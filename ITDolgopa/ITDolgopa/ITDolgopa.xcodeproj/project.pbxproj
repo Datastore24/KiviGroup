@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772043E61C649557001F787F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772043E51C649557001F787F /* LoginView.m */; };
+		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
 		ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCD91C5F6C9F00BCC486 /* main.m */; };
 		ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */; };
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
@@ -19,6 +21,11 @@
 /* Begin PBXFileReference section */
 		25BAB246A8C56568BD8E1483 /* Pods-ITDolgopa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.release.xcconfig"; sourceTree = "<group>"; };
 		49F5514E5A16CD5DD0607A92 /* Pods-ITDolgopa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.debug.xcconfig"; sourceTree = "<group>"; };
+		772043E41C649557001F787F /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		772043E51C649557001F787F /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		772044271C64D177001F787F /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7742CB531C63965F00515DDD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD51C5F6C9F00BCC486 /* ITDolgopa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITDolgopa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD91C5F6C9F00BCC486 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772043E71C649561001F787F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				772043E41C649557001F787F /* LoginView.h */,
+				772043E51C649557001F787F /* LoginView.m */,
+				7742CB521C63965F00515DDD /* LoginViewController.h */,
+				7742CB531C63965F00515DDD /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		ADFBDCCC1C5F6C9F00BCC486 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +83,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				772043E71C649561001F787F /* Login */,
 				ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */,
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
@@ -81,6 +100,7 @@
 		ADFBDCD81C5F6C9F00BCC486 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				772044271C64D177001F787F /* Macros.h */,
 				ADFBDCD91C5F6C9F00BCC486 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -224,8 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
+				772043E61C649557001F787F /* LoginView.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
