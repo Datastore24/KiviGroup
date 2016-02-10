@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		776A118B1C6B410A0089D19A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A118A1C6B410A0089D19A /* main.m */; };
+		776A118E1C6B410A0089D19A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A118D1C6B410A0089D19A /* AppDelegate.m */; };
+		776A11911C6B410A0089D19A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11901C6B410A0089D19A /* ViewController.m */; };
+		776A11941C6B410A0089D19A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 776A11921C6B410A0089D19A /* Main.storyboard */; };
+		776A11961C6B410A0089D19A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 776A11951C6B410A0089D19A /* Assets.xcassets */; };
+		776A11991C6B410A0089D19A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 776A11971C6B410A0089D19A /* LaunchScreen.storyboard */; };
+		776A11A41C6B410A0089D19A /* My_kamchatkaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11A31C6B410A0089D19A /* My_kamchatkaTests.m */; };
+		776A11AF1C6B410B0089D19A /* My_kamchatkaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11AE1C6B410B0089D19A /* My_kamchatkaUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		776A11A01C6B410A0089D19A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 776A117E1C6B410A0089D19A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 776A11851C6B410A0089D19A;
+			remoteInfo = "My kamchatka";
+		};
+		776A11AB1C6B410B0089D19A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 776A117E1C6B410A0089D19A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 776A11851C6B410A0089D19A;
+			remoteInfo = "My kamchatka";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		776A11861C6B410A0089D19A /* My kamchatka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My kamchatka.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		776A118A1C6B410A0089D19A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		776A118C1C6B410A0089D19A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		776A118D1C6B410A0089D19A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		776A118F1C6B410A0089D19A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		776A11901C6B410A0089D19A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		776A11931C6B410A0089D19A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		776A11951C6B410A0089D19A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		776A11981C6B410A0089D19A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		776A119A1C6B410A0089D19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		776A119F1C6B410A0089D19A /* My kamchatkaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My kamchatkaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		776A11A31C6B410A0089D19A /* My_kamchatkaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_kamchatkaTests.m; sourceTree = "<group>"; };
+		776A11A51C6B410A0089D19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		776A11AA1C6B410B0089D19A /* My kamchatkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My kamchatkaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		776A11AE1C6B410B0089D19A /* My_kamchatkaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_kamchatkaUITests.m; sourceTree = "<group>"; };
+		776A11B01C6B410B0089D19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		776A11831C6B410A0089D19A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A119C1C6B410A0089D19A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A11A71C6B410B0089D19A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		776A117D1C6B410A0089D19A = {
+			isa = PBXGroup;
+			children = (
+				776A11881C6B410A0089D19A /* My kamchatka */,
+				776A11A21C6B410A0089D19A /* My kamchatkaTests */,
+				776A11AD1C6B410B0089D19A /* My kamchatkaUITests */,
+				776A11871C6B410A0089D19A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		776A11871C6B410A0089D19A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				776A11861C6B410A0089D19A /* My kamchatka.app */,
+				776A119F1C6B410A0089D19A /* My kamchatkaTests.xctest */,
+				776A11AA1C6B410B0089D19A /* My kamchatkaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		776A11881C6B410A0089D19A /* My kamchatka */ = {
+			isa = PBXGroup;
+			children = (
+				776A118C1C6B410A0089D19A /* AppDelegate.h */,
+				776A118D1C6B410A0089D19A /* AppDelegate.m */,
+				776A118F1C6B410A0089D19A /* ViewController.h */,
+				776A11901C6B410A0089D19A /* ViewController.m */,
+				776A11921C6B410A0089D19A /* Main.storyboard */,
+				776A11951C6B410A0089D19A /* Assets.xcassets */,
+				776A11971C6B410A0089D19A /* LaunchScreen.storyboard */,
+				776A119A1C6B410A0089D19A /* Info.plist */,
+				776A11891C6B410A0089D19A /* Supporting Files */,
+			);
+			path = "My kamchatka";
+			sourceTree = "<group>";
+		};
+		776A11891C6B410A0089D19A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				776A118A1C6B410A0089D19A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		776A11A21C6B410A0089D19A /* My kamchatkaTests */ = {
+			isa = PBXGroup;
+			children = (
+				776A11A31C6B410A0089D19A /* My_kamchatkaTests.m */,
+				776A11A51C6B410A0089D19A /* Info.plist */,
+			);
+			path = "My kamchatkaTests";
+			sourceTree = "<group>";
+		};
+		776A11AD1C6B410B0089D19A /* My kamchatkaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				776A11AE1C6B410B0089D19A /* My_kamchatkaUITests.m */,
+				776A11B01C6B410B0089D19A /* Info.plist */,
+			);
+			path = "My kamchatkaUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		776A11851C6B410A0089D19A /* My kamchatka */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 776A11B31C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatka" */;
+			buildPhases = (
+				776A11821C6B410A0089D19A /* Sources */,
+				776A11831C6B410A0089D19A /* Frameworks */,
+				776A11841C6B410A0089D19A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My kamchatka";
+			productName = "My kamchatka";
+			productReference = 776A11861C6B410A0089D19A /* My kamchatka.app */;
+			productType = "com.apple.product-type.application";
+		};
+		776A119E1C6B410A0089D19A /* My kamchatkaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 776A11B61C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaTests" */;
+			buildPhases = (
+				776A119B1C6B410A0089D19A /* Sources */,
+				776A119C1C6B410A0089D19A /* Frameworks */,
+				776A119D1C6B410A0089D19A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				776A11A11C6B410A0089D19A /* PBXTargetDependency */,
+			);
+			name = "My kamchatkaTests";
+			productName = "My kamchatkaTests";
+			productReference = 776A119F1C6B410A0089D19A /* My kamchatkaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		776A11A91C6B410B0089D19A /* My kamchatkaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 776A11B91C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaUITests" */;
+			buildPhases = (
+				776A11A61C6B410B0089D19A /* Sources */,
+				776A11A71C6B410B0089D19A /* Frameworks */,
+				776A11A81C6B410B0089D19A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				776A11AC1C6B410B0089D19A /* PBXTargetDependency */,
+			);
+			name = "My kamchatkaUITests";
+			productName = "My kamchatkaUITests";
+			productReference = 776A11AA1C6B410B0089D19A /* My kamchatkaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		776A117E1C6B410A0089D19A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Viktor;
+				TargetAttributes = {
+					776A11851C6B410A0089D19A = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					776A119E1C6B410A0089D19A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 776A11851C6B410A0089D19A;
+					};
+					776A11A91C6B410B0089D19A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 776A11851C6B410A0089D19A;
+					};
+				};
+			};
+			buildConfigurationList = 776A11811C6B410A0089D19A /* Build configuration list for PBXProject "My kamchatka" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 776A117D1C6B410A0089D19A;
+			productRefGroup = 776A11871C6B410A0089D19A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				776A11851C6B410A0089D19A /* My kamchatka */,
+				776A119E1C6B410A0089D19A /* My kamchatkaTests */,
+				776A11A91C6B410B0089D19A /* My kamchatkaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		776A11841C6B410A0089D19A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776A11991C6B410A0089D19A /* LaunchScreen.storyboard in Resources */,
+				776A11961C6B410A0089D19A /* Assets.xcassets in Resources */,
+				776A11941C6B410A0089D19A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A119D1C6B410A0089D19A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A11A81C6B410B0089D19A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		776A11821C6B410A0089D19A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776A11911C6B410A0089D19A /* ViewController.m in Sources */,
+				776A118E1C6B410A0089D19A /* AppDelegate.m in Sources */,
+				776A118B1C6B410A0089D19A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A119B1C6B410A0089D19A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776A11A41C6B410A0089D19A /* My_kamchatkaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		776A11A61C6B410B0089D19A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776A11AF1C6B410B0089D19A /* My_kamchatkaUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		776A11A11C6B410A0089D19A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 776A11851C6B410A0089D19A /* My kamchatka */;
+			targetProxy = 776A11A01C6B410A0089D19A /* PBXContainerItemProxy */;
+		};
+		776A11AC1C6B410B0089D19A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 776A11851C6B410A0089D19A /* My kamchatka */;
+			targetProxy = 776A11AB1C6B410B0089D19A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		776A11921C6B410A0089D19A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				776A11931C6B410A0089D19A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		776A11971C6B410A0089D19A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				776A11981C6B410A0089D19A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		776A11B11C6B410B0089D19A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		776A11B21C6B410B0089D19A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		776A11B41C6B410B0089D19A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "My kamchatka/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatka";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		776A11B51C6B410B0089D19A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "My kamchatka/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatka";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		776A11B71C6B410B0089D19A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "My kamchatkaTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatkaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My kamchatka.app/My kamchatka";
+			};
+			name = Debug;
+		};
+		776A11B81C6B410B0089D19A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "My kamchatkaTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatkaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My kamchatka.app/My kamchatka";
+			};
+			name = Release;
+		};
+		776A11BA1C6B410B0089D19A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "My kamchatkaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatkaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "My kamchatka";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		776A11BB1C6B410B0089D19A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "My kamchatkaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ugi-Ugi.My-kamchatkaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "My kamchatka";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		776A11811C6B410A0089D19A /* Build configuration list for PBXProject "My kamchatka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				776A11B11C6B410B0089D19A /* Debug */,
+				776A11B21C6B410B0089D19A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		776A11B31C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				776A11B41C6B410B0089D19A /* Debug */,
+				776A11B51C6B410B0089D19A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		776A11B61C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				776A11B71C6B410B0089D19A /* Debug */,
+				776A11B81C6B410B0089D19A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		776A11B91C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				776A11BA1C6B410B0089D19A /* Debug */,
+				776A11BB1C6B410B0089D19A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 776A117E1C6B410A0089D19A /* Project object */;
+}
