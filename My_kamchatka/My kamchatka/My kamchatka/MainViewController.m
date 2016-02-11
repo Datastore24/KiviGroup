@@ -7,7 +7,25 @@
 //
 
 #import "MainViewController.h"
+#import "SWRevealViewController.h"
 
 @implementation MainViewController
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //Параметры кнопки меню---------------------------------------
+    _barButton.target = self.revealViewController;
+    _barButton.action = @selector(revealToggle:);
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
 
 @end

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77114D681C6BC9C700AE7508 /* RegulationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77114D671C6BC9C700AE7508 /* RegulationsViewController.m */; };
+		77114D6C1C6BCCC500AE7508 /* RequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77114D6B1C6BCCC500AE7508 /* RequirementsViewController.m */; };
+		77114D701C6BCCF900AE7508 /* JuryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77114D6F1C6BCCF900AE7508 /* JuryViewController.m */; };
+		77114D741C6BCD2600AE7508 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77114D731C6BCD2600AE7508 /* GalleryViewController.m */; };
+		77114D781C6BCD5A00AE7508 /* ApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77114D771C6BCD5A00AE7508 /* ApplicationViewController.m */; };
 		776A118B1C6B410A0089D19A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A118A1C6B410A0089D19A /* main.m */; };
 		776A118E1C6B410A0089D19A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A118D1C6B410A0089D19A /* AppDelegate.m */; };
 		776A11911C6B410A0089D19A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11901C6B410A0089D19A /* ViewController.m */; };
@@ -15,6 +20,9 @@
 		776A11991C6B410A0089D19A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 776A11971C6B410A0089D19A /* LaunchScreen.storyboard */; };
 		776A11A41C6B410A0089D19A /* My_kamchatkaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11A31C6B410A0089D19A /* My_kamchatkaTests.m */; };
 		776A11AF1C6B410B0089D19A /* My_kamchatkaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11AE1C6B410B0089D19A /* My_kamchatkaUITests.m */; };
+		776A11BF1C6B429D0089D19A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11BE1C6B429D0089D19A /* SWRevealViewController.m */; };
+		776A11C21C6B430E0089D19A /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11C11C6B430E0089D19A /* MenuViewController.m */; };
+		776A11C61C6B44760089D19A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A11C51C6B44760089D19A /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +43,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		77114D661C6BC9C700AE7508 /* RegulationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegulationsViewController.h; sourceTree = "<group>"; };
+		77114D671C6BC9C700AE7508 /* RegulationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegulationsViewController.m; sourceTree = "<group>"; };
+		77114D6A1C6BCCC500AE7508 /* RequirementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementsViewController.h; sourceTree = "<group>"; };
+		77114D6B1C6BCCC500AE7508 /* RequirementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementsViewController.m; sourceTree = "<group>"; };
+		77114D6E1C6BCCF900AE7508 /* JuryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuryViewController.h; sourceTree = "<group>"; };
+		77114D6F1C6BCCF900AE7508 /* JuryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuryViewController.m; sourceTree = "<group>"; };
+		77114D721C6BCD2600AE7508 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		77114D731C6BCD2600AE7508 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		77114D761C6BCD5A00AE7508 /* ApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationViewController.h; sourceTree = "<group>"; };
+		77114D771C6BCD5A00AE7508 /* ApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationViewController.m; sourceTree = "<group>"; };
 		776A11861C6B410A0089D19A /* My kamchatka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My kamchatka.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		776A118A1C6B410A0089D19A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		776A118C1C6B410A0089D19A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +69,12 @@
 		776A11AA1C6B410B0089D19A /* My kamchatkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My kamchatkaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		776A11AE1C6B410B0089D19A /* My_kamchatkaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_kamchatkaUITests.m; sourceTree = "<group>"; };
 		776A11B01C6B410B0089D19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		776A11BD1C6B429D0089D19A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		776A11BE1C6B429D0089D19A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		776A11C01C6B430E0089D19A /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		776A11C11C6B430E0089D19A /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		776A11C41C6B44760089D19A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		776A11C51C6B44760089D19A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +102,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77114D621C6BC97E00AE7508 /* Regulations */ = {
+			isa = PBXGroup;
+			children = (
+				77114D661C6BC9C700AE7508 /* RegulationsViewController.h */,
+				77114D671C6BC9C700AE7508 /* RegulationsViewController.m */,
+			);
+			name = Regulations;
+			sourceTree = "<group>";
+		};
+		77114D691C6BCCA000AE7508 /* Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				77114D6A1C6BCCC500AE7508 /* RequirementsViewController.h */,
+				77114D6B1C6BCCC500AE7508 /* RequirementsViewController.m */,
+			);
+			name = Requirements;
+			sourceTree = "<group>";
+		};
+		77114D6D1C6BCCE200AE7508 /* Jury */ = {
+			isa = PBXGroup;
+			children = (
+				77114D6E1C6BCCF900AE7508 /* JuryViewController.h */,
+				77114D6F1C6BCCF900AE7508 /* JuryViewController.m */,
+			);
+			name = Jury;
+			sourceTree = "<group>";
+		};
+		77114D711C6BCD1100AE7508 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				77114D721C6BCD2600AE7508 /* GalleryViewController.h */,
+				77114D731C6BCD2600AE7508 /* GalleryViewController.m */,
+			);
+			name = Gallery;
+			sourceTree = "<group>";
+		};
+		77114D751C6BCD4600AE7508 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				77114D761C6BCD5A00AE7508 /* ApplicationViewController.h */,
+				77114D771C6BCD5A00AE7508 /* ApplicationViewController.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
 		776A117D1C6B410A0089D19A = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +170,13 @@
 		776A11881C6B410A0089D19A /* My kamchatka */ = {
 			isa = PBXGroup;
 			children = (
+				776A11BC1C6B42370089D19A /* MenuProject */,
+				776A11C31C6B44610089D19A /* MainView */,
+				77114D621C6BC97E00AE7508 /* Regulations */,
+				77114D691C6BCCA000AE7508 /* Requirements */,
+				77114D6D1C6BCCE200AE7508 /* Jury */,
+				77114D711C6BCD1100AE7508 /* Gallery */,
+				77114D751C6BCD4600AE7508 /* Application */,
 				776A118C1C6B410A0089D19A /* AppDelegate.h */,
 				776A118D1C6B410A0089D19A /* AppDelegate.m */,
 				776A118F1C6B410A0089D19A /* ViewController.h */,
@@ -138,6 +214,26 @@
 				776A11B01C6B410B0089D19A /* Info.plist */,
 			);
 			path = "My kamchatkaUITests";
+			sourceTree = "<group>";
+		};
+		776A11BC1C6B42370089D19A /* MenuProject */ = {
+			isa = PBXGroup;
+			children = (
+				776A11BD1C6B429D0089D19A /* SWRevealViewController.h */,
+				776A11BE1C6B429D0089D19A /* SWRevealViewController.m */,
+				776A11C01C6B430E0089D19A /* MenuViewController.h */,
+				776A11C11C6B430E0089D19A /* MenuViewController.m */,
+			);
+			name = MenuProject;
+			sourceTree = "<group>";
+		};
+		776A11C31C6B44610089D19A /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				776A11C41C6B44760089D19A /* MainViewController.h */,
+				776A11C51C6B44760089D19A /* MainViewController.m */,
+			);
+			name = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +366,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77114D681C6BC9C700AE7508 /* RegulationsViewController.m in Sources */,
 				776A11911C6B410A0089D19A /* ViewController.m in Sources */,
+				77114D701C6BCCF900AE7508 /* JuryViewController.m in Sources */,
+				77114D6C1C6BCCC500AE7508 /* RequirementsViewController.m in Sources */,
+				776A11C61C6B44760089D19A /* MainViewController.m in Sources */,
 				776A118E1C6B410A0089D19A /* AppDelegate.m in Sources */,
 				776A118B1C6B410A0089D19A /* main.m in Sources */,
+				776A11BF1C6B429D0089D19A /* SWRevealViewController.m in Sources */,
+				776A11C21C6B430E0089D19A /* MenuViewController.m in Sources */,
+				77114D781C6BCD5A00AE7508 /* ApplicationViewController.m in Sources */,
+				77114D741C6BCD2600AE7508 /* GalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +602,7 @@
 				776A11B51C6B410B0089D19A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		776A11B61C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +611,7 @@
 				776A11B81C6B410B0089D19A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		776A11B91C6B410B0089D19A /* Build configuration list for PBXNativeTarget "My kamchatkaUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +620,7 @@
 				776A11BB1C6B410B0089D19A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
