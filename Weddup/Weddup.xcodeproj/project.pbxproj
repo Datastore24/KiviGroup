@@ -43,6 +43,7 @@
 		AD66386C1C6C9294000718CE /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638651C6C9294000718CE /* UIImage+RoundedCorner.m */; };
 		AD66386D1C6C9294000718CE /* UIView+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638671C6C9294000718CE /* UIView+Convenient.m */; };
 		AD66386F1C6C929C000718CE /* youtube-play.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66386E1C6C929C000718CE /* youtube-play.png */; };
+		AD6638711C6C945B000718CE /* th-list.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638701C6C945B000718CE /* th-list.png */; };
 		D52D92A362854B4699A5D678 /* libPods-Weddup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76232DCCA0AE26AE08627B1 /* libPods-Weddup.a */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		AD6638661C6C9294000718CE /* UIView+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenient.h"; sourceTree = "<group>"; };
 		AD6638671C6C9294000718CE /* UIView+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenient.m"; sourceTree = "<group>"; };
 		AD66386E1C6C929C000718CE /* youtube-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "youtube-play.png"; sourceTree = "<group>"; };
+		AD6638701C6C945B000718CE /* th-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th-list.png"; sourceTree = "<group>"; };
 		B76232DCCA0AE26AE08627B1 /* libPods-Weddup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weddup.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D93D0BA23D85BA2DF8D68A /* Pods-Weddup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weddup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weddup/Pods-Weddup.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				AD66382F1C6C925B000718CE /* list-alt.png */,
 				AD6638301C6C925B000718CE /* logo.jpg */,
 				AD66382A1C6C9242000718CE /* envelope.png */,
+				AD6638701C6C945B000718CE /* th-list.png */,
 				AD66382B1C6C9242000718CE /* iam.jpg */,
 				AD6638571C6C927C000718CE /* phone-icon.png */,
 			);
@@ -333,6 +336,7 @@
 				AD66382D1C6C9242000718CE /* iam.jpg in Resources */,
 				AD6638351C6C9264000718CE /* order.png in Resources */,
 				AD66380F1C6C90C0000718CE /* Main.storyboard in Resources */,
+				AD6638711C6C945B000718CE /* th-list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
