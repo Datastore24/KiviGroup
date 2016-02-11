@@ -10,19 +10,24 @@
 #import "Macros.h"
 #import "UIColor+HexColor.h"
 
-@interface LoginView ()
+@interface LoginView () <UITextFieldDelegate>
 
 @end
 
 @implementation LoginView
+{
+    UILabel * labelPlaceHolderPhone;
+    BOOL isBool;
+}
 
-- (id)initWithView: (UIView*) view
+- (id)initWithView: (UIView*) view andFont: (NSString*) font
 {
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
+        isBool = YES;
         //Создание Logo------------------------------------------------------------------
         //Создаем кастомную ширину лого--------------------------------------------------
         CGFloat widthLogin = (self.frame.size.width / 3) * 2;
@@ -41,13 +46,59 @@
         viewLoginPhone.backgroundColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         [self addSubview:viewLoginPhone];
         
+        //Плэйс холдер телефона----------------------------------------------------------
+        labelPlaceHolderPhone = [[UILabel alloc] initWithFrame:CGRectMake(viewLoginPhone.frame.origin.x + 5, viewLoginPhone.frame.origin.y - 40, widthLogin, 40)];
+        labelPlaceHolderPhone.text = @"Телефон";
+        labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
+        labelPlaceHolderPhone.font = [UIFont fontWithName:font size:20];
+        [self addSubview:labelPlaceHolderPhone];
         
-        
-        
-
+        //Ввод телефонного номера---------------------------------------------------------
+        UITextField * textFieldInputPhone = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderPhone.frame.origin.x, labelPlaceHolderPhone.frame.origin.y, widthLogin, 40)];
+        textFieldInputPhone.delegate = self;
+        textFieldInputPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        textFieldInputPhone.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testMethos:) name:UITextFieldTextDidChangeNotification object:textFieldInputPhone];
+        [self addSubview:textFieldInputPhone];
         
     }
     return self;
+}
+
+
+
+#pragma mark - UITextFieldDelegate
+
+//Скрытие клавиатуры----------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];    
+    return YES;
+}
+
+//Анимация Лейблов при вводе текста-------------------------
+- (void) testMethos: (NSNotification*) notification
+{
+    UITextField * testField = notification.object;
+    if (testField.text.length != 0 && isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderPhone.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHolderPhone.frame = rect;
+            labelPlaceHolderPhone.alpha = 0.f;
+            isBool = NO;
+        }];
+    } else if (testField.text.length == 0 && !isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderPhone.frame;
+            rect.origin.x = rect.origin.x - 100.f;
+            labelPlaceHolderPhone.frame = rect;
+            labelPlaceHolderPhone.alpha = 1.f;
+            isBool = YES;
+        }];
+    }
 }
 
 

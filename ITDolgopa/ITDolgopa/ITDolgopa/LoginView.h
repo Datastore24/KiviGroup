@@ -11,6 +11,6 @@
 
 @interface LoginView : UIView
 
-- (id)initWithView: (UIView*) view;
+- (id)initWithView: (UIView*) view andFont: (NSString*) font;
 
 @end

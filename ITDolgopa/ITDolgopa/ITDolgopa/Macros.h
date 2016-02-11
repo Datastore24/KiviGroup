@@ -19,7 +19,7 @@
 #define BACKGROUNDCOLORLIGINVIEW @"828282"
 
 //Основной шрифт------------------------------------------------------------
-#define MAINFONTLOGINVIEW @""
+#define MAINFONTLOGINVIEW @"SFUIDisplay-Light"
 
 
 #endif /* Macros_h */
