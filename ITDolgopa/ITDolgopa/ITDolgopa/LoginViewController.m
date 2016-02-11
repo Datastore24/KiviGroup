@@ -22,6 +22,18 @@
     LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
     
+    
+    
+    
+    
+    
+    UILabel * labelTest = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 90, 30)];
+    labelTest.text = @"Телефон";
+    labelTest.textColor = [UIColor whiteColor];
+    [labelTest setFont:[UIFont fontWithName:@"SFUIText Light" size:25.0f]];
+    labelTest.center = loginView.center;
+    [loginView addSubview:labelTest];
+    
 
     
     

@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString* const LoginViewAnimationLeftNotification;
-extern NSString* const LoginViewAnimationWriteNotification;
 
 @interface LoginView : UIView
 
-- (instancetype)initWithView: (UIView*) view;
+- (id)initWithView: (UIView*) view;
 
 @end
