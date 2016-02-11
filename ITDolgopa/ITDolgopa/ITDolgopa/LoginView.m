@@ -42,6 +42,8 @@
         [self addSubview:viewLoginPhone];
         
         
+        
+        
 
         
     }
