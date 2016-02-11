@@ -41,8 +41,40 @@
 		AD66386A1C6C9294000718CE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638611C6C9294000718CE /* UIImage+ImageEffects.m */; };
 		AD66386B1C6C9294000718CE /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638631C6C9294000718CE /* UIImage+Resize.m */; };
 		AD66386C1C6C9294000718CE /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638651C6C9294000718CE /* UIImage+RoundedCorner.m */; };
-		AD66386D1C6C9294000718CE /* UIView+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638671C6C9294000718CE /* UIView+Convenient.m */; };
 		AD66386F1C6C929C000718CE /* youtube-play.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66386E1C6C929C000718CE /* youtube-play.png */; };
+		AD6638711C6C945B000718CE /* th-list.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638701C6C945B000718CE /* th-list.png */; };
+		AD6638751C6C953C000718CE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638741C6C953C000718CE /* SWRevealViewController.m */; };
+		AD6638781C6C9547000718CE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638771C6C9547000718CE /* MenuViewController.m */; };
+		AD66387C1C6C9A99000718CE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD66387B1C6C9A99000718CE /* MainViewController.m */; };
+		AD66387F1C6C9B43000718CE /* TextAndImageHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = AD66387E1C6C9B43000718CE /* TextAndImageHeight.m */; };
+		AD6638851C6CAB73000718CE /* CurveLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638821C6CAB73000718CE /* CurveLayer.m */; };
+		AD6638861C6CAB73000718CE /* CurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638841C6CAB73000718CE /* CurveView.m */; };
+		AD66388B1C6CAB83000718CE /* KYPullToCurveVeiw_footer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638881C6CAB83000718CE /* KYPullToCurveVeiw_footer.m */; };
+		AD66388C1C6CAB83000718CE /* KYPullToCurveVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = AD66388A1C6CAB83000718CE /* KYPullToCurveVeiw.m */; };
+		AD6638941C6CABB7000718CE /* LabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638911C6CABB7000718CE /* LabelView.m */; };
+		AD6638981C6CABCE000718CE /* UIView+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6638971C6CABCE000718CE /* UIView+Convenient.m */; };
+		AD6638AC1C6CB24E000718CE /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389A1C6CB24E000718CE /* Icon-60.png */; };
+		AD6638AD1C6CB24E000718CE /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389B1C6CB24E000718CE /* Icon-60@2x.png */; };
+		AD6638AE1C6CB24E000718CE /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389C1C6CB24E000718CE /* Icon-60@3x.png */; };
+		AD6638AF1C6CB24E000718CE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389D1C6CB24E000718CE /* Icon-72.png */; };
+		AD6638B01C6CB24E000718CE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389E1C6CB24E000718CE /* Icon-72@2x.png */; };
+		AD6638B11C6CB24E000718CE /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = AD66389F1C6CB24E000718CE /* Icon-76.png */; };
+		AD6638B21C6CB24E000718CE /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A01C6CB24E000718CE /* Icon-76@2x.png */; };
+		AD6638B31C6CB24E000718CE /* Icon-Small-40.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A11C6CB24E000718CE /* Icon-Small-40.png */; };
+		AD6638B41C6CB24E000718CE /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A21C6CB24E000718CE /* Icon-Small-40@2x.png */; };
+		AD6638B51C6CB24E000718CE /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A31C6CB24E000718CE /* Icon-Small-40@3x.png */; };
+		AD6638B61C6CB24E000718CE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A41C6CB24E000718CE /* Icon-Small-50.png */; };
+		AD6638B71C6CB24E000718CE /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A51C6CB24E000718CE /* Icon-Small-50@2x.png */; };
+		AD6638B81C6CB24E000718CE /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A61C6CB24E000718CE /* Icon-Small.png */; };
+		AD6638B91C6CB24E000718CE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A71C6CB24E000718CE /* Icon-Small@2x.png */; };
+		AD6638BA1C6CB24E000718CE /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A81C6CB24E000718CE /* Icon-Small@3x.png */; };
+		AD6638BB1C6CB24E000718CE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638A91C6CB24E000718CE /* Icon.png */; };
+		AD6638BD1C6CB24E000718CE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638AB1C6CB24E000718CE /* Icon@2x.png */; };
+		AD6638C41C6CB710000718CE /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638BF1C6CB710000718CE /* iphone 4.png */; };
+		AD6638C51C6CB710000718CE /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638C01C6CB710000718CE /* iphone 5.png */; };
+		AD6638C61C6CB710000718CE /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638C11C6CB710000718CE /* iphone 6 Plus_2.png */; };
+		AD6638C71C6CB710000718CE /* iphone 6 Plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638C21C6CB710000718CE /* iphone 6 Plus.png */; };
+		AD6638C81C6CB710000718CE /* iphone 6.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6638C31C6CB710000718CE /* iphone 6.png */; };
 		D52D92A362854B4699A5D678 /* libPods-Weddup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76232DCCA0AE26AE08627B1 /* libPods-Weddup.a */; };
 /* End PBXBuildFile section */
 
@@ -107,9 +139,50 @@
 		AD6638631C6C9294000718CE /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		AD6638641C6C9294000718CE /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		AD6638651C6C9294000718CE /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		AD6638661C6C9294000718CE /* UIView+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenient.h"; sourceTree = "<group>"; };
-		AD6638671C6C9294000718CE /* UIView+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenient.m"; sourceTree = "<group>"; };
 		AD66386E1C6C929C000718CE /* youtube-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "youtube-play.png"; sourceTree = "<group>"; };
+		AD6638701C6C945B000718CE /* th-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th-list.png"; sourceTree = "<group>"; };
+		AD6638731C6C953C000718CE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		AD6638741C6C953C000718CE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		AD6638761C6C9547000718CE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		AD6638771C6C9547000718CE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		AD66387A1C6C9A99000718CE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AD66387B1C6C9A99000718CE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		AD66387D1C6C9B43000718CE /* TextAndImageHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAndImageHeight.h; sourceTree = "<group>"; };
+		AD66387E1C6C9B43000718CE /* TextAndImageHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndImageHeight.m; sourceTree = "<group>"; };
+		AD6638811C6CAB73000718CE /* CurveLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveLayer.h; sourceTree = "<group>"; };
+		AD6638821C6CAB73000718CE /* CurveLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveLayer.m; sourceTree = "<group>"; };
+		AD6638831C6CAB73000718CE /* CurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveView.h; sourceTree = "<group>"; };
+		AD6638841C6CAB73000718CE /* CurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveView.m; sourceTree = "<group>"; };
+		AD6638871C6CAB83000718CE /* KYPullToCurveVeiw_footer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPullToCurveVeiw_footer.h; sourceTree = "<group>"; };
+		AD6638881C6CAB83000718CE /* KYPullToCurveVeiw_footer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPullToCurveVeiw_footer.m; sourceTree = "<group>"; };
+		AD6638891C6CAB83000718CE /* KYPullToCurveVeiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPullToCurveVeiw.h; sourceTree = "<group>"; };
+		AD66388A1C6CAB83000718CE /* KYPullToCurveVeiw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPullToCurveVeiw.m; sourceTree = "<group>"; };
+		AD6638901C6CABB7000718CE /* LabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelView.h; sourceTree = "<group>"; };
+		AD6638911C6CABB7000718CE /* LabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelView.m; sourceTree = "<group>"; };
+		AD6638961C6CABCE000718CE /* UIView+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenient.h"; sourceTree = "<group>"; };
+		AD6638971C6CABCE000718CE /* UIView+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenient.m"; sourceTree = "<group>"; };
+		AD66389A1C6CB24E000718CE /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60.png"; path = "icons/Icon-60.png"; sourceTree = "<group>"; };
+		AD66389B1C6CB24E000718CE /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "icons/Icon-60@2x.png"; sourceTree = "<group>"; };
+		AD66389C1C6CB24E000718CE /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "icons/Icon-60@3x.png"; sourceTree = "<group>"; };
+		AD66389D1C6CB24E000718CE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icons/Icon-72.png"; sourceTree = "<group>"; };
+		AD66389E1C6CB24E000718CE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "icons/Icon-72@2x.png"; sourceTree = "<group>"; };
+		AD66389F1C6CB24E000718CE /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "icons/Icon-76.png"; sourceTree = "<group>"; };
+		AD6638A01C6CB24E000718CE /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "icons/Icon-76@2x.png"; sourceTree = "<group>"; };
+		AD6638A11C6CB24E000718CE /* Icon-Small-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-40.png"; path = "icons/Icon-Small-40.png"; sourceTree = "<group>"; };
+		AD6638A21C6CB24E000718CE /* Icon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-40@2x.png"; path = "icons/Icon-Small-40@2x.png"; sourceTree = "<group>"; };
+		AD6638A31C6CB24E000718CE /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-40@3x.png"; path = "icons/Icon-Small-40@3x.png"; sourceTree = "<group>"; };
+		AD6638A41C6CB24E000718CE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "icons/Icon-Small-50.png"; sourceTree = "<group>"; };
+		AD6638A51C6CB24E000718CE /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "icons/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		AD6638A61C6CB24E000718CE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icons/Icon-Small.png"; sourceTree = "<group>"; };
+		AD6638A71C6CB24E000718CE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "icons/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		AD6638A81C6CB24E000718CE /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@3x.png"; path = "icons/Icon-Small@3x.png"; sourceTree = "<group>"; };
+		AD6638A91C6CB24E000718CE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = icons/Icon.png; sourceTree = "<group>"; };
+		AD6638AB1C6CB24E000718CE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "icons/Icon@2x.png"; sourceTree = "<group>"; };
+		AD6638BF1C6CB710000718CE /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone 4.png"; path = "icons/Launch/iphone 4.png"; sourceTree = "<group>"; };
+		AD6638C01C6CB710000718CE /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone 5.png"; path = "icons/Launch/iphone 5.png"; sourceTree = "<group>"; };
+		AD6638C11C6CB710000718CE /* iphone 6 Plus_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone 6 Plus_2.png"; path = "icons/Launch/iphone 6 Plus_2.png"; sourceTree = "<group>"; };
+		AD6638C21C6CB710000718CE /* iphone 6 Plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone 6 Plus.png"; path = "icons/Launch/iphone 6 Plus.png"; sourceTree = "<group>"; };
+		AD6638C31C6CB710000718CE /* iphone 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone 6.png"; path = "icons/Launch/iphone 6.png"; sourceTree = "<group>"; };
 		B76232DCCA0AE26AE08627B1 /* libPods-Weddup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weddup.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D93D0BA23D85BA2DF8D68A /* Pods-Weddup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weddup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weddup/Pods-Weddup.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,11 +239,16 @@
 			children = (
 				AD6638591C6C9287000718CE /* SingleTone.h */,
 				AD66385A1C6C9287000718CE /* SingleTone.m */,
-				AD6638291C6C9234000718CE /* Images */,
 				AD6638261C6C9201000718CE /* BBlock.h */,
 				AD6638271C6C9201000718CE /* BBlock.m */,
+				AD66387D1C6C9B43000718CE /* TextAndImageHeight.h */,
+				AD66387E1C6C9B43000718CE /* TextAndImageHeight.m */,
+				AD6638801C6CAA94000718CE /* Reloader */,
+				AD6638291C6C9234000718CE /* Images */,
 				AD6638221C6C91EC000718CE /* Category */,
 				AD66381B1C6C91D6000718CE /* API */,
+				AD6638721C6C950B000718CE /* MenuProject */,
+				AD6638791C6C9A84000718CE /* MainView */,
 				AD6638071C6C90C0000718CE /* AppDelegate.h */,
 				AD6638081C6C90C0000718CE /* AppDelegate.m */,
 				AD66380A1C6C90C0000718CE /* ViewController.h */,
@@ -238,8 +316,6 @@
 				AD6638631C6C9294000718CE /* UIImage+Resize.m */,
 				AD6638641C6C9294000718CE /* UIImage+RoundedCorner.h */,
 				AD6638651C6C9294000718CE /* UIImage+RoundedCorner.m */,
-				AD6638661C6C9294000718CE /* UIView+Convenient.h */,
-				AD6638671C6C9294000718CE /* UIView+Convenient.m */,
 				AD6638231C6C91F9000718CE /* Animation.h */,
 				AD6638241C6C91F9000718CE /* Animation.m */,
 			);
@@ -249,16 +325,94 @@
 		AD6638291C6C9234000718CE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AD6638BE1C6CB6FD000718CE /* Launcher */,
+				AD6638991C6CB228000718CE /* Icons */,
 				AD66382E1C6C925B000718CE /* left.png */,
 				AD66386E1C6C929C000718CE /* youtube-play.png */,
 				AD6638341C6C9264000718CE /* order.png */,
 				AD66382F1C6C925B000718CE /* list-alt.png */,
 				AD6638301C6C925B000718CE /* logo.jpg */,
 				AD66382A1C6C9242000718CE /* envelope.png */,
+				AD6638701C6C945B000718CE /* th-list.png */,
 				AD66382B1C6C9242000718CE /* iam.jpg */,
 				AD6638571C6C927C000718CE /* phone-icon.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		AD6638721C6C950B000718CE /* MenuProject */ = {
+			isa = PBXGroup;
+			children = (
+				AD6638731C6C953C000718CE /* SWRevealViewController.h */,
+				AD6638741C6C953C000718CE /* SWRevealViewController.m */,
+				AD6638761C6C9547000718CE /* MenuViewController.h */,
+				AD6638771C6C9547000718CE /* MenuViewController.m */,
+			);
+			name = MenuProject;
+			sourceTree = "<group>";
+		};
+		AD6638791C6C9A84000718CE /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				AD66387A1C6C9A99000718CE /* MainViewController.h */,
+				AD66387B1C6C9A99000718CE /* MainViewController.m */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		AD6638801C6CAA94000718CE /* Reloader */ = {
+			isa = PBXGroup;
+			children = (
+				AD6638871C6CAB83000718CE /* KYPullToCurveVeiw_footer.h */,
+				AD6638881C6CAB83000718CE /* KYPullToCurveVeiw_footer.m */,
+				AD6638891C6CAB83000718CE /* KYPullToCurveVeiw.h */,
+				AD66388A1C6CAB83000718CE /* KYPullToCurveVeiw.m */,
+				AD6638811C6CAB73000718CE /* CurveLayer.h */,
+				AD6638821C6CAB73000718CE /* CurveLayer.m */,
+				AD6638831C6CAB73000718CE /* CurveView.h */,
+				AD6638841C6CAB73000718CE /* CurveView.m */,
+				AD6638901C6CABB7000718CE /* LabelView.h */,
+				AD6638911C6CABB7000718CE /* LabelView.m */,
+				AD6638961C6CABCE000718CE /* UIView+Convenient.h */,
+				AD6638971C6CABCE000718CE /* UIView+Convenient.m */,
+			);
+			name = Reloader;
+			sourceTree = "<group>";
+		};
+		AD6638991C6CB228000718CE /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				AD66389A1C6CB24E000718CE /* Icon-60.png */,
+				AD66389B1C6CB24E000718CE /* Icon-60@2x.png */,
+				AD66389C1C6CB24E000718CE /* Icon-60@3x.png */,
+				AD66389D1C6CB24E000718CE /* Icon-72.png */,
+				AD66389E1C6CB24E000718CE /* Icon-72@2x.png */,
+				AD66389F1C6CB24E000718CE /* Icon-76.png */,
+				AD6638A01C6CB24E000718CE /* Icon-76@2x.png */,
+				AD6638A11C6CB24E000718CE /* Icon-Small-40.png */,
+				AD6638A21C6CB24E000718CE /* Icon-Small-40@2x.png */,
+				AD6638A31C6CB24E000718CE /* Icon-Small-40@3x.png */,
+				AD6638A41C6CB24E000718CE /* Icon-Small-50.png */,
+				AD6638A51C6CB24E000718CE /* Icon-Small-50@2x.png */,
+				AD6638A61C6CB24E000718CE /* Icon-Small.png */,
+				AD6638A71C6CB24E000718CE /* Icon-Small@2x.png */,
+				AD6638A81C6CB24E000718CE /* Icon-Small@3x.png */,
+				AD6638A91C6CB24E000718CE /* Icon.png */,
+				AD6638AB1C6CB24E000718CE /* Icon@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		AD6638BE1C6CB6FD000718CE /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				AD6638BF1C6CB710000718CE /* iphone 4.png */,
+				AD6638C01C6CB710000718CE /* iphone 5.png */,
+				AD6638C11C6CB710000718CE /* iphone 6 Plus_2.png */,
+				AD6638C21C6CB710000718CE /* iphone 6 Plus.png */,
+				AD6638C31C6CB710000718CE /* iphone 6.png */,
+			);
+			name = Launcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,17 +476,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6638C71C6CB710000718CE /* iphone 6 Plus.png in Resources */,
+				AD6638C41C6CB710000718CE /* iphone 4.png in Resources */,
 				AD6638331C6C925B000718CE /* logo.jpg in Resources */,
 				AD6638141C6C90C0000718CE /* LaunchScreen.storyboard in Resources */,
+				AD6638B61C6CB24E000718CE /* Icon-Small-50.png in Resources */,
+				AD6638B81C6CB24E000718CE /* Icon-Small.png in Resources */,
+				AD6638B21C6CB24E000718CE /* Icon-76@2x.png in Resources */,
+				AD6638B91C6CB24E000718CE /* Icon-Small@2x.png in Resources */,
 				AD6638321C6C925B000718CE /* list-alt.png in Resources */,
+				AD6638AD1C6CB24E000718CE /* Icon-60@2x.png in Resources */,
 				AD66386F1C6C929C000718CE /* youtube-play.png in Resources */,
+				AD6638B01C6CB24E000718CE /* Icon-72@2x.png in Resources */,
 				AD66382C1C6C9242000718CE /* envelope.png in Resources */,
+				AD6638B51C6CB24E000718CE /* Icon-Small-40@3x.png in Resources */,
+				AD6638BB1C6CB24E000718CE /* Icon.png in Resources */,
+				AD6638BA1C6CB24E000718CE /* Icon-Small@3x.png in Resources */,
+				AD6638AE1C6CB24E000718CE /* Icon-60@3x.png in Resources */,
 				AD6638311C6C925B000718CE /* left.png in Resources */,
+				AD6638B41C6CB24E000718CE /* Icon-Small-40@2x.png in Resources */,
 				AD6638581C6C927C000718CE /* phone-icon.png in Resources */,
+				AD6638AC1C6CB24E000718CE /* Icon-60.png in Resources */,
+				AD6638C61C6CB710000718CE /* iphone 6 Plus_2.png in Resources */,
+				AD6638BD1C6CB24E000718CE /* Icon@2x.png in Resources */,
+				AD6638B31C6CB24E000718CE /* Icon-Small-40.png in Resources */,
+				AD6638C81C6CB710000718CE /* iphone 6.png in Resources */,
 				AD6638111C6C90C0000718CE /* Assets.xcassets in Resources */,
 				AD66382D1C6C9242000718CE /* iam.jpg in Resources */,
+				AD6638B71C6CB24E000718CE /* Icon-Small-50@2x.png in Resources */,
+				AD6638C51C6CB710000718CE /* iphone 5.png in Resources */,
 				AD6638351C6C9264000718CE /* order.png in Resources */,
+				AD6638AF1C6CB24E000718CE /* Icon-72.png in Resources */,
 				AD66380F1C6C90C0000718CE /* Main.storyboard in Resources */,
+				AD6638711C6C945B000718CE /* th-list.png in Resources */,
+				AD6638B11C6CB24E000718CE /* Icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,31 +568,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6638941C6CABB7000718CE /* LabelView.m in Sources */,
 				AD66386B1C6C9294000718CE /* UIImage+Resize.m in Sources */,
+				AD6638851C6CAB73000718CE /* CurveLayer.m in Sources */,
+				AD6638781C6C9547000718CE /* MenuViewController.m in Sources */,
 				AD66380C1C6C90C0000718CE /* ViewController.m in Sources */,
 				AD6638091C6C90C0000718CE /* AppDelegate.m in Sources */,
 				AD6638251C6C91F9000718CE /* Animation.m in Sources */,
 				AD6638201C6C91E4000718CE /* API.m in Sources */,
+				AD66388B1C6CAB83000718CE /* KYPullToCurveVeiw_footer.m in Sources */,
 				AD66386A1C6C9294000718CE /* UIImage+ImageEffects.m in Sources */,
+				AD66387F1C6C9B43000718CE /* TextAndImageHeight.m in Sources */,
 				AD6638501C6C9273000718CE /* ParserPrice.m in Sources */,
 				AD6638691C6C9294000718CE /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD66384D1C6C9273000718CE /* ParserAbout.m in Sources */,
 				AD6638061C6C90C0000718CE /* main.m in Sources */,
+				AD66387C1C6C9A99000718CE /* MainViewController.m in Sources */,
 				AD66385B1C6C9287000718CE /* SingleTone.m in Sources */,
 				AD6638681C6C9294000718CE /* UIImage+Alpha.m in Sources */,
 				AD6638211C6C91E4000718CE /* APIPostClass.m in Sources */,
+				AD6638751C6C953C000718CE /* SWRevealViewController.m in Sources */,
 				AD66384E1C6C9273000718CE /* ParserArticles.m in Sources */,
 				AD6638561C6C9273000718CE /* ParsingResponseVideo.m in Sources */,
+				AD66388C1C6CAB83000718CE /* KYPullToCurveVeiw.m in Sources */,
 				AD6638551C6C9273000718CE /* ParsingResponsePrice.m in Sources */,
+				AD6638861C6CAB73000718CE /* CurveView.m in Sources */,
 				AD66386C1C6C9294000718CE /* UIImage+RoundedCorner.m in Sources */,
 				AD6638531C6C9273000718CE /* ParsingResponseArticle.m in Sources */,
 				AD66384F1C6C9273000718CE /* ParserMethod.m in Sources */,
 				AD6638281C6C9201000718CE /* BBlock.m in Sources */,
 				AD6638541C6C9273000718CE /* ParsingResponseNamePrice.m in Sources */,
-				AD66386D1C6C9294000718CE /* UIView+Convenient.m in Sources */,
 				AD66384C1C6C9273000718CE /* ParseDate.m in Sources */,
 				AD6638511C6C9273000718CE /* ParserVideo.m in Sources */,
 				AD6638521C6C9273000718CE /* ParsingResponseAbout.m in Sources */,
+				AD6638981C6CABCE000718CE /* UIView+Convenient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +712,7 @@
 			baseConfigurationReference = D1D93D0BA23D85BA2DF8D68A /* Pods-Weddup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Weddup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -539,6 +726,7 @@
 			baseConfigurationReference = 0CB2018ECE1D0878F7FFB7CE /* Pods-Weddup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Weddup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
