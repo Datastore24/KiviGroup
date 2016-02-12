@@ -296,7 +296,7 @@
 				TargetAttributes = {
 					ADFBDCD41C5F6C9F00BCC486 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8W954C8DEM;
+						DevelopmentTeam = 6598R4ULA4;
 					};
 				};
 			};
@@ -540,7 +540,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ITDolgopa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datastore24.ITDolgopa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ITDolgopa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -555,7 +555,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ITDolgopa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datastore24.ITDolgopa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ITDolgopa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
