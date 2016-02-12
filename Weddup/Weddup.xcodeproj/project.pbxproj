@@ -716,7 +716,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Weddup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datastore24.Weddup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.weddup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -730,7 +730,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Weddup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.datastore24.Weddup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.weddup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
