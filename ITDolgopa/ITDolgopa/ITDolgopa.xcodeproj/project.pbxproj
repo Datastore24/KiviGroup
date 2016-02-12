@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */; };
 		771028F81C6CD25800C77C04 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 771028F71C6CD25800C77C04 /* Logo.png */; };
+		7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712447C1C6E01C5001AFB30 /* iconButtonReg.png */; };
+		7712447F1C6E2BF9001AFB30 /* lockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712447E1C6E2BF9001AFB30 /* lockImage.png */; };
 		772043E61C649557001F787F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772043E51C649557001F787F /* LoginView.m */; };
 		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
@@ -43,6 +45,7 @@
 		7782FA1F1C6D2CBF00EC5477 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E81C6D2C8C00EC5477 /* SFUIDisplay-Semibold.otf */; };
 		7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E91C6D2C8C00EC5477 /* SFUIDisplay-Thin.otf */; };
 		7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EA1C6D2C8D00EC5477 /* SFUIDisplay-Ultralight.otf */; };
+		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCD91C5F6C9F00BCC486 /* main.m */; };
 		ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */; };
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
@@ -58,6 +61,8 @@
 		771028F41C6CC9DB00C77C04 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		771028F71C6CD25800C77C04 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		7712447C1C6E01C5001AFB30 /* iconButtonReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconButtonReg.png; sourceTree = "<group>"; };
+		7712447E1C6E2BF9001AFB30 /* lockImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockImage.png; sourceTree = "<group>"; };
 		772043E41C649557001F787F /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		772043E51C649557001F787F /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		772044271C64D177001F787F /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -95,6 +100,8 @@
 		7782F9FF1C6D2CA400EC5477 /* SFUIText-RegularG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG3.otf"; sourceTree = "<group>"; };
 		7782FA001C6D2CA400EC5477 /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
 		7782FA011C6D2CA400EC5477 /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD51C5F6C9F00BCC486 /* ITDolgopa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITDolgopa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD91C5F6C9F00BCC486 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,6 +139,8 @@
 		772043E71C649561001F787F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				7712447E1C6E2BF9001AFB30 /* lockImage.png */,
+				7712447C1C6E01C5001AFB30 /* iconButtonReg.png */,
 				771028F71C6CD25800C77C04 /* Logo.png */,
 				772043E41C649557001F787F /* LoginView.h */,
 				772043E51C649557001F787F /* LoginView.m */,
@@ -180,6 +189,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		77DA31011C6DF2C7006E0C44 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */,
+				77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
 		ADFBDCCC1C5F6C9F00BCC486 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +222,7 @@
 				7782F9E11C6D2C6B00EC5477 /* Fonts */,
 				771028F31C6CC9C100C77C04 /* Category */,
 				772043E71C649561001F787F /* Login */,
+				77DA31011C6DF2C7006E0C44 /* Registration */,
 				ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */,
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
@@ -321,6 +340,7 @@
 				7782FA101C6D2CBF00EC5477 /* SFUIText-LightItalic.otf in Resources */,
 				7782FA111C6D2CBF00EC5477 /* SFUIText-Medium.otf in Resources */,
 				7782FA121C6D2CBF00EC5477 /* SFUIText-MediumItalic.otf in Resources */,
+				7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */,
 				7782FA131C6D2CBF00EC5477 /* SFUIText-Regular.otf in Resources */,
 				7782FA141C6D2CBF00EC5477 /* SFUIText-RegularG1.otf in Resources */,
 				7782FA151C6D2CBF00EC5477 /* SFUIText-RegularG2.otf in Resources */,
@@ -339,6 +359,7 @@
 				771028F81C6CD25800C77C04 /* Logo.png in Resources */,
 				ADFBDCE81C5F6C9F00BCC486 /* LaunchScreen.storyboard in Resources */,
 				ADFBDCE51C5F6C9F00BCC486 /* Assets.xcassets in Resources */,
+				7712447F1C6E2BF9001AFB30 /* lockImage.png in Resources */,
 				ADFBDCE31C5F6C9F00BCC486 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +425,7 @@
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
+				77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

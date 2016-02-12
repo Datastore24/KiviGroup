@@ -9,6 +9,9 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "Macros.h"
+#import "RegistrationViewController.h"
+#import "UIColor+HexColor.h"
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
 
 @implementation LoginViewController
 
@@ -19,27 +22,33 @@
     
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
     
-    LoginView * loginView = [[LoginView alloc] initWithView:self.view andFont:MAINFONTLOGINVIEW];
+    self.navigationController.navigationBar.hidden = YES; // спрятал navigation bar
+    
+    LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
     
-    
-    
-    
-    
-    
-//    UILabel * labelTest = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 150, 30)];
-//    labelTest.text = @"Телефон";
-//    labelTest.textColor = [UIColor whiteColor];
-//    [labelTest setFont:[UIFont fontWithName:@"SFUIDisplay-Light" size:20.0f]];
-//    labelTest.center = loginView.center;
-//    [loginView addSubview:labelTest];
-    
+    //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
 
-    
-    
-    
-    
-    
+    UIButton * buttonGetCode = (UIButton*)[self.view viewWithTag:301];
+    [buttonGetCode addTarget:self action:@selector(buttonGetCodeAction)
+            forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+#pragma mark - Buttons Methods
+
+//Действие кнопки buttonGetCode
+- (void) buttonGetCodeAction
+{
+    UITextField * textField = (UITextField*)[self.view viewWithTag:302];
+    if (textField.text.length <= 11) {
+        SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+        [alert showSuccess:@"Внимание" subTitle:@"Не верное колличество символов" closeButtonTitle:@"Ок" duration:0.0f];
+    } else {
+    RegistrationViewController * detail = [self.storyboard
+                                 instantiateViewControllerWithIdentifier:@"registration"];
+    [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 @end

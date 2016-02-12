@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface LoginView : UIView
 
-- (id)initWithView: (UIView*) view andFont: (NSString*) font;
+- (id)initWithView: (UIView*) view;
 
 @end
