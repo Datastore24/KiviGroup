@@ -36,9 +36,16 @@
             forControlEvents:UIControlEventTouchUpInside];
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
-    [getAPI getDataFromServerWithParams:nil method:@"phone=89186198564" complitionBlock:^(id response) {
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             @"79099888771",@"phone",
+                             @"123",@"salt",
+                             nil];
+    [getAPI getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
         NSLog(@"%@", response);
+        NSDictionary * resp = (NSDictionary *) response;
+        NSLog(@"ERROR: %@",[resp objectForKey:@"error_msg"]);
     }];
+     
     
     
     

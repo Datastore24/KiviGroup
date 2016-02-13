@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "AuthCoreDataClass.h"
+#import "UserInfo.h"
 
 @interface AppDelegate ()
 
@@ -44,7 +45,15 @@
     NSLog(@"My token is: %@", deviceTokenString);
     
     if(![auth checkDeviceToken:deviceTokenString]){
+        
         [auth putDeviceToken:deviceTokenString];
+        UserInfo * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"ADD TOKEN: %@",userInfo.deviceToken);
+        
+    }else{
+        [auth updateToken:deviceTokenString];
+        UserInfo * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"UPDATE TOKEN: %@",userInfo.deviceToken);
     }
     
     

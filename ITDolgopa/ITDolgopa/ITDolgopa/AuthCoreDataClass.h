@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface AuthCoreDataClass : NSObject
--(void) putDeviceToken:(NSString *) deviceToken;
+- (void) putDeviceToken:(NSString *) deviceToken;
 - (BOOL)checkDeviceToken:(NSString*) deviceToken;
--(NSArray *) showAllUsers;
+- (void)updateToken:(NSString *)deviceToken;
+- (NSArray *) showAllUsers;
 
 @end

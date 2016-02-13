@@ -17,7 +17,7 @@
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
     UserInfo *userInfo = [UserInfo MR_createEntityInContext:localContext];
-    userInfo.userID =@"1";
+    userInfo.userId =@"1";
     userInfo.deviceToken=deviceToken;
     
     NSLog(@"SAVE DEVICE TOKEN");
@@ -42,6 +42,28 @@
         return NO;
     }
 }
+
+//Обновление токена
+- (void)updateToken:(NSString *)deviceToken
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"userId ==[c] 1"];
+    UserInfo *authFounded                   = [UserInfo MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.deviceToken = deviceToken;
+        
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+//
 
 
 -(NSArray *) showAllUsers{

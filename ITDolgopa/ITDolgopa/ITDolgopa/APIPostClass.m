@@ -9,13 +9,13 @@
 #import "APIPostClass.h"
 #import <AFNetworking/AFNetworking.h>
 
-#define MAIN_URL @"http://adm.limelin.com/" //Адрес сервера
+#define MAIN_URL @"http://ceo.aqaholding.ru/API/api.php" //Адрес сервера
+#define API_KEY @"ww5CkGQ_-ofxRnYmoJrqxkEd* pkFInVEkGc_eLxJUZ32^BxYQZQqBk53spf" //Ключ API
 
 
 @implementation APIPostClass
--(void) postDataToServerWithParams: (NSDictionary *) params andAddParam: (NSString *) addParam method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack{
-    
-    NSString * url = [NSString stringWithFormat:@"%@/%@/?%@",MAIN_URL,method,addParam];
+-(void) postDataToServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack{
+    NSString * url = [NSString stringWithFormat:@"%@?%@&api_key=%@",MAIN_URL,method,API_KEY];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];

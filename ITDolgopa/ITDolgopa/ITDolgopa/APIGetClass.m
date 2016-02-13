@@ -20,12 +20,14 @@
 -(void) getDataFromServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack{
     
     NSString * url = [NSString stringWithFormat:@"%@?api_key=%@&action=%@",MAIN_URL,API_KEY,method];
+    NSLog(@"URL: %@",url);
+    NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
 
     //Запрос
-    [manager GET: url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET: encodedURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //Вызов блока
         compitionBack (responseObject);
         

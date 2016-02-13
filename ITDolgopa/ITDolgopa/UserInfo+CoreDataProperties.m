@@ -16,6 +16,6 @@
 @dynamic deviceToken;
 @dynamic salt;
 @dynamic phone;
-@dynamic userID;
+@dynamic userId;
 
 @end
