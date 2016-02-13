@@ -17,5 +17,6 @@
 @dynamic salt;
 @dynamic phone;
 @dynamic userId;
+@dynamic fio;
 
 @end

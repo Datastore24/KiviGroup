@@ -13,5 +13,9 @@
 - (BOOL)checkDeviceToken:(NSString*) deviceToken;
 - (void)updateToken:(NSString *)deviceToken;
 - (NSArray *) showAllUsers;
+- (void)updateUser:(NSString *) user
+           andSalt: (NSString*) salt
+          andPhone: (NSString*) phone;
+- (BOOL)checkSalt:(NSString*) salt;
 
 @end

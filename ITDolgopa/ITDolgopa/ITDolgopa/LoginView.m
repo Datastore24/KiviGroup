@@ -124,7 +124,7 @@
         //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
         UIButton * buttonLogin = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonLogin.frame = CGRectMake(0, textFieldInputSMS.frame.origin.y + 45, widthLogin, widthLogin / 7.8f);
-        buttonLogin.tag = 301;
+        buttonLogin.tag = 304;
         buttonLogin.backgroundColor = [UIColor colorWithHexString:MAINCOLORBUTTONLOGIN];
         buttonLogin.layer.borderColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW].CGColor;
         buttonLogin.layer.borderWidth = 1.f;
