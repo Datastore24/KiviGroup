@@ -46,6 +46,14 @@
 		7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E91C6D2C8C00EC5477 /* SFUIDisplay-Thin.otf */; };
 		7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EA1C6D2C8D00EC5477 /* SFUIDisplay-Ultralight.otf */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
+		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
+		ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111D1C6F15AB003616F3 /* APIPostClass.m */; };
+		ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311211C6F15B5003616F3 /* AlertClass.m */; };
+		ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311241C6F15E4003616F3 /* SingleTone.m */; };
+		ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */; };
+		ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3112A1C6F165B003616F3 /* UserInfo+CoreDataProperties.m */; };
+		ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3112C1C6F165B003616F3 /* UserInfo.m */; };
+		ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */; };
 		ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCD91C5F6C9F00BCC486 /* main.m */; };
 		ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */; };
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
@@ -103,6 +111,21 @@
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADC3111A1C6F15AB003616F3 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
+		ADC3111B1C6F15AB003616F3 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
+		ADC3111C1C6F15AB003616F3 /* APIPostClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPostClass.h; sourceTree = "<group>"; };
+		ADC3111D1C6F15AB003616F3 /* APIPostClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIPostClass.m; sourceTree = "<group>"; };
+		ADC311201C6F15B5003616F3 /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
+		ADC311211C6F15B5003616F3 /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClass.m; sourceTree = "<group>"; };
+		ADC311231C6F15E4003616F3 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
+		ADC311241C6F15E4003616F3 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		ADC311271C6F160E003616F3 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
+		ADC311291C6F165B003616F3 /* UserInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UserInfo+CoreDataProperties.h"; path = "../UserInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		ADC3112A1C6F165B003616F3 /* UserInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UserInfo+CoreDataProperties.m"; path = "../UserInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		ADC3112B1C6F165B003616F3 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfo.h; path = ../UserInfo.h; sourceTree = "<group>"; };
+		ADC3112C1C6F165B003616F3 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfo.m; path = ../UserInfo.m; sourceTree = "<group>"; };
+		ADC311301C6F16D4003616F3 /* AuthCoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoreDataClass.h; sourceTree = "<group>"; };
+		ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthCoreDataClass.m; sourceTree = "<group>"; };
 		ADFBDCD51C5F6C9F00BCC486 /* ITDolgopa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITDolgopa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD91C5F6C9F00BCC486 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -198,6 +221,30 @@
 			name = Registration;
 			sourceTree = "<group>";
 		};
+		ADC311191C6F156B003616F3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ADC3111A1C6F15AB003616F3 /* APIGetClass.h */,
+				ADC3111B1C6F15AB003616F3 /* APIGetClass.m */,
+				ADC3111C1C6F15AB003616F3 /* APIPostClass.h */,
+				ADC3111D1C6F15AB003616F3 /* APIPostClass.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		ADC3112F1C6F1663003616F3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				ADC311291C6F165B003616F3 /* UserInfo+CoreDataProperties.h */,
+				ADC3112A1C6F165B003616F3 /* UserInfo+CoreDataProperties.m */,
+				ADC3112B1C6F165B003616F3 /* UserInfo.h */,
+				ADC3112C1C6F165B003616F3 /* UserInfo.m */,
+				ADC311301C6F16D4003616F3 /* AuthCoreDataClass.h */,
+				ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		ADFBDCCC1C5F6C9F00BCC486 = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +266,12 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				ADC3112F1C6F1663003616F3 /* CoreData */,
+				ADC311201C6F15B5003616F3 /* AlertClass.h */,
+				ADC311211C6F15B5003616F3 /* AlertClass.m */,
+				ADC311231C6F15E4003616F3 /* SingleTone.h */,
+				ADC311241C6F15E4003616F3 /* SingleTone.m */,
+				ADC311191C6F156B003616F3 /* API */,
 				7782F9E11C6D2C6B00EC5477 /* Fonts */,
 				771028F31C6CC9C100C77C04 /* Category */,
 				772043E71C649561001F787F /* Login */,
@@ -227,6 +280,7 @@
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
 				ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */,
+				ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */,
 				ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */,
 				ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */,
 				ADFBDCE61C5F6C9F00BCC486 /* LaunchScreen.storyboard */,
@@ -419,13 +473,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
+				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
+				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
+				ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
 				77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */,
+				ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */,
+				ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */,
+				ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +645,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ADC311271C6F160E003616F3 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = ADC311271C6F160E003616F3 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ADFBDCCD1C5F6C9F00BCC486 /* Project object */;
 }

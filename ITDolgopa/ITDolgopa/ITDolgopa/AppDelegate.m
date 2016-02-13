@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "AuthCoreDataClass.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -31,7 +35,19 @@
 
 //Для получение push
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
-    NSLog(@"My token is: %@", deviceToken);
+    
+    AuthCoreDataClass * auth = [AuthCoreDataClass new];
+    NSString * deviceTokenString = [[[[deviceToken description]
+                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"My token is: %@", deviceTokenString);
+    
+    if(![auth checkDeviceToken:deviceTokenString]){
+        [auth putDeviceToken:deviceTokenString];
+    }
+    
+    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -63,6 +79,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [MagicalRecord cleanUp];
 }
 
 @end
