@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *deviceToken;
 @property (nullable, nonatomic, retain) NSString *salt;
 @property (nullable, nonatomic, retain) NSString *phone;
-@property (nullable, nonatomic, retain) NSString *userID;
+@property (nullable, nonatomic, retain) NSString *userId;
 
 @end
 
