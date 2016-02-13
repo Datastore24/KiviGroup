@@ -93,31 +93,37 @@
         imageViewButtonGetCode.image = [UIImage imageNamed:@"iconButtonReg.png"];
         [buttonGetCode addSubview:imageViewButtonGetCode];
         
+        //Создаем вью главы SMS--------------------------------------------------------------
+        UIView * mainViewSMS = [[UIView alloc] initWithFrame:CGRectMake(-300, buttonGetCode.frame.origin.y + 40, widthLogin, 100)];
+        mainViewSMS.tag = 305;
+        [mainScrollView addSubview:mainViewSMS];
+        
         //Создание полоски вью СМС-----------------------------------------------------------
-        UIView * viewLoginSMS = [[UIView alloc] initWithFrame:CGRectMake(buttonGetCode.frame.origin.x, buttonGetCode.frame.origin.y + 80, widthLogin, 0.5)];
+        UIView * viewLoginSMS = [[UIView alloc] initWithFrame:CGRectMake(0, 40, widthLogin, 0.5)];
         viewLoginSMS.backgroundColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
-        [mainScrollView addSubview:viewLoginSMS];
+        [mainViewSMS addSubview:viewLoginSMS];
         
         //Плэйс холдер СМС-------------------------------------------------------------------
         labelPlaceHolderSMS = [[UILabel alloc] initWithFrame:CGRectMake(viewLoginSMS.frame.origin.x + 5, viewLoginSMS.frame.origin.y - 35, widthLogin, 40)];
         labelPlaceHolderSMS.text = @"Код из СМС";
         labelPlaceHolderSMS.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         labelPlaceHolderSMS.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:20];
-        [mainScrollView addSubview:labelPlaceHolderSMS];
+        [mainViewSMS addSubview:labelPlaceHolderSMS];
         
         //Ввод телефонного номера---------------------------------------------------------
         textFieldInputSMS = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderSMS.frame.origin.x, labelPlaceHolderSMS.frame.origin.y, widthLogin, 40)];
         textFieldInputSMS.delegate = self;
+        textFieldInputSMS.tag = 303;
         textFieldInputSMS.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldInputSMS.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldInputSMS.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:20];
         textFieldInputSMS.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelSMS:) name:UITextFieldTextDidChangeNotification object:textFieldInputSMS];
-        [mainScrollView addSubview:textFieldInputSMS];
+        [mainViewSMS addSubview:textFieldInputSMS];
         
         //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
         UIButton * buttonLogin = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonLogin.frame = CGRectMake(viewLoginPhone.frame.origin.x, textFieldInputSMS.frame.origin.y + 45, widthLogin, widthLogin / 7.8f);
+        buttonLogin.frame = CGRectMake(0, textFieldInputSMS.frame.origin.y + 45, widthLogin, widthLogin / 7.8f);
         buttonLogin.tag = 301;
         buttonLogin.backgroundColor = [UIColor colorWithHexString:MAINCOLORBUTTONLOGIN];
         buttonLogin.layer.borderColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW].CGColor;
@@ -126,7 +132,7 @@
         [buttonLogin setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:15];
-        [mainScrollView addSubview:buttonLogin];
+        [mainViewSMS addSubview:buttonLogin];
         //Картинка конверта подвязанная у кнопке---------------------------------------------
         UIImageView * imageViewButtonLogin = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonLogin.frame.size.height / 4, (buttonLogin.frame.size.height / 2) / 1.15f, buttonLogin.frame.size.height / 2)];
         imageViewButtonLogin.image = [UIImage imageNamed:@"lockImage.png"];
@@ -155,6 +161,7 @@
 
 //Метод ввода тоьлко чисел-----------------------------------
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
     /* for backspace */
     if([string length]==0){
         return YES;
@@ -162,13 +169,25 @@
     
     /*  limit to only numeric characters  */
     
-    NSCharacterSet *myCharSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-    for (int i = 0; i < [string length]; i++) {
-        unichar c = [string characterAtIndex:i];
-        if ([myCharSet characterIsMember:c]) {
-            return YES;
+    if ([textField isEqual:textFieldInputPhone]) {
+        NSCharacterSet *myCharSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        for (int i = 0; i < [string length]; i++) {
+            unichar c = [string characterAtIndex:i];
+            if ([myCharSet characterIsMember:c]) {
+                
+                
+                /*  limit the users input to only 9 characters  */
+                NSUInteger newLength = [textField.text length] + [string length] - range.length;
+                return (newLength > 12) ? NO : YES;
+            }
         }
+        return NO;
+    } else {
+        /*  limit the users input to only 9 characters  */
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return (newLength > 5) ? NO : YES;
     }
+    
     return NO;
 }
 
@@ -176,6 +195,12 @@
 - (void) animationLabelPhone: (NSNotification*) notification
 {
     UITextField * testField = notification.object;
+    
+    if (testField.text.length < 3) {
+        testField.text = @"+7";
+    }
+
+    
     if (testField.text.length != 0 && isBool) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rect;

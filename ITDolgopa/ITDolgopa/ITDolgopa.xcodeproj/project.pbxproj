@@ -267,10 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				ADC3112F1C6F1663003616F3 /* CoreData */,
-				ADC311201C6F15B5003616F3 /* AlertClass.h */,
-				ADC311211C6F15B5003616F3 /* AlertClass.m */,
-				ADC311231C6F15E4003616F3 /* SingleTone.h */,
-				ADC311241C6F15E4003616F3 /* SingleTone.m */,
 				ADC311191C6F156B003616F3 /* API */,
 				7782F9E11C6D2C6B00EC5477 /* Fonts */,
 				771028F31C6CC9C100C77C04 /* Category */,
@@ -280,6 +276,10 @@
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
 				ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */,
+				ADC311201C6F15B5003616F3 /* AlertClass.h */,
+				ADC311211C6F15B5003616F3 /* AlertClass.m */,
+				ADC311231C6F15E4003616F3 /* SingleTone.h */,
+				ADC311241C6F15E4003616F3 /* SingleTone.m */,
 				ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */,
 				ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */,
 				ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */,
