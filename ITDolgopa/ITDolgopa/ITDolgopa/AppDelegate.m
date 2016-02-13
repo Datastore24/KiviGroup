@@ -53,7 +53,7 @@
     }else{
         [auth updateToken:deviceTokenString];
         UserInfo * userInfo = [[auth showAllUsers] objectAtIndex:0];
-        NSLog(@"UPDATE TOKEN: %@",userInfo.deviceToken);
+        NSLog(@"UPDATE TOKEN: %@",userInfo.fio);
     }
     
     

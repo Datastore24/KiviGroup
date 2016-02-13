@@ -65,6 +65,50 @@
 }
 //
 
+//Обновление токена
+- (void)updateUser:(NSString *) user
+           andSalt: (NSString*) salt
+          andPhone: (NSString*) phone
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"userId ==[c] 1"];
+    UserInfo *authFounded                   = [UserInfo MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.fio = user;
+        authFounded.salt = salt;
+        authFounded.phone = phone;
+        
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+
+
+//Проверка токена в CoreData
+- (BOOL)checkSalt:(NSString*) salt{
+    
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"salt ==[c] %@ AND userId ==[c] 1",salt];
+    UserInfo *authFounded                   = [UserInfo MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    // If a person was founded
+    if (authFounded)
+    {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 
 -(NSArray *) showAllUsers{
     NSArray *users            = [UserInfo MR_findAll];
