@@ -54,6 +54,7 @@
 		ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3112A1C6F165B003616F3 /* UserInfo+CoreDataProperties.m */; };
 		ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3112C1C6F165B003616F3 /* UserInfo.m */; };
 		ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */; };
+		ADC57F041C6FDDEB00F55716 /* Glass90.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC57F031C6FDDEB00F55716 /* Glass90.png */; };
 		ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCD91C5F6C9F00BCC486 /* main.m */; };
 		ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */; };
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
@@ -126,6 +127,7 @@
 		ADC3112C1C6F165B003616F3 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfo.m; path = ../UserInfo.m; sourceTree = "<group>"; };
 		ADC311301C6F16D4003616F3 /* AuthCoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoreDataClass.h; sourceTree = "<group>"; };
 		ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthCoreDataClass.m; sourceTree = "<group>"; };
+		ADC57F031C6FDDEB00F55716 /* Glass90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glass90.png; sourceTree = "<group>"; };
 		ADFBDCD51C5F6C9F00BCC486 /* ITDolgopa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITDolgopa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD91C5F6C9F00BCC486 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		772043E71C649561001F787F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				ADC57F031C6FDDEB00F55716 /* Glass90.png */,
 				7712447E1C6E2BF9001AFB30 /* lockImage.png */,
 				7712447C1C6E01C5001AFB30 /* iconButtonReg.png */,
 				771028F71C6CD25800C77C04 /* Logo.png */,
@@ -398,6 +401,7 @@
 				7782FA131C6D2CBF00EC5477 /* SFUIText-Regular.otf in Resources */,
 				7782FA141C6D2CBF00EC5477 /* SFUIText-RegularG1.otf in Resources */,
 				7782FA151C6D2CBF00EC5477 /* SFUIText-RegularG2.otf in Resources */,
+				ADC57F041C6FDDEB00F55716 /* Glass90.png in Resources */,
 				7782FA161C6D2CBF00EC5477 /* SFUIText-RegularG3.otf in Resources */,
 				7782FA171C6D2CBF00EC5477 /* SFUIText-Semibold.otf in Resources */,
 				7782FA181C6D2CBF00EC5477 /* SFUIText-SemiboldItalic.otf in Resources */,

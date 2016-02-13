@@ -35,6 +35,7 @@
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
     [self checkAuth];
     
+    
     self.navigationController.navigationBar.hidden = YES; // спрятал navigation bar
     LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
@@ -92,6 +93,7 @@
 
     //Необходимо создать синглтон в котором будет храниться телефон и ключ--------------
     //И напистаь метод отправляющий на сервер девайс токен------------------------------
+    //Запрос баланса сразу, и положить в SingleTONE
     
     UITextField * textFieldSMS = (UITextField*)[self.view viewWithTag:303];
     
@@ -127,6 +129,7 @@
 
 -(void) checkAuth
 {
+    if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              userInfo.phone,@"phone",
@@ -147,6 +150,7 @@
         
         
     }];
+    }
 }
 
 @end

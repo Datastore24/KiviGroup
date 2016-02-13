@@ -39,6 +39,8 @@
         mainScrollView.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
         [self addSubview:mainScrollView];
         
+        
+        
         //Создание Logo------------------------------------------------------------------
         //Создаем кастомную ширину лого--------------------------------------------------
         CGFloat widthLogin = (self.frame.size.width / 3) * 2;
@@ -137,6 +139,65 @@
         UIImageView * imageViewButtonLogin = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonLogin.frame.size.height / 4, (buttonLogin.frame.size.height / 2) / 1.15f, buttonLogin.frame.size.height / 2)];
         imageViewButtonLogin.image = [UIImage imageNamed:@"lockImage.png"];
         [buttonLogin addSubview:imageViewButtonLogin];
+        
+        //Проверка телефона и кода
+        UIView * checkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
+        checkView.center = self.center;
+        checkView.tag = 304;
+        
+        
+        //СТЕКЛО!!!
+        
+        //Нужно прописать логику, что пока идет проверка, с экрана все убираем в alpha=0 кроме этого окна
+        
+        UIImageView * imageGlassCheck = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
+        imageGlassCheck.image = [UIImage imageNamed:@"Glass90.png"];
+        imageGlassCheck.alpha=0.8;
+        
+        
+        UILabel * labelCheckPhone = [[UILabel alloc] initWithFrame:CGRectMake(40, 20, 290, 40)];
+        labelCheckPhone.text = @"Проверка телефона...";
+        labelCheckPhone.textColor = [UIColor blackColor];
+        labelCheckPhone.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
+        
+        UILabel * labelCheckCode = [[UILabel alloc] initWithFrame:CGRectMake(40, 60, 290, 40)];
+        labelCheckCode.text = @"Проверка кода...";
+        labelCheckCode.textColor = [UIColor blackColor];
+        labelCheckCode.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
+        labelCheckCode.alpha=0;
+        
+        UILabel * labelCheckInformation = [[UILabel alloc] initWithFrame:CGRectMake(40, 100, 290, 40)];
+        labelCheckInformation.text = @"Загрузка информации...";
+        labelCheckInformation.textColor = [UIColor blackColor];
+        labelCheckInformation.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
+        labelCheckInformation.alpha=0;
+        
+    
+        [UIView animateWithDuration:1.0 animations:^{
+            labelCheckCode.alpha = 1;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:1.0 animations:^{
+                labelCheckInformation.alpha = 1;
+            }];
+        }];
+
+        
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activityIndicator.tag=666;
+        activityIndicator.center=CGPointMake(checkView.frame.size.width/2,checkView.frame.size.height/2+60);
+        [activityIndicator startAnimating];
+        
+        
+        
+        [checkView addSubview:imageGlassCheck];
+        
+        [checkView addSubview:labelCheckPhone];
+        [checkView addSubview:labelCheckCode];
+        [checkView addSubview:labelCheckInformation];
+        
+        [checkView addSubview:activityIndicator];
+        [mainScrollView addSubview:checkView];
+        //
         
         
         
