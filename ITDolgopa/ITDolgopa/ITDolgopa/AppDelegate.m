@@ -44,7 +44,7 @@
     NSLog(@"My token is: %@", deviceTokenString);
     
     if(![auth checkDeviceToken:deviceTokenString]){
-    
+        [auth putDeviceToken:deviceTokenString];
     }
     
     
