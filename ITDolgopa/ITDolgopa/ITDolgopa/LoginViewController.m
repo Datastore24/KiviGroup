@@ -72,7 +72,7 @@
     checkView = (UIView*)[self.view viewWithTag:306];
     
     
-    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:3.0f]; //Запуск проверки с паузой
+    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:2.0f]; //Запуск проверки с паузой
     //
 
     
@@ -170,34 +170,33 @@
         NSDictionary * responseInfo = (NSDictionary*)response;
         
         if ([[responseInfo objectForKey:@"error"] integerValue] == 0) {
+            [self showLoginWithAnimation];
+            
             RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
             [self.navigationController pushViewController:detail animated:YES];
         } else {
             NSLog(@"%@", [responseInfo objectForKey:@"error_msg"]);
             
-            [UIView animateWithDuration:2.0 animations:^{
-                textFieldPhone.alpha=1;
-                buttonGetCode.alpha=1;
-                viewLoginPhone.alpha=1;
-                labelPlaceHolderPhone.alpha=1;
-                checkView.alpha=0;
-                checkView=0;
-            }];
+            [self showLoginWithAnimation];
             
         }
         
         
     }];
     }else{
-        [UIView animateWithDuration:2.0 animations:^{
-            textFieldPhone.alpha=1;
-            buttonGetCode.alpha=1;
-            viewLoginPhone.alpha=1;
-            labelPlaceHolderPhone.alpha=1;
-            checkView.alpha=0;
-            checkView=0;
-        }];
+        [self showLoginWithAnimation];
     }
+}
+
+-(void)showLoginWithAnimation{
+    [UIView animateWithDuration:2.0 animations:^{
+        textFieldPhone.alpha=1;
+        buttonGetCode.alpha=1;
+        viewLoginPhone.alpha=1;
+        labelPlaceHolderPhone.alpha=1;
+        checkView.alpha=0;
+        checkView=0;
+    }];
 }
 
 @end
