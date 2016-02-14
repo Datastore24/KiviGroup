@@ -57,11 +57,13 @@
         //Создание полоски вью телефона--------------------------------------------------
         UIView * viewLoginPhone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 0.5)];
         viewLoginPhone.center = self.center;
+        viewLoginPhone.tag = 3021;
         viewLoginPhone.backgroundColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         [mainScrollView addSubview:viewLoginPhone];
         
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderPhone = [[UILabel alloc] initWithFrame:CGRectMake(viewLoginPhone.frame.origin.x + 5, viewLoginPhone.frame.origin.y - 35, widthLogin, 40)];
+        labelPlaceHolderPhone.tag = 3022;
         labelPlaceHolderPhone.text = @"Телефон";
         labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         labelPlaceHolderPhone.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:20];
@@ -140,15 +142,17 @@
         imageViewButtonLogin.image = [UIImage imageNamed:@"lockImage.png"];
         [buttonLogin addSubview:imageViewButtonLogin];
         
-        //Проверка телефона и кода
-        UIView * checkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
-        checkView.center = self.center;
-        checkView.tag = 304;
+        
         
         
         //СТЕКЛО!!!
         
         //Нужно прописать логику, что пока идет проверка, с экрана все убираем в alpha=0 кроме этого окна
+        
+        //Проверка телефона и кода
+        UIView * checkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
+        checkView.center = self.center;
+        checkView.tag = 306;
         
         UIImageView * imageGlassCheck = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
         imageGlassCheck.image = [UIImage imageNamed:@"Glass90.png"];

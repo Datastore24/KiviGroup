@@ -23,6 +23,12 @@
     BOOL isBool;
     NSDictionary * responseSalt;
     AuthCoreDataClass * authCoreDataClass;
+    UITextField * textFieldPhone;
+    UIButton * buttonGetCode;
+    UIView * viewLoginPhone;
+    UILabel * labelPlaceHolderPhone;
+    UIView * checkView;
+    
 }
 
 - (void) viewDidLoad {
@@ -33,20 +39,42 @@
 #pragma mark - initialization
     
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
-    [self checkAuth];
+    
+    
+    
     
     
     self.navigationController.navigationBar.hidden = YES; // спрятал navigation bar
     LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
     //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
-    UIButton * buttonGetCode = (UIButton*)[self.view viewWithTag:301];
+    buttonGetCode = (UIButton*)[self.view viewWithTag:301];
     [buttonGetCode addTarget:self action:@selector(buttonGetCodeAction)
             forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIButton * buttonLogin = (UIButton*)[self.view viewWithTag:304];
     [buttonLogin addTarget:self action:@selector(buttonLoginAction)
                       forControlEvents:UIControlEventTouchUpInside];
+    
+    //Убираем в 0 для вывода проверки
+    buttonGetCode.alpha=0;
+    
+    textFieldPhone = (UITextField*)[self.view viewWithTag:302];
+    textFieldPhone.alpha = 0;
+    
+    viewLoginPhone = (UIView*)[self.view viewWithTag:3021];
+    viewLoginPhone.alpha = 0;
+    
+    labelPlaceHolderPhone = (UILabel*)[self.view viewWithTag:3022];
+    labelPlaceHolderPhone.alpha = 0;
+    
+    checkView = (UIView*)[self.view viewWithTag:306];
+    
+    
+    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:3.0f]; //Запуск проверки с паузой
+    //
+
     
 
     
@@ -58,7 +86,7 @@
 //Действие кнопки buttonGetCode
 - (void) buttonGetCodeAction
 {
-    UITextField * textFieldPhone = (UITextField*)[self.view viewWithTag:302];
+    
     if (textFieldPhone.text.length <= 11) {
         SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
         [alert showSuccess:@"Внимание" subTitle:@"Не верное колличество символов" closeButtonTitle:@"Ок" duration:0.0f];
@@ -146,10 +174,29 @@
             [self.navigationController pushViewController:detail animated:YES];
         } else {
             NSLog(@"%@", [responseInfo objectForKey:@"error_msg"]);
+            
+            [UIView animateWithDuration:2.0 animations:^{
+                textFieldPhone.alpha=1;
+                buttonGetCode.alpha=1;
+                viewLoginPhone.alpha=1;
+                labelPlaceHolderPhone.alpha=1;
+                checkView.alpha=0;
+                checkView=0;
+            }];
+            
         }
         
         
     }];
+    }else{
+        [UIView animateWithDuration:2.0 animations:^{
+            textFieldPhone.alpha=1;
+            buttonGetCode.alpha=1;
+            viewLoginPhone.alpha=1;
+            labelPlaceHolderPhone.alpha=1;
+            checkView.alpha=0;
+            checkView=0;
+        }];
     }
 }
 
