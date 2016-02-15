@@ -22,12 +22,14 @@
 {
     BOOL isBool;
     NSDictionary * responseSalt;
+    NSDictionary * responseInfo;
     AuthCoreDataClass * authCoreDataClass;
     UITextField * textFieldPhone;
     UIButton * buttonGetCode;
     UIView * viewLoginPhone;
     UILabel * labelPlaceHolderPhone;
     UIView * checkView;
+    UIActivityIndicatorView *loadIndicator;
     
 }
 
@@ -68,11 +70,25 @@
     
     labelPlaceHolderPhone = (UILabel*)[self.view viewWithTag:3022];
     labelPlaceHolderPhone.alpha = 0;
+
     
     checkView = (UIView*)[self.view viewWithTag:306];
     
+    loadIndicator=(UIActivityIndicatorView*)[self.view viewWithTag:307];
+    [loadIndicator stopAnimating];
+    [loadIndicator setHidden:YES];
     
-    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:2.0f]; //Запуск проверки с паузой
+    if([authCoreDataClass showAllUsers].count>0){
+         UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
+        NSLog(@"userInfo.salt: %@",userInfo.salt);
+        if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
+            [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
+        }else{
+            [self showLoginWith:NO];
+        }
+    }else{
+        [self showLoginWith:NO];
+    }
     //
 
     
@@ -91,7 +107,10 @@
         SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
         [alert showSuccess:@"Внимание" subTitle:@"Не верное колличество символов" closeButtonTitle:@"Ок" duration:0.0f];
     } else {
+        buttonGetCode.userInteractionEnabled=NO;
+        buttonGetCode.alpha=0.5;
         [self getSalt:textFieldPhone.text andBlock:^{
+            NSLog(@"ERROR: %@",[responseSalt objectForKey:@"error"]);
             if ([[responseSalt objectForKey:@"error"]integerValue]==0) {
                 if (!isBool) {
                     [UIView animateWithDuration:0.3 animations:^{
@@ -100,15 +119,20 @@
                         rect.origin.x = rect.origin.x + 369;
                         mainViewSMS.frame = rect;
                     }];
+                    [loadIndicator setHidden:YES];
+                    [loadIndicator stopAnimating];
                     isBool = YES;
                 }
-                [authCoreDataClass updateUser:[responseSalt objectForKey:@"contr_fio"] andSalt:[responseSalt objectForKey:@"salt"] andPhone:[responseSalt objectForKey:@"contr_phone"]];
             } else if ([[responseSalt objectForKey:@"error"]integerValue]==1) {
                 
                 SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
                 [alert showSuccess:@"Внимание" subTitle:[responseSalt objectForKey:@"error_msg"] closeButtonTitle:@"Ок" duration:0.0f];
+                [loadIndicator setHidden:YES];
+                [loadIndicator stopAnimating];
             } else if ([[responseSalt objectForKey:@"error"]integerValue]==2) {
                 NSLog(@"Загеристрируйся");
+                [loadIndicator setHidden:YES];
+                [loadIndicator stopAnimating];
             }
             
         }];
@@ -125,13 +149,25 @@
     
     UITextField * textFieldSMS = (UITextField*)[self.view viewWithTag:303];
     
-    if ([authCoreDataClass checkSalt:textFieldSMS.text]) {
-        RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
-        [self.navigationController pushViewController:detail animated:YES];
-    } else {
+    
+    [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andBlock:^{
+        NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
-        [AlertClass showAlertViewWithMessage:@"Неверный пароль" view:self];
-    }
+        if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
+            [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"]];
+            RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
+            [self.navigationController pushViewController:detail animated:YES];
+        } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
+            
+            SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+            [alert showSuccess:@"Внимание" subTitle:[responseInfo objectForKey:@"error_msg"] closeButtonTitle:@"Ок" duration:0.0f];
+            [loadIndicator setHidden:YES];
+            [loadIndicator stopAnimating];
+        }
+        
+        
+    }];
+
 }
 
 
@@ -145,12 +181,40 @@
                              phoneResult,@"phone",
                              nil];
     
+    [loadIndicator setHidden:NO];
+    [loadIndicator startAnimating];
+    
+    
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"get_salt" complitionBlock:^(id response) {
         NSLog(@"%@", response);
+        
         responseSalt = (NSDictionary*)response;
         block();
 
+    }];
+}
+
+-(void) getInfo:(NSString *) phone andSalt:(NSString*) salt andBlock:(void (^)(void))block
+{
+    
+    NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             phoneResult,@"phone",
+                             salt,@"salt",
+                             nil];
+    
+    [loadIndicator setHidden:NO];
+    [loadIndicator startAnimating];
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
+        NSLog(@"%@", response);
+        
+        responseInfo = (NSDictionary*)response;
+        block();
+        
     }];
 }
 
@@ -159,44 +223,61 @@
 {
     if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
+        
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              userInfo.phone,@"phone",
                              userInfo.salt, @"salt",
                              nil];
+        
+
     
     APIGetClass * getInfo = [[APIGetClass alloc] init];
+    
+        if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
     [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
         NSLog(@"%@", response);
-        NSDictionary * responseInfo = (NSDictionary*)response;
+
         
-        if ([[responseInfo objectForKey:@"error"] integerValue] == 0) {
-            [self showLoginWithAnimation];
+        NSDictionary * responseCheckInfo = (NSDictionary*)response;
+        
+        if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
+            [self showLoginWith:YES];
             
             RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
             [self.navigationController pushViewController:detail animated:YES];
         } else {
-            NSLog(@"%@", [responseInfo objectForKey:@"error_msg"]);
+            NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
             
-            [self showLoginWithAnimation];
+            [self showLoginWith:YES];
             
         }
         
         
     }];
-    }else{
-        [self showLoginWithAnimation];
+        }else{
+            [self showLoginWith:NO];
+
+        }
     }
 }
 
--(void)showLoginWithAnimation{
+-(void)showLoginWith:(BOOL) animation{
+    if(animation){
     [UIView animateWithDuration:2.0 animations:^{
         textFieldPhone.alpha=1;
         buttonGetCode.alpha=1;
         viewLoginPhone.alpha=1;
         labelPlaceHolderPhone.alpha=1;
         checkView.alpha=0;
-        checkView=0;
     }];
+    }else{
+        textFieldPhone.alpha=1;
+        buttonGetCode.alpha=1;
+        viewLoginPhone.alpha=1;
+        labelPlaceHolderPhone.alpha=1;
+        checkView.alpha=0;
+    }
 }
+
 
 @end

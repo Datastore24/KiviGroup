@@ -203,6 +203,15 @@
         [mainScrollView addSubview:checkView];
         //
         
+        //Индикатор загрузки
+        UIActivityIndicatorView *loadIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        loadIndicator.center=CGPointMake(self.center.x,self.center.y+160);
+        [loadIndicator startAnimating];
+        loadIndicator.tag=307;
+        [mainScrollView addSubview:loadIndicator];
+        
+        //
+        
         
         
     }
