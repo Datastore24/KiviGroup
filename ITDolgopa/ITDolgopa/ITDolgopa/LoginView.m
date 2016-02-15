@@ -10,6 +10,7 @@
 #import "Macros.h"
 #import "UIColor+HexColor.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import "FontSizeChanger.h"
 
 @interface LoginView () <UITextFieldDelegate>
 
@@ -33,6 +34,11 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         isBool = YES;
         isBoolSMS = YES;
+        
+        //Изменение размеров
+        NSDictionary * fontSize = [FontSizeChanger changeFontSize];
+        //
+        
         
         //Создание scrollView------------------------------------------------------------
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
@@ -90,7 +96,7 @@
         buttonGetCode.layer.cornerRadius = 13.f;
         [buttonGetCode setTitle:@"ПОЛУЧИТЬ КОД" forState:UIControlStateNormal];
         [buttonGetCode setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonGetCode.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:MAINBUTTONFONTSIZE];
+        buttonGetCode.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"buttonSize"] intValue]];
         [mainScrollView addSubview:buttonGetCode];
         //Картинка конверта подвязанная у кнопке---------------------------------------------
         UIImageView * imageViewButtonGetCode = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonGetCode.frame.size.height / 4, (buttonGetCode.frame.size.height / 2) * 1.4f, buttonGetCode.frame.size.height / 2)];
@@ -135,7 +141,7 @@
         buttonLogin.layer.cornerRadius = 13.f;
         [buttonLogin setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:MAINBUTTONFONTSIZE];
+        buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"buttonSize"] intValue]];
         [mainViewSMS addSubview:buttonLogin];
         //Картинка конверта подвязанная у кнопке---------------------------------------------
         UIImageView * imageViewButtonLogin = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonLogin.frame.size.height / 4, (buttonLogin.frame.size.height / 2) / 1.15f, buttonLogin.frame.size.height / 2)];
@@ -154,7 +160,7 @@
         //Строка регистрации-----------------------------------------------------------------
         UILabel * labelRegistration = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 40)];
         labelRegistration.text = @"Номер не зарегестирован?";
-        labelRegistration.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:14];
+        labelRegistration.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textSize"] intValue]];
         labelRegistration.textColor = [UIColor whiteColor];
         [labelRegistration sizeToFit];
         CGRect rect = labelRegistration.frame;
@@ -168,7 +174,7 @@
         buttonRegistration.backgroundColor = nil;
         [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
         [buttonRegistration setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonRegistration.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Bold" size:15];
+        buttonRegistration.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Bold" size:[[fontSize objectForKey:@"textSize"] intValue]];
         [viewRegistration addSubview:buttonRegistration];
         
         
