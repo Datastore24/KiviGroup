@@ -55,6 +55,7 @@
 		ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3112C1C6F165B003616F3 /* UserInfo.m */; };
 		ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */; };
 		ADC57F041C6FDDEB00F55716 /* Glass90.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC57F031C6FDDEB00F55716 /* Glass90.png */; };
+		ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC57F061C71E40500F55716 /* FontSizeChanger.m */; };
 		ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCD91C5F6C9F00BCC486 /* main.m */; };
 		ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */; };
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
@@ -128,6 +129,8 @@
 		ADC311301C6F16D4003616F3 /* AuthCoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthCoreDataClass.h; sourceTree = "<group>"; };
 		ADC311311C6F16D4003616F3 /* AuthCoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthCoreDataClass.m; sourceTree = "<group>"; };
 		ADC57F031C6FDDEB00F55716 /* Glass90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glass90.png; sourceTree = "<group>"; };
+		ADC57F051C71E40500F55716 /* FontSizeChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSizeChanger.h; path = ../FontSizeChanger.h; sourceTree = "<group>"; };
+		ADC57F061C71E40500F55716 /* FontSizeChanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSizeChanger.m; path = ../FontSizeChanger.m; sourceTree = "<group>"; };
 		ADFBDCD51C5F6C9F00BCC486 /* ITDolgopa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITDolgopa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBDCD91C5F6C9F00BCC486 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				ADC311211C6F15B5003616F3 /* AlertClass.m */,
 				ADC311231C6F15E4003616F3 /* SingleTone.h */,
 				ADC311241C6F15E4003616F3 /* SingleTone.m */,
+				ADC57F051C71E40500F55716 /* FontSizeChanger.h */,
+				ADC57F061C71E40500F55716 /* FontSizeChanger.m */,
 				ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */,
 				ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */,
 				ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */,
@@ -483,6 +488,7 @@
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,

@@ -19,6 +19,8 @@
 #import "AlertClass.h"
 #import "SingleTone.h"
 
+
+
 @implementation LoginViewController
 {
     BOOL isBool;
@@ -42,8 +44,7 @@
 #pragma mark - initialization
     
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
-    
-    
+
     
     
     
