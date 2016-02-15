@@ -142,6 +142,37 @@
         imageViewButtonLogin.image = [UIImage imageNamed:@"lockImage.png"];
         [buttonLogin addSubview:imageViewButtonLogin];
         
+        //Вью регистрации--------------------------------------------------------------------
+        UIView * viewRegistration = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 40)];
+        viewRegistration.center = self.center;
+        CGPoint pointviewRegistration = viewRegistration.center;
+        pointviewRegistration.y = pointviewRegistration.y + 200;
+        viewRegistration.center = pointviewRegistration;
+        viewRegistration.backgroundColor = nil;
+        [self addSubview:viewRegistration];
+        
+        //Строка регистрации-----------------------------------------------------------------
+        UILabel * labelRegistration = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 40)];
+        labelRegistration.text = @"Номер не зарегестирован?";
+        labelRegistration.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:14];
+        labelRegistration.textColor = [UIColor whiteColor];
+        [labelRegistration sizeToFit];
+        CGRect rect = labelRegistration.frame;
+        rect.size.height = 40;
+        labelRegistration.frame = rect;
+        [viewRegistration addSubview:labelRegistration];
+        
+        //Кнопка регистрации------------------------------------------------------------------
+        UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonRegistration.frame = CGRectMake(labelRegistration.frame.size.width, 0, viewRegistration.frame.size.width - labelRegistration.frame.size.width, 40);
+        buttonRegistration.backgroundColor = nil;
+        [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
+        [buttonRegistration setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonRegistration.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Bold" size:15];
+        [viewRegistration addSubview:buttonRegistration];
+        
+        
+        
         
         
         
