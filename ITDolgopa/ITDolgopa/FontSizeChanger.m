@@ -21,7 +21,7 @@
     }else{
         NSLog(@"Iphone 6,6+");
         fonSize= [[NSDictionary alloc] initWithObjectsAndKeys:
-                  @"14",@"textSize",
+                  @"13",@"textSize",
                   @"20",@"buttonSize", nil];
     }
     
