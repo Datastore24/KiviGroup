@@ -232,6 +232,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              userInfo.phone,@"phone",
                              userInfo.salt, @"salt",
+                             userInfo.deviceToken,@"device_token",
                              nil];
         
 
