@@ -130,7 +130,8 @@
                 [loadIndicator setHidden:YES];
                 [loadIndicator stopAnimating];
             } else if ([[responseSalt objectForKey:@"error"]integerValue]==2) {
-                NSLog(@"Загеристрируйся");
+                [AlertClass showAlertViewWithMessage:@"Вам необходимо зарегистрироваться" view:self];
+
                 [loadIndicator setHidden:YES];
                 [loadIndicator stopAnimating];
             }
