@@ -47,4 +47,5 @@
 //Нотификация запускается после нажатия кнопки buttonGetCode----------------
 #define LoginViewControllerButtonGetCodeAction @"LoginViewControllerButtonGetCodeAction"
 
+
 #endif /* Macros_h */

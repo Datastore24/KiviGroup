@@ -167,9 +167,9 @@
 				ADC57F031C6FDDEB00F55716 /* Glass90.png */,
 				7712447E1C6E2BF9001AFB30 /* lockImage.png */,
 				7712447C1C6E01C5001AFB30 /* iconButtonReg.png */,
-				771028F71C6CD25800C77C04 /* Logo.png */,
 				772043E41C649557001F787F /* LoginView.h */,
 				772043E51C649557001F787F /* LoginView.m */,
+				771028F71C6CD25800C77C04 /* Logo.png */,
 				7742CB521C63965F00515DDD /* LoginViewController.h */,
 				7742CB531C63965F00515DDD /* LoginViewController.m */,
 			);
