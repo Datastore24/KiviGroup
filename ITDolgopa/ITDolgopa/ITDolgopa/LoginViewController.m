@@ -22,7 +22,15 @@
 {
     BOOL isBool;
     NSDictionary * responseSalt;
+    NSDictionary * responseInfo;
     AuthCoreDataClass * authCoreDataClass;
+    UITextField * textFieldPhone;
+    UIButton * buttonGetCode;
+    UIView * viewLoginPhone;
+    UILabel * labelPlaceHolderPhone;
+    UIView * checkView;
+    UIActivityIndicatorView *loadIndicator;
+    
 }
 
 - (void) viewDidLoad {
@@ -33,19 +41,56 @@
 #pragma mark - initialization
     
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
-    [self checkAuth];
+    
+    
+    
+    
     
     self.navigationController.navigationBar.hidden = YES; // спрятал navigation bar
     LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
     //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
-    UIButton * buttonGetCode = (UIButton*)[self.view viewWithTag:301];
+    buttonGetCode = (UIButton*)[self.view viewWithTag:301];
     [buttonGetCode addTarget:self action:@selector(buttonGetCodeAction)
             forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIButton * buttonLogin = (UIButton*)[self.view viewWithTag:304];
     [buttonLogin addTarget:self action:@selector(buttonLoginAction)
                       forControlEvents:UIControlEventTouchUpInside];
+    
+    //Убираем в 0 для вывода проверки
+    buttonGetCode.alpha=0;
+    
+    textFieldPhone = (UITextField*)[self.view viewWithTag:302];
+    textFieldPhone.alpha = 0;
+    
+    viewLoginPhone = (UIView*)[self.view viewWithTag:3021];
+    viewLoginPhone.alpha = 0;
+    
+    labelPlaceHolderPhone = (UILabel*)[self.view viewWithTag:3022];
+    labelPlaceHolderPhone.alpha = 0;
+
+    
+    checkView = (UIView*)[self.view viewWithTag:306];
+    
+    loadIndicator=(UIActivityIndicatorView*)[self.view viewWithTag:307];
+    [loadIndicator stopAnimating];
+    [loadIndicator setHidden:YES];
+    
+    if([authCoreDataClass showAllUsers].count>0){
+         UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
+        NSLog(@"userInfo.salt: %@",userInfo.salt);
+        if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
+            [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
+        }else{
+            [self showLoginWith:NO];
+        }
+    }else{
+        [self showLoginWith:NO];
+    }
+    //
+
     
 
     
@@ -57,12 +102,15 @@
 //Действие кнопки buttonGetCode
 - (void) buttonGetCodeAction
 {
-    UITextField * textFieldPhone = (UITextField*)[self.view viewWithTag:302];
+    
     if (textFieldPhone.text.length <= 11) {
         SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
         [alert showSuccess:@"Внимание" subTitle:@"Не верное колличество символов" closeButtonTitle:@"Ок" duration:0.0f];
     } else {
+        buttonGetCode.userInteractionEnabled=NO;
+        buttonGetCode.alpha=0.5;
         [self getSalt:textFieldPhone.text andBlock:^{
+            NSLog(@"ERROR: %@",[responseSalt objectForKey:@"error"]);
             if ([[responseSalt objectForKey:@"error"]integerValue]==0) {
                 if (!isBool) {
                     [UIView animateWithDuration:0.3 animations:^{
@@ -71,15 +119,20 @@
                         rect.origin.x = rect.origin.x + 369;
                         mainViewSMS.frame = rect;
                     }];
+                    [loadIndicator setHidden:YES];
+                    [loadIndicator stopAnimating];
                     isBool = YES;
                 }
-                [authCoreDataClass updateUser:[responseSalt objectForKey:@"contr_fio"] andSalt:[responseSalt objectForKey:@"salt"] andPhone:[responseSalt objectForKey:@"contr_phone"]];
             } else if ([[responseSalt objectForKey:@"error"]integerValue]==1) {
                 
                 SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
                 [alert showSuccess:@"Внимание" subTitle:[responseSalt objectForKey:@"error_msg"] closeButtonTitle:@"Ок" duration:0.0f];
+                [loadIndicator setHidden:YES];
+                [loadIndicator stopAnimating];
             } else if ([[responseSalt objectForKey:@"error"]integerValue]==2) {
                 NSLog(@"Загеристрируйся");
+                [loadIndicator setHidden:YES];
+                [loadIndicator stopAnimating];
             }
             
         }];
@@ -92,16 +145,29 @@
 
     //Необходимо создать синглтон в котором будет храниться телефон и ключ--------------
     //И напистаь метод отправляющий на сервер девайс токен------------------------------
+    //Запрос баланса сразу, и положить в SingleTONE
     
     UITextField * textFieldSMS = (UITextField*)[self.view viewWithTag:303];
     
-    if ([authCoreDataClass checkSalt:textFieldSMS.text]) {
-        RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
-        [self.navigationController pushViewController:detail animated:YES];
-    } else {
+    
+    [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andBlock:^{
+        NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
-        [AlertClass showAlertViewWithMessage:@"Неверный пароль" view:self];
-    }
+        if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
+            [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"]];
+            RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
+            [self.navigationController pushViewController:detail animated:YES];
+        } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
+            
+            SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+            [alert showSuccess:@"Внимание" subTitle:[responseInfo objectForKey:@"error_msg"] closeButtonTitle:@"Ок" duration:0.0f];
+            [loadIndicator setHidden:YES];
+            [loadIndicator stopAnimating];
+        }
+        
+        
+    }];
+
 }
 
 
@@ -115,38 +181,103 @@
                              phoneResult,@"phone",
                              nil];
     
+    [loadIndicator setHidden:NO];
+    [loadIndicator startAnimating];
+    
+    
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"get_salt" complitionBlock:^(id response) {
         NSLog(@"%@", response);
+        
         responseSalt = (NSDictionary*)response;
         block();
 
     }];
 }
 
+-(void) getInfo:(NSString *) phone andSalt:(NSString*) salt andBlock:(void (^)(void))block
+{
+    
+    NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             phoneResult,@"phone",
+                             salt,@"salt",
+                             nil];
+    
+    [loadIndicator setHidden:NO];
+    [loadIndicator startAnimating];
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
+        NSLog(@"%@", response);
+        
+        responseInfo = (NSDictionary*)response;
+        block();
+        
+    }];
+}
+
 
 -(void) checkAuth
 {
+    if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
+        
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              userInfo.phone,@"phone",
                              userInfo.salt, @"salt",
                              nil];
+        
+
     
     APIGetClass * getInfo = [[APIGetClass alloc] init];
+    
+        if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
     [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
         NSLog(@"%@", response);
-        NSDictionary * responseInfo = (NSDictionary*)response;
+
         
-        if ([[responseInfo objectForKey:@"error"] integerValue] == 0) {
+        NSDictionary * responseCheckInfo = (NSDictionary*)response;
+        
+        if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
+            [self showLoginWith:YES];
+            
             RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
             [self.navigationController pushViewController:detail animated:YES];
         } else {
-            NSLog(@"%@", [responseInfo objectForKey:@"error_msg"]);
+            NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
+            
+            [self showLoginWith:YES];
+            
         }
         
         
     }];
+        }else{
+            [self showLoginWith:NO];
+
+        }
+    }
 }
+
+-(void)showLoginWith:(BOOL) animation{
+    if(animation){
+    [UIView animateWithDuration:2.0 animations:^{
+        textFieldPhone.alpha=1;
+        buttonGetCode.alpha=1;
+        viewLoginPhone.alpha=1;
+        labelPlaceHolderPhone.alpha=1;
+        checkView.alpha=0;
+    }];
+    }else{
+        textFieldPhone.alpha=1;
+        buttonGetCode.alpha=1;
+        viewLoginPhone.alpha=1;
+        labelPlaceHolderPhone.alpha=1;
+        checkView.alpha=0;
+    }
+}
+
 
 @end
