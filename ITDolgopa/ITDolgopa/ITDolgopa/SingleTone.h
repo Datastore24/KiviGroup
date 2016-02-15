@@ -12,12 +12,8 @@
     NSString *someProperty;
 }
 
-@property (strong,nonatomic) NSMutableArray* parsingArray;
-@property (strong,nonatomic) NSMutableArray* parsingArrayKey;
-@property (strong,nonatomic) NSString* parsingToken;
-@property (strong,nonatomic) NSString * typeOfUsers;
-@property (strong,nonatomic) NSString * loginUser;
-@property (strong, nonatomic) NSDictionary * orderCart;
+@property (strong,nonatomic) NSMutableArray* deviceToken;
+
 
 + (id)sharedManager;
 

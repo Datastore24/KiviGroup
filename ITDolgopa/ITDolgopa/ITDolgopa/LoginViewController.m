@@ -17,6 +17,7 @@
 #import "UserInfo.h"
 #import "RegistrationViewController.h"
 #import "AlertClass.h"
+#import "SingleTone.h"
 
 @implementation LoginViewController
 {
@@ -151,7 +152,7 @@
     UITextField * textFieldSMS = (UITextField*)[self.view viewWithTag:303];
     
     
-    [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andBlock:^{
+    [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andDeviceToken:[[SingleTone sharedManager] deviceToken]  andBlock:^{
         NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
@@ -196,13 +197,15 @@
     }];
 }
 
--(void) getInfo:(NSString *) phone andSalt:(NSString*) salt andBlock:(void (^)(void))block
+-(void) getInfo:(NSString *) phone andSalt:(NSString*) salt andDeviceToken: (NSString*) deviceToken
+            andBlock:(void (^)(void))block
 {
     
     NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              phoneResult,@"phone",
                              salt,@"salt",
+                             deviceToken,@"device_token",
                              nil];
     
     [loadIndicator setHidden:NO];
