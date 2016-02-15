@@ -90,7 +90,7 @@
         buttonGetCode.layer.cornerRadius = 13.f;
         [buttonGetCode setTitle:@"ПОЛУЧИТЬ КОД" forState:UIControlStateNormal];
         [buttonGetCode setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonGetCode.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:15];
+        buttonGetCode.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:MAINBUTTONFONTSIZE];
         [mainScrollView addSubview:buttonGetCode];
         //Картинка конверта подвязанная у кнопке---------------------------------------------
         UIImageView * imageViewButtonGetCode = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonGetCode.frame.size.height / 4, (buttonGetCode.frame.size.height / 2) * 1.4f, buttonGetCode.frame.size.height / 2)];
@@ -135,7 +135,7 @@
         buttonLogin.layer.cornerRadius = 13.f;
         [buttonLogin setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:15];
+        buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:MAINBUTTONFONTSIZE];
         [mainViewSMS addSubview:buttonLogin];
         //Картинка конверта подвязанная у кнопке---------------------------------------------
         UIImageView * imageViewButtonLogin = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonLogin.frame.size.height / 4, (buttonLogin.frame.size.height / 2) / 1.15f, buttonLogin.frame.size.height / 2)];

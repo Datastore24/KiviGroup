@@ -47,5 +47,15 @@
 //Нотификация запускается после нажатия кнопки buttonGetCode----------------
 #define LoginViewControllerButtonGetCodeAction @"LoginViewControllerButtonGetCodeAction"
 
+//Шрифты и размеры в зависимости от устройства------------------------------
+
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
+
+#ifdef isiPhone5
+ #define MAINBUTTONFONTSIZE 10
+#else
+ #define MAINBUTTONFONTSIZE 15
+#endif
+
 
 #endif /* Macros_h */
