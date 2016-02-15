@@ -65,10 +65,12 @@
 }
 //
 
-//Обновление токена
+//Обновление данных пользователя
 - (void)updateUser:(NSString *) user
            andSalt: (NSString*) salt
           andPhone: (NSString*) phone
+       andServerId: (NSString*) serverId
+
 {
     // Get the local context
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
@@ -83,6 +85,7 @@
         authFounded.fio = user;
         authFounded.salt = salt;
         authFounded.phone = phone;
+        authFounded.serverId = serverId;
         
         // Save the modification in the local context
         // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts

@@ -155,7 +155,7 @@
         NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
-            [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"]];
+            [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
             RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
             [self.navigationController pushViewController:detail animated:YES];
         } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {

@@ -15,7 +15,8 @@
 - (NSArray *) showAllUsers;
 - (void)updateUser:(NSString *) user
            andSalt: (NSString*) salt
-          andPhone: (NSString*) phone;
+          andPhone: (NSString*) phone
+       andServerId: (NSString*) serverId;
 - (BOOL)checkSalt:(NSString*) salt;
 
 @end
