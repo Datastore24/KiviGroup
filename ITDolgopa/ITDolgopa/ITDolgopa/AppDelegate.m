@@ -10,6 +10,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "AuthCoreDataClass.h"
 #import "UserInfo.h"
+#import "SingleTone.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
+    
+    NSLog(@"badge: %ld",(long)application.applicationIconBadgeNumber);
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -43,6 +46,7 @@
                                      stringByReplacingOccurrencesOfString: @">" withString: @""]
                                     stringByReplacingOccurrencesOfString: @" " withString: @""];
     NSLog(@"My token is: %@", deviceTokenString);
+    [[SingleTone sharedManager] setDeviceToken:deviceTokenString];
     
     if(![auth checkDeviceToken:deviceTokenString]){
         

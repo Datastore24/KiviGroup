@@ -10,11 +10,7 @@
 
 @implementation SingleTone
 
-@synthesize parsingArray;
-@synthesize parsingArrayKey;
-@synthesize parsingToken;
-@synthesize loginUser;
-@synthesize orderCart;
+@synthesize deviceToken;
 
 #pragma mark Singleton Methods
 
