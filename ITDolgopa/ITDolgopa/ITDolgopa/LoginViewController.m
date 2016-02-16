@@ -63,7 +63,7 @@
     [buttonLogin addTarget:self action:@selector(buttonLoginAction)
                       forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * buttonRegistration = (UIButton*)[self.view viewWithTag:308];
+    UIButton * buttonRegistration = (UIButton*)[self.view viewWithTag:309];
     [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction)
                              forControlEvents:UIControlEventTouchUpInside];
     

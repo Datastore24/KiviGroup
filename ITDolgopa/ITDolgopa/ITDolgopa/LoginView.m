@@ -173,7 +173,7 @@
         UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonRegistration.frame = CGRectMake(labelRegistration.frame.size.width, 0, viewRegistration.frame.size.width - labelRegistration.frame.size.width, 40);
         buttonRegistration.backgroundColor = nil;
-        buttonRegistration.tag = 308;
+        buttonRegistration.tag = 309;
         [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
         [buttonRegistration setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonRegistration.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Bold" size:[[fontSize objectForKey:@"textSize"] intValue]];
