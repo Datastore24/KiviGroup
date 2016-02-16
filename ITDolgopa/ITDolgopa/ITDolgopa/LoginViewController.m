@@ -18,8 +18,8 @@
 #import "RegistrationViewController.h"
 #import "AlertClass.h"
 #import "SingleTone.h"
-
-
+#import "SWRevealViewController.h"
+#import "UnderRepairController.h"
 
 @implementation LoginViewController
 {
@@ -43,11 +43,13 @@
 
 #pragma mark - initialization
     
+    _buttonMenu.target = self.revealViewController;
+    _buttonMenu.action = @selector(revealToggle:);
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
 //Добавляем UIЭлементы в приложение через кнтроллер-------------------------
 
-    
-    
-    
     self.navigationController.navigationBar.hidden = YES; // спрятал navigation bar
     LoginView * loginView = [[LoginView alloc] initWithView:self.view];
     [self.view addSubview:loginView];
@@ -56,10 +58,13 @@
     [buttonGetCode addTarget:self action:@selector(buttonGetCodeAction)
             forControlEvents:UIControlEventTouchUpInside];
     
-    
     UIButton * buttonLogin = (UIButton*)[self.view viewWithTag:304];
     [buttonLogin addTarget:self action:@selector(buttonLoginAction)
                       forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton * buttonRegistration = (UIButton*)[self.view viewWithTag:308];
+    [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction)
+                             forControlEvents:UIControlEventTouchUpInside];
     
     //Убираем в 0 для вывода проверки
     buttonGetCode.alpha=0;
@@ -72,7 +77,6 @@
     
     labelPlaceHolderPhone = (UILabel*)[self.view viewWithTag:3022];
     labelPlaceHolderPhone.alpha = 0;
-
     
     checkView = (UIView*)[self.view viewWithTag:306];
     
@@ -90,16 +94,18 @@
         }
     }else{
         [self showLoginWith:NO];
-    }
-    //
-
-    
-
-    
+    }   
 }
 
 
 #pragma mark - Buttons Methods
+
+//Действие кнопки buttonRegistration
+- (void) buttonRegistrationAction
+{
+    RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
 
 //Действие кнопки buttonGetCode
 - (void) buttonGetCodeAction
@@ -158,7 +164,7 @@
         
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
             [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
-            RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
+            UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
             [self.navigationController pushViewController:detail animated:YES];
         } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
             
@@ -248,7 +254,7 @@
         if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
             [self showLoginWith:YES];
             
-            RegistrationViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"registration"];
+            UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
             [self.navigationController pushViewController:detail animated:YES];
         } else {
             NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);

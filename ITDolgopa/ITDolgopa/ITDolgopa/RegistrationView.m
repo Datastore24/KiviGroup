@@ -1,50 +1,47 @@
 //
-//  LoginView.m
+//  RegistrationView.m
 //  ITDolgopa
 //
-//  Created by Viktor on 05.02.16.
+//  Created by Viktor on 15.02.16.
 //  Copyright © 2016 datastore24. All rights reserved.
 //
 
-#import "LoginView.h"
-#import "Macros.h"
+#import "RegistrationView.h"
 #import "UIColor+HexColor.h"
-#import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import "Macros.h"
 #import "FontSizeChanger.h"
 
-@interface LoginView () <UITextFieldDelegate>
+@interface RegistrationView () <UITextFieldDelegate>
 
 @end
 
-@implementation LoginView
+@implementation RegistrationView
 {
+    UIScrollView * mainScrollView;
     UILabel * labelPlaceHolderPhone;
     UILabel * labelPlaceHolderSMS;
-    UIScrollView * mainScrollView;
     UITextField * textFieldInputPhone;
     UITextField * textFieldInputSMS;
     BOOL isBool;
     BOOL isBoolSMS;
+    
 }
 
 - (id)initWithView: (UIView*) view
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         isBool = YES;
         isBoolSMS = YES;
         
         //Изменение размеров
         NSDictionary * fontSize = [FontSizeChanger changeFontSize];
-        //
         
-        
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);        
         //Создание scrollView------------------------------------------------------------
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         mainScrollView.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
         [self addSubview:mainScrollView];
-        
         
         
         //Создание Logo------------------------------------------------------------------
@@ -59,6 +56,7 @@
         centerLogo.y = (centerLogo.y - imageViewLogo.frame.origin.y) + (imageViewLogo.frame.size.height * 2);
         imageViewLogo.center = centerLogo;
         [mainScrollView addSubview:imageViewLogo];
+        
         
         //Создание полоски вью телефона--------------------------------------------------
         UIView * viewLoginPhone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 0.5)];
@@ -78,7 +76,7 @@
         //Ввод телефонного номера---------------------------------------------------------
         textFieldInputPhone = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderPhone.frame.origin.x, labelPlaceHolderPhone.frame.origin.y, widthLogin, 40)];
         textFieldInputPhone.delegate = self;
-        textFieldInputPhone.tag = 302;
+        textFieldInputPhone.tag = 312;
         textFieldInputPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldInputPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldInputPhone.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textField"] intValue]];
@@ -86,25 +84,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldInputPhone];
         [mainScrollView addSubview:textFieldInputPhone];
         
-        //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
-        UIButton * buttonGetCode = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonGetCode.frame = CGRectMake(viewLoginPhone.frame.origin.x, textFieldInputPhone.frame.origin.y + 45, widthLogin, widthLogin / 7.8f);
-        buttonGetCode.tag = 301;
-        buttonGetCode.backgroundColor = [UIColor colorWithHexString:MAINCOLORGREENBUTTON];
-        buttonGetCode.layer.borderColor = [UIColor colorWithHexString:BORDERCOLORGREENBUTTON].CGColor;
-        buttonGetCode.layer.borderWidth = 1.f;
-        buttonGetCode.layer.cornerRadius = 13.f;
-        [buttonGetCode setTitle:@"ПОЛУЧИТЬ КОД" forState:UIControlStateNormal];
-        [buttonGetCode setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonGetCode.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"buttonSize"] intValue]];
-        [mainScrollView addSubview:buttonGetCode];
-        //Картинка конверта подвязанная у кнопке---------------------------------------------
-        UIImageView * imageViewButtonGetCode = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonGetCode.frame.size.height / 4, (buttonGetCode.frame.size.height / 2) * 1.4f, buttonGetCode.frame.size.height / 2)];
-        imageViewButtonGetCode.image = [UIImage imageNamed:@"iconButtonReg.png"];
-        [buttonGetCode addSubview:imageViewButtonGetCode];
-        
         //Создаем вью главы SMS--------------------------------------------------------------
-        UIView * mainViewSMS = [[UIView alloc] initWithFrame:CGRectMake(-300, buttonGetCode.frame.origin.y + 40, widthLogin, 100)];
+        UIView * mainViewSMS = [[UIView alloc] initWithFrame:CGRectMake(viewLoginPhone.frame.origin.x, textFieldInputPhone.frame.origin.y + 50, widthLogin, 150)];
         mainViewSMS.tag = 305;
         [mainScrollView addSubview:mainViewSMS];
         
@@ -115,7 +96,7 @@
         
         //Плэйс холдер СМС-------------------------------------------------------------------
         labelPlaceHolderSMS = [[UILabel alloc] initWithFrame:CGRectMake(viewLoginSMS.frame.origin.x + 5, viewLoginSMS.frame.origin.y - 35, widthLogin, 40)];
-        labelPlaceHolderSMS.text = @"Код из СМС";
+        labelPlaceHolderSMS.text = @"Фамилия Имя Отчество";
         labelPlaceHolderSMS.textColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW];
         labelPlaceHolderSMS.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textField"] intValue]];
         [mainViewSMS addSubview:labelPlaceHolderSMS];
@@ -123,7 +104,7 @@
         //Ввод телефонного номера---------------------------------------------------------
         textFieldInputSMS = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderSMS.frame.origin.x, labelPlaceHolderSMS.frame.origin.y, widthLogin, 40)];
         textFieldInputSMS.delegate = self;
-        textFieldInputSMS.tag = 303;
+        textFieldInputSMS.tag = 313;
         textFieldInputSMS.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldInputSMS.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldInputSMS.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textField"] intValue]];
@@ -132,142 +113,33 @@
         [mainViewSMS addSubview:textFieldInputSMS];
         
         //Создание кнопки ввода ПОЛУЧИТЬ КОД----------------------------------------------
-        UIButton * buttonLogin = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonLogin.frame = CGRectMake(0, textFieldInputSMS.frame.origin.y + 45, widthLogin, widthLogin / 7.8f);
-        buttonLogin.tag = 304;
-        buttonLogin.backgroundColor = [UIColor colorWithHexString:MAINCOLORBUTTONLOGIN];
-        buttonLogin.layer.borderColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW].CGColor;
-        buttonLogin.layer.borderWidth = 1.f;
-        buttonLogin.layer.cornerRadius = 13.f;
-        [buttonLogin setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
-        [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonLogin.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"buttonSize"] intValue]];
-        [mainViewSMS addSubview:buttonLogin];
-        //Картинка конверта подвязанная у кнопке---------------------------------------------
-        UIImageView * imageViewButtonLogin = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonLogin.frame.size.height / 4, (buttonLogin.frame.size.height / 2) / 1.15f, buttonLogin.frame.size.height / 2)];
-        imageViewButtonLogin.image = [UIImage imageNamed:@"lockImage.png"];
-        [buttonLogin addSubview:imageViewButtonLogin];
-        
-        //Вью регистрации--------------------------------------------------------------------
-        UIView * viewRegistration = [[UIView alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 40)];
-        viewRegistration.center = self.center;
-        CGPoint pointviewRegistration = viewRegistration.center;
-        pointviewRegistration.y = pointviewRegistration.y + 200;
-        viewRegistration.center = pointviewRegistration;
-        viewRegistration.backgroundColor = nil;
-        [self addSubview:viewRegistration];
-        
-        //Строка регистрации-----------------------------------------------------------------
-        UILabel * labelRegistration = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, widthLogin, 40)];
-        labelRegistration.text = @"Номер не зарегестирован?";
-        labelRegistration.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textSize"] intValue]];
-        labelRegistration.textColor = [UIColor whiteColor];
-        [labelRegistration sizeToFit];
-        CGRect rect = labelRegistration.frame;
-        rect.size.height = 40;
-        labelRegistration.frame = rect;
-        [viewRegistration addSubview:labelRegistration];
-        
-        //Кнопка регистрации------------------------------------------------------------------
         UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonRegistration.frame = CGRectMake(labelRegistration.frame.size.width, 0, viewRegistration.frame.size.width - labelRegistration.frame.size.width, 40);
-        buttonRegistration.backgroundColor = nil;
-        buttonRegistration.tag = 308;
-        [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
+        buttonRegistration.frame = CGRectMake(0, textFieldInputSMS.frame.origin.y + 90, widthLogin, widthLogin / 7.8f);
+        buttonRegistration.tag = 310;
+        buttonRegistration.backgroundColor = [UIColor colorWithHexString:MAINCOLORBUTTONLOGIN];
+        buttonRegistration.layer.borderColor = [UIColor colorWithHexString:BACKGROUNDCOLORLIGINVIEW].CGColor;
+        buttonRegistration.layer.borderWidth = 1.f;
+        buttonRegistration.layer.cornerRadius = 13.f;
+        [buttonRegistration setTitle:@"ЗАРЕГЕСТРИРОВАТЬСЯ" forState:UIControlStateNormal];
         [buttonRegistration setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        buttonRegistration.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Bold" size:[[fontSize objectForKey:@"textSize"] intValue]];
-        [viewRegistration addSubview:buttonRegistration];
-        
-        
-        
-        
-        
-        
-        //СТЕКЛО!!!
-        
-        //Нужно прописать логику, что пока идет проверка, с экрана все убираем в alpha=0 кроме этого окна
-        
-        //Проверка телефона и кода
-        UIView * checkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
-        checkView.center = self.center;
-        checkView.tag = 306;
-        
-        UIImageView * imageGlassCheck = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 290, 189)];
-        imageGlassCheck.image = [UIImage imageNamed:@"Glass90.png"];
-        imageGlassCheck.alpha=0.8;
-        
-        
-        UILabel * labelCheckPhone = [[UILabel alloc] initWithFrame:CGRectMake(40, 20, 290, 40)];
-        labelCheckPhone.text = @"Проверка телефона...";
-        labelCheckPhone.textColor = [UIColor blackColor];
-        labelCheckPhone.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
-        
-        UILabel * labelCheckCode = [[UILabel alloc] initWithFrame:CGRectMake(40, 60, 290, 40)];
-        labelCheckCode.text = @"Проверка кода...";
-        labelCheckCode.textColor = [UIColor blackColor];
-        labelCheckCode.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
-        labelCheckCode.alpha=0;
-        
-        UILabel * labelCheckInformation = [[UILabel alloc] initWithFrame:CGRectMake(40, 100, 290, 40)];
-        labelCheckInformation.text = @"Загрузка информации...";
-        labelCheckInformation.textColor = [UIColor blackColor];
-        labelCheckInformation.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:17];
-        labelCheckInformation.alpha=0;
-        
-    
-        [UIView animateWithDuration:1.0 animations:^{
-            labelCheckCode.alpha = 1;
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:1.0 animations:^{
-                labelCheckInformation.alpha = 1;
-            }];
-        }];
-
-        
-        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        activityIndicator.tag=666;
-        activityIndicator.center=CGPointMake(checkView.frame.size.width/2,checkView.frame.size.height/2+60);
-        [activityIndicator startAnimating];
-        
-        
-        
-        [checkView addSubview:imageGlassCheck];
-        
-        [checkView addSubview:labelCheckPhone];
-        [checkView addSubview:labelCheckCode];
-        [checkView addSubview:labelCheckInformation];
-        
-        [checkView addSubview:activityIndicator];
-        [mainScrollView addSubview:checkView];
-        //
-        
-        //Индикатор загрузки
-        UIActivityIndicatorView *loadIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        loadIndicator.center=CGPointMake(self.center.x,self.center.y+160);
-        [loadIndicator startAnimating];
-        loadIndicator.tag=307;
-        [mainScrollView addSubview:loadIndicator];
-        
-        //
-        
-        
+        buttonRegistration.titleLabel.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"buttonSize"] intValue]];
+        [mainViewSMS addSubview:buttonRegistration];
+        //Картинка конверта подвязанная у кнопке---------------------------------------------
+        UIImageView * imageViewbuttonRegistration = [[UIImageView alloc] initWithFrame:CGRectMake(20, buttonRegistration.frame.size.height / 4, (buttonRegistration.frame.size.height / 2) / 1.15f, buttonRegistration.frame.size.height / 2)];
+        imageViewbuttonRegistration.image = [UIImage imageNamed:@"iconUser.png"];
+        [buttonRegistration addSubview:imageViewbuttonRegistration];
         
     }
     return self;
 }
 
-//Отвязка от всех нотификаций------------------------------
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 #pragma mark - UITextFieldDelegate
 
 //Скрытие клавиатуры----------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];    
+    [textField resignFirstResponder];
     return YES;
 }
 
@@ -297,7 +169,7 @@
     } else {
         /*  limit the users input to only 9 characters  */
         NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        return (newLength > 6) ? NO : YES;
+        return (newLength > 40) ? NO : YES;
     }
     
     return NO;
@@ -311,7 +183,7 @@
     if (testField.text.length < 3) {
         testField.text = @"+7";
     }
-
+    
     
     if (testField.text.length != 0 && isBool) {
         [UIView animateWithDuration:0.3 animations:^{
@@ -337,26 +209,26 @@
 //Анимация Лейблов при вводе SMS-------------------------
 - (void) animationLabelSMS: (NSNotification*) notification
 {
-        UITextField * testField = notification.object;
-        if (testField.text.length != 0 && isBoolSMS) {
-            [UIView animateWithDuration:0.3 animations:^{
-                CGRect rect;
-                rect = labelPlaceHolderSMS.frame;
-                rect.origin.x = rect.origin.x + 100.f;
-                labelPlaceHolderSMS.frame = rect;
-                labelPlaceHolderSMS.alpha = 0.f;
-                isBoolSMS = NO;
-            }];
-        } else if (testField.text.length == 0 && !isBoolSMS) {
-            [UIView animateWithDuration:0.3 animations:^{
-                CGRect rect;
-                rect = labelPlaceHolderSMS.frame;
-                rect.origin.x = rect.origin.x - 100.f;
-                labelPlaceHolderSMS.frame = rect;
-                labelPlaceHolderSMS.alpha = 1.f;
-                isBoolSMS = YES;
-            }];
-        }
+    UITextField * testField = notification.object;
+    if (testField.text.length != 0 && isBoolSMS) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderSMS.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHolderSMS.frame = rect;
+            labelPlaceHolderSMS.alpha = 0.f;
+            isBoolSMS = NO;
+        }];
+    } else if (testField.text.length == 0 && !isBoolSMS) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderSMS.frame;
+            rect.origin.x = rect.origin.x - 100.f;
+            labelPlaceHolderSMS.frame = rect;
+            labelPlaceHolderSMS.alpha = 1.f;
+            isBoolSMS = YES;
+        }];
+    }
 }
 
 //Поднимаем текст вверх--------------------------------------
@@ -408,6 +280,3 @@
 }
 
 @end
-
-
-

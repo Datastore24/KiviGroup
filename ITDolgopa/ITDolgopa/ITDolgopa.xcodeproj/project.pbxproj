@@ -7,10 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7705C01B1C72FF42000CA333 /* iconUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C01A1C72FF42000CA333 /* iconUser.png */; };
+		7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C01E1C730393000CA333 /* SWRevealViewController.m */; };
+		7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C0241C7304D6000CA333 /* MenuViewController.m */; };
+		7705C0301C7330B0000CA333 /* remont.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C0271C7330B0000CA333 /* remont.png */; };
+		7705C0311C7330B0000CA333 /* istoriya.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C0281C7330B0000CA333 /* istoriya.png */; };
+		7705C0331C7330B0000CA333 /* razrabotchik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C02A1C7330B0000CA333 /* razrabotchik.png */; };
+		7705C0341C7330B0000CA333 /* sait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C02B1C7330B0000CA333 /* sait.png */; };
+		7705C0351C7330B0000CA333 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C02C1C7330B0000CA333 /* chat.png */; };
+		7705C0361C7330B0000CA333 /* balans.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C02D1C7330B0000CA333 /* balans.png */; };
+		7705C0371C7330B0000CA333 /* akcii.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C02E1C7330B0000CA333 /* akcii.png */; };
+		7705C03B1C7333A3000CA333 /* master.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C0391C7333A3000CA333 /* master.png */; };
+		7705C03C1C7333A3000CA333 /* vremya.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C03A1C7333A3000CA333 /* vremya.png */; };
+		7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C03F1C7368D5000CA333 /* UnderRepairController.m */; };
 		771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */; };
 		771028F81C6CD25800C77C04 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 771028F71C6CD25800C77C04 /* Logo.png */; };
 		7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712447C1C6E01C5001AFB30 /* iconButtonReg.png */; };
 		7712447F1C6E2BF9001AFB30 /* lockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712447E1C6E2BF9001AFB30 /* lockImage.png */; };
+		771B88641C71F60500427AA9 /* RegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771B88631C71F60500427AA9 /* RegistrationView.m */; };
+		771B88661C71FF9F00427AA9 /* buttonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 771B88651C71FF9F00427AA9 /* buttonBack.png */; };
 		772043E61C649557001F787F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772043E51C649557001F787F /* LoginView.m */; };
 		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
@@ -68,11 +83,30 @@
 /* Begin PBXFileReference section */
 		25BAB246A8C56568BD8E1483 /* Pods-ITDolgopa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.release.xcconfig"; sourceTree = "<group>"; };
 		49F5514E5A16CD5DD0607A92 /* Pods-ITDolgopa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.debug.xcconfig"; sourceTree = "<group>"; };
+		7705C01A1C72FF42000CA333 /* iconUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconUser.png; sourceTree = "<group>"; };
+		7705C01D1C730393000CA333 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		7705C01E1C730393000CA333 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		7705C0231C7304D6000CA333 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		7705C0241C7304D6000CA333 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		7705C0271C7330B0000CA333 /* remont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remont.png; sourceTree = "<group>"; };
+		7705C0281C7330B0000CA333 /* istoriya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = istoriya.png; sourceTree = "<group>"; };
+		7705C02A1C7330B0000CA333 /* razrabotchik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = razrabotchik.png; sourceTree = "<group>"; };
+		7705C02B1C7330B0000CA333 /* sait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sait.png; sourceTree = "<group>"; };
+		7705C02C1C7330B0000CA333 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		7705C02D1C7330B0000CA333 /* balans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balans.png; sourceTree = "<group>"; };
+		7705C02E1C7330B0000CA333 /* akcii.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akcii.png; sourceTree = "<group>"; };
+		7705C0391C7333A3000CA333 /* master.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = master.png; sourceTree = "<group>"; };
+		7705C03A1C7333A3000CA333 /* vremya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vremya.png; sourceTree = "<group>"; };
+		7705C03E1C7368D5000CA333 /* UnderRepairController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairController.h; sourceTree = "<group>"; };
+		7705C03F1C7368D5000CA333 /* UnderRepairController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderRepairController.m; sourceTree = "<group>"; };
 		771028F41C6CC9DB00C77C04 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		771028F71C6CD25800C77C04 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		7712447C1C6E01C5001AFB30 /* iconButtonReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconButtonReg.png; sourceTree = "<group>"; };
 		7712447E1C6E2BF9001AFB30 /* lockImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockImage.png; sourceTree = "<group>"; };
+		771B88621C71F60500427AA9 /* RegistrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationView.h; sourceTree = "<group>"; };
+		771B88631C71F60500427AA9 /* RegistrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationView.m; sourceTree = "<group>"; };
+		771B88651C71FF9F00427AA9 /* buttonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBack.png; sourceTree = "<group>"; };
 		772043E41C649557001F787F /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		772043E51C649557001F787F /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		772044271C64D177001F787F /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -155,6 +189,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7705C01C1C730334000CA333 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7705C0261C732FCF000CA333 /* icons */,
+				7705C01D1C730393000CA333 /* SWRevealViewController.h */,
+				7705C01E1C730393000CA333 /* SWRevealViewController.m */,
+				7705C0231C7304D6000CA333 /* MenuViewController.h */,
+				7705C0241C7304D6000CA333 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		7705C0261C732FCF000CA333 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				7705C0391C7333A3000CA333 /* master.png */,
+				7705C03A1C7333A3000CA333 /* vremya.png */,
+				7705C0271C7330B0000CA333 /* remont.png */,
+				7705C0281C7330B0000CA333 /* istoriya.png */,
+				7705C02A1C7330B0000CA333 /* razrabotchik.png */,
+				7705C02B1C7330B0000CA333 /* sait.png */,
+				7705C02C1C7330B0000CA333 /* chat.png */,
+				7705C02D1C7330B0000CA333 /* balans.png */,
+				7705C02E1C7330B0000CA333 /* akcii.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		7705C03D1C7368AE000CA333 /* UnderRepair */ = {
+			isa = PBXGroup;
+			children = (
+				7705C03E1C7368D5000CA333 /* UnderRepairController.h */,
+				7705C03F1C7368D5000CA333 /* UnderRepairController.m */,
+			);
+			name = UnderRepair;
+			sourceTree = "<group>";
+		};
 		771028F31C6CC9C100C77C04 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +238,12 @@
 		772043E71C649561001F787F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				771028F71C6CD25800C77C04 /* Logo.png */,
 				ADC57F031C6FDDEB00F55716 /* Glass90.png */,
 				7712447E1C6E2BF9001AFB30 /* lockImage.png */,
 				7712447C1C6E01C5001AFB30 /* iconButtonReg.png */,
 				772043E41C649557001F787F /* LoginView.h */,
 				772043E51C649557001F787F /* LoginView.m */,
-				771028F71C6CD25800C77C04 /* Logo.png */,
 				7742CB521C63965F00515DDD /* LoginViewController.h */,
 				7742CB531C63965F00515DDD /* LoginViewController.m */,
 			);
@@ -221,6 +292,10 @@
 		77DA31011C6DF2C7006E0C44 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				7705C01A1C72FF42000CA333 /* iconUser.png */,
+				771B88651C71FF9F00427AA9 /* buttonBack.png */,
+				771B88621C71F60500427AA9 /* RegistrationView.h */,
+				771B88631C71F60500427AA9 /* RegistrationView.m */,
 				77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */,
 				77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */,
 			);
@@ -272,10 +347,12 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				7705C03D1C7368AE000CA333 /* UnderRepair */,
 				ADC3112F1C6F1663003616F3 /* CoreData */,
 				ADC311191C6F156B003616F3 /* API */,
 				7782F9E11C6D2C6B00EC5477 /* Fonts */,
 				771028F31C6CC9C100C77C04 /* Category */,
+				7705C01C1C730334000CA333 /* Menu */,
 				772043E71C649561001F787F /* Login */,
 				77DA31011C6DF2C7006E0C44 /* Registration */,
 				ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */,
@@ -386,7 +463,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */,
+				7705C0351C7330B0000CA333 /* chat.png in Resources */,
 				7782FA031C6D2CBF00EC5477 /* SFUIText-BoldG1.otf in Resources */,
+				7705C0371C7330B0000CA333 /* akcii.png in Resources */,
+				7705C0341C7330B0000CA333 /* sait.png in Resources */,
 				7782FA041C6D2CBF00EC5477 /* SFUIText-BoldG2.otf in Resources */,
 				7782FA051C6D2CBF00EC5477 /* SFUIText-BoldG3.otf in Resources */,
 				7782FA061C6D2CBF00EC5477 /* SFUIText-BoldItalicG1.otf in Resources */,
@@ -397,7 +477,9 @@
 				7782FA0B1C6D2CBF00EC5477 /* SFUIText-Italic.otf in Resources */,
 				7782FA0C1C6D2CBF00EC5477 /* SFUIText-ItalicG1.otf in Resources */,
 				7782FA0D1C6D2CBF00EC5477 /* SFUIText-ItalicG2.otf in Resources */,
+				7705C0361C7330B0000CA333 /* balans.png in Resources */,
 				7782FA0E1C6D2CBF00EC5477 /* SFUIText-ItalicG3.otf in Resources */,
+				7705C0311C7330B0000CA333 /* istoriya.png in Resources */,
 				7782FA0F1C6D2CBF00EC5477 /* SFUIText-Light.otf in Resources */,
 				7782FA101C6D2CBF00EC5477 /* SFUIText-LightItalic.otf in Resources */,
 				7782FA111C6D2CBF00EC5477 /* SFUIText-Medium.otf in Resources */,
@@ -407,9 +489,12 @@
 				7782FA141C6D2CBF00EC5477 /* SFUIText-RegularG1.otf in Resources */,
 				7782FA151C6D2CBF00EC5477 /* SFUIText-RegularG2.otf in Resources */,
 				ADC57F041C6FDDEB00F55716 /* Glass90.png in Resources */,
+				7705C0301C7330B0000CA333 /* remont.png in Resources */,
+				7705C0331C7330B0000CA333 /* razrabotchik.png in Resources */,
 				7782FA161C6D2CBF00EC5477 /* SFUIText-RegularG3.otf in Resources */,
 				7782FA171C6D2CBF00EC5477 /* SFUIText-Semibold.otf in Resources */,
 				7782FA181C6D2CBF00EC5477 /* SFUIText-SemiboldItalic.otf in Resources */,
+				7705C03B1C7333A3000CA333 /* master.png in Resources */,
 				7782FA191C6D2CBF00EC5477 /* SFUIDisplay-Black.otf in Resources */,
 				7782FA1A1C6D2CBF00EC5477 /* SFUIDisplay-Bold.otf in Resources */,
 				7782FA1B1C6D2CBF00EC5477 /* SFUIDisplay-Heavy.otf in Resources */,
@@ -418,11 +503,14 @@
 				7782FA1E1C6D2CBF00EC5477 /* SFUIDisplay-Regular.otf in Resources */,
 				7782FA1F1C6D2CBF00EC5477 /* SFUIDisplay-Semibold.otf in Resources */,
 				7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */,
+				7705C03C1C7333A3000CA333 /* vremya.png in Resources */,
 				7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */,
 				771028F81C6CD25800C77C04 /* Logo.png in Resources */,
 				ADFBDCE81C5F6C9F00BCC486 /* LaunchScreen.storyboard in Resources */,
+				7705C01B1C72FF42000CA333 /* iconUser.png in Resources */,
 				ADFBDCE51C5F6C9F00BCC486 /* Assets.xcassets in Resources */,
 				7712447F1C6E2BF9001AFB30 /* lockImage.png in Resources */,
+				771B88661C71FF9F00427AA9 /* buttonBack.png in Resources */,
 				ADFBDCE31C5F6C9F00BCC486 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,11 +573,15 @@
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
+				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,
+				7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
+				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
+				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
 				ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */,

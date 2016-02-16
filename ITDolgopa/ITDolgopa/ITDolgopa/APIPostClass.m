@@ -16,13 +16,14 @@
 @implementation APIPostClass
 -(void) postDataToServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack{
     NSString * url = [NSString stringWithFormat:@"%@?%@&api_key=%@",MAIN_URL,method,API_KEY];
+    NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     
     
     //Запрос
-    [manager POST: url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST: encodedURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //Вызов блока
         compitionBack (responseObject);
         
