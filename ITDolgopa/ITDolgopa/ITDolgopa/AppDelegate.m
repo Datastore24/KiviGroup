@@ -69,6 +69,9 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received notification: %@", userInfo);
+    if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
+       // application.applicationIconBadgeNumber=0;
+    }
 }
 //
 

@@ -32,6 +32,7 @@
     UIView * viewLoginPhone;
     UILabel * labelPlaceHolderPhone;
     UIView * checkView;
+    UIView * viewRegistration;
     UIActivityIndicatorView *loadIndicator;
     
 }
@@ -80,9 +81,13 @@
     
     checkView = (UIView*)[self.view viewWithTag:306];
     
+    
     loadIndicator=(UIActivityIndicatorView*)[self.view viewWithTag:307];
     [loadIndicator stopAnimating];
     [loadIndicator setHidden:YES];
+    
+    viewRegistration = (UIView*)[self.view viewWithTag:308];
+    viewRegistration.alpha = 0;
     
     if([authCoreDataClass showAllUsers].count>0){
          UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
@@ -238,6 +243,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              userInfo.phone,@"phone",
                              userInfo.salt, @"salt",
+                             userInfo.deviceToken,@"device_token",
                              nil];
         
 
@@ -279,6 +285,7 @@
         buttonGetCode.alpha=1;
         viewLoginPhone.alpha=1;
         labelPlaceHolderPhone.alpha=1;
+        viewRegistration.alpha=1;
         checkView.alpha=0;
     }];
     }else{
@@ -286,6 +293,7 @@
         buttonGetCode.alpha=1;
         viewLoginPhone.alpha=1;
         labelPlaceHolderPhone.alpha=1;
+        viewRegistration.alpha=1;
         checkView.alpha=0;
     }
 }
