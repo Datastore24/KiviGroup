@@ -155,6 +155,7 @@
         pointviewRegistration.y = pointviewRegistration.y + 200;
         viewRegistration.center = pointviewRegistration;
         viewRegistration.backgroundColor = nil;
+        viewRegistration.tag=308;
         [self addSubview:viewRegistration];
         
         //Строка регистрации-----------------------------------------------------------------
