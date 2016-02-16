@@ -8,6 +8,7 @@
 
 #import "UnderRepairController.h"
 #import "SWRevealViewController.h"
+#import "SingleTone.h"
 
 @implementation UnderRepairController
 
@@ -21,6 +22,8 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
+    
+    NSLog(@"%@", [[SingleTone sharedManager] billingBalance]);
 }
 
 @end

@@ -170,6 +170,7 @@
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
             [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
             UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
+            [[SingleTone sharedManager]setPhone:[responseInfo objectForKey:@"phone"]];
             [self.navigationController pushViewController:detail animated:YES];
         } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
             
@@ -259,6 +260,12 @@
         
         if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
             [self showLoginWith:YES];
+            
+          [[SingleTone sharedManager]setPhone:[responseCheckInfo objectForKey:@"phone"]];
+          [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];
+
+            
+            
             
             UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
             [self.navigationController pushViewController:detail animated:YES];
