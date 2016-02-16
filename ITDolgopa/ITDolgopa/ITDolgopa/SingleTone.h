@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SingleTone : NSObject{
-    NSString *someProperty;
-}
+@interface SingleTone : NSObject
 
 @property (strong,nonatomic) NSMutableArray* deviceToken;
+@property (strong, nonatomic) NSString* phone;
+@property (strong, nonatomic) NSString* billingBalance;
 
 
 + (id)sharedManager;

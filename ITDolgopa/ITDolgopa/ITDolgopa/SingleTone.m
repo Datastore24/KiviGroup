@@ -11,6 +11,9 @@
 @implementation SingleTone
 
 @synthesize deviceToken;
+@synthesize phone;
+@synthesize billingBalance;
+
 
 #pragma mark Singleton Methods
 
