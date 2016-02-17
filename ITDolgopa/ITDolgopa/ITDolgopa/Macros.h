@@ -61,6 +61,14 @@
 
 #define isiPhone5  ([[UIScreen mainScreen] bounds].size.height <= 568)?TRUE:FALSE
 
+//Шрифты--------------------------------------------------------------------------
+#define FONTREGULAR @"SFUIDisplay-Regular"
+#define FONTLITE @"SFUIDisplay-Light"
+
+//Цвета---------------------------------------------------------------------------
+#define COLORLITEGRAY @"929597"
+#define COLORLITELITEGRAY @"f9fafa"
+
 
 
 #endif /* Macros_h */

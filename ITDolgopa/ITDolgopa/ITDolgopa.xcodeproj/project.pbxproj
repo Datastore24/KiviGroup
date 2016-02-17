@@ -27,6 +27,9 @@
 		771B88641C71F60500427AA9 /* RegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771B88631C71F60500427AA9 /* RegistrationView.m */; };
 		771B88661C71FF9F00427AA9 /* buttonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 771B88651C71FF9F00427AA9 /* buttonBack.png */; };
 		772043E61C649557001F787F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772043E51C649557001F787F /* LoginView.m */; };
+		7725852C1C74A3F5007C6AF0 /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7725852B1C74A3F5007C6AF0 /* menuIcon.png */; };
+		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
+		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
 		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
 		7782FA031C6D2CBF00EC5477 /* SFUIText-BoldG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EC1C6D2CA400EC5477 /* SFUIText-BoldG1.otf */; };
@@ -110,6 +113,11 @@
 		772043E41C649557001F787F /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		772043E51C649557001F787F /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		772044271C64D177001F787F /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		7725852B1C74A3F5007C6AF0 /* menuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIcon.png; sourceTree = "<group>"; };
+		772A54EB1C74775900AE635F /* TitleClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleClass.h; sourceTree = "<group>"; };
+		772A54EC1C74775900AE635F /* TitleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleClass.m; sourceTree = "<group>"; };
+		772A54F11C74851500AE635F /* CustomCallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCallView.h; sourceTree = "<group>"; };
+		772A54F21C74851500AE635F /* CustomCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCallView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7742CB531C63965F00515DDD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7782F9E21C6D2C8C00EC5477 /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
@@ -220,8 +228,11 @@
 		7705C03D1C7368AE000CA333 /* UnderRepair */ = {
 			isa = PBXGroup;
 			children = (
+				7725852B1C74A3F5007C6AF0 /* menuIcon.png */,
 				7705C03E1C7368D5000CA333 /* UnderRepairController.h */,
 				7705C03F1C7368D5000CA333 /* UnderRepairController.m */,
+				772A54F11C74851500AE635F /* CustomCallView.h */,
+				772A54F21C74851500AE635F /* CustomCallView.m */,
 			);
 			name = UnderRepair;
 			sourceTree = "<group>";
@@ -378,6 +389,8 @@
 		ADFBDCD81C5F6C9F00BCC486 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				772A54EB1C74775900AE635F /* TitleClass.h */,
+				772A54EC1C74775900AE635F /* TitleClass.m */,
 				772044271C64D177001F787F /* Macros.h */,
 				ADFBDCD91C5F6C9F00BCC486 /* main.m */,
 			);
@@ -484,6 +497,7 @@
 				7782FA101C6D2CBF00EC5477 /* SFUIText-LightItalic.otf in Resources */,
 				7782FA111C6D2CBF00EC5477 /* SFUIText-Medium.otf in Resources */,
 				7782FA121C6D2CBF00EC5477 /* SFUIText-MediumItalic.otf in Resources */,
+				7725852C1C74A3F5007C6AF0 /* menuIcon.png in Resources */,
 				7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */,
 				7782FA131C6D2CBF00EC5477 /* SFUIText-Regular.otf in Resources */,
 				7782FA141C6D2CBF00EC5477 /* SFUIText-RegularG1.otf in Resources */,
@@ -577,6 +591,7 @@
 				7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
+				772A54F31C74851500AE635F /* CustomCallView.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
@@ -586,6 +601,7 @@
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
 				ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
+				772A54ED1C74775900AE635F /* TitleClass.m in Sources */,
 				77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */,
 				ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */,
 				ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */,
