@@ -93,14 +93,23 @@
     NSString * textStatus = [NSString new];
     NSString * textColorStatus = [NSString new];
     if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 1) {
-        textStatus = @"Готов к выдаче";
-        textColorStatus = @"8bc543";
-    } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 2) {
-        textStatus = @"В ремноте";
-        textColorStatus = @"ed1d24";
-    } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 3) {
-        textStatus = @"На диагностике";
+        textStatus = @"В ремонте";
         textColorStatus = @"29a9e0";
+    } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 2) {
+        if ([[dict objectForKey:@"take_money"] integerValue] == 0){
+            textStatus = @"Готов к выдаче";
+            textColorStatus = @"8bc543";
+        }else{
+            textStatus = @"Выдан";
+            textColorStatus = @"8bc543";
+        }
+        
+        
+        
+        
+    } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 3) {
+        textStatus = @"Отказ в ремонте";
+        textColorStatus = @"ed1d24";
     }
     
     
