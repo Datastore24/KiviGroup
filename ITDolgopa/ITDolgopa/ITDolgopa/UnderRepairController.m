@@ -92,24 +92,30 @@
     NSDictionary * dict = [arrayDevice objectAtIndex:indexPath.row];
     NSString * textStatus = [NSString new];
     NSString * textColorStatus = [NSString new];
+    NSString * endDate;
     if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 1) {
         textStatus = @"В ремонте";
         textColorStatus = @"29a9e0";
+        endDate = [dict objectForKey:@"inwork_end"];
     } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 2) {
         if ([[dict objectForKey:@"take_money"] integerValue] == 0){
             textStatus = @"Готов к выдаче";
             textColorStatus = @"8bc543";
         }else{
             textStatus = @"Выдан";
-            textColorStatus = @"8bc543";
+            textColorStatus = @"c7ffc4";
         }
-        
-        
+        if([[dict objectForKey:@"real_inwork_end"] intValue]==0){
+                endDate = [dict objectForKey:@"inwork_end"];
+        }else{
+                endDate = [dict objectForKey:@"real_inwork_end"];
+        }
         
         
     } else if ([[dict objectForKey:@"inwork_wstatus"] integerValue] == 3) {
         textStatus = @"Отказ в ремонте";
         textColorStatus = @"ed1d24";
+        endDate = [dict objectForKey:@"inwork_end"];
     }
     
     
@@ -117,7 +123,7 @@
     //Инициализауия класса ячейки-----------------------------
     cellView = [[CustomCallView alloc] initWithDevice:[dict objectForKey:@"inwork_vendors"]
                                           andBreaking:[dict objectForKey:@"inwork_defects"]
-                                         andReadiness:[dict objectForKey:@"inwork_end"]
+                                         andReadiness:endDate
                                             andStatus:textStatus
                                        andColorStatus:textColorStatus
                                               andView:self.view];
