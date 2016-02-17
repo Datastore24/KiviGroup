@@ -334,6 +334,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonMenu" destination="Cr1-U1-gCD" id="rWa-ed-Sap"/>
+                        <outlet property="mainTableView" destination="hIB-51-6t5" id="bQB-bc-2Vh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAQ-DB-r7M" sceneMemberID="firstResponder"/>

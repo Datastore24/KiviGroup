@@ -114,8 +114,7 @@
 
 //Действие кнопки buttonGetCode
 - (void) buttonGetCodeAction
-{
-    
+{    
     if (textFieldPhone.text.length <= 11) {
         SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
         [alert showSuccess:@"Внимание" subTitle:@"Не верное колличество символов" closeButtonTitle:@"Ок" duration:0.0f];

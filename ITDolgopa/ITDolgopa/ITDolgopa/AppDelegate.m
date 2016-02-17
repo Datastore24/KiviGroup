@@ -21,11 +21,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    self.window.clipsToBounds = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
+    self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
+    
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+//        UIView *addStatusBar = [[UIView alloc] init];
+//        addStatusBar.frame = CGRectMake(0, 0, 320, 20);
+//        //change this to match your navigation bar or view color or tool bar
+//        //You can also use addStatusBar.backgroundColor = [UIColor BlueColor]; or any other color
+//        addStatusBar.backgroundColor = [UIColor colorWithRed:0.973/255. green:0.973/255. blue:0.973/255. alpha:1];
+//        [self.window.rootViewController.view addSubview:addStatusBar];
+//    }
+    
+    
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
     
     NSLog(@"badge: %ld",(long)application.applicationIconBadgeNumber);
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+////    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque];
     
     // Для iOS 7 и ниже
     // [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];

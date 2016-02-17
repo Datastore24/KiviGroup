@@ -18,13 +18,17 @@
         fonSize= [[NSDictionary alloc] initWithObjectsAndKeys:
                   @"11",@"textSize",
                   @"11",@"buttonSize",
-                  @"15",@"textField", nil];
+                  @"15",@"textField",
+                  @"12", @"sizeText",
+                  nil];
     }else{
         NSLog(@"Iphone 6,6+");
         fonSize= [[NSDictionary alloc] initWithObjectsAndKeys:
                   @"13",@"textSize",
                   @"16",@"buttonSize",
-                  @"20",@"textField",nil];
+                  @"20",@"textField",
+                  @"17", @"sizeText",
+                  nil];
     }
     
     return fonSize;
