@@ -14,7 +14,7 @@
     NSDictionary * fonSize;
     
     if (isiPhone5) {
-        NSLog(@"Iphone 5,4");
+//        NSLog(@"Iphone 5,4");
         fonSize= [[NSDictionary alloc] initWithObjectsAndKeys:
                   @"11",@"textSize",
                   @"11",@"buttonSize",
@@ -22,12 +22,12 @@
                   @"12", @"sizeText",
                   nil];
     }else{
-        NSLog(@"Iphone 6,6+");
+//        NSLog(@"Iphone 6,6+");
         fonSize= [[NSDictionary alloc] initWithObjectsAndKeys:
                   @"13",@"textSize",
                   @"16",@"buttonSize",
                   @"20",@"textField",
-                  @"17", @"sizeText",
+                  @"15", @"sizeText",
                   nil];
     }
     

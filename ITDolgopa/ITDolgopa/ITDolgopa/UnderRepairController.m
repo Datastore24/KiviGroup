@@ -25,6 +25,8 @@
     CustomCallView * cellView;
     NSArray * arrayDevice;
     UIButton * buttonBalance;
+    NSMutableArray * mainArray;
+
 }
 
 
@@ -33,9 +35,17 @@
 #pragma mark - initialization
     
     //Заголовок-----------------------------------------------
-    TitleClass * title = [[TitleClass alloc]initWithTitle:@"В РЕМОНТЕ"];
+    NSString * titleString;
+    if ([[SingleTone sharedManager] tableChange]) {
+        titleString = @"В РЕМОНТЕ";
+    } else {
+        titleString = @"ИСТОРИЯ";
+    }
+    TitleClass * title = [[TitleClass alloc]initWithTitle:titleString];
     self.navigationItem.titleView = title;
     NSInteger balance = [[[SingleTone sharedManager] billingBalance] integerValue];
+    
+    mainArray = [NSMutableArray new];
 
     //Кнопка бара--------------------------------------------
     buttonBalance =  [UIButton buttonWithType:UIButtonTypeSystem];
@@ -54,6 +64,7 @@
     self.navigationController.navigationBar.translucent = NO;
     //Отключаем основной цвет----------------------------------
     self.view.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
+    
     //Пареметры кнопки меню------------------------------------
     UIImage *imageBarButton = [UIImage imageNamed:@"menuIcon.png"];
     [_buttonMenu setImage:imageBarButton];
@@ -62,8 +73,6 @@
     [button setImage:imageBarButton forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
-//    _buttonMenu.target = self.revealViewController;
-//    _buttonMenu.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     //Параметры таблицы----------------------------------------------
@@ -80,7 +89,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return arrayDevice.count;
+    return mainArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,7 +98,9 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
     
-    NSDictionary * dict = [arrayDevice objectAtIndex:indexPath.row];
+    NSLog(@"%@", mainArray);
+    
+    NSDictionary * dict = [mainArray objectAtIndex:indexPath.row];
     NSString * textStatus = [NSString new];
     NSString * textColorStatus = [NSString new];
     NSString * endDate;
@@ -122,8 +133,11 @@
     
     //Инициализауия класса ячейки-----------------------------
     cellView = [[CustomCallView alloc] initWithDevice:[dict objectForKey:@"inwork_vendors"]
+                                           andCreated:[dict objectForKey:@"created"]
                                           andBreaking:[dict objectForKey:@"inwork_defects"]
                                          andReadiness:endDate
+                    andPPrice:[NSString stringWithFormat:@"%@ руб.",[dict objectForKey:@"inwork_pprice"]]
+                    andPrepay:[NSString stringWithFormat:@"%@ руб.",[dict objectForKey:@"inwork_prepay"]]
                                             andStatus:textStatus
                                        andColorStatus:textColorStatus
                                               andView:self.view];
@@ -135,7 +149,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    return 150;
 }
 
 #pragma mark - API
@@ -152,10 +166,35 @@
         if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"Все хорошо");
+//            NSLog(@"Все хорошо");
             NSDictionary * dictResponse = (NSDictionary*) response;
             arrayDevice = [dictResponse objectForKey:@"inworks"];
-//            NSLog(@"arrayDevice %@", arrayDevice);
+            //Создание массива под различные вариации---------------------------
+            for (int i = 0; i < arrayDevice.count; i++) {
+                NSDictionary * dictArray = [arrayDevice objectAtIndex:i];
+                if ([[SingleTone sharedManager] tableChange]) {
+                    if ([[dictArray objectForKey:@"inwork_wstatus"] integerValue] == 1) {
+                        [mainArray addObject:[arrayDevice objectAtIndex:i]];
+                    } else if ([[dictArray objectForKey:@"inwork_wstatus"] integerValue] == 2)
+                    {
+                        if ([[dictArray objectForKey:@"take_money"] integerValue] == 0){
+                            [mainArray addObject:[arrayDevice objectAtIndex:i]];
+                        }
+                    }
+                    
+                }
+                else {
+                    if ([[dictArray objectForKey:@"inwork_wstatus"] integerValue] == 2) {
+                        if ([[dictArray objectForKey:@"take_money"] integerValue] != 0) {
+                            [mainArray addObject:[arrayDevice objectAtIndex:i]];
+                        }
+                        
+                    } else if ([[dictArray objectForKey:@"inwork_wstatus"] integerValue] == 3) {
+                            [mainArray addObject:[arrayDevice objectAtIndex:i]];
+                    }
+                }
+            }
+
         }
             [self.mainTableView reloadData];
     }];

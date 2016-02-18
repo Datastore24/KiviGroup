@@ -21,6 +21,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //Строка скрывает НСЛОГИ Базы данных (для включения убрать коммент)------------------
+    [MagicalRecord setLoggingLevel:0];
+    
+    //Задаем параметр выбора ячнйки на еденицу-----
+    [[SingleTone sharedManager] setTableChange:YES];
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     
@@ -41,7 +46,7 @@
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
     
-    NSLog(@"badge: %ld",(long)application.applicationIconBadgeNumber);
+//    NSLog(@"badge: %ld",(long)application.applicationIconBadgeNumber);
     
 ////    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 //    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque];
@@ -64,7 +69,7 @@
                                       stringByReplacingOccurrencesOfString: @"<" withString: @""]
                                      stringByReplacingOccurrencesOfString: @">" withString: @""]
                                     stringByReplacingOccurrencesOfString: @" " withString: @""];
-    NSLog(@"My token is: %@", deviceTokenString);
+//    NSLog(@"My token is: %@", deviceTokenString);
     [[SingleTone sharedManager] setDeviceToken:deviceTokenString];
     
     if(![auth checkDeviceToken:deviceTokenString]){
@@ -83,11 +88,11 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Failed to get token, error: %@", error);
+//    NSLog(@"Failed to get token, error: %@", error);
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"Received notification: %@", userInfo);
+//    NSLog(@"Received notification: %@", userInfo);
     if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
        // application.applicationIconBadgeNumber=0;
     }

@@ -13,6 +13,7 @@
 @property (strong,nonatomic) NSMutableArray* deviceToken;
 @property (strong, nonatomic) NSString* phone;
 @property (strong, nonatomic) NSString* billingBalance;
+@property (assign, nonatomic) BOOL tableChange;
 
 
 + (id)sharedManager;

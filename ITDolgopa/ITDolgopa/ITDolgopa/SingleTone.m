@@ -13,6 +13,7 @@
 @synthesize deviceToken;
 @synthesize phone;
 @synthesize billingBalance;
+@synthesize tableChange;
 
 
 #pragma mark Singleton Methods

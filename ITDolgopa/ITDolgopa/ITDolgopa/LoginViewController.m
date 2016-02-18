@@ -95,7 +95,7 @@
     
     if([authCoreDataClass showAllUsers].count>0){
          UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
-        NSLog(@"userInfo.salt: %@",userInfo.salt);
+//        NSLog(@"userInfo.salt: %@",userInfo.salt);
         if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
@@ -126,7 +126,7 @@
         buttonGetCode.userInteractionEnabled=NO;
         buttonGetCode.alpha=0.5;
         [self getSalt:textFieldPhone.text andBlock:^{
-            NSLog(@"ERROR: %@",[responseSalt objectForKey:@"error"]);
+//            NSLog(@"ERROR: %@",[responseSalt objectForKey:@"error"]);
             if ([[responseSalt objectForKey:@"error"]integerValue]==0) {
                 if (!isBool) {
                     [UIView animateWithDuration:0.3 animations:^{
@@ -168,7 +168,7 @@
     
     
     [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andDeviceToken:[[SingleTone sharedManager] deviceToken]  andBlock:^{
-        NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
+//        NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
             [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
@@ -205,7 +205,7 @@
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"get_salt" complitionBlock:^(id response) {
-        NSLog(@"%@", response);
+//        NSLog(@"%@", response);
         
         responseSalt = (NSDictionary*)response;
         block();
@@ -230,7 +230,7 @@
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-        NSLog(@"%@", response);
+//        NSLog(@"%@", response);
         
         responseInfo = (NSDictionary*)response;
         block();
@@ -252,7 +252,7 @@
     
     
         [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-            NSLog(@"ddddddddd %@", response);
+//            NSLog(@"ddddddddd %@", response);
             
             
             NSDictionary * responseCheckInfo = (NSDictionary*)response;
