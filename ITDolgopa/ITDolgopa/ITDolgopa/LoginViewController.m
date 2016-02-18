@@ -90,7 +90,7 @@
     viewRegistration.alpha = 0;
     
     //ВРЕМЕННО
-    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
+    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:0.1f]; //Запуск проверки с паузой
     //
     
     if([authCoreDataClass showAllUsers].count>0){
@@ -244,7 +244,7 @@
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              /*userInfo.phone*/@"79885035228",@"phone",
-                             /*userInfo.salt*/@"n9ZX0", @"salt",
+                             /*userInfo.salt*/@"Po0ze", @"salt",
                              @"TEST",@"device_token",
                              nil];
     
