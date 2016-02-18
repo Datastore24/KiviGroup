@@ -89,6 +89,10 @@
     viewRegistration = (UIView*)[self.view viewWithTag:308];
     viewRegistration.alpha = 0;
     
+    //ВРЕМЕННО
+    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
+    //
+    
     if([authCoreDataClass showAllUsers].count>0){
          UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
         NSLog(@"userInfo.salt: %@",userInfo.salt);
@@ -237,7 +241,45 @@
 
 -(void) checkAuth
 {
-    if([authCoreDataClass showAllUsers].count>0){
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             /*userInfo.phone*/@"79885035228",@"phone",
+                             /*userInfo.salt*/@"n9ZX0", @"salt",
+                             @"TEST",@"device_token",
+                             nil];
+    
+    APIGetClass * getInfo = [[APIGetClass alloc] init];
+    
+    
+        [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
+            NSLog(@"ddddddddd %@", response);
+            
+            
+            NSDictionary * responseCheckInfo = (NSDictionary*)response;
+            
+            if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
+                [self showLoginWith:YES];
+                
+                [[SingleTone sharedManager] setPhone:[responseCheckInfo objectForKey:@"contr_phone"]];
+                [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];
+                
+                
+                
+                
+                UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
+                [self.navigationController pushViewController:detail animated:YES];
+            } else {
+                NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
+                
+                [self showLoginWith:YES];
+                
+            }
+            
+            
+        }];
+    
+    
+    /* if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
         
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -281,7 +323,7 @@
             [self showLoginWith:NO];
 
         }
-    }
+    }*/
 }
 
 -(void)showLoginWith:(BOOL) animation{
