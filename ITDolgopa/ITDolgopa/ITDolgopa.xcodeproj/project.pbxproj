@@ -31,6 +31,8 @@
 		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
 		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
 		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
+		774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */; };
+		774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
 		7782FA031C6D2CBF00EC5477 /* SFUIText-BoldG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EC1C6D2CA400EC5477 /* SFUIText-BoldG1.otf */; };
 		7782FA041C6D2CBF00EC5477 /* SFUIText-BoldG2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9ED1C6D2CA400EC5477 /* SFUIText-BoldG2.otf */; };
@@ -120,6 +122,10 @@
 		772A54F21C74851500AE635F /* CustomCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCallView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7742CB531C63965F00515DDD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		774A51C11C75F0F900BDEE83 /* UNderRepairDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNderRepairDetailsController.h; sourceTree = "<group>"; };
+		774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNderRepairDetailsController.m; sourceTree = "<group>"; };
+		774A51C41C75FA2700BDEE83 /* UnderRepairDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairDetailsView.h; sourceTree = "<group>"; };
+		774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderRepairDetailsView.m; sourceTree = "<group>"; };
 		7782F9E21C6D2C8C00EC5477 /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
 		7782F9E31C6D2C8C00EC5477 /* SFUIDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Bold.otf"; sourceTree = "<group>"; };
 		7782F9E41C6D2C8C00EC5477 /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
@@ -261,6 +267,17 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		774A51BD1C75EE9900BDEE83 /* UnderRepairDetails */ = {
+			isa = PBXGroup;
+			children = (
+				774A51C11C75F0F900BDEE83 /* UNderRepairDetailsController.h */,
+				774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */,
+				774A51C41C75FA2700BDEE83 /* UnderRepairDetailsView.h */,
+				774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */,
+			);
+			name = UnderRepairDetails;
+			sourceTree = "<group>";
+		};
 		7782F9E11C6D2C6B00EC5477 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +375,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				774A51BD1C75EE9900BDEE83 /* UnderRepairDetails */,
 				7705C03D1C7368AE000CA333 /* UnderRepair */,
 				ADC3112F1C6F1663003616F3 /* CoreData */,
 				ADC311191C6F156B003616F3 /* API */,
@@ -588,6 +606,8 @@
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
 				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,
+				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
+				774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */,
 				7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,

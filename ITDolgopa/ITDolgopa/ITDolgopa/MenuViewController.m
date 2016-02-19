@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "SWRevealViewController.h"
+#import "SingleTone.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -88,6 +89,15 @@
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 0) {
+        [[SingleTone sharedManager] setTableChange:YES];
+    } else if (indexPath.row == 1) {
+        [[SingleTone sharedManager] setTableChange:NO];
+    } else {
+        NSLog(@"Другие ячейки");
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

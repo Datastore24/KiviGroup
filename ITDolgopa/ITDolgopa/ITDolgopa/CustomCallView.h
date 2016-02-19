@@ -11,8 +11,11 @@
 @interface CustomCallView : UIView
 
 - (id)initWithDevice: (NSString*) device
+          andCreated: (NSString*) created
          andBreaking: (NSString*) breaking
         andReadiness: (NSString*) readiness
+           andPPrice: (NSString*) pPrice
+           andPrepay: (NSString*) prepay
            andStatus: (NSString*) status
       andColorStatus: (NSString*) color
              andView: (UIView*) view;
