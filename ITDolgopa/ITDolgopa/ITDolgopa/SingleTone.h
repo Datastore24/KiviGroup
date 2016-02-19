@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString* phone;
 @property (strong, nonatomic) NSString* billingBalance;
 @property (assign, nonatomic) BOOL tableChange;
+@property (strong, nonatomic) NSDictionary * dictDevice;
 
 
 + (id)sharedManager;

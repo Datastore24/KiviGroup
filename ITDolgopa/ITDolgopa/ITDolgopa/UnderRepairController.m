@@ -14,6 +14,7 @@
 #import "Macros.h"
 #import "TitleClass.h"
 #import "CustomCallView.h"
+#import "UNderRepairDetailsController.h"
 
 @interface UnderRepairController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -33,6 +34,9 @@
 - (void) viewDidLoad
 {
 #pragma mark - initialization
+    
+    self.navigationController.navigationBar.layer.cornerRadius=5;
+    self.navigationController.navigationBar.clipsToBounds=YES;
     
     //Заголовок-----------------------------------------------
     NSString * titleString;
@@ -98,7 +102,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
     
-    NSLog(@"%@", mainArray);
+//    NSLog(@"%@", mainArray);
     
     NSDictionary * dict = [mainArray objectAtIndex:indexPath.row];
     NSString * textStatus = [NSString new];
@@ -150,6 +154,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 150;
+}
+
+//Анимация нажатия ячейки--------------------------------------------------------------
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //Передаем в сингтон данные об конкретном устройстве
+    [[SingleTone sharedManager] setDictDevice:[mainArray objectAtIndex:indexPath.row]];
+    
+    UNderRepairDetailsController * details = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepairDetails"];
+    [self.navigationController pushViewController:details animated:YES];
 }
 
 #pragma mark - API

@@ -109,11 +109,14 @@
         [self addSubview:labelCreatedAction];
         
         UILabel * labelBreakingAction = [[UILabel alloc] initWithFrame:
-                                   CGRectMake(20 + labelBreaking.frame.size.width + 5, labelCreated.frame.size.height + labelCreated.frame.origin.y, 100, 40)];
+                                   CGRectMake(20 + labelBreaking.frame.size.width + 5, labelCreated.frame.size.height + labelCreated.frame.origin.y, 80, 40)];
         labelBreakingAction.text = breaking;
         labelBreakingAction.textColor = [UIColor colorWithHexString:COLORLITELITEGRAY];
         labelBreakingAction.font = [UIFont fontWithName:FONTLITE size:[[fontSize objectForKey:@"sizeText"] intValue]];
         [labelBreakingAction sizeToFit];
+        CGRect rect = labelBreakingAction.frame;
+        rect.size.width = 200;
+        labelBreakingAction.frame = rect;
         [self addSubview:labelBreakingAction];
         
         UILabel * labelReadinessAction = [[UILabel alloc] initWithFrame:

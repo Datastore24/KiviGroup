@@ -20,6 +20,7 @@
                   @"11",@"buttonSize",
                   @"15",@"textField",
                   @"12", @"sizeText",
+                  @"11", @"sizeRepairDetails",
                   nil];
     }else{
 //        NSLog(@"Iphone 6,6+");
@@ -28,6 +29,7 @@
                   @"16",@"buttonSize",
                   @"20",@"textField",
                   @"15", @"sizeText",
+                  @"13", @"sizeRepairDetails",
                   nil];
     }
     

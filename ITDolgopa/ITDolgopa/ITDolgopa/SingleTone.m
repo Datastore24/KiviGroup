@@ -14,6 +14,7 @@
 @synthesize phone;
 @synthesize billingBalance;
 @synthesize tableChange;
+@synthesize dictDevice;
 
 
 #pragma mark Singleton Methods
