@@ -68,25 +68,16 @@
                                                           andAllMoney:[NSString stringWithFormat:@"%@", [dictResponse objectForKey:@"allmoney"]]
                                                               andDolg:[NSString stringWithFormat:@"%@", [dictResponse objectForKey:@"dolg"]]];
         [mainScrollView addSubview:balanceView];
-        
-        
         NSArray * arrayListInWork = [NSArray arrayWithArray:[dictResponse objectForKey:@"list_inwork"]];
-        
         for (int i = 0; i < arrayListInWork.count; i++) {
             
             NSDictionary * dictListWork = [arrayListInWork objectAtIndex:i];
-            
-            NSLog(@"%@", dictListWork);
-        
             BalanceView * balanceJob = [[BalanceView alloc] initWithView:mainScrollView andInworkVendors:[dictListWork objectForKey:@"inwork_vendors"] andInworkPprice:[NSString stringWithFormat:@"%@ руб.", [dictListWork objectForKey:@"inwork_pprice"]]];
             balanceJob.frame = CGRectMake(0, 300 + 80 * i, mainScrollView.frame.size.width, 80);
             [mainScrollView addSubview:balanceJob];
         }
-        
-
-        
-        
-        
+     
+        mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 300 + 50 + 80 * arrayListInWork.count);
     }];
 }
 
