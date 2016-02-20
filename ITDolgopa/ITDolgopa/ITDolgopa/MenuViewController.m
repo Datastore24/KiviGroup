@@ -95,7 +95,7 @@
     } else if (indexPath.row == 1) {
         [[SingleTone sharedManager] setTableChange:NO];
     } else {
-        NSLog(@"Другие ячейки");
+//        NSLog(@"Другие ячейки");
     }
     
 }

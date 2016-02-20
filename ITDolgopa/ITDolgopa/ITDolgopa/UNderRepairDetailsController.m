@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "TitleClass.h"
 #import "UnderRepairDetailsView.h"
+#import "BalanceViewController.h"
 
 @implementation UNderRepairDetailsController
 {
@@ -165,7 +166,9 @@
 //Метод кнопки buttonOrders
 - (void) buttonOrdersAction
 {
-    NSLog(@"buttonOrdersAction");
+    BalanceViewController * detail = [self.storyboard
+                                      instantiateViewControllerWithIdentifier:@"Balance"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

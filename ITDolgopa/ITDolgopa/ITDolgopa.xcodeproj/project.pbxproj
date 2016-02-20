@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77031BB81C786430005F6610 /* BalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77031BB71C786430005F6610 /* BalanceViewController.m */; };
+		77031BBB1C786446005F6610 /* BalanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77031BBA1C786446005F6610 /* BalanceView.m */; };
 		7705C01B1C72FF42000CA333 /* iconUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C01A1C72FF42000CA333 /* iconUser.png */; };
 		7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C01E1C730393000CA333 /* SWRevealViewController.m */; };
 		7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C0241C7304D6000CA333 /* MenuViewController.m */; };
@@ -88,6 +90,10 @@
 /* Begin PBXFileReference section */
 		25BAB246A8C56568BD8E1483 /* Pods-ITDolgopa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.release.xcconfig"; sourceTree = "<group>"; };
 		49F5514E5A16CD5DD0607A92 /* Pods-ITDolgopa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.debug.xcconfig"; sourceTree = "<group>"; };
+		77031BB61C786430005F6610 /* BalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceViewController.h; sourceTree = "<group>"; };
+		77031BB71C786430005F6610 /* BalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceViewController.m; sourceTree = "<group>"; };
+		77031BB91C786446005F6610 /* BalanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceView.h; sourceTree = "<group>"; };
+		77031BBA1C786446005F6610 /* BalanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceView.m; sourceTree = "<group>"; };
 		7705C01A1C72FF42000CA333 /* iconUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconUser.png; sourceTree = "<group>"; };
 		7705C01D1C730393000CA333 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		7705C01E1C730393000CA333 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -203,6 +209,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77031BB51C7863FB005F6610 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				77031BB61C786430005F6610 /* BalanceViewController.h */,
+				77031BB71C786430005F6610 /* BalanceViewController.m */,
+				77031BB91C786446005F6610 /* BalanceView.h */,
+				77031BBA1C786446005F6610 /* BalanceView.m */,
+			);
+			name = Balance;
+			sourceTree = "<group>";
+		};
 		7705C01C1C730334000CA333 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +392,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				77031BB51C7863FB005F6610 /* Balance */,
 				774A51BD1C75EE9900BDEE83 /* UnderRepairDetails */,
 				7705C03D1C7368AE000CA333 /* UnderRepair */,
 				ADC3112F1C6F1663003616F3 /* CoreData */,
@@ -613,7 +631,9 @@
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
 				772A54F31C74851500AE635F /* CustomCallView.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
+				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				77031BBB1C786446005F6610 /* BalanceView.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,

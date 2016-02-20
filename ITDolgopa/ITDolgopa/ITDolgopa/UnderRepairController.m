@@ -15,6 +15,7 @@
 #import "TitleClass.h"
 #import "CustomCallView.h"
 #import "UNderRepairDetailsController.h"
+#import "BalanceViewController.h"
 
 @interface UnderRepairController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -220,7 +221,9 @@
 
 - (void) buttonOrdersAction
 {
-    NSLog(@"buttonOrdersAction");
+    BalanceViewController * detail = [self.storyboard
+                                      instantiateViewControllerWithIdentifier:@"Balance"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end
