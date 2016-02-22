@@ -75,15 +75,19 @@
                      andProblem: (NSString*) problem
 {
     APIGetClass * orderTimeGetClass = [APIGetClass new];
-    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:phone, @"phone", date, @"wdate",
-                                 time, @"wtime", problem, @"wproblem", nil];
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 phone, @"phone",
+                                 date, @"wdate",
+                                 time, @"wtime",
+                                 problem, @"wproblem", nil];
     [orderTimeGetClass getDataFromServerWithParams:dictParams method:@"wait_client" complitionBlock:^(id response) {
    
         dictResponse = (NSDictionary*) response;
+        NSLog(@"ERROR %li",[[dictResponse objectForKey:@"error"] integerValue] );
         if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            //            NSLog(@"%@", response);
+           NSLog(@"%@", response);
         }        
     }];
 }
