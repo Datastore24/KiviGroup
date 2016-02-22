@@ -31,6 +31,12 @@
 //Текст Филд ввода телефона textFieldInputPhone.tag = 312;
 //Текст Филд ввод ФИО textFieldInputSMS.tag = 313;
 
+//Класс orders time---------------------------------------------------------
+//Текст филв textFieldProblem.tag = 413;
+//Кнопка отправить buttonConferm.tag = 415;
+//Время labelTimeAction.tag = 410;
+//Дата labelDataAction.tag = 401;
+
 
 
 
@@ -68,6 +74,9 @@
 //Цвета---------------------------------------------------------------------------
 #define COLORLITEGRAY @"929597"
 #define COLORLITELITEGRAY @"f9fafa"
+
+
+#define NOTIFICATION_ORDER_TIME_TEXT_FIELD_PROBLEM = @"NOTIFICATIONORDERTIMETEXTFIELDPROBLEM"
 
 
 

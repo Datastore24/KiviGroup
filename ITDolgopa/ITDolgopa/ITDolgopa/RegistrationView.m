@@ -133,6 +133,12 @@
     return self;
 }
 
+//Отвязка от всех нотификаций------------------------------
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 #pragma mark - UITextFieldDelegate
 
