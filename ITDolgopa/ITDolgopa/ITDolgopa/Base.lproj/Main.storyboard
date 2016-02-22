@@ -202,6 +202,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="UKh-kH-Pzh" kind="custom" customClass="SWRevealViewControllerSegue" id="Fhd-Dd-wOb"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell7" rowHeight="30" id="JaR-5H-skJ">
                                         <rect key="frame" x="0.0" y="208" width="320" height="30"/>
@@ -396,6 +399,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqf-xc-efD" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1118" y="-1136"/>
+        </scene>
+        <!--Call Masster Controller-->
+        <scene sceneID="N2F-X8-SRF">
+            <objects>
+                <viewController id="UKh-kH-Pzh" customClass="CallMassterController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Yf-hY-WsB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7EF-By-VxN">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Nzt-b1-rPL"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="Nzt-b1-rPL" id="h2a-xe-IlW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKD-Qf-UhC" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="-1136"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

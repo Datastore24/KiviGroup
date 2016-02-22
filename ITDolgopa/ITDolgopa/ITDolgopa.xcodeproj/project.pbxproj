@@ -68,6 +68,8 @@
 		7782FA1F1C6D2CBF00EC5477 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E81C6D2C8C00EC5477 /* SFUIDisplay-Semibold.otf */; };
 		7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E91C6D2C8C00EC5477 /* SFUIDisplay-Thin.otf */; };
 		7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EA1C6D2C8D00EC5477 /* SFUIDisplay-Ultralight.otf */; };
+		77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA55971C7B3EE80018F979 /* CallMassterController.m */; };
+		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
@@ -168,6 +170,10 @@
 		7782F9FF1C6D2CA400EC5477 /* SFUIText-RegularG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG3.otf"; sourceTree = "<group>"; };
 		7782FA001C6D2CA400EC5477 /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
 		7782FA011C6D2CA400EC5477 /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		77BA55961C7B3EE80018F979 /* CallMassterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMassterController.h; sourceTree = "<group>"; };
+		77BA55971C7B3EE80018F979 /* CallMassterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMassterController.m; sourceTree = "<group>"; };
+		77BA55991C7B3F010018F979 /* CallMasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMasterView.h; sourceTree = "<group>"; };
+		77BA559A1C7B3F010018F979 /* CallMasterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMasterView.m; sourceTree = "<group>"; };
 		77BAB0251C7903D0009F530B /* OrderTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeController.h; sourceTree = "<group>"; };
 		77BAB0261C7903D0009F530B /* OrderTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeController.m; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
@@ -340,6 +346,17 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		77BA55951C7B3EC60018F979 /* CallMaster */ = {
+			isa = PBXGroup;
+			children = (
+				77BA55961C7B3EE80018F979 /* CallMassterController.h */,
+				77BA55971C7B3EE80018F979 /* CallMassterController.m */,
+				77BA55991C7B3F010018F979 /* CallMasterView.h */,
+				77BA559A1C7B3F010018F979 /* CallMasterView.m */,
+			);
+			name = CallMaster;
+			sourceTree = "<group>";
+		};
 		77BAB0241C7903A7009F530B /* OrderTime */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +426,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				77BA55951C7B3EC60018F979 /* CallMaster */,
 				77BAB0241C7903A7009F530B /* OrderTime */,
 				77031BB51C7863FB005F6610 /* Balance */,
 				774A51BD1C75EE9900BDEE83 /* UnderRepairDetails */,
@@ -638,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */,
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
@@ -653,6 +672,7 @@
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
 				77031BBB1C786446005F6610 /* BalanceView.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,

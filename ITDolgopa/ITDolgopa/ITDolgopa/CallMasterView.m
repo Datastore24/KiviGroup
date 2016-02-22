@@ -1,21 +1,23 @@
 //
-//  OrderTimeView.m
+//  CallMasterView.m
 //  ITDolgopa
 //
-//  Created by Viktor on 21.02.16.
+//  Created by Viktor on 22.02.16.
 //  Copyright © 2016 datastore24. All rights reserved.
 //
+
+#import "CallMasterView.h"
 
 #import "OrderTimeView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "FontSizeChanger.h"
 
-@interface OrderTimeView () <UITextFieldDelegate>
+@interface CallMasterView () <UITextFieldDelegate>
 
 @end
 
-@implementation OrderTimeView
+@implementation CallMasterView
 {
     UIDatePicker * datePicker;
     UIDatePicker * timePicker;
@@ -49,7 +51,7 @@
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
         mainScrollView.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
         [self addSubview:mainScrollView];
-
+        
         //Первая часть вью-----------------------------------------------------------
         UIView * firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 150)];
         firstView.backgroundColor = nil;
@@ -66,7 +68,7 @@
              forControlEvents:UIControlEventValueChanged];
         datePicker.minimumDate = [NSDate date];
         [firstViewAction addSubview:datePicker];
-       
+        
         //Кнопка скрытия датапикера----------------------------------------------------
         UIButton * buttonDate = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonDate.frame = CGRectMake(100, 110, 150, 40);
@@ -123,7 +125,7 @@
         buttonTime.center = point1;
         [buttonTime addTarget:self action:@selector(buttonTimeAction) forControlEvents:UIControlEventTouchUpInside];
         [secondView addSubview:buttonTime];
-
+        
         //Лейбл Время-------------------------------------------------------------------
         UILabel * labelTime = [[UILabel alloc] initWithFrame:CGRectMake(18, 0, 60, 40)];
         labelTime.text = @"Время:";
@@ -148,19 +150,19 @@
         [mainScrollView addSubview:endView];
         
         //Лейбл Проблема-------------------------------------------------------------------
-        UILabel * labelProblem = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 108, 40)];
-        labelProblem.text = @"Проблемма:";
+        UILabel * labelProblem = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 80, 40)];
+        labelProblem.text = @"Адрес:";
         labelProblem.textColor = [UIColor colorWithHexString:COLORLITEGRAY];
         labelProblem.font = [UIFont fontWithName:FONTREGULAR size:18.5f];
         [endView addSubview:labelProblem];
         
         //Плэйс холдер Проблемы-------------------------------------------------------------------
         labelPlaceHolderProblem = [[UILabel alloc] initWithFrame:CGRectMake(labelProblem.frame.origin.x + labelProblem.frame.size.width + 3, labelProblem.frame.origin.y, 200, 40)];
-        labelPlaceHolderProblem.text = @"      Опишите вашу проблему";
+        labelPlaceHolderProblem.text = @"      Введите ваш адрес";
         labelPlaceHolderProblem.textColor = [UIColor whiteColor];
         labelPlaceHolderProblem.font = [UIFont fontWithName:FONTLITE size:15];
         if (isiPhone5) {
-            labelPlaceHolderProblem.text = @"Опишите вашу проблему";
+            labelPlaceHolderProblem.text = @"Введите ваш адрес";
             labelPlaceHolderProblem.font = [UIFont fontWithName:FONTLITE size:12];
         }
         [endView addSubview:labelPlaceHolderProblem];
@@ -187,12 +189,12 @@
         buttonConferm.layer.borderWidth = 0.5f;
         buttonConferm.layer.cornerRadius = 18.f;
         buttonConferm.tag = 415;
-        [buttonConferm setTitle:@"СОБИРАЮСЬ ПРИЙТИ" forState:UIControlStateNormal];
+        [buttonConferm setTitle:@"ВЫЗВАТЬ МАСТЕРА" forState:UIControlStateNormal];
         [buttonConferm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonConferm.titleLabel.font = [UIFont fontWithName:FONTLITE size:[[fontSize objectForKey:@"textSize"] intValue]];
         [endView addSubview:buttonConferm];
         
-
+        
         
         
         
@@ -245,7 +247,7 @@
             endView.frame = rect3;
             isBool = NO;
         }];
-
+        
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rect = firstViewAction.frame;
@@ -296,7 +298,7 @@
         }];
         
     }
-
+    
 }
 
 #pragma mark - UITextFieldDelegate
@@ -336,7 +338,7 @@
 //Поднимаем текст вверх--------------------------------------
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-
+    
     if (isiPhone5) {
         mainScrollView.contentOffset = (CGPoint){
             0, // ось x нас не интересует
@@ -357,6 +359,7 @@
     
     textField.textAlignment = NSTextAlignmentCenter;
 }
+
 
 
 @end

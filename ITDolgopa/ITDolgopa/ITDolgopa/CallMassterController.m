@@ -1,29 +1,29 @@
 //
-//  OrderTimeController.m
+//  CallMassterController.m
 //  ITDolgopa
 //
-//  Created by Viktor on 20.02.16.
+//  Created by Viktor on 22.02.16.
 //  Copyright © 2016 datastore24. All rights reserved.
 //
 
+#import "CallMassterController.h"
 #import "OrderTimeController.h"
 #import "TitleClass.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "SWRevealViewController.h"
-#import "OrderTimeView.h"
+#import "CallMasterView.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "AlertClass.h"
 #import "UnderRepairController.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 
-
-@interface OrderTimeController ()
+@interface CallMassterController()
 
 @end
 
-@implementation OrderTimeController
+@implementation CallMassterController
 {
     UIScrollView * mainScrollView;
     NSDictionary * dictResponse;
@@ -32,12 +32,12 @@
 - (void) viewDidLoad
 {
 #pragma mark - initialization
-
+    
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
     
     //Заголовок-----------------------------------------------
-    TitleClass * title = [[TitleClass alloc]initWithTitle:@"ЗАБРОНИРОВАТЬ ВРЕМЯ"];
+    TitleClass * title = [[TitleClass alloc]initWithTitle:@"ВЫЗВОВ МАСТЕРА"];
     self.navigationItem.titleView = title;
     
     //Задаем цвет бара----------------------------------------
@@ -46,7 +46,7 @@
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-
+    
     //Пареметры кнопки меню------------------------------------
     UIImage *imageBarButton = [UIImage imageNamed:@"menuIcon.png"];
     [_buttonMenu setImage:imageBarButton];
@@ -64,11 +64,11 @@
     [self.view addSubview:mainScrollView];
     
     //Инициализация основного вью-------------------------------
-    OrderTimeView * orderTimeView = [[OrderTimeView alloc] initWithView:mainScrollView];
-    [mainScrollView addSubview:orderTimeView];
+    CallMasterView * callMasterView = [[CallMasterView alloc] initWithView:mainScrollView];
+    [mainScrollView addSubview:callMasterView];
     
     UIButton * buttonConferm = (UIButton*)[self.view viewWithTag:415];
-    [buttonConferm addTarget:self action:@selector(buttonConfermAction) forControlEvents:UIControlEventTouchUpInside];   
+    [buttonConferm addTarget:self action:@selector(buttonConfermAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - API
@@ -76,29 +76,29 @@
 - (void) pushOrderTimeWithPhone: (NSString*) phone
                         andDate: (NSString*) date
                         andTime: (NSString*) time
-                     andProblem: (NSString*) problem
+                     andAdres: (NSString*) adres
 {
     APIGetClass * orderTimeGetClass = [APIGetClass new];
     NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
                                  phone, @"phone",
                                  date, @"wdate",
                                  time, @"wtime",
-                                 problem, @"wproblem", nil];
-    [orderTimeGetClass getDataFromServerWithParams:dictParams method:@"wait_client" complitionBlock:^(id response) {
-   
+                                 adres, @"waddress", nil];
+    [orderTimeGetClass getDataFromServerWithParams:dictParams method:@"order_master" complitionBlock:^(id response) {
+        
         dictResponse = (NSDictionary*) response;
 //        NSLog(@"ERROR %li",[[dictResponse objectForKey:@"error"] integerValue] );
         if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
             [AlertClass showAlertViewWithMessage:[dictResponse objectForKey:@"error_msg"] view:self];
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-           
+            
             SCLAlertView* alert = [[SCLAlertView alloc] init];
             alert.customViewColor = [UIColor colorWithHexString:@"3038a0"];
             [alert addButton:@"Ок" target:self selector:@selector(firstButton)];
             [alert showSuccess:self title:@"Внимание!!!" subTitle:@"Ваша заявка забронированна" closeButtonTitle:nil duration:0.f];
             
-
-        }        
+            
+        }
     }];
 }
 
@@ -110,12 +110,12 @@
     UITextField * textFieldProblem = (UITextField*)[self.view viewWithTag:413];
     
     if (textFieldProblem.text.length != 0) {
-        [self pushOrderTimeWithPhone:[[SingleTone sharedManager] phone] andDate:labelDataAction.text andTime:labelTimeAction.text andProblem:textFieldProblem.text];
+        [self pushOrderTimeWithPhone:[[SingleTone sharedManager] phone] andDate:labelDataAction.text andTime:labelTimeAction.text andAdres:textFieldProblem.text];
     } else {
-        [AlertClass showAlertViewWithMessage:@"Опишите проблему" view:self];
+        [AlertClass showAlertViewWithMessage:@"Введите адрес" view:self];
     }
     
-
+    
 }
 
 - (void) firstButton
@@ -123,5 +123,6 @@
     UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
     [self.navigationController pushViewController:detail animated:YES];
 }
+
 
 @end
