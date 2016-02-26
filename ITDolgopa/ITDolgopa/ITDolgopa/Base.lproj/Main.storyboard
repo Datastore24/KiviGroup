@@ -223,6 +223,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="4xl-uM-2Gr" kind="custom" customClass="SWRevealViewControllerSegue" id="GgY-WI-CZu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell8" rowHeight="30" id="KJW-2i-pRr">
                                         <rect key="frame" x="0.0" y="238" width="320" height="30"/>
@@ -419,6 +422,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKD-Qf-UhC" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1524" y="-1136"/>
+        </scene>
+        <!--Chat Controller-->
+        <scene sceneID="wmB-cA-CPk">
+            <objects>
+                <viewController id="4xl-uM-2Gr" customClass="ChatController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L2K-MK-GVv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uT9-mS-UcC">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="kJ2-kw-MsN"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="kJ2-kw-MsN" id="xid-86-uAx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZPr-UB-5LO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="-1136"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

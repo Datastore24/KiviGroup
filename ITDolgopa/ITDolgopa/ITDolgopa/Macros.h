@@ -37,6 +37,9 @@
 //Время labelTimeAction.tag = 410;
 //Дата labelDataAction.tag = 401;
 
+//Класс ChatViewPush
+//Текст вью ввода текста textFildText.tag = 501;
+
 
 
 
