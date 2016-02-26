@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77006CFB1C7F14B70069FAC6 /* ChatController.m */; };
+		77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 77006CFE1C7F23E10069FAC6 /* ChatViewPush.m */; };
 		77031BB81C786430005F6610 /* BalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77031BB71C786430005F6610 /* BalanceViewController.m */; };
 		77031BBB1C786446005F6610 /* BalanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77031BBA1C786446005F6610 /* BalanceView.m */; };
 		7705C01B1C72FF42000CA333 /* iconUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C01A1C72FF42000CA333 /* iconUser.png */; };
@@ -72,6 +74,7 @@
 		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
+		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
 		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
 		ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111D1C6F15AB003616F3 /* APIPostClass.m */; };
 		ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311211C6F15B5003616F3 /* AlertClass.m */; };
@@ -94,6 +97,10 @@
 /* Begin PBXFileReference section */
 		25BAB246A8C56568BD8E1483 /* Pods-ITDolgopa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.release.xcconfig"; sourceTree = "<group>"; };
 		49F5514E5A16CD5DD0607A92 /* Pods-ITDolgopa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITDolgopa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITDolgopa/Pods-ITDolgopa.debug.xcconfig"; sourceTree = "<group>"; };
+		77006CFA1C7F14B70069FAC6 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
+		77006CFB1C7F14B70069FAC6 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
+		77006CFD1C7F23E00069FAC6 /* ChatViewPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewPush.h; sourceTree = "<group>"; };
+		77006CFE1C7F23E10069FAC6 /* ChatViewPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewPush.m; sourceTree = "<group>"; };
 		77031BB61C786430005F6610 /* BalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceViewController.h; sourceTree = "<group>"; };
 		77031BB71C786430005F6610 /* BalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceViewController.m; sourceTree = "<group>"; };
 		77031BB91C786446005F6610 /* BalanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceView.h; sourceTree = "<group>"; };
@@ -178,6 +185,8 @@
 		77BAB0261C7903D0009F530B /* OrderTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeController.m; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
+		77ED589F1C8036D00066FCA9 /* ChatCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellView.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC3111A1C6F15AB003616F3 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		ADC3111B1C6F15AB003616F3 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
@@ -221,6 +230,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77006CF91C7F149D0069FAC6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				77006CFA1C7F14B70069FAC6 /* ChatController.h */,
+				77006CFB1C7F14B70069FAC6 /* ChatController.m */,
+				77006CFD1C7F23E00069FAC6 /* ChatViewPush.h */,
+				77006CFE1C7F23E10069FAC6 /* ChatViewPush.m */,
+				77ED589E1C8036D00066FCA9 /* ChatCellView.h */,
+				77ED589F1C8036D00066FCA9 /* ChatCellView.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		77031BB51C7863FB005F6610 /* Balance */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +448,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				77006CF91C7F149D0069FAC6 /* Chat */,
 				77BA55951C7B3EC60018F979 /* CallMaster */,
 				77BAB0241C7903A7009F530B /* OrderTime */,
 				77031BB51C7863FB005F6610 /* Balance */,
@@ -660,6 +683,7 @@
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
+				77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */,
 				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,
 				773D01C41C7A390300307174 /* OrderTimeView.m in Sources */,
 				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
@@ -669,7 +693,9 @@
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
 				772A54F31C74851500AE635F /* CustomCallView.m in Sources */,
 				77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */,
+				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
+				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
