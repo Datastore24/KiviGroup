@@ -70,6 +70,13 @@
 		7782FA1F1C6D2CBF00EC5477 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E81C6D2C8C00EC5477 /* SFUIDisplay-Semibold.otf */; };
 		7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9E91C6D2C8C00EC5477 /* SFUIDisplay-Thin.otf */; };
 		7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EA1C6D2C8D00EC5477 /* SFUIDisplay-Ultralight.otf */; };
+		778AE8FA1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8ED1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m */; };
+		778AE8FB1C8208EE000C75C9 /* TextAndImageHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8EF1C8208EE000C75C9 /* TextAndImageHeight.m */; };
+		778AE8FC1C8208EE000C75C9 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F11C8208EE000C75C9 /* UIImage+Alpha.m */; };
+		778AE8FD1C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F31C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m */; };
+		778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F51C8208EE000C75C9 /* UIImage+ImageEffects.m */; };
+		778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F71C8208EE000C75C9 /* UIImage+Resize.m */; };
+		778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F91C8208EE000C75C9 /* UIImage+RoundedCorner.m */; };
 		77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA55971C7B3EE80018F979 /* CallMassterController.m */; };
 		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
@@ -177,6 +184,20 @@
 		7782F9FF1C6D2CA400EC5477 /* SFUIText-RegularG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG3.otf"; sourceTree = "<group>"; };
 		7782FA001C6D2CA400EC5477 /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
 		7782FA011C6D2CA400EC5477 /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		778AE8EC1C8208EE000C75C9 /* UIBarButtonItem+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Alpha.h"; sourceTree = "<group>"; };
+		778AE8ED1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Alpha.m"; sourceTree = "<group>"; };
+		778AE8EE1C8208EE000C75C9 /* TextAndImageHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAndImageHeight.h; sourceTree = "<group>"; };
+		778AE8EF1C8208EE000C75C9 /* TextAndImageHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndImageHeight.m; sourceTree = "<group>"; };
+		778AE8F01C8208EE000C75C9 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		778AE8F11C8208EE000C75C9 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		778AE8F21C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blured_And_SnapShot_Image.h"; sourceTree = "<group>"; };
+		778AE8F31C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blured_And_SnapShot_Image.m"; sourceTree = "<group>"; };
+		778AE8F41C8208EE000C75C9 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		778AE8F51C8208EE000C75C9 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		778AE8F61C8208EE000C75C9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		778AE8F71C8208EE000C75C9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		778AE8F81C8208EE000C75C9 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		778AE8F91C8208EE000C75C9 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		77BA55961C7B3EE80018F979 /* CallMassterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMassterController.h; sourceTree = "<group>"; };
 		77BA55971C7B3EE80018F979 /* CallMassterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMassterController.m; sourceTree = "<group>"; };
 		77BA55991C7B3F010018F979 /* CallMasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMasterView.h; sourceTree = "<group>"; };
@@ -368,6 +389,27 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		778AE8EB1C8208CC000C75C9 /* Caregory */ = {
+			isa = PBXGroup;
+			children = (
+				778AE8EC1C8208EE000C75C9 /* UIBarButtonItem+Alpha.h */,
+				778AE8ED1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m */,
+				778AE8EE1C8208EE000C75C9 /* TextAndImageHeight.h */,
+				778AE8EF1C8208EE000C75C9 /* TextAndImageHeight.m */,
+				778AE8F01C8208EE000C75C9 /* UIImage+Alpha.h */,
+				778AE8F11C8208EE000C75C9 /* UIImage+Alpha.m */,
+				778AE8F21C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.h */,
+				778AE8F31C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m */,
+				778AE8F41C8208EE000C75C9 /* UIImage+ImageEffects.h */,
+				778AE8F51C8208EE000C75C9 /* UIImage+ImageEffects.m */,
+				778AE8F61C8208EE000C75C9 /* UIImage+Resize.h */,
+				778AE8F71C8208EE000C75C9 /* UIImage+Resize.m */,
+				778AE8F81C8208EE000C75C9 /* UIImage+RoundedCorner.h */,
+				778AE8F91C8208EE000C75C9 /* UIImage+RoundedCorner.m */,
+			);
+			name = Caregory;
+			sourceTree = "<group>";
+		};
 		77BA55951C7B3EC60018F979 /* CallMaster */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +490,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				778AE8EB1C8208CC000C75C9 /* Caregory */,
 				77006CF91C7F149D0069FAC6 /* Chat */,
 				77BA55951C7B3EC60018F979 /* CallMaster */,
 				77BAB0241C7903A7009F530B /* OrderTime */,
@@ -680,6 +723,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */,
+				778AE8FD1C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
+				778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */,
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
 				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
@@ -688,16 +733,20 @@
 				773D01C41C7A390300307174 /* OrderTimeView.m in Sources */,
 				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
 				774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */,
+				778AE8FB1C8208EE000C75C9 /* TextAndImageHeight.m in Sources */,
 				7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
 				772A54F31C74851500AE635F /* CustomCallView.m in Sources */,
+				778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */,
 				77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */,
 				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				778AE8FC1C8208EE000C75C9 /* UIImage+Alpha.m in Sources */,
+				778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */,
 				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
 				77031BBB1C786446005F6610 /* BalanceView.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
@@ -708,6 +757,7 @@
 				ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
 				772A54ED1C74775900AE635F /* TitleClass.m in Sources */,
+				778AE8FA1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m in Sources */,
 				77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */,
 				ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */,
 				ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */,
