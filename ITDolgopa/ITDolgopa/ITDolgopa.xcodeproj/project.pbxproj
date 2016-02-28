@@ -24,6 +24,13 @@
 		7705C03B1C7333A3000CA333 /* master.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C0391C7333A3000CA333 /* master.png */; };
 		7705C03C1C7333A3000CA333 /* vremya.png in Resources */ = {isa = PBXBuildFile; fileRef = 7705C03A1C7333A3000CA333 /* vremya.png */; };
 		7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7705C03F1C7368D5000CA333 /* UnderRepairController.m */; };
+		771003801C838A4700B78F18 /* KYPullToCurveVeiw_footer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7710037D1C838A4700B78F18 /* KYPullToCurveVeiw_footer.m */; };
+		771003811C838A4700B78F18 /* KYPullToCurveVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 7710037F1C838A4700B78F18 /* KYPullToCurveVeiw.m */; };
+		771003861C838AB400B78F18 /* CurveLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 771003831C838AB400B78F18 /* CurveLayer.m */; };
+		771003871C838AB400B78F18 /* CurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771003851C838AB400B78F18 /* CurveView.m */; };
+		7710038C1C838AF500B78F18 /* LabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771003891C838AF500B78F18 /* LabelView.m */; };
+		7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7710038B1C838AF500B78F18 /* UIView+Convenient.m */; };
+		771003901C838DC500B78F18 /* BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 7710038F1C838DC500B78F18 /* BBlock.m */; };
 		771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */; };
 		771028F81C6CD25800C77C04 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 771028F71C6CD25800C77C04 /* Logo.png */; };
 		7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7712447C1C6E01C5001AFB30 /* iconButtonReg.png */; };
@@ -77,6 +84,7 @@
 		778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F51C8208EE000C75C9 /* UIImage+ImageEffects.m */; };
 		778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F71C8208EE000C75C9 /* UIImage+Resize.m */; };
 		778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE8F91C8208EE000C75C9 /* UIImage+RoundedCorner.m */; };
+		778AE9041C82199D000C75C9 /* ViewSectionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE9031C82199D000C75C9 /* ViewSectionTable.m */; };
 		77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA55971C7B3EE80018F979 /* CallMassterController.m */; };
 		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
@@ -128,6 +136,20 @@
 		7705C03A1C7333A3000CA333 /* vremya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vremya.png; sourceTree = "<group>"; };
 		7705C03E1C7368D5000CA333 /* UnderRepairController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairController.h; sourceTree = "<group>"; };
 		7705C03F1C7368D5000CA333 /* UnderRepairController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderRepairController.m; sourceTree = "<group>"; };
+		7710037C1C838A4700B78F18 /* KYPullToCurveVeiw_footer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPullToCurveVeiw_footer.h; sourceTree = "<group>"; };
+		7710037D1C838A4700B78F18 /* KYPullToCurveVeiw_footer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPullToCurveVeiw_footer.m; sourceTree = "<group>"; };
+		7710037E1C838A4700B78F18 /* KYPullToCurveVeiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPullToCurveVeiw.h; sourceTree = "<group>"; };
+		7710037F1C838A4700B78F18 /* KYPullToCurveVeiw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPullToCurveVeiw.m; sourceTree = "<group>"; };
+		771003821C838AB400B78F18 /* CurveLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveLayer.h; sourceTree = "<group>"; };
+		771003831C838AB400B78F18 /* CurveLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveLayer.m; sourceTree = "<group>"; };
+		771003841C838AB400B78F18 /* CurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveView.h; sourceTree = "<group>"; };
+		771003851C838AB400B78F18 /* CurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveView.m; sourceTree = "<group>"; };
+		771003881C838AF500B78F18 /* LabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelView.h; sourceTree = "<group>"; };
+		771003891C838AF500B78F18 /* LabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelView.m; sourceTree = "<group>"; };
+		7710038A1C838AF500B78F18 /* UIView+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Convenient.h"; sourceTree = "<group>"; };
+		7710038B1C838AF500B78F18 /* UIView+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Convenient.m"; sourceTree = "<group>"; };
+		7710038E1C838DC500B78F18 /* BBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBlock.h; sourceTree = "<group>"; };
+		7710038F1C838DC500B78F18 /* BBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBlock.m; sourceTree = "<group>"; };
 		771028F41C6CC9DB00C77C04 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		771028F51C6CC9DB00C77C04 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		771028F71C6CD25800C77C04 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
@@ -198,6 +220,8 @@
 		778AE8F71C8208EE000C75C9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		778AE8F81C8208EE000C75C9 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		778AE8F91C8208EE000C75C9 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		778AE9021C82199D000C75C9 /* ViewSectionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSectionTable.h; sourceTree = "<group>"; };
+		778AE9031C82199D000C75C9 /* ViewSectionTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewSectionTable.m; sourceTree = "<group>"; };
 		77BA55961C7B3EE80018F979 /* CallMassterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMassterController.h; sourceTree = "<group>"; };
 		77BA55971C7B3EE80018F979 /* CallMassterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMassterController.m; sourceTree = "<group>"; };
 		77BA55991C7B3F010018F979 /* CallMasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMasterView.h; sourceTree = "<group>"; };
@@ -254,6 +278,20 @@
 		77006CF91C7F149D0069FAC6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				7710038E1C838DC500B78F18 /* BBlock.h */,
+				7710038F1C838DC500B78F18 /* BBlock.m */,
+				771003881C838AF500B78F18 /* LabelView.h */,
+				771003891C838AF500B78F18 /* LabelView.m */,
+				7710038A1C838AF500B78F18 /* UIView+Convenient.h */,
+				7710038B1C838AF500B78F18 /* UIView+Convenient.m */,
+				771003821C838AB400B78F18 /* CurveLayer.h */,
+				771003831C838AB400B78F18 /* CurveLayer.m */,
+				771003841C838AB400B78F18 /* CurveView.h */,
+				771003851C838AB400B78F18 /* CurveView.m */,
+				7710037C1C838A4700B78F18 /* KYPullToCurveVeiw_footer.h */,
+				7710037D1C838A4700B78F18 /* KYPullToCurveVeiw_footer.m */,
+				7710037E1C838A4700B78F18 /* KYPullToCurveVeiw.h */,
+				7710037F1C838A4700B78F18 /* KYPullToCurveVeiw.m */,
 				77006CFA1C7F14B70069FAC6 /* ChatController.h */,
 				77006CFB1C7F14B70069FAC6 /* ChatController.m */,
 				77006CFD1C7F23E00069FAC6 /* ChatViewPush.h */,
@@ -410,6 +448,15 @@
 			name = Caregory;
 			sourceTree = "<group>";
 		};
+		778AE9011C82198A000C75C9 /* ImageAPI */ = {
+			isa = PBXGroup;
+			children = (
+				778AE9021C82199D000C75C9 /* ViewSectionTable.h */,
+				778AE9031C82199D000C75C9 /* ViewSectionTable.m */,
+			);
+			name = ImageAPI;
+			sourceTree = "<group>";
+		};
 		77BA55951C7B3EC60018F979 /* CallMaster */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +537,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				778AE9011C82198A000C75C9 /* ImageAPI */,
 				778AE8EB1C8208CC000C75C9 /* Caregory */,
 				77006CF91C7F149D0069FAC6 /* Chat */,
 				77BA55951C7B3EC60018F979 /* CallMaster */,
@@ -722,6 +770,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771003901C838DC500B78F18 /* BBlock.m in Sources */,
 				77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */,
 				778AE8FD1C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */,
@@ -734,17 +783,23 @@
 				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
 				774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */,
 				778AE8FB1C8208EE000C75C9 /* TextAndImageHeight.m in Sources */,
+				778AE9041C82199D000C75C9 /* ViewSectionTable.m in Sources */,
+				771003861C838AB400B78F18 /* CurveLayer.m in Sources */,
+				771003801C838A4700B78F18 /* KYPullToCurveVeiw_footer.m in Sources */,
 				7705C0251C7304D6000CA333 /* MenuViewController.m in Sources */,
 				ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */,
 				7705C01F1C730393000CA333 /* SWRevealViewController.m in Sources */,
 				772A54F31C74851500AE635F /* CustomCallView.m in Sources */,
+				7710038C1C838AF500B78F18 /* LabelView.m in Sources */,
 				778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */,
 				77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */,
 				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
+				7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
+				771003811C838A4700B78F18 /* KYPullToCurveVeiw.m in Sources */,
 				778AE8FC1C8208EE000C75C9 /* UIImage+Alpha.m in Sources */,
 				778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */,
 				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
@@ -755,6 +810,7 @@
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
 				ADFBDCDA1C5F6C9F00BCC486 /* main.m in Sources */,
 				ADC3112D1C6F165B003616F3 /* UserInfo+CoreDataProperties.m in Sources */,
+				771003871C838AB400B78F18 /* CurveView.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
 				772A54ED1C74775900AE635F /* TitleClass.m in Sources */,
 				778AE8FA1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m in Sources */,

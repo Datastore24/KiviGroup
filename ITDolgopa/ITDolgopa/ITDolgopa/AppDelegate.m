@@ -96,6 +96,10 @@
     if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
        // application.applicationIconBadgeNumber=0;
     }
+    
+    if([[userInfo objectForKey:@"info"] isEqualToString:@"rch"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadChat" object:self];
+    }
 }
 //
 
