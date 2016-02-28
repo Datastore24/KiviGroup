@@ -15,6 +15,9 @@
 #import "ChatCellView.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "ViewSectionTable.h"
+#import "BBlock.h"
+
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -28,15 +31,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 @implementation ChatController
 {
-    UIScrollView * mainScrollView;
+    
     UILabel * labelPlaceHolder;
     BOOL isBool;
     CGFloat animatedDistance;
     UILabel * testLabel;
     CGFloat customHeight;
     NSArray * testArray;
-    NSDictionary * dictResponse;
-    NSArray * arrayDialog;
+
+    
 }
 
 - (void) viewDidLoad
@@ -45,6 +48,30 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     isBool = YES;
     customHeight = 0.f;
+    
+    //Инициализация обновления чата----------------------------
+    self.chatCount = 10;
+    self.offset = 0;
+    self.headerView.alpha=0;
+    self.footerView.alpha=0;
+    self.isRefresh = YES;
+    
+    
+    //---------------------------------------------------------
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadChat) name:@"ReloadChat" object:nil];
+
+   __block NSMutableArray * superArray = [[NSMutableArray alloc] init];
+    
+   __block  NSDictionary * testDict = [NSDictionary dictionaryWithObjectsAndKeys:@"332", @"messages_id",
+                                                                         @"1", @"message_type",
+                                                                         @"Проверка", @"message",
+                                                                         @"0", @"is_read",
+                                                                         @"1", @"from_who",
+                               @"http://ceo.aqaholding.ru/files/avatar/1_1Z8SZlcT9R0_(1).jpg", @"avatar_url", nil];
+    [superArray addObject:testDict];
+
+    [self performSelector:@selector(loadViewWithArray:) withObject:superArray afterDelay:10];
+
     
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
@@ -72,11 +99,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     
     //Параметры mainScrollView-----------------------------------
-    mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,
+    self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,
                                                                     self.view.frame.size.height - 164)];
-    mainScrollView.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
-    mainScrollView.delegate = self;
-    [self.view addSubview:mainScrollView];
+    self.mainScrollView.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
+    self.mainScrollView.delegate = self;
+    [self.view addSubview:self.mainScrollView];
     
     //Инициализация вью отправки----------------------------------
     ChatViewPush * chatViewPush = [[ChatViewPush alloc] initWhithView:self.view andFrame:CGRectMake(0, self.view.frame.size.height - 164, self.view.frame.size.width, 100)];
@@ -87,60 +114,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFildText:) name:UITextFieldTextDidChangeNotification object:textFildText];
     labelPlaceHolder = (UILabel*)[self.view viewWithTag:502];
     
-    [self getAPIWithPhone: [[SingleTone sharedManager] phone] andWithBlock:^{
+    [self getAPIWithPhone:[[SingleTone sharedManager] phone]  andWithBlock:^{
         
-
-        arrayDialog = [NSArray arrayWithArray:[dictResponse objectForKey:@"dialogs"]];
-        NSLog(@"%@", arrayDialog);
+        self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
-        //Инициализация ячеек чата------------------------------------
-        for (int i = 0; i < arrayDialog.count; i++) {
-            
-            NSDictionary * dictArrey = [arrayDialog objectAtIndex:i];
-            
-            testLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, mainScrollView.frame.size.width - 200, 40)];
-            testLabel.numberOfLines = 0;
-            testLabel.backgroundColor = [UIColor clearColor];
-            testLabel.text = [dictArrey objectForKey:@"message"];
-            testLabel.textColor = [UIColor whiteColor];
-            testLabel.font = [UIFont fontWithName:FONTLITE size:12];
-            [testLabel sizeToFit];
-            
-            ChatCellView * cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight, self.view.frame.size.width, testLabel.frame.size.height + 40)];
-            [mainScrollView addSubview:cellView];
-            customHeight = customHeight + (testLabel.frame.size.height + 40);
-            
-            //Вью лейбла-------------------------------------------------
-            UIView * customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 10, 195, testLabel.frame.size.height + 20)];
-            
-            customView.backgroundColor = [UIColor colorWithHexString:@"818181"];
-            customView.layer.cornerRadius = 10.f;
-            [cellView addSubview:customView];
-            
-            [customView addSubview:testLabel];
-            
-            //Лейбл даты-------------------------------------------------
-            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(customView.frame.origin.x + customView.frame.size.width + 20, customView.frame.origin.y, 50, customView.frame.size.height)];
-            labelData.text = @"17.39";
-            labelData.textColor = [UIColor whiteColor];
-            labelData.font = [UIFont fontWithName:FONTLITE size:12];
-            [cellView addSubview:labelData];
-            
-            //Фото отправителя-------------------------------------------
-            UIImageView * imageViewFoto = [[UIImageView alloc] initWithFrame:CGRectMake(customView.frame.origin.x - 60, customView.frame.origin.y - 5, 40, 40)];
-            imageViewFoto.image = [UIImage imageNamed:[dictArrey objectForKey:@"avatar_url"]];
-            imageViewFoto.layer.cornerRadius = 20.f;
-//            imageViewFoto.backgroundColor = [UIColor greenColor];
-            [cellView addSubview:imageViewFoto];
-        }
-        mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 10 + customHeight);
-        if (mainScrollView.contentSize.height > mainScrollView.frame.size.height) {
-            mainScrollView.contentOffset =
-            CGPointMake(0, mainScrollView.contentSize.height - mainScrollView.frame.size.height);
-        }
+        [self loadViewWithArray:self.arrayDialog];
         
-
+//        [NSTimer scheduledTimerWithTimeInterval:5.0f
+//                                             target:self selector:@selector(reloadChat) userInfo:nil repeats:YES];
         
+        NSLog(@"%@", self.arrayDialog);
     }];
     
 
@@ -245,16 +228,41 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 - (void) getAPIWithPhone: (NSString*) phone andWithBlock: (void (^)(void)) block
 {
-    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:phone, @"phone", nil];
+    
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:phone, @"phone",
+                                 [NSNumber numberWithInteger:self.chatCount],@"count",
+                                 [NSNumber numberWithInteger:self.offset],@"offset", nil];
     APIGetClass * aPIGetClass = [APIGetClass new];
     [aPIGetClass getDataFromServerWithParams:dictParams method:@"dialog_show" complitionBlock:^(id response) {
         
-        dictResponse = (NSDictionary*) response;
-        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+        self.dictResponse = (NSDictionary*) response;
+        if ([[self.dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"Ошибка");
-        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+        } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"Все хорошо");
-//            NSLog(@"%@", dictResponse);
+//
+            self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
+//            NSLog(@"self.maxCount %lu", (unsigned long)self.maxCount);
+//            
+//            NSLog(@"%@", self.dictResponse);
+            
+            if (self.isRefresh) {
+                
+                [self.headerView stopRefreshing];
+                self.mainScrollView.scrollEnabled = YES;
+                
+            }
+            else {
+                
+                [self.footerView stopRefreshing];
+                self.mainScrollView.scrollEnabled = YES;
+                
+                
+            }
+//            [self reloadTableViewWhenNewEvent];
+            
+            
+            
         }
         
         block();
@@ -262,6 +270,117 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     }];
 }
 
+
+//Для рефрешера
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    
+    
+    /*
+     Относительно предупреждений, это было связано с тем, что блок является объектом (сущностью в памяти) и такой объект должен быть высвобождени из памяти (потом). Объекты, которые инициализируются внутри блока имеют strong ссылку и эти объекты поставлены в зависимость от жизни объекта ViewController. Таким образом компилятор предупреждает о том, что возможно блок не сможет быть высвобожден из памяти.
+     Чтоб это исправить, мы должны указать объектам, которые инициализируются внутри блока, что их жизнь, в данном конкретном случае зависит не от вью контроллера, а от блока.
+     Для этого необходимо создать локальную переменную (как приведено ниже), которая будет иметь weak (слабую) ссылку на объект. Теперь блок может быть высвобожден из памяти
+     Под эту тему нашел оч хороший класс, который реализует основные задачи с блоками в GCD, а так же прием описанный выше. Я этот класс дополнил возможностью выполнения задачи синхронно, в общем можно пользоваться
+     
+     */
+    
+    self.headerView = [[KYPullToCurveVeiw alloc]initWithAssociatedScrollView:self.mainScrollView withNavigationBar:YES];
+    BBlockWeakSelf wself = self;
+    [self.headerView  addRefreshingBlock:^{
+        
+        wself.isRefresh = YES;
+        wself.mainScrollView.scrollEnabled = NO;
+        wself.offset = 0;
+        wself.chatCount=10;
+        [wself getAPIWithPhone:[[SingleTone sharedManager] phone]  andWithBlock:^{
+            
+             wself.arrayDialog = [NSArray arrayWithArray:[wself.dictResponse objectForKey:@"dialogs"]];
+            
+            [wself loadViewWithArray:wself.arrayDialog];
+        
+        }];
+        
+    }];
+   
+    self.headerView = [[KYPullToCurveVeiw alloc]
+                       initWithAssociatedScrollView:self.mainScrollView withNavigationBar:YES];
+    
+    
+    
+    [self.headerView addRefreshingBlock:^{
+        
+        if (wself.offset + wself.chatCount < wself.maxCount) {
+            wself.isRefresh = NO;
+            wself.mainScrollView.scrollEnabled = NO;
+            wself.offset = self.offset + self.chatCount;
+            [wself getAPIWithPhone:[[SingleTone sharedManager] phone]  andWithBlock:^{
+                
+                wself.arrayDialog = [NSArray arrayWithArray:[wself.dictResponse objectForKey:@"dialogs"]];
+                
+                [wself loadViewWithArray:wself.arrayDialog];
+          
+            }];
+
+        }else{
+            
+            NSLog(@"end !!!!!!");
+            wself.offset=wself.maxCount;
+            wself.mainScrollView.scrollEnabled = YES;
+            wself.chatCount=wself.maxCount;
+            [wself.footerView stopRefreshing];
+        }
+    }];
+   
+}
+- (void) loadViewWithArray: (NSArray*) array
+{
+    
+    
+    NSLog(@"Что то делаю");
+    //Инициализация ячеек чата------------------------------------
+    for (int i = 0; i < array.count; i++) {
+        
+        NSDictionary * dictArrey = [array objectAtIndex:i];
+        
+        testLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.mainScrollView.frame.size.width - 200, 40)];
+        testLabel.numberOfLines = 0;
+        testLabel.backgroundColor = [UIColor clearColor];
+        testLabel.text = [dictArrey objectForKey:@"message"];
+        testLabel.textColor = [UIColor whiteColor];
+        testLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        [testLabel sizeToFit];
+        ChatCellView * cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight, self.view.frame.size.width, testLabel.frame.size.height + 40)];
+        [self.mainScrollView addSubview:cellView];
+        customHeight = customHeight + (testLabel.frame.size.height + 40);
+        //Вью лейбла-------------------------------------------------
+        UIView * customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 10, 195, testLabel.frame.size.height + 20)];
+        
+        customView.backgroundColor = [UIColor colorWithHexString:@"818181"];
+        customView.layer.cornerRadius = 10.f;
+        [cellView addSubview:customView];
+        [customView addSubview:testLabel];
+        //Лейбл даты-------------------------------------------------
+        UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(customView.frame.origin.x + customView.frame.size.width + 20, customView.frame.origin.y, 50, customView.frame.size.height)];
+        labelData.text = @"17.39";
+        labelData.textColor = [UIColor whiteColor];
+        labelData.font = [UIFont fontWithName:FONTLITE size:12];
+        [cellView addSubview:labelData];
+        //Фото отправителя-------------------------------------------
+        if ([dictArrey objectForKey:@"avatar_url"] != [NSNull null]) {
+            
+            ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictArrey objectForKey:@"avatar_url"] andView:customView];
+            
+            [cellView addSubview:viewSectionTable];
+        }
+        
+    }
+    self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 10 + customHeight);
+    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
+        self.mainScrollView.contentOffset =
+        CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
+    }
+}
 
 
 @end
