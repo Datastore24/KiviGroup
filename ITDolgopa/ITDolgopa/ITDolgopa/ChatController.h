@@ -22,5 +22,6 @@
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSArray * arrayDialog;
 @property (strong, nonatomic) NSDictionary * dictResponse;
+@property (strong, nonatomic) NSString * dialogMaxID;
 
 @end
