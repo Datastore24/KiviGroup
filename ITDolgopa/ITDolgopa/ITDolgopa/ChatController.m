@@ -37,7 +37,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     CGFloat animatedDistance;
     UILabel * testLabel;
     CGFloat customHeight;
-    NSArray * testArray;
+    UITextField * textFildText;
+    UIImageView * localImageView;
 
     
 }
@@ -95,7 +96,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     ChatViewPush * chatViewPush = [[ChatViewPush alloc] initWhithView:self.view andFrame:CGRectMake(0, self.view.frame.size.height - 164, self.view.frame.size.width, 100)];
     [self.view addSubview:chatViewPush];
     
-    UITextField * textFildText = (UITextField*)[self.view viewWithTag:501];
+    textFildText = (UITextField*)[self.view viewWithTag:501];
     textFildText.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFildText:) name:UITextFieldTextDidChangeNotification object:textFildText];
     labelPlaceHolder = (UILabel*)[self.view viewWithTag:502];
@@ -113,8 +114,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                                              target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
         //
         
-        NSLog(@"%@", self.arrayDialog);
+//        NSLog(@"%@", self.arrayDialog);
     }];
+    
+    //Инициализаци кнопки отправить------------------------------------------------------------
+    UIButton * sendButton = (UIButton*)[self.view viewWithTag:510];
+    [sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
 
 }
@@ -216,6 +221,29 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 #pragma mark - API
 
+//Метод отправки сообщения--------------------------------------------------
+- (void) getAPIWithPone: (NSString*) phone andMessage: (NSString*) message
+{
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 phone, @"phone",
+                                 message, @"message", nil];
+    APIGetClass * messageAPI = [[APIGetClass alloc] init];
+    [messageAPI getDataFromServerWithParams:dictParams method:@"dialog_send_message" complitionBlock:^(id response) {
+        
+        NSDictionary * responseMessage = (NSDictionary*) response;
+        if ([[responseMessage objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"error_msg %@", [responseMessage objectForKey:@"error_msg"]);
+        } else if ([[responseMessage objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"Сообщение доставленно");
+            NSLog(@"%@", responseMessage);
+            
+            self.dialogMaxID = [responseMessage objectForKey:@"max_id"];
+        }
+
+    }];
+}
+
+//Метод прогрузки всего списка сообщений----------------------------------------------
 - (void) getAPIWithPhone: (NSString*) phone andWithBlock: (void (^)(void)) block
 {
     
@@ -242,6 +270,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     }];
 }
 
+//Магия Кирилла-----------------------------------------------
 - (void) getAPIMoreWithPhone: (NSString*) phone andMaxID:(NSString *) maxid andWithBlock: (void (^)(void)) block
 {
     
@@ -254,7 +283,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         if ([[self.dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"Ошибка");
         } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"Все хорошо");
+//            NSLog(@"Все хорошо");
             //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
@@ -266,8 +295,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     }];
 }
 
-
-
 -(void) loadMoreDialog{
     [self getAPIMoreWithPhone:[[SingleTone sharedManager] phone] andMaxID:self.dialogMaxID andWithBlock:^{
         
@@ -275,14 +302,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         [self loadViewWithArray:self.arrayDialog];
         
+        NSLog(@"%lu", (unsigned long)self.maxCount);
+        NSLog(@"%@", self.arrayDialog);
     }];
 }
 
+//Локальная загрузка сообщения-----------------------------------
 - (void) loadViewWithArray: (NSArray*) array
 {
     
     
-    NSLog(@"Что то делаю");
+//    NSLog(@"Что то делаю");
     //Инициализация ячеек чата------------------------------------
     for (int i = 0; i < array.count; i++) {
         
@@ -306,6 +336,18 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [cellView addSubview:customView];
         [customView addSubview:testLabel];
         //Лейбл даты-------------------------------------------------
+        
+        NSString * stringDateAll = [dictArrey objectForKey:@"created"];
+//        NSArray * stringDateAllArray = [stringDateAll componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//        NSString * stringDate = [stringDateAllArray objectAtIndex:0];
+//        NSString * stringTime = [stringDateAllArray objectAtIndex:1];
+//        NSLog(@"stringDate %@", stringDate);
+//        NSLog(@"stringTime %@", stringTime);
+        
+        NSLog(@"%@", stringDateAll);
+        
+        
+        
         UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(customView.frame.origin.x + customView.frame.size.width + 20, customView.frame.origin.y, 50, customView.frame.size.height)];
         labelData.text = @"17.39";
         labelData.textColor = [UIColor whiteColor];
@@ -313,19 +355,74 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [cellView addSubview:labelData];
         //Фото отправителя-------------------------------------------
         if ([dictArrey objectForKey:@"avatar_url"] != [NSNull null]) {
-            
             ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictArrey objectForKey:@"avatar_url"] andView:customView];
-            
             [cellView addSubview:viewSectionTable];
+        }else{
+            
+            NSLog(@"Нет аватара");
+            
+            localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 60, customView.frame.origin.y - 5, 40, 40)];
+            localImageView.backgroundColor = [UIColor whiteColor];
+            localImageView.layer.cornerRadius = 20.0;
+            localImageView.clipsToBounds = NO;
+            
+            [cellView addSubview:localImageView];
+            
         }
-        
     }
     self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 10 + customHeight);
-    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
+//    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
         self.mainScrollView.contentOffset =
         CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
-    }
+//    }
 }
 
+#pragma mark - Buttons Methods
+
+//Действия кнопки отправить------------------------------
+- (void) sendButtonAction
+{
+    if (textFildText.text.length != 0) {
+        NSString * stringMessage = textFildText.text;
+        NSLog(@"%@", stringMessage);
+        
+        NSMutableArray * arrayAddTextChat = [[NSMutableArray alloc] init];
+        NSDictionary * dictOneMessage = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         /* Тут тоже делаем синглтон с аватаркой пользователя, если синглтон не создан. то показываем предложение в кружке загрузить*/
+                                         @"1", @"dialog_id",
+                                         @"1", @"from_who",
+                                         stringMessage, @"message",
+                                         @"1", @"message_type",
+                                         @"361", @"messages_id", nil];
+        
+        [arrayAddTextChat addObject:dictOneMessage];
+        [self loadViewWithArray:arrayAddTextChat];
+        
+        [self getAPIWithPone:[[SingleTone sharedManager] phone] andMessage:stringMessage];
+        
+        textFildText.text = @"";
+        if (textFildText.text.length != 0 && isBool) {
+            [UIView animateWithDuration:0.3 animations:^{
+                CGRect rect;
+                rect = labelPlaceHolder.frame;
+                rect.origin.x = rect.origin.x + 100.f;
+                labelPlaceHolder.frame = rect;
+                labelPlaceHolder.alpha = 0.f;
+                isBool = NO;
+            }];
+        } else if (textFildText.text.length == 0 && !isBool) {
+            [UIView animateWithDuration:0.3 animations:^{
+                CGRect rect;
+                rect = labelPlaceHolder.frame;
+                rect.origin.x = rect.origin.x - 100.f;
+                labelPlaceHolder.frame = rect;
+                labelPlaceHolder.alpha = 1.f;
+                isBool = YES;
+            }];
+        }
+    } else {
+        NSLog(@"Введите текст");
+    }
+}
 
 @end
