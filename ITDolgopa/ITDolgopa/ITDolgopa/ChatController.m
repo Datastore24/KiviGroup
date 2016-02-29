@@ -287,11 +287,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
-            
         }
-        
         block();
-        
     }];
 }
 
@@ -338,12 +335,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         //Лейбл даты-------------------------------------------------
         
         NSString * stringDateAll = [dictArrey objectForKey:@"created"];
-//        NSArray * stringDateAllArray = [stringDateAll componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//        NSString * stringDate = [stringDateAllArray objectAtIndex:0];
-//        NSString * stringTime = [stringDateAllArray objectAtIndex:1];
-//        NSLog(@"stringDate %@", stringDate);
-//        NSLog(@"stringTime %@", stringTime);
-        
         NSLog(@"%@", stringDateAll);
         
         
@@ -354,7 +345,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         labelData.font = [UIFont fontWithName:FONTLITE size:12];
         [cellView addSubview:labelData];
         //Фото отправителя-------------------------------------------
-        if ([dictArrey objectForKey:@"avatar_url"] != [NSNull null]) {
+        if ([dictArrey objectForKey:@"avatar_url"]) {
             ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictArrey objectForKey:@"avatar_url"] andView:customView];
             [cellView addSubview:viewSectionTable];
         }else{
@@ -367,6 +358,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             localImageView.clipsToBounds = NO;
             
             [cellView addSubview:localImageView];
+            
+            UIButton * buttonLoadImage = [UIButton buttonWithType:UIButtonTypeSystem];
+            buttonLoadImage.frame = CGRectMake(0, 0, 40, 40);
+            [buttonLoadImage setTitle:@"Загрузить" forState:UIControlStateNormal];
+            [buttonLoadImage setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            buttonLoadImage.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:8];
+            [localImageView addSubview:buttonLoadImage];
             
         }
     }
@@ -392,7 +390,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                                          @"1", @"dialog_id",
                                          @"1", @"from_who",
                                          stringMessage, @"message",
-                                         @"1", @"message_type",
+                                         @"2", @"message_type",
                                          @"361", @"messages_id", nil];
         
         [arrayAddTextChat addObject:dictOneMessage];
