@@ -52,25 +52,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     //Инициализация обновления чата----------------------------
     self.chatCount = 10;
     self.offset = 0;
-    self.headerView.alpha=0;
-    self.footerView.alpha=0;
-    self.isRefresh = YES;
     
     
     //---------------------------------------------------------
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadChat) name:@"ReloadChat" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMoreDialog) name:@"ReloadChat" object:nil];
 
-   __block NSMutableArray * superArray = [[NSMutableArray alloc] init];
-    
-   __block  NSDictionary * testDict = [NSDictionary dictionaryWithObjectsAndKeys:@"332", @"messages_id",
-                                                                         @"1", @"message_type",
-                                                                         @"Проверка", @"message",
-                                                                         @"0", @"is_read",
-                                                                         @"1", @"from_who",
-                               @"http://ceo.aqaholding.ru/files/avatar/1_1Z8SZlcT9R0_(1).jpg", @"avatar_url", nil];
-    [superArray addObject:testDict];
-
-    [self performSelector:@selector(loadViewWithArray:) withObject:superArray afterDelay:10];
 
     
     self.navigationController.navigationBar.layer.cornerRadius=5;
@@ -118,10 +104,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
+        
+        
         [self loadViewWithArray:self.arrayDialog];
         
-//        [NSTimer scheduledTimerWithTimeInterval:5.0f
-//                                             target:self selector:@selector(reloadChat) userInfo:nil repeats:YES];
+        //Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
+        [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+        //
         
         NSLog(@"%@", self.arrayDialog);
     }];
@@ -242,25 +232,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             NSLog(@"Все хорошо");
 //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
-//            NSLog(@"self.maxCount %lu", (unsigned long)self.maxCount);
-//            
-//            NSLog(@"%@", self.dictResponse);
-            
-            if (self.isRefresh) {
-                
-                [self.headerView stopRefreshing];
-                self.mainScrollView.scrollEnabled = YES;
-                
-            }
-            else {
-                
-                [self.footerView stopRefreshing];
-                self.mainScrollView.scrollEnabled = YES;
-                
-                
-            }
-//            [self reloadTableViewWhenNewEvent];
-            
+            self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
             
             
         }
@@ -270,69 +242,42 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     }];
 }
 
-
-//Для рефрешера
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-
+- (void) getAPIMoreWithPhone: (NSString*) phone andMaxID:(NSString *) maxid andWithBlock: (void (^)(void)) block
+{
     
-    
-    /*
-     Относительно предупреждений, это было связано с тем, что блок является объектом (сущностью в памяти) и такой объект должен быть высвобождени из памяти (потом). Объекты, которые инициализируются внутри блока имеют strong ссылку и эти объекты поставлены в зависимость от жизни объекта ViewController. Таким образом компилятор предупреждает о том, что возможно блок не сможет быть высвобожден из памяти.
-     Чтоб это исправить, мы должны указать объектам, которые инициализируются внутри блока, что их жизнь, в данном конкретном случае зависит не от вью контроллера, а от блока.
-     Для этого необходимо создать локальную переменную (как приведено ниже), которая будет иметь weak (слабую) ссылку на объект. Теперь блок может быть высвобожден из памяти
-     Под эту тему нашел оч хороший класс, который реализует основные задачи с блоками в GCD, а так же прием описанный выше. Я этот класс дополнил возможностью выполнения задачи синхронно, в общем можно пользоваться
-     
-     */
-    
-    self.headerView = [[KYPullToCurveVeiw alloc]initWithAssociatedScrollView:self.mainScrollView withNavigationBar:YES];
-    BBlockWeakSelf wself = self;
-    [self.headerView  addRefreshingBlock:^{
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:phone, @"phone",
+                                 maxid,@"maxid", nil];
+    APIGetClass * aPIGetClass = [APIGetClass new];
+    [aPIGetClass getDataFromServerWithParams:dictParams method:@"dialog_show" complitionBlock:^(id response) {
         
-        wself.isRefresh = YES;
-        wself.mainScrollView.scrollEnabled = NO;
-        wself.offset = 0;
-        wself.chatCount=10;
-        [wself getAPIWithPhone:[[SingleTone sharedManager] phone]  andWithBlock:^{
+        self.dictResponse = (NSDictionary*) response;
+        if ([[self.dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"Ошибка");
+        } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"Все хорошо");
+            //
+            self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
+            self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
             
-             wself.arrayDialog = [NSArray arrayWithArray:[wself.dictResponse objectForKey:@"dialogs"]];
-            
-            [wself loadViewWithArray:wself.arrayDialog];
-        
-        }];
-        
-    }];
-   
-    self.headerView = [[KYPullToCurveVeiw alloc]
-                       initWithAssociatedScrollView:self.mainScrollView withNavigationBar:YES];
-    
-    
-    
-    [self.headerView addRefreshingBlock:^{
-        
-        if (wself.offset + wself.chatCount < wself.maxCount) {
-            wself.isRefresh = NO;
-            wself.mainScrollView.scrollEnabled = NO;
-            wself.offset = self.offset + self.chatCount;
-            [wself getAPIWithPhone:[[SingleTone sharedManager] phone]  andWithBlock:^{
-                
-                wself.arrayDialog = [NSArray arrayWithArray:[wself.dictResponse objectForKey:@"dialogs"]];
-                
-                [wself loadViewWithArray:wself.arrayDialog];
-          
-            }];
-
-        }else{
-            
-            NSLog(@"end !!!!!!");
-            wself.offset=wself.maxCount;
-            wself.mainScrollView.scrollEnabled = YES;
-            wself.chatCount=wself.maxCount;
-            [wself.footerView stopRefreshing];
         }
+        
+        block();
+        
     }];
-   
 }
+
+
+
+-(void) loadMoreDialog{
+    [self getAPIMoreWithPhone:[[SingleTone sharedManager] phone] andMaxID:self.dialogMaxID andWithBlock:^{
+        
+        self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
+        
+        [self loadViewWithArray:self.arrayDialog];
+        
+    }];
+}
+
 - (void) loadViewWithArray: (NSArray*) array
 {
     
