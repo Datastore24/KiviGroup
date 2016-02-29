@@ -36,6 +36,7 @@
         sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         sendButton.frame = CGRectMake(viewFone.frame.size.width - 40, 2, 36, 36);
         sendButton.layer.cornerRadius = 18;
+        sendButton.tag = 510;
         sendButton.backgroundColor = [UIColor redColor];
         [sendButton addTarget:self action:@selector(tuchGreen) forControlEvents:UIControlEventTouchDown];
         [sendButton addTarget:self action:@selector(tuchRead) forControlEvents:UIControlEventTouchUpInside];

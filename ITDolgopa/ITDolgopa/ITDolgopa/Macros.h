@@ -39,6 +39,7 @@
 
 //Класс ChatViewPush
 //Текст вью ввода текста textFildText.tag = 501;
+//Внопка отправить сообщение sendButton.tag = 510;
 
 
 
