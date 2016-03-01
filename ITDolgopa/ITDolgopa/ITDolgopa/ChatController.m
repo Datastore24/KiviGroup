@@ -39,6 +39,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     CGFloat customHeight;
     UITextField * textFildText;
     UIImageView * localImageView;
+    NSString * messageType;
+    NSString * dateStringText;
+    ChatCellView * cellView;
+    UIView * customView;
 
     
 }
@@ -105,23 +109,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
-        
-        
         [self loadViewWithArray:self.arrayDialog];
         
         //Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
         [NSTimer scheduledTimerWithTimeInterval:7.0f
                                              target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
-        //
         
-//        NSLog(@"%@", self.arrayDialog);
+
+        
     }];
     
     //Инициализаци кнопки отправить------------------------------------------------------------
     UIButton * sendButton = (UIButton*)[self.view viewWithTag:510];
     [sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    
 
+    
 }
 
 #pragma mark - UITextFieldDelegate
@@ -256,8 +258,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         self.dictResponse = (NSDictionary*) response;
         if ([[self.dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"Ошибка");
+           
         } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"Все хорошо");
+             NSLog(@"%@", response);
 //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
@@ -283,8 +286,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         if ([[self.dictResponse objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"Ошибка");
         } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
-//            NSLog(@"Все хорошо");
-            //
+            
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
         }
@@ -299,8 +301,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         [self loadViewWithArray:self.arrayDialog];
         
-        NSLog(@"%lu", (unsigned long)self.maxCount);
-        NSLog(@"%@", self.arrayDialog);
+//        NSLog(@"%lu", (unsigned long)self.maxCount);
+//        NSLog(@"%@", self.arrayDialog);
     }];
 }
 
@@ -322,11 +324,27 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         testLabel.textColor = [UIColor whiteColor];
         testLabel.font = [UIFont fontWithName:FONTLITE size:12];
         [testLabel sizeToFit];
-        ChatCellView * cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight, self.view.frame.size.width, testLabel.frame.size.height + 40)];
-        [self.mainScrollView addSubview:cellView];
-        customHeight = customHeight + (testLabel.frame.size.height + 40);
+
+        //Проверка на повторение пользователя------------------------------------------
+        if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
+            cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight, self.view.frame.size.width, testLabel.frame.size.height + 30)];
+            [self.mainScrollView addSubview:cellView];
+            customHeight = customHeight + (testLabel.frame.size.height + 30);
+        } else {
+            cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 40, self.view.frame.size.width, testLabel.frame.size.height + 70)];
+            [self.mainScrollView addSubview:cellView];
+            customHeight = customHeight + (testLabel.frame.size.height + 70);
+            
+            UILabel * labelFIO = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, - 15, 220, 20)];
+            labelFIO.text = [dictArrey objectForKey:@"fio"];
+            labelFIO.textColor = [UIColor whiteColor];
+            labelFIO.font = [UIFont fontWithName:FONTREGULAR size:14];
+            [cellView addSubview:labelFIO];
+            
+        }
+        
         //Вью лейбла-------------------------------------------------
-        UIView * customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 10, 195, testLabel.frame.size.height + 20)];
+        customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 10, 195, testLabel.frame.size.height + 20)];
         
         customView.backgroundColor = [UIColor colorWithHexString:@"818181"];
         customView.layer.cornerRadius = 10.f;
@@ -336,27 +354,46 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         NSString * stringDateAll = [dictArrey objectForKey:@"created"];
         NSLog(@"%@", stringDateAll);
-        
-        
-        
-        UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(customView.frame.origin.x + customView.frame.size.width + 20, customView.frame.origin.y, 50, customView.frame.size.height)];
-        labelData.text = @"17.39";
+        NSArray * stringDateAllArray = [stringDateAll componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString * stringDate = [stringDateAllArray objectAtIndex:0];
+        NSString * stringTime = [stringDateAllArray objectAtIndex:1];
+
+        //Лейбл Времени----------------------------------------------
+        UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(customView.frame.origin.x + customView.frame.size.width + 10, customView.frame.origin.y, 30, customView.frame.size.height)];
+        labelData.text = stringTime;
         labelData.textColor = [UIColor whiteColor];
         labelData.font = [UIFont fontWithName:FONTLITE size:12];
         [cellView addSubview:labelData];
+        
+        //Проверка на повторение даты-------------------------------------------------
+        
+        if (![dateStringText isEqualToString:stringDate]) {
+            UILabel * dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelData.frame.origin.x + labelData.frame.size.width + 5, customView.frame.origin.y, 30, customView.frame.size.height)];
+            dateLabel.text = stringDate;
+            dateLabel.textColor = [UIColor whiteColor];
+            dateLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+            [cellView addSubview:dateLabel];
+            
+        }
+        
+        dateStringText = stringDate;
+        
         //Фото отправителя-------------------------------------------
         if ([dictArrey objectForKey:@"avatar_url"]) {
             ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictArrey objectForKey:@"avatar_url"] andView:customView];
+            if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
+                viewSectionTable.alpha = 0;
+            }
             [cellView addSubview:viewSectionTable];
         }else{
-            
-            NSLog(@"Нет аватара");
             
             localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 60, customView.frame.origin.y - 5, 40, 40)];
             localImageView.backgroundColor = [UIColor whiteColor];
             localImageView.layer.cornerRadius = 20.0;
             localImageView.clipsToBounds = NO;
-            
+            if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
+                localImageView.alpha = 0;
+            }
             [cellView addSubview:localImageView];
             
             UIButton * buttonLoadImage = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -365,9 +402,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [buttonLoadImage setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             buttonLoadImage.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:8];
             [localImageView addSubview:buttonLoadImage];
-            
+  
         }
+        
+        messageType = [dictArrey objectForKey:@"message_type"];
     }
+
+    
     self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 10 + customHeight);
 //    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
         self.mainScrollView.contentOffset =
@@ -382,22 +423,25 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 {
     if (textFildText.text.length != 0) {
         NSString * stringMessage = textFildText.text;
-        NSLog(@"%@", stringMessage);
-        
         NSMutableArray * arrayAddTextChat = [[NSMutableArray alloc] init];
+        
+        //Создание даты-----------------------------------
+        NSDate * date = [NSDate date];
+        NSDateFormatter * inFormatDate = [[NSDateFormatter alloc] init];
+        [inFormatDate setDateFormat:@"dd.MM HH.mm"];
+        NSString *strDate = [inFormatDate stringFromDate:date];
+
         NSDictionary * dictOneMessage = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         /* Тут тоже делаем синглтон с аватаркой пользователя, если синглтон не создан. то показываем предложение в кружке загрузить*/
                                          @"1", @"dialog_id",
                                          @"1", @"from_who",
                                          stringMessage, @"message",
                                          @"2", @"message_type",
-                                         @"361", @"messages_id", nil];
+                                         @"361", @"messages_id",
+                                         strDate, @"created", nil];
         
         [arrayAddTextChat addObject:dictOneMessage];
         [self loadViewWithArray:arrayAddTextChat];
-        
         [self getAPIWithPone:[[SingleTone sharedManager] phone] andMessage:stringMessage];
-        
         textFildText.text = @"";
         if (textFildText.text.length != 0 && isBool) {
             [UIView animateWithDuration:0.3 animations:^{
