@@ -374,6 +374,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         //Проверка на повторение даты-------------------------------------------------
         
+        ParseDate * parseDate =[[ParseDate alloc] init];
+        if([stringDate isEqual:[parseDate dateFormatToDay]]){
+            
+            //ТУТ НУЖНО ОДИН РАЗ ВЫВЕСТИ ПО ЦЕНТРУ ПЕРЕД СООБЩЕНИЯМИ СЕГОДНЯШНИМИ "СЕГОДНЯ"
+            UILabel * dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelData.frame.origin.x + labelData.frame.size.width + 5, customView.frame.origin.y, 30, customView.frame.size.height)];
+            dateLabel.text = @"Cегодня";
+            dateLabel.textColor = [UIColor whiteColor];
+            dateLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+            [cellView addSubview:dateLabel];
+
+            
+        }
+        
         
             UILabel * dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelData.frame.origin.x + labelData.frame.size.width + 5, customView.frame.origin.y, 30, customView.frame.size.height)];
             dateLabel.text = stringDate;
@@ -393,13 +406,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             
             [self.arrayDate addObject:dictDatePostion];
             
-        ParseDate * parseDate =[[ParseDate alloc] init];
-        if([dateLabel.text isEqual:[parseDate dateFormatToDay]]){
-            
-            //ТУТ нужно как ты делал вставить перед сообщениями LABEL сегодня
-            NSLog(@"СЕГОДНЯ");
-            
-        }
+        
         
         
         
