@@ -15,6 +15,7 @@
 @synthesize billingBalance;
 @synthesize tableChange;
 @synthesize dictDevice;
+@synthesize stringFIO;
 
 
 #pragma mark Singleton Methods
