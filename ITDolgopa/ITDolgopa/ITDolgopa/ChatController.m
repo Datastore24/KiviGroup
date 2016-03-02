@@ -17,6 +17,7 @@
 #import "SingleTone.h"
 #import "ViewSectionTable.h"
 #import "BBlock.h"
+#import "ParseDate.h"
 
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -43,6 +44,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     NSString * dateStringText;
     ChatCellView * cellView;
     UIView * customView;
+    UILabel * dateTopLabel;
+    
 
     
 }
@@ -55,8 +58,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     customHeight = 0.f;
     
     //Инициализация обновления чата----------------------------
-    self.chatCount = 10;
+    self.chatCount = 100;
     self.offset = 0;
+    
+    self.arrayDate = [NSMutableArray array];
     
     
     //---------------------------------------------------------
@@ -112,8 +117,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self loadViewWithArray:self.arrayDialog];
         
         //Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-        [NSTimer scheduledTimerWithTimeInterval:7.0f
-                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+        //[NSTimer scheduledTimerWithTimeInterval:7.0f
+          //                                   target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
         
 
         
@@ -122,6 +127,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     //Инициализаци кнопки отправить------------------------------------------------------------
     UIButton * sendButton = (UIButton*)[self.view viewWithTag:510];
     [sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSLog(@"ARRDATE %@",self.arrayDate);
 
     
 }
@@ -353,7 +360,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         //Лейбл даты-------------------------------------------------
         
         NSString * stringDateAll = [dictArrey objectForKey:@"created"];
-        NSLog(@"%@", stringDateAll);
+        
         NSArray * stringDateAllArray = [stringDateAll componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString * stringDate = [stringDateAllArray objectAtIndex:0];
         NSString * stringTime = [stringDateAllArray objectAtIndex:1];
@@ -367,16 +374,50 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         //Проверка на повторение даты-------------------------------------------------
         
-        if (![dateStringText isEqualToString:stringDate]) {
+        
             UILabel * dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelData.frame.origin.x + labelData.frame.size.width + 5, customView.frame.origin.y, 30, customView.frame.size.height)];
             dateLabel.text = stringDate;
-            dateLabel.textColor = [UIColor whiteColor];
+            dateLabel.textColor = [UIColor clearColor];
             dateLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
             [cellView addSubview:dateLabel];
             
+            UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+            CGPoint convertedPoint = [cellView convertPoint:dateLabel.frame.origin
+                                                     toView:window];
+            NSString * datePositionY = [NSString stringWithFormat:@"%f",convertedPoint.y];
+            NSString * datePositionX = [NSString stringWithFormat:@"%f",convertedPoint.x];
+            NSDictionary * dictDatePostion = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                dateLabel.text,@"text",
+                                              datePositionX,@"positionX",
+                                              datePositionY,@"positionY",nil];
+            
+            [self.arrayDate addObject:dictDatePostion];
+            
+        ParseDate * parseDate =[[ParseDate alloc] init];
+        if([dateLabel.text isEqual:[parseDate dateFormatToDay]]){
+            
+            //ТУТ нужно как ты делал вставить перед сообщениями LABEL сегодня
+            NSLog(@"СЕГОДНЯ");
+            
         }
         
+        
+        
         dateStringText = stringDate;
+        
+        UIView * dateOfView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+        
+        [dateOfView setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
+        [self.view addSubview:dateOfView];
+        
+        dateTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+        dateTopLabel.center = dateOfView.center;
+        dateTopLabel.text = @"";
+        dateTopLabel.textColor = [UIColor colorWithHexString:@"07159f"];
+        dateTopLabel.textAlignment = NSTextAlignmentCenter;
+        dateTopLabel.alpha=1;
+        [self.view addSubview:dateTopLabel];
+        
         
         //Фото отправителя-------------------------------------------
         if ([dictArrey objectForKey:@"avatar_url"]) {
@@ -415,6 +456,45 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
 //    }
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    for (NSInteger i=self.arrayDate.count-1; i>=0; i--) {
+        NSDictionary * datePostionInfoFirst = [self.arrayDate objectAtIndex:i];
+        
+        
+        CGRect thePosition =  CGRectMake([[datePostionInfoFirst objectForKey:@"positionX"] floatValue],[[datePostionInfoFirst objectForKey:@"positionY"] floatValue], 100, 40);
+        
+
+        CGRect container = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, scrollView.frame.size.width, scrollView.frame.size.height);
+        if(CGRectIntersectsRect(thePosition, container))
+        {
+            // This view has been scrolled on screen
+            //Изменения даты
+            ParseDate * parseDate =[[ParseDate alloc] init];
+            if([[datePostionInfoFirst objectForKey:@"text"] isEqual:[parseDate dateFormatToDay]]){
+                dateTopLabel.text = @"Cегодня";
+            }else if([[datePostionInfoFirst objectForKey:@"text"] isEqual:[parseDate dateFormatToYesterDay]]){
+                dateTopLabel.text = @"Вчера";
+            }else if([[datePostionInfoFirst objectForKey:@"text"] isEqual:[parseDate dateFormatToDayBeforeYesterday]]){
+                dateTopLabel.text = @"Позавчера";
+            }else{
+                dateTopLabel.text = [datePostionInfoFirst objectForKey:@"text"];
+            }
+            //
+            
+             NSLog(@"%@",[datePostionInfoFirst objectForKey:@"text"]);
+        }
+        
+        
+    }
+    
+    
+
+    
+}
+
+
 
 #pragma mark - Buttons Methods
 

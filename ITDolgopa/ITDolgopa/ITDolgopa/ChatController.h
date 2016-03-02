@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSArray * arrayDialog;
 @property (strong, nonatomic) NSDictionary * dictResponse;
 @property (strong, nonatomic) NSString * dialogMaxID;
+@property (strong, nonatomic) NSMutableArray * arrayDate;
 
 @end

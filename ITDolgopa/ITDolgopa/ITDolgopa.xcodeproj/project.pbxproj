@@ -90,6 +90,7 @@
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
+		AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F61C86BE9A0085ED4C /* ParseDate.m */; };
 		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
 		ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111D1C6F15AB003616F3 /* APIPostClass.m */; };
 		ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311211C6F15B5003616F3 /* AlertClass.m */; };
@@ -233,6 +234,8 @@
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
 		77ED589F1C8036D00066FCA9 /* ChatCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellView.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5795F51C86BE9A0085ED4C /* ParseDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseDate.h; sourceTree = "<group>"; };
+		AD5795F61C86BE9A0085ED4C /* ParseDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseDate.m; sourceTree = "<group>"; };
 		ADC3111A1C6F15AB003616F3 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		ADC3111B1C6F15AB003616F3 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		ADC3111C1C6F15AB003616F3 /* APIPostClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPostClass.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 		77715A241C842AAF0064161D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				AD5795F51C86BE9A0085ED4C /* ParseDate.h */,
+				AD5795F61C86BE9A0085ED4C /* ParseDate.m */,
 				7710038E1C838DC500B78F18 /* BBlock.h */,
 				7710038F1C838DC500B78F18 /* BBlock.m */,
 				771003881C838AF500B78F18 /* LabelView.h */,
@@ -812,6 +817,7 @@
 				778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */,
 				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
 				77031BBB1C786446005F6610 /* BalanceView.m in Sources */,
+				AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,
