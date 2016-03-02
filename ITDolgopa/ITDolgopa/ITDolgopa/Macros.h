@@ -82,6 +82,9 @@
 
 #define NOTIFICATION_ORDER_TIME_TEXT_FIELD_PROBLEM = @"NOTIFICATIONORDERTIMETEXTFIELDPROBLEM"
 
+//Макрос нотификации ненджа для апп делегата---------------------------------------------
+#define NOTIFICATION_PUSH_BADGE_ON_APP_DELEGATE = @"NOTIFICATIONPUSHBADGEONAPPDELEGATE"
+
 
 
 #endif /* Macros_h */

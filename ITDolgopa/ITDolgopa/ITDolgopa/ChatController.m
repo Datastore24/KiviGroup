@@ -49,6 +49,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     UILabel * dateTopLabel;
     UIView * dateOfViewMain;
     NSString * dateTextNow;
+    UIButton * pushButton;
+    
+    
+    NSMutableArray * arrayButtonsPush; //Массив кнопок
+    NSMutableArray * arrayMessagePush; //Массив отправленных сообщений
+    NSInteger pushTag;
 
     
 
@@ -67,6 +73,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     self.offset = 0;
     
     self.arrayDate = [NSMutableArray array];
+    arrayButtonsPush = [[NSMutableArray alloc] init];
+    arrayMessagePush = [[NSMutableArray alloc] init];
+    pushTag = 0;
 
     
     
@@ -121,7 +130,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
-        [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO];
+        [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
         
      //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
         [NSTimer scheduledTimerWithTimeInterval:7.0f
@@ -237,6 +246,32 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 #pragma mark - API
 
+
+//Метод подтверждения прочтения сообщения----------------------------------
+- (void) getAPIConfermMessageWithPhone: (NSString*) phone
+{
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:phone, @"phone", nil];
+    
+    APIGetClass * apiConfermMessage = [APIGetClass new];
+    [apiConfermMessage getDataFromServerWithParams:dictParams method:@"dialog_is_read" complitionBlock:^(id response) {
+        
+        NSDictionary * responseConfermMessage = (NSDictionary*) response;
+        if ([[responseConfermMessage objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [responseConfermMessage objectForKey:@"error_msg"]);
+        } else if ([[responseConfermMessage objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"%@", responseConfermMessage);
+            
+            NSString * stringBadge = [NSString stringWithFormat:@"%ld", [[responseConfermMessage objectForKey:@"badge"] integerValue]];
+            
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATIONPUSHBADGEONAPPDELEGATE" object:stringBadge];
+            
+            
+        }
+    }];
+}
+
 //Метод отправки сообщения--------------------------------------------------
 - (void) getAPIWithPone: (NSString*) phone andMessage: (NSString*) message
 {
@@ -250,16 +285,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         if ([[responseMessage objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"error_msg %@", [responseMessage objectForKey:@"error_msg"]);
             
-            SCLAlertView *alert = [[SCLAlertView alloc] init];
-            
-            //Using Selector
-            [alert addButton:@"First Button" target:self selector:@selector(alertFirstButton)];
-            [alert addButton:@"Second Button" target:self selector:@selector(alertSecondButton)];
-            [alert showSuccess:self title:@"Ошибка" subTitle:@"Сообщение не доставленно" closeButtonTitle:nil duration:0.0f];
+            [pushButton setTitle:@"Не отправленно" forState:UIControlStateNormal];
+            [pushButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             
         } else if ([[responseMessage objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"Сообщение доставленно");
             NSLog(@"%@", responseMessage);
+            
+            [pushButton setTitle:@"Отправленно" forState:UIControlStateNormal];
+            [pushButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
             
             self.dialogMaxID = [responseMessage objectForKey:@"max_id"];
         }
@@ -321,15 +355,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
-        [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:YES];
+        [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:YES andPush:NO];
         
 //        NSLog(@"%lu", (unsigned long)self.maxCount);
 //        NSLog(@"%@", self.arrayDialog);
     }];
+    
+    [self getAPIConfermMessageWithPhone:[[SingleTone sharedManager] phone]];
 }
 
 //Локальная загрузка сообщения-----------------------------------
-- (void) loadViewWithArray: (NSArray*) array andUpdate: (BOOL) update andLoad: (BOOL) load
+- (void) loadViewWithArray: (NSArray*) array andUpdate: (BOOL) update andLoad: (BOOL) load andPush: (BOOL) push
 {
     //Инициализация ячеек чата------------------------------------
     for (int i = 0; i < array.count; i++) {
@@ -353,9 +389,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
         //Проверка на повторение пользователя------------------------------------------
         if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
-            cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight, self.view.frame.size.width, testLabel.frame.size.height + 50)];
+            cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 10, self.view.frame.size.width, testLabel.frame.size.height + 40)];
+
             [self.mainScrollView addSubview:cellView];
-            customHeight = customHeight + (testLabel.frame.size.height + 50);
+            customHeight = customHeight + (testLabel.frame.size.height + 40);
         } else {
             cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 40, self.view.frame.size.width, testLabel.frame.size.height + 70)];
             customHeight = customHeight + (testLabel.frame.size.height + 70);
@@ -384,12 +421,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                 labelDate.textAlignment = NSTextAlignmentCenter;
                 [cellView addSubview:labelDate];
                 
-                 dateTextNow = stringDate;
+                
                 
             }
 
             [self.mainScrollView addSubview:cellView];
-            UILabel * labelFIO = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, - 15, 220, 20)];
+            UILabel * labelFIO = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, - 25, 220, 20)];
             labelFIO.text = [dictArrey objectForKey:@"fio"];
             labelFIO.textColor = [UIColor whiteColor];
             labelFIO.font = [UIFont fontWithName:FONTREGULAR size:14];
@@ -398,7 +435,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         }
         
         //Вью лейбла-------------------------------------------------
-        customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 10, 195, testLabel.frame.size.height + 20)];
+        customView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, 0, 195, testLabel.frame.size.height + 20)];
         
         customView.backgroundColor = [UIColor colorWithHexString:@"818181"];
         customView.layer.cornerRadius = 10.f;
@@ -440,7 +477,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         dateStringText = stringDate;
         if(update){
         dateOfViewMain = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-        dateOfViewMain.backgroundColor = [UIColor colorWithHue:0.7 saturation:0.3 brightness:0.4 alpha:0.2];
+        dateOfViewMain.backgroundColor = [UIColor colorWithHue:0.7 saturation:0.3 brightness:0.4 alpha:0.4];
         dateOfViewMain.alpha = 0.1;
         [self.view addSubview:dateOfViewMain];
         
@@ -454,7 +491,32 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self.view addSubview:dateTopLabel];
         }
         
-        
+        //Сообщение о доставке сообщения---------------------------
+
+        if ([[[SingleTone sharedManager] stringFIO] isEqualToString:[dictArrey objectForKey:@"fio"]] && push) {
+            
+            pushButton = [UIButton buttonWithType:UIButtonTypeSystem];
+            pushButton.tag = pushTag;
+            pushButton.frame = CGRectMake(180, cellView.frame.size.height - 20, 100, 20);
+            if (![messageType isEqualToString: [dictArrey objectForKey:@"message_type"]])
+            {
+                pushButton.frame = CGRectMake(180, cellView.frame.size.height - 50, 100, 20);
+                if (![dateTextNow isEqualToString:stringDate]) {
+                    pushButton.frame = CGRectMake(180, cellView.frame.size.height - 30, 100, 20);
+                }
+            }
+            [pushButton setTitle:@"" forState:UIControlStateNormal];
+            [pushButton setTintColor:[UIColor whiteColor]];
+            pushButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+            [pushButton addTarget:self action:@selector(pushButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            [arrayButtonsPush addObject:pushButton];
+            pushTag += 1;
+            [cellView addSubview:pushButton];
+            
+            NSString * stringMessagePush = [dictArrey objectForKey:@"message"];
+            [arrayMessagePush addObject:stringMessagePush];
+        }
+
         //Фото отправителя-------------------------------------------
         if ([dictArrey objectForKey:@"avatar_url"]) {
             ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictArrey objectForKey:@"avatar_url"] andView:customView];
@@ -478,15 +540,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [buttonLoadImage setTitle:@"Загрузить" forState:UIControlStateNormal];
             [buttonLoadImage setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             buttonLoadImage.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:8];
+            
             [localImageView addSubview:buttonLoadImage];
   
         }
-        
+        dateTextNow = stringDate;
         messageType = [dictArrey objectForKey:@"message_type"];
     }
 
     
-    self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 10 + customHeight);
+    self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 20 + customHeight);
 //    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
     
     if (!load) {
@@ -524,9 +587,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             }else{
                 dateTopLabel.text = [datePostionInfoFirst objectForKey:@"text"];
             }
-            //
-            
-             NSLog(@"%@",[datePostionInfoFirst objectForKey:@"text"]);
         }  
     }
 }
@@ -535,21 +595,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 #pragma mark - Buttons Methods
 
-//Действие первой кнопки алерта ошибки откравки----------
-- (void) alertFirstButton
-{
-    NSLog(@"Удалить");
-}
-
-//Действие второй кнопки алерта ошибки откравки----------
-- (void) alertSecondButton
-{
-    NSLog(@"Отправить заного");
-}
-
 //Действия кнопки отправить------------------------------
 - (void) sendButtonAction
 {
+    
     if (textFildText.text.length != 0) {
         NSString * stringMessage = textFildText.text;
         NSMutableArray * arrayAddTextChat = [[NSMutableArray alloc] init];
@@ -573,7 +622,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                                          [[SingleTone sharedManager] stringFIO], @"fio", nil];
         
         [arrayAddTextChat addObject:dictOneMessage];
-        [self loadViewWithArray:arrayAddTextChat andUpdate:NO andLoad:NO];
+        [self loadViewWithArray:arrayAddTextChat andUpdate:NO andLoad:NO andPush:YES];
         [self getAPIWithPone:[[SingleTone sharedManager] phone] andMessage:stringMessage];
         textFildText.text = @"";
         if (textFildText.text.length != 0 && isBool) {
@@ -598,6 +647,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     } else {
         [AlertClass showAlertViewWithMessage:@"Введите сообщение" view:self];
     }
+}
+
+//Действие кнопки отправить заного--------------------------------------------
+- (void) pushButtonAction: (UIButton*) button
+{
+    for (int i = 0; i < arrayButtonsPush.count; i++) {
+        if (button.tag == i) {
+          [self getAPIWithPone:[[SingleTone sharedManager] phone] andMessage:[arrayMessagePush objectAtIndex:i]];
+        }
+    }
+
+
+    
+    
 }
 
 @end
