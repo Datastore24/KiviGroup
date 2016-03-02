@@ -174,6 +174,7 @@
             [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
             UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
             [[SingleTone sharedManager]setPhone:[responseInfo objectForKey:@"contr_phone"]];
+            [[SingleTone sharedManager] setStringFIO:[responseInfo objectForKey:@"contr_fio"]];
             [self.navigationController pushViewController:detail animated:YES];
         } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
             
@@ -252,16 +253,18 @@
     
     
         [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-//            NSLog(@"ddddddddd %@", response);
+           NSLog(@"ddddddddd %@", response);
             
             
             NSDictionary * responseCheckInfo = (NSDictionary*)response;
             
             if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                 [self showLoginWith:YES];
+                NSLog(@"FIO %@",[responseInfo objectForKey:@"contr_fio"]);
                 
                 [[SingleTone sharedManager] setPhone:[responseCheckInfo objectForKey:@"contr_phone"]];
                 [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];
+                [[SingleTone sharedManager] setStringFIO:[responseCheckInfo objectForKey:@"contr_fio"]];
                 
                 
                 
@@ -304,6 +307,7 @@
             
           [[SingleTone sharedManager] setPhone:[responseCheckInfo objectForKey:@"contr_phone"]];
           [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];
+          [[SingleTone sharedManager] setStringFIO:[responseCheckInfo objectForKey:@"contr_fio"]];
 
             
             

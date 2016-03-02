@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString* billingBalance;
 @property (assign, nonatomic) BOOL tableChange;
 @property (strong, nonatomic) NSDictionary * dictDevice;
+@property (strong, nonatomic) NSString* stringFIO;
 
 
 + (id)sharedManager;
