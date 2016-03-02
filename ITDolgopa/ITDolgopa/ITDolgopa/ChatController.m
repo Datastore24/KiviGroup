@@ -133,8 +133,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
         
      //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-        //[NSTimer scheduledTimerWithTimeInterval:7.0f
-          //                                   target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
         
 
         
