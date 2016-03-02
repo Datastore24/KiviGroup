@@ -16,6 +16,9 @@
 #import "CustomCallView.h"
 #import "UNderRepairDetailsController.h"
 #import "BalanceViewController.h"
+#import <AFNetworking/AFNetworking.h>
+
+#import "NetworkRechabilityMonitor.h"
 
 @interface UnderRepairController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -35,6 +38,20 @@
 - (void) viewDidLoad
 {
 #pragma mark - initialization
+    
+    //проверка интернет соединения --------------------------
+        [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %ld", (long)status);
+        if(status == 0){
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
+            NSLog(@"НЕТ ИНТЕРНЕТА");
+        }else{
+            NSLog(@"ЕСТЬ ИНТЕРНЕТ");
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+        }
+    }];
+    //
     
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
