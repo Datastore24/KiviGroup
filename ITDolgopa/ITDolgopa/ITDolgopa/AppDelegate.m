@@ -11,6 +11,7 @@
 #import "AuthCoreDataClass.h"
 #import "UserInfo.h"
 #import "SingleTone.h"
+#import "Macros.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,9 @@
     
     //Задаем параметр выбора ячнйки на еденицу-----
     [[SingleTone sharedManager] setTableChange:YES];
+    
+    //---------
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBadge:) name:@"NOTIFICATIONPUSHBADGEONAPPDELEGATE" object:nil];
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     
@@ -94,7 +98,7 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 //    NSLog(@"Received notification: %@", userInfo);
     if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
-       // application.applicationIconBadgeNumber=0;
+//        application.applicationIconBadgeNumber=0;
     }
     
     if([[userInfo objectForKey:@"info"] isEqualToString:@"rch"]){
@@ -124,6 +128,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [MagicalRecord cleanUp];
+}
+
+
+- (void) changeBadge: (NSNotification*) notification
+{
+    NSString * strinhBadge = (NSString*)notification.object;
+    NSLog(@"strinhBadge - %@", strinhBadge);
+    
+    NSInteger intBadge = [strinhBadge integerValue];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:intBadge];
 }
 
 @end
