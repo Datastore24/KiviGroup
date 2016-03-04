@@ -92,6 +92,7 @@
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
 		AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F61C86BE9A0085ED4C /* ParseDate.m */; };
 		AD5795FA1C87428F0085ED4C /* NetworkRechabilityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */; };
+		AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795FC1C8977870085ED4C /* TextMethodClass.m */; };
 		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
 		ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111D1C6F15AB003616F3 /* APIPostClass.m */; };
 		ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311211C6F15B5003616F3 /* AlertClass.m */; };
@@ -239,6 +240,8 @@
 		AD5795F61C86BE9A0085ED4C /* ParseDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseDate.m; sourceTree = "<group>"; };
 		AD5795F81C87428F0085ED4C /* NetworkRechabilityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRechabilityMonitor.h; sourceTree = "<group>"; };
 		AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRechabilityMonitor.m; sourceTree = "<group>"; };
+		AD5795FB1C8977870085ED4C /* TextMethodClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMethodClass.h; sourceTree = "<group>"; };
+		AD5795FC1C8977870085ED4C /* TextMethodClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMethodClass.m; sourceTree = "<group>"; };
 		ADC3111A1C6F15AB003616F3 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		ADC3111B1C6F15AB003616F3 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		ADC3111C1C6F15AB003616F3 /* APIPostClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPostClass.h; sourceTree = "<group>"; };
@@ -570,6 +573,8 @@
 				77DA31011C6DF2C7006E0C44 /* Registration */,
 				ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */,
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
+				AD5795FB1C8977870085ED4C /* TextMethodClass.h */,
+				AD5795FC1C8977870085ED4C /* TextMethodClass.m */,
 				AD5795F81C87428F0085ED4C /* NetworkRechabilityMonitor.h */,
 				AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
@@ -796,6 +801,7 @@
 				7742CB541C63965F00515DDD /* L.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
 				77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */,
+				AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */,
 				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,
 				773D01C41C7A390300307174 /* OrderTimeView.m in Sources */,
 				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
