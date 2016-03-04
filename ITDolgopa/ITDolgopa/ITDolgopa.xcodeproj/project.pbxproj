@@ -42,7 +42,7 @@
 		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
 		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
 		773D01C41C7A390300307174 /* OrderTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D01C31C7A390300307174 /* OrderTimeView.m */; };
-		7742CB541C63965F00515DDD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* LoginViewController.m */; };
+		7742CB541C63965F00515DDD /* L.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* L.m */; };
 		774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */; };
 		774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
@@ -171,7 +171,7 @@
 		773D01C21C7A390300307174 /* OrderTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeView.h; sourceTree = "<group>"; };
 		773D01C31C7A390300307174 /* OrderTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		7742CB531C63965F00515DDD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7742CB531C63965F00515DDD /* L.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = L.m; sourceTree = "<group>"; };
 		774A51C11C75F0F900BDEE83 /* UNderRepairDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNderRepairDetailsController.h; sourceTree = "<group>"; };
 		774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNderRepairDetailsController.m; sourceTree = "<group>"; };
 		774A51C41C75FA2700BDEE83 /* UnderRepairDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairDetailsView.h; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 				772043E41C649557001F787F /* LoginView.h */,
 				772043E51C649557001F787F /* LoginView.m */,
 				7742CB521C63965F00515DDD /* LoginViewController.h */,
-				7742CB531C63965F00515DDD /* LoginViewController.m */,
+				7742CB531C63965F00515DDD /* L.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -793,7 +793,7 @@
 				778AE8FD1C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */,
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
-				7742CB541C63965F00515DDD /* LoginViewController.m in Sources */,
+				7742CB541C63965F00515DDD /* L.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
 				77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */,
 				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,

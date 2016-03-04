@@ -81,6 +81,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     //---------------------------------------------------------
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMoreDialog) name:@"ReloadChat" object:nil];
+    
+    
+    //Скрытие клавиатуры тапом----------------------------------
+    UITapGestureRecognizer * tapOnBackground = [[UITapGestureRecognizer alloc]
+                                                initWithTarget:self action:@selector(tapOnBackgroundAction)];
+    [self.mainScrollView addGestureRecognizer:tapOnBackground];
 
 
     
@@ -657,10 +663,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
           [self getAPIWithPone:[[SingleTone sharedManager] phone] andMessage:[arrayMessagePush objectAtIndex:i]];
         }
     }
+ 
+}
 
-
-    
-    
+//Действие тапа на скрытие клавиатуры------------------------------------------
+- (void) tapOnBackgroundAction
+{
+        [textFildText resignFirstResponder];
 }
 
 @end

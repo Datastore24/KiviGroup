@@ -140,4 +140,9 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:intBadge];
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end
