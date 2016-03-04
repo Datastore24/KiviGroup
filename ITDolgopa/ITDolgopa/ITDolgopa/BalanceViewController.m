@@ -38,7 +38,7 @@
             NSLog(@"НЕТ ИНТЕРНЕТА");
         }else{
             if(self.isNoInternet == 1){
-                [self viewDidLoad];
+                [self loadDesignAndInfo];
             }
             NSLog(@"ЕСТЬ ИНТЕРНЕТ");
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
@@ -77,10 +77,14 @@
     _buttonMenu.customView=button;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
+    [self loadDesignAndInfo];
     
+    }
+
+- (void) loadDesignAndInfo{
     //Вызываем метод API для получения данных от сервера----------------------------
     [self getBalanceWithPhone:[[SingleTone sharedManager] phone] andBlock:^{
-    
+        
         BalanceView * balanceView = [[BalanceView alloc] initWithView:self.view
                                                             andInWork:[NSString stringWithFormat:@"%@", [dictResponse objectForKey:@"inwork"]]
                                                              andReady:[NSString stringWithFormat:@"%@", [dictResponse objectForKey:@"ready"]]
@@ -97,9 +101,10 @@
             balanceJob.frame = CGRectMake(0, 300 + 80 * i, mainScrollView.frame.size.width, 80);
             [mainScrollView addSubview:balanceJob];
         }
-     
+        
         mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 300 + 50 + 80 * arrayListInWork.count);
     }];
+
 }
 
 

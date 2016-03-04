@@ -36,6 +36,13 @@
 }
 
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+[NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+    
+}
+
+
 - (void) viewDidLoad
 {
 #pragma mark - initialization
@@ -52,7 +59,9 @@
             NSLog(@"НЕТ ИНТЕРНЕТА");
         }else{
             if(self.isNoInternet == 1){
-                [self viewDidLoad];
+                arrayDevice = nil;
+                mainArray = [NSMutableArray new];
+               [self getDevicesWithPhone:[[SingleTone sharedManager] phone]];
             }
             NSLog(@"ЕСТЬ ИНТЕРНЕТ");
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];

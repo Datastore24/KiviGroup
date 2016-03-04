@@ -40,7 +40,8 @@
             NSLog(@"НЕТ ИНТЕРНЕТА");
         }else{
             if(self.isNoInternet == 1){
-                [self viewDidLoad];
+                numberInTotal = 0;
+                [self loadDesignAndInfo];
             }
             NSLog(@"ЕСТЬ ИНТЕРНЕТ");
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
@@ -72,7 +73,11 @@
     
     //Инициализируем числовой параметр итого-----------------
     numberInTotal = 0;
+    [self loadDesignAndInfo];
 
+   }
+
+-(void) loadDesignAndInfo {
     //Класс АПИ для отображения вью---------------------------
     [self getDeviceWithPhone:[[[SingleTone sharedManager] dictDevice]objectForKey:@"contr_phone"] andInworkId:[[[SingleTone sharedManager] dictDevice]objectForKey:@"inwork_id"] andBlock:^{
         
@@ -110,19 +115,19 @@
         } else {
             factRepairString = [dictResponse objectForKey:@"akt_created"];
         }
-
+        
         
         
         UnderRepairDetailsView * underRepairDetailsView = [[UnderRepairDetailsView alloc]
-                                 initWithView:self.view
-                                 andDevice:[dictResponse objectForKey:@"inwork_vendors"]
-                                 andSN:[dictResponse objectForKey:@"inwork_sn"]
-                                 andCreated:[dictResponse objectForKey:@"inw_created"]
-                                 andBreaking:[dictResponse objectForKey:@"inwork_defects"]
-                                 andStatus:textStatus
-                                 andStatusColor:textColorStatus
-                                 andReadiness:endDate
-                                 andFactRepair:factRepairString];
+                                                           initWithView:self.view
+                                                           andDevice:[dictResponse objectForKey:@"inwork_vendors"]
+                                                           andSN:[dictResponse objectForKey:@"inwork_sn"]
+                                                           andCreated:[dictResponse objectForKey:@"inw_created"]
+                                                           andBreaking:[dictResponse objectForKey:@"inwork_defects"]
+                                                           andStatus:textStatus
+                                                           andStatusColor:textColorStatus
+                                                           andReadiness:endDate
+                                                           andFactRepair:factRepairString];
         
         [mainScrollView addSubview:underRepairDetailsView];
         
@@ -142,7 +147,7 @@
                 viewLine.backgroundColor = [UIColor colorWithHexString:@"929597"];
                 [mainScrollView addSubview:viewLine];
             }
-   
+            
         }
         
         mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (underRepairDetailsView.frame.size.height + 300) + 100 * arrayJob.count);
@@ -155,8 +160,8 @@
         [mainScrollView addSubview:inTotal];
         
     }];
-}
 
+}
 
 #pragma mark - API
 
