@@ -246,6 +246,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              /*userInfo.phone*/@"79885035228",@"phone",
                              /*userInfo.salt*/@"Lcrvr", @"salt",
+
                              @"TEST",@"device_token",
                              nil];
     
