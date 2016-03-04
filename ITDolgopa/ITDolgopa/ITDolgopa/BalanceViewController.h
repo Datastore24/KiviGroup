@@ -11,5 +11,6 @@
 @interface BalanceViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonMenu;
+@property (assign,nonatomic) BOOL isNoInternet;
 
 @end

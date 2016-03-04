@@ -14,6 +14,8 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "BalanceView.h"
+#import <AFNetworking/AFNetworking.h>
+#import "NetworkRechabilityMonitor.h"
 
 @implementation BalanceViewController
 {
@@ -24,6 +26,25 @@
 - (void) viewDidLoad
 {
 #pragma mark - initialization
+    
+    //проверка интернет соединения --------------------------
+    self.isNoInternet = 0;
+    [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %ld", (long)status);
+        if(status == 0){
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
+            self.isNoInternet = 1;
+            NSLog(@"НЕТ ИНТЕРНЕТА");
+        }else{
+            if(self.isNoInternet == 1){
+                [self viewDidLoad];
+            }
+            NSLog(@"ЕСТЬ ИНТЕРНЕТ");
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+        }
+    }];
+    //
     
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
