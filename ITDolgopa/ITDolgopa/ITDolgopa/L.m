@@ -245,7 +245,11 @@
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              /*userInfo.phone*/@"79885035228",@"phone",
+<<<<<<< HEAD:ITDolgopa/ITDolgopa/ITDolgopa/L.m
                              /*userInfo.salt*/@"Lcrvr", @"salt",
+=======
+                             /*userInfo.salt*/@"Ntovy", @"salt",
+>>>>>>> origin/master:ITDolgopa/ITDolgopa/ITDolgopa/LoginViewController.m
                              @"TEST",@"device_token",
                              nil];
     
