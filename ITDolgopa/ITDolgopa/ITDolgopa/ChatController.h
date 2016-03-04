@@ -24,5 +24,6 @@
 @property (strong, nonatomic) NSDictionary * dictResponse;
 @property (strong, nonatomic) NSString * dialogMaxID;
 @property (strong, nonatomic) NSMutableArray * arrayDate;
+@property (assign,nonatomic) BOOL isNoInternet;
 
 @end

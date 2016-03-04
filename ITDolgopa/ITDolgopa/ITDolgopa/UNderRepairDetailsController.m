@@ -14,6 +14,8 @@
 #import "TitleClass.h"
 #import "UnderRepairDetailsView.h"
 #import "BalanceViewController.h"
+#import <AFNetworking/AFNetworking.h>
+#import "NetworkRechabilityMonitor.h"
 
 @implementation UNderRepairDetailsController
 {
@@ -26,6 +28,26 @@
 - (void) viewDidLoad
 {
 #pragma mark - initialization
+    
+    //проверка интернет соединения --------------------------
+    self.isNoInternet = 0;
+    [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %ld", (long)status);
+        if(status == 0){
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
+            self.isNoInternet = 1;
+            NSLog(@"НЕТ ИНТЕРНЕТА");
+        }else{
+            if(self.isNoInternet == 1){
+                numberInTotal = 0;
+                [self loadDesignAndInfo];
+            }
+            NSLog(@"ЕСТЬ ИНТЕРНЕТ");
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+        }
+    }];
+    //
     
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
@@ -51,7 +73,11 @@
     
     //Инициализируем числовой параметр итого-----------------
     numberInTotal = 0;
+    [self loadDesignAndInfo];
 
+   }
+
+-(void) loadDesignAndInfo {
     //Класс АПИ для отображения вью---------------------------
     [self getDeviceWithPhone:[[[SingleTone sharedManager] dictDevice]objectForKey:@"contr_phone"] andInworkId:[[[SingleTone sharedManager] dictDevice]objectForKey:@"inwork_id"] andBlock:^{
         
@@ -89,19 +115,19 @@
         } else {
             factRepairString = [dictResponse objectForKey:@"akt_created"];
         }
-
+        
         
         
         UnderRepairDetailsView * underRepairDetailsView = [[UnderRepairDetailsView alloc]
-                                 initWithView:self.view
-                                 andDevice:[dictResponse objectForKey:@"inwork_vendors"]
-                                 andSN:[dictResponse objectForKey:@"inwork_sn"]
-                                 andCreated:[dictResponse objectForKey:@"inw_created"]
-                                 andBreaking:[dictResponse objectForKey:@"inwork_defects"]
-                                 andStatus:textStatus
-                                 andStatusColor:textColorStatus
-                                 andReadiness:endDate
-                                 andFactRepair:factRepairString];
+                                                           initWithView:self.view
+                                                           andDevice:[dictResponse objectForKey:@"inwork_vendors"]
+                                                           andSN:[dictResponse objectForKey:@"inwork_sn"]
+                                                           andCreated:[dictResponse objectForKey:@"inw_created"]
+                                                           andBreaking:[dictResponse objectForKey:@"inwork_defects"]
+                                                           andStatus:textStatus
+                                                           andStatusColor:textColorStatus
+                                                           andReadiness:endDate
+                                                           andFactRepair:factRepairString];
         
         [mainScrollView addSubview:underRepairDetailsView];
         
@@ -121,7 +147,7 @@
                 viewLine.backgroundColor = [UIColor colorWithHexString:@"929597"];
                 [mainScrollView addSubview:viewLine];
             }
-   
+            
         }
         
         mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (underRepairDetailsView.frame.size.height + 300) + 100 * arrayJob.count);
@@ -134,8 +160,8 @@
         [mainScrollView addSubview:inTotal];
         
     }];
-}
 
+}
 
 #pragma mark - API
 

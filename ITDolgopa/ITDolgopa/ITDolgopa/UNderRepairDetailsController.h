@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UNderRepairDetailsController : UIViewController
+@property (assign,nonatomic) BOOL isNoInternet;
 
 @end

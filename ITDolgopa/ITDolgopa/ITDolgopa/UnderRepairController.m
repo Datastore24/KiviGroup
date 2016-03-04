@@ -22,6 +22,7 @@
 
 @interface UnderRepairController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+@property (assign, nonatomic) BOOL isNoInternet;
 
 @end
 
@@ -35,18 +36,33 @@
 }
 
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+[NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+    
+}
+
+
 - (void) viewDidLoad
 {
 #pragma mark - initialization
     
+    
     //проверка интернет соединения --------------------------
+    self.isNoInternet = 0;
         [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"Reachability: %ld", (long)status);
         if(status == 0){
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
+            self.isNoInternet = 1;
             NSLog(@"НЕТ ИНТЕРНЕТА");
         }else{
+            if(self.isNoInternet == 1){
+                arrayDevice = nil;
+                mainArray = [NSMutableArray new];
+               [self getDevicesWithPhone:[[SingleTone sharedManager] phone]];
+            }
             NSLog(@"ЕСТЬ ИНТЕРНЕТ");
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
         }

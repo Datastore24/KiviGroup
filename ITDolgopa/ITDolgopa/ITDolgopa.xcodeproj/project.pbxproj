@@ -42,7 +42,6 @@
 		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
 		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
 		773D01C41C7A390300307174 /* OrderTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D01C31C7A390300307174 /* OrderTimeView.m */; };
-		7742CB541C63965F00515DDD /* L.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742CB531C63965F00515DDD /* L.m */; };
 		774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */; };
 		774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
@@ -93,6 +92,7 @@
 		AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F61C86BE9A0085ED4C /* ParseDate.m */; };
 		AD5795FA1C87428F0085ED4C /* NetworkRechabilityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */; };
 		AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795FC1C8977870085ED4C /* TextMethodClass.m */; };
+		AD5795FF1C8983D40085ED4C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795FE1C8983D40085ED4C /* LoginViewController.m */; };
 		ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111B1C6F15AB003616F3 /* APIGetClass.m */; };
 		ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC3111D1C6F15AB003616F3 /* APIPostClass.m */; };
 		ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC311211C6F15B5003616F3 /* AlertClass.m */; };
@@ -172,7 +172,6 @@
 		773D01C21C7A390300307174 /* OrderTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeView.h; sourceTree = "<group>"; };
 		773D01C31C7A390300307174 /* OrderTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		7742CB531C63965F00515DDD /* L.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = L.m; sourceTree = "<group>"; };
 		774A51C11C75F0F900BDEE83 /* UNderRepairDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNderRepairDetailsController.h; sourceTree = "<group>"; };
 		774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNderRepairDetailsController.m; sourceTree = "<group>"; };
 		774A51C41C75FA2700BDEE83 /* UnderRepairDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairDetailsView.h; sourceTree = "<group>"; };
@@ -242,6 +241,7 @@
 		AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRechabilityMonitor.m; sourceTree = "<group>"; };
 		AD5795FB1C8977870085ED4C /* TextMethodClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMethodClass.h; sourceTree = "<group>"; };
 		AD5795FC1C8977870085ED4C /* TextMethodClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMethodClass.m; sourceTree = "<group>"; };
+		AD5795FE1C8983D40085ED4C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		ADC3111A1C6F15AB003616F3 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		ADC3111B1C6F15AB003616F3 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		ADC3111C1C6F15AB003616F3 /* APIPostClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIPostClass.h; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 				772043E41C649557001F787F /* LoginView.h */,
 				772043E51C649557001F787F /* LoginView.m */,
 				7742CB521C63965F00515DDD /* LoginViewController.h */,
-				7742CB531C63965F00515DDD /* L.m */,
+				AD5795FE1C8983D40085ED4C /* LoginViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -798,7 +798,6 @@
 				778AE8FD1C8208EE000C75C9 /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				778AE8FE1C8208EE000C75C9 /* UIImage+ImageEffects.m in Sources */,
 				ADC3111E1C6F15AB003616F3 /* APIGetClass.m in Sources */,
-				7742CB541C63965F00515DDD /* L.m in Sources */,
 				ADC311281C6F160E003616F3 /* UserModel.xcdatamodeld in Sources */,
 				77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */,
 				AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */,
@@ -821,6 +820,7 @@
 				7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
+				AD5795FF1C8983D40085ED4C /* LoginViewController.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				771003811C838A4700B78F18 /* KYPullToCurveVeiw.m in Sources */,

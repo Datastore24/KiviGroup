@@ -21,6 +21,8 @@
 #import "AlertClass.h"
 #import "TextMethodClass.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import <AFNetworking/AFNetworking.h>
+#import "NetworkRechabilityMonitor.h"
 
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -65,6 +67,25 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 - (void) viewDidLoad
 {
 #pragma mark - initialization
+    
+    //проверка интернет соединения --------------------------
+    self.isNoInternet = 0;
+    [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %ld", (long)status);
+        if(status == 0){
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
+            self.isNoInternet = 1;
+            NSLog(@"НЕТ ИНТЕРНЕТА");
+        }else{
+            if(self.isNoInternet == 1){
+                [self loadMoreDialog];
+            }
+            NSLog(@"ЕСТЬ ИНТЕРНЕТ");
+            [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];
+        }
+    }];
+    //
     
     isBool = YES;
     customHeight = 0.f;
@@ -140,8 +161,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
         
      //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-        [NSTimer scheduledTimerWithTimeInterval:7.0f
-                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+        //[NSTimer scheduledTimerWithTimeInterval:7.0f
+          //                                   target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
         
 
         
