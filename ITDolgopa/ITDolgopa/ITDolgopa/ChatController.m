@@ -19,6 +19,7 @@
 #import "BBlock.h"
 #import "ParseDate.h"
 #import "AlertClass.h"
+#import "TextMethodClass.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 
 
@@ -377,6 +378,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     for (int i = 0; i < array.count; i++) {
         
         NSDictionary * dictArrey = [array objectAtIndex:i];
+        NSString * readyMessage = [TextMethodClass stringByStrippingHTML:[dictArrey objectForKey:@"message"]];
         
         //Лейбл даты-------------------------------------------------
         
@@ -388,7 +390,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         testLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.mainScrollView.frame.size.width - 200, 40)];
         testLabel.numberOfLines = 0;
         testLabel.backgroundColor = [UIColor clearColor];
-        testLabel.text = [dictArrey objectForKey:@"message"];
+        testLabel.text = readyMessage;
         testLabel.textColor = [UIColor whiteColor];
         testLabel.font = [UIFont fontWithName:FONTLITE size:12];
         [testLabel sizeToFit];
