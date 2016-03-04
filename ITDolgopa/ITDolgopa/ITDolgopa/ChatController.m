@@ -600,6 +600,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         
         CGRect thePosition =  CGRectMake([[datePostionInfoFirst objectForKey:@"positionX"] floatValue],[[datePostionInfoFirst objectForKey:@"positionY"] floatValue], 100, 40);
         
+//        NSLog(@"%f",scrollView.contentOffset.y);
+//        if(scrollView.contentOffset.y == 0.0f){
+//            NSLog(@"НАЧАЛО");
+//            scrollView.scrollEnabled = NO;
+//        }
+//        
 
         CGRect container = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, scrollView.frame.size.width, scrollView.frame.size.height);
         if(CGRectIntersectsRect(thePosition, container))
