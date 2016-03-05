@@ -58,6 +58,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     NSMutableArray * arrayButtonsPush; //Массив кнопок
     NSMutableArray * arrayMessagePush; //Массив отправленных сообщений
     NSInteger pushTag;
+    
+    
+    CGFloat testFloat;
 
     
 
@@ -108,7 +111,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     //Скрытие клавиатуры тапом----------------------------------
     UITapGestureRecognizer * tapOnBackground = [[UITapGestureRecognizer alloc]
                                                 initWithTarget:self action:@selector(tapOnBackgroundAction)];
-    [self.mainScrollView addGestureRecognizer:tapOnBackground];
+    [self.view addGestureRecognizer:tapOnBackground];
 
 
     
@@ -161,8 +164,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
         
      //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-        //[NSTimer scheduledTimerWithTimeInterval:7.0f
-          //                                   target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
         
 
         
@@ -581,10 +584,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 20 + customHeight);
 //    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
     
-    if (!load) {
+
+    NSLog(@"testFloat %f", testFloat);
+    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
+    
+    
+
+    
+    if (!load || testFloat == self.mainScrollView.contentOffset.y) {
         self.mainScrollView.contentOffset =
         CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
+        
+        testFloat = self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height;
     }
+
     
 
 //    }
@@ -596,6 +609,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     for (NSInteger i=self.arrayDate.count-1; i>=0; i--) {
         NSDictionary * datePostionInfoFirst = [self.arrayDate objectAtIndex:i];
+        
         
         
         CGRect thePosition =  CGRectMake([[datePostionInfoFirst objectForKey:@"positionX"] floatValue],[[datePostionInfoFirst objectForKey:@"positionY"] floatValue], 100, 40);
@@ -618,6 +632,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             }
         }  
     }
+    
+    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
+    
 }
 
 
