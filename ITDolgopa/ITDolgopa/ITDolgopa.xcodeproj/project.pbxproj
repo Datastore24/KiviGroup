@@ -42,6 +42,9 @@
 		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
 		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
 		773D01C41C7A390300307174 /* OrderTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D01C31C7A390300307174 /* OrderTimeView.m */; };
+		7742E9871C8AD8CE000EB2F7 /* SharesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742E9861C8AD8CE000EB2F7 /* SharesController.m */; };
+		7742E98A1C8AD8E2000EB2F7 /* SharesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742E9891C8AD8E2000EB2F7 /* SharesView.m */; };
+		7742E98E1C8AE299000EB2F7 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 7742E98D1C8AE299000EB2F7 /* box.png */; };
 		774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */; };
 		774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 774A51C51C75FA2700BDEE83 /* UnderRepairDetailsView.m */; };
 		7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7782F9EB1C6D2CA400EC5477 /* SFUIText-Bold.otf */; };
@@ -87,7 +90,10 @@
 		77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA55971C7B3EE80018F979 /* CallMassterController.m */; };
 		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
+		77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */; };
+		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
+		77DFE11D1C8D8DAA00138C50 /* developImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE11C1C8D8DAA00138C50 /* developImage.png */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
 		AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F61C86BE9A0085ED4C /* ParseDate.m */; };
 		AD5795FA1C87428F0085ED4C /* NetworkRechabilityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */; };
@@ -172,6 +178,11 @@
 		773D01C21C7A390300307174 /* OrderTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeView.h; sourceTree = "<group>"; };
 		773D01C31C7A390300307174 /* OrderTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7742E9851C8AD8CE000EB2F7 /* SharesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesController.h; sourceTree = "<group>"; };
+		7742E9861C8AD8CE000EB2F7 /* SharesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesController.m; sourceTree = "<group>"; };
+		7742E9881C8AD8E2000EB2F7 /* SharesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesView.h; sourceTree = "<group>"; };
+		7742E9891C8AD8E2000EB2F7 /* SharesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesView.m; sourceTree = "<group>"; };
+		7742E98D1C8AE299000EB2F7 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		774A51C11C75F0F900BDEE83 /* UNderRepairDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNderRepairDetailsController.h; sourceTree = "<group>"; };
 		774A51C21C75F0F900BDEE83 /* UNderRepairDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNderRepairDetailsController.m; sourceTree = "<group>"; };
 		774A51C41C75FA2700BDEE83 /* UnderRepairDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderRepairDetailsView.h; sourceTree = "<group>"; };
@@ -230,8 +241,13 @@
 		77BA559A1C7B3F010018F979 /* CallMasterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMasterView.m; sourceTree = "<group>"; };
 		77BAB0251C7903D0009F530B /* OrderTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeController.h; sourceTree = "<group>"; };
 		77BAB0261C7903D0009F530B /* OrderTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeController.m; sourceTree = "<group>"; };
+		77C3A4841C8B3C9A0040BC77 /* DevelopersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersController.h; sourceTree = "<group>"; };
+		77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersController.m; sourceTree = "<group>"; };
+		77C3A4871C8B3CAD0040BC77 /* DevelopersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersView.h; sourceTree = "<group>"; };
+		77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersView.m; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		77DFE11C1C8D8DAA00138C50 /* developImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = developImage.png; sourceTree = "<group>"; };
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
 		77ED589F1C8036D00066FCA9 /* ChatCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellView.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,6 +389,35 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		7742E9841C8AD8AC000EB2F7 /* Shares */ = {
+			isa = PBXGroup;
+			children = (
+				7742E98D1C8AE299000EB2F7 /* box.png */,
+				7742E9851C8AD8CE000EB2F7 /* SharesController.h */,
+				7742E9861C8AD8CE000EB2F7 /* SharesController.m */,
+				7742E9881C8AD8E2000EB2F7 /* SharesView.h */,
+				7742E9891C8AD8E2000EB2F7 /* SharesView.m */,
+			);
+			name = Shares;
+			sourceTree = "<group>";
+		};
+		7742E98C1C8AD923000EB2F7 /* AdditionalСlasses */ = {
+			isa = PBXGroup;
+			children = (
+				AD5795FB1C8977870085ED4C /* TextMethodClass.h */,
+				AD5795FC1C8977870085ED4C /* TextMethodClass.m */,
+				AD5795F81C87428F0085ED4C /* NetworkRechabilityMonitor.h */,
+				AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */,
+				ADC311201C6F15B5003616F3 /* AlertClass.h */,
+				ADC311211C6F15B5003616F3 /* AlertClass.m */,
+				ADC311231C6F15E4003616F3 /* SingleTone.h */,
+				ADC311241C6F15E4003616F3 /* SingleTone.m */,
+				ADC57F051C71E40500F55716 /* FontSizeChanger.h */,
+				ADC57F061C71E40500F55716 /* FontSizeChanger.m */,
+			);
+			name = "AdditionalСlasses";
+			sourceTree = "<group>";
+		};
 		774A51BD1C75EE9900BDEE83 /* UnderRepairDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +543,18 @@
 			name = OrderTime;
 			sourceTree = "<group>";
 		};
+		77C3A4831C8B3C790040BC77 /* Developers */ = {
+			isa = PBXGroup;
+			children = (
+				77DFE11C1C8D8DAA00138C50 /* developImage.png */,
+				77C3A4841C8B3C9A0040BC77 /* DevelopersController.h */,
+				77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */,
+				77C3A4871C8B3CAD0040BC77 /* DevelopersView.h */,
+				77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */,
+			);
+			name = Developers;
+			sourceTree = "<group>";
+		};
 		77DA31011C6DF2C7006E0C44 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +615,8 @@
 			children = (
 				778AE9011C82198A000C75C9 /* ImageAPI */,
 				778AE8EB1C8208CC000C75C9 /* Caregory */,
+				77C3A4831C8B3C790040BC77 /* Developers */,
+				7742E9841C8AD8AC000EB2F7 /* Shares */,
 				77006CF91C7F149D0069FAC6 /* Chat */,
 				77BA55951C7B3EC60018F979 /* CallMaster */,
 				77BAB0241C7903A7009F530B /* OrderTime */,
@@ -571,20 +630,11 @@
 				7705C01C1C730334000CA333 /* Menu */,
 				772043E71C649561001F787F /* Login */,
 				77DA31011C6DF2C7006E0C44 /* Registration */,
+				7742E98C1C8AD923000EB2F7 /* AdditionalСlasses */,
 				ADFBDCDB1C5F6C9F00BCC486 /* AppDelegate.h */,
 				ADFBDCDC1C5F6C9F00BCC486 /* AppDelegate.m */,
-				AD5795FB1C8977870085ED4C /* TextMethodClass.h */,
-				AD5795FC1C8977870085ED4C /* TextMethodClass.m */,
-				AD5795F81C87428F0085ED4C /* NetworkRechabilityMonitor.h */,
-				AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */,
 				ADFBDCDE1C5F6C9F00BCC486 /* ViewController.h */,
 				ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */,
-				ADC311201C6F15B5003616F3 /* AlertClass.h */,
-				ADC311211C6F15B5003616F3 /* AlertClass.m */,
-				ADC311231C6F15E4003616F3 /* SingleTone.h */,
-				ADC311241C6F15E4003616F3 /* SingleTone.m */,
-				ADC57F051C71E40500F55716 /* FontSizeChanger.h */,
-				ADC57F061C71E40500F55716 /* FontSizeChanger.m */,
 				ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */,
 				ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */,
 				ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */,
@@ -686,6 +736,7 @@
 			files = (
 				7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */,
 				7705C0351C7330B0000CA333 /* chat.png in Resources */,
+				77DFE11D1C8D8DAA00138C50 /* developImage.png in Resources */,
 				7782FA031C6D2CBF00EC5477 /* SFUIText-BoldG1.otf in Resources */,
 				7705C0371C7330B0000CA333 /* akcii.png in Resources */,
 				7705C0341C7330B0000CA333 /* sait.png in Resources */,
@@ -695,6 +746,7 @@
 				7782FA071C6D2CBF00EC5477 /* SFUIText-BoldItalicG2.otf in Resources */,
 				7782FA081C6D2CBF00EC5477 /* SFUIText-BoldItalicG3.otf in Resources */,
 				7782FA091C6D2CBF00EC5477 /* SFUIText-Heavy.otf in Resources */,
+				7742E98E1C8AE299000EB2F7 /* box.png in Resources */,
 				7782FA0A1C6D2CBF00EC5477 /* SFUIText-HeavyItalic.otf in Resources */,
 				7782FA0B1C6D2CBF00EC5477 /* SFUIText-Italic.otf in Resources */,
 				7782FA0C1C6D2CBF00EC5477 /* SFUIText-ItalicG1.otf in Resources */,
@@ -819,6 +871,8 @@
 				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
 				7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
+				77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */,
+				77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */,
 				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
 				AD5795FF1C8983D40085ED4C /* LoginViewController.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
@@ -828,8 +882,10 @@
 				778AE8FF1C8208EE000C75C9 /* UIImage+Resize.m in Sources */,
 				77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */,
 				77031BBB1C786446005F6610 /* BalanceView.m in Sources */,
+				7742E9871C8AD8CE000EB2F7 /* SharesController.m in Sources */,
 				AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
+				7742E98A1C8AD8E2000EB2F7 /* SharesView.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,

@@ -558,7 +558,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [cellView addSubview:viewSectionTable];
         }else{
             
-            localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 60, customView.frame.origin.y - 5, 40, 40)];
+            localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 45, customView.frame.origin.y - 5, 40, 40)];
             localImageView.backgroundColor = [UIColor whiteColor];
             localImageView.layer.cornerRadius = 20.0;
             localImageView.clipsToBounds = NO;

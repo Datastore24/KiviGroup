@@ -163,6 +163,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="rp6-YV-6L9" kind="custom" customClass="SWRevealViewControllerSegue" id="4Mc-7h-xYJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" rowHeight="30" id="wNj-kW-DjV">
                                         <rect key="frame" x="0.0" y="148" width="320" height="30"/>
@@ -224,7 +227,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="4xl-uM-2Gr" kind="custom" customClass="SWRevealViewControllerSegue" id="GgY-WI-CZu"/>
+                                            <segue destination="4xl-uM-2Gr" kind="custom" customClass="SWRevealViewControllerSegue" id="z9F-qV-PkS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell8" rowHeight="30" id="KJW-2i-pRr">
@@ -262,6 +265,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="c5i-LC-WGc" kind="custom" customClass="SWRevealViewControllerSegue" id="CaC-LB-JLV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell10" rowHeight="234" id="B6w-88-aHy">
                                         <rect key="frame" x="0.0" y="298" width="320" height="234"/>
@@ -441,7 +447,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPr-UB-5LO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="-1136"/>
+            <point key="canvasLocation" x="1935" y="-1136"/>
+        </scene>
+        <!--Shares Controller-->
+        <scene sceneID="xQK-wS-cPg">
+            <objects>
+                <viewController id="rp6-YV-6L9" customClass="SharesController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wh5-AH-HfO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gwj-IO-Ukw">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="fM6-1M-dRk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="fM6-1M-dRk" id="dHd-DS-S1B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ntn-ak-eiL" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2359" y="-1136"/>
+        </scene>
+        <!--Developers Controller-->
+        <scene sceneID="eDP-Di-Rc4">
+            <objects>
+                <viewController id="c5i-LC-WGc" customClass="DevelopersController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O4j-QB-vUD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ibR-oC-1XX">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="HAD-Iu-mnP"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="HAD-Iu-mnP" id="L5X-vh-fN8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gK4-JI-TFd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2768" y="-1136"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
