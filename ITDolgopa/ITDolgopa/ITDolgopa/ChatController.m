@@ -596,6 +596,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
                 viewSectionTable.alpha = 0;
             }
+            if (![dateTextNow isEqualToString:stringDate]){
+                viewSectionTable.alpha = 1;
+            }
             [cellView addSubview:viewSectionTable];
         }else{
             
@@ -605,6 +608,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             localImageView.clipsToBounds = NO;
             if ([messageType isEqualToString: [dictArrey objectForKey:@"message_type"]]) {
                 localImageView.alpha = 0;
+            }
+            if (![dateTextNow isEqualToString:stringDate]){
+                localImageView.alpha = 1;
             }
             [cellView addSubview:localImageView];
             
@@ -619,6 +625,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         }
         dateTextNow = stringDate;
         messageType = [dictArrey objectForKey:@"message_type"];
+
     }
 
     
