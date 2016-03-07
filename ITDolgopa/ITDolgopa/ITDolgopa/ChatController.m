@@ -425,11 +425,52 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
             [self.mainScrollView addSubview:cellView];
             customHeight = customHeight + (testLabel.frame.size.height + 40);
+            
+            if (![dateTextNow isEqualToString:stringDate]) {
+                
+                
+                cellView.frame = CGRectMake(0, customHeight + 20, self.view.frame.size.width, testLabel.frame.size.height + 50);
+                customHeight = customHeight + (testLabel.frame.size.height + 50);
+                
+                
+                UILabel * labelDate = [[UILabel alloc] initWithFrame:CGRectMake(0, - 50, self.view.frame.size.width, 20)];
+                
+                
+                ParseDate * parseDate =[[ParseDate alloc] init];
+                if([stringDate isEqual:[parseDate dateFormatToDay]]){
+                    labelDate.text = @"Cегодня";
+                }else if([stringDate isEqual:[parseDate dateFormatToYesterDay]]){
+                    labelDate.text = @"Вчера";
+                }else if([stringDate isEqual:[parseDate dateFormatToDayBeforeYesterday]]){
+                    labelDate.text = @"Позавчера";
+                }else{
+                    labelDate.text = stringDate;
+                }
+                
+                
+                labelDate.textColor = [UIColor whiteColor];
+                labelDate.textAlignment = NSTextAlignmentCenter;
+                [cellView addSubview:labelDate];
+                
+                
+                
+            }
+            
+            
+            
         } else {
             cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 40, self.view.frame.size.width, testLabel.frame.size.height + 70)];
             customHeight = customHeight + (testLabel.frame.size.height + 70);
             
+            
+            NSLog(@"dateTextNow %@", dateTextNow);
+            NSLog(@"stringDate %@", stringDate);
+            NSLog(@"* * * * * * * * * * * * * * * ");
+            
+            
             if (![dateTextNow isEqualToString:stringDate]) {
+                
+                
                 cellView.frame = CGRectMake(0, customHeight + 20, self.view.frame.size.width, testLabel.frame.size.height + 50);
                 customHeight = customHeight + (testLabel.frame.size.height + 50);
                 
@@ -447,7 +488,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                 }else{
                     labelDate.text = stringDate;
                 }
-                
+            
                 
                 labelDate.textColor = [UIColor whiteColor];
                 labelDate.textAlignment = NSTextAlignmentCenter;
@@ -639,7 +680,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         }  
     }
     
-    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
+//    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
     
 }
 
