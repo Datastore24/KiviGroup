@@ -28,6 +28,7 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - Motis (~> 1.3.0)
   - SCLAlertView-Objective-C
   - SDWebImage (~> 3.7)
+  - SVPullToRefresh
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -42,5 +44,6 @@ SPEC CHECKSUMS:
   Motis: a5b1f6aa29ad14cd64e27c4fe15d9805c18c162f
   SCLAlertView-Objective-C: de137408b04f3587551fa98b876b3cbc612cee79
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
 COCOAPODS: 0.39.0
