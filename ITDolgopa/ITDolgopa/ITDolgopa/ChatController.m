@@ -404,7 +404,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         NSDictionary * dictArrey = [array objectAtIndex:i];
         NSString * readyMessage = [TextMethodClass stringByStrippingHTML:[dictArrey objectForKey:@"message"]];
         
-        //Лейбл даты-------------------------------------------------
+    //Лейбл даты-------------------------------------------------
         
         NSString * stringDateAll = [dictArrey objectForKey:@"created"];
         NSArray * stringDateAllArray = [stringDateAll componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -451,26 +451,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                 labelDate.textColor = [UIColor whiteColor];
                 labelDate.textAlignment = NSTextAlignmentCenter;
                 [cellView addSubview:labelDate];
-                
-                
-                
             }
-            
-            
-            
         } else {
             cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 40, self.view.frame.size.width, testLabel.frame.size.height + 70)];
             customHeight = customHeight + (testLabel.frame.size.height + 70);
             
-            
             NSLog(@"dateTextNow %@", dateTextNow);
             NSLog(@"stringDate %@", stringDate);
             NSLog(@"* * * * * * * * * * * * * * * ");
-            
-            
             if (![dateTextNow isEqualToString:stringDate]) {
-                
-                
                 cellView.frame = CGRectMake(0, customHeight + 20, self.view.frame.size.width, testLabel.frame.size.height + 50);
                 customHeight = customHeight + (testLabel.frame.size.height + 50);
                 
@@ -493,11 +482,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
                 labelDate.textColor = [UIColor whiteColor];
                 labelDate.textAlignment = NSTextAlignmentCenter;
                 [cellView addSubview:labelDate];
-                
-                
-                
+                   
             }
-
             [self.mainScrollView addSubview:cellView];
             UILabel * labelFIO = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 195 / 2, - 25, 220, 20)];
             labelFIO.text = [dictArrey objectForKey:@"fio"];
