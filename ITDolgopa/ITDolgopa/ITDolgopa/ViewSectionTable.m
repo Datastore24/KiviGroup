@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(view.frame.origin.x - 45, view.frame.origin.y - 5, 40, 40);
+        self.frame = CGRectMake(view.frame.origin.x - 50, view.frame.origin.y - 5, 40, 40);
         self.layer.cornerRadius = 20.0;
 //        self.layer.shadowColor = [UIColor lightGrayColor].CGColor;
 //        self.layer.shadowOffset = CGSizeMake(3, 3);
