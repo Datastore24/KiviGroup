@@ -276,14 +276,14 @@
     
     
         [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-           NSLog(@"ddddddddd %@", response);
+//           NSLog(@"ddddddddd %@", response);
             
             
             NSDictionary * responseCheckInfo = (NSDictionary*)response;
             
             if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                 [self showLoginWith:YES];
-                NSLog(@"FIO %@",[responseInfo objectForKey:@"contr_fio"]);
+//                NSLog(@"FIO %@",[responseInfo objectForKey:@"contr_fio"]);
                 
                 [[SingleTone sharedManager] setPhone:[responseCheckInfo objectForKey:@"contr_phone"]];
                 [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];

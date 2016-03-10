@@ -98,6 +98,13 @@
 //        NSLog(@"Другие ячейки");
     }
     
+    
+    if (indexPath.row == 7) {
+        
+        //Метод перехода на сайт производить тут !!!!!
+        NSLog(@"Перейти на сайт");
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
