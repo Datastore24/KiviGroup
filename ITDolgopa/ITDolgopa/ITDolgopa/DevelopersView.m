@@ -30,7 +30,7 @@
         buttonCall.center = mainPoint;
         buttonCall.layer.cornerRadius = 20.f;
         buttonCall.backgroundColor = [UIColor colorWithHexString:@"00a552"];
-        [buttonCall setTitle:@"Позвонить в сервисный центр" forState:UIControlStateNormal];
+        [buttonCall setTitle:@"Позвонить в KiviLab" forState:UIControlStateNormal];
         [buttonCall setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonCall.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
         [buttonCall addTarget:self action:@selector(buttonCallAction) forControlEvents:UIControlEventTouchUpInside];

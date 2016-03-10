@@ -64,7 +64,7 @@
                     viewScroll.backgroundColor = [UIColor colorWithHexString:MAINBACKGROUNDCOLOR];
                     [_scrollView addSubview:viewScroll];
                     //Текст акции----------------
-                    UILabel * labelTextView = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, view.frame.size.width - 40, 50)];
+                    UILabel * labelTextView = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, view.frame.size.width - 40, 150)];
                     labelTextView.numberOfLines = 0;
                     labelTextView.backgroundColor = [UIColor clearColor];
                     labelTextView.text = [dictArray objectForKey:@"promo_text"];
