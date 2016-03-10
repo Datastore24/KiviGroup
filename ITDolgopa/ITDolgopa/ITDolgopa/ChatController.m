@@ -61,6 +61,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     
     CGFloat testFloat;
+    CGFloat mainFloat;
 
     
 
@@ -588,7 +589,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [cellView addSubview:viewSectionTable];
         }else{
             
-            localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 45, customView.frame.origin.y - 5, 40, 40)];
+            localImageView = [[UIImageView alloc] initWithFrame:CGRectMake (customView.frame.origin.x - 50, customView.frame.origin.y - 5, 40, 40)];
             localImageView.backgroundColor = [UIColor whiteColor];
             localImageView.layer.cornerRadius = 20.0;
             localImageView.clipsToBounds = NO;
@@ -611,30 +612,35 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         }
         dateTextNow = stringDate;
         messageType = [dictArrey objectForKey:@"message_type"];
+        
+        mainFloat = cellView.frame.size.height;
 
     }
-
     
     self.mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 20 + customHeight);
-//    if (self.mainScrollView.contentSize.height > self.mainScrollView.frame.size.height) {
     
-
-    NSLog(@"testFloat %f", testFloat);
-    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
+    testFloat = self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height - mainFloat;
     
-    
-
-    
-    if (!load || testFloat == self.mainScrollView.contentOffset.y) {
-        self.mainScrollView.contentOffset =
-        CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
+    if (load) {
         
-        testFloat = self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height;
+        NSLog(@"testFloat * * * * * * * * * * * * %f", testFloat);
+        NSLog(@"mainScrollView * * * * * * * * * * * * %f", self.mainScrollView.contentOffset.y);
+        
+        
+                if (self.mainScrollView.contentSize.height <= self.mainScrollView.frame.size.height || testFloat == self.mainScrollView.contentOffset.y) {
+                    self.mainScrollView.contentOffset =
+                    CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
+                }
+  
+    } else {
+
+            self.mainScrollView.contentOffset =
+            CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
+        
+        
     }
-
     
-
-//    }
+    
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -643,18 +649,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     for (NSInteger i=self.arrayDate.count-1; i>=0; i--) {
         NSDictionary * datePostionInfoFirst = [self.arrayDate objectAtIndex:i];
-        
-        
-        
         CGRect thePosition =  CGRectMake([[datePostionInfoFirst objectForKey:@"positionX"] floatValue],[[datePostionInfoFirst objectForKey:@"positionY"] floatValue], 100, 40);
-        
-//        NSLog(@"%f",scrollView.contentOffset.y);
-//        if(scrollView.contentOffset.y == 0.0f){
-//            NSLog(@"НАЧАЛО");
-//            scrollView.scrollEnabled = NO;
-//        }
-//        
-
         CGRect container = CGRectMake(scrollView.contentOffset.x, scrollView.contentOffset.y, scrollView.frame.size.width, scrollView.frame.size.height);
         if(CGRectIntersectsRect(thePosition, container))
         {
@@ -672,13 +667,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             }
         }  
     }
-    
-//    NSLog(@"mainScrollView %f", self.mainScrollView.contentOffset.y);
-    
 }
-
-
-
 #pragma mark - Buttons Methods
 
 //Действия кнопки отправить------------------------------
@@ -688,10 +677,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     if (textFildText.text.length != 0) {
         NSString * stringMessage = textFildText.text;
         NSMutableArray * arrayAddTextChat = [[NSMutableArray alloc] init];
-        
-      
 
-        
         //Создание даты-----------------------------------
         NSDate * date = [NSDate date];
         NSDateFormatter * inFormatDate = [[NSDateFormatter alloc] init];
