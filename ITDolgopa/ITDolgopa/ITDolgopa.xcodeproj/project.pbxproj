@@ -93,8 +93,13 @@
 		77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */; };
 		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
-		77DFE11D1C8D8DAA00138C50 /* developImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DFE11C1C8D8DAA00138C50 /* developImage.png */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
+		AD4759881C9217020065C9DB /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759831C9217020065C9DB /* iphone 4.png */; };
+		AD4759891C9217030065C9DB /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759841C9217020065C9DB /* iphone 5.png */; };
+		AD47598A1C9217030065C9DB /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759851C9217020065C9DB /* iphone 6 Plus_2.png */; };
+		AD47598B1C9217030065C9DB /* iphone 6 Plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759861C9217020065C9DB /* iphone 6 Plus.png */; };
+		AD47598C1C9217030065C9DB /* iphone 6.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759871C9217020065C9DB /* iphone 6.png */; };
+		AD4AC8431C9222EF00ABAC84 /* KiviLab_logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4AC8421C9222EF00ABAC84 /* KiviLab_logo2.png */; };
 		AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F61C86BE9A0085ED4C /* ParseDate.m */; };
 		AD5795FA1C87428F0085ED4C /* NetworkRechabilityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795F91C87428F0085ED4C /* NetworkRechabilityMonitor.m */; };
 		AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5795FC1C8977870085ED4C /* TextMethodClass.m */; };
@@ -114,7 +119,6 @@
 		ADFBDCE01C5F6C9F00BCC486 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */; };
 		ADFBDCE31C5F6C9F00BCC486 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */; };
 		ADFBDCE51C5F6C9F00BCC486 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */; };
-		ADFBDCE81C5F6C9F00BCC486 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFBDCE61C5F6C9F00BCC486 /* LaunchScreen.storyboard */; };
 		D770E58CD56108632511C89B /* libPods-ITDolgopa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */; };
 /* End PBXBuildFile section */
 
@@ -247,10 +251,15 @@
 		77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersView.m; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
-		77DFE11C1C8D8DAA00138C50 /* developImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = developImage.png; sourceTree = "<group>"; };
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
 		77ED589F1C8036D00066FCA9 /* ChatCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellView.m; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD4759831C9217020065C9DB /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
+		AD4759841C9217020065C9DB /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
+		AD4759851C9217020065C9DB /* iphone 6 Plus_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6 Plus_2.png"; sourceTree = "<group>"; };
+		AD4759861C9217020065C9DB /* iphone 6 Plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6 Plus.png"; sourceTree = "<group>"; };
+		AD4759871C9217020065C9DB /* iphone 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6.png"; sourceTree = "<group>"; };
+		AD4AC8421C9222EF00ABAC84 /* KiviLab_logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KiviLab_logo2.png; sourceTree = "<group>"; };
 		AD5795F51C86BE9A0085ED4C /* ParseDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseDate.h; sourceTree = "<group>"; };
 		AD5795F61C86BE9A0085ED4C /* ParseDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseDate.m; sourceTree = "<group>"; };
 		AD5795F81C87428F0085ED4C /* NetworkRechabilityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkRechabilityMonitor.h; sourceTree = "<group>"; };
@@ -284,7 +293,6 @@
 		ADFBDCDF1C5F6C9F00BCC486 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ADFBDCE21C5F6C9F00BCC486 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ADFBDCE71C5F6C9F00BCC486 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADFBDCE91C5F6C9F00BCC486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -546,7 +554,7 @@
 		77C3A4831C8B3C790040BC77 /* Developers */ = {
 			isa = PBXGroup;
 			children = (
-				77DFE11C1C8D8DAA00138C50 /* developImage.png */,
+				AD4AC8421C9222EF00ABAC84 /* KiviLab_logo2.png */,
 				77C3A4841C8B3C9A0040BC77 /* DevelopersController.h */,
 				77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */,
 				77C3A4871C8B3CAD0040BC77 /* DevelopersView.h */,
@@ -566,6 +574,18 @@
 				77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */,
 			);
 			name = Registration;
+			sourceTree = "<group>";
+		};
+		AD4759821C9216EC0065C9DB /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				AD4759831C9217020065C9DB /* iphone 4.png */,
+				AD4759841C9217020065C9DB /* iphone 5.png */,
+				AD4759851C9217020065C9DB /* iphone 6 Plus_2.png */,
+				AD4759861C9217020065C9DB /* iphone 6 Plus.png */,
+				AD4759871C9217020065C9DB /* iphone 6.png */,
+			);
+			name = Launch;
 			sourceTree = "<group>";
 		};
 		ADC311191C6F156B003616F3 /* API */ = {
@@ -613,6 +633,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				AD4759821C9216EC0065C9DB /* Launch */,
 				778AE9011C82198A000C75C9 /* ImageAPI */,
 				778AE8EB1C8208CC000C75C9 /* Caregory */,
 				77C3A4831C8B3C790040BC77 /* Developers */,
@@ -638,7 +659,6 @@
 				ADC311261C6F160E003616F3 /* UserModel.xcdatamodeld */,
 				ADFBDCE11C5F6C9F00BCC486 /* Main.storyboard */,
 				ADFBDCE41C5F6C9F00BCC486 /* Assets.xcassets */,
-				ADFBDCE61C5F6C9F00BCC486 /* LaunchScreen.storyboard */,
 				ADFBDCE91C5F6C9F00BCC486 /* Info.plist */,
 				ADFBDCD81C5F6C9F00BCC486 /* Supporting Files */,
 			);
@@ -734,9 +754,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD47598B1C9217030065C9DB /* iphone 6 Plus.png in Resources */,
 				7782FA021C6D2CBF00EC5477 /* SFUIText-Bold.otf in Resources */,
 				7705C0351C7330B0000CA333 /* chat.png in Resources */,
-				77DFE11D1C8D8DAA00138C50 /* developImage.png in Resources */,
 				7782FA031C6D2CBF00EC5477 /* SFUIText-BoldG1.otf in Resources */,
 				7705C0371C7330B0000CA333 /* akcii.png in Resources */,
 				7705C0341C7330B0000CA333 /* sait.png in Resources */,
@@ -745,12 +765,14 @@
 				7782FA061C6D2CBF00EC5477 /* SFUIText-BoldItalicG1.otf in Resources */,
 				7782FA071C6D2CBF00EC5477 /* SFUIText-BoldItalicG2.otf in Resources */,
 				7782FA081C6D2CBF00EC5477 /* SFUIText-BoldItalicG3.otf in Resources */,
+				AD4AC8431C9222EF00ABAC84 /* KiviLab_logo2.png in Resources */,
 				7782FA091C6D2CBF00EC5477 /* SFUIText-Heavy.otf in Resources */,
 				7742E98E1C8AE299000EB2F7 /* box.png in Resources */,
 				7782FA0A1C6D2CBF00EC5477 /* SFUIText-HeavyItalic.otf in Resources */,
 				7782FA0B1C6D2CBF00EC5477 /* SFUIText-Italic.otf in Resources */,
 				7782FA0C1C6D2CBF00EC5477 /* SFUIText-ItalicG1.otf in Resources */,
 				7782FA0D1C6D2CBF00EC5477 /* SFUIText-ItalicG2.otf in Resources */,
+				AD47598C1C9217030065C9DB /* iphone 6.png in Resources */,
 				7705C0361C7330B0000CA333 /* balans.png in Resources */,
 				7782FA0E1C6D2CBF00EC5477 /* SFUIText-ItalicG3.otf in Resources */,
 				7705C0311C7330B0000CA333 /* istoriya.png in Resources */,
@@ -762,6 +784,7 @@
 				7712447D1C6E01C5001AFB30 /* iconButtonReg.png in Resources */,
 				7782FA131C6D2CBF00EC5477 /* SFUIText-Regular.otf in Resources */,
 				7782FA141C6D2CBF00EC5477 /* SFUIText-RegularG1.otf in Resources */,
+				AD47598A1C9217030065C9DB /* iphone 6 Plus_2.png in Resources */,
 				7782FA151C6D2CBF00EC5477 /* SFUIText-RegularG2.otf in Resources */,
 				ADC57F041C6FDDEB00F55716 /* Glass90.png in Resources */,
 				7705C0301C7330B0000CA333 /* remont.png in Resources */,
@@ -769,6 +792,7 @@
 				7782FA161C6D2CBF00EC5477 /* SFUIText-RegularG3.otf in Resources */,
 				7782FA171C6D2CBF00EC5477 /* SFUIText-Semibold.otf in Resources */,
 				7782FA181C6D2CBF00EC5477 /* SFUIText-SemiboldItalic.otf in Resources */,
+				AD4759891C9217030065C9DB /* iphone 5.png in Resources */,
 				7705C03B1C7333A3000CA333 /* master.png in Resources */,
 				7782FA191C6D2CBF00EC5477 /* SFUIDisplay-Black.otf in Resources */,
 				7782FA1A1C6D2CBF00EC5477 /* SFUIDisplay-Bold.otf in Resources */,
@@ -781,7 +805,7 @@
 				7705C03C1C7333A3000CA333 /* vremya.png in Resources */,
 				7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */,
 				771028F81C6CD25800C77C04 /* Logo.png in Resources */,
-				ADFBDCE81C5F6C9F00BCC486 /* LaunchScreen.storyboard in Resources */,
+				AD4759881C9217020065C9DB /* iphone 4.png in Resources */,
 				7705C01B1C72FF42000CA333 /* iconUser.png in Resources */,
 				ADFBDCE51C5F6C9F00BCC486 /* Assets.xcassets in Resources */,
 				7712447F1C6E2BF9001AFB30 /* lockImage.png in Resources */,
@@ -914,14 +938,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		ADFBDCE61C5F6C9F00BCC486 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADFBDCE71C5F6C9F00BCC486 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1010,6 +1026,7 @@
 			baseConfigurationReference = 49F5514E5A16CD5DD0607A92 /* Pods-ITDolgopa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ITDolgopa/Info.plist;
@@ -1025,6 +1042,7 @@
 			baseConfigurationReference = 25BAB246A8C56568BD8E1483 /* Pods-ITDolgopa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ITDolgopa/Info.plist;

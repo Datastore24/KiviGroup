@@ -102,6 +102,9 @@
     if (indexPath.row == 7) {
         
         //Метод перехода на сайт производить тут !!!!!
+     
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.itdolgopa.ru"]];
+     
         NSLog(@"Перейти на сайт");
     }
     
