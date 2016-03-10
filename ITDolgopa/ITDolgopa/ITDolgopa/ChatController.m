@@ -413,6 +413,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         NSString * stringTime = [stringDateAllArray objectAtIndex:1];
         
         testLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, self.mainScrollView.frame.size.width - 200, 40)];
+        if ([[UIScreen mainScreen] bounds].size.height > 680) {
+            
+            
+            testLabel.frame = CGRectMake(10, 10, self.mainScrollView.frame.size.width - 240, 40);
+            
+        }
         testLabel.numberOfLines = 0;
         testLabel.backgroundColor = [UIColor clearColor];
         testLabel.text = readyMessage;
