@@ -76,7 +76,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     self.isNoInternet = 0;
     [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        NSLog(@"Reachability: %ld", (long)status);
+//        NSLog(@"Reachability: %ld", (long)status);
         if(status == 0){
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:YES];
             self.isNoInternet = 1;
@@ -176,7 +176,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     UIButton * sendButton = (UIButton*)[self.view viewWithTag:510];
     [sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
-    NSLog(@"ARRDATE %@",self.arrayDate);
+//    NSLog(@"ARRDATE %@",self.arrayDate);
 
     
 }
@@ -291,7 +291,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         if ([[responseConfermMessage objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [responseConfermMessage objectForKey:@"error_msg"]);
         } else if ([[responseConfermMessage objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"%@", responseConfermMessage);
+//            NSLog(@"%@", responseConfermMessage);
             
             NSString * stringBadge = [NSString stringWithFormat:@"%ld", [[responseConfermMessage objectForKey:@"badge"] integerValue]];
             
@@ -321,8 +321,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [pushButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             
         } else if ([[responseMessage objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"Сообщение доставленно");
-            NSLog(@"%@", responseMessage);
+//            NSLog(@"Сообщение доставленно");
+//            NSLog(@"%@", responseMessage);
             
             [pushButton setTitle:@"Отправленно" forState:UIControlStateNormal];
             [pushButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
@@ -348,7 +348,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             NSLog(@"Ошибка");
            
         } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
-             NSLog(@"%@", response);
+//             NSLog(@"%@", response);
 //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];
@@ -463,9 +463,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             cellView = [[ChatCellView alloc] initWhithFirstView:self.view andDate:nil andImagePhoto:nil andFrame:CGRectMake(0, customHeight + 40, self.view.frame.size.width, testLabel.frame.size.height + 70)];
             customHeight = customHeight + (testLabel.frame.size.height + 70);
             
-            NSLog(@"dateTextNow %@", dateTextNow);
-            NSLog(@"stringDate %@", stringDate);
-            NSLog(@"* * * * * * * * * * * * * * * ");
+//            NSLog(@"dateTextNow %@", dateTextNow);
+//            NSLog(@"stringDate %@", stringDate);
+//            NSLog(@"* * * * * * * * * * * * * * * ");
             if (![dateTextNow isEqualToString:stringDate]) {
                 cellView.frame = CGRectMake(0, customHeight + 20, self.view.frame.size.width, testLabel.frame.size.height + 50);
                 customHeight = customHeight + (testLabel.frame.size.height + 50);
@@ -629,8 +629,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     if (load) {
         
-        NSLog(@"testFloat * * * * * * * * * * * * %f", testFloat);
-        NSLog(@"mainScrollView * * * * * * * * * * * * %f", self.mainScrollView.contentOffset.y);
+//        NSLog(@"testFloat * * * * * * * * * * * * %f", testFloat);
+//        NSLog(@"mainScrollView * * * * * * * * * * * * %f", self.mainScrollView.contentOffset.y);
         
         
                 if (self.mainScrollView.contentSize.height <= self.mainScrollView.frame.size.height || testFloat == self.mainScrollView.contentOffset.y) {
