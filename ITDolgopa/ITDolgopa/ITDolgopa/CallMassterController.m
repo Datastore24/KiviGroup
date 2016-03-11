@@ -29,6 +29,7 @@
 {
     UIScrollView * mainScrollView;
     NSDictionary * dictResponse;
+    UIButton * buttonConferm;
 }
 
 - (void) viewDidLoad
@@ -90,7 +91,7 @@
     CallMasterView * callMasterView = [[CallMasterView alloc] initWithView:mainScrollView];
     [mainScrollView addSubview:callMasterView];
     
-    UIButton * buttonConferm = (UIButton*)[self.view viewWithTag:415];
+    buttonConferm = (UIButton*)[self.view viewWithTag:415];
     [buttonConferm addTarget:self action:@selector(buttonConfermAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -120,6 +121,8 @@
             [alert addButton:@"Ок" target:self selector:@selector(firstButton)];
             [alert showSuccess:self title:@"Внимание!!!" subTitle:@"Ваша заявка забронированна" closeButtonTitle:nil duration:0.f];
             
+            buttonConferm.userInteractionEnabled = YES;
+            
             
         }
     }];
@@ -131,11 +134,13 @@
     UILabel * labelDataAction = (UILabel*)[self.view viewWithTag:401];
     UILabel * labelTimeAction = (UILabel*)[self.view viewWithTag:410];
     UITextField * textFieldProblem = (UITextField*)[self.view viewWithTag:413];
+    buttonConferm.userInteractionEnabled = NO;
     
     if (textFieldProblem.text.length != 0) {
         [self pushOrderTimeWithPhone:[[SingleTone sharedManager] phone] andDate:labelDataAction.text andTime:labelTimeAction.text andAdres:textFieldProblem.text];
     } else {
         [AlertClass showAlertViewWithMessage:@"Введите адрес" view:self];
+        buttonConferm.userInteractionEnabled = YES;
     }
     
     
