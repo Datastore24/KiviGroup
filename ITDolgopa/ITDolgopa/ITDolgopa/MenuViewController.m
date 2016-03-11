@@ -36,6 +36,10 @@
                                      @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10", nil];
     icons = [NSArray arrayWithObjects:@"remont.png", @"istoriya.png", @"balans.png", @"akcii.png",
                             @"vremya.png", @"master.png", @"chat.png", @"sait.png", @"razrabotchik", @"", nil];
+    
+    //Убираем полосы разделяющие ячейки------------------------------
+    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.mainTableView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - UITableViewDataSource
