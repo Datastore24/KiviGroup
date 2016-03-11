@@ -89,6 +89,7 @@
 		778AE9041C82199D000C75C9 /* ViewSectionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE9031C82199D000C75C9 /* ViewSectionTable.m */; };
 		77BA55981C7B3EE80018F979 /* CallMassterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA55971C7B3EE80018F979 /* CallMassterController.m */; };
 		77BA559B1C7B3F010018F979 /* CallMasterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BA559A1C7B3F010018F979 /* CallMasterView.m */; };
+		77BA99971C92C25300F10FB5 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 77BA99961C92C25300F10FB5 /* ios */; };
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
 		77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */; };
 		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
@@ -243,6 +244,7 @@
 		77BA55971C7B3EE80018F979 /* CallMassterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMassterController.m; sourceTree = "<group>"; };
 		77BA55991C7B3F010018F979 /* CallMasterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallMasterView.h; sourceTree = "<group>"; };
 		77BA559A1C7B3F010018F979 /* CallMasterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallMasterView.m; sourceTree = "<group>"; };
+		77BA99961C92C25300F10FB5 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
 		77BAB0251C7903D0009F530B /* OrderTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeController.h; sourceTree = "<group>"; };
 		77BAB0261C7903D0009F530B /* OrderTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeController.m; sourceTree = "<group>"; };
 		77C3A4841C8B3C9A0040BC77 /* DevelopersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersController.h; sourceTree = "<group>"; };
@@ -540,6 +542,14 @@
 			name = CallMaster;
 			sourceTree = "<group>";
 		};
+		77BA99951C92C23F00F10FB5 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				77BA99961C92C25300F10FB5 /* ios */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		77BAB0241C7903A7009F530B /* OrderTime */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +643,7 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				77BA99951C92C23F00F10FB5 /* Icons */,
 				AD4759821C9216EC0065C9DB /* Launch */,
 				778AE9011C82198A000C75C9 /* ImageAPI */,
 				778AE8EB1C8208CC000C75C9 /* Caregory */,
@@ -774,6 +785,7 @@
 				7782FA0D1C6D2CBF00EC5477 /* SFUIText-ItalicG2.otf in Resources */,
 				AD47598C1C9217030065C9DB /* iphone 6.png in Resources */,
 				7705C0361C7330B0000CA333 /* balans.png in Resources */,
+				77BA99971C92C25300F10FB5 /* ios in Resources */,
 				7782FA0E1C6D2CBF00EC5477 /* SFUIText-ItalicG3.otf in Resources */,
 				7705C0311C7330B0000CA333 /* istoriya.png in Resources */,
 				7782FA0F1C6D2CBF00EC5477 /* SFUIText-Light.otf in Resources */,

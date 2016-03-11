@@ -95,16 +95,10 @@
     } else if (indexPath.row == 1) {
         [[SingleTone sharedManager] setTableChange:NO];
     } else {
-//        NSLog(@"Другие ячейки");
     }
     
-    
     if (indexPath.row == 7) {
-        
-        //Метод перехода на сайт производить тут !!!!!
-     
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.itdolgopa.ru"]];
-     
         NSLog(@"Перейти на сайт");
     }
     
@@ -112,7 +106,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (indexPath.row == 9)
     {
         return 153.f;
