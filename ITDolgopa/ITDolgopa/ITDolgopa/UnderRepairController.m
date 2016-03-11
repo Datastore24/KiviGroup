@@ -47,7 +47,6 @@
 {
 #pragma mark - initialization
     
-    
     //проверка интернет соединения --------------------------
     self.isNoInternet = 0;
         [NetworkRechabilityMonitor startNetworkReachabilityMonitoring];
@@ -63,7 +62,7 @@
             if(self.isNoInternet == 1){
                 arrayDevice = nil;
                 mainArray = [NSMutableArray new];
-               [self getDevicesWithPhone:[[SingleTone sharedManager] phone]];
+//               [self getDevicesWithPhone:[[SingleTone sharedManager] phone]];
             }
             NSLog(@"ЕСТЬ ИНТЕРНЕТ");
             [NetworkRechabilityMonitor showNoInternet:self.view andShow:NO];

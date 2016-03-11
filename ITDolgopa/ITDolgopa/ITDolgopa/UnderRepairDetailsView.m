@@ -209,7 +209,11 @@
         
         //Предоплата-----------------------
         UILabel * labelPrepayment = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width - 200, labelInTotal.frame.origin.y + labelInTotal.frame.size.height, 200, 20)];
-        labelPrepayment.text = [NSString stringWithFormat:@"Предоплата: %@ руб.", prepayment];
+        if (!prepayment) {
+            labelPrepayment.text = [NSString stringWithFormat:@"Предоплата: 0 руб."];
+        } else {
+            labelPrepayment.text = [NSString stringWithFormat:@"Предоплата: %@ руб.", prepayment];
+        }
         labelPrepayment.textColor = [UIColor whiteColor];
         labelPrepayment.font = [UIFont fontWithName:FONTLITE size:15];
         [self addSubview:labelPrepayment];

@@ -29,6 +29,7 @@
 {
     UIScrollView * mainScrollView;
     NSDictionary * dictResponse;
+    UIButton * buttonConferm;
 }
 
 - (void) viewDidLoad
@@ -88,7 +89,7 @@
     OrderTimeView * orderTimeView = [[OrderTimeView alloc] initWithView:mainScrollView];
     [mainScrollView addSubview:orderTimeView];
     
-    UIButton * buttonConferm = (UIButton*)[self.view viewWithTag:415];
+    buttonConferm = (UIButton*)[self.view viewWithTag:415];
     [buttonConferm addTarget:self action:@selector(buttonConfermAction) forControlEvents:UIControlEventTouchUpInside];   
 }
 
@@ -108,7 +109,6 @@
     [orderTimeGetClass getDataFromServerWithParams:dictParams method:@"wait_client" complitionBlock:^(id response) {
    
         dictResponse = (NSDictionary*) response;
-//        NSLog(@"ERROR %li",[[dictResponse objectForKey:@"error"] integerValue] );
         if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
             [AlertClass showAlertViewWithMessage:[dictResponse objectForKey:@"error_msg"] view:self];
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
@@ -117,8 +117,7 @@
             alert.customViewColor = [UIColor colorWithHexString:@"3038a0"];
             [alert addButton:@"Ок" target:self selector:@selector(firstButton)];
             [alert showSuccess:self title:@"Внимание!!!" subTitle:@"Ваша заявка забронированна" closeButtonTitle:nil duration:0.f];
-            
-
+            buttonConferm.userInteractionEnabled = YES;
         }        
     }];
 }
@@ -130,10 +129,13 @@
     UILabel * labelTimeAction = (UILabel*)[self.view viewWithTag:410];
     UITextField * textFieldProblem = (UITextField*)[self.view viewWithTag:413];
     
+    buttonConferm.userInteractionEnabled = NO;
+    
     if (textFieldProblem.text.length != 0) {
         [self pushOrderTimeWithPhone:[[SingleTone sharedManager] phone] andDate:labelDataAction.text andTime:labelTimeAction.text andProblem:textFieldProblem.text];
     } else {
         [AlertClass showAlertViewWithMessage:@"Опишите проблему" view:self];
+        buttonConferm.userInteractionEnabled = YES;
     }
     
 

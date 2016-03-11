@@ -114,7 +114,7 @@
     viewRegistration.alpha = 0;
     
     //ВРЕМЕННО
-    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:0.1f]; //Запуск проверки с паузой
+//    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:0.1f]; //Запуск проверки с паузой
     //
     
     if([authCoreDataClass showAllUsers].count>0){
@@ -156,7 +156,11 @@
                     [UIView animateWithDuration:0.3 animations:^{
                         UIView * mainViewSMS = (UIView*)[self.view viewWithTag:305];
                         CGRect rect = mainViewSMS.frame;
-                        rect.origin.x = rect.origin.x + 369;
+                        if (isiPhone5) {
+                            rect.origin.x = rect.origin.x + 352;
+                        } else {
+                           rect.origin.x = rect.origin.x + 369;
+                        }
                         mainViewSMS.frame = rect;
                     }];
                     [loadIndicator setHidden:YES];
@@ -192,7 +196,6 @@
     
     
     [self getInfo:textFieldPhone.text andSalt:textFieldSMS.text andDeviceToken:[[SingleTone sharedManager] deviceToken]  andBlock:^{
-//        NSLog(@"ERROR2: %@",[responseInfo objectForKey:@"error_msg"]);
         
         if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
             [authCoreDataClass updateUser:[responseInfo objectForKey:@"contr_fio"] andSalt:[responseInfo objectForKey:@"salt"] andPhone:[responseInfo objectForKey:@"contr_phone"] andServerId:[responseInfo objectForKey:@"contr_id"]];
@@ -200,6 +203,7 @@
             [[SingleTone sharedManager]setPhone:[responseInfo objectForKey:@"contr_phone"]];
             [[SingleTone sharedManager] setStringFIO:[responseInfo objectForKey:@"contr_fio"]];
             [self.navigationController pushViewController:detail animated:YES];
+            
         } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
             
             SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
@@ -266,10 +270,6 @@
 
 -(void) checkAuth
 {
-    
- 
-    
-    
     if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
         
@@ -300,6 +300,7 @@
             
             UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
             [self.navigationController pushViewController:detail animated:YES];
+            
         } else {
             NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
             
