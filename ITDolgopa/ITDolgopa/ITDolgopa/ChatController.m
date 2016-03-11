@@ -167,10 +167,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
         
      //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-        [NSTimer scheduledTimerWithTimeInterval:7.0f
-                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
-        
-
+//        [NSTimer scheduledTimerWithTimeInterval:7.0f
+//                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+//        
+//
         
     }];
     
@@ -351,6 +351,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
            
         } else if ([[self.dictResponse objectForKey:@"error"] integerValue] == 0) {
 //             NSLog(@"%@", response);
+            [self getAPIConfermMessageWithPhone:phone];
 //
             self.maxCount = [[self.dictResponse objectForKey:@"dialogs_count"] integerValue];
             self.dialogMaxID = [self.dictResponse objectForKey:@"max_id"];

@@ -267,47 +267,10 @@
 -(void) checkAuth
 {
     
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             /*userInfo.phone*/@"79885035228",@"phone",
-                             /*userInfo.salt*/@"Lcrvr", @"salt",
-
-                             @"TEST",@"device_token",
-                             nil];
-    
-    APIGetClass * getInfo = [[APIGetClass alloc] init];
+ 
     
     
-        [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-//           NSLog(@"ddddddddd %@", response);
-            
-            
-            NSDictionary * responseCheckInfo = (NSDictionary*)response;
-            
-            if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
-                [self showLoginWith:YES];
-//                NSLog(@"FIO %@",[responseInfo objectForKey:@"contr_fio"]);
-                
-                [[SingleTone sharedManager] setPhone:[responseCheckInfo objectForKey:@"contr_phone"]];
-                [[SingleTone sharedManager] setBillingBalance:[responseCheckInfo objectForKey:@"balance"]];
-                [[SingleTone sharedManager] setStringFIO:[responseCheckInfo objectForKey:@"contr_fio"]];
-                
-                
-                
-                
-                UnderRepairController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRepair"];
-                [self.navigationController pushViewController:detail animated:YES];
-            } else {
-                NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
-                
-                [self showLoginWith:YES];
-                
-            }
-            
-            
-        }];
-    
-    
-    /* if([authCoreDataClass showAllUsers].count>0){
+    if([authCoreDataClass showAllUsers].count>0){
     UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];
         
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -315,14 +278,12 @@
                              userInfo.salt, @"salt",
                              userInfo.deviceToken,@"device_token",
                              nil];
-        
-
+    
     
     APIGetClass * getInfo = [[APIGetClass alloc] init];
     
         if(userInfo.salt.length != 0 && userInfo.phone.length != 0){
     [getInfo getDataFromServerWithParams:params method:@"get_info" complitionBlock:^(id response) {
-        NSLog(@"ddddddddd %@", response);
 
         
         NSDictionary * responseCheckInfo = (NSDictionary*)response;
@@ -352,7 +313,7 @@
             [self showLoginWith:NO];
 
         }
-    }*/
+    }
 }
 
 -(void)showLoginWith:(BOOL) animation{
