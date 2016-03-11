@@ -96,6 +96,13 @@
     UIBarButtonItem *barButtonOrders = [[UIBarButtonItem alloc] initWithCustomView:buttonBalance];
     self.navigationItem.rightBarButtonItem = barButtonOrders;
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Назад"
+                                   style:UIBarButtonItemStylePlain
+                                   target:nil
+                                   action:nil];
+    self.navigationItem.backBarButtonItem=backButton;
+    
     //Задаем цвет бара----------------------------------------
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:MAINCOLORBUTTONLOGIN];
     [self.navigationController.navigationBar

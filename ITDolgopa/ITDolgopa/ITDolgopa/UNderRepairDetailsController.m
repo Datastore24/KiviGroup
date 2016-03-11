@@ -54,6 +54,7 @@
     self.navigationController.navigationBar.layer.cornerRadius=5;
     self.navigationController.navigationBar.clipsToBounds=YES;
     
+    
     //Кнопка бара--------------------------------------------
     NSInteger balance = [[[SingleTone sharedManager] billingBalance] integerValue];
     buttonBalance =  [UIButton buttonWithType:UIButtonTypeSystem];
