@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "UIColor+HexColor.h"
 #import "SWRevealViewController.h"
+#import "Macros.h"
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -18,18 +19,20 @@
 @implementation MenuViewController
 {
     NSArray * menu;
+    NSArray * nameCell;
 }
 
 #pragma mark - Initialization
 
 - (void) viewDidLoad
 {
-    self.view.backgroundColor = [UIColor colorWithHexString:@"373737"];
-    self.mainTableView.backgroundColor = nil;
+    self.view.backgroundColor = [UIColor blackColor];
+    self.mainTableView.backgroundColor = [UIColor lightGrayColor];
     self.mainTableView.scrollEnabled = NO;
     
     
-    menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", nil];
+    menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5", @"Cell6", @"Cell7", @"Cell8", @"Cell9", nil];
+    nameCell = [NSArray arrayWithObjects:@"ПРАВИЛА", @"ТРЕБОВАНИЯ", @"ЖЮРИ", @"ГАЛЕРЕЯ", @"ЗАЯВКА", nil];
     
     //Убираем полосы разделяющие ячейки------------------------------
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -48,14 +51,43 @@
     return [menu count];
 }
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * cellIdentifier = [menu objectAtIndex:indexPath.row];
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-
     cell.backgroundColor = nil;
+    
+    if (indexPath.row % 2 != 0) {
+        cell.backgroundColor = [UIColor blackColor];
+        cell.userInteractionEnabled = NO;
+    } else {
+        UIView * viewActiveCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width - 50, cell.frame.size.height)];
+        viewActiveCell.backgroundColor = [UIColor colorWithHexString:@"5d5d5d"];
+        [cell addSubview:viewActiveCell];
+        
+        UILabel * labelName = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, viewActiveCell.frame.size.width, viewActiveCell.frame.size.height)];
+        if (indexPath.row == 0) {
+            labelName.text = @"ПРАВИЛА";
+        }
+        if (indexPath.row == 2) {
+            labelName.text = @"ТРЕБОВАНИЯ";
+        }
+        if (indexPath.row == 4) {
+            labelName.text = @"ЖЮРИ";
+        }
+        if (indexPath.row == 6) {
+            labelName.text = @"ГАЛЕРЕЯ";
+        }
+        if (indexPath.row == 8) {
+            labelName.text = @"ЗАЯВКА";
+        }
+        labelName.textColor = [UIColor whiteColor];
+        labelName.textAlignment = NSTextAlignmentCenter;
+        labelName.font = [UIFont fontWithName:FONTREGULAR size:16];
+        [viewActiveCell addSubview:labelName];
+    }
+    
+    
     return cell;
 }
 
@@ -81,9 +113,14 @@
     
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//}
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row % 2 != 0) {
+       
+        return 10;
+        
+    } else {
+    return 90;
+}
+}
 @end
