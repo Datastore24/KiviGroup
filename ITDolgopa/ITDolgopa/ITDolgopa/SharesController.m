@@ -51,7 +51,7 @@
     
     [self getArraySharesWithBlock:^{
         
-//        NSLog(@"%@", arrayResponse);
+        NSLog(@"%@", arrayResponse);
         
         //Создание класса вью----------------------------------------
         SharesView * sharesView = [[SharesView alloc] initWithView:self.view andArray:arrayResponse];
@@ -73,7 +73,7 @@
         if ([[responseConferm objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [responseConferm objectForKey:@"error_msg"]);
         } else if ([[responseConferm objectForKey:@"error"] integerValue] == 0) {
-//            NSLog(@"Все хорошо");
+            NSLog(@"Все хорошо");
             arrayResponse = [NSArray arrayWithArray:[responseConferm objectForKey:@"promo_array"]];
         }
         

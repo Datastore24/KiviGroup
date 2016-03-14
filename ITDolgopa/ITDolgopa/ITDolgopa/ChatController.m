@@ -67,16 +67,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
     
 }
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (void) viewDidLoad
 {
 #pragma mark - initialization
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMoreDialogTest) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     //проверка интернет соединения --------------------------
     self.isNoInternet = 0;
@@ -171,6 +165,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
         self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
         
         [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
+        
+     //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
+//        [NSTimer scheduledTimerWithTimeInterval:7.0f
+//                                             target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+//        
+//
         
     }];
     
@@ -398,25 +398,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
     [self getAPIConfermMessageWithPhone:[[SingleTone sharedManager] phone]];
 }
-
-
-
--(void) loadMoreDialogTest{
-    [self getAPIMoreWithPhone:[[SingleTone sharedManager] phone] andMaxID:self.dialogMaxID andWithBlock:^{
-        
-        self.arrayDialog = [NSArray arrayWithArray:[self.dictResponse objectForKey:@"dialogs"]];
-        
-        [self loadViewWithArray:self.arrayDialog andUpdate:YES andLoad:NO andPush:NO];
-    
-    }];
-    
-    [self getAPIConfermMessageWithPhone:[[SingleTone sharedManager] phone]];
-    
-    self.mainScrollView.contentOffset = CGPointMake(0, self.mainScrollView.contentSize.height - self.mainScrollView.frame.size.height);
-}
-
-
-
 
 //Локальная загрузка сообщения-----------------------------------
 - (void) loadViewWithArray: (NSArray*) array andUpdate: (BOOL) update andLoad: (BOOL) load andPush: (BOOL) push

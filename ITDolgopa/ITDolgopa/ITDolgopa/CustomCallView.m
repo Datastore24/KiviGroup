@@ -137,12 +137,7 @@
         
         UILabel * labelPrepayAction = [[UILabel alloc] initWithFrame:
                                        CGRectMake(20 + labelPrepay.frame.size.width + 5, labelPPrice.frame.size.height + labelPPrice.frame.origin.y, 100, 40)];
-        if (!prepay) {
-            labelPrepayAction.text = @"0";
-        } else {
-            labelPrepayAction.text = prepay;
-        }
-    
+        labelPrepayAction.text = prepay;
         labelPrepayAction.textColor = [UIColor colorWithHexString:COLORLITELITEGRAY];
         labelPrepayAction.font = [UIFont fontWithName:FONTLITE size:[[fontSize objectForKey:@"sizeText"] intValue]];
         [labelPrepayAction sizeToFit];

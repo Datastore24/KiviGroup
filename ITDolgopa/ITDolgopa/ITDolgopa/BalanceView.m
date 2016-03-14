@@ -74,11 +74,7 @@
         
         UILabel * labelDolg = [[UILabel alloc] initWithFrame:
                                  CGRectMake(20, labelAllMoney.frame.size.height + labelAllMoney.frame.origin.y + 20, 100, 40)];
-        if ([inWork integerValue] > 0) {
-            labelDolg.text = @"Ваш баланс:";
-        } else {
-            labelDolg.text = @"Ваш долг:";
-        }
+        labelDolg.text = @"Ваш долг:";
         labelDolg.textColor = [UIColor colorWithHexString:COLORLITEGRAY];
         labelDolg.font = [UIFont fontWithName:FONTREGULAR size:[[fontSize objectForKey:@"sizeText"] intValue]];
         [labelDolg sizeToFit];

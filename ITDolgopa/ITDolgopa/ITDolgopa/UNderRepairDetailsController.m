@@ -156,7 +156,7 @@
         mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (underRepairDetailsView.frame.size.height + 300) + 100 * arrayJob.count);
         
         NSInteger toPay = 0;
-        toPay = numberInTotal - [[dictResponse objectForKey:@"inwork_prepay"]integerValue];
+        toPay = numberInTotal + [[dictResponse objectForKey:@"inwork_prepay"]integerValue];
         
         
         UnderRepairDetailsView * inTotal = [[UnderRepairDetailsView alloc] initWithCuntomFrame:CGRectMake(0, (underRepairDetailsView.frame.size.height + 100) + 100 * arrayJob.count, self.view.frame.size.width, 100) andInTotal:[NSString stringWithFormat:@"%ld", (long)numberInTotal] andPrepayment:[dictResponse objectForKey:@"inwork_prepay"] andToPay:[NSString stringWithFormat:@"%ld", (long)toPay] andView:self.view];
