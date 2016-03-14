@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06161C96ECB400BC3D61 /* SWRevealViewController.m */; };
+		770B061A1C96ECCD00BC3D61 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06191C96ECCD00BC3D61 /* MenuViewController.m */; };
+		770B061E1C96ED1900BC3D61 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */; };
 		771448DC1C96E2C3006CD98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448DB1C96E2C3006CD98E /* main.m */; };
 		771448DF1C96E2C3006CD98E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448DE1C96E2C3006CD98E /* AppDelegate.m */; };
 		771448E21C96E2C3006CD98E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448E11C96E2C3006CD98E /* ViewController.m */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770B06151C96ECB400BC3D61 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		770B06161C96ECB400BC3D61 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		770B06181C96ECCD00BC3D61 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		770B06191C96ECCD00BC3D61 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		770B061C1C96ED1900BC3D61 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		771448D71C96E2C3006CD98E /* mykamchatka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mykamchatka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		771448DB1C96E2C3006CD98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		771448DD1C96E2C3006CD98E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +87,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770B06141C96EC9B00BC3D61 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				770B06151C96ECB400BC3D61 /* SWRevealViewController.h */,
+				770B06161C96ECB400BC3D61 /* SWRevealViewController.m */,
+				770B06181C96ECCD00BC3D61 /* MenuViewController.h */,
+				770B06191C96ECCD00BC3D61 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		770B061B1C96ED0C00BC3D61 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				770B061C1C96ED1900BC3D61 /* UIColor+HexColor.h */,
+				770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		771448CE1C96E2C3006CD98E = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +130,12 @@
 		771448D91C96E2C3006CD98E /* mykamchatka */ = {
 			isa = PBXGroup;
 			children = (
+				770B061B1C96ED0C00BC3D61 /* Category */,
 				771448DD1C96E2C3006CD98E /* AppDelegate.h */,
 				771448DE1C96E2C3006CD98E /* AppDelegate.m */,
 				771448E01C96E2C3006CD98E /* ViewController.h */,
 				771448E11C96E2C3006CD98E /* ViewController.m */,
+				770B06141C96EC9B00BC3D61 /* Menu */,
 				771448E31C96E2C3006CD98E /* Main.storyboard */,
 				771448E61C96E2C3006CD98E /* Assets.xcassets */,
 				771448E81C96E2C3006CD98E /* LaunchScreen.storyboard */,
@@ -274,6 +305,9 @@
 				771448E21C96E2C3006CD98E /* ViewController.m in Sources */,
 				771448DF1C96E2C3006CD98E /* AppDelegate.m in Sources */,
 				771448DC1C96E2C3006CD98E /* main.m in Sources */,
+				770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */,
+				770B061A1C96ECCD00BC3D61 /* MenuViewController.m in Sources */,
+				770B061E1C96ED1900BC3D61 /* UIColor+HexColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +533,7 @@
 				771449061C96E2C4006CD98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		771449071C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +542,7 @@
 				771449091C96E2C4006CD98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7714490A1C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +551,7 @@
 				7714490C1C96E2C4006CD98E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
