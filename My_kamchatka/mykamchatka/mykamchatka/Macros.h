@@ -1,0 +1,33 @@
+//
+//  Macros.h
+//  ITDolgopa
+//
+//  Created by Viktor on 05.02.16.
+//  Copyright © 2016 datastore24. All rights reserved.
+//
+
+#ifndef Macros_h
+#define Macros_h
+
+//Список кастомных тегов объектов приложени--------------------------------
+
+
+//Макросы для приложения ---------------------------------------------------
+//Тут записанны общие данные о хар-ках приложения---------------------------
+
+//Шрифты и размеры в зависимости от устройства------------------------------
+
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height <= 568)?TRUE:FALSE
+
+//Шрифты--------------------------------------------------------------------------
+#define FONTREGULAR @"SFUIDisplay-Regular"
+#define FONTLITE @"SFUIDisplay-Light"
+#define FONTBOND @"SFUIDisplay-Bold"
+
+//Цвета---------------------------------------------------------------------------
+#define COLORLITEGRAY @"929597"
+#define COLORLITELITEGRAY @"f9fafa"
+
+
+
+#endif /* Macros_h */

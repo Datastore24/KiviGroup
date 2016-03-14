@@ -1,0 +1,731 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06161C96ECB400BC3D61 /* SWRevealViewController.m */; };
+		770B061A1C96ECCD00BC3D61 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06191C96ECCD00BC3D61 /* MenuViewController.m */; };
+		770B061E1C96ED1900BC3D61 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */; };
+		770B06221C96F40C00BC3D61 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06211C96F40C00BC3D61 /* MainViewController.m */; };
+		770B06241C96F83400BC3D61 /* menuIcons.png in Resources */ = {isa = PBXBuildFile; fileRef = 770B06231C96F83400BC3D61 /* menuIcons.png */; };
+		770B06491C97049900BC3D61 /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06481C97049900BC3D61 /* TitleClass.m */; };
+		770B064A1C970A3D00BC3D61 /* SFUIText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06261C97036D00BC3D61 /* SFUIText-Bold.otf */; };
+		770B064B1C970A3D00BC3D61 /* SFUIText-BoldG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06271C97036D00BC3D61 /* SFUIText-BoldG1.otf */; };
+		770B064C1C970A3D00BC3D61 /* SFUIText-BoldG2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06281C97036D00BC3D61 /* SFUIText-BoldG2.otf */; };
+		770B064D1C970A3D00BC3D61 /* SFUIText-BoldG3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06291C97036D00BC3D61 /* SFUIText-BoldG3.otf */; };
+		770B064E1C970A3D00BC3D61 /* SFUIText-BoldItalicG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062A1C97036D00BC3D61 /* SFUIText-BoldItalicG1.otf */; };
+		770B064F1C970A3D00BC3D61 /* SFUIText-BoldItalicG2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062B1C97036D00BC3D61 /* SFUIText-BoldItalicG2.otf */; };
+		770B06501C970A3D00BC3D61 /* SFUIText-BoldItalicG3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062C1C97036D00BC3D61 /* SFUIText-BoldItalicG3.otf */; };
+		770B06511C970A3D00BC3D61 /* SFUIText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062D1C97036D00BC3D61 /* SFUIText-Heavy.otf */; };
+		770B06521C970A3D00BC3D61 /* SFUIText-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062E1C97036D00BC3D61 /* SFUIText-HeavyItalic.otf */; };
+		770B06531C970A3D00BC3D61 /* SFUIText-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B062F1C97036D00BC3D61 /* SFUIText-Italic.otf */; };
+		770B06541C970A3D00BC3D61 /* SFUIText-ItalicG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06301C97036D00BC3D61 /* SFUIText-ItalicG1.otf */; };
+		770B06551C970A3D00BC3D61 /* SFUIText-ItalicG2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06311C97036D00BC3D61 /* SFUIText-ItalicG2.otf */; };
+		770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06321C97036D00BC3D61 /* SFUIText-ItalicG3.otf */; };
+		770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06331C97036D00BC3D61 /* SFUIText-Light.otf */; };
+		770B06581C970A3D00BC3D61 /* SFUIText-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06341C97036D00BC3D61 /* SFUIText-LightItalic.otf */; };
+		770B06591C970A3D00BC3D61 /* SFUIText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06351C97036D00BC3D61 /* SFUIText-Medium.otf */; };
+		770B065A1C970A3D00BC3D61 /* SFUIText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06361C97036D00BC3D61 /* SFUIText-MediumItalic.otf */; };
+		770B065B1C970A3D00BC3D61 /* SFUIText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06371C97036D00BC3D61 /* SFUIText-Regular.otf */; };
+		770B065C1C970A3D00BC3D61 /* SFUIText-RegularG1.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06381C97036D00BC3D61 /* SFUIText-RegularG1.otf */; };
+		770B065D1C970A3D00BC3D61 /* SFUIText-RegularG2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06391C97036D00BC3D61 /* SFUIText-RegularG2.otf */; };
+		770B065E1C970A3D00BC3D61 /* SFUIText-RegularG3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063A1C97036D00BC3D61 /* SFUIText-RegularG3.otf */; };
+		770B065F1C970A3D00BC3D61 /* SFUIText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063B1C97036D00BC3D61 /* SFUIText-Semibold.otf */; };
+		770B06601C970A3D00BC3D61 /* SFUIText-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063C1C97036D00BC3D61 /* SFUIText-SemiboldItalic.otf */; };
+		770B06611C970A3D00BC3D61 /* SFUIDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063D1C97036D00BC3D61 /* SFUIDisplay-Black.otf */; };
+		770B06621C970A3D00BC3D61 /* SFUIDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063E1C97036D00BC3D61 /* SFUIDisplay-Bold.otf */; };
+		770B06631C970A3D00BC3D61 /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B063F1C97036D00BC3D61 /* SFUIDisplay-Heavy.otf */; };
+		770B06641C970A3D00BC3D61 /* SFUIDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06401C97036D00BC3D61 /* SFUIDisplay-Light.otf */; };
+		770B06651C970A3D00BC3D61 /* SFUIDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06411C97036D00BC3D61 /* SFUIDisplay-Medium.otf */; };
+		770B06661C970A3D00BC3D61 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06421C97036D00BC3D61 /* SFUIDisplay-Regular.otf */; };
+		770B06671C970A3D00BC3D61 /* SFUIDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06431C97036D00BC3D61 /* SFUIDisplay-Semibold.otf */; };
+		770B06681C970A3D00BC3D61 /* SFUIDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06441C97036D00BC3D61 /* SFUIDisplay-Thin.otf */; };
+		770B06691C970A3D00BC3D61 /* SFUIDisplay-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 770B06451C97036D00BC3D61 /* SFUIDisplay-Ultralight.otf */; };
+		7712A9251C974445000A7D64 /* fon1_croped.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7712A9241C974445000A7D64 /* fon1_croped.jpg */; };
+		7712A92B1C974746000A7D64 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7712A92A1C974746000A7D64 /* MainView.m */; };
+		771448DC1C96E2C3006CD98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448DB1C96E2C3006CD98E /* main.m */; };
+		771448DF1C96E2C3006CD98E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448DE1C96E2C3006CD98E /* AppDelegate.m */; };
+		771448E21C96E2C3006CD98E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448E11C96E2C3006CD98E /* ViewController.m */; };
+		771448E51C96E2C3006CD98E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771448E31C96E2C3006CD98E /* Main.storyboard */; };
+		771448E71C96E2C3006CD98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 771448E61C96E2C3006CD98E /* Assets.xcassets */; };
+		771448EA1C96E2C3006CD98E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771448E81C96E2C3006CD98E /* LaunchScreen.storyboard */; };
+		771448F51C96E2C4006CD98E /* mykamchatkaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448F41C96E2C4006CD98E /* mykamchatkaTests.m */; };
+		771449001C96E2C4006CD98E /* mykamchatkaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448FF1C96E2C4006CD98E /* mykamchatkaUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		771448F11C96E2C4006CD98E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 771448CF1C96E2C3006CD98E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 771448D61C96E2C3006CD98E;
+			remoteInfo = mykamchatka;
+		};
+		771448FC1C96E2C4006CD98E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 771448CF1C96E2C3006CD98E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 771448D61C96E2C3006CD98E;
+			remoteInfo = mykamchatka;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		770B06151C96ECB400BC3D61 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		770B06161C96ECB400BC3D61 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		770B06181C96ECCD00BC3D61 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		770B06191C96ECCD00BC3D61 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		770B061C1C96ED1900BC3D61 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		770B06201C96F40C00BC3D61 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		770B06211C96F40C00BC3D61 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		770B06231C96F83400BC3D61 /* menuIcons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIcons.png; sourceTree = "<group>"; };
+		770B06261C97036D00BC3D61 /* SFUIText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Bold.otf"; sourceTree = "<group>"; };
+		770B06271C97036D00BC3D61 /* SFUIText-BoldG1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldG1.otf"; sourceTree = "<group>"; };
+		770B06281C97036D00BC3D61 /* SFUIText-BoldG2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldG2.otf"; sourceTree = "<group>"; };
+		770B06291C97036D00BC3D61 /* SFUIText-BoldG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldG3.otf"; sourceTree = "<group>"; };
+		770B062A1C97036D00BC3D61 /* SFUIText-BoldItalicG1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldItalicG1.otf"; sourceTree = "<group>"; };
+		770B062B1C97036D00BC3D61 /* SFUIText-BoldItalicG2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldItalicG2.otf"; sourceTree = "<group>"; };
+		770B062C1C97036D00BC3D61 /* SFUIText-BoldItalicG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldItalicG3.otf"; sourceTree = "<group>"; };
+		770B062D1C97036D00BC3D61 /* SFUIText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Heavy.otf"; sourceTree = "<group>"; };
+		770B062E1C97036D00BC3D61 /* SFUIText-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-HeavyItalic.otf"; sourceTree = "<group>"; };
+		770B062F1C97036D00BC3D61 /* SFUIText-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Italic.otf"; sourceTree = "<group>"; };
+		770B06301C97036D00BC3D61 /* SFUIText-ItalicG1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-ItalicG1.otf"; sourceTree = "<group>"; };
+		770B06311C97036D00BC3D61 /* SFUIText-ItalicG2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-ItalicG2.otf"; sourceTree = "<group>"; };
+		770B06321C97036D00BC3D61 /* SFUIText-ItalicG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-ItalicG3.otf"; sourceTree = "<group>"; };
+		770B06331C97036D00BC3D61 /* SFUIText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Light.otf"; sourceTree = "<group>"; };
+		770B06341C97036D00BC3D61 /* SFUIText-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-LightItalic.otf"; sourceTree = "<group>"; };
+		770B06351C97036D00BC3D61 /* SFUIText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Medium.otf"; sourceTree = "<group>"; };
+		770B06361C97036D00BC3D61 /* SFUIText-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-MediumItalic.otf"; sourceTree = "<group>"; };
+		770B06371C97036D00BC3D61 /* SFUIText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.otf"; sourceTree = "<group>"; };
+		770B06381C97036D00BC3D61 /* SFUIText-RegularG1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG1.otf"; sourceTree = "<group>"; };
+		770B06391C97036D00BC3D61 /* SFUIText-RegularG2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG2.otf"; sourceTree = "<group>"; };
+		770B063A1C97036D00BC3D61 /* SFUIText-RegularG3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularG3.otf"; sourceTree = "<group>"; };
+		770B063B1C97036D00BC3D61 /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
+		770B063C1C97036D00BC3D61 /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		770B063D1C97036D00BC3D61 /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
+		770B063E1C97036D00BC3D61 /* SFUIDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Bold.otf"; sourceTree = "<group>"; };
+		770B063F1C97036D00BC3D61 /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
+		770B06401C97036D00BC3D61 /* SFUIDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Light.otf"; sourceTree = "<group>"; };
+		770B06411C97036D00BC3D61 /* SFUIDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Medium.otf"; sourceTree = "<group>"; };
+		770B06421C97036D00BC3D61 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
+		770B06431C97036D00BC3D61 /* SFUIDisplay-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Semibold.otf"; sourceTree = "<group>"; };
+		770B06441C97036D00BC3D61 /* SFUIDisplay-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Thin.otf"; sourceTree = "<group>"; };
+		770B06451C97036D00BC3D61 /* SFUIDisplay-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Ultralight.otf"; sourceTree = "<group>"; };
+		770B06461C97049000BC3D61 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		770B06471C97049900BC3D61 /* TitleClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleClass.h; sourceTree = "<group>"; };
+		770B06481C97049900BC3D61 /* TitleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleClass.m; sourceTree = "<group>"; };
+		7712A9241C974445000A7D64 /* fon1_croped.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fon1_croped.jpg; sourceTree = "<group>"; };
+		7712A9291C974746000A7D64 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		7712A92A1C974746000A7D64 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		771448D71C96E2C3006CD98E /* mykamchatka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mykamchatka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		771448DB1C96E2C3006CD98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		771448DD1C96E2C3006CD98E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		771448DE1C96E2C3006CD98E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		771448E01C96E2C3006CD98E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		771448E11C96E2C3006CD98E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		771448E41C96E2C3006CD98E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		771448E61C96E2C3006CD98E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		771448E91C96E2C3006CD98E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		771448EB1C96E2C3006CD98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		771448F01C96E2C4006CD98E /* mykamchatkaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mykamchatkaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		771448F41C96E2C4006CD98E /* mykamchatkaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mykamchatkaTests.m; sourceTree = "<group>"; };
+		771448F61C96E2C4006CD98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		771448FB1C96E2C4006CD98E /* mykamchatkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mykamchatkaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		771448FF1C96E2C4006CD98E /* mykamchatkaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mykamchatkaUITests.m; sourceTree = "<group>"; };
+		771449011C96E2C4006CD98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		771448D41C96E2C3006CD98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448ED1C96E2C4006CD98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448F81C96E2C4006CD98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		770B06141C96EC9B00BC3D61 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				770B06151C96ECB400BC3D61 /* SWRevealViewController.h */,
+				770B06161C96ECB400BC3D61 /* SWRevealViewController.m */,
+				770B06181C96ECCD00BC3D61 /* MenuViewController.h */,
+				770B06191C96ECCD00BC3D61 /* MenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		770B061B1C96ED0C00BC3D61 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				770B061C1C96ED1900BC3D61 /* UIColor+HexColor.h */,
+				770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		770B061F1C96F3EF00BC3D61 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				7712A9241C974445000A7D64 /* fon1_croped.jpg */,
+				770B06231C96F83400BC3D61 /* menuIcons.png */,
+				770B06201C96F40C00BC3D61 /* MainViewController.h */,
+				770B06211C96F40C00BC3D61 /* MainViewController.m */,
+				7712A9291C974746000A7D64 /* MainView.h */,
+				7712A92A1C974746000A7D64 /* MainView.m */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		770B06251C97035200BC3D61 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				770B06261C97036D00BC3D61 /* SFUIText-Bold.otf */,
+				770B06271C97036D00BC3D61 /* SFUIText-BoldG1.otf */,
+				770B06281C97036D00BC3D61 /* SFUIText-BoldG2.otf */,
+				770B06291C97036D00BC3D61 /* SFUIText-BoldG3.otf */,
+				770B062A1C97036D00BC3D61 /* SFUIText-BoldItalicG1.otf */,
+				770B062B1C97036D00BC3D61 /* SFUIText-BoldItalicG2.otf */,
+				770B062C1C97036D00BC3D61 /* SFUIText-BoldItalicG3.otf */,
+				770B062D1C97036D00BC3D61 /* SFUIText-Heavy.otf */,
+				770B062E1C97036D00BC3D61 /* SFUIText-HeavyItalic.otf */,
+				770B062F1C97036D00BC3D61 /* SFUIText-Italic.otf */,
+				770B06301C97036D00BC3D61 /* SFUIText-ItalicG1.otf */,
+				770B06311C97036D00BC3D61 /* SFUIText-ItalicG2.otf */,
+				770B06321C97036D00BC3D61 /* SFUIText-ItalicG3.otf */,
+				770B06331C97036D00BC3D61 /* SFUIText-Light.otf */,
+				770B06341C97036D00BC3D61 /* SFUIText-LightItalic.otf */,
+				770B06351C97036D00BC3D61 /* SFUIText-Medium.otf */,
+				770B06361C97036D00BC3D61 /* SFUIText-MediumItalic.otf */,
+				770B06371C97036D00BC3D61 /* SFUIText-Regular.otf */,
+				770B06381C97036D00BC3D61 /* SFUIText-RegularG1.otf */,
+				770B06391C97036D00BC3D61 /* SFUIText-RegularG2.otf */,
+				770B063A1C97036D00BC3D61 /* SFUIText-RegularG3.otf */,
+				770B063B1C97036D00BC3D61 /* SFUIText-Semibold.otf */,
+				770B063C1C97036D00BC3D61 /* SFUIText-SemiboldItalic.otf */,
+				770B063D1C97036D00BC3D61 /* SFUIDisplay-Black.otf */,
+				770B063E1C97036D00BC3D61 /* SFUIDisplay-Bold.otf */,
+				770B063F1C97036D00BC3D61 /* SFUIDisplay-Heavy.otf */,
+				770B06401C97036D00BC3D61 /* SFUIDisplay-Light.otf */,
+				770B06411C97036D00BC3D61 /* SFUIDisplay-Medium.otf */,
+				770B06421C97036D00BC3D61 /* SFUIDisplay-Regular.otf */,
+				770B06431C97036D00BC3D61 /* SFUIDisplay-Semibold.otf */,
+				770B06441C97036D00BC3D61 /* SFUIDisplay-Thin.otf */,
+				770B06451C97036D00BC3D61 /* SFUIDisplay-Ultralight.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		771448CE1C96E2C3006CD98E = {
+			isa = PBXGroup;
+			children = (
+				771448D91C96E2C3006CD98E /* mykamchatka */,
+				771448F31C96E2C4006CD98E /* mykamchatkaTests */,
+				771448FE1C96E2C4006CD98E /* mykamchatkaUITests */,
+				771448D81C96E2C3006CD98E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		771448D81C96E2C3006CD98E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				771448D71C96E2C3006CD98E /* mykamchatka.app */,
+				771448F01C96E2C4006CD98E /* mykamchatkaTests.xctest */,
+				771448FB1C96E2C4006CD98E /* mykamchatkaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		771448D91C96E2C3006CD98E /* mykamchatka */ = {
+			isa = PBXGroup;
+			children = (
+				770B06251C97035200BC3D61 /* Fonts */,
+				770B061F1C96F3EF00BC3D61 /* MainView */,
+				770B061B1C96ED0C00BC3D61 /* Category */,
+				771448DD1C96E2C3006CD98E /* AppDelegate.h */,
+				771448DE1C96E2C3006CD98E /* AppDelegate.m */,
+				771448E01C96E2C3006CD98E /* ViewController.h */,
+				771448E11C96E2C3006CD98E /* ViewController.m */,
+				770B06141C96EC9B00BC3D61 /* Menu */,
+				771448E31C96E2C3006CD98E /* Main.storyboard */,
+				771448E61C96E2C3006CD98E /* Assets.xcassets */,
+				771448E81C96E2C3006CD98E /* LaunchScreen.storyboard */,
+				771448EB1C96E2C3006CD98E /* Info.plist */,
+				771448DA1C96E2C3006CD98E /* Supporting Files */,
+			);
+			path = mykamchatka;
+			sourceTree = "<group>";
+		};
+		771448DA1C96E2C3006CD98E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				770B06471C97049900BC3D61 /* TitleClass.h */,
+				770B06481C97049900BC3D61 /* TitleClass.m */,
+				770B06461C97049000BC3D61 /* Macros.h */,
+				771448DB1C96E2C3006CD98E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		771448F31C96E2C4006CD98E /* mykamchatkaTests */ = {
+			isa = PBXGroup;
+			children = (
+				771448F41C96E2C4006CD98E /* mykamchatkaTests.m */,
+				771448F61C96E2C4006CD98E /* Info.plist */,
+			);
+			path = mykamchatkaTests;
+			sourceTree = "<group>";
+		};
+		771448FE1C96E2C4006CD98E /* mykamchatkaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				771448FF1C96E2C4006CD98E /* mykamchatkaUITests.m */,
+				771449011C96E2C4006CD98E /* Info.plist */,
+			);
+			path = mykamchatkaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		771448D61C96E2C3006CD98E /* mykamchatka */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 771449041C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatka" */;
+			buildPhases = (
+				771448D31C96E2C3006CD98E /* Sources */,
+				771448D41C96E2C3006CD98E /* Frameworks */,
+				771448D51C96E2C3006CD98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mykamchatka;
+			productName = mykamchatka;
+			productReference = 771448D71C96E2C3006CD98E /* mykamchatka.app */;
+			productType = "com.apple.product-type.application";
+		};
+		771448EF1C96E2C4006CD98E /* mykamchatkaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 771449071C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaTests" */;
+			buildPhases = (
+				771448EC1C96E2C4006CD98E /* Sources */,
+				771448ED1C96E2C4006CD98E /* Frameworks */,
+				771448EE1C96E2C4006CD98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				771448F21C96E2C4006CD98E /* PBXTargetDependency */,
+			);
+			name = mykamchatkaTests;
+			productName = mykamchatkaTests;
+			productReference = 771448F01C96E2C4006CD98E /* mykamchatkaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		771448FA1C96E2C4006CD98E /* mykamchatkaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7714490A1C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaUITests" */;
+			buildPhases = (
+				771448F71C96E2C4006CD98E /* Sources */,
+				771448F81C96E2C4006CD98E /* Frameworks */,
+				771448F91C96E2C4006CD98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				771448FD1C96E2C4006CD98E /* PBXTargetDependency */,
+			);
+			name = mykamchatkaUITests;
+			productName = mykamchatkaUITests;
+			productReference = 771448FB1C96E2C4006CD98E /* mykamchatkaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		771448CF1C96E2C3006CD98E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = KiviLab;
+				TargetAttributes = {
+					771448D61C96E2C3006CD98E = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 6598R4ULA4;
+					};
+					771448EF1C96E2C4006CD98E = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 771448D61C96E2C3006CD98E;
+					};
+					771448FA1C96E2C4006CD98E = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 771448D61C96E2C3006CD98E;
+					};
+				};
+			};
+			buildConfigurationList = 771448D21C96E2C3006CD98E /* Build configuration list for PBXProject "mykamchatka" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 771448CE1C96E2C3006CD98E;
+			productRefGroup = 771448D81C96E2C3006CD98E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				771448D61C96E2C3006CD98E /* mykamchatka */,
+				771448EF1C96E2C4006CD98E /* mykamchatkaTests */,
+				771448FA1C96E2C4006CD98E /* mykamchatkaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		771448D51C96E2C3006CD98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				770B064A1C970A3D00BC3D61 /* SFUIText-Bold.otf in Resources */,
+				770B064B1C970A3D00BC3D61 /* SFUIText-BoldG1.otf in Resources */,
+				770B064C1C970A3D00BC3D61 /* SFUIText-BoldG2.otf in Resources */,
+				770B064D1C970A3D00BC3D61 /* SFUIText-BoldG3.otf in Resources */,
+				770B064E1C970A3D00BC3D61 /* SFUIText-BoldItalicG1.otf in Resources */,
+				770B064F1C970A3D00BC3D61 /* SFUIText-BoldItalicG2.otf in Resources */,
+				770B06501C970A3D00BC3D61 /* SFUIText-BoldItalicG3.otf in Resources */,
+				770B06511C970A3D00BC3D61 /* SFUIText-Heavy.otf in Resources */,
+				7712A9251C974445000A7D64 /* fon1_croped.jpg in Resources */,
+				770B06521C970A3D00BC3D61 /* SFUIText-HeavyItalic.otf in Resources */,
+				770B06531C970A3D00BC3D61 /* SFUIText-Italic.otf in Resources */,
+				770B06541C970A3D00BC3D61 /* SFUIText-ItalicG1.otf in Resources */,
+				770B06551C970A3D00BC3D61 /* SFUIText-ItalicG2.otf in Resources */,
+				770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */,
+				770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */,
+				770B06581C970A3D00BC3D61 /* SFUIText-LightItalic.otf in Resources */,
+				770B06591C970A3D00BC3D61 /* SFUIText-Medium.otf in Resources */,
+				770B065A1C970A3D00BC3D61 /* SFUIText-MediumItalic.otf in Resources */,
+				770B065B1C970A3D00BC3D61 /* SFUIText-Regular.otf in Resources */,
+				770B065C1C970A3D00BC3D61 /* SFUIText-RegularG1.otf in Resources */,
+				770B065D1C970A3D00BC3D61 /* SFUIText-RegularG2.otf in Resources */,
+				770B065E1C970A3D00BC3D61 /* SFUIText-RegularG3.otf in Resources */,
+				770B065F1C970A3D00BC3D61 /* SFUIText-Semibold.otf in Resources */,
+				770B06601C970A3D00BC3D61 /* SFUIText-SemiboldItalic.otf in Resources */,
+				770B06611C970A3D00BC3D61 /* SFUIDisplay-Black.otf in Resources */,
+				770B06621C970A3D00BC3D61 /* SFUIDisplay-Bold.otf in Resources */,
+				770B06631C970A3D00BC3D61 /* SFUIDisplay-Heavy.otf in Resources */,
+				770B06641C970A3D00BC3D61 /* SFUIDisplay-Light.otf in Resources */,
+				770B06651C970A3D00BC3D61 /* SFUIDisplay-Medium.otf in Resources */,
+				770B06661C970A3D00BC3D61 /* SFUIDisplay-Regular.otf in Resources */,
+				770B06671C970A3D00BC3D61 /* SFUIDisplay-Semibold.otf in Resources */,
+				770B06681C970A3D00BC3D61 /* SFUIDisplay-Thin.otf in Resources */,
+				770B06691C970A3D00BC3D61 /* SFUIDisplay-Ultralight.otf in Resources */,
+				771448EA1C96E2C3006CD98E /* LaunchScreen.storyboard in Resources */,
+				770B06241C96F83400BC3D61 /* menuIcons.png in Resources */,
+				771448E71C96E2C3006CD98E /* Assets.xcassets in Resources */,
+				771448E51C96E2C3006CD98E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448EE1C96E2C4006CD98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448F91C96E2C4006CD98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		771448D31C96E2C3006CD98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				771448E21C96E2C3006CD98E /* ViewController.m in Sources */,
+				771448DF1C96E2C3006CD98E /* AppDelegate.m in Sources */,
+				771448DC1C96E2C3006CD98E /* main.m in Sources */,
+				770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */,
+				770B06221C96F40C00BC3D61 /* MainViewController.m in Sources */,
+				7712A92B1C974746000A7D64 /* MainView.m in Sources */,
+				770B061A1C96ECCD00BC3D61 /* MenuViewController.m in Sources */,
+				770B061E1C96ED1900BC3D61 /* UIColor+HexColor.m in Sources */,
+				770B06491C97049900BC3D61 /* TitleClass.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448EC1C96E2C4006CD98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				771448F51C96E2C4006CD98E /* mykamchatkaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771448F71C96E2C4006CD98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				771449001C96E2C4006CD98E /* mykamchatkaUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		771448F21C96E2C4006CD98E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 771448D61C96E2C3006CD98E /* mykamchatka */;
+			targetProxy = 771448F11C96E2C4006CD98E /* PBXContainerItemProxy */;
+		};
+		771448FD1C96E2C4006CD98E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 771448D61C96E2C3006CD98E /* mykamchatka */;
+			targetProxy = 771448FC1C96E2C4006CD98E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		771448E31C96E2C3006CD98E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				771448E41C96E2C3006CD98E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		771448E81C96E2C3006CD98E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				771448E91C96E2C3006CD98E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		771449021C96E2C4006CD98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		771449031C96E2C4006CD98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		771449051C96E2C4006CD98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = mykamchatka/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.mykamchatka;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		771449061C96E2C4006CD98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = mykamchatka/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.mykamchatka;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		771449081C96E2C4006CD98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = mykamchatkaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kivilab.mykamchatkaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mykamchatka.app/mykamchatka";
+			};
+			name = Debug;
+		};
+		771449091C96E2C4006CD98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = mykamchatkaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kivilab.mykamchatkaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mykamchatka.app/mykamchatka";
+			};
+			name = Release;
+		};
+		7714490B1C96E2C4006CD98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = mykamchatkaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kivilab.mykamchatkaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = mykamchatka;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		7714490C1C96E2C4006CD98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = mykamchatkaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kivilab.mykamchatkaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = mykamchatka;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		771448D21C96E2C3006CD98E /* Build configuration list for PBXProject "mykamchatka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				771449021C96E2C4006CD98E /* Debug */,
+				771449031C96E2C4006CD98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		771449041C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				771449051C96E2C4006CD98E /* Debug */,
+				771449061C96E2C4006CD98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		771449071C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				771449081C96E2C4006CD98E /* Debug */,
+				771449091C96E2C4006CD98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7714490A1C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatkaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7714490B1C96E2C4006CD98E /* Debug */,
+				7714490C1C96E2C4006CD98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 771448CF1C96E2C3006CD98E /* Project object */;
+}
