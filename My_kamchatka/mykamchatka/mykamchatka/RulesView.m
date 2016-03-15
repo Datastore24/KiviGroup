@@ -88,13 +88,16 @@
             hidenView.tag = 10 + i;
             [mainScrolView addSubview: hidenView];
             
+            NSLog(@"%f",hidenView.frame.size.height);
+            
             UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, hidenView.frame.size.width - 40, 0)];
             labelData.numberOfLines = 0;
             labelData.text = [nameData objectAtIndex:i];
             labelData.tag = 100 + i;
             labelData.textColor = [UIColor whiteColor];
             labelData.font = [UIFont fontWithName:FONTLITE size:16];
-            [labelData sizeToFit];
+            labelData.clipsToBounds=YES;
+//            [labelData sizeToFit];
             [hidenView addSubview:labelData];
 
             
@@ -118,19 +121,43 @@
     for (int i = 0; i < 8; i++) {
         if (button.tag == i) {
            UIView * hidenViewChange = (UIView*)[self viewWithTag:10 + i];
+            UILabel * labelData = (UILabel *)[self viewWithTag:100+i];
+
             
-            floatSize = 200;
+            //Размер поля максимальное
+            CGRect textRectMax = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, MAXFLOAT)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:16]}
+                                                 context:nil];
+            //Размер поля минимальное
+            CGRect textRectMin = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, 0)
+                                                              options:NSStringDrawingTruncatesLastVisibleLine
+                                                           attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:16]}
+                                                              context:nil];
+            
+            CGSize sizeMax = textRectMax.size;
+            CGSize sizeMin = textRectMin.size;
+            
             
             if (button.change) {
             
-                floatSizeScroll = floatSizeScroll + floatSize;
+                floatSizeScroll = floatSizeScroll + sizeMax.height+10;
                 
 
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                     //Движение доп лейбла----------
                     CGRect customRest = hidenViewChange.frame;
-                    customRest.size.height = customRest.size.height + floatSize;
+                    CGRect myLabelFrame = [labelData frame];
+                    //Изменения высоты
+                    myLabelFrame.size.height = sizeMax.height;
+                    
+                    //Новая высата view
+                    customRest.size.height = customRest.size.height + sizeMax.height+10;
+                    
+                    //Установка новой высоты view
                     hidenViewChange.frame = customRest;
+
+                    [labelData setFrame:myLabelFrame];
                     
                     
                     //Вращение кнопки-------------
@@ -140,7 +167,7 @@
                         
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
-                        rectMove.origin.y += floatSize;
+                        rectMove.origin.y += sizeMax.height+10;
                         testView.frame = rectMove;
                     }
                     
@@ -153,13 +180,20 @@
 
             } else {
                 
-                floatSizeScroll = floatSizeScroll - floatSize;
+                floatSizeScroll = floatSizeScroll - sizeMax.height-10;
                 
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                     //Движение доп лейбла-----------
                     CGRect customRest2 = hidenViewChange.frame;
-                    customRest2.size.height = customRest2.size.height - floatSize;
+                    customRest2.size.height = customRest2.size.height - sizeMax.height-10;
                     hidenViewChange.frame = customRest2;
+                    
+                    
+                    CGRect myLabelFrame = [labelData frame];
+                    
+                    myLabelFrame.size.height = sizeMin.height;
+                    [labelData setFrame:myLabelFrame];
+                    
                     //Вращение кнопки-------------
                     [button setTransform:CGAffineTransformRotate(button.transform, -4.7)];
                     
@@ -167,7 +201,7 @@
                         
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
-                        rectMove.origin.y -= floatSize;
+                        rectMove.origin.y -= sizeMax.height+10;
                         testView.frame = rectMove;
                         
                     }
