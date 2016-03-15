@@ -34,18 +34,18 @@
         //Второй лейбл-----
         UILabel * secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 30 + firstLabel.frame.size.height + 25, mainImageView.frame.size.width - 40, 240)];
         secondLabel.numberOfLines = 0;
-        secondLabel.text = @"По итогам фотоконкурса будут выявлены победители и призеры, работы которых будут представлены на фотовыставках в Москве и \nПетропавловске-Камчатском, а также в бортовом журнале авиакомпании \"Аэрофлот - Российские авиалинии\"";
+        secondLabel.text = @"По итогам фотоконкурса будут выявлены победители и призеры, работы которых будут размещены в бортовом журнале и на экранах в салонах воздушных судов авиакомпании \"Аэрофлот-Российские Авиалинии\", а также представлены на фотовыставках в Москве и Петропавловске-Камчатском.";
         secondLabel.textColor = [UIColor whiteColor];
-        secondLabel.font = [UIFont fontWithName:FONTREGULAR size:22];
+        secondLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         [mainImageView addSubview:secondLabel];
         
         
         //Третий лейбл
         UILabel * thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, secondLabel.frame.size.height + 120, mainImageView.frame.size.width - 40, 200)];
         thirdLabel.numberOfLines = 0;
-        thirdLabel.text = @"Победители и призеры будут награждены дипломами и памятными подарками.";
+        thirdLabel.text = @"Для победителей и призеров подготовлены познавательные призы и памятные подарки, а профессиональные фотографы - члены жюри фотоконкурса проведут мастер-классы.";
         thirdLabel.textColor = [UIColor whiteColor];
-        thirdLabel.font = [UIFont fontWithName:FONTREGULAR size:22];
+        thirdLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         [mainImageView addSubview:thirdLabel];
         
         //Автор проекта

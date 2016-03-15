@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="149"/>
+            <point key="canvasLocation" x="61" y="173"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="XUw-4x-CFO">
@@ -62,6 +62,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="G0h-dT-XUr" kind="custom" customClass="SWRevealViewControllerSegue" id="VBa-hj-Kev"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" id="0T6-nF-zVR">
                                         <rect key="frame" x="0.0" y="160" width="320" height="44"/>
@@ -111,6 +114,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell10" id="HYB-CC-rlq">
+                                        <rect key="frame" x="0.0" y="424" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HYB-CC-rlq" id="Flx-S2-ffV">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell11" id="4cR-YG-c2d">
+                                        <rect key="frame" x="0.0" y="468" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cR-YG-c2d" id="6GD-Ar-zfq">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="som-vc-tNr" id="oNe-v5-yId"/>
@@ -146,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mg9-og-QHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="480"/>
+            <point key="canvasLocation" x="918" y="520"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HIi-aS-G5i">
@@ -164,7 +183,27 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtv-Fg-0Ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="480"/>
+            <point key="canvasLocation" x="489" y="520"/>
+        </scene>
+        <!--Rules Controller-->
+        <scene sceneID="AtJ-Le-z0V">
+            <objects>
+                <viewController id="G0h-dT-XUr" customClass="RulesController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H6n-Fz-bWk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OaS-Kp-UMy">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="aOI-iG-HAD"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="aOI-iG-HAD" id="Hpx-e9-93T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0R-yw-EB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="918" y="-165"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

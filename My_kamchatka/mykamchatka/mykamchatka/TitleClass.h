@@ -11,5 +11,6 @@
 @interface TitleClass : UILabel
 
 - (id)initWithTitle: (NSString*) title;
+- (id)initWithLiteTitle: (NSString*) title;
 
 @end
