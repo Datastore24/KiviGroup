@@ -31,8 +31,7 @@
     self.mainTableView.scrollEnabled = NO;
     
     
-    menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5", @"Cell6", @"Cell7", @"Cell8", @"Cell9", nil];
-    nameCell = [NSArray arrayWithObjects:@"ПРАВИЛА", @"ТРЕБОВАНИЯ", @"ЖЮРИ", @"ГАЛЕРЕЯ", @"ЗАЯВКА", nil];
+    menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5", @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10", @"Cell11",nil];
     
     //Убираем полосы разделяющие ячейки------------------------------
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -67,18 +66,21 @@
         
         UILabel * labelName = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, viewActiveCell.frame.size.width, viewActiveCell.frame.size.height)];
         if (indexPath.row == 0) {
-            labelName.text = @"ПРАВИЛА";
+            labelName.text = @"ГЛАВНАЯ";
         }
         if (indexPath.row == 2) {
-            labelName.text = @"ТРЕБОВАНИЯ";
+            labelName.text = @"ПРАВИЛА";
         }
         if (indexPath.row == 4) {
-            labelName.text = @"ЖЮРИ";
+            labelName.text = @"ТРЕБОВАНИЯ";
         }
         if (indexPath.row == 6) {
-            labelName.text = @"ГАЛЕРЕЯ";
+            labelName.text = @"ЖЮРИ";
         }
         if (indexPath.row == 8) {
+            labelName.text = @"ГАЛЕРЕЯ";
+        }
+        if (indexPath.row == 10) {
             labelName.text = @"ЗАЯВКА";
         }
         labelName.textColor = [UIColor whiteColor];
@@ -120,7 +122,7 @@
         return 10;
         
     } else {
-    return 90;
+    return 70;
 }
 }
 @end

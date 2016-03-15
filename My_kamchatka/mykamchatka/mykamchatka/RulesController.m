@@ -1,42 +1,42 @@
 //
-//  MainViewController.m
+//  RulesController.m
 //  mykamchatka
 //
-//  Created by Viktor on 14.03.16.
+//  Created by Viktor on 15.03.16.
 //  Copyright © 2016 KiviLab. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "RulesController.h"
 #import "SWRevealViewController.h"
 #import "UIColor+HexColor.h"
+#import "Macros.h"
 #import "TitleClass.h"
-#import "MainView.h"
+#import "RulesView.h"
 
+@implementation RulesController
 
-@implementation MainViewController
+- (void) viewDidLoad {
 
-- (void) viewDidLoad
-{
-    
 #pragma mark - Title
-    
+
+
     //Заголовок-----------------------------------------------
-    TitleClass * title = [[TitleClass alloc]initWithTitle:@"МОЯ ЛЮБИМАЯ КАМЧАТКА"];
+
+    TitleClass * title = [[TitleClass alloc]initWithLiteTitle:@"ПРАВИЛА"];
     self.navigationItem.titleView = title;
-    
-    
+
     //Задаем цвет бара----------------------------------------
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"7aafcf"];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"b3ddf4"];
     [self.navigationController.navigationBar
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-    
+
     //Пареметры кнопки меню------------------------------------
     UIImage *imageBarButton = [UIImage imageNamed:@"menuIcons.png"];
     [_buttonMenu setImage:imageBarButton];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.bounds = CGRectMake( 0, 0, 20, 20);
+    button.bounds = CGRectMake(0, 0, 20, 20);
     [button setImage:imageBarButton forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
@@ -45,14 +45,11 @@
 
 #pragma mark - Initialization
     
-    //Отображение View-----------------------------------------
-    MainView * mainView = [[MainView alloc] initWithView:self.view];
-    [self.view addSubview:mainView];
+    //Основное вью---------------------------------------------
+    RulesView * rulesView = [[RulesView alloc] initWithView:self.view];
+    [self.view addSubview: rulesView];
     
     
-
 }
-
-
 
 @end

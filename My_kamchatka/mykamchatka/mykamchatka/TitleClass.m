@@ -26,4 +26,22 @@
     return self;
 }
 
+
+- (id)initWithLiteTitle: (NSString*) title
+{
+    self = [super init];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.font = [UIFont fontWithName:FONTLITE size:15];
+        self.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        self.textAlignment = NSTextAlignmentCenter;
+        self.textColor = [UIColor blackColor];
+        self.text = title;
+        [self sizeToFit];
+    }
+    return self;
+}
+
+
+
 @end
