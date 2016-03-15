@@ -10,6 +10,8 @@
 
 @interface RulesView : UIView
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view
+                andArrayName: (NSArray*) arrayName
+                andArrayData: (NSArray*) arrayData;
 
 @end

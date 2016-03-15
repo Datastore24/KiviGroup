@@ -12,6 +12,7 @@
 #import "Macros.h"
 #import "TitleClass.h"
 #import "RulesView.h"
+#import "ModelRuler.h"
 
 @implementation RulesController
 
@@ -45,8 +46,13 @@
 
 #pragma mark - Initialization
     
+    //Данные---------------------------------------------------
+    ModelRuler * modelRules = [[ModelRuler alloc] init];
+    NSArray * arrayName = [modelRules addArrayName];
+    NSArray * arrayData = [modelRules addArrayData];
+    
     //Основное вью---------------------------------------------
-    RulesView * rulesView = [[RulesView alloc] initWithView:self.view];
+    RulesView * rulesView = [[RulesView alloc] initWithView:self.view andArrayName:arrayName andArrayData:arrayData];
     [self.view addSubview: rulesView];
     
     

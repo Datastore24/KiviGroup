@@ -55,6 +55,7 @@
 		771448EA1C96E2C3006CD98E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771448E81C96E2C3006CD98E /* LaunchScreen.storyboard */; };
 		771448F51C96E2C4006CD98E /* mykamchatkaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448F41C96E2C4006CD98E /* mykamchatkaTests.m */; };
 		771449001C96E2C4006CD98E /* mykamchatkaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 771448FF1C96E2C4006CD98E /* mykamchatkaUITests.m */; };
+		777039411C989303002BBB90 /* ModelRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = 777039401C989303002BBB90 /* ModelRuler.m */; };
 		77C65E431C981E99009ED67F /* RulesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E421C981E99009ED67F /* RulesController.m */; };
 		77C65E461C981EB5009ED67F /* RulesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E451C981EB5009ED67F /* RulesView.m */; };
 		77C65E481C98231A009ED67F /* rulesFon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 77C65E471C98231A009ED67F /* rulesFon.jpeg */; };
@@ -143,6 +144,8 @@
 		771448FB1C96E2C4006CD98E /* mykamchatkaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mykamchatkaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		771448FF1C96E2C4006CD98E /* mykamchatkaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mykamchatkaUITests.m; sourceTree = "<group>"; };
 		771449011C96E2C4006CD98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7770393F1C989303002BBB90 /* ModelRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelRuler.h; sourceTree = "<group>"; };
+		777039401C989303002BBB90 /* ModelRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelRuler.m; sourceTree = "<group>"; };
 		77C65E411C981E99009ED67F /* RulesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesController.h; sourceTree = "<group>"; };
 		77C65E421C981E99009ED67F /* RulesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesController.m; sourceTree = "<group>"; };
 		77C65E441C981EB5009ED67F /* RulesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesView.h; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				77C65E451C981EB5009ED67F /* RulesView.m */,
 				77C65E521C984EA6009ED67F /* CustomButton.h */,
 				77C65E531C984EA6009ED67F /* CustomButton.m */,
+				7770393F1C989303002BBB90 /* ModelRuler.h */,
+				777039401C989303002BBB90 /* ModelRuler.m */,
 			);
 			name = Rules;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				771448DF1C96E2C3006CD98E /* AppDelegate.m in Sources */,
 				771448DC1C96E2C3006CD98E /* main.m in Sources */,
 				770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */,
+				777039411C989303002BBB90 /* ModelRuler.m in Sources */,
 				77C65E461C981EB5009ED67F /* RulesView.m in Sources */,
 				770B06221C96F40C00BC3D61 /* MainViewController.m in Sources */,
 				7712A92B1C974746000A7D64 /* MainView.m in Sources */,
