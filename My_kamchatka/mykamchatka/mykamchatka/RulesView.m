@@ -120,7 +120,7 @@
     
     for (int i = 0; i < 8; i++) {
         if (button.tag == i) {
-           UIView * hidenViewChange = (UIView*)[self viewWithTag:10 + i];
+            UIView * hidenViewChange = (UIView*)[self viewWithTag:10 + i];
             UILabel * labelData = (UILabel *)[self viewWithTag:100+i];
 
             
@@ -141,30 +141,27 @@
             
             if (button.change) {
             
-                floatSizeScroll = floatSizeScroll + sizeMax.height+10;
+                floatSizeScroll = floatSizeScroll + sizeMax.height+20;
                 
 
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                    
                     //Движение доп лейбла----------
                     CGRect customRest = hidenViewChange.frame;
                     CGRect myLabelFrame = [labelData frame];
+                    
                     //Изменения высоты
                     myLabelFrame.size.height = sizeMax.height;
                     
                     //Новая высата view
-                    customRest.size.height = customRest.size.height + sizeMax.height+10;
-                    
+                    customRest.size.height = customRest.size.height + sizeMax.height+20;
                     //Установка новой высоты view
                     hidenViewChange.frame = customRest;
-
                     [labelData setFrame:myLabelFrame];
-                    
                     
                     //Вращение кнопки-------------
                     [button setTransform:CGAffineTransformRotate(button.transform, 4.7)];
-                    
                     for (NSInteger j = (button.tag + 1) * 2; j < self.viewsArray.count; j++) {
-                        
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
                         rectMove.origin.y += sizeMax.height+10;
@@ -179,26 +176,20 @@
                 button.change = NO;
 
             } else {
-                
-                floatSizeScroll = floatSizeScroll - sizeMax.height-10;
-                
+                floatSizeScroll = floatSizeScroll - sizeMax.height-20;
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                    
                     //Движение доп лейбла-----------
                     CGRect customRest2 = hidenViewChange.frame;
-                    customRest2.size.height = customRest2.size.height - sizeMax.height-10;
+                    customRest2.size.height = customRest2.size.height - sizeMax.height-20;
                     hidenViewChange.frame = customRest2;
-                    
-                    
                     CGRect myLabelFrame = [labelData frame];
-                    
                     myLabelFrame.size.height = sizeMin.height;
                     [labelData setFrame:myLabelFrame];
                     
                     //Вращение кнопки-------------
                     [button setTransform:CGAffineTransformRotate(button.transform, -4.7)];
-                    
                     for (NSInteger j = (button.tag + 1) * 2; j < self.viewsArray.count; j++) {
-                        
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
                         rectMove.origin.y -= sizeMax.height+10;
@@ -215,7 +206,6 @@
             }
         }
     }
-    
 }
 
 @end
