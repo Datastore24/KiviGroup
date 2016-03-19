@@ -28,6 +28,8 @@
 #define COLORLITEGRAY @"929597"
 #define COLORLITELITEGRAY @"f9fafa"
 
+#define COLORBLUETEXT @"05a4f6"
+
 
 
 #endif /* Macros_h */
