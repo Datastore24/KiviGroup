@@ -58,7 +58,7 @@
             buttonSeason.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:14];
             buttonSeason.layer.cornerRadius = 5.f;
             buttonSeason.change = YES;
-            buttonSeason.tag = i;
+            buttonSeason.tag = i+1;
             [buttonSeason addTarget:self action:@selector(buttonSeasonAction:) forControlEvents:UIControlEventTouchUpInside];
             [viewTopBar addSubview:buttonSeason];
         }
@@ -106,18 +106,17 @@
 - (void) buttonSeasonAction: (CustomButton*) button
 {
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 1; i < 5; i++) {
+        UIButton * otherButton  = (UIButton *) [self viewWithTag:i];
         if (button.tag == i) {
-            button.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
+            button.backgroundColor = [UIColor colorWithHexString:@"05a4f6"];
+        }else{
+             otherButton.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
         }
+     
     }
     
     
-    for (int i = 0; i < 4; i++) {
-        if (button.tag == i) {
-                button.backgroundColor = [UIColor colorWithHexString:@"05a4f6"];
-            }
-        }
 }
 
 
