@@ -81,6 +81,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6kp-Iz-2CI" kind="custom" customClass="SWRevealViewControllerSegue" id="9t7-Sh-QZc"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell6" id="9CV-FZ-XK2">
                                         <rect key="frame" x="0.0" y="248" width="320" height="44"/>
@@ -97,6 +100,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="MoO-Ax-z6H" kind="custom" customClass="SWRevealViewControllerSegue" id="6JA-pR-l2k"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell8" id="5f1-EK-eS5">
                                         <rect key="frame" x="0.0" y="336" width="320" height="44"/>
@@ -113,6 +119,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Olt-PJ-u7I" kind="custom" customClass="SWRevealViewControllerSegue" id="jI6-DS-hCH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell10" id="HYB-CC-rlq">
                                         <rect key="frame" x="0.0" y="424" width="320" height="44"/>
@@ -204,6 +213,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0R-yw-EB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="918" y="-165"/>
+        </scene>
+        <!--Requirements Controller-->
+        <scene sceneID="94i-yb-q9i">
+            <objects>
+                <viewController id="6kp-Iz-2CI" customClass="RequirementsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zGG-fW-TpW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d8U-Pe-ksu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="j5p-pz-x69"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="j5p-pz-x69" id="qne-5C-rL4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eX7-X2-e0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="-165"/>
+        </scene>
+        <!--Jury Controller-->
+        <scene sceneID="ba0-9j-buh">
+            <objects>
+                <viewController id="MoO-Ax-z6H" customClass="JuryController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BA0-95-YIJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="82e-Ki-tOe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="sA7-hU-STf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="sA7-hU-STf" id="zLV-LT-GtD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X77-Tb-yuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="-156"/>
+        </scene>
+        <!--Gallery Controller-->
+        <scene sceneID="68I-qj-ttT">
+            <objects>
+                <viewController id="Olt-PJ-u7I" customClass="GalleryController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pac-xY-FNg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uJu-ML-b00">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ZJk-Ig-8Xl"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="ZJk-Ig-8Xl" id="mvd-mV-qBQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNN-n5-SZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="489" y="-851"/>
+        </scene>
+        <!--Gallery Details Controller-->
+        <scene sceneID="4mW-VH-2Nt">
+            <objects>
+                <viewController storyboardIdentifier="GalleryDetailsController" id="Zis-wj-Jrl" customClass="GalleryDetailsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c7f-7J-GSq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRA-MO-G9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="-851"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
