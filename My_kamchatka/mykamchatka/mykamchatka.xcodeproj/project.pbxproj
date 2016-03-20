@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1C909027F02B9365259543 /* libPods-mykamchatka.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 072F1A9F3ACA9D6FDE9D5D6F /* libPods-mykamchatka.a */; };
 		770B06171C96ECB400BC3D61 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06161C96ECB400BC3D61 /* SWRevealViewController.m */; };
 		770B061A1C96ECCD00BC3D61 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B06191C96ECCD00BC3D61 /* MenuViewController.m */; };
 		770B061E1C96ED1900BC3D61 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 770B061D1C96ED1900BC3D61 /* UIColor+HexColor.m */; };
@@ -97,6 +98,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072F1A9F3ACA9D6FDE9D5D6F /* libPods-mykamchatka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mykamchatka.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64FAC1266224537BDAF120F8 /* Pods-mykamchatka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.release.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.release.xcconfig"; sourceTree = "<group>"; };
 		770B06151C96ECB400BC3D61 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		770B06161C96ECB400BC3D61 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		770B06181C96ECCD00BC3D61 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		77C65E4D1C984807009ED67F /* buttonConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonConfirm.png; sourceTree = "<group>"; };
 		77C65E521C984EA6009ED67F /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		77C65E531C984EA6009ED67F /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D1C909027F02B9365259543 /* libPods-mykamchatka.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +305,8 @@
 				771448F31C96E2C4006CD98E /* mykamchatkaTests */,
 				771448FE1C96E2C4006CD98E /* mykamchatkaUITests */,
 				771448D81C96E2C3006CD98E /* Products */,
+				ECDDFD18C56274BFEC37C5B8 /* Pods */,
+				EA041776B17AB706233EAF32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -444,6 +451,23 @@
 			name = Rules;
 			sourceTree = "<group>";
 		};
+		EA041776B17AB706233EAF32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072F1A9F3ACA9D6FDE9D5D6F /* libPods-mykamchatka.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECDDFD18C56274BFEC37C5B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */,
+				64FAC1266224537BDAF120F8 /* Pods-mykamchatka.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -451,9 +475,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 771449041C96E2C4006CD98E /* Build configuration list for PBXNativeTarget "mykamchatka" */;
 			buildPhases = (
+				EEB4F1DAD7C9D053E4B03D22 /* Check Pods Manifest.lock */,
 				771448D31C96E2C3006CD98E /* Sources */,
 				771448D41C96E2C3006CD98E /* Frameworks */,
 				771448D51C96E2C3006CD98E /* Resources */,
+				A04D964F23046E3EA93F9D14 /* Embed Pods Frameworks */,
+				B9C44DA4C853714471804820 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -613,6 +640,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A04D964F23046E3EA93F9D14 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9C44DA4C853714471804820 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEB4F1DAD7C9D053E4B03D22 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		771448D31C96E2C3006CD98E /* Sources */ = {
@@ -776,6 +851,7 @@
 		};
 		771449051C96E2C4006CD98E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -788,6 +864,7 @@
 		};
 		771449061C96E2C4006CD98E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64FAC1266224537BDAF120F8 /* Pods-mykamchatka.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
