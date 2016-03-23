@@ -113,9 +113,6 @@
     viewRegistration = (UIView*)[self.view viewWithTag:308];
     viewRegistration.alpha = 0;
     
-    //ВРЕМЕННО
-    [self performSelector:@selector(checkAuth) withObject:nil afterDelay:0.1f]; //Запуск проверки с паузой
-    //
     
     if([authCoreDataClass showAllUsers].count>0){
          UserInfo * userInfo = [[authCoreDataClass showAllUsers] objectAtIndex:0];

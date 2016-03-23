@@ -82,7 +82,8 @@
                     //Дата акции-----------------
                     UILabel * labelData = [[UILabel alloc] initWithFrame:
                     CGRectMake(0, viewScroll.frame.size.height - 60, viewScroll.frame.size.width, 20)];
-                    labelData.text = [dictArray objectForKey:@"promo_created"];
+                    labelData.text = [NSString stringWithFormat:@"с %@ по %@",[dictArray objectForKey:@"promo_created"],
+                                      [dictArray objectForKey:@"promo_end"]];
                     labelData.font = [UIFont fontWithName:FONTREGULAR size:14];
                     labelData.textColor = [UIColor whiteColor];
                     labelData.textAlignment = NSTextAlignmentCenter;
