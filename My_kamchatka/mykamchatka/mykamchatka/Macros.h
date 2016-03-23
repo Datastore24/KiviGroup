@@ -30,6 +30,9 @@
 
 #define COLORBLUETEXT @"05a4f6"
 
+//Нотификации---------------------------------------------------------------------
+#define NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH @"NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH"
+
 
 
 #endif /* Macros_h */
