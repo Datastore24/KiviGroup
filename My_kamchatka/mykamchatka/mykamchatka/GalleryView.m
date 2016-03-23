@@ -107,8 +107,9 @@
             buttonGallery.backgroundColor = [UIColor colorWithHexString:@"eceff3"];
             buttonGallery.alpha = 0.5f;
             buttonGallery.tag = 10 + i;
-            [buttonGallery addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
+//            
             [buttonGallery addTarget:self action:@selector(buttonGalleryTuch:) forControlEvents:UIControlEventTouchDown];
+           // [buttonGallery addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
 
             [mainScrollView addSubview:buttonGallery];
             
@@ -168,8 +169,12 @@
         if (button.tag == 10 + i) {
             button.alpha = 0.f;
             UIImageView * customImageView = (UIImageView*)[self viewWithTag:100+i];
-//--------------------------------
             customImageView.alpha = 0.f;
+//--------------------------------
+            [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpOutside];
+            [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:  UIControlEventTouchCancel];
+            
             
 
         }
