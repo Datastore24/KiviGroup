@@ -10,6 +10,8 @@
 
 @interface GalleryView : UIView
 
-- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSMutableArray*) array;
+- (instancetype)initBackgroundWithView: (UIView*) view;
+
+- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array;
 
 @end
