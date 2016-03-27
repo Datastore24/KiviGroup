@@ -164,12 +164,34 @@
             UIImageView * customImageView = (UIImageView*)[self viewWithTag:100+i];
             customImageView.alpha = 0.f;
 //--------------------------------
+            
+            [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:UIControlEventTouchDragOutside];
+            [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:UIControlEventTouchDragEnter];
+            
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
+<<<<<<< HEAD
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpOutside];
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:  UIControlEventTouchCancel];
+=======
+            [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:  UIControlEventTouchCancel];
+            
+            
+>>>>>>> origin/master
 
         }
     }
+}
+
+-(void) buttonGalleryBack: (UIButton*) button{
+    for (int i = 0; i < 20; i++)
+    {
+        if (button.tag == 10 + i) {
+            button.alpha = 0.5f;
+            UIImageView * customImageView = (UIImageView*)[self viewWithTag:100+i];
+            customImageView.alpha = 1.f;
+        }
+    }
+    
 }
 
 //Действие нажатия на картинку--------------------
