@@ -138,6 +138,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ylI-mm-Ehj" kind="custom" customClass="SWRevealViewControllerSegue" id="M1x-ao-lns"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -286,7 +289,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRA-MO-G9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="899" y="-851"/>
+            <point key="canvasLocation" x="918" y="-851"/>
+        </scene>
+        <!--Application Controller-->
+        <scene sceneID="26m-8g-FGZ">
+            <objects>
+                <viewController id="ylI-mm-Ehj" customClass="ApplicationController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zVs-2D-Wgl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e4w-JH-BNE">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="h5Q-Lc-XMW"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="h5Q-Lc-XMW" id="4PI-v1-Wsl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXt-Tf-pQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1346" y="-851"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

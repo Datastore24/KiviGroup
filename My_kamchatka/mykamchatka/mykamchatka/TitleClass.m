@@ -17,6 +17,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont fontWithName:FONTBOND size:15];
+        if (isiPhone5) {
+            self.font = [UIFont fontWithName:FONTBOND size:12];
+        }
         self.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         self.textAlignment = NSTextAlignmentCenter;
         self.textColor = [UIColor whiteColor];
@@ -33,6 +36,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont fontWithName:FONTLITE size:15];
+        if (isiPhone5) {
+            self.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         self.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         self.textAlignment = NSTextAlignmentCenter;
         self.textColor = [UIColor blackColor];

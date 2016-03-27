@@ -34,12 +34,12 @@
             mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, mainImageView.frame.size.width, mainImageView.frame.size.height)];
             [self addSubview:mainScrollView];
             
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 6; i++) {
 
                 NSDictionary * dictJuri = [array objectAtIndex:i];
                 
                 //Основное окно ячейки------------------------
-                UIView * viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 135 * i, mainScrollView.frame.size.width, 135)];
+                UIView * viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 150 * i, mainScrollView.frame.size.width, 150)];
                 viewCell.backgroundColor = [UIColor clearColor];
                 [mainScrollView addSubview:viewCell];
                 
@@ -47,10 +47,17 @@
                 UIImageView * imageJuri = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 100, 100)];
                 imageJuri.image = [UIImage imageNamed:[dictJuri objectForKey:@"image"]];
                 imageJuri.layer.cornerRadius = 50;
+                if (isiPhone5) {
+                    imageJuri.frame = CGRectMake(20, 35, 70, 70);
+                    imageJuri.layer.cornerRadius = 35;
+                }
                 [viewCell addSubview:imageJuri];
                 
                 //Заголовок (фамилия участника жюри)----------
                 UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, 200, 15)];
+                if (isiPhone5) {
+                    titleLabel.frame = CGRectMake(110, 10, 200, 15);
+                }
                 titleLabel.text = [dictJuri objectForKey:@"title"];
                 titleLabel.textColor = [UIColor colorWithHexString:COLORBLUETEXT];
                 titleLabel.font = [UIFont fontWithName:FONTBOND size:14];
@@ -58,13 +65,19 @@
                 
                 //Подзаголовок (Имя Отчество участника жюри)--
                 UILabel * subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 25, 200, 15)];
+                if (isiPhone5) {
+                    subTitleLabel.frame = CGRectMake(110, 25, 200, 15);
+                }
                 subTitleLabel.text = [dictJuri objectForKey:@"subTitle"];
                 subTitleLabel.textColor = [UIColor colorWithHexString:COLORBLUETEXT];
                 subTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:14];
                 [viewCell addSubview:subTitleLabel];
                 
                 //Описание участника жюри---------------------
-                UILabel * juriLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 35, 250, 90)];
+                UILabel * juriLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 35, 230, 115)];
+                if (isiPhone5) {
+                    juriLabel.frame = CGRectMake(110, 35, 200, 115);
+                }
                 juriLabel.text = [dictJuri objectForKey:@"text"];
                 juriLabel.numberOfLines = 0;
                 juriLabel.textColor = [UIColor colorWithHexString:@"474646"];
@@ -80,7 +93,7 @@
                     borderView.alpha = 0.f;
                 }
             }
-            mainScrollView.contentSize = CGSizeMake(0, 50 + 135 * 5);
+            mainScrollView.contentSize = CGSizeMake(0, 60 + 150 * 6);
     }
     return self;
 }

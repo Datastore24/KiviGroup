@@ -60,6 +60,9 @@
             
             //Основной фон----------
             UIView * viewHead = [[UIView alloc] initWithFrame:CGRectMake(40, 100 + 60 * i, self.frame.size.width - 80, 40)];
+            if (isiPhone5) {
+                viewHead.frame = CGRectMake(40, 40 + 40 * i, self.frame.size.width - 80, 30);
+            }
             viewHead.backgroundColor = [UIColor colorWithHexString:@"4f7694"];
             viewHead.layer.cornerRadius = 5.f;
             viewHead.tag = 20 + i;
@@ -70,11 +73,18 @@
             labelTitle.text = [nameArray objectAtIndex:i];
             labelTitle.textColor = [UIColor whiteColor];
             labelTitle.font = [UIFont fontWithName:FONTREGULAR size:18];
+            if (isiPhone5) {
+                labelTitle.font = [UIFont fontWithName:FONTREGULAR size:12];
+                labelTitle.frame = CGRectMake(20, 0, viewHead.frame.size.width - 80, 30);
+            }
             [viewHead addSubview:labelTitle];
             
             //Кнопка раскрытия темы----
             CustomButton * buttonConfirm = [CustomButton buttonWithType:UIButtonTypeCustom];
             buttonConfirm.frame = CGRectMake(viewHead.frame.size.width - 60, 5, 30, 30);
+            if (isiPhone5) {
+                buttonConfirm.frame = CGRectMake(viewHead.frame.size.width - 40, 5, 20, 20);
+            }
             UIImage * buttonConfirmImage = [UIImage imageNamed:@"buttonConfirm.png"];
             [buttonConfirm setImage:buttonConfirmImage forState:UIControlStateNormal];
             buttonConfirm.tag = i;
@@ -88,26 +98,22 @@
             hidenView.tag = 10 + i;
             [mainScrolView addSubview: hidenView];
             
-            NSLog(@"%f",hidenView.frame.size.height);
-            
             UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, hidenView.frame.size.width - 40, 0)];
             labelData.numberOfLines = 0;
             labelData.text = [nameData objectAtIndex:i];
             labelData.tag = 100 + i;
             labelData.textColor = [UIColor whiteColor];
             labelData.font = [UIFont fontWithName:FONTLITE size:16];
+            if (isiPhone5) {
+                labelData.font = [UIFont fontWithName:FONTLITE size:10];
+                labelData.frame = CGRectMake(20, 10, hidenView.frame.size.width - 40, 0);
+            }
             labelData.clipsToBounds=YES;
 //            [labelData sizeToFit];
             [hidenView addSubview:labelData];
-
-            
             [self.viewsArray addObject:viewHead];
             [self.viewsArray addObject:hidenView];
-
-            
         }
-
-        
     }
     return self;
 }
@@ -122,37 +128,45 @@
         if (button.tag == i) {
             UIView * hidenViewChange = (UIView*)[self viewWithTag:10 + i];
             UILabel * labelData = (UILabel *)[self viewWithTag:100+i];
-
             
             //Размер поля максимальное
             CGRect textRectMax = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, MAXFLOAT)
                                                  options:NSStringDrawingUsesLineFragmentOrigin
                                               attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:16]}
                                                  context:nil];
+            
             //Размер поля минимальное
             CGRect textRectMin = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, 0)
                                                               options:NSStringDrawingTruncatesLastVisibleLine
                                                            attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:16]}
                                                               context:nil];
             
+            if (isiPhone5) {
+                //Размер поля максимальное
+                textRectMax = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, MAXFLOAT)
+                                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                                               attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:10]}
+                                                                  context:nil];
+                
+                //Размер поля минимальное
+                textRectMin = [labelData.text boundingRectWithSize:CGSizeMake(hidenViewChange.frame.size.width - 40, 0)
+                                                                  options:NSStringDrawingTruncatesLastVisibleLine
+                                                               attributes:@{NSFontAttributeName:[UIFont fontWithName:FONTLITE size:10]}
+                                                                  context:nil];
+            }
+            
             CGSize sizeMax = textRectMax.size;
             CGSize sizeMin = textRectMin.size;
-            
             
             if (button.change) {
             
                 floatSizeScroll = floatSizeScroll + sizeMax.height+20;
-                
-
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                    
                     //Движение доп лейбла----------
                     CGRect customRest = hidenViewChange.frame;
                     CGRect myLabelFrame = [labelData frame];
-                    
                     //Изменения высоты
                     myLabelFrame.size.height = sizeMax.height;
-                    
                     //Новая высата view
                     customRest.size.height = customRest.size.height + sizeMax.height+20;
                     //Установка новой высоты view
@@ -164,21 +178,18 @@
                     for (NSInteger j = (button.tag + 1) * 2; j < self.viewsArray.count; j++) {
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
-                        rectMove.origin.y += sizeMax.height+10;
+                        rectMove.origin.y += sizeMax.height+20;
                         testView.frame = rectMove;
                     }
-                    
                 }completion:^(BOOL finished){
                     if (finished) {
                         mainScrolView.contentSize = CGSizeMake(0, mainScrolView.frame.size.height + floatSizeScroll);
                     }
                 }];
                 button.change = NO;
-
             } else {
                 floatSizeScroll = floatSizeScroll - sizeMax.height-20;
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                    
                     //Движение доп лейбла-----------
                     CGRect customRest2 = hidenViewChange.frame;
                     customRest2.size.height = customRest2.size.height - sizeMax.height-20;
@@ -192,11 +203,9 @@
                     for (NSInteger j = (button.tag + 1) * 2; j < self.viewsArray.count; j++) {
                         UIView * testView = [self.viewsArray objectAtIndex:j];
                         CGRect rectMove = testView.frame;
-                        rectMove.origin.y -= sizeMax.height+10;
+                        rectMove.origin.y -= sizeMax.height+20;
                         testView.frame = rectMove;
-                        
                     }
-                    
                 }completion:^(BOOL finished){
                     if (finished) {
                         mainScrolView.contentSize = CGSizeMake(0, mainScrolView.frame.size.height + floatSizeScroll);

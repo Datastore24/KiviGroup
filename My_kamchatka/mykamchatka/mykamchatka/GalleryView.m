@@ -11,6 +11,7 @@
 #import "Macros.h"
 #import "CustomButton.h"
 #import "ViewSectionTable.h"
+#import "GalleryDetailsController.h"
 
 @implementation GalleryView
 {
@@ -47,7 +48,7 @@
         //Создание кнопок----------------------------
         for (int i = 0; i < 4; i ++) {
             CustomButton * buttonSeason = [CustomButton buttonWithType:UIButtonTypeCustom];
-            buttonSeason.frame = CGRectMake(12.5 + 100 * i, 10, 90, 30);
+            buttonSeason.frame = CGRectMake(((self.frame.size.width - 350)/2) + 90 * i, 20, 80, 25);
             buttonSeason.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
             [buttonSeason setTitle:[arraySeason objectAtIndex:i] forState:UIControlStateNormal];
             [buttonSeason setTintColor:[UIColor whiteColor]];
@@ -68,6 +69,8 @@
     return self;
 }
 
+//Реалезация галереи-------------------------------
+
 - (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array
 {
     self = [super init];
@@ -76,7 +79,6 @@
         
         //Инициализируем кастомный нумератор для разделения списка на два столбца
         numerator = 0;
-
         
         //Создаем рабочий скрол вью-------------------------------------------------------
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -89,9 +91,9 @@
             
             UIView * imageView = [[UIImageView alloc] init];
             if (i %2 == 0) {
-                imageView.frame = CGRectMake(17, 10 + 200 * numerator, 180, 180);
+                imageView.frame = CGRectMake((self.frame.size.width / 2) - 170, 10 + 180 * numerator, 160, 160);
             } else {
-                imageView.frame = CGRectMake(217, 10 + 200 * numerator, 180, 180);
+                imageView.frame = CGRectMake((self.frame.size.width / 2) + 10, 10 + 180 * numerator, 160, 160);
                 numerator += 1;
             }
             imageView.layer.cornerRadius = 5.f;
@@ -102,15 +104,13 @@
             [imageView addSubview:viewSectionTable];
             
             //Создаем кнопку перехода в новое вью------
-            UIButton * buttonGallery = [UIButton buttonWithType:UIButtonTypeCustom];
+            CustomButton * buttonGallery = [CustomButton buttonWithType:UIButtonTypeCustom];
             buttonGallery.frame = imageView.frame;
             buttonGallery.backgroundColor = [UIColor colorWithHexString:@"eceff3"];
             buttonGallery.alpha = 0.5f;
+            buttonGallery.dictImage = dictData;
             buttonGallery.tag = 10 + i;
-//            
             [buttonGallery addTarget:self action:@selector(buttonGalleryTuch:) forControlEvents:UIControlEventTouchDown];
-           // [buttonGallery addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
-
             [mainScrollView addSubview:buttonGallery];
             
             //Картинка глаза--------------------------
@@ -130,7 +130,6 @@
 //Кнопки действия времен года----------------------
 - (void) buttonSeasonAction: (CustomButton*) button
 {
-    
     for (int i = 1; i < 5; i++) {
         CustomButton * otherButton  = (CustomButton *) [self viewWithTag:i];
         if (button.tag == i) {
@@ -142,26 +141,20 @@
                 //Создаем переменную для передачи данных на сервер--------
                 if (button.tag == i) {
                 NSString * getString = [NSString stringWithFormat:@"%ld", 96+ button.tag];
-                NSLog(@"getNumber %@", getString);
                 //Создаем нотификацию для отправки данных-----------------
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH object:getString];
                 }
-                
             }
-            
         }else{
              otherButton.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
              otherButton.change = YES;
         }
-     
     }
-    
-    
 }
 
 
 //Тач по картинке--------------------------------
-- (void) buttonGalleryTuch: (UIButton*) button
+- (void) buttonGalleryTuch: (CustomButton*) button
 {
     for (int i = 0; i < 20; i++)
     {
@@ -174,33 +167,27 @@
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpOutside];
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:  UIControlEventTouchCancel];
-            
-            
 
         }
     }
 }
 
 //Действие нажатия на картинку--------------------
-- (void) buttonGalleryAction: (UIButton*) button
+- (void) buttonGalleryAction: (CustomButton*) button
 {
     
     for (int i = 0; i < 20; i++)
     {
         if (button.tag == 10 + i) {
-            NSLog(@"button.tag = %ld", (long)button.tag);
+            NSDictionary * dictImage = button.dictImage;
             button.alpha = 0.5f;
             UIImageView * customImageView = (UIImageView*)[self viewWithTag:100+i];
             customImageView.alpha = 1.f;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_GALLARY_PUSH_GALLARY_DETAIL object:nil userInfo:dictImage];
+            
         }
     }
 }
-
-
-
-
-
-
-
 
 @end

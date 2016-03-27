@@ -10,6 +10,8 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "TitleClass.h"
+#import "SingleTone.h"
+#import "GallaryDetailsView.h"
 
 @implementation GalleryDetailsController
 
@@ -28,7 +30,17 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
 
-#pragma mark - Initialization    
+#pragma mark - Initialization  
+    
+    //Подключаем фон-------------------------------------------
+    GallaryDetailsView * gallaryDetailsViewBackGround = [[GallaryDetailsView alloc] initBackgroundWithView:self.view];
+    [self.view addSubview:gallaryDetailsViewBackGround];
+    
+    //Подключаем картинку--------------------------------------
+    GallaryDetailsView * gallaryDetailsViewImage = [[GallaryDetailsView alloc] initImageWithView:self.view andDict:[[SingleTone sharedManager] dictImage]];
+    [self.view addSubview:gallaryDetailsViewImage];
+    
+
 }
 
 @end
