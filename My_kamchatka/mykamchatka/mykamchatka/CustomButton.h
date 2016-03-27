@@ -11,5 +11,6 @@
 @interface CustomButton : UIButton
 
 @property (assign, nonatomic) BOOL change;
+@property (strong, nonatomic) NSDictionary * dictImage;
 
 @end

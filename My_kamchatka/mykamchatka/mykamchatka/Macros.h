@@ -32,6 +32,7 @@
 
 //Нотификации---------------------------------------------------------------------
 #define NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH @"NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH"
+#define NOTIFICATION_GALLARY_PUSH_GALLARY_DETAIL @"NOTIFICATION_GALLARY_PUSH_GALLARY_DETAIL"
 
 
 

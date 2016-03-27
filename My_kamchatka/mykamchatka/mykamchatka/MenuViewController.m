@@ -119,10 +119,14 @@
 {
     if (indexPath.row % 2 != 0) {
        
-        return 10;
+        return 5;
         
     } else {
+        if (isiPhone5) {
+            return 50;
+        } else {
     return 70;
+}
 }
 }
 @end
