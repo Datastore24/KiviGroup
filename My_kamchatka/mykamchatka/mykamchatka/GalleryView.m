@@ -169,14 +169,14 @@
             [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:UIControlEventTouchDragEnter];
             
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpInside];
-<<<<<<< HEAD
+
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:UIControlEventTouchUpOutside];
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:  UIControlEventTouchCancel];
-=======
+
             [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:  UIControlEventTouchCancel];
             
             
->>>>>>> origin/master
+
 
         }
     }
