@@ -7,6 +7,7 @@
 //
 
 #import "ApplicationView.h"
+#import "ApplicationController.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 
@@ -34,6 +35,7 @@
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
+        
         //Создаем фон из двух частей фонофого затемнения и изображения--------------------
         UIView * secondView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
         secondView.backgroundColor = [UIColor colorWithHexString:@"eceff3"];
@@ -56,6 +58,9 @@
         
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         [self addSubview:mainScrollView];
+        
+       
+        
         
         //Наносим текст-------------------------------------------------------------------
         UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, self.frame.size.width - 60, 350)];
@@ -163,7 +168,8 @@
             buttonLoadPhoto.frame = CGRectMake((self.frame.size.width/2) - 100, 420, 30, 23);
         }
         [buttonLoadPhoto setImage:imageBarButton forState:UIControlStateNormal];
-        [buttonLoadPhoto addTarget:self action:@selector(buttonLoadPhotoAction)
+        ApplicationController * appController = [[ApplicationController alloc] init];
+        [buttonLoadPhoto addTarget:appController action:@selector(openPhotoLibraryButton:)
                               forControlEvents:UIControlEventTouchUpInside];
         [mainScrollView addSubview:buttonLoadPhoto];
         
@@ -283,13 +289,13 @@
 //Действие кнопки отправить заявку-------------------------
 - (void) buttonSendApplicationAction
 {
+    
     NSLog(@"Отправить фото");
+    ApplicationController * appController = [[ApplicationController alloc] init];
+    [appController getAPIWithFio:textFieldLogin.text andEmail:textFieldEmail.text];
 }
-//Действие кнопки выбрать фотографию-----------------------
-- (void) buttonLoadPhotoAction
-{
-    NSLog(@"Выбираем фоточки");
-}
+
+
 
 //Действие кнопки согласиться с лиц. соглашением------------
 - (void) buttonСonfirmAction
@@ -303,6 +309,8 @@
     }
     
 }
+
+
 #pragma mark - DEALLOC
 
 - (void) dealloc

@@ -11,6 +11,7 @@
 @interface SingleTone : NSObject
 
 @property (strong, nonatomic) NSDictionary * dictImage;
+@property (strong, nonatomic) NSString * urlImage;
 
 + (id)sharedManager;
 

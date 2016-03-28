@@ -12,6 +12,9 @@
 #import "Macros.h"
 #import "ApplicationView.h"
 #import "TitleClass.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
+#import <AFNetworking/AFNetworking.h>
 
 @implementation ApplicationController
 
@@ -22,6 +25,8 @@
     //Заголовок-----------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithLiteTitle:@"ЗАЯВКА"];
     self.navigationItem.titleView = title;
+    
+    
     
     //Задаем цвет бара----------------------------------------
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"b3ddf4"];
@@ -51,6 +56,83 @@
     ApplicationView * applicationView = [[ApplicationView alloc] initWithView:self.view];
     [self.view addSubview:applicationView];
     
+}
+
+#pragma mark - PHOTO
+//Действие кнопки выбрать фотографию-----------------------
+- (void)openPhotoLibraryButton:(id)sender {
+    NSLog(@"Выбираем фоточки");
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+    
+        [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+        picker.allowsEditing = NO;
+        
+        [self presentViewController:picker animated:true completion:nil];
+    }
+    
+}
+
+// IMAGE PICKER DELEGATE =================
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self saveImage:image];
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+// SAVE IMAGE
+- (void)saveImage: (UIImage*) image {
+    NSLog(@"%@",image);
+    
+    NSString *stringUrl = [ NSString stringWithFormat:@"http://photokamchatka.irinayarovaya.ru/API/uploader.php"];
+    NSData *imageLoad = UIImageJPEGRepresentation(image,0.2);
+
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    [manager POST:stringUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+         
+     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSDictionary *response =(NSDictionary *)responseObject;
+         [[SingleTone sharedManager] setUrlImage:[response objectForKey:@"url"]];
+
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+     }];
+
+    
+    NSLog(@"OK");
+}
+
+#pragma mark - API
+- (void) getAPIWithFio: (NSString*) fio andEmail: (NSString *) email
+{
+    NSLog(@"URL %@",[[SingleTone sharedManager] urlImage]);
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 fio, @"fio",
+                                 email, @"email",
+                                 [[SingleTone sharedManager] urlImage], @"url",nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:dictParams method:@"send_photo" complitionBlock:^(id response) {
+        
+       NSDictionary * dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"ТУТ АЛЕРТ НУЖЕН");
+        }
+    }];
 }
 
 @end

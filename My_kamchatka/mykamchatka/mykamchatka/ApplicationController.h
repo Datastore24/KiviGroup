@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ApplicationController : UIViewController
+@interface ApplicationController : UIViewController <UINavigationControllerDelegate,
+UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonMenu;
+
+
+- (void) getAPIWithFio: (NSString*) fio andEmail: (NSString *) email;
 
 @end
