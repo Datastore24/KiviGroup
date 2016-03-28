@@ -74,6 +74,7 @@
 		777039411C989303002BBB90 /* ModelRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = 777039401C989303002BBB90 /* ModelRuler.m */; };
 		779024551CA9A899006B0F9C /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 779024541CA9A899006B0F9C /* AlertClass.m */; };
 		779024571CA9B30B006B0F9C /* confirmImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 779024561CA9B30B006B0F9C /* confirmImage.png */; };
+		779024591CA9C5BE006B0F9C /* fonRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 779024581CA9C5BD006B0F9C /* fonRules.png */; };
 		77B570221CA69E390091F33B /* imagePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B570211CA69E390091F33B /* imagePhoto.png */; };
 		77BABDF21C9C5CAA00E75205 /* JuryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABDF11C9C5CAA00E75205 /* JuryController.m */; };
 		77BABDF51C9C5CBD00E75205 /* JuryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABDF41C9C5CBD00E75205 /* JuryView.m */; };
@@ -89,7 +90,6 @@
 		77BABE121C9C9E6B00E75205 /* GalleryDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABE111C9C9E6B00E75205 /* GalleryDetailsController.m */; };
 		77C65E431C981E99009ED67F /* RulesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E421C981E99009ED67F /* RulesController.m */; };
 		77C65E461C981EB5009ED67F /* RulesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E451C981EB5009ED67F /* RulesView.m */; };
-		77C65E481C98231A009ED67F /* rulesFon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 77C65E471C98231A009ED67F /* rulesFon.jpeg */; };
 		77C65E4E1C984807009ED67F /* buttonConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C65E4D1C984807009ED67F /* buttonConfirm.png */; };
 		77C65E541C984EA6009ED67F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E531C984EA6009ED67F /* CustomButton.m */; };
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
@@ -212,6 +212,7 @@
 		779024531CA9A899006B0F9C /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
 		779024541CA9A899006B0F9C /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClass.m; sourceTree = "<group>"; };
 		779024561CA9B30B006B0F9C /* confirmImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmImage.png; sourceTree = "<group>"; };
+		779024581CA9C5BD006B0F9C /* fonRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fonRules.png; sourceTree = "<group>"; };
 		77B570211CA69E390091F33B /* imagePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto.png; sourceTree = "<group>"; };
 		77BABDF01C9C5CAA00E75205 /* JuryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuryController.h; sourceTree = "<group>"; };
 		77BABDF11C9C5CAA00E75205 /* JuryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuryController.m; sourceTree = "<group>"; };
@@ -235,7 +236,6 @@
 		77C65E421C981E99009ED67F /* RulesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesController.m; sourceTree = "<group>"; };
 		77C65E441C981EB5009ED67F /* RulesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesView.h; sourceTree = "<group>"; };
 		77C65E451C981EB5009ED67F /* RulesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesView.m; sourceTree = "<group>"; };
-		77C65E471C98231A009ED67F /* rulesFon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rulesFon.jpeg; sourceTree = "<group>"; };
 		77C65E4D1C984807009ED67F /* buttonConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonConfirm.png; sourceTree = "<group>"; };
 		77C65E521C984EA6009ED67F /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		77C65E531C984EA6009ED67F /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
@@ -527,8 +527,8 @@
 		77C65E401C981E6F009ED67F /* Rules */ = {
 			isa = PBXGroup;
 			children = (
+				779024581CA9C5BD006B0F9C /* fonRules.png */,
 				77C65E4D1C984807009ED67F /* buttonConfirm.png */,
-				77C65E471C98231A009ED67F /* rulesFon.jpeg */,
 				77C65E411C981E99009ED67F /* RulesController.h */,
 				77C65E421C981E99009ED67F /* RulesController.m */,
 				77C65E441C981EB5009ED67F /* RulesView.h */,
@@ -698,6 +698,7 @@
 				770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */,
 				77BABE041C9C97B900E75205 /* govoruhin.png in Resources */,
 				770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */,
+				779024591CA9C5BE006B0F9C /* fonRules.png in Resources */,
 				770B06581C970A3D00BC3D61 /* SFUIText-LightItalic.otf in Resources */,
 				770B06591C970A3D00BC3D61 /* SFUIText-Medium.otf in Resources */,
 				770B065A1C970A3D00BC3D61 /* SFUIText-MediumItalic.otf in Resources */,
@@ -727,7 +728,6 @@
 				771448E71C96E2C3006CD98E /* Assets.xcassets in Resources */,
 				771448E51C96E2C3006CD98E /* Main.storyboard in Resources */,
 				772511571CA6F06D00CCFED5 /* fandeev.png in Resources */,
-				77C65E481C98231A009ED67F /* rulesFon.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
