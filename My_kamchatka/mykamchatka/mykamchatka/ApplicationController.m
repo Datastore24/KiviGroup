@@ -137,7 +137,7 @@
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            [AlertClass showAlertWithMessage:@"Ваша галлерея пуста"];
+//            [AlertClass showAlertWithMessage:@"Ваша галлерея пуста"];
         }
     }];
 }

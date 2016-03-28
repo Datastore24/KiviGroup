@@ -72,7 +72,7 @@
             UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, viewHead.frame.size.width - 80, 40)];
             labelTitle.text = [nameArray objectAtIndex:i];
             labelTitle.textColor = [UIColor whiteColor];
-            labelTitle.font = [UIFont fontWithName:FONTREGULAR size:18];
+            labelTitle.font = [UIFont fontWithName:FONTREGULAR size:16];
             if (isiPhone5) {
                 labelTitle.font = [UIFont fontWithName:FONTREGULAR size:12];
                 labelTitle.frame = CGRectMake(20, 0, viewHead.frame.size.width - 80, 30);

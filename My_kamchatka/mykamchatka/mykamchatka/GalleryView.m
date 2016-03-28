@@ -146,7 +146,7 @@
         
         if (array.count == 0) {
             UILabel * labelNotPhoto = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, mainScrollView.frame.size.width, mainScrollView.frame.size.height - 64)];
-            labelNotPhoto.text = @"В ГАЛЛЕРЕИ НЕТ НЕ ОДНОЙ ФОТОГРАФИИ";
+            labelNotPhoto.text = @"В ГАЛЛЕРЕИ НЕТ НИ ОДНОЙ ФОТОГРАФИИ";
             labelNotPhoto.textColor = [UIColor blackColor];
             labelNotPhoto.textAlignment = NSTextAlignmentCenter;
             labelNotPhoto.font = [UIFont fontWithName:FONTBOND size:16];
