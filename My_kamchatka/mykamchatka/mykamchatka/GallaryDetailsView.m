@@ -51,23 +51,31 @@
         [self addSubview:imageView];
         
         //Вью для коменнтариев-------------
-        UIView * viewComments = [[UIView alloc] initWithFrame:CGRectMake(20 + 5, 20 + 45 + imageGallary.frame.size.height, imageGallary.frame.size.width, 80)];
+        UIView * viewComments = [[UIView alloc] initWithFrame:CGRectMake(20 + 5, 20 + imageGallary.frame.size.height, imageGallary.frame.size.width, 80)];
         viewComments.backgroundColor = [UIColor blackColor];
         viewComments.alpha = 0.9f;
         [self addSubview:viewComments];
         
         //Лейбл комментария--------------
-        UILabel * labelComment = [[UILabel alloc] initWithFrame:CGRectMake(40, 15, viewComments.frame.size.width - 20, 20)];
+        UILabel * labelComment = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, viewComments.frame.size.width - 40, 20)];
         labelComment.text = [dict objectForKey:@"title"];
         labelComment.textColor = [UIColor whiteColor];
-        labelComment.font = [UIFont fontWithName:FONTLITE size:14];
+        labelComment.font = [UIFont fontWithName:FONTLITE size:12];
+        if (isiPhone5) {
+            labelComment.font = [UIFont fontWithName:FONTLITE size:10];
+        }
+        labelComment.textAlignment = NSTextAlignmentCenter;
         [viewComments addSubview:labelComment];
         
         //Лейбл Имени и Возраста--------
-        UILabel * labelNameAndAge = [[UILabel alloc] initWithFrame:CGRectMake(40, 45, viewComments.frame.size.width - 20, 20)];
+        UILabel * labelNameAndAge = [[UILabel alloc] initWithFrame:CGRectMake(20, 45, viewComments.frame.size.width - 40, 20)];
         labelNameAndAge.text = [dict objectForKey:@"introtext"];
         labelNameAndAge.textColor = [UIColor whiteColor];
         labelNameAndAge.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone5) {
+            labelNameAndAge.font = [UIFont fontWithName:FONTLITE size:12];
+        }
+        labelNameAndAge.textAlignment = NSTextAlignmentCenter;
         [viewComments addSubview:labelNameAndAge];
         
 
