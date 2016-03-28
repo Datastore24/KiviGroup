@@ -40,7 +40,7 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
         //Полноэкранное изображение-------
-        NSLog(@"%@",[dict objectForKey:@"image_fulltext"]);
+//        NSLog(@"%@",[dict objectForKey:@"image_fulltext"]);
         UIImageView * imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height/2)];
          imageView.layer.masksToBounds = YES;
         

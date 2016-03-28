@@ -12,11 +12,16 @@
 #import "CustomButton.h"
 #import "ViewSectionTable.h"
 #import "GalleryDetailsController.h"
+#import "SingleTone.h"
 
 @implementation GalleryView
 {
     UIScrollView * mainScrollView;
     NSInteger numerator;
+    
+    NSMutableArray * buttonsYearsArray;
+    
+    NSArray * mainArray;
 }
 
 - (instancetype)initBackgroundWithView: (UIView*) view
@@ -26,6 +31,7 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         //Инициализируем кастомный нумератор для разделения списка на два столбца
         numerator = 0;
+        buttonsYearsArray = [[NSMutableArray alloc] init];
         
         //Создаем фон из двух частей фонофого затемнения и изображения--------------------
         UIView * secondView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
@@ -88,6 +94,9 @@
         
         //Инициализируем кастомный нумератор для разделения списка на два столбца
         numerator = 0;
+        mainArray = array;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(buttonsYearsAction) name:NOTIFICATION_BACK_BUTTONS_YEARS object:nil];
         
         //Создаем рабочий скрол вью-------------------------------------------------------
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -134,6 +143,18 @@
             eyeView.center = imageView.center;
             [mainScrollView addSubview:eyeView];
         }
+        
+        if (array.count == 0) {
+            UILabel * labelNotPhoto = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, mainScrollView.frame.size.width, mainScrollView.frame.size.height - 64)];
+            labelNotPhoto.text = @"В ГАЛЛЕРЕИ НЕТ НЕ ОДНОЙ ФОТОГРАФИИ";
+            labelNotPhoto.textColor = [UIColor blackColor];
+            labelNotPhoto.textAlignment = NSTextAlignmentCenter;
+            labelNotPhoto.font = [UIFont fontWithName:FONTBOND size:16];
+            if (isiPhone5) {
+                labelNotPhoto.font = [UIFont fontWithName:FONTBOND size:14];
+            }
+            [mainScrollView addSubview:labelNotPhoto];
+        }
         if (!isiPhone5) {
             mainScrollView.contentSize = CGSizeMake(0, 60 + 190 * numerator);
         } else {
@@ -154,7 +175,7 @@
         if (button.tag == i) {
             if (button.change) {
                 button.backgroundColor = [UIColor colorWithHexString:@"05a4f6"];
-                NSLog(@"Тест на проверку");
+//                NSLog(@"Тест на проверку");
                 button.change = NO;
                 
                 //Создаем переменную для передачи данных на сервер--------
@@ -167,15 +188,19 @@
         }else{
              otherButton.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
              otherButton.change = YES;
+             otherButton.userInteractionEnabled = NO;
+            [buttonsYearsArray addObject:otherButton];
         }
+        
     }
+    [[SingleTone sharedManager] setButtonsArray:buttonsYearsArray];
 }
 
 
 //Тач по картинке--------------------------------
 - (void) buttonGalleryTuch: (CustomButton*) button
 {
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < mainArray.count; i++)
     {
         
         if (button.tag == 10 + i) {
@@ -193,16 +218,12 @@
             [button addTarget:self action:@selector(buttonGalleryAction:) forControlEvents:  UIControlEventTouchCancel];
 
             [button addTarget:self action:@selector(buttonGalleryBack:) forControlEvents:  UIControlEventTouchCancel];
-            
-            
-
-
         }
     }
 }
 
 -(void) buttonGalleryBack: (UIButton*) button{
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < mainArray.count; i++)
     {
         if (button.tag == 10 + i) {
             button.alpha = 0.5f;
@@ -217,7 +238,7 @@
 - (void) buttonGalleryAction: (CustomButton*) button
 {
     
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < mainArray.count; i++)
     {
         if (button.tag == 10 + i) {
             NSDictionary * dictImage = button.dictImage;

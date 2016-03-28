@@ -162,7 +162,7 @@
         <!--Main View Controller-->
         <scene sceneID="rD3-7S-97k">
             <objects>
-                <viewController id="scD-aV-1Vu" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="scD-aV-1Vu" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X3P-zk-U7l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -67,7 +67,7 @@
         authorLabel.numberOfLines = 0;
         authorLabel.text = @"Автор проекта -  \nдепутат государственной думмы Ирина Яровая";
         authorLabel.textColor = [UIColor whiteColor];
-        authorLabel.font = [UIFont fontWithName:FONTBOND size:15];
+        authorLabel.font = [UIFont fontWithName:FONTBOND size:14];
         if (isiPhone5) {
         authorLabel.font = [UIFont fontWithName:FONTBOND size:11];
         authorLabel.frame = CGRectMake(20, mainImageView.frame.size.height - 110, mainImageView.frame.size.width - 40, 40);

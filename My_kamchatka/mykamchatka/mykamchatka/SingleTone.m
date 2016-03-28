@@ -12,6 +12,7 @@
 
 @synthesize dictImage;
 @synthesize urlImage;
+@synthesize buttonsArray;
 
 #pragma mark Singleton Methods
 

@@ -15,6 +15,8 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import <AFNetworking/AFNetworking.h>
+#import "MainViewController.h"
+#import "AlertClass.h"
 
 @implementation ApplicationController
 
@@ -55,6 +57,9 @@
     //Подвязываем остальные UI элементы------------------------
     ApplicationView * applicationView = [[ApplicationView alloc] initWithView:self.view];
     [self.view addSubview:applicationView];
+    
+    //Нотификация----------------------------------------------
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWithMainView) name:NOTIFICATION_APPLICATION_PUSH_ON_MAIN_VIEW object:nil];
     
 }
 
@@ -102,20 +107,22 @@
      } success:^(AFHTTPRequestOperation *operation, id responseObject) {
          NSDictionary *response =(NSDictionary *)responseObject;
          [[SingleTone sharedManager] setUrlImage:[response objectForKey:@"url"]];
+         
+         
 
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@ ***** %@", operation.responseString, error);
      }];
 
-    
-    NSLog(@"OK");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHANGE_BUTTON_LOAD_PHOTO object:nil];
+//    NSLog(@"OK");
 }
 
 #pragma mark - API
 - (void) getAPIWithFio: (NSString*) fio andEmail: (NSString *) email
 {
-    NSLog(@"URL %@",[[SingleTone sharedManager] urlImage]);
+//    NSLog(@"URL %@",[[SingleTone sharedManager] urlImage]);
     NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
                                  fio, @"fio",
                                  email, @"email",
@@ -130,9 +137,24 @@
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"ТУТ АЛЕРТ НУЖЕН");
+            [AlertClass showAlertWithMessage:@"Ваша галлерея пуста"];
         }
     }];
+}
+
+#pragma mark - NOTIFICATION METHODS
+
+- (void) pushWithMainView
+{
+    MainViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - DEALLOC
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
