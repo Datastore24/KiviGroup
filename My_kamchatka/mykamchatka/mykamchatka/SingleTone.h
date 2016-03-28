@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSDictionary * dictImage;
 @property (strong, nonatomic) NSString * urlImage;
+@property (strong, nonatomic) NSMutableArray * buttonsArray;
 
 + (id)sharedManager;
 

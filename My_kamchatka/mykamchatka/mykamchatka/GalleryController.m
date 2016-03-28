@@ -86,7 +86,7 @@
 {
     
     //Новая графика--------------------------------------------------------------
-    NSLog(@"Новое окно %@", notification.object);
+//    NSLog(@"Новое окно %@", notification.object);
     [self getAPIWithIdentifier:notification.object andBlock:^{
         mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"gallery"]];
         [UIView animateWithDuration:0.3 animations:^{
@@ -105,6 +105,10 @@
 
             [backgroungView addSubview:galleryViewSecond];
             galleryViewFirst = galleryViewSecond;
+            
+            for (UIButton * button in [[SingleTone sharedManager] buttonsArray]) {
+                button.userInteractionEnabled = YES;
+            }       
     }];
     }];
 }
