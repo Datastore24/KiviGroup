@@ -40,8 +40,15 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
         //Полноэкранное изображение-------
-        ViewSectionTable * imageGallary = [[ViewSectionTable alloc] initSharesWithImageURL:[dict objectForKey:@"image_fulltext"] andView:self];
-        [self addSubview:imageGallary];
+        NSLog(@"%@",[dict objectForKey:@"image_fulltext"]);
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height/2)];
+         imageView.layer.masksToBounds = YES;
+        
+        ViewSectionTable * imageGallary = [[ViewSectionTable alloc] initSharesWithImageURL:[dict objectForKey:@"image_fulltext"] andView:imageView andContentMode:UIViewContentModeScaleAspectFill];
+        
+        [imageView addSubview:imageGallary];
+        
+        [self addSubview:imageView];
         
         //Вью для коменнтариев-------------
         UIView * viewComments = [[UIView alloc] initWithFrame:CGRectMake(20 + 5, 20 + 45 + imageGallary.frame.size.height, imageGallary.frame.size.width, 80)];
