@@ -11,6 +11,7 @@
 #import "ViewSectionTable.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "UIImage+Resize.h"//Ресайз изображения
+#import "Macros.h"
 
 
 @implementation ViewSectionTable
@@ -19,11 +20,19 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, 180, 180);
+        if (!isiPhone5) {
+            self.frame = CGRectMake(0, 0, 180, 180);
+        } else {
+           self.frame = CGRectMake(0, 0, 140, 140);
+        }
         self.layer.cornerRadius = 5.0;
         self.clipsToBounds = NO;
         
+        
                 __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180, 180)];
+        if (isiPhone5) {
+            imageViewChat.frame = CGRectMake(0, 0, 140, 140);
+        }
                 NSURL *imgURL = [NSURL URLWithString:imageUrl];
         
                 //SingleTone с ресайз изображения
