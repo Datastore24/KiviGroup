@@ -112,7 +112,7 @@
             imageView.layer.masksToBounds = YES;
             [mainScrollView addSubview:imageView];
             
-            ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictData objectForKey:@"image_intro"] andView:nil];
+            ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:[dictData objectForKey:@"image_intro"] andView:nil andContentMode:UIViewContentModeScaleAspectFill];
             [imageView addSubview:viewSectionTable];
             
             //Создаем кнопку перехода в новое вью------

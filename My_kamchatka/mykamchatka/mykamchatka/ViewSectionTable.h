@@ -13,7 +13,9 @@
 
 @interface ViewSectionTable : UIView
 
-- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view;
-- (instancetype)initSharesWithImageURL: (NSString*) imageUrl andView: (UIView*) view;
+- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view
+                  andContentMode: (UIViewContentMode) contentMode;
+- (instancetype)initSharesWithImageURL: (NSString*) imageUrl andView: (UIView*) view
+                        andContentMode: (UIViewContentMode) contentMode;
 
 @end

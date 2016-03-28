@@ -16,7 +16,7 @@
 
 @implementation ViewSectionTable
 
-- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view
+- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode
 {
     self = [super init];
     if (self) {
@@ -47,7 +47,7 @@
         
                                             [UIView transitionWithView:imageViewChat duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                                                 imageViewChat.image = image;
-                                                imageViewChat.contentMode=UIViewContentModeScaleAspectFill;
+                                                imageViewChat.contentMode=contentMode;
                                                 imageViewChat.layer.cornerRadius = 5.0;
                                                 imageViewChat.layer.masksToBounds = YES;
                                             } completion:nil];
@@ -58,7 +58,7 @@
     return self;
 }
 
-- (instancetype)initSharesWithImageURL: (NSString*) imageUrl andView: (UIView*) view
+- (instancetype)initSharesWithImageURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode
 {
     self = [super init];
     if (self) {
@@ -81,7 +81,7 @@
                                     [UIView transitionWithView:imageViewChat duration:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                                         imageViewChat.backgroundColor=[UIColor whiteColor];
                                         imageViewChat.image = image;
-                                        imageViewChat.contentMode=UIViewContentModeTop;
+                                        imageViewChat.contentMode=contentMode;
                                         imageViewChat.layer.masksToBounds = YES;
                                         imageViewChat.frame = CGRectMake(5, 10, view.frame.size.width - 50, view.frame.size.height - 20);
  

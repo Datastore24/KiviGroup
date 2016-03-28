@@ -188,6 +188,7 @@
                 }];
                 button.change = NO;
             } else {
+              
                 floatSizeScroll = floatSizeScroll - sizeMax.height-20;
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                     //Движение доп лейбла-----------
@@ -195,7 +196,7 @@
                     customRest2.size.height = customRest2.size.height - sizeMax.height-20;
                     hidenViewChange.frame = customRest2;
                     CGRect myLabelFrame = [labelData frame];
-                    myLabelFrame.size.height = sizeMin.height;
+                    myLabelFrame.size.height = 0;
                     [labelData setFrame:myLabelFrame];
                     
                     //Вращение кнопки-------------
