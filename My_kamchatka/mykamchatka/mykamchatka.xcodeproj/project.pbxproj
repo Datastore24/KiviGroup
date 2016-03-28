@@ -95,6 +95,11 @@
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
 		77F1FA291CA67E530025560B /* ApplicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA281CA67E530025560B /* ApplicationView.m */; };
 		77FE7FDD1CA45A8B0080E185 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE7FDC1CA45A8B0080E185 /* SingleTone.m */; };
+		AD65CF961CA9CC1C00525C73 /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF911CA9CC1C00525C73 /* iphone 4.png */; };
+		AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF921CA9CC1C00525C73 /* iphone 5.png */; };
+		AD65CF981CA9CC1C00525C73 /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */; };
+		AD65CF991CA9CC1C00525C73 /* iphone 6 Plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF941CA9CC1C00525C73 /* iphone 6 Plus.png */; };
+		AD65CF9A1CA9CC1C00525C73 /* iphone 6.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF951CA9CC1C00525C73 /* iphone 6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +251,11 @@
 		77FE7FDB1CA45A8B0080E185 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		77FE7FDC1CA45A8B0080E185 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.debug.xcconfig"; sourceTree = "<group>"; };
+		AD65CF911CA9CC1C00525C73 /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
+		AD65CF921CA9CC1C00525C73 /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
+		AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6 Plus_2.png"; sourceTree = "<group>"; };
+		AD65CF941CA9CC1C00525C73 /* iphone 6 Plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6 Plus.png"; sourceTree = "<group>"; };
+		AD65CF951CA9CC1C00525C73 /* iphone 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +395,7 @@
 		771448D91C96E2C3006CD98E /* mykamchatka */ = {
 			isa = PBXGroup;
 			children = (
+				AD65CF901CA9CBEF00525C73 /* Launcer */,
 				774C832D1C9F3608009DFE35 /* ImageAPI */,
 				774C83291C9F2DA8009DFE35 /* API */,
 				77F1FA231CA67E110025560B /* Application */,
@@ -554,6 +565,18 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
+		AD65CF901CA9CBEF00525C73 /* Launcer */ = {
+			isa = PBXGroup;
+			children = (
+				AD65CF911CA9CC1C00525C73 /* iphone 4.png */,
+				AD65CF921CA9CC1C00525C73 /* iphone 5.png */,
+				AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */,
+				AD65CF941CA9CC1C00525C73 /* iphone 6 Plus.png */,
+				AD65CF951CA9CC1C00525C73 /* iphone 6.png */,
+			);
+			name = Launcer;
+			sourceTree = "<group>";
+		};
 		EA041776B17AB706233EAF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,8 +704,10 @@
 				77BABE071C9C97B900E75205 /* fetisov.png in Resources */,
 				770B064A1C970A3D00BC3D61 /* SFUIText-Bold.otf in Resources */,
 				773FB7321C999FE4006A5780 /* RequirementsFon.jpg in Resources */,
+				AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */,
 				770B064B1C970A3D00BC3D61 /* SFUIText-BoldG1.otf in Resources */,
 				770B064C1C970A3D00BC3D61 /* SFUIText-BoldG2.otf in Resources */,
+				AD65CF981CA9CC1C00525C73 /* iphone 6 Plus_2.png in Resources */,
 				770B064D1C970A3D00BC3D61 /* SFUIText-BoldG3.otf in Resources */,
 				770B064E1C970A3D00BC3D61 /* SFUIText-BoldItalicG1.otf in Resources */,
 				770B064F1C970A3D00BC3D61 /* SFUIText-BoldItalicG2.otf in Resources */,
@@ -702,9 +727,11 @@
 				770B06581C970A3D00BC3D61 /* SFUIText-LightItalic.otf in Resources */,
 				770B06591C970A3D00BC3D61 /* SFUIText-Medium.otf in Resources */,
 				770B065A1C970A3D00BC3D61 /* SFUIText-MediumItalic.otf in Resources */,
+				AD65CF961CA9CC1C00525C73 /* iphone 4.png in Resources */,
 				770B065B1C970A3D00BC3D61 /* SFUIText-Regular.otf in Resources */,
 				770B065C1C970A3D00BC3D61 /* SFUIText-RegularG1.otf in Resources */,
 				770B065D1C970A3D00BC3D61 /* SFUIText-RegularG2.otf in Resources */,
+				AD65CF9A1CA9CC1C00525C73 /* iphone 6.png in Resources */,
 				770B065E1C970A3D00BC3D61 /* SFUIText-RegularG3.otf in Resources */,
 				770B065F1C970A3D00BC3D61 /* SFUIText-Semibold.otf in Resources */,
 				779024571CA9B30B006B0F9C /* confirmImage.png in Resources */,
@@ -714,6 +741,7 @@
 				770B06611C970A3D00BC3D61 /* SFUIDisplay-Black.otf in Resources */,
 				770B06621C970A3D00BC3D61 /* SFUIDisplay-Bold.otf in Resources */,
 				770B06631C970A3D00BC3D61 /* SFUIDisplay-Heavy.otf in Resources */,
+				AD65CF991CA9CC1C00525C73 /* iphone 6 Plus.png in Resources */,
 				770B06641C970A3D00BC3D61 /* SFUIDisplay-Light.otf in Resources */,
 				770B06651C970A3D00BC3D61 /* SFUIDisplay-Medium.otf in Resources */,
 				770B06661C970A3D00BC3D61 /* SFUIDisplay-Regular.otf in Resources */,
@@ -974,6 +1002,7 @@
 			baseConfigurationReference = A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = mykamchatka/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -987,6 +1016,7 @@
 			baseConfigurationReference = 64FAC1266224537BDAF120F8 /* Pods-mykamchatka.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = mykamchatka/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
