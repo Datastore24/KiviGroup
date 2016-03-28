@@ -47,7 +47,7 @@
         secondView.backgroundColor = [UIColor colorWithHexString:@"eceff3"];
         [self addSubview:secondView];
         UIImageView * mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
-        mainImageView.image = [UIImage imageNamed:@"rulesFon.jpeg"];
+        mainImageView.image = [UIImage imageNamed:@"fonRules.png"];
         mainImageView.alpha = 0.4f;
         [secondView addSubview:mainImageView];
         
@@ -209,7 +209,10 @@
                     }
                 }completion:^(BOOL finished){
                     if (finished) {
-                        mainScrolView.contentSize = CGSizeMake(0, mainScrolView.frame.size.height + floatSizeScroll);
+                        [UIView animateWithDuration:0.3 animations:^{
+                                                    mainScrolView.contentSize = CGSizeMake(0, mainScrolView.frame.size.height + floatSizeScroll);
+                        }];
+
                     }
                 }];
                 button.change = YES;
