@@ -63,16 +63,28 @@
         labelText.text = @"Для регистрации, пожалуйста, заполните предлагаемую форму, указав в соответствующих графах ваши фамилию, имя и адрес электронной почты, на который Оргкомитетом будет отправлено подтверждение вашей регистрации.\n\n\nПожалуйста, отправьте на электронный адрес Оргкомитета фотоконкурса photokamchatka@irinayarovaya.ru не более трех фотографий, соответствующих требованиям, не забыв при этом указать НОМИНАЦИЮ, НАЗВАНИЕ ФОТОГРАФИИ, ВАШ ВОЗРАСТ и НОМЕР КОНТАКТНОГО ТЕЛЕФОНА";
         labelText.numberOfLines = 0;
         labelText.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            labelText.frame = CGRectMake(30, 0, self.frame.size.width - 60, 300);
+            labelText.font = [UIFont fontWithName:FONTREGULAR size:13];
+        }
         [mainScrollView addSubview:labelText];
         
         //Создаем вью Имени------------------------------------------------------------
         UIView * loginView = [[UIView alloc] initWithFrame:CGRectMake((self.frame.size.width/2) - 120, 360, 240, 35)];
+        if (isiPhone5) {
+            loginView.frame = CGRectMake((self.frame.size.width/2) - 100, 300, 200, 30);
+        }
         loginView.backgroundColor = [UIColor whiteColor];
         loginView.layer.cornerRadius = 5.f;
         [mainScrollView addSubview:loginView];
         
         //ТекстФилд для Ввода имени-------------------------------------------------------
         textFieldLogin = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, 200, 35)];
+        textFieldLogin.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            textFieldLogin.frame = CGRectMake(20, 0, 180, 30);
+            textFieldLogin.font = [UIFont fontWithName:FONTREGULAR size:14];
+        }
         textFieldLogin.tag = 300;
         textFieldLogin.delegate = self;
         [loginView addSubview:textFieldLogin];
@@ -83,6 +95,9 @@
         labelLoginPlaceholder.text = @"Фамилия Имя";
         labelLoginPlaceholder.textColor = [UIColor colorWithHexString:@"5f5f5f"];
         labelLoginPlaceholder.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            labelLoginPlaceholder.font = [UIFont fontWithName:FONTREGULAR size:14];
+        }
         [loginView addSubview:labelLoginPlaceholder];
         
         //Булевая переменная для логина---------------------------------------------------
@@ -93,12 +108,20 @@
         
         //Создаем вью Почты----------------------------------------------------------------
         UIView * emailView = [[UIView alloc] initWithFrame:CGRectMake((self.frame.size.width/2) - 120, 420, 240, 35)];
+        if (isiPhone5) {
+            emailView.frame = CGRectMake((self.frame.size.width/2) - 100, 340, 200, 30);
+        }
         emailView.backgroundColor = [UIColor whiteColor];
         emailView.layer.cornerRadius = 5.f;
         [mainScrollView addSubview:emailView];
         
         //ТекстФилд для Ввода Потчы-------------------------------------------------------
         textFieldEmail = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, 200, 35)];
+        textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            textFieldEmail.frame = CGRectMake(20, 0, 180, 30);
+            textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:14];
+        }
         textFieldEmail.tag = 300;
         textFieldEmail.delegate = self;
         [emailView addSubview:textFieldEmail];
@@ -109,6 +132,9 @@
         labelEmailPlaceholder.text = @"Email";
         labelEmailPlaceholder.textColor = [UIColor colorWithHexString:@"5f5f5f"];
         labelEmailPlaceholder.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            labelEmailPlaceholder.font = [UIFont fontWithName:FONTREGULAR size:14];
+        }
         [emailView addSubview:labelEmailPlaceholder];
         
         //Булевая переменная для логина---------------------------------------------------
@@ -121,6 +147,10 @@
         [buttonSendApplication setTitle:@"ОТПРАВИТЬ ЗАЯВКУ" forState:UIControlStateNormal];
         [buttonSendApplication setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSendApplication.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            buttonSendApplication.frame = CGRectMake((self.frame.size.width/2) - 100, 380, 200, 30);
+            buttonSendApplication.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:14];
+        }
         buttonSendApplication.layer.cornerRadius = 5.f;
         [buttonSendApplication addTarget:self action:@selector(buttonSendApplicationAction)
                         forControlEvents:UIControlEventTouchUpInside];
@@ -130,14 +160,22 @@
         UIImage *imageBarButton = [UIImage imageNamed:@"imagePhoto.png"];
         UIButton * buttonLoadPhoto = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonLoadPhoto.frame = CGRectMake((self.frame.size.width/2) - 120, 525, 40, 31);
+        if (isiPhone5) {
+            buttonLoadPhoto.frame = CGRectMake((self.frame.size.width/2) - 100, 420, 30, 23);
+        }
         [buttonLoadPhoto setImage:imageBarButton forState:UIControlStateNormal];
         [buttonLoadPhoto addTarget:self action:@selector(buttonLoadPhotoAction)
                               forControlEvents:UIControlEventTouchUpInside];
         [mainScrollView addSubview:buttonLoadPhoto];
         
+         mainScrollView.contentSize = CGSizeMake(0, 565);
+        
         //Создаем кнопку подтверждения условия соглашения---------------------------------
         UIButton * buttonСonfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonСonfirm.frame = CGRectMake(30, self.frame.size.height - 104, 20, 20);
+        buttonСonfirm.frame = CGRectMake(30, mainScrollView.frame.size.height - 104, 20, 20);
+        if (isiPhone5) {
+            buttonСonfirm.frame = CGRectMake(15, mainScrollView.contentSize.height - 97, 15, 15);
+        }
         buttonСonfirm.backgroundColor = [UIColor whiteColor];
         [buttonСonfirm addTarget:self action:@selector(buttonСonfirmAction) forControlEvents:UIControlEventTouchUpInside];
         [mainScrollView addSubview:buttonСonfirm];
@@ -149,7 +187,13 @@
         UILabel * labelConfirm = [[UILabel alloc] initWithFrame:CGRectMake(60, self.frame.size.height - 104, self.frame.size.width - 60, 20)];
         labelConfirm.text = @"Согласен(а) с правилами конкурса и условиями участия";
         labelConfirm.font = [UIFont fontWithName:FONTBOND size:10];
+        if (isiPhone5) {
+            labelConfirm.frame = CGRectMake(40, mainScrollView.contentSize.height - 104, mainScrollView.frame.size.width - 60, 30);
+            labelConfirm.numberOfLines = 0;
+        }
         [mainScrollView addSubview:labelConfirm];
+        
+        
         
     }
     return self;
@@ -208,34 +252,34 @@
 //Метод перед вводом текста---------------------------------
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField == textFieldLogin && textFieldLogin.text.length != 0) {
-        textFieldLogin.textAlignment = NSTextAlignmentLeft;
-    }
-    if (textField == textFieldEmail && textFieldEmail.text.length != 0) {
-        textFieldEmail.textAlignment = NSTextAlignmentLeft;
-    }
+    
+    if (isiPhone5) {
+        mainScrollView.contentOffset = (CGPoint){
+            0, // ось x нас не интересует
+            120 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+        };
+    }else {
+    
     if (textField == textFieldEmail) {
         mainScrollView.contentOffset = (CGPoint){
             0, // ось x нас не интересует
             80 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
         };
     }
+    }
 }
 
 //Метод после ввода текста----------------------------------
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == textFieldLogin && textFieldLogin.text.length != 0) {
-        textFieldLogin.textAlignment = NSTextAlignmentCenter;
-    }
-    if (textField == textFieldEmail && textFieldEmail.text.length != 0) {
-        textFieldEmail.textAlignment = NSTextAlignmentCenter;
-    }
+    if (isiPhone5) {
+    mainScrollView.contentOffset = (CGPoint){0, 0}; // Возвращаем скролл в начало, так как редактирование текстового поля закончено
+    } else {
     if (textField == textFieldEmail) {
     mainScrollView.contentOffset = (CGPoint){0, 0}; // Возвращаем скролл в начало, так как редактирование текстового поля закончено
 }
 }
-
+}
 #pragma mark - Buttons Methods
 //Действие кнопки отправить заявку-------------------------
 - (void) buttonSendApplicationAction

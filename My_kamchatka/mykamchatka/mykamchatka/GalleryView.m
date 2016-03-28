@@ -39,6 +39,9 @@
         //Создаем кнопки под топ баром---------------------------------------------------
         //Осноное вью для кнопок---------------------
         UIView * viewTopBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 64)];
+        if (isiPhone5) {
+            viewTopBar.frame = CGRectMake(0, 0, self.frame.size.width, 45);
+        }
         viewTopBar.backgroundColor = [UIColor colorWithHexString:@"b3ddf4"];
         [self addSubview:viewTopBar];
         
@@ -49,6 +52,9 @@
         for (int i = 0; i < 4; i ++) {
             CustomButton * buttonSeason = [CustomButton buttonWithType:UIButtonTypeCustom];
             buttonSeason.frame = CGRectMake(((self.frame.size.width - 350)/2) + 90 * i, 20, 80, 25);
+            if (isiPhone5) {
+            buttonSeason.frame = CGRectMake(((self.frame.size.width - 310)/2) + 80 * i, 13, 70, 20);
+            }
             buttonSeason.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
             [buttonSeason setTitle:[arraySeason objectAtIndex:i] forState:UIControlStateNormal];
             [buttonSeason setTintColor:[UIColor whiteColor]];
@@ -92,8 +98,14 @@
             UIView * imageView = [[UIImageView alloc] init];
             if (i %2 == 0) {
                 imageView.frame = CGRectMake((self.frame.size.width / 2) - 170, 10 + 180 * numerator, 160, 160);
+                if (isiPhone5) {
+                imageView.frame = CGRectMake((self.frame.size.width / 2) - 145, 10 + 150 * numerator, 140, 140);
+                }
             } else {
                 imageView.frame = CGRectMake((self.frame.size.width / 2) + 10, 10 + 180 * numerator, 160, 160);
+                if (isiPhone5) {
+                imageView.frame = CGRectMake((self.frame.size.width / 2) + 5, 10 + 150 * numerator, 140, 140);
+                }
                 numerator += 1;
             }
             imageView.layer.cornerRadius = 5.f;
@@ -120,7 +132,12 @@
             eyeView.center = imageView.center;
             [mainScrollView addSubview:eyeView];
         }
-        mainScrollView.contentSize = CGSizeMake(0, 140 + 200 * 10);
+        if (!isiPhone5) {
+            mainScrollView.contentSize = CGSizeMake(0, 60 + 190 * numerator);
+        } else {
+            mainScrollView.contentSize = CGSizeMake(0, 60 + 160 * numerator);
+        }
+        
     }
     return self;
 }
@@ -140,7 +157,7 @@
                 
                 //Создаем переменную для передачи данных на сервер--------
                 if (button.tag == i) {
-                NSString * getString = [NSString stringWithFormat:@"%ld", 96+ button.tag];
+                NSString * getString = [NSString stringWithFormat:@"%d", 96+ button.tag];
                 //Создаем нотификацию для отправки данных-----------------
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICARION_GALLERY_VVIEW_CHANGE_MONTH object:getString];
                 }
