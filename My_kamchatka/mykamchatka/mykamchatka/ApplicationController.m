@@ -92,7 +92,7 @@
     NSLog(@"%@",image);
     
     NSString *stringUrl = [ NSString stringWithFormat:@"http://photokamchatka.irinayarovaya.ru/API/uploader.php"];
-    NSData *imageLoad = UIImageJPEGRepresentation(image,0.2);
+    NSData *imageLoad = UIImageJPEGRepresentation(image,0.8);
 
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
