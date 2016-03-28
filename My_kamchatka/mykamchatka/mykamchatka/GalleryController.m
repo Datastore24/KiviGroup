@@ -75,7 +75,7 @@
     [self getAPIWithIdentifier:@"97" andBlock:^{
   
         mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"gallery"]];
-        galleryViewFirst = [[GalleryView alloc] initWithView:self.view ansArrayGallery:mainArray];
+        galleryViewFirst = [[GalleryView alloc] initWithView:self.view ansArrayGallery:mainArray andFirst:YES];
         [backgroungView addSubview:galleryViewFirst];
     }];
 }
@@ -95,7 +95,14 @@
             galleryViewFirst.frame = rect;
             
         } completion:^(BOOL finished) {
-            galleryViewSecond = [[GalleryView alloc] initWithView:self.view ansArrayGallery:mainArray];
+            galleryViewSecond = [[GalleryView alloc] initWithView:self.view ansArrayGallery:mainArray andFirst:NO];
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                CGRect rect = galleryViewSecond.frame;
+                rect.origin.x += 400;
+                galleryViewSecond.frame = rect;
+            }];
+
             [backgroungView addSubview:galleryViewSecond];
             galleryViewFirst = galleryViewSecond;
     }];

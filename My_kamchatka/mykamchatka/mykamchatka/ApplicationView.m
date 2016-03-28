@@ -24,8 +24,7 @@
     UILabel * labelEmailPlaceholder;
     BOOL emailBool;
     
-    UIScrollView * mainScrollView;
-    
+    UIScrollView * mainScrollView;    
     BOOL confirmBool;
 }
 

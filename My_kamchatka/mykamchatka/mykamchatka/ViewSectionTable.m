@@ -84,6 +84,10 @@
                                         imageViewChat.contentMode=contentMode;
                                         imageViewChat.layer.masksToBounds = YES;
                                         imageViewChat.frame = CGRectMake(5, 10, view.frame.size.width - 50, view.frame.size.height - 20);
+                                        if (!isiPhone5) {
+                                            
+                                            
+                                        }
  
                                     } completion:nil];
                                 }

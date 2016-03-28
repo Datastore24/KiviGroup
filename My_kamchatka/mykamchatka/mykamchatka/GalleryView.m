@@ -77,11 +77,14 @@
 
 //Реалезация галереи-------------------------------
 
-- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array
+- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array andFirst: (BOOL) first
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height);
+        if (!first) {
+            self.frame = CGRectMake(-400, 64, view.frame.size.width, view.frame.size.height);
+        }
         
         //Инициализируем кастомный нумератор для разделения списка на два столбца
         numerator = 0;
@@ -94,7 +97,6 @@
         for (int i = 0; i < array.count; i++) {
             
             NSDictionary * dictData = [array objectAtIndex:i];
-            
             UIView * imageView = [[UIImageView alloc] init];
             if (i %2 == 0) {
                 imageView.frame = CGRectMake((self.frame.size.width / 2) - 170, 10 + 180 * numerator, 160, 160);
