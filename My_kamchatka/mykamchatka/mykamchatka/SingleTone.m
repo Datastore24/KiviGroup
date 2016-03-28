@@ -11,6 +11,7 @@
 @implementation SingleTone
 
 @synthesize dictImage;
+@synthesize urlImage;
 
 #pragma mark Singleton Methods
 

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ApplicationView : UIView
+
+
+
 
 - (instancetype)initBackgroundWithView: (UIView*) view;
 - (instancetype)initWithView: (UIView*) view;
