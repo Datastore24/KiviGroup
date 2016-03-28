@@ -11,6 +11,6 @@
 @interface GalleryView : UIView
 
 - (instancetype)initBackgroundWithView: (UIView*) view;
-- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array;
+- (instancetype)initWithView: (UIView*) view ansArrayGallery: (NSArray*) array andFirst: (BOOL) first;
 
 @end
