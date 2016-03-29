@@ -97,18 +97,24 @@
         } completion:^(BOOL finished) {
             galleryViewSecond = [[GalleryView alloc] initWithView:self.view ansArrayGallery:mainArray andFirst:NO];
             
+
+            
             [UIView animateWithDuration:0.3 animations:^{
                 CGRect rect = galleryViewSecond.frame;
                 rect.origin.x += 400;
                 galleryViewSecond.frame = rect;
+            } completion:^(BOOL finished) {
+                for (UIButton * button in [[SingleTone sharedManager] buttonsArray]) {
+                    button.userInteractionEnabled = YES;
+                }
+                
+                [[[SingleTone sharedManager] buttonsArray] removeAllObjects];
             }];
 
             [backgroungView addSubview:galleryViewSecond];
             galleryViewFirst = galleryViewSecond;
             
-            for (UIButton * button in [[SingleTone sharedManager] buttonsArray]) {
-                button.userInteractionEnabled = YES;
-            }       
+      
     }];
     }];
 }

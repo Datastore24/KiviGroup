@@ -80,11 +80,7 @@
 		77BABDF51C9C5CBD00E75205 /* JuryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABDF41C9C5CBD00E75205 /* JuryView.m */; };
 		77BABDF71C9C5F3900E75205 /* JuriFon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 77BABDF61C9C5F3900E75205 /* JuriFon.jpeg */; };
 		77BABDFC1C9C90EC00E75205 /* JuryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABDFB1C9C90EC00E75205 /* JuryModel.m */; };
-		77BABE031C9C97B900E75205 /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BABDFE1C9C97B900E75205 /* yarovaya.png */; };
-		77BABE041C9C97B900E75205 /* govoruhin.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BABDFF1C9C97B900E75205 /* govoruhin.png */; };
 		77BABE051C9C97B900E75205 /* shpilyonok.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BABE001C9C97B900E75205 /* shpilyonok.png */; };
-		77BABE061C9C97B900E75205 /* gorshkov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BABE011C9C97B900E75205 /* gorshkov.png */; };
-		77BABE071C9C97B900E75205 /* fetisov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BABE021C9C97B900E75205 /* fetisov.png */; };
 		77BABE0B1C9C9D3400E75205 /* GalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABE0A1C9C9D3400E75205 /* GalleryController.m */; };
 		77BABE0E1C9C9D4600E75205 /* GalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABE0D1C9C9D4600E75205 /* GalleryView.m */; };
 		77BABE121C9C9E6B00E75205 /* GalleryDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BABE111C9C9E6B00E75205 /* GalleryDetailsController.m */; };
@@ -92,6 +88,10 @@
 		77C65E461C981EB5009ED67F /* RulesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E451C981EB5009ED67F /* RulesView.m */; };
 		77C65E4E1C984807009ED67F /* buttonConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C65E4D1C984807009ED67F /* buttonConfirm.png */; };
 		77C65E541C984EA6009ED67F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E531C984EA6009ED67F /* CustomButton.m */; };
+		77CDE9BD1CAAA08B00D34D88 /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */; };
+		77CDE9BF1CAAA09D00D34D88 /* fetisov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9BE1CAAA09D00D34D88 /* fetisov.png */; };
+		77CDE9C11CAAA0A500D34D88 /* govoryhin.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9C01CAAA0A500D34D88 /* govoryhin.png */; };
+		77CDE9C31CAAA0AD00D34D88 /* gorshkov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */; };
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
 		77F1FA291CA67E530025560B /* ApplicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA281CA67E530025560B /* ApplicationView.m */; };
 		77FE7FDD1CA45A8B0080E185 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE7FDC1CA45A8B0080E185 /* SingleTone.m */; };
@@ -237,11 +237,7 @@
 		77BABDF61C9C5F3900E75205 /* JuriFon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = JuriFon.jpeg; sourceTree = "<group>"; };
 		77BABDFA1C9C90EC00E75205 /* JuryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuryModel.h; sourceTree = "<group>"; };
 		77BABDFB1C9C90EC00E75205 /* JuryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuryModel.m; sourceTree = "<group>"; };
-		77BABDFE1C9C97B900E75205 /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
-		77BABDFF1C9C97B900E75205 /* govoruhin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = govoruhin.png; sourceTree = "<group>"; };
 		77BABE001C9C97B900E75205 /* shpilyonok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shpilyonok.png; sourceTree = "<group>"; };
-		77BABE011C9C97B900E75205 /* gorshkov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gorshkov.png; sourceTree = "<group>"; };
-		77BABE021C9C97B900E75205 /* fetisov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fetisov.png; sourceTree = "<group>"; };
 		77BABE091C9C9D3400E75205 /* GalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryController.h; sourceTree = "<group>"; };
 		77BABE0A1C9C9D3400E75205 /* GalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryController.m; sourceTree = "<group>"; };
 		77BABE0C1C9C9D4600E75205 /* GalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryView.h; sourceTree = "<group>"; };
@@ -255,6 +251,10 @@
 		77C65E4D1C984807009ED67F /* buttonConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonConfirm.png; sourceTree = "<group>"; };
 		77C65E521C984EA6009ED67F /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		77C65E531C984EA6009ED67F /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
+		77CDE9BE1CAAA09D00D34D88 /* fetisov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fetisov.png; sourceTree = "<group>"; };
+		77CDE9C01CAAA0A500D34D88 /* govoryhin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = govoryhin.png; sourceTree = "<group>"; };
+		77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gorshkov.png; sourceTree = "<group>"; };
 		77F1FA241CA67E3A0025560B /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		77F1FA251CA67E3A0025560B /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		77F1FA271CA67E530025560B /* ApplicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationView.h; sourceTree = "<group>"; };
@@ -525,12 +525,12 @@
 		77BABDFD1C9C97AC00E75205 /* avaImage */ = {
 			isa = PBXGroup;
 			children = (
+				77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */,
+				77CDE9C01CAAA0A500D34D88 /* govoryhin.png */,
+				77CDE9BE1CAAA09D00D34D88 /* fetisov.png */,
+				77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */,
 				772511561CA6F06D00CCFED5 /* fandeev.png */,
-				77BABDFE1C9C97B900E75205 /* yarovaya.png */,
-				77BABDFF1C9C97B900E75205 /* govoruhin.png */,
 				77BABE001C9C97B900E75205 /* shpilyonok.png */,
-				77BABE011C9C97B900E75205 /* gorshkov.png */,
-				77BABE021C9C97B900E75205 /* fetisov.png */,
 			);
 			name = avaImage;
 			sourceTree = "<group>";
@@ -742,8 +742,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77CDE9BF1CAAA09D00D34D88 /* fetisov.png in Resources */,
 				AD65CFD71CA9D20200525C73 /* Icon-Small@3x.png in Resources */,
-				77BABE071C9C97B900E75205 /* fetisov.png in Resources */,
 				770B064A1C970A3D00BC3D61 /* SFUIText-Bold.otf in Resources */,
 				773FB7321C999FE4006A5780 /* RequirementsFon.jpg in Resources */,
 				AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */,
@@ -761,11 +761,11 @@
 				770B06531C970A3D00BC3D61 /* SFUIText-Italic.otf in Resources */,
 				770B06541C970A3D00BC3D61 /* SFUIText-ItalicG1.otf in Resources */,
 				771AA1A01C9D882200CCA969 /* eye.png in Resources */,
+				77CDE9C11CAAA0A500D34D88 /* govoryhin.png in Resources */,
 				AD65CFD61CA9D20200525C73 /* Icon-Small@2x.png in Resources */,
-				77BABE061C9C97B900E75205 /* gorshkov.png in Resources */,
+				77CDE9BD1CAAA08B00D34D88 /* yarovaya.png in Resources */,
 				770B06551C970A3D00BC3D61 /* SFUIText-ItalicG2.otf in Resources */,
 				770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */,
-				77BABE041C9C97B900E75205 /* govoruhin.png in Resources */,
 				770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */,
 				779024591CA9C5BE006B0F9C /* fonRules.png in Resources */,
 				770B06581C970A3D00BC3D61 /* SFUIText-LightItalic.otf in Resources */,
@@ -798,7 +798,6 @@
 				770B06661C970A3D00BC3D61 /* SFUIDisplay-Regular.otf in Resources */,
 				770B06671C970A3D00BC3D61 /* SFUIDisplay-Semibold.otf in Resources */,
 				77BABDF71C9C5F3900E75205 /* JuriFon.jpeg in Resources */,
-				77BABE031C9C97B900E75205 /* yarovaya.png in Resources */,
 				77C65E4E1C984807009ED67F /* buttonConfirm.png in Resources */,
 				770B06681C970A3D00BC3D61 /* SFUIDisplay-Thin.otf in Resources */,
 				770B06691C970A3D00BC3D61 /* SFUIDisplay-Ultralight.otf in Resources */,
@@ -807,6 +806,7 @@
 				771448E71C96E2C3006CD98E /* Assets.xcassets in Resources */,
 				AD65CFCE1CA9D20200525C73 /* Icon-40@2x.png in Resources */,
 				771448E51C96E2C3006CD98E /* Main.storyboard in Resources */,
+				77CDE9C31CAAA0AD00D34D88 /* gorshkov.png in Resources */,
 				772511571CA6F06D00CCFED5 /* fandeev.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

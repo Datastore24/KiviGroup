@@ -36,7 +36,7 @@
                                
                                @"Фотограф-натуралист, снимает дикую природу и диких животных. Основатель и первый директор заповедника «Брянский лес». Автор фотокниг о дикой природе. Член Международной Лиги природоохранных фотографов.", nil];
     
-    NSArray * imageJuri = [NSArray arrayWithObjects:@"yarovaya.png", @"govoruhin.png", @"fetisov.png", @"fandeev.png",
+    NSArray * imageJuri = [NSArray arrayWithObjects:@"yarovaya.png", @"govoryhin.png", @"fetisov.png", @"fandeev.png",
                            @"gorshkov.png", @"shpilyonok.png", nil];
     
     
