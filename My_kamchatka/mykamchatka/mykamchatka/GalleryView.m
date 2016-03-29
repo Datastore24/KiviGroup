@@ -173,11 +173,10 @@
     for (int i = 1; i < 5; i++) {
         CustomButton * otherButton  = (CustomButton *) [self viewWithTag:i];
         if (button.tag == i) {
+            button.userInteractionEnabled = NO;
             if (button.change) {
                 button.backgroundColor = [UIColor colorWithHexString:@"05a4f6"];
-//                NSLog(@"Тест на проверку");
                 button.change = NO;
-                
                 //Создаем переменную для передачи данных на сервер--------
                 if (button.tag == i) {
                 NSString * getString = [NSString stringWithFormat:@"%d", 96+ button.tag];
@@ -188,12 +187,14 @@
         }else{
              otherButton.backgroundColor = [UIColor colorWithHexString:@"2d6186"];
              otherButton.change = YES;
-             otherButton.userInteractionEnabled = NO;
             [buttonsYearsArray addObject:otherButton];
+            otherButton.userInteractionEnabled = NO;
         }
         
     }
     [[SingleTone sharedManager] setButtonsArray:buttonsYearsArray];
+
+
 }
 
 
