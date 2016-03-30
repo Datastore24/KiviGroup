@@ -77,6 +77,7 @@
         textFieldInputPhone = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderPhone.frame.origin.x, labelPlaceHolderPhone.frame.origin.y, widthLogin, 40)];
         textFieldInputPhone.delegate = self;
         textFieldInputPhone.tag = 312;
+        textFieldInputPhone.keyboardAppearance = UIKeyboardAppearanceDark;
         textFieldInputPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldInputPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldInputPhone.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textField"] intValue]];
@@ -105,6 +106,7 @@
         textFieldInputSMS = [[UITextField alloc] initWithFrame:CGRectMake(labelPlaceHolderSMS.frame.origin.x, labelPlaceHolderSMS.frame.origin.y, widthLogin, 40)];
         textFieldInputSMS.delegate = self;
         textFieldInputSMS.tag = 313;
+        textFieldInputSMS.keyboardAppearance = UIKeyboardAppearanceDark;
         textFieldInputSMS.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldInputSMS.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldInputSMS.font = [UIFont fontWithName:MAINFONTLOGINVIEW size:[[fontSize objectForKey:@"textField"] intValue]];

@@ -15,6 +15,7 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -255,7 +256,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РАЗРАБОТЧИКИ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PEw-LI-0LQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="КОНТАКТЫ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PEw-LI-0LQ">
                                                     <rect key="frame" x="60" y="0.0" width="250" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
@@ -266,13 +267,34 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="c5i-LC-WGc" kind="custom" customClass="SWRevealViewControllerSegue" id="CaC-LB-JLV"/>
+                                            <segue destination="SkL-Sh-dPK" kind="custom" customClass="SWRevealViewControllerSegue" id="Jlg-WG-Qnu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell10" rowHeight="234" id="B6w-88-aHy">
                                         <rect key="frame" x="0.0" y="298" width="320" height="234"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B6w-88-aHy" id="RLe-LS-J3r">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РАЗРАБОТЧИКИ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RdG-vm-srZ">
+                                                    <rect key="frame" x="60" y="0.0" width="250" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="c5i-LC-WGc" kind="custom" customClass="SWRevealViewControllerSegue" id="go6-QV-Q4S"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell11" rowHeight="234" id="U1i-0Q-2ZF">
+                                        <rect key="frame" x="0.0" y="532" width="320" height="234"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U1i-0Q-2ZF" id="KGk-hT-jqz">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -306,7 +328,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ALL-1f-AO9"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WaI-7W-KN7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0w-2A-Jgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -488,6 +510,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gK4-JI-TFd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2768" y="-1136"/>
+        </scene>
+        <!--Contacts Controller-->
+        <scene sceneID="83H-Xp-H1U">
+            <objects>
+                <viewController id="SkL-Sh-dPK" customClass="ContactsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UEk-fy-k3P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UJG-Dp-XBD">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="wd2-qT-lOz"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="wd2-qT-lOz" id="QrP-Fk-fYM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vhd-7X-1W9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="831"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

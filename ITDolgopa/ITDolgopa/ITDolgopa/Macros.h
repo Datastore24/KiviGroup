@@ -78,6 +78,7 @@
 //Шрифты--------------------------------------------------------------------------
 #define FONTREGULAR @"SFUIDisplay-Regular"
 #define FONTLITE @"SFUIDisplay-Light"
+#define FONTBOLD @"SFUIDisplay-Bold"
 
 //Цвета---------------------------------------------------------------------------
 #define COLORLITEGRAY @"929597"

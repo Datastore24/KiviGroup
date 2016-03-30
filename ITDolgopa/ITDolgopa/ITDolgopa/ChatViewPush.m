@@ -51,6 +51,7 @@
         
         UITextField * textFildText = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, viewFone.frame.size.width - 70, 40)];
         textFildText.font = [UIFont fontWithName:FONTLITE size:12];
+        textFildText.keyboardAppearance = UIKeyboardAppearanceDark;
         textFildText.tag = 501;
         [viewFone addSubview:textFildText];
         

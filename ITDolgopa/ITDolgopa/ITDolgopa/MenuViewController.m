@@ -33,9 +33,9 @@
     
     
     menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5",
-                                     @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10", nil];
+                                     @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10",@"Cell11", nil];
     icons = [NSArray arrayWithObjects:@"remont.png", @"istoriya.png", @"balans.png", @"akcii.png",
-                            @"vremya.png", @"master.png", @"chat.png", @"sait.png", @"razrabotchik", @"", nil];
+                            @"vremya.png", @"master.png", @"chat.png", @"sait.png", @"contact-icon.png", @"razrabotchik", @"", nil];
     
     //Убираем полосы разделяющие ячейки------------------------------
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -63,7 +63,7 @@
 
     cell.backgroundColor = nil;
     
-    if ([cellIdentifier isEqualToString:@"Cell10"]) {
+    if ([cellIdentifier isEqualToString:@"Cell11"]) {
         cell.userInteractionEnabled = NO;
     }
     
@@ -110,7 +110,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 9)
+    if (indexPath.row == 10)
     {
         return 153.f;
     } else {
