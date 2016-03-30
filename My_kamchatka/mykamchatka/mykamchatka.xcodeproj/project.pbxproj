@@ -88,13 +88,13 @@
 		77C65E461C981EB5009ED67F /* RulesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E451C981EB5009ED67F /* RulesView.m */; };
 		77C65E4E1C984807009ED67F /* buttonConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C65E4D1C984807009ED67F /* buttonConfirm.png */; };
 		77C65E541C984EA6009ED67F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C65E531C984EA6009ED67F /* CustomButton.m */; };
-		77CDE9BD1CAAA08B00D34D88 /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */; };
 		77CDE9BF1CAAA09D00D34D88 /* fetisov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9BE1CAAA09D00D34D88 /* fetisov.png */; };
 		77CDE9C11CAAA0A500D34D88 /* govoryhin.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9C01CAAA0A500D34D88 /* govoryhin.png */; };
 		77CDE9C31CAAA0AD00D34D88 /* gorshkov.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */; };
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
 		77F1FA291CA67E530025560B /* ApplicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA281CA67E530025560B /* ApplicationView.m */; };
 		77FE7FDD1CA45A8B0080E185 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE7FDC1CA45A8B0080E185 /* SingleTone.m */; };
+		77FFEC871CABAEA70088B5A0 /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FFEC861CABAEA70088B5A0 /* yarovaya.png */; };
 		AD65CF961CA9CC1C00525C73 /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF911CA9CC1C00525C73 /* iphone 4.png */; };
 		AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF921CA9CC1C00525C73 /* iphone 5.png */; };
 		AD65CF981CA9CC1C00525C73 /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */; };
@@ -251,7 +251,6 @@
 		77C65E4D1C984807009ED67F /* buttonConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonConfirm.png; sourceTree = "<group>"; };
 		77C65E521C984EA6009ED67F /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		77C65E531C984EA6009ED67F /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
-		77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
 		77CDE9BE1CAAA09D00D34D88 /* fetisov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fetisov.png; sourceTree = "<group>"; };
 		77CDE9C01CAAA0A500D34D88 /* govoryhin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = govoryhin.png; sourceTree = "<group>"; };
 		77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gorshkov.png; sourceTree = "<group>"; };
@@ -261,6 +260,7 @@
 		77F1FA281CA67E530025560B /* ApplicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationView.m; sourceTree = "<group>"; };
 		77FE7FDB1CA45A8B0080E185 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		77FE7FDC1CA45A8B0080E185 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		77FFEC861CABAEA70088B5A0 /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
 		A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.debug.xcconfig"; sourceTree = "<group>"; };
 		AD65CF911CA9CC1C00525C73 /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
 		AD65CF921CA9CC1C00525C73 /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
@@ -525,10 +525,10 @@
 		77BABDFD1C9C97AC00E75205 /* avaImage */ = {
 			isa = PBXGroup;
 			children = (
+				77FFEC861CABAEA70088B5A0 /* yarovaya.png */,
 				77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */,
 				77CDE9C01CAAA0A500D34D88 /* govoryhin.png */,
 				77CDE9BE1CAAA09D00D34D88 /* fetisov.png */,
-				77CDE9BC1CAAA08B00D34D88 /* yarovaya.png */,
 				772511561CA6F06D00CCFED5 /* fandeev.png */,
 				77BABE001C9C97B900E75205 /* shpilyonok.png */,
 			);
@@ -763,7 +763,7 @@
 				771AA1A01C9D882200CCA969 /* eye.png in Resources */,
 				77CDE9C11CAAA0A500D34D88 /* govoryhin.png in Resources */,
 				AD65CFD61CA9D20200525C73 /* Icon-Small@2x.png in Resources */,
-				77CDE9BD1CAAA08B00D34D88 /* yarovaya.png in Resources */,
+				77FFEC871CABAEA70088B5A0 /* yarovaya.png in Resources */,
 				770B06551C970A3D00BC3D61 /* SFUIText-ItalicG2.otf in Resources */,
 				770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */,
 				770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */,
