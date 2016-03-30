@@ -154,6 +154,9 @@
                         UIView * mainViewSMS = (UIView*)[self.view viewWithTag:305];
                         CGRect rect = mainViewSMS.frame;
                         rect.origin.x = rect.origin.x + 369;
+                        if (isiPhone5) {
+                            rect.origin.x = rect.origin.x - 15;
+                        }
                         mainViewSMS.frame = rect;
                     }];
                     [loadIndicator setHidden:YES];

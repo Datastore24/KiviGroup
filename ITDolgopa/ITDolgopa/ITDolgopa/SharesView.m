@@ -65,6 +65,9 @@
                     [_scrollView addSubview:viewScroll];
                     //Текст акции----------------
                     UILabel * labelTextView = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, view.frame.size.width - 40, 150)];
+                    if (isiPhone5) {
+                        labelTextView.frame = CGRectMake(20, - 30, view.frame.size.width - 40, 150);
+                    }
                     labelTextView.numberOfLines = 0;
                     labelTextView.backgroundColor = [UIColor clearColor];
                     labelTextView.text = [dictArray objectForKey:@"promo_text"];
