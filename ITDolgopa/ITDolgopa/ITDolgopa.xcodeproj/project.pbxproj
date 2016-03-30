@@ -41,6 +41,7 @@
 		7725852C1C74A3F5007C6AF0 /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7725852B1C74A3F5007C6AF0 /* menuIcon.png */; };
 		772A54ED1C74775900AE635F /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54EC1C74775900AE635F /* TitleClass.m */; };
 		772A54F31C74851500AE635F /* CustomCallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 772A54F21C74851500AE635F /* CustomCallView.m */; };
+		773942CA1CAC6C6B0011DCA3 /* contact-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 773942C91CAC6C6B0011DCA3 /* contact-icon.png */; };
 		773D01C41C7A390300307174 /* OrderTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D01C31C7A390300307174 /* OrderTimeView.m */; };
 		7742E9871C8AD8CE000EB2F7 /* SharesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742E9861C8AD8CE000EB2F7 /* SharesController.m */; };
 		7742E98A1C8AD8E2000EB2F7 /* SharesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7742E9891C8AD8E2000EB2F7 /* SharesView.m */; };
@@ -95,6 +96,12 @@
 		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
+		77FFEC8B1CABE4D90088B5A0 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC8A1CABE4D90088B5A0 /* ContactsController.m */; };
+		77FFEC8E1CABE50C0088B5A0 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC8D1CABE50C0088B5A0 /* ContactsView.m */; };
+		77FFEC901CAC0BBF0088B5A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FFEC8F1CAC0BBF0088B5A0 /* MapKit.framework */; };
+		77FFEC961CAC162C0088B5A0 /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */; };
+		77FFEC971CAC162C0088B5A0 /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */; };
+		77FFEC991CAC18730088B5A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FFEC981CAC18730088B5A0 /* Images.xcassets */; };
 		AD4759881C9217020065C9DB /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759831C9217020065C9DB /* iphone 4.png */; };
 		AD4759891C9217030065C9DB /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759841C9217020065C9DB /* iphone 5.png */; };
 		AD47598A1C9217030065C9DB /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759851C9217020065C9DB /* iphone 6 Plus_2.png */; };
@@ -180,6 +187,7 @@
 		772A54EC1C74775900AE635F /* TitleClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleClass.m; sourceTree = "<group>"; };
 		772A54F11C74851500AE635F /* CustomCallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCallView.h; sourceTree = "<group>"; };
 		772A54F21C74851500AE635F /* CustomCallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCallView.m; sourceTree = "<group>"; };
+		773942C91CAC6C6B0011DCA3 /* contact-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact-icon.png"; sourceTree = "<group>"; };
 		773D01C21C7A390300307174 /* OrderTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTimeView.h; sourceTree = "<group>"; };
 		773D01C31C7A390300307174 /* OrderTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTimeView.m; sourceTree = "<group>"; };
 		7742CB521C63965F00515DDD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -255,6 +263,16 @@
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
 		77ED589F1C8036D00066FCA9 /* ChatCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellView.m; sourceTree = "<group>"; };
+		77FFEC891CABE4D90088B5A0 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		77FFEC8A1CABE4D90088B5A0 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		77FFEC8C1CABE50C0088B5A0 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		77FFEC8D1CABE50C0088B5A0 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
+		77FFEC8F1CAC0BBF0088B5A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		77FFEC921CAC162C0088B5A0 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSPinAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/src/ZSPinAnnotation.h"; sourceTree = "<group>"; };
+		77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSPinAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/src/ZSPinAnnotation.m"; sourceTree = "<group>"; };
+		77FFEC941CAC162C0088B5A0 /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/ZSAnnotation.h"; sourceTree = "<group>"; };
+		77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/ZSAnnotation.m"; sourceTree = "<group>"; };
+		77FFEC981CAC18730088B5A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4759831C9217020065C9DB /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
 		AD4759841C9217020065C9DB /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
@@ -303,6 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FFEC901CAC0BBF0088B5A0 /* MapKit.framework in Frameworks */,
 				D770E58CD56108632511C89B /* libPods-ITDolgopa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +369,7 @@
 		7705C0261C732FCF000CA333 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				773942C91CAC6C6B0011DCA3 /* contact-icon.png */,
 				7705C0391C7333A3000CA333 /* master.png */,
 				7705C03A1C7333A3000CA333 /* vremya.png */,
 				7705C0271C7330B0000CA333 /* remont.png */,
@@ -586,6 +606,29 @@
 			name = Registration;
 			sourceTree = "<group>";
 		};
+		77FFEC881CABE4AB0088B5A0 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				77FFEC891CABE4D90088B5A0 /* ContactsController.h */,
+				77FFEC8A1CABE4D90088B5A0 /* ContactsController.m */,
+				77FFEC8C1CABE50C0088B5A0 /* ContactsView.h */,
+				77FFEC8D1CABE50C0088B5A0 /* ContactsView.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		77FFEC911CAC16140088B5A0 /* ZSPinAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				77FFEC921CAC162C0088B5A0 /* ZSPinAnnotation.h */,
+				77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */,
+				77FFEC941CAC162C0088B5A0 /* ZSAnnotation.h */,
+				77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */,
+				77FFEC981CAC18730088B5A0 /* Images.xcassets */,
+			);
+			name = ZSPinAnnotation;
+			sourceTree = "<group>";
+		};
 		AD4759821C9216EC0065C9DB /* Launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,11 +686,13 @@
 		ADFBDCD71C5F6C9F00BCC486 /* ITDolgopa */ = {
 			isa = PBXGroup;
 			children = (
+				77FFEC911CAC16140088B5A0 /* ZSPinAnnotation */,
 				77BA99951C92C23F00F10FB5 /* Icons */,
 				AD4759821C9216EC0065C9DB /* Launch */,
 				778AE9011C82198A000C75C9 /* ImageAPI */,
 				778AE8EB1C8208CC000C75C9 /* Caregory */,
 				77C3A4831C8B3C790040BC77 /* Developers */,
+				77FFEC881CABE4AB0088B5A0 /* Contacts */,
 				7742E9841C8AD8AC000EB2F7 /* Shares */,
 				77006CF91C7F149D0069FAC6 /* Chat */,
 				77BA55951C7B3EC60018F979 /* CallMaster */,
@@ -699,6 +744,7 @@
 		EAD7D5694ED2F5C165AFBF9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77FFEC8F1CAC0BBF0088B5A0 /* MapKit.framework */,
 				88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */,
 			);
 			name = Frameworks;
@@ -780,6 +826,7 @@
 				7782FA091C6D2CBF00EC5477 /* SFUIText-Heavy.otf in Resources */,
 				7742E98E1C8AE299000EB2F7 /* box.png in Resources */,
 				7782FA0A1C6D2CBF00EC5477 /* SFUIText-HeavyItalic.otf in Resources */,
+				77FFEC991CAC18730088B5A0 /* Images.xcassets in Resources */,
 				7782FA0B1C6D2CBF00EC5477 /* SFUIText-Italic.otf in Resources */,
 				7782FA0C1C6D2CBF00EC5477 /* SFUIText-ItalicG1.otf in Resources */,
 				7782FA0D1C6D2CBF00EC5477 /* SFUIText-ItalicG2.otf in Resources */,
@@ -813,6 +860,7 @@
 				7782FA1D1C6D2CBF00EC5477 /* SFUIDisplay-Medium.otf in Resources */,
 				7782FA1E1C6D2CBF00EC5477 /* SFUIDisplay-Regular.otf in Resources */,
 				7782FA1F1C6D2CBF00EC5477 /* SFUIDisplay-Semibold.otf in Resources */,
+				773942CA1CAC6C6B0011DCA3 /* contact-icon.png in Resources */,
 				7782FA201C6D2CBF00EC5477 /* SFUIDisplay-Thin.otf in Resources */,
 				7705C03C1C7333A3000CA333 /* vremya.png in Resources */,
 				7782FA211C6D2CBF00EC5477 /* SFUIDisplay-Ultralight.otf in Resources */,
@@ -905,6 +953,7 @@
 				778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */,
 				77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */,
 				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
+				77FFEC971CAC162C0088B5A0 /* ZSAnnotation.m in Sources */,
 				7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */,
@@ -912,6 +961,7 @@
 				77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */,
 				AD5795FF1C8983D40085ED4C /* LoginViewController.m in Sources */,
 				77031BB81C786430005F6610 /* BalanceViewController.m in Sources */,
+				77FFEC8E1CABE50C0088B5A0 /* ContactsView.m in Sources */,
 				772043E61C649557001F787F /* LoginView.m in Sources */,
 				771003811C838A4700B78F18 /* KYPullToCurveVeiw.m in Sources */,
 				778AE8FC1C8208EE000C75C9 /* UIImage+Alpha.m in Sources */,
@@ -931,11 +981,13 @@
 				AD5795FA1C87428F0085ED4C /* NetworkRechabilityMonitor.m in Sources */,
 				771028F61C6CC9DB00C77C04 /* UIColor+HexColor.m in Sources */,
 				772A54ED1C74775900AE635F /* TitleClass.m in Sources */,
+				77FFEC8B1CABE4D90088B5A0 /* ContactsController.m in Sources */,
 				778AE8FA1C8208EE000C75C9 /* UIBarButtonItem+Alpha.m in Sources */,
 				77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */,
 				ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */,
 				ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */,
 				ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */,
+				77FFEC961CAC162C0088B5A0 /* ZSPinAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

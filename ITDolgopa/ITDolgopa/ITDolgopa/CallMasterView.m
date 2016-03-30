@@ -171,6 +171,7 @@
         textFieldProblem = [[UITextField alloc] initWithFrame:CGRectMake(labelProblem.frame.origin.x + labelProblem.frame.size.width + 3, labelProblem.frame.origin.y, 230, 40)];
         textFieldProblem.delegate = self;
         textFieldProblem.tag = 413;
+        textFieldProblem.keyboardAppearance = UIKeyboardAppearanceDark;
         textFieldProblem.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldProblem.font = [UIFont fontWithName:FONTLITE size:15];
         if (isiPhone5) {
