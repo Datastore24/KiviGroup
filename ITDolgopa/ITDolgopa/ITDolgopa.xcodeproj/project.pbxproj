@@ -95,7 +95,7 @@
 		77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */; };
 		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
 		77D297D21CAD90FF0057CC1C /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */; };
-		77D297D81CAD91670057CC1C /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */; };
+		77D297DB1CAD958B0057CC1C /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D297DA1CAD958B0057CC1C /* ZSPinAnnotation.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
 		77FFEC8B1CABE4D90088B5A0 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC8A1CABE4D90088B5A0 /* ContactsController.m */; };
@@ -260,8 +260,8 @@
 		77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersView.m; sourceTree = "<group>"; };
 		77D297D01CAD90FF0057CC1C /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSAnnotation.h; sourceTree = "<group>"; };
 		77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSAnnotation.m; sourceTree = "<group>"; };
-		77D297D61CAD91670057CC1C /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSPinAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master-2/ZSPinAnnotation/src/ZSPinAnnotation.h"; sourceTree = "<group>"; };
-		77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSPinAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master-2/ZSPinAnnotation/src/ZSPinAnnotation.m"; sourceTree = "<group>"; };
+		77D297D91CAD958B0057CC1C /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSPinAnnotation.h; sourceTree = "<group>"; };
+		77D297DA1CAD958B0057CC1C /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSPinAnnotation.m; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
@@ -618,8 +618,8 @@
 		77FFEC911CAC16140088B5A0 /* ZSPinAnnotation */ = {
 			isa = PBXGroup;
 			children = (
-				77D297D61CAD91670057CC1C /* ZSPinAnnotation.h */,
-				77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */,
+				77D297D91CAD958B0057CC1C /* ZSPinAnnotation.h */,
+				77D297DA1CAD958B0057CC1C /* ZSPinAnnotation.m */,
 				77D297D01CAD90FF0057CC1C /* ZSAnnotation.h */,
 				77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */,
 			);
@@ -968,7 +968,7 @@
 				AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				7742E98A1C8AD8E2000EB2F7 /* SharesView.m in Sources */,
-				77D297D81CAD91670057CC1C /* ZSPinAnnotation.m in Sources */,
+				77D297DB1CAD958B0057CC1C /* ZSPinAnnotation.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
