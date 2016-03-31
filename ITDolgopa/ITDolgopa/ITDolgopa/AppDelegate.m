@@ -29,7 +29,7 @@
     [[SingleTone sharedManager] setTableChange:YES];
     
     //---------
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBadge:) name:@"NOTIFICATIONPUSHBADGEONAPPDELEGATE" object:nil];
+    [[UINavigationBar appearance] setFrame:CGRectMake(0, 0, 320, 64)];
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     
