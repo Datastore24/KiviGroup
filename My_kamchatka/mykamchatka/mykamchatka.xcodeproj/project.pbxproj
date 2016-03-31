@@ -71,6 +71,7 @@
 		774C83431C9F3660009DFE35 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 774C833A1C9F3660009DFE35 /* UIImage+ImageEffects.m */; };
 		774C83441C9F3660009DFE35 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 774C833C1C9F3660009DFE35 /* UIImage+Resize.m */; };
 		774C83451C9F3660009DFE35 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 774C833E1C9F3660009DFE35 /* UIImage+RoundedCorner.m */; };
+		776D8DC91CAD4ECE0028929C /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DC81CAD4ECE0028929C /* yarovaya.png */; };
 		777039411C989303002BBB90 /* ModelRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = 777039401C989303002BBB90 /* ModelRuler.m */; };
 		779024551CA9A899006B0F9C /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 779024541CA9A899006B0F9C /* AlertClass.m */; };
 		779024571CA9B30B006B0F9C /* confirmImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 779024561CA9B30B006B0F9C /* confirmImage.png */; };
@@ -94,7 +95,6 @@
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
 		77F1FA291CA67E530025560B /* ApplicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA281CA67E530025560B /* ApplicationView.m */; };
 		77FE7FDD1CA45A8B0080E185 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE7FDC1CA45A8B0080E185 /* SingleTone.m */; };
-		77FFEC871CABAEA70088B5A0 /* yarovaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FFEC861CABAEA70088B5A0 /* yarovaya.png */; };
 		AD65CF961CA9CC1C00525C73 /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF911CA9CC1C00525C73 /* iphone 4.png */; };
 		AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF921CA9CC1C00525C73 /* iphone 5.png */; };
 		AD65CF981CA9CC1C00525C73 /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */; };
@@ -223,6 +223,7 @@
 		774C833C1C9F3660009DFE35 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		774C833D1C9F3660009DFE35 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		774C833E1C9F3660009DFE35 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		776D8DC81CAD4ECE0028929C /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
 		7770393F1C989303002BBB90 /* ModelRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelRuler.h; sourceTree = "<group>"; };
 		777039401C989303002BBB90 /* ModelRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelRuler.m; sourceTree = "<group>"; };
 		779024531CA9A899006B0F9C /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
@@ -260,7 +261,6 @@
 		77F1FA281CA67E530025560B /* ApplicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationView.m; sourceTree = "<group>"; };
 		77FE7FDB1CA45A8B0080E185 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		77FE7FDC1CA45A8B0080E185 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
-		77FFEC861CABAEA70088B5A0 /* yarovaya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yarovaya.png; sourceTree = "<group>"; };
 		A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.debug.xcconfig"; sourceTree = "<group>"; };
 		AD65CF911CA9CC1C00525C73 /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
 		AD65CF921CA9CC1C00525C73 /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 		77BABDFD1C9C97AC00E75205 /* avaImage */ = {
 			isa = PBXGroup;
 			children = (
-				77FFEC861CABAEA70088B5A0 /* yarovaya.png */,
+				776D8DC81CAD4ECE0028929C /* yarovaya.png */,
 				77CDE9C21CAAA0AD00D34D88 /* gorshkov.png */,
 				77CDE9C01CAAA0A500D34D88 /* govoryhin.png */,
 				77CDE9BE1CAAA09D00D34D88 /* fetisov.png */,
@@ -763,7 +763,7 @@
 				771AA1A01C9D882200CCA969 /* eye.png in Resources */,
 				77CDE9C11CAAA0A500D34D88 /* govoryhin.png in Resources */,
 				AD65CFD61CA9D20200525C73 /* Icon-Small@2x.png in Resources */,
-				77FFEC871CABAEA70088B5A0 /* yarovaya.png in Resources */,
+				776D8DC91CAD4ECE0028929C /* yarovaya.png in Resources */,
 				770B06551C970A3D00BC3D61 /* SFUIText-ItalicG2.otf in Resources */,
 				770B06561C970A3D00BC3D61 /* SFUIText-ItalicG3.otf in Resources */,
 				770B06571C970A3D00BC3D61 /* SFUIText-Light.otf in Resources */,
