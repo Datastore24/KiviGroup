@@ -94,14 +94,13 @@
 		77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BAB0261C7903D0009F530B /* OrderTimeController.m */; };
 		77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */; };
 		77C3A4891C8B3CAD0040BC77 /* DevelopersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */; };
+		77D297D21CAD90FF0057CC1C /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */; };
+		77D297D81CAD91670057CC1C /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */; };
 		77DA31041C6DF2ED006E0C44 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */; };
 		77ED58A01C8036D00066FCA9 /* ChatCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ED589F1C8036D00066FCA9 /* ChatCellView.m */; };
 		77FFEC8B1CABE4D90088B5A0 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC8A1CABE4D90088B5A0 /* ContactsController.m */; };
 		77FFEC8E1CABE50C0088B5A0 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC8D1CABE50C0088B5A0 /* ContactsView.m */; };
 		77FFEC901CAC0BBF0088B5A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FFEC8F1CAC0BBF0088B5A0 /* MapKit.framework */; };
-		77FFEC961CAC162C0088B5A0 /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */; };
-		77FFEC971CAC162C0088B5A0 /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */; };
-		77FFEC991CAC18730088B5A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FFEC981CAC18730088B5A0 /* Images.xcassets */; };
 		AD4759881C9217020065C9DB /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759831C9217020065C9DB /* iphone 4.png */; };
 		AD4759891C9217030065C9DB /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759841C9217020065C9DB /* iphone 5.png */; };
 		AD47598A1C9217030065C9DB /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD4759851C9217020065C9DB /* iphone 6 Plus_2.png */; };
@@ -259,6 +258,10 @@
 		77C3A4851C8B3C9A0040BC77 /* DevelopersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersController.m; sourceTree = "<group>"; };
 		77C3A4871C8B3CAD0040BC77 /* DevelopersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersView.h; sourceTree = "<group>"; };
 		77C3A4881C8B3CAD0040BC77 /* DevelopersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersView.m; sourceTree = "<group>"; };
+		77D297D01CAD90FF0057CC1C /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSAnnotation.h; sourceTree = "<group>"; };
+		77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSAnnotation.m; sourceTree = "<group>"; };
+		77D297D61CAD91670057CC1C /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSPinAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master-2/ZSPinAnnotation/src/ZSPinAnnotation.h"; sourceTree = "<group>"; };
+		77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSPinAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master-2/ZSPinAnnotation/src/ZSPinAnnotation.m"; sourceTree = "<group>"; };
 		77DA31021C6DF2ED006E0C44 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		77DA31031C6DF2ED006E0C44 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		77ED589E1C8036D00066FCA9 /* ChatCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellView.h; sourceTree = "<group>"; };
@@ -268,11 +271,6 @@
 		77FFEC8C1CABE50C0088B5A0 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
 		77FFEC8D1CABE50C0088B5A0 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		77FFEC8F1CAC0BBF0088B5A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		77FFEC921CAC162C0088B5A0 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSPinAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/src/ZSPinAnnotation.h"; sourceTree = "<group>"; };
-		77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSPinAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/src/ZSPinAnnotation.m"; sourceTree = "<group>"; };
-		77FFEC941CAC162C0088B5A0 /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSAnnotation.h; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/ZSAnnotation.h"; sourceTree = "<group>"; };
-		77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSAnnotation.m; path = "../../../../../../Downloads/ZSPinAnnotation-master/ZSPinAnnotation/ZSAnnotation.m"; sourceTree = "<group>"; };
-		77FFEC981CAC18730088B5A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		88FE461AC84779B6D1FFCBD8 /* libPods-ITDolgopa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITDolgopa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4759831C9217020065C9DB /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
 		AD4759841C9217020065C9DB /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
@@ -620,11 +618,10 @@
 		77FFEC911CAC16140088B5A0 /* ZSPinAnnotation */ = {
 			isa = PBXGroup;
 			children = (
-				77FFEC921CAC162C0088B5A0 /* ZSPinAnnotation.h */,
-				77FFEC931CAC162C0088B5A0 /* ZSPinAnnotation.m */,
-				77FFEC941CAC162C0088B5A0 /* ZSAnnotation.h */,
-				77FFEC951CAC162C0088B5A0 /* ZSAnnotation.m */,
-				77FFEC981CAC18730088B5A0 /* Images.xcassets */,
+				77D297D61CAD91670057CC1C /* ZSPinAnnotation.h */,
+				77D297D71CAD91670057CC1C /* ZSPinAnnotation.m */,
+				77D297D01CAD90FF0057CC1C /* ZSAnnotation.h */,
+				77D297D11CAD90FF0057CC1C /* ZSAnnotation.m */,
 			);
 			name = ZSPinAnnotation;
 			sourceTree = "<group>";
@@ -826,7 +823,6 @@
 				7782FA091C6D2CBF00EC5477 /* SFUIText-Heavy.otf in Resources */,
 				7742E98E1C8AE299000EB2F7 /* box.png in Resources */,
 				7782FA0A1C6D2CBF00EC5477 /* SFUIText-HeavyItalic.otf in Resources */,
-				77FFEC991CAC18730088B5A0 /* Images.xcassets in Resources */,
 				7782FA0B1C6D2CBF00EC5477 /* SFUIText-Italic.otf in Resources */,
 				7782FA0C1C6D2CBF00EC5477 /* SFUIText-ItalicG1.otf in Resources */,
 				7782FA0D1C6D2CBF00EC5477 /* SFUIText-ItalicG2.otf in Resources */,
@@ -938,6 +934,7 @@
 				77006CFF1C7F23E10069FAC6 /* ChatViewPush.m in Sources */,
 				AD5795FD1C8977870085ED4C /* TextMethodClass.m in Sources */,
 				771B88641C71F60500427AA9 /* RegistrationView.m in Sources */,
+				77D297D21CAD90FF0057CC1C /* ZSAnnotation.m in Sources */,
 				773D01C41C7A390300307174 /* OrderTimeView.m in Sources */,
 				774A51C31C75F0F900BDEE83 /* UNderRepairDetailsController.m in Sources */,
 				774A51C61C75FA2700BDEE83 /* UnderRepairDetailsView.m in Sources */,
@@ -953,7 +950,6 @@
 				778AE9001C8208EE000C75C9 /* UIImage+RoundedCorner.m in Sources */,
 				77BAB0271C7903D0009F530B /* OrderTimeController.m in Sources */,
 				77006CFC1C7F14B70069FAC6 /* ChatController.m in Sources */,
-				77FFEC971CAC162C0088B5A0 /* ZSAnnotation.m in Sources */,
 				7710038D1C838AF500B78F18 /* UIView+Convenient.m in Sources */,
 				ADFBDCDD1C5F6C9F00BCC486 /* AppDelegate.m in Sources */,
 				77C3A4861C8B3C9A0040BC77 /* DevelopersController.m in Sources */,
@@ -972,6 +968,7 @@
 				AD5795F71C86BE9A0085ED4C /* ParseDate.m in Sources */,
 				ADC57F071C71E40600F55716 /* FontSizeChanger.m in Sources */,
 				7742E98A1C8AD8E2000EB2F7 /* SharesView.m in Sources */,
+				77D297D81CAD91670057CC1C /* ZSPinAnnotation.m in Sources */,
 				ADC311321C6F16D4003616F3 /* AuthCoreDataClass.m in Sources */,
 				7705C0401C7368D5000CA333 /* UnderRepairController.m in Sources */,
 				ADC3112E1C6F165B003616F3 /* UserInfo.m in Sources */,
@@ -987,7 +984,6 @@
 				ADC311251C6F15E4003616F3 /* SingleTone.m in Sources */,
 				ADC3111F1C6F15AB003616F3 /* APIPostClass.m in Sources */,
 				ADC311221C6F15B5003616F3 /* AlertClass.m in Sources */,
-				77FFEC961CAC162C0088B5A0 /* ZSPinAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

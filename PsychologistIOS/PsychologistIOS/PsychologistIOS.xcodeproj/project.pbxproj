@@ -63,6 +63,7 @@
 		776D8DB41CAD2B3F0028929C /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DB31CAD2B3F0028929C /* menuIcon.png */; };
 		776D8DC41CAD44C30028929C /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DC31CAD44C30028929C /* CategoryController.m */; };
 		776D8DC71CAD44D30028929C /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DC61CAD44D30028929C /* CategoryView.m */; };
+		776D8DCB1CAD54420028929C /* mainFoniOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DCA1CAD54420028929C /* mainFoniOS.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		776D8DC31CAD44C30028929C /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
 		776D8DC51CAD44D30028929C /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
 		776D8DC61CAD44D30028929C /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
+		776D8DCA1CAD54420028929C /* mainFoniOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFoniOS.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 		776D8DA91CAD24FC0028929C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				776D8DCA1CAD54420028929C /* mainFoniOS.png */,
 				776D8DB31CAD2B3F0028929C /* menuIcon.png */,
 				776D8DAA1CAD25120028929C /* LoginController.h */,
 				776D8DAB1CAD25120028929C /* LoginController.m */,
@@ -485,6 +488,7 @@
 				776D8D9C1CAD22A70028929C /* SFUIText-RegularG2.otf in Resources */,
 				776D8D9D1CAD22AA0028929C /* SFUIText-RegularG3.otf in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
+				776D8DCB1CAD54420028929C /* mainFoniOS.png in Resources */,
 				776D8D9F1CAD22B00028929C /* SFUIText-SemiboldItalic.otf in Resources */,
 				776D8DA01CAD22B60028929C /* SFUIDisplay-Black.otf in Resources */,
 				776D8DA11CAD22BB0028929C /* SFUIDisplay-Bold.otf in Resources */,
