@@ -8,6 +8,7 @@
 
 #import "LoginController.h"
 #import "SWRevealViewController.h"
+#import "LoginView.h"
 
 @implementation LoginController
 
@@ -39,6 +40,15 @@
     _buttonMenu.customView=button;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
+    
+#pragma mark - Initialization
+    //Основной фон-------------------------------------
+    LoginView * backgroundView = [[LoginView alloc] initWithBackgroundView:self.view];
+    [self.view addSubview:backgroundView];
+    
+    //Основные графические элементы--------------------
+    LoginView * mainContentView = [[LoginView alloc] initWithContentView:self.view];
+    [self.view addSubview:mainContentView];
 
 }
 

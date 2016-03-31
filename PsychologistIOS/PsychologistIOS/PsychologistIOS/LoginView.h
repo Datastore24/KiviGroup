@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginView : UIView
+@interface LoginView : UIView <UITextFieldDelegate>
+
+- (instancetype)initWithBackgroundView: (UIView*) view;
+- (instancetype)initWithContentView: (UIView*) view;
 
 @end
