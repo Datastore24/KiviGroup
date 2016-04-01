@@ -10,4 +10,6 @@
 
 @interface CategoryController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonMenu;
+
 @end

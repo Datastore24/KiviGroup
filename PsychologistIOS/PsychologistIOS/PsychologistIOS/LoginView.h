@@ -12,5 +12,6 @@
 
 - (instancetype)initWithBackgroundView: (UIView*) view;
 - (instancetype)initWithContentView: (UIView*) view;
+- (instancetype)initButtonLogin;
 
 @end

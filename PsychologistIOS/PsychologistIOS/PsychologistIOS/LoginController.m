@@ -9,6 +9,8 @@
 #import "LoginController.h"
 #import "SWRevealViewController.h"
 #import "LoginView.h"
+#import "Macros.h"
+#import "CategoryController.h"
 
 @implementation LoginController
 
@@ -18,8 +20,7 @@
 #pragma mark - Header
     
     self.navigationController.navigationBarHidden = YES;
-    
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 60)];    
+       
     //Задаем цвет бара----------------------------------------
     self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     [self.navigationController.navigationBar
@@ -49,7 +50,25 @@
     //Основные графические элементы--------------------
     LoginView * mainContentView = [[LoginView alloc] initWithContentView:self.view];
     [self.view addSubview:mainContentView];
+    
+    LoginView * buttonLigin = [[LoginView alloc] initButtonLogin];
+    [mainContentView addSubview:buttonLigin];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWithMainView) name:NOTIFICATION_LOGIN_VIEW_PUSH_MAIN_VIEW object:nil];
 
 }
 
+#pragma mark - action Methods
+
+- (void) pushWithMainView
+{
+    UITextField * textFildSMS = (UITextField*)[self.view viewWithTag:120];
+    
+    if (textFildSMS.text.length < 5) {
+        NSLog(@"%lu", textFildSMS.text.length);
+    } else {
+    CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+}
 @end
