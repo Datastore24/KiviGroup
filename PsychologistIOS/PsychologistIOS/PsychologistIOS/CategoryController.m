@@ -7,14 +7,49 @@
 //
 
 #import "CategoryController.h"
+#import "SWRevealViewController.h"
+#import "UIColor+HexColor.h"
+#import "CategoryView.h"
 
 @implementation CategoryController
 
 - (void) viewDidLoad {
     
-    UIView * viewTest = [[UIView alloc] initWithFrame:CGRectMake(40, 50, 400, 300)];
-    viewTest.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:viewTest];
+#pragma mark - Header
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    //Задаем цвет бара----------------------------------------
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"d46559"];
+    [self.navigationController.navigationBar
+     setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
+    
+    //Пареметры кнопки меню------------------------------------
+    UIImage *imageBarButton = [UIImage imageNamed:@"menuIcon.png"];
+    [_buttonMenu setImage:imageBarButton];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake(0, 0, 32, 24);
+    CGRect rect = button.frame;
+    rect.origin.y += 16;
+    button.frame = rect;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    _buttonMenu.customView=button;
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
+    
+#pragma mark - Initilization
+    
+    CategoryView * backgroundView = [[CategoryView alloc] initWithBackgroundView:self.view];
+    [self.view addSubview:backgroundView];
+    
+    CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view];
+    [self.view addSubview:contentView];
+    
+    
+
     
 }
 

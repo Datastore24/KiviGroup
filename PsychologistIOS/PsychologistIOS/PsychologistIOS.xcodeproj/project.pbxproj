@@ -62,8 +62,12 @@
 		776D8DB21CAD25470028929C /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DB11CAD25470028929C /* MenuController.m */; };
 		776D8DB41CAD2B3F0028929C /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DB31CAD2B3F0028929C /* menuIcon.png */; };
 		776D8DC41CAD44C30028929C /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DC31CAD44C30028929C /* CategoryController.m */; };
-		776D8DC71CAD44D30028929C /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DC61CAD44D30028929C /* CategoryView.m */; };
-		776D8DCB1CAD54420028929C /* mainFoniOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DCA1CAD54420028929C /* mainFoniOS.png */; };
+		778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 778C30661CAE7A6900E2BAE5 /* CategoryView.m */; };
+		778C30691CAE7EB600E2BAE5 /* fonAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 778C30681CAE7EB600E2BAE5 /* fonAlpha.png */; };
+		77D297DD1CADAC760057CC1C /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DC1CADAC760057CC1C /* facebook.png */; };
+		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
+		77D297E11CADAC7D0057CC1C /* VK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E01CADAC7D0057CC1C /* VK.png */; };
+		77D297E31CADB5B00057CC1C /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E21CADB5B00057CC1C /* mainFone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,9 +166,13 @@
 		776D8DB31CAD2B3F0028929C /* menuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIcon.png; sourceTree = "<group>"; };
 		776D8DC21CAD44C30028929C /* CategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryController.h; sourceTree = "<group>"; };
 		776D8DC31CAD44C30028929C /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
-		776D8DC51CAD44D30028929C /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
-		776D8DC61CAD44D30028929C /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
-		776D8DCA1CAD54420028929C /* mainFoniOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFoniOS.png; sourceTree = "<group>"; };
+		778C30651CAE7A6800E2BAE5 /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
+		778C30661CAE7A6900E2BAE5 /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
+		778C30681CAE7EB600E2BAE5 /* fonAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fonAlpha.png; sourceTree = "<group>"; };
+		77D297DC1CADAC760057CC1C /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		77D297DE1CADAC790057CC1C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
+		77D297E01CADAC7D0057CC1C /* VK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VK.png; sourceTree = "<group>"; };
+		77D297E21CADB5B00057CC1C /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,10 +323,11 @@
 		776D8D301CAD1ABC0028929C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				778C30681CAE7EB600E2BAE5 /* fonAlpha.png */,
 				776D8DC21CAD44C30028929C /* CategoryController.h */,
 				776D8DC31CAD44C30028929C /* CategoryController.m */,
-				776D8DC51CAD44D30028929C /* CategoryView.h */,
-				776D8DC61CAD44D30028929C /* CategoryView.m */,
+				778C30651CAE7A6800E2BAE5 /* CategoryView.h */,
+				778C30661CAE7A6900E2BAE5 /* CategoryView.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -326,7 +335,10 @@
 		776D8DA91CAD24FC0028929C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				776D8DCA1CAD54420028929C /* mainFoniOS.png */,
+				77D297E01CADAC7D0057CC1C /* VK.png */,
+				77D297DE1CADAC790057CC1C /* Email.png */,
+				77D297DC1CADAC760057CC1C /* facebook.png */,
+				77D297E21CADB5B00057CC1C /* mainFone.png */,
 				776D8DB31CAD2B3F0028929C /* menuIcon.png */,
 				776D8DAA1CAD25120028929C /* LoginController.h */,
 				776D8DAB1CAD25120028929C /* LoginController.m */,
@@ -467,10 +479,12 @@
 				776D8CDC1CAD17BF0028929C /* Main.storyboard in Resources */,
 				776D8D891CAD22520028929C /* SFUIText-Bold.otf in Resources */,
 				776D8D8A1CAD22550028929C /* SFUIText-BoldG1.otf in Resources */,
+				77D297DD1CADAC760057CC1C /* facebook.png in Resources */,
 				776D8D8B1CAD22580028929C /* SFUIText-BoldG2.otf in Resources */,
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
 				776D8D8D1CAD225D0028929C /* SFUIText-BoldItalicG1.otf in Resources */,
 				776D8D8E1CAD225F0028929C /* SFUIText-BoldItalicG2.otf in Resources */,
+				77D297E11CADAC7D0057CC1C /* VK.png in Resources */,
 				776D8D8F1CAD22610028929C /* SFUIText-BoldItalicG3.otf in Resources */,
 				776D8D901CAD22640028929C /* SFUIText-Heavy.otf in Resources */,
 				776D8D911CAD226D0028929C /* SFUIText-HeavyItalic.otf in Resources */,
@@ -480,15 +494,16 @@
 				776D8D941CAD228B0028929C /* SFUIText-ItalicG2.otf in Resources */,
 				776D8D951CAD228D0028929C /* SFUIText-ItalicG3.otf in Resources */,
 				776D8D961CAD22910028929C /* SFUIText-Light.otf in Resources */,
+				77D297E31CADB5B00057CC1C /* mainFone.png in Resources */,
 				776D8D971CAD22940028929C /* SFUIText-LightItalic.otf in Resources */,
 				776D8D981CAD22980028929C /* SFUIText-Medium.otf in Resources */,
 				776D8D991CAD229C0028929C /* SFUIText-MediumItalic.otf in Resources */,
 				776D8D9A1CAD229F0028929C /* SFUIText-Regular.otf in Resources */,
 				776D8D9B1CAD22A30028929C /* SFUIText-RegularG1.otf in Resources */,
+				77D297DF1CADAC790057CC1C /* Email.png in Resources */,
 				776D8D9C1CAD22A70028929C /* SFUIText-RegularG2.otf in Resources */,
 				776D8D9D1CAD22AA0028929C /* SFUIText-RegularG3.otf in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
-				776D8DCB1CAD54420028929C /* mainFoniOS.png in Resources */,
 				776D8D9F1CAD22B00028929C /* SFUIText-SemiboldItalic.otf in Resources */,
 				776D8DA01CAD22B60028929C /* SFUIDisplay-Black.otf in Resources */,
 				776D8DA11CAD22BB0028929C /* SFUIDisplay-Bold.otf in Resources */,
@@ -498,6 +513,7 @@
 				776D8DA51CAD22C90028929C /* SFUIDisplay-Regular.otf in Resources */,
 				776D8DA61CAD22CB0028929C /* SFUIDisplay-Semibold.otf in Resources */,
 				776D8DA71CAD22CD0028929C /* SFUIDisplay-Thin.otf in Resources */,
+				778C30691CAE7EB600E2BAE5 /* fonAlpha.png in Resources */,
 				776D8DA81CAD22D00028929C /* SFUIDisplay-Ultralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,7 +555,7 @@
 				776D8D411CAD1AD20028929C /* UIBarButtonItem+Alpha.m in Sources */,
 				776D8D461CAD1AD20028929C /* UIImage+Resize.m in Sources */,
 				776D8D2C1CAD18FD0028929C /* TitleClass.m in Sources */,
-				776D8DC71CAD44D30028929C /* CategoryView.m in Sources */,
+				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
 				776D8D281CAD18B20028929C /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

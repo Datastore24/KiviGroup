@@ -155,7 +155,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3ep-T5-Nt7" kind="relationship" relationship="rootViewController" id="7O9-Mp-fYL"/>
+                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="yix-VR-5mN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -165,7 +165,7 @@
         <!--Category Controller-->
         <scene sceneID="SLb-Wn-3x7">
             <objects>
-                <viewController id="aYw-dh-yw3" customClass="CategoryController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoryController" id="aYw-dh-yw3" customClass="CategoryController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P0r-3q-tGW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,4 +183,7 @@
             <point key="canvasLocation" x="985" y="-79"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yix-VR-5mN"/>
+    </inferredMetricsTieBreakers>
 </document>

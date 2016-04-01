@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoryView : UIView
+@interface CategoryView : UIView <UISearchBarDelegate>
+
+- (instancetype)initWithBackgroundView: (UIView*) view;
+- (instancetype)initWithContent: (UIView*) view;
 
 @end
