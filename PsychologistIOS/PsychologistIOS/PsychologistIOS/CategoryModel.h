@@ -10,6 +10,6 @@
 
 @interface CategoryModel : NSObject
 
-- (NSMutableArray *) setArrayJuri;
++ (NSMutableArray *) setArrayJuri;
 
 @end

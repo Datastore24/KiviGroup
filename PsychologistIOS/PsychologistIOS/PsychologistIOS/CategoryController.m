@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "UIColor+HexColor.h"
 #import "CategoryView.h"
+#import "CategoryModel.h"
 #import "TitleClass.h"
 
 @implementation CategoryController
@@ -49,7 +50,7 @@
     CategoryView * backgroundView = [[CategoryView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
     
-    CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view];
+    CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:[CategoryModel setArrayJuri]];
     [self.view addSubview:contentView];
     
     

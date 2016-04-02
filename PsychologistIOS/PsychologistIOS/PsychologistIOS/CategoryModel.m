@@ -10,7 +10,7 @@
 
 @implementation CategoryModel
 
-- (NSMutableArray *) setArrayJuri
++ (NSMutableArray *) setArrayJuri
 {
     NSMutableArray * arrayJury = [[NSMutableArray alloc] init];
     
@@ -19,32 +19,24 @@
                             @"Мир отношений", @"Кладовая женских знаний", nil];
     
     NSArray * arraySubTitle = [NSArray arrayWithObjects:
-                               @"Ирина Анатольевна", @"Станислав Сергеевич",
-                               @"Вечеслав Александрович", @"Михаил Алексеевич", @"Сергей Владимирович",
-                               @"Игорь Петрович", nil];
+                               @"Краткое, полезное описание", @"Краткое, полезное описание",
+                               @"Краткое, полезное описание", @"Краткое, полезное описание", @"Краткое, полезное описание", nil];
     
-    NSArray * textJuriArray = [NSArray arrayWithObjects:
-                               @"Депутат Государственной думы Федерального Собрания РФ, председатель комитетаГосударственной думы по безопасности и противодействию коррупции",
-                               
-                               @"Советский и российский кинорежиссёр, сценарист, актёр, народный артист Российской Федерации. Депутат Государственной думы, председатель комитета Государственной думы по культуре. Сопредседатель центрального штаба Общероссийского народного фронта",
-                               
-                               @"Советский и российский хоккеист, заслуженный мастер спорта СССР, заслуженный тренер России. Председатель правления Российской любительской хоккейной лиги",
-                               
-                               @"Директор департамента маркетинговых коммуникаций ОАО «Аэрофлот - российские авиалинии»",
-                               
-                               @"Российский фотограф дикой природы. Учредитель Российского Союза фотографов дикой природы, автор многочисленных фотоальбомов, в том числе «Камчатская одиссея», «Медведь», «Исчезающий мир Камчатки», «След кошки. Леопард»,«Русская Арктика. Остров Врангеля»",
-                               
-                               @"Фотограф-натуралист, снимает дикую природу и диких животных. Основатель и первый директор заповедника «Брянский лес». Автор фотокниг о дикой природе. Член Международной Лиги природоохранных фотографов.", nil];
+    NSArray * textJuriArray = [NSArray arrayWithObjects: [NSNumber numberWithBool:NO],
+                               [NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES],
+                               [NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES],
+                               nil];
     
-    NSArray * imageJuri = [NSArray arrayWithObjects:@"yarovaya.png", @"govoryhin.png", @"fetisov.png", @"fandeev.png", @"gorshkov.png", @"shpilyonok.png", nil];
+    NSArray * imageJuri = [NSArray arrayWithObjects:@"image1.png", @"image2.png",
+                           @"image3.png", @"image4.png", @"image5.png", nil];
     
     
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 5; i++) {
         
         NSDictionary * dictJury = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [arrayTitle objectAtIndex:i], @"title",
                                    [arraySubTitle objectAtIndex:i], @"subTitle",
-                                   [textJuriArray objectAtIndex:i], @"text",
+                                   [textJuriArray objectAtIndex:i], @"money",
                                    [imageJuri objectAtIndex:i], @"image", nil];
         
         [arrayJury addObject:dictJury];
