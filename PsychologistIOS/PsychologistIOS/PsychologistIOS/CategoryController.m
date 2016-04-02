@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "UIColor+HexColor.h"
 #import "CategoryView.h"
+#import "TitleClass.h"
 
 @implementation CategoryController
 
@@ -18,6 +19,9 @@
 #pragma mark - Header
     
     self.navigationController.navigationBarHidden = NO;
+    //Заголовок-----------------------------------------------
+    TitleClass * title = [[TitleClass alloc]initWithTitle:@"КАТЕГОРИИ"];
+    self.navigationItem.titleView = title;
     
     //Задаем цвет бара----------------------------------------
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"d46559"];

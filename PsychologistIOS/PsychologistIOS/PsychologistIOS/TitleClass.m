@@ -16,7 +16,7 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.font = [UIFont fontWithName:FONTBOND size:15];
+        self.font = [UIFont fontWithName:FONTBOND size:19];
         if (isiPhone5) {
             self.font = [UIFont fontWithName:FONTBOND size:12];
         }

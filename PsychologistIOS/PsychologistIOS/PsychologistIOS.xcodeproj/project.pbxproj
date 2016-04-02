@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772707311CAF04BA0067DF6C /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707301CAF04B90067DF6C /* Search.png */; };
+		772707331CAF05770067DF6C /* Search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707321CAF05770067DF6C /* Search1.png */; };
+		772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 772707351CAF0E3A0067DF6C /* CategoryModel.m */; };
 		776D8CD31CAD17BF0028929C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD21CAD17BF0028929C /* main.m */; };
 		776D8CD61CAD17BF0028929C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD51CAD17BF0028929C /* AppDelegate.m */; };
 		776D8CD91CAD17BF0028929C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD81CAD17BF0028929C /* ViewController.m */; };
@@ -88,6 +91,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		772707301CAF04B90067DF6C /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search.png; sourceTree = "<group>"; };
+		772707321CAF05770067DF6C /* Search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search1.png; sourceTree = "<group>"; };
+		772707341CAF0E3A0067DF6C /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
+		772707351CAF0E3A0067DF6C /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
 		776D8CCE1CAD17BF0028929C /* PsychologistIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsychologistIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		776D8CD21CAD17BF0028929C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		776D8CD41CAD17BF0028929C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -323,11 +330,15 @@
 		776D8D301CAD1ABC0028929C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				772707321CAF05770067DF6C /* Search1.png */,
+				772707301CAF04B90067DF6C /* Search.png */,
 				778C30681CAE7EB600E2BAE5 /* fonAlpha.png */,
 				776D8DC21CAD44C30028929C /* CategoryController.h */,
 				776D8DC31CAD44C30028929C /* CategoryController.m */,
 				778C30651CAE7A6800E2BAE5 /* CategoryView.h */,
 				778C30661CAE7A6900E2BAE5 /* CategoryView.m */,
+				772707341CAF0E3A0067DF6C /* CategoryModel.h */,
+				772707351CAF0E3A0067DF6C /* CategoryModel.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -484,6 +495,7 @@
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
 				776D8D8D1CAD225D0028929C /* SFUIText-BoldItalicG1.otf in Resources */,
 				776D8D8E1CAD225F0028929C /* SFUIText-BoldItalicG2.otf in Resources */,
+				772707331CAF05770067DF6C /* Search1.png in Resources */,
 				77D297E11CADAC7D0057CC1C /* VK.png in Resources */,
 				776D8D8F1CAD22610028929C /* SFUIText-BoldItalicG3.otf in Resources */,
 				776D8D901CAD22640028929C /* SFUIText-Heavy.otf in Resources */,
@@ -493,6 +505,7 @@
 				776D8D931CAD22890028929C /* SFUIText-ItalicG1.otf in Resources */,
 				776D8D941CAD228B0028929C /* SFUIText-ItalicG2.otf in Resources */,
 				776D8D951CAD228D0028929C /* SFUIText-ItalicG3.otf in Resources */,
+				772707311CAF04BA0067DF6C /* Search.png in Resources */,
 				776D8D961CAD22910028929C /* SFUIText-Light.otf in Resources */,
 				77D297E31CADB5B00057CC1C /* mainFone.png in Resources */,
 				776D8D971CAD22940028929C /* SFUIText-LightItalic.otf in Resources */,
@@ -544,6 +557,7 @@
 				776D8D481CAD1AD20028929C /* UIColor+HexColor.m in Sources */,
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
+				772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
 				776D8CD31CAD17BF0028929C /* main.m in Sources */,
 				776D8D471CAD1AD20028929C /* UIImage+RoundedCorner.m in Sources */,
