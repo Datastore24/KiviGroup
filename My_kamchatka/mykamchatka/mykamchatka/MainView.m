@@ -11,6 +11,9 @@
 #import "Macros.h"
 
 @implementation MainView
+{
+    UIScrollView * mainScrollView;
+}
 
 - (instancetype)initWithView: (UIView*) view
 {
@@ -18,11 +21,21 @@
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
+        mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        mainScrollView.showsVerticalScrollIndicator = NO;
+        [self addSubview:mainScrollView];
+        mainScrollView.contentSize = CGSizeMake(0, 565);
+        
         //Основной фон----
         UIImageView * mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         mainImageView.image = [UIImage imageNamed:@"fon1_croped.jpg"];
         mainImageView.contentMode=UIViewContentModeScaleToFill;
-        [self addSubview:mainImageView];
+        
+        if (isiPhone5) {
+            mainImageView.frame = CGRectMake(0, 0, self.frame.size.width, 540);
+        }
+        
+        [mainScrollView addSubview:mainImageView];
         
         //Первый лейбл----
         UILabel * myLoveLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 200, mainImageView.frame.size.width - 20, 20)];
@@ -30,8 +43,8 @@
         myLoveLabel.textColor = [UIColor colorWithHexString:@"023d6e"];
         myLoveLabel.font = [UIFont fontWithName:FONTBOND size:14];
         if (isiPhone5) {
-        myLoveLabel.frame = CGRectMake(20, 10, mainImageView.frame.size.width - 40, 16);
-        myLoveLabel.font = [UIFont fontWithName:FONTBOND size:16];
+        myLoveLabel.frame = CGRectMake(- 30, 170, mainImageView.frame.size.width - 40, 16);
+        myLoveLabel.font = [UIFont fontWithName:FONTBOND size:12];
         myLoveLabel.textAlignment = NSTextAlignmentCenter;
         }
         [mainImageView addSubview:myLoveLabel];
@@ -42,8 +55,8 @@
         firstLabel.textColor = [UIColor colorWithHexString:@"023d6e"];
         firstLabel.font = [UIFont fontWithName:FONTBOND size:14];
         if (isiPhone5) {
-            firstLabel.frame = CGRectMake(20, 10, mainImageView.frame.size.width - 40, 16);
-            firstLabel.font = [UIFont fontWithName:FONTBOND size:16];
+            firstLabel.frame = CGRectMake(50, 185, mainImageView.frame.size.width - 40, 16);
+            firstLabel.font = [UIFont fontWithName:FONTBOND size:12];
             firstLabel.textAlignment = NSTextAlignmentCenter;
         }
         [mainImageView addSubview:firstLabel];
@@ -55,8 +68,8 @@
         secondLabel.textColor = [UIColor colorWithHexString:@"023d6e"];
         secondLabel.font = [UIFont fontWithName:FONTREGULAR size:14];
         if (isiPhone5) {
-        secondLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
-        secondLabel.frame = CGRectMake(20, 10 + firstLabel.frame.size.height + 25, mainImageView.frame.size.width - 40, 170);
+        secondLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+        secondLabel.frame = CGRectMake(18, 105 + firstLabel.frame.size.height + 25, mainImageView.frame.size.width - 20, 170);
         }
         [mainImageView addSubview:secondLabel];
         
@@ -64,6 +77,9 @@
         UIImageView * yarovayaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 290, 150, 169)];
         yarovayaImageView.image = [UIImage imageNamed:@"yar.png"];
         yarovayaImageView.contentMode=UIViewContentModeScaleToFill;
+        if (isiPhone5) {
+            yarovayaImageView.frame = CGRectMake(10, 255, 130, 146);
+        }
         [mainImageView addSubview:yarovayaImageView];
         
         
@@ -75,7 +91,7 @@
         thirdLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         if (isiPhone5) {
         thirdLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
-        thirdLabel.frame = CGRectMake(20, secondLabel.frame.origin.y + 170,
+        thirdLabel.frame = CGRectMake(150, 260,
                                       mainImageView.frame.size.width - 40, 150);
         }
         [mainImageView addSubview:thirdLabel];
@@ -88,28 +104,22 @@
         seasonLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         if (isiPhone5) {
             seasonLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
-            seasonLabel.frame = CGRectMake(20, secondLabel.frame.origin.y + 170,
+            seasonLabel.frame = CGRectMake(20, 345,
                                           mainImageView.frame.size.width - 40, 150);
         }
         [mainImageView addSubview:seasonLabel];
         
         //Фотография сезонов----
-        UIImageView * seasonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 520, mainImageView.frame.size.width - 20, 61)];
+        UIImageView * seasonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, self.frame.size.height - 134, mainImageView.frame.size.width - 20, 61)];
         seasonImageView.image = [UIImage imageNamed:@"season.png"];
         seasonImageView.contentMode=UIViewContentModeScaleToFill;
+        
+        if (isiPhone5) {
+            seasonImageView.frame = CGRectMake(40, mainScrollView.contentSize.height - 105, mainImageView.frame.size.width - 80, 40);
+        }
         [mainImageView addSubview:seasonImageView];
         
-//        //Автор проекта
-//        UILabel * authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, mainImageView.frame.size.height - 130, mainImageView.frame.size.width - 40, 40)];
-//        authorLabel.numberOfLines = 0;
-//        authorLabel.text = @"Автор проекта -  \nдепутат государственной думмы Ирина Яровая";
-//        authorLabel.textColor = [UIColor whiteColor];
-//        authorLabel.font = [UIFont fontWithName:FONTBOND size:14];
-//        if (isiPhone5) {
-//        authorLabel.font = [UIFont fontWithName:FONTBOND size:11];
-//        authorLabel.frame = CGRectMake(20, mainImageView.frame.size.height - 110, mainImageView.frame.size.width - 40, 40);
-//        }
-//        [mainImageView addSubview:authorLabel];
+        
         
         
     }
