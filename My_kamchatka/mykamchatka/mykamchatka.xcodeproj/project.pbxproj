@@ -95,6 +95,8 @@
 		77F1FA261CA67E3A0025560B /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA251CA67E3A0025560B /* ApplicationController.m */; };
 		77F1FA291CA67E530025560B /* ApplicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1FA281CA67E530025560B /* ApplicationView.m */; };
 		77FE7FDD1CA45A8B0080E185 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE7FDC1CA45A8B0080E185 /* SingleTone.m */; };
+		AD37D0A91CAEA7AA0011D609 /* yar.png in Resources */ = {isa = PBXBuildFile; fileRef = AD37D0A81CAEA7AA0011D609 /* yar.png */; };
+		AD37D0AB1CAEB0820011D609 /* season.png in Resources */ = {isa = PBXBuildFile; fileRef = AD37D0AA1CAEB0820011D609 /* season.png */; };
 		AD65CF961CA9CC1C00525C73 /* iphone 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF911CA9CC1C00525C73 /* iphone 4.png */; };
 		AD65CF971CA9CC1C00525C73 /* iphone 5.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF921CA9CC1C00525C73 /* iphone 5.png */; };
 		AD65CF981CA9CC1C00525C73 /* iphone 6 Plus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */; };
@@ -262,6 +264,8 @@
 		77FE7FDB1CA45A8B0080E185 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		77FE7FDC1CA45A8B0080E185 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		A206015004AFBEE99D46A3E6 /* Pods-mykamchatka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mykamchatka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mykamchatka/Pods-mykamchatka.debug.xcconfig"; sourceTree = "<group>"; };
+		AD37D0A81CAEA7AA0011D609 /* yar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yar.png; sourceTree = "<group>"; };
+		AD37D0AA1CAEB0820011D609 /* season.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = season.png; sourceTree = "<group>"; };
 		AD65CF911CA9CC1C00525C73 /* iphone 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 4.png"; sourceTree = "<group>"; };
 		AD65CF921CA9CC1C00525C73 /* iphone 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 5.png"; sourceTree = "<group>"; };
 		AD65CF931CA9CC1C00525C73 /* iphone 6 Plus_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone 6 Plus_2.png"; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 			children = (
 				7712A9241C974445000A7D64 /* fon1_croped.jpg */,
 				770B06231C96F83400BC3D61 /* menuIcons.png */,
+				AD37D0A81CAEA7AA0011D609 /* yar.png */,
+				AD37D0AA1CAEB0820011D609 /* season.png */,
 				770B06201C96F40C00BC3D61 /* MainViewController.h */,
 				770B06211C96F40C00BC3D61 /* MainViewController.m */,
 				7712A9291C974746000A7D64 /* MainView.h */,
@@ -776,6 +782,7 @@
 				AD65CFCF1CA9D20200525C73 /* Icon-40@3x.png in Resources */,
 				770B065B1C970A3D00BC3D61 /* SFUIText-Regular.otf in Resources */,
 				770B065C1C970A3D00BC3D61 /* SFUIText-RegularG1.otf in Resources */,
+				AD37D0AB1CAEB0820011D609 /* season.png in Resources */,
 				770B065D1C970A3D00BC3D61 /* SFUIText-RegularG2.otf in Resources */,
 				AD65CF9A1CA9CC1C00525C73 /* iphone 6.png in Resources */,
 				AD65CFD21CA9D20200525C73 /* Icon-76.png in Resources */,
@@ -791,6 +798,7 @@
 				770B06621C970A3D00BC3D61 /* SFUIDisplay-Bold.otf in Resources */,
 				770B06631C970A3D00BC3D61 /* SFUIDisplay-Heavy.otf in Resources */,
 				AD65CF991CA9CC1C00525C73 /* iphone 6 Plus.png in Resources */,
+				AD37D0A91CAEA7AA0011D609 /* yar.png in Resources */,
 				AD65CFD41CA9D20200525C73 /* Icon-83.5@2x.png in Resources */,
 				AD65CFD51CA9D20200525C73 /* Icon-Small.png in Resources */,
 				770B06641C970A3D00BC3D61 /* SFUIDisplay-Light.otf in Resources */,
