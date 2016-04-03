@@ -42,7 +42,7 @@
     [button setImage:imageBarButton forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     
 #pragma mark - Initilization

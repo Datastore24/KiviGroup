@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7709628D1CB18CCD0024448B /* alertViewImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7709628C1CB18CCD0024448B /* alertViewImage.png */; };
+		7709628F1CB1A5570024448B /* imageCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 7709628E1CB1A5570024448B /* imageCancel.png */; };
 		772707311CAF04BA0067DF6C /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707301CAF04B90067DF6C /* Search.png */; };
 		772707331CAF05770067DF6C /* Search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707321CAF05770067DF6C /* Search1.png */; };
 		772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 772707351CAF0E3A0067DF6C /* CategoryModel.m */; };
@@ -98,6 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7709628C1CB18CCD0024448B /* alertViewImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alertViewImage.png; sourceTree = "<group>"; };
+		7709628E1CB1A5570024448B /* imageCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCancel.png; sourceTree = "<group>"; };
 		772707301CAF04B90067DF6C /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search.png; sourceTree = "<group>"; };
 		772707321CAF05770067DF6C /* Search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search1.png; sourceTree = "<group>"; };
 		772707341CAF0E3A0067DF6C /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
@@ -221,6 +225,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770962901CB1A9D50024448B /* mainImage */ = {
+			isa = PBXGroup;
+			children = (
+				7709628C1CB18CCD0024448B /* alertViewImage.png */,
+				772707321CAF05770067DF6C /* Search1.png */,
+				772707301CAF04B90067DF6C /* Search.png */,
+				778C30681CAE7EB600E2BAE5 /* fonAlpha.png */,
+				77EA7C311CB024EC0083AD5B /* imageMoney.png */,
+				77EA7C2F1CB024E40083AD5B /* arrowImage.png */,
+				7709628E1CB1A5570024448B /* imageCancel.png */,
+			);
+			name = mainImage;
+			sourceTree = "<group>";
+		};
+		770962911CB1A9ED0024448B /* image */ = {
+			isa = PBXGroup;
+			children = (
+				77D297E01CADAC7D0057CC1C /* VK.png */,
+				77D297DE1CADAC790057CC1C /* Email.png */,
+				77D297DC1CADAC760057CC1C /* facebook.png */,
+				77D297E21CADB5B00057CC1C /* mainFone.png */,
+				776D8DB31CAD2B3F0028929C /* menuIcon.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		776D8CC51CAD17BF0028929C = {
 			isa = PBXGroup;
 			children = (
@@ -344,12 +374,8 @@
 		776D8D301CAD1ABC0028929C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				770962901CB1A9D50024448B /* mainImage */,
 				77EA7C241CB024C90083AD5B /* image */,
-				772707321CAF05770067DF6C /* Search1.png */,
-				772707301CAF04B90067DF6C /* Search.png */,
-				778C30681CAE7EB600E2BAE5 /* fonAlpha.png */,
-				77EA7C311CB024EC0083AD5B /* imageMoney.png */,
-				77EA7C2F1CB024E40083AD5B /* arrowImage.png */,
 				776D8DC21CAD44C30028929C /* CategoryController.h */,
 				776D8DC31CAD44C30028929C /* CategoryController.m */,
 				778C30651CAE7A6800E2BAE5 /* CategoryView.h */,
@@ -363,11 +389,7 @@
 		776D8DA91CAD24FC0028929C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				77D297E01CADAC7D0057CC1C /* VK.png */,
-				77D297DE1CADAC790057CC1C /* Email.png */,
-				77D297DC1CADAC760057CC1C /* facebook.png */,
-				77D297E21CADB5B00057CC1C /* mainFone.png */,
-				776D8DB31CAD2B3F0028929C /* menuIcon.png */,
+				770962911CB1A9ED0024448B /* image */,
 				776D8DAA1CAD25120028929C /* LoginController.h */,
 				776D8DAB1CAD25120028929C /* LoginController.m */,
 				776D8DAD1CAD25200028929C /* LoginView.h */,
@@ -541,6 +563,7 @@
 				77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */,
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
 				772707311CAF04BA0067DF6C /* Search.png in Resources */,
+				7709628F1CB1A5570024448B /* imageCancel.png in Resources */,
 				776D8D961CAD22910028929C /* SFUIText-Light.otf in Resources */,
 				77D297E31CADB5B00057CC1C /* mainFone.png in Resources */,
 				77EA7C2C1CB024D80083AD5B /* image3.png in Resources */,
@@ -552,6 +575,7 @@
 				77D297DF1CADAC790057CC1C /* Email.png in Resources */,
 				776D8D9C1CAD22A70028929C /* SFUIText-RegularG2.otf in Resources */,
 				776D8D9D1CAD22AA0028929C /* SFUIText-RegularG3.otf in Resources */,
+				7709628D1CB18CCD0024448B /* alertViewImage.png in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
 				776D8D9F1CAD22B00028929C /* SFUIText-SemiboldItalic.otf in Resources */,
 				776D8DA01CAD22B60028929C /* SFUIDisplay-Black.otf in Resources */,
