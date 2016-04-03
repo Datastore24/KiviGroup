@@ -18,6 +18,12 @@
 {
     UITableView * mainTableView;
     NSMutableArray * mainArray;
+    
+    UIImageView * alertView;
+    UIView * darkView;
+    UIImageView * mainMoneyImage;
+    UILabel * alertTitleLabel;
+    UILabel * mainAlertText;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -37,10 +43,9 @@
 {
     self = [super init];
     if (self) {
+        
         //Основной контент---------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
-        
-        NSLog(@"array %@", array);
         mainArray = array;
         
         //Вью поиска---------------------------
@@ -71,6 +76,77 @@
         mainTableView.delegate = self;
         mainTableView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainTableView];
+        
+        //Затемнение-----------------------------------------------------
+        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        darkView.backgroundColor = [UIColor blackColor];
+        darkView.alpha = 0.0;
+        [self addSubview:darkView];
+
+#pragma mark - Create Alert
+        
+        //Создаем алерт---------------------------------------------------
+        alertView = [[UIImageView alloc] initWithFrame:CGRectMake(24, -600, self.frame.size.width - 48, 408)];
+        alertView.image = [UIImage imageNamed:@"alertViewImage.png"];
+        alertView.userInteractionEnabled = YES;
+        [self addSubview:alertView];
+        
+        //Кнопка отмены--------------------------------------------------
+        UIButton * buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonCancel.frame = CGRectMake(24, 56, 32, 32);
+        UIImage *btnImage = [UIImage imageNamed:@"imageCancel.png"];
+        [buttonCancel setImage:btnImage forState:UIControlStateNormal];
+        [buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertView addSubview:buttonCancel];
+        
+        //Значек денег----------------------------------------------------
+        mainMoneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(alertView.frame.size.width / 2 - 20, 16, 40, 40)];
+        mainMoneyImage.image = [UIImage imageNamed:@"imageMoney.png"];
+        [alertView addSubview:mainMoneyImage];
+        
+        //Заголовок алерта-----------------------------------------------
+        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 72, alertView.frame.size.width - 128, 16)];
+        alertTitleLabel.numberOfLines = 0;
+        alertTitleLabel.textAlignment = NSTextAlignmentCenter;
+        alertTitleLabel.textColor = [UIColor colorWithHexString:@"c0c0c0"];
+        alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
+        [alertView addSubview:alertTitleLabel];
+        
+        //Основной текст--------------------------------------------------
+        mainAlertText = [[UILabel alloc] initWithFrame:CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 32, alertView.frame.size.width - 60, 120)];
+        mainAlertText.numberOfLines = 0;
+        mainAlertText.textAlignment = NSTextAlignmentCenter;
+        mainAlertText.textColor = [UIColor colorWithHexString:@"c0c0c0"];
+        mainAlertText.font = [UIFont fontWithName:FONTLITE size:13];
+        [alertView addSubview:mainAlertText];
+        
+        //Кнопка добавить в игранное--------------------------------------
+        UIButton * buttonToFavorites = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonToFavorites.frame = CGRectMake(24, 264, alertView.frame.size.width - 48, 48);
+        buttonToFavorites.backgroundColor = [UIColor colorWithHexString:@"ee5a59"];
+        buttonToFavorites.layer.cornerRadius = 25;
+        buttonToFavorites.layer.borderColor = [UIColor colorWithHexString:@"ee5a59"].CGColor;
+        buttonToFavorites.layer.borderWidth = 1.f;
+        [buttonToFavorites setTitle:@"ДОБАВИТЬ В ИЗБРАННОЕ" forState:UIControlStateNormal];
+        [buttonToFavorites setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertView addSubview:buttonToFavorites];
+        
+        //Кнопка открыть категорию--------------------------------------
+        UIButton * buttonOpenCategory = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonOpenCategory.frame = CGRectMake(24, 328, alertView.frame.size.width - 48, 48);
+        buttonOpenCategory.backgroundColor = nil;
+        buttonOpenCategory.layer.cornerRadius = 25;
+        buttonOpenCategory.layer.borderColor = [UIColor colorWithHexString:@"36b34c"].CGColor;
+        buttonOpenCategory.layer.borderWidth = 1.f;
+        [buttonOpenCategory setTitle:@"ОТКРЫТЬ КАТЕГОРИЮ" forState:UIControlStateNormal];
+        [buttonOpenCategory setTitleColor:[UIColor colorWithHexString:@"36b34c"] forState:UIControlStateNormal];
+        buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        [buttonOpenCategory addTarget:self action:@selector(buttonOpenCategoryAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertView addSubview:buttonOpenCategory];
+        
+
         
     }
     return self;
@@ -109,7 +185,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    alertTitleLabel.text = [dictCell objectForKey:@"title"];
     
+    mainAlertText.text = @"Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только";
+    
+    //Анимация алерта---------------------------------------------
+    [UIView animateWithDuration:0.1 animations:^{
+        darkView.alpha = 0.4f;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rectAlert = alertView.frame;
+            rectAlert.origin.y += 760;
+            alertView.frame = rectAlert;
+        }];
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -117,6 +207,9 @@
     return 128;
 }
 
+#pragma mark - CustomCell
+
+//Кастомная ячейка---------------------------------------
 - (UIView*) setTableCellWithTitle: (NSString*) string
                       andSubTitle: (NSString*) subTitle
                          andMoney: (BOOL) money
@@ -167,11 +260,34 @@
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
-
-    
-    
-    
+   
     return cellView;
 }
+
+#pragma mark - Buttons Methods
+//Действие кнопки закрыть алерт
+- (void) buttonCancelAction
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rectAlert = alertView.frame;
+        rectAlert.origin.y -= 760;
+        alertView.frame = rectAlert;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            darkView.alpha = 0;
+        }];
+    }];
+}
+//Действие кнопки добавить в избранное
+- (void) buttonToFavoritesAction
+{
+    NSLog(@"ДОБАВЛЯЕМ В ИЗБРАННОЕ");
+}
+//Действие кнопки открыть категорию
+- (void) buttonOpenCategoryAction
+{
+    NSLog(@"ОТКРЫТЬ КАТЕГОРИЮ");
+}
+
 
 @end
