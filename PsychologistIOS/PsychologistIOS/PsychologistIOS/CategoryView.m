@@ -24,6 +24,7 @@
     UIImageView * mainMoneyImage;
     UILabel * alertTitleLabel;
     UILabel * mainAlertText;
+    UIButton * buttonToFavorites;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -121,13 +122,13 @@
         [alertView addSubview:mainAlertText];
         
         //Кнопка добавить в игранное--------------------------------------
-        UIButton * buttonToFavorites = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonToFavorites = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonToFavorites.frame = CGRectMake(24, 264, alertView.frame.size.width - 48, 48);
         buttonToFavorites.backgroundColor = [UIColor colorWithHexString:@"ee5a59"];
         buttonToFavorites.layer.cornerRadius = 25;
         buttonToFavorites.layer.borderColor = [UIColor colorWithHexString:@"ee5a59"].CGColor;
         buttonToFavorites.layer.borderWidth = 1.f;
-        [buttonToFavorites setTitle:@"ДОБАВИТЬ В ИЗБРАННОЕ" forState:UIControlStateNormal];
+        [buttonToFavorites setTitle:@"ПОДПИСАТЬСЯ НА КАТЕГОРИЮ" forState:UIControlStateNormal];
         [buttonToFavorites setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
@@ -145,8 +146,6 @@
         buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         [buttonOpenCategory addTarget:self action:@selector(buttonOpenCategoryAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonOpenCategory];
-        
-
         
     }
     return self;
@@ -189,6 +188,13 @@
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     
     mainAlertText.text = @"Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только";
+    if ([[dictCell objectForKey:@"money"] boolValue]) {
+        buttonToFavorites.alpha = 1.f;
+        
+        
+    } else {
+        buttonToFavorites.alpha = 0.f;
+    }
     
     //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
@@ -281,7 +287,7 @@
 //Действие кнопки добавить в избранное
 - (void) buttonToFavoritesAction
 {
-    NSLog(@"ДОБАВЛЯЕМ В ИЗБРАННОЕ");
+    NSLog(@"ПОДПИСАТЬСЯ НА КАТЕГОРИЮ");
 }
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
