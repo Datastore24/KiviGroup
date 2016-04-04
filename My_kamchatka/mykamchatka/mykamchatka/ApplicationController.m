@@ -66,7 +66,7 @@
 #pragma mark - PHOTO
 //Действие кнопки выбрать фотографию-----------------------
 - (void)openPhotoLibraryButton:(id)sender {
-    NSLog(@"Выбираем фоточки");
+//    NSLog(@"Выбираем фоточки");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
@@ -89,7 +89,7 @@
 
 // SAVE IMAGE
 - (void)saveImage: (UIImage*) image {
-    NSLog(@"%@",image);
+//    NSLog(@"%@",image);
     
     NSString *stringUrl = [ NSString stringWithFormat:@"http://photokamchatka.irinayarovaya.ru/API/uploader.php"];
     NSData *imageLoad = UIImageJPEGRepresentation(image,0.8);
