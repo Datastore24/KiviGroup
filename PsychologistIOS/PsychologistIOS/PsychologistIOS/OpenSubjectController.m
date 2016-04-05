@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "SingleTone.h"
 #import "OpenSubjectView.h"
+#import "HeightForText.h"
 
 @implementation OpenSubjectController
 

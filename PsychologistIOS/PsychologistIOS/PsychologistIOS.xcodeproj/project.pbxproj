@@ -21,6 +21,7 @@
 		775B7C4A1CB4391300161EF9 /* OpenSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B7C491CB4391300161EF9 /* OpenSubjectView.m */; };
 		775B7C4C1CB43CD100161EF9 /* imageSubject.png in Resources */ = {isa = PBXBuildFile; fileRef = 775B7C4B1CB43CD100161EF9 /* imageSubject.png */; };
 		775B7C4E1CB445A500161EF9 /* buttonHight.png in Resources */ = {isa = PBXBuildFile; fileRef = 775B7C4D1CB445A500161EF9 /* buttonHight.png */; };
+		775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B7C4F1CB4533E00161EF9 /* HeightForText.m */; };
 		776D8CD31CAD17BF0028929C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD21CAD17BF0028929C /* main.m */; };
 		776D8CD61CAD17BF0028929C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD51CAD17BF0028929C /* AppDelegate.m */; };
 		776D8CD91CAD17BF0028929C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD81CAD17BF0028929C /* ViewController.m */; };
@@ -133,6 +134,8 @@
 		775B7C491CB4391300161EF9 /* OpenSubjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSubjectView.m; sourceTree = "<group>"; };
 		775B7C4B1CB43CD100161EF9 /* imageSubject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSubject.png; sourceTree = "<group>"; };
 		775B7C4D1CB445A500161EF9 /* buttonHight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHight.png; sourceTree = "<group>"; };
+		775B7C4F1CB4533E00161EF9 /* HeightForText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightForText.m; sourceTree = "<group>"; };
+		775B7C501CB4533E00161EF9 /* HeightForText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightForText.h; sourceTree = "<group>"; };
 		776D8CCE1CAD17BF0028929C /* PsychologistIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsychologistIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		776D8CD21CAD17BF0028929C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		776D8CD41CAD17BF0028929C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 		776D8DC11CAD43B70028929C /* iCategory */ = {
 			isa = PBXGroup;
 			children = (
+				775B7C4F1CB4533E00161EF9 /* HeightForText.m */,
+				775B7C501CB4533E00161EF9 /* HeightForText.h */,
 				776D8D311CAD1AD20028929C /* UIBarButtonItem+Alpha.h */,
 				776D8D321CAD1AD20028929C /* UIBarButtonItem+Alpha.m */,
 				776D8D331CAD1AD20028929C /* TextAndImageHeight.h */,
@@ -701,6 +706,7 @@
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
 				772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */,
+				775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
 				776D8CD31CAD17BF0028929C /* main.m in Sources */,
 				775B7C471CB4347700161EF9 /* SubjectModel.m in Sources */,
