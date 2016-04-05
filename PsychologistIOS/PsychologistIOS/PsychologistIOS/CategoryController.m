@@ -12,6 +12,8 @@
 #import "CategoryView.h"
 #import "CategoryModel.h"
 #import "TitleClass.h"
+#import "Macros.h"
+#import "SubCategoryController.h"
 
 @implementation CategoryController
 
@@ -21,7 +23,7 @@
     
     self.navigationController.navigationBarHidden = NO;
     //Заголовок-----------------------------------------------
-    TitleClass * title = [[TitleClass alloc]initWithTitle:@"КАТЕГОРИИ"];
+    TitleClass * title = [[TitleClass alloc]initWithTitle:@"РАЗДЕЛ"];
     self.navigationItem.titleView = title;
     
     //Задаем цвет бара----------------------------------------
@@ -43,7 +45,6 @@
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
 //    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     
 #pragma mark - Initilization
     
@@ -53,9 +54,21 @@
     CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:[CategoryModel setArrayJuri]];
     [self.view addSubview:contentView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     
+}
 
-    
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Action Methods
+
+- (void) notificationPushWithSubCategory
+{
+    SubCategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCategoryController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

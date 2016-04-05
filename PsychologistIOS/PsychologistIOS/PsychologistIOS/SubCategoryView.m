@@ -1,21 +1,21 @@
 //
-//  CategoryView.m
+//  SubCategoryView.m
 //  PsychologistIOS
 //
-//  Created by Viktor on 01.04.16.
+//  Created by Viktor on 04.04.16.
 //  Copyright © 2016 KiviLab. All rights reserved.
 //
 
-#import "CategoryView.h"
+#import "SubCategoryView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "SingleTone.h"
 
-@interface CategoryView () <UITableViewDataSource, UITableViewDelegate>
+@interface SubCategoryView () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation CategoryView
+@implementation SubCategoryView
 {
     UITableView * mainTableView;
     NSMutableArray * mainArray;
@@ -38,11 +38,12 @@
         //Фоновая картинка--------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
-        backgroundView.image = [UIImage imageNamed:@"fonAlpha.png"];
+        backgroundView.image = [UIImage imageNamed:@"fonSubImage.png"];
         [self addSubview:backgroundView];
     }
     return self;
 }
+
 
 - (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array
 {
@@ -53,25 +54,8 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         mainArray = array;
         
-        //Вью поиска---------------------------
-        UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 40)];
-        viewSearch.backgroundColor = [UIColor colorWithHexString:@"eb9285"];
-        [self addSubview:viewSearch];
         
-        //Окно поиска--------------------------
-        UISearchBar * mainSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 240, 24)];
-        mainSearchBar.center = viewSearch.center;
-        mainSearchBar.backgroundImage = [UIImage imageNamed:@"Search1.png"];
-        mainSearchBar.layer.cornerRadius = 10;
-        mainSearchBar.placeholder = @"Поиск по категориям";
-        mainSearchBar.searchBarStyle = UISearchBarStyleDefault;
-        mainSearchBar.barTintColor = [UIColor colorWithHexString:@"eb9285"];
-        mainSearchBar.tintColor = [UIColor redColor];
-        mainSearchBar.showsBookmarkButton = NO;
-        mainSearchBar.showsCancelButton = NO;
-        mainSearchBar.showsScopeBar = NO;
-        mainSearchBar.showsSearchResultsButton = NO;
-        [viewSearch addSubview:mainSearchBar];
+
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
         //Убираем полосы разделяющие ячейки------------------------------
@@ -87,7 +71,7 @@
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];
-
+        
 #pragma mark - Create Alert
         
         //Создаем алерт---------------------------------------------------
@@ -163,7 +147,7 @@
         [buttonBuy addTarget:self action:@selector(buttonBuyAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonBuy];
         
-
+        
         
     }
     return self;
@@ -220,8 +204,8 @@
         
     }
     
+    [[SingleTone sharedManager] setTitleSubCategory:[dictCell objectForKey:@"title"]];
     
-    [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
     
     //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
@@ -288,12 +272,12 @@
     UIImageView * arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 48, 40, 16, 48)];
     arrowImage.image = [UIImage imageNamed:@"arrowImage.png"];
     [cellView addSubview:arrowImage];
-
+    
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
-   
+    
     return cellView;
 }
 
@@ -319,7 +303,8 @@
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
 {
-   [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SUB_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
+    NSLog(@"Категория");
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }
 
@@ -328,6 +313,7 @@
 {
     NSLog(@"КУПИТЬ ТЕМУ");
 }
+
 
 
 @end
