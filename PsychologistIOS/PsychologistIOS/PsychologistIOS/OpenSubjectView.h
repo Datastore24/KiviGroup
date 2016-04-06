@@ -10,6 +10,6 @@
 
 @interface OpenSubjectView : UIView
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
 
 @end
