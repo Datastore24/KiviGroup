@@ -155,7 +155,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ofn-a0-dlU" kind="relationship" relationship="rootViewController" id="KKp-03-Rz5"/>
+                        <segue destination="ofn-a0-dlU" kind="relationship" relationship="rootViewController" id="UoI-bc-ACR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7A-Yc-CHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205" y="-79"/>
+            <point key="canvasLocation" x="1388" y="645"/>
         </scene>
     </scenes>
 </document>

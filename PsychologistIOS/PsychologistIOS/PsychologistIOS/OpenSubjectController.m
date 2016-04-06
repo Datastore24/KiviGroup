@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "SingleTone.h"
 #import "OpenSubjectView.h"
+#import "OpenSubjectModel.h"
 
 @implementation OpenSubjectController
 
@@ -34,10 +35,8 @@
 #pragma mark - Initialization
     
     //Основной контент-----------------------------------------
-    OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view];
+    OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andArray:[OpenSubjectModel setArrayChat]];
     [self.view addSubview:mainContent];
-    
-
 }
 
 @end

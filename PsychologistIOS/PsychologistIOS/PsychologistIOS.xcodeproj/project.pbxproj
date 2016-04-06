@@ -21,6 +21,8 @@
 		775B7C4A1CB4391300161EF9 /* OpenSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B7C491CB4391300161EF9 /* OpenSubjectView.m */; };
 		775B7C4C1CB43CD100161EF9 /* imageSubject.png in Resources */ = {isa = PBXBuildFile; fileRef = 775B7C4B1CB43CD100161EF9 /* imageSubject.png */; };
 		775B7C4E1CB445A500161EF9 /* buttonHight.png in Resources */ = {isa = PBXBuildFile; fileRef = 775B7C4D1CB445A500161EF9 /* buttonHight.png */; };
+		775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B7C4F1CB4533E00161EF9 /* HeightForText.m */; };
+		775B7C541CB4643900161EF9 /* OpenSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 775B7C531CB4643900161EF9 /* OpenSubjectModel.m */; };
 		776D8CD31CAD17BF0028929C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD21CAD17BF0028929C /* main.m */; };
 		776D8CD61CAD17BF0028929C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD51CAD17BF0028929C /* AppDelegate.m */; };
 		776D8CD91CAD17BF0028929C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD81CAD17BF0028929C /* ViewController.m */; };
@@ -76,6 +78,8 @@
 		776D8DB21CAD25470028929C /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DB11CAD25470028929C /* MenuController.m */; };
 		776D8DB41CAD2B3F0028929C /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 776D8DB31CAD2B3F0028929C /* menuIcon.png */; };
 		776D8DC41CAD44C30028929C /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8DC31CAD44C30028929C /* CategoryController.m */; };
+		778144EF1CB5B75C009E70E7 /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 778144EE1CB5B75C009E70E7 /* bubble.png */; };
+		778144F11CB5B910009E70E7 /* bubble - gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 778144F01CB5B910009E70E7 /* bubble - gray.png */; };
 		778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 778C30661CAE7A6900E2BAE5 /* CategoryView.m */; };
 		778C30691CAE7EB600E2BAE5 /* fonAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 778C30681CAE7EB600E2BAE5 /* fonAlpha.png */; };
 		77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A807DB1CB2F8C0008EE5A5 /* SubCategoryController.m */; };
@@ -133,6 +137,10 @@
 		775B7C491CB4391300161EF9 /* OpenSubjectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSubjectView.m; sourceTree = "<group>"; };
 		775B7C4B1CB43CD100161EF9 /* imageSubject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSubject.png; sourceTree = "<group>"; };
 		775B7C4D1CB445A500161EF9 /* buttonHight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHight.png; sourceTree = "<group>"; };
+		775B7C4F1CB4533E00161EF9 /* HeightForText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightForText.m; sourceTree = "<group>"; };
+		775B7C501CB4533E00161EF9 /* HeightForText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightForText.h; sourceTree = "<group>"; };
+		775B7C521CB4643900161EF9 /* OpenSubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenSubjectModel.h; sourceTree = "<group>"; };
+		775B7C531CB4643900161EF9 /* OpenSubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSubjectModel.m; sourceTree = "<group>"; };
 		776D8CCE1CAD17BF0028929C /* PsychologistIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsychologistIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		776D8CD21CAD17BF0028929C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		776D8CD41CAD17BF0028929C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -211,6 +219,8 @@
 		776D8DB31CAD2B3F0028929C /* menuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIcon.png; sourceTree = "<group>"; };
 		776D8DC21CAD44C30028929C /* CategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryController.h; sourceTree = "<group>"; };
 		776D8DC31CAD44C30028929C /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
+		778144EE1CB5B75C009E70E7 /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
+		778144F01CB5B910009E70E7 /* bubble - gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble - gray.png"; sourceTree = "<group>"; };
 		778C30651CAE7A6800E2BAE5 /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
 		778C30661CAE7A6900E2BAE5 /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
 		778C30681CAE7EB600E2BAE5 /* fonAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fonAlpha.png; sourceTree = "<group>"; };
@@ -300,12 +310,16 @@
 		775B7C411CB4334F00161EF9 /* OpenSubject */ = {
 			isa = PBXGroup;
 			children = (
+				778144F01CB5B910009E70E7 /* bubble - gray.png */,
+				778144EE1CB5B75C009E70E7 /* bubble.png */,
 				775B7C4D1CB445A500161EF9 /* buttonHight.png */,
 				775B7C4B1CB43CD100161EF9 /* imageSubject.png */,
 				775B7C421CB4337700161EF9 /* OpenSubjectController.h */,
 				775B7C431CB4337700161EF9 /* OpenSubjectController.m */,
 				775B7C481CB4391300161EF9 /* OpenSubjectView.h */,
 				775B7C491CB4391300161EF9 /* OpenSubjectView.m */,
+				775B7C521CB4643900161EF9 /* OpenSubjectModel.h */,
+				775B7C531CB4643900161EF9 /* OpenSubjectModel.m */,
 			);
 			name = OpenSubject;
 			sourceTree = "<group>";
@@ -465,6 +479,8 @@
 		776D8DC11CAD43B70028929C /* iCategory */ = {
 			isa = PBXGroup;
 			children = (
+				775B7C4F1CB4533E00161EF9 /* HeightForText.m */,
+				775B7C501CB4533E00161EF9 /* HeightForText.h */,
 				776D8D311CAD1AD20028929C /* UIBarButtonItem+Alpha.h */,
 				776D8D321CAD1AD20028929C /* UIBarButtonItem+Alpha.m */,
 				776D8D331CAD1AD20028929C /* TextAndImageHeight.h */,
@@ -626,6 +642,7 @@
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
 				776D8D8D1CAD225D0028929C /* SFUIText-BoldItalicG1.otf in Resources */,
 				776D8D8E1CAD225F0028929C /* SFUIText-BoldItalicG2.otf in Resources */,
+				778144F11CB5B910009E70E7 /* bubble - gray.png in Resources */,
 				772707331CAF05770067DF6C /* Search1.png in Resources */,
 				77D297E11CADAC7D0057CC1C /* VK.png in Resources */,
 				77EA7C2B1CB024D80083AD5B /* image2.png in Resources */,
@@ -663,6 +680,7 @@
 				776D8DA21CAD22BE0028929C /* SFUIDisplay-Heavy.otf in Resources */,
 				776D8DA31CAD22C20028929C /* SFUIDisplay-Light.otf in Resources */,
 				776D8DA41CAD22C50028929C /* SFUIDisplay-Medium.otf in Resources */,
+				778144EF1CB5B75C009E70E7 /* bubble.png in Resources */,
 				776D8DA51CAD22C90028929C /* SFUIDisplay-Regular.otf in Resources */,
 				776D8DA61CAD22CB0028929C /* SFUIDisplay-Semibold.otf in Resources */,
 				776D8DA71CAD22CD0028929C /* SFUIDisplay-Thin.otf in Resources */,
@@ -701,6 +719,7 @@
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
 				772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */,
+				775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
 				776D8CD31CAD17BF0028929C /* main.m in Sources */,
 				775B7C471CB4347700161EF9 /* SubjectModel.m in Sources */,
@@ -716,6 +735,7 @@
 				775B7C3D1CB42E8700161EF9 /* SubjectViewController.m in Sources */,
 				775B7C4A1CB4391300161EF9 /* OpenSubjectView.m in Sources */,
 				776D8D2C1CAD18FD0028929C /* TitleClass.m in Sources */,
+				775B7C541CB4643900161EF9 /* OpenSubjectModel.m in Sources */,
 				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
 				77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */,
 				77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */,
