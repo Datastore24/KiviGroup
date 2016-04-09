@@ -29,6 +29,9 @@
     UIButton * buttonToFavorites;
     UIButton * buttonBuy;
     UIButton * buttonOpenCategory;
+    //Тип ячейки-----------------
+    NSString * typeCell;
+    
 }
 
 - (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array
@@ -174,6 +177,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
+    typeCell = [dictCell objectForKey:@"typeCell"];
     
     mainAlertText.text = @"Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только";
     
@@ -289,7 +293,7 @@
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:typeCell];
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }
 

@@ -30,6 +30,8 @@
     NSArray * imageJuri = [NSArray arrayWithObjects:@"image3.png", @"image5.png",
                            @"image1.png", @"image1.png", @"image4.png", nil];
     
+    NSArray * arrayType = [NSArray arrayWithObjects:@"1", @"3", @"2", @"1", @"3", nil];
+    
     
     for (int i = 0; i < 5; i++) {
         
@@ -37,7 +39,8 @@
                                    [arrayTitle objectAtIndex:i], @"title",
                                    [arraySubTitle objectAtIndex:i], @"subTitle",
                                    [textJuriArray objectAtIndex:i], @"money",
-                                   [imageJuri objectAtIndex:i], @"image", nil];
+                                   [imageJuri objectAtIndex:i], @"image",
+                                   [arrayType objectAtIndex:i], @"typeCell", nil];
         
         [arrayJury addObject:dictJury];
     }

@@ -66,7 +66,7 @@
 #pragma mark - PHOTO
 //Действие кнопки выбрать фотографию-----------------------
 - (void)openPhotoLibraryButton:(id)sender {
-//    NSLog(@"Выбираем фоточки");
+    NSLog(@"Выбираем фоточки");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;

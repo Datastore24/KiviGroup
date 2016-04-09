@@ -18,11 +18,7 @@
     UIButton * buttonHeight;
     BOOL mainAnim;
     
-    CGFloat countFor;
-    
-    
-    
-    
+    CGFloat countFor;  
 }
 
 - (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array
@@ -38,11 +34,8 @@
         //Вью чата--------------------------------------------------------------------
         UIView * viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 368, self.frame.size.width, self.frame.size.height - 368)];
         
-        
         for (NSInteger i = array.count; i > (array.count - 3); i--) {
-            
             NSDictionary * dictChat = [array objectAtIndex:i - 1];
-            
             if ([[dictChat objectForKey:@"Users"] isEqualToString:@"Пользователь 1"]) {
                 // Имя пользователя---------------
                 UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
@@ -51,7 +44,7 @@
                 labelUser.text = [dictChat objectForKey:@"Users"];
                 [viewChat addSubview:labelUser];
                 
-                //Текст сообщения
+                //Текст сообщения------------------
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 24, 32 + countFor, 300, 12)];
                 labelText.numberOfLines = 0;
                 labelText.textColor = [UIColor whiteColor];
@@ -60,17 +53,26 @@
                 [labelText sizeToFit];
                 labelText.frame = CGRectMake((viewChat.frame.size.width - labelText.frame.size.width) - 32, labelText.frame.origin.y, labelText.frame.size.width, labelText.frame.size.height);
                 
-                //Вью сообщения--------------------
+                //Вью сообщения----------------------
                 UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
-                viewMessage.layer.cornerRadius = 5.f;
+                viewMessage.layer.cornerRadius = 7.f;
                 [viewChat addSubview:viewMessage];
                 [viewChat addSubview:labelText];
                 
-                //Создаем хвостик------------------
+                //Создаем хвостик--------------------
                 UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(viewMessage.frame.origin.x + viewMessage.frame.size.width - 9, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
                 bubbleView.image = [UIImage imageNamed:@"bubble.png"];
                 [viewChat addSubview:bubbleView];
+                
+                //Лейбл даты-----------------------
+                UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 40, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
+                labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
+                labelData.font = [UIFont fontWithName:FONTLITE size:12];
+                labelData.text = [dictChat objectForKey:@"Data"];
+                [labelData sizeToFit];
+                labelData.frame = CGRectMake(viewChat.frame.size.width - 24 - labelData.frame.size.width, labelData.frame.origin.y, labelData.frame.size.width, labelData.frame.size.height);
+                [viewChat addSubview:labelData];
                 
                 countFor += viewMessage.frame.size.height + 30;
 
@@ -90,7 +92,7 @@
                 //Вью Сообщения---------------------
                 UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
-                viewMessage.layer.cornerRadius = 5.f;
+                viewMessage.layer.cornerRadius = 7.f;
                 [viewChat addSubview:viewMessage];
                 [viewChat addSubview:labelText];
                 
@@ -98,6 +100,13 @@
                 UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(32 - 7, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
                 bubbleView.image = [UIImage imageNamed:@"bubble - gray.png"];
                 [viewChat addSubview:bubbleView];
+                
+                //Лейбл даты-----------------------
+                UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(32, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
+                labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
+                labelData.font = [UIFont fontWithName:FONTLITE size:12];
+                labelData.text = [dictChat objectForKey:@"Data"];
+                [viewChat addSubview:labelData];
                 
                 countFor += viewMessage.frame.size.height + 30;
                 
@@ -112,6 +121,7 @@
         [buttonPush setTitle:@"ОБСУДИТЬ" forState:UIControlStateNormal];
         [buttonPush setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        [buttonPush addTarget:self action:@selector(buttonPushAction) forControlEvents:UIControlEventTouchUpInside];
         [viewChat addSubview:buttonPush];
 
         [self addSubview:viewChat];
@@ -171,11 +181,8 @@
             CGRect newRectLabel = textViewText.frame;
             newRectLabel.size.height += 300;
             textViewText.frame = newRectLabel;
-
         } completion:^(BOOL finished) {
-         
             textViewText.userInteractionEnabled = YES;
-            
         }];
         mainAnim = NO;
     } else {
@@ -192,17 +199,16 @@
             CGRect newRectLabel = textViewText.frame;
             newRectLabel.size.height -= 300;
             textViewText.frame = newRectLabel;
-            
         } completion:^(BOOL finished) {
-            
             textViewText.userInteractionEnabled = NO;
-            
         }];
         mainAnim = YES;
     }
-    
+}
 
-    
+- (void) buttonPushAction
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OPEN_SUBJECT_PUSH_TU_DISCUSSIONS object:nil];
 }
 
 @end

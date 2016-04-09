@@ -26,13 +26,16 @@
     NSArray * arrayData = [NSArray arrayWithObjects:@"1 час назад", @"2 часа назад",
                            @"вчера", @"вчера", @"вчера", nil];
     
+    NSArray * arrayType = [NSArray arrayWithObjects:@"1", @"1", @"1", @"1", @"1", nil];
+    
     
     for (int i = 0; i < 5; i++) {
         
         NSDictionary * dictJury = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [arrayUsers objectAtIndex:i], @"Users",
                                    [arrayMessage objectAtIndex:i], @"Message",
-                                   [arrayData objectAtIndex:i], @"Data", nil];
+                                   [arrayData objectAtIndex:i], @"Data",
+                                   [arrayType objectAtIndex:i], @"Type", nil];
         
         [arrayJury addObject:dictJury];
     }
