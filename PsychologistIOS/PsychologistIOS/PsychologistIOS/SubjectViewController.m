@@ -42,13 +42,23 @@
     SubjectView * contentView = [[SubjectView alloc] initWithContent:self.view andArray:[SubjectModel setArraySubject]];
     [self.view addSubview:contentView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
 }
 
-- (void) notificationPushWithOpenSubject
+- (void) notificationPushWithOpenSubject: (NSNotification*) notification
 {
-    OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
-    [self.navigationController pushViewController:detail animated:YES];
+    if ([notification.object integerValue] == 1) {
+        NSLog(@"Текст");
+        OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
+        [self.navigationController pushViewController:detail animated:YES];
+    } else if ([notification.object integerValue] == 2) {
+        NSLog(@"Вебинар");
+    } else if ([notification.object integerValue] == 3) {
+        NSLog(@"Звукозапись");
+    } else {
+        NSLog(@"Ошибка");
+    }
+
 }
 
 @end

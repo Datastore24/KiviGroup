@@ -14,6 +14,7 @@
 #import "SingleTone.h"
 #import "OpenSubjectView.h"
 #import "OpenSubjectModel.h"
+#import "DiscussionsController.h"
 
 @implementation OpenSubjectController
 
@@ -37,6 +38,21 @@
     //Основной контент-----------------------------------------
     OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andArray:[OpenSubjectModel setArrayChat]];
     [self.view addSubview:mainContent];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithDiscussions) name:NOTIFICATION_OPEN_SUBJECT_PUSH_TU_DISCUSSIONS object:nil];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - ACTION METHODS
+
+- (void) notificationPushWithDiscussions
+{
+    DiscussionsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussionsController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end
