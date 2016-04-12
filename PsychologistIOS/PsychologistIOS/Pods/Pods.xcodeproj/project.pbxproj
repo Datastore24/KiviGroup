@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55F3DB9475AE5EB76621B6CA8F7F0A06 /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 908ED6799B97D01C762EBEC08AF52D16 /* AKPickerView.m */; };
+		5E3455A9D17138FB8DE19A599D5200F5 /* AKPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB4D34A75DE7449B9A08775AF6FEB13 /* AKPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		638756EBDD61F70EBB5CF176BFF2A6FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */; };
+		69020BA38D2C0DEEC6BAAEAB6CEE6171 /* AKPickerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 80CD853E21CC8A09093DB6FB3452CF4E /* AKPickerView-dummy.m */; };
+		CB435E8D7DCB326D15FF319FDA785601 /* Pods-PsychologistIOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D17CF6BC5EF25BDB96F95858C6F31F6C /* Pods-PsychologistIOS-dummy.m */; };
+		E987EB513A895EA9215003E49A1042E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */; };
+		F39E4F528DEBEDDDF7AA04C615A2F3DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18F24645AA4D651DFC7B69A3A0833DB /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F96A8FD9A21938C833372E7D9075BAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A35273E1314605952F39D68083D1DC9E;
+			remoteInfo = AKPickerView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AB4D34A75DE7449B9A08775AF6FEB13 /* AKPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AKPickerView.h; path = AKPickerViewSample/AKPickerView/AKPickerView.h; sourceTree = "<group>"; };
+		258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2DB3226BA55A061FBA2E3C4F57392AA9 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D37C72B5D173D06A401BAEAF788293F /* Pods-PsychologistIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PsychologistIOS.release.xcconfig"; sourceTree = "<group>"; };
+		80CD853E21CC8A09093DB6FB3452CF4E /* AKPickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AKPickerView-dummy.m"; sourceTree = "<group>"; };
+		859F0E0D48159F75F0806FC5B626D9D9 /* AKPickerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AKPickerView-prefix.pch"; sourceTree = "<group>"; };
+		87A0E70C3E48D8CE3F03D0104AAC2455 /* AKPickerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AKPickerView.xcconfig; sourceTree = "<group>"; };
+		908ED6799B97D01C762EBEC08AF52D16 /* AKPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AKPickerView.m; path = AKPickerViewSample/AKPickerView/AKPickerView.m; sourceTree = "<group>"; };
+		929E4D90C1E3A3D911D5C3B6422F4C2A /* Pods-PsychologistIOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PsychologistIOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B01546A64616B73EA538B0AB1931666C /* Pods-PsychologistIOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PsychologistIOS-frameworks.sh"; sourceTree = "<group>"; };
+		B18F24645AA4D651DFC7B69A3A0833DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D17CF6BC5EF25BDB96F95858C6F31F6C /* Pods-PsychologistIOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PsychologistIOS-dummy.m"; sourceTree = "<group>"; };
+		D7D8C552FB053B07803786EDFF1E9415 /* libAKPickerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAKPickerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88251715F8320DC9F8E849689F1BC53 /* Pods-PsychologistIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PsychologistIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		ED36B9E3B9E4E3B8D2211538509476CA /* Pods-PsychologistIOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PsychologistIOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		EE870CB7FC4216550995A56A8D23869A /* Pods-PsychologistIOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PsychologistIOS-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FB463F171F1D426CEB4513D559AEEF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E987EB513A895EA9215003E49A1042E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A66B0555602BC01DB1965AC34168CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				638756EBDD61F70EBB5CF176BFF2A6FB /* Foundation.framework in Frameworks */,
+				F39E4F528DEBEDDDF7AA04C615A2F3DE /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F98EFAA45F33BB97D9A0B4ECCCA0BD3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				16A56B70472C263E87C8F29A7C6715B4 /* Pods-PsychologistIOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		145EBB8A77483408D92AD885C92E24DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7D8C552FB053B07803786EDFF1E9415 /* libAKPickerView.a */,
+				2DB3226BA55A061FBA2E3C4F57392AA9 /* libPods-PsychologistIOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16A56B70472C263E87C8F29A7C6715B4 /* Pods-PsychologistIOS */ = {
+			isa = PBXGroup;
+			children = (
+				929E4D90C1E3A3D911D5C3B6422F4C2A /* Pods-PsychologistIOS-acknowledgements.markdown */,
+				ED36B9E3B9E4E3B8D2211538509476CA /* Pods-PsychologistIOS-acknowledgements.plist */,
+				D17CF6BC5EF25BDB96F95858C6F31F6C /* Pods-PsychologistIOS-dummy.m */,
+				B01546A64616B73EA538B0AB1931666C /* Pods-PsychologistIOS-frameworks.sh */,
+				EE870CB7FC4216550995A56A8D23869A /* Pods-PsychologistIOS-resources.sh */,
+				E88251715F8320DC9F8E849689F1BC53 /* Pods-PsychologistIOS.debug.xcconfig */,
+				3D37C72B5D173D06A401BAEAF788293F /* Pods-PsychologistIOS.release.xcconfig */,
+			);
+			name = "Pods-PsychologistIOS";
+			path = "Target Support Files/Pods-PsychologistIOS";
+			sourceTree = "<group>";
+		};
+		30B0B2C8D3B754D44AC44C792F00220C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				87A0E70C3E48D8CE3F03D0104AAC2455 /* AKPickerView.xcconfig */,
+				80CD853E21CC8A09093DB6FB3452CF4E /* AKPickerView-dummy.m */,
+				859F0E0D48159F75F0806FC5B626D9D9 /* AKPickerView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AKPickerView";
+			sourceTree = "<group>";
+		};
+		37F9B521087FD7A98028F991F3505220 /* AKPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				0AB4D34A75DE7449B9A08775AF6FEB13 /* AKPickerView.h */,
+				908ED6799B97D01C762EBEC08AF52D16 /* AKPickerView.m */,
+				30B0B2C8D3B754D44AC44C792F00220C /* Support Files */,
+			);
+			path = AKPickerView;
+			sourceTree = "<group>";
+		};
+		3926C638AD0708942C88C2BC89261735 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				258B0C8029B3982F03A30ED9FB271283 /* Foundation.framework */,
+				B18F24645AA4D651DFC7B69A3A0833DB /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3926C638AD0708942C88C2BC89261735 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44566BEB753A389C142CD6CDDD0F3D97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37F9B521087FD7A98028F991F3505220 /* AKPickerView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				44566BEB753A389C142CD6CDDD0F3D97 /* Pods */,
+				145EBB8A77483408D92AD885C92E24DC /* Products */,
+				0F98EFAA45F33BB97D9A0B4ECCCA0BD3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4C39730E71CE4BC075FAE11F261040BF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E3455A9D17138FB8DE19A599D5200F5 /* AKPickerView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		90956BA9C47C2803C49247F9F393BCF8 /* Pods-PsychologistIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7968808E90265650FA141A0EFA35088 /* Build configuration list for PBXNativeTarget "Pods-PsychologistIOS" */;
+			buildPhases = (
+				99A5FC4576AAEECCF7F17D2D50FAD0FC /* Sources */,
+				4FB463F171F1D426CEB4513D559AEEF3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B00811E4B83B0EEC54940CAE9F22622 /* PBXTargetDependency */,
+			);
+			name = "Pods-PsychologistIOS";
+			productName = "Pods-PsychologistIOS";
+			productReference = 2DB3226BA55A061FBA2E3C4F57392AA9 /* libPods-PsychologistIOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A35273E1314605952F39D68083D1DC9E /* AKPickerView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD15DF2C54D7E6392D6AD7995D804130 /* Build configuration list for PBXNativeTarget "AKPickerView" */;
+			buildPhases = (
+				A1B2EEDD8E7D488F2741F78C323E1747 /* Sources */,
+				E7A66B0555602BC01DB1965AC34168CC /* Frameworks */,
+				4C39730E71CE4BC075FAE11F261040BF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AKPickerView;
+			productName = AKPickerView;
+			productReference = D7D8C552FB053B07803786EDFF1E9415 /* libAKPickerView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 145EBB8A77483408D92AD885C92E24DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A35273E1314605952F39D68083D1DC9E /* AKPickerView */,
+				90956BA9C47C2803C49247F9F393BCF8 /* Pods-PsychologistIOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99A5FC4576AAEECCF7F17D2D50FAD0FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB435E8D7DCB326D15FF319FDA785601 /* Pods-PsychologistIOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2EEDD8E7D488F2741F78C323E1747 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69020BA38D2C0DEEC6BAAEAB6CEE6171 /* AKPickerView-dummy.m in Sources */,
+				55F3DB9475AE5EB76621B6CA8F7F0A06 /* AKPickerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B00811E4B83B0EEC54940CAE9F22622 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AKPickerView;
+			target = A35273E1314605952F39D68083D1DC9E /* AKPickerView */;
+			targetProxy = F96A8FD9A21938C833372E7D9075BAAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2494F60D4622079504FE5E4428060C5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87A0E70C3E48D8CE3F03D0104AAC2455 /* AKPickerView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AKPickerView/AKPickerView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		698CF0C83C17595744329DE349F73E7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87A0E70C3E48D8CE3F03D0104AAC2455 /* AKPickerView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AKPickerView/AKPickerView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		928881686DF4EDA18A12792965A4B69B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D37C72B5D173D06A401BAEAF788293F /* Pods-PsychologistIOS.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D865A1F19D32CD8A304775DEA6C32C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E88251715F8320DC9F8E849689F1BC53 /* Pods-PsychologistIOS.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1534490D941DCA47C62AC4314182AF /* Debug */,
+				C5A18280E9321A9268D1C80B7DA43967 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7968808E90265650FA141A0EFA35088 /* Build configuration list for PBXNativeTarget "Pods-PsychologistIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D865A1F19D32CD8A304775DEA6C32C58 /* Debug */,
+				928881686DF4EDA18A12792965A4B69B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD15DF2C54D7E6392D6AD7995D804130 /* Build configuration list for PBXNativeTarget "AKPickerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2494F60D4622079504FE5E4428060C5A /* Debug */,
+				698CF0C83C17595744329DE349F73E7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
