@@ -18,6 +18,9 @@
     UIView * darkView;
     UIView * alertViewXenia;
     UITextView * mainAlertText;
+    UITextField * textFieldMail;
+    UILabel * labelPlaceHolderMail;
+    BOOL isBoolEmail;
 }
 
 - (instancetype)initWithView: (UIView*) view
@@ -25,6 +28,8 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        
+        isBoolEmail = YES;
         
         //Масив картинок------------------------------
         arrayImage = [NSArray arrayWithObjects:@"imageVK.png", @"imageFace.png", @"imageInst.png", @"imagePeres.png", @"imageSkype.png", nil];
@@ -150,19 +155,33 @@
         mainAlertText.layer.borderWidth = 0.4f;
         [alertViewXenia addSubview:mainAlertText];
         
-        //Лейбл почты-----------------------------------------------------
-        UILabel * labelMail = [[UILabel alloc] initWithFrame:CGRectMake(40, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 80, 48)];
-        labelMail.text = @"   Ksenia@gmail.com";
-        labelMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
-        labelMail.font = [UIFont fontWithName:FONTREGULAR size:19];
-        labelMail.layer.cornerRadius = 5.f;
-        labelMail.layer.borderColor = [UIColor colorWithHexString:@"c0c0c0"].CGColor;
-        labelMail.layer.borderWidth = 0.4f;
-        [alertViewXenia addSubview:labelMail];
+        //Вью почты-------------------------------------------------------
+        UIView * viewMail = [[UIView alloc] initWithFrame:CGRectMake(40, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 80, 48)];
+        viewMail.layer.cornerRadius = 5.f;
+        viewMail.layer.borderColor = [UIColor colorWithHexString:@"c0c0c0"].CGColor;
+        viewMail.layer.borderWidth = 0.4f;
+        [alertViewXenia addSubview:viewMail];
+        
+        //Ввод телефона-----------------------------------------------------------------
+        textFieldMail = [[UITextField alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
+        textFieldMail.delegate = self;
+        textFieldMail.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldMail.font = [UIFont fontWithName:FONTREGULAR size:19];
+        textFieldMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelMail:) name:UITextFieldTextDidChangeNotification object:textFieldMail];
+        [alertViewXenia addSubview:textFieldMail];
+        
+        //Плэйс холдер телефона----------------------------------------------------------
+        labelPlaceHolderMail = [[UILabel alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
+        labelPlaceHolderMail.tag = 3022;
+        labelPlaceHolderMail.text = @"Введите Email";
+        labelPlaceHolderMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
+        labelPlaceHolderMail.font = [UIFont fontWithName:FONTREGULAR size:19];
+        [alertViewXenia addSubview:labelPlaceHolderMail];
         
         //Кнопка открыть категорию--------------------------------------
         UIButton * buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSend.frame = CGRectMake(40, labelMail.frame.origin.y + labelMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 48);
+        buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 48);
         buttonSend.backgroundColor = nil;
         buttonSend.layer.cornerRadius = 25;
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"39bb50"].CGColor;
@@ -242,8 +261,44 @@
     }];
 }
 
+//Анимация Лейблов при вводе Почты-------------------------
+- (void) animationLabelMail: (NSNotification*) notification
+{
+    UITextField * testField = notification.object;
+    if (testField.text.length != 0 && isBoolEmail) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderMail.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHolderMail.frame = rect;
+            labelPlaceHolderMail.alpha = 0.f;
+            isBoolEmail = NO;
+        }];
+    } else if (testField.text.length == 0 && !isBoolEmail) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderMail.frame;
+            rect.origin.x = rect.origin.x - 100.f;
+            labelPlaceHolderMail.frame = rect;
+            labelPlaceHolderMail.alpha = 1.f;
+            isBoolEmail = YES;
+        }];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+//Скрытие клавиатуры----------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
 #pragma mark - UITextViewDelegate
 
+//Скрытие клавиатуры----------------------------------------
 - (BOOL)textView:(UITextView *)textView
 shouldChangeTextInRange:(NSRange)range
  replacementText:(NSString *)text

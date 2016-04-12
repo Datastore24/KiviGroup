@@ -299,7 +299,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3ep-T5-Nt7" kind="relationship" relationship="rootViewController" id="yq1-lE-Fnk"/>
+                        <segue destination="3Lu-6P-UFk" kind="relationship" relationship="rootViewController" id="ZqX-Z9-E8a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -423,4 +423,7 @@
     <resources>
         <image name="arrow.png" width="16" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZqX-Z9-E8a"/>
+    </inferredMetricsTieBreakers>
 </document>

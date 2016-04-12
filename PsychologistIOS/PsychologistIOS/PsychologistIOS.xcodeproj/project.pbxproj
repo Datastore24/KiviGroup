@@ -615,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				77CA4DFE1CBA4F3B007BD3F2 /* AboutXenia */,
+				77CA4E121CBAAC9C007BD3F2 /* Recommend */,
 			);
 			name = Xenia;
 			sourceTree = "<group>";
@@ -622,7 +623,6 @@
 		77CA4DFE1CBA4F3B007BD3F2 /* AboutXenia */ = {
 			isa = PBXGroup;
 			children = (
-				77CA4E121CBAAC9C007BD3F2 /* Recommend */,
 				77CA4E071CBA8C76007BD3F2 /* ImageSocial */,
 				77CA4E051CBA774B007BD3F2 /* imageXenia.png */,
 				77CA4DFF1CBA4F59007BD3F2 /* AboutXeniaController.h */,
