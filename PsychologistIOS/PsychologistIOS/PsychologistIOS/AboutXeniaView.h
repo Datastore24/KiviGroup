@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutXeniaView : UIView <UITextViewDelegate>
+@interface AboutXeniaView : UIView <UITextViewDelegate, UITextFieldDelegate>
 
 - (instancetype)initWithView: (UIView*) view;
 

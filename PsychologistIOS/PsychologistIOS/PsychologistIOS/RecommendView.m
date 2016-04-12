@@ -17,6 +17,19 @@
 @implementation RecommendView
 {
     UITableView * mainTableViewRecommend;
+    
+    //Массив кнопок------------------------
+    NSMutableArray * arrayButtons;
+    NSArray * arrayBool;
+    NSInteger customTagCallButton;
+    NSInteger customTagBackCallButton;
+    
+    //Алерт
+    UIView * darkView;
+    UIView * alertViewRecommend;
+    UITextField * textFieldPhone;
+    UILabel * labelPlaceHolderPhone;
+    BOOL isBool;
 }
 
 - (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
@@ -26,15 +39,97 @@
         
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         
+        arrayButtons = [[NSMutableArray alloc] init];
+        arrayBool = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES],
+                                              [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], nil];
+        customTagCallButton = 0;
+        customTagBackCallButton = 0;
+        isBool = YES;
+        
         mainTableViewRecommend = [[UITableView alloc] initWithFrame:CGRectMake(0, 24, self.frame.size.width, self.frame.size.height - 24) style:UITableViewStylePlain];
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableViewRecommend.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableViewRecommend.dataSource = self;
         mainTableViewRecommend.delegate = self;
         mainTableViewRecommend.showsVerticalScrollIndicator = NO;
+        //Очень полездное свойство, отключает дествие ячейки-------------
+        mainTableViewRecommend.allowsSelection = NO;
         [self addSubview:mainTableViewRecommend];
         
+#pragma mark - Create Alert
         
+        //Затемнение-----------------------------------------------------
+        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        darkView.backgroundColor = [UIColor blackColor];
+        darkView.alpha = 0.0;
+        [self addSubview:darkView];
+        
+        //Создаем алерт---------------------------------------------------
+        alertViewRecommend = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
+        alertViewRecommend.layer.cornerRadius = 5.f;
+        alertViewRecommend.backgroundColor = [UIColor whiteColor];
+        alertViewRecommend.userInteractionEnabled = YES;
+        [self addSubview:alertViewRecommend];
+        
+        //Кнопка отмены--------------------------------------------------
+        UIButton * buttonCancelRecommend = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonCancelRecommend.frame = CGRectMake(10, 10, 24, 24);
+        UIImage *btnImage = [UIImage imageNamed:@"imageCancel.png"];
+        [buttonCancelRecommend setImage:btnImage forState:UIControlStateNormal];
+        [buttonCancelRecommend addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertViewRecommend addSubview:buttonCancelRecommend];
+        
+        //Основной текст-------------------------------------------------
+        UILabel * mainLabelText = [[UILabel alloc] initWithFrame:CGRectMake(32, 24, alertViewRecommend.frame.size.width - 64, 80)];
+        mainLabelText.numberOfLines = 0;
+        mainLabelText.text = @"Введите номер телефона и укажите время в которое вы хотите получить консультацию наших специалистов";
+        mainLabelText.textColor = [UIColor colorWithHexString:@"4b4a4a"];
+        mainLabelText.font = [UIFont fontWithName:FONTREGULAR size:14];
+        [alertViewRecommend addSubview:mainLabelText];
+        
+        //Вью для телевона------------------------------------------------
+        UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 48)];
+        viewPhone.layer.cornerRadius = 10.f;
+        viewPhone.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
+        viewPhone.layer.borderWidth = 0.4f;
+        [alertViewRecommend addSubview:viewPhone];
+        
+        //Ввод телефона-----------------------------------------------------------------
+        textFieldPhone = [[UITextField alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
+        textFieldPhone.delegate = self;
+        textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:19];
+        textFieldPhone.textColor = [UIColor colorWithHexString:@"a6a6a6"];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
+        [viewPhone addSubview:textFieldPhone];
+        
+        //Плэйс холдер телефона----------------------------------------------------------
+        labelPlaceHolderPhone = [[UILabel alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
+        labelPlaceHolderPhone.tag = 3022;
+        labelPlaceHolderPhone.text = @"Номер телефона";
+        labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:@"a6a6a6"];
+        labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:19];
+        [viewPhone addSubview:labelPlaceHolderPhone];
+        
+        //Заголовок предпочитаемое время-------------------------------------------------
+        UILabel * labelTime = [[UILabel alloc] initWithFrame:CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 16, alertViewRecommend.frame.size.width, 16)];
+        labelTime.text = @"Предпочитаемое время";
+        labelTime.textColor = [UIColor colorWithHexString:@"9f9f9f"];
+        labelTime.textAlignment = NSTextAlignmentCenter;
+        labelTime.font = [UIFont fontWithName:FONTREGULAR size:13];
+        [alertViewRecommend addSubview:labelTime];
+        
+        //Вью предпочитаемое время--------------------------------------------------------
+        UIView * viewTime = [[UIView alloc] initWithFrame:CGRectMake(alertViewRecommend.frame.size.width / 2 - 72, labelTime.frame.size.height + labelTime.frame.origin.y + 8, 144, 48)];
+        viewTime.layer.cornerRadius = 10.f;
+        viewTime.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
+        viewTime.layer.borderWidth = 0.4f;
+        viewTime.backgroundColor = nil;
+        [alertViewRecommend addSubview:viewTime];
+
+        
+
         
     }
     return self;
@@ -46,8 +141,9 @@
                           ansSite: (NSString*) site
                           andMail: (NSString*) mail
                      andButtonTag: (NSInteger) buttonTag
+                       andBoolParams: (BOOL) boolPrams
 {
-    //основное вью ячейки-----------------------------------------
+    //Основное вью ячейки-----------------------------------------
     UIView * viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 144)];
     
     //Картинка ячейки---------------------------------------------
@@ -83,30 +179,36 @@
     labelMail.font = [UIFont fontWithName:FONTLITE size:11];
     [viewCell addSubview:labelMail];
     
-    //Кнопка подвонить-------------------------------------------
-    UIButton * callButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    callButton.frame = CGRectMake(144, 76, viewCell.frame.size.width - 32 - 144, 24);
-    callButton.backgroundColor = [UIColor colorWithHexString:@"36b34c"];
-    [callButton setTitle:@"ПОЗВОНИТЬ" forState:UIControlStateNormal];
-    callButton.tag = 50 + buttonTag;
-    callButton.layer.cornerRadius = 10.f;
-    [callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    callButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
-    [callButton addTarget:self action:@selector(callButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [viewCell addSubview:callButton];
-    
-    //Кнопка обратный звонок----------------------------------------
-    UIButton * backCallButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    backCallButton.frame = CGRectMake(144, 108, viewCell.frame.size.width - 32 - 144, 24);
-    backCallButton.backgroundColor = [UIColor colorWithHexString:@"0076a2"];
-    [backCallButton setTitle:@"ОБРАТНЫЙ ЗВОНОК" forState:UIControlStateNormal];
-    backCallButton.tag = 60 + buttonTag;
-    backCallButton.layer.cornerRadius = 10.f;
-    [backCallButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    backCallButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
-    [backCallButton addTarget:self action:@selector(backCallButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [viewCell addSubview:backCallButton];
-    
+    if (boolPrams) {
+        //Кнопка подвонить-------------------------------------------
+        UIButton * callButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        callButton.frame = CGRectMake(144, 80, viewCell.frame.size.width - 32 - 144, 24);
+        callButton.backgroundColor = [UIColor colorWithHexString:@"36b34c"];
+        [callButton setTitle:@"ПОЗВОНИТЬ" forState:UIControlStateNormal];
+        callButton.tag = buttonTag;
+        callButton.layer.cornerRadius = 10.f;
+        [callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        callButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        [callButton addTarget:self action:@selector(callButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [viewCell addSubview:callButton];
+        
+        [arrayButtons addObject:callButton];
+    } else {
+        //Кнопка обратный звонок----------------------------------------
+        UIButton * backCallButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        backCallButton.frame = CGRectMake(144, 80, viewCell.frame.size.width - 32 - 144, 24);
+        backCallButton.backgroundColor = [UIColor colorWithHexString:@"0076a2"];
+        [backCallButton setTitle:@"ОБРАТНЫЙ ЗВОНОК" forState:UIControlStateNormal];
+        backCallButton.tag = buttonTag;
+        backCallButton.layer.cornerRadius = 10.f;
+        [backCallButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        backCallButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        [backCallButton addTarget:self action:@selector(backCallButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [viewCell addSubview:backCallButton];
+        
+        [arrayButtons addObject:backCallButton];
+    }
+
     return viewCell;
 }
 
@@ -128,7 +230,25 @@
     
     cell.backgroundColor = nil;
     
-    [cell addSubview:[self setTableCellWithImage:@"imageCellRecommend.png" andTitle:@"Ксения Буракова" andSubTitle:@"Профессиональный психолог" ansSite:@"www.soulsite.com" andMail:@"Soul@gmail.com" andButtonTag:indexPath.row]];
+    if ([[arrayBool objectAtIndex:indexPath.row] boolValue]) {
+        
+        customTagCallButton += 1;
+
+           [cell addSubview:[self setTableCellWithImage:@"imageCellRecommend.png" andTitle:@"Ксения Буракова" andSubTitle:@"Профессиональный психолог" ansSite:@"www.soulsite.com" andMail:@"Soul@gmail.com" andButtonTag:customTagCallButton andBoolParams:[[arrayBool objectAtIndex:indexPath.row] boolValue]]];
+        
+    } else {
+        
+        customTagBackCallButton += 1;
+        
+            [cell addSubview:[self setTableCellWithImage:@"imageCellRecommend.png" andTitle:@"Ксения Буракова" andSubTitle:@"Профессиональный психолог" ansSite:@"www.soulsite.com" andMail:@"Soul@gmail.com" andButtonTag:customTagBackCallButton andBoolParams:[[arrayBool objectAtIndex:indexPath.row] boolValue]]];
+
+    }
+    
+
+     
+     
+    cell.editing = NO;
+
     
     return cell;
 }
@@ -141,19 +261,172 @@
     return 144;
 }
 
+#pragma mark - UITextFieldDelegate
+
+//Скрытие клавиатуры----------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//Метод ввода тоьлко чисел-----------------------------------
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    /* for backspace */
+    if([string length]==0){
+        return YES;
+    }
+    
+    /*  limit to only numeric characters  */
+    
+    if ([textField isEqual:textFieldPhone]) {
+        NSCharacterSet *myCharSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        for (int i = 0; i < [string length]; i++) {
+            unichar c = [string characterAtIndex:i];
+            if ([myCharSet characterIsMember:c]) {
+                
+                
+                /*  limit the users input to only 9 characters  */
+                NSUInteger newLength = [textField.text length] + [string length] - range.length;
+                return (newLength > 12) ? NO : YES;
+            }
+        }
+        return NO;
+    } else {
+        /*  limit the users input to only 9 characters  */
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return (newLength > 5) ? NO : YES;
+    }
+    
+    return NO;
+}
+
+//Анимация Лейблов при вводе Телефона------------------------
+- (void) animationLabelPhone: (NSNotification*) notification
+{
+    UITextField * testField = notification.object;
+    
+    if (testField.text.length < 3) {
+        testField.text = @"+7";
+    }
+    
+    
+    if (testField.text.length != 0 && isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderPhone.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHolderPhone.frame = rect;
+            labelPlaceHolderPhone.alpha = 0.f;
+            isBool = NO;
+        }];
+    } else if (testField.text.length == 0 && !isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderPhone.frame;
+            rect.origin.x = rect.origin.x - 100.f;
+            labelPlaceHolderPhone.frame = rect;
+            labelPlaceHolderPhone.alpha = 1.f;
+            isBool = YES;
+        }];
+    }
+}
+
+//Поднимаем текст вверх--------------------------------------
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if ([textField isEqual:textFieldPhone]) {
+        if ([textField.text isEqualToString:@""]) {
+            textField.text = @"+7";
+            if (textField.text.length != 0 && isBool) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    CGRect rect;
+                    rect = labelPlaceHolderPhone.frame;
+                    rect.origin.x = rect.origin.x + 100.f;
+                    labelPlaceHolderPhone.frame = rect;
+                    labelPlaceHolderPhone.alpha = 0.f;
+                    isBool = NO;
+                }];
+            }
+            
+        }
+    }
+    
+    textField.textAlignment = NSTextAlignmentLeft;
+}
+
+//Восстанавливаем стандартный размер-----------------------
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([textField isEqual:textFieldPhone]) {
+        if ([textField.text isEqualToString:@"+7"]) {
+            textField.text = @"";
+            if (textField.text.length == 0 && !isBool) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    CGRect rect;
+                    rect = labelPlaceHolderPhone.frame;
+                    rect.origin.x = rect.origin.x - 100.f;
+                    labelPlaceHolderPhone.frame = rect;
+                    labelPlaceHolderPhone.alpha = 1.f;
+                    isBool = YES;
+                }];
+            }
+        }
+    }
+    
+    textField.textAlignment = NSTextAlignmentCenter;
+}
+
+//Отвязка от всех нотификаций------------------------------
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Action Methods
 
 //Действие кнопки позвонить
 - (void) callButtonAction: (UIButton*) button
 {
-
-    NSLog(@"Позвонить");
+    for (int i = 0; i < arrayButtons.count; i++) {
+        if (button.tag == i + 1) {
+            NSLog(@"Звоним на конкретный номер");
+        }
+    }
 }
 
 //Дествие кнопки обраный звонок
 - (void) backCallButtonAction: (UIButton*) button
 {
-    NSLog(@"Обратный звонок");
+    for (int i = 0; i < arrayButtons.count; i++) {
+        if (button.tag == i + 1) {
+            //Анимация алерта---------------------------------------------
+            [UIView animateWithDuration:0.1 animations:^{
+                darkView.alpha = 0.4f;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    CGRect rectAlert = alertViewRecommend.frame;
+                    rectAlert.origin.y += 750;
+                    alertViewRecommend.frame = rectAlert;
+                }];
+            }];
+        }
+    }
+}
+
+//Действие кнопки закрыть алерт
+- (void) buttonCancelAction
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rectAlert = alertViewRecommend.frame;
+        rectAlert.origin.y -= 760;
+        alertViewRecommend.frame = rectAlert;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            darkView.alpha = 0;
+        }];
+    }];
 }
 
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecommendView : UIView
+@interface RecommendView : UIView <UITextFieldDelegate>
 
 - (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
 
