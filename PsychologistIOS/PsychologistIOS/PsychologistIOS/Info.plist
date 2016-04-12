@@ -31,6 +31,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFUIDisplay-Ultralight.otf</string>
 		<string>SFUIDisplay-Regular.otf</string>
 		<string>SFUIDisplay-Light.otf</string>
 		<string>SFUIDisplay-Bold.otf</string>

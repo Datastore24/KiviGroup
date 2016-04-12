@@ -66,13 +66,13 @@
         mainTableView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainTableView];
         
+#pragma mark - Create Alert
+        
         //Затемнение-----------------------------------------------------
         darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];
-        
-#pragma mark - Create Alert
         
         //Создаем алерт---------------------------------------------------
         alertView = [[UIImageView alloc] initWithFrame:CGRectMake(24, -600, self.frame.size.width - 48, 408)];
