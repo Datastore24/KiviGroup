@@ -172,6 +172,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="3Lu-6P-UFk" kind="custom" customClass="SWRevealViewControllerSegue" id="Moo-N9-YJG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" id="kwg-un-DKo">
                                         <rect key="frame" x="0.0" y="204" width="320" height="44"/>
@@ -296,7 +299,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="3UE-nq-RwD"/>
+                        <segue destination="3ep-T5-Nt7" kind="relationship" relationship="rootViewController" id="yq1-lE-Fnk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -382,11 +385,42 @@
             </objects>
             <point key="canvasLocation" x="2595" y="-79"/>
         </scene>
+        <!--About Xenia Controller-->
+        <scene sceneID="KBc-Yi-xV0">
+            <objects>
+                <viewController storyboardIdentifier="AboutXeniaController" id="3Lu-6P-UFk" customClass="AboutXeniaController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cG0-8y-yon">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N72-yw-dHV">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="sYx-XP-w6c"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="sYx-XP-w6c" id="2WS-PX-r42"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mox-4B-JKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="-735"/>
+        </scene>
+        <!--Recommend Controller-->
+        <scene sceneID="WiF-bS-llm">
+            <objects>
+                <viewController storyboardIdentifier="RecommendController" id="kY5-XW-XKd" customClass="RecommendController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9LQ-4g-OG2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pZ-Xb-n3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="-735"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.png" width="16" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="euc-X5-iY4"/>
-    </inferredMetricsTieBreakers>
 </document>

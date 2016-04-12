@@ -98,6 +98,17 @@
 		77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A807DB1CB2F8C0008EE5A5 /* SubCategoryController.m */; };
 		77A807DF1CB2F8DE008EE5A5 /* SubCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A807DE1CB2F8DE008EE5A5 /* SubCategoryView.m */; };
 		77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A807E11CB2FA33008EE5A5 /* SingleTone.m */; };
+		77CA4E011CBA4F59007BD3F2 /* AboutXeniaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E001CBA4F59007BD3F2 /* AboutXeniaController.m */; };
+		77CA4E041CBA4F71007BD3F2 /* AboutXeniaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E031CBA4F71007BD3F2 /* AboutXeniaView.m */; };
+		77CA4E061CBA774B007BD3F2 /* imageXenia.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E051CBA774B007BD3F2 /* imageXenia.png */; };
+		77CA4E0D1CBA8C8E007BD3F2 /* imageFace.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E081CBA8C8E007BD3F2 /* imageFace.png */; };
+		77CA4E0E1CBA8C8E007BD3F2 /* imageInst.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E091CBA8C8E007BD3F2 /* imageInst.png */; };
+		77CA4E0F1CBA8C8E007BD3F2 /* imageVK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E0A1CBA8C8E007BD3F2 /* imageVK.png */; };
+		77CA4E101CBA8C8E007BD3F2 /* imagePeres.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E0B1CBA8C8E007BD3F2 /* imagePeres.png */; };
+		77CA4E111CBA8C8E007BD3F2 /* imageSkype.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E0C1CBA8C8E007BD3F2 /* imageSkype.png */; };
+		77CA4E151CBAACAE007BD3F2 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E141CBAACAE007BD3F2 /* RecommendView.m */; };
+		77CA4E181CBAACBF007BD3F2 /* RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E171CBAACBF007BD3F2 /* RecommendController.m */; };
+		77CA4E1A1CBAB799007BD3F2 /* imageCellRecommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E191CBAB799007BD3F2 /* imageCellRecommend.png */; };
 		77D297DD1CADAC760057CC1C /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DC1CADAC760057CC1C /* facebook.png */; };
 		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
 		77D297E11CADAC7D0057CC1C /* VK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E01CADAC7D0057CC1C /* VK.png */; };
@@ -259,6 +270,21 @@
 		77A807DE1CB2F8DE008EE5A5 /* SubCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategoryView.m; sourceTree = "<group>"; };
 		77A807E01CB2FA33008EE5A5 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		77A807E11CB2FA33008EE5A5 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		77CA4DFF1CBA4F59007BD3F2 /* AboutXeniaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXeniaController.h; sourceTree = "<group>"; };
+		77CA4E001CBA4F59007BD3F2 /* AboutXeniaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXeniaController.m; sourceTree = "<group>"; };
+		77CA4E021CBA4F71007BD3F2 /* AboutXeniaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXeniaView.h; sourceTree = "<group>"; };
+		77CA4E031CBA4F71007BD3F2 /* AboutXeniaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXeniaView.m; sourceTree = "<group>"; };
+		77CA4E051CBA774B007BD3F2 /* imageXenia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageXenia.png; sourceTree = "<group>"; };
+		77CA4E081CBA8C8E007BD3F2 /* imageFace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFace.png; sourceTree = "<group>"; };
+		77CA4E091CBA8C8E007BD3F2 /* imageInst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageInst.png; sourceTree = "<group>"; };
+		77CA4E0A1CBA8C8E007BD3F2 /* imageVK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageVK.png; sourceTree = "<group>"; };
+		77CA4E0B1CBA8C8E007BD3F2 /* imagePeres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePeres.png; sourceTree = "<group>"; };
+		77CA4E0C1CBA8C8E007BD3F2 /* imageSkype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSkype.png; sourceTree = "<group>"; };
+		77CA4E131CBAACAE007BD3F2 /* RecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
+		77CA4E141CBAACAE007BD3F2 /* RecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
+		77CA4E161CBAACBF007BD3F2 /* RecommendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendController.h; sourceTree = "<group>"; };
+		77CA4E171CBAACBF007BD3F2 /* RecommendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendController.m; sourceTree = "<group>"; };
+		77CA4E191CBAB799007BD3F2 /* imageCellRecommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCellRecommend.png; sourceTree = "<group>"; };
 		77D297DC1CADAC760057CC1C /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		77D297DE1CADAC790057CC1C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		77D297E01CADAC7D0057CC1C /* VK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VK.png; sourceTree = "<group>"; };
@@ -403,11 +429,8 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
-				771715991CB6647A003CD228 /* Discussions */,
-				775B7C411CB4334F00161EF9 /* OpenSubject */,
-				775B7C3A1CB42E0100161EF9 /* Subject */,
-				77A807D91CB2F88D008EE5A5 /* SubCategory */,
-				776D8D301CAD1ABC0028929C /* Category */,
+				77CA4DFD1CBA4F32007BD3F2 /* Xenia */,
+				77CA4DFC1CBA4EF8007BD3F2 /* Section */,
 				776D8DA91CAD24FC0028929C /* Login */,
 				776D8CD41CAD17BF0028929C /* AppDelegate.h */,
 				776D8CD51CAD17BF0028929C /* AppDelegate.m */,
@@ -576,6 +599,64 @@
 			name = SubCategory;
 			sourceTree = "<group>";
 		};
+		77CA4DFC1CBA4EF8007BD3F2 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				771715991CB6647A003CD228 /* Discussions */,
+				775B7C411CB4334F00161EF9 /* OpenSubject */,
+				775B7C3A1CB42E0100161EF9 /* Subject */,
+				77A807D91CB2F88D008EE5A5 /* SubCategory */,
+				776D8D301CAD1ABC0028929C /* Category */,
+			);
+			name = Section;
+			sourceTree = "<group>";
+		};
+		77CA4DFD1CBA4F32007BD3F2 /* Xenia */ = {
+			isa = PBXGroup;
+			children = (
+				77CA4DFE1CBA4F3B007BD3F2 /* AboutXenia */,
+			);
+			name = Xenia;
+			sourceTree = "<group>";
+		};
+		77CA4DFE1CBA4F3B007BD3F2 /* AboutXenia */ = {
+			isa = PBXGroup;
+			children = (
+				77CA4E121CBAAC9C007BD3F2 /* Recommend */,
+				77CA4E071CBA8C76007BD3F2 /* ImageSocial */,
+				77CA4E051CBA774B007BD3F2 /* imageXenia.png */,
+				77CA4DFF1CBA4F59007BD3F2 /* AboutXeniaController.h */,
+				77CA4E001CBA4F59007BD3F2 /* AboutXeniaController.m */,
+				77CA4E021CBA4F71007BD3F2 /* AboutXeniaView.h */,
+				77CA4E031CBA4F71007BD3F2 /* AboutXeniaView.m */,
+			);
+			name = AboutXenia;
+			sourceTree = "<group>";
+		};
+		77CA4E071CBA8C76007BD3F2 /* ImageSocial */ = {
+			isa = PBXGroup;
+			children = (
+				77CA4E081CBA8C8E007BD3F2 /* imageFace.png */,
+				77CA4E091CBA8C8E007BD3F2 /* imageInst.png */,
+				77CA4E0A1CBA8C8E007BD3F2 /* imageVK.png */,
+				77CA4E0B1CBA8C8E007BD3F2 /* imagePeres.png */,
+				77CA4E0C1CBA8C8E007BD3F2 /* imageSkype.png */,
+			);
+			name = ImageSocial;
+			sourceTree = "<group>";
+		};
+		77CA4E121CBAAC9C007BD3F2 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				77CA4E191CBAB799007BD3F2 /* imageCellRecommend.png */,
+				77CA4E161CBAACBF007BD3F2 /* RecommendController.h */,
+				77CA4E171CBAACBF007BD3F2 /* RecommendController.m */,
+				77CA4E131CBAACAE007BD3F2 /* RecommendView.h */,
+				77CA4E141CBAACAE007BD3F2 /* RecommendView.m */,
+			);
+			name = Recommend;
+			sourceTree = "<group>";
+		};
 		77EA7C241CB024C90083AD5B /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +785,7 @@
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
 				776D8D8D1CAD225D0028929C /* SFUIText-BoldItalicG1.otf in Resources */,
 				776D8D8E1CAD225F0028929C /* SFUIText-BoldItalicG2.otf in Resources */,
+				77CA4E061CBA774B007BD3F2 /* imageXenia.png in Resources */,
 				778144F11CB5B910009E70E7 /* bubble - gray.png in Resources */,
 				772707331CAF05770067DF6C /* Search1.png in Resources */,
 				77D297E11CADAC7D0057CC1C /* VK.png in Resources */,
@@ -723,11 +805,16 @@
 				776D8D941CAD228B0028929C /* SFUIText-ItalicG2.otf in Resources */,
 				776D8D951CAD228D0028929C /* SFUIText-ItalicG3.otf in Resources */,
 				77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */,
+				77CA4E0D1CBA8C8E007BD3F2 /* imageFace.png in Resources */,
+				77CA4E0F1CBA8C8E007BD3F2 /* imageVK.png in Resources */,
+				77CA4E101CBA8C8E007BD3F2 /* imagePeres.png in Resources */,
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
 				772707311CAF04BA0067DF6C /* Search.png in Resources */,
 				773C0D931CB986A2005794BE /* faceMenu.png in Resources */,
 				7709628F1CB1A5570024448B /* imageCancel.png in Resources */,
+				77CA4E1A1CBAB799007BD3F2 /* imageCellRecommend.png in Resources */,
 				771715AC1CB69512003CD228 /* buttonCameraImage.png in Resources */,
+				77CA4E0E1CBA8C8E007BD3F2 /* imageInst.png in Resources */,
 				776D8D961CAD22910028929C /* SFUIText-Light.otf in Resources */,
 				77D297E31CADB5B00057CC1C /* mainFone.png in Resources */,
 				77EA7C2C1CB024D80083AD5B /* image3.png in Resources */,
@@ -739,6 +826,7 @@
 				776D8D9B1CAD22A30028929C /* SFUIText-RegularG1.otf in Resources */,
 				77D297DF1CADAC790057CC1C /* Email.png in Resources */,
 				776D8D9C1CAD22A70028929C /* SFUIText-RegularG2.otf in Resources */,
+				77CA4E111CBA8C8E007BD3F2 /* imageSkype.png in Resources */,
 				776D8D9D1CAD22AA0028929C /* SFUIText-RegularG3.otf in Resources */,
 				7709628D1CB18CCD0024448B /* alertViewImage.png in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
@@ -783,6 +871,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				776D8CD91CAD17BF0028929C /* ViewController.m in Sources */,
+				77CA4E041CBA4F71007BD3F2 /* AboutXeniaView.m in Sources */,
 				776D8CD61CAD17BF0028929C /* AppDelegate.m in Sources */,
 				776D8D481CAD1AD20028929C /* UIColor+HexColor.m in Sources */,
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
@@ -792,9 +881,11 @@
 				772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */,
 				775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
+				77CA4E151CBAACAE007BD3F2 /* RecommendView.m in Sources */,
 				776D8CD31CAD17BF0028929C /* main.m in Sources */,
 				773C0D861CB9651B005794BE /* UIButton+ButtonImage.m in Sources */,
 				775B7C471CB4347700161EF9 /* SubjectModel.m in Sources */,
+				77CA4E011CBA4F59007BD3F2 /* AboutXeniaController.m in Sources */,
 				776D8D471CAD1AD20028929C /* UIImage+RoundedCorner.m in Sources */,
 				771715A21CB66669003CD228 /* DiscussionsController.m in Sources */,
 				776D8D431CAD1AD20028929C /* UIImage+Alpha.m in Sources */,
@@ -811,6 +902,7 @@
 				775B7C541CB4643900161EF9 /* OpenSubjectModel.m in Sources */,
 				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
 				77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */,
+				77CA4E181CBAACBF007BD3F2 /* RecommendController.m in Sources */,
 				77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */,
 				776D8D281CAD18B20028929C /* SWRevealViewController.m in Sources */,
 				7717159F1CB664B3003CD228 /* DiscussionsView.m in Sources */,
