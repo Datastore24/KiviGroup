@@ -182,12 +182,12 @@
         //Кнопка открыть категорию--------------------------------------
         UIButton * buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 48);
-        buttonSend.backgroundColor = nil;
+        buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonSend.layer.cornerRadius = 25;
-        buttonSend.layer.borderColor = [UIColor colorWithHexString:@"39bb50"].CGColor;
+        buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
-        [buttonSend setTitleColor:[UIColor colorWithHexString:@"39bb50"] forState:UIControlStateNormal];
+        [buttonSend setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSend.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
         [buttonSend addTarget:self action:@selector(buttonSendAction) forControlEvents:UIControlEventTouchUpInside];
         [alertViewXenia addSubview:buttonSend];

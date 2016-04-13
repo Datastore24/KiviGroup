@@ -9,8 +9,9 @@
 #import "RecommendView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
+#import <AKPickerView/AKPickerView.h>
 
-@interface RecommendView () <UITableViewDataSource, UITableViewDelegate>
+@interface RecommendView () <UITableViewDataSource, UITableViewDelegate, AKPickerViewDataSource, AKPickerViewDelegate>
 
 @end
 
@@ -30,6 +31,9 @@
     UITextField * textFieldPhone;
     UILabel * labelPlaceHolderPhone;
     BOOL isBool;
+    AKPickerView * pickerAlert;
+    NSArray * titles;
+    NSInteger row;
 }
 
 - (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
@@ -121,15 +125,56 @@
         [alertViewRecommend addSubview:labelTime];
         
         //Вью предпочитаемое время--------------------------------------------------------
-        UIView * viewTime = [[UIView alloc] initWithFrame:CGRectMake(alertViewRecommend.frame.size.width / 2 - 72, labelTime.frame.size.height + labelTime.frame.origin.y + 8, 144, 48)];
-        viewTime.layer.cornerRadius = 10.f;
+        UIView * viewTime = [[UIView alloc] initWithFrame:CGRectMake(alertViewRecommend.frame.size.width / 2 - 40, labelTime.frame.size.height + labelTime.frame.origin.y + 12, 80, 40)];
+        viewTime.layer.cornerRadius = 8.f;
         viewTime.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewTime.layer.borderWidth = 0.4f;
         viewTime.backgroundColor = nil;
         [alertViewRecommend addSubview:viewTime];
-
         
-
+        //Пикер------------------------------------------------------------------------------
+        pickerAlert = [[AKPickerView alloc] initWithFrame:CGRectMake(32, labelTime.frame.size.height + labelTime.frame.origin.y + 8, alertViewRecommend.frame.size.width - 64, 48)];
+        pickerAlert.dataSource = self;
+        pickerAlert.delegate = self;
+        pickerAlert.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [alertViewRecommend addSubview:pickerAlert];
+        pickerAlert.font = [UIFont fontWithName:FONTLITE size:20];
+        pickerAlert.highlightedFont = [UIFont fontWithName:FONTREGULAR size:20];
+        pickerAlert.textColor = [UIColor colorWithHexString:@"9f9f9f"];
+        pickerAlert.highlightedTextColor = [UIColor colorWithHexString:@"9f9f9f"];
+        pickerAlert.interitemSpacing = 20.0;
+        pickerAlert.fisheyeFactor = 0.001;
+        pickerAlert.pickerViewStyle = AKPickerViewStyle3D;
+        pickerAlert.maskDisabled = false;
+        titles = @[@"12:00",
+                   @"12:20",
+                   @"12:40",
+                   @"13:00",
+                   @"13:20",
+                   @"13:40",
+                   @"14:20",
+                   @"14:40",
+                   @"15:20",
+                   @"15:40"];
+        
+        [pickerAlert reloadData];
+        NSInteger intCount = 3;
+        [pickerAlert selectItem:intCount animated:NO];
+        
+        //Кнопка отправить-----------------------------------------------------
+        //Кнопка открыть категорию--------------------------------------
+        UIButton * buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonSend.frame = CGRectMake(40, pickerAlert.frame.origin.y + pickerAlert.frame.size.height + 16, alertViewRecommend.frame.size.width - 80, 48);
+        buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
+        buttonSend.layer.cornerRadius = 25;
+        buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
+        buttonSend.layer.borderWidth = 1.f;
+        [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
+        [buttonSend setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [buttonSend addTarget:self action:@selector(buttonSendAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertViewRecommend addSubview:buttonSend];
+        
+        
         
     }
     return self;
@@ -210,6 +255,28 @@
     }
 
     return viewCell;
+}
+
+#pragma mark - AKPickerViewDataSource
+
+- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
+{
+    return [titles count];
+}
+
+
+- (NSString *)pickerView:(AKPickerView *)pickerView titleForItem:(NSInteger)item
+{
+    return titles[item];
+}
+
+
+
+#pragma mark - AKPickerViewDelegate
+
+- (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
+{
+    NSLog(@"%@", titles[item]);
 }
 
 #pragma mark - UITableViewDataSource
@@ -427,6 +494,12 @@
             darkView.alpha = 0;
         }];
     }];
+}
+
+//Действие кнопки отправить--------------------
+- (void) buttonSendAction
+{
+    NSLog(@"Попросить перезвонить мне");
 }
 
 
