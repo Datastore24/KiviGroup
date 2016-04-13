@@ -13,6 +13,7 @@
 @synthesize titleSubCategory;
 @synthesize titleCategory;
 @synthesize titleSubject;
+@synthesize titleInstruction;
 
 #pragma mark Singleton Methods
 

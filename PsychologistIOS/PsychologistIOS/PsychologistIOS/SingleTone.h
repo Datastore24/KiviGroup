@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSString * titleSubCategory;
 @property (strong, nonatomic) NSString * titleCategory;
 @property (strong, nonatomic) NSString * titleSubject;
+@property (strong, nonatomic) NSString * titleInstruction;
+
 
 
 + (id)sharedManager;
