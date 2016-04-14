@@ -136,6 +136,9 @@
 		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
 		77D297E11CADAC7D0057CC1C /* VK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E01CADAC7D0057CC1C /* VK.png */; };
 		77D297E31CADB5B00057CC1C /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E21CADB5B00057CC1C /* mainFone.png */; };
+		77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */; };
+		77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CD1CBFFB6500B6A303 /* PersonalAreaView.m */; };
+		77E6A2D01CC019AB00B6A303 /* arrowDownImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E6A2CF1CC019AB00B6A303 /* arrowDownImage.png */; };
 		77EA7C261CB024D20083AD5B /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C251CB024D20083AD5B /* image4.png */; };
 		77EA7C2A1CB024D80083AD5B /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C271CB024D80083AD5B /* image1.png */; };
 		77EA7C2B1CB024D80083AD5B /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C281CB024D80083AD5B /* image2.png */; };
@@ -349,6 +352,11 @@
 		77D297DE1CADAC790057CC1C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		77D297E01CADAC7D0057CC1C /* VK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VK.png; sourceTree = "<group>"; };
 		77D297E21CADB5B00057CC1C /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
+		77E6A2C91CBFFB4900B6A303 /* PersonalAreaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaController.h; sourceTree = "<group>"; };
+		77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaController.m; sourceTree = "<group>"; };
+		77E6A2CC1CBFFB6500B6A303 /* PersonalAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaView.h; sourceTree = "<group>"; };
+		77E6A2CD1CBFFB6500B6A303 /* PersonalAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaView.m; sourceTree = "<group>"; };
+		77E6A2CF1CC019AB00B6A303 /* arrowDownImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowDownImage.png; sourceTree = "<group>"; };
 		77EA7C251CB024D20083AD5B /* image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image4.png; sourceTree = "<group>"; };
 		77EA7C271CB024D80083AD5B /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
 		77EA7C281CB024D80083AD5B /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
@@ -515,6 +523,7 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
+				77E6A2C81CBFFB2700B6A303 /* PersonalArea */,
 				77C72EFF1CBECC32009A78F7 /* Instructions */,
 				772F5A751CBEAE370051EC10 /* SupportService */,
 				77B79C111CBD625300E37B52 /* Bookmarks */,
@@ -829,6 +838,18 @@
 			name = Recommend;
 			sourceTree = "<group>";
 		};
+		77E6A2C81CBFFB2700B6A303 /* PersonalArea */ = {
+			isa = PBXGroup;
+			children = (
+				77E6A2CF1CC019AB00B6A303 /* arrowDownImage.png */,
+				77E6A2C91CBFFB4900B6A303 /* PersonalAreaController.h */,
+				77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */,
+				77E6A2CC1CBFFB6500B6A303 /* PersonalAreaView.h */,
+				77E6A2CD1CBFFB6500B6A303 /* PersonalAreaView.m */,
+			);
+			name = PersonalArea;
+			sourceTree = "<group>";
+		};
 		77EA7C241CB024C90083AD5B /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -994,6 +1015,7 @@
 				77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */,
 				77CA4E0D1CBA8C8E007BD3F2 /* imageFace.png in Resources */,
 				77CA4E0F1CBA8C8E007BD3F2 /* imageVK.png in Resources */,
+				77E6A2D01CC019AB00B6A303 /* arrowDownImage.png in Resources */,
 				77B79C241CBD686D00E37B52 /* image05.png in Resources */,
 				77CA4E101CBA8C8E007BD3F2 /* imagePeres.png in Resources */,
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
@@ -1116,6 +1138,7 @@
 				776D8D481CAD1AD20028929C /* UIColor+HexColor.m in Sources */,
 				77C72F0A1CBECCAE009A78F7 /* InstructionsModel.m in Sources */,
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
+				77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */,
 				775B7C441CB4337700161EF9 /* OpenSubjectController.m in Sources */,
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
@@ -1154,6 +1177,7 @@
 				776D8D2C1CAD18FD0028929C /* TitleClass.m in Sources */,
 				775B7C541CB4643900161EF9 /* OpenSubjectModel.m in Sources */,
 				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
+				77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */,
 				77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */,
 				77CA4E181CBAACBF007BD3F2 /* RecommendController.m in Sources */,
 				77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */,
