@@ -15,6 +15,7 @@
 #import "Macros.h"
 #import "SubCategoryController.h"
 #import "RatesController.h"
+#import "FemaleKnowledgeController.h"
 
 @implementation CategoryController
 
@@ -59,6 +60,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
+    
 }
 
 - (void) dealloc
@@ -77,6 +80,13 @@
 - (void) notificationPushWithRates
 {
     RatesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RatesController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+//Кладовая женских знаний---------------
+- (void) pushCustom
+{
+    FemaleKnowledgeController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FemaleKnowledgeController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
