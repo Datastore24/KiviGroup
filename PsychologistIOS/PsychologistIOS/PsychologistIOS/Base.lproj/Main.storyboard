@@ -312,7 +312,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="QOx-lx-bjS" kind="relationship" relationship="rootViewController" id="3iS-7u-2am"/>
+                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="IMQ-GY-vjI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -515,6 +515,34 @@
             </objects>
             <point key="canvasLocation" x="589" y="1974"/>
         </scene>
+        <!--Female Knowledge Controller-->
+        <scene sceneID="0Cz-UV-KeH">
+            <objects>
+                <viewController storyboardIdentifier="FemaleKnowledgeController" id="ti1-CW-tGc" customClass="FemaleKnowledgeController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r0T-1n-nKG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oI-Aw-Opr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="1974"/>
+        </scene>
+        <!--Chat Controller-->
+        <scene sceneID="qSZ-HE-Egw">
+            <objects>
+                <viewController storyboardIdentifier="ChatController" id="iec-hY-Dpl" customClass="ChatController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WMa-iw-5Ef">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gqy-iw-Ekx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="1974"/>
+        </scene>
         <!--Instructions Controller-->
         <scene sceneID="16m-W6-vXw">
             <objects>
@@ -573,4 +601,7 @@
     <resources>
         <image name="arrow.png" width="16" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="IMQ-GY-vjI"/>
+    </inferredMetricsTieBreakers>
 </document>

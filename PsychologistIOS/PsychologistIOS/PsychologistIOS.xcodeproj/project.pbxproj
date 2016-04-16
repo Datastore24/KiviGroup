@@ -24,6 +24,14 @@
 		771E53951CC2B0BB008E5562 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53941CC2B0BB008E5562 /* NotificationView.m */; };
 		771E53981CC2C146008E5562 /* ArrayModelNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53971CC2C146008E5562 /* ArrayModelNotification.m */; };
 		771E539A1CC2C962008E5562 /* notificationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53991CC2C962008E5562 /* notificationImage.png */; };
+		771E539E1CC2CD5C008E5562 /* FemaleKnowledgeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */; };
+		771E53A11CC2CD7A008E5562 /* FemaleKnowledgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */; };
+		771E53A41CC2D218008E5562 /* ModelFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53A31CC2D218008E5562 /* ModelFemale.m */; };
+		771E53A61CC2D56B008E5562 /* imageFamele.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53A51CC2D56B008E5562 /* imageFamele.png */; };
+		771E53A81CC2DB8C008E5562 /* imageMoneyWeb.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */; };
+		771E53AC1CC2DD13008E5562 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53AB1CC2DD13008E5562 /* ChatController.m */; };
+		771E53AF1CC2DD77008E5562 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53AE1CC2DD77008E5562 /* ChatView.m */; };
+		771E53B11CC2E0BF008E5562 /* imagePlayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53B01CC2E0BF008E5562 /* imagePlayer.png */; };
 		772707311CAF04BA0067DF6C /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707301CAF04B90067DF6C /* Search.png */; };
 		772707331CAF05770067DF6C /* Search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 772707321CAF05770067DF6C /* Search1.png */; };
 		772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 772707351CAF0E3A0067DF6C /* CategoryModel.m */; };
@@ -201,6 +209,19 @@
 		771E53961CC2C146008E5562 /* ArrayModelNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayModelNotification.h; sourceTree = "<group>"; };
 		771E53971CC2C146008E5562 /* ArrayModelNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayModelNotification.m; sourceTree = "<group>"; };
 		771E53991CC2C962008E5562 /* notificationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationImage.png; sourceTree = "<group>"; };
+		771E539C1CC2CD5C008E5562 /* FemaleKnowledgeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FemaleKnowledgeController.h; sourceTree = "<group>"; };
+		771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FemaleKnowledgeController.m; sourceTree = "<group>"; };
+		771E539F1CC2CD7A008E5562 /* FemaleKnowledgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FemaleKnowledgeView.h; sourceTree = "<group>"; };
+		771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FemaleKnowledgeView.m; sourceTree = "<group>"; };
+		771E53A21CC2D218008E5562 /* ModelFemale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFemale.h; sourceTree = "<group>"; };
+		771E53A31CC2D218008E5562 /* ModelFemale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFemale.m; sourceTree = "<group>"; };
+		771E53A51CC2D56B008E5562 /* imageFamele.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFamele.png; sourceTree = "<group>"; };
+		771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMoneyWeb.png; sourceTree = "<group>"; };
+		771E53AA1CC2DD13008E5562 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
+		771E53AB1CC2DD13008E5562 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
+		771E53AD1CC2DD77008E5562 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
+		771E53AE1CC2DD77008E5562 /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
+		771E53B01CC2E0BF008E5562 /* imagePlayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePlayer.png; sourceTree = "<group>"; };
 		772707301CAF04B90067DF6C /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search.png; sourceTree = "<group>"; };
 		772707321CAF05770067DF6C /* Search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search1.png; sourceTree = "<group>"; };
 		772707341CAF0E3A0067DF6C /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
@@ -493,6 +514,34 @@
 			name = Notification;
 			sourceTree = "<group>";
 		};
+		771E539B1CC2CD2A008E5562 /* PantryFemaleKnowledge */ = {
+			isa = PBXGroup;
+			children = (
+				771E53A91CC2DCE9008E5562 /* ChatWeb */,
+				771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */,
+				771E53A51CC2D56B008E5562 /* imageFamele.png */,
+				771E539C1CC2CD5C008E5562 /* FemaleKnowledgeController.h */,
+				771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */,
+				771E539F1CC2CD7A008E5562 /* FemaleKnowledgeView.h */,
+				771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */,
+				771E53A21CC2D218008E5562 /* ModelFemale.h */,
+				771E53A31CC2D218008E5562 /* ModelFemale.m */,
+			);
+			name = PantryFemaleKnowledge;
+			sourceTree = "<group>";
+		};
+		771E53A91CC2DCE9008E5562 /* ChatWeb */ = {
+			isa = PBXGroup;
+			children = (
+				771E53B01CC2E0BF008E5562 /* imagePlayer.png */,
+				771E53AA1CC2DD13008E5562 /* ChatController.h */,
+				771E53AB1CC2DD13008E5562 /* ChatController.m */,
+				771E53AD1CC2DD77008E5562 /* ChatView.h */,
+				771E53AE1CC2DD77008E5562 /* ChatView.m */,
+			);
+			name = ChatWeb;
+			sourceTree = "<group>";
+		};
 		772F5A751CBEAE370051EC10 /* SupportService */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +623,7 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
+				771E539B1CC2CD2A008E5562 /* PantryFemaleKnowledge */,
 				771E538F1CC2B093008E5562 /* Notification */,
 				771E53831CC2668A008E5562 /* Rates */,
 				77E6A2C81CBFFB2700B6A303 /* PersonalArea */,
@@ -1044,6 +1094,7 @@
 				77B79C211CBD686D00E37B52 /* image02.png in Resources */,
 				776D8D8B1CAD22580028929C /* SFUIText-BoldG2.otf in Resources */,
 				775B7C4C1CB43CD100161EF9 /* imageSubject.png in Resources */,
+				771E53B11CC2E0BF008E5562 /* imagePlayer.png in Resources */,
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
 				77C72EFE1CBEC5B9009A78F7 /* phoneButtonImage.png in Resources */,
 				771E538B1CC281AC008E5562 /* checkImageButton.png in Resources */,
@@ -1073,6 +1124,7 @@
 				77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */,
 				77CA4E0D1CBA8C8E007BD3F2 /* imageFace.png in Resources */,
 				77CA4E0F1CBA8C8E007BD3F2 /* imageVK.png in Resources */,
+				771E53A61CC2D56B008E5562 /* imageFamele.png in Resources */,
 				77E6A2D01CC019AB00B6A303 /* arrowDownImage.png in Resources */,
 				77B79C241CBD686D00E37B52 /* image05.png in Resources */,
 				77CA4E101CBA8C8E007BD3F2 /* imagePeres.png in Resources */,
@@ -1101,6 +1153,7 @@
 				7709628D1CB18CCD0024448B /* alertViewImage.png in Resources */,
 				77C72EFD1CBEC5B9009A78F7 /* skypeButtonImage.png in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
+				771E53A81CC2DB8C008E5562 /* imageMoneyWeb.png in Resources */,
 				775B7C361CB4278300161EF9 /* fonSubImage.png in Resources */,
 				776D8D9F1CAD22B00028929C /* SFUIText-SemiboldItalic.otf in Resources */,
 				776D8DA01CAD22B60028929C /* SFUIDisplay-Black.otf in Resources */,
@@ -1191,6 +1244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771E53AF1CC2DD77008E5562 /* ChatView.m in Sources */,
 				776D8CD91CAD17BF0028929C /* ViewController.m in Sources */,
 				77CA4E041CBA4F71007BD3F2 /* AboutXeniaView.m in Sources */,
 				776D8CD61CAD17BF0028929C /* AppDelegate.m in Sources */,
@@ -1198,11 +1252,13 @@
 				776D8D481CAD1AD20028929C /* UIColor+HexColor.m in Sources */,
 				77C72F0A1CBECCAE009A78F7 /* InstructionsModel.m in Sources */,
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
+				771E53A41CC2D218008E5562 /* ModelFemale.m in Sources */,
 				77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */,
 				775B7C441CB4337700161EF9 /* OpenSubjectController.m in Sources */,
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
 				772707361CAF0E3A0067DF6C /* CategoryModel.m in Sources */,
+				771E539E1CC2CD5C008E5562 /* FemaleKnowledgeController.m in Sources */,
 				775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
 				77CA4E151CBAACAE007BD3F2 /* RecommendView.m in Sources */,
@@ -1223,6 +1279,7 @@
 				776D8DC41CAD44C30028929C /* CategoryController.m in Sources */,
 				776D8DAC1CAD25120028929C /* LoginController.m in Sources */,
 				772F5A781CBEAE580051EC10 /* SupportServiceController.m in Sources */,
+				771E53A11CC2CD7A008E5562 /* FemaleKnowledgeView.m in Sources */,
 				77B79C1A1CBD658000E37B52 /* BoolmarksModel.m in Sources */,
 				776D8D441CAD1AD20028929C /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				772F5A7B1CBEAE700051EC10 /* SupportServiceView.m in Sources */,
@@ -1242,6 +1299,7 @@
 				776D8D2C1CAD18FD0028929C /* TitleClass.m in Sources */,
 				775B7C541CB4643900161EF9 /* OpenSubjectModel.m in Sources */,
 				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
+				771E53AC1CC2DD13008E5562 /* ChatController.m in Sources */,
 				771E53981CC2C146008E5562 /* ArrayModelNotification.m in Sources */,
 				77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */,
 				77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */,

@@ -202,6 +202,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 4) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"customNotification" object:nil];
+        [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
+    }
+    
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     
@@ -233,6 +239,7 @@
             alertView.frame = rectAlert;
         }];
     }];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -319,6 +326,7 @@
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
 {
+    
    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }
