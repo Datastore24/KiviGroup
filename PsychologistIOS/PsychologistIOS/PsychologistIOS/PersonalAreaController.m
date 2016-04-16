@@ -13,6 +13,7 @@
 #import "TitleClass.h"
 #import "SubCategoryView.h"
 #import "PersonalAreaView.h"
+#import "ArrayCitys.h"
 
 @implementation PersonalAreaController
 
@@ -52,7 +53,7 @@
     [self.view addSubview:backgroundView];
     
     //Основной контент------------
-    PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andArray:nil];
+    PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andArray:[ArrayCitys setCitysArray]];
     [self.view addSubview:contentView];
 
 }

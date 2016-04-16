@@ -14,6 +14,7 @@
 #import "TitleClass.h"
 #import "Macros.h"
 #import "SubCategoryController.h"
+#import "RatesController.h"
 
 @implementation CategoryController
 
@@ -56,6 +57,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
+    
 }
 
 - (void) dealloc
@@ -68,6 +71,12 @@
 - (void) notificationPushWithSubCategory
 {
     SubCategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCategoryController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) notificationPushWithRates
+{
+    RatesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RatesController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
