@@ -150,7 +150,7 @@
         [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonToFavorites];
         
-        //Добавить в избранное----------------------------------------------
+        //Купить тему----------------------------------------------
         buttonBuy = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonBuy.frame = CGRectMake(24, 342, alertView.frame.size.width - 48, 48);
         buttonBuy.backgroundColor = [UIColor colorWithHexString:@"ee5a59"];
@@ -326,7 +326,7 @@
 //Действие кнопки купить тему
 -(void) buttonBuyAction
 {
-    NSLog(@"КУПИТЬ ТЕМУ");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
 }
 
 

@@ -10,9 +10,11 @@
 #import "UIColor+HexColor.h"
 #import "SWRevealViewController.h"
 #import "Macros.h"
+#import "NotificationController.h"
 
 @interface MenuController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonNotification;
 
 @end
 
@@ -33,6 +35,7 @@
                                      @"Cell6", @"Cell7", @"Cell8", nil];
     
     arrayImage = [NSArray arrayWithObjects:@"VKMenu.png", @"faceMenu.png", @"instMenu.png", @"peresMenu.png", @"skypeMenu.png", nil];
+    [self.buttonNotification addTarget:self action:@selector(buttonNotificationAction) forControlEvents:UIControlEventTouchUpInside];
     
     //Вью первой границы-------------------------------
     UIView * viewBorder1 = [[UIView alloc] initWithFrame:CGRectMake(0, 85, self.view.frame.size.width, 0.4)];
@@ -141,6 +144,14 @@
         return 40;
     }
     
+}
+
+#pragma mark - Action Methods
+
+- (void) buttonNotificationAction
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
