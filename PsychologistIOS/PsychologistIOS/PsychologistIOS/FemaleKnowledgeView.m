@@ -29,6 +29,9 @@
         mainArray = array;
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 24, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
+        if (isiPhone6) {
+            mainTableView.frame = CGRectMake(0, 5, self.frame.size.width, self.frame.size.height - 40);
+        }
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
@@ -82,7 +85,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 216;
+    if (isiPhone6) {
+        return 190;
+    } else {
+        return 216;
+    }
+    
 }
 
 #pragma mark - CustomCell
@@ -92,7 +100,10 @@
                       andSumName: (NSString*) subName
 {
     //Основное окно ячейки--------------------------------
-    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
+    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 216)];
+    if (isiPhone6) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 190);
+    }
     cellView.backgroundColor = nil;
     
     //Стрелка перехода------------------------------------
@@ -102,6 +113,9 @@
     
     //Основная картинка----------------------------------
     UIImageView * mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 16, 320, 180)];
+    if (isiPhone6) {
+        mainImageView.frame = CGRectMake(20, 20, 260, 146);
+    }
     mainImageView.image = [UIImage imageNamed:@"imageFamele.png"];
     [cellView addSubview:mainImageView];
     
@@ -110,6 +124,10 @@
     labelName.text = name;
     labelName.textColor = [UIColor colorWithHexString:@"d46458"];
     labelName.font = [UIFont fontWithName:FONTLITE size:24];
+    if (isiPhone6) {
+        labelName.frame = CGRectMake(32, 125, 232, 20);
+        labelName.font = [UIFont fontWithName:FONTLITE size:20];
+    }
     [cellView addSubview:labelName];
     
     //Описание-------------------------------------------
@@ -117,15 +135,25 @@
     subLabel.text = subName;
     subLabel.textColor = [UIColor colorWithHexString:@"676766"];
     subLabel.font = [UIFont fontWithName:FONTLITE size:16];
+    if (isiPhone6) {
+        subLabel.frame = CGRectMake(32, 145, 232, 16);
+        subLabel.font = [UIFont fontWithName:FONTLITE size:15];
+    }
     [cellView addSubview:subLabel];
     
     //Картинка монетки------------------------------------
-    UIImageView * imageMoney = [[UIImageView alloc] initWithFrame:CGRectMake(mainImageView.frame.size.width - 16, 4, 56, 56)];
+    UIImageView * imageMoney = [[UIImageView alloc] initWithFrame:CGRectMake(mainImageView.frame.size.width - 16, 155, 56, 56)];
+    if (isiPhone6) {
+        imageMoney.frame = CGRectMake(mainImageView.frame.size.width - 16, 135, 50, 50);
+    }
     imageMoney.image = [UIImage imageNamed:@"imageMoneyWeb.png"];
     [cellView addSubview:imageMoney];
     
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 215, cellView.frame.size.width - 32, 1)];
+    if (isiPhone6) {
+        viewBorder.frame = CGRectMake(16, 189, cellView.frame.size.width - 32, 1);
+    }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
     

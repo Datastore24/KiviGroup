@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "NotificationView.h"
 #import "ArrayModelNotification.h"
+#import "SWRevealViewController.h"
 
 @implementation NotificationController
 
@@ -30,6 +31,19 @@
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
+    
+    //Пареметры кнопки меню------------------------------------
+    UIImage *imageBarButton = [UIImage imageNamed:@"menuIcon.png"];
+    [_buttonMenu setImage:imageBarButton];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake(0, 0, 32, 24);
+    CGRect rect = button.frame;
+    rect.origin.y += 16;
+    button.frame = rect;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    _buttonMenu.customView=button;
+    //    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
 #pragma mark - Initialization
     

@@ -19,6 +19,8 @@
         self.font = [UIFont fontWithName:FONTBOND size:19];
         if (isiPhone5) {
             self.font = [UIFont fontWithName:FONTBOND size:12];
+        } else if (isiPhone6) {
+            self.font = [UIFont fontWithName:FONTBOND size:15];
         }
         self.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         self.textAlignment = NSTextAlignmentCenter;

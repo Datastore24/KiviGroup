@@ -140,6 +140,9 @@
         //Кнопка скайпа-------------------------------------------------------------------
         UIButton * buttonSkype = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonSkype.frame = CGRectMake(40, buttonSend.frame.origin.y + buttonSend.frame.size.height + 100, 32, 32);
+        if (isiPhone6) {
+            buttonSkype.frame = CGRectMake(40, buttonSend.frame.origin.y + buttonSend.frame.size.height + 60, 32, 32);
+        }
         UIImage * imgeButtonSkype = [UIImage imageNamed:@"skypeButtonImage.png"];
         [buttonSkype setImage:imgeButtonSkype forState:UIControlStateNormal];
         [buttonSkype addTarget:self action:@selector(buttonSkypeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -155,6 +158,9 @@
         //Кнопка звонка-------------------------------------------------------------------
         UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonPhone.frame = CGRectMake(236, buttonSkype.frame.origin.y + 7, 32, 24);
+        if (isiPhone6) {
+            buttonPhone.frame = CGRectMake(206, buttonSkype.frame.origin.y + 7, 32, 24);
+        }
         UIImage * imgeButtonPhone = [UIImage imageNamed:@"phoneButtonImage.png"];
         [buttonPhone setImage:imgeButtonPhone forState:UIControlStateNormal];
         [buttonPhone addTarget:self action:@selector(buttonPhoneAction) forControlEvents:UIControlEventTouchUpInside];
@@ -162,6 +168,9 @@
         
         //Лейбл кнопки позвонить--------------------------------------------------------------
         UILabel * labelButtonPhone = [[UILabel alloc] initWithFrame:CGRectMake(272, buttonPhone.frame.origin.y + 4, 160, 16)];
+        if (isiPhone6) {
+            labelButtonPhone.frame = CGRectMake(242, buttonPhone.frame.origin.y + 4, 160, 16);
+        }
         labelButtonPhone.text = @"8 (999) 99 99 99";
         labelButtonPhone.textColor = [UIColor colorWithHexString:@"5c5b5a"];
         labelButtonPhone.font = [UIFont fontWithName:FONTREGULAR size:15];

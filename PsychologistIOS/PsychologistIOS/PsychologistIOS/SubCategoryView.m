@@ -58,6 +58,9 @@
 
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
+        if (isiPhone6) {
+            mainTableView.frame = CGRectMake(0, 30, self.frame.size.width, self.frame.size.height - 40);
+        }
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
@@ -128,7 +131,7 @@
         buttonToFavorites.layer.cornerRadius = 25;
         buttonToFavorites.layer.borderColor = [UIColor colorWithHexString:@"147ab4"].CGColor;
         buttonToFavorites.layer.borderWidth = 1.f;
-        [buttonToFavorites setTitle:@"ДОБАВИТЬ В ИЗБРАННОЕ" forState:UIControlStateNormal];
+        [buttonToFavorites setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
         [buttonToFavorites setTitleColor:[UIColor colorWithHexString:@"147ab4"] forState:UIControlStateNormal];
         buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
@@ -141,7 +144,7 @@
         buttonBuy.layer.cornerRadius = 25;
         buttonBuy.layer.borderColor = [UIColor colorWithHexString:@"ee5a59"].CGColor;
         buttonBuy.layer.borderWidth = 1.f;
-        [buttonBuy setTitle:@"КУПИТЬ ТЕМУ" forState:UIControlStateNormal];
+        [buttonBuy setTitle:@"ПОДПИСАТЬСЯ НА ТЕМУ" forState:UIControlStateNormal];
         [buttonBuy setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonBuy.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         [buttonBuy addTarget:self action:@selector(buttonBuyAction) forControlEvents:UIControlEventTouchUpInside];
@@ -213,7 +216,11 @@
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rectAlert = alertView.frame;
-            rectAlert.origin.y += 760;
+            if (isiPhone6) {
+                rectAlert.origin.y += 680;
+            } else {
+                rectAlert.origin.y += 760;
+            }
             alertView.frame = rectAlert;
         }];
     }];
@@ -221,7 +228,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 128;
+    if (isiPhone6) {
+        return 112;
+    } else {
+        return 128;
+    }
 }
 
 #pragma mark - CustomCell
@@ -234,11 +245,17 @@
 {
     //Основное окно ячейки--------------------------------
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
+    if (isiPhone6) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 112);
+    }
     cellView.backgroundColor = nil;
     
     //Создаем картинку------------------------------------
     UIImageView * imageViewCategory = [[UIImageView alloc] initWithFrame:CGRectMake(16, 16, 96, 96)];
     imageViewCategory.layer.cornerRadius = 0.5;
+    if (isiPhone6) {
+        imageViewCategory.frame = CGRectMake(12, 11, 88, 88);
+    }
     imageViewCategory.image = [UIImage imageNamed:image];
     [cellView addSubview:imageViewCategory];
     
@@ -248,6 +265,10 @@
     labelTitle.numberOfLines = 0;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:23];
+    if (isiPhone6) {
+        labelTitle.frame = CGRectMake(120, 16, 216, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:22];
+    }
     [labelTitle sizeToFit];
     [cellView addSubview:labelTitle];
     
@@ -257,11 +278,18 @@
     labelSubTitle.textColor = [UIColor colorWithHexString:@"c0c0c0"];
     labelSubTitle.numberOfLines = 0;
     labelSubTitle.font = [UIFont fontWithName:FONTLITE size:16];
+    if (isiPhone6) {
+        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
+    }
     [labelSubTitle sizeToFit];
     [cellView addSubview:labelSubTitle];
     
     //Платная или нет-------------------------------------
-    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 8, 40, 40)];
+    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 80, 40, 40)];
+    if (isiPhone6) {
+        moneyImage.frame = CGRectMake(70, 70, 35, 35);
+    }
     moneyImage.image = [UIImage imageNamed:@"imageMoney.png"];
     [cellView addSubview:moneyImage];
     if (!money) {
@@ -270,11 +298,17 @@
     
     //Стрелка перехода------------------------------------
     UIImageView * arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 48, 40, 16, 48)];
+    if (isiPhone6) {
+        arrowImage.frame = CGRectMake(cellView.frame.size.width - 48, cellView.frame.size.height / 2 - 24, 16, 48);
+    }
     arrowImage.image = [UIImage imageNamed:@"arrowImage.png"];
     [cellView addSubview:arrowImage];
     
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
+    if (isiPhone6) {
+        viewBorder.frame = CGRectMake(16, 111, cellView.frame.size.width - 32, 1);
+    }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
     
@@ -287,7 +321,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertView.frame;
-        rectAlert.origin.y -= 760;
+        if (isiPhone6) {
+            rectAlert.origin.y -= 680;
+        } else {
+            rectAlert.origin.y -= 760;
+        }
         alertView.frame = rectAlert;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1 animations:^{
