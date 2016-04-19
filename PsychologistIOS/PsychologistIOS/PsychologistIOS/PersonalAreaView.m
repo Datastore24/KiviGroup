@@ -76,6 +76,9 @@
         //Телефон-----------
         //Вью для телевона------------------------------------------------
         UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, 96, 328, 48)];
+        if (isiPhone6) {
+            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 164, 66, 328, 48);
+        }
         viewPhone.layer.cornerRadius = 24.f;
         viewPhone.backgroundColor = [UIColor whiteColor];
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
@@ -102,6 +105,9 @@
         //Кнопка подтвердить через СМС-----------------------------
         UIButton * buttonСonfirm = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonСonfirm.frame = CGRectMake(78, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
+        if (isiPhone6) {
+            buttonСonfirm.frame = CGRectMake(58, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
+        }
         [buttonСonfirm setTitle:@"Подтвердить через СМС" forState:UIControlStateNormal];
         [buttonСonfirm setTitleColor: [UIColor colorWithHexString:@"8e8d8d"] forState:UIControlStateNormal];
         buttonСonfirm.titleLabel.font = [UIFont fontWithName:FONTLITE size:11];
@@ -237,18 +243,22 @@
         buttonEighteen.frame = CGRectMake(110, buttonMaritalStatus.frame.size.height + buttonMaritalStatus.frame.origin.y + 16, 16, 16);
         buttonEighteen.backgroundColor = [UIColor whiteColor];
         [buttonEighteen addTarget:self action:@selector(buttonEighteenAction) forControlEvents:UIControlEventTouchUpInside];
+        buttonEighteen.alpha = 0.f;
         [self addSubview:buttonEighteen];
         
-        //Лейбл есть 18ть ???-----------------------------------
-        UILabel * labelButtonEighteen = [[UILabel alloc] initWithFrame:CGRectMake(142, buttonMaritalStatus.frame.size.height + buttonMaritalStatus.frame.origin.y + 18, 200, 16)];
-        labelButtonEighteen.text = @"Отображать темы 18 +";
-        labelButtonEighteen.textColor = [UIColor colorWithHexString:@"5b5b5b"];
-        labelButtonEighteen.font = [UIFont fontWithName:FONTREGULAR size:15];
-        [self addSubview:labelButtonEighteen];
+//        //Лейбл есть 18ть ???-----------------------------------
+//        UILabel * labelButtonEighteen = [[UILabel alloc] initWithFrame:CGRectMake(142, buttonMaritalStatus.frame.size.height + buttonMaritalStatus.frame.origin.y + 18, 200, 16)];
+//        labelButtonEighteen.text = @"Отображать темы 18 +";
+//        labelButtonEighteen.textColor = [UIColor colorWithHexString:@"5b5b5b"];
+//        labelButtonEighteen.font = [UIFont fontWithName:FONTREGULAR size:15];
+//        [self addSubview:labelButtonEighteen];
         
         //Кнопка сохранить----------------------------------------
         UIButton * buttonSave = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 48, 184, 48);
+        buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 28, 184, 48);
+        if (isiPhone6) {
+                    buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y, 184, 48);
+        }
         buttonSave.layer.cornerRadius = 24;
         [buttonSave setTitle:@"СОХРАНИТЬ" forState:UIControlStateNormal];
         [buttonSave setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -277,6 +287,10 @@
         
         //Создаем алерт---------------------------------------------------
         alertViewPersonalArea = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
+        if (isiPhone6) {
+            alertViewPersonalArea.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
+
+        }
         alertViewPersonalArea.layer.cornerRadius = 5.f;
         alertViewPersonalArea.backgroundColor = [UIColor whiteColor];
         alertViewPersonalArea.userInteractionEnabled = YES;
@@ -336,6 +350,10 @@
         buttonSend.frame = CGRectMake(40, pickerCity.frame.origin.y + pickerCity.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 48);
         buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonSend.layer.cornerRadius = 25;
+        if (isiPhone6) {
+            buttonSend.frame = CGRectMake(40, pickerCity.frame.origin.y + pickerCity.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 40);
+            buttonSend.layer.cornerRadius = 20;
+        }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];

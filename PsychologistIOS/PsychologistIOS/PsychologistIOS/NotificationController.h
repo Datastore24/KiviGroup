@@ -10,4 +10,6 @@
 
 @interface NotificationController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonMenu;
+
 @end

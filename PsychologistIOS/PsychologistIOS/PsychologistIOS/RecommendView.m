@@ -70,6 +70,9 @@
         
         //Создаем алерт---------------------------------------------------
         alertViewRecommend = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
+        if (isiPhone6) {
+            alertViewRecommend.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
+        }
         alertViewRecommend.layer.cornerRadius = 5.f;
         alertViewRecommend.backgroundColor = [UIColor whiteColor];
         alertViewRecommend.userInteractionEnabled = YES;
@@ -93,6 +96,9 @@
         
         //Вью для телевона------------------------------------------------
         UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 48)];
+        if (isiPhone6) {
+            viewPhone.frame = CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 40);
+        }
         viewPhone.layer.cornerRadius = 10.f;
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewPhone.layer.borderWidth = 0.4f;
@@ -167,6 +173,10 @@
         buttonSend.frame = CGRectMake(40, pickerAlert.frame.origin.y + pickerAlert.frame.size.height + 16, alertViewRecommend.frame.size.width - 80, 48);
         buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonSend.layer.cornerRadius = 25;
+        if (isiPhone6) {
+            buttonSend.frame = CGRectMake(40, pickerAlert.frame.origin.y + pickerAlert.frame.size.height + 16, alertViewRecommend.frame.size.width - 80, 40);
+            buttonSend.layer.cornerRadius = 20;
+        }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];

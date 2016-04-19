@@ -29,6 +29,10 @@
 //        [labelText sizeToFit];
         labelText.textColor = [UIColor colorWithHexString:@"4c4a4a"];
         labelText.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone6) {
+            labelText.frame = CGRectMake(16, 40, self.frame.size.width - 32, 80);
+            labelText.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [self addSubview:labelText];
         
         //Тестовый массив имен-----------
@@ -40,6 +44,9 @@
             
             CustomButton * buttonRates = [CustomButton buttonWithType:UIButtonTypeSystem];
             buttonRates.frame = CGRectMake(100, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+            if (isiPhone6) {
+                buttonRates.frame = CGRectMake(80, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+            }
             buttonRates.backgroundColor = nil;
             buttonRates.layer.borderColor = [UIColor colorWithHexString:@"949494"].CGColor;
             buttonRates.layer.borderWidth = 0.4;

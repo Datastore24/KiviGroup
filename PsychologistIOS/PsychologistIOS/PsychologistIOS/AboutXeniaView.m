@@ -37,6 +37,10 @@
         //Основная картинка Ксении--------------------
         UIImageView * mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 84, 24, 168, 168)];
         mainImageView.layer.cornerRadius = 84;
+        if (isiPhone6) {
+            mainImageView.frame = CGRectMake(self.frame.size.width / 2 - 75, 20, 150, 150);
+            mainImageView.layer.cornerRadius = 75;
+        }
 //        mainImageView.layer.borderColor = [UIColor colorWithHexString:@"f69679"].CGColor;
 //        mainImageView.layer.borderWidth = 0.4f;
         mainImageView.image = [UIImage imageNamed:@"imageXenia.png"];
@@ -48,6 +52,10 @@
         mainTitle.textColor = [UIColor colorWithHexString:@"515050"];
         mainTitle.textAlignment = NSTextAlignmentCenter;
         mainTitle.font = [UIFont fontWithName:FONTREGULAR size:22];
+        if (isiPhone6) {
+            mainTitle.frame = CGRectMake(0, 188, self.frame.size.width, 20);
+            mainTitle.font = [UIFont fontWithName:FONTREGULAR size:20];
+        }
         [self addSubview:mainTitle];
         
         //Подзаголовок----------------------------------
@@ -56,6 +64,9 @@
         subTitle.textColor = [UIColor colorWithHexString:@"f26e6e"];
         subTitle.textAlignment = NSTextAlignmentCenter;
         subTitle.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone6) {
+            subTitle.frame = CGRectMake(0, 218, self.frame.size.width, 16);
+        }
         [self addSubview:subTitle];
         
         //Основной текст--------------------------------
@@ -64,6 +75,10 @@
         textLabel.text = @"Одним из важных условий эффективной психологической \nпомощи становится целевая установка психолога-практика, \nмотивы его профессиональной деятельности. \nДействительно ли он желает оказывать помощь людям, \nделая доброе дело, или же смотрит на оказываемую \nпомощь, как на возможность больше зарабатывать на \nнесчастьях людей? трудные для клиента дни, или же \nостался довольным, что получил хорошее материальное вознаграждение";
         textLabel.textColor = [UIColor colorWithHexString:@"5b5b5b"];
         textLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone6) {
+            textLabel.frame = CGRectMake(24, 238, self.frame.size.width - 48, 160);
+            textLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+        }
         [self addSubview:textLabel];
         
         //Кнопка Рекомендую--------------------------------------
@@ -71,6 +86,10 @@
         buttonRecommend.frame = CGRectMake(24, 450, self.frame.size.width - 48, 48);
         buttonRecommend.backgroundColor = nil;
         buttonRecommend.layer.cornerRadius = 25;
+        if (isiPhone6) {
+            buttonRecommend.frame = CGRectMake(24, 415, self.frame.size.width - 48, 40);
+            buttonRecommend.layer.cornerRadius = 20;
+        }
         buttonRecommend.layer.borderColor = [UIColor colorWithHexString:@"4babe4"].CGColor;
         buttonRecommend.layer.borderWidth = 1.f;
         [buttonRecommend setTitle:@"РЕКОМЕНДУЮ" forState:UIControlStateNormal];
@@ -84,6 +103,10 @@
         buttonContact.frame = CGRectMake(24, 506, self.frame.size.width - 48, 48);
         buttonContact.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonContact.layer.cornerRadius = 25;
+        if (isiPhone6) {
+            buttonContact.frame = CGRectMake(24, 466, self.frame.size.width - 48, 40);
+            buttonContact.layer.cornerRadius = 20;
+        }
         buttonContact.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonContact.layer.borderWidth = 1.f;
         [buttonContact setTitle:@"СВЯЗАТЬСЯ С КСЕНИЕЙ" forState:UIControlStateNormal];
@@ -94,6 +117,9 @@
         
         //Лейьл соц сети----------------------------------------------------
         UILabel * labelSocialNetwork = [[UILabel alloc] initWithFrame:CGRectMake(0, 562, self.frame.size.width, 16)];
+        if (isiPhone6) {
+            labelSocialNetwork.frame = CGRectMake(0, 515, self.frame.size.width, 16);
+        }
         labelSocialNetwork.text = @"Я в социальных сетях";
         labelSocialNetwork.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelSocialNetwork.textAlignment = NSTextAlignmentCenter;
@@ -104,7 +130,11 @@
         for (int i = 0; i < arrayImage.count; i++) {
             UIButton * buttonSocial = [UIButton buttonWithType:UIButtonTypeCustom];
             buttonSocial.frame = CGRectMake((self.frame.size.width / 2 - 150) + 64 * i, 594, 48, 48);
-            buttonSocial.layer.cornerRadius = 24;
+            
+            if (isiPhone6) {
+                buttonSocial.frame = CGRectMake((self.frame.size.width / 2 - 117) + 48 * i, 540, 40, 40);
+                buttonSocial.layer.cornerRadius = 20;
+            }
             UIImage * buttonSocialImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonSocial setImage:buttonSocialImage forState:UIControlStateNormal];
             buttonSocial.tag = 40 + i;
@@ -114,6 +144,9 @@
             
         //Сайт Ксении-----------------------------------------------------------
         UILabel * labelSite = [[UILabel alloc] initWithFrame:CGRectMake(0, 650, self.frame.size.width, 16)];
+        if (isiPhone6) {
+            labelSite.frame = CGRectMake(0, 585, self.frame.size.width, 16);
+        }
         labelSite.text = @"www.ksenia.ru";
         labelSite.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelSite.textAlignment = NSTextAlignmentCenter;
@@ -130,6 +163,9 @@
         
         //Создаем алерт---------------------------------------------------
         alertViewXenia = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
+        if (isiPhone6) {
+            alertViewXenia.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
+        }
         alertViewXenia.layer.cornerRadius = 5.f;
         alertViewXenia.backgroundColor = [UIColor whiteColor];
         alertViewXenia.userInteractionEnabled = YES;
@@ -158,12 +194,18 @@
         //Вью почты-------------------------------------------------------
         UIView * viewMail = [[UIView alloc] initWithFrame:CGRectMake(40, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 80, 48)];
         viewMail.layer.cornerRadius = 5.f;
+        if (isiPhone6) {
+            viewMail.frame = CGRectMake(40, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 80, 40);
+        }
         viewMail.layer.borderColor = [UIColor colorWithHexString:@"c0c0c0"].CGColor;
         viewMail.layer.borderWidth = 0.4f;
         [alertViewXenia addSubview:viewMail];
         
         //Ввод телефона-----------------------------------------------------------------
         textFieldMail = [[UITextField alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
+        if (isiPhone6) {
+            textFieldMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
+        }
         textFieldMail.delegate = self;
         textFieldMail.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldMail.font = [UIFont fontWithName:FONTREGULAR size:19];
@@ -173,6 +215,9 @@
         
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderMail = [[UILabel alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
+        if (isiPhone6) {
+            labelPlaceHolderMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
+        }
         labelPlaceHolderMail.tag = 3022;
         labelPlaceHolderMail.text = @"Введите Email";
         labelPlaceHolderMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
@@ -184,6 +229,10 @@
         buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 48);
         buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonSend.layer.cornerRadius = 25;
+        if (isiPhone6) {
+            buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 40);
+            buttonSend.layer.cornerRadius = 20;
+        }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
@@ -215,7 +264,11 @@
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rectAlert = alertViewXenia.frame;
+            if (isiPhone6) {
+                rectAlert.origin.y += 680;
+            } else {
             rectAlert.origin.y += 750;
+            }
             alertViewXenia.frame = rectAlert;
         }];
     }];
@@ -237,7 +290,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertViewXenia.frame;
-        rectAlert.origin.y -= 750;
+        if (isiPhone6) {
+            rectAlert.origin.y -= 680;
+        } else {
+            rectAlert.origin.y -= 750;
+        }
         alertViewXenia.frame = rectAlert;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1 animations:^{

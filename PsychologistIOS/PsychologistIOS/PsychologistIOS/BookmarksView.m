@@ -65,6 +65,9 @@
         [viewSearch addSubview:mainSearchBar];
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
+        if (isiPhone6) {
+            mainTableView.frame = CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40);
+        }
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
@@ -120,7 +123,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 128;
+    if (isiPhone6) {
+        return 112;
+    } else {
+        return 128;
+    }
 }
 
 #pragma mark - CustomCell
@@ -134,11 +141,17 @@
 {
     //Основное окно ячейки--------------------------------
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
+    if (isiPhone6) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 112);
+    }
     cellView.backgroundColor = nil;
     
     //Создаем картинку------------------------------------
     UIImageView * imageViewCategory = [[UIImageView alloc] initWithFrame:CGRectMake(16, 16, 96, 96)];
     imageViewCategory.layer.cornerRadius = 0.5;
+    if (isiPhone6) {
+        imageViewCategory.frame = CGRectMake(12, 11, 88, 88);
+    }
     imageViewCategory.image = [UIImage imageNamed:image];
     [cellView addSubview:imageViewCategory];
     
@@ -148,6 +161,10 @@
     labelTitle.numberOfLines = 0;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:23];
+    if (isiPhone6) {
+        labelTitle.frame = CGRectMake(120, 16, 216, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:22];
+    }
     [labelTitle sizeToFit];
     [cellView addSubview:labelTitle];
     
@@ -157,11 +174,18 @@
     labelSubTitle.textColor = [UIColor colorWithHexString:@"676766"];
     labelSubTitle.numberOfLines = 0;
     labelSubTitle.font = [UIFont fontWithName:FONTLITE size:16];
+    if (isiPhone6) {
+        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
+    }
     [labelSubTitle sizeToFit];
     [cellView addSubview:labelSubTitle];
     
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
+    if (isiPhone6) {
+        viewBorder.frame = CGRectMake(16, 111, cellView.frame.size.width - 32, 1);
+    }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
     
@@ -170,6 +194,10 @@
         UIView * viewNotification = [[UIView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 56, 16, 40, 40)];
         viewNotification.backgroundColor = [UIColor colorWithHexString:@"f92502"];
         viewNotification.layer.cornerRadius = 20;
+        if (isiPhone6) {
+            viewNotification.frame = CGRectMake(cellView.frame.size.width - 56, 16, 34, 34);
+            viewNotification.layer.cornerRadius = 17;
+        }
         [cellView addSubview:viewNotification];
         
         UILabel * labelNotification = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -177,6 +205,10 @@
         labelNotification.textColor = [UIColor whiteColor];
         labelNotification.textAlignment = NSTextAlignmentCenter;
         labelNotification.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone6) {
+            labelNotification.frame = CGRectMake(0, 0, 34, 34);
+            labelNotification.font = [UIFont fontWithName:FONTREGULAR size:17];
+        }
         [viewNotification addSubview:labelNotification];
     }
     
@@ -187,6 +219,10 @@
         labelTrial.text = @"Доступен до 1.04.2016";
         labelTrial.textColor = [UIColor colorWithHexString:@"676766"];
         labelTrial.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone6) {
+            labelTrial.frame = CGRectMake(120, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 200, 16);
+            labelTrial.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [cellView addSubview:labelTrial];
     } else if ([trial integerValue] == 2) {
         UIButton * buttonBuyTrial = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -194,6 +230,10 @@
         [buttonBuyTrial setTitle:@"Продлить доступ" forState:UIControlStateNormal];
         [buttonBuyTrial setTitleColor:[UIColor colorWithHexString:@"676766"] forState:UIControlStateNormal];
         buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone6) {
+            buttonBuyTrial.frame = CGRectMake(111, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 110, 16);
+            buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [buttonBuyTrial addTarget:self action:@selector(buttonBuyTrialActiob) forControlEvents:UIControlEventTouchUpInside];
         [cellView addSubview:buttonBuyTrial];
     }

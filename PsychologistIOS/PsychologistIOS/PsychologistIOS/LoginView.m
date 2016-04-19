@@ -33,6 +33,9 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(16, 520, 382, 64);
+        if (isiPhone6) {
+            self.frame = CGRectMake(16, 460, 382, 56);
+        }
         
         //Кнопка меню---------------------------------------------------------------------
         buttonInput = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -40,6 +43,10 @@
         buttonInput.backgroundColor = [UIColor colorWithHexString:@"48709d"];
         buttonInput.layer.borderColor = [UIColor whiteColor].CGColor;
         buttonInput.layer.cornerRadius = 30;
+        if (isiPhone6) {
+            buttonInput.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
+            buttonInput.layer.cornerRadius = 28;
+        }
         [buttonInput setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
         [buttonInput setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonInput.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
@@ -53,6 +60,10 @@
         buttonLogin.backgroundColor = [UIColor colorWithHexString:@"3cc354"];
         buttonLogin.layer.borderColor = [UIColor whiteColor].CGColor;
         buttonLogin.layer.cornerRadius = 30;
+        if (isiPhone6) {
+            buttonLogin.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
+            buttonLogin.layer.cornerRadius = 28;
+        }
         [buttonLogin setTitle:@"ПОЛУЧИТЬ КОД СМС" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLogin.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
@@ -97,6 +108,9 @@
         
         //Вью ввода телефона----------------
         viewPhone = [[UIView alloc] initWithFrame:CGRectMake(16, 440, self.frame.size.width - 32, 64)];
+        if (isiPhone6) {
+            viewPhone.frame = CGRectMake(16, 390, self.frame.size.width - 32, 56);
+        }
         viewPhone.backgroundColor = [UIColor colorWithHexString:@"a04c43"];
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"e18c82"].CGColor;
         viewPhone.layer.borderWidth = 0.4f;
@@ -109,6 +123,9 @@
         textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldPhone.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            textFieldPhone.font = [UIFont fontWithName:FONTLITE size:18];
+        }
         textFieldPhone.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
         [viewPhone addSubview:textFieldPhone];
@@ -119,10 +136,16 @@
         labelPlaceHolderPhone.text = @"Телефон";
         labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         labelPlaceHolderPhone.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            labelPlaceHolderPhone.font = [UIFont fontWithName:FONTLITE size:18];
+        }
         [viewPhone addSubview:labelPlaceHolderPhone];
         
         //Вью ввода телефона----------------
         viewSMS = [[UIView alloc] initWithFrame:CGRectMake(800, 440, self.frame.size.width - 32, 64)];
+        if (isiPhone6) {
+            viewSMS.frame = CGRectMake(800, 390, self.frame.size.width - 32, 56);
+        }
         viewSMS.backgroundColor = [UIColor colorWithHexString:@"a04c43"];
         viewSMS.layer.borderColor = [UIColor colorWithHexString:@"e18c82"].CGColor;
         viewSMS.layer.borderWidth = 0.4f;
@@ -136,6 +159,9 @@
         textFieldSMS.keyboardType = UIKeyboardTypeDefault;
         textFieldSMS.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldSMS.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            textFieldSMS.font = [UIFont fontWithName:FONTLITE size:18];
+        }
         textFieldSMS.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelSMS:) name:UITextFieldTextDidChangeNotification object:textFieldSMS];
         [viewSMS addSubview:textFieldSMS];
@@ -146,6 +172,9 @@
         labelPlaceHoldSMS.text = @"Введите код";
         labelPlaceHoldSMS.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         labelPlaceHoldSMS.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            labelPlaceHoldSMS.font = [UIFont fontWithName:FONTLITE size:18];
+        }
         [viewSMS addSubview:labelPlaceHoldSMS];
         
         //Лейбл возможности регистрации другим путем---------------------------------------
@@ -154,12 +183,20 @@
         labelOtherInput.textColor = [UIColor whiteColor];
         labelOtherInput.textAlignment = NSTextAlignmentCenter;
         labelOtherInput.font = [UIFont fontWithName:FONTREGULAR size:15.6];
+        if (isiPhone6) {
+            labelOtherInput.frame = CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 86, self.frame.size.width, 16);
+            labelOtherInput.font = [UIFont fontWithName:FONTREGULAR size:14.6];
+        }
         [self addSubview:labelOtherInput];
         
         for (int i = 0; i < 3; i++) {
             UIButton * buttonOtherInput = [UIButton buttonWithType:UIButtonTypeCustom];
             buttonOtherInput.frame = CGRectMake(120 + 60 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 56, 56);
             buttonOtherInput.layer.cornerRadius = 28;
+            if (isiPhone6) {
+                buttonOtherInput.frame = CGRectMake(110 + 52 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 48, 48);
+                buttonOtherInput.layer.cornerRadius = 24;
+            }
             UIImage *btnImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonOtherInput setImage:btnImage forState:UIControlStateNormal];
             [self addSubview:buttonOtherInput];
@@ -167,7 +204,10 @@
         
         //Кнопка условия лицензионного соглашения
         UIButton * buttonLicense = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonLicense.frame = CGRectMake(136, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 72, 152, 24);
+        buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 72, 152, 24);
+        if (isiPhone6) {
+            buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 66, 152, 24);
+        }
         [buttonLicense setTitle:@"Условия соглашения" forState:UIControlStateNormal];
         [buttonLicense setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLicense.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];

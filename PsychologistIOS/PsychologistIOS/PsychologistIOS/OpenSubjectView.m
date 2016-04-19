@@ -33,6 +33,9 @@
         
         //Вью чата--------------------------------------------------------------------
         UIView * viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 368, self.frame.size.width, self.frame.size.height - 368)];
+        if (isiPhone6) {
+            viewChat.frame = CGRectMake(0, 300, self.frame.size.width, self.frame.size.height - 300);
+        }
         
         for (NSInteger i = array.count; i > (array.count - 3); i--) {
             NSDictionary * dictChat = [array objectAtIndex:i - 1];
@@ -50,11 +53,17 @@
                 labelText.textColor = [UIColor whiteColor];
                 labelText.text = [dictChat objectForKey:@"Message"];
                 labelText.font = [UIFont fontWithName:FONTLITE size:18];
+                if (isiPhone6) {
+                    labelText.font = [UIFont fontWithName:FONTLITE size:16];
+                }
                 [labelText sizeToFit];
                 labelText.frame = CGRectMake((viewChat.frame.size.width - labelText.frame.size.width) - 32, labelText.frame.origin.y, labelText.frame.size.width, labelText.frame.size.height);
                 
                 //Вью сообщения----------------------
                 UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
+                if (isiPhone6) {
+                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+                }
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
                 viewMessage.layer.cornerRadius = 7.f;
                 [viewChat addSubview:viewMessage];
@@ -87,10 +96,16 @@
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(42, 32 + countFor, 40, 12)];
                 labelText.text = [dictChat objectForKey:@"Message"];
                 labelText.font = [UIFont fontWithName:FONTLITE size:18];
+                if (isiPhone6) {
+                    labelText.font = [UIFont fontWithName:FONTLITE size:16];
+                }
                 [labelText sizeToFit];
                 
                 //Вью Сообщения---------------------
                 UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
+                if (isiPhone6) {
+                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+                }
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
                 viewMessage.layer.cornerRadius = 7.f;
                 [viewChat addSubview:viewMessage];
@@ -118,6 +133,9 @@
         buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 250, 336, 48);
         buttonPush.backgroundColor = [UIColor colorWithHexString:@"e54444"];
         buttonPush.layer.cornerRadius = 24;
+        if (isiPhone6) {
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 235, 336, 48);
+        }
         [buttonPush setTitle:@"ОБСУДИТЬ" forState:UIControlStateNormal];
         [buttonPush setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
@@ -136,6 +154,9 @@
         [self addSubview:mainImage];
         
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 170, view.frame.size.width, 200)];
+        if (isiPhone6) {
+            mainScrollView.frame = CGRectMake(0, 150, view.frame.size.width, 158);
+        }
         mainScrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:mainScrollView];
         
@@ -145,6 +166,10 @@
         textViewText.backgroundColor = nil;
         textViewText.textColor = [UIColor colorWithHexString:@"838484"];
         textViewText.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone6) {
+            textViewText.frame = CGRectMake(16, 8, self.frame.size.width - 32, 125);
+            textViewText.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         textViewText.userInteractionEnabled = NO;
         textViewText.editable = NO;
         textViewText.showsVerticalScrollIndicator = NO;
@@ -153,6 +178,9 @@
         //Кнопка изменения высоты первого скрола
         buttonHeight = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonHeight.frame = CGRectMake(16, 180, 45.5, 8);
+        if (isiPhone6) {
+            buttonHeight.frame = CGRectMake(16, 140, 45.5, 8);
+        }
         UIImage * imageButtonHeight = [UIImage imageNamed:@"buttonHight.png"];
         [buttonHeight setImage:imageButtonHeight forState:UIControlStateNormal];
         [buttonHeight addTarget:self action:@selector(buttonHeightAction) forControlEvents:UIControlEventTouchUpInside];
@@ -171,15 +199,27 @@
         [UIView animateWithDuration:0.5 animations:^{
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
-            newRectScroll.size.height += 300;
+            if (isiPhone6) {
+                newRectScroll.size.height += 295;
+            } else {
+                newRectScroll.size.height += 300;
+            }
             mainScrollView.frame = newRectScroll;
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
-            newRectButton.origin.y += 300;
+            if (isiPhone6) {
+                newRectButton.origin.y += 295;
+            } else {
+                newRectButton.origin.y += 300;
+            }
             buttonHeight.frame = newRectButton;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
-            newRectLabel.size.height += 300;
+            if (isiPhone6) {
+                newRectLabel.size.height += 295;
+            } else {
+                newRectLabel.size.height += 300;
+            }
             textViewText.frame = newRectLabel;
         } completion:^(BOOL finished) {
             textViewText.userInteractionEnabled = YES;
@@ -189,15 +229,27 @@
         [UIView animateWithDuration:0.5 animations:^{
             //Скрол
             CGRect newRectScroll = mainScrollView.frame;
-            newRectScroll.size.height -= 300;
+            if (isiPhone6) {
+                newRectScroll.size.height -= 295;
+            } else {
+                newRectScroll.size.height -= 300;
+            }
             mainScrollView.frame = newRectScroll;
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
-            newRectButton.origin.y -= 300;
+            if (isiPhone6) {
+                newRectButton.origin.y -= 295;
+            } else {
+                newRectButton.origin.y -= 300;
+            }
             buttonHeight.frame = newRectButton;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
-            newRectLabel.size.height -= 300;
+            if (isiPhone6) {
+                newRectLabel.size.height -= 295;
+            } else {
+                newRectLabel.size.height -= 300;
+            }
             textViewText.frame = newRectLabel;
         } completion:^(BOOL finished) {
             textViewText.userInteractionEnabled = NO;

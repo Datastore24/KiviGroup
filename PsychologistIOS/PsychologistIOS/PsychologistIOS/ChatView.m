@@ -58,10 +58,13 @@
         buttonImageChange = NO;
         
         UIImageView * imageViewPlayer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 232)];
+        if (isiPhone6) {
+            imageViewPlayer.frame = CGRectMake(0, 0, self.frame.size.width, 210);
+        }
         imageViewPlayer.image = [UIImage imageNamed:@"imagePlayer.png"];
         [self addSubview:imageViewPlayer];
         
-        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 232, self.frame.size.width, self.frame.size.height - 232)];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 210, self.frame.size.width, self.frame.size.height - 210)];
         [self addSubview:mainScrollView];
         
         //Получаем ответ в виде нотификации с обектом картинки--
@@ -83,6 +86,9 @@
         
         //Ввод текста----------------
         UIView * inputText = [[UIView alloc] initWithFrame:CGRectMake(64, 10, 248, 32)];
+        if (isiPhone6) {
+            inputText.frame = CGRectMake(60, 10, 236, 28);
+        }
         inputText.backgroundColor = nil;
         inputText.layer.borderColor = [UIColor colorWithHexString:@"c7c7cc"].CGColor;
         inputText.layer.borderWidth = 0.4f;
@@ -94,6 +100,9 @@
         textFieldChat.delegate = self;
         textFieldChat.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldChat.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            textFieldChat.font = [UIFont fontWithName:FONTLITE size:16];
+        }
         textFieldChat.textColor = [UIColor colorWithHexString:@"c7c7cc"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelChat:) name:UITextFieldTextDidChangeNotification object:textFieldChat];
         [inputText addSubview:textFieldChat];
@@ -104,11 +113,17 @@
         labelPlaceHolderChat.text = @"Сообщение";
         labelPlaceHolderChat.textColor = [UIColor colorWithHexString:@"c7c7cc"];
         labelPlaceHolderChat.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            textFieldChat.font = [UIFont fontWithName:FONTLITE size:16];
+        }
         [inputText addSubview:labelPlaceHolderChat];
         
         //Кнопка отправить---------------------------------------------------------------
         UIButton * pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
         pushButton.frame = CGRectMake(320, 10, 32, 32);
+        if (isiPhone6) {
+            pushButton.frame = CGRectMake(305, 10, 28, 28);
+        }
         pushButton.layer.cornerRadius = 16;
         UIImage * imageButtonPush = [UIImage imageNamed:@"pushMessageImage.png"];
         [pushButton setImage:imageButtonPush forState:UIControlStateNormal];
@@ -118,6 +133,9 @@
         //Кнопка создания аудио дорожки---------------------------------------------------
         UIButton * soundButton = [UIButton buttonWithType:UIButtonTypeCustom];
         soundButton.frame = CGRectMake(363, 10, 32, 32);
+        if (isiPhone6) {
+            soundButton.frame = CGRectMake(340, 10, 28, 28);
+        }
         soundButton.layer.cornerRadius = 16;
         UIImage * imageSoundButton = [UIImage imageNamed:@"soundButton.png"];
         [soundButton setImage:imageSoundButton forState:UIControlStateNormal];
@@ -127,6 +145,9 @@
         //Кнопка отправки фото------------------------------------------------------------
         UIButton * cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cameraButton.frame = CGRectMake(18, 15, 32, 21);
+        if (isiPhone6) {
+            cameraButton.frame = CGRectMake(18, 15, 28, 18);
+        }
         UIImage * cameraButtonButton = [UIImage imageNamed:@"buttonCameraImage.png"];
         [cameraButton setImage:cameraButtonButton forState:UIControlStateNormal];
         [cameraButton addTarget:self action:@selector(cameraButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -136,12 +157,15 @@
         imageFull = [[UIImageView alloc] initWithFrame:self.frame];
         imageFull.alpha = 0.f;
         imageFull.userInteractionEnabled = YES;
+        imageFull.backgroundColor = [UIColor whiteColor];
+        imageFull.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:imageFull];
         
-        UIButton * buttonCanselImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton * buttonCanselImage = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonCanselImage.frame = CGRectMake(imageFull.frame.size.width - 70, 10, 50, 50);
         buttonCanselImage.layer.cornerRadius = 25;
-        buttonCanselImage.backgroundColor = [UIColor blackColor];
+        UIImage * imageButtonCansel = [UIImage imageNamed:@"imageCancel.png"];
+        [buttonCanselImage setImage:imageButtonCansel forState:UIControlStateNormal];
         [buttonCanselImage addTarget:self action:@selector(buttonCanselImageAction) forControlEvents:UIControlEventTouchUpInside];
         [imageFull addSubview:buttonCanselImage];
         
