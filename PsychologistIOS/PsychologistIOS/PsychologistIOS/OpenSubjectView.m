@@ -159,31 +159,32 @@
             }
         }
         
-        
+        [self addSubview:viewChat];
         
         //Кнопка обсудить---------------------------
         UIButton * buttonPush = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 250, 336, 48);
+        buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 615, 336, 48);
         buttonPush.backgroundColor = [UIColor colorWithHexString:@"e54444"];
         buttonPush.layer.cornerRadius = 24;
         [buttonPush setTitle:@"ОБСУДИТЬ" forState:UIControlStateNormal];
         [buttonPush setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         if (isiPhone6) {
-            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 235, 336, 48);
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 530, 336, 48);
         } else if (isiPhone5) {
-            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 350, 280, 40);
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 450, 280, 40);
             buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
             buttonPush.layer.cornerRadius = 20;
         }
-        [buttonPush addTarget:self action:@selector(buttonPushAction) forControlEvents:UIControlEventTouchUpInside];
+        
         if (isiPhone4s) {
-            [self addSubview:buttonPush];
-        } else {
-        [viewChat addSubview:buttonPush];
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 350, 280, 40);
         }
+        [buttonPush addTarget:self action:@selector(buttonPushAction) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonPush];
 
-        [self addSubview:viewChat];
+
+        
         
         
 #pragma mark - MainView
