@@ -371,7 +371,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="Fgh-7t-oLX"/>
+                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="o0z-bc-l8g"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -452,6 +452,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="LdO-DZ-Ck5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Du-L0-DJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -666,6 +667,6 @@
         <image name="arrow.png" width="16" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fgh-7t-oLX"/>
+        <segue reference="Ejw-Dp-4q0"/>
     </inferredMetricsTieBreakers>
 </document>

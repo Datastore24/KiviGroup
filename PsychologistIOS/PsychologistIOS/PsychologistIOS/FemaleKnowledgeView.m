@@ -31,6 +31,8 @@
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 24, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
         if (isiPhone6) {
             mainTableView.frame = CGRectMake(0, 5, self.frame.size.width, self.frame.size.height - 40);
+        } else if (isiPhone5) {
+            mainTableView.frame = CGRectMake(0, 5, self.frame.size.width, self.frame.size.height - 40);
         }
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -87,7 +89,9 @@
 {
     if (isiPhone6) {
         return 190;
-    } else {
+    } else if (isiPhone5) {
+        return 170;
+    }else {
         return 216;
     }
     
@@ -103,11 +107,16 @@
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 216)];
     if (isiPhone6) {
         cellView.frame = CGRectMake(0, 0, self.frame.size.width, 190);
+    } else if (isiPhone5) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 170);
     }
     cellView.backgroundColor = nil;
     
     //Стрелка перехода------------------------------------
     UIImageView * arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 48, 80, 16, 48)];
+    if (isiPhone5) {
+        arrowImage.frame = CGRectMake(cellView.frame.size.width - 48, 60, 14, 42);
+    }
     arrowImage.image = [UIImage imageNamed:@"arrowImage.png"];
     [cellView addSubview:arrowImage];
     
@@ -115,6 +124,8 @@
     UIImageView * mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 16, 320, 180)];
     if (isiPhone6) {
         mainImageView.frame = CGRectMake(20, 20, 260, 146);
+    } else if (isiPhone5) {
+        mainImageView.frame = CGRectMake(20, 20, 220, 140);
     }
     mainImageView.image = [UIImage imageNamed:@"imageFamele.png"];
     [cellView addSubview:mainImageView];
@@ -127,6 +138,9 @@
     if (isiPhone6) {
         labelName.frame = CGRectMake(32, 125, 232, 20);
         labelName.font = [UIFont fontWithName:FONTLITE size:20];
+    } else if (isiPhone5) {
+        labelName.frame = CGRectMake(32, 115, 232, 20);
+        labelName.font = [UIFont fontWithName:FONTLITE size:16];
     }
     [cellView addSubview:labelName];
     
@@ -138,6 +152,9 @@
     if (isiPhone6) {
         subLabel.frame = CGRectMake(32, 145, 232, 16);
         subLabel.font = [UIFont fontWithName:FONTLITE size:15];
+    } else if (isiPhone5) {
+        subLabel.frame = CGRectMake(32, 135, 232, 16);
+        subLabel.font = [UIFont fontWithName:FONTLITE size:13];
     }
     [cellView addSubview:subLabel];
     
@@ -145,6 +162,8 @@
     UIImageView * imageMoney = [[UIImageView alloc] initWithFrame:CGRectMake(mainImageView.frame.size.width - 16, 155, 56, 56)];
     if (isiPhone6) {
         imageMoney.frame = CGRectMake(mainImageView.frame.size.width - 16, 135, 50, 50);
+    } else if (isiPhone5) {
+        imageMoney.frame = CGRectMake(mainImageView.frame.size.width - 14, 120, 44, 44);
     }
     imageMoney.image = [UIImage imageNamed:@"imageMoneyWeb.png"];
     [cellView addSubview:imageMoney];
@@ -153,6 +172,8 @@
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 215, cellView.frame.size.width - 32, 1)];
     if (isiPhone6) {
         viewBorder.frame = CGRectMake(16, 189, cellView.frame.size.width - 32, 1);
+    } else if (isiPhone5) {
+        viewBorder.frame = CGRectMake(16, 169, cellView.frame.size.width - 32, 1);
     }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];

@@ -18,7 +18,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.font = [UIFont fontWithName:FONTBOND size:19];
         if (isiPhone5) {
-            self.font = [UIFont fontWithName:FONTBOND size:12];
+            self.font = [UIFont fontWithName:FONTBOND size:15];
         } else if (isiPhone6) {
             self.font = [UIFont fontWithName:FONTBOND size:15];
         }

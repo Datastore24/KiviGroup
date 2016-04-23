@@ -21,6 +21,8 @@
 
 #define isiPhone6  ([[UIScreen mainScreen] bounds].size.height == 667)?TRUE:FALSE
 
+#define isiPhone4s  ([[UIScreen mainScreen] bounds].size.height == 480)?TRUE:FALSE
+
 //Шрифты--------------------------------------------------------------------------
 #define FONTREGULAR @"SFUIDisplay-Regular"
 #define FONTLITE @"SFUIDisplay-Light"

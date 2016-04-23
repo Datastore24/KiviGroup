@@ -32,6 +32,9 @@
         if (isiPhone6) {
             labelText.frame = CGRectMake(16, 40, self.frame.size.width - 32, 80);
             labelText.font = [UIFont fontWithName:FONTLITE size:12];
+        } else if (isiPhone5) {
+            labelText.frame = CGRectMake(16, 40, self.frame.size.width - 32, 80);
+            labelText.font = [UIFont fontWithName:FONTLITE size:10];
         }
         [self addSubview:labelText];
         
@@ -46,6 +49,8 @@
             buttonRates.frame = CGRectMake(100, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
             if (isiPhone6) {
                 buttonRates.frame = CGRectMake(80, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+            } else if (isiPhone5) {
+                buttonRates.frame = CGRectMake(60, (labelText.frame.size.height + labelText.frame.origin.y + 50) + 56 * i, 10, 10);
             }
             buttonRates.backgroundColor = nil;
             buttonRates.layer.borderColor = [UIColor colorWithHexString:@"949494"].CGColor;
@@ -58,6 +63,9 @@
             
             //Нужная кнопка----------------
             UIImageView * imageViewRates = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 16, 16)];
+            if (isiPhone5) {
+                imageViewRates.frame = CGRectMake(0, 0, 10, 10);
+            }
             imageViewRates.image = [UIImage imageNamed:@"checkImageButton.png"];
             imageViewRates.tag = i + 10;
             imageViewRates.alpha = 0.f;
@@ -67,6 +75,10 @@
             labelTextButton.text = [arrayName objectAtIndex:i];
             labelTextButton.textColor = [UIColor colorWithHexString:@"727372"];
             labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:15];
+            if (isiPhone5) {
+                labelTextButton.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + labelText.frame.origin.y + 47) + 56 * i, 300, 16);
+                labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:12];
+            }
             [self addSubview:labelTextButton];
         }
         
@@ -78,6 +90,10 @@
         [buttonSubscribe setTitle:@"ПОДПИСАТЬСЯ" forState:UIControlStateNormal];
         [buttonSubscribe setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSubscribe.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
+        if (isiPhone5) {
+            buttonSubscribe.frame = CGRectMake(self.frame.size.width / 2 - 92, self.frame.size.height - 128, 184, 40);
+            buttonSubscribe.layer.cornerRadius = 20;
+        }
         [buttonSubscribe addTarget:self action:@selector(buttonSubscribeAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonSubscribe];
         

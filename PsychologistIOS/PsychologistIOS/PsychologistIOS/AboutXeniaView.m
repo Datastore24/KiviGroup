@@ -21,6 +21,8 @@
     UITextField * textFieldMail;
     UILabel * labelPlaceHolderMail;
     BOOL isBoolEmail;
+    
+    UIScrollView * mainScrollView;
 }
 
 - (instancetype)initWithView: (UIView*) view
@@ -28,6 +30,11 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        if (isiPhone4s) {
+            mainScrollView.contentSize = CGSizeMake(0, 568);
+        }
+        [self addSubview:mainScrollView];
         
         isBoolEmail = YES;
         
@@ -40,11 +47,14 @@
         if (isiPhone6) {
             mainImageView.frame = CGRectMake(self.frame.size.width / 2 - 75, 20, 150, 150);
             mainImageView.layer.cornerRadius = 75;
+        } else if (isiPhone5) {
+            mainImageView.frame = CGRectMake(self.frame.size.width / 2 - 60, 20, 120, 120);
+            mainImageView.layer.cornerRadius = 60;
         }
 //        mainImageView.layer.borderColor = [UIColor colorWithHexString:@"f69679"].CGColor;
 //        mainImageView.layer.borderWidth = 0.4f;
         mainImageView.image = [UIImage imageNamed:@"imageXenia.png"];
-        [self addSubview:mainImageView];
+        [mainScrollView addSubview:mainImageView];
         
         //Заголовок------------------------------------
         UILabel * mainTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 208, self.frame.size.width, 22)];
@@ -55,8 +65,11 @@
         if (isiPhone6) {
             mainTitle.frame = CGRectMake(0, 188, self.frame.size.width, 20);
             mainTitle.font = [UIFont fontWithName:FONTREGULAR size:20];
+        } else if (isiPhone5) {
+            mainTitle.frame = CGRectMake(0, 158, self.frame.size.width, 18);
+            mainTitle.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        [self addSubview:mainTitle];
+        [mainScrollView addSubview:mainTitle];
         
         //Подзаголовок----------------------------------
         UILabel * subTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 238, self.frame.size.width, 16)];
@@ -66,8 +79,10 @@
         subTitle.font = [UIFont fontWithName:FONTLITE size:13];
         if (isiPhone6) {
             subTitle.frame = CGRectMake(0, 218, self.frame.size.width, 16);
+        } else if (isiPhone5) {
+            subTitle.frame = CGRectMake(0, 180, self.frame.size.width, 16);
         }
-        [self addSubview:subTitle];
+        [mainScrollView addSubview:subTitle];
         
         //Основной текст--------------------------------
         UILabel * textLabel = [[UILabel alloc] initWithFrame:CGRectMake(24, 268, self.frame.size.width - 48, 160)];
@@ -78,25 +93,32 @@
         if (isiPhone6) {
             textLabel.frame = CGRectMake(24, 238, self.frame.size.width - 48, 160);
             textLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+        } else if (isiPhone5) {
+            textLabel.frame = CGRectMake(24, 200, self.frame.size.width - 48, 140);
+            textLabel.font = [UIFont fontWithName:FONTREGULAR size:10];
         }
-        [self addSubview:textLabel];
+        [mainScrollView addSubview:textLabel];
         
         //Кнопка Рекомендую--------------------------------------
         UIButton * buttonRecommend = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonRecommend.frame = CGRectMake(24, 450, self.frame.size.width - 48, 48);
         buttonRecommend.backgroundColor = nil;
         buttonRecommend.layer.cornerRadius = 25;
-        if (isiPhone6) {
-            buttonRecommend.frame = CGRectMake(24, 415, self.frame.size.width - 48, 40);
-            buttonRecommend.layer.cornerRadius = 20;
-        }
         buttonRecommend.layer.borderColor = [UIColor colorWithHexString:@"4babe4"].CGColor;
         buttonRecommend.layer.borderWidth = 1.f;
         [buttonRecommend setTitle:@"РЕКОМЕНДУЮ" forState:UIControlStateNormal];
         [buttonRecommend setTitleColor:[UIColor colorWithHexString:@"4babe4"] forState:UIControlStateNormal];
         buttonRecommend.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone6) {
+            buttonRecommend.frame = CGRectMake(24, 415, self.frame.size.width - 48, 40);
+            buttonRecommend.layer.cornerRadius = 20;
+        } else if (isiPhone5 ) {
+            buttonRecommend.frame = CGRectMake(30, 345, self.frame.size.width - 60, 34);
+            buttonRecommend.layer.cornerRadius = 17;
+            buttonRecommend.titleLabel.font = [UIFont fontWithName:FONTLITE size:14];
+        }
         [buttonRecommend addTarget:self action:@selector(buttonRecommendAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonRecommend];
+        [mainScrollView addSubview:buttonRecommend];
         
         //Добавить в избранное----------------------------------------------
         UIButton * buttonContact = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -106,6 +128,10 @@
         if (isiPhone6) {
             buttonContact.frame = CGRectMake(24, 466, self.frame.size.width - 48, 40);
             buttonContact.layer.cornerRadius = 20;
+        } else if (isiPhone5 ) {
+            buttonContact.frame = CGRectMake(30, 385, self.frame.size.width - 60, 34);
+            buttonContact.layer.cornerRadius = 17;
+            buttonContact.titleLabel.font = [UIFont fontWithName:FONTLITE size:14];
         }
         buttonContact.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonContact.layer.borderWidth = 1.f;
@@ -113,18 +139,20 @@
         [buttonContact setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonContact.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         [buttonContact addTarget:self action:@selector(buttonContactAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonContact];
+        [mainScrollView addSubview:buttonContact];
         
         //Лейьл соц сети----------------------------------------------------
         UILabel * labelSocialNetwork = [[UILabel alloc] initWithFrame:CGRectMake(0, 562, self.frame.size.width, 16)];
         if (isiPhone6) {
             labelSocialNetwork.frame = CGRectMake(0, 515, self.frame.size.width, 16);
+        } else if (isiPhone5) {
+            labelSocialNetwork.frame = CGRectMake(0, 430, self.frame.size.width, 16);
         }
         labelSocialNetwork.text = @"Я в социальных сетях";
         labelSocialNetwork.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelSocialNetwork.textAlignment = NSTextAlignmentCenter;
         labelSocialNetwork.font = [UIFont fontWithName:FONTREGULAR size:13];
-        [self addSubview:labelSocialNetwork];
+        [mainScrollView addSubview:labelSocialNetwork];
         
         //Кнопки для соц сетей-----------------------------------------------
         for (int i = 0; i < arrayImage.count; i++) {
@@ -134,46 +162,59 @@
             if (isiPhone6) {
                 buttonSocial.frame = CGRectMake((self.frame.size.width / 2 - 117) + 48 * i, 540, 40, 40);
                 buttonSocial.layer.cornerRadius = 20;
+            } else if (isiPhone5 ) {
+                buttonSocial.frame = CGRectMake((self.frame.size.width / 2 - 97) + 40 * i, 450, 34, 34);
+                buttonSocial.layer.cornerRadius = 17;
             }
             UIImage * buttonSocialImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonSocial setImage:buttonSocialImage forState:UIControlStateNormal];
             buttonSocial.tag = 40 + i;
             [buttonSocial addTarget:self action:@selector(buttonSocialAction:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:buttonSocial];
+            [mainScrollView addSubview:buttonSocial];
         }
             
         //Сайт Ксении-----------------------------------------------------------
         UILabel * labelSite = [[UILabel alloc] initWithFrame:CGRectMake(0, 650, self.frame.size.width, 16)];
         if (isiPhone6) {
             labelSite.frame = CGRectMake(0, 585, self.frame.size.width, 16);
+        } else if (isiPhone5) {
+            labelSite.frame = CGRectMake(0, 487, self.frame.size.width, 16);
         }
         labelSite.text = @"www.ksenia.ru";
         labelSite.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelSite.textAlignment = NSTextAlignmentCenter;
         labelSite.font = [UIFont fontWithName:FONTREGULAR size:13];
-        [self addSubview:labelSite];
+        [mainScrollView addSubview:labelSite];
         
 #pragma mark - Create Alert
         
         //Затемнение-----------------------------------------------------
         darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        if (isiPhone4s) {
+            darkView.frame = CGRectMake(0, 0, self.frame.size.width, 568);
+        }
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
-        [self addSubview:darkView];
+        [mainScrollView addSubview:darkView];
         
         //Создаем алерт---------------------------------------------------
         alertViewXenia = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
         if (isiPhone6) {
             alertViewXenia.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
+        } else if (isiPhone5) {
+            alertViewXenia.frame = CGRectMake(self.frame.size.width / 2 - 150, -710, 300, 340);
         }
         alertViewXenia.layer.cornerRadius = 5.f;
         alertViewXenia.backgroundColor = [UIColor whiteColor];
         alertViewXenia.userInteractionEnabled = YES;
-        [self addSubview:alertViewXenia];
+        [mainScrollView addSubview:alertViewXenia];
         
         //Кнопка отмены--------------------------------------------------
         UIButton * buttonCancelXania = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonCancelXania.frame = CGRectMake(10, 10, 24, 24);
+        if (isiPhone5) {
+            buttonCancelXania.frame = CGRectMake(7, 7, 20, 20);
+        }
         UIImage *btnImage = [UIImage imageNamed:@"imageCancel.png"];
         [buttonCancelXania setImage:btnImage forState:UIControlStateNormal];
         [buttonCancelXania addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
@@ -187,6 +228,9 @@
         mainAlertText.editable = YES;
         mainAlertText.scrollEnabled = YES;
         mainAlertText.layer.cornerRadius = 5.f;
+        if (isiPhone5) {
+            mainAlertText.frame = CGRectMake(30, 30, alertViewXenia.frame.size.width - 60, 150);
+        }
         mainAlertText.layer.borderColor = [UIColor colorWithHexString:@"c0c0c0"].CGColor;
         mainAlertText.layer.borderWidth = 0.4f;
         [alertViewXenia addSubview:mainAlertText];
@@ -196,32 +240,40 @@
         viewMail.layer.cornerRadius = 5.f;
         if (isiPhone6) {
             viewMail.frame = CGRectMake(40, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 80, 40);
+        } else if (isiPhone5) {
+                viewMail.frame = CGRectMake(30, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 10, alertViewXenia.frame.size.width - 60, 30);
         }
         viewMail.layer.borderColor = [UIColor colorWithHexString:@"c0c0c0"].CGColor;
         viewMail.layer.borderWidth = 0.4f;
         [alertViewXenia addSubview:viewMail];
         
-        //Ввод телефона-----------------------------------------------------------------
+        //Ввод почты-----------------------------------------------------------------
         textFieldMail = [[UITextField alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
-        if (isiPhone6) {
-            textFieldMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
-        }
         textFieldMail.delegate = self;
         textFieldMail.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldMail.font = [UIFont fontWithName:FONTREGULAR size:19];
         textFieldMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
+        if (isiPhone6) {
+            textFieldMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
+        } else if (isiPhone5) {
+            textFieldMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 10, alertViewXenia.frame.size.width - 120, 30);
+            textFieldMail.font = [UIFont fontWithName:FONTREGULAR size:16];
+        }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelMail:) name:UITextFieldTextDidChangeNotification object:textFieldMail];
         [alertViewXenia addSubview:textFieldMail];
         
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderMail = [[UILabel alloc] initWithFrame:CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 48)];
-        if (isiPhone6) {
-            labelPlaceHolderMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
-        }
         labelPlaceHolderMail.tag = 3022;
         labelPlaceHolderMail.text = @"Введите Email";
         labelPlaceHolderMail.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         labelPlaceHolderMail.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone6) {
+            labelPlaceHolderMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 16, alertViewXenia.frame.size.width - 120, 40);
+        } else if (isiPhone5) {
+            labelPlaceHolderMail.frame = CGRectMake(60, mainAlertText.frame.size.height + mainAlertText.frame.origin.y + 10, alertViewXenia.frame.size.width - 120, 30);
+        }
+        labelPlaceHolderMail.font = [UIFont fontWithName:FONTREGULAR size:16];
         [alertViewXenia addSubview:labelPlaceHolderMail];
         
         //Кнопка открыть категорию--------------------------------------
@@ -232,6 +284,9 @@
         if (isiPhone6) {
             buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 16, alertViewXenia.frame.size.width - 80, 40);
             buttonSend.layer.cornerRadius = 20;
+        } else if (isiPhone5) {
+            buttonSend.frame = CGRectMake(40, viewMail.frame.origin.y + viewMail.frame.size.height + 30, alertViewXenia.frame.size.width - 80, 34);
+            buttonSend.layer.cornerRadius = 17;
         }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
@@ -263,6 +318,8 @@
         darkView.alpha = 0.4f;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3 animations:^{
+            mainScrollView.scrollEnabled = NO;
+            mainScrollView.contentSize = CGSizeMake(0, 0);
             CGRect rectAlert = alertViewXenia.frame;
             if (isiPhone6) {
                 rectAlert.origin.y += 680;
@@ -288,6 +345,8 @@
 //Действие кнопки закрыть алерт
 - (void) buttonCancelAction
 {
+    mainScrollView.scrollEnabled = YES;
+    mainScrollView.contentSize = CGSizeMake(0, 568);
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertViewXenia.frame;
         if (isiPhone6) {

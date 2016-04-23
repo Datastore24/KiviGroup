@@ -35,7 +35,15 @@
         self.frame = CGRectMake(16, 520, 382, 64);
         if (isiPhone6) {
             self.frame = CGRectMake(16, 460, 382, 56);
+        } else if (isiPhone5) {
+            self.frame = CGRectMake(0, 400, 320, 48);
         }
+        
+        if (isiPhone4s) {
+            self.frame = CGRectMake(0, 335, 320, 48);
+        }
+        
+        
         
         //Кнопка меню---------------------------------------------------------------------
         buttonInput = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -43,13 +51,17 @@
         buttonInput.backgroundColor = [UIColor colorWithHexString:@"48709d"];
         buttonInput.layer.borderColor = [UIColor whiteColor].CGColor;
         buttonInput.layer.cornerRadius = 30;
-        if (isiPhone6) {
-            buttonInput.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
-            buttonInput.layer.cornerRadius = 28;
-        }
         [buttonInput setTitle:@"ВОЙТИ" forState:UIControlStateNormal];
         [buttonInput setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonInput.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
+        if (isiPhone6) {
+            buttonInput.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
+            buttonInput.layer.cornerRadius = 28;
+        } else if (isiPhone5) {
+            buttonInput.frame = CGRectMake(self.frame.size.width / 2 - 140, 0, 280, 46);
+            buttonInput.layer.cornerRadius = 23;
+            buttonInput.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        }
         [buttonInput addTarget:self action:@selector(buttonInputAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonInput];
         
@@ -60,13 +72,17 @@
         buttonLogin.backgroundColor = [UIColor colorWithHexString:@"3cc354"];
         buttonLogin.layer.borderColor = [UIColor whiteColor].CGColor;
         buttonLogin.layer.cornerRadius = 30;
-        if (isiPhone6) {
-            buttonLogin.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
-            buttonLogin.layer.cornerRadius = 28;
-        }
         [buttonLogin setTitle:@"ПОЛУЧИТЬ КОД СМС" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLogin.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
+        if (isiPhone6) {
+            buttonLogin.frame = CGRectMake(self.frame.size.width / 2 - 170 - 16, 0, 340, 56);
+            buttonLogin.layer.cornerRadius = 28;
+        } else if (isiPhone5) {
+            buttonLogin.frame = CGRectMake(self.frame.size.width / 2 - 140, 0, 280, 46);
+            buttonLogin.layer.cornerRadius = 23;
+            buttonLogin.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        }
         [buttonLogin addTarget:self action:@selector(buttonLoginAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonLogin];
         
@@ -110,6 +126,12 @@
         viewPhone = [[UIView alloc] initWithFrame:CGRectMake(16, 440, self.frame.size.width - 32, 64)];
         if (isiPhone6) {
             viewPhone.frame = CGRectMake(16, 390, self.frame.size.width - 32, 56);
+        } else if (isiPhone5) {
+            viewPhone.frame = CGRectMake(20, 340, self.frame.size.width - 40, 48);
+        }
+        
+        if (isiPhone4s) {
+            viewPhone.frame = CGRectMake(20, 280, self.frame.size.width - 40, 48);
         }
         viewPhone.backgroundColor = [UIColor colorWithHexString:@"a04c43"];
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"e18c82"].CGColor;
@@ -125,6 +147,8 @@
         textFieldPhone.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
             textFieldPhone.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            textFieldPhone.font = [UIFont fontWithName:FONTLITE size:16];
         }
         textFieldPhone.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
@@ -138,13 +162,21 @@
         labelPlaceHolderPhone.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
             labelPlaceHolderPhone.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            labelPlaceHolderPhone.font = [UIFont fontWithName:FONTLITE size:16];
         }
         [viewPhone addSubview:labelPlaceHolderPhone];
         
-        //Вью ввода телефона----------------
+        //Вью ввода СМС----------------
         viewSMS = [[UIView alloc] initWithFrame:CGRectMake(800, 440, self.frame.size.width - 32, 64)];
         if (isiPhone6) {
             viewSMS.frame = CGRectMake(800, 390, self.frame.size.width - 32, 56);
+        } else if (isiPhone5) {
+            viewSMS.frame = CGRectMake(800, 340, self.frame.size.width - 40, 48);
+        }
+        
+        if (isiPhone4s) {
+            viewSMS.frame = CGRectMake(800, 280, self.frame.size.width - 40, 48);
         }
         viewSMS.backgroundColor = [UIColor colorWithHexString:@"a04c43"];
         viewSMS.layer.borderColor = [UIColor colorWithHexString:@"e18c82"].CGColor;
@@ -152,7 +184,7 @@
         viewSMS.layer.cornerRadius = 5;
         [mainScrollView addSubview:viewSMS];
         
-        //Ввод телефона-----------------------------------------------------------------
+        //Ввод смс-----------------------------------------------------------------
         textFieldSMS = [[UITextField alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
         textFieldSMS.delegate = self;
         textFieldSMS.tag = 120;
@@ -161,6 +193,8 @@
         textFieldSMS.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
             textFieldSMS.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            textFieldSMS.font = [UIFont fontWithName:FONTLITE size:16];
         }
         textFieldSMS.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelSMS:) name:UITextFieldTextDidChangeNotification object:textFieldSMS];
@@ -174,6 +208,8 @@
         labelPlaceHoldSMS.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
             labelPlaceHoldSMS.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            labelPlaceHoldSMS.font = [UIFont fontWithName:FONTLITE size:16];
         }
         [viewSMS addSubview:labelPlaceHoldSMS];
         
@@ -186,7 +222,15 @@
         if (isiPhone6) {
             labelOtherInput.frame = CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 86, self.frame.size.width, 16);
             labelOtherInput.font = [UIFont fontWithName:FONTREGULAR size:14.6];
+        } else if (isiPhone5) {
+            labelOtherInput.frame = CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 65, self.frame.size.width, 16);
+            labelOtherInput.font = [UIFont fontWithName:FONTREGULAR size:12.6];
         }
+        
+        if (isiPhone4s) {
+            labelOtherInput.frame = CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 55, self.frame.size.width, 16);
+        }
+        
         [self addSubview:labelOtherInput];
         
         for (int i = 0; i < 3; i++) {
@@ -196,6 +240,13 @@
             if (isiPhone6) {
                 buttonOtherInput.frame = CGRectMake(110 + 52 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 48, 48);
                 buttonOtherInput.layer.cornerRadius = 24;
+            } else if (isiPhone5) {
+                buttonOtherInput.frame = CGRectMake(93 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 40, 40);
+                buttonOtherInput.layer.cornerRadius = 20;
+            }
+            
+            if (isiPhone4s) {
+                buttonOtherInput.frame = CGRectMake(93 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 5, 40, 40);
             }
             UIImage *btnImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonOtherInput setImage:btnImage forState:UIControlStateNormal];
@@ -205,12 +256,20 @@
         //Кнопка условия лицензионного соглашения
         UIButton * buttonLicense = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 72, 152, 24);
-        if (isiPhone6) {
-            buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 66, 152, 24);
-        }
         [buttonLicense setTitle:@"Условия соглашения" forState:UIControlStateNormal];
         [buttonLicense setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLicense.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone6) {
+            buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 66, 152, 24);
+        } else if (isiPhone5) {
+            buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 52, 152, 24);
+            buttonLicense.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:11];
+        }
+        
+        if (isiPhone4s) {
+            buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 42, 152, 24);
+        }
+        
         [self addSubview:buttonLicense];
         
         
@@ -337,10 +396,30 @@
     }
     
     [UIView animateWithDuration:0.3 animations:^{
+        
+
+        if (isiPhone4s) {
+            mainScrollView.contentOffset = (CGPoint){
+                0, // ось x нас не интересует
+                100 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+            };
+        } else {
+        
+        if (isiPhone5) {
+            mainScrollView.contentOffset = (CGPoint){
+                0, // ось x нас не интересует
+                60 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+            };
+        } else {
         mainScrollView.contentOffset = (CGPoint){
             0, // ось x нас не интересует
             30 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
         };
+            
+            
+            
+        }
+        }
     }];
 
     textField.textAlignment = NSTextAlignmentLeft;
