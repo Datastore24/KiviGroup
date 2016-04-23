@@ -81,7 +81,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 56;
+    if (isiPhone5) {
+        return 50;
+    } else {
+        return 56;
+    }
 }
 
 #pragma mark - CustomCell
@@ -90,7 +94,10 @@
 - (UIView*) setTableCellWithTitle: (NSString*) title
 {
     //Основное окно ячейки--------------------------------
-    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
+    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 56)];
+    if (isiPhone5) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 50);
+    }
     cellView.backgroundColor = nil;
     
     //Заголовок-------------------------------------------
@@ -98,6 +105,9 @@
     labelTitle.text = title;
     labelTitle.textColor = [UIColor colorWithHexString:@"323131"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:19];
+    if (isiPhone5) {
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:16];
+    }
     [cellView addSubview:labelTitle];
     
     //Стрелка перехода-----------------------------------
@@ -107,6 +117,9 @@
     
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 55, cellView.frame.size.width - 32, 1)];
+    if (isiPhone5) {
+        viewBorder.frame = CGRectMake(16, 49, cellView.frame.size.width - 32, 1);
+    }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"d9d9d9"];
     [cellView addSubview:viewBorder];
     

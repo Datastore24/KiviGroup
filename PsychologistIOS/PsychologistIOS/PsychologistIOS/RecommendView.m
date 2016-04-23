@@ -72,6 +72,8 @@
         alertViewRecommend = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 192, -600, 384, 368)];
         if (isiPhone6) {
             alertViewRecommend.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
+        } else if (isiPhone5) {
+            alertViewRecommend.frame = CGRectMake(self.frame.size.width / 2 - 150, -700, 300, 340);
         }
         alertViewRecommend.layer.cornerRadius = 5.f;
         alertViewRecommend.backgroundColor = [UIColor whiteColor];
@@ -81,6 +83,9 @@
         //Кнопка отмены--------------------------------------------------
         UIButton * buttonCancelRecommend = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonCancelRecommend.frame = CGRectMake(10, 10, 24, 24);
+        if (isiPhone5) {
+            buttonCancelRecommend.frame = CGRectMake(7, 7, 20, 20);
+        }
         UIImage *btnImage = [UIImage imageNamed:@"imageCancel.png"];
         [buttonCancelRecommend setImage:btnImage forState:UIControlStateNormal];
         [buttonCancelRecommend addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
@@ -98,6 +103,8 @@
         UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 48)];
         if (isiPhone6) {
             viewPhone.frame = CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 40);
+        } else if (isiPhone5) {
+            viewPhone.frame = CGRectMake(32, 152, alertViewRecommend.frame.size.width - 64, 32);
         }
         viewPhone.layer.cornerRadius = 10.f;
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
@@ -110,6 +117,9 @@
         textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone5) {
+            textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:17];
+        }
         textFieldPhone.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
         [viewPhone addSubview:textFieldPhone];
@@ -120,6 +130,9 @@
         labelPlaceHolderPhone.text = @"Номер телефона";
         labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone5) {
+            labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:17];
+        }
         [viewPhone addSubview:labelPlaceHolderPhone];
         
         //Заголовок предпочитаемое время-------------------------------------------------
@@ -176,6 +189,9 @@
         if (isiPhone6) {
             buttonSend.frame = CGRectMake(40, pickerAlert.frame.origin.y + pickerAlert.frame.size.height + 16, alertViewRecommend.frame.size.width - 80, 40);
             buttonSend.layer.cornerRadius = 20;
+        } else if (isiPhone5) {
+            buttonSend.frame = CGRectMake(40, pickerAlert.frame.origin.y + pickerAlert.frame.size.height + 16, alertViewRecommend.frame.size.width - 80, 34);
+            buttonSend.layer.cornerRadius = 17;
         }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
@@ -200,9 +216,15 @@
 {
     //Основное вью ячейки-----------------------------------------
     UIView * viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 144)];
+    if (isiPhone5) {
+        viewCell.frame = CGRectMake(0, 0, self.frame.size.width, 130);
+    }
     
     //Картинка ячейки---------------------------------------------
     UIImageView * imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(32, 16, 80, 80)];
+    if (isiPhone5) {
+        imageViewCell.frame = CGRectMake(32, 16, 70, 70);
+    }
     imageViewCell.image = [UIImage imageNamed:image];
     [viewCell addSubview:imageViewCell];
     
@@ -211,10 +233,17 @@
     titleLabel.text = title;
     titleLabel.textColor = [UIColor colorWithHexString:@"8a8a8a"];
     titleLabel.font = [UIFont fontWithName:FONTREGULAR size:22];
+    if (isiPhone5) {
+        titleLabel.frame = CGRectMake(124, 16, 200, 20);
+        titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
+    }
     [viewCell addSubview:titleLabel];
     
     //Подзаголовок-----------------------------------------------
     UILabel * subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(144, 40, 200, 16)];
+    if (isiPhone5) {
+        subTitleLabel.frame = CGRectMake(124, 38, 200, 16);
+    }
     subTitleLabel.text = subTitle;
     subTitleLabel.textColor = [UIColor colorWithHexString:@"f26e6e"];
     subTitleLabel.font = [UIFont fontWithName:FONTLITE size:12];
@@ -222,6 +251,9 @@
     
     //Сайт-------------------------------------------------------
     UILabel * labelSite = [[UILabel alloc] initWithFrame:CGRectMake(144, 56, 200, 16)];
+    if (isiPhone5) {
+        labelSite.frame = CGRectMake(124, 56, 200, 16);
+    }
     labelSite.text = site;
     labelSite.textColor = [UIColor colorWithHexString:@"777575"];
     labelSite.font = [UIFont fontWithName:FONTLITE size:12];
@@ -229,6 +261,9 @@
     
     //Почта------------------------------------------------------
     UILabel * labelMail = [[UILabel alloc] initWithFrame:CGRectMake(32, 102, 90, 16)];
+    if (isiPhone5) {
+        labelMail.frame = CGRectMake(32, 95, 90, 16);
+    }
     labelMail.text = mail;
     labelMail.textColor = [UIColor colorWithHexString:@"f26e6e"];
     labelMail.font = [UIFont fontWithName:FONTLITE size:11];
@@ -244,6 +279,9 @@
         callButton.layer.cornerRadius = 10.f;
         [callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         callButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        if (isiPhone5) {
+            callButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+        }
         [callButton addTarget:self action:@selector(callButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [viewCell addSubview:callButton];
         
@@ -258,6 +296,9 @@
         backCallButton.layer.cornerRadius = 10.f;
         [backCallButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         backCallButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
+        if (isiPhone5) {
+            backCallButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+        }
         [backCallButton addTarget:self action:@selector(backCallButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [viewCell addSubview:backCallButton];
         
@@ -335,7 +376,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 144;
+    if (isiPhone5) {
+        return 130;
+    }  else {
+       return 144;
+    }
 }
 
 #pragma mark - UITextFieldDelegate

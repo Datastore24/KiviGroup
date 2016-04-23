@@ -99,6 +99,10 @@
     nickNameLabel.text = name;
     nickNameLabel.textColor = [UIColor colorWithHexString:@"d46458"];
     nickNameLabel.font = [UIFont fontWithName:FONTBOND size:13];
+    if (isiPhone5) {
+        nickNameLabel.frame = CGRectMake(20, 24, 20, 16);
+        nickNameLabel.font = [UIFont fontWithName:FONTBOND size:10];
+    }
     [nickNameLabel sizeToFit];
     [cellView addSubview:nickNameLabel];
     
@@ -107,6 +111,9 @@
     labelTextAction.text = action;
     labelTextAction.textColor = [UIColor colorWithHexString:@"333332"];
     labelTextAction.font = [UIFont fontWithName:FONTLITE size:13];
+    if (isiPhone5) {
+        labelTextAction.font = [UIFont fontWithName:FONTLITE size:10];
+    }
     [labelTextAction sizeToFit];
     [cellView addSubview:labelTextAction];
     
@@ -115,6 +122,10 @@
     labelTheme.text = theme;
     labelTheme.textColor = [UIColor colorWithHexString:@"333332"];
     labelTheme.font = [UIFont fontWithName:FONTBOND size:13];
+    if (isiPhone5) {
+        labelTheme.frame = CGRectMake(20, 48, 20, 16);
+        labelTheme.font = [UIFont fontWithName:FONTBOND size:10];
+    }
     [labelTheme sizeToFit];
     [cellView addSubview:labelTheme];
     
@@ -126,6 +137,9 @@
     labelTime.text = time;
     labelTime.textColor = [UIColor colorWithHexString:@"a4a4a3"];
     labelTime.font = [UIFont fontWithName:FONTLITE size:13];
+    if (isiPhone5) {
+        labelTime.font = [UIFont fontWithName:FONTLITE size:10];
+    }
     [labelTime sizeToFit];
     [cellView addSubview:labelTime];
     

@@ -28,6 +28,9 @@
     UITextView * mainMailText;
     UILabel * labelPlaceHolderText;
     BOOL isBoolText;
+    
+    //UIScrollView
+    UIScrollView * mainScrollView;
 }
 
 - (instancetype)initWithView: (UIView*) view
@@ -35,6 +38,12 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        if (isiPhone4s) {
+          mainScrollView.contentSize = CGSizeMake(0, 500);
+        }
+
+        [self addSubview:mainScrollView];
         
         isBoolName = YES;
         isBoolMail = YES;
@@ -46,28 +55,42 @@
         labelMainTitle.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         labelMainTitle.textAlignment = NSTextAlignmentCenter;
         labelMainTitle.font = [UIFont fontWithName:FONTREGULAR size:13];
-        [self addSubview:labelMainTitle];
+        if (isiPhone5) {
+            labelMainTitle.frame = CGRectMake(0, 30, self.frame.size.width, 16);
+            labelMainTitle.font = [UIFont fontWithName:FONTREGULAR size:12];
+        }
+        [mainScrollView addSubview:labelMainTitle];
         
         //Имя----------------
         //Вью Имени-------------------------------------------------------
         UIView * viewName = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 168, 88, 336, 40)];
         viewName.layer.cornerRadius = 10.f;
+        if (isiPhone5) {
+            viewName.frame = CGRectMake(self.frame.size.width / 2 - 140, 68, 280, 30);
+            viewName.layer.cornerRadius = 8.f;
+        }
         viewName.backgroundColor = [UIColor colorWithHexString:@"e5e5e5"];
         viewName.layer.borderColor = [UIColor colorWithHexString:@"4a4a4a"].CGColor;
         viewName.layer.borderWidth = 0.4f;
-        [self addSubview:viewName];
+        [mainScrollView addSubview:viewName];
         
         //Ввод Имени-----------------------------------------------------------------
         textFieldName = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, viewName.frame.size.width - 40, 40)];
         textFieldName.delegate = self;
         textFieldName.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldName.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5) {
+            textFieldName.frame = CGRectMake(20, 0, viewName.frame.size.width - 40, 30);
+        }
         textFieldName.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelName:) name:UITextFieldTextDidChangeNotification object:textFieldName];
         [viewName addSubview:textFieldName];
         
         //Плэйс холдер Имени----------------------------------------------------------
         labelPlaceHolderName = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, viewName.frame.size.width - 40, 40)];
+        if (isiPhone5) {
+            labelPlaceHolderName.frame = CGRectMake(20, 0, viewName.frame.size.width - 40, 30);
+        }
         labelPlaceHolderName.text = @"Имя";
         labelPlaceHolderName.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         labelPlaceHolderName.font = [UIFont fontWithName:FONTREGULAR size:13];
@@ -77,16 +100,23 @@
         //Вью Почты-----------------------------------------------------------------
         UIView * viewMail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 168, 160, 336, 40)];
         viewMail.layer.cornerRadius = 10.f;
+        if (isiPhone5) {
+            viewMail.frame = CGRectMake(self.frame.size.width / 2 - 140, 120, 280, 30);
+            viewMail.layer.cornerRadius = 8.f;
+        }
         viewMail.backgroundColor = [UIColor colorWithHexString:@"e5e5e5"];
         viewMail.layer.borderColor = [UIColor colorWithHexString:@"4a4a4a"].CGColor;
         viewMail.layer.borderWidth = 0.4f;
-        [self addSubview:viewMail];
+        [mainScrollView addSubview:viewMail];
         
         //Ввод Имени-----------------------------------------------------------------
         textFieldMail = [[UITextField alloc] initWithFrame:CGRectMake(20, 0, viewName.frame.size.width - 40, 40)];
         textFieldMail.delegate = self;
         textFieldMail.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldMail.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5) {
+            textFieldMail.frame = CGRectMake(20, 0, viewName.frame.size.width - 40, 30);
+        }
         textFieldMail.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelMail:) name:UITextFieldTextDidChangeNotification object:textFieldMail];
         [viewMail addSubview:textFieldMail];
@@ -96,19 +126,26 @@
         labelPlaceHolderMail.text = @"Email";
         labelPlaceHolderMail.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         labelPlaceHolderMail.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5) {
+            labelPlaceHolderMail.frame = CGRectMake(20, 0, viewName.frame.size.width - 40, 30);
+        }
         [viewMail addSubview:labelPlaceHolderMail];
         
         //Текст Письма----------
         //Вью текста---------------------------------------------------------------
         UIView * viewText = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 168, 232, 336, 160)];
         viewText.layer.cornerRadius = 10.f;
+        if (isiPhone5) {
+            viewText.frame = CGRectMake(self.frame.size.width / 2 - 140, 180, 280, 140);
+            viewText.layer.cornerRadius = 8.f;
+        }
         viewText.backgroundColor = [UIColor colorWithHexString:@"e5e5e5"];
         viewText.layer.borderColor = [UIColor colorWithHexString:@"4a4a4a"].CGColor;
         viewText.layer.borderWidth = 0.4f;
-        [self addSubview:viewText];
+        [mainScrollView addSubview:viewText];
         
         //Текст вью----------------------------------------------------------------
-        mainMailText = [[UITextView alloc] initWithFrame:CGRectMake(16, 0, viewText.frame.size.width - 32, 158)];
+        mainMailText = [[UITextView alloc] initWithFrame:CGRectMake(16, 0, viewText.frame.size.width - 32, 140)];
         mainMailText.delegate = self;
         mainMailText.textColor = [UIColor colorWithHexString:@"4f4f4e"];
         mainMailText.font = [UIFont fontWithName:FONTREGULAR size:13];
@@ -134,47 +171,60 @@
         [buttonSend setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSend.titleLabel.font = [UIFont fontWithName:FONTBOND size:15];
         buttonSend.layer.cornerRadius = 10.f;
+        if (isiPhone5) {
+          buttonSend.frame = CGRectMake(self.frame.size.width / 2 - 140, viewText.frame.size.height + viewText.frame.origin.y + 20, 280, 40);
+            buttonSend.layer.cornerRadius = 8.f;
+        }
         [buttonSend addTarget:self action:@selector(buttonSendAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonSend];
+        [mainScrollView addSubview:buttonSend];
         
         //Кнопка скайпа-------------------------------------------------------------------
         UIButton * buttonSkype = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonSkype.frame = CGRectMake(40, buttonSend.frame.origin.y + buttonSend.frame.size.height + 100, 32, 32);
         if (isiPhone6) {
             buttonSkype.frame = CGRectMake(40, buttonSend.frame.origin.y + buttonSend.frame.size.height + 60, 32, 32);
+        } else if (isiPhone5) {
+             buttonSkype.frame = CGRectMake(15, buttonSend.frame.origin.y + buttonSend.frame.size.height + 40, 28, 28);
         }
         UIImage * imgeButtonSkype = [UIImage imageNamed:@"skypeButtonImage.png"];
         [buttonSkype setImage:imgeButtonSkype forState:UIControlStateNormal];
         [buttonSkype addTarget:self action:@selector(buttonSkypeAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonSkype];
+        [mainScrollView addSubview:buttonSkype];
         
         //Лейбл кнопки скайп--------------------------------------------------------------
         UILabel * labelButtonSkype = [[UILabel alloc] initWithFrame:CGRectMake(80, buttonSkype.frame.origin.y + 10, 60, 16)];
+        if (isiPhone5) {
+            labelButtonSkype.frame = CGRectMake(55, buttonSkype.frame.origin.y + 10, 60, 16);
+        }
         labelButtonSkype.text = @"Support";
         labelButtonSkype.textColor = [UIColor colorWithHexString:@"5c5b5a"];
         labelButtonSkype.font = [UIFont fontWithName:FONTREGULAR size:15];
-        [self addSubview:labelButtonSkype];
+        [mainScrollView addSubview:labelButtonSkype];
         
         //Кнопка звонка-------------------------------------------------------------------
         UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonPhone.frame = CGRectMake(236, buttonSkype.frame.origin.y + 7, 32, 24);
         if (isiPhone6) {
             buttonPhone.frame = CGRectMake(206, buttonSkype.frame.origin.y + 7, 32, 24);
+        } else if (isiPhone5) {
+            buttonPhone.frame = CGRectMake(146, buttonSkype.frame.origin.y + 5, 32, 24);
         }
         UIImage * imgeButtonPhone = [UIImage imageNamed:@"phoneButtonImage.png"];
         [buttonPhone setImage:imgeButtonPhone forState:UIControlStateNormal];
         [buttonPhone addTarget:self action:@selector(buttonPhoneAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonPhone];
+        [mainScrollView addSubview:buttonPhone];
         
         //Лейбл кнопки позвонить--------------------------------------------------------------
         UILabel * labelButtonPhone = [[UILabel alloc] initWithFrame:CGRectMake(272, buttonPhone.frame.origin.y + 4, 160, 16)];
         if (isiPhone6) {
             labelButtonPhone.frame = CGRectMake(242, buttonPhone.frame.origin.y + 4, 160, 16);
+        } else if (isiPhone5) {
+            labelButtonPhone.frame = CGRectMake(192, buttonPhone.frame.origin.y + 4, 160, 16);
         }
         labelButtonPhone.text = @"8 (999) 99 99 99";
         labelButtonPhone.textColor = [UIColor colorWithHexString:@"5c5b5a"];
         labelButtonPhone.font = [UIFont fontWithName:FONTREGULAR size:15];
-        [self addSubview:labelButtonPhone];
+        [mainScrollView addSubview:labelButtonPhone];
         
         
         
@@ -280,6 +330,33 @@ shouldChangeTextInRange:(NSRange)range
         [textView resignFirstResponder];
     }
     return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        if (isiPhone4s) {
+            mainScrollView.contentOffset = (CGPoint){
+                0, // ось x нас не интересует
+                160 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+            };
+        } else {
+        mainScrollView.contentOffset = (CGPoint){
+            0, // ось x нас не интересует
+            80 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+        };
+    }
+    }];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        mainScrollView.contentOffset = (CGPoint){
+            0, // ось x нас не интересует
+            0 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+        };
+    }];
 }
 
 #pragma mark - DEALLOC

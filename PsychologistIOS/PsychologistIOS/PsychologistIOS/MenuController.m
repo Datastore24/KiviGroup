@@ -96,6 +96,9 @@
             for (int i = 0; i < 5; i ++) {
                 UIButton * buttonMenu = [UIButton buttonWithType:UIButtonTypeCustom];
                 buttonMenu.frame = CGRectMake(20 + 40 * i, 46, 32, 32);
+                if (isiPhone5) {
+                    buttonMenu.frame = CGRectMake(20 + 40 * i, 41, 32, 32);
+                }
                 buttonMenu.layer.cornerRadius = 16;
                 UIImage * buttonImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
                 [buttonMenu setImage:buttonImage forState:UIControlStateNormal];
@@ -141,13 +144,24 @@
     if (indexPath.row == 7) {
         return 15;
     } else if (indexPath.row == 1) {
+        if (isiPhone5) {
+            return 50;
+        } else {
         return 60;
+        }
     } else if (indexPath.row == 10) {
+        if (isiPhone5) {
+            return 75;
+        } else {
         return 90;
+        }
     } else {
+        if (isiPhone5) {
+            return 30;
+        } else {
         return 40;
     }
-    
+    }
 }
 
 #pragma mark - Action Methods

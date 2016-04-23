@@ -117,6 +117,9 @@
     //Временная картинка до появления аудиоплеера---------
     //Заменить на реальную логику, картинкой музыку не послушаешь ))
     UIImageView * imageViewPlayer = [[UIImageView alloc] initWithFrame:CGRectMake(16, 96, cellView.frame.size.width - 32, 32)];
+    if (isiPhone5) {
+        imageViewPlayer.frame = CGRectMake(16, 96, cellView.frame.size.width - 32, 20);
+    }
     imageViewPlayer.image = [UIImage imageNamed:@"playerImage.png"];
     [cellView addSubview:imageViewPlayer];
     

@@ -67,6 +67,8 @@
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
         if (isiPhone6) {
             mainTableView.frame = CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40);
+        } else if (isiPhone5) {
+            mainTableView.frame = CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40);
         }
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -125,6 +127,8 @@
 {
     if (isiPhone6) {
         return 112;
+    } else if (isiPhone5) {
+        return 100;
     } else {
         return 128;
     }
@@ -143,6 +147,8 @@
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
     if (isiPhone6) {
         cellView.frame = CGRectMake(0, 0, self.frame.size.width, 112);
+    } else if (isiPhone5) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 100);
     }
     cellView.backgroundColor = nil;
     
@@ -151,6 +157,8 @@
     imageViewCategory.layer.cornerRadius = 0.5;
     if (isiPhone6) {
         imageViewCategory.frame = CGRectMake(12, 11, 88, 88);
+    } else if (isiPhone5) {
+        imageViewCategory.frame = CGRectMake(12, 11, 80, 80);
     }
     imageViewCategory.image = [UIImage imageNamed:image];
     [cellView addSubview:imageViewCategory];
@@ -164,6 +172,9 @@
     if (isiPhone6) {
         labelTitle.frame = CGRectMake(120, 16, 216, 24);
         labelTitle.font = [UIFont fontWithName:FONTLITE size:22];
+    } else if (isiPhone5) {
+        labelTitle.frame = CGRectMake(100, 14, 200, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:18];
     }
     [labelTitle sizeToFit];
     [cellView addSubview:labelTitle];
@@ -177,6 +188,9 @@
     if (isiPhone6) {
         labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
         labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
+    } else if (isiPhone5) {
+        labelSubTitle.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:12];
     }
     [labelSubTitle sizeToFit];
     [cellView addSubview:labelSubTitle];
@@ -185,6 +199,8 @@
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
     if (isiPhone6) {
         viewBorder.frame = CGRectMake(16, 111, cellView.frame.size.width - 32, 1);
+    } else if (isiPhone5) {
+        viewBorder.frame = CGRectMake(16, 99, cellView.frame.size.width - 32, 1);
     }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
@@ -197,6 +213,9 @@
         if (isiPhone6) {
             viewNotification.frame = CGRectMake(cellView.frame.size.width - 56, 16, 34, 34);
             viewNotification.layer.cornerRadius = 17;
+        } else if (isiPhone5) {
+            viewNotification.frame = CGRectMake(cellView.frame.size.width - 56, 16, 30, 30);
+            viewNotification.layer.cornerRadius = 15;
         }
         [cellView addSubview:viewNotification];
         
@@ -208,6 +227,9 @@
         if (isiPhone6) {
             labelNotification.frame = CGRectMake(0, 0, 34, 34);
             labelNotification.font = [UIFont fontWithName:FONTREGULAR size:17];
+        } else if (isiPhone5) {
+            labelNotification.frame = CGRectMake(0, 0, 30, 30);
+            labelNotification.font = [UIFont fontWithName:FONTREGULAR size:15];
         }
         [viewNotification addSubview:labelNotification];
     }
@@ -222,6 +244,9 @@
         if (isiPhone6) {
             labelTrial.frame = CGRectMake(120, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 200, 16);
             labelTrial.font = [UIFont fontWithName:FONTLITE size:12];
+        } else if (isiPhone5) {
+            labelTrial.frame = CGRectMake(100, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 200, 16);
+            labelTrial.font = [UIFont fontWithName:FONTLITE size:10];
         }
         [cellView addSubview:labelTrial];
     } else if ([trial integerValue] == 2) {
@@ -233,6 +258,9 @@
         if (isiPhone6) {
             buttonBuyTrial.frame = CGRectMake(111, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 110, 16);
             buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        } else if (isiPhone5) {
+            buttonBuyTrial.frame = CGRectMake(90, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 110, 16);
+            buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:10];
         }
         [buttonBuyTrial addTarget:self action:@selector(buttonBuyTrialActiob) forControlEvents:UIControlEventTouchUpInside];
         [cellView addSubview:buttonBuyTrial];

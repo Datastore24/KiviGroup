@@ -92,6 +92,9 @@
         
         //Создаем алерт---------------------------------------------------
         alertView = [[UIImageView alloc] initWithFrame:CGRectMake(24, -600, self.frame.size.width - 48, 408)];
+        if (isiPhone5) {
+            alertView.frame = CGRectMake(24, -600, self.frame.size.width - 48, 310);
+        }
         alertView.image = [UIImage imageNamed:@"alertViewImage.png"];
         alertView.userInteractionEnabled = YES;
         [self addSubview:alertView];
@@ -99,6 +102,9 @@
         //Кнопка отмены--------------------------------------------------
         UIButton * buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonCancel.frame = CGRectMake(24, 56, 32, 32);
+        if (isiPhone5) {
+            buttonCancel.frame = CGRectMake(10, 40, 25, 25);
+        }
         UIImage *btnImage = [UIImage imageNamed:@"imageCancel.png"];
         [buttonCancel setImage:btnImage forState:UIControlStateNormal];
         [buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
@@ -106,6 +112,9 @@
         
         //Значек денег----------------------------------------------------
         mainMoneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(alertView.frame.size.width / 2 - 20, 16, 40, 40)];
+        if (isiPhone5) {
+            mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
+        }
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
@@ -114,6 +123,10 @@
         alertTitleLabel.textAlignment = NSTextAlignmentCenter;
         alertTitleLabel.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
+        if (isiPhone5) {
+            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 13);
+            alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
+        }
         [alertView addSubview:alertTitleLabel];
         
         //Основной текст--------------------------------------------------
@@ -122,6 +135,10 @@
         mainAlertText.textAlignment = NSTextAlignmentCenter;
         mainAlertText.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         mainAlertText.font = [UIFont fontWithName:FONTLITE size:13];
+        if (isiPhone5) {
+            mainAlertText.frame = CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 4, alertView.frame.size.width - 60, 100);
+            mainAlertText.font = [UIFont fontWithName:FONTLITE size:10];
+        }
         [alertView addSubview:mainAlertText];
         
         //Кнопка открыть категорию--------------------------------------
@@ -134,6 +151,11 @@
         [buttonOpenCategory setTitle:@"ОТКРЫТЬ ТЕМУ" forState:UIControlStateNormal];
         [buttonOpenCategory setTitleColor:[UIColor colorWithHexString:@"36b34c"] forState:UIControlStateNormal];
         buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone5) {
+            buttonOpenCategory.frame = CGRectMake(25, 180, alertView.frame.size.width - 50, 36);
+            buttonOpenCategory.layer.cornerRadius = 18;
+            buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [buttonOpenCategory addTarget:self action:@selector(buttonOpenCategoryAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonOpenCategory];
         
@@ -147,6 +169,11 @@
         [buttonToFavorites setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
         [buttonToFavorites setTitleColor:[UIColor colorWithHexString:@"147ab4"] forState:UIControlStateNormal];
         buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone5) {
+            buttonToFavorites.frame = CGRectMake(25, 222, alertView.frame.size.width - 50, 36);
+            buttonToFavorites.layer.cornerRadius = 18;
+            buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonToFavorites];
         
@@ -160,6 +187,11 @@
         [buttonBuy setTitle:@"ПОДПИСАТЬСЯ НА ТЕМУ" forState:UIControlStateNormal];
         [buttonBuy setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonBuy.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone5) {
+            buttonBuy.frame = CGRectMake(25, 264, alertView.frame.size.width - 50, 36);
+            buttonBuy.layer.cornerRadius = 18;
+            buttonBuy.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
+        }
         [buttonBuy addTarget:self action:@selector(buttonBuyAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonBuy];
         
@@ -237,6 +269,8 @@
             CGRect rectAlert = alertView.frame;
             if (isiPhone6) {
                 rectAlert.origin.y += 680;
+            } else if (isiPhone5) {
+                rectAlert.origin.y += 650;
             } else {
                 rectAlert.origin.y += 760;
             }
@@ -248,9 +282,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (isiPhone6) {
         return 112;
+    } else if (isiPhone5) {
+        return 100;
     } else {
         return 128;
     }
@@ -268,6 +303,8 @@
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
     if (isiPhone6) {
         cellView.frame = CGRectMake(0, 0, self.frame.size.width, 112);
+    } else if (isiPhone5) {
+        cellView.frame = CGRectMake(0, 0, self.frame.size.width, 100);
     }
     cellView.backgroundColor = nil;
     
@@ -276,6 +313,8 @@
     imageViewCategory.layer.cornerRadius = 0.5;
     if (isiPhone6) {
         imageViewCategory.frame = CGRectMake(12, 11, 88, 88);
+    } else if (isiPhone5) {
+        imageViewCategory.frame = CGRectMake(12, 11, 80, 80);
     }
     imageViewCategory.image = [UIImage imageNamed:image];
     [cellView addSubview:imageViewCategory];
@@ -289,6 +328,9 @@
     if (isiPhone6) {
         labelTitle.frame = CGRectMake(120, 16, 216, 24);
         labelTitle.font = [UIFont fontWithName:FONTLITE size:22];
+    } else if (isiPhone5) {
+        labelTitle.frame = CGRectMake(100, 14, 200, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:18];
     }
     [labelTitle sizeToFit];
     [cellView addSubview:labelTitle];
@@ -302,6 +344,9 @@
     if (isiPhone6) {
         labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
         labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
+    } else if (isiPhone5) {
+        labelSubTitle.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:12];
     }
     [labelSubTitle sizeToFit];
     [cellView addSubview:labelSubTitle];
@@ -310,6 +355,8 @@
     UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 80, 40, 40)];
     if (isiPhone6) {
         moneyImage.frame = CGRectMake(70, 70, 35, 35);
+    } else if (isiPhone5) {
+        moneyImage.frame = CGRectMake(65, 65, 30, 30);
     }
     moneyImage.image = [UIImage imageNamed:@"imageMoney.png"];
     [cellView addSubview:moneyImage];
@@ -321,6 +368,8 @@
     UIImageView * arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 48, 40, 16, 48)];
     if (isiPhone6) {
         arrowImage.frame = CGRectMake(cellView.frame.size.width - 48, cellView.frame.size.height / 2 - 24, 16, 48);
+    } else if (isiPhone5) {
+        arrowImage.frame = CGRectMake(cellView.frame.size.width - 40, cellView.frame.size.height / 2 - 20, 13, 40);
     }
     arrowImage.image = [UIImage imageNamed:@"arrowImage.png"];
     [cellView addSubview:arrowImage];
@@ -329,6 +378,8 @@
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
     if (isiPhone6) {
         viewBorder.frame = CGRectMake(16, 111, cellView.frame.size.width - 32, 1);
+    } else if (isiPhone5) {
+        viewBorder.frame = CGRectMake(16, 99, cellView.frame.size.width - 32, 1);
     }
     viewBorder.backgroundColor = [UIColor colorWithHexString:@"c0c0c0"];
     [cellView addSubview:viewBorder];
@@ -345,6 +396,8 @@
         
         if (isiPhone6) {
             rectAlert.origin.y -= 680;
+        } else if (isiPhone5) {
+            rectAlert.origin.y -= 650;
         } else {
             rectAlert.origin.y -= 760;
         }

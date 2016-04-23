@@ -76,10 +76,18 @@
         //Телефон-----------
         //Вью для телевона------------------------------------------------
         UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, 96, 328, 48)];
+        viewPhone.layer.cornerRadius = 24.f;
         if (isiPhone6) {
             viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 164, 66, 328, 48);
+        } else if (isiPhone5) {
+            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 140, 55, 280, 42);
+            viewPhone.layer.cornerRadius = 21.f;
         }
-        viewPhone.layer.cornerRadius = 24.f;
+        
+        if (isiPhone4s) {
+            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 140, 15, 280, 42);
+        }
+        
         viewPhone.backgroundColor = [UIColor whiteColor];
         viewPhone.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewPhone.layer.borderWidth = 0.4f;
@@ -91,6 +99,9 @@
         textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:22];
+        if (isiPhone5) {
+            textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         textFieldPhone.textColor = [UIColor colorWithHexString:@"515050"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
         [viewPhone addSubview:textFieldPhone];
@@ -100,6 +111,9 @@
         labelPlaceHolderPhone.text = @"Телефон";
         labelPlaceHolderPhone.textColor = [UIColor colorWithHexString:@"515050"];
         labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:22];
+        if (isiPhone5) {
+            labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [viewPhone addSubview:labelPlaceHolderPhone];
         
         //Кнопка подтвердить через СМС-----------------------------
@@ -107,6 +121,8 @@
         buttonСonfirm.frame = CGRectMake(78, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
         if (isiPhone6) {
             buttonСonfirm.frame = CGRectMake(58, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
+        } else if (isiPhone5) {
+            buttonСonfirm.frame = CGRectMake(40, viewPhone.frame.size.height + viewPhone.frame.origin.y + 4, 128, 16);
         }
         [buttonСonfirm setTitle:@"Подтвердить через СМС" forState:UIControlStateNormal];
         [buttonСonfirm setTitleColor: [UIColor colorWithHexString:@"8e8d8d"] forState:UIControlStateNormal];
@@ -119,6 +135,10 @@
         //Вью для Email------------------------------------------------
         UIView * viewEmail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 48, 328, 48)];
         viewEmail.layer.cornerRadius = 24.f;
+        if (isiPhone5) {
+                viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 25, 280, 42);
+                viewEmail.layer.cornerRadius = 21.f;
+            }
         viewEmail.backgroundColor = [UIColor whiteColor];
         viewEmail.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewEmail.layer.borderWidth = 0.4f;
@@ -130,6 +150,9 @@
         textFieldEmail.keyboardType = UIKeyboardTypeURL;
         textFieldEmail.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         textFieldEmail.textColor = [UIColor colorWithHexString:@"515050"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEmail:) name:UITextFieldTextDidChangeNotification object:textFieldEmail];
         [viewEmail addSubview:textFieldEmail];
@@ -139,12 +162,19 @@
         labelPlaceHolderEmail.text = @"Введите Email";
         labelPlaceHolderEmail.textColor = [UIColor colorWithHexString:@"515050"];
         labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [viewEmail addSubview:labelPlaceHolderEmail];
         
         //NickName-----------
         //Вью для NickName------------------------------------------------
         UIView * viewNickName = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewEmail.frame.size.height + viewEmail.frame.origin.y + 16, 328, 48)];
         viewNickName.layer.cornerRadius = 24.f;
+        if (isiPhone5) {
+            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewEmail.frame.size.height + viewEmail.frame.origin.y + 12, 280, 42);
+            viewNickName.layer.cornerRadius = 21.f;
+        }
         viewNickName.backgroundColor = [UIColor whiteColor];
         viewNickName.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewNickName.layer.borderWidth = 0.4f;
@@ -155,6 +185,9 @@
         textFieldviewNickName.delegate = self;
         textFieldviewNickName.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldviewNickName.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            textFieldviewNickName.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         textFieldviewNickName.textColor = [UIColor colorWithHexString:@"515050"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelNickName:) name:UITextFieldTextDidChangeNotification object:textFieldviewNickName];
         [viewNickName addSubview:textFieldviewNickName];
@@ -164,6 +197,9 @@
         labelPlaceHolderNickName.text = @"Ник";
         labelPlaceHolderNickName.textColor = [UIColor colorWithHexString:@"515050"];
         labelPlaceHolderNickName.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            labelPlaceHolderNickName.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [viewNickName addSubview:labelPlaceHolderNickName];
         
         //Город-----------
@@ -171,6 +207,10 @@
         buttonCity = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonCity.frame = CGRectMake(self.frame.size.width / 2 - 164, viewNickName.frame.size.height + viewNickName.frame.origin.y + 16, 328, 48);
         buttonCity.layer.cornerRadius = 24.f;
+        if (isiPhone5) {
+            buttonCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 42);
+            buttonCity.layer.cornerRadius = 21.f;
+        }
         buttonCity.backgroundColor = [UIColor whiteColor];
         buttonCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonCity.layer.borderWidth = 0.4f;
@@ -178,16 +218,26 @@
         [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
         [buttonCity setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonCity.contentEdgeInsets = UIEdgeInsetsMake(0, -200, 0, 0);
+        if (isiPhone5) {
+            buttonCity.contentEdgeInsets = UIEdgeInsetsMake(0, -175, 0, 0);
+        }
         buttonCity.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         [self addSubview:buttonCity];
         
         UIImageView * imageViewButton = [[UIImageView alloc] initWithFrame:CGRectMake(buttonCity.frame.size.width - 64, 24, 16, 8)];
+        if (isiPhone5) {
+            imageViewButton.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
+        }
         imageViewButton.image = [UIImage imageNamed:@"arrowDownImage.png"];
         [buttonCity addSubview:imageViewButton];
         
         //Вью для города подвержд----------------------
         viewCity = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewNickName.frame.size.height + viewNickName.frame.origin.y + 16, 328, 48)];
         viewCity.layer.cornerRadius = 24.f;
+        if (isiPhone5) {
+            viewCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 42);
+            viewCity.layer.cornerRadius = 21.f;
+        }
         viewCity.backgroundColor = [UIColor whiteColor];
         viewCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewCity.layer.borderWidth = 0.4f;
@@ -198,6 +248,9 @@
         labelCity.text = @"";
         labelCity.textColor = [UIColor colorWithHexString:@"515050"];
         labelCity.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            labelCity.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [viewCity addSubview:labelCity];
         
         //Дата рождения-----------
@@ -205,6 +258,10 @@
         UIButton * buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, buttonCity.frame.size.height + buttonCity.frame.origin.y + 16, 328, 48);
         buttonBirth.layer.cornerRadius = 24.f;
+        if (isiPhone5) {
+            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonCity.frame.size.height + buttonCity.frame.origin.y + 12, 280, 42);
+            buttonBirth.layer.cornerRadius = 21.f;
+        }
         buttonBirth.backgroundColor = [UIColor whiteColor];
         buttonBirth.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonBirth.layer.borderWidth = 0.4f;
@@ -213,9 +270,15 @@
         [buttonBirth setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonBirth.contentEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
         buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [self addSubview:buttonBirth];
         
         UIImageView * imageViewButtonBirth = [[UIImageView alloc] initWithFrame:CGRectMake(buttonBirth.frame.size.width - 64, 24, 16, 8)];
+        if (isiPhone5) {
+            imageViewButtonBirth.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
+        }
         imageViewButtonBirth.image = [UIImage imageNamed:@"arrowDownImage.png"];
         [buttonBirth addSubview:imageViewButtonBirth];
         
@@ -232,9 +295,17 @@
         [buttonMaritalStatus setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonMaritalStatus.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
         buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 12, 280, 42);
+            buttonMaritalStatus.layer.cornerRadius = 21.f;
+            buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
         [self addSubview:buttonMaritalStatus];
         
         UIImageView * imageViewButtonbuttonMaritalStatus = [[UIImageView alloc] initWithFrame:CGRectMake(buttonMaritalStatus.frame.size.width - 64, 24, 16, 8)];
+        if (isiPhone5) {
+            imageViewButtonbuttonMaritalStatus.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
+        }
         imageViewButtonbuttonMaritalStatus.image = [UIImage imageNamed:@"arrowDownImage.png"];
         [buttonMaritalStatus addSubview:imageViewButtonbuttonMaritalStatus];
         
@@ -256,13 +327,21 @@
         //Кнопка сохранить----------------------------------------
         UIButton * buttonSave = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 28, 184, 48);
-        if (isiPhone6) {
-                    buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y, 184, 48);
-        }
         buttonSave.layer.cornerRadius = 24;
         [buttonSave setTitle:@"СОХРАНИТЬ" forState:UIControlStateNormal];
         [buttonSave setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSave.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone6) {
+            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y, 184, 48);
+        } else if (isiPhone5) {
+            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y , 160, 40);
+            buttonSave.layer.cornerRadius = 20;
+            buttonSave.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
+        }
+        
+        if (isiPhone4s) {
+           buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y - 20, 160, 40);
+        }
         buttonSave.backgroundColor = [UIColor colorWithHexString:@"ea504f"];
         [buttonSave addTarget:self action:@selector(buttonSaveAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonSave];
@@ -270,6 +349,9 @@
         //Кнопка сменить пароль------------------------------------
         UIButton * changePussButton = [UIButton buttonWithType:UIButtonTypeSystem];
         changePussButton.frame = CGRectMake(self.frame.size.width / 2 - 52, buttonSave.frame.size.height + buttonSave.frame.origin.y + 16, 104, 16);
+        if (isiPhone4s) {
+                    changePussButton.frame = CGRectMake(self.frame.size.width / 2 - 52, buttonSave.frame.size.height + buttonSave.frame.origin.y + 5, 104, 16);
+        }
         changePussButton.backgroundColor = nil;
         [changePussButton setTitle:@"Сменить пароль" forState:UIControlStateNormal];
         [changePussButton setTitleColor:[UIColor colorWithHexString:@"5b5b5b"] forState:UIControlStateNormal];
@@ -290,6 +372,8 @@
         if (isiPhone6) {
             alertViewPersonalArea.frame = CGRectMake(self.frame.size.width / 2 - 162, -600, 324, 368);
 
+        } else if (isiPhone5) {
+            alertViewPersonalArea.frame = CGRectMake(self.frame.size.width / 2 - 150, -700, 300, 340);
         }
         alertViewPersonalArea.layer.cornerRadius = 5.f;
         alertViewPersonalArea.backgroundColor = [UIColor whiteColor];
