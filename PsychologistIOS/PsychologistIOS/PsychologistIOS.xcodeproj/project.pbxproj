@@ -153,6 +153,7 @@
 		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
 		77D297E11CADAC7D0057CC1C /* VK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E01CADAC7D0057CC1C /* VK.png */; };
 		77D297E31CADB5B00057CC1C /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E21CADB5B00057CC1C /* mainFone.png */; };
+		77E0F8A71CD265EA0047008F /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E0F8A61CD265EA0047008F /* APIGetClass.m */; };
 		77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */; };
 		77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CD1CBFFB6500B6A303 /* PersonalAreaView.m */; };
 		77E6A2D01CC019AB00B6A303 /* arrowDownImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E6A2CF1CC019AB00B6A303 /* arrowDownImage.png */; };
@@ -398,6 +399,8 @@
 		77D297DE1CADAC790057CC1C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		77D297E01CADAC7D0057CC1C /* VK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VK.png; sourceTree = "<group>"; };
 		77D297E21CADB5B00057CC1C /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
+		77E0F8A51CD265EA0047008F /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
+		77E0F8A61CD265EA0047008F /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		77E6A2C91CBFFB4900B6A303 /* PersonalAreaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaController.h; sourceTree = "<group>"; };
 		77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaController.m; sourceTree = "<group>"; };
 		77E6A2CC1CBFFB6500B6A303 /* PersonalAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaView.h; sourceTree = "<group>"; };
@@ -623,6 +626,9 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
+				77E0F8A51CD265EA0047008F /* APIGetClass.h */,
+				77E0F8A61CD265EA0047008F /* APIGetClass.m */,
+				77E0F89E1CD2647F0047008F /* API */,
 				771E539B1CC2CD2A008E5562 /* PantryFemaleKnowledge */,
 				771E538F1CC2B093008E5562 /* Notification */,
 				771E53831CC2668A008E5562 /* Rates */,
@@ -941,6 +947,13 @@
 				77CA4E141CBAACAE007BD3F2 /* RecommendView.m */,
 			);
 			name = Recommend;
+			sourceTree = "<group>";
+		};
+		77E0F89E1CD2647F0047008F /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		77E6A2C81CBFFB2700B6A303 /* PersonalArea */ = {
@@ -1266,6 +1279,7 @@
 				771E53861CC266B7008E5562 /* RatesController.m in Sources */,
 				773C0D861CB9651B005794BE /* UIButton+ButtonImage.m in Sources */,
 				775B7C471CB4347700161EF9 /* SubjectModel.m in Sources */,
+				77E0F8A71CD265EA0047008F /* APIGetClass.m in Sources */,
 				77CA4E011CBA4F59007BD3F2 /* AboutXeniaController.m in Sources */,
 				776D8D471CAD1AD20028929C /* UIImage+RoundedCorner.m in Sources */,
 				77C72F0F1CBEDB22009A78F7 /* InstructionDetailsController.m in Sources */,

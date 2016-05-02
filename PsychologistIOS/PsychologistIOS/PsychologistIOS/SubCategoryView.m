@@ -18,7 +18,7 @@
 @implementation SubCategoryView
 {
     UITableView * mainTableView;
-    NSMutableArray * mainArray;
+    NSArray * mainArray;
     
     UIImageView * alertView;
     UIView * darkView;
@@ -45,7 +45,7 @@
 }
 
 
-- (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array
+- (instancetype)initWithContent: (UIView*) view andArray: (NSArray*) array
 {
     self = [super init];
     if (self) {
@@ -194,7 +194,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return mainArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -205,15 +205,19 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    for (UIView * view in cell.contentView.subviews) {
+        
+        [view removeFromSuperview];
+    }
     
     cell.backgroundColor = nil;
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     
-    [cell addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
-                                     andSubTitle:[dictCell objectForKey:@"subTitle"]
-                                        andMoney:[[dictCell objectForKey:@"money"] boolValue]
-                                        andImage:[dictCell objectForKey:@"image"]]];
+    [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
+                                     andSubTitle:[dictCell objectForKey:@"description"]
+                                        andMoney:[[dictCell objectForKey:@"paid"]boolValue]
+                                        andImage:nil]];
     
     return cell;
 }
@@ -224,9 +228,10 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    [[SingleTone sharedManager] setIdentifierSubCategory:[dictCell objectForKey:@"id"]];
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     
-    mainAlertText.text = @"Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только";
+    mainAlertText.text = [dictCell objectForKey:@"text"];
     
     if ([[dictCell objectForKey:@"money"] boolValue]) {
         buttonBuy.alpha = 1.f;

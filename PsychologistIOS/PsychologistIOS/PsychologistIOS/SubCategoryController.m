@@ -15,8 +15,12 @@
 #import "SubCategoryModel.h"
 #import "Macros.h"
 #import "SubjectViewController.h"
+#import "APIGetClass.h"
 
 @implementation SubCategoryController
+{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad
 {
@@ -35,11 +39,17 @@
         
 #pragma mark - Initilization
     
+    [self getAPIWithBlock:^{
+        NSArray * arrayMainResponce = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+        SubCategoryView * contentView = [[SubCategoryView alloc] initWithContent:self.view andArray:arrayMainResponce];
+        [self.view addSubview:contentView];
+        
+    }];
+    
     SubCategoryView * backgroundView = [[SubCategoryView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
     
-    SubCategoryView * contentView = [[SubCategoryView alloc] initWithContent:self.view andArray:[SubCategoryModel setArraySubCategory]];
-    [self.view addSubview:contentView];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubject) name:NOTIFICATION_SUB_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
 
@@ -49,6 +59,27 @@
 {
     SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"show_tree", [[SingleTone sharedManager] identifierCategory], @"id_parent",  nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_category" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 @end

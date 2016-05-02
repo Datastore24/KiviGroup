@@ -27,7 +27,7 @@
      setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
-
+    
     //Пареметры кнопки меню------------------------------------
     UIImage *imageBarButton = [UIImage imageNamed:@"menuIcon.png"];
     [_buttonMenu setImage:imageBarButton];
@@ -40,6 +40,8 @@
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     
 #pragma mark - Initialization

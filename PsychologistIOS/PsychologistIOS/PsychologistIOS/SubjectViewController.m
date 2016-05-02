@@ -16,8 +16,12 @@
 #import "SingleTone.h"
 #import "Macros.h"
 #import "OpenSubjectController.h"
+#import "APIGetClass.h"
 
 @implementation SubjectViewController
+{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad
 {
@@ -39,25 +43,41 @@
     SubCategoryView * backgroundView = [[SubCategoryView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
     
-    SubjectView * contentView = [[SubjectView alloc] initWithContent:self.view andArray:[SubjectModel setArraySubject]];
-    [self.view addSubview:contentView];
+    [self getAPIWithBlock:^{
+        NSArray * mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+        NSLog(@"%@", mainArray);
+        SubjectView * contentView = [[SubjectView alloc] initWithContent:self.view andArray:mainArray];
+        [self.view addSubview:contentView];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
 }
 
 - (void) notificationPushWithOpenSubject: (NSNotification*) notification
 {
-    if ([notification.object integerValue] == 1) {
         NSLog(@"Текст");
         OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
         [self.navigationController pushViewController:detail animated:YES];
-    } else if ([notification.object integerValue] == 2) {
-        NSLog(@"Вебинар");
-    } else if ([notification.object integerValue] == 3) {
-        NSLog(@"Звукозапись");
-    } else {
-        NSLog(@"Ошибка");
-    }
+
+}
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_category", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"list_post" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 
 }
 

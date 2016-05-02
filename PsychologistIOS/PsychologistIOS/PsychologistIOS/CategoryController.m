@@ -16,8 +16,14 @@
 #import "SubCategoryController.h"
 #import "RatesController.h"
 #import "FemaleKnowledgeController.h"
+#import "APIGetClass.h"
 
 @implementation CategoryController
+{
+    NSDictionary * dictResponse;
+}
+
+
 
 - (void) viewDidLoad {
     
@@ -50,17 +56,24 @@
     
 #pragma mark - Initilization
     
+    [self getAPIWithBlock:^{
+        
+        NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];        
+        CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:mainArrayAPI];
+        [self.view addSubview:contentView];
+        
+    }];
+    
     CategoryView * backgroundView = [[CategoryView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
     
-    CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:[CategoryModel setArrayJuri]];
-    [self.view addSubview:contentView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
+    
     
 }
 
@@ -88,6 +101,26 @@
 {
     FemaleKnowledgeController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FemaleKnowledgeController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"show_tree", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_category" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 @end

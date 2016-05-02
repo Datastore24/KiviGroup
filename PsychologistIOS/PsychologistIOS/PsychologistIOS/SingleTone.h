@@ -15,6 +15,11 @@
 @property (strong, nonatomic) NSString * titleSubject;
 @property (strong, nonatomic) NSString * titleInstruction;
 
+//АПИ--------------------------------------------
+@property (strong, nonatomic) NSString * identifierCategory;
+@property (strong, nonatomic) NSString * identifierSubCategory;
+@property (strong, nonatomic) NSString * identifierSubjectModel;
+
 
 
 + (id)sharedManager;

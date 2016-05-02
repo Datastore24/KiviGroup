@@ -15,6 +15,13 @@
 @synthesize titleSubject;
 @synthesize titleInstruction;
 
+@synthesize identifierCategory;
+@synthesize identifierSubCategory;
+@synthesize identifierSubjectModel;
+
+
+
+
 #pragma mark Singleton Methods
 
 + (id)sharedManager{
