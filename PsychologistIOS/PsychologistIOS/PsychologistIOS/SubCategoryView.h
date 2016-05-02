@@ -12,6 +12,6 @@
 
 - (instancetype)initWithBackgroundView: (UIView*) view;
 
-- (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array;
+- (instancetype)initWithContent: (UIView*) view andArray: (NSArray*) array;
 
 @end

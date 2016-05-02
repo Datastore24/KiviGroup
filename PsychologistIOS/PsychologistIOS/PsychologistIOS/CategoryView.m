@@ -18,7 +18,7 @@
 @implementation CategoryView
 {
     UITableView * mainTableView;
-    NSMutableArray * mainArray;
+    NSArray * mainArray;
     
     UIImageView * alertView;
     UIView * darkView;
@@ -44,7 +44,7 @@
     return self;
 }
 
-- (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array
+- (instancetype)initWithContent: (UIView*) view andArray: (NSArray*) array
 {
     self = [super init];
     if (self) {
@@ -73,9 +73,9 @@
         mainSearchBar.showsSearchResultsButton = NO;
         [viewSearch addSubview:mainSearchBar];
         
-        mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
+        mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height)];
         //Убираем полосы разделяющие ячейки------------------------------
-        mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
         mainTableView.dataSource = self;
         mainTableView.delegate = self;
@@ -203,29 +203,39 @@
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return mainArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     static NSString *CellIdentifier = @"newFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    for (UIView * view in cell.contentView.subviews) {
+        
+        [view removeFromSuperview];
     }
     
     cell.backgroundColor = nil;
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     
-    [cell addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
-                                     andSubTitle:[dictCell objectForKey:@"subTitle"]
-                                        andMoney:[[dictCell objectForKey:@"money"] boolValue]
-                                        andImage:[dictCell objectForKey:@"image"]]];
-    
+    [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
+                                     andSubTitle:[dictCell objectForKey:@"description"]
+                                        andMoney:[[dictCell objectForKey:@"paid"] boolValue]
+                                        andImage:nil]];
     return cell;
 }
 
@@ -233,7 +243,10 @@
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
+    NSDictionary * dictMainArray = [mainArray objectAtIndex:indexPath.row];
+    [[SingleTone sharedManager] setIdentifierCategory:[dictMainArray objectForKey:@"id"]];
+
     
     if (indexPath.row == 4) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"customNotification" object:nil];
@@ -242,8 +255,7 @@
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
-    
-    mainAlertText.text = @"Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только";
+    mainAlertText.text = [dictCell objectForKey:@"text"];
     
     if ([[dictCell objectForKey:@"money"] boolValue]) {
         buttonBuy.alpha = 1.f;
@@ -321,7 +333,8 @@
     
     //Заголовок-------------------------------------------
     UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16, 216, 24)];
-    labelTitle.text = string;
+    NSString * myString = string;
+    labelTitle.text = myString;
     labelTitle.numberOfLines = 0;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:23];

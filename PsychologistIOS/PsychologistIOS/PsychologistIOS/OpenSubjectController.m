@@ -15,8 +15,12 @@
 #import "OpenSubjectView.h"
 #import "OpenSubjectModel.h"
 #import "DiscussionsController.h"
+#import "APIGetClass.h"
 
 @implementation OpenSubjectController
+{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad
 {
@@ -35,9 +39,12 @@
     
 #pragma mark - Initialization
     
-    //Основной контент-----------------------------------------
-    OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andArray:[OpenSubjectModel setArrayChat]];
-    [self.view addSubview:mainContent];
+    [self getAPIWithBlock:^{
+        NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
+        //Основной контент-----------------------------------------
+        OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andDict:mainDict];
+        [self.view addSubview:mainContent];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithDiscussions) name:NOTIFICATION_OPEN_SUBJECT_PUSH_TU_DISCUSSIONS object:nil];
 }
@@ -53,6 +60,25 @@
 {
     DiscussionsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussionsController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id",  nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_post" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 @end
