@@ -41,4 +41,17 @@
     return buttonRegistration;
 }
 
++ (UIButton*) createButtonTextWithName: (NSString*) name
+                              andFrame: (CGRect) rect
+                              fontName: (NSString*) font
+{
+    UIButton * textButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    textButton.frame = rect;
+    [textButton setTitle:name forState:UIControlStateNormal];
+    [textButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    textButton.titleLabel.font = [UIFont fontWithName:font size:13];
+    
+    return textButton;
+}
+
 @end
