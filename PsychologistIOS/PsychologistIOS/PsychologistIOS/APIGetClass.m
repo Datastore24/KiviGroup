@@ -8,6 +8,7 @@
 
 #import "APIGetClass.h"
 #import <AFNetworking/AFNetworking.h>
+#import "SingleTone.h"
 
 
 #define MAIN_URL @"http://psy.kivilab.ru/API/api.php" //Адрес сервера
@@ -37,5 +38,26 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+//Запрос на сервер
+-(void) getDataFromServerWithAudioParams: (NSDictionary *) params andAudioURL: (NSURL*) audioUrl method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack
+{
+    //-----------
+    NSString * url = [NSString stringWithFormat:@"%@?api_key=%@&action=%@",MAIN_URL,API_KEY,method];
+    NSData *voiceData = [[NSData alloc]initWithContentsOfURL:audioUrl];
+    //-------------------
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         [formData appendPartWithFileData:voiceData name:@"userfile" fileName:@"audio.caf" mimeType:@"audio/x-caf"];
+     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         compitionBack (responseObject);
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+     }];
+    
 }
 @end

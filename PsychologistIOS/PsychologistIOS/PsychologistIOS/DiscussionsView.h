@@ -10,6 +10,6 @@
 
 @interface DiscussionsView : UIView
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
+- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array;
 
 @end

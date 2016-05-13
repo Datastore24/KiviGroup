@@ -9,6 +9,8 @@
 #import "OpenSubjectView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
+#import "StringImage.h"
+#import "ViewSectionTable.h"
 
 @implementation OpenSubjectView
 {
@@ -26,28 +28,27 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         mainAnim = YES;
         selfHeight = view.frame.size.height - 64;
         mainDict = dict;
-        
         self.userInteractionEnabled = YES;
 
-//#pragma mark - Chat View
-//        
-//        //Вью чата--------------------------------------------------------------------
-//        UIView * viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 368, self.frame.size.width, self.frame.size.height - 368)];
-//        viewChat.userInteractionEnabled = YES;
-//        if (isiPhone6) {
-//            viewChat.frame = CGRectMake(0, 300, self.frame.size.width, self.frame.size.height - 300);
-//        } else if (isiPhone5) {
-//            viewChat.frame = CGRectMake(0, 240, self.frame.size.width, self.frame.size.height - 240);
-//        }
-//        
-//        if (isiPhone4s) {
-//            viewChat.frame = CGRectMake(0, 140, self.frame.size.width, self.frame.size.height - 240);
-//        }
-//        
+#pragma mark - Chat View
+        
+        //Вью чата--------------------------------------------------------------------
+        UIView * viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 368, self.frame.size.width, self.frame.size.height - 368)];
+        viewChat.userInteractionEnabled = YES;
+        if (isiPhone6) {
+            viewChat.frame = CGRectMake(0, 300, self.frame.size.width, self.frame.size.height - 300);
+        } else if (isiPhone5) {
+            viewChat.frame = CGRectMake(0, 240, self.frame.size.width, self.frame.size.height - 240);
+        }
+        
+        if (isiPhone4s) {
+            viewChat.frame = CGRectMake(0, 140, self.frame.size.width, self.frame.size.height - 240);
+        }
+        
 //        for (NSInteger i = array.count; i > (array.count - 3); i--) {
 //            NSDictionary * dictChat = [array objectAtIndex:i - 1];
 //            if ([[dictChat objectForKey:@"Users"] isEqualToString:@"Пользователь 1"]) {
@@ -160,46 +161,36 @@
 //                
 //            }
 //        }
-//        
-//        [self addSubview:viewChat];
-//        
-//        //Кнопка обсудить---------------------------
-//        UIButton * buttonPush = [UIButton buttonWithType:UIButtonTypeSystem];
-//        buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 615, 336, 48);
-//        buttonPush.backgroundColor = [UIColor colorWithHexString:@"e54444"];
-//        buttonPush.layer.cornerRadius = 24;
-//        [buttonPush setTitle:@"ОБСУДИТЬ" forState:UIControlStateNormal];
-//        [buttonPush setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
-//        if (isiPhone6) {
-//            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 530, 336, 48);
-//        } else if (isiPhone5) {
-//            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 450, 280, 40);
-//            buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
-//            buttonPush.layer.cornerRadius = 20;
-//        }
-//        
-//        if (isiPhone4s) {
-//            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 350, 280, 40);
-//        }
-//        [buttonPush addTarget:self action:@selector(buttonPushAction) forControlEvents:UIControlEventTouchUpInside];
-//            [self addSubview:buttonPush];
-//
-//
-//        
         
+        [self addSubview:viewChat];
+        
+        //Кнопка обсудить---------------------------
+        UIButton * buttonPush = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 615, 336, 48);
+        buttonPush.backgroundColor = [UIColor colorWithHexString:@"e54444"];
+        buttonPush.layer.cornerRadius = 24;
+        [buttonPush setTitle:@"ОБСУДИТЬ" forState:UIControlStateNormal];
+        [buttonPush setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        if (isiPhone6) {
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 168, 530, 336, 48);
+        } else if (isiPhone5) {
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 450, 280, 40);
+            buttonPush.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+            buttonPush.layer.cornerRadius = 20;
+        }
+        
+        if (isiPhone4s) {
+            buttonPush.frame = CGRectMake(viewChat.frame.size.width / 2 - 140, 350, 280, 40);
+        }
+        [buttonPush addTarget:self action:@selector(buttonPushAction) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonPush];
         
 #pragma mark - MainView
         
         NSString * stringText = [mainDict objectForKey:@"text"];
-        
-        //Картинка---------------------------------------------
-        UIImageView * mainImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 160)];
-        if (isiPhone5) {
-            mainImage.frame = CGRectMake(0, 0, self.frame.size.width, 110);
-        }
-        mainImage.image = [UIImage imageNamed:@"imageSubject.png"];
-        [self addSubview:mainImage];
+        ViewSectionTable * imagePost = [[ViewSectionTable alloc] initWithPostImageURL:[StringImage createStringImageURLWithString:[mainDict objectForKey:@"media_path"]] andView:self andContentMode:UIViewContentModeScaleAspectFill];
+        [self addSubview:imagePost];
         
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 170, view.frame.size.width, 200)];
         if (isiPhone6) {

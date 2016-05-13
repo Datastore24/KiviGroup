@@ -11,4 +11,6 @@
 @interface APIGetClass : NSObject
 //Метод получающий данные с сервера
 -(void) getDataFromServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack;
+
+-(void) getDataFromServerWithAudioParams: (NSDictionary *) params andAudioURL: (NSURL*) audioUrl method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack;
 @end

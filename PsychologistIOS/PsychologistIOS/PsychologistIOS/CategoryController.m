@@ -10,7 +10,6 @@
 #import "SWRevealViewController.h"
 #import "UIColor+HexColor.h"
 #import "CategoryView.h"
-#import "CategoryModel.h"
 #import "TitleClass.h"
 #import "Macros.h"
 #import "SubCategoryController.h"
@@ -58,7 +57,7 @@
     
     [self getAPIWithBlock:^{
         
-        NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];        
+        NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
         CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:mainArrayAPI];
         [self.view addSubview:contentView];
         

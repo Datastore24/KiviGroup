@@ -63,7 +63,7 @@
         } else if (isiPhone5) {
             imageViewPlayer.frame = CGRectMake(0, 0, self.frame.size.width, 160);
         }
-        imageViewPlayer.image = [UIImage imageNamed:@"imagePlayer.png"];
+//        imageViewPlayer.image = [UIImage imageNamed:@"imagePlayer.png"];
         [self addSubview:imageViewPlayer];
         
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 210, self.frame.size.width, self.frame.size.height - 210)];

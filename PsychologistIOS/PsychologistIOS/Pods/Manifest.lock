@@ -26,6 +26,7 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - YandexMoneySDKObjc (2.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Motis (~> 1.3.0)
   - SCLAlertView-Objective-C
   - SDWebImage (~> 3.7)
+  - YandexMoneySDKObjc
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -40,5 +42,6 @@ SPEC CHECKSUMS:
   Motis: a5b1f6aa29ad14cd64e27c4fe15d9805c18c162f
   SCLAlertView-Objective-C: 25f7ea3a3526dde177d8b8056a0b88fe4187651e
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  YandexMoneySDKObjc: c5ef2e6813deeba3323d427551e7321530bf768e
 
 COCOAPODS: 0.39.0
