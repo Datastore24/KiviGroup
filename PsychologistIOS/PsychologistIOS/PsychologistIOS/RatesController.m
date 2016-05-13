@@ -11,8 +11,14 @@
 #import "Macros.h"
 #import "TitleClass.h"
 #import "RatesView.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
+#import "YandexSalesController.h"
 
 @implementation RatesController
+{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad
 {
@@ -32,10 +38,55 @@
     
 #pragma mark - Initialization
     
-    //Основной контент вью----------------------------------------
-    RatesView * viewContent = [[RatesView alloc] initWithView:self.view];
-    [self.view addSubview:viewContent];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushYandex) name:@"PushYandexNotification" object:nil];
+
+    [self getAPIWithBlock:^{
+        if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray * mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+            //Основной контент вью----------------------------------------
+            RatesView * viewContent = [[RatesView alloc] initWithView:self.view andArray:mainArray];
+            [self.view addSubview:viewContent];
+        } else {
+            NSLog(@"Не массив");
+        }
+    }];
+    
+   
     
 }
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] tariffID], @"id_category", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"list_category_tariff" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            
+            block();
+        }
+    }];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) pushYandex
+{
+    YandexSalesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YandexSalesController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+
 
 @end

@@ -13,7 +13,6 @@
 #import "Macros.h"
 #import "SingleTone.h"
 #import "OpenSubjectView.h"
-#import "OpenSubjectModel.h"
 #import "DiscussionsController.h"
 #import "APIGetClass.h"
 
@@ -40,10 +39,18 @@
 #pragma mark - Initialization
     
     [self getAPIWithBlock:^{
-        NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
-        //Основной контент-----------------------------------------
-        OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andDict:mainDict];
-        [self.view addSubview:mainContent];
+        
+        
+        if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
+            //Основной контент-----------------------------------------
+            OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andDict:mainDict];
+            [self.view addSubview:mainContent];
+        } else {
+            NSLog(@"Не дикшенери");
+        }
+        
+
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithDiscussions) name:NOTIFICATION_OPEN_SUBJECT_PUSH_TU_DISCUSSIONS object:nil];

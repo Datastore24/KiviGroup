@@ -13,20 +13,21 @@
 
 @implementation RatesView
 {
-    
+    NSArray * mainArray;
 }
 
-- (instancetype)initWithView: (UIView*) view
+- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         
+        mainArray = array;
+        
         //Основной текст--------------------------------------------------------
         UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(8, 40, self.frame.size.width - 16, 80)];
         labelText.numberOfLines = 0;
         labelText.text = @"В рамках специальных кампаний пользователю приложения  предоставлена возможность перейти на любой предлагаемый тарифный план через предоставленное меню.\nДля этого необходимо выбрать необходимый тариф, после чего подтвердить действие нажав на кнопку “Подписаться";
-//        [labelText sizeToFit];
         labelText.textColor = [UIColor colorWithHexString:@"4c4a4a"];
         labelText.font = [UIFont fontWithName:FONTLITE size:13];
         if (isiPhone6) {
@@ -36,21 +37,21 @@
             labelText.frame = CGRectMake(16, 40, self.frame.size.width - 32, 80);
             labelText.font = [UIFont fontWithName:FONTLITE size:10];
         }
+        labelText.textAlignment = NSTextAlignmentCenter;
         [self addSubview:labelText];
         
-        //Тестовый массив имен-----------
-        NSArray * arrayName = [NSArray arrayWithObjects:@"Бесплатная тестовая подписка",
-                               @"Тариф 1", @"Тариф 2", @"Тариф 3",nil];
-        
         //Кнопки тарифов----------------------------------------------------------
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < mainArray.count; i++) {
+            
+            NSDictionary * mainDict = [mainArray objectAtIndex:i];
+//            NSLog(@"%@", mainDict);
             
             CustomButton * buttonRates = [CustomButton buttonWithType:UIButtonTypeSystem];
-            buttonRates.frame = CGRectMake(100, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+            buttonRates.frame = CGRectMake(150, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
             if (isiPhone6) {
-                buttonRates.frame = CGRectMake(80, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+                buttonRates.frame = CGRectMake(120, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
             } else if (isiPhone5) {
-                buttonRates.frame = CGRectMake(60, (labelText.frame.size.height + labelText.frame.origin.y + 50) + 56 * i, 10, 10);
+                buttonRates.frame = CGRectMake(120, (labelText.frame.size.height + labelText.frame.origin.y + 50) + 56 * i, 10, 10);
             }
             buttonRates.backgroundColor = nil;
             buttonRates.layer.borderColor = [UIColor colorWithHexString:@"949494"].CGColor;
@@ -71,8 +72,8 @@
             imageViewRates.alpha = 0.f;
             [buttonRates addSubview:imageViewRates];
             
-            UILabel * labelTextButton = [[UILabel alloc] initWithFrame:CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 300, 16)];
-            labelTextButton.text = [arrayName objectAtIndex:i];
+            UILabel * labelTextButton = [[UILabel alloc] initWithFrame:CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height - 12 + labelText.frame.origin.y + 88) + 56 * i, 300, 16)];
+            labelTextButton.text = [mainDict objectForKey:@"title"];
             labelTextButton.textColor = [UIColor colorWithHexString:@"727372"];
             labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:15];
             if (isiPhone5) {
@@ -80,11 +81,24 @@
                 labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:12];
             }
             [self addSubview:labelTextButton];
+            
+            UILabel * labelTextCost = [[UILabel alloc] initWithFrame:CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + 13 + labelText.frame.origin.y + 88) + 56 * i, 300, 16)];
+            labelTextCost.text = [NSString stringWithFormat:@"%@ руб.", [mainDict objectForKey:@"cost"]];
+            if ([[mainDict objectForKey:@"cost"] isEqualToString:@""]) {
+                labelTextCost.text = @"0 руб.";
+            }
+            labelTextCost.textColor = [UIColor colorWithHexString:@"727372"];
+            labelTextCost.font = [UIFont fontWithName:FONTREGULAR size:15];
+            if (isiPhone5) {
+                labelTextCost.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + labelText.frame.origin.y + 47) + 56 * i, 300, 16);
+                labelTextCost.font = [UIFont fontWithName:FONTREGULAR size:12];
+            }
+            [self addSubview:labelTextCost];
         }
         
         //Кнопка Подписаться---------------------------------------------------------
         UIButton * buttonSubscribe = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSubscribe.frame = CGRectMake(self.frame.size.width / 2 - 92, self.frame.size.height - 128, 184, 48);
+        buttonSubscribe.frame = CGRectMake(self.frame.size.width / 2 - 92, self.frame.size.height - 98, 184, 48);
         buttonSubscribe.backgroundColor = [UIColor colorWithHexString:@"08bb36"];
         buttonSubscribe.layer.cornerRadius = 24;
         [buttonSubscribe setTitle:@"ПОДПИСАТЬСЯ" forState:UIControlStateNormal];
@@ -137,7 +151,7 @@
 //Действие кнопки подписатсья--------------------------------
 - (void) buttonSubscribeAction
 {
-    NSLog(@"Подписаться");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PushYandexNotification" object:nil];
 }
 
 //Действие кнопки соглашение---------------------------------

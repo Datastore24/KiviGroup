@@ -91,7 +91,7 @@
 - (void)saveImage: (UIImage*) image {
 //    NSLog(@"%@",image);
     
-    NSString *stringUrl = [ NSString stringWithFormat:@"http://photokamchatka.irinayarovaya.ru/API/uploader.php"];
+    NSString *stringUrl = [NSString stringWithFormat:@"http://photokamchatka.irinayarovaya.ru/API/uploader.php"];
     NSData *imageLoad = UIImageJPEGRepresentation(image,0.8);
 
     
@@ -102,7 +102,7 @@
     
     [manager POST:stringUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
-         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"audio.caf" mimeType:@"audio/caf"];
          
      } success:^(AFHTTPRequestOperation *operation, id responseObject) {
          NSDictionary *response =(NSDictionary *)responseObject;

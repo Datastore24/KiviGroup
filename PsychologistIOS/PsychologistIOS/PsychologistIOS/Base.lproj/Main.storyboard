@@ -371,7 +371,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="o0z-bc-l8g"/>
+                        <segue destination="aYw-dh-yw3" kind="relationship" relationship="rootViewController" id="Qji-Wl-yRd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,6 +546,20 @@
             </objects>
             <point key="canvasLocation" x="589" y="-735"/>
         </scene>
+        <!--Yandex Sales Controller-->
+        <scene sceneID="ygl-Gm-f3L">
+            <objects>
+                <viewController storyboardIdentifier="YandexSalesController" id="fS1-R8-Wwa" customClass="YandexSalesController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0J1-d4-9Se">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-Do-b6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147" y="1313"/>
+        </scene>
         <!--Rates Controller-->
         <scene sceneID="bm9-LK-JuC">
             <objects>
@@ -558,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBr-oI-hdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589" y="1313"/>
+            <point key="canvasLocation" x="543" y="1313"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="XZS-5Z-4ce">
@@ -589,6 +603,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aAP-6X-P5X"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oI-Aw-Opr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -601,8 +616,17 @@
                     <view key="view" contentMode="scaleToFill" id="WMa-iw-5Ef">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="y28-Vs-3W3" customClass="PlayerView">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="y28-Vs-3W3" id="qQp-Bx-ilR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqy-iw-Ekx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -662,11 +686,25 @@
             </objects>
             <point key="canvasLocation" x="1388" y="633"/>
         </scene>
+        <!--Subscription Controller-->
+        <scene sceneID="kHb-IN-teH">
+            <objects>
+                <viewController storyboardIdentifier="SubscriptionController" id="kFW-Cg-N1g" customClass="SubscriptionController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sOy-yN-ZKg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmj-ea-PIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789" y="632"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.png" width="16" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ejw-Dp-4q0"/>
+        <segue reference="Qji-Wl-yRd"/>
     </inferredMetricsTieBreakers>
 </document>

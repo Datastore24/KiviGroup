@@ -20,6 +20,15 @@
 @property (strong, nonatomic) NSString * identifierSubCategory;
 @property (strong, nonatomic) NSString * identifierSubjectModel;
 
+@property (strong, nonatomic) NSString * apiImage;
+
+//Тарифы-----------------------------------------
+
+@property (strong, nonatomic) NSString * tariffID;
+
+//Работа с аудио---------------------------------
+@property (strong, nonatomic) NSString * audioURL;
+
 
 
 + (id)sharedManager;

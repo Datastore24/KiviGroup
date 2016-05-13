@@ -471,7 +471,7 @@
 - (void) notificationAnimationMethod
 {
     if (textFieldPhone.text.length < 12) {
-        NSLog(@"%lu", textFieldPhone.text.length);
+
     } else {
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rectPhone = viewPhone.frame;

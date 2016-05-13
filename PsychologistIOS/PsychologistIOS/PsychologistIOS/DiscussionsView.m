@@ -9,14 +9,30 @@
 #import "DiscussionsView.h"
 #import "UIColor+HexColor.h"
 #include "Macros.h"
+#import "DACircularProgressView.h"
+#import "DALabeledCircularProgressView.h"
+#import <AVFoundation/AVFoundation.h>
+#import "CustomPlayer.h"
+
 
 
 @interface DiscussionsView () <UITextFieldDelegate, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) DACircularProgressView *progressView;
+@property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer * timerLabel;
+@property (strong, nonatomic) UILabel * labelTest;
+@property (assign, nonatomic) CGFloat labelFloat;
+
+@property (strong, nonatomic) CustomPlayer *player;
+
 
 @end
 
 @implementation DiscussionsView
 {
+
+    
     
     UIScrollView * mainScrollView;
     //Переменные вью отправки------------
@@ -40,10 +56,17 @@
     BOOL buttonImageChange;
     
     UIImageView * imageFull;
+    
+    //Вью микрофона------------------------
+    UIView * dictaphoneView;
+    BOOL dictaBool;
+    UIButton * buttonSend;
+    
+    NSInteger integetButtonPlay;
 
 }
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array
+- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array
 {
     self = [super init];
     if (self) {
@@ -55,6 +78,8 @@
         buttonsNumber = 9;
         buttonsArray = [NSMutableArray new];
         buttonImageChange = NO;
+        dictaBool = NO;
+        integetButtonPlay = 0;
         
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
@@ -62,6 +87,8 @@
         
         //Получаем ответ в виде нотификации с обектом картинки--
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSentImage:) name:NOTIFICATION_SEND_IMAGE_FOR_DUSCUSSIONS_VIEW object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotificationMethod:) name:@"proverkaPeredachiZvuka" object:nil];
         
         
 #pragma mark - Chat
@@ -178,14 +205,114 @@
         [buttonCanselImage addTarget:self action:@selector(buttonCanselImageAction) forControlEvents:UIControlEventTouchUpInside];
         [imageFull addSubview:buttonCanselImage];
         
+#pragma mark - Dictaphone
+        
+        dictaphoneView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 200)];
+        [view addSubview:dictaphoneView];
+        
+        self.labelTest = [[UILabel alloc] initWithFrame:CGRectMake(dictaphoneView.frame.size.width / 2 - 150, dictaphoneView.frame.size.height / 2 + 60, 100, 20)];
+        self.labelTest.text = @"0:0";
+        self.labelTest.textAlignment = NSTextAlignmentCenter;
+        [dictaphoneView addSubview:self.labelTest];
+        self.labelFloat = 0.00;
+        self.progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(dictaphoneView.frame.size.width / 2 - 150, dictaphoneView.frame.size.height / 2 - 50, 100, 100)];
+        self.progressView.trackTintColor = [UIColor colorWithHexString:@"77b3d4"];
+        self.progressView.progressTintColor = [UIColor colorWithHexString:@"4f5d73"];
+        self.progressView.thicknessRatio = 0.2;
+        self.progressView.layer.borderColor = [UIColor blackColor].CGColor;
+        self.progressView.layer.borderWidth = 1.f;
+        self.progressView.layer.cornerRadius = 50.f;
+        [dictaphoneView addSubview:self.progressView];
+        
+        UIButton * mainButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        mainButton.frame = CGRectMake(dictaphoneView.frame.size.width / 2 - 137, dictaphoneView.frame.size.height / 2 - 37, 74, 74);
+        mainButton.layer.cornerRadius = 37.f;
+        mainButton.layer.borderColor = [UIColor colorWithHexString:@"4f5d73"].CGColor;
+        mainButton.layer.borderWidth = 3.f;
+        [mainButton addTarget:self action:@selector(startAnimation) forControlEvents:UIControlEventTouchDown];
+        [mainButton addTarget:self action:@selector(stopAnimation) forControlEvents:UIControlEventTouchUpInside];
+        UIImage * image = [UIImage imageNamed:@"mic.png"];
+        [mainButton setImage:image forState:UIControlStateNormal];
+        [dictaphoneView addSubview:mainButton];
+        
+        //Кнопка Рекомендую--------------------------------------
+        buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonSend.frame = CGRectMake(185, dictaphoneView.frame.size.height / 2 - 24, 200, 48);
+        buttonSend.backgroundColor = nil;
+        buttonSend.layer.cornerRadius = 24;
+        buttonSend.layer.borderColor = [UIColor colorWithHexString:@"4babe4"].CGColor;
+        buttonSend.layer.borderWidth = 1.f;
+        [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
+        [buttonSend setTitleColor:[UIColor colorWithHexString:@"4babe4"] forState:UIControlStateNormal];
+        buttonSend.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+        [buttonSend addTarget:self action:@selector(buttonSendAction) forControlEvents:UIControlEventTouchUpInside];
+        buttonSend.alpha = 0.4;
+        buttonSend.userInteractionEnabled = NO;
+        [dictaphoneView addSubview:buttonSend];
+        
+        
     }
     return self;
+}
+
+#pragma mark - DictaphoneMethods
+- (void) progressChange
+{
+    CGFloat progress = self.progressView.progress + 0.001673f;
+    [self.progressView setProgress:progress animated:YES];
+    if (self.progressView.progress >= 1.0f && [self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+        [self.timerLabel invalidate];
+        self.timerLabel = nil;
+    }
+}
+
+- (void) progressTimerLabel
+{
+    self.labelFloat += 0.05;
+    self.labelTest.text = [NSString stringWithFormat:@"%.1f", self.labelFloat];
+}
+
+- (void)startAnimation
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05
+                                                  target:self
+                                                selector:@selector(progressChange)
+                                                userInfo:nil
+                                                 repeats:YES];
+    self.timerLabel = [NSTimer scheduledTimerWithTimeInterval:0.05
+                                                       target:self
+                                                     selector:@selector(progressTimerLabel)
+                                                     userInfo:nil
+                                                      repeats:YES];
+    self.labelFloat = 0.00;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUDIO_START_RECORD object:nil];
+}
+
+- (void) stopAnimation
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    [self.timerLabel invalidate];
+    self.timerLabel = nil;
+    [self.progressView setProgress:0.f animated:YES];
+    if (buttonSend.userInteractionEnabled == NO) {
+        [UIView animateWithDuration:0.3 animations:^{
+            buttonSend.userInteractionEnabled = YES;
+            buttonSend.alpha = 1.f;
+        }];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUDIO_STOP_RECORD object:nil];
+    
 }
 
 #pragma mark - main Method send Message
 
 //Метод Отправки сообщения---------------
-- (void) sendMessageWithArray: (NSMutableArray*) array andSend: (BOOL) send
+- (void) sendMessageWithArray: (NSArray*) array andSend: (BOOL) send
 {
     for (int i = 0; i < array.count; i++) {
         NSDictionary * dictChat = [array objectAtIndex:i];
@@ -256,6 +383,39 @@
             //Если приходит аудиофайл---------------------------------------
             } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
                 
+                viewMessage = [[UIView alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 112, 32 + countFor, 80, 20)];
+                viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
+                viewMessage.layer.cornerRadius = 7.f;
+                [viewScrollChat addSubview:viewMessage];
+                
+                //Создаем хвостик--------------------
+                UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(viewMessage.frame.origin.x + viewMessage.frame.size.width - 9, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
+                bubbleView.image = [UIImage imageNamed:@"bubble.png"];
+                [viewScrollChat addSubview:bubbleView];
+                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"Message"]];
+                self.player = [[CustomPlayer alloc] initWithURL:url];
+                self.player.customTag = integetButtonPlay;
+                self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(playerItemDidReachEnd:)
+                                                             name:AVPlayerItemDidPlayToEndTimeNotification
+                                                           object:[self.player currentItem]];
+                if (!self.player) {
+                    NSLog(@"Error");
+                }
+                
+                UIButton * buttonPlay = [UIButton buttonWithType:UIButtonTypeSystem];
+                buttonPlay.frame = CGRectMake(5, 5, 10, 10);
+                buttonPlay.backgroundColor = [UIColor blackColor];
+                buttonPlay.tag = integetButtonPlay;
+                [buttonPlay addTarget:self action:@selector(buttonPlayAction:) forControlEvents:UIControlEventTouchUpInside];
+                [viewMessage addSubview:buttonPlay];
+                
+                integetButtonPlay += 1;
+                
+                NSLog(@"Звук");
+                
             //Ошибка------------------------------------------------
             } else {
                 NSLog(@"Error");
@@ -281,8 +441,8 @@
                 countFor += viewMessage.frame.size.height + 50;
             } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
                 countFor += imageViewChat.frame.size.height + 50;
-            } else {
-                NSLog(@"Error");
+            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+                countFor += viewMessage.frame.size.height + 50;
             }
             
         } else {
@@ -310,6 +470,8 @@
                     labelText.frame = CGRectMake(38, 28 + countFor, 200, 12);
                 }
                 [labelText sizeToFit];
+                
+                
                 
                 //Вью Сообщения---------------------
                 viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
@@ -349,10 +511,47 @@
                 //Если приходит аудиофайл---------------------------------------
             } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
                 
+                viewMessage = [[UIView alloc] initWithFrame:CGRectMake(32, 32 + countFor, 80, 20)];
+                viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
+                viewMessage.layer.cornerRadius = 7.f;
+                [viewScrollChat addSubview:viewMessage];
+                
+                //Создаем хвостик------------------
+                UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(32 - 7, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
+                bubbleView.image = [UIImage imageNamed:@"bubble - gray.png"];
+                [viewScrollChat addSubview:bubbleView];
+                
+                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"Message"]];
+                self.player = [[CustomPlayer alloc] initWithURL:url];
+                self.player.customTag = integetButtonPlay;
+                self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(playerItemDidReachEnd:)
+                                                             name:AVPlayerItemDidPlayToEndTimeNotification
+                                                           object:[self.player currentItem]];
+                if (!self.player) {
+                    NSLog(@"Error");
+                }
+                
+                UIButton * buttonPlay = [UIButton buttonWithType:UIButtonTypeSystem];
+                buttonPlay.frame = CGRectMake(5, 5, 10, 10);
+                buttonPlay.backgroundColor = [UIColor blackColor];
+                buttonPlay.tag = integetButtonPlay;
+                [buttonPlay addTarget:self action:@selector(buttonPlayAction:) forControlEvents:UIControlEventTouchUpInside];
+                [viewMessage addSubview:buttonPlay];
+                
+                integetButtonPlay += 1;
+                
+                [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player];
+                
+                
+                
+                NSLog(@"Звук");
                 
                 //Ошибка------------------------------------------------
             } else {
-                NSLog(@"Error");
+                NSLog(@"Error444");
             }
             
             //Лейбл даты-----------------------
@@ -373,8 +572,8 @@
                 countFor += viewMessage.frame.size.height + 50;
             } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
                 countFor += imageViewChat.frame.size.height + 50;
-            } else {
-                NSLog(@"Error");
+            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+                countFor += viewMessage.frame.size.height + 50;
             }
         }
         
@@ -382,6 +581,20 @@
         viewScrollChat.contentOffset =
         CGPointMake(0, viewScrollChat.contentSize.height - viewScrollChat.frame.size.height);
     }
+}
+
+
+- (void) buttonPlayAction: (UIButton*) button
+{
+    [self.player play];
+}
+
+- (void)moviePlayDidEnd:(NSNotification *)notification {
+        NSLog(@"Play end");
+    
+    [self.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
+        NSLog(@"Конец аудио");
+    }];
 }
 
 
@@ -473,6 +686,34 @@
 
 #pragma mark - Action Methods
 
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *p = [notification object];
+    [p seekToTime:kCMTimeZero];
+    
+    [self performSelector:@selector(stopPlayer) withObject:nil afterDelay:0.2];
+}
+
+- (void) stopPlayer
+{
+    [self.player pause];
+}
+
+//Отправить запись--------------------
+- (void) buttonSendAction
+{
+    NSLog(@"Отправить песню");
+    [UIView animateWithDuration:(0.3) animations:^{
+        buttonSend.alpha = 0.4;
+        buttonSend.userInteractionEnabled = NO;
+        self.labelTest.text = @"0.0";
+    } completion:^(BOOL finished) {
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUDIO_POST object:nil];
+        
+    }];
+}
+
 //Действие кнопки отправить сообщение---
 - (void) pushButtonAction
 {
@@ -514,11 +755,7 @@
     }
 }
 
-//Действие кнопки загрузить аудиозапись--
-- (void) soundButtonAction
-{
-    NSLog(@"Загрузить аудиозапись");
-}
+
 
 //Действие кнопки загрузить фото---------
 - (void) cameraButtonAction
@@ -545,14 +782,29 @@
                                    @"Моя датка", @"Data", @"2", @"Type", nil];
     
     [mArrayForPushButton addObject:dictPushText];
-    
-    
     [self sendMessageWithArray:mArrayForPushButton andSend:YES];
-    
     [mArrayForPushButton removeAllObjects];
-    
+}
 
+- (void) testNotificationMethod: (NSNotification*) notification
+{
+    BOOL isBoolen = arc4random() % 2;
+    NSString * testString;
     
+    if (isBoolen) {
+        testString = @"Пользователь 1";
+    } else {
+        testString = @"Пользователь 2";
+    }
+    
+    NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   testString, @"Users",
+                                   notification.object, @"Message",
+                                   @"Моя датка", @"Data", @"3", @"Type", nil];
+    
+    [mArrayForPushButton addObject:dictPushText];
+    [self sendMessageWithArray:mArrayForPushButton andSend:YES];
+    [mArrayForPushButton removeAllObjects];
 }
 
 //Действие на тап картинки------------------------------
@@ -568,6 +820,34 @@
                 }];
         }
     }
+}
+
+//Действие кнопки загрузить аудиозапись--
+- (void) soundButtonAction
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        if (!dictaBool) {
+            CGRect rectDict = dictaphoneView.frame;
+            CGRect rectSelf = self.frame;
+            rectDict.origin.y -= 200;
+            rectSelf.origin.y -= 200;
+            dictaphoneView.frame = rectDict;
+            self.frame = rectSelf;
+            
+            dictaBool = YES;
+        } else {
+            CGRect rectDict = dictaphoneView.frame;
+            CGRect rectSelf = self.frame;
+            rectDict.origin.y += 200;
+            rectSelf.origin.y += 200;
+            dictaphoneView.frame = rectDict;
+            self.frame = rectSelf;
+            
+            dictaBool = NO;
+        }
+        
+    } completion:^(BOOL finished) {
+    }];
 }
 
 - (void) buttonCanselImageAction

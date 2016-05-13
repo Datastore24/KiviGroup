@@ -14,6 +14,7 @@
 #import "SubCategoryView.h"
 #import "PersonalAreaView.h"
 #import "ArrayCitys.h"
+#import "SubscriptionController.h"
 
 @implementation PersonalAreaController
 
@@ -55,7 +56,22 @@
     //Основной контент------------
     PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andArray:[ArrayCitys setCitysArray]];
     [self.view addSubview:contentView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushSubscription) name:NOTIFICATION_PUSH_SUBSCRIPTION object:nil];
 
+}
+
+#pragma mark - DEALLOC
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Action Methods
+- (void) notificationPushSubscription
+{
+    SubscriptionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

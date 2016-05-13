@@ -19,6 +19,11 @@
 @synthesize identifierSubCategory;
 @synthesize identifierSubjectModel;
 
+@synthesize apiImage;
+@synthesize tariffID;
+
+@synthesize audioURL;
+
 
 
 

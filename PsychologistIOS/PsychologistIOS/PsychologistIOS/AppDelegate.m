@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SingleTone.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,7 @@
     self.window.clipsToBounds = YES;
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
     self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-    self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
-    
+    self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);    
     
     
     return YES;

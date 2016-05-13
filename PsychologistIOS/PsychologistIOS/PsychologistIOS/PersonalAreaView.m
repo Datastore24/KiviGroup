@@ -346,6 +346,28 @@
         [buttonSave addTarget:self action:@selector(buttonSaveAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonSave];
         
+        //Кнопка Подписки----------------------------------------
+        UIButton * buttonSubscription = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 92, 25, 184, 48);
+        buttonSubscription.layer.cornerRadius = 24;
+        [buttonSubscription setTitle:@"ПОДПИСКИ" forState:UIControlStateNormal];
+        [buttonSubscription setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonSubscription.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:19];
+        if (isiPhone6) {
+            buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 92, 28, 184, 48);
+        } else if (isiPhone5) {
+            buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 80, 28, 160, 40);
+            buttonSubscription.layer.cornerRadius = 20;
+            buttonSubscription.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
+        }
+        
+        if (isiPhone4s) {
+            buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 80, 28, 160, 40);
+        }
+        buttonSubscription.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
+        [buttonSubscription addTarget:self action:@selector(buttonSubscriptionAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonSubscription];
+        
         //Кнопка сменить пароль------------------------------------
         UIButton * changePussButton = [UIButton buttonWithType:UIButtonTypeSystem];
         changePussButton.frame = CGRectMake(self.frame.size.width / 2 - 52, buttonSave.frame.size.height + buttonSave.frame.origin.y + 16, 104, 16);
@@ -799,6 +821,11 @@
         }];
     }];
     
+}
+
+- (void) buttonSubscriptionAction
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_SUBSCRIPTION object:nil];
 }
 
 #pragma mark - UIPickerViewDataSource

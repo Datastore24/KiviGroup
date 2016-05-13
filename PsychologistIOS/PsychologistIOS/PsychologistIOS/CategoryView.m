@@ -10,6 +10,8 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "SingleTone.h"
+#import "ViewSectionTable.h"
+#import "StringImage.h"
 
 @interface CategoryView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -74,6 +76,9 @@
         [viewSearch addSubview:mainSearchBar];
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height)];
+        if (isiPhone6) {
+            mainTableView.frame = CGRectMake(0, 40, self.frame.size.width, self.frame.size.height + 20);
+        }
         //Убираем полосы разделяющие ячейки------------------------------
 //        mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
@@ -83,7 +88,7 @@
         [self addSubview:mainTableView];
         
         //Затемнение-----------------------------------------------------
-        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 65)];
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];
@@ -115,6 +120,7 @@
         if (isiPhone5) {
             mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
         }
+        mainMoneyImage.layer.cornerRadius = 20;
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
@@ -232,10 +238,17 @@
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     
-    [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
-                                     andSubTitle:[dictCell objectForKey:@"description"]
-                                        andMoney:[[dictCell objectForKey:@"paid"] boolValue]
-                                        andImage:nil]];
+    if (mainArray.count != 0) {
+        NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
+        [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
+                                                     andSubTitle:[dictCell objectForKey:@"description"]
+                                                        andMoney:[[dictCell objectForKey:@"paid"] boolValue]
+                                                        andImage:nil andURL:stringURL]];
+    } else {
+        NSLog(@"Нет категорий");
+    }
+    
+
     return cell;
 }
 
@@ -245,31 +258,22 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];    
     NSDictionary * dictMainArray = [mainArray objectAtIndex:indexPath.row];
-    [[SingleTone sharedManager] setIdentifierCategory:[dictMainArray objectForKey:@"id"]];
-
     
-    if (indexPath.row == 4) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"customNotification" object:nil];
-        [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
-    }
+    [[SingleTone sharedManager] setIdentifierCategory:[dictMainArray objectForKey:@"id"]];
+    [[SingleTone sharedManager] setTariffID:[dictMainArray objectForKey:@"id"]];
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     mainAlertText.text = [dictCell objectForKey:@"text"];
     
-    if ([[dictCell objectForKey:@"money"] boolValue]) {
+    if ([[dictCell objectForKey:@"paid"] boolValue]) {
         buttonBuy.alpha = 1.f;
-        mainMoneyImage.image = [UIImage imageNamed:@"imageMoney.png"];
-        mainMoneyImage.layer.cornerRadius = 0;
-        
-        
     } else {
         buttonBuy.alpha = 0.f;
-        mainMoneyImage.image = [UIImage imageNamed:[dictCell objectForKey:@"image"]];
-        mainMoneyImage.layer.cornerRadius = 20;
-        
     }
     
+    NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
+    mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
     
@@ -299,7 +303,7 @@
     } else if (isiPhone5) {
         return 100;
     } else {
-        return 128;
+        return 120;
     }
 }
 
@@ -310,9 +314,10 @@
                       andSubTitle: (NSString*) subTitle
                          andMoney: (BOOL) money
                          andImage: (NSString*) image
+                           andURL: (NSString*) url
 {
     //Основное окно ячейки--------------------------------
-    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 128)];
+    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 120)];
     if (isiPhone6) {
         cellView.frame = CGRectMake(0, 0, self.frame.size.width, 112);
     } else if (isiPhone5) {
@@ -321,14 +326,18 @@
     cellView.backgroundColor = nil;
     
     //Создаем картинку------------------------------------
-    UIImageView * imageViewCategory = [[UIImageView alloc] initWithFrame:CGRectMake(16, 16, 96, 96)];
+    UIView * imageViewCategory = [[UIView alloc] initWithFrame:CGRectMake(16, 10, 96, 96)];
     imageViewCategory.layer.cornerRadius = 0.5;
     if (isiPhone6) {
         imageViewCategory.frame = CGRectMake(12, 11, 88, 88);
     } else if (isiPhone5) {
-        imageViewCategory.frame = CGRectMake(12, 11, 80, 80);
+        imageViewCategory.frame = CGRectMake(12, 11, 78, 78);
     }
-    imageViewCategory.image = [UIImage imageNamed:image];
+    
+        ViewSectionTable * viewSectionTable = [[ViewSectionTable alloc] initWithImageURL:url andView:nil andContentMode:UIViewContentModeScaleAspectFill];
+        [imageViewCategory addSubview:viewSectionTable];
+
+    
     [cellView addSubview:imageViewCategory];
     
     //Заголовок-------------------------------------------
@@ -365,7 +374,7 @@
     [cellView addSubview:labelSubTitle];
     
     //Платная или нет-------------------------------------
-    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 80, 40, 40)];
+    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 74, 40, 40)];
     if (isiPhone6) {
         moneyImage.frame = CGRectMake(70, 70, 35, 35);
     } else if (isiPhone5) {
@@ -388,7 +397,7 @@
     [cellView addSubview:arrowImage];
 
     //Граница ячейки--------------------------------------
-    UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];
+    UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 119, cellView.frame.size.width - 32, 1)];
     if (isiPhone6) {
         viewBorder.frame = CGRectMake(16, 111, cellView.frame.size.width - 32, 1);
     } else if (isiPhone5) {
@@ -406,6 +415,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertView.frame;
+        
         
         if (isiPhone6) {
             rectAlert.origin.y -= 680;
@@ -438,6 +448,7 @@
 -(void) buttonBuyAction
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
+    [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }
 
 

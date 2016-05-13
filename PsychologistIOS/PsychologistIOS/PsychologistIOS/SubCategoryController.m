@@ -12,7 +12,6 @@
 #import "UIColor+HexColor.h"
 #import "SingleTone.h"
 #import "SubCategoryView.h"
-#import "SubCategoryModel.h"
 #import "Macros.h"
 #import "SubjectViewController.h"
 #import "APIGetClass.h"
@@ -40,9 +39,17 @@
 #pragma mark - Initilization
     
     [self getAPIWithBlock:^{
-        NSArray * arrayMainResponce = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
-        SubCategoryView * contentView = [[SubCategoryView alloc] initWithContent:self.view andArray:arrayMainResponce];
-        [self.view addSubview:contentView];
+        
+        if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray * arrayMainResponce = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+            SubCategoryView * contentView = [[SubCategoryView alloc] initWithContent:self.view andArray:arrayMainResponce];
+            [self.view addSubview:contentView];
+        } else {
+            NSLog(@"Не массив");
+        }
+        
+        
+
         
     }];
     

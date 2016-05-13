@@ -12,7 +12,6 @@
 #import "SubCategoryView.h"
 #import "SubjectView.h"
 #import "UIColor+HexColor.h"
-#import "SubjectModel.h"
 #import "SingleTone.h"
 #import "Macros.h"
 #import "OpenSubjectController.h"
@@ -44,10 +43,15 @@
     [self.view addSubview:backgroundView];
     
     [self getAPIWithBlock:^{
-        NSArray * mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
-        NSLog(@"%@", mainArray);
-        SubjectView * contentView = [[SubjectView alloc] initWithContent:self.view andArray:mainArray];
-        [self.view addSubview:contentView];
+        
+        if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]])
+        {
+            NSArray * mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+            SubjectView * contentView = [[SubjectView alloc] initWithContent:self.view andArray:mainArray];
+            [self.view addSubview:contentView];
+        } else {
+            NSLog(@"Не массив");
+        }
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
