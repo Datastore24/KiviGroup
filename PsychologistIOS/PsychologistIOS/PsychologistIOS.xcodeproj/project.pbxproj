@@ -157,7 +157,6 @@
 		77CA4E151CBAACAE007BD3F2 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E141CBAACAE007BD3F2 /* RecommendView.m */; };
 		77CA4E181CBAACBF007BD3F2 /* RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA4E171CBAACBF007BD3F2 /* RecommendController.m */; };
 		77CA4E1A1CBAB799007BD3F2 /* imageCellRecommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77CA4E191CBAB799007BD3F2 /* imageCellRecommend.png */; };
-		77CACF951CE661A4004B3F22 /* VkontakteDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CACF941CE661A4004B3F22 /* VkontakteDelegate.m */; };
 		77CF0ED31CC0BBCD00D4FEC4 /* ArrayCitys.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CF0ED21CC0BBCD00D4FEC4 /* ArrayCitys.m */; };
 		77D297DD1CADAC760057CC1C /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DC1CADAC760057CC1C /* facebook.png */; };
 		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
@@ -422,8 +421,6 @@
 		77CA4E161CBAACBF007BD3F2 /* RecommendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendController.h; sourceTree = "<group>"; };
 		77CA4E171CBAACBF007BD3F2 /* RecommendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendController.m; sourceTree = "<group>"; };
 		77CA4E191CBAB799007BD3F2 /* imageCellRecommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCellRecommend.png; sourceTree = "<group>"; };
-		77CACF931CE661A4004B3F22 /* VkontakteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteDelegate.h; sourceTree = "<group>"; };
-		77CACF941CE661A4004B3F22 /* VkontakteDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteDelegate.m; sourceTree = "<group>"; };
 		77CF0ED11CC0BBCD00D4FEC4 /* ArrayCitys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayCitys.h; sourceTree = "<group>"; };
 		77CF0ED21CC0BBCD00D4FEC4 /* ArrayCitys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayCitys.m; sourceTree = "<group>"; };
 		77D297DC1CADAC760057CC1C /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
@@ -734,8 +731,6 @@
 				77A2A97B1CD8F6AC0092CC06 /* StringImage.m */,
 				7784E9A61CE0EA6A0020F2FC /* CustomPlayer.h */,
 				7784E9A71CE0EA6A0020F2FC /* CustomPlayer.m */,
-				77CACF931CE661A4004B3F22 /* VkontakteDelegate.h */,
-				77CACF941CE661A4004B3F22 /* VkontakteDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1399,7 +1394,6 @@
 				772F5A7B1CBEAE700051EC10 /* SupportServiceView.m in Sources */,
 				77C72F121CBEDB36009A78F7 /* InstructionDetailsView.m in Sources */,
 				77B79C171CBD629900E37B52 /* BookmarksView.m in Sources */,
-				77CACF951CE661A4004B3F22 /* VkontakteDelegate.m in Sources */,
 				77B79C2A1CBD758E00E37B52 /* MeditationController.m in Sources */,
 				77A807DF1CB2F8DE008EE5A5 /* SubCategoryView.m in Sources */,
 				776D8D451CAD1AD20028929C /* UIImage+ImageEffects.m in Sources */,
