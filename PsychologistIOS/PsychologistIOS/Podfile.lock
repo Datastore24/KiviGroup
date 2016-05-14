@@ -21,27 +21,49 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AKPickerView (0.2.7)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.0):
+    - FBSDKCoreKit
   - Motis (1.3.0)
   - SCLAlertView-Objective-C (1.0.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - VK-ios-sdk (1.3.17)
   - YandexMoneySDKObjc (2.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AKPickerView
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Motis (~> 1.3.0)
   - SCLAlertView-Objective-C
   - SDWebImage (~> 3.7)
+  - VK-ios-sdk
   - YandexMoneySDKObjc
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AKPickerView: 125372e36fcc372216127600a541f14dcdbb7993
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
   Motis: a5b1f6aa29ad14cd64e27c4fe15d9805c18c162f
   SCLAlertView-Objective-C: 25f7ea3a3526dde177d8b8056a0b88fe4187651e
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  VK-ios-sdk: 671b7bc84596da7040544eb848b3c71787906fbd
   YandexMoneySDKObjc: c5ef2e6813deeba3323d427551e7321530bf768e
 
 COCOAPODS: 0.39.0
