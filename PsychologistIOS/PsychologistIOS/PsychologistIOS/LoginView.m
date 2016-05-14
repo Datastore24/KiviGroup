@@ -250,6 +250,8 @@
             }
             UIImage *btnImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonOtherInput setImage:btnImage forState:UIControlStateNormal];
+            buttonOtherInput.tag = 10 + i;
+            [buttonOtherInput addTarget:self action:@selector(buttonOtherInputAction:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonOtherInput];
         }
         
@@ -457,9 +459,23 @@
 }
 
 #pragma mark - Buttons Methods
+
+- (void) buttonOtherInputAction: (UIButton*) button
+{
+        if (button.tag == 10) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"VKN" object:nil];
+        } else if (button.tag == 11) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"FaceBookN" object:nil];
+        } else if (button.tag == 12) {
+            NSLog(@"Почта");
+        } else {
+            NSLog(@"Error");
+        }
+}
+
+
 - (void) buttonLoginAction
 {
-
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION object:nil];
 }
 
