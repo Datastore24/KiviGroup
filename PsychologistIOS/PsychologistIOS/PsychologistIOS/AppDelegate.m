@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "SingleTone.h"
-#import <VKSdk.h>
 #import <FBSDKSettings.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 

@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface VKApi : NSObject
+-(void) getUserWithParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
 
 @end

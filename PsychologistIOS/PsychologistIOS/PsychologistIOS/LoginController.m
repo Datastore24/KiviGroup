@@ -11,8 +11,7 @@
 #import "LoginView.h"
 #import "Macros.h"
 #import "CategoryController.h"
-#import <VK-ios-sdk/VKSdk.h>
-#import "VkontakteDelegate.h"
+#import "VKApi.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKCoreKit/FBSDKGraphRequestConnection.h>
@@ -202,7 +201,7 @@
         
         [self closeWebView];
         //передаем всю информацию специально обученному классу
-        [[VkontakteDelegate sharedInstance] loginWithParams:user];
+        //[[VkontakteDelegate sharedInstance] loginWithParams:user];
 //        [[VkontakteDelegate sharedInstance] postToWall];
     }
     else {
