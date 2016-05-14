@@ -26,13 +26,10 @@
     //-------------------
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-    
     //Запрос
     [manager GET: encodedURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //Вызов блока
         compitionBack (responseObject);
-        
-        
         //Ошибки
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -41,28 +38,24 @@
 
 //Поделиться
 -(void) postWallWithParams: (NSDictionary *) params message: (NSString *) message andLinkAttach: (NSString*) link complitionBlock: (void (^) (id response)) compitionBack{
-    
     NSString* user_id = [params objectForKey:@"user_id"];
     NSString* access_token = [params objectForKey:@"access_token"];
-    
+    NSString* attachmentsString = [params objectForKey:@"attachments"];
     NSString* messageWithPlus = [message stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"https://api.vk.com/method/wall.post?uid=%@&message=%@&attachments=https://pp.vk.me/c623316/v623316359/3e441/f8U_GvVIOXo.jpg&access_token=%@", user_id, messageWithPlus,access_token];
+    NSString * url = [NSString stringWithFormat:@"https://api.vk.com/method/wall.post?uid=%@&message=%@&attachments=%@&access_token=%@", user_id, messageWithPlus, attachmentsString, access_token];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     //-------------------
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-    
     //Запрос
     [manager GET: encodedURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //Вызов блока
         compitionBack (responseObject);
-        
-        
         //Ошибки
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
