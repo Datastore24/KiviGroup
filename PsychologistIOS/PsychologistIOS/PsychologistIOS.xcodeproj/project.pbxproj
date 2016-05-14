@@ -174,6 +174,7 @@
 		77EA7C2E1CB024DD0083AD5B /* image5.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C2D1CB024DD0083AD5B /* image5.png */; };
 		77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C2F1CB024E40083AD5B /* arrowImage.png */; };
 		77EA7C321CB024EC0083AD5B /* imageMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C311CB024EC0083AD5B /* imageMoney.png */; };
+		ADB719681CE704F900C447B3 /* VKApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719671CE704F900C447B3 /* VKApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -443,6 +444,8 @@
 		77EA7C2D1CB024DD0083AD5B /* image5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image5.png; sourceTree = "<group>"; };
 		77EA7C2F1CB024E40083AD5B /* arrowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowImage.png; sourceTree = "<group>"; };
 		77EA7C311CB024EC0083AD5B /* imageMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMoney.png; sourceTree = "<group>"; };
+		ADB719661CE704F900C447B3 /* VKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKApi.h; sourceTree = "<group>"; };
+		ADB719671CE704F900C447B3 /* VKApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKApi.m; sourceTree = "<group>"; };
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1041,6 +1044,8 @@
 				77A2A9781CD8F5780092CC06 /* ViewSectionTable.m */,
 				77E0F8A51CD265EA0047008F /* APIGetClass.h */,
 				77E0F8A61CD265EA0047008F /* APIGetClass.m */,
+				ADB719661CE704F900C447B3 /* VKApi.h */,
+				ADB719671CE704F900C447B3 /* VKApi.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1402,6 +1407,7 @@
 				771E53891CC267DC008E5562 /* RatesView.m in Sources */,
 				7784E9A21CE09EF40020F2FC /* DALabeledCircularProgressView.m in Sources */,
 				776D8D411CAD1AD20028929C /* UIBarButtonItem+Alpha.m in Sources */,
+				ADB719681CE704F900C447B3 /* VKApi.m in Sources */,
 				776D8D461CAD1AD20028929C /* UIImage+Resize.m in Sources */,
 				775B7C3D1CB42E8700161EF9 /* SubjectViewController.m in Sources */,
 				77C72F041CBECC76009A78F7 /* InstructionsController.m in Sources */,
