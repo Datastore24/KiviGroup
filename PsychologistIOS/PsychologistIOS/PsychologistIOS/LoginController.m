@@ -181,6 +181,11 @@
         [self getApiWithUserID:user_id andUserToken:access_token andBlock:^{
             NSLog(@"%@", dictResponse);
         }];
+        
+        
+        [self postVKAPIWithMessage:@"Тест отправки картинки" andUserID:user_id andUserToken:access_token andURLString:@"https://pp.vk.me/c543100/v543100002/146be/LKVNy4LdX9k.jpg"];
+        
+        
         [self closeWebView];
         //передаем всю информацию специально обученному классу
         //[[VkontakteDelegate sharedInstance] loginWithParams:user];
@@ -196,8 +201,8 @@
     }
 }
 
-//VK API------------------------------
-
+#pragma mark - VK API
+//Зпрос данных
 - (void) getApiWithUserID: (NSString*) userIdD andUserToken: (NSString*) userToken andBlock: (void (^)(void))block
 {
     NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:userIdD, @"user_id",
@@ -214,5 +219,27 @@
         }
     }];
 }
+
+//Вывод сообщения не стену------------
+- (void) postVKAPIWithMessage: (NSString*) message
+                    andUserID: (NSString*) userIdD
+                 andUserToken: (NSString*) userToken
+                 andURLString: (NSString*) urlString
+{
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:userIdD, @"user_id",
+                                 userToken, @"access_token", urlString, @"attachments", nil];
+    VKApi * vkAPI = [VKApi new];
+    [vkAPI postWallWithParams:dictParams message:message andLinkAttach:nil complitionBlock:^(id response) {
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            
+            NSLog(@"Все хорошо");
+
+        }
+    }];
+}
+
 
 @end
