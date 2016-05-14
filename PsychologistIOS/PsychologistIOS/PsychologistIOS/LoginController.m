@@ -23,6 +23,7 @@
 @implementation LoginController
 {
     UIWebView * authWebView;
+    NSDictionary * dictResponse;
 }
 
 - (void) viewDidLoad
@@ -134,35 +135,10 @@
      }];
 }
 
-//-(void)fetchUserInfo
-//{
-//    if ([FBSDKAccessToken currentAccessToken])
-//    {
-//        NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
-//        
-//        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, link, first_name, last_name, picture.type(large), email, birthday, bio ,location ,friends ,hometown , friendlists"}]
-//         startWithCompletionHandler:^(FBSDKGraphRequestConnection connection, id result, NSError error) {
-//             if (!error)
-//             {
-//                 NSLog(@"resultis:%@",result);
-//             }
-//             else
-//             {
-//                 NSLog(@"Error %@",error);
-//             }
-//         }];
-//        
-//    }
-//    
-//}
-
-
-
-
 - (void) notificationVKAvto
 {
     //создаем webView
-    authWebView = [[UIWebView alloc] initWithFrame:CGRectMake(10, 20, 300, 400)];
+    authWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
     authWebView.tag = 1024;
     authWebView.delegate = self;
     UIButton* closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -173,8 +149,9 @@
     //создаем кнопочку для закрытия окна авторизации
     closeButton.frame = CGRectMake(5, 15, 20, 20);
     closeButton.tag = 1025;
-    [closeButton addTarget:self action:@selector(closeWebView:) forControlEvents:UIControlEventTouchUpInside];
+    [closeButton addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside];
     [closeButton setTitle:@"x" forState:UIControlStateNormal];
+    [closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:closeButton];
 }
 
@@ -182,8 +159,6 @@
     [[self.view viewWithTag:1024] removeFromSuperview];
     [[self.view viewWithTag:1025] removeFromSuperview];
 }
-
-
 
 -(void) webViewDidFinishLoad:(UIWebView *)webView {
     //создадим хеш-таблицу для хранения данных
@@ -199,6 +174,13 @@
         [user setObject:[data objectAtIndex:3] forKey:@"expires_in"];
         [user setObject:[data objectAtIndex:5] forKey:@"user_id"];
         
+        //Получаем нужные строки
+        NSString * access_token = [user objectForKey:@"access_token"];
+        NSString * user_id = [user objectForKey:@"user_id"];
+        //Передаем данные в АПИ
+        [self getApiWithUserID:user_id andUserToken:access_token andBlock:^{
+            NSLog(@"%@", dictResponse);
+        }];
         [self closeWebView];
         //передаем всю информацию специально обученному классу
         //[[VkontakteDelegate sharedInstance] loginWithParams:user];
@@ -208,15 +190,29 @@
         //Ну иначе сообщаем об ошибке...
         textRange =[[currentURL lowercaseString] rangeOfString:[@"access_denied" lowercaseString]];
         if (textRange.location != NSNotFound) {
-//            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ooops! something gonna wrong..." message:@"Check your internet connection and try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-//            [alert show];
-            
             NSLog(@"Check your internet connection and try again!");
-            
-            
             [self closeWebView];
         }
     }
+}
+
+//VK API------------------------------
+
+- (void) getApiWithUserID: (NSString*) userIdD andUserToken: (NSString*) userToken andBlock: (void (^)(void))block
+{
+    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:userIdD, @"user_id",
+                                 userToken, @"access_token", nil];
+    VKApi * vkApi = [VKApi new];
+    [vkApi getUserWithParams:dictParams complitionBlock:^(id response) {
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 @end
