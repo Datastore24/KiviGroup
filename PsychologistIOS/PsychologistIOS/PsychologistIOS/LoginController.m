@@ -166,8 +166,28 @@
             
             if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
                 
+                NSString * token_fb;
+                NSString * token_vk;
+                
+               
+                
                 NSDictionary * respData = [responseInfo objectForKey:@"data"];
-                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:[respData objectForKey:@"vk_token"] andTokenFb:[respData objectForKey:@"fb_token"]  andTypeAuth:[respData objectForKey:@"pass"] ];
+                
+                if([[respData objectForKey:@"vk_token"] isEqual: [NSNull null]]){
+                    
+                    token_vk=@"";
+                }else{
+                    token_vk=[respData objectForKey:@"vk_token"];
+                }
+                
+                if([[respData objectForKey:@"fb_token"] isEqual: [NSNull null]]){
+                    
+                    token_fb=@"";
+                }else{
+                    token_fb=[respData objectForKey:@"fb_token"];
+                }
+                
+                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:token_vk andTokenFb:token_fb andTypeAuth:@"pass" ];
                 CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
                 
                 
