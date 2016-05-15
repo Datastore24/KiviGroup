@@ -16,6 +16,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKCoreKit/FBSDKGraphRequestConnection.h>
 
+#import "Auth.h"
+#import "AuthDbClass.h"
+#import "SingleTone.h"
+#import <AFNetworking/AFNetworking.h>
+#import "APIGetClass.h"
+
 @interface LoginController () <UIWebViewDelegate>
 
 @end
@@ -24,10 +30,24 @@
 {
     UIWebView * authWebView;
     NSDictionary * dictResponse;
+    
+    BOOL isBool;
+    NSDictionary * responsePassword;
+    NSDictionary * responseInfo;
+    AuthDbClass * authDbClass;
 }
 
 - (void) viewDidLoad
 {
+    
+#pragma mark - Auth
+    
+    authDbClass = [[AuthDbClass alloc] init];
+    isBool = NO;
+    
+    
+    
+    
     
 #pragma mark - Header
     
@@ -69,9 +89,45 @@
     [mainContentView addSubview:buttonLigin];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWithMainView) name:NOTIFICATION_LOGIN_VIEW_PUSH_MAIN_VIEW object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSmsCode:) name:NOTIFICATION_SEND_SMS_CODE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationVKAvto) name:@"VKN" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFaceAvto) name:@"FaceBookN" object:nil];
+    
+#pragma mark - CheckAuth
+    //Проверка при запуске приложеия
+    if([authDbClass showAllUsers].count>0){
+        Auth * userInfo = [[authDbClass showAllUsers] objectAtIndex:0];
+        //        NSLog(@"userInfo.salt: %@",userInfo.salt);
+        
+        //Проверка CoreData на существование password, token FB, token VK
+        if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
+            [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
+        }else{
+            [self showLoginWith:NO];
+        }
+    }else{
+        [self showLoginWith:NO];
+    }
 
+}
+
+//Показ проверки и анимация появления авторизации
+-(void)showLoginWith:(BOOL) animation{
+    if(animation){
+        //Повяление с анимацией
+        [UIView animateWithDuration:2.0 animations:^{
+//            textFieldPhone.alpha=1;
+//            buttonGetCode.alpha=1;
+//            viewLoginPhone.alpha=1;
+//            labelPlaceHolderPhone.alpha=1;
+//            viewRegistration.alpha=1;
+//            checkView.alpha=0;
+        }];
+        
+    }else{
+       // Без анимации
+    }
 }
 
 - (void) dealloc
@@ -81,8 +137,21 @@
 
 #pragma mark - action Methods
 
+- (void) getSmsCode: (NSNotification*) notification
+{
+    NSLog(@"NOTIF %@",notification.object);
+    [self getPassword:notification.object];
+    
+    
+   
+
+    
+}
+
 - (void) pushWithMainView
 {
+    
+    
     UITextField * textFildSMS = (UITextField*)[self.view viewWithTag:120];
     
     if (textFildSMS.text.length < 5) {
@@ -238,6 +307,29 @@
             NSLog(@"Все хорошо");
 
         }
+    }];
+}
+
+#pragma mark - API
+
+-(void) getPassword:(NSString *) phone
+{
+    
+    NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             phoneResult,@"phone",
+                             nil];
+    
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"get_password" complitionBlock:^(id response) {
+        //        NSLog(@"%@", response);
+        
+        responsePassword = (NSDictionary*)response;
+        NSLog(@"resp: %@",responsePassword);
+        NSLog(@"error_msg: %@",[responsePassword objectForKey:@"error_msg"]);
+        
     }];
 }
 
