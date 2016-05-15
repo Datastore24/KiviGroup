@@ -11,6 +11,12 @@
 #import <FBSDKSettings.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#import <MagicalRecord/MagicalRecord.h>
+#import "Auth.h"
+#import "AuthDbClass.h"
+#import "SingleTone.h"
+
+
 @interface AppDelegate ()
 
 @end
@@ -31,6 +37,11 @@
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     
+    //Строка скрывает НСЛОГИ Базы данных (для включения убрать коммент)------------------
+    [MagicalRecord setLoggingLevel:0];
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    
     self.window.clipsToBounds = YES;
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
     self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
@@ -42,6 +53,48 @@
     
     return YES;
 }
+
+//Для получение push
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
+    
+    AuthDbClass * auth = [AuthDbClass new];
+    NSString * deviceTokenString = [[[[deviceToken description]
+                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+    //    NSLog(@"My token is: %@", deviceTokenString);
+    [[SingleTone sharedManager] setToken_ios:deviceTokenString];
+    
+    if(![auth checkDeviceToken:deviceTokenString]){
+        
+        [auth putDeviceToken:deviceTokenString];
+        Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"ADD TOKEN: %@",userInfo.token_ios);
+        
+    }else{
+        [auth updateToken:deviceTokenString];
+        Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"UPDATE TOKEN: %@",userInfo.token_ios);
+    }
+    
+    
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //    NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //    NSLog(@"Received notification: %@", userInfo);
+    if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
+        //        application.applicationIconBadgeNumber=0;
+    }
+    
+    if([[userInfo objectForKey:@"info"] isEqualToString:@"rch"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadChat" object:self];
+    }
+}
+//
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -55,6 +108,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadChat" object:self];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -64,6 +118,22 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [MagicalRecord cleanUp];
 }
+
+- (void) changeBadge: (NSNotification*) notification
+{
+    NSString * strinhBadge = (NSString*)notification.object;
+    NSLog(@"strinhBadge - %@", strinhBadge);
+    
+    NSInteger intBadge = [strinhBadge integerValue];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:intBadge];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 @end

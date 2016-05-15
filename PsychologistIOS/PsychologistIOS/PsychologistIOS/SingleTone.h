@@ -29,6 +29,10 @@
 //Работа с аудио---------------------------------
 @property (strong, nonatomic) NSString * audioURL;
 
+//Авторизация
+@property (strong,nonatomic) NSMutableArray* token_ios;
+@property (strong, nonatomic) NSString* login;
+
 
 
 + (id)sharedManager;
