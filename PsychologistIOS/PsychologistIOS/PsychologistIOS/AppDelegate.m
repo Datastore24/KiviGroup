@@ -38,9 +38,12 @@
     [UIApplication sharedApplication].statusBarHidden = NO;
     
     //Строка скрывает НСЛОГИ Базы данных (для включения убрать коммент)------------------
-    [MagicalRecord setLoggingLevel:0];
+    //[MagicalRecord setLoggingLevel:0];
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    
+      AuthDbClass * auth = [AuthDbClass new];
+    NSLog(@"SHOW %@",[auth showAllUsers]);
     
     self.window.clipsToBounds = YES;
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
