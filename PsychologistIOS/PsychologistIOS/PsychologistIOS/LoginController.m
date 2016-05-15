@@ -24,6 +24,8 @@
 
 @interface LoginController () <UIWebViewDelegate>
 
+@property (strong,nonatomic) NSString * loginString;
+
 @end
 
 @implementation LoginController
@@ -140,11 +142,11 @@
 - (void) getSmsCode: (NSNotification*) notification
 {
     NSLog(@"NOTIF %@",notification.object);
+    
+    self.loginString = notification.object;
+    NSLog(@"%@",self.loginString);
     [self getPassword:notification.object];
     
-    
-   
-
     
 }
 
@@ -153,12 +155,37 @@
     
     
     UITextField * textFildSMS = (UITextField*)[self.view viewWithTag:120];
+    NSLog(@"PASSWORD %@",textFildSMS.text);
     
     if (textFildSMS.text.length < 5) {
         NSLog(@"%lu", textFildSMS.text.length);
     } else {
-    CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
-    [self.navigationController pushViewController:detail animated:YES];
+        
+        [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andBlock:^{
+            NSLog(@"INFO: %@",responseInfo);
+            
+            if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
+                
+                NSDictionary * respData = [responseInfo objectForKey:@"data"];
+                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:[respData objectForKey:@"vk_token"] andTokenFb:[respData objectForKey:@"fb_token"]  andTypeAuth:[respData objectForKey:@"pass"] ];
+                CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
+                
+                
+                
+                [[SingleTone sharedManager]setLogin:[respData objectForKey:@"login"]];
+                
+                [self.navigationController pushViewController:detail animated:YES];
+            } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
+                
+                NSLog(@"ERROR:%@",[responseInfo objectForKey:@"error_msg"]);
+                
+            }
+        }];
+        
+        
+
+        
+   
 }
     
 }
@@ -329,6 +356,27 @@
         responsePassword = (NSDictionary*)response;
         NSLog(@"resp: %@",responsePassword);
         NSLog(@"error_msg: %@",[responsePassword objectForKey:@"error_msg"]);
+        
+    }];
+}
+
+-(void) getInfo:(NSString *) login andPassword:(NSString*) password andDeviceToken: (NSString*) token_ios
+       andBlock:(void (^)(void))block
+{
+    
+    NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             loginResult,@"login",
+                             password,@"password",
+                             token_ios,@"token",
+                             nil];
+  
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
+               NSLog(@"%@", response);
+        
+        responseInfo = (NSDictionary*)response;
+        block();
         
     }];
 }
