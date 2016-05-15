@@ -67,7 +67,7 @@
     
     if(![auth checkDeviceToken:deviceTokenString]){
         
-        [auth putDeviceToken:deviceTokenString];
+        [auth putDeviceToken:@"111"];
         Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
         NSLog(@"ADD TOKEN: %@",userInfo.token_ios);
         
