@@ -50,6 +50,10 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
+    // Для iOS 8 и выше
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
     
     return YES;
 }
@@ -67,7 +71,7 @@
     
     if(![auth checkDeviceToken:deviceTokenString]){
         
-        [auth putDeviceToken:@"111"];
+        [auth putDeviceToken:deviceTokenString];
         Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
         NSLog(@"ADD TOKEN: %@",userInfo.token_ios);
         
