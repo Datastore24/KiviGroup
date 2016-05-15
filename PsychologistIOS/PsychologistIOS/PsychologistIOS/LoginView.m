@@ -26,6 +26,8 @@
     UIView * viewSMS;
     UIButton * buttonLogin;
     UIButton * buttonInput;
+    
+    NSString * stringPhone;
 }
 
 - (instancetype)initButtonLogin
@@ -86,7 +88,7 @@
         [buttonLogin addTarget:self action:@selector(buttonLoginAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonLogin];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAnimationMethodButton) name:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAnimationMethodButton:) name:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:nil];
     }
     return self;
 }
@@ -142,6 +144,7 @@
         //Ввод телефона-----------------------------------------------------------------
         textFieldPhone = [[UITextField alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
         textFieldPhone.delegate = self;
+        textFieldPhone.tag = 257;
         textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldPhone.font = [UIFont fontWithName:FONTLITE size:19];
@@ -476,10 +479,8 @@
 
 - (void) buttonLoginAction
 {
-    NSLog(@"%@",textFieldPhone.text);
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_SMS_CODE object:textFieldPhone.text];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_SMS_CODE object:stringPhone];    
 }
 
 - (void) buttonInputAction
@@ -501,18 +502,22 @@
         rectSMS.origin.x -= 784;
         viewSMS.frame = rectSMS;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:textFieldPhone.text];
     }];
 }
 }
 
-- (void) notificationAnimationMethodButton
+- (void) notificationAnimationMethodButton: (NSNotification*) notification
 {
     [UIView transitionFromView:buttonLogin
                         toView:buttonInput
                       duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromBottom
                     completion:nil];
+    
+    
+    stringPhone = notification.object;
+    
 }
 
 @end
