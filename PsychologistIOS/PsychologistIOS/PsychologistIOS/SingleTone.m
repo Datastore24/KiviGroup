@@ -24,6 +24,9 @@
 
 @synthesize audioURL;
 
+@synthesize token_ios;
+@synthesize login;
+
 
 
 

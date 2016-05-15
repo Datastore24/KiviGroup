@@ -174,6 +174,10 @@
 		77EA7C301CB024E40083AD5B /* arrowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C2F1CB024E40083AD5B /* arrowImage.png */; };
 		77EA7C321CB024EC0083AD5B /* imageMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EA7C311CB024EC0083AD5B /* imageMoney.png */; };
 		ADB719681CE704F900C447B3 /* VKApi.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719671CE704F900C447B3 /* VKApi.m */; };
+		ADB7196C1CE7BF0300C447B3 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADB7196A1CE7BF0300C447B3 /* UserModel.xcdatamodeld */; };
+		ADB719751CE7BFDE00C447B3 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719741CE7BFDE00C447B3 /* AuthDbClass.m */; };
+		ADB7197A1CE852F000C447B3 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */; };
+		ADB7197B1CE852F000C447B3 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719791CE852F000C447B3 /* Auth.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -443,6 +447,13 @@
 		77EA7C311CB024EC0083AD5B /* imageMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMoney.png; sourceTree = "<group>"; };
 		ADB719661CE704F900C447B3 /* VKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKApi.h; sourceTree = "<group>"; };
 		ADB719671CE704F900C447B3 /* VKApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKApi.m; sourceTree = "<group>"; };
+		ADB7196B1CE7BF0300C447B3 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
+		ADB719731CE7BFDE00C447B3 /* AuthDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthDbClass.h; sourceTree = "<group>"; };
+		ADB719741CE7BFDE00C447B3 /* AuthDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDbClass.m; sourceTree = "<group>"; };
+		ADB719761CE852F000C447B3 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
+		ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
+		ADB719781CE852F000C447B3 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
+		ADB719791CE852F000C447B3 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -710,6 +721,7 @@
 				776D8CE21CAD17BF0028929C /* Info.plist */,
 				770384471CDBC1C5006A885B /* Video */,
 				77E0F89E1CD2647F0047008F /* API */,
+				ADB719691CE7BECE00C447B3 /* CoreData */,
 				776D8DC11CAD43B70028929C /* iCategory */,
 				776D8D251CAD18A50028929C /* Menu */,
 				776D8D041CAD18830028929C /* Font */,
@@ -1072,6 +1084,20 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		ADB719691CE7BECE00C447B3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				ADB719761CE852F000C447B3 /* Auth+CoreDataProperties.h */,
+				ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */,
+				ADB719781CE852F000C447B3 /* Auth.h */,
+				ADB719791CE852F000C447B3 /* Auth.m */,
+				ADB719731CE7BFDE00C447B3 /* AuthDbClass.h */,
+				ADB719741CE7BFDE00C447B3 /* AuthDbClass.m */,
+				ADB7196A1CE7BF0300C447B3 /* UserModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		D98BDD5E10C32A32658D3F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1396,8 +1422,10 @@
 				77B79C171CBD629900E37B52 /* BookmarksView.m in Sources */,
 				77B79C2A1CBD758E00E37B52 /* MeditationController.m in Sources */,
 				77A807DF1CB2F8DE008EE5A5 /* SubCategoryView.m in Sources */,
+				ADB719751CE7BFDE00C447B3 /* AuthDbClass.m in Sources */,
 				776D8D451CAD1AD20028929C /* UIImage+ImageEffects.m in Sources */,
 				77A2A9791CD8F5780092CC06 /* ViewSectionTable.m in Sources */,
+				ADB7196C1CE7BF0300C447B3 /* UserModel.xcdatamodeld in Sources */,
 				771E53891CC267DC008E5562 /* RatesView.m in Sources */,
 				7784E9A21CE09EF40020F2FC /* DALabeledCircularProgressView.m in Sources */,
 				776D8D411CAD1AD20028929C /* UIBarButtonItem+Alpha.m in Sources */,
@@ -1411,12 +1439,14 @@
 				776D8D2C1CAD18FD0028929C /* TitleClass.m in Sources */,
 				770BD4D41CE3882A000A20CC /* YandexSalesController.m in Sources */,
 				778C30671CAE7A6900E2BAE5 /* CategoryView.m in Sources */,
+				ADB7197B1CE852F000C447B3 /* Auth.m in Sources */,
 				771E53AC1CC2DD13008E5562 /* ChatController.m in Sources */,
 				771E53981CC2C146008E5562 /* ArrayModelNotification.m in Sources */,
 				7784E9991CE09BED0020F2FC /* DictaphoneView.m in Sources */,
 				77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */,
 				77A807E21CB2FA33008EE5A5 /* SingleTone.m in Sources */,
 				771D05291CDDEEF900A83111 /* SubscriptionView.m in Sources */,
+				ADB7197A1CE852F000C447B3 /* Auth+CoreDataProperties.m in Sources */,
 				77CA4E181CBAACBF007BD3F2 /* RecommendController.m in Sources */,
 				77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */,
 				771D05261CDDEEE500A83111 /* SubscriptionController.m in Sources */,
@@ -1668,6 +1698,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ADB7196A1CE7BF0300C447B3 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ADB7196B1CE7BF0300C447B3 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = ADB7196B1CE7BF0300C447B3 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 776D8CC61CAD17BF0028929C /* Project object */;
 }
