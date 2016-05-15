@@ -476,7 +476,10 @@
 
 - (void) buttonLoginAction
 {
+    NSLog(@"%@",textFieldPhone.text);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_SMS_CODE object:textFieldPhone.text];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION object:nil];
+    
 }
 
 - (void) buttonInputAction
