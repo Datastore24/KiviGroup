@@ -98,11 +98,13 @@
     
 #pragma mark - CheckAuth
     //Проверка при запуске приложеия
+    NSLog(@"COUNT %@",[authDbClass showAllUsers]);
     if([authDbClass showAllUsers].count>0){
         Auth * userInfo = [[authDbClass showAllUsers] objectAtIndex:0];
         //        NSLog(@"userInfo.salt: %@",userInfo.salt);
         
         //Проверка CoreData на существование password, token FB, token VK
+        NSLog(@"TO %@",userInfo.password);
         if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
@@ -173,6 +175,8 @@
                 
                 NSDictionary * respData = [responseInfo objectForKey:@"data"];
                 
+                //Пустые токены
+                
                 if([[respData objectForKey:@"vk_token"] isEqual: [NSNull null]]){
                     
                     token_vk=@"";
@@ -187,9 +191,14 @@
                     token_fb=[respData objectForKey:@"fb_token"];
                 }
                 
-                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:token_vk andTokenFb:token_fb andTypeAuth:@"pass" ];
-                CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
+                //
                 
+                
+                //Обновление базы данных
+                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:token_vk andTokenFb:token_fb andTypeAuth:@"pass" ];
+                
+                
+                CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
                 
                 
                 [[SingleTone sharedManager]setLogin:[respData objectForKey:@"login"]];
@@ -400,6 +409,57 @@
         
     }];
 }
+
+-(void) checkAuth
+{
+    
+    
+    
+    
+    if([authDbClass showAllUsers].count>0){
+        Auth * userInfo = [[authDbClass showAllUsers] objectAtIndex:0];
+        
+        NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 userInfo.login,@"login",
+                                 userInfo.password, @"password",
+                                 userInfo.token_ios,@"token",
+                                 nil];
+        
+        
+        APIGetClass * getInfo = [[APIGetClass alloc] init];
+        
+        if(userInfo.password.length != 0 && userInfo.login.length != 0){
+            [getInfo getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
+                
+                
+                NSDictionary * responseCheckInfo = (NSDictionary*)response;
+                
+                if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
+                    [self showLoginWith:YES];
+                    
+                    [[SingleTone sharedManager] setLogin:[responseCheckInfo objectForKey:@"login"]];
+                   
+                    
+                    CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
+                    
+                    
+                    [self.navigationController pushViewController:detail animated:YES];
+                } else {
+                    NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
+                    
+                    [self showLoginWith:YES];
+                    
+                }
+                
+                
+            }];
+        }else{
+            [self showLoginWith:NO];
+            
+        }
+    }
+}
+
 
 
 @end

@@ -14,7 +14,7 @@
 
 //Метод сохраняющий deviceToken для push уведомлений
 -(void) putDeviceToken:(NSString *) deviceToken {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserInfo.sqlite"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
     Auth *auth = [Auth MR_createEntityInContext:localContext];
     auth.uid =@"1";
