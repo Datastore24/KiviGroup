@@ -43,7 +43,19 @@
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
       AuthDbClass * auth = [AuthDbClass new];
-    NSLog(@"SHOW %@",[auth showAllUsers]);
+    
+    if(![auth checkDeviceToken:@"TEST"]){
+        
+        [auth putDeviceToken:@"TEST"];
+        Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"ADD TOKEN: %@",userInfo.token_ios);
+        
+    }else{
+        [auth updateToken:@"TEST"];
+        Auth * userInfo = [[auth showAllUsers] objectAtIndex:0];
+        NSLog(@"UPDATE TOKEN: %@",userInfo.token_ios);
+    }
+
     
     self.window.clipsToBounds = YES;
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
@@ -56,6 +68,12 @@
     // Для iOS 8 и выше
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    //Временно
+    
+    
+    
+    //
     
     
     return YES;
