@@ -130,4 +130,9 @@
     return users;
 }
 
+-(void) deleteAll{
+    [Auth MR_truncateAll];
+}
+
+
 @end

@@ -21,6 +21,7 @@
        andTypeAuth: (NSString*) typeAuth;
 - (BOOL)checkTokens:(NSString*) token type:(NSString*) type;
 - (NSArray *) showAllUsers;
+- (void) deleteAll;
 
 
 
