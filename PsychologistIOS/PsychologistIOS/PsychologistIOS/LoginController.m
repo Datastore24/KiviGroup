@@ -25,6 +25,7 @@
 @interface LoginController () <UIWebViewDelegate>
 
 @property (strong,nonatomic) NSString * loginString;
+@property (strong,nonatomic) NSString * type_auth;
 
 @end
 
@@ -38,6 +39,7 @@
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
     BOOL phoneAndMail;
+
 }
 
 - (void) viewDidLoad
@@ -143,6 +145,11 @@
 - (void) getEmailCode: (NSNotification*) notification
 {
     NSLog(@"Выводим почту %@", notification.object);
+    
+    self.loginString = notification.object;
+    NSLog(@"%@",self.loginString);
+    [self getPassword:notification.object type:@"email"];
+    self.type_auth=@"pass";
 }
 
 - (void) getSmsCode: (NSNotification*) notification
@@ -151,7 +158,8 @@
     
     self.loginString = notification.object;
     NSLog(@"%@",self.loginString);
-    [self getPassword:notification.object];
+    [self getPassword:notification.object type:@"phone"];
+    self.type_auth=@"pass";
     
     
 }
@@ -167,7 +175,9 @@
         NSLog(@"%lu", textFildSMS.text.length);
     } else {
         
-        [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andBlock:^{
+        NSLog(@"TYPE: %@",self.type_auth);
+        
+        [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andSocToken:@"" andTypeAuth:self.type_auth andBlock:^{
             NSLog(@"INFO: %@",responseInfo);
             
             if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
@@ -372,18 +382,30 @@
 
 #pragma mark - API
 
--(void) getPassword:(NSString *) phone
+-(void) getPassword:(NSString *) login type:(NSString*) type
 {
-    
-    NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             phoneResult,@"phone",
-                             nil];
+    NSDictionary * params;
+    NSString * method;
+    if([type isEqualToString:@"phone"]){
+        NSString * phoneResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 phoneResult,@"phone",
+                                 nil];
+        method = @"get_password";
+    }else if([type isEqualToString:@"email"]){
+        
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                  login,@"email",
+                  nil];
+        method = @"get_password_email";
+        
+    }
+   
     
     
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
-    [getAPI getDataFromServerWithParams:params method:@"get_password" complitionBlock:^(id response) {
+    [getAPI getDataFromServerWithParams:params method:method complitionBlock:^(id response) {
         //        NSLog(@"%@", response);
         
         responsePassword = (NSDictionary*)response;
@@ -393,16 +415,36 @@
     }];
 }
 
--(void) getInfo:(NSString *) login andPassword:(NSString*) password andDeviceToken: (NSString*) token_ios
+-(void) getInfo:(NSString *) login andPassword:(NSString*) password andDeviceToken: (NSString*) token_ios andSocToken: (NSString*) token_soc andTypeAuth: (NSString*) type_auth
        andBlock:(void (^)(void))block
 {
+    
+    NSString *socToken;
+    if([token_soc isEqual: [NSNull null]]){
+        socToken=@"";
+    }else{
+        socToken=token_soc;
+    }
+    
+    NSString * iosToken;
+    
+    if([token_ios isEqual: [NSNull null]]){
+        iosToken=@"";
+    }else{
+        iosToken=token_soc;
+    }
+    
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              loginResult,@"login",
                              password,@"password",
-                             token_ios,@"token",
+                             iosToken,@"token",
+                             socToken,@"soc_token",
+                             type_auth,@"type_auth",
                              nil];
+    
+    NSLog(@"PARAMS %@",params);
   
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
