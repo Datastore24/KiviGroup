@@ -137,6 +137,15 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.row == 11) {
+        
+        
+        //Сюда вводить код БЛшки для очистки БД !!!!!!!!!!!!!
+        //---------------------------------------------------------
+        
+        NSLog(@"ВЫХОД !!!!!!!!!!!!!!!!!");
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
