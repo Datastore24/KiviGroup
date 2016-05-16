@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "Macros.h"
 #import "NotificationController.h"
+#import "AuthDbClass.h"
 
 @interface MenuController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -142,6 +143,8 @@
         
         //Сюда вводить код БЛшки для очистки БД !!!!!!!!!!!!!
         //---------------------------------------------------------
+        AuthDbClass * auth = [AuthDbClass new];
+        [auth deleteAll];
         
         NSLog(@"ВЫХОД !!!!!!!!!!!!!!!!!");
     }
