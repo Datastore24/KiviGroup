@@ -401,6 +401,8 @@
     [vkAPI postWallWithParams:dictParams message:message andLinkAttach:nil complitionBlock:^(id response) {
         if ([[response objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [response objectForKey:@"error_msg"]);
+            
+            
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[response objectForKey:@"error"] integerValue] == 0) {
             
@@ -597,7 +599,7 @@
                 } else {
                     NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
                     
-                    [self showLoginWith:YES];
+                    [self showLoginWith:NO];
                     
                 }
                 
