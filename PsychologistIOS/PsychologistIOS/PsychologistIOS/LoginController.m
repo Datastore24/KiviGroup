@@ -37,6 +37,7 @@
     NSDictionary * responsePassword;
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
+    BOOL phoneAndMail;
 }
 
 - (void) viewDidLoad
@@ -46,10 +47,7 @@
     
     authDbClass = [[AuthDbClass alloc] init];
     isBool = NO;
-    
-    
-    
-    
+    phoneAndMail = YES;
     
 #pragma mark - Header
     
@@ -91,8 +89,9 @@
     [mainContentView addSubview:buttonLigin];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushWithMainView) name:NOTIFICATION_LOGIN_VIEW_PUSH_MAIN_VIEW object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSmsCode:) name:NOTIFICATION_SEND_SMS_CODE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getEmailCode:) name:NOTIFICATION_SEND_EMAIL_CODE object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationVKAvto) name:@"VKN" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFaceAvto) name:@"FaceBookN" object:nil];
     
@@ -140,6 +139,11 @@
 }
 
 #pragma mark - action Methods
+
+- (void) getEmailCode: (NSNotification*) notification
+{
+    NSLog(@"Выводим почту %@", notification.object);
+}
 
 - (void) getSmsCode: (NSNotification*) notification
 {
