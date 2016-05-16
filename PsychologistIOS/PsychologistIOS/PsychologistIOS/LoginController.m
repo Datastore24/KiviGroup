@@ -25,6 +25,9 @@
 @interface LoginController () <UIWebViewDelegate>
 
 @property (strong,nonatomic) NSString * loginString;
+@property (strong,nonatomic) NSString * socTokenString;
+@property (strong,nonatomic) NSString * socType;
+@property (strong,nonatomic) NSString * type_auth;
 
 @end
 
@@ -38,6 +41,7 @@
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
     BOOL phoneAndMail;
+
 }
 
 - (void) viewDidLoad
@@ -103,8 +107,11 @@
         //        NSLog(@"userInfo.salt: %@",userInfo.salt);
         
         //Проверка CoreData на существование password, token FB, token VK
+        NSLog(@"TO %@",userInfo.login);
         NSLog(@"TO %@",userInfo.password);
+        NSLog(@"TOT %@",userInfo.token_vk);
         if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
+            NSLog(@"GO AUTH AUTO");
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
             [self showLoginWith:NO];
@@ -143,15 +150,21 @@
 - (void) getEmailCode: (NSNotification*) notification
 {
     NSLog(@"Выводим почту %@", notification.object);
+    
+    
+    NSLog(@"%@",self.loginString);
+    [self getPassword:notification.object type:@"email"];
+    self.type_auth=@"pass";
 }
 
 - (void) getSmsCode: (NSNotification*) notification
 {
     NSLog(@"NOTIF %@",notification.object);
     
-    self.loginString = notification.object;
+    self.loginString = [notification.object stringByReplacingOccurrencesOfString: @"+" withString: @""];
     NSLog(@"%@",self.loginString);
-    [self getPassword:notification.object];
+    [self getPassword:notification.object type:@"phone"];
+    self.type_auth=@"pass";
     
     
 }
@@ -167,7 +180,9 @@
         NSLog(@"%lu", textFildSMS.text.length);
     } else {
         
-        [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andBlock:^{
+        NSLog(@"TYPE: %@",self.loginString);
+        
+        [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andSocToken:@"" andTypeAuth:self.type_auth andBlock:^{
             NSLog(@"INFO: %@",responseInfo);
             
             if ([[responseInfo objectForKey:@"error"]integerValue]==0) {
@@ -199,7 +214,7 @@
                 
                 
                 //Обновление базы данных
-                [authDbClass updateUser:[respData objectForKey:@"login"] andPassword:[respData objectForKey:@"password"] andIdUser:[respData objectForKey:@"id"] andTokenVk:token_vk andTokenFb:token_fb andTypeAuth:@"pass" ];
+                [authDbClass updateUser:self.loginString andPassword:textFildSMS.text andIdUser:[respData objectForKey:@"id"] andTokenVk:token_vk andTokenFb:token_fb andTypeAuth:@"pass" ];
                 
                 
                 CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
@@ -237,6 +252,7 @@
              
              NSString * string = result.token.appID;
              NSString * strng2 = result.token.tokenString;
+             self.socTokenString=result.token.tokenString;
              NSLog(@"%@", string);
              NSLog(@"%@", strng2);
            //-------------
@@ -248,6 +264,8 @@
                   if (!error) {
                       
                       NSLog(@"result %@", result);
+                      
+                     [self saveSocToken:self.socTokenString type:@"fb" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:@""];
                       
                       
                   }
@@ -308,11 +326,17 @@
         NSString * user_id = [user objectForKey:@"user_id"];
         //Передаем данные в АПИ
         [self getApiWithUserID:user_id andUserToken:access_token andBlock:^{
-            NSLog(@"%@", dictResponse);
+            self.socTokenString=access_token;
+            
+            NSArray * response = (NSArray *) [dictResponse objectForKey:@"response"];
+            NSDictionary * result = (NSDictionary *)[response objectAtIndex:0];
+            NSLog(@"VK DICT%@", result);
+            [self saveSocToken:access_token type:@"vk" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:[result objectForKey:@"bdate"]];
+            
+            
         }];
         
-        
-        [self postVKAPIWithMessage:@"Тест отправки картинки" andUserID:user_id andUserToken:access_token andURLString:@"https://pp.vk.me/c543100/v543100002/146be/LKVNy4LdX9k.jpg"];
+    
         
         
         [self closeWebView];
@@ -372,18 +396,30 @@
 
 #pragma mark - API
 
--(void) getPassword:(NSString *) phone
+-(void) getPassword:(NSString *) login type:(NSString*) type
 {
-    
-    NSString * phoneResult = [phone stringByReplacingOccurrencesOfString: @"+" withString: @""];
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             phoneResult,@"phone",
-                             nil];
+    NSDictionary * params;
+    NSString * method;
+    if([type isEqualToString:@"phone"]){
+        NSString * phoneResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 phoneResult,@"phone",
+                                 nil];
+        method = @"get_password";
+    }else if([type isEqualToString:@"email"]){
+        
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                  login,@"email",
+                  nil];
+        method = @"get_password_email";
+        
+    }
+   
     
     
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
-    [getAPI getDataFromServerWithParams:params method:@"get_password" complitionBlock:^(id response) {
+    [getAPI getDataFromServerWithParams:params method:method complitionBlock:^(id response) {
         //        NSLog(@"%@", response);
         
         responsePassword = (NSDictionary*)response;
@@ -393,16 +429,87 @@
     }];
 }
 
--(void) getInfo:(NSString *) login andPassword:(NSString*) password andDeviceToken: (NSString*) token_ios
+-(void) saveSocToken:(NSString *) token type:(NSString*) type andFname:(NSString *) fname andLname: (NSString *) lname
+            andBdate:(NSString *) bdate
+
+{
+    NSDictionary * params;
+    NSString * auth;
+   
+    if([type isEqualToString:@"vk"]){
+     auth=@"vk";
+
+    }else if([type isEqualToString:@"fb"]){
+        NSLog(@"FNAME %@",fname);
+        
+        auth=@"fb";
+  
+        
+    }
+    
+    
+    params = [[NSDictionary alloc] initWithObjectsAndKeys:
+              token,@"soc_token",
+              auth,@"type",
+              fname,@"first_name",
+              lname,@"last_name",
+              bdate,@"bdate",
+              nil];
+    
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"save_soc_token" complitionBlock:^(id response) {
+        
+        
+        responsePassword = (NSDictionary*)response;
+        NSLog(@"resp: %@",responsePassword);
+        if ([[responsePassword objectForKey:@"error"] integerValue] == 0) {
+            
+            [authDbClass updateUser:@"" andPassword:@"" andIdUser:@"" andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
+            CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
+            
+            
+            [self.navigationController pushViewController:detail animated:YES];
+            
+        }else{
+                NSLog(@"error_msg: %@",[responsePassword objectForKey:@"error_msg"]);
+        }
+        
+        
+    }];
+}
+
+-(void) getInfo:(NSString *) login andPassword:(NSString*) password andDeviceToken: (NSString*) token_ios andSocToken: (NSString*) token_soc andTypeAuth: (NSString*) type_auth
        andBlock:(void (^)(void))block
 {
+    
+    NSString *socToken;
+    if([token_soc isEqual: [NSNull null]]){
+        socToken=@"";
+    }else{
+        socToken=token_soc;
+    }
+    
+    NSString * iosToken;
+    
+    if([token_ios isEqual: [NSNull null]]){
+        iosToken=@"";
+    }else{
+        iosToken=token_soc;
+    }
+    
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              loginResult,@"login",
                              password,@"password",
-                             token_ios,@"token",
+                             iosToken,@"token",
+                             socToken,@"soc_token",
+                             type_auth,@"type_auth",
                              nil];
+    
+    NSLog(@"PARAMS %@",params);
   
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
@@ -417,27 +524,47 @@
 -(void) checkAuth
 {
     
-    
-    
-    
     if([authDbClass showAllUsers].count>0){
         Auth * userInfo = [[authDbClass showAllUsers] objectAtIndex:0];
+        NSDictionary * params;
+        if([userInfo.type_auth isEqualToString:@"pass"]){
+            params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     userInfo.login,@"login",
+                                     userInfo.password, @"password",
+                                     userInfo.token_ios,@"token",
+                                     @"",@"soc_token",
+                                     @"pass",@"type_auth",
+                                     nil];
+        }else if([userInfo.type_auth isEqualToString:@"vk"]){
+            params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      userInfo.login,@"login",
+                      userInfo.password, @"password",
+                      userInfo.token_ios,@"token",
+                      userInfo.token_vk,@"soc_token",
+                      @"vk",@"type_auth",
+                      nil];
+        }else if([userInfo.type_auth isEqualToString:@"fb"]){
+            params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      userInfo.login,@"login",
+                      userInfo.password, @"password",
+                      userInfo.token_ios,@"token",
+                      userInfo.token_vk,@"soc_token",
+                      @"fb",@"type_auth",
+                      nil];
+        }
         
-        NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 userInfo.login,@"login",
-                                 userInfo.password, @"password",
-                                 userInfo.token_ios,@"token",
-                                 nil];
+       
         
         
         APIGetClass * getInfo = [[APIGetClass alloc] init];
         
-        if(userInfo.password.length != 0 && userInfo.login.length != 0){
+        if((userInfo.password.length != 0 &&userInfo.login.length != 0) || userInfo.token_vk.length !=0 || userInfo.token_fb.length !=0){
             [getInfo getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
                 
                 
                 NSDictionary * responseCheckInfo = (NSDictionary*)response;
                 
+                NSLog(@"RESPOCHECK: %@",responseCheckInfo);
                 if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                     [self showLoginWith:YES];
                     
