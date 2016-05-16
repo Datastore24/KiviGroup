@@ -516,7 +516,7 @@
     }else{
         iosToken=token_soc;
     }
-    
+    NSLog(@"TYPE: %@",type_auth);
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -531,7 +531,7 @@
   
     APIGetClass * getAPI = [[APIGetClass alloc] init];
     [getAPI getDataFromServerWithParams:params method:@"show_user_token" complitionBlock:^(id response) {
-               NSLog(@"%@", response);
+               NSLog(@"АВТОРИЗАЦИЯ %@", response);
         
         responseInfo = (NSDictionary*)response;
         block();
