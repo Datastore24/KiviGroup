@@ -9,6 +9,7 @@
 #import "LoginView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
+#import "SingleTone.h"
 
 @implementation LoginView
 {
@@ -19,15 +20,25 @@
     UITextField * textFieldSMS;
     UILabel * labelPlaceHolderPhone;
     UILabel * labelPlaceHoldSMS;
+    
+    UITextField * textFieldEmail;
+    UILabel * labelPlaceHoldEmail;
+    
     BOOL isBool;
     BOOL isBoolSMS;
+    BOOL isBoolMail;
+    
+    BOOL isPhoneOrEmail;
+    BOOL boolButton;
     
     UIView * viewPhone;
     UIView * viewSMS;
+    UIView * viewEmail;
     UIButton * buttonLogin;
     UIButton * buttonInput;
     
     NSString * stringPhone;
+    NSString * stringEmail;
 }
 
 - (instancetype)initButtonLogin
@@ -45,6 +56,7 @@
             self.frame = CGRectMake(0, 335, 320, 48);
         }
         
+        boolButton = YES;
         
         
         //Кнопка меню---------------------------------------------------------------------
@@ -74,7 +86,7 @@
         buttonLogin.backgroundColor = [UIColor colorWithHexString:@"3cc354"];
         buttonLogin.layer.borderColor = [UIColor whiteColor].CGColor;
         buttonLogin.layer.cornerRadius = 30;
-        [buttonLogin setTitle:@"ПОЛУЧИТЬ КОД СМС" forState:UIControlStateNormal];
+        [buttonLogin setTitle:@"ПОЛУЧИТЬ КОД" forState:UIControlStateNormal];
         [buttonLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonLogin.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
         if (isiPhone6) {
@@ -89,6 +101,7 @@
         [self addSubview:buttonLogin];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAnimationMethodButton:) name:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testMethod:) name:@"NotificationTestBool" object:nil];
     }
     return self;
 }
@@ -115,6 +128,8 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         isBool = YES;
         isBoolSMS = YES;
+        isBoolMail = YES;
+        isPhoneOrEmail = YES;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAnimationMethod) name:NOTIFICATION_LOGIN_VIEW_ANIMATION object:nil];
         
@@ -216,6 +231,52 @@
         }
         [viewSMS addSubview:labelPlaceHoldSMS];
         
+        //Вью ввода Почты----------------
+        viewEmail = [[UIView alloc] initWithFrame:CGRectMake(800, 440, self.frame.size.width - 32, 64)];
+        if (isiPhone6) {
+            viewEmail.frame = CGRectMake(800, 390, self.frame.size.width - 32, 56);
+        } else if (isiPhone5) {
+            viewEmail.frame = CGRectMake(800, 340, self.frame.size.width - 40, 48);
+        }
+        
+        if (isiPhone4s) {
+            viewEmail.frame = CGRectMake(800, 280, self.frame.size.width - 40, 48);
+        }
+        viewEmail.backgroundColor = [UIColor colorWithHexString:@"a04c43"];
+        viewEmail.layer.borderColor = [UIColor colorWithHexString:@"e18c82"].CGColor;
+        viewEmail.layer.borderWidth = 0.4f;
+        viewEmail.layer.cornerRadius = 5;
+        [mainScrollView addSubview:viewEmail];
+        
+        //Ввод Почты-----------------------------------------------------------------
+        textFieldEmail = [[UITextField alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
+        textFieldEmail.delegate = self;
+        textFieldEmail.tag = 473;
+        textFieldEmail.keyboardType = UIKeyboardTypeDefault;
+        textFieldEmail.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldEmail.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            textFieldEmail.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            textFieldEmail.font = [UIFont fontWithName:FONTLITE size:16];
+        }
+        textFieldEmail.textColor = [UIColor colorWithHexString:@"b3b3b4"];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEmail:) name:UITextFieldTextDidChangeNotification object:textFieldEmail];
+        [viewEmail addSubview:textFieldEmail];
+        
+        //Плесхолдер Email-------------------------------------------------------------------
+        labelPlaceHoldEmail = [[UILabel alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
+        labelPlaceHoldEmail.tag = 3021;
+        labelPlaceHoldEmail.text = @"Введите eMail";
+        labelPlaceHoldEmail.textColor = [UIColor colorWithHexString:@"b3b3b4"];
+        labelPlaceHoldEmail.font = [UIFont fontWithName:FONTLITE size:19];
+        if (isiPhone6) {
+            labelPlaceHoldEmail.font = [UIFont fontWithName:FONTLITE size:18];
+        } else if (isiPhone5) {
+            labelPlaceHoldEmail.font = [UIFont fontWithName:FONTLITE size:16];
+        }
+        [viewEmail addSubview:labelPlaceHoldEmail];
+        
         //Лейбл возможности регистрации другим путем---------------------------------------
         UILabel * labelOtherInput = [[UILabel alloc] initWithFrame:CGRectMake(0, viewPhone.frame.size.height + viewPhone.frame.origin.y + 96, self.frame.size.width, 16)];
         labelOtherInput.text = @"ВОЙТИ ЧЕРЕЗ АККАУНТ";
@@ -315,10 +376,14 @@
             }
         }
         return NO;
-    } else {
+    } else if ([textField isEqual:textFieldSMS]){
         /*  limit the users input to only 9 characters  */
         NSUInteger newLength = [textField.text length] + [string length] - range.length;
         return (newLength > 5) ? NO : YES;
+    } else if ([textField isEqual:textFieldEmail]) {
+        /*  limit the users input to only 9 characters  */
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return (newLength > 30) ? NO : YES;
     }
     
     return NO;
@@ -376,6 +441,30 @@
             labelPlaceHoldSMS.frame = rect;
             labelPlaceHoldSMS.alpha = 1.f;
             isBoolSMS = YES;
+        }];
+    }
+}
+
+- (void) animationLabelEmail: (NSNotification*) notification
+{
+    UITextField * testField = notification.object;
+    if (testField.text.length != 0 && isBoolMail) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHoldEmail.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHoldEmail.frame = rect;
+            labelPlaceHoldEmail.alpha = 0.f;
+            isBoolMail = NO;
+        }];
+    } else if (testField.text.length == 0 && !isBoolMail) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHoldEmail.frame;
+            rect.origin.x = rect.origin.x - 100.f;
+            labelPlaceHoldEmail.frame = rect;
+            labelPlaceHoldEmail.alpha = 1.f;
+            isBoolMail = YES;
         }];
     }
 }
@@ -470,7 +559,40 @@
         } else if (button.tag == 11) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"FaceBookN" object:nil];
         } else if (button.tag == 12) {
-            NSLog(@"Почта");
+        
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                if (isPhoneOrEmail) {
+                    CGRect rectPhone = viewPhone.frame;
+                    rectPhone.origin.x -= 500;
+                    viewPhone.frame = rectPhone;
+                    
+                    CGRect rectSMS = viewSMS.frame;
+                    rectSMS.origin.x -= 784;
+                    viewEmail.frame = rectSMS;
+                    
+                    isPhoneOrEmail = NO;
+                } else {
+                    CGRect rectPhone = viewPhone.frame;
+                    rectPhone.origin.x += 500;
+                    viewPhone.frame = rectPhone;
+                    
+                    CGRect rectSMS = viewSMS.frame;
+                    rectSMS.origin.x += 784;
+                    viewEmail.frame = rectSMS;
+                    
+                    isPhoneOrEmail = YES;
+                    
+                    
+                }
+                
+            } completion:^(BOOL finished) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationTestBool" object:[NSNumber numberWithBool:isPhoneOrEmail]];
+                
+            }];
+            
         } else {
             NSLog(@"Error");
         }
@@ -480,7 +602,16 @@
 - (void) buttonLoginAction
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_SMS_CODE object:stringPhone];    
+    if (boolButton) {
+        if (stringPhone.length == 12) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_SMS_CODE object:stringPhone];
+        }
+    } else {
+        if (stringEmail.length != 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_EMAIL_CODE object:stringEmail];
+        }
+    }
+    
 }
 
 - (void) buttonInputAction
@@ -490,21 +621,33 @@
 
 - (void) notificationAnimationMethod
 {
-    if (textFieldPhone.text.length < 12) {
-
+    if (textFieldEmail.text.length != 0 || textFieldPhone.text.length == 12) {
+        NSDictionary * dictNotf = [NSDictionary dictionaryWithObjectsAndKeys:textFieldPhone.text, @"textPhone", textFieldEmail.text, @"textEmail", nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:nil userInfo:dictNotf];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            if (isPhoneOrEmail) {
+                CGRect rectPhone = viewPhone.frame;
+                rectPhone.origin.x -= 500;
+                viewPhone.frame = rectPhone;
+            } else {
+                CGRect rectPhone = viewEmail.frame;
+                rectPhone.origin.x -= 500;
+                viewEmail.frame = rectPhone;
+            }
+            
+            CGRect rectSMS = viewSMS.frame;
+            rectSMS.origin.x -= 784;
+            viewSMS.frame = rectSMS;
+            
+            
+            
+        }];
     } else {
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect rectPhone = viewPhone.frame;
-        rectPhone.origin.x -= 500;
-        viewPhone.frame = rectPhone;
-        
-        CGRect rectSMS = viewSMS.frame;
-        rectSMS.origin.x -= 784;
-        viewSMS.frame = rectSMS;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_VIEW_ANIMATION_BUTTON object:textFieldPhone.text];
-    }];
-}
+        NSLog(@"Символы телефона %lu", textFieldPhone.text.length);
+    }
+
 }
 
 - (void) notificationAnimationMethodButton: (NSNotification*) notification
@@ -516,8 +659,16 @@
                     completion:nil];
     
     
-    stringPhone = notification.object;
+    stringPhone = [notification.userInfo objectForKey:@"textPhone"];
+    stringEmail = [notification.userInfo objectForKey:@"textEmail"];
     
+    
+    
+}
+
+- (void) testMethod: (NSNotification*) notification
+{
+    boolButton = [notification.object boolValue];
 }
 
 @end
