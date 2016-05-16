@@ -41,6 +41,9 @@
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
     BOOL phoneAndMail;
+    
+    UIView * avtorizationView;
+    UIActivityIndicatorView * activitiView;
 
 }
 
@@ -99,6 +102,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationVKAvto) name:@"VKN" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFaceAvto) name:@"FaceBookN" object:nil];
     
+    //Элементы авторизации------------------------------------
+    avtorizationView = [[UIView alloc] initWithFrame:self.view.frame];
+    avtorizationView.backgroundColor = [UIColor whiteColor];
+    avtorizationView.alpha = 0.f;
+    [self.view addSubview:avtorizationView];
+    activitiView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.frame];
+    activitiView.backgroundColor = [UIColor clearColor];
+    activitiView.color = [UIColor blackColor];
+    activitiView.alpha = 0.f;
+    [self.view addSubview:activitiView];
+    
 #pragma mark - CheckAuth
     //Проверка при запуске приложеия
     NSLog(@"COUNT %@",[authDbClass showAllUsers]);
@@ -112,6 +126,9 @@
         NSLog(@"TOT %@",userInfo.token_vk);
         if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
             NSLog(@"GO AUTH AUTO");
+            avtorizationView.alpha = 0.6;
+            activitiView.alpha = 1.f;
+            [activitiView startAnimating];
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
             [self showLoginWith:NO];
@@ -127,16 +144,15 @@
     if(animation){
         //Повяление с анимацией
         [UIView animateWithDuration:2.0 animations:^{
-//            textFieldPhone.alpha=1;
-//            buttonGetCode.alpha=1;
-//            viewLoginPhone.alpha=1;
-//            labelPlaceHolderPhone.alpha=1;
-//            viewRegistration.alpha=1;
-//            checkView.alpha=0;
+            avtorizationView.alpha = 0.6;
+            activitiView.alpha = 1.f;
+            [activitiView startAnimating];
         }];
         
     }else{
-       // Без анимации
+        avtorizationView.alpha = 0.f;
+        activitiView.alpha = 0.f;
+        [activitiView stopAnimating];
     }
 }
 
@@ -297,7 +313,7 @@
     closeButton.frame = CGRectMake(5, 15, 20, 20);
     closeButton.tag = 1025;
     [closeButton addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside];
-    [closeButton setTitle:@"x" forState:UIControlStateNormal];
+    [closeButton setTitle:@"" forState:UIControlStateNormal];
     [closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:closeButton];
 }
@@ -575,6 +591,9 @@
                     
                     
                     [self.navigationController pushViewController:detail animated:YES];
+                    [self performSelector:@selector(stopAnimation) withObject:nil afterDelay:0.5];
+
+                    
                 } else {
                     NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
                     
@@ -591,6 +610,11 @@
     }
 }
 
-
+- (void) stopAnimation
+{
+    activitiView.alpha = 0.f;
+    [activitiView stopAnimating];
+    avtorizationView.alpha = 0.f;
+}
 
 @end

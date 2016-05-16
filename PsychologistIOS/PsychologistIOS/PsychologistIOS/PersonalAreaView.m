@@ -366,6 +366,7 @@
         }
         buttonSubscription.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         [buttonSubscription addTarget:self action:@selector(buttonSubscriptionAction) forControlEvents:UIControlEventTouchUpInside];
+        buttonSubscription.alpha = 0.f;
         [self addSubview:buttonSubscription];
         
         //Кнопка сменить пароль------------------------------------

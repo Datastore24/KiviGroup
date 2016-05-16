@@ -28,7 +28,7 @@
         
         mainArray = array;
         
-        mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
+        mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) style:UITableViewStylePlain];
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
