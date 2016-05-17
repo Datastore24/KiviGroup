@@ -10,9 +10,11 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import <AKPickerView/AKPickerView.h>
+#import "StringImage.h"
+#import "ViewSectionTable.h"
 
 @interface RecommendView () <UITableViewDataSource, UITableViewDelegate, AKPickerViewDataSource, AKPickerViewDelegate>
-
+@property (strong,nonatomic) NSString * personalID;
 @end
 
 @implementation RecommendView
@@ -22,9 +24,11 @@
     //Массив кнопок------------------------
     NSMutableArray * arrayButtons;
     NSArray * arrayBool;
+    NSArray * arrayInfo;
     NSInteger customTagCallButton;
     NSInteger customTagBackCallButton;
-    
+    NSMutableDictionary * phoneDict;
+    NSMutableDictionary * idDict;
     //Алерт
     UIView * darkView;
     UIView * alertViewRecommend;
@@ -36,11 +40,13 @@
     NSInteger row;
 }
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
+- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array;
 {
     self = [super init];
     if (self) {
-        
+        arrayInfo=array;
+        phoneDict = [[NSMutableDictionary alloc] init];
+        idDict = [[NSMutableDictionary alloc] init];
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         
         arrayButtons = [[NSMutableArray alloc] init];
@@ -209,7 +215,9 @@
 - (UIView*) setTableCellWithImage: (NSString*) image
                          andTitle: (NSString*) title
                       andSubTitle: (NSString*) subTitle
-                          ansSite: (NSString*) site
+                          andSite: (NSString*) site
+                        andPhone: (NSString*) phone
+                         andPersonalId: (NSString*) personal_id
                           andMail: (NSString*) mail
                      andButtonTag: (NSInteger) buttonTag
                        andBoolParams: (BOOL) boolPrams
@@ -225,8 +233,10 @@
     if (isiPhone5) {
         imageViewCell.frame = CGRectMake(32, 16, 70, 70);
     }
-    imageViewCell.image = [UIImage imageNamed:image];
-    [viewCell addSubview:imageViewCell];
+    
+    ViewSectionTable * viewSectionTable =[[ViewSectionTable alloc] initWithImageURL:image andView:viewCell andImageView:imageViewCell andContentMode:UIViewContentModeScaleAspectFill];
+    
+    [viewCell addSubview:viewSectionTable];
     
     //Заголовок---------------------------------------------------
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(144, 16, 200, 24)];
@@ -276,6 +286,8 @@
         callButton.backgroundColor = [UIColor colorWithHexString:@"36b34c"];
         [callButton setTitle:@"ПОЗВОНИТЬ" forState:UIControlStateNormal];
         callButton.tag = buttonTag;
+        NSString * tag =[NSString stringWithFormat:@"%li",buttonTag];
+        [phoneDict setObject:phone forKey:tag];
         callButton.layer.cornerRadius = 10.f;
         [callButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         callButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
@@ -293,6 +305,8 @@
         backCallButton.backgroundColor = [UIColor colorWithHexString:@"0076a2"];
         [backCallButton setTitle:@"ОБРАТНЫЙ ЗВОНОК" forState:UIControlStateNormal];
         backCallButton.tag = buttonTag;
+        NSString * tagPersonal =[NSString stringWithFormat:@"%li",buttonTag];
+        [idDict setObject:personal_id forKey:tagPersonal];
         backCallButton.layer.cornerRadius = 10.f;
         [backCallButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         backCallButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:15];
@@ -334,11 +348,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return arrayInfo.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * resultDict = [arrayInfo objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"newFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -348,17 +363,20 @@
     
     cell.backgroundColor = nil;
     
-    if ([[arrayBool objectAtIndex:indexPath.row] boolValue]) {
+    NSString * stringURL = [StringImage createStringImageURLWithString:[resultDict objectForKey:@"media_path"]];
+    
+  
+    if ([[resultDict objectForKey:@"can_call"] integerValue]==1) {
         
         customTagCallButton += 1;
 
-           [cell addSubview:[self setTableCellWithImage:@"imageCellRecommend.png" andTitle:@"Ксения Буракова" andSubTitle:@"Профессиональный психолог" ansSite:@"www.soulsite.com" andMail:@"Soul@gmail.com" andButtonTag:customTagCallButton andBoolParams:[[arrayBool objectAtIndex:indexPath.row] boolValue]]];
+        [cell addSubview:[self setTableCellWithImage:stringURL andTitle:[resultDict objectForKey:@"name"] andSubTitle:[resultDict objectForKey:@"description"]  andSite:[resultDict objectForKey:@"site"] andPhone:[resultDict objectForKey:@"phone"] andPersonalId:[resultDict objectForKey:@"id"] andMail:[resultDict objectForKey:@"email"] andButtonTag:customTagCallButton andBoolParams:[[resultDict objectForKey:@"can_call"] integerValue]]];
         
     } else {
         
         customTagBackCallButton += 1;
         
-            [cell addSubview:[self setTableCellWithImage:@"imageCellRecommend.png" andTitle:@"Ксения Буракова" andSubTitle:@"Профессиональный психолог" ansSite:@"www.soulsite.com" andMail:@"Soul@gmail.com" andButtonTag:customTagBackCallButton andBoolParams:[[arrayBool objectAtIndex:indexPath.row] boolValue]]];
+        [cell addSubview:[self setTableCellWithImage:stringURL andTitle:[resultDict objectForKey:@"name"] andSubTitle:[resultDict objectForKey:@"description"]  andSite:[resultDict objectForKey:@"site"] andPhone:[resultDict objectForKey:@"phone"] andPersonalId:[resultDict objectForKey:@"id"] andMail:[resultDict objectForKey:@"email"] andButtonTag:customTagBackCallButton andBoolParams:[[resultDict objectForKey:@"can_call"] integerValue]]];
 
     }
     
@@ -511,9 +529,12 @@
 //Действие кнопки позвонить
 - (void) callButtonAction: (UIButton*) button
 {
+    NSLog(@"%@",phoneDict);
     for (int i = 0; i < arrayButtons.count; i++) {
         if (button.tag == i + 1) {
             NSLog(@"Звоним на конкретный номер");
+            NSString * phone = [NSString stringWithFormat:@"%li",button.tag];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[phoneDict objectForKey:phone]]];
         }
     }
 }
@@ -521,8 +542,13 @@
 //Дествие кнопки обраный звонок
 - (void) backCallButtonAction: (UIButton*) button
 {
+    
     for (int i = 0; i < arrayButtons.count; i++) {
         if (button.tag == i + 1) {
+            
+            NSString * personalID = [NSString stringWithFormat:@"%li",button.tag];
+            self.personalID = [idDict objectForKey:personalID];
+            
             //Анимация алерта---------------------------------------------
             [UIView animateWithDuration:0.1 animations:^{
                 darkView.alpha = 0.4f;
@@ -554,7 +580,22 @@
 //Действие кнопки отправить--------------------
 - (void) buttonSendAction
 {
-    NSLog(@"Попросить перезвонить мне");
+    
+    NSUInteger selectedRow = [pickerAlert selectedItem];
+    NSString * selectedTitle = [titles objectAtIndex:selectedRow];
+    
+    
+    NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               textFieldPhone.text,@"phone",
+                               selectedTitle,@"time",
+                               self.personalID,@"personal_id",
+                     
+                               nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_PERSONAL_SMS object:dictInfo];
+    
+   
+    
+    NSLog(@"Попросить перезвонить мне:%@",selectedTitle);
 }
 
 

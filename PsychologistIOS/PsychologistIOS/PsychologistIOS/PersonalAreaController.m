@@ -15,8 +15,12 @@
 #import "PersonalAreaView.h"
 #import "ArrayCitys.h"
 #import "SubscriptionController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
-@implementation PersonalAreaController
+@implementation PersonalAreaController{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad {
     
@@ -54,8 +58,11 @@
     [self.view addSubview:backgroundView];
     
     //Основной контент------------
-    PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andArray:[ArrayCitys setCitysArray]];
-    [self.view addSubview:contentView];
+    [self getAPIWithBlock:^{
+        PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andDictionary:[dictResponse objectForKey:@"data"]];
+        [self.view addSubview:contentView];
+    }];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushSubscription) name:NOTIFICATION_PUSH_SUBSCRIPTION object:nil];
 
@@ -72,6 +79,29 @@
 {
     SubscriptionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSLog(@"%@",[[SingleTone sharedManager] userId]);
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+    [[SingleTone sharedManager] userId],@"id", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_user_id" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+   
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 @end

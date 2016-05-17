@@ -613,8 +613,11 @@
                 if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                     [self showLoginWith:YES];
                     
-                    [[SingleTone sharedManager] setLogin:[responseCheckInfo objectForKey:@"login"]];
-                    [[SingleTone sharedManager] setUserId:[responseCheckInfo objectForKey:@"id"]];
+                    NSDictionary * data = [responseCheckInfo objectForKey:@"data"];
+                    
+                    [[SingleTone sharedManager] setLogin:[data objectForKey:@"login"]];
+                    [[SingleTone sharedManager] setUserId:[data objectForKey:@"id"]];
+                   
                    
                     
                     CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];

@@ -31,7 +31,7 @@
         self.clipsToBounds = NO;
         
         
-                __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 96, 96)];
+                __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(16, 0, 96, 96)];
         if (isiPhone6) {
             imageViewChat.frame = CGRectMake(0, 0, 88, 88);
         } else if (isiPhone5) {
@@ -57,6 +57,47 @@
                                         }
                                     }];
                 [self addSubview:imageViewChat];
+    }
+    return self;
+}
+
+- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view andImageView: (UIImageView*) imageView
+                  andContentMode: (UIViewContentMode) contentMode
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0, 0, 96, 96);
+        if (isiPhone6) {
+            self.frame = CGRectMake(0, 0, 88, 88);
+        } else if (isiPhone5) {
+            self.frame = CGRectMake(0, 0, 78, 78);
+        }
+        
+        
+        self.clipsToBounds = NO;
+        
+    
+        
+        NSURL *imgURL = [NSURL URLWithString:imageUrl];
+        
+        //SingleTone с ресайз изображения
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if(image){
+                                    
+                                    [UIView transitionWithView:imageView duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                                        imageView.image = image;
+                                        imageView.contentMode=contentMode;
+                                        imageView.layer.masksToBounds = YES;
+                                    } completion:nil];
+                                }
+                            }];
+        [self addSubview:imageView];
     }
     return self;
 }
