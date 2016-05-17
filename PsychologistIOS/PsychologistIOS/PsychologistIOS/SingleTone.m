@@ -28,6 +28,8 @@
 @synthesize login;
 @synthesize userId;
 
+@synthesize userID;
+@synthesize postID;
 
 
 

@@ -14,6 +14,7 @@
 #import "OpenSubjectModel.h"
 #import <AVFoundation/AVFoundation.h>
 #import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
@@ -27,11 +28,16 @@
     NSData *audioData;
     NSDictionary * dictResponse;
     NSString * myURL;
+    
+    NSDictionary * dictResponseMessage;
 }
 
 - (void) viewDidLoad
 {
 #pragma mark - Header
+    
+    NSLog(@"userID %@", [[SingleTone sharedManager] userID]);
+    NSLog(@"postID %@", [[SingleTone sharedManager] postID]);
     
     //Заголовок-----------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ОБСУЖДЕНИЯ"];
@@ -52,11 +58,17 @@
     [audioSession setActive:YES error:nil];
     [recorder setDelegate:self];
     
-    NSArray * mainArray = [NSArray arrayWithArray:[OpenSubjectModel setArrayChat]];
+    [self getAPIMessageWithBlock:^{
+        if ([[dictResponseMessage objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray * arrayMainResponce = [NSArray arrayWithArray:[dictResponseMessage objectForKey:@"data"]];
+            NSLog(@"arrayMainResponce %@", arrayMainResponce);
+            //Загрузка контента вью для контроллера---------------------
+            DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:arrayMainResponce];
+            [self.view addSubview:contentDiscussions];
+        }
+    }];
     
-    //Загрузка контента вью для контроллера---------------------
-    DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:mainArray];
-    [self.view addSubview:contentDiscussions];
+
     
     //Диктофон--------------------------------------------------
     
@@ -170,6 +182,27 @@
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"proverkaPeredachiZvuka" object:[dictResponse objectForKey:@"url"]];
 
+        }
+    }];
+}
+
+#pragma mark - API
+- (void) getAPIMessageWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager]postID], @"id_post",
+                             [[SingleTone sharedManager]userID], @"id_user",nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"chat_show_message" complitionBlock:^(id response) {
+        
+        dictResponseMessage = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
         }
     }];
 }

@@ -135,20 +135,11 @@
 #pragma mark - UITableViewDelegate
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (indexPath.row == 11) {
-        
-        
-        //Сюда вводить код БЛшки для очистки БД !!!!!!!!!!!!!
-        //---------------------------------------------------------
         AuthDbClass * auth = [AuthDbClass new];
         [auth deleteAll];
-        
-        NSLog(@"ВЫХОД !!!!!!!!!!!!!!!!!");
-    }
-    
+    }    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

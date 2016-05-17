@@ -81,7 +81,7 @@
         dictaBool = NO;
         integetButtonPlay = 0;
         
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         [self addSubview:mainScrollView];
         
@@ -329,13 +329,13 @@
             [viewScrollChat addSubview:labelUser];
 
             //Если приходит текст-------------------------------------------
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 1) {
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
                 
                 //Текст сообщения------------------
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 24, 32 + countFor, 300, 12)];
                 labelText.numberOfLines = 0;
                 labelText.textColor = [UIColor whiteColor];
-                labelText.text = [dictChat objectForKey:@"Message"];
+                labelText.text = [dictChat objectForKey:@"message"];
                 labelText.font = [UIFont fontWithName:FONTLITE size:18];
                 if (isiPhone6) {
                     labelText.font = [UIFont fontWithName:FONTLITE size:16];
@@ -364,7 +364,7 @@
                 [viewScrollChat addSubview:bubbleView];
                 
             //Если приходит картинка----------------------------------------
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 
                 //Создаем картинку--------------------
                 imageViewChat = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -374,14 +374,14 @@
                 if (isiPhone5) {
                     imageViewChat.frame = CGRectMake(viewScrollChat.frame.size.width - 222, 32 + countFor, 200, 150);
                 }
-                [imageViewChat setImage:[dictChat objectForKey:@"Message"] forState:UIControlStateNormal];
+                [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
 
                 [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 [viewScrollChat addSubview:imageViewChat];
                 [buttonsArray addObject:imageViewChat];
 
             //Если приходит аудиофайл---------------------------------------
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"audio"]) {
                 
                 viewMessage = [[UIView alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 112, 32 + countFor, 80, 20)];
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
@@ -392,7 +392,7 @@
                 UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(viewMessage.frame.origin.x + viewMessage.frame.size.width - 9, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
                 bubbleView.image = [UIImage imageNamed:@"bubble.png"];
                 [viewScrollChat addSubview:bubbleView];
-                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"Message"]];
+                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"message"]];
                 self.player = [[CustomPlayer alloc] initWithURL:url];
                 self.player.customTag = integetButtonPlay;
                 self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
@@ -423,7 +423,7 @@
             
             //Лейбл даты-----------------------
             UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 40, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 labelData.frame = CGRectMake(viewScrollChat.frame.size.width - 32 - 40, imageViewChat.frame.origin.y + imageViewChat.frame.size.height + 5, 40, 12);
             }
             labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
@@ -431,17 +431,17 @@
             if (isiPhone5) {
                 labelData.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            labelData.text = [dictChat objectForKey:@"Data"];
+            labelData.text = [dictChat objectForKey:@"inserted"];
             [labelData sizeToFit];
             labelData.frame = CGRectMake(viewScrollChat.frame.size.width - 24 - labelData.frame.size.width, labelData.frame.origin.y, labelData.frame.size.width, labelData.frame.size.height);
             [viewScrollChat addSubview:labelData];
             
             //Создаем отступ-------------------
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 1) {
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
                 countFor += viewMessage.frame.size.height + 50;
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 countFor += imageViewChat.frame.size.height + 50;
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"audio"]) {
                 countFor += viewMessage.frame.size.height + 50;
             }
             
@@ -453,15 +453,15 @@
             if (isiPhone5) {
                 labelUser.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            labelUser.text = [dictChat objectForKey:@"Users"];
+            labelUser.text = @"Пользователь";
             [viewScrollChat addSubview:labelUser];
             
             //Если приходит текст-------------------------------------------
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 1) {
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
             
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(38, 32 + countFor, 300, 12)];
                 labelText.numberOfLines = 0;
-                labelText.text = [dictChat objectForKey:@"Message"];
+                labelText.text = [dictChat objectForKey:@"message"];
                 labelText.font = [UIFont fontWithName:FONTLITE size:18];
                 if (isiPhone6) {
                     labelText.font = [UIFont fontWithName:FONTLITE size:16];
@@ -491,7 +491,7 @@
                 [viewScrollChat addSubview:bubbleView];
                 
                 //Если приходит картинка----------------------------------------
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 
                 //Создаем картинку--------------------
                 imageViewChat = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -501,7 +501,7 @@
                 }
                 buttonsNumber += 1;
                 imageViewChat.tag = buttonsNumber;
-                [imageViewChat setImage:[dictChat objectForKey:@"Message"] forState:UIControlStateNormal];
+                [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
                 [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 [viewScrollChat addSubview:imageViewChat];
                 
@@ -509,7 +509,7 @@
                 
                 
                 //Если приходит аудиофайл---------------------------------------
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"audio"]) {
                 
                 viewMessage = [[UIView alloc] initWithFrame:CGRectMake(32, 32 + countFor, 80, 20)];
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
@@ -521,7 +521,7 @@
                 bubbleView.image = [UIImage imageNamed:@"bubble - gray.png"];
                 [viewScrollChat addSubview:bubbleView];
                 
-                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"Message"]];
+                NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"message"]];
                 self.player = [[CustomPlayer alloc] initWithURL:url];
                 self.player.customTag = integetButtonPlay;
                 self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
@@ -555,8 +555,8 @@
             }
             
             //Лейбл даты-----------------------
-            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 80, 12)];
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 labelData.frame = CGRectMake(28, imageViewChat.frame.origin.y + imageViewChat.frame.size.height + 5, 60, 12);
             }
             labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
@@ -564,15 +564,15 @@
             if (isiPhone5) {
                 labelData.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            labelData.text = [dictChat objectForKey:@"Data"];
+            labelData.text = [dictChat objectForKey:@"inserted"];
             [viewScrollChat addSubview:labelData];
             
             //Создаем отступ-------------------
-            if ([[dictChat objectForKey:@"Type"] integerValue] == 1) {
+            if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
                 countFor += viewMessage.frame.size.height + 50;
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 countFor += imageViewChat.frame.size.height + 50;
-            } else if ([[dictChat objectForKey:@"Type"] integerValue] == 3) {
+            } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"audio"]) {
                 countFor += viewMessage.frame.size.height + 50;
             }
         }
@@ -732,8 +732,8 @@
         
         NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
                                        testString, @"Users",
-                                       textFieldChat.text, @"Message",
-                                       @"Моя датка", @"Data", @"1", @"Type", nil];
+                                       textFieldChat.text, @"message",
+                                       @"Моя датка", @"inserted", @"message", @"type", nil];
         
         [mArrayForPushButton addObject:dictPushText];
         [self sendMessageWithArray:mArrayForPushButton andSend:YES];
@@ -778,8 +778,8 @@
     
     NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
                                    testString, @"Users",
-                                   notification.object, @"Message",
-                                   @"Моя датка", @"Data", @"2", @"Type", nil];
+                                   notification.object, @"message",
+                                   @"Моя датка", @"inserted", @"image", @"type", nil];
     
     [mArrayForPushButton addObject:dictPushText];
     [self sendMessageWithArray:mArrayForPushButton andSend:YES];
@@ -799,8 +799,8 @@
     
     NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
                                    testString, @"Users",
-                                   notification.object, @"Message",
-                                   @"Моя датка", @"Data", @"3", @"Type", nil];
+                                   notification.object, @"message",
+                                   @"Моя датка", @"inserted", @"audio", @"type", nil];
     
     [mArrayForPushButton addObject:dictPushText];
     [self sendMessageWithArray:mArrayForPushButton andSend:YES];

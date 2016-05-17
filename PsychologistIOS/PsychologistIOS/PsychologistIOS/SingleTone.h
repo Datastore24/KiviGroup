@@ -35,6 +35,10 @@
 @property (strong, nonatomic) NSString* login;
 @property (strong, nonatomic) NSString* userId;
 
+//Чат
+@property (strong, nonatomic) NSString * userID;
+@property (strong, nonatomic) NSString * postID;
+
 
 
 + (id)sharedManager;
