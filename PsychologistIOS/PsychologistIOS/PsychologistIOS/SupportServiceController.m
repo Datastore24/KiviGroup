@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "SWRevealViewController.h"
 #import "SupportServiceView.h"
+#import "APIGetClass.h"
 
 @implementation SupportServiceController
 
@@ -50,6 +51,38 @@
     SupportServiceView * contentView = [[SupportServiceView alloc] initWithView:self.view];
     [self.view addSubview:contentView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SEND_EMAIL_SUPPORT object:nil];
+    
+}
+
+-(void)sendAction: (NSNotification*) notification{
+    
+    NSDictionary * dictSend = notification.object;
+    [self sendEmail:[dictSend objectForKey:@"email"] name:[dictSend objectForKey:@"name"]
+               text:[dictSend objectForKey:@"text"]];
+    
+}
+
+-(void) sendEmail:(NSString *) email name:(NSString*) name text:(NSString*) text
+{
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             name,@"name",
+                             email,@"email",
+                             text,@"text",
+                             nil];
+    
+    
+    
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"send_email" complitionBlock:^(id response) {
+        //        NSLog(@"%@", response);
+        
+        NSDictionary * result = (NSDictionary*)response;
+        NSLog(@"resp: %@",result);
+        
+    }];
 }
 
 @end

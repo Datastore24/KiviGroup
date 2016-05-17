@@ -166,7 +166,7 @@
 - (void) getEmailCode: (NSNotification*) notification
 {
     NSLog(@"Выводим почту %@", notification.object);
-    
+    self.loginString=notification.object;
     
     NSLog(@"%@",self.loginString);
     [self getPassword:notification.object type:@"email"];
@@ -190,13 +190,13 @@
     
     
     UITextField * textFildSMS = (UITextField*)[self.view viewWithTag:120];
-    NSLog(@"PASSWORD %@",textFildSMS.text);
+
     
     if (textFildSMS.text.length < 5) {
         NSLog(@"%lu", textFildSMS.text.length);
     } else {
         
-        NSLog(@"TYPE: %@",self.loginString);
+   
         
         [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andSocToken:@"" andTypeAuth:self.type_auth andBlock:^{
             NSLog(@"INFO: %@",responseInfo);
@@ -464,6 +464,14 @@
   
         
     }
+    NSString * idUser;
+    if([[[SingleTone sharedManager] userId] isEqual: [NSNull null]]){
+        
+        idUser = @"";
+        
+    }else{
+       idUser = [[SingleTone sharedManager] userId];
+    }
     
     
     params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -472,6 +480,7 @@
               fname,@"first_name",
               lname,@"last_name",
               bdate,@"bdate",
+              idUser,@"id_user",
               nil];
     
     
@@ -484,7 +493,18 @@
         NSLog(@"resp: %@",responsePassword);
         if ([[responsePassword objectForKey:@"error"] integerValue] == 0) {
             
-            [authDbClass updateUser:@"" andPassword:@"" andIdUser:@"" andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
+            [[SingleTone sharedManager] setUserId:[responsePassword objectForKey:@"id"]];
+            
+            if([type isEqualToString:@"vk"]){
+               [authDbClass updateUser:@"" andPassword:@"" andIdUser:[responsePassword objectForKey:@"id"] andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
+                
+            }else if([type isEqualToString:@"fb"]){
+               [authDbClass updateUser:@"" andPassword:@"" andIdUser:[responsePassword objectForKey:@"id"] andTokenVk:@""andTokenFb:self.socTokenString andTypeAuth:auth];
+                
+                
+            }
+            
+            
             CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];
             
             
@@ -516,9 +536,16 @@
     }else{
         iosToken=token_soc;
     }
-    NSLog(@"TYPE: %@",type_auth);
+   
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
+    
+    NSLog(@"TYPE: %@",loginResult);
+    NSLog(@"TYPE: %@",password);
+    NSLog(@"TYPE: %@",iosToken);
+    NSLog(@"TYPE: %@",socToken);
+    NSLog(@"TYPE: %@",type_auth);
+    
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              loginResult,@"login",
                              password,@"password",
@@ -590,7 +617,11 @@
                 if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                     [self showLoginWith:YES];
                     
-                    [[SingleTone sharedManager] setLogin:[responseCheckInfo objectForKey:@"login"]];
+                    NSDictionary * data = [responseCheckInfo objectForKey:@"data"];
+                    
+                    [[SingleTone sharedManager] setLogin:[data objectForKey:@"login"]];
+                    [[SingleTone sharedManager] setUserId:[data objectForKey:@"id"]];
+                   
                    
                     
                     CategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryController"];

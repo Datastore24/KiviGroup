@@ -56,7 +56,7 @@
 
 }
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array
+- (instancetype)initWithView: (UIView*) view andDictionary: (NSDictionary*) dict
 {
     self = [super init];
     if (self) {
@@ -66,15 +66,15 @@
         isBoolEmail = YES;
         isBoolNickName = YES;
         isBoolAlertCity = YES;
-        arrayCity = array;
+        
         
         arrayMoterial = [NSArray arrayWithObjects:@"Замужен", @"Не замужем", @"В разводе", @"Не готова ответить", nil];
-        arrayMCity = [[NSMutableArray alloc] initWithArray:array];
+        
         
         
         
         //Телефон-----------
-        //Вью для телевона------------------------------------------------
+        //Вью для телефона------------------------------------------------
         UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, 96, 328, 48)];
         viewPhone.layer.cornerRadius = 24.f;
         if (isiPhone6) {
@@ -96,6 +96,7 @@
         //Ввод телефона-----------------------------------------------------------------
         textFieldPhone = [[UITextField alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
         textFieldPhone.delegate = self;
+        
         textFieldPhone.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         textFieldPhone.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldPhone.font = [UIFont fontWithName:FONTREGULAR size:22];
@@ -106,6 +107,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
         [viewPhone addSubview:textFieldPhone];
         
+        
+        
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderPhone = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
         labelPlaceHolderPhone.text = @"Телефон";
@@ -114,7 +117,21 @@
         if (isiPhone5) {
             labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        [viewPhone addSubview:labelPlaceHolderPhone];
+        
+        NSString *firstLetter = [[dict objectForKey:@"login"] substringToIndex:1];
+        
+        if ([firstLetter isEqualToString:@"7"]) {
+            if(![[dict objectForKey:@"login"] isEqual:[NSNull null]]){
+                textFieldPhone.text=[dict objectForKey:@"login"];
+            }else{
+                [viewPhone addSubview:labelPlaceHolderPhone];
+            }
+        } else {
+           [viewPhone addSubview:labelPlaceHolderPhone];
+        }
+        
+             
+        
         
         //Кнопка подтвердить через СМС-----------------------------
         UIButton * buttonСonfirm = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -165,7 +182,17 @@
         if (isiPhone5) {
             labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        [viewEmail addSubview:labelPlaceHolderEmail];
+        
+        
+
+            if(![[dict objectForKey:@"email"] isEqual:[NSNull null]]){
+                textFieldPhone.text=[dict objectForKey:@"email"];
+            }else{
+                [viewEmail addSubview:labelPlaceHolderEmail];
+            }
+            
+        
+        
         
         //NickName-----------
         //Вью для NickName------------------------------------------------
@@ -191,6 +218,9 @@
         textFieldviewNickName.textColor = [UIColor colorWithHexString:@"515050"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelNickName:) name:UITextFieldTextDidChangeNotification object:textFieldviewNickName];
         [viewNickName addSubview:textFieldviewNickName];
+    
+        
+        
         
         //Плэйс холдер NickName----------------------------------------------------------
         labelPlaceHolderNickName = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
@@ -200,7 +230,13 @@
         if (isiPhone5) {
             labelPlaceHolderNickName.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        [viewNickName addSubview:labelPlaceHolderNickName];
+        
+        if(![[dict objectForKey:@"name"] isEqual:[NSNull null]]){
+            textFieldviewNickName.text=[dict objectForKey:@"name"];
+        }else{
+          [viewNickName addSubview:labelPlaceHolderNickName];
+        }
+       
         
         //Город-----------
         //Вью для Город------------------------------------------------
@@ -215,7 +251,14 @@
         buttonCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonCity.layer.borderWidth = 0.4f;
         [buttonCity addTarget:self action:@selector(buttonCityAction) forControlEvents:UIControlEventTouchUpInside];
-        [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+        
+        if(![[dict objectForKey:@"city"] isEqual:[NSNull null]]){
+        
+            [buttonCity setTitle:[dict objectForKey:@"city"] forState:UIControlStateNormal];
+        }else{
+            [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+        }
+        
         [buttonCity setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonCity.contentEdgeInsets = UIEdgeInsetsMake(0, -200, 0, 0);
         if (isiPhone5) {
@@ -266,7 +309,14 @@
         buttonBirth.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonBirth.layer.borderWidth = 0.4f;
         [buttonBirth addTarget:self action:@selector(buttonBirthAction) forControlEvents:UIControlEventTouchUpInside];
-        [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+        
+        if(![[dict objectForKey:@"b_date"] isEqual:[NSNull null]]){
+            
+            [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
+        }else{
+            [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+        }
+        
         [buttonBirth setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonBirth.contentEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
         buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
@@ -291,7 +341,13 @@
         buttonMaritalStatus.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonMaritalStatus.layer.borderWidth = 0.4f;
         [buttonMaritalStatus addTarget:self action:@selector(buttonMaritalStatu) forControlEvents:UIControlEventTouchUpInside];
-        [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
+        
+        if(![[dict objectForKey:@"family"] isEqual:[NSNull null]]){
+            [buttonMaritalStatus setTitle:[dict objectForKey:@"family"] forState:UIControlStateNormal];
+        }else{
+           [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
+        }
+        
         [buttonMaritalStatus setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
         buttonMaritalStatus.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
         buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];

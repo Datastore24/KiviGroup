@@ -14,6 +14,7 @@
 #import "SubCategoryView.h"
 #import "AboutXeniaView.h"
 #import "RecommendController.h"
+#import "APIGetClass.h"
 
 @implementation AboutXeniaController
 
@@ -58,6 +59,8 @@
     
     //Нотификация перехода в рекомендуемые-------
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRecommend) name:NOTIFICATION_PUSH_ABOUT_XENIA_WITH_RECOMMEND object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SEND_EMAIL_XENIA object:nil];
 
 }
 
@@ -68,6 +71,36 @@
 {
     RecommendController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RecommendController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+-(void)sendAction: (NSNotification*) notification{
+    
+    NSDictionary * dictSend = notification.object;
+    [self sendEmail:[dictSend objectForKey:@"email"]
+               text:[dictSend objectForKey:@"text"]];
+    
+}
+
+-(void) sendEmail:(NSString *) email text:(NSString*) text
+{
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                    
+                             email,@"email",
+                             text,@"text",
+                             nil];
+    
+    
+    
+    
+    
+    APIGetClass * getAPI = [[APIGetClass alloc] init];
+    [getAPI getDataFromServerWithParams:params method:@"send_email_xen" complitionBlock:^(id response) {
+        //        NSLog(@"%@", response);
+        
+        NSDictionary * result = (NSDictionary*)response;
+        NSLog(@"resp: %@",result);
+        
+    }];
 }
 
 #pragma mark - DEALLOC

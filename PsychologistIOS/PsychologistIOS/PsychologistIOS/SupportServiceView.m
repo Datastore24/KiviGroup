@@ -196,7 +196,7 @@
         if (isiPhone5) {
             labelButtonSkype.frame = CGRectMake(55, buttonSkype.frame.origin.y + 10, 60, 16);
         }
-        labelButtonSkype.text = @"Support";
+        labelButtonSkype.text = @"RadioVm";
         labelButtonSkype.textColor = [UIColor colorWithHexString:@"5c5b5a"];
         labelButtonSkype.font = [UIFont fontWithName:FONTREGULAR size:15];
         [mainScrollView addSubview:labelButtonSkype];
@@ -221,7 +221,7 @@
         } else if (isiPhone5) {
             labelButtonPhone.frame = CGRectMake(192, buttonPhone.frame.origin.y + 4, 160, 16);
         }
-        labelButtonPhone.text = @"8 (999) 99 99 99";
+        labelButtonPhone.text = @"+7 (499) 713-5917";
         labelButtonPhone.textColor = [UIColor colorWithHexString:@"5c5b5a"];
         labelButtonPhone.font = [UIFont fontWithName:FONTREGULAR size:15];
         [mainScrollView addSubview:labelButtonPhone];
@@ -370,6 +370,14 @@ shouldChangeTextInRange:(NSRange)range
 //Действие кнпоки отправить-----------------------------------
 - (void) buttonSendAction
 {
+        NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   textFieldMail.text,@"email",
+                                   textFieldName.text,@"name",
+                                   mainMailText.text,@"text",
+                                   nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_EMAIL_SUPPORT object:dictInfo];
+    
+    
     NSLog(@"Кнопка отправить");
 }
 
@@ -377,11 +385,14 @@ shouldChangeTextInRange:(NSRange)range
 - (void) buttonSkypeAction
 {
     NSLog(@"Skype !!!!");
+   NSString *urlString = [NSString stringWithFormat:@"skype:RadioVm?chat"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
 //Действие кнопки позвонить----------------------------------
 - (void) buttonPhoneAction
 {
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74997135917"]];
     NSLog(@"Дзынь дзынь");
 }
 

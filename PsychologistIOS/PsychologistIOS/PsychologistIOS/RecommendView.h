@@ -10,6 +10,6 @@
 
 @interface RecommendView : UIView <UITextFieldDelegate>
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
+- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array;
 
 @end

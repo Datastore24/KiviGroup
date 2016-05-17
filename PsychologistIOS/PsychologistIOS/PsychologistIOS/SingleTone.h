@@ -33,6 +33,7 @@
 //Авторизация
 @property (strong,nonatomic) NSMutableArray* token_ios;
 @property (strong, nonatomic) NSString* login;
+@property (strong, nonatomic) NSString* userId;
 
 //Чат
 @property (strong, nonatomic) NSString * userID;

@@ -10,6 +10,6 @@
 
 @interface PersonalAreaView : UIView
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array;
+- (instancetype)initWithView: (UIView*) view andDictionary: (NSDictionary*) dict;
 
 @end

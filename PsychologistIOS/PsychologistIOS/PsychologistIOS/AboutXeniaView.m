@@ -87,7 +87,7 @@
         //Основной текст--------------------------------
         UILabel * textLabel = [[UILabel alloc] initWithFrame:CGRectMake(24, 268, self.frame.size.width - 48, 160)];
         textLabel.numberOfLines = 0;
-        textLabel.text = @"Одним из важных условий эффективной психологической \nпомощи становится целевая установка психолога-практика, \nмотивы его профессиональной деятельности. \nДействительно ли он желает оказывать помощь людям, \nделая доброе дело, или же смотрит на оказываемую \nпомощь, как на возможность больше зарабатывать на \nнесчастьях людей? трудные для клиента дни, или же \nостался довольным, что получил хорошее материальное вознаграждение";
+        textLabel.text = @"Милые женщины, я — Ксения Буракова, исключительно женский психолог-консультант и автор тренингов. Я женщина, поэтому вопросы, с которыми вы приходите, мне знакомы. Я замужем, живу в любви, у меня чудесная дочь и работа, приносящая истинное удовольствие. Я счастливая женщина!\nЯ готова поделиться своим опытом и знаниями с вами. Практикую с 2006 года. Веду консультации и тренинги, работаю лично и в оn-line формате.";
         textLabel.textColor = [UIColor colorWithHexString:@"5b5b5b"];
         textLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         if (isiPhone6) {
@@ -180,7 +180,7 @@
         } else if (isiPhone5) {
             labelSite.frame = CGRectMake(0, 487, self.frame.size.width, 16);
         }
-        labelSite.text = @"www.ksenia.ru";
+        labelSite.text = @"ксения-буракова.рф";
         labelSite.textColor = [UIColor colorWithHexString:@"a6a6a6"];
         labelSite.textAlignment = NSTextAlignmentCenter;
         labelSite.font = [UIFont fontWithName:FONTREGULAR size:13];
@@ -335,16 +335,33 @@
 //Действие кнопок соц сетей--------------
 - (void) buttonSocialAction: (UIButton*) button
 {
-    for (int i = 0; i < arrayImage.count; i++) {
-        if (button.tag == 40 + i) {
-            NSLog(@"button %d", i + 1);
-        }
+    
+    if (button.tag == 40) {
+       
+            NSLog(@"VK");
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://vk.com/zhenskiclub"]];
+    }else if(button.tag==41){
+            NSLog(@"FB");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/zhenskiclub/"]];
+    }else if(button.tag==42){
+            NSLog(@"INST");
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://instagram.com/magua_sovershenstva"]];
+    }else if(button.tag==43){
+        NSLog(@"PERISCOPE");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.periscope.tv/ksevali"]];
+    }else if(button.tag==44){
+        NSLog(@"SKYPE");
+        NSString *urlString = [NSString stringWithFormat:@"skype:maksu2709?chat"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
     }
+    
+
 }
 
 //Действие кнопки закрыть алерт
 - (void) buttonCancelAction
 {
+
     mainScrollView.scrollEnabled = YES;
     mainScrollView.contentSize = CGSizeMake(0, 568);
     [UIView animateWithDuration:0.3 animations:^{
@@ -365,6 +382,15 @@
 //Действие кнопки отправить-------
 - (void) buttonSendAction
 {
+  
+    NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               textFieldMail.text,@"email",
+                               mainAlertText.text,@"text",
+                               nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_EMAIL_XENIA object:dictInfo];
+    
+
+    
     //Отправить письмо-------------
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertViewXenia.frame;
