@@ -13,6 +13,7 @@
 #import "DALabeledCircularProgressView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CustomPlayer.h"
+#import "SingleTone.h"
 
 
 
@@ -317,15 +318,15 @@
     for (int i = 0; i < array.count; i++) {
         NSDictionary * dictChat = [array objectAtIndex:i];
         
-        if ([[dictChat objectForKey:@"Users"] isEqualToString:@"Пользователь 1"]) {
+        if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
             // Имя пользователя---------------
             UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
             labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
-            labelUser.font = [UIFont fontWithName:FONTLITE size:12];
+            labelUser.font = [UIFont fontWithName:FONTBOND size:12];
             if (isiPhone5) {
-                labelUser.font = [UIFont fontWithName:FONTLITE size:10];
+                labelUser.font = [UIFont fontWithName:FONTBOND size:10];
             }
-            labelUser.text = [dictChat objectForKey:@"Users"];
+            labelUser.text = @"Ксения";
             [viewScrollChat addSubview:labelUser];
 
             //Если приходит текст-------------------------------------------
@@ -453,7 +454,7 @@
             if (isiPhone5) {
                 labelUser.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            labelUser.text = @"Пользователь";
+            labelUser.text = [NSString stringWithFormat:@"id_user %@", [dictChat objectForKey:@"id_user"]];
             [viewScrollChat addSubview:labelUser];
             
             //Если приходит текст-------------------------------------------
@@ -555,7 +556,7 @@
             }
             
             //Лейбл даты-----------------------
-            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 80, 12)];
+            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 100, 12)];
             if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 labelData.frame = CGRectMake(28, imageViewChat.frame.origin.y + imageViewChat.frame.size.height + 5, 60, 12);
             }
@@ -565,6 +566,7 @@
                 labelData.font = [UIFont fontWithName:FONTLITE size:10];
             }
             labelData.text = [dictChat objectForKey:@"inserted"];
+            [labelData sizeToFit];
             [viewScrollChat addSubview:labelData];
             
             //Создаем отступ-------------------
@@ -721,22 +723,15 @@
         NSLog(@"Введите текст");
     } else {
         
-        BOOL isBoolen = arc4random() % 2;
-        NSString * testString;
-        
-        if (isBoolen) {
-            testString = @"Пользователь 1";
-        } else {
-            testString = @"Пользователь 2";
-        }
-        
         NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       testString, @"Users",
+                                       [[SingleTone sharedManager] userId], @"id_user",
                                        textFieldChat.text, @"message",
                                        @"Моя датка", @"inserted", @"message", @"type", nil];
         
         [mArrayForPushButton addObject:dictPushText];
         [self sendMessageWithArray:mArrayForPushButton andSend:YES];
+        
+        NSString * textString = textFieldChat.text;
         textFieldChat.text = nil;
         
         if (textFieldChat.text.length == 0) {
@@ -751,6 +746,16 @@
         }
         
         [mArrayForPushButton removeAllObjects];
+        
+        
+        
+        NSDictionary * dictData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [[SingleTone sharedManager] userId], @"id_user",
+                                   [[SingleTone sharedManager] postID], @"id_post",
+                                   textString, @"message",
+                                   @"message", @"type", nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_POST_MESSAGE_IN_CHAT object:nil userInfo:dictData];
         
     }
 }

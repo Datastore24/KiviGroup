@@ -50,6 +50,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     
+#pragma mark - Post Messages NOTIFICATION
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postMessageText:) name:NOTIFICATION_POST_MESSAGE_IN_CHAT object:nil];
+    
 #pragma mark - Initialization
     
     [super viewDidLoad];
@@ -139,6 +142,26 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Post Messages ACTIONS
+//Отправка на сервер текстового сообщения------------
+- (void) postMessageText: (NSNotification*) notification
+{
+    APIGetClass * apiGallery = [APIGetClass new];
+    
+    NSLog(@"%@", notification.userInfo);
+    
+    [apiGallery getDataFromServerWithParams:notification.userInfo method:@"chat_add_message" complitionBlock:^(id response) {
+        
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"response %@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"%@", response);
+ 
+        }
+    }];
 }
 
 #pragma mark - ACTION METHODS
