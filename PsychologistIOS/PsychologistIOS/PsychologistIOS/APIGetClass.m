@@ -78,7 +78,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
-         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"audio.caf" mimeType:@"audio/x-caf"];
+         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"image.jpg" mimeType:@"image/jpeg"];
      } success:^(AFHTTPRequestOperation *operation, id responseObject) {
          compitionBack (responseObject);
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
