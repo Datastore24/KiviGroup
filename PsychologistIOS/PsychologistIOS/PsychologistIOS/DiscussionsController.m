@@ -185,9 +185,26 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_IMAGE_FOR_DUSCUSSIONS_VIEW object:image];
+    [self getAPIImageWithImage:image];
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void) getAPIImageWithImage: (UIImage*) image
+{
+    NSLog(@"Загружаем картинку");
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"image", @"type", nil];
+    APIGetClass * apiPostImage = [APIGetClass new];
+    [apiPostImage getDataFromServerWithImageParams:params andImage:image method:@"upload_media" complitionBlock:^(id response) {
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"Удачная отправка");
+            NSLog(@"response %@", response);
+        }
+    }];
+}
+
+//Загрузка АУДИО файла на сервер--------------------
 - (void) getAPIWithBlock
 {
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"audio", @"type", nil];
