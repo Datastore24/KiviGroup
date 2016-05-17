@@ -273,9 +273,9 @@
         if (isiPhone5) {
             labelPlaceHolderCity.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        if([dict objectForKey:@"name"] != [NSNull null]){
-            if(![[dict objectForKey:@"name"] isEqualToString:@""]){
-                labelPlaceHolderCity.text=[dict objectForKey:@"name"];
+        if([dict objectForKey:@"city"] != [NSNull null]){
+            if(![[dict objectForKey:@"city"] isEqualToString:@""]){
+                textFieldviewCity.text=[dict objectForKey:@"city"];
             }else{
                 [viewCity addSubview:labelPlaceHolderCity];
             }
@@ -811,7 +811,7 @@
                                selectedTitle,@"family",
                                textFieldEmail.text,@"email",
                                textFieldPhone.text,@"phone",
-                               @"",@"city",
+                               textFieldviewCity.text,@"city",
                                stringFromDate,@"bdate",
                      
                                
