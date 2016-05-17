@@ -65,6 +65,8 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushSubscription) name:NOTIFICATION_PUSH_SUBSCRIPTION object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SAVE_PROFILE object:nil];
 
 }
 
@@ -100,6 +102,47 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             block();
+        }
+    }];
+}
+
+-(void)sendAction: (NSNotification*) notification{
+    
+    NSDictionary * dictSend = notification.object;
+    [self saveProfile:dictSend];
+    
+}
+
+- (void) saveProfile: (NSDictionary *) dict
+{
+
+
+                               
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            [dict objectForKey:@"id"],@"id",
+                            [dict objectForKey:@"name"],@"name",
+                            [dict objectForKey:@"family"],@"family",
+                            [dict objectForKey:@"email"],@"email",
+                            [dict objectForKey:@"phone"],@"phone",
+                            [dict objectForKey:@"city"],@"city",
+                            [dict objectForKey:@"bdate"],@"bdate",
+
+                             
+                             nil];
+    
+    NSLog(@"%@",params);
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"edit_user" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+          NSLog(@"%@", dictResponse);
         }
     }];
 }

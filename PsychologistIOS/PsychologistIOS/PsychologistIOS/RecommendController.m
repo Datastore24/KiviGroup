@@ -100,6 +100,12 @@
         
     }];
 }
+
+#pragma mark - DEALLOC
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
      
 
 @end

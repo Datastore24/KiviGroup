@@ -9,6 +9,7 @@
 #import "PersonalAreaView.h"
 #import "UIColor+HexColor.h"
 #import "Macros.h"
+#import "SingleTone.h"
 
 @interface PersonalAreaView () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -49,10 +50,12 @@
     
     //Дата-------------------------
     UIDatePicker * dataPicker;
+    UIButton * buttonBirth;
     
     //Семейное положение-----------
     UIPickerView * maritalStatusPicker;
     NSArray * arrayMoterial;
+    UIButton * buttonMaritalStatus;
 
 }
 
@@ -68,7 +71,7 @@
         isBoolAlertCity = YES;
         
         
-        arrayMoterial = [NSArray arrayWithObjects:@"Замужен", @"Не замужем", @"В разводе", @"Не готова ответить", nil];
+        arrayMoterial = [NSArray arrayWithObjects:@"Замужем", @"Не замужем", @"В разводе", @"Не готова ответить", nil];
         
         
         
@@ -121,8 +124,8 @@
         NSString *firstLetter = [[dict objectForKey:@"login"] substringToIndex:1];
         
         if ([firstLetter isEqualToString:@"7"]) {
-            if(![[dict objectForKey:@"login"] isEqual:[NSNull null]]){
-                textFieldPhone.text=[dict objectForKey:@"login"];
+            if(![[dict objectForKey:@"phone"] isEqualToString:@""]){
+                textFieldPhone.text=[dict objectForKey:@"phone"];
             }else{
                 [viewPhone addSubview:labelPlaceHolderPhone];
             }
@@ -130,23 +133,7 @@
            [viewPhone addSubview:labelPlaceHolderPhone];
         }
         
-             
         
-        
-        //Кнопка подтвердить через СМС-----------------------------
-        UIButton * buttonСonfirm = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonСonfirm.frame = CGRectMake(78, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
-        if (isiPhone6) {
-            buttonСonfirm.frame = CGRectMake(58, viewPhone.frame.size.height + viewPhone.frame.origin.y + 8, 128, 16);
-        } else if (isiPhone5) {
-            buttonСonfirm.frame = CGRectMake(40, viewPhone.frame.size.height + viewPhone.frame.origin.y + 4, 128, 16);
-        }
-        [buttonСonfirm setTitle:@"Подтвердить через СМС" forState:UIControlStateNormal];
-        [buttonСonfirm setTitleColor: [UIColor colorWithHexString:@"8e8d8d"] forState:UIControlStateNormal];
-        buttonСonfirm.titleLabel.font = [UIFont fontWithName:FONTLITE size:11];
-        buttonСonfirm.backgroundColor = nil;
-        [buttonСonfirm addTarget:self action:@selector(buttonСonfirmAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonСonfirm];
         
         //Email-----------
         //Вью для Email------------------------------------------------
@@ -184,9 +171,9 @@
         }
         
         
-
-            if(![[dict objectForKey:@"email"] isEqual:[NSNull null]]){
-                textFieldPhone.text=[dict objectForKey:@"email"];
+        NSLog(@"EMAIL %@",[dict objectForKey:@"email"]);
+            if(![[dict objectForKey:@"email"] isEqualToString:@""]){
+                textFieldEmail.text=[dict objectForKey:@"email"];
             }else{
                 [viewEmail addSubview:labelPlaceHolderEmail];
             }
@@ -231,7 +218,7 @@
             labelPlaceHolderNickName.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
         
-        if(![[dict objectForKey:@"name"] isEqual:[NSNull null]]){
+        if(![[dict objectForKey:@"name"] isEqualToString:@""]){
             textFieldviewNickName.text=[dict objectForKey:@"name"];
         }else{
           [viewNickName addSubview:labelPlaceHolderNickName];
@@ -252,7 +239,7 @@
         buttonCity.layer.borderWidth = 0.4f;
         [buttonCity addTarget:self action:@selector(buttonCityAction) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"city"] isEqual:[NSNull null]]){
+        if(![[dict objectForKey:@"city"] isEqualToString:@""]){
         
             [buttonCity setTitle:[dict objectForKey:@"city"] forState:UIControlStateNormal];
         }else{
@@ -298,7 +285,7 @@
         
         //Дата рождения-----------
         //Вью для Даты рождения------------------------------------------------
-        UIButton * buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, buttonCity.frame.size.height + buttonCity.frame.origin.y + 16, 328, 48);
         buttonBirth.layer.cornerRadius = 24.f;
         if (isiPhone5) {
@@ -310,7 +297,7 @@
         buttonBirth.layer.borderWidth = 0.4f;
         [buttonBirth addTarget:self action:@selector(buttonBirthAction) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"b_date"] isEqual:[NSNull null]]){
+        if(![[dict objectForKey:@"b_date"] isEqualToString:@""]){
             
             [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
         }else{
@@ -334,7 +321,7 @@
         
         //Семейное положение-----------
         //Вью для Семейное положение------------------------------------------------
-        UIButton * buttonMaritalStatus = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonMaritalStatus = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 164, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 16, 328, 48);
         buttonMaritalStatus.layer.cornerRadius = 24.f;
         buttonMaritalStatus.backgroundColor = [UIColor whiteColor];
@@ -342,7 +329,7 @@
         buttonMaritalStatus.layer.borderWidth = 0.4f;
         [buttonMaritalStatus addTarget:self action:@selector(buttonMaritalStatu) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"family"] isEqual:[NSNull null]]){
+        if(![[dict objectForKey:@"family"] isEqualToString:@""]){
             [buttonMaritalStatus setTitle:[dict objectForKey:@"family"] forState:UIControlStateNormal];
         }else{
            [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
@@ -831,6 +818,24 @@
 //Действие кнопки сохранить
 - (void) buttonSaveAction
 {
+    
+    NSUInteger selectedRow = [maritalStatusPicker selectedRowInComponent:0];
+    NSString * selectedTitle = [arrayMoterial objectAtIndex:selectedRow];
+    NSLog(@"Selected: %@",selectedTitle);
+    
+    
+    NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+                              [[SingleTone sharedManager] userId],@"id",
+                               textFieldviewNickName.text,@"name",
+                               selectedTitle,@"family",
+                               textFieldEmail.text,@"email",
+                               textFieldPhone.text,@"phone",
+                               @"",@"city",
+                               @"",@"bdate",
+                     
+                               
+                               nil];
+      [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SAVE_PROFILE object:dictInfo];
     NSLog(@"Сохранить");
 }
 
@@ -860,6 +865,7 @@
 - (void) buttonSendAction
 {
     NSLog(@"Отправить !!!");
+    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertViewPersonalArea.frame;
         rectAlert.origin.y -= 750;
@@ -926,8 +932,11 @@
         } else {
             NSLog(@"%@", arrayMCity[row]);
         }
-    } else{
-        NSLog(@"%@", arrayMoterial[row]);
+    } else if(pickerView == maritalStatusPicker){
+        NSLog(@"TYT %@", arrayMoterial[row]);
+        
+        [buttonMaritalStatus setTitle:arrayMoterial[row] forState:UIControlStateNormal];
+        
     }
 
     
