@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CustomPlayer.h"
 #import "SingleTone.h"
+#import "ViewSectionTable.h"
 
 
 
@@ -375,8 +376,12 @@
                 if (isiPhone5) {
                     imageViewChat.frame = CGRectMake(viewScrollChat.frame.size.width - 222, 32 + countFor, 200, 150);
                 }
-                [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
-
+                if (send) {
+                    [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
+                } else {
+                    ViewSectionTable * urlViewChat = [[ViewSectionTable alloc] initImageChatWithImageURL:[dictChat objectForKey:@"message"] andContentMode:UIViewContentModeScaleAspectFill];
+                    [imageViewChat addSubview:urlViewChat];
+                }
                 [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 [viewScrollChat addSubview:imageViewChat];
                 [buttonsArray addObject:imageViewChat];
@@ -502,7 +507,12 @@
                 }
                 buttonsNumber += 1;
                 imageViewChat.tag = buttonsNumber;
-                [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
+                if (send) {
+                    [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
+                } else {
+                    ViewSectionTable * urlViewChat = [[ViewSectionTable alloc] initImageChatWithImageURL:[dictChat objectForKey:@"message"] andContentMode:UIViewContentModeScaleAspectFill];
+                    [imageViewChat addSubview:urlViewChat];
+                }
                 [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 [viewScrollChat addSubview:imageViewChat];
                 
@@ -744,11 +754,8 @@
                 isBool = YES;
             }];
         }
-        
+
         [mArrayForPushButton removeAllObjects];
-        
-        
-        
         NSDictionary * dictData = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [[SingleTone sharedManager] userId], @"id_user",
                                    [[SingleTone sharedManager] postID], @"id_post",
@@ -791,6 +798,7 @@
     [mArrayForPushButton removeAllObjects];
 }
 
+//Отправка Аудио Файла
 - (void) testNotificationMethod: (NSNotification*) notification
 {
     BOOL isBoolen = arc4random() % 2;

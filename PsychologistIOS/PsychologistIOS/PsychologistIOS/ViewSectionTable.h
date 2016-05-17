@@ -23,4 +23,7 @@
 
 - (instancetype)initWithPostImageURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode;
 
+- (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
+                           andContentMode: (UIViewContentMode) contentMode;
+
 @end
