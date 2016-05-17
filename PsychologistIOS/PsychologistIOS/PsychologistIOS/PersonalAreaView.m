@@ -823,6 +823,11 @@
     NSString * selectedTitle = [arrayMoterial objectAtIndex:selectedRow];
     NSLog(@"Selected: %@",selectedTitle);
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:dataPicker.date];
+    
     
     NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
                               [[SingleTone sharedManager] userId],@"id",
@@ -831,7 +836,7 @@
                                textFieldEmail.text,@"email",
                                textFieldPhone.text,@"phone",
                                @"",@"city",
-                               @"",@"bdate",
+                               stringFromDate,@"bdate",
                      
                                
                                nil];
@@ -865,6 +870,15 @@
 - (void) buttonSendAction
 {
     NSLog(@"Отправить !!!");
+
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:dataPicker.date];
+    NSLog(@"FORMAT %@",stringFromDate);
+    
+    [buttonBirth setTitle:stringFromDate forState:(UIControlStateNormal)];
     
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectAlert = alertViewPersonalArea.frame;
@@ -942,6 +956,7 @@
     
     
 }
+
 
 
 @end
