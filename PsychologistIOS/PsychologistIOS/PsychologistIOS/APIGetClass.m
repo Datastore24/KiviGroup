@@ -61,4 +61,29 @@
      }];
     
 }
+
+
+//Запрос на сервер
+-(void) getDataFromServerWithImageParams: (NSDictionary *) params
+                             andImage: (UIImage*) image
+                                  method:(NSString*) method
+                         complitionBlock: (void (^) (id response)) compitionBack
+{
+    //-----------
+    NSString * url = [NSString stringWithFormat:@"%@?api_key=%@&action=%@",MAIN_URL,API_KEY,method];
+    NSData *imageLoad = UIImageJPEGRepresentation(image,0.8);
+    //-------------------
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         [formData appendPartWithFileData:imageLoad name:@"userfile" fileName:@"audio.caf" mimeType:@"audio/x-caf"];
+     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         compitionBack (responseObject);
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@ ***** %@", operation.responseString, error);
+     }];
+    
+}
 @end
