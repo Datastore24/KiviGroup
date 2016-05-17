@@ -59,6 +59,7 @@
     
     //Основной контент------------
     [self getAPIWithBlock:^{
+        
         PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andDictionary:[dictResponse objectForKey:@"data"]];
         [self.view addSubview:contentView];
     }];
@@ -101,6 +102,7 @@
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"LOG %@",dictResponse);
             block();
         }
     }];
