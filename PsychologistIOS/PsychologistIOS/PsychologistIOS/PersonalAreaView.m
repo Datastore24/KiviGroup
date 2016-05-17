@@ -74,7 +74,7 @@
         arrayMoterial = [NSArray arrayWithObjects:@"Замужем", @"Не замужем", @"В разводе", @"Не готова ответить", nil];
         
         
-        
+       
         
         //Телефон-----------
         //Вью для телефона------------------------------------------------
@@ -121,16 +121,27 @@
             labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
         
-        NSString *firstLetter = [[dict objectForKey:@"login"] substringToIndex:1];
+        if([dict objectForKey:@"login"] != [NSNull null]){
+
+            NSString *firstLetter = [[dict objectForKey:@"login"] substringToIndex:1];
         
-        if ([firstLetter isEqualToString:@"7"]) {
-            if(![[dict objectForKey:@"phone"] isEqualToString:@""]){
-                textFieldPhone.text=[dict objectForKey:@"phone"];
-            }else{
+            if ([firstLetter isEqualToString:@"7"]) {
+                if([dict objectForKey:@"phone"] != [NSNull null]){
+                    if(![[dict objectForKey:@"phone"] isEqualToString:@""]){
+                            textFieldPhone.text=[dict objectForKey:@"phone"];
+                    }else{
+                        [viewPhone addSubview:labelPlaceHolderPhone];
+                    }
+                    
+                }else{
+                    [viewPhone addSubview:labelPlaceHolderPhone];
+                }
+            } else {
                 [viewPhone addSubview:labelPlaceHolderPhone];
             }
-        } else {
-           [viewPhone addSubview:labelPlaceHolderPhone];
+        }else{
+          
+          [viewPhone addSubview:labelPlaceHolderPhone];
         }
         
         
@@ -171,12 +182,18 @@
         }
         
         
-        NSLog(@"EMAIL %@",[dict objectForKey:@"email"]);
+        NSLog(@"EMAIL");
+        if([dict objectForKey:@"email"] != [NSNull null]){
+            NSLog(@"NOT EMPTY");
             if(![[dict objectForKey:@"email"] isEqualToString:@""]){
                 textFieldEmail.text=[dict objectForKey:@"email"];
             }else{
                 [viewEmail addSubview:labelPlaceHolderEmail];
             }
+        }else{
+            NSLog(@"EMPTY");
+            [viewEmail addSubview:labelPlaceHolderEmail];
+        }
             
         
         
@@ -217,11 +234,14 @@
         if (isiPhone5) {
             labelPlaceHolderNickName.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        
-        if(![[dict objectForKey:@"name"] isEqualToString:@""]){
-            textFieldviewNickName.text=[dict objectForKey:@"name"];
+        if([dict objectForKey:@"name"] != [NSNull null]){
+            if(![[dict objectForKey:@"name"] isEqualToString:@""]){
+                textFieldviewNickName.text=[dict objectForKey:@"name"];
+            }else{
+                [viewNickName addSubview:labelPlaceHolderNickName];
+            }
         }else{
-          [viewNickName addSubview:labelPlaceHolderNickName];
+           [viewNickName addSubview:labelPlaceHolderNickName];
         }
        
         
@@ -239,11 +259,15 @@
         buttonCity.layer.borderWidth = 0.4f;
         [buttonCity addTarget:self action:@selector(buttonCityAction) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"city"] isEqualToString:@""]){
+        if([dict objectForKey:@"city"] != [NSNull null]){
+            if(![[dict objectForKey:@"city"] isEqualToString:@""]){
         
-            [buttonCity setTitle:[dict objectForKey:@"city"] forState:UIControlStateNormal];
+                [buttonCity setTitle:[dict objectForKey:@"city"] forState:UIControlStateNormal];
+            }else{
+                [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+            }
         }else{
-            [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+           [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
         }
         
         [buttonCity setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
@@ -297,11 +321,15 @@
         buttonBirth.layer.borderWidth = 0.4f;
         [buttonBirth addTarget:self action:@selector(buttonBirthAction) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"b_date"] isEqualToString:@""]){
+        if([dict objectForKey:@"b_date"] != [NSNull null]){
+            if(![[dict objectForKey:@"b_date"] isEqualToString:@""]){
             
-            [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
+                [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
+            }else{
+                [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+            }
         }else{
-            [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+          [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
         }
         
         [buttonBirth setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
@@ -329,10 +357,15 @@
         buttonMaritalStatus.layer.borderWidth = 0.4f;
         [buttonMaritalStatus addTarget:self action:@selector(buttonMaritalStatu) forControlEvents:UIControlEventTouchUpInside];
         
-        if(![[dict objectForKey:@"family"] isEqualToString:@""]){
-            [buttonMaritalStatus setTitle:[dict objectForKey:@"family"] forState:UIControlStateNormal];
+        
+        if([dict objectForKey:@"family"] != [NSNull null]){
+            if(![[dict objectForKey:@"family"] isEqualToString:@""]){
+                [buttonMaritalStatus setTitle:[dict objectForKey:@"family"] forState:UIControlStateNormal];
+            }else{
+                [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
+            }
         }else{
-           [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
+            [buttonMaritalStatus setTitle:@"Семейное положение" forState:UIControlStateNormal];
         }
         
         [buttonMaritalStatus setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
