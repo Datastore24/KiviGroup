@@ -34,9 +34,12 @@
     UILabel * labelPlaceHolderNickName;
     BOOL isBoolNickName;
     //Город-----------------------
+    UITextField * textFieldviewCity;
+    UILabel * labelPlaceHolderCity;
+    BOOL isBoolCity;
+    
     UIButton * buttonCity;
     UILabel * labelButtonCity;
-    UIView * viewCity;
     
     //Алерт------------------------
     //Город------------------------
@@ -63,18 +66,15 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
         isBoolPhone = YES;
         isBoolEmail = YES;
         isBoolNickName = YES;
         isBoolAlertCity = YES;
-        
+        isBoolCity = YES;
         
         arrayMoterial = [NSArray arrayWithObjects:@"Замужем", @"Не замужем", @"В разводе", @"Не готова ответить", nil];
-        
-        
-       
         
         //Телефон-----------
         //Вью для телефона------------------------------------------------
@@ -109,8 +109,6 @@
         textFieldPhone.textColor = [UIColor colorWithHexString:@"515050"];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelPhone:) name:UITextFieldTextDidChangeNotification object:textFieldPhone];
         [viewPhone addSubview:textFieldPhone];
-        
-        
         
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderPhone = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
@@ -223,9 +221,6 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelNickName:) name:UITextFieldTextDidChangeNotification object:textFieldviewNickName];
         [viewNickName addSubview:textFieldviewNickName];
     
-        
-        
-        
         //Плэйс холдер NickName----------------------------------------------------------
         labelPlaceHolderNickName = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
         labelPlaceHolderNickName.text = @"Ник";
@@ -247,46 +242,7 @@
         
         //Город-----------
         //Вью для Город------------------------------------------------
-        buttonCity = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonCity.frame = CGRectMake(self.frame.size.width / 2 - 164, viewNickName.frame.size.height + viewNickName.frame.origin.y + 16, 328, 48);
-        buttonCity.layer.cornerRadius = 24.f;
-        if (isiPhone5) {
-            buttonCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 42);
-            buttonCity.layer.cornerRadius = 21.f;
-        }
-        buttonCity.backgroundColor = [UIColor whiteColor];
-        buttonCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
-        buttonCity.layer.borderWidth = 0.4f;
-        [buttonCity addTarget:self action:@selector(buttonCityAction) forControlEvents:UIControlEventTouchUpInside];
-        
-        if([dict objectForKey:@"city"] != [NSNull null]){
-            if(![[dict objectForKey:@"city"] isEqualToString:@""]){
-        
-                [buttonCity setTitle:[dict objectForKey:@"city"] forState:UIControlStateNormal];
-            }else{
-                [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
-            }
-        }else{
-           [buttonCity setTitle:@"Город" forState:UIControlStateNormal];
-        }
-        
-        [buttonCity setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
-        buttonCity.contentEdgeInsets = UIEdgeInsetsMake(0, -200, 0, 0);
-        if (isiPhone5) {
-            buttonCity.contentEdgeInsets = UIEdgeInsetsMake(0, -175, 0, 0);
-        }
-        buttonCity.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
-        [self addSubview:buttonCity];
-        
-        UIImageView * imageViewButton = [[UIImageView alloc] initWithFrame:CGRectMake(buttonCity.frame.size.width - 64, 24, 16, 8)];
-        if (isiPhone5) {
-            imageViewButton.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
-        }
-        imageViewButton.image = [UIImage imageNamed:@"arrowDownImage.png"];
-        [buttonCity addSubview:imageViewButton];
-        
-        //Вью для города подвержд----------------------
-        viewCity = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewNickName.frame.size.height + viewNickName.frame.origin.y + 16, 328, 48)];
+        UIView * viewCity = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewNickName.frame.size.height + viewNickName.frame.origin.y + 16, 328, 48)];
         viewCity.layer.cornerRadius = 24.f;
         if (isiPhone5) {
             viewCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 42);
@@ -295,27 +251,49 @@
         viewCity.backgroundColor = [UIColor whiteColor];
         viewCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewCity.layer.borderWidth = 0.4f;
-        viewCity.alpha = 0.f;
         [self addSubview:viewCity];
         
-        UILabel * labelCity = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewCity.frame.size.width - 64, 48)];
-        labelCity.text = @"";
-        labelCity.textColor = [UIColor colorWithHexString:@"515050"];
-        labelCity.font = [UIFont fontWithName:FONTREGULAR size:20];
+        //Ввод City-----------------------------------------------------------------
+        textFieldviewCity = [[UITextField alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
+        textFieldviewCity.delegate = self;
+        textFieldviewCity.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldviewCity.font = [UIFont fontWithName:FONTREGULAR size:20];
         if (isiPhone5) {
-            labelCity.font = [UIFont fontWithName:FONTREGULAR size:18];
+            textFieldviewCity.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
-        [viewCity addSubview:labelCity];
+        textFieldviewCity.textColor = [UIColor colorWithHexString:@"515050"];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelCity:) name:UITextFieldTextDidChangeNotification object:textFieldviewCity];
+        [viewCity addSubview:textFieldviewCity];
+        
+        //Плэйс холдер NickName----------------------------------------------------------
+        labelPlaceHolderCity = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
+        labelPlaceHolderCity.text = @"Город";
+        labelPlaceHolderCity.textColor = [UIColor colorWithHexString:@"515050"];
+        labelPlaceHolderCity.font = [UIFont fontWithName:FONTREGULAR size:20];
+        if (isiPhone5) {
+            labelPlaceHolderCity.font = [UIFont fontWithName:FONTREGULAR size:18];
+        }
+        if([dict objectForKey:@"name"] != [NSNull null]){
+            if(![[dict objectForKey:@"name"] isEqualToString:@""]){
+                labelPlaceHolderCity.text=[dict objectForKey:@"name"];
+            }else{
+                [viewCity addSubview:labelPlaceHolderCity];
+            }
+        }else{
+            [viewCity addSubview:labelPlaceHolderCity];
+        }
         
         //Дата рождения-----------
         //Вью для Даты рождения------------------------------------------------
         buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, buttonCity.frame.size.height + buttonCity.frame.origin.y + 16, 328, 48);
+        buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, viewCity.frame.size.height + viewCity.frame.origin.y + 16, 328, 48);
         buttonBirth.layer.cornerRadius = 24.f;
         if (isiPhone5) {
-            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonCity.frame.size.height + buttonCity.frame.origin.y + 12, 280, 42);
+            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 42);
             buttonBirth.layer.cornerRadius = 21.f;
         }
+        buttonBirth.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [buttonBirth setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 130.0f, 0.0f, 0.0f)];
         buttonBirth.backgroundColor = [UIColor whiteColor];
         buttonBirth.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonBirth.layer.borderWidth = 0.4f;
@@ -355,6 +333,8 @@
         buttonMaritalStatus.backgroundColor = [UIColor whiteColor];
         buttonMaritalStatus.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         buttonMaritalStatus.layer.borderWidth = 0.4f;
+        buttonMaritalStatus.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [buttonMaritalStatus setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 70.0f, 0.0f, 0.0f)];
         [buttonMaritalStatus addTarget:self action:@selector(buttonMaritalStatu) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -487,25 +467,6 @@
         [buttonCancelXania addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
         [alertViewPersonalArea addSubview:buttonCancelXania];
         
-        //Контент алерта--------------------------------------------------
-        //Пикер городов-------------------------------------------
-        pickerCity = [[UIPickerView alloc] initWithFrame:CGRectMake(30, 50, alertViewPersonalArea.frame.size.width - 60, alertViewPersonalArea.frame.size.height - 150)];
-        pickerCity.dataSource = self;
-        pickerCity.delegate = self;
-        [alertViewPersonalArea addSubview:pickerCity];
-        pickerCity.alpha = 0.f;
-//        [self.discountPicker selectRow:self.mArrayDiscount.count - 1 inComponent:0 animated:YES];
-        
-        //Ввод NickName-----------------------------------------------------------------
-        textFieldAlertCity = [[UITextField alloc] initWithFrame:CGRectMake(50, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
-        textFieldAlertCity.delegate = self;
-        textFieldAlertCity.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldAlertCity.font = [UIFont fontWithName:FONTREGULAR size:20];
-        textFieldAlertCity.textColor = [UIColor colorWithHexString:@"515050"];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelAlertCity:) name:UITextFieldTextDidChangeNotification object:textFieldAlertCity];
-        textFieldAlertCity.alpha = 0.f;
-        [alertViewPersonalArea addSubview:textFieldAlertCity];
-        
         //Плэйс холдер NickName----------------------------------------------------------
         labelPlaceHolderAlertCity = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
         labelPlaceHolderAlertCity.text = @"Введите город";
@@ -530,11 +491,11 @@
         
         //Кнопка отправить---------------------------------
         UIButton * buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSend.frame = CGRectMake(40, pickerCity.frame.origin.y + pickerCity.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 48);
+        buttonSend.frame = CGRectMake(40, dataPicker.frame.origin.y + dataPicker.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 48);
         buttonSend.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         buttonSend.layer.cornerRadius = 25;
         if (isiPhone6) {
-            buttonSend.frame = CGRectMake(40, pickerCity.frame.origin.y + pickerCity.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 40);
+            buttonSend.frame = CGRectMake(40, dataPicker.frame.origin.y + dataPicker.frame.size.height + 16, alertViewPersonalArea.frame.size.width - 80, 40);
             buttonSend.layer.cornerRadius = 20;
         }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
@@ -654,7 +615,7 @@
     }
 }
 
-//Анимация Лейблов при вводе Email------------------------
+//Анимация Лейблов при вводе NickName------------------------
 - (void) animationLabelNickName: (NSNotification*) notification
 {
     UITextField * testField = notification.object;
@@ -681,47 +642,29 @@
 }
 
 //Анимация Лейблов при вводе Города------------------------
-- (void) animationLabelAlertCity: (NSNotification*) notification
+- (void) animationLabelCity: (NSNotification*) notification
 {
     UITextField * testField = notification.object;
     
-    if (testField.text.length != 0 && isBoolAlertCity) {
+    if (testField.text.length != 0 && isBoolCity) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rect;
-            rect = labelPlaceHolderAlertCity.frame;
+            rect = labelPlaceHolderCity.frame;
             rect.origin.x = rect.origin.x + 100.f;
-            labelPlaceHolderAlertCity.frame = rect;
-            labelPlaceHolderAlertCity.alpha = 0.f;
-            isBoolAlertCity = NO;
+            labelPlaceHolderCity.frame = rect;
+            labelPlaceHolderCity.alpha = 0.f;
+            isBoolCity = NO;
         }];
-    } else if (testField.text.length == 0 && !isBoolAlertCity) {
+    } else if (testField.text.length == 0 && !isBoolCity) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rect;
-            rect = labelPlaceHolderAlertCity.frame;
+            rect = labelPlaceHolderCity.frame;
             rect.origin.x = rect.origin.x - 100.f;
-            labelPlaceHolderAlertCity.frame = rect;
-            labelPlaceHolderAlertCity.alpha = 1.f;
-            isBoolAlertCity = YES;
+            labelPlaceHolderCity.frame = rect;
+            labelPlaceHolderCity.alpha = 1.f;
+            isBoolCity = YES;
         }];
     }
-    
-    
-    //Отбор городов--------------------------
-    [arrayMCity removeAllObjects];
-    for (int i = 0; i < arrayCity.count; i++) {
-        
-        
-        if ([[arrayCity objectAtIndex:i] rangeOfString:textFieldAlertCity.text].location == NSNotFound) {
-//            NSLog(@"string does not contain bla");
-        } else {
-            [arrayMCity addObject:[arrayCity objectAtIndex:i]];
-        }
-        
-        
-    }
-    
-    [pickerCity reloadAllComponents];
-   
 }
 
 
