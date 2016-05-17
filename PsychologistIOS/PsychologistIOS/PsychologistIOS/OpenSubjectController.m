@@ -40,9 +40,9 @@
     
     [self getAPIWithBlock:^{
         
-        
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
             NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
+            [[SingleTone sharedManager] setPostID:[mainDict objectForKey:@"id"]];
             //Основной контент-----------------------------------------
             OpenSubjectView * mainContent = [[OpenSubjectView alloc] initWithView:self.view andDict:mainDict];
             [self.view addSubview:mainContent];

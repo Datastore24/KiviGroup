@@ -581,8 +581,12 @@
                 
                 
                 NSDictionary * responseCheckInfo = (NSDictionary*)response;
+                NSDictionary * dictLogin = [NSDictionary dictionaryWithDictionary:[responseCheckInfo objectForKey:@"data"]];
+                NSLog(@"RESPOCHECK: %@",dictLogin);
                 
-                NSLog(@"RESPOCHECK: %@",responseCheckInfo);
+                //Берем userID
+                [[SingleTone sharedManager] setUserID:[dictLogin objectForKey:@"id"]];
+                
                 if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                     [self showLoginWith:YES];
                     

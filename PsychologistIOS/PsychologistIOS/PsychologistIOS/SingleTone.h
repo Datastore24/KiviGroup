@@ -34,6 +34,10 @@
 @property (strong,nonatomic) NSMutableArray* token_ios;
 @property (strong, nonatomic) NSString* login;
 
+//Чат
+@property (strong, nonatomic) NSString * userID;
+@property (strong, nonatomic) NSString * postID;
+
 
 
 + (id)sharedManager;
