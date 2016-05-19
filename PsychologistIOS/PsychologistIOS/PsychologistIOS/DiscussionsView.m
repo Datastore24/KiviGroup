@@ -669,10 +669,11 @@
     }
     
     [UIView animateWithDuration:0.3 animations:^{
-        mainScrollView.contentOffset = (CGPoint){
-            0, // ось x нас не интересует
-            230 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
-        };
+//        mainScrollView.contentOffset = (CGPoint){
+//            0, // ось x нас не интересует
+//            230 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+//        };
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PostUpKyboard" object:nil];
     }];
 }
 

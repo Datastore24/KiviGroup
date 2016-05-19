@@ -16,6 +16,12 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 230;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
+
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 @end
@@ -30,6 +36,10 @@
     NSString * myURL;
     
     NSDictionary * dictResponseMessage;
+    
+    //Для подъема вверх
+    CGFloat testFloat;
+    CGFloat mainFloat;
 }
 
 - (void) viewDidLoad
@@ -52,6 +62,7 @@
     
 #pragma mark - Post Messages NOTIFICATION
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postMessageText:) name:NOTIFICATION_POST_MESSAGE_IN_CHAT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upKeyboard) name:@"PostUpKyboard" object:nil];
     
 #pragma mark - Initialization
     
