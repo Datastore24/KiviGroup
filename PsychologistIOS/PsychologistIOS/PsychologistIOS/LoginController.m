@@ -464,7 +464,7 @@
 }
 
 -(void) saveSocToken:(NSString *) token type:(NSString*) type andFname:(NSString *) fname andLname: (NSString *) lname
-            andBdate:(NSString *) bdate andCity:(NSString *) city
+            andBdate:(NSString *) bdate andCity:(NSString *) city_name
 
 {
     NSDictionary * params;
@@ -497,11 +497,12 @@
               auth,@"type",
               fname,@"first_name",
               lname,@"last_name",
+              city_name,@"city_name",
               bdate,@"bdate",
               idUser,@"id_user",
-              city,@"city_name",
+              
               nil];
-     NSLog(@"CITY %@",city);
+     NSLog(@"CITY %@",city_name);
     
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
