@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface SingleTone : NSObject
 
@@ -38,6 +39,11 @@
 //Чат
 @property (strong, nonatomic) NSString * userID;
 @property (strong, nonatomic) NSString * postID;
+
+//Имя пользователя
+@property (strong, nonatomic) NSString * userName;
+
+
 
 
 

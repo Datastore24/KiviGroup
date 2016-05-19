@@ -611,6 +611,9 @@
                 NSDictionary * dictLogin = [NSDictionary dictionaryWithDictionary:[responseCheckInfo objectForKey:@"data"]];
                 NSLog(@"RESPOCHECK: %@",dictLogin);
                 
+                //Записываем имя при проврке
+                [[SingleTone sharedManager] setUserName:[dictLogin objectForKey:@"email"]];
+                
                 //Берем userID
                 [[SingleTone sharedManager] setUserID:[dictLogin objectForKey:@"id"]];
                 

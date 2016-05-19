@@ -15,6 +15,7 @@
 #import "Auth.h"
 #import "AuthDbClass.h"
 #import "SingleTone.h"
+#import "Macros.h"
 
 
 @interface AppDelegate ()
@@ -70,14 +71,23 @@
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
-    //Временно
     
     
     
-    //
+    
+    
+    //Тестовый вызов нотификации через 10 секунд-----------------------------
+    [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                     target:self selector:@selector(upViewNotification) userInfo:nil repeats:YES];
     
     
     return YES;
+}
+
+//Тестовый метод подъема вью нотификации
+- (void) upViewNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_UP_VIEW_NOTIFICATION object:nil];
 }
 
 //Для получение push

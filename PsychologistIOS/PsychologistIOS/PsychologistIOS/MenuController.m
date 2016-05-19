@@ -45,12 +45,12 @@
     [self.view addSubview:viewBorder1];
 
     //Вью второй границы-------------------------------
-    UIView * viewBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, 348, self.view.frame.size.width, 0.4)];
+    UIView * viewBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, 308, self.view.frame.size.width, 0.4)];
     viewBorder2.backgroundColor = [UIColor colorWithHexString:@"b3b3b3"];
     [self.view addSubview:viewBorder2];
 
     //Вью второй границы-------------------------------
-    UIView * viewBorder3 = [[UIView alloc] initWithFrame:CGRectMake(0, 436, self.view.frame.size.width, 0.4)];
+    UIView * viewBorder3 = [[UIView alloc] initWithFrame:CGRectMake(0, 396, self.view.frame.size.width, 0.4)];
     viewBorder3.backgroundColor = [UIColor colorWithHexString:@"b3b3b3"];
     [self.view addSubview:viewBorder3];
     
@@ -158,6 +158,8 @@
         } else {
         return 90;
         }
+    } else if (indexPath.row == 6) {
+        return 0;
     } else {
         if (isiPhone5) {
             return 30;

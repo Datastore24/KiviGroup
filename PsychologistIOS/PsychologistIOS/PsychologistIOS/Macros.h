@@ -78,6 +78,10 @@
 #define NOTIFICATION_POST_AUDIO_IN_CHAT @"NOTIFICATION_POST_AUDIO_IN_CHAT"
 
 
+//Нотификация поднимает вью нотификации вверх----
+#define NOTIFICATION_UP_VIEW_NOTIFICATION @"NOTIFICATION_UP_VIEW_NOTIFICATION"
+
+
 
 
 #endif /* Macros_h */

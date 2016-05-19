@@ -16,10 +16,14 @@
 #import "RatesController.h"
 #import "FemaleKnowledgeController.h"
 #import "APIGetClass.h"
+#import "Macros.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation CategoryController
 {
     NSDictionary * dictResponse;
+
 }
 
 
@@ -55,11 +59,15 @@
     
 #pragma mark - Initilization
     
+    self.view.userInteractionEnabled = YES;
+    
     [self getAPIWithBlock:^{
-        
         NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
         CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:mainArrayAPI];
         [self.view addSubview:contentView];
+        
+        UIButton * buttonPush = (UIButton*) [self.view viewWithTag:555];
+        [buttonPush addTarget:self action:@selector(pushViewController) forControlEvents:UIControlEventTouchUpInside];
         
     }];
     
@@ -68,12 +76,17 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
     
     
+}
+
+
+- (void) pushViewController
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void) dealloc
