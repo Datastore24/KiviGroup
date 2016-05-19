@@ -47,8 +47,10 @@
     _buttonMenu.customView=button;
 
 #pragma mark - Initialization
-    UIWebView * webDevelop = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
-    [webDevelop ]
+    UIWebView * webDevelop = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:webDevelop];
+    [webDevelop loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://apptrends.ru"]]];
+
 
 }
 
