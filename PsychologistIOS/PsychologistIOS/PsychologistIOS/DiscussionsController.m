@@ -16,6 +16,12 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 230;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
+
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 @end
@@ -30,6 +36,10 @@
     NSString * myURL;
     
     NSDictionary * dictResponseMessage;
+    
+    //Для подъема вверх
+    CGFloat testFloat;
+    CGFloat mainFloat;
 }
 
 - (void) viewDidLoad
@@ -52,6 +62,7 @@
     
 #pragma mark - Post Messages NOTIFICATION
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postMessageText:) name:NOTIFICATION_POST_MESSAGE_IN_CHAT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upKeyboard) name:@"PostUpKyboard" object:nil];
     
 #pragma mark - Initialization
     
@@ -148,11 +159,8 @@
 //Отправка на сервер текстового сообщения------------
 - (void) postMessageText: (NSNotification*) notification
 {
-    APIGetClass * apiGallery = [APIGetClass new];
-    
-    NSLog(@"%@", notification.userInfo);
-    
-    [apiGallery getDataFromServerWithParams:notification.userInfo method:@"chat_add_message" complitionBlock:^(id response) {
+    APIGetClass * apiSendMessage = [APIGetClass new];
+    [apiSendMessage getDataFromServerWithParams:notification.userInfo method:@"chat_add_message" complitionBlock:^(id response) {
         
         if ([[response objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"response %@", [response objectForKey:@"error_msg"]);
@@ -163,8 +171,49 @@
         }
     }];
 }
+//Отправка картинки на сервер--------------------------
+- (void) sendMessageImageWithURL: (NSString*) stringURL
+{
+    APIGetClass * apiSendImage = [APIGetClass new];
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager] userId], @"id_user",
+                             [[SingleTone sharedManager] postID], @"id_post",
+                             stringURL, @"message",
+                             @"image", @"type", nil];
+    
+    [apiSendImage getDataFromServerWithParams:params method:@"chat_add_message" complitionBlock:^(id response) {
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"response %@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"%@", response);
+            
+        }
+    }];
+}
 
-#pragma mark - ACTION METHODS
+//Отправка аудио Файла в чат----------
+- (void) sendMessageAudioWithURL: (NSString*) stringURL
+{
+    APIGetClass * apiSendAudio = [APIGetClass new];
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager] userId], @"id_user",
+                             [[SingleTone sharedManager] postID], @"id_post",
+                             stringURL, @"message",
+                             @"audio", @"type", nil];
+    
+    [apiSendAudio getDataFromServerWithParams:params method:@"chat_add_message" complitionBlock:^(id response) {
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"response %@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"%@", response);
+            
+        }
+    }];
+}
+
+#pragma mark - IMAGE
 
 //Метод нотификации о выборе картинки--------------------------
 - (void) notifictionActionChooseImage
@@ -189,44 +238,8 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-- (void) getAPIImageWithImage: (UIImage*) image
-{
-    NSLog(@"Загружаем картинку");
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"image", @"type", nil];
-    APIGetClass * apiPostImage = [APIGetClass new];
-    [apiPostImage getDataFromServerWithImageParams:params andImage:image method:@"upload_media" complitionBlock:^(id response) {
-        if ([[response objectForKey:@"error"] integerValue] == 1) {
-            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
-        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"Удачная отправка");
-            NSLog(@"response %@", response);
-        }
-    }];
-}
-
-//Загрузка АУДИО файла на сервер--------------------
-- (void) getAPIWithBlock
-{
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"audio", @"type", nil];
-    
-    APIGetClass * apiGallery = [APIGetClass new];
-    [apiGallery getDataFromServerWithAudioParams:params andAudioURL:temporaryRecFile method:@"upload_media" complitionBlock:^(id response) {
-        dictResponse = (NSDictionary*) response;
-        NSLog(@"%@", response);
-        
-        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
-            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
-        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            
-            NSLog(@"Удачная отправка");
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"proverkaPeredachiZvuka" object:[dictResponse objectForKey:@"url"]];
-
-        }
-    }];
-}
-
 #pragma mark - API
+//Показать Все сообщения--------------------------
 - (void) getAPIMessageWithBlock: (void (^)(void))block
 {
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -243,6 +256,48 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             block();
+        }
+    }];
+}
+
+//Загрузка изображения
+- (void) getAPIImageWithImage: (UIImage*) image
+{
+    NSLog(@"Загружаем картинку");
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"image", @"type", nil];
+    APIGetClass * apiPostImage = [APIGetClass new];
+    
+    
+    [apiPostImage getDataFromServerWithImageParams:params andImage:image method:@"upload_media" complitionBlock:^(id response) {
+        NSLog(@"response %@", response);
+        
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"Удачная отправка");
+            [self sendMessageImageWithURL:[response objectForKey:@"url"]];
+            NSLog(@"response %@", response);
+        }
+    }];
+}
+
+//Загрузка АУДИО файла на сервер--------------------
+- (void) getAPIWithBlock
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys: @"audio", @"type", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithAudioParams:params andAudioURL:temporaryRecFile method:@"upload_media" complitionBlock:^(id response) {
+        dictResponse = (NSDictionary*) response;
+        
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            [self sendMessageAudioWithURL:[response objectForKey:@"url"]];
+            NSLog(@"Удачная отправка");            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"proverkaPeredachiZvuka" object:[dictResponse objectForKey:@"url"]];
+            
         }
     }];
 }

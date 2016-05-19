@@ -39,6 +39,7 @@
     
     //Строка скрывает НСЛОГИ Базы данных (для включения убрать коммент)------------------
     //[MagicalRecord setLoggingLevel:0];
+    //Коммент
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
