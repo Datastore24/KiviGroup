@@ -465,9 +465,11 @@
         
     }
     NSString * idUser;
+    
+    
     if([[[SingleTone sharedManager] userId] isEqual: [NSNull null]]){
         
-        idUser = @"";
+      idUser = @"";
         
     }else{
        idUser = [[SingleTone sharedManager] userId];
@@ -492,14 +494,15 @@
         responsePassword = (NSDictionary*)response;
         NSLog(@"resp: %@",responsePassword);
         if ([[responsePassword objectForKey:@"error"] integerValue] == 0) {
+            NSString * userID =[NSString stringWithFormat:@"%@",[responsePassword objectForKey:@"id"]];
             
-            [[SingleTone sharedManager] setUserId:[responsePassword objectForKey:@"id"]];
+            [[SingleTone sharedManager] setUserId:userID];
             
             if([type isEqualToString:@"vk"]){
-               [authDbClass updateUser:@"" andPassword:@"" andIdUser:[responsePassword objectForKey:@"id"] andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
+               [authDbClass updateUser:@"" andPassword:@"" andIdUser:userID andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
                 
             }else if([type isEqualToString:@"fb"]){
-               [authDbClass updateUser:@"" andPassword:@"" andIdUser:[responsePassword objectForKey:@"id"] andTokenVk:@""andTokenFb:self.socTokenString andTypeAuth:auth];
+               [authDbClass updateUser:@"" andPassword:@"" andIdUser:userID andTokenVk:@"" andTokenFb:self.socTokenString andTypeAuth:auth];
                 
                 
             }

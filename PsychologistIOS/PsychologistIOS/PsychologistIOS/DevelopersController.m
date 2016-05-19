@@ -45,8 +45,10 @@
     [button setImage:imageBarButton forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
-    //    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+
+#pragma mark - Initialization
+    UIWebView * webDevelop = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
+    [webDevelop ]
 
 }
 
