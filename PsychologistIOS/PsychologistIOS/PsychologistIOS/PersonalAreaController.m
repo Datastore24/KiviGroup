@@ -17,6 +17,8 @@
 #import "SubscriptionController.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation PersonalAreaController{
     NSDictionary * dictResponse;
@@ -62,6 +64,12 @@
         
         PersonalAreaView * contentView = [[PersonalAreaView alloc] initWithView:self.view andDictionary:[dictResponse objectForKey:@"data"]];
         [self.view addSubview:contentView];
+        
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
     }];
     
     
@@ -106,6 +114,12 @@
             block();
         }
     }];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 -(void)sendAction: (NSNotification*) notification{

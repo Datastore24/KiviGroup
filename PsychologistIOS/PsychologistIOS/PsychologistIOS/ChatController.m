@@ -14,6 +14,8 @@
 #import "OpenSubjectModel.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayerView.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @interface ChatController ()
 {
@@ -58,17 +60,18 @@
     ChatView * viewContent = [[ChatView alloc] initWithView:self.view andArray:[OpenSubjectModel setArrayChat]];
     [self.view addSubview:viewContent];
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
+
+    
     //Получаем нотификацию из вью о загрузке галереи------------
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifictionActionChooseImage) name:NOTIFICATION_REQUEST_IMAGE_FOR_CHAT object:nil];
     
 #pragma mark - VideoElements
     
-//    UIImageView * imageViewPlayer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 232)];
-//    if (isiPhone6) {
-//        imageViewPlayer.frame = CGRectMake(0, 0, self.frame.size.width, 210);
-//    } else if (isiPhone5) {
-//        imageViewPlayer.frame = CGRectMake(0, 0, self.frame.size.width, 160);
-//    }
     NSURL *videoUrl = [NSURL URLWithString:@"http://mirror.cessen.com/blender.org/peach/trailer/trailer_iphone.m4v"];
     self.playerItem = [AVPlayerItem playerItemWithURL:videoUrl];
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
@@ -99,10 +102,13 @@
     [self.view addSubview:self.videoSlider];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
+  
+}
 
-    
-    
-    
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - DEALLOC

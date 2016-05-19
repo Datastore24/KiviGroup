@@ -15,6 +15,8 @@
 #import "Macros.h"
 #import "SubjectViewController.h"
 #import "APIGetClass.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation SubCategoryController
 {
@@ -48,7 +50,11 @@
             NSLog(@"Не массив");
         }
         
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
         
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
 
         
     }];
@@ -66,6 +72,11 @@
 {
     SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -87,6 +98,12 @@
             block();
         }
     }];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

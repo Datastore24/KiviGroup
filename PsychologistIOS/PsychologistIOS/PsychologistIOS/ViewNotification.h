@@ -10,6 +10,7 @@
 
 @interface ViewNotification : UIView
 
-- (instancetype)initWithView: (UIView*) view andIDDel: (id) object;
+- (instancetype)initWithView: (UIView*) view andIDDel: (id) object
+               andTitleLabel: (NSString*) title andText: (NSString*) text;
 
 @end

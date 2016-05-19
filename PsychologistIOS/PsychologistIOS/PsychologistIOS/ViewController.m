@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIColor+HexColor.h"
+#import "NotificationController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

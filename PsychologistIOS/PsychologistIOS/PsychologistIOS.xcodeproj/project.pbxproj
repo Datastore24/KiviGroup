@@ -180,6 +180,7 @@
 		ADB7197B1CE852F000C447B3 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719791CE852F000C447B3 /* Auth.m */; };
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
 		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
+		FFB28FDD1CEE4F9300A417A9 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -460,6 +461,8 @@
 		FFB28FD21CEE14B100A417A9 /* ViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotification.h; sourceTree = "<group>"; };
 		FFB28FD31CEE14B100A417A9 /* ViewNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewNotification.m; sourceTree = "<group>"; };
 		FFB28FD71CEE436C00A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationAlert.png; sourceTree = "<group>"; };
+		FFB28FDB1CEE4F9300A417A9 /* DevelopersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersController.h; sourceTree = "<group>"; };
+		FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +707,7 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
+				FFB28FDA1CEE4F7100A417A9 /* Developers */,
 				771E539B1CC2CD2A008E5562 /* PantryFemaleKnowledge */,
 				771E538F1CC2B093008E5562 /* Notification */,
 				771E53831CC2668A008E5562 /* Rates */,
@@ -1114,6 +1118,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FFB28FDA1CEE4F7100A417A9 /* Developers */ = {
+			isa = PBXGroup;
+			children = (
+				FFB28FDB1CEE4F9300A417A9 /* DevelopersController.h */,
+				FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */,
+			);
+			name = Developers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1461,6 +1474,7 @@
 				77A807DC1CB2F8C0008EE5A5 /* SubCategoryController.m in Sources */,
 				771D05261CDDEEE500A83111 /* SubscriptionController.m in Sources */,
 				776D8D281CAD18B20028929C /* SWRevealViewController.m in Sources */,
+				FFB28FDD1CEE4F9300A417A9 /* DevelopersController.m in Sources */,
 				7717159F1CB664B3003CD228 /* DiscussionsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,8 @@
 #import "Macros.h"
 #import "OpenSubjectController.h"
 #import "APIGetClass.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation SubjectViewController
 {
@@ -52,6 +54,13 @@
         } else {
             NSLog(@"Не массив");
         }
+        
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
+        
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
@@ -63,6 +72,11 @@
         OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
         [self.navigationController pushViewController:detail animated:YES];
 
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - API
@@ -83,6 +97,12 @@
         }
     }];
 
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

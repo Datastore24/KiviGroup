@@ -62,13 +62,16 @@
     self.view.userInteractionEnabled = YES;
     
     [self getAPIWithBlock:^{
+        
         NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
         CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:mainArrayAPI];
         [self.view addSubview:contentView];
         
-        UIButton * buttonPush = (UIButton*) [self.view viewWithTag:555];
-        [buttonPush addTarget:self action:@selector(pushViewController) forControlEvents:UIControlEventTouchUpInside];
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
         
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];        
     }];
     
     CategoryView * backgroundView = [[CategoryView alloc] initWithBackgroundView:self.view];
@@ -133,6 +136,12 @@
             block();
         }
     }];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end
