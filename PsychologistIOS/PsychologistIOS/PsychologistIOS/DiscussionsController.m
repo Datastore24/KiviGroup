@@ -72,14 +72,17 @@
             //Загрузка контента вью для контроллера---------------------
             DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:arrayMainResponce];
             [self.view addSubview:contentDiscussions];
+        } else {
+            DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:nil];
+            [self.view addSubview:contentDiscussions];
         }
         
         
-//        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
-//        NSString * stringTitle = @"\"Женские секреты\"";
-//        
-//        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
-//        [self.view addSubview:viewNotification];
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
         
     }];
     

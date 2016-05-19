@@ -723,6 +723,20 @@
             </objects>
             <point key="canvasLocation" x="2188" y="632"/>
         </scene>
+        <!--License Agreement Controller-->
+        <scene sceneID="bK4-IN-sLZ">
+            <objects>
+                <viewController storyboardIdentifier="LicenseAgreementController" id="Sfe-oF-9zc" customClass="LicenseAgreementController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cmO-C4-FDS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E64-NG-nZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2605" y="635"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.png" width="16" height="26"/>

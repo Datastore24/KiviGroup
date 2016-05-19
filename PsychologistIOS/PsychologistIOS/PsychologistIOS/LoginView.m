@@ -324,6 +324,7 @@
         buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 72, 152, 24);
         [buttonLicense setTitle:@"Условия соглашения" forState:UIControlStateNormal];
         [buttonLicense setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonLicense.tag = 386;
         buttonLicense.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         if (isiPhone6) {
             buttonLicense.frame = CGRectMake(self.frame.size.width / 2 - 76, labelOtherInput.frame.size.height + labelOtherInput.frame.origin.y + 66, 152, 24);
