@@ -36,6 +36,29 @@
     }];
 }
 
+//Информация о пользователе
+-(void) getСityFromVK: (NSString *) cityID complitionBlock: (void (^) (id response)) compitionBack{
+    
+
+    
+    //-----------
+    NSString * url = [NSString stringWithFormat:@"https://api.vk.com/method/database.getCitiesById?city_ids=%@", cityID];
+    
+    //    NSLog(@"URL: %@",url);
+    NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    //-------------------
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    //Запрос
+    [manager GET: encodedURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //Вызов блока
+        compitionBack (responseObject);
+        //Ошибки
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
 //Поделиться
 -(void) postWallWithParams: (NSDictionary *) params message: (NSString *) message andLinkAttach: (NSString*) link complitionBlock: (void (^) (id response)) compitionBack{
     NSString* user_id = [params objectForKey:@"user_id"];
