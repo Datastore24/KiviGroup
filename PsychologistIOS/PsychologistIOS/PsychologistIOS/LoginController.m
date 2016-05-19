@@ -281,7 +281,7 @@
                       
                       NSLog(@"result %@", result);
                       
-                     [self saveSocToken:self.socTokenString type:@"fb" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:@""];
+                     [self saveSocToken:self.socTokenString type:@"fb" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:@"" andCity:@""];
                       
                       
                   }
@@ -347,7 +347,23 @@
             NSArray * response = (NSArray *) [dictResponse objectForKey:@"response"];
             NSDictionary * result = (NSDictionary *)[response objectAtIndex:0];
             NSLog(@"VK DICT%@", result);
-            [self saveSocToken:access_token type:@"vk" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:[result objectForKey:@"bdate"]];
+             VKApi * vkApi = [VKApi new];
+            [vkApi getСityFromVK:[result objectForKey:@"city"] complitionBlock:^(id response) {
+                NSLog(@"%@",response);
+                
+                NSArray * array = [response objectForKey:@"response"];
+                NSDictionary * resDict;
+                if(array.count>0){
+                    resDict = [array objectAtIndex:0];
+                }else{
+                    resDict = nil;
+                }
+                
+                
+                
+                [self saveSocToken:access_token type:@"vk" andFname:[result objectForKey:@"first_name"] andLname:[result objectForKey:@"last_name"] andBdate:[result objectForKey:@"bdate"] andCity:[resDict objectForKey:@"name"]];
+            }];
+            
             
             
         }];
@@ -448,7 +464,7 @@
 }
 
 -(void) saveSocToken:(NSString *) token type:(NSString*) type andFname:(NSString *) fname andLname: (NSString *) lname
-            andBdate:(NSString *) bdate
+            andBdate:(NSString *) bdate andCity:(NSString *) city
 
 {
     NSDictionary * params;
@@ -475,7 +491,7 @@
        idUser = [[SingleTone sharedManager] userId];
     }
     
-    
+   
     params = [[NSDictionary alloc] initWithObjectsAndKeys:
               token,@"soc_token",
               auth,@"type",
@@ -483,8 +499,9 @@
               lname,@"last_name",
               bdate,@"bdate",
               idUser,@"id_user",
+              city,@"city_name",
               nil];
-    
+     NSLog(@"CITY %@",city);
     
     
     APIGetClass * getAPI = [[APIGetClass alloc] init];
