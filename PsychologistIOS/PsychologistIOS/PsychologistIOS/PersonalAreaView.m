@@ -436,6 +436,8 @@
         [changePussButton setTitleColor:[UIColor colorWithHexString:@"5b5b5b"] forState:UIControlStateNormal];
         changePussButton.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         [changePussButton addTarget:self action:@selector(changePussButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        //Пока что отключаем-----------------------
+        changePussButton.alpha = 0.f;
         [self addSubview:changePussButton];
         
 #pragma mark - Alert View

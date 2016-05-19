@@ -135,6 +135,9 @@
     
     NSLog(@"%@",params);
     
+    //Записываем имя при проврке
+    [[SingleTone sharedManager] setUserName:[params objectForKey:@"email"]];
+    
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"edit_user" complitionBlock:^(id response) {
         

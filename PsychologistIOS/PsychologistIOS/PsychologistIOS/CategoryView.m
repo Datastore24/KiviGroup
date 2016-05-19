@@ -12,6 +12,7 @@
 #import "SingleTone.h"
 #import "ViewSectionTable.h"
 #import "StringImage.h"
+#import "ViewNotification.h"
 
 @interface CategoryView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -41,6 +42,7 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
         backgroundView.image = [UIImage imageNamed:@"fonAlpha.png"];
+        backgroundView.userInteractionEnabled = YES;
         [self addSubview:backgroundView];
     }
     return self;
@@ -53,6 +55,7 @@
         
         //Основной контент---------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        self.userInteractionEnabled = YES;
         mainArray = array;
         
         //Вью поиска---------------------------
@@ -86,6 +89,9 @@
         mainTableView.delegate = self;
         mainTableView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainTableView];
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self andIDDel:self];
+        [self addSubview:viewNotification];
         
         //Затемнение-----------------------------------------------------
         darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 65)];

@@ -31,6 +31,9 @@
 @synthesize userID;
 @synthesize postID;
 
+@synthesize userName;
+
+
 
 
 #pragma mark Singleton Methods

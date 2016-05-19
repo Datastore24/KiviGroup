@@ -87,8 +87,9 @@
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         [self addSubview:mainScrollView];
         
-        //Получаем ответ в виде нотификации с обектом картинки--
+        //Получаем ответ в виде нотификации с обектом--
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSentImage:) name:NOTIFICATION_SEND_IMAGE_FOR_DUSCUSSIONS_VIEW object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateActionWithParams:) name:@"updateNotificationWithParams" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testNotificationMethod:) name:@"proverkaPeredachiZvuka" object:nil];
         
@@ -100,6 +101,11 @@
         [mainScrollView addSubview:viewScrollChat];
         //Загружаем данные------------------------------------------------------------
         [self sendMessageWithArray:array andSend:NO];
+        
+        //Скрытие клавиатуры тапом----------------------------------
+        UITapGestureRecognizer * tapOnBackground = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self action:@selector(tapOnBackgroundAction)];
+        [self addGestureRecognizer:tapOnBackground];
         
 #pragma mark - Push Message
         
@@ -121,8 +127,9 @@
         [mainViewPush addSubview:inputText];
         
         //Ввод телефона-----------------------------------------------------------------
-        textFieldChat = [[UITextField alloc] initWithFrame:CGRectMake(16, 8, 216, 16)];
+        textFieldChat = [[UITextField alloc] initWithFrame:CGRectMake(16, 8, 210, 16)];
         textFieldChat.delegate = self;
+        textFieldChat.tag = 1001;
         textFieldChat.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldChat.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
@@ -137,7 +144,7 @@
         
         //Плэйс холдер телефона----------------------------------------------------------
         labelPlaceHolderChat = [[UILabel alloc] initWithFrame:CGRectMake(16, 8, 216, 16)];
-        labelPlaceHolderChat.tag = 3022;
+        labelPlaceHolderChat.tag = 1002;
         labelPlaceHolderChat.text = @"Сообщение";
         labelPlaceHolderChat.textColor = [UIColor colorWithHexString:@"c7c7cc"];
         labelPlaceHolderChat.font = [UIFont fontWithName:FONTLITE size:19];
@@ -237,9 +244,9 @@
         [mainButton setImage:image forState:UIControlStateNormal];
         [dictaphoneView addSubview:mainButton];
         
-        //Кнопка Рекомендую--------------------------------------
+        //Кнопка Отправить--------------------------------------
         buttonSend = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSend.frame = CGRectMake(185, dictaphoneView.frame.size.height / 2 - 24, 200, 48);
+        buttonSend.frame = CGRectMake(165, dictaphoneView.frame.size.height / 2 - 24, 200, 48);
         buttonSend.backgroundColor = nil;
         buttonSend.layer.cornerRadius = 24;
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"4babe4"].CGColor;
@@ -319,6 +326,8 @@
     for (int i = 0; i < array.count; i++) {
         NSDictionary * dictChat = [array objectAtIndex:i];
         
+        NSLog(@"id_user !!!!!!!!!!!!!!!!!!!!!!%@", [dictChat objectForKey:@"id_user"]);
+        
         if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
             // Имя пользователя---------------
             UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
@@ -332,6 +341,8 @@
 
             //Если приходит текст-------------------------------------------
             if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
+                
+                NSLog(@"message");
                 
                 //Текст сообщения------------------
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 24, 32 + countFor, 300, 12)];
@@ -453,13 +464,18 @@
             
         } else {
             // Имя пользователя---------------
-            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(28, 8 + countFor, 88, 12)];
+            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(28, 8 + countFor, 120, 12)];
             labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
             labelUser.font = [UIFont fontWithName:FONTLITE size:12];
             if (isiPhone5) {
                 labelUser.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            labelUser.text = [NSString stringWithFormat:@"id_user %@", [dictChat objectForKey:@"id_user"]];
+            if ([[SingleTone sharedManager] userName] == nil || [[[SingleTone sharedManager] userName] isEqualToString:@""]) {
+                labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
+            } else {
+                labelUser.text = [[SingleTone sharedManager] userName];
+            }
+            
             [viewScrollChat addSubview:labelUser];
             
             //Если приходит текст-------------------------------------------
@@ -592,6 +608,9 @@
         viewScrollChat.contentSize = CGSizeMake(self.frame.size.width, 20 + countFor);
         viewScrollChat.contentOffset =
         CGPointMake(0, viewScrollChat.contentSize.height - viewScrollChat.frame.size.height);
+        
+        //ОТСТУП
+        countFor += 20;
     }
 }
 
@@ -650,6 +669,8 @@
             isBool = YES;
         }];
     }
+    
+    
 }
 
 //Поднимаем текст вверх--------------------------------------
@@ -669,11 +690,30 @@
     }
     
     [UIView animateWithDuration:0.3 animations:^{
-//        mainScrollView.contentOffset = (CGPoint){
-//            0, // ось x нас не интересует
-//            230 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
-//        };
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PostUpKyboard" object:nil];
+        mainScrollView.contentOffset = (CGPoint){
+            0, // ось x нас не интересует
+            230 // Скроллим скролл к верхней границе текстового поля - Вы можете настроить эту величину по своему усмотрению
+        };
+        CGRect rect = viewScrollChat.frame;
+        rect.origin.y += 230;
+        rect.size.height -= 230;
+        viewScrollChat.frame = rect;
+        CGPoint point = viewScrollChat.contentOffset;
+        point.y += 230;
+        viewScrollChat.contentOffset = point;
+        
+        if (dictaBool) {
+        
+        CGRect rectDict = dictaphoneView.frame;
+        CGRect rectSelf = self.frame;
+        rectDict.origin.y += 200;
+        rectSelf.origin.y += 200;
+        dictaphoneView.frame = rectDict;
+        self.frame = rectSelf;
+        
+        dictaBool = NO;
+        }
+
     }];
 }
 
@@ -694,6 +734,10 @@
     }
     [UIView animateWithDuration:0.3 animations:^{
         mainScrollView.contentOffset = (CGPoint){0, 0}; // Возвращаем скролл в начало, так как редактирование текстового поля закончено
+        CGRect rect = viewScrollChat.frame;
+        rect.origin.y -= 230;
+        rect.size.height += 230;
+        viewScrollChat.frame = rect;
     }];
 }
 
@@ -734,10 +778,16 @@
         NSLog(@"Введите текст");
     } else {
         
+        //Создание даты-----------------------------------
+        NSDate * date = [NSDate date];
+        NSDateFormatter * inFormatDate = [[NSDateFormatter alloc] init];
+        [inFormatDate setDateFormat:@"dd.MM.YYYY HH.mm"];
+        NSString *strDate = [inFormatDate stringFromDate:date];
+        
         NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
                                        [[SingleTone sharedManager] userId], @"id_user",
                                        textFieldChat.text, @"message",
-                                       @"Моя датка", @"inserted", @"message", @"type", nil];
+                                       strDate, @"inserted", @"message", @"type", nil];
         
         [mArrayForPushButton addObject:dictPushText];
         [self sendMessageWithArray:mArrayForPushButton andSend:YES];
@@ -780,21 +830,19 @@
 //Загружаем фото а архив
 - (void) notificationSentImage: (NSNotification*) notification
 {
-    BOOL isBoolen = arc4random() % 2;
-    NSString * testString;
+    //Создание даты-----------------------------------
+    NSDate * date = [NSDate date];
+    NSDateFormatter * inFormatDate = [[NSDateFormatter alloc] init];
+    [inFormatDate setDateFormat:@"dd.MM.YYYY HH.mm"];
+    NSString *strDate = [inFormatDate stringFromDate:date];
     
-    if (isBoolen) {
-        testString = @"Пользователь 1";
-    } else {
-        testString = @"Пользователь 2";
-    }
     
-    NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   testString, @"Users",
+    NSDictionary * dictPushImage = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [[SingleTone sharedManager] userId], @"id_user",
                                    notification.object, @"message",
-                                   @"Моя датка", @"inserted", @"image", @"type", nil];
+                                   strDate, @"inserted", @"image", @"type", nil];
     
-    [mArrayForPushButton addObject:dictPushText];
+    [mArrayForPushButton addObject:dictPushImage];
     [self sendMessageWithArray:mArrayForPushButton andSend:YES];
     [mArrayForPushButton removeAllObjects];
 }
@@ -802,19 +850,17 @@
 //Отправка Аудио Файла
 - (void) testNotificationMethod: (NSNotification*) notification
 {
-    BOOL isBoolen = arc4random() % 2;
-    NSString * testString;
+    //Создание даты-----------------------------------
+    NSDate * date = [NSDate date];
+    NSDateFormatter * inFormatDate = [[NSDateFormatter alloc] init];
+    [inFormatDate setDateFormat:@"dd.MM.YYYY HH.mm"];
+    NSString *strDate = [inFormatDate stringFromDate:date];
     
-    if (isBoolen) {
-        testString = @"Пользователь 1";
-    } else {
-        testString = @"Пользователь 2";
-    }
     
     NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   testString, @"Users",
+                                   [[SingleTone sharedManager] userId], @"id_user",
                                    notification.object, @"message",
-                                   @"Моя датка", @"inserted", @"audio", @"type", nil];
+                                   strDate, @"inserted", @"audio", @"type", nil];
     
     [mArrayForPushButton addObject:dictPushText];
     [self sendMessageWithArray:mArrayForPushButton andSend:YES];
@@ -840,29 +886,36 @@
 - (void) soundButtonAction
 {
     [UIView animateWithDuration:0.3 animations:^{
-        if (!dictaBool) {
-            CGRect rectDict = dictaphoneView.frame;
-            CGRect rectSelf = self.frame;
-            rectDict.origin.y -= 200;
-            rectSelf.origin.y -= 200;
-            dictaphoneView.frame = rectDict;
-            self.frame = rectSelf;
-            
-            dictaBool = YES;
-        } else {
-            CGRect rectDict = dictaphoneView.frame;
-            CGRect rectSelf = self.frame;
-            rectDict.origin.y += 200;
-            rectSelf.origin.y += 200;
-            dictaphoneView.frame = rectDict;
-            self.frame = rectSelf;
-            
-            dictaBool = NO;
-        }
+        
+        [textFieldChat resignFirstResponder];
         
     } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            if (!dictaBool) {
+                CGRect rectDict = dictaphoneView.frame;
+                CGRect rectSelf = self.frame;
+                rectDict.origin.y -= 200;
+                rectSelf.origin.y -= 200;
+                dictaphoneView.frame = rectDict;
+                self.frame = rectSelf;
+                
+                dictaBool = YES;
+            } else {
+                CGRect rectDict = dictaphoneView.frame;
+                CGRect rectSelf = self.frame;
+                rectDict.origin.y += 200;
+                rectSelf.origin.y += 200;
+                dictaphoneView.frame = rectDict;
+                self.frame = rectSelf;
+                
+                dictaBool = NO;
+            }
+            
+        } completion:^(BOOL finished) {
+        }];
+
     }];
-}
+    }
 
 - (void) buttonCanselImageAction
 {
@@ -871,6 +924,24 @@
     } completion:^(BOOL finished) {
 
     }];
+}
+
+//Действие тапа на скрытие клавиатуры------------------------------------------
+- (void) tapOnBackgroundAction
+{
+    [textFieldChat resignFirstResponder];
+}
+
+- (void) updateActionWithParams: (NSNotification*) notification
+{
+    [viewScrollChat.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    countFor = 0.f;
+    
+    if ([[notification.userInfo objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+        NSArray * arrayMainResponce = [NSArray arrayWithArray:[notification.userInfo objectForKey:@"data"]];
+        
+        [self sendMessageWithArray:arrayMainResponce andSend:NO];
+    }
 }
 
 

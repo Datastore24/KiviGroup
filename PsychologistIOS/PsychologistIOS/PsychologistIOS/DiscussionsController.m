@@ -16,11 +16,6 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 
-static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
-static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
-static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
-static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 230;
-static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
@@ -46,9 +41,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
 {
 #pragma mark - Header
     
-    NSLog(@"userID %@", [[SingleTone sharedManager] userID]);
-    NSLog(@"postID %@", [[SingleTone sharedManager] postID]);
-    
     //Заголовок-----------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ОБСУЖДЕНИЯ"];
     self.navigationItem.titleView = title;
@@ -62,7 +54,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
     
 #pragma mark - Post Messages NOTIFICATION
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postMessageText:) name:NOTIFICATION_POST_MESSAGE_IN_CHAT object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upKeyboard) name:@"PostUpKyboard" object:nil];
     
 #pragma mark - Initialization
     
@@ -81,6 +72,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             [self.view addSubview:contentDiscussions];
         }
     }];
+    
+    //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
+            [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                                 target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+    
+    
     
 
     
@@ -300,6 +297,31 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 230;
             
         }
     }];
+}
+
+- (void) loadMoreDialog
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager]postID], @"id_post",
+                             [[SingleTone sharedManager]userID], @"id_user",nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"chat_show_message" complitionBlock:^(id response) {
+        
+        dictResponseMessage = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            
+            NSDictionary * dictResp = response;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNotificationWithParams" object:nil userInfo: dictResp];
+        }
+    }];
+
+    
 }
 
 
