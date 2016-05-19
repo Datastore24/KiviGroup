@@ -75,11 +75,11 @@
         }
         
         
-        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
-        NSString * stringTitle = @"\"Женские секреты\"";
-        
-        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
-        [self.view addSubview:viewNotification];
+//        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+//        NSString * stringTitle = @"\"Женские секреты\"";
+//        
+//        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+//        [self.view addSubview:viewNotification];
         
     }];
     
