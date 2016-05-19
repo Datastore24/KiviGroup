@@ -470,7 +470,7 @@
             if (isiPhone5) {
                 labelUser.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            if ([[SingleTone sharedManager] userName] == nil || [[[SingleTone sharedManager] userName] isEqualToString:@""]) {
+            if ([[SingleTone sharedManager] userName] == [NSNull null]) {
                 labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
             } else {
                 labelUser.text = [[SingleTone sharedManager] userName];

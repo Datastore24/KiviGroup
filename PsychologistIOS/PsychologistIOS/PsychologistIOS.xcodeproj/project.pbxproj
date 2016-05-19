@@ -181,6 +181,7 @@
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
 		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
 		FFB28FDD1CEE4F9300A417A9 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */; };
+		FFB28FE01CEE687800A417A9 /* LicenseAgreementController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FDF1CEE687800A417A9 /* LicenseAgreementController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,6 +464,8 @@
 		FFB28FD71CEE436C00A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationAlert.png; sourceTree = "<group>"; };
 		FFB28FDB1CEE4F9300A417A9 /* DevelopersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevelopersController.h; sourceTree = "<group>"; };
 		FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevelopersController.m; sourceTree = "<group>"; };
+		FFB28FDE1CEE687800A417A9 /* LicenseAgreementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseAgreementController.h; sourceTree = "<group>"; };
+		FFB28FDF1CEE687800A417A9 /* LicenseAgreementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseAgreementController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,6 +848,8 @@
 		776D8DA91CAD24FC0028929C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FFB28FDE1CEE687800A417A9 /* LicenseAgreementController.h */,
+				FFB28FDF1CEE687800A417A9 /* LicenseAgreementController.m */,
 				770962911CB1A9ED0024448B /* image */,
 				776D8DAA1CAD25120028929C /* LoginController.h */,
 				776D8DAB1CAD25120028929C /* LoginController.m */,
@@ -1431,6 +1436,7 @@
 				771E538E1CC28426008E5562 /* CustomButton.m in Sources */,
 				776D8D431CAD1AD20028929C /* UIImage+Alpha.m in Sources */,
 				77B79C141CBD628000E37B52 /* BookmarksController.m in Sources */,
+				FFB28FE01CEE687800A417A9 /* LicenseAgreementController.m in Sources */,
 				77CF0ED31CC0BBCD00D4FEC4 /* ArrayCitys.m in Sources */,
 				776D8DC41CAD44C30028929C /* CategoryController.m in Sources */,
 				776D8DAC1CAD25120028929C /* LoginController.m in Sources */,

@@ -21,6 +21,7 @@
 #import "SingleTone.h"
 #import <AFNetworking/AFNetworking.h>
 #import "APIGetClass.h"
+#import "LicenseAgreementController.h"
 
 @interface LoginController () <UIWebViewDelegate>
 
@@ -112,6 +113,9 @@
     activitiView.color = [UIColor blackColor];
     activitiView.alpha = 0.f;
     [self.view addSubview:activitiView];
+    
+    UIButton * buttonLicense = (UIButton*)[self.view viewWithTag:386];
+    [buttonLicense addTarget:self action:@selector(licensePush) forControlEvents:UIControlEventTouchUpInside];
     
 #pragma mark - CheckAuth
     //Проверка при запуске приложеия
@@ -676,6 +680,12 @@
     activitiView.alpha = 0.f;
     [activitiView stopAnimating];
     avtorizationView.alpha = 0.f;
+}
+
+- (void) licensePush
+{
+    LicenseAgreementController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"LicenseAgreementController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

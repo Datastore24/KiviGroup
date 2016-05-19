@@ -72,6 +72,9 @@
             //Загрузка контента вью для контроллера---------------------
             DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:arrayMainResponce];
             [self.view addSubview:contentDiscussions];
+        } else {
+            DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:nil];
+            [self.view addSubview:contentDiscussions];
         }
         
         
