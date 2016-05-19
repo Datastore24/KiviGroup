@@ -12,6 +12,8 @@
 #import "Macros.h"
 #import "RecommendView.h"
 #import "APIGetClass.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation RecommendController{
     NSDictionary * dictResponse;
@@ -40,6 +42,12 @@
         RecommendView * recommendView = [[RecommendView alloc] initWithView:self.view andArray:mainArrayAPI];
         [self.view addSubview:recommendView];
        
+        
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
         
     }];
     

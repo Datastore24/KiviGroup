@@ -15,6 +15,8 @@
 #import "AboutXeniaView.h"
 #import "RecommendController.h"
 #import "APIGetClass.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation AboutXeniaController
 
@@ -57,6 +59,12 @@
     AboutXeniaView * mainContentView = [[AboutXeniaView alloc] initWithView:self.view];
     [self.view addSubview:mainContentView];
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
+    
     //Нотификация перехода в рекомендуемые-------
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRecommend) name:NOTIFICATION_PUSH_ABOUT_XENIA_WITH_RECOMMEND object:nil];
     
@@ -79,6 +87,12 @@
     [self sendEmail:[dictSend objectForKey:@"email"]
                text:[dictSend objectForKey:@"text"]];
     
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 -(void) sendEmail:(NSString *) email text:(NSString*) text

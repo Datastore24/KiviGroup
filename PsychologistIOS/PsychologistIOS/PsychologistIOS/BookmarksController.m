@@ -15,6 +15,8 @@
 #import "BoolmarksModel.h"
 #import "OpenSubjectController.h"
 #import "MeditationController.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 
 @implementation BookmarksController
@@ -56,6 +58,13 @@
     BookmarksView * viewContent = [[BookmarksView alloc] initWithContent:self.view andArray:[BoolmarksModel setArrayJuri]];
     [self.view addSubview:viewContent];
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:NOTIFICATION_PUSH_BOOKMARKS_WITH_OPENSUBJECT object:nil];
     
     
@@ -86,6 +95,12 @@
     [self.navigationController pushViewController:detail animated:YES];
         
     }
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 

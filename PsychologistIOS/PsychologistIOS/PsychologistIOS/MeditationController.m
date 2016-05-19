@@ -12,6 +12,8 @@
 #import "TitleClass.h"
 #import "MeditationView.h"
 #import "MeditationModel.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation MeditationController
 
@@ -37,7 +39,24 @@
     [self.view addSubview:contentView];
     
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
     
 }
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 @end

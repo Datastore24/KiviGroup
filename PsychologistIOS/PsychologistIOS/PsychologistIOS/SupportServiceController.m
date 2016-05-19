@@ -13,6 +13,8 @@
 #import "SWRevealViewController.h"
 #import "SupportServiceView.h"
 #import "APIGetClass.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation SupportServiceController
 
@@ -51,9 +53,27 @@
     SupportServiceView * contentView = [[SupportServiceView alloc] initWithView:self.view];
     [self.view addSubview:contentView];
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SEND_EMAIL_SUPPORT object:nil];
     
 }
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
 
 -(void)sendAction: (NSNotification*) notification{
     

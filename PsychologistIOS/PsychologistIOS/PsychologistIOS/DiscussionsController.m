@@ -15,6 +15,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
@@ -71,6 +73,14 @@
             DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:arrayMainResponce];
             [self.view addSubview:contentDiscussions];
         }
+        
+        
+        NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+        NSString * stringTitle = @"\"Женские секреты\"";
+        
+        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+        [self.view addSubview:viewNotification];
+        
     }];
     
     //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
@@ -187,6 +197,12 @@
             
         }
     }];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 //Отправка аудио Файла в чат----------

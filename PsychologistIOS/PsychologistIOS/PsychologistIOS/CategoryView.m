@@ -89,9 +89,7 @@
         mainTableView.delegate = self;
         mainTableView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainTableView];
-        
-        ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self andIDDel:self];
-        [self addSubview:viewNotification];
+    
         
         //Затемнение-----------------------------------------------------
         darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 65)];

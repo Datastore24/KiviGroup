@@ -14,6 +14,8 @@
 #import "SubCategoryView.h"
 #import "ModelFemale.h"
 #import "ChatController.h"
+#import "ViewNotification.h"
+#import "NotificationController.h"
 
 @implementation FemaleKnowledgeController
 
@@ -43,6 +45,12 @@
     FemaleKnowledgeView * viewContent = [[FemaleKnowledgeView alloc] initWithView:self.view andArray:[ModelFemale setArrayNotification]];
     [self.view addSubview:viewContent];
     
+    NSString * stringText = @"У вас 5 новых уведомлений в разделе";
+    NSString * stringTitle = @"\"Женские секреты\"";
+    
+    ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    [self.view addSubview:viewNotification];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithChat) name:NOTIFICATION_PUSH_FAMELE_WITH_CHAT object:nil];
     
 }
@@ -50,6 +58,12 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) pushNotificationWithNotification
+{
+    NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - Action Methods
