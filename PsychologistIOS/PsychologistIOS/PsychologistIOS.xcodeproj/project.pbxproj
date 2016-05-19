@@ -179,7 +179,7 @@
 		ADB7197A1CE852F000C447B3 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */; };
 		ADB7197B1CE852F000C447B3 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719791CE852F000C447B3 /* Auth.m */; };
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
-		FFB28FD61CEE273100A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD51CEE273100A417A9 /* notificationAlert.png */; };
+		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -459,7 +459,7 @@
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB28FD21CEE14B100A417A9 /* ViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotification.h; sourceTree = "<group>"; };
 		FFB28FD31CEE14B100A417A9 /* ViewNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewNotification.m; sourceTree = "<group>"; };
-		FFB28FD51CEE273100A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notificationAlert.png; path = ../../../../../../../Desktop/notificationAlert.png; sourceTree = "<group>"; };
+		FFB28FD71CEE436C00A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationAlert.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -748,9 +748,9 @@
 				77A2A97B1CD8F6AC0092CC06 /* StringImage.m */,
 				7784E9A61CE0EA6A0020F2FC /* CustomPlayer.h */,
 				7784E9A71CE0EA6A0020F2FC /* CustomPlayer.m */,
-				FFB28FD51CEE273100A417A9 /* notificationAlert.png */,
 				FFB28FD21CEE14B100A417A9 /* ViewNotification.h */,
 				FFB28FD31CEE14B100A417A9 /* ViewNotification.m */,
+				FFB28FD71CEE436C00A417A9 /* notificationAlert.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1268,7 +1268,7 @@
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
 				772707311CAF04BA0067DF6C /* Search.png in Resources */,
 				773C0D931CB986A2005794BE /* faceMenu.png in Resources */,
-				FFB28FD61CEE273100A417A9 /* notificationAlert.png in Resources */,
+				FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */,
 				7709628F1CB1A5570024448B /* imageCancel.png in Resources */,
 				77CA4E1A1CBAB799007BD3F2 /* imageCellRecommend.png in Resources */,
 				771715AC1CB69512003CD228 /* buttonCameraImage.png in Resources */,
