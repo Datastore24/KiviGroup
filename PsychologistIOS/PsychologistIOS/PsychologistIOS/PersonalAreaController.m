@@ -153,6 +153,8 @@
                              
                              nil];
     
+    [[SingleTone sharedManager] setUserName:[dict objectForKey:@"name"]];
+    
     NSLog(@"%@",params);
     
     
@@ -167,9 +169,6 @@
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
           NSLog(@"dictResponse %@", dictResponse);
             
-            //Записываем имя при проврке
-            NSDictionary * dictData2 = [dictResponse objectForKey:@"data"];
-            [[SingleTone sharedManager] setUserName:[dictData2 objectForKey:@"name"]];
         }
     }];
 }

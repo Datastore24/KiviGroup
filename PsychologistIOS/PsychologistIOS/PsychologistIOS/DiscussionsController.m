@@ -18,6 +18,9 @@
 #import "ViewNotification.h"
 #import "NotificationController.h"
 
+const float MAX_HEIGHT_MESSAGE_TEXTBOX = 80;
+const float MIN_HEIGHT_MESSAGE_TEXTBOX = 30;
+
 
 @interface DiscussionsController () <AVAudioSessionDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 

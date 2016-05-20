@@ -10,7 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 
-@interface ChatView () <UITextFieldDelegate, UIImagePickerControllerDelegate>
+@interface ChatView () <UITextViewDelegate, UIImagePickerControllerDelegate>
 
 @end
 
@@ -20,7 +20,7 @@
     UIScrollView * mainScrollView;
     //Переменные вью отправки------------
     BOOL isBool;
-    UITextField * textFieldChat;
+    UITextView * textFieldChat;
     UILabel * labelPlaceHolderChat;
     
     //Переменные чата---------------------
@@ -100,7 +100,7 @@
         [mainViewPush addSubview:inputText];
         
         //Ввод телефона-----------------------------------------------------------------
-        textFieldChat = [[UITextField alloc] initWithFrame:CGRectMake(16, 8, 216, 16)];
+        textFieldChat = [[UITextView alloc] initWithFrame:CGRectMake(16, 8, 216, 16)];
         textFieldChat.delegate = self;
         textFieldChat.autocorrectionType = UITextAutocorrectionTypeNo;
         textFieldChat.font = [UIFont fontWithName:FONTLITE size:19];
@@ -111,7 +111,7 @@
             textFieldChat.frame = CGRectMake(16, 5, 216, 16);
         }
         textFieldChat.textColor = [UIColor colorWithHexString:@"c7c7cc"];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelChat:) name:UITextFieldTextDidChangeNotification object:textFieldChat];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelChat:) name:UITextViewTextDidChangeNotification object:textFieldChat];
         [inputText addSubview:textFieldChat];
         
         //Плэйс холдер телефона----------------------------------------------------------
@@ -400,12 +400,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextViewDelegate
 
-//Скрытие клавиатуры----------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -435,11 +438,10 @@
     }
 }
 
-//Поднимаем текст вверх--------------------------------------
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([textField isEqual:textFieldChat]) {
-        if (textField.text.length != 0 && isBool) {
+    if ([textView isEqual:textFieldChat]) {
+        if (textView.text.length != 0 && isBool) {
             [UIView animateWithDuration:0.3 animations:^{
                 CGRect rect;
                 rect = labelPlaceHolderChat.frame;
@@ -458,12 +460,10 @@
         };
     }];
 }
-
-//Восстанавливаем стандартный размер-----------------------
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if ([textField isEqual:textFieldChat]) {
-        if (textField.text.length == 0 && !isBool) {
+    if ([textView isEqual:textFieldChat]) {
+        if (textView.text.length == 0 && !isBool) {
             [UIView animateWithDuration:0.3 animations:^{
                 CGRect rect;
                 rect = labelPlaceHolderChat.frame;
