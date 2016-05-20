@@ -39,6 +39,7 @@
     BOOL isBool;
     UITextView * textFieldChat;
     UILabel * labelPlaceHolderChat;
+    UIView * inputText;
     
     //Переменные чата---------------------
     UIScrollView * viewScrollChat;
@@ -112,7 +113,7 @@
         [mainScrollView addSubview:mainViewPush];
         
         //Ввод текста----------------
-        UIView * inputText = [[UIView alloc] initWithFrame:CGRectMake(64, 10, 248, 32)];
+        inputText = [[UIView alloc] initWithFrame:CGRectMake(64, 10, 248, 32)];
         if (isiPhone6) {
             inputText.frame = CGRectMake(60, 10, 236, 28);
         } else if (isiPhone5) {
@@ -468,7 +469,7 @@
             if (isiPhone5) {
                 labelUser.font = [UIFont fontWithName:FONTLITE size:10];
             }
-            if ([[SingleTone sharedManager] userName] == [NSNull null]) {
+            if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
                 labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
             } else {
                 labelUser.text = [[SingleTone sharedManager] userName];
@@ -722,24 +723,56 @@
 
 - (void)setFrameToTextSize:(CGRect)txtFrame textView:(UITextView *)textView
 {
+
     
-    if(txtFrame.size.height > 80)
+    if(txtFrame.size.height > 38.187500)
     {
+        NSLog(@"80");
+        
+        CGRect newFrame = inputText.frame;
+        newFrame.size.height = 42;
+        txtFrame.size.height = 32;
+        if (isiPhone6) {
+            newFrame.size.height = 48;
+        } else if (isiPhone5) {
+            newFrame.size.height = 44;
+           
+        }
+        newFrame.origin.y=-15;
+        [inputText setFrame:newFrame];
+        
         //OK, the new frame is to large. Let's use scroll
-        txtFrame.size.height = 80;
+        
         textView.scrollEnabled = YES;
+        txtFrame.origin.y = 10;
+        
+        
+        
+       
         [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
     }
     else
     {
-        if (textView.frame.size.height < 30) {
-            //OK, the new frame is to small. Let's set minimum size
-            txtFrame.size.height = 30;
+        
+        NSLog(@"30");
+        txtFrame.size.height = 32;
+        txtFrame.origin.y=0;
+        CGRect newFrame = inputText.frame;
+        newFrame.origin.y=10;
+        inputText.frame = CGRectMake(64, 10, 248, 32);
+        if (isiPhone6) {
+            inputText.frame = CGRectMake(60, 10, 236, 28);
+            
+        } else if (isiPhone5) {
+            inputText.frame = CGRectMake(40, 15, 220, 24);
+           
         }
-        //no need for scroll
-        textView.scrollEnabled = NO;
+        
+        
+
     }
     //set the frame
+    
     textView.frame = txtFrame;
 }
 
@@ -755,9 +788,11 @@
     
     if (animated) {
         //set the new frame, animated for a more nice transition
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowAnimatedContent animations:^{
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowAnimatedContent animations:^{
             [self setFrameToTextSize:txtFrame textView:textView];
         } completion:nil];
+        
+        
     }
     else
     {
@@ -823,6 +858,21 @@
         
         NSString * textString = textFieldChat.text;
         textFieldChat.text = nil;
+        
+        //После отправки восстановить размеры
+       
+        inputText.frame = CGRectMake(64, 10, 248, 32);
+        if (isiPhone6) {
+            inputText.frame = CGRectMake(60, 10, 236, 28);
+            
+        } else if (isiPhone5) {
+            inputText.frame = CGRectMake(40, 15, 220, 24);
+            
+        }
+        //
+    
+        textFieldChat.frame =CGRectMake(16, 0, 210, 32);
+        
         
         if (textFieldChat.text.length == 0) {
             [UIView animateWithDuration:0.3 animations:^{

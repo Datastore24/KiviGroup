@@ -634,20 +634,20 @@
                 
                 
                 NSDictionary * responseCheckInfo = (NSDictionary*)response;
-                NSDictionary * dictLogin = [NSDictionary dictionaryWithDictionary:[responseCheckInfo objectForKey:@"data"]];
-                NSLog(@"RESPOCHECK: %@",dictLogin);
+           
                 
                 //Записываем имя при проврке
                 
                 
-                //Берем userID
-                [[SingleTone sharedManager] setUserID:[dictLogin objectForKey:@"id"]];
+                
                 
                 if ([[responseCheckInfo objectForKey:@"error"] integerValue] == 0) {
                     [self showLoginWith:YES];
                     
                     NSDictionary * data = [responseCheckInfo objectForKey:@"data"];
                     
+                    //Берем userID
+                    [[SingleTone sharedManager] setUserID:[data objectForKey:@"id"]];
                     [[SingleTone sharedManager] setLogin:[data objectForKey:@"login"]];
                     [[SingleTone sharedManager] setUserId:[data objectForKey:@"id"]];
                     [[SingleTone sharedManager] setUserName:[data objectForKey:@"name"]];
