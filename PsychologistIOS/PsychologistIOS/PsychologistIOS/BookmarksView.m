@@ -265,10 +265,10 @@
     labelType.numberOfLines = 0;
     labelType.font = [UIFont fontWithName:FONTLITE size:16];
     if (isiPhone6) {
-        labelType.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
+        labelType.frame = CGRectMake(120, 16 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
         labelType.font = [UIFont fontWithName:FONTLITE size:15];
     } else if (isiPhone5) {
-        labelType.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 16);
+        labelType.frame = CGRectMake(100, 20 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
         labelType.font = [UIFont fontWithName:FONTLITE size:12];
     }
     [cellView addSubview:labelType];
