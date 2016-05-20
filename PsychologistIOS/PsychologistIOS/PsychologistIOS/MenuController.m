@@ -15,7 +15,8 @@
 
 @interface MenuController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
-@property (weak, nonatomic) IBOutlet UIButton *buttonNotification;
+
+
 
 @end
 
@@ -37,15 +38,21 @@
                                      @"Cell11", @"Cell12", nil];
     
     arrayImage = [NSArray arrayWithObjects:@"VKMenu.png", @"faceMenu.png", @"instMenu.png", @"peresMenu.png", @"skypeMenu.png", nil];
-    [self.buttonNotification addTarget:self action:@selector(buttonNotificationAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.buttonNotification addTarget:self action:@selector(buttonNotificationAction) forControlEvents:UIControlEventTouchUpInside];
     
     //Вью первой границы-------------------------------
     UIView * viewBorder1 = [[UIView alloc] initWithFrame:CGRectMake(0, 81, self.view.frame.size.width, 0.4)];
+    if (isiPhone5) {
+        viewBorder1.frame = CGRectMake(0, 75, self.view.frame.size.width, 0.4);
+    }
     viewBorder1.backgroundColor = [UIColor colorWithHexString:@"b3b3b3"];
     [self.view addSubview:viewBorder1];
 
     //Вью второй границы-------------------------------
     UIView * viewBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, 308, self.view.frame.size.width, 0.4)];
+    if (isiPhone5) {
+        viewBorder2.frame = CGRectMake(0, 320, self.view.frame.size.width, 0.4);
+    }
     viewBorder2.backgroundColor = [UIColor colorWithHexString:@"b3b3b3"];
     [self.view addSubview:viewBorder2];
 
@@ -57,6 +64,7 @@
     //Убираем полосы разделяющие ячейки------------------------------
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mainTableView.backgroundColor = [UIColor clearColor];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -77,6 +85,70 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     cell.backgroundColor = nil;
+    
+    if (isiPhone5) {
+        if ([cellIdentifier isEqualToString:@"Cell3"]) {
+            UILabel * label1 = (UILabel*)[self.view viewWithTag:10];
+            CGRect rect1 = label1.frame;
+            rect1.origin.y -= 5;
+            label1.frame = rect1;
+            //----
+            UIImageView * image1 = (UIImageView*)[self.view viewWithTag:20];
+            CGRect rect10 = image1.frame;
+            rect10.origin.y -= 5;
+            image1.frame = rect10;
+        } else if ([cellIdentifier isEqualToString:@"Cell4"]) {
+            UILabel * label2 = (UILabel*)[self.view viewWithTag:11];
+            CGRect rect2 = label2.frame;
+            rect2.origin.y -= 5;
+            label2.frame = rect2;
+            //----
+            UIImageView * image2 = (UIImageView*)[self.view viewWithTag:21];
+            CGRect rect11 = image2.frame;
+            rect11.origin.y -= 5;
+            image2.frame = rect11;
+        } else if ([cellIdentifier isEqualToString:@"Cell5"]) {
+            UILabel * label3 = (UILabel*)[self.view viewWithTag:12];
+            CGRect rect3 = label3.frame;
+            rect3.origin.y -= 5;
+            label3.frame = rect3;
+            //----
+            UIImageView * image2 = (UIImageView*)[self.view viewWithTag:22];
+            CGRect rect12 = image2.frame;
+            rect12.origin.y -= 5;
+            image2.frame = rect12;
+        } else if ([cellIdentifier isEqualToString:@"Cell6"]) {
+            UILabel * label4 = (UILabel*)[self.view viewWithTag:13];
+            CGRect rect4 = label4.frame;
+            rect4.origin.y -= 5;
+            label4.frame = rect4;
+            //----
+            UIImageView * image4 = (UIImageView*)[self.view viewWithTag:23];
+            CGRect rect14 = image4.frame;
+            rect14.origin.y -= 5;
+            image4.frame = rect14;
+        } else if ([cellIdentifier isEqualToString:@"Cell9"]) {
+            UILabel * label5 = (UILabel*)[self.view viewWithTag:15];
+            CGRect rect5 = label5.frame;
+            rect5.origin.y -= 5;
+            label5.frame = rect5;
+            //----
+            UIImageView * image5 = (UIImageView*)[self.view viewWithTag:25];
+            CGRect rect15 = image5.frame;
+            rect15.origin.y -= 5;
+            image5.frame = rect15;
+        } else if ([cellIdentifier isEqualToString:@"Cell10"]) {
+            UILabel * label6 = (UILabel*)[self.view viewWithTag:16];
+            CGRect rect6 = label6.frame;
+            rect6.origin.y -= 5;
+            label6.frame = rect6;
+            //----
+            UIImageView * image6 = (UIImageView*)[self.view viewWithTag:26];
+            CGRect rect16 = image6.frame;
+            rect16.origin.y -= 5;
+            image6.frame = rect16;
+        }
+    }
     
     if ([cellIdentifier isEqualToString:@"Cell8"]) {
         cell.userInteractionEnabled = NO;

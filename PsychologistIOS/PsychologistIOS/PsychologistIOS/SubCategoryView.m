@@ -31,6 +31,8 @@
     UIButton * buttonToFavorites;
     UIButton * buttonBuy;
     UIButton * buttonOpenCategory;
+    
+    NSDictionary * dictBookMark;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -132,7 +134,7 @@
         buttonOpenCategory.layer.cornerRadius = 25;
         buttonOpenCategory.layer.borderColor = [UIColor colorWithHexString:@"36b34c"].CGColor;
         buttonOpenCategory.layer.borderWidth = 1.f;
-        [buttonOpenCategory setTitle:@"ОТКРЫТЬ ТЕМУ" forState:UIControlStateNormal];
+        [buttonOpenCategory setTitle:@"ОТКРЫТЬ" forState:UIControlStateNormal];
         [buttonOpenCategory setTitleColor:[UIColor colorWithHexString:@"36b34c"] forState:UIControlStateNormal];
         buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         if (isiPhone5) {
@@ -220,7 +222,7 @@
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
         [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
                                                      andSubTitle:[dictCell objectForKey:@"description"]
-                                                        andMoney:[[dictCell objectForKey:@"paid"] boolValue]
+                                                        andMoney:nil
                                                         andImage:nil andURL:stringURL]];
     } else {
         NSLog(@"Нет категорий");
@@ -246,6 +248,7 @@
     //    }
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    dictBookMark = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     mainAlertText.text = [dictCell objectForKey:@"text"];
     
@@ -425,7 +428,8 @@
 //Действие кнопки добавить в избранное
 - (void) buttonToFavoritesAction
 {
-    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_BOOKMARK_SUB_CATEGORY object:nil userInfo:dictBookMark];
+    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ Категорию");
 }
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction

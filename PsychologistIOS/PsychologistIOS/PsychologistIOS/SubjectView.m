@@ -34,6 +34,8 @@
     //Тип ячейки-----------------
     NSString * typeCell;
     
+    NSDictionary * dictBookmark;
+    
 }
 
 - (instancetype)initWithContent: (UIView*) view andArray: (NSArray*) array
@@ -121,7 +123,7 @@
         buttonOpenCategory.layer.cornerRadius = 25;
         buttonOpenCategory.layer.borderColor = [UIColor colorWithHexString:@"36b34c"].CGColor;
         buttonOpenCategory.layer.borderWidth = 1.f;
-        [buttonOpenCategory setTitle:@"ОТКРЫТЬ ТЕМУ" forState:UIControlStateNormal];
+        [buttonOpenCategory setTitle:@"ЧИТАТЬ" forState:UIControlStateNormal];
         [buttonOpenCategory setTitleColor:[UIColor colorWithHexString:@"36b34c"] forState:UIControlStateNormal];
         buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         if (isiPhone5) {
@@ -188,7 +190,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
     static NSString *CellIdentifier = @"newFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -228,6 +229,7 @@
     [[SingleTone sharedManager] setIdentifierSubjectModel:[dictMainArray objectForKey:@"id"]];
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    dictBookmark = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     mainAlertText.text = [dictCell objectForKey:@"text"];
     
@@ -331,19 +333,18 @@
     [cellView addSubview:labelTitle];
     
     //Подзаголовок----------------------------------------
-    UILabel * labelSubTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelTitle.frame.size.height, 216, 16)];
+    UILabel * labelSubTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelTitle.frame.size.height, 216, 32)];
     labelSubTitle.text = subTitle;
     labelSubTitle.textColor = [UIColor colorWithHexString:@"c0c0c0"];
     labelSubTitle.numberOfLines = 0;
     labelSubTitle.font = [UIFont fontWithName:FONTLITE size:16];
     if (isiPhone6) {
-        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 32);
         labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
     } else if (isiPhone5) {
-        labelSubTitle.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 16);
+        labelSubTitle.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 32);
         labelSubTitle.font = [UIFont fontWithName:FONTLITE size:12];
     }
-    [labelSubTitle sizeToFit];
     [cellView addSubview:labelSubTitle];
     
     //Платная или нет-------------------------------------
@@ -407,7 +408,8 @@
 //Действие кнопки добавить в избранное
 - (void) buttonToFavoritesAction
 {
-    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_BOOKMARK_SUBJECT object:nil userInfo:dictBookmark];
+    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ пост");
 }
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction

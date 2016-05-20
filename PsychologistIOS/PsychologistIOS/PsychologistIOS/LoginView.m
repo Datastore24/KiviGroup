@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "SingleTone.h"
+#import "AlertClass.h"
 
 @implementation LoginView
 {
@@ -646,7 +647,7 @@
             
         }];
     } else {
-        NSLog(@"Символы телефона %lu", textFieldPhone.text.length);
+        [AlertClass showAlertViewWithMessage:@"Введите верное клолличество символов"];
     }
 
 }

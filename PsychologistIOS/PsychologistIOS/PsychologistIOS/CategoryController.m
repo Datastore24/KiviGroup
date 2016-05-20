@@ -19,6 +19,7 @@
 #import "Macros.h"
 #import "ViewNotification.h"
 #import "NotificationController.h"
+#import "SingleTone.h"
 
 @implementation CategoryController
 {
@@ -81,6 +82,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookmarkCategory:) name:NOTIFICATION_SEND_BOOKMARK_CATEGORY object:nil];
     
     
 }
@@ -134,6 +136,25 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             block();
+        }
+    }];
+}
+
+- (void) sendBookmarkCategory: (NSNotification*) notification
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"response %@", response);
+            NSLog(@"Добавленно");
         }
     }];
 }

@@ -102,21 +102,20 @@
     return self;
 }
 
-
 //Картинка на алерт
 + (UIImageView*) createWithImageAlertURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode andBoolMoney: (BOOL) boolMoney
 {
+    
+    __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    if (isiPhone5) {
+        imageViewChat.frame = CGRectMake(view.frame.size.width / 2 - 20, 16, 40, 40);
+    }
+    
+    if (boolMoney) {
         
-        __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        if (isiPhone5) {
-            imageViewChat.frame = CGRectMake(view.frame.size.width / 2 - 20, 16, 40, 40);
-        }
+        imageViewChat.image = [UIImage imageNamed:@"imageMoney.png"];
         
-        if (boolMoney) {
-            
-            imageViewChat.image = [UIImage imageNamed:@"imageMoney.png"];
-            
-        } else {
+    } else {
         
         
         NSURL *imgURL = [NSURL URLWithString:imageUrl];
@@ -139,10 +138,11 @@
                                     } completion:nil];
                                 }
                             }];
-        }
+    }
     return imageViewChat;
-
+    
 }
+
 
 //Картинка под раскрытие поста--------
 - (instancetype)initWithPostImageURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode

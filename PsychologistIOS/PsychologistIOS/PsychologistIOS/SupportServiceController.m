@@ -57,6 +57,9 @@
     NSString * stringTitle = @"\"Женские секреты\"";
     
     ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    CGRect myRect = viewNotification.frame;
+    myRect.origin.y -= 64;
+    viewNotification.frame = myRect;
     [self.view addSubview:viewNotification];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SEND_EMAIL_SUPPORT object:nil];
