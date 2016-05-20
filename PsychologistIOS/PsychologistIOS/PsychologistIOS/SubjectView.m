@@ -139,6 +139,7 @@
         buttonToFavorites.frame = CGRectMake(24, 286, alertView.frame.size.width - 48, 48);
         buttonToFavorites.backgroundColor = nil;
         buttonToFavorites.layer.cornerRadius = 25;
+        buttonToFavorites.tag = 246;
         buttonToFavorites.layer.borderColor = [UIColor colorWithHexString:@"147ab4"].CGColor;
         buttonToFavorites.layer.borderWidth = 1.f;
         [buttonToFavorites setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
@@ -149,7 +150,6 @@
             buttonToFavorites.layer.cornerRadius = 18;
             buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
         }
-        [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonToFavorites];
         
         //Купить тему----------------------------------------------
@@ -247,6 +247,8 @@
     
     
     [[SingleTone sharedManager] setTitleSubject:[dictCell objectForKey:@"title"]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMarkSubject" object:nil];
     
     //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
@@ -404,12 +406,6 @@
             darkView.alpha = 0;
         }];
     }];
-}
-//Действие кнопки добавить в избранное
-- (void) buttonToFavoritesAction
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_BOOKMARK_SUBJECT object:nil userInfo:dictBookmark];
-    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ пост");
 }
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction

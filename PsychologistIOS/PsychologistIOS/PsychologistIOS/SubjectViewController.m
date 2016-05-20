@@ -25,6 +25,7 @@
 @implementation SubjectViewController
 {
     NSDictionary * dictResponse;
+    UIButton * buttonBookmark;
 }
 
 - (void) viewDidLoad
@@ -64,10 +65,13 @@
         ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
         [self.view addSubview:viewNotification];
         
+        buttonBookmark = (UIButton*)[self.view viewWithTag:246];
+        [buttonBookmark addTarget:self action:@selector(addBuukmark) forControlEvents:UIControlEventTouchUpInside];
+        
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookMark:) name:NOTIFICATION_SEND_BOOKMARK_SUBJECT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMark) name:@"notificationChekBookMarkSubject" object:nil];
 }
 
 - (void) notificationPushWithOpenSubject: (NSNotification*) notification
@@ -103,9 +107,11 @@
 
 }
 
-- (void) sendBookMark: (NSNotification*) notification
+- (void) chetBookMark
 {
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
+    
+    NSLog(@"params %@", params);
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
@@ -118,42 +124,41 @@
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"response %@", response);
             if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
-                NSLog(@"Нет в закладках");
-                [self sendeBookmarkCategory:notification];
+                [buttonBookmark setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
             } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
-                NSLog(@"Есть в закладках");
-                SCLAlertView *alert = [[SCLAlertView alloc] init];
-                //Using Selector
-                [alert addButton:@"Ок" target:self selector:@selector(firstButton)];
-                [alert showSuccess:self title:@"Внимание" subTitle:@"Данная тема уже есть в избранном" closeButtonTitle:nil duration:0.0f];
+                [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
+                
             }
         }
     }];
-}
-
-- (void) firstButton
-{
-    BookmarksController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BookmarksController"];
-    [self.navigationController pushViewController:detail animated:YES];
-}
-
-- (void) sendeBookmarkCategory: (NSNotification*) notification
-{
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
     
-    APIGetClass * apiGallery = [APIGetClass new];
-    [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
+}
+
+- (void) addBuukmark
+{
+    if ([[buttonBookmark titleForState:UIControlStateNormal] isEqualToString:@"ДОБАВИТЬ В ЗАКЛАДКИ"]) {
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
         
-        dictResponse = (NSDictionary*) response;
-        
-        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
-            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
-            //ТУТ UILabel когда нет фоток там API выдает
-        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"response %@", response);
-            [AlertClass showAlertViewWithMessage:@"Тема добавлена в избранное"];
-        }
-    }];
+        APIGetClass * apiGallery = [APIGetClass new];
+        [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
+            
+            dictResponse = (NSDictionary*) response;
+            
+            if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+                NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+                //ТУТ UILabel когда нет фоток там API выдает
+            } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+                NSLog(@"response %@", response);
+                [UIView animateWithDuration:0.3 animations:^{
+                    [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
+                }];
+            }
+        }];
+    } else if ([[buttonBookmark titleForState:UIControlStateNormal] isEqualToString:@"УЖЕ В ЗАКЛАДКАХ"]) {
+        BookmarksController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BookmarksController"];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+    
 }
 
 - (void) pushNotificationWithNotification

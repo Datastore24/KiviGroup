@@ -176,6 +176,7 @@
         buttonToFavorites = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonToFavorites.frame = CGRectMake(24, 286, alertView.frame.size.width - 48, 48);
         buttonToFavorites.backgroundColor = nil;
+        buttonToFavorites.tag = 246;
         buttonToFavorites.layer.cornerRadius = 25;
         buttonToFavorites.layer.borderColor = [UIColor colorWithHexString:@"147ab4"].CGColor;
         buttonToFavorites.layer.borderWidth = 1.f;
@@ -187,7 +188,7 @@
             buttonToFavorites.layer.cornerRadius = 18;
             buttonToFavorites.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
         }
-        [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
+//        [buttonToFavorites addTarget:self action:@selector(buttonToFavoritesAction) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:buttonToFavorites];
         
         //Купить тему----------------------------------------------
@@ -285,6 +286,8 @@
     mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMark" object:nil];
     
     //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
