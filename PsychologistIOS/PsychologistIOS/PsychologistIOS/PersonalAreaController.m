@@ -111,6 +111,12 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"LOG %@",dictResponse);
+            
+            NSDictionary * dictData = [dictResponse objectForKey:@"data"];
+            [[SingleTone sharedManager] setUserName:[dictData objectForKey:@"name"]];
+            
+            
+            
             block();
         }
     }];
@@ -149,8 +155,6 @@
     
     NSLog(@"%@",params);
     
-    //Записываем имя при проврке
-    [[SingleTone sharedManager] setUserName:[params objectForKey:@"name"]];
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"edit_user" complitionBlock:^(id response) {
@@ -161,7 +165,11 @@
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-          NSLog(@"%@", dictResponse);
+          NSLog(@"dictResponse %@", dictResponse);
+            
+            //Записываем имя при проврке
+            NSDictionary * dictData2 = [dictResponse objectForKey:@"data"];
+            [[SingleTone sharedManager] setUserName:[dictData2 objectForKey:@"name"]];
         }
     }];
 }
