@@ -77,7 +77,7 @@
     
     
 //    //Тестовый вызов нотификации через 10 секунд-----------------------------
-//    [NSTimer scheduledTimerWithTimeInterval:10.0f
+//    [NSTimer scheduledTimerWithTimeInterval:5.0f
 //                                     target:self selector:@selector(upViewNotification) userInfo:nil repeats:YES];
     
     

@@ -330,7 +330,7 @@
         
         if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
             // Имя пользователя---------------
-            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
+            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 38, 8 + countFor, 88, 12)];
             labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
             labelUser.font = [UIFont fontWithName:FONTBOND size:12];
             if (isiPhone5) {

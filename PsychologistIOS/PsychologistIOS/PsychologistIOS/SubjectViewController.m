@@ -64,6 +64,7 @@
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithOpenSubject:) name:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookMark:) name:NOTIFICATION_SEND_BOOKMARK_SUBJECT object:nil];
 }
 
 - (void) notificationPushWithOpenSubject: (NSNotification*) notification
@@ -97,6 +98,23 @@
         }
     }];
 
+}
+
+- (void) sendBookMark: (NSNotification*) notification
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
+        
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"response %@", response);
+            NSLog(@"Добавлен Пост");
+        }
+    }];
 }
 
 - (void) pushNotificationWithNotification

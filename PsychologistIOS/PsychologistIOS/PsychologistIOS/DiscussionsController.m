@@ -86,9 +86,9 @@
         
     }];
     
-    //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
-            [NSTimer scheduledTimerWithTimeInterval:7.0f
-                                                 target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
+//    //   Временнй метод для симулятор, котоорый эмулирует нотификацию он новом сообщении
+//            [NSTimer scheduledTimerWithTimeInterval:7.0f
+//                                                 target:self selector:@selector(loadMoreDialog) userInfo:nil repeats:YES];
     
     
     

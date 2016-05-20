@@ -22,6 +22,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "APIGetClass.h"
 #import "LicenseAgreementController.h"
+#import "AlertClass.h"
 
 @interface LoginController () <UIWebViewDelegate>
 

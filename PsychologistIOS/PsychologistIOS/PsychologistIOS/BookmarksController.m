@@ -17,9 +17,17 @@
 #import "MeditationController.h"
 #import "ViewNotification.h"
 #import "NotificationController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
+#import "SubCategoryController.h"
+#import "SubjectViewController.h"
+#import "OpenSubjectController.h"
 
 
 @implementation BookmarksController
+{
+    NSDictionary * dictResponse;
+}
 
 - (void) viewDidLoad {
     
@@ -55,22 +63,85 @@
     BookmarksView * backgroundView = [[BookmarksView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
     
-    BookmarksView * viewContent = [[BookmarksView alloc] initWithContent:self.view andArray:[BoolmarksModel setArrayJuri]];
-    [self.view addSubview:viewContent];
-    
+    [self getAPIWithBlock:^{
+        if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray * mainArray = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+            BookmarksView * viewContent = [[BookmarksView alloc] initWithContent:self.view andArray:mainArray];
+            [self.view addSubview:viewContent];
+        }
+    }];
     NSString * stringText = @"У вас 5 новых уведомлений в разделе";
     NSString * stringTitle = @"\"Женские секреты\"";
     
     ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
+    CGRect myRect = viewNotification.frame;
+    myRect.origin.y -= 64;
+    viewNotification.frame = myRect;
     [self.view addSubview:viewNotification];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushBookMerkWithCategory:) name:NOTIFICATION_PUSH_BOOKMARK_CATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushBookMerkWithSubCategory:) name:NOTIFICATION_PUSH_BOOKMARK_SUB_CATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushBookMerkWithSubject:) name:NOTIFICATION_PUSH_BOOKMARK_SUBJECT object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteCell:) name:NOTIFICATION_DELET_CELL_BOOKMARK object:nil];
 
+}
+
+#pragma mark - API
+
+- (void) deleteCell: (NSNotification*) notification
+{
+    NSLog(@"notification %@", notification.userInfo);
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id", nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction:) name:NOTIFICATION_PUSH_BOOKMARKS_WITH_OPENSUBJECT object:nil];
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"del_fav" complitionBlock:^(id response) {
+        
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"response %@", response);
+            NSLog(@"ячейка удалена");
+        }
+    }];
+}
+
+- (void) pushBookMerkWithCategory: (NSNotification*) notification
+{
+    SubCategoryController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubCategoryController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushBookMerkWithSubCategory: (NSNotification*) notification
+{
+    SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushBookMerkWithSubject: (NSNotification*) notification
+{
+    OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] userID], @"id_user", nil];
     
-    
-    
-    
-    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_fav" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 #pragma mark - DEALLOC

@@ -73,7 +73,7 @@
 - (void) backAnimation
 {
         [UIView animateWithDuration:0.3 animations:^{
-            self.alpha = 0.f;
+//            self.alpha = 0.f;
         } completion:^(BOOL finished) {
         }];
 }

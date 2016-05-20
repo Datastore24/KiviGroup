@@ -32,6 +32,9 @@
     UIButton * buttonToFavorites;
     UIButton * buttonBuy;
     UIButton * buttonOpenCategory;
+    
+    
+    NSDictionary * dictCellSend;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -158,7 +161,7 @@
         buttonOpenCategory.layer.cornerRadius = 25;
         buttonOpenCategory.layer.borderColor = [UIColor colorWithHexString:@"36b34c"].CGColor;
         buttonOpenCategory.layer.borderWidth = 1.f;
-        [buttonOpenCategory setTitle:@"ОТКРЫТЬ ТЕМУ" forState:UIControlStateNormal];
+        [buttonOpenCategory setTitle:@"ОТКРЫТЬ" forState:UIControlStateNormal];
         [buttonOpenCategory setTitleColor:[UIColor colorWithHexString:@"36b34c"] forState:UIControlStateNormal];
         buttonOpenCategory.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
         if (isiPhone5) {
@@ -264,9 +267,11 @@
     NSDictionary * dictMainArray = [mainArray objectAtIndex:indexPath.row];
     
     [[SingleTone sharedManager] setIdentifierCategory:[dictMainArray objectForKey:@"id"]];
+    NSLog(@"ID %@", [dictMainArray objectForKey:@"id"]);
     [[SingleTone sharedManager] setTariffID:[dictMainArray objectForKey:@"id"]];
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    dictCellSend = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     mainAlertText.text = [dictCell objectForKey:@"text"];
     
@@ -438,7 +443,8 @@
 //Действие кнопки добавить в избранное
 - (void) buttonToFavoritesAction
 {
-    NSLog(@"ДОБАВИТЬ В ИЗБРАННОЕ");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_BOOKMARK_CATEGORY object:nil userInfo:dictCellSend];
+    NSLog(@"Отправка в закладки");
 }
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction

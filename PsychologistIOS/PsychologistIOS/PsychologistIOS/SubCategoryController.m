@@ -65,6 +65,7 @@
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubject) name:NOTIFICATION_SUB_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBookmark:) name:NOTIFICATION_SEND_BOOKMARK_SUB_CATEGORY object:nil];
 
 }
 
@@ -96,6 +97,23 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             block();
+        }
+    }];
+}
+
+- (void) addBookmark: (NSNotification*) notification
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"subcategory", @"type", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
+        
+        if ([[response objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [response objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[response objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"response %@", response);
+            NSLog(@"Добавленна сабкатегория");
         }
     }];
 }
