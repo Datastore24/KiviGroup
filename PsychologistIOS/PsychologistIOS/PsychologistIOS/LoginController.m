@@ -638,7 +638,7 @@
                 NSLog(@"RESPOCHECK: %@",dictLogin);
                 
                 //Записываем имя при проврке
-                [[SingleTone sharedManager] setUserName:[dictLogin objectForKey:@"email"]];
+                [[SingleTone sharedManager] setUserName:[dictLogin objectForKey:@"name"]];
                 
                 //Берем userID
                 [[SingleTone sharedManager] setUserID:[dictLogin objectForKey:@"id"]];
