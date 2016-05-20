@@ -16,9 +16,7 @@
 #import "SingleTone.h"
 #import "ViewSectionTable.h"
 
-
-
-@interface DiscussionsView () <UITextFieldDelegate, UIImagePickerControllerDelegate>
+@interface DiscussionsView () <UITextViewDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) DACircularProgressView *progressView;
 @property (strong, nonatomic) NSTimer *timer;
@@ -39,7 +37,7 @@
     UIScrollView * mainScrollView;
     //Переменные вью отправки------------
     BOOL isBool;
-    UITextField * textFieldChat;
+    UITextView * textFieldChat;
     UILabel * labelPlaceHolderChat;
     
     //Переменные чата---------------------
@@ -127,7 +125,7 @@
         [mainViewPush addSubview:inputText];
         
         //Ввод телефона-----------------------------------------------------------------
-        textFieldChat = [[UITextField alloc] initWithFrame:CGRectMake(16, 8, 210, 16)];
+        textFieldChat = [[UITextView alloc] initWithFrame:CGRectMake(16, 0, 210, 32)];
         textFieldChat.delegate = self;
         textFieldChat.tag = 1001;
         textFieldChat.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -139,7 +137,7 @@
             textFieldChat.frame = CGRectMake(16, 5, 216, 16);
         }
         textFieldChat.textColor = [UIColor colorWithHexString:@"c7c7cc"];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelChat:) name:UITextFieldTextDidChangeNotification object:textFieldChat];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelChat:) name:UITextViewTextDidChangeNotification object:textFieldChat];
         [inputText addSubview:textFieldChat];
         
         //Плэйс холдер телефона----------------------------------------------------------
@@ -636,14 +634,18 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextViewDelegate
 
-//Скрытие клавиатуры----------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
     return YES;
 }
+
 
 //Анимация Лейблов при вводе Телефона------------------------
 - (void) animationLabelChat: (NSNotification*) notification
@@ -673,22 +675,9 @@
     
 }
 
-//Поднимаем текст вверх--------------------------------------
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textField isEqual:textFieldChat]) {
-            if (textField.text.length != 0 && isBool) {
-                [UIView animateWithDuration:0.3 animations:^{
-                    CGRect rect;
-                    rect = labelPlaceHolderChat.frame;
-                    rect.origin.x = rect.origin.x + 100.f;
-                    labelPlaceHolderChat.frame = rect;
-                    labelPlaceHolderChat.alpha = 0.f;
-                    isBool = NO;
-                }];
-            }
-    }
-    
     [UIView animateWithDuration:0.3 animations:^{
         mainScrollView.contentOffset = (CGPoint){
             0, // ось x нас не интересует
@@ -703,35 +692,23 @@
         viewScrollChat.contentOffset = point;
         
         if (dictaBool) {
-        
-        CGRect rectDict = dictaphoneView.frame;
-        CGRect rectSelf = self.frame;
-        rectDict.origin.y += 200;
-        rectSelf.origin.y += 200;
-        dictaphoneView.frame = rectDict;
-        self.frame = rectSelf;
-        
-        dictaBool = NO;
+            
+            CGRect rectDict = dictaphoneView.frame;
+            CGRect rectSelf = self.frame;
+            rectDict.origin.y += 200;
+            rectSelf.origin.y += 200;
+            dictaphoneView.frame = rectDict;
+            self.frame = rectSelf;
+            
+            dictaBool = NO;
         }
-
+        
     }];
+    return YES;
 }
-
-//Восстанавливаем стандартный размер-----------------------
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
-    if ([textField isEqual:textFieldChat]) {
-            if (textField.text.length == 0 && !isBool) {
-                [UIView animateWithDuration:0.3 animations:^{
-                    CGRect rect;
-                    rect = labelPlaceHolderChat.frame;
-                    rect.origin.x = rect.origin.x - 100.f;
-                    labelPlaceHolderChat.frame = rect;
-                    labelPlaceHolderChat.alpha = 1.f;
-                    isBool = YES;
-                }];
-            }
-    }
+
     [UIView animateWithDuration:0.3 animations:^{
         mainScrollView.contentOffset = (CGPoint){0, 0}; // Возвращаем скролл в начало, так как редактирование текстового поля закончено
         CGRect rect = viewScrollChat.frame;
@@ -739,6 +716,58 @@
         rect.size.height += 230;
         viewScrollChat.frame = rect;
     }];
+    return YES;
+}
+
+
+- (void)setFrameToTextSize:(CGRect)txtFrame textView:(UITextView *)textView
+{
+    
+    if(txtFrame.size.height > 80)
+    {
+        //OK, the new frame is to large. Let's use scroll
+        txtFrame.size.height = 80;
+        textView.scrollEnabled = YES;
+        [textView scrollRangeToVisible:NSMakeRange([textView.text length], 0)];
+    }
+    else
+    {
+        if (textView.frame.size.height < 30) {
+            //OK, the new frame is to small. Let's set minimum size
+            txtFrame.size.height = 30;
+        }
+        //no need for scroll
+        textView.scrollEnabled = NO;
+    }
+    //set the frame
+    textView.frame = txtFrame;
+}
+
+- (void)setframeToTextSize:(UITextView *)textView animated:(BOOL)animated
+{
+    //get current height
+    CGRect txtFrame = textView.frame;
+    
+    txtFrame.size.height =[[NSString stringWithFormat:@"%@\n ",textView.text]
+                           boundingRectWithSize:CGSizeMake(txtFrame.size.width, CGFLOAT_MAX)
+                           options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                           attributes:[NSDictionary dictionaryWithObjectsAndKeys:textView.font,NSFontAttributeName, nil] context:nil].size.height;
+    
+    if (animated) {
+        //set the new frame, animated for a more nice transition
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowAnimatedContent animations:^{
+            [self setFrameToTextSize:txtFrame textView:textView];
+        } completion:nil];
+    }
+    else
+    {
+        [self setFrameToTextSize:txtFrame textView:textView];
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self setframeToTextSize:textView animated:YES];
 }
 
 #pragma mark - Action Methods
