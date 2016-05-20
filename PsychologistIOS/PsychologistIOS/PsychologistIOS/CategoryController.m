@@ -20,6 +20,9 @@
 #import "ViewNotification.h"
 #import "NotificationController.h"
 #import "SingleTone.h"
+#import "AlertClass.h"
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import "BookmarksController.h"
 
 @implementation CategoryController
 {
@@ -84,7 +87,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookmarkCategory:) name:NOTIFICATION_SEND_BOOKMARK_CATEGORY object:nil];
     
-    
 }
 
 
@@ -145,6 +147,40 @@
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
     
     APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"response %@", response);
+            if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
+                NSLog(@"Нет в закладках");
+                [self sendeBookmarkCategory:notification];
+            } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
+                NSLog(@"Есть в закладках");
+                SCLAlertView *alert = [[SCLAlertView alloc] init];
+                //Using Selector
+                [alert addButton:@"Ок" target:self selector:@selector(firstButton)];
+                [alert showSuccess:self title:@"Внимание" subTitle:@"Данный раздел уже есть в избранном" closeButtonTitle:nil duration:0.0f];
+            }
+        }
+    }];
+}
+
+- (void) firstButton
+{
+    BookmarksController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BookmarksController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) sendeBookmarkCategory: (NSNotification*) notification
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[notification.userInfo objectForKey:@"id"], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
         
         dictResponse = (NSDictionary*) response;
@@ -154,7 +190,7 @@
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"response %@", response);
-            NSLog(@"Добавленно");
+            [AlertClass showAlertViewWithMessage:@"Раздел добавлен в избранное"];
         }
     }];
 }
