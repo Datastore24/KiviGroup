@@ -12,6 +12,7 @@
 #import "SingleTone.h"
 #import "StringImage.h"
 #import "ViewSectionTable.h"
+#import "TextMethodClass.h"
 
 @interface SubjectView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -90,6 +91,7 @@
             mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
         }
         mainMoneyImage.layer.cornerRadius = 20;
+        mainMoneyImage.layer.masksToBounds = YES;
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
@@ -231,7 +233,7 @@
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     dictBookmark = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
-    mainAlertText.text = [dictCell objectForKey:@"text"];
+    mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictCell objectForKey:@"text"]];
     
     if ([[dictCell objectForKey:@"paid"] boolValue]) {
         buttonBuy.alpha = 1.f;

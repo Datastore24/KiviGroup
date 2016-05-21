@@ -340,6 +340,7 @@
             } else if ([[dictChat objectForKey:@"Type"] integerValue] == 2) {
                 
                 //Создаем картинку--------------------
+                
                 imageViewChat = [UIButton buttonWithType:UIButtonTypeCustom];
                 imageViewChat.frame = CGRectMake(32, 32 + countFor, 250, 200);
                 if (isiPhone5) {
@@ -347,8 +348,9 @@
                 }
                 buttonsNumber += 1;
                 imageViewChat.tag = buttonsNumber;
-                [imageViewChat setImage:[dictChat objectForKey:@"Message"] forState:UIControlStateNormal];
                 [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
+                [imageViewChat setImage:[dictChat objectForKey:@"Message"] forState:UIControlStateNormal];
+                
                 [viewScrollChat addSubview:imageViewChat];
                 
                 [buttonsArray addObject:imageViewChat];
@@ -566,6 +568,7 @@
 //Действие на тап картинки------------------------------
 - (void) imageViewChatAction: (UIButton*) button
 {
+    NSLog(@"CLICK");
     for (int i = 0; i < buttonsArray.count; i++) {
         if (button.tag == 10 + i) {
             imageFull.image = button.imageView.image;

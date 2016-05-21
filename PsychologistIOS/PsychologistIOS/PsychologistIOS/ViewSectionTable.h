@@ -26,4 +26,8 @@
 - (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
                            andContentMode: (UIViewContentMode) contentMode;
 
+- (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
+                           andContentMode: (UIViewContentMode) contentMode
+                             andImageView: (UIScrollView *) scrollView;
+
 @end

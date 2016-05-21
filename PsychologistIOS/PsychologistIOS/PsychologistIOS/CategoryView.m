@@ -13,6 +13,7 @@
 #import "ViewSectionTable.h"
 #import "StringImage.h"
 #import "ViewNotification.h"
+#import "TextMethodClass.h"
 
 @interface CategoryView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -40,6 +41,7 @@
 - (instancetype)initWithBackgroundView: (UIView*) view
 {
     self = [super init];
+    
     if (self) {
         //Фоновая картинка--------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
@@ -128,6 +130,7 @@
             mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
         }
         mainMoneyImage.layer.cornerRadius = 20;
+        mainMoneyImage.layer.masksToBounds = YES;
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
@@ -274,7 +277,8 @@
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     dictCellSend = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
-    mainAlertText.text = [dictCell objectForKey:@"text"];
+    
+    mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictCell objectForKey:@"text"]] ;
     
     if ([[dictCell objectForKey:@"paid"] boolValue]) {
         buttonBuy.alpha = 1.f;
@@ -283,6 +287,7 @@
     }
     
     NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
+    
     mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
