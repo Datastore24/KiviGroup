@@ -232,6 +232,8 @@
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     dictBookmark = dictCell;
+    
+    
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
     mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictCell objectForKey:@"text"]];
     
@@ -412,6 +414,9 @@
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
 {
+
+    
+    typeCell = [dictBookmark objectForKey:@"post_type"];    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SUBJECT_PUSH_TU_SUBCATEGORY object:typeCell];
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }

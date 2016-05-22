@@ -10,6 +10,8 @@
 
 @interface ChatView : UIView
 
-- (instancetype)initWithView: (UIView*) view andArray: (NSMutableArray*) array;
+- (instancetype)initWithView: (UIView*) view andDict: (NSDictionary*) dict;
+
+
 
 @end

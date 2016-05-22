@@ -14,7 +14,7 @@
 #import "StringImage.h"
 #import "ViewNotification.h"
 #import "TextMethodClass.h"
-#import "APIGetClass.h";
+#import "APIGetClass.h"
 
 @interface CategoryView () <UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate>
 
@@ -497,7 +497,6 @@
 //Действие кнопки открыть категорию
 - (void) buttonOpenCategoryAction
 {
-    
    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
 }
