@@ -231,50 +231,51 @@
     [cellView addSubview:imageViewCategory];
     
     //Заголовок-------------------------------------------
-    UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16, 216, 24)];
-    labelTitle.text = string;
+    UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 10, 216, 24)];
+    NSString * myString = string;
+    labelTitle.text = myString;
     labelTitle.numberOfLines = 0;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
-    labelTitle.font = [UIFont fontWithName:FONTLITE size:23];
+    labelTitle.font = [UIFont fontWithName:FONTLITE size:21];
     if (isiPhone6) {
-        labelTitle.frame = CGRectMake(120, 16, 216, 24);
-        labelTitle.font = [UIFont fontWithName:FONTLITE size:22];
+        labelTitle.frame = CGRectMake(120, 10, 200, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:20];
     } else if (isiPhone5) {
-        labelTitle.frame = CGRectMake(100, 14, 200, 24);
-        labelTitle.font = [UIFont fontWithName:FONTLITE size:18];
+        labelTitle.frame = CGRectMake(100, 8, 175, 24);
+        labelTitle.font = [UIFont fontWithName:FONTLITE size:16];
     }
     [labelTitle sizeToFit];
     [cellView addSubview:labelTitle];
     
     //Подзаголовок----------------------------------------
-    UILabel * labelSubTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelTitle.frame.size.height, 216, 16)];
+    UILabel * labelSubTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelTitle.frame.size.height, 216, 55)];
     labelSubTitle.text = subTitle;
-    labelSubTitle.textColor = [UIColor colorWithHexString:@"676766"];
+    labelSubTitle.textColor = [UIColor colorWithHexString:@"c0c0c0"];
     labelSubTitle.numberOfLines = 0;
-    labelSubTitle.font = [UIFont fontWithName:FONTLITE size:16];
+    labelSubTitle.font = [UIFont fontWithName:FONTLITE size:14];
     if (isiPhone6) {
-        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 216, 16);
-        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:15];
+        labelSubTitle.frame = CGRectMake(120, 16 + labelTitle.frame.size.height, 200, 48);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:13];
     } else if (isiPhone5) {
-        labelSubTitle.frame = CGRectMake(100, 20 + labelTitle.frame.size.height, 216, 16);
-        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:12];
+        labelSubTitle.frame = CGRectMake(100, 15 + labelTitle.frame.size.height, 175, 40);
+        labelSubTitle.font = [UIFont fontWithName:FONTLITE size:11];
     }
     [cellView addSubview:labelSubTitle];
     
-    //Тип----------------------------------------
-    UILabel * labelType = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16)];
-    labelType.text = type;
-    labelType.textColor = [UIColor colorWithHexString:@"676766"];
-    labelType.numberOfLines = 0;
-    labelType.font = [UIFont fontWithName:FONTLITE size:16];
-    if (isiPhone6) {
-        labelType.frame = CGRectMake(120, 16 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
-        labelType.font = [UIFont fontWithName:FONTLITE size:15];
-    } else if (isiPhone5) {
-        labelType.frame = CGRectMake(100, 20 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
-        labelType.font = [UIFont fontWithName:FONTLITE size:12];
-    }
-    [cellView addSubview:labelType];
+//    //Тип----------------------------------------
+//    UILabel * labelType = [[UILabel alloc] initWithFrame:CGRectMake(136, 16 + labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16)];
+//    labelType.text = type;
+//    labelType.textColor = [UIColor colorWithHexString:@"676766"];
+//    labelType.numberOfLines = 0;
+//    labelType.font = [UIFont fontWithName:FONTLITE size:16];
+//    if (isiPhone6) {
+//        labelType.frame = CGRectMake(120, 16 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
+//        labelType.font = [UIFont fontWithName:FONTLITE size:15];
+//    } else if (isiPhone5) {
+//        labelType.frame = CGRectMake(100, 20 + labelTitle.frame.size.height + labelSubTitle.frame.origin.y, 216, 16);
+//        labelType.font = [UIFont fontWithName:FONTLITE size:12];
+//    }
+//    [cellView addSubview:labelType];
     
     //Граница ячейки--------------------------------------
     UIView * viewBorder = [[UIView alloc] initWithFrame:CGRectMake(16, 127, cellView.frame.size.width - 32, 1)];

@@ -21,6 +21,7 @@
 #import "AlertClass.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "BookmarksController.h"
+#import "ChatController.h"
 
 @implementation SubjectViewController
 {
@@ -76,10 +77,16 @@
 
 - (void) notificationPushWithOpenSubject: (NSNotification*) notification
 {
-        NSLog(@"Текст");
+    
+    NSLog(@"%@", notification.object);
+    
+    if ([notification.object isEqualToString:@"post"]) {
         OpenSubjectController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenSubjectController"];
         [self.navigationController pushViewController:detail animated:YES];
-
+    } else {
+        ChatController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ChatController"];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 - (void) dealloc
@@ -110,9 +117,6 @@
 - (void) chetBookMark
 {
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
-    
-    NSLog(@"params %@", params);
-    
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
         
@@ -138,17 +142,13 @@
 {
     if ([[buttonBookmark titleForState:UIControlStateNormal] isEqualToString:@"ДОБАВИТЬ В ЗАКЛАДКИ"]) {
         NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
-        
         APIGetClass * apiGallery = [APIGetClass new];
         [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
-            
             dictResponse = (NSDictionary*) response;
-            
             if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
                 NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
                 //ТУТ UILabel когда нет фоток там API выдает
             } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-                NSLog(@"response %@", response);
                 [UIView animateWithDuration:0.3 animations:^{
                     [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
                 }];
