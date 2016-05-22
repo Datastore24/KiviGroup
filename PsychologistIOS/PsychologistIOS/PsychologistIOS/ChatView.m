@@ -364,6 +364,7 @@
 - (void) buttonPushAction
 {
     NSLog(@"Переход в чат");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_AUDIO_FOR_CHAT object:nil];
 }
 
 
