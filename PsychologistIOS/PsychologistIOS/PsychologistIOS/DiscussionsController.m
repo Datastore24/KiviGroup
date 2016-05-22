@@ -189,7 +189,7 @@ const float MIN_HEIGHT_MESSAGE_TEXTBOX = 30;
 {
     APIGetClass * apiSendImage = [APIGetClass new];
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [[SingleTone sharedManager] userId], @"id_user",
+                             [[SingleTone sharedManager] userID], @"id_user",
                              [[SingleTone sharedManager] postID], @"id_post",
                              stringURL, @"message",
                              @"image", @"type", nil];
@@ -216,7 +216,7 @@ const float MIN_HEIGHT_MESSAGE_TEXTBOX = 30;
 {
     APIGetClass * apiSendAudio = [APIGetClass new];
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [[SingleTone sharedManager] userId], @"id_user",
+                             [[SingleTone sharedManager] userID], @"id_user",
                              [[SingleTone sharedManager] postID], @"id_post",
                              stringURL, @"message",
                              @"audio", @"type", nil];

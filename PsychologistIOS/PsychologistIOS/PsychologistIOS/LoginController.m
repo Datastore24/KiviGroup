@@ -215,6 +215,7 @@
                
                 
                 NSDictionary * respData = [responseInfo objectForKey:@"data"];
+                NSLog(@"VK: %@",respData);
                 
                 //Пустые токены
                 
@@ -490,12 +491,12 @@
     NSString * idUser;
     
     
-    if([[[SingleTone sharedManager] userId] isEqual: [NSNull null]]){
+    if([[[SingleTone sharedManager] userID] isEqual: [NSNull null]]){
         
       idUser = @"";
         
     }else{
-       idUser = [[SingleTone sharedManager] userId];
+       idUser = [[SingleTone sharedManager] userID];
     }
     
    
@@ -520,8 +521,8 @@
         NSLog(@"resp: %@",responsePassword);
         if ([[responsePassword objectForKey:@"error"] integerValue] == 0) {
             NSString * userID =[NSString stringWithFormat:@"%@",[responsePassword objectForKey:@"id"]];
-            
-            [[SingleTone sharedManager] setUserId:userID];
+            NSLog(@"USERID %@",userID);
+            [[SingleTone sharedManager] setUserID:userID];
             
             if([type isEqualToString:@"vk"]){
                [authDbClass updateUser:@"" andPassword:@"" andIdUser:userID andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
@@ -652,7 +653,6 @@
                     //Берем userID
                     [[SingleTone sharedManager] setUserID:[data objectForKey:@"id"]];
                     [[SingleTone sharedManager] setLogin:[data objectForKey:@"login"]];
-                    [[SingleTone sharedManager] setUserId:[data objectForKey:@"id"]];
                     [[SingleTone sharedManager] setUserName:[data objectForKey:@"name"]];
                    
                    
