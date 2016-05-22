@@ -19,6 +19,8 @@
 #import "ChatView.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "DiscussionsController.h"
+#import "StringImage.h"
 
 @interface ChatController ()
 {
@@ -58,24 +60,13 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToChat) name:NOTIFICATION_SEND_AUDIO_FOR_CHAT object:nil];
+    
+    
+    
 #pragma mark - VideoElements
     
     [self getAPIWithBlock:^{
-        
-        NSLog(@"%@", dictResponse);
-        
-        
-        NSURL *videoUrl = [NSURL URLWithString:@"http://mirror.cessen.com/blender.org/peach/trailer/trailer_iphone.m4v"];
-        self.playerItem = [AVPlayerItem playerItemWithURL:videoUrl];
-        [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-        [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-        self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
-        self.playerView.player = _player;
-        self.playerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 140);
-        if (isiPhone5) {
-            self.playerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 90);
-        }
-        
         
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
             NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
@@ -85,6 +76,20 @@
             [self.view addSubview:openDetailsView];
         } else {
             NSLog(@"Не дикшенери");
+        }
+        NSDictionary * mainDictionary = [dictResponse objectForKey:@"data"];
+        NSDictionary * dictMedia = [mainDictionary objectForKey:@"other_media"];
+        NSString * stringURL = [StringImage createStringImageURLWithString:[dictMedia objectForKey:@"path"]];
+        
+        NSURL *videoUrl = [NSURL URLWithString:stringURL];
+        self.playerItem = [AVPlayerItem playerItemWithURL:videoUrl];
+        [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+        [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+        self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+        self.playerView.player = _player;
+        self.playerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 140);
+        if (isiPhone5) {
+            self.playerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 90);
         }
         
         NSString * stringText = @"У вас 5 новых уведомлений в разделе";
@@ -101,17 +106,27 @@
         [self.stateButton addTarget:self action:@selector(stateButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.stateButton];
         
-        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.playerView.frame.size.width - 70, self.playerView.frame.size.height + 10, 70, 20)];
-        self.timeLabel.text = @"Time";
-        self.timeLabel.font = [UIFont fontWithName:FONTREGULAR size:10];
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.playerView.frame.size.width - 100, self.playerView.frame.size.height + 10, 100, 20)];
+        self.timeLabel.text = @"00:00/00:00";
+        self.timeLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5) {
+            self.timeLabel.frame = CGRectMake(self.playerView.frame.size.width - 70, self.playerView.frame.size.height + 10, 70, 20);
+            self.timeLabel.font = [UIFont fontWithName:FONTREGULAR size:10];
+        }
         self.timeLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:self.timeLabel];
         
-        self.videoProgress = [[UIProgressView alloc] initWithFrame:CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 20, 200, 20)];
+        self.videoProgress = [[UIProgressView alloc] initWithFrame:CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 20, 230, 20)];
+        if (isiPhone5) {
+            self.videoProgress.frame = CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 20, 200, 20);
+        }
         self.videoProgress.progressTintColor = [UIColor blackColor];
         [self.view addSubview:self.videoProgress];
         
-        self.videoSlider = [[UISlider alloc] initWithFrame:CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 11.2, 200, 20)];
+        self.videoSlider = [[UISlider alloc] initWithFrame:CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 11.2, 230, 20)];
+        if (isiPhone5) {
+            self.videoSlider.frame = CGRectMake(self.stateButton.frame.size.width + 5, self.playerView.frame.size.height + 11.2, 200, 20);
+        }
         [self.videoSlider addTarget:self action:@selector(videoSliderAction:) forControlEvents:UIControlEventValueChanged];
         [self.videoSlider addTarget:self action:@selector(videoSliderActionAnd:) forControlEvents:UIControlEventValueChanged];
         [self.view addSubview:self.videoSlider];
@@ -313,6 +328,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) pushToChat
+{
+    DiscussionsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"DiscussionsController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
