@@ -67,7 +67,7 @@
     
     [self getAPIWithBlock:^{
         
-        NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
+        NSMutableArray * mainArrayAPI = [NSMutableArray arrayWithArray:[dictResponse objectForKey:@"data"]];
         CategoryView * contentView = [[CategoryView alloc] initWithContent:self.view andArray:mainArrayAPI];
         [self.view addSubview:contentView];
         
