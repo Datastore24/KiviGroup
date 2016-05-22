@@ -169,11 +169,11 @@
         
         //Кнопка отправить---------------------------------------------------------------
         UIButton * pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        pushButton.frame = CGRectMake(320, 10, 32, 32);
+        pushButton.frame = CGRectMake(320, 8, 38, 38);
         if (isiPhone6) {
-            pushButton.frame = CGRectMake(305, 10, 28, 28);
+            pushButton.frame = CGRectMake(302, 10, 32, 32);
         } else if (isiPhone5) {
-            pushButton.frame = CGRectMake(265, 16, 22, 22);
+            pushButton.frame = CGRectMake(263, 16, 25, 25);
         }
         pushButton.layer.cornerRadius = 16;
         UIImage * imageButtonPush = [UIImage imageNamed:@"pushMessageImage.png"];
@@ -183,11 +183,11 @@
         
         //Кнопка создания аудио дорожки---------------------------------------------------
         UIButton * soundButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        soundButton.frame = CGRectMake(363, 10, 32, 32);
+        soundButton.frame = CGRectMake(363, 8, 38, 38);
         if (isiPhone6) {
-            soundButton.frame = CGRectMake(340, 10, 28, 28);
+            soundButton.frame = CGRectMake(340, 10, 32, 32);
         } else if (isiPhone5) {
-            soundButton.frame = CGRectMake(290, 16, 22, 22);
+            soundButton.frame = CGRectMake(292, 16, 25, 25);
         }
         soundButton.layer.cornerRadius = 16;
         UIImage * imageSoundButton = [UIImage imageNamed:@"soundButton.png"];
@@ -197,11 +197,11 @@
         
         //Кнопка отправки фото------------------------------------------------------------
         UIButton * cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cameraButton.frame = CGRectMake(18, 15, 32, 21);
+        cameraButton.frame = CGRectMake(18, 12, 38, 25);
         if (isiPhone6) {
-            cameraButton.frame = CGRectMake(18, 15, 28, 18);
+            cameraButton.frame = CGRectMake(18, 12, 32, 20);
         } else if (isiPhone5) {
-            cameraButton.frame = CGRectMake(12, 18, 22, 16);
+            cameraButton.frame = CGRectMake(7, 16, 27, 18);
         } 
         UIImage * cameraButtonButton = [UIImage imageNamed:@"buttonCameraImage.png"];
         [cameraButton setImage:cameraButtonButton forState:UIControlStateNormal];

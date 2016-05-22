@@ -13,7 +13,7 @@
 #import "StringImage.h"
 #import "ViewSectionTable.h"
 
-@interface BookmarksView () <UITableViewDataSource, UITableViewDelegate>
+@interface BookmarksView () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @end
 
@@ -22,6 +22,7 @@
     NSMutableArray * mainArray;
     UITableView * mainTableView;
     NSDictionary * dictInform;
+    UISearchBar * mainSearchBar;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -53,7 +54,7 @@
         [self addSubview:viewSearch];
         
         //Окно поиска--------------------------
-        UISearchBar * mainSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 240, 24)];
+        mainSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 240, 24)];
         mainSearchBar.center = viewSearch.center;
         mainSearchBar.backgroundImage = [UIImage imageNamed:@"Search1.png"];
         mainSearchBar.layer.cornerRadius = 10;
@@ -65,6 +66,8 @@
         mainSearchBar.showsCancelButton = NO;
         mainSearchBar.showsScopeBar = NO;
         mainSearchBar.showsSearchResultsButton = NO;
+        mainSearchBar.delegate = self;
+        mainSearchBar.enablesReturnKeyAutomatically = NO;
         [viewSearch addSubview:mainSearchBar];
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40) style:UITableViewStylePlain];
@@ -293,71 +296,15 @@
     arrowImage.image = [UIImage imageNamed:@"arrowImage.png"];
     [cellView addSubview:arrowImage];
     
-//    //Нотификации-----------------------------------------
-//    if ([notific integerValue] != 0) {
-//        UIView * viewNotification = [[UIView alloc] initWithFrame:CGRectMake(cellView.frame.size.width - 56, 16, 40, 40)];
-//        viewNotification.backgroundColor = [UIColor colorWithHexString:@"f92502"];
-//        viewNotification.layer.cornerRadius = 20;
-//        if (isiPhone6) {
-//            viewNotification.frame = CGRectMake(cellView.frame.size.width - 56, 16, 34, 34);
-//            viewNotification.layer.cornerRadius = 17;
-//        } else if (isiPhone5) {
-//            viewNotification.frame = CGRectMake(cellView.frame.size.width - 56, 16, 30, 30);
-//            viewNotification.layer.cornerRadius = 15;
-//        }
-//        [cellView addSubview:viewNotification];
-//        
-//        UILabel * labelNotification = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-//        labelNotification.text = [NSString stringWithFormat:@"%ld", (long)[notific integerValue]];
-//        labelNotification.textColor = [UIColor whiteColor];
-//        labelNotification.textAlignment = NSTextAlignmentCenter;
-//        labelNotification.font = [UIFont fontWithName:FONTREGULAR size:19];
-//        if (isiPhone6) {
-//            labelNotification.frame = CGRectMake(0, 0, 34, 34);
-//            labelNotification.font = [UIFont fontWithName:FONTREGULAR size:17];
-//        } else if (isiPhone5) {
-//            labelNotification.frame = CGRectMake(0, 0, 30, 30);
-//            labelNotification.font = [UIFont fontWithName:FONTREGULAR size:15];
-//        }
-//        [viewNotification addSubview:labelNotification];
-//    }
-//    
-//    //Срок действия------------------------------------------
-//    // 0 - бесплатная, 1 - платная оплаченная, 2 - платная закончилась
-//    if ([trial integerValue] == 1) {
-//        UILabel * labelTrial = [[UILabel alloc] initWithFrame:CGRectMake(136, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 24, 200, 16)];
-//        labelTrial.text = @"Доступен до 1.04.2016";
-//        labelTrial.textColor = [UIColor colorWithHexString:@"676766"];
-//        labelTrial.font = [UIFont fontWithName:FONTLITE size:13];
-//        if (isiPhone6) {
-//            labelTrial.frame = CGRectMake(120, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 200, 16);
-//            labelTrial.font = [UIFont fontWithName:FONTLITE size:12];
-//        } else if (isiPhone5) {
-//            labelTrial.frame = CGRectMake(100, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 200, 16);
-//            labelTrial.font = [UIFont fontWithName:FONTLITE size:10];
-//        }
-//        [cellView addSubview:labelTrial];
-//    } else if ([trial integerValue] == 2) {
-//        UIButton * buttonBuyTrial = [UIButton buttonWithType:UIButtonTypeSystem];
-//        buttonBuyTrial.frame = CGRectMake(136, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 24, 110, 16);
-//        [buttonBuyTrial setTitle:@"Продлить доступ" forState:UIControlStateNormal];
-//        [buttonBuyTrial setTitleColor:[UIColor colorWithHexString:@"676766"] forState:UIControlStateNormal];
-//        buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:13];
-//        if (isiPhone6) {
-//            buttonBuyTrial.frame = CGRectMake(111, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 110, 16);
-//            buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:12];
-//        } else if (isiPhone5) {
-//            buttonBuyTrial.frame = CGRectMake(90, labelSubTitle.frame.size.height + labelSubTitle.frame.origin.y + 14, 110, 16);
-//            buttonBuyTrial.titleLabel.font = [UIFont fontWithName:FONTLITE size:10];
-//        }
-//        [buttonBuyTrial addTarget:self action:@selector(buttonBuyTrialActiob) forControlEvents:UIControlEventTouchUpInside];
-//        [cellView addSubview:buttonBuyTrial];
-//    }
-    
     return cellView;
 }
 
 #pragma mark - Action Methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [mainSearchBar resignFirstResponder];
+}
 
 //Действие кнопки продлить доступ
 - (void) buttonBuyTrialActiob

@@ -47,7 +47,7 @@
         }
         
         if (isiPhone4s) {
-            viewChat.frame = CGRectMake(0, 140, self.frame.size.width, self.frame.size.height - 240);
+            viewChat.frame = CGRectMake(0, 150, self.frame.size.width, self.frame.size.height - 250);
         }
         
 //        for (NSInteger i = array.count; i > (array.count - 3); i--) {
@@ -193,15 +193,15 @@
         ViewSectionTable * imagePost = [[ViewSectionTable alloc] initWithPostImageURL:[StringImage createStringImageURLWithString:[mainDict objectForKey:@"media_path"]] andView:self andContentMode:UIViewContentModeScaleAspectFill];
         [self addSubview:imagePost];
         
-        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 170, view.frame.size.width, 200)];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 170, view.frame.size.width, 220)];
         if (isiPhone6) {
-            mainScrollView.frame = CGRectMake(0, 150, view.frame.size.width, 158);
+            mainScrollView.frame = CGRectMake(0, 150, view.frame.size.width, 168);
         } else if (isiPhone5) {
-            mainScrollView.frame = CGRectMake(0, 100, view.frame.size.width, 140);
+            mainScrollView.frame = CGRectMake(0, 100, view.frame.size.width, 160);
         }
         
         if (isiPhone4s) {
-            mainScrollView.frame = CGRectMake(0, 100, view.frame.size.width, 65);
+            mainScrollView.frame = CGRectMake(0, 110, view.frame.size.width, 80);
         }
         mainScrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:mainScrollView];
@@ -230,19 +230,26 @@
         
         //Кнопка изменения высоты первого скрола
         buttonHeight = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonHeight.frame = CGRectMake(16, 180, 65.5, 10);
+        buttonHeight.frame = CGRectMake(16, 180, 65.5, 35);
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65.5, 10)];
         if (isiPhone6) {
-            buttonHeight.frame = CGRectMake(16, 140, 65.5, 10);
+            buttonHeight.frame = CGRectMake(16, 140, 65.5, 35);
+            imageView.frame = CGRectMake(0, 0, 65.5, 10);
         } if (isiPhone5) {
-            buttonHeight.frame = CGRectMake(20, 130, 60, 9);
+            buttonHeight.frame = CGRectMake(20, 130, 60, 30);
+            imageView.frame = CGRectMake(0, 0, 60, 9);
         }
         
         if (isiPhone4s) {
-            buttonHeight.frame = CGRectMake(20, 55, 60, 9);
+            buttonHeight.frame = CGRectMake(20, 55, 60, 30);
+            imageView.frame = CGRectMake(0, 0, 60, 9);
         }
         
         UIImage * imageButtonHeight = [UIImage imageNamed:@"buttonHight.png"];
-        [buttonHeight setImage:imageButtonHeight forState:UIControlStateNormal];
+        
+        imageView.image = imageButtonHeight;
+        [buttonHeight addSubview:imageView];
+//        [buttonHeight setImage:imageButtonHeight forState:UIControlStateNormal];
         [buttonHeight addTarget:self action:@selector(buttonHeightAction) forControlEvents:UIControlEventTouchUpInside];
         [mainScrollView addSubview:buttonHeight];
         
@@ -261,42 +268,42 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height += 250;
+                newRectScroll.size.height += 230;
             } else {
             if (isiPhone6) {
-                newRectScroll.size.height += 295;
+                newRectScroll.size.height += 275;
             } else if (isiPhone5) {
-                newRectScroll.size.height += 260;
+                newRectScroll.size.height += 240;
             } else {
-                newRectScroll.size.height += 300;
+                newRectScroll.size.height += 280;
             }
             }
             mainScrollView.frame = newRectScroll;
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y += 250;
+                newRectButton.origin.y += 230;
             } else {
             if (isiPhone6) {
-                newRectButton.origin.y += 295;
+                newRectButton.origin.y += 275;
             } else if (isiPhone5) {
-                newRectButton.origin.y += 260;
+                newRectButton.origin.y += 240;
             } else {
-                newRectButton.origin.y += 300;
+                newRectButton.origin.y += 280;
             }
             }
             buttonHeight.frame = newRectButton;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height += 250;
+                newRectLabel.size.height += 230;
             } else {
             if (isiPhone6) {
-                newRectLabel.size.height += 295;
+                newRectLabel.size.height += 275;
             } else if (isiPhone5) {
-                newRectLabel.size.height += 260;
+                newRectLabel.size.height += 240;
             } else {
-                newRectLabel.size.height += 300;
+                newRectLabel.size.height += 280;
             }
             }
             textViewText.frame = newRectLabel;
@@ -309,42 +316,42 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height -= 250;
+                newRectScroll.size.height -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectScroll.size.height -= 295;
+                    newRectScroll.size.height -= 275;
                 } else if (isiPhone5) {
-                    newRectScroll.size.height -= 260;
+                    newRectScroll.size.height -= 240;
                 } else {
-                    newRectScroll.size.height -= 300;
+                    newRectScroll.size.height -= 280;
                 }
             }
             mainScrollView.frame = newRectScroll;
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y -= 250;
+                newRectButton.origin.y -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectButton.origin.y -= 295;
+                    newRectButton.origin.y -= 275;
                 } else if (isiPhone5) {
-                    newRectButton.origin.y -= 260;
+                    newRectButton.origin.y -= 240;
                 } else {
-                    newRectButton.origin.y -= 300;
+                    newRectButton.origin.y -= 280;
                 }
             }
             buttonHeight.frame = newRectButton;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height -= 250;
+                newRectLabel.size.height -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectLabel.size.height -= 295;
+                    newRectLabel.size.height -= 275;
                 } else if (isiPhone5) {
-                    newRectLabel.size.height -= 260;
+                    newRectLabel.size.height -= 240;
                 } else {
-                    newRectLabel.size.height -= 300;
+                    newRectLabel.size.height -= 280;
                 }
             }            textViewText.frame = newRectLabel;
         } completion:^(BOOL finished) {

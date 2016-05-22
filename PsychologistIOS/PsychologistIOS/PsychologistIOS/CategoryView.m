@@ -86,10 +86,10 @@
         mainSearchBar.barTintColor = [UIColor colorWithHexString:@"eb9285"];
         mainSearchBar.tintColor = [UIColor redColor];
         mainSearchBar.showsBookmarkButton = NO;
-        mainSearchBar.showsCancelButton = NO;
         mainSearchBar.showsScopeBar = NO;
         mainSearchBar.showsSearchResultsButton = NO;
         mainSearchBar.delegate = self;
+        mainSearchBar.enablesReturnKeyAutomatically = NO;
         [viewSearch addSubview:mainSearchBar];
       
         
@@ -104,7 +104,12 @@
         mainTableView.delegate = self;
         mainTableView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainTableView];
-    
+        
+//        //Скрытие клавиатуры тапом----------------------------------
+//        UITapGestureRecognizer * tapOnBackground = [[UITapGestureRecognizer alloc]
+//                                                    initWithTarget:self action:@selector(tapOnBackgroundAction)];
+//        [self addGestureRecognizer:tapOnBackground];
+//    
         
         //Затемнение-----------------------------------------------------
         darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 65)];
@@ -565,11 +570,18 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Cancel clicked");
+//    [mainSearchBar resignFirstResponder];
+    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Search Clicked");
     [self searchTableList];
+    [mainSearchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [mainSearchBar resignFirstResponder];
 }
 
 
