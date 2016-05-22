@@ -96,10 +96,10 @@
 
 - (void) getAPIWithBlock: (void (^)(void))block
 {
-    NSLog(@"%@",[[SingleTone sharedManager] userId]);
+    NSLog(@"%@",[[SingleTone sharedManager] userID]);
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-    [[SingleTone sharedManager] userId],@"id", nil];
+    [[SingleTone sharedManager] userID],@"id", nil];
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"show_user_id" complitionBlock:^(id response) {

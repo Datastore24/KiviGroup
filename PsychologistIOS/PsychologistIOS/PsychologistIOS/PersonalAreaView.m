@@ -808,7 +808,7 @@
     
     
     NSDictionary * dictInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              [[SingleTone sharedManager] userId],@"id",
+                              [[SingleTone sharedManager] userID],@"id",
                                textFieldviewNickName.text,@"name",
                                selectedTitle,@"family",
                                textFieldEmail.text,@"email",

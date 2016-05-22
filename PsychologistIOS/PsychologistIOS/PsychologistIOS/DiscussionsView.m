@@ -902,7 +902,7 @@
         NSString *strDate = [inFormatDate stringFromDate:date];
         
         NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       [[SingleTone sharedManager] userId], @"id_user",
+                                       [[SingleTone sharedManager] userID], @"id_user",
                                        textFieldChat.text, @"message",
                                        strDate, @"inserted", @"message", @"type", nil];
         
@@ -940,7 +940,7 @@
 
         [mArrayForPushButton removeAllObjects];
         NSDictionary * dictData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [[SingleTone sharedManager] userId], @"id_user",
+                                   [[SingleTone sharedManager] userID], @"id_user",
                                    [[SingleTone sharedManager] postID], @"id_post",
                                    textString, @"message",
                                    @"message", @"type", nil];
@@ -970,7 +970,7 @@
     
     
     NSDictionary * dictPushImage = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [[SingleTone sharedManager] userId], @"id_user",
+                                   [[SingleTone sharedManager] userID], @"id_user",
                                    notification.object, @"message",
                                    strDate, @"inserted", @"image", @"type", nil];
     
@@ -990,7 +990,7 @@
     
     
     NSDictionary * dictPushText = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [[SingleTone sharedManager] userId], @"id_user",
+                                   [[SingleTone sharedManager] userID], @"id_user",
                                    notification.object, @"message",
                                    strDate, @"inserted", @"audio", @"type", nil];
     

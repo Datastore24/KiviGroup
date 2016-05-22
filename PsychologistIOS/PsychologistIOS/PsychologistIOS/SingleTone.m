@@ -26,7 +26,6 @@
 
 @synthesize token_ios;
 @synthesize login;
-@synthesize userId;
 
 @synthesize userID;
 @synthesize postID;
