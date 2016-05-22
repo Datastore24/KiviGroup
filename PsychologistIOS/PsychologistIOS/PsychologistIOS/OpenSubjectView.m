@@ -11,6 +11,7 @@
 #import "Macros.h"
 #import "StringImage.h"
 #import "ViewSectionTable.h"
+#import "TextMethodClass.h"
 
 @implementation OpenSubjectView
 {
@@ -188,7 +189,7 @@
         
 #pragma mark - MainView
         
-        NSString * stringText = [mainDict objectForKey:@"text"];
+        NSString * stringText = [TextMethodClass stringByStrippingHTML:[mainDict objectForKey:@"text"]];
         ViewSectionTable * imagePost = [[ViewSectionTable alloc] initWithPostImageURL:[StringImage createStringImageURLWithString:[mainDict objectForKey:@"media_path"]] andView:self andContentMode:UIViewContentModeScaleAspectFill];
         [self addSubview:imagePost];
         
@@ -229,15 +230,15 @@
         
         //Кнопка изменения высоты первого скрола
         buttonHeight = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonHeight.frame = CGRectMake(16, 180, 45.5, 8);
+        buttonHeight.frame = CGRectMake(16, 180, 65.5, 10);
         if (isiPhone6) {
-            buttonHeight.frame = CGRectMake(16, 140, 45.5, 8);
+            buttonHeight.frame = CGRectMake(16, 140, 65.5, 10);
         } if (isiPhone5) {
-            buttonHeight.frame = CGRectMake(20, 130, 40, 7);
+            buttonHeight.frame = CGRectMake(20, 130, 60, 9);
         }
         
         if (isiPhone4s) {
-            buttonHeight.frame = CGRectMake(20, 55, 40, 7);
+            buttonHeight.frame = CGRectMake(20, 55, 60, 9);
         }
         
         UIImage * imageButtonHeight = [UIImage imageNamed:@"buttonHight.png"];

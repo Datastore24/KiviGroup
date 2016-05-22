@@ -13,15 +13,22 @@
 #import "ViewSectionTable.h"
 #import "StringImage.h"
 #import "ViewNotification.h"
+#import "TextMethodClass.h"
+#import "APIGetClass.h";
 
-@interface CategoryView () <UITableViewDataSource, UITableViewDelegate>
+@interface CategoryView () <UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate>
 
 @end
 
 @implementation CategoryView
 {
     UITableView * mainTableView;
+    UISearchController *searchBarController;
+    UISearchBar * mainSearchBar;
     NSArray * mainArray;
+    NSArray *filteredContentList;
+    BOOL isSearching;
+    NSDictionary* dictResponse;
     
     UIImageView * alertView;
     UIView * darkView;
@@ -40,6 +47,7 @@
 - (instancetype)initWithBackgroundView: (UIView*) view
 {
     self = [super init];
+    
     if (self) {
         //Фоновая картинка--------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
@@ -51,7 +59,7 @@
     return self;
 }
 
-- (instancetype)initWithContent: (UIView*) view andArray: (NSArray*) array
+- (instancetype)initWithContent: (UIView*) view andArray: (NSMutableArray*) array
 {
     self = [super init];
     if (self) {
@@ -61,13 +69,15 @@
         self.userInteractionEnabled = YES;
         mainArray = array;
         
+        dictResponse = [NSDictionary new];
+        
         //Вью поиска---------------------------
         UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 40)];
         viewSearch.backgroundColor = [UIColor colorWithHexString:@"eb9285"];
         [self addSubview:viewSearch];
         
         //Окно поиска--------------------------
-        UISearchBar * mainSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 240, 24)];
+        mainSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 240, 24)];
         mainSearchBar.center = viewSearch.center;
         mainSearchBar.backgroundImage = [UIImage imageNamed:@"Search1.png"];
         mainSearchBar.layer.cornerRadius = 10;
@@ -79,7 +89,9 @@
         mainSearchBar.showsCancelButton = NO;
         mainSearchBar.showsScopeBar = NO;
         mainSearchBar.showsSearchResultsButton = NO;
+        mainSearchBar.delegate = self;
         [viewSearch addSubview:mainSearchBar];
+      
         
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height)];
         if (isiPhone6) {
@@ -128,6 +140,7 @@
             mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
         }
         mainMoneyImage.layer.cornerRadius = 20;
+        mainMoneyImage.layer.masksToBounds = YES;
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
@@ -223,7 +236,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return mainArray.count;
+    if (isSearching) {
+        if([filteredContentList isEqual: [NSNull null]]){
+            return 0;
+        }else{
+            return filteredContentList.count;
+        }
+        
+    }
+    else {
+        return mainArray.count;
+    }
+
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -242,9 +267,23 @@
         [view removeFromSuperview];
     }
     
-    cell.backgroundColor = nil;
+
+   
+
     
-    NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+    cell.backgroundColor = nil;
+    NSDictionary * dictCell ;
+     if (isSearching) {
+          NSLog(@"DICTS %li",filteredContentList.count);
+
+             dictCell = [filteredContentList objectAtIndex:indexPath.row];
+
+        
+     }else{
+       dictCell = [mainArray objectAtIndex:indexPath.row];
+     }
+    
+   
     
     if (mainArray.count != 0) {
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
@@ -274,7 +313,8 @@
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     dictCellSend = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
-    mainAlertText.text = [dictCell objectForKey:@"text"];
+    
+    mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictCell objectForKey:@"text"]] ;
     
     if ([[dictCell objectForKey:@"paid"] boolValue]) {
         buttonBuy.alpha = 1.f;
@@ -283,6 +323,7 @@
     }
     
     NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
+    
     mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
@@ -462,6 +503,73 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
     [self performSelector:@selector(buttonCancelAction) withObject:nil afterDelay:0.5];
+}
+
+- (void)searchTableList {
+    NSString *searchString = mainSearchBar.text;
+    NSLog(@"ПОИСК");
+    
+    [self getAPIWithSearch:searchString andBlock:^{
+        //Remove all objects first.
+        filteredContentList = [dictResponse objectForKey:@"data"];
+        
+        isSearching = YES;
+        [mainTableView reloadData];
+    }];
+
+}
+
+- (void) getAPIWithSearch: (NSString *) search andBlock: (void (^)(void))block
+{
+    NSLog(@"Serch %@",search);
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:@"0", @"show_tree",
+                             search, @"search", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_category_search" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
+}
+
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",isSearching);
+    
+    //Remove all objects first.
+    
+    
+    if([searchText length] > 2) {
+        
+        [self searchTableList];
+        
+    }
+    else {
+        isSearching = NO;
+        [mainTableView reloadData];
+    }
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchTableList];
 }
 
 

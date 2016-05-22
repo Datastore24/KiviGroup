@@ -119,9 +119,9 @@
             labelPlaceHolderPhone.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
         
-        if([dict objectForKey:@"login"] != [NSNull null]){
+        if([dict objectForKey:@"phone"] != [NSNull null]){
 
-            NSString *firstLetter = [[dict objectForKey:@"login"] substringToIndex:1];
+            NSString *firstLetter = [[dict objectForKey:@"phone"] substringToIndex:1];
         
             if ([firstLetter isEqualToString:@"7"]) {
                 if([dict objectForKey:@"phone"] != [NSNull null]){
@@ -180,9 +180,9 @@
         }
         
         
-        NSLog(@"EMAIL");
+
         if([dict objectForKey:@"email"] != [NSNull null]){
-            NSLog(@"NOT EMPTY");
+          
             if(![[dict objectForKey:@"email"] isEqualToString:@""]){
                 textFieldEmail.text=[dict objectForKey:@"email"];
             }else{

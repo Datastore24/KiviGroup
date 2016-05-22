@@ -199,6 +199,7 @@
     
     if (textFildSMS.text.length < 5) {
         NSLog(@"%lu", textFildSMS.text.length);
+        [AlertClass showAlertViewWithMessage:@"Код должен быть меньше 5 символов"];
     } else {
         
    
@@ -247,6 +248,7 @@
             } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
                 
                 NSLog(@"ERROR:%@",[responseInfo objectForKey:@"error_msg"]);
+                [AlertClass showAlertViewWithMessage:@"Не верно введен код"];
                 
             }
         }];
@@ -538,6 +540,7 @@
             
         }else{
                 NSLog(@"error_msg: %@",[responsePassword objectForKey:@"error_msg"]);
+           
         }
         
         
@@ -634,7 +637,7 @@
                 
                 
                 NSDictionary * responseCheckInfo = (NSDictionary*)response;
-           
+            
                 
                 //Записываем имя при проврке
                 
@@ -663,6 +666,7 @@
                     
                 } else {
                     NSLog(@"%@", [responseCheckInfo objectForKey:@"error_msg"]);
+                    
                     
                     [self showLoginWith:NO];
                     

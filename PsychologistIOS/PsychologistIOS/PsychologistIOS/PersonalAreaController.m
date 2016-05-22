@@ -138,7 +138,7 @@
 - (void) saveProfile: (NSDictionary *) dict
 {
 
-
+NSString * phoneResult = [[dict objectForKey:@"phone"] stringByReplacingOccurrencesOfString: @"+" withString: @""];
                                
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -146,7 +146,7 @@
                             [dict objectForKey:@"name"],@"name",
                             [dict objectForKey:@"family"],@"family",
                             [dict objectForKey:@"email"],@"email",
-                            [dict objectForKey:@"phone"],@"phone",
+                            phoneResult,@"phone",
                             [dict objectForKey:@"city"],@"city",
                             [dict objectForKey:@"bdate"],@"bdate",
 

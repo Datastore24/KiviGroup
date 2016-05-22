@@ -47,7 +47,7 @@
         arrayInfo=array;
         phoneDict = [[NSMutableDictionary alloc] init];
         idDict = [[NSMutableDictionary alloc] init];
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
         arrayButtons = [[NSMutableArray alloc] init];
         arrayBool = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES],
@@ -56,7 +56,7 @@
         customTagBackCallButton = 0;
         isBool = YES;
         
-        mainTableViewRecommend = [[UITableView alloc] initWithFrame:CGRectMake(0, 24, self.frame.size.width, self.frame.size.height - 24) style:UITableViewStylePlain];
+        mainTableViewRecommend = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) style:UITableViewStylePlain];
         //Убираем полосы разделяющие ячейки------------------------------
         mainTableViewRecommend.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableViewRecommend.dataSource = self;
@@ -69,7 +69,7 @@
 #pragma mark - Create Alert
         
         //Затемнение-----------------------------------------------------
-        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height+65)];
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];

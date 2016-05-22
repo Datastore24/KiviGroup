@@ -54,9 +54,11 @@
     NSInteger buttonsNumber;
     //Массив картинок---------------------
     NSMutableArray * buttonsArray;
+    NSMutableArray * imageArray;
     BOOL buttonImageChange;
-    
+    UIView * imageFullView;
     UIImageView * imageFull;
+    
     
     //Вью микрофона------------------------
     UIView * dictaphoneView;
@@ -64,6 +66,9 @@
     UIButton * buttonSend;
     
     NSInteger integetButtonPlay;
+    NSMutableDictionary * soundDict;
+    
+    
 
 }
 
@@ -78,9 +83,15 @@
         countFor = 0.f;
         buttonsNumber = 9;
         buttonsArray = [NSMutableArray new];
+        imageArray = [NSMutableArray new];
+        soundDict = [NSMutableDictionary new];
         buttonImageChange = NO;
         dictaBool = NO;
         integetButtonPlay = 0;
+        
+        
+        
+        
         
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
@@ -198,12 +209,16 @@
         [mainViewPush addSubview:cameraButton];
         
         
+        imageFullView = [[UIImageView alloc] initWithFrame:self.frame];
+        imageFullView.alpha = 0.f;
+        imageFullView.userInteractionEnabled = YES;
+        imageFullView.backgroundColor = [UIColor whiteColor];
+        imageFullView.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:imageFullView];
+        
         imageFull = [[UIImageView alloc] initWithFrame:self.frame];
-        imageFull.alpha = 0.f;
-        imageFull.userInteractionEnabled = YES;
-        imageFull.backgroundColor = [UIColor whiteColor];
         imageFull.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:imageFull];
+        [imageFullView addSubview:imageFull];
         
         UIButton * buttonCanselImage = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonCanselImage.frame = CGRectMake(imageFull.frame.size.width - 70, 10, 50, 50);
@@ -211,7 +226,7 @@
         UIImage * imageButtonCansel = [UIImage imageNamed:@"imageCancel.png"];
         [buttonCanselImage setImage:imageButtonCansel forState:UIControlStateNormal];
         [buttonCanselImage addTarget:self action:@selector(buttonCanselImageAction) forControlEvents:UIControlEventTouchUpInside];
-        [imageFull addSubview:buttonCanselImage];
+        [imageFullView addSubview:buttonCanselImage];
         
 #pragma mark - Dictaphone
         
@@ -325,7 +340,7 @@
     for (int i = 0; i < array.count; i++) {
         NSDictionary * dictChat = [array objectAtIndex:i];
         
-        NSLog(@"id_user !!!!!!!!!!!!!!!!!!!!!!%@", [dictChat objectForKey:@"id_user"]);
+        
         
         if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
             // Имя пользователя---------------
@@ -341,7 +356,7 @@
             //Если приходит текст-------------------------------------------
             if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
                 
-                NSLog(@"message");
+               
                 
                 //Текст сообщения------------------
                 UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 24, 32 + countFor, 300, 12)];
@@ -378,22 +393,34 @@
             //Если приходит картинка----------------------------------------
             } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
                 
+                
                 //Создаем картинку--------------------
                 imageViewChat = [UIButton buttonWithType:UIButtonTypeCustom];
                 buttonsNumber += 1;
                 imageViewChat.tag = buttonsNumber;
+                
+                
                 imageViewChat.frame = CGRectMake(viewScrollChat.frame.size.width - 282, 32 + countFor, 250, 200);
                 if (isiPhone5) {
                     imageViewChat.frame = CGRectMake(viewScrollChat.frame.size.width - 222, 32 + countFor, 200, 150);
                 }
                 if (send) {
                     [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
+                    [imageViewChat addTarget:self action:@selector(imageLocalViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 } else {
                     ViewSectionTable * urlViewChat = [[ViewSectionTable alloc] initImageChatWithImageURL:[dictChat objectForKey:@"message"] andContentMode:UIViewContentModeScaleAspectFill];
+                    urlViewChat.userInteractionEnabled = NO;
+                    urlViewChat.exclusiveTouch = NO;
+                    
                     [imageViewChat addSubview:urlViewChat];
+                    [imageArray addObject:[dictChat objectForKey:@"message"]];
+                    [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 }
-                [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                
                 [viewScrollChat addSubview:imageViewChat];
+                
                 [buttonsArray addObject:imageViewChat];
 
             //Если приходит аудиофайл---------------------------------------
@@ -409,18 +436,10 @@
                 bubbleView.image = [UIImage imageNamed:@"bubble.png"];
                 [viewScrollChat addSubview:bubbleView];
                 NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"message"]];
-                self.player = [[CustomPlayer alloc] initWithURL:url];
-                self.player.customTag = integetButtonPlay;
-                self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                NSString * integetButtonPlayString = [NSString stringWithFormat:@"%li",integetButtonPlay];
+                [soundDict setObject:url forKey:integetButtonPlayString];
                 
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                                                         selector:@selector(playerItemDidReachEnd:)
-                                                             name:AVPlayerItemDidPlayToEndTimeNotification
-                                                           object:[self.player currentItem]];
-                if (!self.player) {
-                    NSLog(@"Error");
-                }
-                
+               
                 UIButton * buttonPlay = [UIButton buttonWithType:UIButtonTypeSystem];
                 buttonPlay.frame = CGRectMake(5, 5, 10, 10);
                 buttonPlay.backgroundColor = [UIColor blackColor];
@@ -430,7 +449,7 @@
                 
                 integetButtonPlay += 1;
                 
-                NSLog(@"Звук");
+              
                 
             //Ошибка------------------------------------------------
             } else {
@@ -513,7 +532,7 @@
                 
                 //Если приходит картинка----------------------------------------
             } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"image"]) {
-                
+               
                 //Создаем картинку--------------------
                 imageViewChat = [UIButton buttonWithType:UIButtonTypeCustom];
                 imageViewChat.frame = CGRectMake(32, 32 + countFor, 250, 200);
@@ -521,23 +540,36 @@
                     imageViewChat.frame = CGRectMake(32, 32 + countFor, 200, 150);
                 }
                 buttonsNumber += 1;
+            
                 imageViewChat.tag = buttonsNumber;
+                
                 if (send) {
                     [imageViewChat setImage:[dictChat objectForKey:@"message"] forState:UIControlStateNormal];
+                    [imageViewChat addTarget:self action:@selector(imageLocalViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 } else {
                     ViewSectionTable * urlViewChat = [[ViewSectionTable alloc] initImageChatWithImageURL:[dictChat objectForKey:@"message"] andContentMode:UIViewContentModeScaleAspectFill];
+                    urlViewChat.userInteractionEnabled = NO;
+                    urlViewChat.exclusiveTouch = NO;
+                   
                     [imageViewChat addSubview:urlViewChat];
+                    [imageArray addObject:[dictChat objectForKey:@"message"]];
+                    [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
                 }
-                [imageViewChat addTarget:self action:@selector(imageViewChatAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+              
+                
                 [viewScrollChat addSubview:imageViewChat];
                 
                 [buttonsArray addObject:imageViewChat];
+             
+                
+               
                 
                 
                 //Если приходит аудиофайл---------------------------------------
             } else if ([[dictChat objectForKey:@"type"] isEqualToString:@"audio"]) {
                 
-                viewMessage = [[UIView alloc] initWithFrame:CGRectMake(32, 32 + countFor, 80, 20)];
+                viewMessage = [[UIView alloc] initWithFrame:CGRectMake(32, 32 + countFor, 80, 40)];
                 viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
                 viewMessage.layer.cornerRadius = 7.f;
                 [viewScrollChat addSubview:viewMessage];
@@ -548,32 +580,31 @@
                 [viewScrollChat addSubview:bubbleView];
                 
                 NSURL * url = [NSURL URLWithString:[dictChat objectForKey:@"message"]];
-                self.player = [[CustomPlayer alloc] initWithURL:url];
-                self.player.customTag = integetButtonPlay;
-                self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                NSString * integetButtonPlayString = [NSString stringWithFormat:@"%li",integetButtonPlay];
+                [soundDict setObject:url forKey:integetButtonPlayString];
                 
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                                                         selector:@selector(playerItemDidReachEnd:)
-                                                             name:AVPlayerItemDidPlayToEndTimeNotification
-                                                           object:[self.player currentItem]];
-                if (!self.player) {
-                    NSLog(@"Error");
-                }
+               
                 
-                UIButton * buttonPlay = [UIButton buttonWithType:UIButtonTypeSystem];
-                buttonPlay.frame = CGRectMake(5, 5, 10, 10);
-                buttonPlay.backgroundColor = [UIColor blackColor];
+                UIButton * buttonPlay = [UIButton buttonWithType:UIButtonTypeCustom];
+                buttonPlay.frame = CGRectMake(5, 5, 30, 30);
+                UIImage *btnImage = [UIImage imageNamed:@"play_t.png"];
+                [buttonPlay setImage:btnImage forState:UIControlStateNormal];
+//                buttonPlay.backgroundColor = [UIColor blackColor];
                 buttonPlay.tag = integetButtonPlay;
                 [buttonPlay addTarget:self action:@selector(buttonPlayAction:) forControlEvents:UIControlEventTouchUpInside];
                 [viewMessage addSubview:buttonPlay];
                 
+                UIActivityIndicatorView * activitiView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(35, 5, 30, 30)];
+                activitiView.tag = 20+integetButtonPlay;
+                
+                activitiView.backgroundColor = [UIColor clearColor];
+                activitiView.color = [UIColor blackColor];
+                activitiView.alpha = 0.f;
+                [viewMessage addSubview:activitiView];
+                
                 integetButtonPlay += 1;
                 
-                [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player];
                 
-                
-                
-                NSLog(@"Звук");
                 
                 //Ошибка------------------------------------------------
             } else {
@@ -616,7 +647,25 @@
 
 - (void) buttonPlayAction: (UIButton*) button
 {
+    
+     NSURL * url = [soundDict objectForKey:[NSString stringWithFormat:@"%li",button.tag]];
+    
+    self.player = [[CustomPlayer alloc] initWithURL:url];
+    self.player.customTag = button.tag;
+
+    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[self.player currentItem]];
+    UIActivityIndicatorView * activitiView = [mainScrollView viewWithTag:20+button.tag];
+    [activitiView setAlpha:1.0f];
+    [activitiView startAnimating];
+    
     [self.player play];
+   
+    
 }
 
 - (void)moviePlayDidEnd:(NSNotification *)notification {
@@ -727,8 +776,7 @@
     
     if(txtFrame.size.height > 38.187500)
     {
-        NSLog(@"80");
-        
+       
         CGRect newFrame = inputText.frame;
         newFrame.size.height = 42;
         txtFrame.size.height = 32;
@@ -754,7 +802,7 @@
     else
     {
         
-        NSLog(@"30");
+        
         txtFrame.size.height = 32;
         txtFrame.origin.y=0;
         CGRect newFrame = inputText.frame;
@@ -809,6 +857,7 @@
 
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
+
     AVPlayerItem *p = [notification object];
     [p seekToTime:kCMTimeZero];
     
@@ -817,13 +866,17 @@
 
 - (void) stopPlayer
 {
+
+    UIActivityIndicatorView * activitiView = [mainScrollView viewWithTag:20+self.player.customTag];
+    [activitiView setAlpha:0.0f];
+    [activitiView stopAnimating];
     [self.player pause];
 }
 
 //Отправить запись--------------------
 - (void) buttonSendAction
 {
-    NSLog(@"Отправить песню");
+  
     [UIView animateWithDuration:(0.3) animations:^{
         buttonSend.alpha = 0.4;
         buttonSend.userInteractionEnabled = NO;
@@ -949,16 +1002,48 @@
 //Действие на тап картинки------------------------------
 - (void) imageViewChatAction: (UIButton*) button
 {
-    for (int i = 0; i < buttonsArray.count; i++) {
+  
+    
+    for (int i = 0; i < imageArray.count; i++) {
+        
         if (button.tag == 10 + i) {
-                imageFull.image = button.imageView.image;
+            
+            ViewSectionTable * urlViewChat = [[ViewSectionTable alloc] initImageChatWithImageURL:[imageArray objectAtIndex:i] andContentMode:UIViewContentModeScaleAspectFit andImageView:mainScrollView];
+            
+            [imageFull addSubview:urlViewChat];
+//
+            
+//                imageFull.image = button.imageView.image;
+//            
+            
                 [UIView animateWithDuration:0.3 animations:^{
-                    imageFull.alpha = 1.f;
+                    imageFullView.alpha = 1.f;
                 } completion:^(BOOL finished) {
 
                 }];
-        }
-    }
+        }    }
+}
+- (void) imageLocalViewChatAction: (UIButton*) button
+{
+
+    
+    for (int i = 0; i < buttonsArray.count; i++) {
+        
+        if (button.tag == 10 + i) {
+            
+            //[imageFull addSubview:button.imageView];
+            
+            imageFull.image=button.imageView.image;
+            
+            
+            
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                imageFullView.alpha = 1.f;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }    }
 }
 
 //Действие кнопки загрузить аудиозапись--
@@ -999,7 +1084,13 @@
 - (void) buttonCanselImageAction
 {
     [UIView animateWithDuration:0.3 animations:^{
-        imageFull.alpha = 0.f;
+        imageFullView.alpha = 0.f;
+        
+        for (UIView* b in imageFull.subviews)
+        {
+            [b removeFromSuperview];
+        }
+        
     } completion:^(BOOL finished) {
 
     }];
@@ -1022,6 +1113,8 @@
         [self sendMessageWithArray:arrayMainResponce andSend:NO];
     }
 }
+
+
 
 
 @end

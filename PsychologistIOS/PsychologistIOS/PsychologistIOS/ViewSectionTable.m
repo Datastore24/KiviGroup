@@ -132,6 +132,7 @@
                                     
                                     [UIView transitionWithView:imageViewChat duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                                         imageViewChat.image = image;
+                                   
                                         imageViewChat.contentMode=contentMode;
                                         imageViewChat.layer.cornerRadius = 20.f;
                                         imageViewChat.layer.masksToBounds = YES;
@@ -206,6 +207,49 @@
         if (isiPhone5) {
             imageViewChat.frame = CGRectMake(0, 0, 200, 150);
         }
+        
+        NSURL *imgURL = [NSURL URLWithString:imageUrl];
+        
+        //SingleTone с ресайз изображения
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if(image){
+                                    
+                                    [UIView transitionWithView:imageViewChat duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                                        imageViewChat.image = image;
+                                        imageViewChat.contentMode=contentMode;
+                                        imageViewChat.layer.masksToBounds = YES;
+                                    } completion:nil];
+                                }
+                            }];
+        [self addSubview:imageViewChat];
+    }
+    return self;
+}
+
+//Картинка для чата большая
+- (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
+                           andContentMode: (UIViewContentMode) contentMode
+                             andImageView: (UIScrollView *) scrollView
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.bounds.size.height);
+        if (isiPhone5) {
+            self.frame = CGRectMake(0, 0, 200, 150);
+        }
+        
+        
+        self.clipsToBounds = NO;
+        
+        __block UIImageView * imageViewChat = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.bounds.size.height)];
+        
+        
         
         NSURL *imgURL = [NSURL URLWithString:imageUrl];
         

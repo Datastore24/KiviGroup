@@ -101,6 +101,7 @@
             mainMoneyImage.frame = CGRectMake(alertView.frame.size.width / 2 - 20, 10, 40, 40);
         }
         mainMoneyImage.layer.cornerRadius = 20;
+        mainMoneyImage.layer.masksToBounds = YES;
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------

@@ -14,9 +14,11 @@
 #import "APIGetClass.h"
 #import "ViewNotification.h"
 #import "NotificationController.h"
+#import "AlertClass.h"
 
 @implementation RecommendController{
     NSDictionary * dictResponse;
+    RecommendView * recommendView;
 }
 
 - (void) viewDidLoad
@@ -39,7 +41,7 @@
     [self getAPIWithBlock:^{
         
         NSArray * mainArrayAPI = [NSArray arrayWithArray:[dictResponse objectForKey:@"data"]];
-        RecommendView * recommendView = [[RecommendView alloc] initWithView:self.view andArray:mainArrayAPI];
+        recommendView = [[RecommendView alloc] initWithView:self.view andArray:mainArrayAPI];
         [self.view addSubview:recommendView];
        
         
@@ -52,7 +54,7 @@
     }];
     
     //Основной вью контент------------------------------------
-    RecommendView * recommendView = [[RecommendView alloc] initWithView:self.view andArray:nil];
+    recommendView = [[RecommendView alloc] initWithView:self.view andArray:nil];
     [self.view addSubview:recommendView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAction:) name:NOTIFICATION_SEND_PERSONAL_SMS object:nil];
@@ -104,7 +106,12 @@
         //        NSLog(@"%@", response);
         
         NSDictionary * result = (NSDictionary*)response;
-        NSLog(@"resp: %@",result);
+        if([[result objectForKey:@"error"] integerValue]==0){
+            [AlertClass showAlertViewWithMessage:@"Просьба перезвонить успешно принята"];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
         
     }];
 }
