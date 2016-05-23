@@ -195,13 +195,13 @@
         
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 220)];
         if (isiPhone6) {
-            mainScrollView.frame = CGRectMake(0, 0, view.frame.size.width, 168);
+            mainScrollView.frame = CGRectMake(0, 10, view.frame.size.width, 168);
         } else if (isiPhone5) {
-            mainScrollView.frame = CGRectMake(0, 0, view.frame.size.width, 160);
+            mainScrollView.frame = CGRectMake(0, 10, view.frame.size.width, 160);
         }
         
         if (isiPhone4s) {
-            mainScrollView.frame = CGRectMake(0, 0, view.frame.size.width, 80);
+            mainScrollView.frame = CGRectMake(0, 10, view.frame.size.width, 80);
         }
         mainScrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:mainScrollView];
@@ -275,7 +275,7 @@
                 } else if (isiPhone5) {
                     newRectScroll.size.height += 220;
                 } else {
-                    newRectScroll.size.height += 260;
+                    newRectScroll.size.height += 280;
                 }
             }
             mainScrollView.frame = newRectScroll;
@@ -289,7 +289,7 @@
                 } else if (isiPhone5) {
                     newRectButton.origin.y += 220;
                 } else {
-                    newRectButton.origin.y += 260;
+                    newRectButton.origin.y += 280;
                 }
             }
             buttonHeight.frame = newRectButton;
@@ -303,7 +303,7 @@
                 } else if (isiPhone5) {
                     newRectLabel.size.height += 220;
                 } else {
-                    newRectLabel.size.height += 260;
+                    newRectLabel.size.height += 280;
                 }
             }
             textViewText.frame = newRectLabel;
@@ -323,7 +323,7 @@
                 } else if (isiPhone5) {
                     newRectScroll.size.height -= 220;
                 } else {
-                    newRectScroll.size.height -= 260;
+                    newRectScroll.size.height -= 280;
                 }
             }
             mainScrollView.frame = newRectScroll;
@@ -337,7 +337,7 @@
                 } else if (isiPhone5) {
                     newRectButton.origin.y -= 220;
                 } else {
-                    newRectButton.origin.y -= 260;
+                    newRectButton.origin.y -= 280;
                 }
             }
             buttonHeight.frame = newRectButton;
@@ -351,7 +351,7 @@
                 } else if (isiPhone5) {
                     newRectLabel.size.height -= 220;
                 } else {
-                    newRectLabel.size.height -= 260;
+                    newRectLabel.size.height -= 280;
                 }
             }            textViewText.frame = newRectLabel;
         } completion:^(BOOL finished) {
