@@ -112,8 +112,13 @@
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
             NSLog(@"LOG %@",dictResponse);
             
-            NSDictionary * dictData = [dictResponse objectForKey:@"data"];
-            [[SingleTone sharedManager] setUserName:[dictData objectForKey:@"name"]];
+            if([dictResponse objectForKey:@"data"] != [NSNull null]){
+                NSDictionary * dictData = [dictResponse objectForKey:@"data"];
+                [[SingleTone sharedManager] setUserName:[dictData objectForKey:@"name"]];
+                
+            }
+            
+            
             
             
             
