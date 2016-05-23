@@ -30,11 +30,6 @@
 		771E53951CC2B0BB008E5562 /* NotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53941CC2B0BB008E5562 /* NotificationView.m */; };
 		771E53981CC2C146008E5562 /* ArrayModelNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53971CC2C146008E5562 /* ArrayModelNotification.m */; };
 		771E539A1CC2C962008E5562 /* notificationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53991CC2C962008E5562 /* notificationImage.png */; };
-		771E539E1CC2CD5C008E5562 /* FemaleKnowledgeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */; };
-		771E53A11CC2CD7A008E5562 /* FemaleKnowledgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */; };
-		771E53A41CC2D218008E5562 /* ModelFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53A31CC2D218008E5562 /* ModelFemale.m */; };
-		771E53A61CC2D56B008E5562 /* imageFamele.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53A51CC2D56B008E5562 /* imageFamele.png */; };
-		771E53A81CC2DB8C008E5562 /* imageMoneyWeb.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */; };
 		771E53AC1CC2DD13008E5562 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53AB1CC2DD13008E5562 /* ChatController.m */; };
 		771E53AF1CC2DD77008E5562 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771E53AE1CC2DD77008E5562 /* ChatView.m */; };
 		771E53B11CC2E0BF008E5562 /* imagePlayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 771E53B01CC2E0BF008E5562 /* imagePlayer.png */; };
@@ -161,7 +156,6 @@
 		77D297DD1CADAC760057CC1C /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DC1CADAC760057CC1C /* facebook.png */; };
 		77D297DF1CADAC790057CC1C /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297DE1CADAC790057CC1C /* Email.png */; };
 		77D297E11CADAC7D0057CC1C /* VK.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E01CADAC7D0057CC1C /* VK.png */; };
-		77D297E31CADB5B00057CC1C /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D297E21CADB5B00057CC1C /* mainFone.png */; };
 		77E0F8A71CD265EA0047008F /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E0F8A61CD265EA0047008F /* APIGetClass.m */; };
 		77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CA1CBFFB4900B6A303 /* PersonalAreaController.m */; };
 		77E6A2CE1CBFFB6500B6A303 /* PersonalAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6A2CD1CBFFB6500B6A303 /* PersonalAreaView.m */; };
@@ -215,6 +209,7 @@
 		FF36FD4A1CF3A02F00BF217A /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD3A1CF3A02F00BF217A /* kr-video-player-shrinkscreen@3x.png */; };
 		FF36FD4B1CF3A02F00BF217A /* KrVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF36FD3C1CF3A02F00BF217A /* KrVideoPlayerController.m */; };
 		FF36FD4C1CF3A02F00BF217A /* KrVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF36FD3E1CF3A02F00BF217A /* KrVideoPlayerControlView.m */; };
+		FF36FD4E1CF3A6E200BF217A /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD4D1CF3A6E200BF217A /* mainFone.png */; };
 		FF71472B1CEF0F7300286C4B /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF71472A1CEF0F7300286C4B /* AlertClass.m */; };
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
 		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
@@ -279,14 +274,6 @@
 		771E53961CC2C146008E5562 /* ArrayModelNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayModelNotification.h; sourceTree = "<group>"; };
 		771E53971CC2C146008E5562 /* ArrayModelNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayModelNotification.m; sourceTree = "<group>"; };
 		771E53991CC2C962008E5562 /* notificationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationImage.png; sourceTree = "<group>"; };
-		771E539C1CC2CD5C008E5562 /* FemaleKnowledgeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FemaleKnowledgeController.h; sourceTree = "<group>"; };
-		771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FemaleKnowledgeController.m; sourceTree = "<group>"; };
-		771E539F1CC2CD7A008E5562 /* FemaleKnowledgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FemaleKnowledgeView.h; sourceTree = "<group>"; };
-		771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FemaleKnowledgeView.m; sourceTree = "<group>"; };
-		771E53A21CC2D218008E5562 /* ModelFemale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFemale.h; sourceTree = "<group>"; };
-		771E53A31CC2D218008E5562 /* ModelFemale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFemale.m; sourceTree = "<group>"; };
-		771E53A51CC2D56B008E5562 /* imageFamele.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFamele.png; sourceTree = "<group>"; };
-		771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMoneyWeb.png; sourceTree = "<group>"; };
 		771E53AA1CC2DD13008E5562 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
 		771E53AB1CC2DD13008E5562 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
 		771E53AD1CC2DD77008E5562 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
@@ -472,7 +459,6 @@
 		77D297DC1CADAC760057CC1C /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		77D297DE1CADAC790057CC1C /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
 		77D297E01CADAC7D0057CC1C /* VK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VK.png; sourceTree = "<group>"; };
-		77D297E21CADB5B00057CC1C /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
 		77E0F8A51CD265EA0047008F /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		77E0F8A61CD265EA0047008F /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		77E6A2C91CBFFB4900B6A303 /* PersonalAreaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaController.h; sourceTree = "<group>"; };
@@ -537,6 +523,7 @@
 		FF36FD3C1CF3A02F00BF217A /* KrVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KrVideoPlayerController.m; sourceTree = "<group>"; };
 		FF36FD3D1CF3A02F00BF217A /* KrVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KrVideoPlayerControlView.h; sourceTree = "<group>"; };
 		FF36FD3E1CF3A02F00BF217A /* KrVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KrVideoPlayerControlView.m; sourceTree = "<group>"; };
+		FF36FD4D1CF3A6E200BF217A /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
 		FF7147291CEF0F7300286C4B /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
 		FF71472A1CEF0F7300286C4B /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClass.m; sourceTree = "<group>"; };
 		FFB28FD21CEE14B100A417A9 /* ViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotification.h; sourceTree = "<group>"; };
@@ -612,8 +599,8 @@
 			children = (
 				77D297E01CADAC7D0057CC1C /* VK.png */,
 				77D297DE1CADAC790057CC1C /* Email.png */,
+				FF36FD4D1CF3A6E200BF217A /* mainFone.png */,
 				77D297DC1CADAC760057CC1C /* facebook.png */,
-				77D297E21CADB5B00057CC1C /* mainFone.png */,
 				776D8DB31CAD2B3F0028929C /* menuIcon.png */,
 			);
 			name = image;
@@ -690,14 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				771E53A91CC2DCE9008E5562 /* ChatWeb */,
-				771E53A71CC2DB8C008E5562 /* imageMoneyWeb.png */,
-				771E53A51CC2D56B008E5562 /* imageFamele.png */,
-				771E539C1CC2CD5C008E5562 /* FemaleKnowledgeController.h */,
-				771E539D1CC2CD5C008E5562 /* FemaleKnowledgeController.m */,
-				771E539F1CC2CD7A008E5562 /* FemaleKnowledgeView.h */,
-				771E53A01CC2CD7A008E5562 /* FemaleKnowledgeView.m */,
-				771E53A21CC2D218008E5562 /* ModelFemale.h */,
-				771E53A31CC2D218008E5562 /* ModelFemale.m */,
 			);
 			name = PantryFemaleKnowledge;
 			sourceTree = "<group>";
@@ -1437,7 +1416,6 @@
 				77CA4E0D1CBA8C8E007BD3F2 /* imageFace.png in Resources */,
 				AD2134D01CF3A14900073D5A /* Icon-167.png in Resources */,
 				77CA4E0F1CBA8C8E007BD3F2 /* imageVK.png in Resources */,
-				771E53A61CC2D56B008E5562 /* imageFamele.png in Resources */,
 				FF36FD461CF3A02F00BF217A /* kr-video-player-play@3x.png in Resources */,
 				77E6A2D01CC019AB00B6A303 /* arrowDownImage.png in Resources */,
 				AD0D8A4E1CF0953F00E31448 /* stop_t.png in Resources */,
@@ -1445,6 +1423,7 @@
 				77CA4E101CBA8C8E007BD3F2 /* imagePeres.png in Resources */,
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
 				772707311CAF04BA0067DF6C /* Search.png in Resources */,
+				FF36FD4E1CF3A6E200BF217A /* mainFone.png in Resources */,
 				773C0D931CB986A2005794BE /* faceMenu.png in Resources */,
 				FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */,
 				7709628F1CB1A5570024448B /* imageCancel.png in Resources */,
@@ -1453,7 +1432,6 @@
 				AD2134CB1CF3A14900073D5A /* Icon-60@3x.png in Resources */,
 				77CA4E0E1CBA8C8E007BD3F2 /* imageInst.png in Resources */,
 				776D8D961CAD22910028929C /* SFUIText-Light.otf in Resources */,
-				77D297E31CADB5B00057CC1C /* mainFone.png in Resources */,
 				77EA7C2C1CB024D80083AD5B /* image3.png in Resources */,
 				776D8D971CAD22940028929C /* SFUIText-LightItalic.otf in Resources */,
 				776D8D981CAD22980028929C /* SFUIText-Medium.otf in Resources */,
@@ -1473,7 +1451,6 @@
 				FF36FD411CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png in Resources */,
 				77C72EFD1CBEC5B9009A78F7 /* skypeButtonImage.png in Resources */,
 				776D8D9E1CAD22AD0028929C /* SFUIText-Semibold.otf in Resources */,
-				771E53A81CC2DB8C008E5562 /* imageMoneyWeb.png in Resources */,
 				775B7C361CB4278300161EF9 /* fonSubImage.png in Resources */,
 				776D8D9F1CAD22B00028929C /* SFUIText-SemiboldItalic.otf in Resources */,
 				FF36FD421CF3A02F00BF217A /* kr-video-player-fullscreen@3x.png in Resources */,
@@ -1584,7 +1561,6 @@
 				776D8D481CAD1AD20028929C /* UIColor+HexColor.m in Sources */,
 				77C72F0A1CBECCAE009A78F7 /* InstructionsModel.m in Sources */,
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
-				771E53A41CC2D218008E5562 /* ModelFemale.m in Sources */,
 				77A2A97C1CD8F6AC0092CC06 /* StringImage.m in Sources */,
 				77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */,
 				775B7C441CB4337700161EF9 /* OpenSubjectController.m in Sources */,
@@ -1592,7 +1568,6 @@
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
 				7703844B1CDBC234006A885B /* PlayerView.m in Sources */,
 				FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */,
-				771E539E1CC2CD5C008E5562 /* FemaleKnowledgeController.m in Sources */,
 				775B7C511CB4533E00161EF9 /* HeightForText.m in Sources */,
 				776D8D421CAD1AD20028929C /* TextAndImageHeight.m in Sources */,
 				77CA4E151CBAACAE007BD3F2 /* RecommendView.m in Sources */,
@@ -1618,7 +1593,6 @@
 				776D8DAC1CAD25120028929C /* LoginController.m in Sources */,
 				772F5A781CBEAE580051EC10 /* SupportServiceController.m in Sources */,
 				771D052C1CDDF6BC00A83111 /* SubscriptionModel.m in Sources */,
-				771E53A11CC2CD7A008E5562 /* FemaleKnowledgeView.m in Sources */,
 				77B79C1A1CBD658000E37B52 /* BoolmarksModel.m in Sources */,
 				7784E9A81CE0EA6A0020F2FC /* CustomPlayer.m in Sources */,
 				776D8D441CAD1AD20028929C /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
