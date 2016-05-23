@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatController : UIViewController <UINavigationControllerDelegate,
-UIImagePickerControllerDelegate>
+@interface ChatController : UIViewController
 
 @end
