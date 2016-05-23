@@ -14,7 +14,6 @@
 #import "Macros.h"
 #import "SubCategoryController.h"
 #import "RatesController.h"
-#import "FemaleKnowledgeController.h"
 #import "APIGetClass.h"
 #import "Macros.h"
 #import "ViewNotification.h"
@@ -117,13 +116,6 @@
 - (void) notificationPushWithRates
 {
     RatesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RatesController"];
-    [self.navigationController pushViewController:detail animated:YES];
-}
-
-//Кладовая женских знаний---------------
-- (void) pushCustom
-{
-    FemaleKnowledgeController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FemaleKnowledgeController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
