@@ -7,6 +7,7 @@
 //
 
 #import "KrVideoPlayerControlView.h"
+#import "SingleTone.h"
 
 static const CGFloat kVideoControlBarHeight = 40.0;
 static const CGFloat kVideoControlAnimationTimeinterval = 0.3;
@@ -80,8 +81,13 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
         return;
     }
     [UIView animateWithDuration:kVideoControlAnimationTimeinterval animations:^{
+         NSLog(@"%@", [[SingleTone sharedManager] postType]);
+        if ([[[SingleTone sharedManager] postType] isEqualToString:@"audio"]) {
+            NSLog(@"Аудио");
+        } else {
         self.topBar.alpha = 0.0;
         self.bottomBar.alpha = 0.0;
+        }
     } completion:^(BOOL finished) {
         self.isBarShowing = NO;
     }];

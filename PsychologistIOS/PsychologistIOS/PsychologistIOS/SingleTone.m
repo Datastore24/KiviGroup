@@ -32,6 +32,8 @@
 
 @synthesize userName;
 
+@synthesize postType;
+
 
 
 
