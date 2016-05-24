@@ -16,6 +16,7 @@
 #import "AuthDbClass.h"
 #import "SingleTone.h"
 #import "Macros.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface AppDelegate ()
@@ -34,7 +35,10 @@
                                                        annotation:annotation];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     

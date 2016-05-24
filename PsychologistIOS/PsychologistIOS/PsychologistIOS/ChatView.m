@@ -19,6 +19,7 @@
     CGFloat selfHeight;
     UITextView * textViewText;
     UIButton * buttonHeight;
+    UIButton * buttonLink;
     BOOL mainAnim;
     NSDictionary * mainDict;
     
@@ -231,18 +232,18 @@
         //Кнопка изменения высоты первого скрола
         buttonHeight = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonHeight.frame = CGRectMake(16, 180, 65.5, 35);
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 65.5, 10)];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 13, 65.5, 10)];
         if (isiPhone6) {
             buttonHeight.frame = CGRectMake(16, 140, 65.5, 35);
-            imageView.frame = CGRectMake(0, 0, 65.5, 10);
+            imageView.frame = CGRectMake(0, 13, 65.5, 10);
         } if (isiPhone5) {
             buttonHeight.frame = CGRectMake(20, 130, 60, 30);
-            imageView.frame = CGRectMake(0, 0, 60, 9);
+            imageView.frame = CGRectMake(0, 10, 60, 9);
         }
         
         if (isiPhone4s) {
             buttonHeight.frame = CGRectMake(20, 55, 60, 30);
-            imageView.frame = CGRectMake(0, 0, 60, 9);
+            imageView.frame = CGRectMake(0, 10, 60, 9);
         }
         
         UIImage * imageButtonHeight = [UIImage imageNamed:@"buttonHight.png"];
@@ -252,6 +253,26 @@
         //        [buttonHeight setImage:imageButtonHeight forState:UIControlStateNormal];
         [buttonHeight addTarget:self action:@selector(buttonHeightAction) forControlEvents:UIControlEventTouchUpInside];
         [mainScrollView addSubview:buttonHeight];
+        
+        //Кнопка перехода по ссылке
+        buttonLink = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonLink.frame = CGRectMake(self.frame.size.width - 125, 180, 105.5, 35);
+        [buttonLink setTitle:@"Подробнее" forState:UIControlStateNormal];
+        [buttonLink setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        buttonLink.titleLabel.font = [UIFont fontWithName:FONTBOND size:16];
+        if (isiPhone6) {
+            buttonLink.frame = CGRectMake(self.frame.size.width - 125, 140, 105.5, 35);
+            buttonLink.titleLabel.font = [UIFont fontWithName:FONTBOND size:16];
+        } if (isiPhone5) {
+            buttonLink.frame = CGRectMake(self.frame.size.width - 120, 130, 100, 30);
+            buttonLink.titleLabel.font = [UIFont fontWithName:FONTBOND size:14];
+        }
+        if (isiPhone4s) {
+            buttonLink.frame = CGRectMake(self.frame.size.width - 120, 55, 100, 30);
+            buttonLink.titleLabel.font = [UIFont fontWithName:FONTBOND size:14];
+        }
+        [buttonLink addTarget:self action:@selector(buttonLinkAction) forControlEvents:UIControlEventTouchUpInside];
+        [mainScrollView addSubview:buttonLink];
         
     }
     return self;
@@ -268,12 +289,12 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height += 210;
+                newRectScroll.size.height += 230;
             } else {
                 if (isiPhone6) {
-                    newRectScroll.size.height += 255;
+                    newRectScroll.size.height += 275;
                 } else if (isiPhone5) {
-                    newRectScroll.size.height += 220;
+                    newRectScroll.size.height += 240;
                 } else {
                     newRectScroll.size.height += 280;
                 }
@@ -282,26 +303,40 @@
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y += 210;
+                newRectButton.origin.y += 230;
             } else {
                 if (isiPhone6) {
-                    newRectButton.origin.y += 255;
+                    newRectButton.origin.y += 275;
                 } else if (isiPhone5) {
-                    newRectButton.origin.y += 220;
+                    newRectButton.origin.y += 240;
                 } else {
                     newRectButton.origin.y += 280;
                 }
             }
             buttonHeight.frame = newRectButton;
+            //Линк
+            CGRect newRectLink = buttonLink.frame;
+            if (isiPhone4s) {
+                newRectLink.origin.y += 230;
+            } else {
+                if (isiPhone6) {
+                    newRectLink.origin.y += 275;
+                } else if (isiPhone5) {
+                    newRectLink.origin.y += 240;
+                } else {
+                    newRectLink.origin.y += 280;
+                }
+            }
+            buttonLink.frame = newRectLink;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height += 210;
+                newRectLabel.size.height += 230;
             } else {
                 if (isiPhone6) {
-                    newRectLabel.size.height += 255;
+                    newRectLabel.size.height += 275;
                 } else if (isiPhone5) {
-                    newRectLabel.size.height += 220;
+                    newRectLabel.size.height += 240;
                 } else {
                     newRectLabel.size.height += 280;
                 }
@@ -316,12 +351,12 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height -= 210;
+                newRectScroll.size.height -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectScroll.size.height -= 255;
+                    newRectScroll.size.height -= 275;
                 } else if (isiPhone5) {
-                    newRectScroll.size.height -= 220;
+                    newRectScroll.size.height -= 240;
                 } else {
                     newRectScroll.size.height -= 280;
                 }
@@ -330,26 +365,40 @@
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y -= 210;
+                newRectButton.origin.y -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectButton.origin.y -= 255;
+                    newRectButton.origin.y -= 275;
                 } else if (isiPhone5) {
-                    newRectButton.origin.y -= 220;
+                    newRectButton.origin.y -= 240;
                 } else {
                     newRectButton.origin.y -= 280;
                 }
             }
             buttonHeight.frame = newRectButton;
+            //Линк
+            CGRect newRectLink = buttonLink.frame;
+            if (isiPhone4s) {
+                newRectLink.origin.y -= 230;
+            } else {
+                if (isiPhone6) {
+                    newRectLink.origin.y -= 275;
+                } else if (isiPhone5) {
+                    newRectLink.origin.y -= 240;
+                } else {
+                    newRectLink.origin.y -= 280;
+                }
+            }
+            buttonLink.frame = newRectLink;
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height -= 210;
+                newRectLabel.size.height -= 230;
             } else {
                 if (isiPhone6) {
-                    newRectLabel.size.height -= 255;
+                    newRectLabel.size.height -= 275;
                 } else if (isiPhone5) {
-                    newRectLabel.size.height -= 220;
+                    newRectLabel.size.height -= 240;
                 } else {
                     newRectLabel.size.height -= 280;
                 }
@@ -365,6 +414,12 @@
 {
     NSLog(@"Переход в чат");
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SEND_AUDIO_FOR_CHAT object:nil];
+}
+
+- (void) buttonLinkAction
+{
+        NSString * stringURL = [NSString stringWithFormat:@"http://%@", [mainDict objectForKey:@"link"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
 }
 
 

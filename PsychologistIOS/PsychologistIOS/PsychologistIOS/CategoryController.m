@@ -64,6 +64,15 @@
     
     self.view.userInteractionEnabled = YES;
     
+    NSString * stringName;
+    if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
+        stringName = [NSString stringWithFormat:@"гость %@", [[SingleTone sharedManager] userID]];
+    } else {
+        stringName = [[SingleTone sharedManager] userName];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHECK_NAME_LABEL object:stringName];
+    
     [self getAPIWithBlock:^{
         
         NSMutableArray * mainArrayAPI = [NSMutableArray arrayWithArray:[dictResponse objectForKey:@"data"]];

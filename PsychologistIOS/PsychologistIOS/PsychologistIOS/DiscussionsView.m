@@ -68,6 +68,8 @@
     NSInteger integetButtonPlay;
     NSMutableDictionary * soundDict;
     
+    NSInteger integerButtonName;
+    
     
 
 }
@@ -88,6 +90,8 @@
         buttonImageChange = NO;
         dictaBool = NO;
         integetButtonPlay = 0;
+        
+        integerButtonName = 0;
         
         
         
@@ -343,15 +347,20 @@
         
         
         if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
+            integerButtonName += 1;
             // Имя пользователя---------------
-            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewScrollChat.frame.size.width - 32 - 38, 8 + countFor, 88, 12)];
-            labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
-            labelUser.font = [UIFont fontWithName:FONTBOND size:12];
+            UIButton * buttonUser = [UIButton buttonWithType:UIButtonTypeSystem];
+            buttonUser.frame = CGRectMake(viewScrollChat.frame.size.width - 32 - 38, 8 + countFor, 88, 12);
+            buttonUser.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonUser setTitleColor:[UIColor colorWithHexString:@"8e8e93"] forState:UIControlStateNormal];
+            buttonUser.titleLabel.font = [UIFont fontWithName:FONTBOND size:12];
             if (isiPhone5) {
-                labelUser.font = [UIFont fontWithName:FONTBOND size:10];
+                buttonUser.titleLabel.font = [UIFont fontWithName:FONTBOND size:10];
             }
-            labelUser.text = @"Ксения";
-            [viewScrollChat addSubview:labelUser];
+            [buttonUser setTitle:@"Ксения" forState:UIControlStateNormal];
+            buttonUser.tag = integerButtonName;
+            [buttonUser addTarget:self action:@selector(addUserNameOnTextView:) forControlEvents:UIControlEventTouchUpInside];
+            [viewScrollChat addSubview:buttonUser];
 
             //Если приходит текст-------------------------------------------
             if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
@@ -481,20 +490,24 @@
             }
             
         } else {
+            integerButtonName += 1;
             // Имя пользователя---------------
-            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(28, 8 + countFor, 120, 12)];
-            labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
-            labelUser.font = [UIFont fontWithName:FONTLITE size:12];
+            UIButton * buttonUser = [UIButton buttonWithType:UIButtonTypeSystem];
+            buttonUser.frame = CGRectMake(28, 8 + countFor, 120, 12);
+            buttonUser.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonUser setTitleColor:[UIColor colorWithHexString:@"8e8e93"] forState:UIControlStateNormal];
+            buttonUser.titleLabel.font = [UIFont fontWithName:FONTBOND size:12];
             if (isiPhone5) {
-                labelUser.font = [UIFont fontWithName:FONTLITE size:10];
+                buttonUser.titleLabel.font = [UIFont fontWithName:FONTBOND size:10];
             }
             if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
-                labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
+                [buttonUser setTitle:[NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]] forState:UIControlStateNormal];
             } else {
-                labelUser.text = [[SingleTone sharedManager] userName];
+                [buttonUser setTitle:[[SingleTone sharedManager] userName] forState:UIControlStateNormal];
             }
-            
-            [viewScrollChat addSubview:labelUser];
+            buttonUser.tag = integerButtonName;
+            [buttonUser addTarget:self action:@selector(addUserNameOnTextView:) forControlEvents:UIControlEventTouchUpInside];
+            [viewScrollChat addSubview:buttonUser];
             
             //Если приходит текст-------------------------------------------
             if ([[dictChat objectForKey:@"type"] isEqualToString:@"message"]) {
@@ -1111,6 +1124,29 @@
         NSArray * arrayMainResponce = [NSArray arrayWithArray:[notification.userInfo objectForKey:@"data"]];
         
         [self sendMessageWithArray:arrayMainResponce andSend:NO];
+    }
+}
+
+- (void) addUserNameOnTextView: (UIButton*) button
+{
+    NSString * stringText;
+    for (int i = 1; i <= integerButtonName; i++) {
+        if (button.tag == i) {
+            stringText = [NSString stringWithFormat:@"%@[%@]", textFieldChat.text, button.titleLabel.text];
+            textFieldChat.text = stringText;
+        }
+        
+    }
+    if (isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect;
+            rect = labelPlaceHolderChat.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHolderChat.frame = rect;
+            labelPlaceHolderChat.alpha = 0.f;
+            isBool = NO;
+            textFieldChat.text = stringText;
+        }];
     }
 }
 

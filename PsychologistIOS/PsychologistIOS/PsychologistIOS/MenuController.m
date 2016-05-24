@@ -12,6 +12,7 @@
 #import "Macros.h"
 #import "NotificationController.h"
 #import "AuthDbClass.h"
+#import "SingleTone.h"
 
 @interface MenuController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
@@ -22,23 +23,26 @@
 
 @implementation MenuController
 {
+    UILabel * labelName;
     NSArray * menu;
     NSArray * arrayImage;
 }
 
 - (void) viewDidLoad
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkName:) name:NOTIFICATION_CHECK_NAME_LABEL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeName:) name:NOTIFICATION_CHANGE_NAME_LABEL object:nil];
+    
     self.mainTableView.backgroundColor = nil;
     self.mainTableView.scrollEnabled = NO;
-    self.view.backgroundColor = [UIColor colorWithHexString:@"3d3d3d"];
-    
+    self.view.backgroundColor = [UIColor colorWithHexString:@"3d3d3d"];    
     
     menu = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5",
                                      @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10",
                                      @"Cell11", @"Cell12", nil];
     
     arrayImage = [NSArray arrayWithObjects:@"VKMenu.png", @"faceMenu.png", @"instMenu.png", @"peresMenu.png", @"skypeMenu.png", nil];
-//    [self.buttonNotification addTarget:self action:@selector(buttonNotificationAction) forControlEvents:UIControlEventTouchUpInside];
     
     //Вью первой границы-------------------------------
     UIView * viewBorder1 = [[UIView alloc] initWithFrame:CGRectMake(0, 81, self.view.frame.size.width, 0.4)];
@@ -65,6 +69,25 @@
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mainTableView.backgroundColor = [UIColor clearColor];
     
+    //Создаем текст имени--------------------------------------------
+    labelName = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, 40)];
+    if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
+       labelName.text = [NSString stringWithFormat:@"гость %@", [[SingleTone sharedManager] userID]];
+    } else {
+        labelName.text = [[SingleTone sharedManager] userName];
+    }
+    labelName.textColor = [UIColor whiteColor];
+    labelName.font = [UIFont fontWithName:FONTREGULAR size:18];
+    [self.view addSubview:labelName];
+    
+    
+    
+    
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -151,6 +174,10 @@
     }
     
     if ([cellIdentifier isEqualToString:@"Cell8"]) {
+        cell.userInteractionEnabled = NO;
+    }
+    
+    if ([cellIdentifier isEqualToString:@"Cell1"]) {
         cell.userInteractionEnabled = NO;
     }
     
@@ -247,6 +274,16 @@
 {
     NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) checkName: (NSNotification*) notification
+{
+    labelName.text = notification.object;
+}
+
+- (void) changeName: (NSNotification*) notification
+{
+    labelName.text = notification.object;
 }
 
 

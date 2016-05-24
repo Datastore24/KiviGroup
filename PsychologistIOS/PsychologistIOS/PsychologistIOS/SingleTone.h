@@ -42,8 +42,7 @@
 //Имя пользователя
 @property (strong, nonatomic) NSString * userName;
 
-
-
+@property (strong, nonatomic) NSString * postType;
 
 
 + (id)sharedManager;

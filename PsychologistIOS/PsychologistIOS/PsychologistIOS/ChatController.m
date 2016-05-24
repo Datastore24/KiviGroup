@@ -72,6 +72,7 @@
         }
         NSDictionary * mainDictionary = [dictResponse objectForKey:@"data"];
         NSDictionary * dictMedia = [mainDictionary objectForKey:@"other_media"];
+        [[SingleTone sharedManager] setPostType:[dictMedia objectForKey:@"type"]];
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictMedia objectForKey:@"path"]];
         
         [self playVideoWithURL:stringURL];
