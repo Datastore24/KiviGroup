@@ -33,6 +33,14 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 {
     self = [super init];
     if (self) {
+        NSError *setCategoryErr = nil;
+        NSError *activationErr  = nil;
+        [[AVAudioSession sharedInstance]
+         setCategory: AVAudioSessionCategoryPlayback
+         error: &setCategoryErr];
+        [[AVAudioSession sharedInstance]
+         setActive: YES
+         error: &activationErr];
         self.view.frame = frame;
         self.view.backgroundColor = [UIColor blackColor];
         self.controlStyle = MPMovieControlStyleNone;
