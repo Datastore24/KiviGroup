@@ -103,11 +103,11 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 
 - (void)autoFadeOutControlBar
 {
-    if (!self.isBarShowing) {
-        return;
-    }
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
-    [self performSelector:@selector(animateHide) withObject:nil afterDelay:kVideoControlBarAutoFadeOutTimeinterval];
+//    if (!self.isBarShowing) {
+//        return;
+//    }
+//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
+//    [self performSelector:@selector(animateHide) withObject:nil afterDelay:kVideoControlBarAutoFadeOutTimeinterval];
 }
 
 - (void)cancelAutoFadeOutControlBar
