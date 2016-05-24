@@ -81,9 +81,7 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
         return;
     }
     [UIView animateWithDuration:kVideoControlAnimationTimeinterval animations:^{
-         NSLog(@"%@", [[SingleTone sharedManager] postType]);
         if ([[[SingleTone sharedManager] postType] isEqualToString:@"audio"]) {
-            NSLog(@"Аудио");
         } else {
         self.topBar.alpha = 0.0;
         self.bottomBar.alpha = 0.0;
@@ -109,11 +107,11 @@ static const CGFloat kVideoControlBarAutoFadeOutTimeinterval = 5.0;
 
 - (void)autoFadeOutControlBar
 {
-//    if (!self.isBarShowing) {
-//        return;
-//    }
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
-//    [self performSelector:@selector(animateHide) withObject:nil afterDelay:kVideoControlBarAutoFadeOutTimeinterval];
+    if (!self.isBarShowing) {
+        return;
+    }
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
+    [self performSelector:@selector(animateHide) withObject:nil afterDelay:kVideoControlBarAutoFadeOutTimeinterval];
 }
 
 - (void)cancelAutoFadeOutControlBar

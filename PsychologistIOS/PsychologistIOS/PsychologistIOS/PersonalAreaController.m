@@ -159,6 +159,7 @@ NSString * phoneResult = [[dict objectForKey:@"phone"] stringByReplacingOccurren
                              nil];
     
     [[SingleTone sharedManager] setUserName:[dict objectForKey:@"name"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHANGE_NAME_LABEL object:[dict objectForKey:@"name"]];
     
     NSLog(@"%@",params);
     

@@ -45,9 +45,6 @@
 @property (strong, nonatomic) NSString * postType;
 
 
-
-
-
 + (id)sharedManager;
 
 @end
