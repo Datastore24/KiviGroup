@@ -290,7 +290,7 @@
     
    
     
-    if (mainArray.count != 0) {
+    if (mainArray.count != 0 || filteredContentList.count !=0) {
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
         [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
                                                      andSubTitle:[dictCell objectForKey:@"description"]
