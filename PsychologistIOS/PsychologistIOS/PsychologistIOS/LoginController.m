@@ -23,6 +23,7 @@
 #import "APIGetClass.h"
 #import "LicenseAgreementController.h"
 #import "AlertClass.h"
+#import "KrVideoPlayerController.h"
 
 @interface LoginController () <UIWebViewDelegate>
 
@@ -30,6 +31,8 @@
 @property (strong,nonatomic) NSString * socTokenString;
 @property (strong,nonatomic) NSString * socType;
 @property (strong,nonatomic) NSString * type_auth;
+
+@property (nonatomic, strong) KrVideoPlayerController  *videoController;
 
 @end
 
@@ -43,9 +46,7 @@
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
     BOOL phoneAndMail;
-    
-    UIView * avtorizationView;
-    UIActivityIndicatorView * activitiView;
+    UIView * videoView;
 
 }
 
@@ -86,6 +87,8 @@
     self.navigationController.navigationBar.hidden = NO; // спрятал navigation bar
     
 #pragma mark - Initialization
+    
+    
     //Основной фон-------------------------------------
     LoginView * backgroundView = [[LoginView alloc] initWithBackgroundView:self.view];
     [self.view addSubview:backgroundView];
@@ -105,15 +108,20 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFaceAvto) name:@"FaceBookN" object:nil];
     
     //Элементы авторизации------------------------------------
-    avtorizationView = [[UIView alloc] initWithFrame:self.view.frame];
-    avtorizationView.backgroundColor = [UIColor whiteColor];
-    avtorizationView.alpha = 0.f;
-    [self.view addSubview:avtorizationView];
-    activitiView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.frame];
-    activitiView.backgroundColor = [UIColor clearColor];
-    activitiView.color = [UIColor blackColor];
-    activitiView.alpha = 0.f;
-    [self.view addSubview:activitiView];
+    videoView = [[UIView alloc] initWithFrame:self.view.frame];
+    videoView.alpha = 0.f;
+    [self.view addSubview:videoView];
+    
+    NSString *filePath=[[NSBundle mainBundle] pathForResource:@"video2" ofType:@"mov"];
+    NSURL *fileUrl=[NSURL fileURLWithPath:filePath];
+    [self playVideoWithURL:fileUrl];
+    [self.videoController fullScreenHide];
+    [self.videoController allHide];
+    
+
+
+
+
     
     UIButton * buttonLicense = (UIButton*)[self.view viewWithTag:386];
     [buttonLicense addTarget:self action:@selector(licensePush) forControlEvents:UIControlEventTouchUpInside];
@@ -131,9 +139,8 @@
         NSLog(@"TOT %@",userInfo.token_vk);
         if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
             NSLog(@"GO AUTH AUTO");
-            avtorizationView.alpha = 0.6;
-            activitiView.alpha = 1.f;
-            [activitiView startAnimating];
+            videoView.alpha = 1.f;
+            [self.videoController play];
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
             [self showLoginWith:NO];
@@ -144,20 +151,53 @@
 
 }
 
+#pragma mark - Video
+
+- (void)playVideoWithURL: (NSURL*) myURL {
+    [self addVideoPlayerWithURL:myURL];
+}
+
+- (void)addVideoPlayerWithURL:(NSURL *)url{
+    if (!self.videoController) {
+        self.videoController = [[KrVideoPlayerController alloc] initWithFrame:CGRectMake(- 220, 0, self.view.frame.size.width + 800, self.view.frame.size.height)];
+        if (isiPhone5) {
+            self.videoController.frame = self.view.frame;
+        }
+        __weak typeof(self)weakSelf = self;
+        [self.videoController setDimissCompleteBlock:^{
+            weakSelf.videoController = nil;
+        }];
+        [self.videoController setWillBackOrientationPortrait:^{
+            [weakSelf toolbarHidden:NO];
+        }];
+        [self.videoController setWillChangeToFullscreenMode:^{
+            [weakSelf toolbarHidden:YES];
+        }];
+        [videoView addSubview:self.videoController.view];
+    }
+    self.videoController.contentURL = url;
+    
+}
+//隐藏navigation tabbar 电池栏
+- (void)toolbarHidden:(BOOL)Bool{
+    self.navigationController.navigationBar.hidden = Bool;
+    self.tabBarController.tabBar.hidden = Bool;
+    [[UIApplication sharedApplication] setStatusBarHidden:Bool withAnimation:UIStatusBarAnimationFade];
+}
+
+
 //Показ проверки и анимация появления авторизации
 -(void)showLoginWith:(BOOL) animation{
     if(animation){
         //Повяление с анимацией
         [UIView animateWithDuration:2.0 animations:^{
-            avtorizationView.alpha = 0.6;
-            activitiView.alpha = 1.f;
-            [activitiView startAnimating];
+            videoView.alpha = 1.f;
+            [self.videoController play];
         }];
         
     }else{
-        avtorizationView.alpha = 0.f;
-        activitiView.alpha = 0.f;
-        [activitiView stopAnimating];
+        videoView.alpha = 0.f;
+        [self.videoController stop];
     }
 }
 
@@ -685,9 +725,8 @@
 
 - (void) stopAnimation
 {
-    activitiView.alpha = 0.f;
-    [activitiView stopAnimating];
-    avtorizationView.alpha = 0.f;
+    videoView.alpha = 0.f;
+    [self.videoController stop];
 }
 
 - (void) licensePush
