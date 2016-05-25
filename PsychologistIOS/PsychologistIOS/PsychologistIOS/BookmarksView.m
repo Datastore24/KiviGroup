@@ -12,6 +12,8 @@
 #import "SingleTone.h"
 #import "StringImage.h"
 #import "ViewSectionTable.h"
+#import "TextMethodClass.h"
+#import "APIGetClass.h"
 
 @interface BookmarksView () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -20,6 +22,10 @@
 @implementation BookmarksView
 {
     NSMutableArray * mainArray;
+    NSMutableArray *filteredContentList;
+    BOOL isSearching;
+     NSDictionary* dictResponse;
+    
     UITableView * mainTableView;
     NSDictionary * dictInform;
     UISearchBar * mainSearchBar;
@@ -47,6 +53,8 @@
         //Основной контент---------------------
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         mainArray = [NSMutableArray arrayWithArray:array];
+        
+        dictResponse = [NSDictionary new];
         
         //Вью поиска---------------------------
         UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 40)];
@@ -92,7 +100,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return mainArray.count;
+    if (isSearching) {
+        if([filteredContentList isEqual: [NSNull null]]){
+            return 0;
+        }else{
+            return filteredContentList.count;
+        }
+        
+    }
+    else {
+        return mainArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,44 +129,97 @@
     
     cell.backgroundColor = nil;
     
-    NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     
-    NSString * type;
-    if ([[dictCell objectForKey:@"type"] isEqualToString:@"post"]) {
-        type = @"Тема";
-    } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"subcategory"]) {
-        type = @"Категория";
-    } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"category"]) {
-        type = @"Раздел";
-    } else {
-        type = @"";
+    
+    NSDictionary * dictCell;
+    
+    
+    if (isSearching) {
+        NSLog(@"DICTS %li",filteredContentList.count);
+        
+        
+        if (filteredContentList.count !=0) {
+            dictCell = [filteredContentList objectAtIndex:indexPath.row];
+            NSString * type;
+            if ([[dictCell objectForKey:@"type"] isEqualToString:@"post"]) {
+                type = @"Тема";
+            } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"subcategory"]) {
+                type = @"Категория";
+            } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"category"]) {
+                type = @"Раздел";
+            } else {
+                type = @"";
+            }
+            
+            
+            dictInform = [dictCell objectForKey:@"inform"];
+            NSString * stringURL = [StringImage createStringImageURLWithString:[dictInform objectForKey:@"media_path"]];
+            [cell.contentView addSubview:[self setTableCellWithTitle:[dictInform objectForKey:@"title"]
+                                                         andSubTitle:[dictInform objectForKey:@"description"]
+                                                            andImage:stringURL
+                                                            andTrial:nil
+                                                      andNotifiction:nil
+                                                             andType:type]];
+            
+            
+        } else {
+            NSLog(@"Нет категорий");
+        }
+        
+        
+    }else{
+        dictCell = [mainArray objectAtIndex:indexPath.row];
+        if (mainArray.count != 0) {
+            
+            NSString * type;
+            if ([[dictCell objectForKey:@"type"] isEqualToString:@"post"]) {
+                type = @"Тема";
+            } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"subcategory"]) {
+                type = @"Категория";
+            } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"category"]) {
+                type = @"Раздел";
+            } else {
+                type = @"";
+            }
+            
+            
+            dictInform = [dictCell objectForKey:@"inform"];
+            NSString * stringURL = [StringImage createStringImageURLWithString:[dictInform objectForKey:@"media_path"]];
+            [cell.contentView addSubview:[self setTableCellWithTitle:[dictInform objectForKey:@"title"]
+                                                         andSubTitle:[dictInform objectForKey:@"description"]
+                                                            andImage:stringURL
+                                                            andTrial:nil
+                                                      andNotifiction:nil
+                                                             andType:type]];
+            
+            
+        } else {
+            NSLog(@"Нет категорий");
+        }
     }
     
+    
+         
 
-    dictInform = [dictCell objectForKey:@"inform"];
-    NSString * stringURL = [StringImage createStringImageURLWithString:[dictInform objectForKey:@"media_path"]];
-    [cell.contentView addSubview:[self setTableCellWithTitle:[dictInform objectForKey:@"title"]
-                                     andSubTitle:[dictInform objectForKey:@"description"]
-                                        andImage:stringURL
-                                        andTrial:nil
-                                  andNotifiction:nil
-                                         andType:type]];
+    
+
+ 
     
     return cell;
 }
 
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView beginUpdates];
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
-        NSLog(@"%@", dictCell);
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DELET_CELL_BOOKMARK object:nil userInfo:dictCell];
-        [mainArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
-    }
-    [tableView endUpdates];
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView beginUpdates];
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
+//        NSLog(@"%@", dictCell);
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DELET_CELL_BOOKMARK object:nil userInfo:dictCell];
+//        [mainArray removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+//    }
+//    [tableView endUpdates];
+//}
 
 #pragma mark - UITableViewDelegate
 //Анимация нажатия ячейки--------------------------------------------------------------
@@ -302,15 +373,89 @@
 
 #pragma mark - Action Methods
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Search Clicked");
-    [mainSearchBar resignFirstResponder];
-}
 
 //Действие кнопки продлить доступ
 - (void) buttonBuyTrialActiob
 {
     NSLog(@"Продлить доступ");
+}
+
+
+- (void)searchTableList {
+    NSString *searchString = mainSearchBar.text;
+    NSLog(@"ПОИСК");
+    
+    [self getAPIWithSearch:searchString andBlock:^{
+        //Remove all objects first.
+        filteredContentList = [dictResponse objectForKey:@"data"];
+        
+        isSearching = YES;
+        [mainTableView reloadData];
+    }];
+    
+}
+
+- (void) getAPIWithSearch: (NSString *) search andBlock: (void (^)(void))block
+{
+    NSLog(@"Serch %@",search);
+
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [[SingleTone sharedManager] userID] , @"id_user",
+                             search, @"search", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"show_fav_search" complitionBlock:^(id response) {
+        
+        dictResponse = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            NSLog(@"SEARCH %@:",response);
+            block();
+        }
+    }];
+}
+
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",isSearching);
+    
+    //Remove all objects first.
+    
+    
+    if([searchText length] > 2) {
+        
+        [self searchTableList];
+        
+    }
+    else {
+        isSearching = NO;
+        [mainTableView reloadData];
+    }
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+    //    [mainSearchBar resignFirstResponder];
+    
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchTableList];
+    [mainSearchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [mainSearchBar resignFirstResponder];
 }
 
 
