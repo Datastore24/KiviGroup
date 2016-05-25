@@ -195,6 +195,7 @@
 		ADB719751CE7BFDE00C447B3 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719741CE7BFDE00C447B3 /* AuthDbClass.m */; };
 		ADB7197A1CE852F000C447B3 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */; };
 		ADB7197B1CE852F000C447B3 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719791CE852F000C447B3 /* Auth.m */; };
+		FF0224BB1CF6467D0059029B /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF0224BA1CF6467D0059029B /* video2.mov */; };
 		FF36FD3F1CF3A02F00BF217A /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */; };
 		FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */; };
 		FF36FD411CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */; };
@@ -507,6 +508,7 @@
 		ADB719781CE852F000C447B3 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		ADB719791CE852F000C447B3 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0224BA1CF6467D0059029B /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
 		FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
 		FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
 		FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 		770962911CB1A9ED0024448B /* image */ = {
 			isa = PBXGroup;
 			children = (
+				FF0224BA1CF6467D0059029B /* video2.mov */,
 				77D297E01CADAC7D0057CC1C /* VK.png */,
 				77D297DE1CADAC790057CC1C /* Email.png */,
 				FF36FD4D1CF3A6E200BF217A /* mainFone.png */,
@@ -1473,6 +1476,7 @@
 				773C0D911CB986A2005794BE /* VKMenu.png in Resources */,
 				776D8DA61CAD22CB0028929C /* SFUIDisplay-Semibold.otf in Resources */,
 				AD0D8A4A1CF0902E00E31448 /* play_button.png in Resources */,
+				FF0224BB1CF6467D0059029B /* video2.mov in Resources */,
 				776D8DA71CAD22CD0028929C /* SFUIDisplay-Thin.otf in Resources */,
 				AD2134D31CF3A14900073D5A /* Icon-Small-40@3x.png in Resources */,
 				AD2134C91CF3A14900073D5A /* Icon-60.png in Resources */,

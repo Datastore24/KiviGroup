@@ -22,6 +22,9 @@
 - (void)showInWindow;
 - (void)dismiss;
 - (void)fullScreenHide;
+- (void) playVideo;
+- (void) stopVideo;
+- (void) allHide;
 /**
  *  获取视频截图
  */

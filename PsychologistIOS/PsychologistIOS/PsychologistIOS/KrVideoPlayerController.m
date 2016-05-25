@@ -56,6 +56,11 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 
 #pragma mark - Override Method
 
+- (void) allHide
+{
+    self.videoControl.alpha = 0.f;
+}
+
 - (void)setContentURL:(NSURL *)contentURL
 {
     [self stop];
@@ -395,6 +400,16 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 {
     self.durationTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(monitorVideoPlayback) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.durationTimer forMode:NSDefaultRunLoopMode];
+}
+
+- (void) playVideo
+{
+    [self play];
+}
+
+- (void) stopVideo
+{
+    [self stop];
 }
 
 - (void)stopDurationTimer
