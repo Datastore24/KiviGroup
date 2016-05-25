@@ -22,7 +22,7 @@
 @implementation BookmarksView
 {
     NSMutableArray * mainArray;
-    NSMutableArray *filteredContentList;
+    NSMutableArray * filteredContentList;
     BOOL isSearching;
      NSDictionary* dictResponse;
     
@@ -209,17 +209,26 @@
 }
 
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView beginUpdates];
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
-//        NSLog(@"%@", dictCell);
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DELET_CELL_BOOKMARK object:nil userInfo:dictCell];
-//        [mainArray removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
-//    }
-//    [tableView endUpdates];
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
+    if (editingStyle == UITableViewCellEditingStyleDelete && !isSearching) {
+        NSDictionary * dictCell;
+    
+            dictCell = [mainArray objectAtIndex:indexPath.row];
+        
+      
+        NSLog(@"%@", dictCell);
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DELET_CELL_BOOKMARK object:nil userInfo:dictCell];
+
+          
+              [mainArray removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+        
+      
+        
+    }
+    [tableView endUpdates];
+}
 
 #pragma mark - UITableViewDelegate
 //Анимация нажатия ячейки--------------------------------------------------------------
