@@ -98,7 +98,8 @@
 
 - (void) getAPIWithBlock: (void (^)(void))block
 {
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_category", nil];
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_category",
+        @"1",@"post_date",nil];
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"list_post" complitionBlock:^(id response) {
