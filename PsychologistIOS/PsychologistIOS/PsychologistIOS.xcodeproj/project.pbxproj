@@ -57,7 +57,6 @@
 		776D8CD91CAD17BF0028929C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CD81CAD17BF0028929C /* ViewController.m */; };
 		776D8CDC1CAD17BF0028929C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 776D8CDA1CAD17BF0028929C /* Main.storyboard */; };
 		776D8CDE1CAD17BF0028929C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 776D8CDD1CAD17BF0028929C /* Assets.xcassets */; };
-		776D8CE11CAD17BF0028929C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 776D8CDF1CAD17BF0028929C /* LaunchScreen.storyboard */; };
 		776D8CEC1CAD17BF0028929C /* PsychologistIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CEB1CAD17BF0028929C /* PsychologistIOSTests.m */; };
 		776D8CF71CAD17BF0028929C /* PsychologistIOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8CF61CAD17BF0028929C /* PsychologistIOSUITests.m */; };
 		776D8D281CAD18B20028929C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D8D271CAD18B20028929C /* SWRevealViewController.m */; };
@@ -195,6 +194,10 @@
 		ADB719751CE7BFDE00C447B3 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719741CE7BFDE00C447B3 /* AuthDbClass.m */; };
 		ADB7197A1CE852F000C447B3 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */; };
 		ADB7197B1CE852F000C447B3 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB719791CE852F000C447B3 /* Auth.m */; };
+		ADBFA8D31CF8A3A100776248 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8CF1CF8A3A100776248 /* 03.png */; };
+		ADBFA8D41CF8A3A100776248 /* 09.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D01CF8A3A100776248 /* 09.png */; };
+		ADBFA8D51CF8A3A100776248 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D11CF8A3A100776248 /* 11.png */; };
+		ADBFA8D61CF8A3A100776248 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D21CF8A3A100776248 /* 12.png */; };
 		FF0224BB1CF6467D0059029B /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF0224BA1CF6467D0059029B /* video2.mov */; };
 		FF36FD3F1CF3A02F00BF217A /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */; };
 		FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */; };
@@ -315,7 +318,6 @@
 		776D8CD81CAD17BF0028929C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		776D8CDB1CAD17BF0028929C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		776D8CDD1CAD17BF0028929C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		776D8CE01CAD17BF0028929C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		776D8CE21CAD17BF0028929C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		776D8CE71CAD17BF0028929C /* PsychologistIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsychologistIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		776D8CEB1CAD17BF0028929C /* PsychologistIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PsychologistIOSTests.m; sourceTree = "<group>"; };
@@ -507,6 +509,10 @@
 		ADB719771CE852F000C447B3 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
 		ADB719781CE852F000C447B3 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		ADB719791CE852F000C447B3 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		ADBFA8CF1CF8A3A100776248 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
+		ADBFA8D01CF8A3A100776248 /* 09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09.png; sourceTree = "<group>"; };
+		ADBFA8D11CF8A3A100776248 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		ADBFA8D21CF8A3A100776248 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0224BA1CF6467D0059029B /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
 		FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
@@ -775,6 +781,7 @@
 		776D8CD01CAD17BF0028929C /* PsychologistIOS */ = {
 			isa = PBXGroup;
 			children = (
+				ADBFA8CE1CF8A38C00776248 /* Launcher */,
 				AD2134B51CF3A11700073D5A /* Icons */,
 				FFB28FDA1CEE4F7100A417A9 /* Developers */,
 				771E539B1CC2CD2A008E5562 /* PantryFemaleKnowledge */,
@@ -795,7 +802,6 @@
 				77A807E11CB2FA33008EE5A5 /* SingleTone.m */,
 				776D8CDA1CAD17BF0028929C /* Main.storyboard */,
 				776D8CDD1CAD17BF0028929C /* Assets.xcassets */,
-				776D8CDF1CAD17BF0028929C /* LaunchScreen.storyboard */,
 				776D8CE21CAD17BF0028929C /* Info.plist */,
 				770384471CDBC1C5006A885B /* Video */,
 				77E0F89E1CD2647F0047008F /* API */,
@@ -1212,6 +1218,17 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		ADBFA8CE1CF8A38C00776248 /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				ADBFA8CF1CF8A3A100776248 /* 03.png */,
+				ADBFA8D01CF8A3A100776248 /* 09.png */,
+				ADBFA8D11CF8A3A100776248 /* 11.png */,
+				ADBFA8D21CF8A3A100776248 /* 12.png */,
+			);
+			name = Launcher;
+			sourceTree = "<group>";
+		};
 		D98BDD5E10C32A32658D3F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,7 +1377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD0D8A4C1CF090DB00E31448 /* play_t.png in Resources */,
-				776D8CE11CAD17BF0028929C /* LaunchScreen.storyboard in Resources */,
 				AD2134D51CF3A14900073D5A /* Icon-Small-50@2x.png in Resources */,
 				776D8CDE1CAD17BF0028929C /* Assets.xcassets in Resources */,
 				776D8CDC1CAD17BF0028929C /* Main.storyboard in Resources */,
@@ -1369,6 +1385,7 @@
 				776D8D891CAD22520028929C /* SFUIText-Bold.otf in Resources */,
 				AD2134D61CF3A14900073D5A /* Icon-Small.png in Resources */,
 				776D8D8A1CAD22550028929C /* SFUIText-BoldG1.otf in Resources */,
+				ADBFA8D41CF8A3A100776248 /* 09.png in Resources */,
 				AD2134D71CF3A14900073D5A /* Icon-Small@2x.png in Resources */,
 				AD2134DB1CF3A14900073D5A /* iTunesArtwork@2x.png in Resources */,
 				77EA7C2E1CB024DD0083AD5B /* image5.png in Resources */,
@@ -1378,6 +1395,7 @@
 				775B7C4C1CB43CD100161EF9 /* imageSubject.png in Resources */,
 				771E53B11CC2E0BF008E5562 /* imagePlayer.png in Resources */,
 				776D8D8C1CAD225A0028929C /* SFUIText-BoldG3.otf in Resources */,
+				ADBFA8D51CF8A3A100776248 /* 11.png in Resources */,
 				FF36FD451CF3A02F00BF217A /* kr-video-player-play@2x.png in Resources */,
 				FF36FD4A1CF3A02F00BF217A /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				AD2134CE1CF3A14900073D5A /* Icon-76.png in Resources */,
@@ -1449,6 +1467,7 @@
 				776D8D9C1CAD22A70028929C /* SFUIText-RegularG2.otf in Resources */,
 				FF36FD431CF3A02F00BF217A /* kr-video-player-pause@2x.png in Resources */,
 				77CA4E111CBA8C8E007BD3F2 /* imageSkype.png in Resources */,
+				ADBFA8D61CF8A3A100776248 /* 12.png in Resources */,
 				776D8D9D1CAD22AA0028929C /* SFUIText-RegularG3.otf in Resources */,
 				7709628D1CB18CCD0024448B /* alertViewImage.png in Resources */,
 				FF36FD411CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png in Resources */,
@@ -1474,6 +1493,7 @@
 				AD2134CD1CF3A14900073D5A /* Icon-72@2x.png in Resources */,
 				FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */,
 				773C0D911CB986A2005794BE /* VKMenu.png in Resources */,
+				ADBFA8D31CF8A3A100776248 /* 03.png in Resources */,
 				776D8DA61CAD22CB0028929C /* SFUIDisplay-Semibold.otf in Resources */,
 				AD0D8A4A1CF0902E00E31448 /* play_button.png in Resources */,
 				FF0224BB1CF6467D0059029B /* video2.mov in Resources */,
@@ -1680,14 +1700,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		776D8CDF1CAD17BF0028929C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				776D8CE01CAD17BF0028929C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1776,6 +1788,7 @@
 			baseConfigurationReference = 080999DC11FF3D9F0649D5B0 /* Pods-PsychologistIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
@@ -1791,6 +1804,7 @@
 			baseConfigurationReference = 0B0A8F1E4D38244C59D0D80D /* Pods-PsychologistIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
