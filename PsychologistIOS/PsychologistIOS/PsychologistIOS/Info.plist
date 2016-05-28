@@ -58,7 +58,7 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>App plays audio</string>
+		<string>audio</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

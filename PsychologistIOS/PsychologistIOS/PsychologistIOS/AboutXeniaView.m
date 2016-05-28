@@ -53,7 +53,7 @@
         }
 //        mainImageView.layer.borderColor = [UIColor colorWithHexString:@"f69679"].CGColor;
 //        mainImageView.layer.borderWidth = 0.4f;
-        mainImageView.image = [UIImage imageNamed:@"imageXenia.png"];
+        mainImageView.image = [UIImage imageNamed:@"imageXenia2.png"];
         [mainScrollView addSubview:mainImageView];
         
         //Заголовок------------------------------------

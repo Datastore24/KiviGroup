@@ -268,7 +268,7 @@
         //Плесхолдер Email-------------------------------------------------------------------
         labelPlaceHoldEmail = [[UILabel alloc] initWithFrame:CGRectMake(24, 0, viewPhone.frame.size.width - 48, viewPhone.frame.size.height)];
         labelPlaceHoldEmail.tag = 3021;
-        labelPlaceHoldEmail.text = @"Введите eMail";
+        labelPlaceHoldEmail.text = @"Введите E-mail";
         labelPlaceHoldEmail.textColor = [UIColor colorWithHexString:@"b3b3b4"];
         labelPlaceHoldEmail.font = [UIFont fontWithName:FONTLITE size:19];
         if (isiPhone6) {
