@@ -17,6 +17,7 @@
 #import "SingleTone.h"
 #import "Macros.h"
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 
 @interface AppDelegate ()
@@ -42,9 +43,15 @@
     
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    //Строка скрывает НСЛОГИ Базы данных (для включения убрать коммент)------------------
-    //[MagicalRecord setLoggingLevel:0];
-    //Коммент
+    [[AVAudioSession sharedInstance] setDelegate:self];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    UInt32 size = sizeof(CFStringRef);
+    CFStringRef route;
+    AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &size, &route);
+    NSLog(@"route = %@", route);
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
@@ -86,6 +93,27 @@
     
     
     return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)theEvent {
+    
+    if (theEvent.type == UIEventTypeRemoteControl)  {
+        switch(theEvent.subtype)        {
+            case UIEventSubtypeRemoteControlPlay:
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"TogglePlayPause" object:nil];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"TogglePlayPause" object:nil];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                break;
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"TogglePlayPause" object:nil];
+                break;
+            default:
+                return;
+        }
+    }
 }
 
 //Тестовый метод подъема вью нотификации

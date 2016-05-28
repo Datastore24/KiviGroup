@@ -29,6 +29,7 @@
 @interface ChatController ()
 {
     NSDictionary * dictResponse;
+    BOOL isBool;
 }
 @property (nonatomic, strong) KrVideoPlayerController  *videoController;
 
@@ -53,12 +54,14 @@
     self.navigationController.navigationBar.translucent = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToChat) name:NOTIFICATION_SEND_AUDIO_FOR_CHAT object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pauseSound) name:@"TogglePlayPause" object:nil];
     
     
 #pragma mark - VideoElements
     
     [self getAPIWithBlock:^{
+        
+        isBool = YES;
         
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSDictionary class]]) {
             NSDictionary * mainDict = [dictResponse objectForKey:@"data"];
@@ -83,6 +86,18 @@
         }
         
     }];
+    
+}
+
+- (void) pauseSound
+{
+    if (isBool) {
+        [self.videoController pause];
+        isBool = NO;
+    } else {
+        [self.videoController play];
+        isBool = YES;
+    }
     
 }
 

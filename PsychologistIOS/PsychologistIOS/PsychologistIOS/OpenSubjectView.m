@@ -291,40 +291,40 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height += 230;
+                newRectScroll.size.height += 190;
             } else {
-            if (isiPhone6) {
-                newRectScroll.size.height += 275;
-            } else if (isiPhone5) {
-                newRectScroll.size.height += 240;
-            } else {
-                newRectScroll.size.height += 280;
-            }
+                if (isiPhone6) {
+                    newRectScroll.size.height += 240;
+                } else if (isiPhone5) {
+                    newRectScroll.size.height += 200;
+                } else {
+                    newRectScroll.size.height += 280;
+                }
             }
             mainScrollView.frame = newRectScroll;
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y += 230;
+                newRectButton.origin.y += 190;
             } else {
-            if (isiPhone6) {
-                newRectButton.origin.y += 275;
-            } else if (isiPhone5) {
-                newRectButton.origin.y += 240;
-            } else {
-                newRectButton.origin.y += 280;
-            }
+                if (isiPhone6) {
+                    newRectButton.origin.y += 240;
+                } else if (isiPhone5) {
+                    newRectButton.origin.y += 200;
+                } else {
+                    newRectButton.origin.y += 280;
+                }
             }
             buttonHeight.frame = newRectButton;
             //Линк
             CGRect newRectLink = buttonLink.frame;
             if (isiPhone4s) {
-                newRectLink.origin.y += 230;
+                newRectLink.origin.y += 190;
             } else {
                 if (isiPhone6) {
-                    newRectLink.origin.y += 275;
-                } else if (isiPhone5) {
                     newRectLink.origin.y += 240;
+                } else if (isiPhone5) {
+                    newRectLink.origin.y += 200;
                 } else {
                     newRectLink.origin.y += 280;
                 }
@@ -333,15 +333,15 @@
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height += 230;
+                newRectLabel.size.height += 190;
             } else {
-            if (isiPhone6) {
-                newRectLabel.size.height += 275;
-            } else if (isiPhone5) {
-                newRectLabel.size.height += 240;
-            } else {
-                newRectLabel.size.height += 280;
-            }
+                if (isiPhone6) {
+                    newRectLabel.size.height += 240;
+                } else if (isiPhone5) {
+                    newRectLabel.size.height += 200;
+                } else {
+                    newRectLabel.size.height += 280;
+                }
             }
             textViewText.frame = newRectLabel;
         } completion:^(BOOL finished) {
@@ -353,12 +353,12 @@
             //Скролл
             CGRect newRectScroll = mainScrollView.frame;
             if (isiPhone4s) {
-                newRectScroll.size.height -= 230;
+                newRectScroll.size.height -= 190;
             } else {
                 if (isiPhone6) {
-                    newRectScroll.size.height -= 275;
-                } else if (isiPhone5) {
                     newRectScroll.size.height -= 240;
+                } else if (isiPhone5) {
+                    newRectScroll.size.height -= 200;
                 } else {
                     newRectScroll.size.height -= 280;
                 }
@@ -367,12 +367,12 @@
             //Кнопка
             CGRect newRectButton = buttonHeight.frame;
             if (isiPhone4s) {
-                newRectButton.origin.y -= 230;
+                newRectButton.origin.y -= 190;
             } else {
                 if (isiPhone6) {
-                    newRectButton.origin.y -= 275;
-                } else if (isiPhone5) {
                     newRectButton.origin.y -= 240;
+                } else if (isiPhone5) {
+                    newRectButton.origin.y -= 200;
                 } else {
                     newRectButton.origin.y -= 280;
                 }
@@ -381,12 +381,12 @@
             //Линк
             CGRect newRectLink = buttonLink.frame;
             if (isiPhone4s) {
-                newRectLink.origin.y -= 230;
+                newRectLink.origin.y -= 190;
             } else {
                 if (isiPhone6) {
-                    newRectLink.origin.y -= 275;
-                } else if (isiPhone5) {
                     newRectLink.origin.y -= 240;
+                } else if (isiPhone5) {
+                    newRectLink.origin.y -= 200;
                 } else {
                     newRectLink.origin.y -= 280;
                 }
@@ -395,12 +395,12 @@
             //Лейбл
             CGRect newRectLabel = textViewText.frame;
             if (isiPhone4s) {
-                newRectLabel.size.height -= 230;
+                newRectLabel.size.height -= 190;
             } else {
                 if (isiPhone6) {
-                    newRectLabel.size.height -= 275;
-                } else if (isiPhone5) {
                     newRectLabel.size.height -= 240;
+                } else if (isiPhone5) {
+                    newRectLabel.size.height -= 200;
                 } else {
                     newRectLabel.size.height -= 280;
                 }

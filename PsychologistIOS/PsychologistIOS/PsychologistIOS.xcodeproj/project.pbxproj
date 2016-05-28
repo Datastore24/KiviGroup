@@ -215,6 +215,7 @@
 		FF36FD4C1CF3A02F00BF217A /* KrVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF36FD3E1CF3A02F00BF217A /* KrVideoPlayerControlView.m */; };
 		FF36FD4E1CF3A6E200BF217A /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD4D1CF3A6E200BF217A /* mainFone.png */; };
 		FF71472B1CEF0F7300286C4B /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF71472A1CEF0F7300286C4B /* AlertClass.m */; };
+		FF747B671CF9878D00A610E1 /* imageXenia2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF747B661CF9878D00A610E1 /* imageXenia2.png */; };
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
 		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
 		FFB28FDD1CEE4F9300A417A9 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */; };
@@ -534,6 +535,7 @@
 		FF36FD4D1CF3A6E200BF217A /* mainFone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainFone.png; sourceTree = "<group>"; };
 		FF7147291CEF0F7300286C4B /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
 		FF71472A1CEF0F7300286C4B /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClass.m; sourceTree = "<group>"; };
+		FF747B661CF9878D00A610E1 /* imageXenia2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageXenia2.png; sourceTree = "<group>"; };
 		FFB28FD21CEE14B100A417A9 /* ViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotification.h; sourceTree = "<group>"; };
 		FFB28FD31CEE14B100A417A9 /* ViewNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewNotification.m; sourceTree = "<group>"; };
 		FFB28FD71CEE436C00A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationAlert.png; sourceTree = "<group>"; };
@@ -1106,6 +1108,7 @@
 			children = (
 				77CA4E071CBA8C76007BD3F2 /* ImageSocial */,
 				77CA4E051CBA774B007BD3F2 /* imageXenia.png */,
+				FF747B661CF9878D00A610E1 /* imageXenia2.png */,
 				77CA4DFF1CBA4F59007BD3F2 /* AboutXeniaController.h */,
 				77CA4E001CBA4F59007BD3F2 /* AboutXeniaController.m */,
 				77CA4E021CBA4F71007BD3F2 /* AboutXeniaView.h */,
@@ -1420,6 +1423,7 @@
 				771715981CB65AC5003CD228 /* bubble.jpg in Resources */,
 				FF36FD471CF3A02F00BF217A /* kr-video-player-point@2x.png in Resources */,
 				776D8D8F1CAD22610028929C /* SFUIText-BoldItalicG3.otf in Resources */,
+				FF747B671CF9878D00A610E1 /* imageXenia2.png in Resources */,
 				77B79C221CBD686D00E37B52 /* image03.png in Resources */,
 				776D8D901CAD22640028929C /* SFUIText-Heavy.otf in Resources */,
 				771715A41CB68A0D003CD228 /* pushMessageImage.png in Resources */,
