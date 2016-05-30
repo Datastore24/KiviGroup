@@ -326,7 +326,7 @@
         <!--Login Controller-->
         <scene sceneID="aaw-O3-ugF">
             <objects>
-                <viewController id="3ep-T5-Nt7" customClass="LoginController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" id="3ep-T5-Nt7" customClass="LoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q0K-DD-DHa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHZ-mp-zNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="633"/>
+            <point key="canvasLocation" x="1341" y="634"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5ke-P0-mcV">
@@ -354,12 +354,27 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3ep-T5-Nt7" kind="relationship" relationship="rootViewController" id="UGq-Fa-cP8"/>
+                        <segue destination="JGu-UQ-7Ka" kind="relationship" relationship="rootViewController" id="GpX-so-ZC2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4T-CC-fmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="633"/>
+        </scene>
+        <!--Play Video Controller-->
+        <scene sceneID="Os6-DW-w52">
+            <objects>
+                <viewController id="JGu-UQ-7Ka" customClass="PlayVideoController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Dt-in-9E4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dTK-ig-fML"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pie-of-hpF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="636"/>
         </scene>
         <!--Category Controller-->
         <scene sceneID="SLb-Wn-3x7">
@@ -658,7 +673,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Aw-Bi-B7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="633"/>
+            <point key="canvasLocation" x="1744" y="634"/>
         </scene>
         <!--Subscription Controller-->
         <scene sceneID="kHb-IN-teH">
@@ -672,7 +687,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmj-ea-PIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="632"/>
+            <point key="canvasLocation" x="2145" y="633"/>
         </scene>
         <!--Developers Controller-->
         <scene sceneID="M0F-aS-qlB">
@@ -692,7 +707,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrJ-lg-mBR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="632"/>
+            <point key="canvasLocation" x="2544" y="633"/>
         </scene>
         <!--License Agreement Controller-->
         <scene sceneID="bK4-IN-sLZ">
@@ -706,13 +721,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E64-NG-nZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605" y="635"/>
+            <point key="canvasLocation" x="2961" y="636"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.png" width="16" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4rH-IK-lVJ"/>
-    </inferredMetricsTieBreakers>
 </document>

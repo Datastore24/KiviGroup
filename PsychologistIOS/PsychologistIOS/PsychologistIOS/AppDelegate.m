@@ -56,6 +56,7 @@
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
       AuthDbClass * auth = [AuthDbClass new];
+    [[SingleTone sharedManager] setToken_ios:@"TEST"];
     
     if(![auth checkDeviceToken:@"TEST"]){
         
@@ -130,8 +131,10 @@
                                       stringByReplacingOccurrencesOfString: @"<" withString: @""]
                                      stringByReplacingOccurrencesOfString: @">" withString: @""]
                                     stringByReplacingOccurrencesOfString: @" " withString: @""];
-    //    NSLog(@"My token is: %@", deviceTokenString);
+    
     [[SingleTone sharedManager] setToken_ios:deviceTokenString];
+    
+      NSLog(@"My token is: %@",  [[SingleTone sharedManager] token_ios]);
     
     if(![auth checkDeviceToken:deviceTokenString]){
         

@@ -216,6 +216,7 @@
 		FF36FD4E1CF3A6E200BF217A /* mainFone.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD4D1CF3A6E200BF217A /* mainFone.png */; };
 		FF71472B1CEF0F7300286C4B /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF71472A1CEF0F7300286C4B /* AlertClass.m */; };
 		FF747B671CF9878D00A610E1 /* imageXenia2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF747B661CF9878D00A610E1 /* imageXenia2.png */; };
+		FF747B6B1CF9CE6D00A610E1 /* PlayVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF747B6A1CF9CE6D00A610E1 /* PlayVideoController.m */; };
 		FFB28FD41CEE14B100A417A9 /* ViewNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FD31CEE14B100A417A9 /* ViewNotification.m */; };
 		FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB28FD71CEE436C00A417A9 /* notificationAlert.png */; };
 		FFB28FDD1CEE4F9300A417A9 /* DevelopersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */; };
@@ -536,6 +537,8 @@
 		FF7147291CEF0F7300286C4B /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClass.h; sourceTree = "<group>"; };
 		FF71472A1CEF0F7300286C4B /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClass.m; sourceTree = "<group>"; };
 		FF747B661CF9878D00A610E1 /* imageXenia2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageXenia2.png; sourceTree = "<group>"; };
+		FF747B691CF9CE6D00A610E1 /* PlayVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoController.h; sourceTree = "<group>"; };
+		FF747B6A1CF9CE6D00A610E1 /* PlayVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoController.m; sourceTree = "<group>"; };
 		FFB28FD21CEE14B100A417A9 /* ViewNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotification.h; sourceTree = "<group>"; };
 		FFB28FD31CEE14B100A417A9 /* ViewNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewNotification.m; sourceTree = "<group>"; };
 		FFB28FD71CEE436C00A417A9 /* notificationAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationAlert.png; sourceTree = "<group>"; };
@@ -796,6 +799,7 @@
 				77CA4DFD1CBA4F32007BD3F2 /* Xenia */,
 				77CA4DFC1CBA4EF8007BD3F2 /* Section */,
 				776D8DA91CAD24FC0028929C /* Login */,
+				FF747B681CF9CE4900A610E1 /* Video */,
 				776D8CD41CAD17BF0028929C /* AppDelegate.h */,
 				776D8CD51CAD17BF0028929C /* AppDelegate.m */,
 				776D8CD71CAD17BF0028929C /* ViewController.h */,
@@ -1263,6 +1267,15 @@
 			name = VideoPlayerKit;
 			sourceTree = "<group>";
 		};
+		FF747B681CF9CE4900A610E1 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				FF747B691CF9CE6D00A610E1 /* PlayVideoController.h */,
+				FF747B6A1CF9CE6D00A610E1 /* PlayVideoController.m */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		FFB28FDA1CEE4F7100A417A9 /* Developers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1342,7 +1355,7 @@
 				TargetAttributes = {
 					776D8CCD1CAD17BF0028929C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8W954C8DEM;
+						DevelopmentTeam = K35V233G6Y;
 					};
 					776D8CE61CAD17BF0028929C = {
 						CreatedOnToolsVersion = 7.2;
@@ -1622,6 +1635,7 @@
 				772F5A781CBEAE580051EC10 /* SupportServiceController.m in Sources */,
 				771D052C1CDDF6BC00A83111 /* SubscriptionModel.m in Sources */,
 				77B79C1A1CBD658000E37B52 /* BoolmarksModel.m in Sources */,
+				FF747B6B1CF9CE6D00A610E1 /* PlayVideoController.m in Sources */,
 				7784E9A81CE0EA6A0020F2FC /* CustomPlayer.m in Sources */,
 				776D8D441CAD1AD20028929C /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				772F5A7B1CBEAE700051EC10 /* SupportServiceView.m in Sources */,
@@ -1797,7 +1811,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kivilab.PsychologistIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ToBeAWoman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1813,7 +1827,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kivilab.PsychologistIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ToBeAWoman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

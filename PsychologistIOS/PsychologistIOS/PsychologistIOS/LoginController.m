@@ -32,8 +32,6 @@
 @property (strong,nonatomic) NSString * socType;
 @property (strong,nonatomic) NSString * type_auth;
 
-@property (nonatomic, strong) KrVideoPlayerController  *videoController;
-
 @end
 
 @implementation LoginController
@@ -46,7 +44,8 @@
     NSDictionary * responseInfo;
     AuthDbClass * authDbClass;
     BOOL phoneAndMail;
-    UIView * videoView;
+    UIView * avtorizationView;
+    UIActivityIndicatorView * activityView;
 
 }
 
@@ -108,20 +107,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFaceAvto) name:@"FaceBookN" object:nil];
     
     //Элементы авторизации------------------------------------
-    videoView = [[UIView alloc] initWithFrame:self.view.frame];
-    videoView.alpha = 0.f;
-    [self.view addSubview:videoView];
-    
-    NSString *filePath=[[NSBundle mainBundle] pathForResource:@"video2" ofType:@"mov"];
-    NSURL *fileUrl=[NSURL fileURLWithPath:filePath];
-    [self playVideoWithURL:fileUrl];
-    [self.videoController fullScreenHide];
-    [self.videoController allHide];
-    
-
-
-
-
+    avtorizationView = [[UIView alloc] initWithFrame:self.view.frame];
+    avtorizationView.alpha = 0.f;
+    avtorizationView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:avtorizationView];
+    activityView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.frame];
+    activityView.backgroundColor = [UIColor clearColor];
+    activityView.alpha = 0.f;
+    [activityView stopAnimating];
+    [self.view addSubview:activityView];
     
     UIButton * buttonLicense = (UIButton*)[self.view viewWithTag:386];
     [buttonLicense addTarget:self action:@selector(licensePush) forControlEvents:UIControlEventTouchUpInside];
@@ -139,8 +133,9 @@
         NSLog(@"TOT %@",userInfo.token_vk);
         if(userInfo.password.length != 0 || userInfo.token_fb.length != 0 || userInfo.token_vk.length != 0){
             NSLog(@"GO AUTH AUTO");
-            videoView.alpha = 1.f;
-            [self.videoController play];
+            avtorizationView.alpha = 0.6f;
+            activityView.alpha = 1.f;
+            [activityView startAnimating];
             [self performSelector:@selector(checkAuth) withObject:nil afterDelay:1.8f]; //Запуск проверки с паузой
         }else{
             [self showLoginWith:NO];
@@ -153,51 +148,21 @@
 
 #pragma mark - Video
 
-- (void)playVideoWithURL: (NSURL*) myURL {
-    [self addVideoPlayerWithURL:myURL];
-}
-
-- (void)addVideoPlayerWithURL:(NSURL *)url{
-    if (!self.videoController) {
-        self.videoController = [[KrVideoPlayerController alloc] initWithFrame:CGRectMake(- 220, 0, self.view.frame.size.width + 800, self.view.frame.size.height)];
-        if (isiPhone5) {
-            self.videoController.frame = self.view.frame;
-        }
-        __weak typeof(self)weakSelf = self;
-        [self.videoController setDimissCompleteBlock:^{
-            weakSelf.videoController = nil;
-        }];
-        [self.videoController setWillBackOrientationPortrait:^{
-            [weakSelf toolbarHidden:NO];
-        }];
-        [self.videoController setWillChangeToFullscreenMode:^{
-            [weakSelf toolbarHidden:YES];
-        }];
-        [videoView addSubview:self.videoController.view];
-    }
-    self.videoController.contentURL = url;
-    
-}
-//隐藏navigation tabbar 电池栏
-- (void)toolbarHidden:(BOOL)Bool{
-    self.navigationController.navigationBar.hidden = Bool;
-    self.tabBarController.tabBar.hidden = Bool;
-    [[UIApplication sharedApplication] setStatusBarHidden:Bool withAnimation:UIStatusBarAnimationFade];
-}
-
 
 //Показ проверки и анимация появления авторизации
 -(void)showLoginWith:(BOOL) animation{
     if(animation){
         //Повяление с анимацией
         [UIView animateWithDuration:2.0 animations:^{
-            videoView.alpha = 1.f;
-            [self.videoController play];
+            avtorizationView.alpha = 0.6f;
+            activityView.alpha = 1.f;
+            [activityView startAnimating];
         }];
         
     }else{
-        videoView.alpha = 0.f;
-        [self.videoController stop];
+        avtorizationView.alpha = 0.f;
+        activityView.alpha = 0.f;
+        [activityView stopAnimating];
     }
 }
 
@@ -241,7 +206,7 @@
         NSLog(@"%lu", textFildSMS.text.length);
         [AlertClass showAlertViewWithMessage:@"Код должен быть меньше 5 символов"];
     } else {
-        
+        NSLog(@"DEVICET %@",[[SingleTone sharedManager] token_ios]);
    
         
         [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andSocToken:@"" andTypeAuth:self.type_auth andBlock:^{
@@ -606,17 +571,17 @@
     if([token_ios isEqual: [NSNull null]]){
         iosToken=@"";
     }else{
-        iosToken=token_soc;
+        iosToken=token_ios;
     }
    
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
     
-    NSLog(@"TYPE: %@",loginResult);
-    NSLog(@"TYPE: %@",password);
-    NSLog(@"TYPE: %@",iosToken);
-    NSLog(@"TYPE: %@",socToken);
-    NSLog(@"TYPE: %@",type_auth);
+    NSLog(@"TYPE L: %@",loginResult);
+    NSLog(@"TYPE P: %@",password);
+    NSLog(@"TYPE T: %@",iosToken);
+    NSLog(@"TYPE ST: %@",socToken);
+    NSLog(@"TYPE A: %@",type_auth);
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              loginResult,@"login",
@@ -725,8 +690,9 @@
 
 - (void) stopAnimation
 {
-    videoView.alpha = 0.f;
-    [self.videoController stop];
+    avtorizationView.alpha = 0.f;
+    activityView.alpha = 0.f;
+    [activityView stopAnimating];
 }
 
 - (void) licensePush
