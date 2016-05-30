@@ -49,7 +49,7 @@
             CustomButton * buttonRates = [CustomButton buttonWithType:UIButtonTypeSystem];
             buttonRates.frame = CGRectMake(150, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
             if (isiPhone6) {
-                buttonRates.frame = CGRectMake(120, (labelText.frame.size.height + labelText.frame.origin.y + 88) + 56 * i, 16, 16);
+                buttonRates.frame = CGRectMake(120, (labelText.frame.size.height + labelText.frame.origin.y + 50) + 56 * i, 16, 16);
             } else if (isiPhone5) {
                 buttonRates.frame = CGRectMake(120, (labelText.frame.size.height + labelText.frame.origin.y + 50) + 56 * i, 10, 10);
             }
@@ -76,9 +76,13 @@
             labelTextButton.text = [mainDict objectForKey:@"title"];
             labelTextButton.textColor = [UIColor colorWithHexString:@"727372"];
             labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:15];
+            
             if (isiPhone5) {
                 labelTextButton.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + labelText.frame.origin.y + 47) + 56 * i, 300, 16);
                 labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:12];
+            } else if (isiPhone6) {
+                labelTextButton.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height - 12 + labelText.frame.origin.y + 50) + 56 * i, 300, 16);
+                labelTextButton.font = [UIFont fontWithName:FONTREGULAR size:15];
             }
             [self addSubview:labelTextButton];
             
@@ -92,13 +96,15 @@
             if (isiPhone5) {
                 labelTextCost.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + labelText.frame.origin.y + 47) + 56 * i, 300, 16);
                 labelTextCost.font = [UIFont fontWithName:FONTREGULAR size:12];
+            } else if (isiPhone6) {
+                labelTextCost.frame = CGRectMake(buttonRates.frame.size.width + buttonRates.frame.origin.x + 32, (labelText.frame.size.height + 13 + labelText.frame.origin.y + 50) + 56 * i, 300, 16);
             }
             [self addSubview:labelTextCost];
         }
         
         //Кнопка Подписаться---------------------------------------------------------
         UIButton * buttonSubscribe = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSubscribe.frame = CGRectMake(self.frame.size.width / 2 - 92, self.frame.size.height - 98, 184, 48);
+        buttonSubscribe.frame = CGRectMake(self.frame.size.width / 2 - 92, self.frame.size.height - 60, 184, 48);
         buttonSubscribe.backgroundColor = [UIColor colorWithHexString:@"08bb36"];
         buttonSubscribe.layer.cornerRadius = 24;
         [buttonSubscribe setTitle:@"ПОДПИСАТЬСЯ" forState:UIControlStateNormal];
@@ -130,7 +136,7 @@
 //Действие кноки выбора тарифа
 - (void) buttonRatesAction: (CustomButton*) button
 {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         CustomButton * otherButton  = (CustomButton *) [self viewWithTag:i + 20];
         UIImageView * imgeHol = (UIImageView*) [self viewWithTag:i + 10];
         if (button.tag == i + 20) {

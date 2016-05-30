@@ -101,7 +101,7 @@
 
 - (void) buttonSite
 {
-    NSLog(@"Перейти на сайт");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://apptrends.ru"]];
 }
 
 /*
