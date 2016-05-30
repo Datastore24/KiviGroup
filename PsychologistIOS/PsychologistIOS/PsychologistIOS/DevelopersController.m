@@ -45,13 +45,53 @@
     [button setImage:imageBarButton forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     _buttonMenu.customView=button;
-
+    
 #pragma mark - Initialization
-    UIWebView * webDevelop = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.view addSubview:webDevelop];
-    [webDevelop loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://apptrends.ru"]]];
-
-
+    //Фоновая картинка--------------------
+    UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    backgroundView.image = [UIImage imageNamed:@"fonSubImage.png"];
+    [self.view addSubview:backgroundView];
+    
+    //Фоновая картинка--------------------
+    UIView * mainLogoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    mainLogoView.backgroundColor = [UIColor colorWithHexString:@"eb9285"];
+    [self.view addSubview:mainLogoView];
+    UIImageView * imageViewLogo = [[UIImageView alloc] initWithFrame:CGRectMake(60, 0, self.view.frame.size.width - 140, 40)];
+    imageViewLogo.image = [UIImage imageNamed:@"logo.png"];
+    [self.view addSubview:imageViewLogo];
+    
+    UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width - 20, 400)];
+    labelText.numberOfLines = 0;
+    labelText.text = @"Мы превратим вашу идею в успешный и популярный мобильный сервис, который принесет прибыль\n\n\nНаши специалисты готовы предоставить вам консультацию по любым вопросам, связанным с разработкой мобильных приложений, помочь с выбором необходимого вам приложения и определением его функциональных параметров, предоставить готовые решения для вашего бизнеса!";
+    labelText.textColor = [UIColor blackColor];
+    labelText.font = [UIFont fontWithName:FONTREGULAR size:16];
+    [self.view addSubview:labelText];
+    
+    //Кнопка Рекомендую--------------------------------------
+    UIButton * buttonRecommend = [UIButton buttonWithType:UIButtonTypeSystem];
+    buttonRecommend.frame = CGRectMake(24, 530, self.view.frame.size.width - 48, 48);
+    buttonRecommend.backgroundColor = nil;
+    buttonRecommend.layer.cornerRadius = 25;
+    buttonRecommend.layer.borderColor = [UIColor colorWithHexString:@"eb9285"].CGColor;
+    buttonRecommend.layer.borderWidth = 1.f;
+    [buttonRecommend setTitle:@"ПОДРОБНО" forState:UIControlStateNormal];
+    [buttonRecommend setTitleColor:[UIColor colorWithHexString:@"eb9285"] forState:UIControlStateNormal];
+    buttonRecommend.titleLabel.font = [UIFont fontWithName:FONTLITE size:16];
+    if (isiPhone6) {
+        buttonRecommend.frame = CGRectMake(24, 495, self.view.frame.size.width - 48, 40);
+        buttonRecommend.layer.cornerRadius = 20;
+    } else if (isiPhone5 ) {
+        buttonRecommend.frame = CGRectMake(30, 425, self.view.frame.size.width - 60, 34);
+        buttonRecommend.layer.cornerRadius = 17;
+        buttonRecommend.titleLabel.font = [UIFont fontWithName:FONTLITE size:14];
+    }
+    [buttonRecommend addTarget:self action:@selector(buttonSite) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonRecommend];
+    
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,14 +99,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) buttonSite
+{
+    NSLog(@"Перейти на сайт");
 }
-*/
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

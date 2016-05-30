@@ -199,6 +199,7 @@
 		ADBFA8D51CF8A3A100776248 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D11CF8A3A100776248 /* 11.png */; };
 		ADBFA8D61CF8A3A100776248 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D21CF8A3A100776248 /* 12.png */; };
 		FF0224BB1CF6467D0059029B /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF0224BA1CF6467D0059029B /* video2.mov */; };
+		FF0E21801CFC9DD5005449C1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF0E217F1CFC9DD5005449C1 /* logo.png */; };
 		FF36FD3F1CF3A02F00BF217A /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */; };
 		FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */; };
 		FF36FD411CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */; };
@@ -517,6 +518,7 @@
 		ADBFA8D21CF8A3A100776248 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0224BA1CF6467D0059029B /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
+		FF0E217F1CFC9DD5005449C1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
 		FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
 		FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
@@ -1279,6 +1281,7 @@
 		FFB28FDA1CEE4F7100A417A9 /* Developers */ = {
 			isa = PBXGroup;
 			children = (
+				FF0E217F1CFC9DD5005449C1 /* logo.png */,
 				FFB28FDB1CEE4F9300A417A9 /* DevelopersController.h */,
 				FFB28FDC1CEE4F9300A417A9 /* DevelopersController.m */,
 			);
@@ -1508,6 +1511,7 @@
 				773C0D881CB97E50005794BE /* arrow.png in Resources */,
 				776D8DA51CAD22C90028929C /* SFUIDisplay-Regular.otf in Resources */,
 				AD2134CD1CF3A14900073D5A /* Icon-72@2x.png in Resources */,
+				FF0E21801CFC9DD5005449C1 /* logo.png in Resources */,
 				FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */,
 				773C0D911CB986A2005794BE /* VKMenu.png in Resources */,
 				ADBFA8D31CF8A3A100776248 /* 03.png in Resources */,
