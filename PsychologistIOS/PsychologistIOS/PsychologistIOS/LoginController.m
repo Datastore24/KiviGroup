@@ -531,7 +531,8 @@
             NSString * userID =[NSString stringWithFormat:@"%@",[responsePassword objectForKey:@"id"]];
             NSLog(@"USERID %@",userID);
             [[SingleTone sharedManager] setUserID:userID];
-            
+            [[SingleTone sharedManager] setUserName:[responsePassword objectForKey:@"name"]];
+              
             if([type isEqualToString:@"vk"]){
                [authDbClass updateUser:@"" andPassword:@"" andIdUser:userID andTokenVk:self.socTokenString andTokenFb:@"" andTypeAuth:auth];
                 

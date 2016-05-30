@@ -72,7 +72,7 @@
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubject) name:NOTIFICATION_SUB_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMark) name:@"notificationChekBookMarkSubcategory" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMarkSub) name:@"notificationChekBookMarkSubcategory" object:nil];
 
 }
 
@@ -108,9 +108,9 @@
     }];
 }
 
-- (void) chetBookMark
+- (void) chetBookMarkSub
 {
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"subcategory", @"type", nil];
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
@@ -136,7 +136,7 @@
 - (void) addBuukmark
 {
     if ([[buttonBookmark titleForState:UIControlStateNormal] isEqualToString:@"ДОБАВИТЬ В ЗАКЛАДКИ"]) {
-        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"subcategory", @"type", nil];
         
         APIGetClass * apiGallery = [APIGetClass new];
         [apiGallery getDataFromServerWithParams:params method:@"add_fav" complitionBlock:^(id response) {
