@@ -65,6 +65,8 @@
     self.view.userInteractionEnabled = YES;
     
     NSString * stringName;
+    NSLog(@"USERNAME %@",[[SingleTone sharedManager] userName]);
+    NSLog(@"id %@", [[SingleTone sharedManager] userID]);
     if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
         stringName = [NSString stringWithFormat:@"гость %@", [[SingleTone sharedManager] userID]];
     } else {
@@ -97,7 +99,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCustom) name:@"customNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMark) name:@"notificationChekBookMark" object:nil];
     
 }
