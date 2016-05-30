@@ -206,7 +206,7 @@
         NSLog(@"%lu", textFildSMS.text.length);
         [AlertClass showAlertViewWithMessage:@"Код должен быть меньше 5 символов"];
     } else {
-        
+        NSLog(@"DEVICET %@",[[SingleTone sharedManager] token_ios]);
    
         
         [self getInfo:self.loginString andPassword:textFildSMS.text andDeviceToken:[[SingleTone sharedManager] token_ios] andSocToken:@"" andTypeAuth:self.type_auth andBlock:^{
@@ -571,17 +571,17 @@
     if([token_ios isEqual: [NSNull null]]){
         iosToken=@"";
     }else{
-        iosToken=token_soc;
+        iosToken=token_ios;
     }
    
     
     NSString * loginResult = [login stringByReplacingOccurrencesOfString: @"+" withString: @""];
     
-    NSLog(@"TYPE: %@",loginResult);
-    NSLog(@"TYPE: %@",password);
-    NSLog(@"TYPE: %@",iosToken);
-    NSLog(@"TYPE: %@",socToken);
-    NSLog(@"TYPE: %@",type_auth);
+    NSLog(@"TYPE L: %@",loginResult);
+    NSLog(@"TYPE P: %@",password);
+    NSLog(@"TYPE T: %@",iosToken);
+    NSLog(@"TYPE ST: %@",socToken);
+    NSLog(@"TYPE A: %@",type_auth);
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              loginResult,@"login",

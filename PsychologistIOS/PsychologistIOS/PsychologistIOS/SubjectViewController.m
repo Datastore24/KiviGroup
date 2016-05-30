@@ -50,6 +50,7 @@
     [self.view addSubview:backgroundView];
     
     [self getAPIWithBlock:^{
+        NSLog(@"dictResponse: %@",dictResponse);
         
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]])
         {
