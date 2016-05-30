@@ -251,6 +251,7 @@
                 [[SingleTone sharedManager]setLogin:[respData objectForKey:@"login"]];
                 NSString * userID =[NSString stringWithFormat:@"%@",[respData objectForKey:@"id"]];
                 [[SingleTone sharedManager]setUserID:userID];
+                [[SingleTone sharedManager] setUserName:[respData objectForKey:@"name"]];
                 
                 [self.navigationController pushViewController:detail animated:YES];
             } else if ([[responseInfo objectForKey:@"error"]integerValue]==1) {
