@@ -21,6 +21,7 @@
 @implementation OpenSubjectController
 {
     NSDictionary * dictResponse;
+    NSDictionary * dictResponseMessage;
 }
 
 - (void) viewDidLoad
@@ -57,6 +58,20 @@
         
         ViewNotification * viewNotification = [[ViewNotification alloc] initWithView:self.view andIDDel:self andTitleLabel:stringTitle andText:stringText];
         [self.view addSubview:viewNotification];
+        
+        [self getAPIMessageWithBlock:^{
+            NSMutableArray * mArrayChat = [NSMutableArray new];
+            if ([[dictResponseMessage objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+            NSArray * myArray = [NSArray arrayWithArray:[dictResponseMessage objectForKey:@"data"]];
+            for (int i = 0; i < myArray.count; i++) {
+                NSDictionary * dict = [myArray objectAtIndex:i];
+                if ([[dict objectForKey:@"type"] isEqualToString:@"message"] && mArrayChat.count < 2) {
+                    [mArrayChat addObject:dict];
+                }
+            }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_SEE_MESSAGE" object:mArrayChat];
+            }
+        }];
         
 
     }];
@@ -101,5 +116,27 @@
         }
     }];
 }
+
+//Показать все сообщения-----------------------------------------------
+- (void) getAPIMessageWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager]postID], @"id_post",
+                             [[SingleTone sharedManager]userID], @"id_user" , @"1", @"desc", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"chat_show_message" complitionBlock:^(id response) {
+        
+        dictResponseMessage = (NSDictionary*) response;        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
+}
+
+
 
 @end
