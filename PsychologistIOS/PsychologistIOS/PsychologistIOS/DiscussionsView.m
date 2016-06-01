@@ -267,6 +267,10 @@
         buttonSend.frame = CGRectMake(165, dictaphoneView.frame.size.height / 2 - 24, 200, 48);
         buttonSend.backgroundColor = nil;
         buttonSend.layer.cornerRadius = 24;
+        if (isiPhone5) {
+            buttonSend.frame = CGRectMake(155, dictaphoneView.frame.size.height / 2 - 24, 150, 36);
+            buttonSend.layer.cornerRadius = 18;
+        }
         buttonSend.layer.borderColor = [UIColor colorWithHexString:@"4babe4"].CGColor;
         buttonSend.layer.borderWidth = 1.f;
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
@@ -523,8 +527,6 @@
                     labelText.frame = CGRectMake(38, 28 + countFor, 200, 12);
                 }
                 [labelText sizeToFit];
-                
-                
                 
                 //Вью Сообщения---------------------
                 viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];

@@ -29,6 +29,7 @@
 @interface ChatController ()
 {
     NSDictionary * dictResponse;
+    NSDictionary * dictResponseMessage;
     BOOL isBool;
 }
 @property (nonatomic, strong) KrVideoPlayerController  *videoController;
@@ -69,7 +70,6 @@
             //Основной контент-----------------------------------------
             ChatView * openDetailsView = [[ChatView alloc] initWithView:self.view andDict:mainDict];
             [self.view addSubview:openDetailsView];
-            NSLog(@"%@", dictResponse);
         } else {
             NSLog(@"Не дикшенери");
         }
@@ -84,6 +84,23 @@
             ViewSectionTable * imagePost = [[ViewSectionTable alloc] initWithPostImageURL:[StringImage createStringImageURLWithString:[mainDictionary objectForKey:@"media_path"]] andView:self.view andContentMode:UIViewContentModeScaleAspectFill];
             [self.view addSubview:imagePost];
         }
+        
+        
+        [self getAPIMessageWithBlock:^{
+            NSMutableArray * mArrayChat = [NSMutableArray new];
+            if ([[dictResponseMessage objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                NSArray * myArray = [NSArray arrayWithArray:[dictResponseMessage objectForKey:@"data"]];
+//                NSLog(@"myArray %@", myArray);
+                for (int i = 0; i < myArray.count; i++) {
+                    NSDictionary * dict = [myArray objectAtIndex:i];
+                    if ([[dict objectForKey:@"type"] isEqualToString:@"message"] && mArrayChat.count < 2) {
+                        [mArrayChat addObject:dict];
+                    }
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_SEE_MESSAGE_VIDEO_TYPE" object:mArrayChat];
+            }
+        }];
+        
         
     }];
     
@@ -188,6 +205,27 @@
     if (self.isMovingFromParentViewController) {
         [self.videoController dismiss];
     }
+}
+
+//Показать все сообщения-----------------------------------------------
+- (void) getAPIMessageWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager]postID], @"id_post",
+                             [[SingleTone sharedManager]userID], @"id_user" , @"1", @"desc", nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"chat_show_message" complitionBlock:^(id response) {
+        
+        dictResponseMessage = (NSDictionary*) response;
+        
+        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+            //ТУТ UILabel когда нет фоток там API выдает
+        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+            block();
+        }
+    }];
 }
 
 

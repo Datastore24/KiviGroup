@@ -12,9 +12,12 @@
 #import "StringImage.h"
 #import "ViewSectionTable.h"
 #import "TextMethodClass.h"
+#import "SingleTone.h"
 
 @implementation ChatView
 {
+    UIView * viewChat;
+    
     UIScrollView * mainScrollView;
     CGFloat selfHeight;
     UITextView * textViewText;
@@ -35,13 +38,14 @@
         }
         mainAnim = YES;
         mainDict = dict;
+        countFor = 60;
         selfHeight = view.frame.size.height - 64;
         self.userInteractionEnabled = YES;
         
 #pragma mark - Chat View
         
         //Вью чата--------------------------------------------------------------------
-        UIView * viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 188, self.frame.size.width, self.frame.size.height - 188)];
+        viewChat = [[UIView alloc] initWithFrame:CGRectMake(0, 188, self.frame.size.width, self.frame.size.height - 188)];
         viewChat.userInteractionEnabled = YES;
         if (isiPhone6) {
             viewChat.frame = CGRectMake(0, 120, self.frame.size.width, self.frame.size.height - 120);
@@ -52,121 +56,14 @@
         if (isiPhone4s) {
             viewChat.frame = CGRectMake(0, 20, self.frame.size.width, self.frame.size.height - 120);
         }
-        
-        //        for (NSInteger i = array.count; i > (array.count - 3); i--) {
-        //            NSDictionary * dictChat = [array objectAtIndex:i - 1];
-        //            if ([[dictChat objectForKey:@"Users"] isEqualToString:@"Пользователь 1"]) {
-        //                // Имя пользователя---------------
-        //                UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
-        //                labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
-        //                labelUser.font = [UIFont fontWithName:FONTLITE size:12];
-        //                if (isiPhone5) {
-        //                    labelUser.font = [UIFont fontWithName:FONTLITE size:10];
-        //                }
-        //                labelUser.text = [dictChat objectForKey:@"Users"];
-        //                [viewChat addSubview:labelUser];
-        //
-        //                //Текст сообщения------------------
-        //                UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 24, 32 + countFor, 300, 12)];
-        //                labelText.numberOfLines = 0;
-        //                labelText.textColor = [UIColor whiteColor];
-        //                labelText.text = [dictChat objectForKey:@"Message"];
-        //                labelText.font = [UIFont fontWithName:FONTLITE size:18];
-        //                if (isiPhone6) {
-        //                    labelText.font = [UIFont fontWithName:FONTLITE size:16];
-        //                } else if (isiPhone5) {
-        //                    labelText.font = [UIFont fontWithName:FONTLITE size:12];
-        //                    labelText.frame = CGRectMake(viewChat.frame.size.width - 24, 28 + countFor, 200, 12);
-        //                }
-        //
-        //                [labelText sizeToFit];
-        //                labelText.frame = CGRectMake((viewChat.frame.size.width - labelText.frame.size.width) - 32, labelText.frame.origin.y, labelText.frame.size.width, labelText.frame.size.height);
-        //
-        //                //Вью сообщения----------------------
-        //                UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
-        //                if (isiPhone6) {
-        //                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
-        //                } else if (isiPhone5) {
-        //                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
-        //                }
-        //                viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
-        //                viewMessage.layer.cornerRadius = 7.f;
-        //                [viewChat addSubview:viewMessage];
-        //                [viewChat addSubview:labelText];
-        //
-        //                //Создаем хвостик--------------------
-        //                UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(viewMessage.frame.origin.x + viewMessage.frame.size.width - 9, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
-        //                bubbleView.image = [UIImage imageNamed:@"bubble.png"];
-        //                [viewChat addSubview:bubbleView];
-        //
-        //                //Лейбл даты-----------------------
-        //                UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 40, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
-        //                labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
-        //                labelData.font = [UIFont fontWithName:FONTLITE size:12];
-        //                if (isiPhone5) {
-        //                    labelData.font = [UIFont fontWithName:FONTLITE size:10];
-        //                }
-        //                labelData.text = [dictChat objectForKey:@"Data"];
-        //                [labelData sizeToFit];
-        //                labelData.frame = CGRectMake(viewChat.frame.size.width - 24 - labelData.frame.size.width, labelData.frame.origin.y, labelData.frame.size.width, labelData.frame.size.height);
-        //                [viewChat addSubview:labelData];
-        //
-        //                countFor += viewMessage.frame.size.height + 30;
-        //
-        //            } else {
-        //                // Имя пользователя---------------
-        //                UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(28, 8 + countFor, 88, 12)];
-        //                labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
-        //                labelUser.font = [UIFont fontWithName:FONTLITE size:12];
-        //                if (isiPhone5) {
-        //                    labelUser.font = [UIFont fontWithName:FONTLITE size:10];
-        //                }
-        //                labelUser.text = [dictChat objectForKey:@"Users"];
-        //                [viewChat addSubview:labelUser];
-        //
-        //                UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(38, 28 + countFor, 40, 12)];
-        //                labelText.text = [dictChat objectForKey:@"Message"];
-        //                labelText.font = [UIFont fontWithName:FONTLITE size:18];
-        //                if (isiPhone6) {
-        //                    labelText.font = [UIFont fontWithName:FONTLITE size:16];
-        //                } else if (isiPhone5) {
-        //                    labelText.font = [UIFont fontWithName:FONTLITE size:12];
-        //                }
-        //                [labelText sizeToFit];
-        //
-        //                //Вью Сообщения---------------------
-        //                UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
-        //                if (isiPhone6) {
-        //                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
-        //                } else if (isiPhone5) {
-        //                    viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
-        //                }
-        //                viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
-        //                viewMessage.layer.cornerRadius = 7.f;
-        //                [viewChat addSubview:viewMessage];
-        //                [viewChat addSubview:labelText];
-        //
-        //                //Создаем хвостик------------------
-        //                UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(32 - 7, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
-        //                bubbleView.image = [UIImage imageNamed:@"bubble - gray.png"];
-        //                [viewChat addSubview:bubbleView];
-        //
-        //                //Лейбл даты-----------------------
-        //                UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
-        //                labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
-        //                labelData.font = [UIFont fontWithName:FONTLITE size:12];
-        //                if (isiPhone5) {
-        //                    labelData.font = [UIFont fontWithName:FONTLITE size:10];
-        //                }
-        //                labelData.text = [dictChat objectForKey:@"Data"];
-        //                [viewChat addSubview:labelData];
-        //
-        //                countFor += viewMessage.frame.size.height + 30;
-        //
-        //            }
-        //        }
-        
+ 
         [self addSubview:viewChat];
+            
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMessageChat:) name:@"NOTIFICATION_SEE_MESSAGE_VIDEO_TYPE" object:nil];
+            
+        UIView * viewForButton = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 80, self.frame.size.width, 80)];
+        viewForButton.backgroundColor = [UIColor whiteColor];
+        [self addSubview:viewForButton];
         
         //Кнопка обсудить---------------------------
         UIButton * buttonPush = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -272,6 +169,10 @@
             buttonLink.titleLabel.font = [UIFont fontWithName:FONTBOND size:14];
         }
         [buttonLink addTarget:self action:@selector(buttonLinkAction) forControlEvents:UIControlEventTouchUpInside];
+        NSLog(@"mainDict --------------- %@", [mainDict objectForKey:@"link"]);
+        if ([[mainDict objectForKey:@"link"] isEqualToString:@""] || [[mainDict objectForKey:@"link"] isEqual:[NSNull null]]) {
+            buttonLink.alpha = 0;
+        }
         [mainScrollView addSubview:buttonLink];
         
     }
@@ -420,6 +321,140 @@
 {
         NSString * stringURL = [NSString stringWithFormat:@"http://%@", [mainDict objectForKey:@"link"]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
+}
+
+- (void) addMessageChat: (NSNotification*) notification
+{
+    NSMutableArray * array = notification.object;
+    
+    for (int i = 0; i < array.count; i++) {
+        NSDictionary * dictChat = [array objectAtIndex:i];
+        if ([[dictChat objectForKey:@"id_user"] integerValue] == 0) {
+            // Имя пользователя---------------
+            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 73, 8 + countFor, 88, 12)];
+            labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
+            labelUser.font = [UIFont fontWithName:FONTLITE size:12];
+            if (isiPhone5) {
+                labelUser.font = [UIFont fontWithName:FONTLITE size:10];
+            }
+            labelUser.text = @"Ксения";
+            [viewChat addSubview:labelUser];
+            
+            //Текст сообщения------------------
+            UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 24, 32 + countFor, 300, 12)];
+            labelText.numberOfLines = 0;
+            labelText.textColor = [UIColor whiteColor];
+            labelText.text = [dictChat objectForKey:@"message"];
+            labelText.font = [UIFont fontWithName:FONTLITE size:18];
+            if (isiPhone6) {
+                labelText.font = [UIFont fontWithName:FONTLITE size:16];
+            } else if (isiPhone5) {
+                labelText.font = [UIFont fontWithName:FONTLITE size:12];
+                labelText.frame = CGRectMake(viewChat.frame.size.width - 24, 28 + countFor, 200, 12);
+            }
+            
+            [labelText sizeToFit];
+            labelText.frame = CGRectMake((viewChat.frame.size.width - labelText.frame.size.width) - 32, labelText.frame.origin.y, labelText.frame.size.width, labelText.frame.size.height);
+            
+            //Вью сообщения----------------------
+            UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
+            if (isiPhone6) {
+                viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+            } else if (isiPhone5) {
+                viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+            }
+            viewMessage.backgroundColor = [UIColor colorWithHexString:@"f69679"];
+            viewMessage.layer.cornerRadius = 7.f;
+            [viewChat addSubview:viewMessage];
+            [viewChat addSubview:labelText];
+            
+            //Создаем хвостик--------------------
+            UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(viewMessage.frame.origin.x + viewMessage.frame.size.width - 9, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
+            bubbleView.image = [UIImage imageNamed:@"bubble.png"];
+            [viewChat addSubview:bubbleView];
+            
+            //Лейбл даты-----------------------
+            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(viewChat.frame.size.width - 32 - 40, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
+            labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
+            labelData.font = [UIFont fontWithName:FONTLITE size:12];
+            if (isiPhone5) {
+                labelData.font = [UIFont fontWithName:FONTLITE size:10];
+            }
+            labelData.text = [dictChat objectForKey:@"inserted"];
+            [labelData sizeToFit];
+            labelData.frame = CGRectMake(viewChat.frame.size.width - 24 - labelData.frame.size.width, labelData.frame.origin.y, labelData.frame.size.width, labelData.frame.size.height);
+            [viewChat addSubview:labelData];
+            
+            countFor += viewMessage.frame.size.height + 30;
+            
+        } else {
+            // Имя пользователя---------------
+            UILabel * labelUser = [[UILabel alloc] initWithFrame:CGRectMake(28, 8 + countFor, 88, 12)];
+            labelUser.textColor = [UIColor colorWithHexString:@"8e8e93"];
+            labelUser.font = [UIFont fontWithName:FONTLITE size:12];
+            if (isiPhone5) {
+                labelUser.font = [UIFont fontWithName:FONTLITE size:10];
+            }
+            if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
+                labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
+            } else {
+                labelUser.text = [[SingleTone sharedManager] userName];
+            }
+            [labelUser sizeToFit];
+            [viewChat addSubview:labelUser];
+            
+            UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(38, 32 + countFor, 300, 12)];
+            labelText.numberOfLines = 0;
+            labelText.text = [dictChat objectForKey:@"message"];
+            labelText.font = [UIFont fontWithName:FONTLITE size:18];
+            if (isiPhone6) {
+                labelText.font = [UIFont fontWithName:FONTLITE size:16];
+            } else if (isiPhone5) {
+                labelText.font = [UIFont fontWithName:FONTLITE size:12];
+            }
+            [labelText sizeToFit];
+            
+            //Вью Сообщения---------------------
+            UIView * viewMessage = [[UIView alloc] initWithFrame:CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 5, labelText.frame.size.width + 20, labelText.frame.size.height + 10)];
+            if (isiPhone6) {
+                viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+            } else if (isiPhone5) {
+                viewMessage.frame = CGRectMake(labelText.frame.origin.x - 10, labelText.frame.origin.y - 3, labelText.frame.size.width + 20, labelText.frame.size.height + 6);
+            }
+            viewMessage.backgroundColor = [UIColor colorWithHexString:@"e5e5ea"];
+            viewMessage.layer.cornerRadius = 7.f;
+            [viewChat addSubview:viewMessage];
+            [viewChat addSubview:labelText];
+            
+            //Создаем хвостик------------------
+            UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(32 - 7, viewMessage.frame.origin.y + viewMessage.frame.size.height - 7, 16, 8)];
+            bubbleView.image = [UIImage imageNamed:@"bubble - gray.png"];
+            [viewChat addSubview:bubbleView];
+            
+            //Лейбл даты-----------------------
+            UILabel * labelData = [[UILabel alloc] initWithFrame:CGRectMake(28, viewMessage.frame.origin.y + viewMessage.frame.size.height + 5, 40, 12)];
+            labelData.textColor = [UIColor colorWithHexString:@"8e8e93"];
+            labelData.font = [UIFont fontWithName:FONTLITE size:12];
+            if (isiPhone5) {
+                labelData.font = [UIFont fontWithName:FONTLITE size:10];
+            }
+            labelData.text = [dictChat objectForKey:@"inserted"];
+            [labelData sizeToFit];
+            [viewChat addSubview:labelData];
+            
+            countFor += viewMessage.frame.size.height + 30;
+            
+        }
+        countFor += 15;
+    }
+    
+    
+    
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
