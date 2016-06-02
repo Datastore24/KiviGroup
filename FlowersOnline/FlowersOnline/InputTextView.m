@@ -60,6 +60,13 @@
     return self;
 }
 
+- (void) setHeight:(CGFloat)height
+{
+    CGRect myRect = self.frame;
+    myRect.origin.y = height;
+    self.frame = myRect;
+}
+
 #pragma mark - UITextFieldDelegate
 
 //Скрытие клавиатуры----------------------------------------

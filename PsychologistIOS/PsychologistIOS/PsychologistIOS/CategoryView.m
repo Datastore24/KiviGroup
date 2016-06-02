@@ -149,15 +149,16 @@
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
-        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 72, alertView.frame.size.width - 128, 16)];
+        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 72, alertView.frame.size.width - 128, 40)];
         alertTitleLabel.numberOfLines = 0;
         alertTitleLabel.textAlignment = NSTextAlignmentCenter;
         alertTitleLabel.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
         if (isiPhone5) {
-            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 13);
+            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 30);
             alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         }
+//        [alertTitleLabel sizeToFit];
         [alertView addSubview:alertTitleLabel];
         
         //Основной текст--------------------------------------------------
@@ -402,7 +403,7 @@
     UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 10, 216, 24)];
     NSString * myString = string;
     labelTitle.text = myString;
-    labelTitle.numberOfLines = 0;
+    labelTitle.numberOfLines = 2;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:21];
     if (isiPhone6) {

@@ -21,4 +21,6 @@
                     andImage: (NSString*) imageName
           andTextPlaceHolder: (NSString*) placeHolder;
 
+@property (assign, nonatomic) CGFloat height;
+
 @end

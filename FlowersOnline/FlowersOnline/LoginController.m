@@ -19,7 +19,7 @@
     
 #pragma mark - Header    
     
-    self.navigationController.navigationBarHidden = YES;    
+//    self.navigationController.navigationBarHidden = YES;    
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
