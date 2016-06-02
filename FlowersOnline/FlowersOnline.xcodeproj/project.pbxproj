@@ -27,7 +27,6 @@
 		7748A1901CD5076F001A5743 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7748A18F1CD5076F001A5743 /* Avatar.png */; };
 		7748A1931CD52B95001A5743 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7748A1921CD52B95001A5743 /* LoginView.m */; };
 		7748A1951CD52CFA001A5743 /* BGImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7748A1941CD52CFA001A5743 /* BGImage.png */; };
-		7748A1991CD52E13001A5743 /* CustomInputText.m in Sources */ = {isa = PBXBuildFile; fileRef = 7748A1981CD52E13001A5743 /* CustomInputText.m */; };
 		77A2A8EE1CD8B9FA0092CC06 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A2A8ED1CD8B9FA0092CC06 /* logo.png */; };
 		77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B355251CD3B5BE00A17546 /* SWRevealViewController.m */; };
 		77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B355291CD3B8C100A17546 /* MenuController.m */; };
@@ -97,8 +96,6 @@
 		7748A1911CD52B95001A5743 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		7748A1921CD52B95001A5743 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		7748A1941CD52CFA001A5743 /* BGImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BGImage.png; sourceTree = "<group>"; };
-		7748A1971CD52E13001A5743 /* CustomInputText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInputText.h; sourceTree = "<group>"; };
-		7748A1981CD52E13001A5743 /* CustomInputText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInputText.m; sourceTree = "<group>"; };
 		77A2A8ED1CD8B9FA0092CC06 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		77B355241CD3B5BE00A17546 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		77B355251CD3B5BE00A17546 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -263,6 +260,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
+				FF57A6A51D00A1C800C91077 /* Registration */,
 				77B3552B1CD3BEEE00A17546 /* Login */,
 				77B355231CD3B05500A17546 /* Menu Controller */,
 				AD109ABC1CCF5B120074BA7B /* AppDelegate.h */,
@@ -285,14 +283,19 @@
 		AD109AB91CCF5B120074BA7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7748A1971CD52E13001A5743 /* CustomInputText.h */,
-				7748A1981CD52E13001A5743 /* CustomInputText.m */,
 				77B3552F1CD3BFBE00A17546 /* TitleClass.h */,
 				77B355301CD3BFBE00A17546 /* TitleClass.m */,
 				77B355311CD3BFBE00A17546 /* Macros.h */,
 				AD109ABA1CCF5B120074BA7B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF57A6A51D00A1C800C91077 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,7 +394,6 @@
 				7748A1931CD52B95001A5743 /* LoginView.m in Sources */,
 				77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
-				7748A1991CD52E13001A5743 /* CustomInputText.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
 				77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */,
 				77B3552E1CD3BF3900A17546 /* LoginController.m in Sources */,

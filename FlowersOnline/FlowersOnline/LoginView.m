@@ -45,6 +45,9 @@
         //Создание полей ввода текста----
         for (int i = 0; i < arrayImageName.count; i++) {
             InputTextView * inputText = [[InputTextView alloc] initWithView:self PointY:460 + 76 * i andImage:[arrayImageName objectAtIndex:i] andTextPlaceHolder:[arrayName objectAtIndex:i]];
+            if (isiPhone6) {
+                inputText.height = 400 + 76 * i;
+            }
             [self addSubview:inputText];
         }
         //Создание кнопки----------------

@@ -15,9 +15,8 @@
 //Макросы для приложения ---------------------------------------------------
 
 //Элементы под разные устройства----------------------------------------------
-
-#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
 #define isiPhone6  ([[UIScreen mainScreen] bounds].size.height == 667)?TRUE:FALSE
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
 #define isiPhone4s  ([[UIScreen mainScreen] bounds].size.height == 480)?TRUE:FALSE
 
 //Шрифты--------------------------------------------------------------------------

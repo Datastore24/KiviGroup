@@ -325,7 +325,7 @@
     UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(136, 10, 216, 24)];
     NSString * myString = string;
     labelTitle.text = myString;
-    labelTitle.numberOfLines = 0;
+    labelTitle.numberOfLines = 2;
     labelTitle.textColor = [UIColor colorWithHexString:@"d46458"];
     labelTitle.font = [UIFont fontWithName:FONTLITE size:21];
     if (isiPhone6) {
