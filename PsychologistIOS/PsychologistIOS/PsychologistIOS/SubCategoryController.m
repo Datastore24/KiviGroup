@@ -140,13 +140,11 @@
         }];
 
         if ([[dictRates objectForKey:@"error"] integerValue] == 1) {
-            //            NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
-        } else if ([[dictRates objectForKey:@"error"] integerValue] == 0) {
-            
+                        NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
+        } else if ([[dictRates objectForKey:@"error"] integerValue] == 0) {            
             NSLog(@"dictRates\\\\|||||//////   %@", dictRates);
-            block();
-            
         }
+        block();
     }];
 }
 
@@ -161,6 +159,7 @@
                 buttonBuy.alpha = 0.f;
             } else {
                 openButton.alpha = 0.f;
+                NSLog(@"Не оплеченный саб");
             }
         }];
     } else {
