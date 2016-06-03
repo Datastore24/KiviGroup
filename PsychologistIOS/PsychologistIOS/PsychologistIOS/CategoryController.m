@@ -100,7 +100,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithSubCategory) name:NOTIFICATION_CATEGORY_PUSH_TU_SUBCATEGORY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPushWithRates) name:NOTIFICATION_PUSH_BUY_CATEGORY object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMark) name:@"notificationChekBookMark" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chetBookMark:) name:@"notificationChekBookMark" object:nil];
     
 }
 
@@ -156,13 +156,30 @@
                              [[SingleTone sharedManager] identifierCategory], @"id_category",
                              [[SingleTone sharedManager] userID], @"id_user",nil];
     
-    NSLog(@"identifierCategory %@", [[SingleTone sharedManager] identifierCategory]);
-    NSLog(@"userID %@", [[SingleTone sharedManager] userID]);
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"check_subscribe" complitionBlock:^(id response) {
         
         dictRates = (NSDictionary*) response;
+                //Провека закладок------------
+                NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+                APIGetClass * apiGallery = [APIGetClass new];
+                [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
+                    dictResponse = (NSDictionary*) response;
+                     [[NSNotificationCenter defaultCenter] postNotificationName:@"animationAlertView" object:nil];
+                    if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+                        NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+                        //ТУТ UILabel когда нет фоток там API выдает
+                    } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+                        NSLog(@"response %@", response);
+                        if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
+                            [buttonBookmark setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
+                        } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
+                            [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
+                        }
+                    }
+                }];
+        
         
         if ([[dictRates objectForKey:@"error"] integerValue] == 1) {
 //            NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
@@ -175,46 +192,41 @@
     }];
 }
 
-- (void) chetBookMark
+- (void) chetBookMark: (NSNotification*) notification
 {
-    //Проверка подписки-----------
-    [self getAPIWithParamsWithBlock:^{
-        UIButton * buttonBuy = [self.view viewWithTag:1875];
-        if ([dictRates objectForKey:@"data"] != [NSNull null]) {
-            buttonBuy.alpha = 0.f;
-        }
-        
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"animationAlertView" object:nil];
-        
-        
-    }];
-    
-
-    
-    
-    //Провека закладок------------
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
-    
-    APIGetClass * apiGallery = [APIGetClass new];
-    [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
-        
-        dictResponse = (NSDictionary*) response;
-        
-        if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
-            NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
-            //ТУТ UILabel когда нет фоток там API выдает
-        } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"response %@", response);
-            if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
-               [buttonBookmark setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
-            } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
-                [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
-                
+    if ([notification.object boolValue]) {
+        //Проверка подписки-----------
+        [self getAPIWithParamsWithBlock:^{
+            UIButton * buttonBuy = [self.view viewWithTag:1875];
+            if ([dictRates objectForKey:@"data"] != [NSNull null]) {
+                buttonBuy.alpha = 0.f;
             }
-        }
-    }];
+        }];
+    } else {
+        
+        //Провека закладок------------
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
+        APIGetClass * apiGallery = [APIGetClass new];
+        [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
+            dictResponse = (NSDictionary*) response;
+            if ([[dictResponse objectForKey:@"error"] integerValue] == 1) {
+                NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
+                //ТУТ UILabel когда нет фоток там API выдает
+            } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
+                NSLog(@"response %@", response);
+                if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
+                    [buttonBookmark setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
+                } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
+                    [buttonBookmark setTitle:@"УЖЕ В ЗАКЛАДКАХ" forState:UIControlStateNormal];
+                }
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"animationAlertView" object:nil];
+            
+        }];
 
+    }
+
+    
 }
 
 - (void) addBuukmark

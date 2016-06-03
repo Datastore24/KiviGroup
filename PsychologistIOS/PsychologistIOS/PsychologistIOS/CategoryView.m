@@ -317,6 +317,11 @@
     return cell;
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - UITableViewDelegate
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -345,7 +350,7 @@
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
     [[SingleTone sharedManager] setRules:[dictCell objectForKey:@"rules"]];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMark" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMark" object:[dictCell objectForKey:@"paid"]];
     
     [UIView animateWithDuration:0.1 animations:^{
         darkView.alpha = 0.4f;
