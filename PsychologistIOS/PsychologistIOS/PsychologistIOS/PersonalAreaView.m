@@ -78,10 +78,10 @@
         
         //Телефон-----------
         //Вью для телефона------------------------------------------------
-        UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, 96, 328, 48)];
+        UIView * viewPhone = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, 110, 328, 48)];
         viewPhone.layer.cornerRadius = 24.f;
         if (isiPhone6) {
-            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 164, 66, 328, 48);
+            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 164, 110, 328, 48);
         } else if (isiPhone5) {
             viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 140, 55, 280, 42);
             viewPhone.layer.cornerRadius = 21.f;
@@ -146,7 +146,7 @@
         
         //Email-----------
         //Вью для Email------------------------------------------------
-        UIView * viewEmail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 48, 328, 48)];
+        UIView * viewEmail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 16, 328, 48)];
         viewEmail.layer.cornerRadius = 24.f;
         if (isiPhone5) {
                 viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 25, 280, 42);
@@ -422,7 +422,6 @@
         }
         buttonSubscription.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         [buttonSubscription addTarget:self action:@selector(buttonSubscriptionAction) forControlEvents:UIControlEventTouchUpInside];
-        buttonSubscription.alpha = 0.f;
         [self addSubview:buttonSubscription];
         
         //Кнопка сменить пароль------------------------------------

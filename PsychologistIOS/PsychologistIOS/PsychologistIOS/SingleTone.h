@@ -44,6 +44,9 @@
 
 @property (strong, nonatomic) NSString * postType;
 
+//Соглашение
+@property (strong, nonatomic) NSString * rules;
+
 
 + (id)sharedManager;
 
