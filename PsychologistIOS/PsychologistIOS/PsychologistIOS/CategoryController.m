@@ -27,6 +27,7 @@
 {
     NSDictionary * dictResponse;
     UIButton * buttonBookmark;
+    NSDictionary * dictRates;
 }
 
 
@@ -149,8 +150,50 @@
     }];
 }
 
+- (void) getAPIWithParamsWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager] identifierCategory], @"id_category",
+                             [[SingleTone sharedManager] userID], @"id_user",nil];
+    
+    NSLog(@"identifierCategory %@", [[SingleTone sharedManager] identifierCategory]);
+    NSLog(@"userID %@", [[SingleTone sharedManager] userID]);
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"check_subscribe" complitionBlock:^(id response) {
+        
+        dictRates = (NSDictionary*) response;
+        
+        if ([[dictRates objectForKey:@"error"] integerValue] == 1) {
+//            NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
+        } else if ([[dictRates objectForKey:@"error"] integerValue] == 0) {
+            
+            NSLog(@"dictRates\\\\|||||//////   %@", dictRates);
+            block();
+            
+        }
+    }];
+}
+
 - (void) chetBookMark
 {
+    //Проверка подписки-----------
+    [self getAPIWithParamsWithBlock:^{
+        UIButton * buttonBuy = [self.view viewWithTag:1875];
+        if ([dictRates objectForKey:@"data"] != [NSNull null]) {
+            buttonBuy.alpha = 0.f;
+        }
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"animationAlertView" object:nil];
+        
+        
+    }];
+    
+
+    
+    
+    //Провека закладок------------
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"category", @"type", nil];
     
     APIGetClass * apiGallery = [APIGetClass new];

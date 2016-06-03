@@ -34,6 +34,8 @@
 
 @synthesize postType;
 
+@synthesize rules;
+
 
 
 

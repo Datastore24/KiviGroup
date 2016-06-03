@@ -42,6 +42,9 @@
     
     
     NSDictionary * dictCellSend;
+    
+    
+    UIActivityIndicatorView * activitiInd;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -70,6 +73,8 @@
         mainArray = array;
         
         dictResponse = [NSDictionary new];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationAlert) name:@"animationAlertView" object:nil];
         
         //Вью поиска---------------------------
         UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, 40)];
@@ -116,6 +121,12 @@
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];
+        
+        activitiInd = [[UIActivityIndicatorView alloc] initWithFrame:darkView.frame];
+        activitiInd.backgroundColor = [UIColor clearColor];
+        activitiInd.alpha = 0.f;
+        [self addSubview:activitiInd];
+        
 
 #pragma mark - Create Alert
         
@@ -149,26 +160,26 @@
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
-        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 72, alertView.frame.size.width - 128, 40)];
+        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 65, alertView.frame.size.width - 128, 40)];
         alertTitleLabel.numberOfLines = 0;
         alertTitleLabel.textAlignment = NSTextAlignmentCenter;
         alertTitleLabel.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
         if (isiPhone5) {
-            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 30);
+            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 32);
             alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         }
 //        [alertTitleLabel sizeToFit];
         [alertView addSubview:alertTitleLabel];
         
         //Основной текст--------------------------------------------------
-        mainAlertText = [[UILabel alloc] initWithFrame:CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 8, alertView.frame.size.width - 60, 120)];
+        mainAlertText = [[UILabel alloc] initWithFrame:CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 4, alertView.frame.size.width - 60, 120)];
         mainAlertText.numberOfLines = 0;
         mainAlertText.textAlignment = NSTextAlignmentCenter;
         mainAlertText.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         mainAlertText.font = [UIFont fontWithName:FONTLITE size:13];
         if (isiPhone5) {
-            mainAlertText.frame = CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 4, alertView.frame.size.width - 60, 100);
+            mainAlertText.frame = CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 4, alertView.frame.size.width - 60, 90);
             mainAlertText.font = [UIFont fontWithName:FONTLITE size:10];
         }
         [alertView addSubview:mainAlertText];
@@ -214,6 +225,7 @@
         buttonBuy = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonBuy.frame = CGRectMake(24, 342, alertView.frame.size.width - 48, 48);
         buttonBuy.backgroundColor = [UIColor colorWithHexString:@"ee5a59"];
+        buttonBuy.tag = 1875;
         buttonBuy.layer.cornerRadius = 25;
         buttonBuy.layer.borderColor = [UIColor colorWithHexString:@"ee5a59"].CGColor;
         buttonBuy.layer.borderWidth = 1.f;
@@ -313,15 +325,13 @@
     NSDictionary * dictMainArray = [mainArray objectAtIndex:indexPath.row];
     
     [[SingleTone sharedManager] setIdentifierCategory:[dictMainArray objectForKey:@"id"]];
-    NSLog(@"ID %@", [dictMainArray objectForKey:@"id"]);
+//    NSLog(@"dictMainArray %@", dictMainArray);
     [[SingleTone sharedManager] setTariffID:[dictMainArray objectForKey:@"id"]];
     
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     dictCellSend = dictCell;
     alertTitleLabel.text = [dictCell objectForKey:@"title"];
-    
-    mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictCell objectForKey:@"text"]] ;
-    
+    mainAlertText.text = [TextMethodClass stringByStrippingHTML:[dictMainArray objectForKey:@"text"]];
     if ([[dictCell objectForKey:@"paid"] boolValue]) {
         buttonBuy.alpha = 1.f;
     } else {
@@ -333,12 +343,24 @@
     mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
     [[SingleTone sharedManager] setTitleCategory:[dictCell objectForKey:@"title"]];
+    [[SingleTone sharedManager] setRules:[dictCell objectForKey:@"rules"]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMark" object:nil];
     
-    //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
         darkView.alpha = 0.4f;
+        activitiInd.alpha = 1.f;
+        [activitiInd startAnimating];
+        
+    }];
+}
+
+- (void) animationAlert
+{
+    //Анимация алерта---------------------------------------------
+    [UIView animateWithDuration:0.1 animations:^{
+        activitiInd.alpha = 0.f;
+        [activitiInd stopAnimating];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rectAlert = alertView.frame;
@@ -352,7 +374,6 @@
             alertView.frame = rectAlert;
         }];
     }];
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -432,7 +453,7 @@
     [cellView addSubview:labelSubTitle];
     
     //Платная или нет-------------------------------------
-    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 74, 40, 40)];
+    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(90, 74, 40, 40)];
     if (isiPhone6) {
         moneyImage.frame = CGRectMake(70, 70, 35, 35);
     } else if (isiPhone5) {

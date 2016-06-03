@@ -26,6 +26,7 @@
 @implementation SubjectViewController
 {
     NSDictionary * dictResponse;
+    NSDictionary * dictRates;
     UIButton * buttonBookmark;
 }
 
@@ -118,6 +119,7 @@
 
 - (void) chetBookMark
 {
+    //Проверка закладки-----------------
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubjectModel], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"post", @"type", nil];
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"check_fav" complitionBlock:^(id response) {
@@ -168,5 +170,6 @@
     NotificationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"NotificationController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
+
 
 @end

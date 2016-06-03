@@ -105,19 +105,20 @@
         [alertView addSubview:mainMoneyImage];
         
         //Заголовок алерта-----------------------------------------------
-        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 72, alertView.frame.size.width - 128, 16)];
+        alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 65, alertView.frame.size.width - 128, 40)];
         alertTitleLabel.numberOfLines = 0;
         alertTitleLabel.textAlignment = NSTextAlignmentCenter;
         alertTitleLabel.textColor = [UIColor colorWithHexString:@"c0c0c0"];
         alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:16];
         if (isiPhone5) {
-            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 13);
+            alertTitleLabel.frame = CGRectMake(64, 55, alertView.frame.size.width - 128, 32);
             alertTitleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         }
+        //        [alertTitleLabel sizeToFit];
         [alertView addSubview:alertTitleLabel];
         
         //Основной текст--------------------------------------------------
-        mainAlertText = [[UILabel alloc] initWithFrame:CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 8, alertView.frame.size.width - 60, 120)];
+        mainAlertText = [[UILabel alloc] initWithFrame:CGRectMake(30, alertTitleLabel.frame.origin.y + alertTitleLabel.frame.size.height + 4, alertView.frame.size.width - 60, 120)];
         mainAlertText.numberOfLines = 0;
         mainAlertText.textAlignment = NSTextAlignmentCenter;
         mainAlertText.textColor = [UIColor colorWithHexString:@"c0c0c0"];
@@ -168,6 +169,7 @@
         buttonBuy = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonBuy.frame = CGRectMake(24, 342, alertView.frame.size.width - 48, 48);
         buttonBuy.backgroundColor = [UIColor colorWithHexString:@"ee5a59"];
+        buttonBuy.tag = 1265;
         buttonBuy.layer.cornerRadius = 25;
         buttonBuy.layer.borderColor = [UIColor colorWithHexString:@"ee5a59"].CGColor;
         buttonBuy.layer.borderWidth = 1.f;
@@ -223,7 +225,7 @@
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
         [cell.contentView addSubview:[self setTableCellWithTitle:[dictCell objectForKey:@"title"]
                                                      andSubTitle:[dictCell objectForKey:@"description"]
-                                                        andMoney:nil
+                                                        andMoney:[[dictCell objectForKey:@"paid"] boolValue]
                                                         andImage:nil andURL:stringURL]];
     } else {
         NSLog(@"Нет категорий");
@@ -259,6 +261,8 @@
         buttonBuy.alpha = 0.f;
     }
     
+    NSLog(@"%@", dictCell);
+    
     NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
     mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
     
@@ -267,6 +271,7 @@
     
     
     [[SingleTone sharedManager] setTitleSubCategory:[dictCell objectForKey:@"title"]];
+    [[SingleTone sharedManager] setRules:[dictCell objectForKey:@"rules"]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMarkSubcategory" object:nil];
     
@@ -370,7 +375,7 @@
     [cellView addSubview:labelSubTitle];
     
     //Платная или нет-------------------------------------
-    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(80, 74, 40, 40)];
+    UIImageView * moneyImage = [[UIImageView alloc] initWithFrame:CGRectMake(90, 74, 40, 40)];
     if (isiPhone6) {
         moneyImage.frame = CGRectMake(70, 70, 35, 35);
     } else if (isiPhone5) {

@@ -25,6 +25,7 @@
 {
     NSDictionary * dictResponse;
     UIButton * buttonBookmark;
+    NSDictionary * dictRates;
 }
 
 - (void) viewDidLoad
@@ -108,6 +109,31 @@
     }];
 }
 
+- (void) getAPIWithParamsWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [[SingleTone sharedManager] identifierCategory], @"id_category",
+                             [[SingleTone sharedManager] userID], @"id_user",nil];
+    
+    NSLog(@"identifierCategory %@", [[SingleTone sharedManager] identifierCategory]);
+    NSLog(@"userID %@", [[SingleTone sharedManager] userID]);
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"check_subscribe" complitionBlock:^(id response) {
+        
+        dictRates = (NSDictionary*) response;
+        
+        if ([[dictRates objectForKey:@"error"] integerValue] == 1) {
+            //            NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
+        } else if ([[dictRates objectForKey:@"error"] integerValue] == 0) {
+            
+            NSLog(@"dictRates\\\\|||||//////   %@", dictRates);
+            block();
+            
+        }
+    }];
+}
+
 - (void) chetBookMarkSub
 {
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"subcategory", @"type", nil];
@@ -135,6 +161,19 @@
 
 - (void) addBuukmark
 {
+    
+    //Проверка подписки-----------
+    [self getAPIWithParamsWithBlock:^{
+        UIButton * buttonBuy = [self.view viewWithTag:1265];
+        if ([dictRates objectForKey:@"data"] != [NSNull null]) {
+            buttonBuy.alpha = 0.f;
+        }
+    }];
+    
+    
+    
+    
+    //Провека закладок------------
     if ([[buttonBookmark titleForState:UIControlStateNormal] isEqualToString:@"ДОБАВИТЬ В ЗАКЛАДКИ"]) {
         NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:[[SingleTone sharedManager] identifierSubCategory], @"id_type", [[SingleTone sharedManager] userID], @"id_user", @"subcategory", @"type", nil];
         

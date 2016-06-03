@@ -14,6 +14,7 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "YandexSalesController.h"
+#import "AgreementController.h"
 
 @implementation RatesController
 {
@@ -23,6 +24,8 @@
 - (void) viewDidLoad
 {
 #pragma mark - Header
+    
+    self.view.userInteractionEnabled = YES;
     
     self.navigationController.navigationBarHidden = NO;
     //Заголовок-----------------------------------------------
@@ -39,6 +42,7 @@
 #pragma mark - Initialization
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushYandex) name:@"PushYandexNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushAgreement) name:@"PushActionWithAgreementController" object:nil];
 
     [self getAPIWithBlock:^{
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
@@ -84,6 +88,12 @@
 - (void) pushYandex
 {
     YandexSalesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YandexSalesController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushAgreement
+{
+    AgreementController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AgreementController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

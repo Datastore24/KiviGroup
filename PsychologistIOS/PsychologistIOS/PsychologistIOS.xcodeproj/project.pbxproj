@@ -201,6 +201,7 @@
 		ADBFA8D61CF8A3A100776248 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBFA8D21CF8A3A100776248 /* 12.png */; };
 		FF0224BB1CF6467D0059029B /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = FF0224BA1CF6467D0059029B /* video2.mov */; };
 		FF0E21801CFC9DD5005449C1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF0E217F1CFC9DD5005449C1 /* logo.png */; };
+		FF306CE51D01CB9E006AAD78 /* AgreementController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF306CE41D01CB9E006AAD78 /* AgreementController.m */; };
 		FF36FD3F1CF3A02F00BF217A /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */; };
 		FF36FD401CF3A02F00BF217A /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */; };
 		FF36FD411CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */; };
@@ -521,6 +522,8 @@
 		B7BD67B62A443BDC473637F6 /* libPods-PsychologistIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PsychologistIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0224BA1CF6467D0059029B /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
 		FF0E217F1CFC9DD5005449C1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		FF306CE31D01CB9E006AAD78 /* AgreementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementController.h; sourceTree = "<group>"; };
+		FF306CE41D01CB9E006AAD78 /* AgreementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementController.m; sourceTree = "<group>"; };
 		FF36FD2F1CF3A02F00BF217A /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
 		FF36FD301CF3A02F00BF217A /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
 		FF36FD311CF3A02F00BF217A /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
@@ -667,6 +670,7 @@
 		771E53831CC2668A008E5562 /* Rates */ = {
 			isa = PBXGroup;
 			children = (
+				FF306CE21D01CB86006AAD78 /* Agreement */,
 				770BD4D11CE38805000A20CC /* YandexSales */,
 				771E538A1CC281AB008E5562 /* checkImageButton.png */,
 				771E53841CC266B7008E5562 /* RatesController.h */,
@@ -1249,6 +1253,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF306CE21D01CB86006AAD78 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				FF306CE31D01CB9E006AAD78 /* AgreementController.h */,
+				FF306CE41D01CB9E006AAD78 /* AgreementController.m */,
+			);
+			name = Agreement;
+			sourceTree = "<group>";
+		};
 		FF36FD2E1CF3A01400BF217A /* VideoPlayerKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,6 +1625,7 @@
 				776D8DAF1CAD25200028929C /* LoginView.m in Sources */,
 				77A2A97C1CD8F6AC0092CC06 /* StringImage.m in Sources */,
 				77E6A2CB1CBFFB4900B6A303 /* PersonalAreaController.m in Sources */,
+				FF306CE51D01CB9E006AAD78 /* AgreementController.m in Sources */,
 				775B7C441CB4337700161EF9 /* OpenSubjectController.m in Sources */,
 				776D8DB21CAD25470028929C /* MenuController.m in Sources */,
 				775B7C401CB4323200161EF9 /* SubjectView.m in Sources */,
