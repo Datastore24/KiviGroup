@@ -33,6 +33,8 @@
     UIButton * buttonOpenCategory;
     
     NSDictionary * dictBookMark;
+    
+    UIActivityIndicatorView * activitiInd;
 }
 
 - (instancetype)initWithBackgroundView: (UIView*) view
@@ -58,6 +60,8 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 64);
         mainArray = array;
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationAlertView) name:@"animationSubCatregoryAlertView" object:nil];
+        
         mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         //Убираем полосы разделяющие ячейки------------------------------
         //        mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -72,6 +76,11 @@
         darkView.backgroundColor = [UIColor blackColor];
         darkView.alpha = 0.0;
         [self addSubview:darkView];
+        
+        activitiInd = [[UIActivityIndicatorView alloc] initWithFrame:darkView.frame];
+        activitiInd.backgroundColor = [UIColor clearColor];
+        activitiInd.alpha = 0.f;
+        [self addSubview:activitiInd];
         
 #pragma mark - Create Alert
         
@@ -133,6 +142,7 @@
         buttonOpenCategory = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonOpenCategory.frame = CGRectMake(24, 230, alertView.frame.size.width - 48, 48);
         buttonOpenCategory.backgroundColor = nil;
+        buttonOpenCategory.tag = 382;
         buttonOpenCategory.layer.cornerRadius = 25;
         buttonOpenCategory.layer.borderColor = [UIColor colorWithHexString:@"36b34c"].CGColor;
         buttonOpenCategory.layer.borderWidth = 1.f;
@@ -235,6 +245,11 @@
     return cell;
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - UITableViewDelegate
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -261,23 +276,32 @@
         buttonBuy.alpha = 0.f;
     }
     
-    NSLog(@"%@", dictCell);
+//    NSLog(@"%@", dictCell);
     
     NSString * stringURL = [StringImage createStringImageURLWithString:[dictCell objectForKey:@"media_path"]];
-    mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;
-    
-    
-    
-    
+    mainMoneyImage.image = [ViewSectionTable createWithImageAlertURL:stringURL andView:alertView andContentMode:UIViewContentModeScaleAspectFill andBoolMoney:[[dictCell objectForKey:@"paid"] boolValue]].image;    
     
     [[SingleTone sharedManager] setTitleSubCategory:[dictCell objectForKey:@"title"]];
     [[SingleTone sharedManager] setRules:[dictCell objectForKey:@"rules"]];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMarkSubcategory" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationChekBookMarkSubcategory" object:[dictCell objectForKey:@"paid"]];
     
-    //Анимация алерта---------------------------------------------
     [UIView animateWithDuration:0.1 animations:^{
         darkView.alpha = 0.4f;
+        activitiInd.alpha = 1.f;
+        [activitiInd startAnimating];
+    }];
+    
+
+    
+}
+
+- (void) animationAlertView
+{
+    //Анимация алерта---------------------------------------------
+    [UIView animateWithDuration:0.1 animations:^{
+        activitiInd.alpha = 0.f;
+        [activitiInd stopAnimating];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rectAlert = alertView.frame;
@@ -291,7 +315,6 @@
             alertView.frame = rectAlert;
         }];
     }];
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
