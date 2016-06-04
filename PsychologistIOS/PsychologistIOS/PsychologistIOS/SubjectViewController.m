@@ -51,7 +51,7 @@
     [self.view addSubview:backgroundView];
     
     [self getAPIWithBlock:^{
-        NSLog(@"dictResponse: %@",dictResponse);
+//        NSLog(@"dictResponse: %@",dictResponse);
         
         if ([[dictResponse objectForKey:@"data"] isKindOfClass:[NSArray class]])
         {
@@ -130,7 +130,7 @@
             NSLog(@"%@", [dictResponse objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
         } else if ([[dictResponse objectForKey:@"error"] integerValue] == 0) {
-            NSLog(@"response %@", response);
+//            NSLog(@"response %@", response);
             if ([[response objectForKey:@"favorite_count"] integerValue] == 0) {
                 [buttonBookmark setTitle:@"ДОБАВИТЬ В ЗАКЛАДКИ" forState:UIControlStateNormal];
             } else if ([[response objectForKey:@"favorite_count"] integerValue] == 1) {
