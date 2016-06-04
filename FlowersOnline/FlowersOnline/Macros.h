@@ -36,5 +36,6 @@
 #define COLORGRAY @"d9d9d9"
 
 //Нотификации класса LoginView and LoginController
+#define NOTIFICATION_LOGIN_VIEW_PUSH_BOUQUETS_CONTROLLER @"NOTIFICATION_LOGIN_VIEW_PUSH_BOUQUETS_CONTROLLER"
 
 #endif /* Macros_h */

@@ -11,13 +11,18 @@
 #import "TitleClass.h"
 #import "ButtonMenu.h"
 #import "LoginView.h"
+#import "Macros.h"
+#import "BouquetsController.h"
 
 @implementation LoginController
 
 - (void) viewDidLoad
 {
     
-#pragma mark - Header    
+#pragma mark - Header 
+    
+    //Рабочие нотификации-------------------------------------
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushBouquetsController) name:NOTIFICATION_LOGIN_VIEW_PUSH_BOUQUETS_CONTROLLER object:nil];
     
     self.navigationController.navigationBarHidden = YES;    
     //Пареметры кнопки меню------------------------------------
@@ -39,6 +44,15 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Notification Actions
+
+//Метод нотификации перехода в раздел букетов------------------
+- (void) pushBouquetsController
+{
+    BouquetsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BouquetsController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

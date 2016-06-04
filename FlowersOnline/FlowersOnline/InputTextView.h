@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "Macros.h"
 #import "UIColor+HexColor.h"
+#import "CustomTextField.h"
 
 @interface InputTextView : UIView <UITextFieldDelegate>
 // Метод инициализации объекта для ввода текста-----------
@@ -25,5 +26,6 @@
               andScrollWidth: (CGFloat) scrollWidth;
 
 @property (assign, nonatomic) CGFloat height;
+@property (strong, nonatomic) CustomTextField * textFieldInput;
 
 @end

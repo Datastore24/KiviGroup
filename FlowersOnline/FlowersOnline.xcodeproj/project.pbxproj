@@ -38,6 +38,10 @@
 		AD109AC41CCF5B120074BA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC21CCF5B120074BA7B /* Main.storyboard */; };
 		AD109AC61CCF5B120074BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC51CCF5B120074BA7B /* Assets.xcassets */; };
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
+		FFE955371D03795400AAAC0B /* nameImageReg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE955351D03795400AAAC0B /* nameImageReg.png */; };
+		FFE955381D03795400AAAC0B /* emailImageReg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE955361D03795400AAAC0B /* emailImageReg.png */; };
+		FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9553B1D03809A00AAAC0B /* BouquetsController.m */; };
+		FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +120,12 @@
 		AD109AC51CCF5B120074BA7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD109AC81CCF5B120074BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFE955351D03795400AAAC0B /* nameImageReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nameImageReg.png; sourceTree = "<group>"; };
+		FFE955361D03795400AAAC0B /* emailImageReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailImageReg.png; sourceTree = "<group>"; };
+		FFE9553A1D03809A00AAAC0B /* BouquetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouquetsController.h; sourceTree = "<group>"; };
+		FFE9553B1D03809A00AAAC0B /* BouquetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouquetsController.m; sourceTree = "<group>"; };
+		FFE9553D1D0380AC00AAAC0B /* BouquetsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouquetsView.h; sourceTree = "<group>"; };
+		FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouquetsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +142,8 @@
 		7731948F1CD76D0D002831E4 /* InputText */ = {
 			isa = PBXGroup;
 			children = (
+				FFE955351D03795400AAAC0B /* nameImageReg.png */,
+				FFE955361D03795400AAAC0B /* emailImageReg.png */,
 				773194931CD77488002831E4 /* UserNameImage.png */,
 				773194941CD77488002831E4 /* PasswordImage.png */,
 				773194901CD76D2B002831E4 /* InputTextView.h */,
@@ -260,6 +272,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
+				FFE955391D03808200AAAC0B /* Bouquets */,
 				77B3552B1CD3BEEE00A17546 /* Login */,
 				77B355231CD3B05500A17546 /* Menu Controller */,
 				AD109ABC1CCF5B120074BA7B /* AppDelegate.h */,
@@ -288,6 +301,17 @@
 				AD109ABA1CCF5B120074BA7B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFE955391D03808200AAAC0B /* Bouquets */ = {
+			isa = PBXGroup;
+			children = (
+				FFE9553A1D03809A00AAAC0B /* BouquetsController.h */,
+				FFE9553B1D03809A00AAAC0B /* BouquetsController.m */,
+				FFE9553D1D0380AC00AAAC0B /* BouquetsView.h */,
+				FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */,
+			);
+			name = Bouquets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,9 +373,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7748A18B1CD5022F001A5743 /* BookmarksImageMenu.png in Resources */,
+				FFE955371D03795400AAAC0B /* nameImageReg.png in Resources */,
 				7748A1891CD5022F001A5743 /* UserNameImageMenu.png in Resources */,
 				77A2A8EE1CD8B9FA0092CC06 /* logo.png in Resources */,
 				7748A18C1CD5022F001A5743 /* ContactsImageMenu.png in Resources */,
+				FFE955381D03795400AAAC0B /* emailImageReg.png in Resources */,
 				7748A18E1CD5022F001A5743 /* DostavkaImageMenu.png in Resources */,
 				7748A16F1CD4F0A1001A5743 /* SFUIDisplay-Regular.otf in Resources */,
 				7748A16E1CD4F09C001A5743 /* SFUIDisplay-Light.otf in Resources */,
@@ -383,11 +409,13 @@
 				773194991CD77CD4002831E4 /* CustomTextField.m in Sources */,
 				7748A1751CD4F977001A5743 /* CustomCellView.m in Sources */,
 				77B355321CD3BFBE00A17546 /* TitleClass.m in Sources */,
+				FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */,
 				7748A1931CD52B95001A5743 /* LoginView.m in Sources */,
 				77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
 				77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */,
+				FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */,
 				77B3552E1CD3BF3900A17546 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
