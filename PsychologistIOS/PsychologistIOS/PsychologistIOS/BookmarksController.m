@@ -22,11 +22,16 @@
 #import "SubCategoryController.h"
 #import "SubjectViewController.h"
 #import "OpenSubjectController.h"
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import "RatesController.h"
+
 
 
 @implementation BookmarksController
 {
     NSDictionary * dictResponse;
+    NSDictionary * dictRates;
+    NSDictionary * dictSubInfo;
 }
 
 - (void) viewDidLoad {
@@ -97,7 +102,6 @@
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:params method:@"del_fav" complitionBlock:^(id response) {
-        
         if ([[response objectForKey:@"error"] integerValue] == 1) {
             NSLog(@"%@", [response objectForKey:@"error_msg"]);
             //ТУТ UILabel когда нет фоток там API выдает
@@ -114,9 +118,61 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+
+//Переход и категорий-------------------------------
+
+
+- (void) getAPIWithParamsID: (NSString*) subCategory
+andWithBlock: (void (^)(void))block
+{
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:
+                             subCategory, @"id_category",
+                             [[SingleTone sharedManager] userID], @"id_user",nil];
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:params method:@"check_subscribe" complitionBlock:^(id response) {
+        
+        dictRates = (NSDictionary*) response;
+        
+        
+        if ([[dictRates objectForKey:@"error"] integerValue] == 1) {
+            NSLog(@"ошибка ! %@", [dictRates objectForKey:@"error_msg"]);
+        } else if ([[dictRates objectForKey:@"error"] integerValue] == 0) {
+            
+        }
+        block();
+    }];
+}
+
 - (void) pushBookMerkWithSubCategory: (NSNotification*) notification
 {
-    SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
+    
+    dictSubInfo = notification.userInfo;
+    if ([[dictSubInfo objectForKey:@"paid"] boolValue]) {
+        [self getAPIWithParamsID:[dictSubInfo objectForKey:@"id"] andWithBlock:^{
+            if ([dictRates objectForKey:@"data"] != [NSNull null]) {
+                SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
+                [self.navigationController pushViewController:detail animated:YES];
+            } else {
+                SCLAlertView *alert = [[SCLAlertView alloc] init];
+                alert.customViewColor = [UIColor colorWithHexString:@"d46559"];
+                [alert addButton:@"Оплатить" target:self selector:@selector(pushRates)];
+                [alert showSuccess:self title:@"Внимание" subTitle:@"Данная категория не оплачена" closeButtonTitle:@"Отмена" duration:0.0f];
+            }
+        }];
+    } else {
+            SubjectViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SubjectViewController"];
+            [self.navigationController pushViewController:detail animated:YES];
+    }
+    
+
+}
+
+- (void) pushRates
+{
+    [[SingleTone sharedManager] setTariffID:[dictSubInfo objectForKey:@"id"]];
+    [[SingleTone sharedManager] setRules:[dictSubInfo objectForKey:@"rules"]];
+    RatesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RatesController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

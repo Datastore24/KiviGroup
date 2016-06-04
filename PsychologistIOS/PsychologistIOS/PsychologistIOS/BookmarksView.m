@@ -217,7 +217,7 @@
             dictCell = [mainArray objectAtIndex:indexPath.row];
         
       
-        NSLog(@"%@", dictCell);
+//        NSLog(@"%@", dictCell);
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DELET_CELL_BOOKMARK object:nil userInfo:dictCell];
 
           
@@ -237,7 +237,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
     NSDictionary * dictCell = [mainArray objectAtIndex:indexPath.row];
     
-    NSLog(@"%@", [dictCell objectForKey:@"type"]);
+//    NSLog(@"%@", [dictCell objectForKey:@"type"]);
     
     if ([[dictCell objectForKey:@"type"] isEqualToString:@"post"]) {
         NSDictionary * dictSubject = [dictCell objectForKey:@"inform"];
@@ -248,7 +248,7 @@
     } else if ([[dictCell objectForKey:@"type"] isEqualToString:@"subcategory"]) {
         NSDictionary * dictSubCategory = [dictCell objectForKey:@"inform"];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_BOOKMARK_SUB_CATEGORY object:nil userInfo:dictSubCategory];
-        NSLog(@"%@", [dictSubCategory objectForKey:@"id"]);
+//        NSLog(@"%@", [dictSubCategory objectForKey:@"id"]);
         [[SingleTone sharedManager] setIdentifierSubCategory:[dictSubCategory objectForKey:@"id"]];
         [[SingleTone sharedManager] setTitleSubCategory:[dictSubCategory objectForKey:@"title"]];
         NSLog(@"dictCell категория %@", dictCell);
