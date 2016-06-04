@@ -120,11 +120,7 @@
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
-        if (isiPhone4s) {
-            rectAnimation.origin.y -= 160;
-        } else {
             rectAnimation.origin.y -= 90;
-        }
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];
@@ -135,11 +131,7 @@
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
-        if (isiPhone4s) {
-            rectAnimation.origin.y += 160;
-        } else {
             rectAnimation.origin.y += 90;
-        }
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];
