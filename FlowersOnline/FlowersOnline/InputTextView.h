@@ -15,11 +15,14 @@
 #import "UIColor+HexColor.h"
 
 @interface InputTextView : UIView <UITextFieldDelegate>
-//Метод инициализации объекта для ввода текста-----------
+// Метод инициализации объекта для ввода текста-----------
+// Элемент scrollWidth используется только в расширенном
+// скрол вью для смещения объектов в очи Х
 - (instancetype)initWithView: (UIView*) view
                       PointY: (CGFloat) pointY
                     andImage: (NSString*) imageName
-          andTextPlaceHolder: (NSString*) placeHolder;
+          andTextPlaceHolder: (NSString*) placeHolder
+              andScrollWidth: (CGFloat) scrollWidth;
 
 @property (assign, nonatomic) CGFloat height;
 

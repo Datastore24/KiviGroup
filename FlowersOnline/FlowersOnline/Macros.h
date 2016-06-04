@@ -6,6 +6,12 @@
 //  Copyright © 2016 datastore24. All rights reserved.
 //
 
+/*Наименование нотификайии состоит из 3ех частей
+ 1 часть - Идентификатор нотификиции
+ 2 часть - Название класса где созданна нотификаци
+ 3 часть - Действие которое выполняет нотификации
+*/
+
 #ifndef Macros_h
 #define Macros_h
 
@@ -28,5 +34,7 @@
 #define COLORGREEN @"85af02"
 #define COLORBLACK @"2a2a2a"
 #define COLORGRAY @"d9d9d9"
+
+//Нотификации класса LoginView and LoginController
 
 #endif /* Macros_h */

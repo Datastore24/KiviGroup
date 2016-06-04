@@ -19,7 +19,7 @@
     
 #pragma mark - Header    
     
-//    self.navigationController.navigationBarHidden = YES;    
+    self.navigationController.navigationBarHidden = YES;    
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -34,7 +34,11 @@
     
     LoginView * contentView = [[LoginView alloc] initContentWithView:self.view];
     [self.view addSubview:contentView];
+}
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

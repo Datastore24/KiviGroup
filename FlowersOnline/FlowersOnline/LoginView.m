@@ -12,6 +12,10 @@
 #import "Macros.h"
 
 @implementation LoginView
+{
+    UIScrollView * mainScrollView;
+    CGFloat widthScroll;
+}
 
 - (instancetype)initBackGroundWithView: (UIView*) view
 {
@@ -29,14 +33,29 @@
 {
     self = [super init];
     if (self) {
+        
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+        mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        mainScrollView.scrollEnabled = NO;
+        mainScrollView.showsHorizontalScrollIndicator = NO;
+        mainScrollView.contentSize = CGSizeMake(self.frame.size.width * 2, 0);
+        mainScrollView.contentOffset = CGPointMake(self.frame.size.width, 0);
+        [self addSubview:mainScrollView];
+        
+        widthScroll = self.frame.size.width;
+        
+#pragma mark - LOGIN
         
         //Создание лого--------------
-        UIImageView * imageViewLogo = [[UIImageView alloc] initWithFrame: CGRectMake(self.frame.size.width / 2 - 150, 130, 300, 123)];
+        UIImageView * imageViewLogo = [[UIImageView alloc] initWithFrame: CGRectMake(widthScroll + (self.frame.size.width / 2 - 150), 130, 300, 123)];
+        if (isiPhone5) {
+            imageViewLogo.frame = CGRectMake(widthScroll + (self.frame.size.width / 2 - 140), 110, 280, 130);
+        } else if (isiPhone4s) {
+            imageViewLogo.frame = CGRectMake(widthScroll + (self.frame.size.width / 2 - 140), 30, 280, 130);
+        }
         imageViewLogo.image = [UIImage imageNamed:@"logo.png"];
         imageViewLogo.alpha = 0.6;
-        [self addSubview:imageViewLogo];
-        
+        [mainScrollView addSubview:imageViewLogo];
         
         //Массивы с данными-------------
         NSArray * arrayImageName = [NSArray arrayWithObjects:@"UserNameImage.png", @"PasswordImage.png", nil];
@@ -44,28 +63,88 @@
         
         //Создание полей ввода текста----
         for (int i = 0; i < arrayImageName.count; i++) {
-            InputTextView * inputText = [[InputTextView alloc] initWithView:self PointY:460 + 76 * i andImage:[arrayImageName objectAtIndex:i] andTextPlaceHolder:[arrayName objectAtIndex:i]];
+            InputTextView * inputText = [[InputTextView alloc] initWithView:self PointY:460 + 76 * i andImage:[arrayImageName objectAtIndex:i] andTextPlaceHolder:[arrayName objectAtIndex:i] andScrollWidth:widthScroll];
             if (isiPhone6) {
                 inputText.height = 400 + 76 * i;
+            } else if (isiPhone5) {
+                inputText.height = 320 + 66 * i;
+            } else if (isiPhone4s) {
+                inputText.height = 240 + 66 * i;
             }
-            [self addSubview:inputText];
+            [mainScrollView addSubview:inputText];
         }
+        
         //Создание кнопки----------------
         UIButton * buttonComeIn = [ButtonMenu createButtonRegistrationWithName:@"Войти" andColor:COLORGREEN andPointY:612 andView:self];
+        if (isiPhone6) {
+            CGRect rect6 = buttonComeIn.frame;
+            rect6.origin.y = 552;
+            rect6.origin.x += widthScroll;
+            buttonComeIn.frame = rect6;
+        } else if (isiPhone5) {
+            CGRect rect5 = buttonComeIn.frame;
+            rect5.origin.y = 452;
+            rect5.origin.x += widthScroll;
+            buttonComeIn.frame = rect5;
+        } else if (isiPhone4s) {
+            CGRect rect4 = buttonComeIn.frame;
+            rect4.origin.y = 372;
+            rect4.origin.x += widthScroll;
+            buttonComeIn.frame = rect4;
+        } else {
+            CGRect rect7 = buttonComeIn.frame;
+            rect7.origin.x += widthScroll;
+            buttonComeIn.frame = rect7;
+        }
         [buttonComeIn addTarget:self action:@selector(buttonComeInAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonComeIn];
+        [mainScrollView addSubview:buttonComeIn];
         
         //Содание кнопки регистрация------
         UIButton * buttonRegistration =[ButtonMenu createButtonTextWithName:@"Регистрация" andFrame:CGRectMake(20, 695, 100, 20) fontName:FONTLITE];
+        if (isiPhone6) {
+            CGRect rect6 = buttonRegistration.frame;
+            rect6.origin.y = 635;
+            rect6.origin.x += widthScroll;
+            buttonRegistration.frame = rect6;
+        } else if (isiPhone5) {
+            CGRect rect5 = buttonRegistration.frame;
+            rect5.origin.y = 525;
+            rect5.origin.x += widthScroll;
+            buttonRegistration.frame = rect5;
+        } else if (isiPhone4s) {
+            CGRect rect4 = buttonRegistration.frame;
+            rect4.origin.y = 445;
+            rect4.origin.x += widthScroll;
+            buttonRegistration.frame = rect4;
+        }
         buttonRegistration.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonRegistration];
+        [mainScrollView addSubview:buttonRegistration];
         
         //Создание кнопки Нужна помощ----
-        UIButton * buttonNeedHelp = [ButtonMenu createButtonTextWithName:@"Нужна помощ" andFrame:CGRectMake(293, 695, 100, 20) fontName:FONTREGULAR];
+        UIButton * buttonNeedHelp = [ButtonMenu createButtonTextWithName:@"Нужна помощ" andFrame:CGRectMake(self.frame.size.width - 120, 695, 100, 20) fontName:FONTREGULAR];
+        if (isiPhone6) {
+            CGRect rect6 = buttonNeedHelp.frame;
+            rect6.origin.y = 635;
+            rect6.origin.x += widthScroll;
+            buttonNeedHelp.frame = rect6;
+        } else if (isiPhone5) {
+            CGRect rect5 = buttonNeedHelp.frame;
+            rect5.origin.y = 525;
+            rect5.origin.x += widthScroll;
+            buttonNeedHelp.frame = rect5;
+        } else if (isiPhone4s) {
+            CGRect rect4 = buttonNeedHelp.frame;
+            rect4.origin.y = 445;
+            rect4.origin.x += widthScroll;
+            buttonNeedHelp.frame = rect4;
+        }
         buttonNeedHelp.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [buttonNeedHelp addTarget:self action:@selector(buttonNeedHelpAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonNeedHelp];
+        [mainScrollView addSubview:buttonNeedHelp];
+        
+        
+#pragma mark - REGISTRATION
         
         
         
@@ -83,7 +162,10 @@
 
 - (void) buttonRegistrationAction
 {
-    NSLog(@"buttonRegistrationAction");
+   [UIView animateWithDuration:0.5 animations:^{
+       mainScrollView.contentOffset = CGPointMake(0, 0);
+   } completion:^(BOOL finished) {
+   }];
 }
 
 - (void) buttonNeedHelpAction

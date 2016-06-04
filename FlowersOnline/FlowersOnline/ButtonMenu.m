@@ -37,6 +37,11 @@
     [buttonRegistration setTitle:title forState:UIControlStateNormal];
     [buttonRegistration setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buttonRegistration.titleLabel.font = [UIFont fontWithName:FONTBOND size:17];
+    if (isiPhone5 || isiPhone4s) {
+        buttonRegistration.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 50);
+        buttonRegistration.layer.cornerRadius = 25;
+        buttonRegistration.titleLabel.font = [UIFont fontWithName:FONTBOND size:15];
+    }
     
     return buttonRegistration;
 }
