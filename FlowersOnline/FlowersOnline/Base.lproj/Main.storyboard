@@ -74,6 +74,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sG0-5V-Kgw" kind="custom" customClass="SWRevealViewControllerSegue" id="9OG-Wg-04y"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" id="IwL-UW-kqP">
                                         <rect key="frame" x="0.0" y="116" width="320" height="44"/>
@@ -176,7 +179,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghr-CP-Q5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-81"/>
+            <point key="canvasLocation" x="944" y="-1189"/>
+        </scene>
+        <!--Personal Area Controller-->
+        <scene sceneID="cUr-gK-N7P">
+            <objects>
+                <viewController storyboardIdentifier="PersonalAreaController" id="sG0-5V-Kgw" customClass="PersonalAreaController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="736-Df-9Bb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sSt-1N-SNV">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="CfV-dW-6lW"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="CfV-dW-6lW" id="Mhv-uQ-iFm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iW-G5-42O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="-524"/>
         </scene>
     </scenes>
 </document>

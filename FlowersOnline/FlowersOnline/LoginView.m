@@ -15,6 +15,8 @@
 {
     UIScrollView * mainScrollView;
     CGFloat widthScroll;
+    UIImageView * imageViewLogo;
+    UILabel * labelTitle;
 }
 
 - (instancetype)initBackGroundWithView: (UIView*) view
@@ -47,7 +49,7 @@
 #pragma mark - LOGIN
         
         //Создание лого--------------
-        UIImageView * imageViewLogo = [[UIImageView alloc] initWithFrame: CGRectMake(widthScroll + (self.frame.size.width / 2 - 150), 130, 300, 123)];
+        imageViewLogo = [[UIImageView alloc] initWithFrame: CGRectMake(widthScroll + (self.frame.size.width / 2 - 150), 130, 300, 123)];
         if (isiPhone5) {
             imageViewLogo.frame = CGRectMake(widthScroll + (self.frame.size.width / 2 - 140), 110, 280, 130);
         } else if (isiPhone4s) {
@@ -72,7 +74,7 @@
             } else if (isiPhone5) {
                 inputText.height = 320 + 66 * i;
             } else if (isiPhone4s) {
-                inputText.height = 240 + 66 * i;
+                inputText.height = 230 + 66 * i;
             }
             [mainScrollView addSubview:inputText];
         }
@@ -157,7 +159,7 @@
         
 #pragma mark - REGISTRATION
         
-        UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 150, 110, 300, 123)];
+        labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 150, 110, 300, 123)];
         if (isiPhone5) {
             labelTitle.frame = CGRectMake(self.frame.size.width / 2 - 140, 60, 280, 130);
         } else if (isiPhone4s) {
@@ -184,9 +186,14 @@
             } else if (isiPhone5) {
                 inputTextReg.height = 230 + 66 * i;
             } else if (isiPhone4s) {
-                inputTextReg.height = 180 + 66 * i;
+                inputTextReg.height = 170 + 66 * i;
             }
             [mainScrollView addSubview:inputTextReg];
+        }
+        
+        if (isiPhone4s) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLogoStart) name:UITextFieldTextDidBeginEditingNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLogoEnd) name:UITextFieldTextDidEndEditingNotification object:nil];
         }
         
         //Создание кнопки----------------
@@ -232,6 +239,11 @@
     return self;
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - ActionMethods
 
 - (void) buttonComeInAction
@@ -263,6 +275,32 @@
 - (void) buttonLicAgreementAction
 {
     NSLog(@"buttonLicAgreementAction");
+}
+
+- (void) animationLogoStart
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rectLogo = imageViewLogo.frame;
+        rectLogo.origin.y -= 100;
+        imageViewLogo.frame = rectLogo;
+        CGRect rectLabel = labelTitle.frame;
+        rectLabel.origin.y -= 100;
+        labelTitle.frame = rectLabel;
+    }];
+
+}
+
+- (void) animationLogoEnd
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rectLogo = imageViewLogo.frame;
+        rectLogo.origin.y += 100;
+        imageViewLogo.frame = rectLogo;
+        CGRect rectLabel = labelTitle.frame;
+        rectLabel.origin.y += 100;
+        labelTitle.frame = rectLabel;
+    }];
+
 }
 
 @end

@@ -42,6 +42,8 @@
 		FFE955381D03795400AAAC0B /* emailImageReg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE955361D03795400AAAC0B /* emailImageReg.png */; };
 		FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9553B1D03809A00AAAC0B /* BouquetsController.m */; };
 		FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */; };
+		FFE955431D03847100AAAC0B /* PersonalAreaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE955421D03847100AAAC0B /* PersonalAreaController.m */; };
+		FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE955451D03848200AAAC0B /* PersonalAreaView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +128,10 @@
 		FFE9553B1D03809A00AAAC0B /* BouquetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouquetsController.m; sourceTree = "<group>"; };
 		FFE9553D1D0380AC00AAAC0B /* BouquetsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouquetsView.h; sourceTree = "<group>"; };
 		FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouquetsView.m; sourceTree = "<group>"; };
+		FFE955411D03847100AAAC0B /* PersonalAreaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaController.h; sourceTree = "<group>"; };
+		FFE955421D03847100AAAC0B /* PersonalAreaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaController.m; sourceTree = "<group>"; };
+		FFE955441D03848200AAAC0B /* PersonalAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaView.h; sourceTree = "<group>"; };
+		FFE955451D03848200AAAC0B /* PersonalAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +278,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
+				FFE955401D03845D00AAAC0B /* Personal Area */,
 				FFE955391D03808200AAAC0B /* Bouquets */,
 				77B3552B1CD3BEEE00A17546 /* Login */,
 				77B355231CD3B05500A17546 /* Menu Controller */,
@@ -312,6 +319,17 @@
 				FFE9553E1D0380AC00AAAC0B /* BouquetsView.m */,
 			);
 			name = Bouquets;
+			sourceTree = "<group>";
+		};
+		FFE955401D03845D00AAAC0B /* Personal Area */ = {
+			isa = PBXGroup;
+			children = (
+				FFE955411D03847100AAAC0B /* PersonalAreaController.h */,
+				FFE955421D03847100AAAC0B /* PersonalAreaController.m */,
+				FFE955441D03848200AAAC0B /* PersonalAreaView.h */,
+				FFE955451D03848200AAAC0B /* PersonalAreaView.m */,
+			);
+			name = "Personal Area";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,9 +421,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
+				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
 				7748A1371CD4E99D001A5743 /* UIColor+HexColor.m in Sources */,
 				AD109ABE1CCF5B120074BA7B /* AppDelegate.m in Sources */,
 				773194921CD76D2B002831E4 /* InputTextView.m in Sources */,
+				FFE955431D03847100AAAC0B /* PersonalAreaController.m in Sources */,
 				773194991CD77CD4002831E4 /* CustomTextField.m in Sources */,
 				7748A1751CD4F977001A5743 /* CustomCellView.m in Sources */,
 				77B355321CD3BFBE00A17546 /* TitleClass.m in Sources */,
