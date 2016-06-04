@@ -17,15 +17,22 @@
     BOOL keyboardUp;
 }
 
+
+
 - (instancetype)initWithView: (UIView*) view
                       PointY: (CGFloat) pointY
                     andImage: (NSString*) imageName
           andTextPlaceHolder: (NSString*) placeHolder
+              andScrollWidth: (CGFloat) scrollWidth
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 60);
+        self.frame = CGRectMake(20 + scrollWidth, pointY, view.frame.size.width - 40, 60);
         self.layer.cornerRadius = 30.f;
+        if (isiPhone5 || isiPhone4s) {
+            self.frame = CGRectMake(20 + scrollWidth, pointY, view.frame.size.width - 40, 50);
+            self.layer.cornerRadius = 25.f;
+        }
         self.backgroundColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:0.5];
         keyboardUp = NO;
         
@@ -36,10 +43,17 @@
         imageViewInput.image = [UIImage imageNamed:imageName];
         imageViewInput.alpha = 0.5;
         [imageViewInput sizeThatFits:CGSizeMake(40, 40)];
+        if (isiPhone5 || isiPhone4s) {
+            imageViewInput.frame = CGRectMake(20, 7.5, 35, 35);
+            [imageViewInput sizeThatFits:CGSizeMake(35, 35)];
+        }
         [self addSubview:imageViewInput];
         
         //Ввод текста-------------
         textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 70, 60)];
+        if (isiPhone5 || isiPhone4s) {
+            textFieldInput.frame = CGRectMake(70, 0, self.frame.size.width - 70, 50);
+        }
         textFieldInput.delegate = self;
         textFieldInput.isBoll = YES;
         textFieldInput.keyboardType = UIKeyboardTypeDefault;
@@ -106,7 +120,11 @@
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
-        rectAnimation.origin.y -= 90;
+        if (isiPhone4s) {
+            rectAnimation.origin.y -= 160;
+        } else {
+            rectAnimation.origin.y -= 90;
+        }
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];
@@ -117,7 +135,11 @@
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
-        rectAnimation.origin.y += 90;
+        if (isiPhone4s) {
+            rectAnimation.origin.y += 160;
+        } else {
+            rectAnimation.origin.y += 90;
+        }
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];

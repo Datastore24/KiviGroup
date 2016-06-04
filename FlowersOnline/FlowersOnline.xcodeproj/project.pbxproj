@@ -260,7 +260,6 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
-				FF57A6A51D00A1C800C91077 /* Registration */,
 				77B3552B1CD3BEEE00A17546 /* Login */,
 				77B355231CD3B05500A17546 /* Menu Controller */,
 				AD109ABC1CCF5B120074BA7B /* AppDelegate.h */,
@@ -289,13 +288,6 @@
 				AD109ABA1CCF5B120074BA7B /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FF57A6A51D00A1C800C91077 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
