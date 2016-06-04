@@ -11,7 +11,7 @@
 
 @implementation InputTextView
 {
-    CustomTextField * textFieldInput;
+//    CustomTextField * textFieldInput;
     UILabel * labelPlaceHoldInput;
     UIView * mainView;
     BOOL keyboardUp;
@@ -50,21 +50,21 @@
         [self addSubview:imageViewInput];
         
         //Ввод текста-------------
-        textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 70, 60)];
+        self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 70, 60)];
         if (isiPhone5 || isiPhone4s) {
-            textFieldInput.frame = CGRectMake(70, 0, self.frame.size.width - 70, 50);
+            self.textFieldInput.frame = CGRectMake(70, 0, self.frame.size.width - 70, 50);
         }
-        textFieldInput.delegate = self;
-        textFieldInput.isBoll = YES;
-        textFieldInput.keyboardType = UIKeyboardTypeDefault;
-        textFieldInput.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
-        textFieldInput.textColor = [UIColor whiteColor];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:textFieldInput];
-        [self addSubview:textFieldInput];
+        self.textFieldInput.delegate = self;
+        self.textFieldInput.isBoll = YES;
+        self.textFieldInput.keyboardType = UIKeyboardTypeDefault;
+        self.textFieldInput.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
+        self.textFieldInput.textColor = [UIColor whiteColor];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
+        [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:textFieldInput.frame];
+        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
         labelPlaceHoldInput.text = placeHolder;
         labelPlaceHoldInput.textColor = [UIColor whiteColor];
         labelPlaceHoldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
