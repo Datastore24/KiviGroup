@@ -78,6 +78,8 @@
         [[SingleTone sharedManager] setPostType:[dictMedia objectForKey:@"type"]];
         NSString * stringURL = [StringImage createStringImageURLWithString:[dictMedia objectForKey:@"path"]];
         
+        NSLog(@"dictResponse %@", dictResponse);
+        
         [self playVideoWithURL:stringURL];
         if ([[dictMedia objectForKey:@"type"] isEqualToString:@"audio"]) {
             [self.videoController fullScreenHide];

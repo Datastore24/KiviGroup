@@ -38,6 +38,7 @@
 		AD109AC41CCF5B120074BA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC21CCF5B120074BA7B /* Main.storyboard */; };
 		AD109AC61CCF5B120074BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC51CCF5B120074BA7B /* Assets.xcassets */; };
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
+		FF5CCB421D075EE300990081 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CCB411D075EE300990081 /* CustomButton.m */; };
 		FFE955371D03795400AAAC0B /* nameImageReg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE955351D03795400AAAC0B /* nameImageReg.png */; };
 		FFE955381D03795400AAAC0B /* emailImageReg.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE955361D03795400AAAC0B /* emailImageReg.png */; };
 		FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE9553B1D03809A00AAAC0B /* BouquetsController.m */; };
@@ -122,6 +123,8 @@
 		AD109AC51CCF5B120074BA7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD109AC81CCF5B120074BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5CCB401D075EE300990081 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		FF5CCB411D075EE300990081 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		FFE955351D03795400AAAC0B /* nameImageReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nameImageReg.png; sourceTree = "<group>"; };
 		FFE955361D03795400AAAC0B /* emailImageReg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailImageReg.png; sourceTree = "<group>"; };
 		FFE9553A1D03809A00AAAC0B /* BouquetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouquetsController.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				7748A1481CD4EF0D001A5743 /* IconButtonMenu.png */,
 				7748A1451CD4ED9D001A5743 /* ButtonMenu.h */,
 				7748A1461CD4ED9D001A5743 /* ButtonMenu.m */,
+				FF5CCB401D075EE300990081 /* CustomButton.h */,
+				FF5CCB411D075EE300990081 /* CustomButton.m */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */,
 				7748A1931CD52B95001A5743 /* LoginView.m in Sources */,
 				77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */,
+				FF5CCB421D075EE300990081 /* CustomButton.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
 				77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */,

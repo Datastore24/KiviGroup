@@ -32,7 +32,7 @@
     
     NSString * paymentType = @"";
     NSString * shopId = @"58658";
-    NSString * scid = @"9875718";
+    NSString * scid = @"536545";
     NSString * sum = @"10";
     //customerNumber - id пользователя
     NSString * customerNumber = [[SingleTone sharedManager] userID];

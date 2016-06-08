@@ -647,7 +647,7 @@
             
         }];
     } else {
-        [AlertClass showAlertViewWithMessage:@"Введите верное клолличество символов"];
+        [AlertClass showAlertViewWithMessage:@"Введите верное колличество символов"];
     }
 
 }
