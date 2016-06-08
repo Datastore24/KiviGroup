@@ -323,7 +323,8 @@
 - (void) buttonLinkAction
 {
     NSString * stringURL = [NSString stringWithFormat:@"http://%@", [mainDict objectForKey:@"link"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
+    NSLog(@"stringURL %@", stringURL);
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stringURL]];
 }
 
 - (void) addMessageChat: (NSNotification*) notification

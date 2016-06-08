@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BouquetsView : UIView
+@interface BouquetsView : UIView <UIScrollViewDelegate>
+
+- (instancetype)initWithView: (UIView*) view;
 
 @end

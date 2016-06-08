@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "ButtonMenu.h"
 #import "TitleClass.h"
+#import "BouquetsView.h"
 
 @interface BouquetsController ()
 
@@ -29,6 +30,14 @@
     //Заголовок--------------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"БУКЕТЫ"];
     self.navigationItem.titleView = title;
+    
+#pragma mark - View
+    
+    BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view];
+    [self.view addSubview:mainView];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

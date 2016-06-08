@@ -30,7 +30,7 @@
         //Основной текст--------------------------------------------------------
         UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(8, 40, self.frame.size.width - 16, 80)];
         labelText.numberOfLines = 0;
-        labelText.text = [[SingleTone sharedManager] rules];
+        labelText.text = @"Для оплаты, выберите тариф и нажмите оплатить";
         labelText.textColor = [UIColor colorWithHexString:@"4c4a4a"];
         labelText.font = [UIFont fontWithName:FONTLITE size:13];
         if (isiPhone6) {
@@ -127,7 +127,6 @@
         [buttonAgreement setTitleColor:[UIColor colorWithHexString:@"727372"] forState:UIControlStateNormal];
         buttonAgreement.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:13];
         [buttonAgreement addTarget:self action:@selector(buttonAgreementAction) forControlEvents:UIControlEventTouchUpInside];
-        buttonAgreement.alpha = 0.f;
         [self addSubview:buttonAgreement];
         
         
