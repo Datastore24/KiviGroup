@@ -85,6 +85,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="scM-2f-IK7" kind="custom" customClass="SWRevealViewControllerSegue" id="Neo-wF-8P2"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" id="6kP-Bl-Erx">
                                         <rect key="frame" x="0.0" y="160" width="320" height="44"/>
@@ -93,6 +96,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nED-xL-zjc" kind="custom" customClass="SWRevealViewControllerSegue" id="9Qn-Re-cfr"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" id="ILg-d7-JeI">
                                         <rect key="frame" x="0.0" y="204" width="320" height="44"/>
@@ -200,6 +206,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iW-G5-42O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="944" y="-524"/>
+        </scene>
+        <!--Shares Controller-->
+        <scene sceneID="r6Q-52-5rm">
+            <objects>
+                <viewController storyboardIdentifier="SharesController" id="scM-2f-IK7" customClass="SharesController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcL-VG-lfF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="53b-69-4kq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="MF2-S6-IwH"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="MF2-S6-IwH" id="4d9-Jd-0hf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DhY-7g-K1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="147"/>
+        </scene>
+        <!--Delivery Controller-->
+        <scene sceneID="q7c-G2-aQA">
+            <objects>
+                <viewController storyboardIdentifier="DeliveryController" id="nED-xL-zjc" customClass="DeliveryController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GpV-yV-h2m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rwJ-Kz-bxO">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="PYS-dX-iAg"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="PYS-dX-iAg" id="JNS-Ml-T9B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RDR-F7-0JH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="817"/>
         </scene>
     </scenes>
 </document>
