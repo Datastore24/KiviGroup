@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonalAreaView : UIView
+@interface PersonalAreaView : UIView <UITableViewDelegate, UITableViewDataSource>
+
+- (instancetype)initWithView: (UIView*) view;
 
 @end
