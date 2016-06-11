@@ -33,14 +33,21 @@
     NSString * paymentType = @"";
     NSString * shopId = @"58658";
     NSString * scid = @"536545";
-    NSString * sum = @"10";
+    NSDictionary * tariffDict = [[SingleTone sharedManager] tariffDict];
+    NSLog(@"TDICT %@",tariffDict);
+    
+    NSString * sum = [tariffDict objectForKey:@"cost"];
     //customerNumber - id пользователя
     NSString * customerNumber = [[SingleTone sharedManager] userID];
     //shopArticleId - идентификатор тарифа
-    NSString * id_tariff = @"";
-    NSString * id_category = @"";
+    
+    
+    NSString * id_tariff = [tariffDict objectForKey:@"id_tariff"];
+    NSString * id_category = [tariffDict objectForKey:@"id_category"];
+    
     NSString *urlStr = [NSString stringWithFormat:@"https://demomoney.yandex.ru/eshop.xml?paymentType=%@&shopId=%@&scid=%@&sum=%@&customerNumber=%@&id_tariff=%@&id_category=%@",paymentType, shopId, scid, sum, customerNumber, id_tariff, id_category];
     NSURL *url = [NSURL URLWithString:urlStr];
+    NSLog(@"urlSTR %@",urlStr);
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [mainWeb loadRequest:requestObj];
     [self.view addSubview:mainWeb];

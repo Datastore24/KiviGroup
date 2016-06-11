@@ -15,6 +15,7 @@
 @implementation RatesView
 {
     NSArray * mainArray;
+    
 }
 
 - (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array
@@ -143,6 +144,13 @@
         CustomButton * otherButton  = (CustomButton *) [self viewWithTag:i + 20];
         UIImageView * imgeHol = (UIImageView*) [self viewWithTag:i + 10];
         if (button.tag == i + 20) {
+            NSDictionary * mainDict = [mainArray objectAtIndex:i];
+            
+           NSDictionary * tariffDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+            [mainDict objectForKey:@"id_tariff"],@"id_tariff",
+            [mainDict objectForKey:@"id_category"],@"id_category",
+            [mainDict objectForKey:@"cost"],@"cost",nil];
+            [[SingleTone sharedManager] setTariffDict:tariffDict];
             button.userInteractionEnabled = NO;
             if (button.change) {
                 imgeHol.alpha = 1.f;
