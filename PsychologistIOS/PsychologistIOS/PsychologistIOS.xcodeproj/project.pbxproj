@@ -18,6 +18,7 @@
 		771715A41CB68A0D003CD228 /* pushMessageImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 771715A31CB68A0D003CD228 /* pushMessageImage.png */; };
 		771715A61CB68D54003CD228 /* soundButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 771715A51CB68D54003CD228 /* soundButton.png */; };
 		771715AC1CB69512003CD228 /* buttonCameraImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 771715AB1CB69512003CD228 /* buttonCameraImage.png */; };
+		771904CF1D0D4B3D00924A57 /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 771904CE1D0D4B3D00924A57 /* video2.mov */; };
 		771D05261CDDEEE500A83111 /* SubscriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771D05251CDDEEE500A83111 /* SubscriptionController.m */; };
 		771D05291CDDEEF900A83111 /* SubscriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771D05281CDDEEF900A83111 /* SubscriptionView.m */; };
 		771D052C1CDDF6BC00A83111 /* SubscriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 771D052B1CDDF6BC00A83111 /* SubscriptionModel.m */; };
@@ -261,6 +262,7 @@
 		771715A31CB68A0D003CD228 /* pushMessageImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushMessageImage.png; sourceTree = "<group>"; };
 		771715A51CB68D54003CD228 /* soundButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundButton.png; sourceTree = "<group>"; };
 		771715AB1CB69512003CD228 /* buttonCameraImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCameraImage.png; sourceTree = "<group>"; };
+		771904CE1D0D4B3D00924A57 /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
 		771D05241CDDEEE500A83111 /* SubscriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionController.h; sourceTree = "<group>"; };
 		771D05251CDDEEE500A83111 /* SubscriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionController.m; sourceTree = "<group>"; };
 		771D05271CDDEEF900A83111 /* SubscriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionView.h; sourceTree = "<group>"; };
@@ -1237,6 +1239,7 @@
 		ADBFA8CE1CF8A38C00776248 /* Launcher */ = {
 			isa = PBXGroup;
 			children = (
+				771904CE1D0D4B3D00924A57 /* video2.mov */,
 				ADBFA8CF1CF8A3A100776248 /* 03.png */,
 				ADBFA8D01CF8A3A100776248 /* 09.png */,
 				ADBFA8D11CF8A3A100776248 /* 11.png */,
@@ -1479,6 +1482,7 @@
 				77EA7C2A1CB024D80083AD5B /* image1.png in Resources */,
 				772707311CAF04BA0067DF6C /* Search.png in Resources */,
 				AD06317E1D00134E00DBF14C /* Icon-60@2x.png in Resources */,
+				771904CF1D0D4B3D00924A57 /* video2.mov in Resources */,
 				FF36FD4E1CF3A6E200BF217A /* mainFone.png in Resources */,
 				773C0D931CB986A2005794BE /* faceMenu.png in Resources */,
 				FFB28FD81CEE436C00A417A9 /* notificationAlert.png in Resources */,

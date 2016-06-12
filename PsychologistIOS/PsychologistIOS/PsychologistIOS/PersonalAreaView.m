@@ -88,7 +88,8 @@
         }
         
         if (isiPhone4s) {
-            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 140, 15, 280, 42);
+            viewPhone.frame = CGRectMake(self.frame.size.width / 2 - 140, 60, 280, 38);
+            viewPhone.layer.cornerRadius = 19.f;
         }
         
         viewPhone.backgroundColor = [UIColor whiteColor];
@@ -152,6 +153,10 @@
                 viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 25, 280, 42);
                 viewEmail.layer.cornerRadius = 21.f;
             }
+        if (isiPhone4s) {
+            viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 12, 280, 38);
+            viewEmail.layer.cornerRadius = 19.f;
+        }
         viewEmail.backgroundColor = [UIColor whiteColor];
         viewEmail.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewEmail.layer.borderWidth = 0.4f;
@@ -204,6 +209,11 @@
             viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewEmail.frame.size.height + viewEmail.frame.origin.y + 12, 280, 42);
             viewNickName.layer.cornerRadius = 21.f;
         }
+        
+        if (isiPhone4s) {
+            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewEmail.frame.size.height + viewEmail.frame.origin.y + 12, 280, 38);
+            viewNickName.layer.cornerRadius = 19.f;
+        }
         viewNickName.backgroundColor = [UIColor whiteColor];
         viewNickName.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewNickName.layer.borderWidth = 0.4f;
@@ -248,6 +258,10 @@
             viewCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 42);
             viewCity.layer.cornerRadius = 21.f;
         }
+        if (isiPhone4s) {
+            viewCity.frame = CGRectMake(self.frame.size.width / 2 - 140, viewNickName.frame.size.height + viewNickName.frame.origin.y + 12, 280, 38);
+            viewCity.layer.cornerRadius = 19.f;
+        }
         viewCity.backgroundColor = [UIColor whiteColor];
         viewCity.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
         viewCity.layer.borderWidth = 0.4f;
@@ -291,6 +305,10 @@
         if (isiPhone5) {
             buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 42);
             buttonBirth.layer.cornerRadius = 21.f;
+        }
+        if (isiPhone4s) {
+            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 38);
+            buttonBirth.layer.cornerRadius = 19.f;
         }
         buttonBirth.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [buttonBirth setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 130.0f, 0.0f, 0.0f)];
@@ -356,6 +374,10 @@
             buttonMaritalStatus.layer.cornerRadius = 21.f;
             buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
+        if (isiPhone4s) {
+            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 12, 280, 38);
+            buttonMaritalStatus.layer.cornerRadius = 19.f;
+        }
         [self addSubview:buttonMaritalStatus];
         
         UIImageView * imageViewButtonbuttonMaritalStatus = [[UIImageView alloc] initWithFrame:CGRectMake(buttonMaritalStatus.frame.size.width - 64, 24, 16, 8)];
@@ -418,7 +440,7 @@
         }
         
         if (isiPhone4s) {
-            buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 80, 28, 160, 40);
+            buttonSubscription.frame = CGRectMake(self.frame.size.width / 2 - 80, 10, 160, 40);
         }
         buttonSubscription.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         [buttonSubscription addTarget:self action:@selector(buttonSubscriptionAction) forControlEvents:UIControlEventTouchUpInside];
