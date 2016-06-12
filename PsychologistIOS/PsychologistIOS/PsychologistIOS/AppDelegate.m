@@ -156,13 +156,21 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    //    NSLog(@"Received notification: %@", userInfo);
+       NSLog(@"Received notification: %@", userInfo);
     if([[userInfo objectForKey:@"info"] isEqualToString:@"badge_null"]){
         //        application.applicationIconBadgeNumber=0;
     }
     
     if([[userInfo objectForKey:@"info"] isEqualToString:@"rch"]){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadChat" object:self];
+    }
+    
+    if([[userInfo objectForKey:@"info"] isEqualToString:@"pay"]){
+        
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"CategoryController"];
+        
+
+        
     }
 }
 //

@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSString * identifierSubCategory;
 @property (strong, nonatomic) NSString * identifierSubjectModel;
 
+@property (strong, nonatomic) NSDictionary * tariffDict;
+
 @property (strong, nonatomic) NSString * apiImage;
 
 //Тарифы-----------------------------------------

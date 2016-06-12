@@ -19,6 +19,8 @@
 @synthesize identifierSubCategory;
 @synthesize identifierSubjectModel;
 
+@synthesize tariffDict;
+
 @synthesize apiImage;
 @synthesize tariffID;
 

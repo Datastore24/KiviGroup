@@ -10,6 +10,7 @@
 
 @interface RatesView : UIView
 
+
 - (instancetype)initWithView: (UIView*) view andArray: (NSArray*) array;
 
 @end

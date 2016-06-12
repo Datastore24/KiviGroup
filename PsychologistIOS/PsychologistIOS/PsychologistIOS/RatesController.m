@@ -87,6 +87,7 @@
 
 - (void) pushYandex
 {
+    
     YandexSalesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YandexSalesController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
