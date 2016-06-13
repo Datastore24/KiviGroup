@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771669D11D0E9C7E00037831 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D01D0E9C7E00037831 /* ContactsController.m */; };
+		771669D41D0E9C9200037831 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D31D0E9C9200037831 /* ContactsView.m */; };
 		773194921CD76D2B002831E4 /* InputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 773194911CD76D2B002831E4 /* InputTextView.m */; };
 		773194951CD77488002831E4 /* UserNameImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 773194931CD77488002831E4 /* UserNameImage.png */; };
 		773194961CD77488002831E4 /* PasswordImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 773194941CD77488002831E4 /* PasswordImage.png */; };
@@ -59,6 +61,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		771669CF1D0E9C7E00037831 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		771669D01D0E9C7E00037831 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		771669D21D0E9C9200037831 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		771669D31D0E9C9200037831 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
 		773194901CD76D2B002831E4 /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextView.h; sourceTree = "<group>"; };
 		773194911CD76D2B002831E4 /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
 		773194931CD77488002831E4 /* UserNameImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserNameImage.png; sourceTree = "<group>"; };
@@ -175,6 +181,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		771669CE1D0E9C5600037831 /* Сontacts */ = {
+			isa = PBXGroup;
+			children = (
+				771669CF1D0E9C7E00037831 /* ContactsController.h */,
+				771669D01D0E9C7E00037831 /* ContactsController.m */,
+				771669D21D0E9C9200037831 /* ContactsView.h */,
+				771669D31D0E9C9200037831 /* ContactsView.m */,
+			);
+			name = "Сontacts";
+			sourceTree = "<group>";
+		};
 		7731948F1CD76D0D002831E4 /* InputText */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +327,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
+				771669CE1D0E9C5600037831 /* Сontacts */,
 				FFC1ACF01D0B512B00B30E4B /* Delivery */,
 				FFC1ACDC1D0B438C00B30E4B /* Shares */,
 				FFE955401D03845D00AAAC0B /* Personal Area */,
@@ -508,7 +526,9 @@
 			files = (
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
+				771669D11D0E9C7E00037831 /* ContactsController.m in Sources */,
 				7748A1371CD4E99D001A5743 /* UIColor+HexColor.m in Sources */,
+				771669D41D0E9C9200037831 /* ContactsView.m in Sources */,
 				AD109ABE1CCF5B120074BA7B /* AppDelegate.m in Sources */,
 				773194921CD76D2B002831E4 /* InputTextView.m in Sources */,
 				FFE955431D03847100AAAC0B /* PersonalAreaController.m in Sources */,
