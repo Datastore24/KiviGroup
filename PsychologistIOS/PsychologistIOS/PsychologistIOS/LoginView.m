@@ -300,24 +300,29 @@
         
         for (int i = 0; i < 3; i++) {
             UIButton * buttonOtherInput = [UIButton buttonWithType:UIButtonTypeCustom];
-            buttonOtherInput.frame = CGRectMake(120 + 60 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 56, 56);
+            buttonOtherInput.frame = CGRectMake(150 + 60 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 56, 56);
             buttonOtherInput.layer.cornerRadius = 28;
             if (isiPhone6) {
-                buttonOtherInput.frame = CGRectMake(110 + 52 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 48, 48);
+                buttonOtherInput.frame = CGRectMake(136 + 52 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 48, 48);
                 buttonOtherInput.layer.cornerRadius = 24;
             } else if (isiPhone5) {
-                buttonOtherInput.frame = CGRectMake(93 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 40, 40);
+                buttonOtherInput.frame = CGRectMake(117 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 12, 40, 40);
                 buttonOtherInput.layer.cornerRadius = 20;
             }
             
             if (isiPhone4s) {
-                buttonOtherInput.frame = CGRectMake(93 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 5, 40, 40);
+                buttonOtherInput.frame = CGRectMake(117 + 48 * i, labelOtherInput.frame.origin.y + labelOtherInput.frame.size.height + 5, 40, 40);
             }
             UIImage *btnImage = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
             [buttonOtherInput setImage:btnImage forState:UIControlStateNormal];
             buttonOtherInput.tag = 10 + i;
             [buttonOtherInput addTarget:self action:@selector(buttonOtherInputAction:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonOtherInput];
+            
+            if (i == 2) {
+                //Скрываем вход через почту
+                buttonOtherInput.alpha = 0.f;
+            }
         }
         
         //Кнопка условия лицензионного соглашения
