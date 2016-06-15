@@ -145,73 +145,73 @@
         
         
         
-        //Email-----------
-        //Вью для Email------------------------------------------------
-        UIView * viewEmail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 16, 328, 48)];
-        viewEmail.layer.cornerRadius = 24.f;
-        if (isiPhone5) {
-                viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 25, 280, 42);
-                viewEmail.layer.cornerRadius = 21.f;
-            }
-        if (isiPhone4s) {
-            viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 12, 280, 38);
-            viewEmail.layer.cornerRadius = 19.f;
-        }
-        viewEmail.backgroundColor = [UIColor whiteColor];
-        viewEmail.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
-        viewEmail.layer.borderWidth = 0.4f;
-        [self addSubview:viewEmail];
+//        //Email-----------
+//        //Вью для Email------------------------------------------------
+//        UIView * viewEmail = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 16, 328, 48)];
+//        viewEmail.layer.cornerRadius = 24.f;
+//        if (isiPhone5) {
+//                viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 25, 280, 42);
+//                viewEmail.layer.cornerRadius = 21.f;
+//            }
+//        if (isiPhone4s) {
+//            viewEmail.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 12, 280, 38);
+//            viewEmail.layer.cornerRadius = 19.f;
+//        }
+//        viewEmail.backgroundColor = [UIColor whiteColor];
+//        viewEmail.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
+//        viewEmail.layer.borderWidth = 0.4f;
+//        [self addSubview:viewEmail];
+//        
+//        //Ввод Email-----------------------------------------------------------------
+//        textFieldEmail = [[UITextField alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
+//        textFieldEmail.delegate = self;
+//        textFieldEmail.keyboardType = UIKeyboardTypeURL;
+//        textFieldEmail.autocorrectionType = UITextAutocorrectionTypeNo;
+//        textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
+//        if (isiPhone5) {
+//            textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
+//        }
+//        textFieldEmail.textColor = [UIColor colorWithHexString:@"515050"];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEmail:) name:UITextFieldTextDidChangeNotification object:textFieldEmail];
+//        [viewEmail addSubview:textFieldEmail];
+//        
+//        //Плэйс холдер Email----------------------------------------------------------
+//        labelPlaceHolderEmail = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
+//        labelPlaceHolderEmail.text = @"Введите Email";
+//        labelPlaceHolderEmail.textColor = [UIColor colorWithHexString:@"515050"];
+//        labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
+//        if (isiPhone5) {
+//            labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
+//        }
+//        
+//        
+//
+//        if([dict objectForKey:@"email"] != [NSNull null]){
+//          
+//            if(![[dict objectForKey:@"email"] isEqualToString:@""]){
+//                textFieldEmail.text=[dict objectForKey:@"email"];
+//            }else{
+//                [viewEmail addSubview:labelPlaceHolderEmail];
+//            }
+//        }else{
+//            NSLog(@"EMPTY");
+//            [viewEmail addSubview:labelPlaceHolderEmail];
+//        }
         
-        //Ввод Email-----------------------------------------------------------------
-        textFieldEmail = [[UITextField alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
-        textFieldEmail.delegate = self;
-        textFieldEmail.keyboardType = UIKeyboardTypeURL;
-        textFieldEmail.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
-        if (isiPhone5) {
-            textFieldEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
-        }
-        textFieldEmail.textColor = [UIColor colorWithHexString:@"515050"];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEmail:) name:UITextFieldTextDidChangeNotification object:textFieldEmail];
-        [viewEmail addSubview:textFieldEmail];
-        
-        //Плэйс холдер Email----------------------------------------------------------
-        labelPlaceHolderEmail = [[UILabel alloc] initWithFrame:CGRectMake(32, 0, viewPhone.frame.size.width - 64, viewPhone.frame.size.height)];
-        labelPlaceHolderEmail.text = @"Введите Email";
-        labelPlaceHolderEmail.textColor = [UIColor colorWithHexString:@"515050"];
-        labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:20];
-        if (isiPhone5) {
-            labelPlaceHolderEmail.font = [UIFont fontWithName:FONTREGULAR size:18];
-        }
-        
-        
-
-        if([dict objectForKey:@"email"] != [NSNull null]){
-          
-            if(![[dict objectForKey:@"email"] isEqualToString:@""]){
-                textFieldEmail.text=[dict objectForKey:@"email"];
-            }else{
-                [viewEmail addSubview:labelPlaceHolderEmail];
-            }
-        }else{
-            NSLog(@"EMPTY");
-            [viewEmail addSubview:labelPlaceHolderEmail];
-        }
-            
         
         
         
         //NickName-----------
         //Вью для NickName------------------------------------------------
-        UIView * viewNickName = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewEmail.frame.size.height + viewEmail.frame.origin.y + 16, 328, 48)];
+        UIView * viewNickName = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 164, viewPhone.frame.size.height + viewPhone.frame.origin.y + 16, 328, 48)];
         viewNickName.layer.cornerRadius = 24.f;
         if (isiPhone5) {
-            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewEmail.frame.size.height + viewEmail.frame.origin.y + 12, 280, 42);
+            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 12, 280, 42);
             viewNickName.layer.cornerRadius = 21.f;
         }
         
         if (isiPhone4s) {
-            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewEmail.frame.size.height + viewEmail.frame.origin.y + 12, 280, 38);
+            viewNickName.frame = CGRectMake(self.frame.size.width / 2 - 140, viewPhone.frame.size.height + viewPhone.frame.origin.y + 12, 280, 38);
             viewNickName.layer.cornerRadius = 19.f;
         }
         viewNickName.backgroundColor = [UIColor whiteColor];
@@ -297,56 +297,56 @@
             [viewCity addSubview:labelPlaceHolderCity];
         }
         
-        //Дата рождения-----------
-        //Вью для Даты рождения------------------------------------------------
-        buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, viewCity.frame.size.height + viewCity.frame.origin.y + 16, 328, 48);
-        buttonBirth.layer.cornerRadius = 24.f;
-        if (isiPhone5) {
-            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 42);
-            buttonBirth.layer.cornerRadius = 21.f;
-        }
-        if (isiPhone4s) {
-            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 38);
-            buttonBirth.layer.cornerRadius = 19.f;
-        }
-        buttonBirth.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [buttonBirth setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 130.0f, 0.0f, 0.0f)];
-        buttonBirth.backgroundColor = [UIColor whiteColor];
-        buttonBirth.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
-        buttonBirth.layer.borderWidth = 0.4f;
-        [buttonBirth addTarget:self action:@selector(buttonBirthAction) forControlEvents:UIControlEventTouchUpInside];
-        
-        if([dict objectForKey:@"b_date"] != [NSNull null]){
-            if(![[dict objectForKey:@"b_date"] isEqualToString:@""]){
-            
-                [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
-            }else{
-                [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
-            }
-        }else{
-          [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
-        }
-        
-        [buttonBirth setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
-        buttonBirth.contentEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
-        buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
-        if (isiPhone5) {
-            buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
-        }
-        [self addSubview:buttonBirth];
-        
-        UIImageView * imageViewButtonBirth = [[UIImageView alloc] initWithFrame:CGRectMake(buttonBirth.frame.size.width - 64, 24, 16, 8)];
-        if (isiPhone5) {
-            imageViewButtonBirth.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
-        }
-        imageViewButtonBirth.image = [UIImage imageNamed:@"arrowDownImage.png"];
-        [buttonBirth addSubview:imageViewButtonBirth];
+//        //Дата рождения-----------
+//        //Вью для Даты рождения------------------------------------------------
+//        buttonBirth = [UIButton buttonWithType:UIButtonTypeSystem];
+//        buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 164, viewCity.frame.size.height + viewCity.frame.origin.y + 16, 328, 48);
+//        buttonBirth.layer.cornerRadius = 24.f;
+//        if (isiPhone5) {
+//            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 42);
+//            buttonBirth.layer.cornerRadius = 21.f;
+//        }
+//        if (isiPhone4s) {
+//            buttonBirth.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 38);
+//            buttonBirth.layer.cornerRadius = 19.f;
+//        }
+//        buttonBirth.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//        [buttonBirth setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 130.0f, 0.0f, 0.0f)];
+//        buttonBirth.backgroundColor = [UIColor whiteColor];
+//        buttonBirth.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
+//        buttonBirth.layer.borderWidth = 0.4f;
+//        [buttonBirth addTarget:self action:@selector(buttonBirthAction) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        if([dict objectForKey:@"b_date"] != [NSNull null]){
+//            if(![[dict objectForKey:@"b_date"] isEqualToString:@""]){
+//            
+//                [buttonBirth setTitle:[dict objectForKey:@"b_date"] forState:UIControlStateNormal];
+//            }else{
+//                [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+//            }
+//        }else{
+//          [buttonBirth setTitle:@"Дата рождения" forState:UIControlStateNormal];
+//        }
+//        
+//        [buttonBirth setTitleColor:[UIColor colorWithHexString:@"515050"] forState:UIControlStateNormal];
+//        buttonBirth.contentEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
+//        buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+//        if (isiPhone5) {
+//            buttonBirth.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
+//        }
+//        [self addSubview:buttonBirth];
+//        
+//        UIImageView * imageViewButtonBirth = [[UIImageView alloc] initWithFrame:CGRectMake(buttonBirth.frame.size.width - 64, 24, 16, 8)];
+//        if (isiPhone5) {
+//            imageViewButtonBirth.frame = CGRectMake(buttonCity.frame.size.width - 60, 18, 16, 8);
+//        }
+//        imageViewButtonBirth.image = [UIImage imageNamed:@"arrowDownImage.png"];
+//        [buttonBirth addSubview:imageViewButtonBirth];
         
         //Семейное положение-----------
         //Вью для Семейное положение------------------------------------------------
         buttonMaritalStatus = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 164, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 16, 328, 48);
+        buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 164, viewCity.frame.size.height + viewCity.frame.origin.y + 16, 328, 48);
         buttonMaritalStatus.layer.cornerRadius = 24.f;
         buttonMaritalStatus.backgroundColor = [UIColor whiteColor];
         buttonMaritalStatus.layer.borderColor = [UIColor colorWithHexString:@"a6a6a6"].CGColor;
@@ -370,12 +370,12 @@
         buttonMaritalStatus.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
         buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
         if (isiPhone5) {
-            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 12, 280, 42);
+            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 42);
             buttonMaritalStatus.layer.cornerRadius = 21.f;
             buttonMaritalStatus.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
         }
         if (isiPhone4s) {
-            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, buttonBirth.frame.size.height + buttonBirth.frame.origin.y + 12, 280, 38);
+            buttonMaritalStatus.frame = CGRectMake(self.frame.size.width / 2 - 140, viewCity.frame.size.height + viewCity.frame.origin.y + 12, 280, 38);
             buttonMaritalStatus.layer.cornerRadius = 19.f;
         }
         [self addSubview:buttonMaritalStatus];
@@ -404,21 +404,21 @@
         
         //Кнопка сохранить----------------------------------------
         UIButton * buttonSave = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 28, 184, 48);
+        buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 128, 184, 48);
         buttonSave.layer.cornerRadius = 24;
         [buttonSave setTitle:@"СОХРАНИТЬ" forState:UIControlStateNormal];
         [buttonSave setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSave.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:19];
         if (isiPhone6) {
-            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y, 184, 48);
+            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 92, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 80, 184, 48);
         } else if (isiPhone5) {
-            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y , 160, 40);
+            buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 80, 160, 40);
             buttonSave.layer.cornerRadius = 20;
             buttonSave.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:17];
         }
         
         if (isiPhone4s) {
-           buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y - 20, 160, 40);
+           buttonSave.frame = CGRectMake(self.frame.size.width / 2 - 80, buttonEighteen.frame.size.height + buttonEighteen.frame.origin.y + 40, 160, 40);
         }
         buttonSave.backgroundColor = [UIColor colorWithHexString:@"ea504f"];
         [buttonSave addTarget:self action:@selector(buttonSaveAction) forControlEvents:UIControlEventTouchUpInside];
@@ -444,6 +444,8 @@
         }
         buttonSubscription.backgroundColor = [UIColor colorWithHexString:@"44d05c"];
         [buttonSubscription addTarget:self action:@selector(buttonSubscriptionAction) forControlEvents:UIControlEventTouchUpInside];
+        //Скрываем кнопку подписки------------
+        buttonSubscription.alpha = 0.f;
         [self addSubview:buttonSubscription];
         
         //Кнопка сменить пароль------------------------------------
