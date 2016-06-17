@@ -46,6 +46,8 @@
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
 		FF2D67DF1D0AB1EE006AD0EC /* CustomLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */; };
 		FF5CCB421D075EE300990081 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CCB411D075EE300990081 /* CustomButton.m */; };
+		FF911C771D12FA0500D3BE87 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF911C761D12FA0500D3BE87 /* Animation.m */; };
+		FF911C791D1308D900D3BE87 /* imageButtonDelivery.png in Resources */ = {isa = PBXBuildFile; fileRef = FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */; };
 		FFC1ACDF1D0B43AB00B30E4B /* SharesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC1ACDE1D0B43AB00B30E4B /* SharesController.m */; };
 		FFC1ACE21D0B43BE00B30E4B /* SharesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC1ACE11D0B43BE00B30E4B /* SharesView.m */; };
 		FFC1ACEA1D0B49D400B30E4B /* bouquets6.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC1ACE41D0B49D400B30E4B /* bouquets6.png */; };
@@ -154,6 +156,9 @@
 		FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabels.m; sourceTree = "<group>"; };
 		FF5CCB401D075EE300990081 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		FF5CCB411D075EE300990081 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		FF911C751D12FA0500D3BE87 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		FF911C761D12FA0500D3BE87 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonDelivery.png; sourceTree = "<group>"; };
 		FFC1ACDD1D0B43AB00B30E4B /* SharesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesController.h; sourceTree = "<group>"; };
 		FFC1ACDE1D0B43AB00B30E4B /* SharesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesController.m; sourceTree = "<group>"; };
 		FFC1ACE01D0B43BE00B30E4B /* SharesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesView.h; sourceTree = "<group>"; };
@@ -205,6 +210,7 @@
 		771669D51D0ED60600037831 /* Basket */ = {
 			isa = PBXGroup;
 			children = (
+				FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */,
 				77D57B9C1D0F0DCE00EEA42D /* ButtonImageDown.png */,
 				77D57B9D1D0F0DCE00EEA42D /* buttomInageUp.png */,
 				771669D61D0ED68500037831 /* BasketController.h */,
@@ -371,6 +377,7 @@
 				7748A14A1CD4EFF3001A5743 /* Fonts */,
 				7748A1381CD4E9A7001A5743 /* Buttons */,
 				FF2D67DC1D0AB1CC006AD0EC /* Labels */,
+				FF911C741D12F9F300D3BE87 /* Animation */,
 				AD109AB91CCF5B120074BA7B /* Supporting Files */,
 			);
 			path = FlowersOnline;
@@ -394,6 +401,15 @@
 				FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */,
 			);
 			name = Labels;
+			sourceTree = "<group>";
+		};
+		FF911C741D12F9F300D3BE87 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FF911C751D12FA0500D3BE87 /* Animation.h */,
+				FF911C761D12FA0500D3BE87 /* Animation.m */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		FFC1ACDC1D0B438C00B30E4B /* Shares */ = {
@@ -520,6 +536,7 @@
 				77A2A8EE1CD8B9FA0092CC06 /* logo.png in Resources */,
 				7748A18C1CD5022F001A5743 /* ContactsImageMenu.png in Resources */,
 				FFC1ACEB1D0B49D400B30E4B /* bouquets5.png in Resources */,
+				FF911C791D1308D900D3BE87 /* imageButtonDelivery.png in Resources */,
 				FFE955381D03795400AAAC0B /* emailImageReg.png in Resources */,
 				FFC1ACEA1D0B49D400B30E4B /* bouquets6.png in Resources */,
 				7748A18E1CD5022F001A5743 /* DostavkaImageMenu.png in Resources */,
@@ -552,6 +569,7 @@
 			files = (
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
+				FF911C771D12FA0500D3BE87 /* Animation.m in Sources */,
 				771669D11D0E9C7E00037831 /* ContactsController.m in Sources */,
 				7748A1371CD4E99D001A5743 /* UIColor+HexColor.m in Sources */,
 				771669D41D0E9C9200037831 /* ContactsView.m in Sources */,

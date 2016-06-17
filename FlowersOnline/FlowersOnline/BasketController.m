@@ -29,6 +29,8 @@
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"КОРЗИНА"];
     self.navigationItem.titleView = title;
     
+    
+    
 #pragma mark - Initialization
     
     BasketView * mainView = [[BasketView alloc] initWithView:self.view];

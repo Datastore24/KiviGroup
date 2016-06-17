@@ -36,6 +36,7 @@
 #define COLORGRAY @"d9d9d9"
 #define COLORTEXTGRAY @"4d4d4b"
 #define COLORPINCK @"fe3a63"
+#define COLORLITEGRAY @"e5e5e5"
 
 //Нотификации класса LoginView and LoginController
 #define NOTIFICATION_LOGIN_VIEW_PUSH_BOUQUETS_CONTROLLER @"NOTIFICATION_LOGIN_VIEW_PUSH_BOUQUETS_CONTROLLER"
