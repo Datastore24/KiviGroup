@@ -173,6 +173,20 @@
             </objects>
             <point key="canvasLocation" x="523" y="562"/>
         </scene>
+        <!--Checkout Controller-->
+        <scene sceneID="FBt-cg-Ybw">
+            <objects>
+                <viewController storyboardIdentifier="CheckoutController" id="gVE-iZ-KWq" customClass="CheckoutController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tPL-LR-CwR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwc-SO-XG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="-1445"/>
+        </scene>
         <!--Bouquets Controller-->
         <scene sceneID="eD7-Tx-HgW">
             <objects>
