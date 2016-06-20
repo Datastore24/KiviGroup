@@ -18,6 +18,13 @@
     NSMutableArray * mainArray;
     UIScrollView * mainScrollView;
     NSMutableArray * arrayView;
+    NSArray * arrayPriceDelivery;
+    //------------------------------
+    NSInteger allPrice;
+    CustomLabels * allPriceLabelAction;
+    
+    //-------------------------------
+    NSInteger countPrice;
     
 }
 
@@ -33,10 +40,13 @@
                                         @"Курьерская доставка о Москве - ",
                                         @"Курьерская доставка до 10 км от МКАД - ",
                                         @"Самовывоз - ", nil];
-        NSArray * arrayPriceDelivery = [NSArray arrayWithObjects:
-                                   [NSNumber numberWithInteger:500],
-                                   [NSNumber numberWithInteger:1000],
-                                   [NSNumber numberWithInteger:0], nil];
+        arrayPriceDelivery = [NSArray arrayWithObjects:
+                             [NSNumber numberWithInteger:500],
+                             [NSNumber numberWithInteger:1000],
+                             [NSNumber numberWithInteger:0], nil];
+        allPrice = 0;
+        countPrice = 0;
+        
 
         //Создание таблицы заказов----
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 200)];
@@ -79,6 +89,7 @@
             
             //Цена букета-----------------------------------------
             NSString * stringPrice = [NSString stringWithFormat:@"%ld р", (long)[[dictCount objectForKey:@"price"] integerValue]];
+            allPrice += [[dictCount objectForKey:@"price"] integerValue];
             CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:77 andSizeWidht:400 andSizeHeight:18 andColor:COLORPINCK andText:stringPrice];
             labelCellPrice.font = [UIFont fontWithName:FONTBOND size:16];
             labelCellPrice.textAlignment = NSTextAlignmentLeft;
@@ -147,9 +158,30 @@
             [buttonChangeDelivery setImage:imageButtonDelivery forState:UIControlStateNormal];
             [buttonChangeDelivery addTarget:self action:@selector(buttonChangeDeliveryAction:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonChangeDelivery];
-            
-            
         }
+        //Общая цена---------------------------------------
+        CustomLabels * allPriceLabelNoAction = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 180 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORTEXTGRAY andText:@"Итого:"];
+        allPriceLabelNoAction.font = [UIFont fontWithName:FONTBOND size:18];
+        allPriceLabelNoAction.textAlignment = NSTextAlignmentLeft;
+        [allPriceLabelNoAction sizeToFit];
+        [viewDelivery addSubview:allPriceLabelNoAction];
+        
+        //Общая цена---------------------------------------
+        allPriceLabelAction = [[CustomLabels alloc] initLabelTableWithWidht:allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORPINCK andText:[NSString stringWithFormat:@"%ld р", (long)allPrice]];
+        allPriceLabelAction.font = [UIFont fontWithName:FONTBOND size:18];
+        allPriceLabelAction.textAlignment = NSTextAlignmentLeft;
+        [allPriceLabelAction sizeToFit];
+        [viewDelivery addSubview:allPriceLabelAction];
+        
+        //Оформить заказ--------------------------------------
+        UIButton * buttonCheckout = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonCheckout.frame = CGRectMake(20, 140, self.frame.size.width - 40, 35);
+        buttonCheckout.backgroundColor = [UIColor colorWithHexString:@"85af02"];
+        [buttonCheckout setTitle:@"ПЕРЕЙТИ К ОПЛАТЕ" forState:UIControlStateNormal];
+        [buttonCheckout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonCheckout.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
+        [buttonCheckout addTarget:self action:@selector(buttonCheckoutAction) forControlEvents:UIControlEventTouchUpInside];
+        [viewDelivery addSubview:buttonCheckout];
     }
     return self;
 }
@@ -164,6 +196,11 @@
             NSInteger intCount = [label.text integerValue];
             intCount += 1;
             label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
+            NSDictionary * dictArray = [mainArray objectAtIndex:i];
+            NSInteger intPrice = [[dictArray objectForKey:@"price"] integerValue];
+            allPrice += intPrice;
+            allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
+            [allPriceLabelAction sizeToFit];
         }
     }
 }
@@ -176,6 +213,13 @@
             NSInteger intCount = [label.text integerValue];
             intCount -= 1;
             label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
+            
+            
+            NSDictionary * dictArray = [mainArray objectAtIndex:i];
+            NSInteger intPrice = [[dictArray objectForKey:@"price"] integerValue];
+            allPrice -= intPrice;
+            allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
+            [allPriceLabelAction sizeToFit];
             
             
             if ([label.text isEqualToString:@"0"]) {
@@ -204,16 +248,28 @@
     for (int i = 0; i < 3; i++) {
         UIButton * otherButton = (UIButton*)[self viewWithTag:120 + i];
         if (button.tag == 120 + i) {
+            
             button.backgroundColor = [UIColor colorWithHexString:COLORGREEN];
             button.userInteractionEnabled = NO;
+            NSInteger intPrice = [[arrayPriceDelivery objectAtIndex:i] integerValue];
+            countPrice = allPrice + intPrice;
+            allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)countPrice];
+            [allPriceLabelAction sizeToFit];
+            
         } else {
             otherButton.backgroundColor = [UIColor clearColor];
             otherButton.userInteractionEnabled = YES;
         }
     }
+    
 
 
     
+}
+
+- (void) buttonCheckoutAction
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
 }
 
 

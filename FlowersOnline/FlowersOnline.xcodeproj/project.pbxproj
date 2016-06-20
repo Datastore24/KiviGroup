@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7708B61B1D1850050083C029 /* CheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708B61A1D1850050083C029 /* CheckoutController.m */; };
+		7708B61E1D1850180083C029 /* CheckoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708B61D1D1850180083C029 /* CheckoutView.m */; };
 		771669D11D0E9C7E00037831 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D01D0E9C7E00037831 /* ContactsController.m */; };
 		771669D41D0E9C9200037831 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D31D0E9C9200037831 /* ContactsView.m */; };
 		771669D81D0ED68500037831 /* BasketController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D71D0ED68500037831 /* BasketController.m */; };
@@ -67,6 +69,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7708B6191D1850050083C029 /* CheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutController.h; sourceTree = "<group>"; };
+		7708B61A1D1850050083C029 /* CheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutController.m; sourceTree = "<group>"; };
+		7708B61C1D1850180083C029 /* CheckoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutView.h; sourceTree = "<group>"; };
+		7708B61D1D1850180083C029 /* CheckoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutView.m; sourceTree = "<group>"; };
 		771669CF1D0E9C7E00037831 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
 		771669D01D0E9C7E00037831 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		771669D21D0E9C9200037831 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
@@ -196,6 +202,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7708B6181D184FE70083C029 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				7708B6191D1850050083C029 /* CheckoutController.h */,
+				7708B61A1D1850050083C029 /* CheckoutController.m */,
+				7708B61C1D1850180083C029 /* CheckoutView.h */,
+				7708B61D1D1850180083C029 /* CheckoutView.m */,
+			);
+			name = Checkout;
+			sourceTree = "<group>";
+		};
 		771669CE1D0E9C5600037831 /* Сontacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +373,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
+				7708B6181D184FE70083C029 /* Checkout */,
 				771669D51D0ED60600037831 /* Basket */,
 				771669CE1D0E9C5600037831 /* Сontacts */,
 				FFC1ACF01D0B512B00B30E4B /* Delivery */,
@@ -567,7 +585,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7708B61B1D1850050083C029 /* CheckoutController.m in Sources */,
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
+				7708B61E1D1850180083C029 /* CheckoutView.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
 				FF911C771D12FA0500D3BE87 /* Animation.m in Sources */,
 				771669D11D0E9C7E00037831 /* ContactsController.m in Sources */,

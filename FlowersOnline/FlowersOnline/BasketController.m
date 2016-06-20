@@ -11,6 +11,7 @@
 #import "ButtonMenu.h"
 #import "TitleClass.h"
 #import "BasketView.h"
+#import "CheckoutController.h"
 
 @implementation BasketController
 
@@ -29,6 +30,14 @@
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"КОРЗИНА"];
     self.navigationItem.titleView = title;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain target:self action:nil];
+    backButton.tintColor = [UIColor whiteColor];
+    [self.navigationItem setBackBarButtonItem:backButton];
+    
+    
+    
     
     
 #pragma mark - Initialization
@@ -41,6 +50,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) pushCheckout
+{
+    CheckoutController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckoutController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
