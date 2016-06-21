@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "ButtonMenu.h"
 #import "TitleClass.h"
+#import "CheckoutView.h"
 
 @implementation CheckoutController
 
@@ -21,6 +22,13 @@
     //Заголовок--------------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ОФОРМЛЕНИЕ"];
     self.navigationItem.titleView = title;
+    
+#pragma mark - Initializayion
+    
+    CheckoutView * mainView = [[CheckoutView alloc] initWithView:self.view];
+    [self.view addSubview:mainView];
+    
+    
 }
 
 @end

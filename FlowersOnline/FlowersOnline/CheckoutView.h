@@ -10,4 +10,6 @@
 
 @interface CheckoutView : UIView
 
+- (instancetype)initWithView: (UIView*) view;
+
 @end
