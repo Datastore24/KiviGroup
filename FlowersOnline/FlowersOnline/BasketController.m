@@ -31,10 +31,8 @@
     self.navigationItem.titleView = title;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain target:self action:nil];
-    backButton.tintColor = [UIColor whiteColor];
-    [self.navigationItem setBackBarButtonItem:backButton];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
     
     
     

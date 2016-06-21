@@ -74,6 +74,60 @@
     return self;
 }
 
+
+- (instancetype)initCheckoutWithView: (UIView*) view
+                              PointY: (CGFloat) pointY
+                  andTextPlaceHolder: (NSString*) placeHolder
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 40);
+        self.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
+        self.layer.borderWidth = 1.f;
+        if (isiPhone5 || isiPhone4s) {
+            self.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 25);
+
+        }
+        keyboardUp = NO;
+        
+        mainView = view;
+        
+        //Ввод текста-------------
+        self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width - 70, 40)];
+        if (isiPhone5 || isiPhone4s) {
+            self.textFieldInput.frame = CGRectMake(10, 0, self.frame.size.width - 70, 25);
+        }
+        self.textFieldInput.delegate = self;
+        self.textFieldInput.isBoll = YES;
+        self.textFieldInput.tag = 90;
+        self.textFieldInput.keyboardType = UIKeyboardTypeDefault;
+        self.textFieldInput.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
+        self.textFieldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
+        [self addSubview:self.textFieldInput];
+        
+        //Плесхолдер --------------
+        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        labelPlaceHoldInput.text = placeHolder;
+        labelPlaceHoldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
+        labelPlaceHoldInput.font = [UIFont fontWithName:FONTLITE size:17];
+        [self addSubview:labelPlaceHoldInput];
+        
+    }
+    return self;
+}
+
+
+
+
+
+
+
+
+
+
+
 - (void) setHeight:(CGFloat)height
 {
     CGRect myRect = self.frame;
@@ -118,23 +172,31 @@
 //Поднимаем текст вверх--------------------------------------
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if (textField.tag == 90) {
+        
+    } else {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
             rectAnimation.origin.y -= 90;
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];
+    }
 }
 
 //Восстанавливаем стандартный размер-----------------------
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if (textField.tag == 90) {
+        
+    } else {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect rectAnimation = mainView.frame;
             rectAnimation.origin.y += 90;
         mainView.frame = rectAnimation;
     } completion:^(BOOL finished) {
     }];
+    }
 }
 
 

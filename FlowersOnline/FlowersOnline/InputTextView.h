@@ -25,6 +25,10 @@
           andTextPlaceHolder: (NSString*) placeHolder
               andScrollWidth: (CGFloat) scrollWidth;
 
+- (instancetype)initCheckoutWithView: (UIView*) view
+                              PointY: (CGFloat) pointY
+                  andTextPlaceHolder: (NSString*) placeHolder;
+
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;
 
