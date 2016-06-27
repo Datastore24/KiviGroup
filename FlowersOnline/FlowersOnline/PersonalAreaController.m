@@ -11,6 +11,7 @@
 #import "ButtonMenu.h"
 #import "TitleClass.h"
 #import "PersonalAreaView.h"
+#import "BasketController.h"
 
 @interface PersonalAreaController ()
 
@@ -31,6 +32,12 @@
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ЛИЧНЫЙ КАБИНЕТ"];
     self.navigationItem.titleView = title;
     
+    //Кнопка корзины---------------------------------------------
+    UIButton * buttonBasket = [ButtonMenu createButtonBasket];
+    [buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:buttonBasket];
+    self.navigationItem.rightBarButtonItem = mailbutton;
+    
 #pragma mark - InitializationView
     PersonalAreaView * mainView = [[PersonalAreaView alloc] initWithView:self.view];
     [self.view addSubview:mainView];
@@ -43,14 +50,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Buttons Action
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) buttonBasketAction
+{
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
-*/
 
 @end

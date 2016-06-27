@@ -85,7 +85,7 @@
         self.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
         self.layer.borderWidth = 1.f;
         if (isiPhone5 || isiPhone4s) {
-            self.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 25);
+            self.frame = CGRectMake(20, pointY, view.frame.size.width - 40, 30);
 
         }
         keyboardUp = NO;
@@ -95,7 +95,7 @@
         //Ввод текста-------------
         self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width - 70, 40)];
         if (isiPhone5 || isiPhone4s) {
-            self.textFieldInput.frame = CGRectMake(10, 0, self.frame.size.width - 70, 25);
+            self.textFieldInput.frame = CGRectMake(10, 0, self.frame.size.width - 70, 30);
         }
         self.textFieldInput.delegate = self;
         self.textFieldInput.isBoll = YES;

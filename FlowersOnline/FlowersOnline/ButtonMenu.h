@@ -13,6 +13,9 @@
 #import "Macros.h"
 
 @interface ButtonMenu : UIButton
+
+//Кнопка корзины
++ (UIButton*) createButtonBasket;
 //Кнопка меню в приложении
 + (UIButton*) createButtonMenu;
 //Кнопка в регистрационных окнах

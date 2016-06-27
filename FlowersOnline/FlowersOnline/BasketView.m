@@ -50,15 +50,26 @@
 
         //Создание таблицы заказов----
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 200)];
+        if (isiPhone5 || isiPhone4s) {
+            mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 180);
+        }
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
-        mainScrollView.contentSize = CGSizeMake(0, 120 * mainArray.count);
+        
+        if (isiPhone5 || isiPhone4s) {
+            mainScrollView.contentSize = CGSizeMake(0, 100 * mainArray.count);
+        } else {
+            mainScrollView.contentSize = CGSizeMake(0, 120 * mainArray.count);
+        }
         
         for (int i = 0; i < mainArray.count; i++) {
             
             NSDictionary * dictCount = [mainArray objectAtIndex:i];
             
             UIView * mainViewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 120 * i, self.frame.size.width, 120)];
+            if (isiPhone5 || isiPhone4s) {
+                mainViewCell.frame = CGRectMake(0, 0 + 100 * i, self.frame.size.width, 100);
+            }
             mainViewCell.tag = 60 + i;
             [mainScrollView addSubview:mainViewCell];
             
@@ -66,6 +77,9 @@
             
             //Основная картинка-----------------------------------
             UIImageView * imageTableCell = [[UIImageView alloc] initWithFrame:CGRectMake(15, 25, 70, 70)];
+            if (isiPhone5 || isiPhone4s) {
+                imageTableCell.frame = CGRectMake(15, 20, 60, 60);
+            }
             imageTableCell.image = [UIImage imageNamed:[dictCount objectForKey:@"image"]];
             [mainViewCell addSubview:imageTableCell];
             
@@ -73,6 +87,10 @@
             CustomLabels * titleCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:22 andSizeWidht:400 andSizeHeight:18 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"name"]];
             titleCell.font = [UIFont fontWithName:FONTBOND size:16];
             titleCell.textAlignment = NSTextAlignmentLeft;
+            if (isiPhone5 || isiPhone4s) {
+                titleCell.frame = CGRectMake(85, 17, 400, 18);
+                titleCell.font = [UIFont fontWithName:FONTBOND size:14];
+            }
             [mainViewCell addSubview:titleCell];
             
             //Основной текст---------------------------------------
@@ -80,10 +98,17 @@
             textCell.numberOfLines = 2;
             textCell.font = [UIFont fontWithName:FONTREGULAR size:14];
             textCell.textAlignment = NSTextAlignmentLeft;
+            if (isiPhone4s || isiPhone5) {
+                textCell.frame = CGRectMake(85, 30, self.frame.size.width - 170, 40);
+                textCell.font = [UIFont fontWithName:FONTREGULAR size:11];
+            }
             [mainViewCell addSubview:textCell];
             
             //Кастомный разделитель ячеек-------------------------
             UIView * viewBorderCell = [[UIView alloc] initWithFrame:CGRectMake(20, 119.5, self.frame.size.width - 40, 0.5)];
+            if (isiPhone5 || isiPhone4s) {
+                viewBorderCell.frame = CGRectMake(20, 99.5, self.frame.size.width - 40, 0.5);
+            }
             viewBorderCell.backgroundColor = [UIColor colorWithHexString:COLORTEXTGRAY];
             [mainViewCell addSubview:viewBorderCell];
             
@@ -93,6 +118,10 @@
             CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:77 andSizeWidht:400 andSizeHeight:18 andColor:COLORPINCK andText:stringPrice];
             labelCellPrice.font = [UIFont fontWithName:FONTBOND size:16];
             labelCellPrice.textAlignment = NSTextAlignmentLeft;
+            if (isiPhone4s || isiPhone5) {
+                labelCellPrice.frame = CGRectMake(85, 63, 400, 18);
+                labelCellPrice.font = [UIFont fontWithName:FONTBOND size:14];
+            }
             [mainViewCell addSubview:labelCellPrice];
             
             //Создаем кнопку увеличения числа товара--------------
@@ -102,6 +131,9 @@
             buttonUp.frame = CGRectMake(self.frame.size.width - 75, (120 / 2 - 10), 20, 20);
             [buttonUp setImage:imageButtonUp forState:UIControlStateNormal];
             [buttonUp addTarget:self action:@selector(upCountAction:) forControlEvents:UIControlEventTouchUpInside];
+            if (isiPhone5 || isiPhone4s) {
+                buttonUp.frame = CGRectMake(self.frame.size.width - 75, (100 / 2 - 10), 20, 20);
+            }
             [mainViewCell addSubview:buttonUp];
             
             //Создаем кнопку уменьшения числа товара-----------------
@@ -111,10 +143,16 @@
             buttonDown.frame = CGRectMake(self.frame.size.width - 35, (120 / 2 - 10), 20, 20);
             [buttonDown setImage:imageButtonDown forState:UIControlStateNormal];
             [buttonDown addTarget:self action:@selector(downCountAction:) forControlEvents:UIControlEventTouchUpInside];
+            if (isiPhone4s || isiPhone5) {
+                buttonDown.frame = CGRectMake(self.frame.size.width - 35, (100 / 2 - 10), 20, 20);
+            }
             [mainViewCell addSubview:buttonDown];
             
             //Лейбл числа--------------------------------------------
             CustomLabels * labelCount = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 55 andHeight:(120 / 2 - 10) andSizeWidht:20 andSizeHeight:20 andColor:@"a0a0a0" andText:[NSString stringWithFormat:@"%d", 1]];
+            if (isiPhone5 || isiPhone4s) {
+                labelCount.frame = CGRectMake(self.frame.size.width - 55, (100 / 2 - 10), 20, 20);
+            }
             labelCount.tag = 30 + i;
             labelCount.font = [UIFont fontWithName:FONTBOND size:18];
             [mainViewCell addSubview:labelCount];
@@ -123,6 +161,9 @@
         
         //Доставка----------------------------------------------
         UIView * viewDelivery = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 200, self.frame.size.width, 200)];
+        if (isiPhone4s || isiPhone5) {
+            viewDelivery.frame = CGRectMake(0, self.frame.size.height - 180, self.frame.size.width, 180);
+        }
         viewDelivery.backgroundColor = [UIColor colorWithHexString:COLORLITEGRAY];
         viewDelivery.userInteractionEnabled = YES;
         [self addSubview:viewDelivery];
@@ -133,6 +174,11 @@
             labelDontActive.font = [UIFont fontWithName:FONTREGULAR size:14];
             labelDontActive.textAlignment = NSTextAlignmentLeft;
             [labelDontActive sizeToFit];
+            if (isiPhone4s || isiPhone5) {
+                labelDontActive.frame = CGRectMake(10, 20 + 20 * i, 10, 20);
+                labelDontActive.font = [UIFont fontWithName:FONTREGULAR size:11];
+                [labelDontActive sizeToFit];
+            }
             [viewDelivery addSubview:labelDontActive];
             
             //Создаем строку цен доставки-----------------------
@@ -147,6 +193,11 @@
             labelActive.font = [UIFont fontWithName:FONTREGULAR size:14];
             labelActive.textAlignment = NSTextAlignmentLeft;
             [labelActive sizeToFit];
+            if (isiPhone5 || isiPhone4s) {
+                labelActive.frame = CGRectMake(labelDontActive.frame.size.width + 15, 20 + 20 * i, 10, 20);
+                labelActive.font = [UIFont fontWithName:FONTREGULAR size:11];
+                [labelActive sizeToFit];
+            }
             [viewDelivery addSubview:labelActive];
             
             //Кнопка выбора доставки---------------------------
@@ -157,12 +208,20 @@
             buttonChangeDelivery.tag = 120 + i;
             [buttonChangeDelivery setImage:imageButtonDelivery forState:UIControlStateNormal];
             [buttonChangeDelivery addTarget:self action:@selector(buttonChangeDeliveryAction:) forControlEvents:UIControlEventTouchUpInside];
+            if (isiPhone4s || isiPhone5) {
+                buttonChangeDelivery.frame = CGRectMake(self.frame.size.width - 30, ((self.frame.size.height - 180) + 20) + 20 * i, 12, 12);
+                buttonChangeDelivery.layer.cornerRadius = 6.f;
+            }
             [self addSubview:buttonChangeDelivery];
         }
         //Общая цена---------------------------------------
         CustomLabels * allPriceLabelNoAction = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 180 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORTEXTGRAY andText:@"Итого:"];
         allPriceLabelNoAction.font = [UIFont fontWithName:FONTBOND size:18];
         allPriceLabelNoAction.textAlignment = NSTextAlignmentLeft;
+        if (isiPhone5 || isiPhone4s) {
+            allPriceLabelNoAction.frame = CGRectMake(self.frame.size.width - 140, 85, 20, 10);
+            allPriceLabelNoAction.font = [UIFont fontWithName:FONTBOND size:16];
+        }
         [allPriceLabelNoAction sizeToFit];
         [viewDelivery addSubview:allPriceLabelNoAction];
         
@@ -170,6 +229,10 @@
         allPriceLabelAction = [[CustomLabels alloc] initLabelTableWithWidht:allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORPINCK andText:[NSString stringWithFormat:@"%ld р", (long)allPrice]];
         allPriceLabelAction.font = [UIFont fontWithName:FONTBOND size:18];
         allPriceLabelAction.textAlignment = NSTextAlignmentLeft;
+        if (isiPhone4s || isiPhone5) {
+            allPriceLabelAction.frame = CGRectMake(allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5, 85, 20, 10);
+            allPriceLabelAction.font = [UIFont fontWithName:FONTBOND size:16];
+        }
         [allPriceLabelAction sizeToFit];
         [viewDelivery addSubview:allPriceLabelAction];
         
@@ -181,6 +244,9 @@
         [buttonCheckout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonCheckout.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
         [buttonCheckout addTarget:self action:@selector(buttonCheckoutAction) forControlEvents:UIControlEventTouchUpInside];
+        if (isiPhone5 || isiPhone4s) {
+            buttonCheckout.frame = CGRectMake(20, 120, self.frame.size.width - 40, 35);
+        }
         [viewDelivery addSubview:buttonCheckout];
     }
     return self;
@@ -228,13 +294,21 @@
             for (int i = 0; i < arrayView.count; i++) {
                 UIView * upsView = (UIView*)[self viewWithTag:60 + i];
                 if (upsView.tag > testView.tag) {
+                    if (isiPhone5 || isiPhone4s) {
+                        [Animation animationTestView:upsView move_Y:- 100];
+                    } else {
                     [Animation animationTestView:upsView move_Y:- 120];
+                    }
                 }
 
                 }
                 [UIView animateWithDuration:0.3 animations:^{
                     CGSize sizeScrollNew = mainScrollView.contentSize;
+                    if (isiPhone4s || isiPhone5) {
+                        sizeScrollNew.height -= 100;
+                    } else {
                     sizeScrollNew.height -= 120;
+                    }
                     mainScrollView.contentSize = sizeScrollNew;
                 }];
             }
