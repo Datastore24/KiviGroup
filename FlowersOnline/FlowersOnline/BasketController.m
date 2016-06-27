@@ -22,6 +22,7 @@
 #pragma mark - Header
     
     self.navigationController.navigationBarHidden = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"alphaView" object:nil];
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -59,6 +60,11 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"desapiarViewAlpha" object:nil];
 }
 
 @end

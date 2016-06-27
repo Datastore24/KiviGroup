@@ -11,6 +11,7 @@
 #import "ButtonMenu.h"
 #import "TitleClass.h"
 #import "DeliveryView.h"
+#import "BasketController.h"
 
 @interface DeliveryController ()
 
@@ -32,6 +33,12 @@
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ДОСТАВКА"];
     self.navigationItem.titleView = title;
     
+    //Кнопка корзины---------------------------------------------
+    UIButton * buttonBasket = [ButtonMenu createButtonBasket];
+    [buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:buttonBasket];
+    self.navigationItem.rightBarButtonItem = mailbutton;
+    
 #pragma mark - Initialization
     
     DeliveryView * mainView = [[DeliveryView alloc] initWithView:self.view];
@@ -43,6 +50,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Buttons Action
+
+- (void) buttonBasketAction
+{
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

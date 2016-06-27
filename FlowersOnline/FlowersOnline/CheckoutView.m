@@ -25,6 +25,11 @@
         for (int i = 0; i < arrayPlaceHolder.count; i++) {
             InputTextView * inputText = [[InputTextView alloc] initCheckoutWithView:self PointY:80 + 50 * i andTextPlaceHolder:[arrayPlaceHolder objectAtIndex:i]];
             inputText.tag = 20 + i;
+            if (isiPhone5) {
+                inputText.height = 40 + 50 * i;
+            } else if (isiPhone4s) {
+                inputText.height = 15 + 38 * i;
+            }
             [self addSubview:inputText];
         }
 
