@@ -11,6 +11,7 @@
 #import "ButtonMenu.h"
 #import "TitleClass.h"
 #import "CheckoutView.h"
+#import "SingleTone.h"
 
 @implementation CheckoutController
 
@@ -27,8 +28,16 @@
     
     CheckoutView * mainView = [[CheckoutView alloc] initWithView:self.view];
     [self.view addSubview:mainView];
-    
-    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [[SingleTone sharedManager] viewBasketBar].alpha = 0;
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[SingleTone sharedManager] viewBasketBar]. alpha = 1;
 }
 
 @end

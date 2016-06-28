@@ -65,6 +65,7 @@
 		FF56E84E1D2146C900D9DB40 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF56E83F1D2146C900D9DB40 /* 1.jpg */; };
 		FF56E8521D21751C00D9DB40 /* iconBasketBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = FF56E8511D21751C00D9DB40 /* iconBasketBlack.png */; };
 		FF5CCB421D075EE300990081 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CCB411D075EE300990081 /* CustomButton.m */; };
+		FF73503C1D2255BA001DD7C2 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73503B1D2255BA001DD7C2 /* SingleTone.m */; };
 		FF911C771D12FA0500D3BE87 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF911C761D12FA0500D3BE87 /* Animation.m */; };
 		FF911C791D1308D900D3BE87 /* imageButtonDelivery.png in Resources */ = {isa = PBXBuildFile; fileRef = FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */; };
 		FFC1ACDF1D0B43AB00B30E4B /* SharesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC1ACDE1D0B43AB00B30E4B /* SharesController.m */; };
@@ -196,6 +197,8 @@
 		FF56E8511D21751C00D9DB40 /* iconBasketBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBasketBlack.png; sourceTree = "<group>"; };
 		FF5CCB401D075EE300990081 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		FF5CCB411D075EE300990081 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		FF73503A1D2255BA001DD7C2 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
+		FF73503B1D2255BA001DD7C2 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		FF911C751D12FA0500D3BE87 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		FF911C761D12FA0500D3BE87 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 		FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonDelivery.png; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 		AD109AB91CCF5B120074BA7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF73503A1D2255BA001DD7C2 /* SingleTone.h */,
+				FF73503B1D2255BA001DD7C2 /* SingleTone.m */,
 				77B3552F1CD3BFBE00A17546 /* TitleClass.h */,
 				77B355301CD3BFBE00A17546 /* TitleClass.m */,
 				77B355311CD3BFBE00A17546 /* Macros.h */,
@@ -686,6 +691,7 @@
 				FF5CCB421D075EE300990081 /* CustomButton.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
+				FF73503C1D2255BA001DD7C2 /* SingleTone.m in Sources */,
 				77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */,
 				FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */,
 				771669DB1D0ED69A00037831 /* BasketView.m in Sources */,

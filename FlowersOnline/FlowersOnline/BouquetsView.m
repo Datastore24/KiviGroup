@@ -11,6 +11,7 @@
 #import "CustomButton.h"
 #import "CustomLabels.h"
 #import "Macros.h"
+#import "SingleTone.h"
 
 @implementation BouquetsView
 
@@ -116,12 +117,18 @@
             //Загаловок букета----------------------------------------------------
             CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:20 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[arrayName objectAtIndex:i]];
             labelTitle.font = [UIFont fontWithName:FONTLITE size:16];
+            if (isiPhone5 || isiPhone4s) {
+                labelTitle.font = [UIFont fontWithName:FONTLITE size:14];
+            }
             labelTitle.textAlignment = NSTextAlignmentLeft;
             [mainScrollView addSubview:labelTitle];
             
             //Средняя цена букета--------------------------------------------------
             CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:[arrayPrice objectAtIndex:i]];
             labelPrice.font = [UIFont fontWithName:FONTLITE size:16];
+            if (isiPhone5 || isiPhone4s) {
+                labelPrice.font = [UIFont fontWithName:FONTLITE size:14];
+            }
             labelPrice.textAlignment = NSTextAlignmentRight;
             [mainScrollView addSubview:labelPrice];
             
@@ -134,6 +141,10 @@
             [buttonToGive setTitle:@"Подарить" forState:UIControlStateNormal];
             [buttonToGive setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             buttonToGive.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:14];
+            if (isiPhone5 || isiPhone4s) {
+                buttonToGive.frame = CGRectMake (-5, (self.frame.size.width / 2 - 13) + (self.frame.size.width * i), 90, 26);
+                buttonToGive.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:12];
+            }
             [buttonToGive addTarget:self action:@selector(buttonToGiveAction:) forControlEvents:UIControlEventTouchUpInside];
             [mainScrollView addSubview:buttonToGive];
             
@@ -142,6 +153,9 @@
             CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[arrayText objectAtIndex:i]];
             labelText.numberOfLines = 2;
             labelText.font = [UIFont fontWithName:FONTLITE size:12];
+            if (isiPhone5 || isiPhone4s) {
+                labelText.font = [UIFont fontWithName:FONTLITE size:10];
+            }
             labelText.textAlignment = NSTextAlignmentLeft;
             [labelText sizeToFit];
             [mainScrollView addSubview:labelText];
@@ -239,11 +253,27 @@
 //Действие кнопки подарить----------------------
 - (void) buttonToGiveAction: (UIButton*) button
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect rectButton = button.frame;
-        rectButton.origin.x -= 100;
-        button.frame = rectButton;
-    }];
+    for (int i = 0; i < arrayName.count; i++) {
+        if (button.tag == 20 + i) {
+            
+            mainScrollView.scrollEnabled = NO;
+            CustomButton * buttonTup = (CustomButton*)[buttonsArray objectAtIndex:i];
+            buttonTup.isBool = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                //Метод оцентровки------------------------------------
+                mainScrollView.contentOffset = CGPointMake(0, ((self.frame.size.width) * i) - 64);
+                CGRect tableRect = tablePrice.frame;
+                tableRect.origin.y -= (self.frame.size.height - self.frame.size.width) - 64;
+                tablePrice.frame = tableRect;
+                [UIView animateWithDuration:0.3 animations:^{
+                    UIButton * buttonGive = (UIButton*)[self viewWithTag:20 + i];
+                    CGRect rectButton = buttonGive.frame;
+                    rectButton.origin.x -= 100;
+                    buttonGive.frame = rectButton;
+                }];
+            }];
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -277,13 +307,23 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 76;
+    return tablePrice.frame.size.height / 3;
 }
 
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSInteger countOrder = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
+    countOrder += 1;
+    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)countOrder];
+    [UIView animateWithDuration:0.15 animations:^{
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.15 animations:^{
+            
+        }];
+    }];
 }
 
 #pragma mark - CustomCell
@@ -294,35 +334,59 @@
                         andPrice: (NSString*) price
 {
     //Основное окно ячейки--------------------------------
-    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 76)];
+    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, tablePrice.frame.size.height / 3)];
     cellView.backgroundColor = [UIColor colorWithHexString:COLORGRAY];
     
     //Загаловок ячейки-----------------------------------
     CustomLabels * labelTitleCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:15 andSizeWidht:200
                                                                     andSizeHeight:26 andColor:@"000000" andText:name];
     labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:20];
+    if (isiPhone5) {
+        labelTitleCell.frame = CGRectMake(20, 10, 200, 26);
+        labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:18];
+    } else if (isiPhone4s) {
+        labelTitleCell.frame = CGRectMake(20, 0, 200, 20);
+        labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:14];
+    }
     labelTitleCell.textAlignment = NSTextAlignmentLeft;
     [cellView addSubview:labelTitleCell];
     
     //Данные по доставке-------------------------------
     CustomLabels * labelDeliveryCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:45 andSizeWidht:200 andSizeHeight:20 andColor:@"858383" andText:data];
     labelDeliveryCell.font = [UIFont fontWithName:FONTREGULAR size:12];
+    if (isiPhone5) {
+        labelDeliveryCell.frame = CGRectMake(20, 35, 200, 20);
+        labelDeliveryCell.font = [UIFont fontWithName:FONTREGULAR size:10];
+    } else if (isiPhone4s) {
+        labelDeliveryCell.frame = CGRectMake(20, 15, 200, 20);
+        labelDeliveryCell.font = [UIFont fontWithName:FONTREGULAR size:9];
+    }
     labelDeliveryCell.textAlignment = NSTextAlignmentLeft;
     [cellView addSubview:labelDeliveryCell];
     
     //Данные о цене-----------------------------------
-    CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 140 andHeight:0 andSizeWidht:80 andSizeHeight:76 andColor:@"000000" andText:price];
+    CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 140 andHeight:0 andSizeWidht:80 andSizeHeight:tablePrice.frame.size.height / 3 andColor:@"000000" andText:price];
     labelCellPrice.font = [UIFont fontWithName:FONTREGULAR size:20];
+    if (isiPhone5) {
+        labelCellPrice.font = [UIFont fontWithName:FONTREGULAR size:18];
+    } else if (isiPhone4s) {
+        labelCellPrice.font = [UIFont fontWithName:FONTREGULAR size:16];
+    }
     labelCellPrice.textAlignment = NSTextAlignmentRight;
     [cellView addSubview: labelCellPrice];
     
     //Изображение корзинки-------------------------------
-    UIImageView * imageBasket = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 50, 76 / 2 - 13 , 26, 26)];
+    UIImageView * imageBasket = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 50, (tablePrice.frame.size.height / 3) / 2 - 13 , 26, 26)];
+    if (isiPhone5) {
+        imageBasket.frame = CGRectMake(self.frame.size.width - 50, (tablePrice.frame.size.height / 3) / 2 - 10 , 20, 20);
+    } else if (isiPhone4s) {
+        imageBasket.frame = CGRectMake(self.frame.size.width - 50, (tablePrice.frame.size.height / 3) / 2 - 8 , 16, 16);
+    }
     imageBasket.image = [UIImage imageNamed:@"iconBasketBlack.png"];
     [cellView addSubview:imageBasket];
     
     //Вью границы-----------------------------------------
-    UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0, 75.5, self.frame.size.width, 0.5f)];
+    UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0, (tablePrice.frame.size.height / 3) - 0.5, self.frame.size.width, 0.5f)];
     borderView.backgroundColor = [UIColor whiteColor];
     [cellView addSubview:borderView];
     
