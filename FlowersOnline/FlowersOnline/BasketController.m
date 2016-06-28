@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "BasketView.h"
 #import "CheckoutController.h"
+#import "SingleTone.h"
 
 @implementation BasketController
 
@@ -33,17 +34,22 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
-    
-    
-    
-    
     
 #pragma mark - Initialization
     
     BasketView * mainView = [[BasketView alloc] initWithView:self.view];
     [self.view addSubview:mainView];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [[SingleTone sharedManager] viewBasketBar].alpha = 0;
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[SingleTone sharedManager] viewBasketBar]. alpha = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,16 +61,6 @@
 {
     CheckoutController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckoutController"];
     [self.navigationController pushViewController:detail animated:YES];
-}
-
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"desapiarViewAlpha" object:nil];
 }
 
 @end

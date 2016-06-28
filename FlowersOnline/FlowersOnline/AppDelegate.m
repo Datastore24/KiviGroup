@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIColor+HexColor.h"
+#import "SingleTone.h"
 
 @interface AppDelegate ()
 

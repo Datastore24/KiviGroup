@@ -12,15 +12,13 @@
 #import "TitleClass.h"
 #import "BouquetsView.h"
 #import "BasketController.h"
+#import "SingleTone.h"
 
 @interface BouquetsController ()
 
 @end
 
 @implementation BouquetsController
-{
-    UIView * view;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,40 +39,29 @@
     UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:buttonBasket];
     self.navigationItem.rightBarButtonItem = mailbutton;
     
-    view = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 75, 10, 30, 20)];
-    view.backgroundColor = [UIColor clearColor];
-    view.layer.borderColor = [UIColor whiteColor].CGColor;
-    view.layer.borderWidth = 1.5f;
-    view.layer.cornerRadius = 7.f;
-    [self.navigationController.navigationBar addSubview:view];
+    UIView * countOrdersView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 75, 10, 30, 20)];
+    countOrdersView.backgroundColor = [UIColor clearColor];
+    countOrdersView.layer.borderColor = [UIColor whiteColor].CGColor;
+    countOrdersView.tag = 240;
+    countOrdersView.layer.borderWidth = 1.5f;
+    countOrdersView.layer.cornerRadius = 7.f;
+    [self.navigationController.navigationBar addSubview:countOrdersView];
+    [[SingleTone sharedManager] setViewBasketBar:countOrdersView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewNotificationAlpha) name:@"alphaView" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewNotificationAlphaTrue) name:@"viewNotificationAlpha" object:nil];
     
     UILabel * labelBasket = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    labelBasket.text = @"3";
+    labelBasket.text = @"0";
     labelBasket.textColor = [UIColor whiteColor];
     labelBasket.font = [UIFont fontWithName:FONTREGULAR size:14];
     labelBasket.textAlignment = NSTextAlignmentCenter;
-    [view addSubview:labelBasket];
+    [countOrdersView addSubview:labelBasket];
+    [[SingleTone sharedManager] setLabelCountBasket:labelBasket];
     
 #pragma mark - View
     
     BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view];
     [self.view addSubview:mainView];
-    
-    
-    
-}
 
-- (void) viewNotificationAlpha
-{
-    view.alpha = 0.f;
-}
-
-- (void) viewNotificationAlphaTrue
-{
-    view.alpha = 1.f;
 }
 
 - (void) dealloc
