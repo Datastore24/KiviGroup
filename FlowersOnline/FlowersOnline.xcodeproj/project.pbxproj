@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C022693BFF2E59A5B760114 /* libPods-FlowersOnline.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE848407A30E36178A824FD /* libPods-FlowersOnline.a */; };
 		7708B61B1D1850050083C029 /* CheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708B61A1D1850050083C029 /* CheckoutController.m */; };
 		7708B61E1D1850180083C029 /* CheckoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708B61D1D1850180083C029 /* CheckoutView.m */; };
 		771669D11D0E9C7E00037831 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771669D01D0E9C7E00037831 /* ContactsController.m */; };
@@ -87,6 +88,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BE848407A30E36178A824FD /* libPods-FlowersOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlowersOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		585C321004D499F1684EBD95 /* Pods-FlowersOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.release.xcconfig"; sourceTree = "<group>"; };
 		7708B6191D1850050083C029 /* CheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutController.h; sourceTree = "<group>"; };
 		7708B61A1D1850050083C029 /* CheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutController.m; sourceTree = "<group>"; };
 		7708B61C1D1850180083C029 /* CheckoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutView.h; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		AD109AC51CCF5B120074BA7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD109AC81CCF5B120074BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2D67DD1D0AB1EE006AD0EC /* CustomLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabels.h; sourceTree = "<group>"; };
 		FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabels.m; sourceTree = "<group>"; };
 		FF56E82E1D2115D700D9DB40 /* iconBasket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBasket.png; sourceTree = "<group>"; };
@@ -233,12 +237,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C022693BFF2E59A5B760114 /* libPods-FlowersOnline.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33BE0B8D5F917D396E35D371 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BE848407A30E36178A824FD /* libPods-FlowersOnline.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7708B6181D184FE70083C029 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +410,8 @@
 			children = (
 				AD109AB81CCF5B120074BA7B /* FlowersOnline */,
 				AD109AB71CCF5B120074BA7B /* Products */,
+				D555E9AF147670AFEFE96D67 /* Pods */,
+				33BE0B8D5F917D396E35D371 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -450,6 +465,15 @@
 				AD109ABA1CCF5B120074BA7B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D555E9AF147670AFEFE96D67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */,
+				585C321004D499F1684EBD95 /* Pods-FlowersOnline.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		FF2D67DC1D0AB1CC006AD0EC /* Labels */ = {
@@ -559,9 +583,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD109ACD1CCF5B120074BA7B /* Build configuration list for PBXNativeTarget "FlowersOnline" */;
 			buildPhases = (
+				E8B93C998CBB201DB2C151DD /* [CP] Check Pods Manifest.lock */,
 				AD109AB21CCF5B120074BA7B /* Sources */,
 				AD109AB31CCF5B120074BA7B /* Frameworks */,
 				AD109AB41CCF5B120074BA7B /* Resources */,
+				F4E055D310E650E32EE557CB /* [CP] Embed Pods Frameworks */,
+				CC2B0C2CE50ABFD9AAB33A3D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -660,6 +687,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC2B0C2CE50ABFD9AAB33A3D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8B93C998CBB201DB2C151DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F4E055D310E650E32EE557CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AD109AB21CCF5B120074BA7B /* Sources */ = {
@@ -806,6 +881,7 @@
 		};
 		AD109ACE1CCF5B120074BA7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -820,6 +896,7 @@
 		};
 		AD109ACF1CCF5B120074BA7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 585C321004D499F1684EBD95 /* Pods-FlowersOnline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

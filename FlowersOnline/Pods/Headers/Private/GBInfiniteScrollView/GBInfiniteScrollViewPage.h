@@ -1,1 +1,0 @@
-../../../GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.h
