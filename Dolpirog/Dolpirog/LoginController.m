@@ -12,7 +12,7 @@
 #import "ButtonMenu.h"
 #import "LoginView.h"
 #import "Macros.h"
-//#import "BouquetsController.h"
+#import "CatalogController.h"
 
 @implementation LoginController
 
@@ -51,9 +51,8 @@
 //Метод нотификации перехода в раздел букетов------------------
 - (void) pushBouquetsController
 {
-//    BouquetsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BouquetsController"];
-//    [self.navigationController pushViewController:detail animated:YES];
-    NSLog(@"Переход к регистрации");
+    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

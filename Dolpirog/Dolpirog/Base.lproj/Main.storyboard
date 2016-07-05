@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGp-Al-jNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953" y="624"/>
+            <point key="canvasLocation" x="545" y="1302"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="mGB-6S-xrS">
@@ -63,6 +63,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="cqB-jV-sW5" kind="custom" customClass="SWRevealViewControllerSegue" id="tgT-f1-IFV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" id="ISM-HA-2Wz">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
@@ -170,6 +173,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTC-PC-XSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="545" y="624"/>
+        </scene>
+        <!--Catalog Controller-->
+        <scene sceneID="poO-q3-sRv">
+            <objects>
+                <viewController storyboardIdentifier="CatalogController" id="cqB-jV-sW5" customClass="CatalogController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9qd-Tn-lSC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QdX-vh-FBW">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Fav-5Y-z4k"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonMenu" destination="Fav-5Y-z4k" id="Qmd-OJ-i02"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qrd-P2-j3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="-200"/>
         </scene>
     </scenes>
 </document>

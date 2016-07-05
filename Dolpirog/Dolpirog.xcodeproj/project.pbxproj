@@ -48,6 +48,17 @@
 		FF2B229D1D2BA78C003F501A /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B229C1D2BA78C003F501A /* background2.png */; };
 		FF2B22A11D2BAA60003F501A /* pfagoraslabpro-reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF2B229F1D2BA9CD003F501A /* pfagoraslabpro-reg.ttf */; };
 		FF2B22A21D2BAA63003F501A /* pfagoraslabpro-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22A01D2BA9CD003F501A /* pfagoraslabpro-bold.ttf */; };
+		FF2B22A61D2BB2AE003F501A /* CatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22A51D2BB2AE003F501A /* CatalogController.m */; };
+		FF2B22A91D2BB2C0003F501A /* CatalogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22A81D2BB2C0003F501A /* CatalogView.m */; };
+		FF2B22AC1D2BB50B003F501A /* BackgroundFone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22AB1D2BB50B003F501A /* BackgroundFone.m */; };
+		FF2B22AE1D2BB6F1003F501A /* backgroudMainImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22AD1D2BB6F1003F501A /* backgroudMainImage.png */; };
+		FF2B22B11D2BB9F3003F501A /* CatalogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22B01D2BB9F3003F501A /* CatalogModel.m */; };
+		FF2B22B91D2BC54D003F501A /* imagePie.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B31D2BC54D003F501A /* imagePie.png */; };
+		FF2B22BA1D2BC54D003F501A /* imageBarbecue.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B41D2BC54D003F501A /* imageBarbecue.png */; };
+		FF2B22BB1D2BC54D003F501A /* imageGarnish.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B51D2BC54D003F501A /* imageGarnish.png */; };
+		FF2B22BC1D2BC54D003F501A /* imageDrink.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B61D2BC54D003F501A /* imageDrink.png */; };
+		FF2B22BD1D2BC54D003F501A /* imageSauce.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B71D2BC54D003F501A /* imageSauce.png */; };
+		FF2B22BE1D2BC54D003F501A /* imageSalad.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B81D2BC54D003F501A /* imageSalad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +142,21 @@
 		FF2B229C1D2BA78C003F501A /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
 		FF2B229F1D2BA9CD003F501A /* pfagoraslabpro-reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfagoraslabpro-reg.ttf"; sourceTree = "<group>"; };
 		FF2B22A01D2BA9CD003F501A /* pfagoraslabpro-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pfagoraslabpro-bold.ttf"; sourceTree = "<group>"; };
+		FF2B22A41D2BB2AE003F501A /* CatalogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogController.h; sourceTree = "<group>"; };
+		FF2B22A51D2BB2AE003F501A /* CatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogController.m; sourceTree = "<group>"; };
+		FF2B22A71D2BB2C0003F501A /* CatalogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogView.h; sourceTree = "<group>"; };
+		FF2B22A81D2BB2C0003F501A /* CatalogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogView.m; sourceTree = "<group>"; };
+		FF2B22AA1D2BB50B003F501A /* BackgroundFone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundFone.h; sourceTree = "<group>"; };
+		FF2B22AB1D2BB50B003F501A /* BackgroundFone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundFone.m; sourceTree = "<group>"; };
+		FF2B22AD1D2BB6F1003F501A /* backgroudMainImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroudMainImage.png; sourceTree = "<group>"; };
+		FF2B22AF1D2BB9F3003F501A /* CatalogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogModel.h; sourceTree = "<group>"; };
+		FF2B22B01D2BB9F3003F501A /* CatalogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogModel.m; sourceTree = "<group>"; };
+		FF2B22B31D2BC54D003F501A /* imagePie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePie.png; sourceTree = "<group>"; };
+		FF2B22B41D2BC54D003F501A /* imageBarbecue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageBarbecue.png; sourceTree = "<group>"; };
+		FF2B22B51D2BC54D003F501A /* imageGarnish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageGarnish.png; sourceTree = "<group>"; };
+		FF2B22B61D2BC54D003F501A /* imageDrink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageDrink.png; sourceTree = "<group>"; };
+		FF2B22B71D2BC54D003F501A /* imageSauce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSauce.png; sourceTree = "<group>"; };
+		FF2B22B81D2BC54D003F501A /* imageSalad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSalad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +207,7 @@
 		FF2B22131D2B94FD003F501A /* Dolpirog */ = {
 			isa = PBXGroup;
 			children = (
+				FF2B22A31D2BB288003F501A /* Catalog */,
 				FF2B227A1D2B9818003F501A /* Login */,
 				FF2B22471D2B950E003F501A /* Menu */,
 				FF2B22171D2B94FD003F501A /* AppDelegate.h */,
@@ -210,6 +237,9 @@
 				FF2B22531D2B9746003F501A /* TitleClass.h */,
 				FF2B22541D2B9746003F501A /* TitleClass.m */,
 				FF2B22551D2B9746003F501A /* Macros.h */,
+				FF2B22AA1D2BB50B003F501A /* BackgroundFone.h */,
+				FF2B22AB1D2BB50B003F501A /* BackgroundFone.m */,
+				FF2B22AD1D2BB6F1003F501A /* backgroudMainImage.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -331,6 +361,33 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		FF2B22A31D2BB288003F501A /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				FF2B22B21D2BC540003F501A /* imagesCatalog */,
+				FF2B22A41D2BB2AE003F501A /* CatalogController.h */,
+				FF2B22A51D2BB2AE003F501A /* CatalogController.m */,
+				FF2B22A71D2BB2C0003F501A /* CatalogView.h */,
+				FF2B22A81D2BB2C0003F501A /* CatalogView.m */,
+				FF2B22AF1D2BB9F3003F501A /* CatalogModel.h */,
+				FF2B22B01D2BB9F3003F501A /* CatalogModel.m */,
+			);
+			name = Catalog;
+			sourceTree = "<group>";
+		};
+		FF2B22B21D2BC540003F501A /* imagesCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				FF2B22B31D2BC54D003F501A /* imagePie.png */,
+				FF2B22B41D2BC54D003F501A /* imageBarbecue.png */,
+				FF2B22B51D2BC54D003F501A /* imageGarnish.png */,
+				FF2B22B61D2BC54D003F501A /* imageDrink.png */,
+				FF2B22B71D2BC54D003F501A /* imageSauce.png */,
+				FF2B22B81D2BC54D003F501A /* imageSalad.png */,
+			);
+			name = imagesCatalog;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -434,6 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2B22BC1D2BC54D003F501A /* imageDrink.png in Resources */,
 				FF2B22A21D2BAA63003F501A /* pfagoraslabpro-bold.ttf in Resources */,
 				FF2B22A11D2BAA60003F501A /* pfagoraslabpro-reg.ttf in Resources */,
 				FF2B228F1D2B9B08003F501A /* BuketImageMenu.png in Resources */,
@@ -442,19 +500,25 @@
 				FF2B22671D2B979F003F501A /* UserNameImage.png in Resources */,
 				FF2B22241D2B94FD003F501A /* LaunchScreen.storyboard in Resources */,
 				FF2B22931D2B9B08003F501A /* DostavkaImageMenu.png in Resources */,
+				FF2B22BA1D2BC54D003F501A /* imageBarbecue.png in Resources */,
 				FF2B22951D2B9D90003F501A /* imageRadio.png in Resources */,
 				FF2B22991D2BA4F8003F501A /* imageRadioCell.png in Resources */,
+				FF2B22BD1D2BC54D003F501A /* imageSauce.png in Resources */,
+				FF2B22BE1D2BC54D003F501A /* imageSalad.png in Resources */,
 				FF2B22901D2B9B08003F501A /* BookmarksImageMenu.png in Resources */,
+				FF2B22AE1D2BB6F1003F501A /* backgroudMainImage.png in Resources */,
 				FF2B228D1D2B9B08003F501A /* Avatar.png in Resources */,
 				FF2B22681D2B979F003F501A /* PasswordImage.png in Resources */,
 				FF2B22721D2B97BE003F501A /* iconBasket.png in Resources */,
 				FF2B22651D2B979F003F501A /* nameImageReg.png in Resources */,
+				FF2B22BB1D2BC54D003F501A /* imageGarnish.png in Resources */,
 				FF2B22211D2B94FD003F501A /* Assets.xcassets in Resources */,
 				FF2B221F1D2B94FD003F501A /* Main.storyboard in Resources */,
 				FF2B22821D2B982C003F501A /* BGImage.png in Resources */,
 				FF2B229D1D2BA78C003F501A /* background2.png in Resources */,
 				FF2B229B1D2BA688003F501A /* logo.png in Resources */,
 				FF2B22921D2B9B08003F501A /* SetttingsImageMenu.png in Resources */,
+				FF2B22B91D2BC54D003F501A /* imagePie.png in Resources */,
 				FF2B228E1D2B9B08003F501A /* UserNameImageMenu.png in Resources */,
 				FF2B22911D2B9B08003F501A /* ContactsImageMenu.png in Resources */,
 			);
@@ -482,18 +546,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2B22741D2B97BE003F501A /* ButtonMenu.m in Sources */,
+				FF2B22B11D2BB9F3003F501A /* CatalogModel.m in Sources */,
 				FF2B221C1D2B94FD003F501A /* ViewController.m in Sources */,
 				FF2B22501D2B954D003F501A /* CustomCellView.m in Sources */,
 				FF2B226A1D2B979F003F501A /* CustomTextField.m in Sources */,
 				FF2B22561D2B9746003F501A /* SingleTone.m in Sources */,
 				FF2B22831D2B982C003F501A /* LoginController.m in Sources */,
+				FF2B22A91D2BB2C0003F501A /* CatalogView.m in Sources */,
 				FF2B22191D2B94FD003F501A /* AppDelegate.m in Sources */,
+				FF2B22A61D2BB2AE003F501A /* CatalogController.m in Sources */,
 				FF2B22691D2B979F003F501A /* InputTextView.m in Sources */,
 				FF2B224F1D2B954D003F501A /* MenuController.m in Sources */,
 				FF2B225B1D2B9780003F501A /* UIColor+HexColor.m in Sources */,
 				FF2B22841D2B982C003F501A /* LoginView.m in Sources */,
 				FF2B22161D2B94FD003F501A /* main.m in Sources */,
 				FF2B224E1D2B954D003F501A /* SWRevealViewController.m in Sources */,
+				FF2B22AC1D2BB50B003F501A /* BackgroundFone.m in Sources */,
 				FF2B22791D2B97D5003F501A /* CustomLabels.m in Sources */,
 				FF2B22751D2B97BE003F501A /* CustomButton.m in Sources */,
 				FF2B22571D2B9746003F501A /* TitleClass.m in Sources */,
