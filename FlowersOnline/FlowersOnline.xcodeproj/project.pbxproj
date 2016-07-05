@@ -47,6 +47,7 @@
 		AD109AC41CCF5B120074BA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC21CCF5B120074BA7B /* Main.storyboard */; };
 		AD109AC61CCF5B120074BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC51CCF5B120074BA7B /* Assets.xcassets */; };
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
+		FF2B22971D2BA49B003F501A /* imageRadioCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22961D2BA49B003F501A /* imageRadioCell.png */; };
 		FF2D67DF1D0AB1EE006AD0EC /* CustomLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */; };
 		FF56E82F1D2115D700D9DB40 /* iconBasket.png in Resources */ = {isa = PBXBuildFile; fileRef = FF56E82E1D2115D700D9DB40 /* iconBasket.png */; };
 		FF56E8401D2146C900D9DB40 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF56E8311D2146C900D9DB40 /* 13.jpg */; };
@@ -180,6 +181,7 @@
 		AD109AC81CCF5B120074BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
+		FF2B22961D2BA49B003F501A /* imageRadioCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageRadioCell.png; sourceTree = "<group>"; };
 		FF2D67DD1D0AB1EE006AD0EC /* CustomLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabels.h; sourceTree = "<group>"; };
 		FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabels.m; sourceTree = "<group>"; };
 		FF56E82E1D2115D700D9DB40 /* iconBasket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBasket.png; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				7748A1861CD5022F001A5743 /* ContactsImageMenu.png */,
 				7748A1871CD5022F001A5743 /* SetttingsImageMenu.png */,
 				7748A1881CD5022F001A5743 /* DostavkaImageMenu.png */,
+				FF2B22961D2BA49B003F501A /* imageRadioCell.png */,
 			);
 			name = ImageMenu;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				FF56E84B1D2146C900D9DB40 /* 3.jpg in Resources */,
 				7748A1491CD4EF0D001A5743 /* IconButtonMenu.png in Resources */,
 				FF56E8481D2146C900D9DB40 /* 5.jpg in Resources */,
+				FF2B22971D2BA49B003F501A /* imageRadioCell.png in Resources */,
 				7748A18D1CD5022F001A5743 /* SetttingsImageMenu.png in Resources */,
 				FF56E8431D2146C900D9DB40 /* 10.jpg in Resources */,
 				773194961CD77488002831E4 /* PasswordImage.png in Resources */,
