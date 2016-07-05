@@ -7,41 +7,82 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CEA4C21802E4CC993F519D1E9D30E78 /* Pods-FlowersOnline-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9E1AA21FAAD4D3E8392B7DB8C649BA /* Pods-FlowersOnline-dummy.m */; };
-		90048B1C3AEB938304E30227A51B6F27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		09900B7628B53EEFC756AE09BB9BAEBD /* GBInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9192EAE8D8B0D9BF5F3FFAD2E1A2BA7E /* GBInfiniteScrollView.m */; };
+		2195076E95AE845ED0E13DD9C60C8B1C /* GBInfiniteScrollViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EC3A119A4F7353403C1AF9B500FF59 /* GBInfiniteScrollViewPage.m */; };
+		2C536E5F2D647DAAE8DEF18713162D90 /* GBInfiniteScrollViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA9EFA83C4334CF2A449F31779AC274 /* GBInfiniteScrollViewPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		595D29129E20A4384D81FF38C8C237AD /* GBInfiniteScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = EB074B21605AA9F8AFF57E2D0551E53D /* GBInfiniteScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C8E91BCD8DA0F5453F5809AEDFC59DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8798624484FA903449C4BCD9A272CE70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		87EAF0D0FD94C4AD713BE8BC35D67FEB /* GBInfiniteScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F1666A344BA78B32E191E491B843 /* GBInfiniteScrollView-dummy.m */; };
+		91A1E3DC29602A35E10672236D37B671 /* Pods-FlowersOnline-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9E1AA21FAAD4D3E8392B7DB8C649BA /* Pods-FlowersOnline-dummy.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F80A44F1BE172456EA4EBB7A4E7F9BA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C96052BA81D6C71724BE91312D967DE0;
+			remoteInfo = GBInfiniteScrollView;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		024E15150C1C345FFE8075B79AF91FB6 /* Pods-FlowersOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlowersOnline.release.xcconfig"; sourceTree = "<group>"; };
-		252F180E297C12C822FDD0880278264E /* libPods-FlowersOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlowersOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2822DE872B1984DF277B7294220BD35A /* libGBInfiniteScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGBInfiniteScrollView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9E1AA21FAAD4D3E8392B7DB8C649BA /* Pods-FlowersOnline-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FlowersOnline-dummy.m"; sourceTree = "<group>"; };
+		5398F1666A344BA78B32E191E491B843 /* GBInfiniteScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GBInfiniteScrollView-dummy.m"; sourceTree = "<group>"; };
 		5CB53287B11FE49F79830454A7EF5582 /* Pods-FlowersOnline-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlowersOnline-resources.sh"; sourceTree = "<group>"; };
+		6474879AAE74ED66493A0FDCF454E279 /* GBInfiniteScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GBInfiniteScrollView-prefix.pch"; sourceTree = "<group>"; };
+		9192EAE8D8B0D9BF5F3FFAD2E1A2BA7E /* GBInfiniteScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollView.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AFFC99FE5034DA7487B7CE0C928D1DFB /* libPods-FlowersOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlowersOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8229A405EC29A778B65416502C1668D /* GBInfiniteScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GBInfiniteScrollView.xcconfig; sourceTree = "<group>"; };
+		B9EC3A119A4F7353403C1AF9B500FF59 /* GBInfiniteScrollViewPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GBInfiniteScrollViewPage.m; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.m; sourceTree = "<group>"; };
+		BCA9EFA83C4334CF2A449F31779AC274 /* GBInfiniteScrollViewPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollViewPage.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollViewPage.h; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DE5DC80AD158CDE3E987460AC17864FF /* Pods-FlowersOnline-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlowersOnline-acknowledgements.plist"; sourceTree = "<group>"; };
 		DE91E136E62F82C024439C96889B7624 /* Pods-FlowersOnline-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlowersOnline-frameworks.sh"; sourceTree = "<group>"; };
 		E09CCCADDB9BA916E28459378DAF81D7 /* Pods-FlowersOnline-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FlowersOnline-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EA1F92D9AC5C018EEED7079E77DB5202 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
+		EB074B21605AA9F8AFF57E2D0551E53D /* GBInfiniteScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GBInfiniteScrollView.h; path = GBInfiniteScrollView/GBInfiniteScrollView/GBInfiniteScrollView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E111FDDB262D06C979F87AD9953B96A0 /* Frameworks */ = {
+		10A9B0AAC83CA72CB7FB6FAD89DF4CA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90048B1C3AEB938304E30227A51B6F27 /* Foundation.framework in Frameworks */,
+				5C8E91BCD8DA0F5453F5809AEDFC59DF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB54022318ED80B20433ED24BDF801F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8798624484FA903449C4BCD9A272CE70 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34EC703BFAF216A5A76DEBB1FF301E43 /* Products */ = {
+		1470427D397414954D6A10ACAB89697B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				252F180E297C12C822FDD0880278264E /* libPods-FlowersOnline.a */,
+				3829E8A2AA6239B5174B9E7CC3E44DBD /* GBInfiniteScrollView */,
 			);
-			name = Products;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3829E8A2AA6239B5174B9E7CC3E44DBD /* GBInfiniteScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				89E161925B0A638D0E90A821956F3061 /* Core */,
+				69FD83A05E445588FEEC6372D3985FD7 /* Support Files */,
+			);
+			path = GBInfiniteScrollView;
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -52,6 +93,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		3DF7829C1AA3610EA0D3EBA8BB7D1862 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2822DE872B1984DF277B7294220BD35A /* libGBInfiniteScrollView.a */,
+				AFFC99FE5034DA7487B7CE0C928D1DFB /* libPods-FlowersOnline.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		50C3EF6961733A5D35B1BD7DF95A8847 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +110,37 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		69FD83A05E445588FEEC6372D3985FD7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8229A405EC29A778B65416502C1668D /* GBInfiniteScrollView.xcconfig */,
+				5398F1666A344BA78B32E191E491B843 /* GBInfiniteScrollView-dummy.m */,
+				6474879AAE74ED66493A0FDCF454E279 /* GBInfiniteScrollView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GBInfiniteScrollView";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				34EC703BFAF216A5A76DEBB1FF301E43 /* Products */,
+				1470427D397414954D6A10ACAB89697B /* Pods */,
+				3DF7829C1AA3610EA0D3EBA8BB7D1862 /* Products */,
 				50C3EF6961733A5D35B1BD7DF95A8847 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		89E161925B0A638D0E90A821956F3061 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EB074B21605AA9F8AFF57E2D0551E53D /* GBInfiniteScrollView.h */,
+				9192EAE8D8B0D9BF5F3FFAD2E1A2BA7E /* GBInfiniteScrollView.m */,
+				BCA9EFA83C4334CF2A449F31779AC274 /* GBInfiniteScrollViewPage.h */,
+				B9EC3A119A4F7353403C1AF9B500FF59 /* GBInfiniteScrollViewPage.m */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		96806825E27C173DAE2515175D0D4584 /* Pods-FlowersOnline */ = {
@@ -95,21 +168,51 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		817939B54E6EB8A8BB0E8329EB362A81 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				595D29129E20A4384D81FF38C8C237AD /* GBInfiniteScrollView.h in Headers */,
+				2C536E5F2D647DAAE8DEF18713162D90 /* GBInfiniteScrollViewPage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		1F155E23776A24A2280F67CB03DC55BA /* Pods-FlowersOnline */ = {
+		47EB1C31F112C7EEE2257C6765549A36 /* Pods-FlowersOnline */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 485AECC32AA11809B407287C9BF6424C /* Build configuration list for PBXNativeTarget "Pods-FlowersOnline" */;
+			buildConfigurationList = 0298ED35A71EDC2927BA60D5774239CC /* Build configuration list for PBXNativeTarget "Pods-FlowersOnline" */;
 			buildPhases = (
-				63083969803561ED8A2B4EFECF1D9FDB /* Sources */,
-				E111FDDB262D06C979F87AD9953B96A0 /* Frameworks */,
+				C5541DB40DFBB395E3D873E6C5B31CC0 /* Sources */,
+				10A9B0AAC83CA72CB7FB6FAD89DF4CA9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32CF404B828220C81D1E054313A127A8 /* PBXTargetDependency */,
+			);
+			name = "Pods-FlowersOnline";
+			productName = "Pods-FlowersOnline";
+			productReference = AFFC99FE5034DA7487B7CE0C928D1DFB /* libPods-FlowersOnline.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C96052BA81D6C71724BE91312D967DE0 /* GBInfiniteScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F41338517BA37FBFC4826C9B1549E39B /* Build configuration list for PBXNativeTarget "GBInfiniteScrollView" */;
+			buildPhases = (
+				BCD5E2192666E67DFCD6BA4891E94876 /* Sources */,
+				FB54022318ED80B20433ED24BDF801F7 /* Frameworks */,
+				817939B54E6EB8A8BB0E8329EB362A81 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-FlowersOnline";
-			productName = "Pods-FlowersOnline";
-			productReference = 252F180E297C12C822FDD0880278264E /* libPods-FlowersOnline.a */;
+			name = GBInfiniteScrollView;
+			productName = GBInfiniteScrollView;
+			productReference = 2822DE872B1984DF277B7294220BD35A /* libGBInfiniteScrollView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -129,28 +232,69 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 34EC703BFAF216A5A76DEBB1FF301E43 /* Products */;
+			productRefGroup = 3DF7829C1AA3610EA0D3EBA8BB7D1862 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F155E23776A24A2280F67CB03DC55BA /* Pods-FlowersOnline */,
+				C96052BA81D6C71724BE91312D967DE0 /* GBInfiniteScrollView */,
+				47EB1C31F112C7EEE2257C6765549A36 /* Pods-FlowersOnline */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		63083969803561ED8A2B4EFECF1D9FDB /* Sources */ = {
+		BCD5E2192666E67DFCD6BA4891E94876 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CEA4C21802E4CC993F519D1E9D30E78 /* Pods-FlowersOnline-dummy.m in Sources */,
+				87EAF0D0FD94C4AD713BE8BC35D67FEB /* GBInfiniteScrollView-dummy.m in Sources */,
+				09900B7628B53EEFC756AE09BB9BAEBD /* GBInfiniteScrollView.m in Sources */,
+				2195076E95AE845ED0E13DD9C60C8B1C /* GBInfiniteScrollViewPage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5541DB40DFBB395E3D873E6C5B31CC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91A1E3DC29602A35E10672236D37B671 /* Pods-FlowersOnline-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		32CF404B828220C81D1E054313A127A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GBInfiniteScrollView;
+			target = C96052BA81D6C71724BE91312D967DE0 /* GBInfiniteScrollView */;
+			targetProxy = F80A44F1BE172456EA4EBB7A4E7F9BA8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		8232213A7BFD233ECB702CC6414BA218 /* Debug */ = {
+		4FAB2EF0D44FD2ADBD1475818A5A5A00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8229A405EC29A778B65416502C1668D /* GBInfiniteScrollView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GBInfiniteScrollView/GBInfiniteScrollView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		642A7EB88D09CC9C5D6AAD21D442CA14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA1F92D9AC5C018EEED7079E77DB5202 /* Pods-FlowersOnline.debug.xcconfig */;
 			buildSettings = {
@@ -166,6 +310,27 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		717394732079D2A79BF5CFD530E96DF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8229A405EC29A778B65416502C1668D /* GBInfiniteScrollView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GBInfiniteScrollView/GBInfiniteScrollView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -213,7 +378,7 @@
 			};
 			name = Debug;
 		};
-		A43041DF2D8E18964E2A9A3D7E65EEC5 /* Release */ = {
+		97EB2B55E18A64B666F203ED2746235D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 024E15150C1C345FFE8075B79AF91FB6 /* Pods-FlowersOnline.release.xcconfig */;
 			buildSettings = {
@@ -275,6 +440,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0298ED35A71EDC2927BA60D5774239CC /* Build configuration list for PBXNativeTarget "Pods-FlowersOnline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				642A7EB88D09CC9C5D6AAD21D442CA14 /* Debug */,
+				97EB2B55E18A64B666F203ED2746235D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -284,11 +458,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		485AECC32AA11809B407287C9BF6424C /* Build configuration list for PBXNativeTarget "Pods-FlowersOnline" */ = {
+		F41338517BA37FBFC4826C9B1549E39B /* Build configuration list for PBXNativeTarget "GBInfiniteScrollView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8232213A7BFD233ECB702CC6414BA218 /* Debug */,
-				A43041DF2D8E18964E2A9A3D7E65EEC5 /* Release */,
+				717394732079D2A79BF5CFD530E96DF2 /* Debug */,
+				4FAB2EF0D44FD2ADBD1475818A5A5A00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
