@@ -399,11 +399,7 @@
                     if (isiPhone5) {
                         labelUser.font = [UIFont fontWithName:FONTLITE size:10];
                     }
-                    if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
-                        labelUser.text = [NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]];
-                    } else {
-                        labelUser.text = [[SingleTone sharedManager] userName];
-                    }
+                        labelUser.text = [NSString stringWithFormat:@"%@", [dictChat objectForKey:@"name"]];
                     [labelUser sizeToFit];
                     [viewChat addSubview:labelUser];
     

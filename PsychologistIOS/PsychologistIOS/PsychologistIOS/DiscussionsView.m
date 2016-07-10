@@ -504,11 +504,16 @@
             if (isiPhone5) {
                 buttonUser.titleLabel.font = [UIFont fontWithName:FONTBOND size:10];
             }
-            if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
-                [buttonUser setTitle:[NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]] forState:UIControlStateNormal];
+            if (send) {
+                if ([[[SingleTone sharedManager] userName] isEqual: [NSNull null]]) {
+                    [buttonUser setTitle:[NSString stringWithFormat:@"гость %@", [dictChat objectForKey:@"id_user"]] forState:UIControlStateNormal];
+                } else {
+                    [buttonUser setTitle:[[SingleTone sharedManager] userName] forState:UIControlStateNormal];
+                }
             } else {
-                [buttonUser setTitle:[[SingleTone sharedManager] userName] forState:UIControlStateNormal];
+                [buttonUser setTitle:[NSString stringWithFormat:@"%@", [dictChat objectForKey:@"name"]] forState:UIControlStateNormal];
             }
+
             buttonUser.tag = integerButtonName;
             [buttonUser addTarget:self action:@selector(addUserNameOnTextView:) forControlEvents:UIControlEventTouchUpInside];
             [viewScrollChat addSubview:buttonUser];

@@ -71,7 +71,10 @@ const float MIN_HEIGHT_MESSAGE_TEXTBOX = 30;
     [self getAPIMessageWithBlock:^{
         if ([[dictResponseMessage objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
             NSArray * arrayMainResponce = [NSArray arrayWithArray:[dictResponseMessage objectForKey:@"data"]];
-            NSLog(@"arrayMainResponce %@", arrayMainResponce);
+
+            for (NSDictionary * dict in arrayMainResponce) {
+                NSLog(@"%@", [dict objectForKey:@"name"]);
+            }
             //Загрузка контента вью для контроллера---------------------
             DiscussionsView * contentDiscussions = [[DiscussionsView alloc] initWithView:self.view andArray:arrayMainResponce];
             [self.view addSubview:contentDiscussions];
