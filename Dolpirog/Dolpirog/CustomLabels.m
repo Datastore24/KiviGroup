@@ -15,14 +15,15 @@
 - (instancetype)initLabelBondWithWidht: (CGFloat) widht
                                andHeight: (CGFloat) height
                                andColor: (NSString*) hexColor
-                                andText: (NSString*) text
+                               andText: (NSString*) text
+                           andTextSize: (NSInteger) textSize
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(widht, height, 20, 16);
+        self.frame = CGRectMake(widht, height, 100, 16);
         self.text = text;
         self.textColor = [UIColor colorWithHexString:hexColor];
-        self.font = [UIFont fontWithName:FONTBOND size:15];
+        self.font = [UIFont fontWithName:FONTBOND size:textSize];
         [self sizeToFit];
         
     }
@@ -33,13 +34,15 @@
                              andHeight: (CGFloat) height
                               andColor: (NSString*) hexColor
                                andText: (NSString*) text
+                              andTextSize: (NSInteger) textSize
+
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(widht, height, 20, 16);
         self.text = text;
         self.textColor = [UIColor colorWithHexString:hexColor];
-        self.font = [UIFont fontWithName:FONTREGULAR size:15];
+        self.font = [UIFont fontWithName:FONTREGULAR size:textSize];
         [self sizeToFit];
         
     }

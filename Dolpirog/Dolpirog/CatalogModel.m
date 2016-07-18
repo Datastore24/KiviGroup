@@ -17,7 +17,7 @@
                            @"ОСЕТИНСКИЕ ПИРОГИ", @"ШАШЛЫК", @"ГАРНИР",
                            @"САЛАТЫ", @"СОУСЫ", @"НАПИТКИ", nil];
     NSArray * arrayImagesName = [NSArray arrayWithObjects:
-                                 @"imagePie.png", @"mageBarbecue.png", @"imageGarnish.png",
+                                 @"imagePie.png", @"imageBarbecue.png", @"imageGarnish.png",
                                  @"imageSalad.png", @"imageSauce.png", @"imageDrink.png",nil];
     for (int i = 0; i < arrayName.count; i++) {
         NSDictionary * dictDate = [NSDictionary dictionaryWithObjectsAndKeys:

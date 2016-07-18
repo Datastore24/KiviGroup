@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9sF-f1-vxm">
-                                <rect key="frame" x="0.0" y="102" width="320" height="533"/>
+                                <rect key="frame" x="0.0" y="102" width="320" height="650"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -193,6 +193,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrd-P2-j3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="951" y="-200"/>
+        </scene>
+        <!--Catalog Detail Controller-->
+        <scene sceneID="nIw-GD-7Fl">
+            <objects>
+                <viewController storyboardIdentifier="CatalogDetailController" id="5bf-d7-RZS" customClass="CatalogDetailController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mZr-jy-BWP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rsp-Yz-yDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1333" y="-200"/>
+        </scene>
+        <!--Order Controller-->
+        <scene sceneID="Qna-cH-kUL">
+            <objects>
+                <viewController storyboardIdentifier="OrderController" id="6Y6-3c-a4O" customClass="OrderController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Hs-77-21C">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LS8-iw-A64" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="-204"/>
         </scene>
     </scenes>
 </document>

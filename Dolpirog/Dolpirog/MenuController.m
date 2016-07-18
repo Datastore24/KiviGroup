@@ -20,11 +20,11 @@
     
     if (isiPhone5) {
         CGRect customRect = self.mainTableView.frame;
-        customRect.origin.y = customRect.origin.y - 70;
+        customRect.origin.y = customRect.origin.y - 40;
         self.mainTableView.frame = customRect;
     } else if (isiPhone4s) {
         CGRect customRect = self.mainTableView.frame;
-        customRect.origin.y = customRect.origin.y - 100;
+        customRect.origin.y = customRect.origin.y - 40;
         self.mainTableView.frame = customRect;
     }
     
@@ -116,16 +116,27 @@
         if (isiPhone6) {
             return 100;
         } else  if (isiPhone5) {
-            return 165;
+            return 135;
         } else  if (isiPhone4s) {
             return 110;
         }else {
             return 250;
         }
     } else if (indexPath.row == 7) {
-        return 75;
+        if (isiPhone6) {
+            return 75;
+        } else if (isiPhone5) {
+            return 0;
+        }else {
+            return 10;
+        }
     } else {
-        return 40;
+        
+        if (isiPhone4s) {
+            return 30;
+        } else {
+            return 40;
+        }
     }
 }
 

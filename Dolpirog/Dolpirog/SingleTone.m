@@ -12,6 +12,7 @@
 
 @synthesize viewBasketBar;
 @synthesize labelCountBasket;
+@synthesize dictOrder;
 
 
 #pragma mark Singleton Methods
