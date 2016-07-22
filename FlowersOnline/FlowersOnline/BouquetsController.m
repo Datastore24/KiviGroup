@@ -13,8 +13,11 @@
 #import "BouquetsView.h"
 #import "BasketController.h"
 #import "SingleTone.h"
+#import "APIGetClass.h"
 
 @interface BouquetsController ()
+
+@property (strong, nonatomic) NSArray * arrayResponse;
 
 @end
 
@@ -59,8 +62,19 @@
     
 #pragma mark - View
     
-    BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view];
-    [self.view addSubview:mainView];
+    //загрузка данных------
+    
+    [self getAPIWithBlock:^{
+
+        
+        NSDictionary * dictTest = [_arrayResponse objectAtIndex:0];
+        NSLog(@"%@", dictTest);
+        
+        
+        //отображение----
+        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view];
+        [self.view addSubview:mainView];
+    }];
 
 }
 
@@ -81,5 +95,22 @@
     BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:nil method:@"get_categories" complitionBlock:^(id response) {
+        
+        _arrayResponse = response;
+                
+        block();
+
+    }];
+}
+
+
 
 @end

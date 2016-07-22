@@ -48,6 +48,18 @@
 		AD109AC61CCF5B120074BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC51CCF5B120074BA7B /* Assets.xcassets */; };
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
 		FF2B22971D2BA49B003F501A /* imageRadioCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22961D2BA49B003F501A /* imageRadioCell.png */; };
+		FF2CD6FF1D420725001F2F6A /* ViewSectionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FA1D420725001F2F6A /* ViewSectionTable.m */; };
+		FF2CD7001D420725001F2F6A /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FC1D420725001F2F6A /* APIGetClass.m */; };
+		FF2CD7011D420725001F2F6A /* VKApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FE1D420725001F2F6A /* VKApi.m */; };
+		FF2CD7141D42074C001F2F6A /* HeightForText.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7021D42074C001F2F6A /* HeightForText.m */; };
+		FF2CD7151D42074C001F2F6A /* UIBarButtonItem+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7051D42074C001F2F6A /* UIBarButtonItem+Alpha.m */; };
+		FF2CD7161D42074C001F2F6A /* TextAndImageHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7071D42074C001F2F6A /* TextAndImageHeight.m */; };
+		FF2CD7171D42074C001F2F6A /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7091D42074C001F2F6A /* UIImage+Alpha.m */; };
+		FF2CD7181D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD70B1D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m */; };
+		FF2CD7191D42074C001F2F6A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD70D1D42074C001F2F6A /* UIImage+ImageEffects.m */; };
+		FF2CD71A1D42074C001F2F6A /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD70F1D42074C001F2F6A /* UIImage+Resize.m */; };
+		FF2CD71B1D42074C001F2F6A /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7111D42074C001F2F6A /* UIImage+RoundedCorner.m */; };
+		FF2CD71C1D42074C001F2F6A /* UIButton+ButtonImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD7131D42074C001F2F6A /* UIButton+ButtonImage.m */; };
 		FF2D67DF1D0AB1EE006AD0EC /* CustomLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */; };
 		FF56E82F1D2115D700D9DB40 /* iconBasket.png in Resources */ = {isa = PBXBuildFile; fileRef = FF56E82E1D2115D700D9DB40 /* iconBasket.png */; };
 		FF56E8401D2146C900D9DB40 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF56E8311D2146C900D9DB40 /* 13.jpg */; };
@@ -182,6 +194,30 @@
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2B22961D2BA49B003F501A /* imageRadioCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageRadioCell.png; sourceTree = "<group>"; };
+		FF2CD6F91D420725001F2F6A /* ViewSectionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSectionTable.h; sourceTree = "<group>"; };
+		FF2CD6FA1D420725001F2F6A /* ViewSectionTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewSectionTable.m; sourceTree = "<group>"; };
+		FF2CD6FB1D420725001F2F6A /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
+		FF2CD6FC1D420725001F2F6A /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
+		FF2CD6FD1D420725001F2F6A /* VKApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKApi.h; sourceTree = "<group>"; };
+		FF2CD6FE1D420725001F2F6A /* VKApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKApi.m; sourceTree = "<group>"; };
+		FF2CD7021D42074C001F2F6A /* HeightForText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightForText.m; sourceTree = "<group>"; };
+		FF2CD7031D42074C001F2F6A /* HeightForText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightForText.h; sourceTree = "<group>"; };
+		FF2CD7041D42074C001F2F6A /* UIBarButtonItem+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Alpha.h"; sourceTree = "<group>"; };
+		FF2CD7051D42074C001F2F6A /* UIBarButtonItem+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Alpha.m"; sourceTree = "<group>"; };
+		FF2CD7061D42074C001F2F6A /* TextAndImageHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAndImageHeight.h; sourceTree = "<group>"; };
+		FF2CD7071D42074C001F2F6A /* TextAndImageHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAndImageHeight.m; sourceTree = "<group>"; };
+		FF2CD7081D42074C001F2F6A /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		FF2CD7091D42074C001F2F6A /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		FF2CD70A1D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blured_And_SnapShot_Image.h"; sourceTree = "<group>"; };
+		FF2CD70B1D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blured_And_SnapShot_Image.m"; sourceTree = "<group>"; };
+		FF2CD70C1D42074C001F2F6A /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		FF2CD70D1D42074C001F2F6A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		FF2CD70E1D42074C001F2F6A /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		FF2CD70F1D42074C001F2F6A /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		FF2CD7101D42074C001F2F6A /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		FF2CD7111D42074C001F2F6A /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		FF2CD7121D42074C001F2F6A /* UIButton+ButtonImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ButtonImage.h"; sourceTree = "<group>"; };
+		FF2CD7131D42074C001F2F6A /* UIButton+ButtonImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonImage.m"; sourceTree = "<group>"; };
 		FF2D67DD1D0AB1EE006AD0EC /* CustomLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabels.h; sourceTree = "<group>"; };
 		FF2D67DE1D0AB1EE006AD0EC /* CustomLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabels.m; sourceTree = "<group>"; };
 		FF56E82E1D2115D700D9DB40 /* iconBasket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBasket.png; sourceTree = "<group>"; };
@@ -402,6 +438,24 @@
 		77B355331CD3C4C000A17546 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FF2CD7021D42074C001F2F6A /* HeightForText.m */,
+				FF2CD7031D42074C001F2F6A /* HeightForText.h */,
+				FF2CD7041D42074C001F2F6A /* UIBarButtonItem+Alpha.h */,
+				FF2CD7051D42074C001F2F6A /* UIBarButtonItem+Alpha.m */,
+				FF2CD7061D42074C001F2F6A /* TextAndImageHeight.h */,
+				FF2CD7071D42074C001F2F6A /* TextAndImageHeight.m */,
+				FF2CD7081D42074C001F2F6A /* UIImage+Alpha.h */,
+				FF2CD7091D42074C001F2F6A /* UIImage+Alpha.m */,
+				FF2CD70A1D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.h */,
+				FF2CD70B1D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m */,
+				FF2CD70C1D42074C001F2F6A /* UIImage+ImageEffects.h */,
+				FF2CD70D1D42074C001F2F6A /* UIImage+ImageEffects.m */,
+				FF2CD70E1D42074C001F2F6A /* UIImage+Resize.h */,
+				FF2CD70F1D42074C001F2F6A /* UIImage+Resize.m */,
+				FF2CD7101D42074C001F2F6A /* UIImage+RoundedCorner.h */,
+				FF2CD7111D42074C001F2F6A /* UIImage+RoundedCorner.m */,
+				FF2CD7121D42074C001F2F6A /* UIButton+ButtonImage.h */,
+				FF2CD7131D42074C001F2F6A /* UIButton+ButtonImage.m */,
 				7748A1351CD4E99D001A5743 /* UIColor+HexColor.h */,
 				7748A1361CD4E99D001A5743 /* UIColor+HexColor.m */,
 			);
@@ -446,6 +500,7 @@
 				AD109AC51CCF5B120074BA7B /* Assets.xcassets */,
 				AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */,
 				AD109ACA1CCF5B120074BA7B /* Info.plist */,
+				FF2CD6F81D42070F001F2F6A /* API */,
 				7731948F1CD76D0D002831E4 /* InputText */,
 				77B355331CD3C4C000A17546 /* Category */,
 				7748A14A1CD4EFF3001A5743 /* Fonts */,
@@ -477,6 +532,19 @@
 				585C321004D499F1684EBD95 /* Pods-FlowersOnline.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF2CD6F81D42070F001F2F6A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6F91D420725001F2F6A /* ViewSectionTable.h */,
+				FF2CD6FA1D420725001F2F6A /* ViewSectionTable.m */,
+				FF2CD6FB1D420725001F2F6A /* APIGetClass.h */,
+				FF2CD6FC1D420725001F2F6A /* APIGetClass.m */,
+				FF2CD6FD1D420725001F2F6A /* VKApi.h */,
+				FF2CD6FE1D420725001F2F6A /* VKApi.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		FF2D67DC1D0AB1CC006AD0EC /* Labels */ = {
@@ -749,30 +817,42 @@
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
 				7708B61E1D1850180083C029 /* CheckoutView.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
+				FF2CD7161D42074C001F2F6A /* TextAndImageHeight.m in Sources */,
 				FF911C771D12FA0500D3BE87 /* Animation.m in Sources */,
+				FF2CD6FF1D420725001F2F6A /* ViewSectionTable.m in Sources */,
 				771669D11D0E9C7E00037831 /* ContactsController.m in Sources */,
+				FF2CD7141D42074C001F2F6A /* HeightForText.m in Sources */,
 				7748A1371CD4E99D001A5743 /* UIColor+HexColor.m in Sources */,
 				771669D41D0E9C9200037831 /* ContactsView.m in Sources */,
 				AD109ABE1CCF5B120074BA7B /* AppDelegate.m in Sources */,
 				773194921CD76D2B002831E4 /* InputTextView.m in Sources */,
+				FF2CD7011D420725001F2F6A /* VKApi.m in Sources */,
 				771669D81D0ED68500037831 /* BasketController.m in Sources */,
 				FFE955431D03847100AAAC0B /* PersonalAreaController.m in Sources */,
+				FF2CD71B1D42074C001F2F6A /* UIImage+RoundedCorner.m in Sources */,
+				FF2CD7191D42074C001F2F6A /* UIImage+ImageEffects.m in Sources */,
 				773194991CD77CD4002831E4 /* CustomTextField.m in Sources */,
 				7748A1751CD4F977001A5743 /* CustomCellView.m in Sources */,
+				FF2CD7171D42074C001F2F6A /* UIImage+Alpha.m in Sources */,
 				FF2D67DF1D0AB1EE006AD0EC /* CustomLabels.m in Sources */,
 				FFC1ACE21D0B43BE00B30E4B /* SharesView.m in Sources */,
 				77B355321CD3BFBE00A17546 /* TitleClass.m in Sources */,
 				FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */,
+				FF2CD7181D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
+				FF2CD7151D42074C001F2F6A /* UIBarButtonItem+Alpha.m in Sources */,
+				FF2CD71A1D42074C001F2F6A /* UIImage+Resize.m in Sources */,
 				FFC1ACF61D0B515000B30E4B /* DeliveryView.m in Sources */,
 				FFC1ACDF1D0B43AB00B30E4B /* SharesController.m in Sources */,
 				7748A1931CD52B95001A5743 /* LoginView.m in Sources */,
 				77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */,
 				FF5CCB421D075EE300990081 /* CustomButton.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
+				FF2CD7001D420725001F2F6A /* APIGetClass.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
 				FF73503C1D2255BA001DD7C2 /* SingleTone.m in Sources */,
 				77B355261CD3B5BE00A17546 /* SWRevealViewController.m in Sources */,
 				FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */,
+				FF2CD71C1D42074C001F2F6A /* UIButton+ButtonImage.m in Sources */,
 				771669DB1D0ED69A00037831 /* BasketView.m in Sources */,
 				77B3552E1CD3BF3900A17546 /* LoginController.m in Sources */,
 				FFC1ACF31D0B514300B30E4B /* DeliveryController.m in Sources */,
