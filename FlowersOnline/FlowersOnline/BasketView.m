@@ -335,10 +335,6 @@
             otherButton.userInteractionEnabled = YES;
         }
     }
-    
-
-
-    
 }
 
 - (void) buttonCheckoutAction

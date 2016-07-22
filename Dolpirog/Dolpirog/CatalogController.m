@@ -16,6 +16,7 @@
 #import "CatalogView.h"
 #import "CatalogModel.h"
 #import "CatalogDetailController.h"
+#import "BasketController.h"
 
 @implementation CatalogController
 
@@ -62,7 +63,8 @@
 
 - (void) buttonBasketAction
 {
-    NSLog(@"Корзина");
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void) pushToCatalogDetailController

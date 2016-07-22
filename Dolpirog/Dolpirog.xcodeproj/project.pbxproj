@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95E3AEEF7D148E307B4E0E48 /* libPods-DolpirogUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248696E286DC302CF0425CB9 /* libPods-DolpirogUITests.a */; };
+		A4DEBCE83ACE3EBD4F6B9EAF /* libPods-DolpirogTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8D7F782AB874C0C6EFA3F4 /* libPods-DolpirogTests.a */; };
+		BD910C94EA3157C7C2FE4A55 /* libPods-Dolpirog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E40261AB827F50A223CD63F9 /* libPods-Dolpirog.a */; };
 		FF2B22161D2B94FD003F501A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22151D2B94FD003F501A /* main.m */; };
 		FF2B22191D2B94FD003F501A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B22181D2B94FD003F501A /* AppDelegate.m */; };
 		FF2B221C1D2B94FD003F501A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2B221B1D2B94FD003F501A /* ViewController.m */; };
@@ -59,6 +62,22 @@
 		FF2B22BC1D2BC54D003F501A /* imageDrink.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B61D2BC54D003F501A /* imageDrink.png */; };
 		FF2B22BD1D2BC54D003F501A /* imageSauce.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B71D2BC54D003F501A /* imageSauce.png */; };
 		FF2B22BE1D2BC54D003F501A /* imageSalad.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22B81D2BC54D003F501A /* imageSalad.png */; };
+		FF2CD6CD1D40CE18001F2F6A /* InputTextToView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6CC1D40CE18001F2F6A /* InputTextToView.m */; };
+		FF2CD6D01D40D849001F2F6A /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6CF1D40D849001F2F6A /* CustomTextView.m */; };
+		FF2CD6D21D40DDCE001F2F6A /* mainImageRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6D11D40DDCE001F2F6A /* mainImageRadio.png */; };
+		FF2CD6D61D40DDE6001F2F6A /* pauseButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6D51D40DDE6001F2F6A /* pauseButtonImage.png */; };
+		FF2CD6E01D40F6D0001F2F6A /* ButtonImageDown.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6D91D40F6D0001F2F6A /* ButtonImageDown.png */; };
+		FF2CD6E11D40F6D0001F2F6A /* buttomInageUp.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6DA1D40F6D0001F2F6A /* buttomInageUp.png */; };
+		FF2CD6E21D40F6D0001F2F6A /* BasketController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6DC1D40F6D0001F2F6A /* BasketController.m */; };
+		FF2CD6E31D40F6D0001F2F6A /* BasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6DE1D40F6D0001F2F6A /* BasketView.m */; };
+		FF2CD6E91D40F71E001F2F6A /* CheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6E61D40F71E001F2F6A /* CheckoutController.m */; };
+		FF2CD6EA1D40F71E001F2F6A /* CheckoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6E81D40F71E001F2F6A /* CheckoutView.m */; };
+		FF2CD6EE1D40F7CB001F2F6A /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6ED1D40F7CB001F2F6A /* Animation.m */; };
+		FF2CD6F01D40FB1C001F2F6A /* imageButtonDelivery.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6EF1D40FB1C001F2F6A /* imageButtonDelivery.png */; };
+		FF2CD6F51D410080001F2F6A /* OrderAcceptedController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6F41D410080001F2F6A /* OrderAcceptedController.m */; };
+		FF2CD6F71D41024D001F2F6A /* backGroundOrder.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CD6F61D41024D001F2F6A /* backGroundOrder.png */; };
+		FF3163D61D40BD2B0040818C /* RadioPirogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3163D51D40BD2B0040818C /* RadioPirogView.m */; };
+		FF3163D91D40BD3B0040818C /* RadioController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3163D81D40BD3B0040818C /* RadioController.m */; };
 		FF9683611D3CB9D300C4FBC6 /* arrowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9683601D3CB9D300C4FBC6 /* arrowImage.png */; };
 		FF9683651D3CC66900C4FBC6 /* CatalogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9683641D3CC66900C4FBC6 /* CatalogDetailController.m */; };
 		FF9683681D3CC67C00C4FBC6 /* CatalogDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9683671D3CC67C00C4FBC6 /* CatalogDetailView.m */; };
@@ -80,6 +99,18 @@
 		FF9683901D3D0DBF00C4FBC6 /* imageCakeTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF96838D1D3D0DBF00C4FBC6 /* imageCakeTwo.png */; };
 		FF9683911D3D0DBF00C4FBC6 /* imageCakeThree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF96838E1D3D0DBF00C4FBC6 /* imageCakeThree.jpg */; };
 		FF9683951D3D159900C4FBC6 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9683941D3D159900C4FBC6 /* StyledPageControl.m */; };
+		FFB77A7F1D3E369900D9ACD7 /* PersonalAreaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A7E1D3E369900D9ACD7 /* PersonalAreaController.m */; };
+		FFB77A821D3E36AB00D9ACD7 /* PersonalAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A811D3E36AB00D9ACD7 /* PersonalAreaView.m */; };
+		FFB77A861D3E474400D9ACD7 /* SharesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A851D3E474400D9ACD7 /* SharesView.m */; };
+		FFB77A891D3E475500D9ACD7 /* SharesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A881D3E475500D9ACD7 /* SharesController.m */; };
+		FFB77A8E1D3E525400D9ACD7 /* DeliveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A8D1D3E525400D9ACD7 /* DeliveryController.m */; };
+		FFB77A911D3E526800D9ACD7 /* DeliveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A901D3E526800D9ACD7 /* DeliveryView.m */; };
+		FFB77A961D3E54D700D9ACD7 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A951D3E54D700D9ACD7 /* CustomView.m */; };
+		FFB77A9A1D3E683F00D9ACD7 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A991D3E683F00D9ACD7 /* ContactsView.m */; };
+		FFB77A9D1D3E685200D9ACD7 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77A9C1D3E685200D9ACD7 /* ContactsController.m */; };
+		FFB77AA11D3E72C200D9ACD7 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77AA01D3E72C200D9ACD7 /* SettingsController.m */; };
+		FFB77AA41D3E72CF00D9ACD7 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77AA31D3E72CF00D9ACD7 /* SettingsView.m */; };
+		FFB77AA81D3E779B00D9ACD7 /* MBSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB77AA71D3E779B00D9ACD7 /* MBSwitch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +131,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		248696E286DC302CF0425CB9 /* libPods-DolpirogUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DolpirogUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8D7F782AB874C0C6EFA3F4 /* libPods-DolpirogTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DolpirogTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CC03ECDA1CF43189FF04B9 /* Pods-Dolpirog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dolpirog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dolpirog/Pods-Dolpirog.debug.xcconfig"; sourceTree = "<group>"; };
+		887E6AE1F1A4082A36360233 /* Pods-DolpirogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolpirogUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DolpirogUITests/Pods-DolpirogUITests.release.xcconfig"; sourceTree = "<group>"; };
+		922342F2BB15F55420594D32 /* Pods-DolpirogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolpirogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DolpirogTests/Pods-DolpirogTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CFC2AA83935E30BCDDCE17E9 /* Pods-DolpirogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolpirogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DolpirogTests/Pods-DolpirogTests.release.xcconfig"; sourceTree = "<group>"; };
+		E40261AB827F50A223CD63F9 /* libPods-Dolpirog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dolpirog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5B4FA5E65ECA71C061852ED /* Pods-Dolpirog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dolpirog.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dolpirog/Pods-Dolpirog.release.xcconfig"; sourceTree = "<group>"; };
+		ECEC9A4739D5EFF4B2EF0512 /* Pods-DolpirogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolpirogUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DolpirogUITests/Pods-DolpirogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2B22111D2B94FD003F501A /* Dolpirog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dolpirog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2B22151D2B94FD003F501A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FF2B22171D2B94FD003F501A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -178,6 +218,32 @@
 		FF2B22B61D2BC54D003F501A /* imageDrink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageDrink.png; sourceTree = "<group>"; };
 		FF2B22B71D2BC54D003F501A /* imageSauce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSauce.png; sourceTree = "<group>"; };
 		FF2B22B81D2BC54D003F501A /* imageSalad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSalad.png; sourceTree = "<group>"; };
+		FF2CD6CB1D40CE18001F2F6A /* InputTextToView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextToView.h; sourceTree = "<group>"; };
+		FF2CD6CC1D40CE18001F2F6A /* InputTextToView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextToView.m; sourceTree = "<group>"; };
+		FF2CD6CE1D40D849001F2F6A /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		FF2CD6CF1D40D849001F2F6A /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		FF2CD6D11D40DDCE001F2F6A /* mainImageRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainImageRadio.png; sourceTree = "<group>"; };
+		FF2CD6D51D40DDE6001F2F6A /* pauseButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButtonImage.png; sourceTree = "<group>"; };
+		FF2CD6D91D40F6D0001F2F6A /* ButtonImageDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonImageDown.png; sourceTree = "<group>"; };
+		FF2CD6DA1D40F6D0001F2F6A /* buttomInageUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttomInageUp.png; sourceTree = "<group>"; };
+		FF2CD6DB1D40F6D0001F2F6A /* BasketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketController.h; sourceTree = "<group>"; };
+		FF2CD6DC1D40F6D0001F2F6A /* BasketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketController.m; sourceTree = "<group>"; };
+		FF2CD6DD1D40F6D0001F2F6A /* BasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketView.h; sourceTree = "<group>"; };
+		FF2CD6DE1D40F6D0001F2F6A /* BasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketView.m; sourceTree = "<group>"; };
+		FF2CD6E51D40F71E001F2F6A /* CheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutController.h; sourceTree = "<group>"; };
+		FF2CD6E61D40F71E001F2F6A /* CheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutController.m; sourceTree = "<group>"; };
+		FF2CD6E71D40F71E001F2F6A /* CheckoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutView.h; sourceTree = "<group>"; };
+		FF2CD6E81D40F71E001F2F6A /* CheckoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutView.m; sourceTree = "<group>"; };
+		FF2CD6EC1D40F7CB001F2F6A /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		FF2CD6ED1D40F7CB001F2F6A /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		FF2CD6EF1D40FB1C001F2F6A /* imageButtonDelivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonDelivery.png; sourceTree = "<group>"; };
+		FF2CD6F31D410080001F2F6A /* OrderAcceptedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAcceptedController.h; sourceTree = "<group>"; };
+		FF2CD6F41D410080001F2F6A /* OrderAcceptedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAcceptedController.m; sourceTree = "<group>"; };
+		FF2CD6F61D41024D001F2F6A /* backGroundOrder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundOrder.png; sourceTree = "<group>"; };
+		FF3163D41D40BD2B0040818C /* RadioPirogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioPirogView.h; sourceTree = "<group>"; };
+		FF3163D51D40BD2B0040818C /* RadioPirogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioPirogView.m; sourceTree = "<group>"; };
+		FF3163D71D40BD3B0040818C /* RadioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioController.h; sourceTree = "<group>"; };
+		FF3163D81D40BD3B0040818C /* RadioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioController.m; sourceTree = "<group>"; };
 		FF9683601D3CB9D300C4FBC6 /* arrowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowImage.png; sourceTree = "<group>"; };
 		FF9683631D3CC66900C4FBC6 /* CatalogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogDetailController.h; sourceTree = "<group>"; };
 		FF9683641D3CC66900C4FBC6 /* CatalogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogDetailController.m; sourceTree = "<group>"; };
@@ -205,6 +271,30 @@
 		FF96838E1D3D0DBF00C4FBC6 /* imageCakeThree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imageCakeThree.jpg; sourceTree = "<group>"; };
 		FF9683931D3D159900C4FBC6 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		FF9683941D3D159900C4FBC6 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
+		FFB77A7D1D3E369900D9ACD7 /* PersonalAreaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaController.h; sourceTree = "<group>"; };
+		FFB77A7E1D3E369900D9ACD7 /* PersonalAreaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaController.m; sourceTree = "<group>"; };
+		FFB77A801D3E36AB00D9ACD7 /* PersonalAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalAreaView.h; sourceTree = "<group>"; };
+		FFB77A811D3E36AB00D9ACD7 /* PersonalAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalAreaView.m; sourceTree = "<group>"; };
+		FFB77A841D3E474400D9ACD7 /* SharesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesView.h; sourceTree = "<group>"; };
+		FFB77A851D3E474400D9ACD7 /* SharesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesView.m; sourceTree = "<group>"; };
+		FFB77A871D3E475500D9ACD7 /* SharesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharesController.h; sourceTree = "<group>"; };
+		FFB77A881D3E475500D9ACD7 /* SharesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesController.m; sourceTree = "<group>"; };
+		FFB77A8C1D3E525400D9ACD7 /* DeliveryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryController.h; sourceTree = "<group>"; };
+		FFB77A8D1D3E525400D9ACD7 /* DeliveryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryController.m; sourceTree = "<group>"; };
+		FFB77A8F1D3E526800D9ACD7 /* DeliveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryView.h; sourceTree = "<group>"; };
+		FFB77A901D3E526800D9ACD7 /* DeliveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryView.m; sourceTree = "<group>"; };
+		FFB77A941D3E54D700D9ACD7 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
+		FFB77A951D3E54D700D9ACD7 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		FFB77A981D3E683F00D9ACD7 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		FFB77A991D3E683F00D9ACD7 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
+		FFB77A9B1D3E685200D9ACD7 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		FFB77A9C1D3E685200D9ACD7 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		FFB77A9F1D3E72C200D9ACD7 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		FFB77AA01D3E72C200D9ACD7 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		FFB77AA21D3E72CF00D9ACD7 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
+		FFB77AA31D3E72CF00D9ACD7 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		FFB77AA61D3E779B00D9ACD7 /* MBSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSwitch.h; sourceTree = "<group>"; };
+		FFB77AA71D3E779B00D9ACD7 /* MBSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSwitch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD910C94EA3157C7C2FE4A55 /* libPods-Dolpirog.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4DEBCE83ACE3EBD4F6B9EAF /* libPods-DolpirogTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,12 +318,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E3AEEF7D148E307B4E0E48 /* libPods-DolpirogUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4031429CB4AE32E6188116BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E40261AB827F50A223CD63F9 /* libPods-Dolpirog.a */,
+				5D8D7F782AB874C0C6EFA3F4 /* libPods-DolpirogTests.a */,
+				248696E286DC302CF0425CB9 /* libPods-DolpirogUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63B5DC66C79B302CD66C955C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83CC03ECDA1CF43189FF04B9 /* Pods-Dolpirog.debug.xcconfig */,
+				E5B4FA5E65ECA71C061852ED /* Pods-Dolpirog.release.xcconfig */,
+				922342F2BB15F55420594D32 /* Pods-DolpirogTests.debug.xcconfig */,
+				CFC2AA83935E30BCDDCE17E9 /* Pods-DolpirogTests.release.xcconfig */,
+				ECEC9A4739D5EFF4B2EF0512 /* Pods-DolpirogUITests.debug.xcconfig */,
+				887E6AE1F1A4082A36360233 /* Pods-DolpirogUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF2B22081D2B94FD003F501A = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +355,8 @@
 				FF2B222D1D2B94FD003F501A /* DolpirogTests */,
 				FF2B22381D2B94FD003F501A /* DolpirogUITests */,
 				FF2B22121D2B94FD003F501A /* Products */,
+				63B5DC66C79B302CD66C955C /* Pods */,
+				4031429CB4AE32E6188116BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,8 +373,15 @@
 		FF2B22131D2B94FD003F501A /* Dolpirog */ = {
 			isa = PBXGroup;
 			children = (
-				FF9683821D3D02AB00C4FBC6 /* Order */,
-				FF9683621D3CC62500C4FBC6 /* CatalogDetail */,
+				FF2CD6F11D410051001F2F6A /* OrderAccepted */,
+				FF2CD6E41D40F70B001F2F6A /* Checkout */,
+				FF2CD6D71D40F6AD001F2F6A /* Basket */,
+				FF3163D31D40BCFD0040818C /* Radio */,
+				FFB77A9E1D3E72AD00D9ACD7 /* Settings */,
+				FFB77A971D3E682400D9ACD7 /* Сontacts */,
+				FFB77A8B1D3E523D00D9ACD7 /* Delivery */,
+				FFB77A831D3E472F00D9ACD7 /* Shares */,
+				FFB77A7C1D3E367A00D9ACD7 /* PersonalArea */,
 				FF2B22A31D2BB288003F501A /* Catalog */,
 				FF2B227A1D2B9818003F501A /* Login */,
 				FF2B22471D2B950E003F501A /* Menu */,
@@ -268,7 +393,10 @@
 				FF2B22201D2B94FD003F501A /* Assets.xcassets */,
 				FF2B22221D2B94FD003F501A /* LaunchScreen.storyboard */,
 				FF2B22251D2B94FD003F501A /* Info.plist */,
+				FF2CD6EB1D40F7BD001F2F6A /* Animation */,
+				FFB77A931D3E54C200D9ACD7 /* CustomView */,
 				FF9683921D3D158B00C4FBC6 /* PageControl */,
+				FFB77AA51D3E778D00D9ACD7 /* SwichLib */,
 				FF2B226B1D2B97AF003F501A /* Buttons */,
 				FF2B229E1D2BA9B3003F501A /* Fonts */,
 				FF96837E1D3CD52700C4FBC6 /* ScrollViewImage */,
@@ -348,6 +476,10 @@
 				FF2B22601D2B979F003F501A /* PasswordImage.png */,
 				FF2B22611D2B979F003F501A /* InputTextView.h */,
 				FF2B22621D2B979F003F501A /* InputTextView.m */,
+				FF2CD6CB1D40CE18001F2F6A /* InputTextToView.h */,
+				FF2CD6CC1D40CE18001F2F6A /* InputTextToView.m */,
+				FF2CD6CE1D40D849001F2F6A /* CustomTextView.h */,
+				FF2CD6CF1D40D849001F2F6A /* CustomTextView.m */,
 				FF2B22631D2B979F003F501A /* CustomTextField.h */,
 				FF2B22641D2B979F003F501A /* CustomTextField.m */,
 			);
@@ -418,13 +550,9 @@
 		FF2B22A31D2BB288003F501A /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
-				FF2B22B21D2BC540003F501A /* imagesCatalog */,
-				FF2B22A41D2BB2AE003F501A /* CatalogController.h */,
-				FF2B22A51D2BB2AE003F501A /* CatalogController.m */,
-				FF2B22A71D2BB2C0003F501A /* CatalogView.h */,
-				FF2B22A81D2BB2C0003F501A /* CatalogView.m */,
-				FF2B22AF1D2BB9F3003F501A /* CatalogModel.h */,
-				FF2B22B01D2BB9F3003F501A /* CatalogModel.m */,
+				FF9683821D3D02AB00C4FBC6 /* Order */,
+				FF9683621D3CC62500C4FBC6 /* CatalogDetail */,
+				FFB77A7B1D3E362100D9ACD7 /* MainCatalog */,
 			);
 			name = Catalog;
 			sourceTree = "<group>";
@@ -441,6 +569,64 @@
 				FF2B22B81D2BC54D003F501A /* imageSalad.png */,
 			);
 			name = imagesCatalog;
+			sourceTree = "<group>";
+		};
+		FF2CD6D71D40F6AD001F2F6A /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6EF1D40FB1C001F2F6A /* imageButtonDelivery.png */,
+				FF2CD6D91D40F6D0001F2F6A /* ButtonImageDown.png */,
+				FF2CD6DA1D40F6D0001F2F6A /* buttomInageUp.png */,
+				FF2CD6DB1D40F6D0001F2F6A /* BasketController.h */,
+				FF2CD6DC1D40F6D0001F2F6A /* BasketController.m */,
+				FF2CD6DD1D40F6D0001F2F6A /* BasketView.h */,
+				FF2CD6DE1D40F6D0001F2F6A /* BasketView.m */,
+			);
+			name = Basket;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FF2CD6E41D40F70B001F2F6A /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6E51D40F71E001F2F6A /* CheckoutController.h */,
+				FF2CD6E61D40F71E001F2F6A /* CheckoutController.m */,
+				FF2CD6E71D40F71E001F2F6A /* CheckoutView.h */,
+				FF2CD6E81D40F71E001F2F6A /* CheckoutView.m */,
+			);
+			name = Checkout;
+			sourceTree = "<group>";
+		};
+		FF2CD6EB1D40F7BD001F2F6A /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6EC1D40F7CB001F2F6A /* Animation.h */,
+				FF2CD6ED1D40F7CB001F2F6A /* Animation.m */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		FF2CD6F11D410051001F2F6A /* OrderAccepted */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6F61D41024D001F2F6A /* backGroundOrder.png */,
+				FF2CD6F31D410080001F2F6A /* OrderAcceptedController.h */,
+				FF2CD6F41D410080001F2F6A /* OrderAcceptedController.m */,
+			);
+			name = OrderAccepted;
+			sourceTree = "<group>";
+		};
+		FF3163D31D40BCFD0040818C /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				FF2CD6D51D40DDE6001F2F6A /* pauseButtonImage.png */,
+				FF2CD6D11D40DDCE001F2F6A /* mainImageRadio.png */,
+				FF3163D71D40BD3B0040818C /* RadioController.h */,
+				FF3163D81D40BD3B0040818C /* RadioController.m */,
+				FF3163D41D40BD2B0040818C /* RadioPirogView.h */,
+				FF3163D51D40BD2B0040818C /* RadioPirogView.m */,
+			);
+			name = Radio;
 			sourceTree = "<group>";
 		};
 		FF9683621D3CC62500C4FBC6 /* CatalogDetail */ = {
@@ -511,6 +697,93 @@
 			name = PageControl;
 			sourceTree = "<group>";
 		};
+		FFB77A7B1D3E362100D9ACD7 /* MainCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				FF2B22B21D2BC540003F501A /* imagesCatalog */,
+				FF2B22A41D2BB2AE003F501A /* CatalogController.h */,
+				FF2B22A51D2BB2AE003F501A /* CatalogController.m */,
+				FF2B22A71D2BB2C0003F501A /* CatalogView.h */,
+				FF2B22A81D2BB2C0003F501A /* CatalogView.m */,
+				FF2B22AF1D2BB9F3003F501A /* CatalogModel.h */,
+				FF2B22B01D2BB9F3003F501A /* CatalogModel.m */,
+			);
+			name = MainCatalog;
+			sourceTree = "<group>";
+		};
+		FFB77A7C1D3E367A00D9ACD7 /* PersonalArea */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A7D1D3E369900D9ACD7 /* PersonalAreaController.h */,
+				FFB77A7E1D3E369900D9ACD7 /* PersonalAreaController.m */,
+				FFB77A801D3E36AB00D9ACD7 /* PersonalAreaView.h */,
+				FFB77A811D3E36AB00D9ACD7 /* PersonalAreaView.m */,
+			);
+			name = PersonalArea;
+			sourceTree = "<group>";
+		};
+		FFB77A831D3E472F00D9ACD7 /* Shares */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A871D3E475500D9ACD7 /* SharesController.h */,
+				FFB77A881D3E475500D9ACD7 /* SharesController.m */,
+				FFB77A841D3E474400D9ACD7 /* SharesView.h */,
+				FFB77A851D3E474400D9ACD7 /* SharesView.m */,
+			);
+			name = Shares;
+			sourceTree = "<group>";
+		};
+		FFB77A8B1D3E523D00D9ACD7 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A8C1D3E525400D9ACD7 /* DeliveryController.h */,
+				FFB77A8D1D3E525400D9ACD7 /* DeliveryController.m */,
+				FFB77A8F1D3E526800D9ACD7 /* DeliveryView.h */,
+				FFB77A901D3E526800D9ACD7 /* DeliveryView.m */,
+			);
+			name = Delivery;
+			sourceTree = "<group>";
+		};
+		FFB77A931D3E54C200D9ACD7 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A941D3E54D700D9ACD7 /* CustomView.h */,
+				FFB77A951D3E54D700D9ACD7 /* CustomView.m */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
+		FFB77A971D3E682400D9ACD7 /* Сontacts */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A9B1D3E685200D9ACD7 /* ContactsController.h */,
+				FFB77A9C1D3E685200D9ACD7 /* ContactsController.m */,
+				FFB77A981D3E683F00D9ACD7 /* ContactsView.h */,
+				FFB77A991D3E683F00D9ACD7 /* ContactsView.m */,
+			);
+			name = "Сontacts";
+			sourceTree = "<group>";
+		};
+		FFB77A9E1D3E72AD00D9ACD7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77A9F1D3E72C200D9ACD7 /* SettingsController.h */,
+				FFB77AA01D3E72C200D9ACD7 /* SettingsController.m */,
+				FFB77AA21D3E72CF00D9ACD7 /* SettingsView.h */,
+				FFB77AA31D3E72CF00D9ACD7 /* SettingsView.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		FFB77AA51D3E778D00D9ACD7 /* SwichLib */ = {
+			isa = PBXGroup;
+			children = (
+				FFB77AA61D3E779B00D9ACD7 /* MBSwitch.h */,
+				FFB77AA71D3E779B00D9ACD7 /* MBSwitch.m */,
+			);
+			name = SwichLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -518,9 +791,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF2B223E1D2B94FD003F501A /* Build configuration list for PBXNativeTarget "Dolpirog" */;
 			buildPhases = (
+				4A4231577CE064EF1F7D95D6 /* [CP] Check Pods Manifest.lock */,
 				FF2B220D1D2B94FD003F501A /* Sources */,
 				FF2B220E1D2B94FD003F501A /* Frameworks */,
 				FF2B220F1D2B94FD003F501A /* Resources */,
+				7CFE2A4B463B19B3AEB0C63A /* [CP] Embed Pods Frameworks */,
+				26464DAA5BA6C0017FEA2C61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,9 +811,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF2B22411D2B94FD003F501A /* Build configuration list for PBXNativeTarget "DolpirogTests" */;
 			buildPhases = (
+				A161A5F1C0DB57F64D93B8B2 /* [CP] Check Pods Manifest.lock */,
 				FF2B22261D2B94FD003F501A /* Sources */,
 				FF2B22271D2B94FD003F501A /* Frameworks */,
 				FF2B22281D2B94FD003F501A /* Resources */,
+				760B18C7872B4AD832E73F63 /* [CP] Embed Pods Frameworks */,
+				6D8555422A6935298AEE55CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -553,9 +832,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF2B22441D2B94FD003F501A /* Build configuration list for PBXNativeTarget "DolpirogUITests" */;
 			buildPhases = (
+				979B6A96514ECAD4ECCE4695 /* [CP] Check Pods Manifest.lock */,
 				FF2B22311D2B94FD003F501A /* Sources */,
 				FF2B22321D2B94FD003F501A /* Frameworks */,
 				FF2B22331D2B94FD003F501A /* Resources */,
+				3774993DCAFF9D7B2B184D9F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -619,9 +900,11 @@
 				FF2B22A11D2BAA60003F501A /* pfagoraslabpro-reg.ttf in Resources */,
 				FF2B228F1D2B9B08003F501A /* BuketImageMenu.png in Resources */,
 				FF9683901D3D0DBF00C4FBC6 /* imageCakeTwo.png in Resources */,
+				FF2CD6F01D40FB1C001F2F6A /* imageButtonDelivery.png in Resources */,
 				FF96836A1D3CCA2E00C4FBC6 /* arrowBackImage.png in Resources */,
 				FF9683911D3D0DBF00C4FBC6 /* imageCakeThree.jpg in Resources */,
 				FF2B22731D2B97BE003F501A /* IconButtonMenu.png in Resources */,
+				FF2CD6D21D40DDCE001F2F6A /* mainImageRadio.png in Resources */,
 				FF96837A1D3CD48800C4FBC6 /* withCheese.png in Resources */,
 				FF9683791D3CD48800C4FBC6 /* fishery.png in Resources */,
 				FF96837B1D3CD48800C4FBC6 /* withChicken.png in Resources */,
@@ -641,15 +924,19 @@
 				FF96837C1D3CD48800C4FBC6 /* withBeans.png in Resources */,
 				FF2B22AE1D2BB6F1003F501A /* backgroudMainImage.png in Resources */,
 				FF2B228D1D2B9B08003F501A /* Avatar.png in Resources */,
+				FF2CD6E01D40F6D0001F2F6A /* ButtonImageDown.png in Resources */,
 				FF2B22681D2B979F003F501A /* PasswordImage.png in Resources */,
 				FF2B22721D2B97BE003F501A /* iconBasket.png in Resources */,
+				FF2CD6E11D40F6D0001F2F6A /* buttomInageUp.png in Resources */,
 				FF96838A1D3D075A00C4FBC6 /* imageBackRoundTwo.png in Resources */,
 				FF2B22651D2B979F003F501A /* nameImageReg.png in Resources */,
 				FF2B22BB1D2BC54D003F501A /* imageGarnish.png in Resources */,
 				FF2B22211D2B94FD003F501A /* Assets.xcassets in Resources */,
 				FF96837D1D3CD48800C4FBC6 /* withPotato.png in Resources */,
+				FF2CD6F71D41024D001F2F6A /* backGroundOrder.png in Resources */,
 				FF2B221F1D2B94FD003F501A /* Main.storyboard in Resources */,
 				FF2B22821D2B982C003F501A /* BGImage.png in Resources */,
+				FF2CD6D61D40DDE6001F2F6A /* pauseButtonImage.png in Resources */,
 				FF2B229D1D2BA78C003F501A /* background2.png in Resources */,
 				FF9683781D3CD48800C4FBC6 /* sweet.png in Resources */,
 				FF2B229B1D2BA688003F501A /* logo.png in Resources */,
@@ -678,35 +965,180 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		26464DAA5BA6C0017FEA2C61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dolpirog/Pods-Dolpirog-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3774993DCAFF9D7B2B184D9F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DolpirogUITests/Pods-DolpirogUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A4231577CE064EF1F7D95D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6D8555422A6935298AEE55CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DolpirogTests/Pods-DolpirogTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		760B18C7872B4AD832E73F63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DolpirogTests/Pods-DolpirogTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CFE2A4B463B19B3AEB0C63A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dolpirog/Pods-Dolpirog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		979B6A96514ECAD4ECCE4695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A161A5F1C0DB57F64D93B8B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF2B220D1D2B94FD003F501A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FF2B22741D2B97BE003F501A /* ButtonMenu.m in Sources */,
+				FF2CD6CD1D40CE18001F2F6A /* InputTextToView.m in Sources */,
 				FF2B22B11D2BB9F3003F501A /* CatalogModel.m in Sources */,
+				FFB77A961D3E54D700D9ACD7 /* CustomView.m in Sources */,
 				FF2B221C1D2B94FD003F501A /* ViewController.m in Sources */,
 				FF2B22501D2B954D003F501A /* CustomCellView.m in Sources */,
+				FF3163D61D40BD2B0040818C /* RadioPirogView.m in Sources */,
 				FF9683881D3D02E600C4FBC6 /* OrderView.m in Sources */,
+				FF3163D91D40BD3B0040818C /* RadioController.m in Sources */,
 				FF2B226A1D2B979F003F501A /* CustomTextField.m in Sources */,
 				FF2B22561D2B9746003F501A /* SingleTone.m in Sources */,
 				FF2B22831D2B982C003F501A /* LoginController.m in Sources */,
+				FFB77A911D3E526800D9ACD7 /* DeliveryView.m in Sources */,
 				FF9683811D3CD57A00C4FBC6 /* ScrollViewImage.m in Sources */,
 				FF9683681D3CC67C00C4FBC6 /* CatalogDetailView.m in Sources */,
+				FFB77AA11D3E72C200D9ACD7 /* SettingsController.m in Sources */,
 				FF2B22A91D2BB2C0003F501A /* CatalogView.m in Sources */,
+				FF2CD6EE1D40F7CB001F2F6A /* Animation.m in Sources */,
+				FFB77A891D3E475500D9ACD7 /* SharesController.m in Sources */,
+				FF2CD6EA1D40F71E001F2F6A /* CheckoutView.m in Sources */,
 				FF2B22191D2B94FD003F501A /* AppDelegate.m in Sources */,
 				FF9683651D3CC66900C4FBC6 /* CatalogDetailController.m in Sources */,
+				FF2CD6E21D40F6D0001F2F6A /* BasketController.m in Sources */,
+				FF2CD6D01D40D849001F2F6A /* CustomTextView.m in Sources */,
 				FF2B22A61D2BB2AE003F501A /* CatalogController.m in Sources */,
 				FF2B22691D2B979F003F501A /* InputTextView.m in Sources */,
+				FFB77AA41D3E72CF00D9ACD7 /* SettingsView.m in Sources */,
 				FF2B224F1D2B954D003F501A /* MenuController.m in Sources */,
+				FFB77A861D3E474400D9ACD7 /* SharesView.m in Sources */,
+				FF2CD6E91D40F71E001F2F6A /* CheckoutController.m in Sources */,
 				FF2B225B1D2B9780003F501A /* UIColor+HexColor.m in Sources */,
+				FF2CD6E31D40F6D0001F2F6A /* BasketView.m in Sources */,
 				FF2B22841D2B982C003F501A /* LoginView.m in Sources */,
+				FFB77AA81D3E779B00D9ACD7 /* MBSwitch.m in Sources */,
+				FFB77A9D1D3E685200D9ACD7 /* ContactsController.m in Sources */,
 				FF2B22161D2B94FD003F501A /* main.m in Sources */,
 				FF2B224E1D2B954D003F501A /* SWRevealViewController.m in Sources */,
 				FF2B22AC1D2BB50B003F501A /* BackgroundFone.m in Sources */,
+				FFB77A9A1D3E683F00D9ACD7 /* ContactsView.m in Sources */,
 				FF9683851D3D02D700C4FBC6 /* OrderController.m in Sources */,
+				FFB77A8E1D3E525400D9ACD7 /* DeliveryController.m in Sources */,
 				FF2B22791D2B97D5003F501A /* CustomLabels.m in Sources */,
 				FF9683951D3D159900C4FBC6 /* StyledPageControl.m in Sources */,
+				FFB77A7F1D3E369900D9ACD7 /* PersonalAreaController.m in Sources */,
+				FFB77A821D3E36AB00D9ACD7 /* PersonalAreaView.m in Sources */,
+				FF2CD6F51D410080001F2F6A /* OrderAcceptedController.m in Sources */,
 				FF2B22751D2B97BE003F501A /* CustomButton.m in Sources */,
 				FF2B22571D2B9746003F501A /* TitleClass.m in Sources */,
 			);
@@ -849,6 +1281,7 @@
 		};
 		FF2B223F1D2B94FD003F501A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CC03ECDA1CF43189FF04B9 /* Pods-Dolpirog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Dolpirog/Info.plist;
@@ -860,6 +1293,7 @@
 		};
 		FF2B22401D2B94FD003F501A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5B4FA5E65ECA71C061852ED /* Pods-Dolpirog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Dolpirog/Info.plist;
@@ -871,6 +1305,7 @@
 		};
 		FF2B22421D2B94FD003F501A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 922342F2BB15F55420594D32 /* Pods-DolpirogTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DolpirogTests/Info.plist;
@@ -883,6 +1318,7 @@
 		};
 		FF2B22431D2B94FD003F501A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFC2AA83935E30BCDDCE17E9 /* Pods-DolpirogTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DolpirogTests/Info.plist;
@@ -895,6 +1331,7 @@
 		};
 		FF2B22451D2B94FD003F501A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECEC9A4739D5EFF4B2EF0512 /* Pods-DolpirogUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DolpirogUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -906,6 +1343,7 @@
 		};
 		FF2B22461D2B94FD003F501A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 887E6AE1F1A4082A36360233 /* Pods-DolpirogUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DolpirogUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "SingleTone.h"
 #import "OrderView.h"
+#import "BasketController.h"
 
 @implementation OrderController
 
@@ -50,7 +51,8 @@
 
 - (void) buttonBasketAction
 {
-    NSLog(@"Я корзина");
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)buttonBackAction

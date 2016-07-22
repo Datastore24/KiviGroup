@@ -17,8 +17,8 @@
 
 @interface InputTextView : UIView <UITextFieldDelegate>
 // Метод инициализации объекта для ввода текста-----------
-// Элемент scrollWidth используется только в расширенном
-// скрол вью для смещения объектов в очи Х
+// Элемент scrollWidth используется только в расширенном экране
+// скрол вью для смещения объектов в оcи Х
 - (instancetype)initWithView: (UIView*) view
                       PointY: (CGFloat) pointY
                     andImage: (NSString*) imageName
@@ -28,6 +28,13 @@
 - (instancetype)initCheckoutWithView: (UIView*) view
                               PointY: (CGFloat) pointY
                   andTextPlaceHolder: (NSString*) placeHolder;
+
+- (instancetype)initCustonTextViewWithRect: (CGRect) rect
+                        andTextPlaceHolder: (NSString*) placeHolder
+                           andCornerRadius: (CGFloat) cornerRadius
+                                   andView: (UIView*) view
+                                  fonColor: (NSString*) bgColor
+                              andTextColor: (NSString*) textColor;
 
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;
