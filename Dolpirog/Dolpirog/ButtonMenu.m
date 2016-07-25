@@ -36,6 +36,19 @@
     return button;
 }
 
++ (UIButton*) createButtonBack
+{
+    UIImage *imageBarButton = [UIImage imageNamed:@"arrowBackImage.png"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake(0, 0, 20, 20);
+    CGRect rect = button.frame;
+    rect.origin.y += 16;
+    button.frame = rect;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    
+    return button;
+}
+
 + (UIButton*) createButtonRegistrationWithName: (NSString*) title
                                 andColor: (NSString*) color
                                andPointY: (CGFloat) pointY

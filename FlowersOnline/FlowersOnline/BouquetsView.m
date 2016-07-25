@@ -28,7 +28,10 @@
     NSArray * arrayTableCellName;
     NSArray * arrayData;
     NSArray * arrayTablePrice;
+    
+
 }
+
 
 - (instancetype)initWithView: (UIView*) view
 {
@@ -75,9 +78,10 @@
         
         //Наносим основной скрол вью
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
-        mainScrollView.contentSize = CGSizeMake(0, self.frame.size.width * arrayName.count);
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
+        
+                mainScrollView.contentSize = CGSizeMake(0, self.frame.size.width * arrayName.count);
         
         //Создаем циклБукетов
         for (int i = 0; i < arrayName.count; i++) {
@@ -309,6 +313,8 @@
 {
     return tablePrice.frame.size.height / 3;
 }
+
+
 
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

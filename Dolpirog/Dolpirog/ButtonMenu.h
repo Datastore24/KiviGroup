@@ -28,6 +28,9 @@
                               andFrame: (CGRect) rect
                               fontName: (NSString*) font;
 
+//Кнопка назад
++ (UIButton*) createButtonBack;
+
 
 
 @end

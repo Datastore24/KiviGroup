@@ -42,5 +42,10 @@
 		<string>SFUIDisplay-Light.otf</string>
 		<string>SFUIDisplay-Regular.otf</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

@@ -15,8 +15,12 @@
 #import "BackgroundFone.h"
 #import "CatalogView.h"
 #import "CatalogModel.h"
+#import "CatalogDetailController.h"
+#import "BasketController.h"
 
 @implementation CatalogController
+
+
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +35,9 @@
     //Заголовок--------------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"КАТАЛОГ"];
     self.navigationItem.titleView = title;
+    
+    //Нотификации-------------------------------------------------
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToCatalogDetailController) name:NOTIFIVATION_CATALOG_VIEW_PUSH_CATALOG_DETAIL_CONTROLLER object:nil];
     
     //Кнопка корзины---------------------------------------------
     UIButton * buttonBasket = [ButtonMenu createButtonBasket];
@@ -48,11 +55,22 @@
     
 }
 
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Buttons Action
 
 - (void) buttonBasketAction
 {
-    NSLog(@"Корзина");
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToCatalogDetailController
+{
+    CatalogDetailController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogDetailController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 

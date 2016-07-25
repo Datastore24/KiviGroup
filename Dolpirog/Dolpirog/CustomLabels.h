@@ -13,12 +13,14 @@
 - (instancetype)initLabelBondWithWidht: (CGFloat) widht
                              andHeight: (CGFloat) height
                               andColor: (NSString*) hexColor
-                               andText: (NSString*) text;
+                               andText: (NSString*) text
+                           andTextSize: (NSInteger) textSize;
 
 - (instancetype)initLabelRegularWithWidht: (CGFloat) widht
                                 andHeight: (CGFloat) height
                                  andColor: (NSString*) hexColor
-                                  andText: (NSString*) text;
+                                  andText: (NSString*) text
+                              andTextSize: (NSInteger) textSize;
 
 - (instancetype)initLabelTableWithWidht: (CGFloat) widht
                               andHeight: (CGFloat) height

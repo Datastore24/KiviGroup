@@ -118,13 +118,48 @@
     return self;
 }
 
+- (instancetype)initCustonTextViewWithRect: (CGRect) rect
+                        andTextPlaceHolder: (NSString*) placeHolder
+                           andCornerRadius: (CGFloat) cornerRadius
+                                   andView: (UIView*) view
+                                  fonColor: (NSString*) bgColor
+                              andTextColor: (NSString*) textColor
+{
+    self = [super init];
+    if (self) {
+        self.frame = rect;
+        self.layer.cornerRadius = cornerRadius;
+        self.backgroundColor = [UIColor colorWithHexString:bgColor];
 
 
-
-
-
-
-
+        keyboardUp = NO;
+        
+        mainView = view;
+        
+        //Ввод текста-------------
+        self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width - 70, self.frame.size.height)];
+        if (isiPhone5 || isiPhone4s) {
+            self.textFieldInput.frame = CGRectMake(10, 0, self.frame.size.width - 70, 30);
+        }
+        self.textFieldInput.delegate = self;
+        self.textFieldInput.isBoll = YES;
+        self.textFieldInput.tag = 90;
+        self.textFieldInput.keyboardType = UIKeyboardTypeDefault;
+        self.textFieldInput.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:15];
+        self.textFieldInput.textColor = [UIColor colorWithHexString:textColor];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
+        [self addSubview:self.textFieldInput];
+        
+        //Плесхолдер --------------
+        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        labelPlaceHoldInput.text = placeHolder;
+        labelPlaceHoldInput.textColor = [UIColor colorWithHexString:textColor];
+        labelPlaceHoldInput.font = [UIFont fontWithName:FONTREGULAR size:15];
+        [self addSubview:labelPlaceHoldInput];
+    }
+    return self;
+}
 
 
 
