@@ -19,8 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     [UINavigationBar appearance].barTintColor = [UIColor colorWithHexString:@"85af02"];
+    //Создаем синглтон для букетов
+    NSMutableArray * arrayBouquets = [[NSMutableArray alloc] init];
+    [[SingleTone sharedManager] setArrayBouquets:arrayBouquets];
     
     return YES;
 }

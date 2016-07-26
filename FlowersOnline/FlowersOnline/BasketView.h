@@ -10,6 +10,7 @@
 
 @interface BasketView : UIView
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view
+                     andData: (NSMutableArray*) data;
 
 @end

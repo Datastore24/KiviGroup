@@ -37,7 +37,7 @@
     
 #pragma mark - Initialization
     
-    BasketView * mainView = [[BasketView alloc] initWithView:self.view];
+    BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:[[SingleTone sharedManager] arrayBouquets]];
     [self.view addSubview:mainView];
 
 }

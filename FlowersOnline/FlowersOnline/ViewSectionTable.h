@@ -13,21 +13,13 @@
 
 @interface ViewSectionTable : UIView
 
-- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view
+- (instancetype)initWithImageURL: (NSString*) imageUrl
+                         andView: (UIView*) view
                   andContentMode: (UIViewContentMode) contentMode;
 
-- (instancetype)initWithImageURL: (NSString*) imageUrl andView: (UIView*) view andImageView: (UIImageView*) imageView
-                  andContentMode: (UIViewContentMode) contentMode;
+- (instancetype)initImageWithImageURL: (NSString*) imageURL
+                          andMainView: (UIView*) view
+                             andFrame: (CGRect) frame;
 
-+ (UIImageView*)createWithImageAlertURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode andBoolMoney: (BOOL) boolMoney;
-
-- (instancetype)initWithPostImageURL: (NSString*) imageUrl andView: (UIView*) view andContentMode: (UIViewContentMode) contentMode;
-
-- (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
-                           andContentMode: (UIViewContentMode) contentMode;
-
-- (instancetype)initImageChatWithImageURL: (NSString*) imageUrl
-                           andContentMode: (UIViewContentMode) contentMode
-                             andImageView: (UIScrollView *) scrollView;
 
 @end

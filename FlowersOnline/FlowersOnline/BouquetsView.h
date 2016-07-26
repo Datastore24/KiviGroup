@@ -10,6 +10,6 @@
 
 @interface BouquetsView : UIView <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array;
 
 @end
