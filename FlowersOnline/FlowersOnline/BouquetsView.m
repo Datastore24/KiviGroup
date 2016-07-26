@@ -12,79 +12,57 @@
 #import "CustomLabels.h"
 #import "Macros.h"
 #import "SingleTone.h"
+#import "ViewSectionTable.h"
+
+@interface BouquetsView ()
+
+@property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSDictionary * mainDict;
+
+@property (strong, nonatomic) NSArray * arrayPrice;
+
+@end
 
 @implementation BouquetsView
 
 {
     UIScrollView * mainScrollView;
-    NSArray * arrayName;
     NSMutableArray * arrayScroll;
     NSMutableArray * arrayControl;
     NSMutableArray * buttonsArray;
-    
+    NSDictionary * dictPrice;
     UITableView * tablePrice;
-    
-    //Временные массивы--------
-    NSArray * arrayTableCellName;
-    NSArray * arrayData;
-    NSArray * arrayTablePrice;
-    
-
+    NSMutableArray * mArray;
+    NSMutableArray * sort;
 }
 
 
-- (instancetype)initWithView: (UIView*) view
+- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
-        //Тестовые массивы для работы--------------------------------
+        self.arrayData = array;
+        arrayScroll = [[NSMutableArray alloc] init];
+        arrayControl = [[NSMutableArray alloc] init];
+        buttonsArray = [[NSMutableArray alloc] init];
+        mArray = [[NSMutableArray alloc] init];
         
-        arrayTableCellName = [NSArray arrayWithObjects:@"Размер Премиум", @"Размер Делюкс", @"Размер Стандарт", nil];
-        arrayData = [NSArray arrayWithObjects:
-                               @"Соберем и доставим до 15:00",
-                               @"Соберем и доставим до 15:00",
-                               @"Соберем и доставим до 15:00", nil];
-        arrayTablePrice = [NSArray arrayWithObjects:@"9990 p.", @"6990 p.", @"2500 p.", nil];
-        
-        
-        
-        
-        
-        
-        
-        arrayName = [NSArray arrayWithObjects:@"Букет Сатурн", @"Букет 5 роз", @"Букет Палитра", @"Букет Свадебный", @"Хороший Букет", nil];
-        NSArray * array1 = [NSArray arrayWithObjects:@"1.jpg", @"2.jpg", @"3.jpg", nil];
-        NSArray * array2 = [NSArray arrayWithObjects:@"4.jpg", @"5.jpg", @"6.jpg", nil];
-        NSArray * array3 = [NSArray arrayWithObjects:@"7.jpg", @"8.jpg", @"9.jpg", nil];
-        NSArray * array4 = [NSArray arrayWithObjects:@"10.jpg", @"11.jpg", @"12.jpg", nil];
-        NSArray * array5= [NSArray arrayWithObjects:@"13.jpg", @"14.jpg", @"15.jpg", nil];
-        
-        NSArray * arrayText = [NSArray arrayWithObjects:
-                               @"Потрясающий космический букет",
-                               @"Поднимающий настроение букет из роз",
-                               @"Все краски радуги смешались в одном букете",
-                               @"Наилучший будет для свадебного торжества",
-                               @"Просто хороший букет, красивый и не дорогой", nil];
-        
-        NSArray * arrayPrice = [NSArray arrayWithObjects:@"от 2000 р.", @"от 3500 р.", @"от 1500 р.", @"от 2200 р.", @"от 1000 р.", nil];
-        
-        NSArray * allImage = [NSArray arrayWithObjects:array1, array2, array3, array4, array5, nil];
-        
-        arrayScroll = [NSMutableArray new];
-        arrayControl = [NSMutableArray new];
-        buttonsArray = [NSMutableArray new];
-        
+
         //Наносим основной скрол вью
         mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
         
-                mainScrollView.contentSize = CGSizeMake(0, self.frame.size.width * arrayName.count);
+                mainScrollView.contentSize = CGSizeMake(0, self.frame.size.width * self.arrayData.count);
         
         //Создаем циклБукетов
-        for (int i = 0; i < arrayName.count; i++) {
+        for (int i = 0; i < self.arrayData.count; i++) {
+            
+            self.mainDict = [self.arrayData objectAtIndex:i];
+            NSArray * arrayImages = [NSArray arrayWithArray:[self.mainDict objectForKey:@"img"]];
+            
             //Инициализация scrollView-----------------------------------------
             UIScrollView * scrollImages = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * i, self.frame.size.width, self.frame.size.width)];
             [scrollImages setDelegate:self];
@@ -103,23 +81,23 @@
             [arrayControl addObject:pageControl];
             [mainScrollView addSubview:pageControl];
             
-            //Тестовый массив картинок--------------------------------------------
-            NSArray * arrayOmageCount = [allImage objectAtIndex:i];
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
+            UIImage * image = [UIImage imageWithData: imageData];
             
             UIImageView * view1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
-            view1.image = [UIImage imageNamed:[arrayOmageCount objectAtIndex:0]];
+            view1.image = image;
             [scrollImages addSubview:view1];
             
             UIImageView * view2 = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.width)];
-             view2.image = [UIImage imageNamed:[arrayOmageCount objectAtIndex:1]];
+             view2.image = image;
             [scrollImages addSubview:view2];
             
             UIImageView * view3 = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, self.frame.size.width)];
-             view3.image = [UIImage imageNamed:[arrayOmageCount objectAtIndex:2]];;
+             view3.image = image;
             [scrollImages addSubview:view3];
             
             //Загаловок букета----------------------------------------------------
-            CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:20 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[arrayName objectAtIndex:i]];
+            CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:20 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"name"]];
             labelTitle.font = [UIFont fontWithName:FONTLITE size:16];
             if (isiPhone5 || isiPhone4s) {
                 labelTitle.font = [UIFont fontWithName:FONTLITE size:14];
@@ -128,7 +106,7 @@
             [mainScrollView addSubview:labelTitle];
             
             //Средняя цена букета--------------------------------------------------
-            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:[arrayPrice objectAtIndex:i]];
+            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:@"500р"];
             labelPrice.font = [UIFont fontWithName:FONTLITE size:16];
             if (isiPhone5 || isiPhone4s) {
                 labelPrice.font = [UIFont fontWithName:FONTLITE size:14];
@@ -154,7 +132,7 @@
             
             
             //Описание букета-------------------------------------------------------
-            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[arrayText objectAtIndex:i]];
+            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:@"Описание букета"];
             labelText.numberOfLines = 2;
             labelText.font = [UIFont fontWithName:FONTLITE size:12];
             if (isiPhone5 || isiPhone4s) {
@@ -183,7 +161,7 @@
         tablePrice.showsVerticalScrollIndicator = NO;
         tablePrice.backgroundColor = [UIColor colorWithHexString:COLORGRAY];
         //Очень полездное свойство, отключает дествие ячейки-------------
-//        tablePrice.allowsSelection = NO;
+
         [self addSubview:tablePrice];
         
         
@@ -193,7 +171,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-        for (int i = 0; i < arrayName.count; i++) {
+        for (int i = 0; i < self.arrayData.count; i++) {
             if ([scrollView isEqual:[arrayScroll objectAtIndex:i]]) {
                 CGFloat pageWidth = CGRectGetWidth(self.bounds);
                 UIScrollView * scrol = [arrayScroll objectAtIndex:i];
@@ -204,11 +182,12 @@
         }
 }
 
+
 #pragma mark - Buttons Action
 //Действие тача на букет--------------------------
 - (void) buttonScrollAction: (CustomButton*) button
 {
-    for (int i = 0; i < arrayName.count; i++) {
+    for (int i = 0; i < self.arrayData.count; i++) {
         if ([button isEqual:[buttonsArray objectAtIndex:i]]) {
             if (button.isBool) {
                 mainScrollView.scrollEnabled = NO;
@@ -229,11 +208,28 @@
                 } completion:^(BOOL finished) {
                 }];
                 button.isBool = NO;
+                
+                
+                
+                dictPrice = [self.arrayData objectAtIndex:i];
+                self.arrayPrice = [dictPrice objectForKey:@"variants"];
+                [tablePrice reloadData];
+                
+                NSLog(@"%@", dictPrice);
+                
+                NSMutableArray * testArray = [[SingleTone sharedManager] arrayBouquets];
+                for (int i = 0; i < testArray.count; i++) {
+                    if ([[[testArray objectAtIndex:i] objectForKey:@"product_id"] isEqualToString:[dictPrice objectForKey:@"product_id"]]) {
+                        tablePrice.allowsSelection = NO;
+                    }
+                }
+                
+                
             } else {
                 mainScrollView.scrollEnabled = YES;
                 [UIView animateWithDuration:0.3 animations:^{
                     //Метод оцентровки------------------------------------
-                    if (i == arrayName.count - 1) {
+                    if (i == self.arrayData.count - 1) {
                         mainScrollView.contentOffset = CGPointMake(0, mainScrollView.contentOffset.y - tablePrice.frame.size.height);
                     }
                     CGRect tableRect = tablePrice.frame;
@@ -250,6 +246,9 @@
                 } completion:^(BOOL finished) {
                 }];
                 button.isBool = YES;
+                tablePrice.allowsSelection = YES;
+                
+                
             }
         }
     }
@@ -257,7 +256,7 @@
 //Действие кнопки подарить----------------------
 - (void) buttonToGiveAction: (UIButton*) button
 {
-    for (int i = 0; i < arrayName.count; i++) {
+    for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
             
             mainScrollView.scrollEnabled = NO;
@@ -276,6 +275,13 @@
                     buttonGive.frame = rectButton;
                 }];
             }];
+            
+            NSMutableArray * testArray = [[SingleTone sharedManager] arrayBouquets];
+            for (int i = 0; i < testArray.count; i++) {
+                if ([[[testArray objectAtIndex:i] objectForKey:@"product_id"] isEqualToString:[dictPrice objectForKey:@"product_id"]]) {
+                    tablePrice.allowsSelection = NO;
+                }
+            }
         }
     }
 }
@@ -288,7 +294,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -301,9 +307,12 @@
     for (UIView * view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-    [cell.contentView addSubview:[self setTableCellWithName:[arrayTableCellName objectAtIndex:indexPath.row]
-                                                    andData:[arrayData objectAtIndex:indexPath.row]
-                                                   andPrice:[arrayTablePrice objectAtIndex:indexPath.row]]];
+    
+    NSDictionary * dictCell = [self.arrayPrice objectAtIndex:0];
+    
+    [cell.contentView addSubview:[self setTableCellWithName:[dictCell objectForKey:@"name"]
+                                                    andData:nil
+                                                   andPrice:[dictCell objectForKey:@"price"]]];
     return cell;
 }
 
@@ -320,9 +329,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSInteger countOrder = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
-    countOrder += 1;
-    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)countOrder];
+    
+    
+    [[[SingleTone sharedManager] arrayBouquets] addObject:dictPrice];
+    tablePrice.allowsSelection = NO;
+    
+    
+    NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
+    count += 1;
+    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", count];
+    
     [UIView animateWithDuration:0.15 animations:^{
         
     } completion:^(BOOL finished) {
@@ -358,7 +374,7 @@
     [cellView addSubview:labelTitleCell];
     
     //Данные по доставке-------------------------------
-    CustomLabels * labelDeliveryCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:45 andSizeWidht:200 andSizeHeight:20 andColor:@"858383" andText:data];
+    CustomLabels * labelDeliveryCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:45 andSizeWidht:200 andSizeHeight:20 andColor:@"858383" andText:@"Соберем и доставим до 15:00"];
     labelDeliveryCell.font = [UIFont fontWithName:FONTREGULAR size:12];
     if (isiPhone5) {
         labelDeliveryCell.frame = CGRectMake(20, 35, 200, 20);

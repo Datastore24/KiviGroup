@@ -51,9 +51,15 @@
     [self.navigationController.navigationBar addSubview:countOrdersView];
     [[SingleTone sharedManager] setViewBasketBar:countOrdersView];
     
-    
+
+
     UILabel * labelBasket = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    labelBasket.text = @"0";
+    if ([[SingleTone sharedManager] labelCountBasket] == nil) {
+        labelBasket.text = @"0";
+    } else {
+        labelBasket.text = [[SingleTone sharedManager] labelCountBasket].text;
+    }
+    
     labelBasket.textColor = [UIColor whiteColor];
     labelBasket.font = [UIFont fontWithName:FONTREGULAR size:14];
     labelBasket.textAlignment = NSTextAlignmentCenter;
@@ -64,16 +70,12 @@
     
     //загрузка данных------
     
-    [self getAPIWithBlock:^{
-
-        
-        NSDictionary * dictTest = [_arrayResponse objectAtIndex:0];
-        NSLog(@"%@", dictTest);
-        
+    [self getAPIWithBlock:^{        
         
         //отображение----
-        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view];
+        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse];
         [self.view addSubview:mainView];
+        
     }];
 
 }
@@ -101,10 +103,17 @@
 - (void) getAPIWithBlock: (void (^)(void))block
 {
     
+    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"category_id", nil];
+    
     APIGetClass * apiGallery = [APIGetClass new];
-    [apiGallery getDataFromServerWithParams:nil method:@"get_categories" complitionBlock:^(id response) {
+    [apiGallery getDataFromServerWithParams:dict method:@"load_products" complitionBlock:^(id response) {\
         
-        _arrayResponse = response;
+        if ([response isKindOfClass:[NSArray class]]) {
+            _arrayResponse = response;
+        } else {
+            NSLog(@"Что то другое");
+        }
+
                 
         block();
 

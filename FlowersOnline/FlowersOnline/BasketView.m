@@ -11,11 +11,17 @@
 #import "Macros.h"
 #import "CustomLabels.h"
 #import "Animation.h"
+#import "SingleTone.h"
+
+@interface BasketView ()
+
+@property (strong, nonatomic) NSMutableArray * mainArray;
+
+@end
 
 @implementation BasketView
 {
     UITableView * mainTableView;
-    NSMutableArray * mainArray;
     UIScrollView * mainScrollView;
     NSMutableArray * arrayView;
     NSArray * arrayPriceDelivery;
@@ -29,12 +35,13 @@
 }
 
 - (instancetype)initWithView: (UIView*) view
+                     andData: (NSMutableArray*) data;
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
-        mainArray = [self setArrayTest];
+        self.mainArray = data;
         arrayView = [NSMutableArray new];
         NSArray * arrayNamesDelivery = [NSArray arrayWithObjects:
                                         @"Курьерская доставка о Москве - ",
@@ -57,14 +64,14 @@
         [self addSubview:mainScrollView];
         
         if (isiPhone5 || isiPhone4s) {
-            mainScrollView.contentSize = CGSizeMake(0, 100 * mainArray.count);
+            mainScrollView.contentSize = CGSizeMake(0, 100 * self.mainArray.count);
         } else {
-            mainScrollView.contentSize = CGSizeMake(0, 120 * mainArray.count);
+            mainScrollView.contentSize = CGSizeMake(0, 120 * self.mainArray.count);
         }
         
-        for (int i = 0; i < mainArray.count; i++) {
+        for (int i = 0; i < self.mainArray.count; i++) {
             
-            NSDictionary * dictCount = [mainArray objectAtIndex:i];
+            NSDictionary * dictCount = [self.mainArray objectAtIndex:i];
             
             UIView * mainViewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 120 * i, self.frame.size.width, 120)];
             if (isiPhone5 || isiPhone4s) {
@@ -80,7 +87,10 @@
             if (isiPhone5 || isiPhone4s) {
                 imageTableCell.frame = CGRectMake(15, 20, 60, 60);
             }
-            imageTableCell.image = [UIImage imageNamed:[dictCount objectForKey:@"image"]];
+            NSArray * arrayImages = [dictCount objectForKey:@"img"];
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
+            UIImage * image = [UIImage imageWithData: imageData];
+            imageTableCell.image = image;
             [mainViewCell addSubview:imageTableCell];
             
             //Заголовок ячейки------------------------------------
@@ -94,7 +104,7 @@
             [mainViewCell addSubview:titleCell];
             
             //Основной текст---------------------------------------
-            CustomLabels * textCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:40  andSizeWidht:self.frame.size.width - 180 andSizeHeight:40 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"text"]];
+            CustomLabels * textCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:40  andSizeWidht:self.frame.size.width - 180 andSizeHeight:40 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"body"]];
             textCell.numberOfLines = 2;
             textCell.font = [UIFont fontWithName:FONTREGULAR size:14];
             textCell.textAlignment = NSTextAlignmentLeft;
@@ -113,8 +123,12 @@
             [mainViewCell addSubview:viewBorderCell];
             
             //Цена букета-----------------------------------------
-            NSString * stringPrice = [NSString stringWithFormat:@"%ld р", (long)[[dictCount objectForKey:@"price"] integerValue]];
-            allPrice += [[dictCount objectForKey:@"price"] integerValue];
+            NSArray * arrayVariants = [dictCount objectForKey:@"variants"];
+            NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
+            
+            
+            NSString * stringPrice = [NSString stringWithFormat:@"%ld р", (long)[[dictVariants objectForKey:@"price"] integerValue]];
+            allPrice += [[dictVariants objectForKey:@"price"] integerValue];
             CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:77 andSizeWidht:400 andSizeHeight:18 andColor:COLORPINCK andText:stringPrice];
             labelCellPrice.font = [UIFont fontWithName:FONTBOND size:16];
             labelCellPrice.textAlignment = NSTextAlignmentLeft;
@@ -256,14 +270,16 @@
 
 - (void) upCountAction: (UIButton*) button
 {
-    for (int i = 0; i < mainArray.count; i++) {
+    for (int i = 0; i < self.mainArray.count; i++) {
         if (button.tag == 10 + i) {
             UILabel * label = (UILabel*)[self viewWithTag:30 + i];
             NSInteger intCount = [label.text integerValue];
             intCount += 1;
             label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
-            NSDictionary * dictArray = [mainArray objectAtIndex:i];
-            NSInteger intPrice = [[dictArray objectForKey:@"price"] integerValue];
+            NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
+            NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
+            NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
+            NSInteger intPrice = [[dictVariants objectForKey:@"price"] integerValue];
             allPrice += intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
@@ -273,26 +289,30 @@
 
 - (void) downCountAction: (UIButton*) button
 {
-    for (int i = 0; i < mainArray.count; i++) {
+    for (int i = 0; i < self.mainArray.count; i++) {
         if (button.tag == 20 + i) {
+            
             UILabel * label = (UILabel*)[self viewWithTag:30 + i];
             NSInteger intCount = [label.text integerValue];
             intCount -= 1;
             label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
-            
-            
-            NSDictionary * dictArray = [mainArray objectAtIndex:i];
-            NSInteger intPrice = [[dictArray objectForKey:@"price"] integerValue];
+            NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
+            NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
+            NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
+            NSInteger intPrice = [[dictVariants objectForKey:@"price"] integerValue];
             allPrice -= intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
-            
-            
+
             if ([label.text isEqualToString:@"0"]) {
+                NSLog(@"Удаляем");
                 UIView * testView = (UIView*)[self viewWithTag:60 + i];
                 [Animation animateTransformView:testView withScale:1.f move_X:-self.frame.size.width + 10 move_Y:0 alpha:1.f delay:0.5f];
-            for (int i = 0; i < arrayView.count; i++) {
-                UIView * upsView = (UIView*)[self viewWithTag:60 + i];
+                [self.mainArray removeObjectAtIndex:i];
+//                [[SingleTone sharedManager] setArrayBouquets:self.mainArray];
+//                [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%lu", (unsigned long)[[SingleTone sharedManager] arrayBouquets].count];
+            for (int j = 0; j < arrayView.count; j++) {
+                UIView * upsView = (UIView*)[self viewWithTag:60 + j];
                 if (upsView.tag > testView.tag) {
                     if (isiPhone5 || isiPhone4s) {
                         [Animation animationTestView:upsView move_Y:- 100];
@@ -300,6 +320,8 @@
                     [Animation animationTestView:upsView move_Y:- 120];
                     }
                 }
+                
+
 
                 }
                 [UIView animateWithDuration:0.3 animations:^{
@@ -311,6 +333,7 @@
                     }
                     mainScrollView.contentSize = sizeScrollNew;
                 }];
+
             }
             
         }
@@ -341,52 +364,6 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
 }
-
-
-#pragma mark - Other Code
-//создадим тестовый массив-----------
-- (NSMutableArray *) setArrayTest
-{
-    NSMutableArray * arrayOrder = [[NSMutableArray alloc] init];
-    
-    NSArray * arrayImage = [NSArray arrayWithObjects:
-                           @"bouquets1.png", @"bouquets2.png", @"bouquets3.png",
-                           @"bouquets4.png", @"bouquets5.png", nil];
-    
-    NSArray * arrayText = [NSArray arrayWithObjects:
-                           @"Красивый букет из 5 алых роз перевязанный ленточкой",
-                           @"Насыщенный цветом букет, способен удивить любого!",
-                           @"Насыщенный цветом букет, способен покорить любого!",
-                           @"Красивый букет из 4 белых грузинов перевязанный ленточкой",
-                           @"Насыщенный цветом букет, способен влюбить любого!", nil];
-    
-    
-    NSArray * arrayName = [NSArray arrayWithObjects:
-                           @"Букет “Сатурн”", @"Букет “7 роз”", @"Букет “Палитра”",
-                           @"Букет “9 роз”", @"Букет “3 розы”", nil];
-    
-    NSArray * arrayPrice = [NSArray arrayWithObjects:
-                            [NSNumber numberWithInteger:3000],
-                            [NSNumber numberWithInteger:4500],
-                            [NSNumber numberWithInteger:1300],
-                            [NSNumber numberWithInteger:2500],
-                            [NSNumber numberWithInteger:1700], nil];
-    
-    
-    for (int i = 0; i < arrayImage.count; i++) {
-        
-        NSDictionary * dictOrder = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [arrayImage objectAtIndex:i], @"image",
-                                    [arrayText objectAtIndex:i], @"text",
-                                    [arrayName objectAtIndex:i], @"name",
-                                    [arrayPrice objectAtIndex:i], @"price", nil];
-        
-        [arrayOrder addObject:dictOrder];
-    }
-    
-    return arrayOrder;
-}
-
 
 
 @end

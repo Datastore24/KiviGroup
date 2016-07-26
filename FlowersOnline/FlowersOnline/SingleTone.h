@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIView * viewBasketBar;
 @property (strong, nonatomic) UILabel * labelCountBasket;
+@property (strong, nonatomic) NSMutableArray * arrayBouquets;
 
 + (id)sharedManager;
 
