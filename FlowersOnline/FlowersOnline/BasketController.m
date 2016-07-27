@@ -35,6 +35,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    
 #pragma mark - Initialization
     
     BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:[[SingleTone sharedManager] arrayBouquets]];
@@ -62,5 +63,6 @@
     CheckoutController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckoutController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
+
 
 @end

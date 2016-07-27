@@ -61,7 +61,7 @@
 }
 
 //Общий метод анимации----------------------------------------------------------
-+ (void)animateTransformView:(UIView*)view withScale:(CGFloat)scale move_X:(CGFloat)moveX move_Y:(CGFloat)moveY alpha:(CGFloat)alpha delay:(CGFloat)delay
++ (void)animateTransformView:(UIView*)view withScale:(CGFloat)scale move_X:(CGFloat)moveX move_Y:(CGFloat)moveY alpha:(CGFloat)alpha delay:(CGFloat)delay andBlock: (void(^)(void)) block
 {
 
     [UIView animateWithDuration:0.3f
@@ -89,17 +89,30 @@
 
         }
         completion:^(BOOL finished){
+            block();
 
         }];
 }
 
-+ (void) animationTestView:(UIView*)view move_Y: (CGFloat)moveY
++ (void) animationTestView:(UIView*)view move_Y: (CGFloat)moveY andBlock: (void (^) (void)) block
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = view.frame;
         rect.origin.y = rect.origin.y + moveY;
         view.frame = rect;
-        
+    } completion:^(BOOL finished) {
+        block();
+    }];
+}
+
++ (void) animatioMoveXWithView:(UIView*)view move_X: (CGFloat)moveX andBlock: (void (^) (void)) block
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect rect = view.frame;
+        rect.origin.x = rect.origin.y + moveX;
+        view.frame = rect;
+    } completion:^(BOOL finished) {
+        block();
     }];
 }
 

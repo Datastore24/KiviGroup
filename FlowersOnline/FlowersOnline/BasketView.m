@@ -16,6 +16,9 @@
 @interface BasketView ()
 
 @property (strong, nonatomic) NSMutableArray * mainArray;
+@property (strong, nonatomic) NSMutableArray * arrayBasketCount;
+@property (strong, nonatomic) NSMutableArray * arrayTime;
+
 
 @end
 
@@ -31,6 +34,7 @@
     
     //-------------------------------
     NSInteger countPrice;
+    NSInteger maxCount;
     
 }
 
@@ -42,6 +46,7 @@
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
         self.mainArray = data;
+        self.arrayBasketCount = [[SingleTone sharedManager] arrayBasketCount];
         arrayView = [NSMutableArray new];
         NSArray * arrayNamesDelivery = [NSArray arrayWithObjects:
                                         @"Курьерская доставка о Москве - ",
@@ -53,6 +58,13 @@
                              [NSNumber numberWithInteger:0], nil];
         allPrice = 0;
         countPrice = 0;
+        
+        maxCount = self.mainArray.count;
+        
+        for (int i = 0; i < self.mainArray.count; i++) {
+            NSNumber * numberCount = [NSNumber numberWithInteger:1];
+            [self.arrayBasketCount addObject:numberCount];
+        }
         
 
         //Создание таблицы заказов----
@@ -77,7 +89,7 @@
             if (isiPhone5 || isiPhone4s) {
                 mainViewCell.frame = CGRectMake(0, 0 + 100 * i, self.frame.size.width, 100);
             }
-            mainViewCell.tag = 60 + i;
+            mainViewCell.tag = 1 + i;
             [mainScrollView addSubview:mainViewCell];
             
             [arrayView addObject:mainViewCell];
@@ -162,8 +174,11 @@
             }
             [mainViewCell addSubview:buttonDown];
             
+            
+            
             //Лейбл числа--------------------------------------------
-            CustomLabels * labelCount = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 55 andHeight:(120 / 2 - 10) andSizeWidht:20 andSizeHeight:20 andColor:@"a0a0a0" andText:[NSString stringWithFormat:@"%d", 1]];
+            NSString * stringCount = [NSString stringWithFormat:@"%ld", (long)[[self.arrayBasketCount objectAtIndex:i] integerValue]];
+            CustomLabels * labelCount = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 55 andHeight:(120 / 2 - 10) andSizeWidht:20 andSizeHeight:20 andColor:@"a0a0a0" andText:stringCount];
             if (isiPhone5 || isiPhone4s) {
                 labelCount.frame = CGRectMake(self.frame.size.width - 55, (100 / 2 - 10), 20, 20);
             }
@@ -273,9 +288,10 @@
     for (int i = 0; i < self.mainArray.count; i++) {
         if (button.tag == 10 + i) {
             UILabel * label = (UILabel*)[self viewWithTag:30 + i];
-            NSInteger intCount = [label.text integerValue];
-            intCount += 1;
-            label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
+            NSInteger countOrder = [[self.arrayBasketCount objectAtIndex:i] integerValue];
+            countOrder += 1;
+            [self.arrayBasketCount setObject:[NSNumber numberWithInteger:countOrder] atIndexedSubscript:i];
+            label.text = [NSString stringWithFormat:@"%ld", (long)[[self.arrayBasketCount objectAtIndex:i] integerValue]];
             NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
             NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
             NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
@@ -289,13 +305,13 @@
 
 - (void) downCountAction: (UIButton*) button
 {
-    for (int i = 0; i < self.mainArray.count; i++) {
+    for (int i = 0; i < arrayView.count; i++) {
         if (button.tag == 20 + i) {
-            
             UILabel * label = (UILabel*)[self viewWithTag:30 + i];
-            NSInteger intCount = [label.text integerValue];
-            intCount -= 1;
-            label.text = [NSString stringWithFormat:@"%ld", (long)intCount];
+            NSInteger countOrder = [[self.arrayBasketCount objectAtIndex:i] integerValue];
+            countOrder -= 1;
+            [self.arrayBasketCount setObject:[NSNumber numberWithInteger:countOrder] atIndexedSubscript:i];
+            label.text = [NSString stringWithFormat:@"%ld", (long)[[self.arrayBasketCount objectAtIndex:i] integerValue]];
             NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
             NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
             NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
@@ -305,37 +321,18 @@
             [allPriceLabelAction sizeToFit];
 
             if ([label.text isEqualToString:@"0"]) {
-                NSLog(@"Удаляем");
-                UIView * testView = (UIView*)[self viewWithTag:60 + i];
-                [Animation animateTransformView:testView withScale:1.f move_X:-self.frame.size.width + 10 move_Y:0 alpha:1.f delay:0.5f];
-                [self.mainArray removeObjectAtIndex:i];
-//                [[SingleTone sharedManager] setArrayBouquets:self.mainArray];
-//                [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%lu", (unsigned long)[[SingleTone sharedManager] arrayBouquets].count];
-            for (int j = 0; j < arrayView.count; j++) {
-                UIView * upsView = (UIView*)[self viewWithTag:60 + j];
-                if (upsView.tag > testView.tag) {
-                    if (isiPhone5 || isiPhone4s) {
-                        [Animation animationTestView:upsView move_Y:- 100];
-                    } else {
-                    [Animation animationTestView:upsView move_Y:- 120];
-                    }
-                }
                 
+                NSMutableArray * array = arrayView;
+                
+                [Animation animatioMoveXWithView:[array objectAtIndex:i] move_X:- self.frame.size.width - 100 andBlock:^{
+                    for (UIView * view in array) {
+                        [array removeObjectAtIndex:i+1];
+                            [Animation animationTestView:view move_Y:-view.frame.size.height andBlock:^{
+                            }];
+                        }
 
-
-                }
-                [UIView animateWithDuration:0.3 animations:^{
-                    CGSize sizeScrollNew = mainScrollView.contentSize;
-                    if (isiPhone4s || isiPhone5) {
-                        sizeScrollNew.height -= 100;
-                    } else {
-                    sizeScrollNew.height -= 120;
-                    }
-                    mainScrollView.contentSize = sizeScrollNew;
                 }];
-
             }
-            
         }
     }
 }

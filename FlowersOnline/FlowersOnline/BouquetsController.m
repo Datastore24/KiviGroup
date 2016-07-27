@@ -51,8 +51,6 @@
     [self.navigationController.navigationBar addSubview:countOrdersView];
     [[SingleTone sharedManager] setViewBasketBar:countOrdersView];
     
-
-
     UILabel * labelBasket = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
     if ([[SingleTone sharedManager] labelCountBasket] == nil) {
         labelBasket.text = @"0";
