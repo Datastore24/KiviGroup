@@ -17,8 +17,6 @@
 
 @property (strong, nonatomic) NSMutableArray * mainArray;
 @property (strong, nonatomic) NSMutableArray * arrayBasketCount;
-@property (strong, nonatomic) NSMutableArray * arrayTime;
-
 
 @end
 
@@ -27,6 +25,9 @@
     UITableView * mainTableView;
     UIScrollView * mainScrollView;
     NSMutableArray * arrayView;
+    NSMutableArray * arrayButtonUp;
+    NSMutableArray * arrayButtonDown;
+    NSMutableArray * arrayLabelOrders;
     NSArray * arrayPriceDelivery;
     //------------------------------
     NSInteger allPrice;
@@ -48,6 +49,9 @@
         self.mainArray = data;
         self.arrayBasketCount = [[SingleTone sharedManager] arrayBasketCount];
         arrayView = [NSMutableArray new];
+        arrayButtonUp  = [NSMutableArray new];
+        arrayButtonDown = [NSMutableArray new];
+        arrayLabelOrders = [NSMutableArray new];
         NSArray * arrayNamesDelivery = [NSArray arrayWithObjects:
                                         @"Курьерская доставка о Москве - ",
                                         @"Курьерская доставка до 10 км от МКАД - ",
@@ -58,15 +62,12 @@
                              [NSNumber numberWithInteger:0], nil];
         allPrice = 0;
         countPrice = 0;
-        
         maxCount = self.mainArray.count;
         
         for (int i = 0; i < self.mainArray.count; i++) {
             NSNumber * numberCount = [NSNumber numberWithInteger:1];
             [self.arrayBasketCount addObject:numberCount];
         }
-        
-
         //Создание таблицы заказов----
         mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 200)];
         if (isiPhone5 || isiPhone4s) {
@@ -80,20 +81,14 @@
         } else {
             mainScrollView.contentSize = CGSizeMake(0, 120 * self.mainArray.count);
         }
-        
         for (int i = 0; i < self.mainArray.count; i++) {
-            
             NSDictionary * dictCount = [self.mainArray objectAtIndex:i];
-            
             UIView * mainViewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 120 * i, self.frame.size.width, 120)];
             if (isiPhone5 || isiPhone4s) {
                 mainViewCell.frame = CGRectMake(0, 0 + 100 * i, self.frame.size.width, 100);
             }
-            mainViewCell.tag = 1 + i;
             [mainScrollView addSubview:mainViewCell];
-            
             [arrayView addObject:mainViewCell];
-            
             //Основная картинка-----------------------------------
             UIImageView * imageTableCell = [[UIImageView alloc] initWithFrame:CGRectMake(15, 25, 70, 70)];
             if (isiPhone5 || isiPhone4s) {
@@ -138,7 +133,6 @@
             NSArray * arrayVariants = [dictCount objectForKey:@"variants"];
             NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
             
-            
             NSString * stringPrice = [NSString stringWithFormat:@"%ld р", (long)[[dictVariants objectForKey:@"price"] integerValue]];
             allPrice += [[dictVariants objectForKey:@"price"] integerValue];
             CustomLabels * labelCellPrice = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:77 andSizeWidht:400 andSizeHeight:18 andColor:COLORPINCK andText:stringPrice];
@@ -152,7 +146,7 @@
             
             //Создаем кнопку увеличения числа товара--------------
             UIButton * buttonUp = [UIButton buttonWithType:UIButtonTypeCustom];
-            buttonUp.tag = 10 + i;
+//            buttonUp.tag = 10 + i;
             UIImage * imageButtonUp = [UIImage imageNamed:@"buttomInageUp.png"];
             buttonUp.frame = CGRectMake(self.frame.size.width - 75, (120 / 2 - 10), 20, 20);
             [buttonUp setImage:imageButtonUp forState:UIControlStateNormal];
@@ -161,10 +155,11 @@
                 buttonUp.frame = CGRectMake(self.frame.size.width - 75, (100 / 2 - 10), 20, 20);
             }
             [mainViewCell addSubview:buttonUp];
+            [arrayButtonUp addObject:buttonUp];
             
             //Создаем кнопку уменьшения числа товара-----------------
             UIButton * buttonDown = [UIButton buttonWithType:UIButtonTypeCustom];
-            buttonDown.tag = 20 + i;
+//            buttonDown.tag = 20 + i;
             UIImage * imageButtonDown = [UIImage imageNamed:@"ButtonImageDown.png"];
             buttonDown.frame = CGRectMake(self.frame.size.width - 35, (120 / 2 - 10), 20, 20);
             [buttonDown setImage:imageButtonDown forState:UIControlStateNormal];
@@ -173,6 +168,7 @@
                 buttonDown.frame = CGRectMake(self.frame.size.width - 35, (100 / 2 - 10), 20, 20);
             }
             [mainViewCell addSubview:buttonDown];
+            [arrayButtonDown addObject:buttonDown];
             
             
             
@@ -182,9 +178,10 @@
             if (isiPhone5 || isiPhone4s) {
                 labelCount.frame = CGRectMake(self.frame.size.width - 55, (100 / 2 - 10), 20, 20);
             }
-            labelCount.tag = 30 + i;
+//            labelCount.tag = 30 + i;
             labelCount.font = [UIFont fontWithName:FONTBOND size:18];
             [mainViewCell addSubview:labelCount];
+            [arrayLabelOrders addObject:labelCount];
             
         }
         
@@ -286,8 +283,8 @@
 - (void) upCountAction: (UIButton*) button
 {
     for (int i = 0; i < self.mainArray.count; i++) {
-        if (button.tag == 10 + i) {
-            UILabel * label = (UILabel*)[self viewWithTag:30 + i];
+        if ([button isEqual:[arrayButtonUp objectAtIndex:i]]) {
+            UILabel * label = [arrayLabelOrders objectAtIndex:i];
             NSInteger countOrder = [[self.arrayBasketCount objectAtIndex:i] integerValue];
             countOrder += 1;
             [self.arrayBasketCount setObject:[NSNumber numberWithInteger:countOrder] atIndexedSubscript:i];
@@ -299,15 +296,16 @@
             allPrice += intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
+            
         }
     }
 }
 
 - (void) downCountAction: (UIButton*) button
 {
-    for (int i = 0; i < arrayView.count; i++) {
-        if (button.tag == 20 + i) {
-            UILabel * label = (UILabel*)[self viewWithTag:30 + i];
+    for (int i = 0; i < self.mainArray.count; i++) {
+        if ([button isEqual:[arrayButtonDown objectAtIndex:i]]) {
+            UILabel * label = [arrayLabelOrders objectAtIndex:i];
             NSInteger countOrder = [[self.arrayBasketCount objectAtIndex:i] integerValue];
             countOrder -= 1;
             [self.arrayBasketCount setObject:[NSNumber numberWithInteger:countOrder] atIndexedSubscript:i];
@@ -322,19 +320,37 @@
 
             if ([label.text isEqualToString:@"0"]) {
                 
-                NSMutableArray * array = arrayView;
+                UIView * actionView = [arrayView objectAtIndex:i];
                 
-                [Animation animatioMoveXWithView:[array objectAtIndex:i] move_X:- self.frame.size.width - 100 andBlock:^{
-                    for (UIView * view in array) {
-                        [array removeObjectAtIndex:i+1];
-                            [Animation animationTestView:view move_Y:-view.frame.size.height andBlock:^{
-                            }];
-                        }
-
-                }];
+//                [Animation animatioMoveXWithView:actionView move_X:- self.frame.size.width - 120 andBlock:^{
+//                    for (int j = 0; j < self.mainArray.count; j++) {
+//                        UIView * quetView = [arrayView objectAtIndex:j];
+//                        if (quetView.frame.origin.y > actionView.frame.origin.y) {
+//                            [Animation animationTestView:quetView move_Y:-quetView.frame.size.height andBlock:^{
+//                                if (j == self.mainArray.count - 1) {
+                
+                                    [arrayView removeObjectAtIndex:i];
+                                    [arrayButtonDown removeObjectAtIndex:i];
+                                    [arrayButtonUp removeObjectAtIndex:i];
+                                    [arrayLabelOrders removeObjectAtIndex:i];
+                                    [self.mainArray removeObjectAtIndex:i];
+                                    [self.arrayBasketCount removeObjectAtIndex:i];
+//                                }
+                
+                                NSLog(@"%@", arrayButtonUp);
+                NSLog(@"%d", i);
+//                            }];
+//                        }
+//                    }
+//                }];
             }
         }
     }
+}
+
+
+- (void) animathionMethod {
+    
 }
 
 - (void) buttonChangeDeliveryAction: (UIButton*) button
@@ -360,6 +376,16 @@
 - (void) buttonCheckoutAction
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
+    
+    
+    
+    
+    
+                              
+                              
+                        
+    
+    
 }
 
 

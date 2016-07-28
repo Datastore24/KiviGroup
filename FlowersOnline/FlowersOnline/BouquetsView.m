@@ -329,12 +329,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
     [[[SingleTone sharedManager] arrayBouquets] addObject:dictPrice];
     tablePrice.allowsSelection = NO;
-    
-    
     NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
     count += 1;
     [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", count];

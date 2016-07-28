@@ -75,6 +75,8 @@
         [self.view addSubview:mainView];
         
     }];
+    
+
 
 }
 
