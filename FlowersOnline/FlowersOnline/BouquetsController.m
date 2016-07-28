@@ -27,7 +27,6 @@
     [super viewDidLoad];
 #pragma mark - Header
     
-    self.navigationController.navigationBarHidden = NO;
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -51,8 +50,6 @@
     [self.navigationController.navigationBar addSubview:countOrdersView];
     [[SingleTone sharedManager] setViewBasketBar:countOrdersView];
     
-
-
     UILabel * labelBasket = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
     if ([[SingleTone sharedManager] labelCountBasket] == nil) {
         labelBasket.text = @"0";
@@ -77,7 +74,6 @@
         [self.view addSubview:mainView];
         
     }];
-
 }
 
 - (void) dealloc

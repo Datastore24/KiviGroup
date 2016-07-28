@@ -23,6 +23,8 @@
     //Создаем синглтон для букетов
     NSMutableArray * arrayBouquets = [[NSMutableArray alloc] init];
     [[SingleTone sharedManager] setArrayBouquets:arrayBouquets];
+    NSMutableArray * arrayBasketCount = [[NSMutableArray alloc] init];
+    [[SingleTone sharedManager] setArrayBasketCount:arrayBasketCount];
     
     return YES;
 }

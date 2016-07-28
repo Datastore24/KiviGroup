@@ -55,4 +55,8 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = NO;
+}
+
 @end

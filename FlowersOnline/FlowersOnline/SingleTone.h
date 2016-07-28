@@ -15,6 +15,8 @@
 @property (strong, nonatomic) UILabel * labelCountBasket;
 @property (strong, nonatomic) NSMutableArray * arrayBouquets;
 
+@property (strong, nonatomic) NSMutableArray * arrayBasketCount;
+
 + (id)sharedManager;
 
 @end

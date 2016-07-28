@@ -13,6 +13,7 @@
 @synthesize viewBasketBar;
 @synthesize labelCountBasket;
 @synthesize arrayBouquets;
+@synthesize arrayBasketCount;
 
 
 #pragma mark Singleton Methods

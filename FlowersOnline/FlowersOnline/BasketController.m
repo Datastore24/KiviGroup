@@ -21,8 +21,6 @@
     [super viewDidLoad];
     
 #pragma mark - Header
-    
-    self.navigationController.navigationBarHidden = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"alphaView" object:nil];
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
@@ -34,6 +32,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     
 #pragma mark - Initialization
     
@@ -62,5 +61,6 @@
     CheckoutController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckoutController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
+
 
 @end
