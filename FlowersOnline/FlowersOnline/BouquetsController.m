@@ -27,7 +27,6 @@
     [super viewDidLoad];
 #pragma mark - Header
     
-    self.navigationController.navigationBarHidden = NO;
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -75,9 +74,6 @@
         [self.view addSubview:mainView];
         
     }];
-    
-
-
 }
 
 - (void) dealloc

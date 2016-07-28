@@ -163,12 +163,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="q56-dg-jiM" kind="relationship" relationship="rootViewController" id="fna-1W-0dr"/>
+                        <segue destination="q56-dg-jiM" kind="relationship" relationship="rootViewController" id="nZD-Cx-lwt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk9-8L-5cz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="523" y="562"/>
+            <point key="canvasLocation" x="88" y="1058"/>
         </scene>
         <!--Checkout Controller-->
         <scene sceneID="FBt-cg-Ybw">

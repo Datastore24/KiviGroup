@@ -21,8 +21,6 @@
     [super viewDidLoad];
     
 #pragma mark - Header
-    
-    self.navigationController.navigationBarHidden = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"alphaView" object:nil];
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];

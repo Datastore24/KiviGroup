@@ -18,8 +18,6 @@
 - (void) viewDidLoad
 {
 #pragma mark - Header
-    
-    self.navigationController.navigationBarHidden = NO;
     //Заголовок--------------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ОФОРМЛЕНИЕ"];
     self.navigationItem.titleView = title;

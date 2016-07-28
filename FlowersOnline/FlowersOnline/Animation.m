@@ -98,7 +98,7 @@
 {
     [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = view.frame;
-        rect.origin.y = rect.origin.y + moveY;
+        rect.origin.y = rect.origin.y - moveY;
         view.frame = rect;
     } completion:^(BOOL finished) {
         block();
@@ -109,7 +109,7 @@
 {
     [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = view.frame;
-        rect.origin.x = rect.origin.y + moveX;
+        rect.origin.x = rect.origin.x - moveX;
         view.frame = rect;
     } completion:^(BOOL finished) {
         block();

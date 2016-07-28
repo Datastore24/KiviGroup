@@ -36,6 +36,7 @@
     //-------------------------------
     NSInteger countPrice;
     NSInteger maxCount;
+    NSInteger stap;
     
 }
 
@@ -62,6 +63,7 @@
                              [NSNumber numberWithInteger:0], nil];
         allPrice = 0;
         countPrice = 0;
+        stap = 0;
         maxCount = self.mainArray.count;
         
         for (int i = 0; i < self.mainArray.count; i++) {
@@ -317,40 +319,37 @@
             allPrice -= intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
-
-            if ([label.text isEqualToString:@"0"]) {
-                
-                UIView * actionView = [arrayView objectAtIndex:i];
-                
-//                [Animation animatioMoveXWithView:actionView move_X:- self.frame.size.width - 120 andBlock:^{
-//                    for (int j = 0; j < self.mainArray.count; j++) {
-//                        UIView * quetView = [arrayView objectAtIndex:j];
-//                        if (quetView.frame.origin.y > actionView.frame.origin.y) {
-//                            [Animation animationTestView:quetView move_Y:-quetView.frame.size.height andBlock:^{
-//                                if (j == self.mainArray.count - 1) {
-                
-                                    [arrayView removeObjectAtIndex:i];
-                                    [arrayButtonDown removeObjectAtIndex:i];
-                                    [arrayButtonUp removeObjectAtIndex:i];
-                                    [arrayLabelOrders removeObjectAtIndex:i];
-                                    [self.mainArray removeObjectAtIndex:i];
-                                    [self.arrayBasketCount removeObjectAtIndex:i];
-//                                }
-                
-                                NSLog(@"%@", arrayButtonUp);
-                NSLog(@"%d", i);
-//                            }];
-//                        }
-//                    }
-//                }];
-            }
+                stap = i;
         }
     }
+    [self animathionMethod];
 }
 
 
 - (void) animathionMethod {
-    
+    UILabel * label = [arrayLabelOrders objectAtIndex:stap];
+    if ([label.text isEqualToString:@"0"]) {
+        UIView * viewAnim = [arrayView objectAtIndex:stap];
+        CGFloat heidth = viewAnim.frame.origin.y;
+        [Animation animatioMoveXWithView:viewAnim move_X:self.frame.size.width andBlock:^{
+            [self.mainArray removeObjectAtIndex:stap];
+            [self.arrayBasketCount removeObjectAtIndex:stap];
+            [arrayView removeObjectAtIndex:stap];
+            [arrayButtonDown removeObjectAtIndex:stap];
+            [arrayButtonUp removeObjectAtIndex:stap];
+            [arrayLabelOrders removeObjectAtIndex:stap];
+            
+            NSInteger countOrder = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
+            countOrder -= 1;
+            [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)countOrder];
+            for (int i = 0; i < self.mainArray.count; i++) {
+                    UIView * view = [arrayView objectAtIndex:i];
+                    if (view.frame.origin.y > heidth) {
+                        [Animation animationTestView:view move_Y:view.frame.size.height andBlock:^{}];
+                    }
+                }
+        }];
+    }
 }
 
 - (void) buttonChangeDeliveryAction: (UIButton*) button
@@ -376,16 +375,7 @@
 - (void) buttonCheckoutAction
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
-    
-    
-    
-    
-    
-                              
-                              
-                        
-    
-    
+
 }
 
 
