@@ -10,6 +10,13 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "CustomLabels.h"
+#import "Auth.h"
+#import "AuthDBClass.h"
+
+@interface PersonalAreaView ()
+
+
+@end
 
 @implementation PersonalAreaView
 {
@@ -22,36 +29,57 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height);
-        
-        //тестовый массив---------
-        testArray = [self setArrayTest];
-        
+
         //Имя пользовтаеля---------------------
-        CustomLabels * labelName = [[CustomLabels alloc] initLabelBondWithWidht:20 andHeight:15 andColor:COLORTEXTGRAY andText:@"Анатоле Вассерман"];
-        [self addSubview:labelName];
+        CustomLabels * labelName = [[CustomLabels alloc] initLabelBondWithWidht:20 andHeight:15 andColor:COLORTEXTGRAY andText:@"Goust"];
+
+        
         
         //Заголовк телефон-------------------
         CustomLabels * labelTintPhone = [[CustomLabels alloc] initLabelBondWithWidht:20
                                                                            andHeight:labelName.frame.origin.y + labelName.frame.size.height + 2
                                                                             andColor:COLORGREEN andText:@"Тел:"];
-        [self addSubview:labelTintPhone];
+        
+        
+        
         
         //Данные Телефон
         CustomLabels * labelTintPhoneAct = [[CustomLabels alloc] initLabelRegularWithWidht:25 + labelTintPhone.frame.size.width
                                                                            andHeight:labelName.frame.origin.y + labelName.frame.size.height + 2
-                                                                            andColor:COLORTEXTGRAY andText:@"+7 999 999 999"];
-        [self addSubview:labelTintPhoneAct];
+                                                                            andColor:COLORTEXTGRAY andText:@"+7 xxx xxx xx xx"];
+
+        
         
         //Заголовк почта-------------------
         CustomLabels * labelTintEmail = [[CustomLabels alloc] initLabelBondWithWidht:20
                                                                            andHeight:labelTintPhone.frame.origin.y + labelTintPhone.frame.size.height + 2
                                                                             andColor:COLORGREEN andText:@"Email:"];
-        [self addSubview:labelTintEmail];
+        
+        
         
         //Заголовк почта изменяемый-------------------
         CustomLabels * labelTintEmailAct = [[CustomLabels alloc] initLabelRegularWithWidht:25 + labelTintEmail.frame.size.width
                                                                            andHeight:labelTintPhone.frame.origin.y + labelTintPhone.frame.size.height + 2
-                                                                            andColor:COLORTEXTGRAY andText:@"Anatole@mail.ru"];
+                                                                            andColor:COLORTEXTGRAY andText:@"goust@email.com"];
+        
+        
+        AuthDBClass * authDbClass = [AuthDBClass new];
+        if([authDbClass checkRegistration]){
+            NSLog(@"ДАННЫЕ ЕСТЬ");
+            NSArray * userArray = [authDbClass showAllUsers];
+            Auth * auth = [userArray objectAtIndex:0];
+            labelName.text = auth.name;
+            [labelName sizeToFit];
+            labelTintPhoneAct.text = auth.phone;
+            [labelTintPhoneAct sizeToFit];
+            labelTintEmailAct.text = auth.email;
+            [labelTintEmailAct sizeToFit];
+        }
+        
+        [self addSubview:labelName];
+        [self addSubview:labelTintPhone];
+        [self addSubview:labelTintPhoneAct];
+        [self addSubview:labelTintEmail];
         [self addSubview:labelTintEmailAct];
         
         //Вью Фон Для таблицы-------

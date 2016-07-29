@@ -10,6 +10,6 @@
 
 @interface SharesView : UIView
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) dataArray;
 
 @end

@@ -12,8 +12,11 @@
 #import "TitleClass.h"
 #import "SharesView.h"
 #import "BasketController.h"
+#import "APIGetClass.h"
 
 @interface SharesController ()
+
+@property (strong, nonatomic) NSArray * arrayData;
 
 @end
 
@@ -38,9 +41,12 @@
     self.navigationItem.rightBarButtonItem = mailbutton;
     
 #pragma mark - Initialization View
+
     
-    SharesView * mainView = [[SharesView alloc] initWithView:self.view];
-    [self.view addSubview:mainView];
+    [self getAPIWithBlock:^{
+        SharesView * mainView = [[SharesView alloc] initWithView:self.view andData:self.arrayData];
+        [self.view addSubview:mainView];
+    }];
 
 }
 
@@ -55,6 +61,21 @@
 {
     BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:nil method:@"load_actions" complitionBlock:^(id response) {
+        self.arrayData = response;
+        
+        block();
+        
+    }];
 }
 
 

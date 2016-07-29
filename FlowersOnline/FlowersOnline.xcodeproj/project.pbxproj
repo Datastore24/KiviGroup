@@ -83,6 +83,8 @@
 		FF56E84E1D2146C900D9DB40 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF56E83F1D2146C900D9DB40 /* 1.jpg */; };
 		FF56E8521D21751C00D9DB40 /* iconBasketBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = FF56E8511D21751C00D9DB40 /* iconBasketBlack.png */; };
 		FF5CCB421D075EE300990081 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CCB411D075EE300990081 /* CustomButton.m */; };
+		FF6DD5421D4B601000317495 /* NavController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6DD5411D4B601000317495 /* NavController.m */; };
+		FF6DD5441D4B98ED00317495 /* buttonUp.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6DD5431D4B98ED00317495 /* buttonUp.png */; };
 		FF73503C1D2255BA001DD7C2 /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF73503B1D2255BA001DD7C2 /* SingleTone.m */; };
 		FF911C771D12FA0500D3BE87 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF911C761D12FA0500D3BE87 /* Animation.m */; };
 		FF911C791D1308D900D3BE87 /* imageButtonDelivery.png in Resources */ = {isa = PBXBuildFile; fileRef = FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */; };
@@ -250,6 +252,9 @@
 		FF56E8511D21751C00D9DB40 /* iconBasketBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBasketBlack.png; sourceTree = "<group>"; };
 		FF5CCB401D075EE300990081 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		FF5CCB411D075EE300990081 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		FF6DD5401D4B601000317495 /* NavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavController.h; sourceTree = "<group>"; };
+		FF6DD5411D4B601000317495 /* NavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavController.m; sourceTree = "<group>"; };
+		FF6DD5431D4B98ED00317495 /* buttonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonUp.png; path = ../../../../../../Desktop/buttonUp.png; sourceTree = "<group>"; };
 		FF73503A1D2255BA001DD7C2 /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		FF73503B1D2255BA001DD7C2 /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		FF911C751D12FA0500D3BE87 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
@@ -326,6 +331,7 @@
 		771669D51D0ED60600037831 /* Basket */ = {
 			isa = PBXGroup;
 			children = (
+				FF6DD5431D4B98ED00317495 /* buttonUp.png */,
 				FF911C781D1308D900D3BE87 /* imageButtonDelivery.png */,
 				77D57B9C1D0F0DCE00EEA42D /* ButtonImageDown.png */,
 				77D57B9D1D0F0DCE00EEA42D /* buttomInageUp.png */,
@@ -507,6 +513,8 @@
 				AD109ABD1CCF5B120074BA7B /* AppDelegate.m */,
 				AD109ABF1CCF5B120074BA7B /* ViewController.h */,
 				AD109AC01CCF5B120074BA7B /* ViewController.m */,
+				FF6DD5401D4B601000317495 /* NavController.h */,
+				FF6DD5411D4B601000317495 /* NavController.m */,
 				AD109AC21CCF5B120074BA7B /* Main.storyboard */,
 				AD109AC51CCF5B120074BA7B /* Assets.xcassets */,
 				AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */,
@@ -734,6 +742,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6DD5441D4B98ED00317495 /* buttonUp.png in Resources */,
 				FF56E8421D2146C900D9DB40 /* 11.jpg in Resources */,
 				7748A18B1CD5022F001A5743 /* BookmarksImageMenu.png in Resources */,
 				FFC1ACEF1D0B49D400B30E4B /* bouquets1.png in Resources */,
@@ -842,6 +851,7 @@
 				7708B61B1D1850050083C029 /* CheckoutController.m in Sources */,
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
 				7708B61E1D1850180083C029 /* CheckoutView.m in Sources */,
+				FF6DD5421D4B601000317495 /* NavController.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
 				FF2CD7161D42074C001F2F6A /* TextAndImageHeight.m in Sources */,
 				FF911C771D12FA0500D3BE87 /* Animation.m in Sources */,

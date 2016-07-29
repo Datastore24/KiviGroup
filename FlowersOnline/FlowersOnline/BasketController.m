@@ -13,6 +13,13 @@
 #import "BasketView.h"
 #import "CheckoutController.h"
 #import "SingleTone.h"
+#import "APIGetClass.h"
+
+@interface BasketController ()
+
+@property (strong, nonatomic) NSArray * arrayDelivery;
+
+@end
 
 @implementation BasketController
 
@@ -32,12 +39,19 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
     
     
 #pragma mark - Initialization
     
-    BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:[[SingleTone sharedManager] arrayBouquets]];
-    [self.view addSubview:mainView];
+    [self getAPIWithBlock:^{
+        BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:[[SingleTone sharedManager] arrayBouquets] andDelivery:self.arrayDelivery];
+        [self.view addSubview:mainView];
+        
+        NSLog(@"%@", self.arrayDelivery);
+    }];
+    
+    
 
 }
 
@@ -60,6 +74,21 @@
 {
     CheckoutController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CheckoutController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    
+    APIGetClass * apiGallery = [APIGetClass new];
+    [apiGallery getDataFromServerWithParams:nil method:@"get_deliveryes" complitionBlock:^(id response) {\
+        self.arrayDelivery = response;
+        
+        block();
+        
+    }];
 }
 
 

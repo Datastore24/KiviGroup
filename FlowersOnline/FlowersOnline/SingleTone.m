@@ -14,6 +14,7 @@
 @synthesize labelCountBasket;
 @synthesize arrayBouquets;
 @synthesize arrayBasketCount;
+@synthesize delivery;
 
 
 #pragma mark Singleton Methods

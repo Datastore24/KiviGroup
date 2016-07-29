@@ -19,15 +19,20 @@
 // Метод инициализации объекта для ввода текста-----------
 // Элемент scrollWidth используется только в расширенном
 // скрол вью для смещения объектов в очи Х
+// text - если текст записывается при инициализации текст филд
 - (instancetype)initWithView: (UIView*) view
                       PointY: (CGFloat) pointY
                     andImage: (NSString*) imageName
           andTextPlaceHolder: (NSString*) placeHolder
-              andScrollWidth: (CGFloat) scrollWidth;
+              andScrollWidth: (CGFloat) scrollWidth
+                     andText: (NSString*) text
+             andKeyboardType: (UIKeyboardType) keyboardType;
 
 - (instancetype)initCheckoutWithView: (UIView*) view
                               PointY: (CGFloat) pointY
-                  andTextPlaceHolder: (NSString*) placeHolder;
+                  andTextPlaceHolder: (NSString*) placeHolder
+                             andText: (NSString*) text
+                     andKeyboardType: (UIKeyboardType) keyboardType;
 
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;

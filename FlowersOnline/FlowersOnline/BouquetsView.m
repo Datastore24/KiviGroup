@@ -41,7 +41,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height - 64);
         
         self.arrayData = array;
         arrayScroll = [[NSMutableArray alloc] init];
@@ -51,7 +51,7 @@
         
 
         //Наносим основной скрол вью
-        mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
         
@@ -67,19 +67,19 @@
             UIScrollView * scrollImages = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * i, self.frame.size.width, self.frame.size.width)];
             [scrollImages setDelegate:self];
             [scrollImages setPagingEnabled:YES];
-            [scrollImages setContentSize:CGSizeMake(self.frame.size.width*3, self.frame.size.width)]; // задаем количество слайдов
+            [scrollImages setContentSize:CGSizeMake(self.frame.size.width, self.frame.size.width)]; // задаем количество слайдов
             scrollImages.showsHorizontalScrollIndicator = NO;
             [scrollImages setBackgroundColor:[UIColor whiteColor]]; // цвет фона скролвью
             [arrayScroll addObject:scrollImages];
             [mainScrollView addSubview:scrollImages];
             
-            //Инициализация pageControl-------------------------------------------
-            UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 30, scrollImages.frame.size.height-20 + self.frame.size.width * i, 60, 10)];
-            [pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"303f9f"]]; //цвет "точек" при пролистывании экрана приветствия
-            pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-            [pageControl setNumberOfPages:3]; // задаем количетсво слайдов приветствия
-            [arrayControl addObject:pageControl];
-            [mainScrollView addSubview:pageControl];
+//            //Инициализация pageControl-------------------------------------------
+//            UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 30, scrollImages.frame.size.height-20 + self.frame.size.width * i, 60, 10)];
+//            [pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"303f9f"]]; //цвет "точек" при пролистывании экрана приветствия
+//            pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+//            [pageControl setNumberOfPages:3]; // задаем количетсво слайдов приветствия
+//            [arrayControl addObject:pageControl];
+//            [mainScrollView addSubview:pageControl];
             
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
             UIImage * image = [UIImage imageWithData: imageData];
@@ -153,7 +153,7 @@
         
         //Крытая таблица цен----------------------------------------------------
         //Создание таблицы заказов----
-        tablePrice = [[UITableView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, self.frame.size.height - self.frame.size.width - 64)];
+        tablePrice = [[UITableView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, self.frame.size.height - self.frame.size.width)];
         //Убираем полосы разделяющие ячейки------------------------------
         tablePrice.separatorStyle = UITableViewCellSeparatorStyleNone;
         tablePrice.dataSource = self;
@@ -169,18 +169,18 @@
     return self;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-        for (int i = 0; i < self.arrayData.count; i++) {
-            if ([scrollView isEqual:[arrayScroll objectAtIndex:i]]) {
-                CGFloat pageWidth = CGRectGetWidth(self.bounds);
-                UIScrollView * scrol = [arrayScroll objectAtIndex:i];
-                UIPageControl * control = [arrayControl objectAtIndex:i];
-                CGFloat pageFraction = scrol.contentOffset.x / pageWidth;
-                control.currentPage = roundf(pageFraction);
-            }
-        }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    
+//        for (int i = 0; i < self.arrayData.count; i++) {
+//            if ([scrollView isEqual:[arrayScroll objectAtIndex:i]]) {
+//                CGFloat pageWidth = CGRectGetWidth(self.bounds);
+//                UIScrollView * scrol = [arrayScroll objectAtIndex:i];
+//                UIPageControl * control = [arrayControl objectAtIndex:i];
+//                CGFloat pageFraction = scrol.contentOffset.x / pageWidth;
+//                control.currentPage = roundf(pageFraction);
+//            }
+//        }
+//}
 
 
 #pragma mark - Buttons Action
@@ -193,10 +193,10 @@
                 mainScrollView.scrollEnabled = NO;
                 [UIView animateWithDuration:0.3 animations:^{
                     //Метод оцентровки------------------------------------
-                    mainScrollView.contentOffset = CGPointMake(0, ((self.frame.size.width) * i) - 64);
+                    mainScrollView.contentOffset = CGPointMake(0, ((self.frame.size.width) * i));
                     
                     CGRect tableRect = tablePrice.frame;
-                    tableRect.origin.y -= (self.frame.size.height - self.frame.size.width) - 64;
+                    tableRect.origin.y -= (self.frame.size.height - self.frame.size.width);
                     tablePrice.frame = tableRect;
                     
                     [UIView animateWithDuration:0.3 animations:^{
@@ -233,7 +233,7 @@
                         mainScrollView.contentOffset = CGPointMake(0, mainScrollView.contentOffset.y - tablePrice.frame.size.height);
                     }
                     CGRect tableRect = tablePrice.frame;
-                    tableRect.origin.y += (self.frame.size.height - self.frame.size.width) - 64;
+                    tableRect.origin.y += (self.frame.size.height - self.frame.size.width);
                     tablePrice.frame = tableRect;
                     
                     [UIView animateWithDuration:0.3 animations:^{
@@ -264,9 +264,9 @@
             buttonTup.isBool = NO;
             [UIView animateWithDuration:0.3 animations:^{
                 //Метод оцентровки------------------------------------
-                mainScrollView.contentOffset = CGPointMake(0, ((self.frame.size.width) * i) - 64);
+                mainScrollView.contentOffset = CGPointMake(0, ((self.frame.size.width) * i));
                 CGRect tableRect = tablePrice.frame;
-                tableRect.origin.y -= (self.frame.size.height - self.frame.size.width) - 64;
+                tableRect.origin.y -= (self.frame.size.height - self.frame.size.width);
                 tablePrice.frame = tableRect;
                 [UIView animateWithDuration:0.3 animations:^{
                     UIButton * buttonGive = (UIButton*)[self viewWithTag:20 + i];

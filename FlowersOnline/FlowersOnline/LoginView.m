@@ -65,7 +65,7 @@
         
         //Создание полей ввода текста----
         for (int i = 0; i < arrayImageName.count; i++) {
-            InputTextView * inputText = [[InputTextView alloc] initWithView:self PointY:460 + 76 * i andImage:[arrayImageName objectAtIndex:i] andTextPlaceHolder:[arrayName objectAtIndex:i] andScrollWidth:widthScroll];
+            InputTextView * inputText = [[InputTextView alloc] initWithView:self PointY:460 + 76 * i andImage:[arrayImageName objectAtIndex:i] andTextPlaceHolder:[arrayName objectAtIndex:i] andScrollWidth:widthScroll andText:nil andKeyboardType:UIKeyboardTypeDefault];
             if ([[arrayName objectAtIndex:i] isEqualToString:@"Пароль"]) {
                 inputText.textFieldInput.secureTextEntry = YES;
             }
@@ -177,7 +177,7 @@
         
         //Создание полей ввода текста при регистрации----
         for (int i = 0; i < arrayImageNameReg.count; i++) {
-            InputTextView * inputTextReg = [[InputTextView alloc] initWithView:self PointY:360 + 76 * i andImage:[arrayImageNameReg objectAtIndex:i] andTextPlaceHolder:[arrayNameReg objectAtIndex:i] andScrollWidth:0];
+            InputTextView * inputTextReg = [[InputTextView alloc] initWithView:self PointY:360 + 76 * i andImage:[arrayImageNameReg objectAtIndex:i] andTextPlaceHolder:[arrayNameReg objectAtIndex:i] andScrollWidth:0 andText:nil andKeyboardType:UIKeyboardTypeDefault];
             if ([[arrayNameReg objectAtIndex:i] isEqualToString:@"Пароль"]) {
                 inputTextReg.textFieldInput.secureTextEntry = YES;
             }

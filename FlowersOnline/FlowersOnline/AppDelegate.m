@@ -29,6 +29,10 @@
     NSMutableArray * arrayBasketCount = [[NSMutableArray alloc] init];
     [[SingleTone sharedManager] setArrayBasketCount:arrayBasketCount];
      [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    NSMutableDictionary * deliveryDict = [[NSMutableDictionary alloc] init];
+    [[SingleTone sharedManager] setDelivery:deliveryDict];
+    
+    
     
     return YES;
 }

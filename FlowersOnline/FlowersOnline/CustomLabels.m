@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(widht, height, 20, 16);
+        self.frame = CGRectMake(widht, height, 30, 16);
         self.text = text;
         self.textColor = [UIColor colorWithHexString:hexColor];
         self.font = [UIFont fontWithName:FONTBOND size:15];

@@ -11,6 +11,7 @@
 @interface BasketView : UIView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSMutableArray*) data;
+                     andData: (NSMutableArray*) data
+                 andDelivery: (NSArray*) delivery;
 
 @end
