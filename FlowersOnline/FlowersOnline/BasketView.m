@@ -268,7 +268,7 @@
         UIButton * buttonCheckout = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonCheckout.frame = CGRectMake(20, 140, self.frame.size.width - 40, 35);
         buttonCheckout.backgroundColor = [UIColor colorWithHexString:@"85af02"];
-        [buttonCheckout setTitle:@"ПЕРЕЙТИ К ОПЛАТЕ" forState:UIControlStateNormal];
+        [buttonCheckout setTitle:@"ПЕРЕЙТИ К ОФОРМЛЕНИЮ" forState:UIControlStateNormal];
         [buttonCheckout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonCheckout.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
         [buttonCheckout addTarget:self action:@selector(buttonCheckoutAction) forControlEvents:UIControlEventTouchUpInside];

@@ -14,8 +14,6 @@
 @implementation Auth (CoreDataProperties)
 
 @dynamic uid;
-@dynamic login;
-@dynamic password;
 @dynamic name;
 @dynamic email;
 @dynamic address;

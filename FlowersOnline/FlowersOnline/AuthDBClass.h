@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AuthDBClass : NSObject
-- (void)registerUser:(NSString *) login
-         andPassword: (NSString*) password
-             andName: (NSString*) name
+- (void)registerUser:(NSString *) name
             andEmail: (NSString*) email
           andAddress: (NSString*) address
             andPhone: (NSString*) phone; //Регистрация пользователя

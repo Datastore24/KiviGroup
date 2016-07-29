@@ -36,9 +36,7 @@
 
 
 //Обновление данных пользователя
-- (void)registerUser:(NSString *) login
-       andPassword: (NSString*) password
-         andName: (NSString*) name
+- (void)registerUser:(NSString *) name
         andEmail: (NSString*) email
         andAddress: (NSString*) address
        andPhone: (NSString*) phone
@@ -50,8 +48,7 @@
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
     Auth *auth = [Auth MR_createEntityInContext:localContext];
     auth.uid =@"1";
-    auth.login = login;
-    auth.password = password;
+
     auth.name = name;
     auth.email = email;
     auth.address = address;
