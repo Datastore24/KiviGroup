@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 #import "CustomLabels.h"
+#import "CustomButton.h"
 #import "Animation.h"
 #import "SingleTone.h"
 
@@ -17,6 +18,8 @@
 
 @property (strong, nonatomic) NSMutableArray * mainArray;
 @property (strong, nonatomic) NSMutableArray * arrayBasketCount;
+@property (strong, nonatomic) UIView * viewDelivery;
+@property (strong, nonatomic) NSArray * delivery;
 
 @end
 
@@ -41,22 +44,20 @@
 }
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSMutableArray*) data;
+                     andData: (NSMutableArray*) data
+                 andDelivery: (NSArray*) delivery
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         
+        self.delivery = delivery;
         self.mainArray = data;
         self.arrayBasketCount = [[SingleTone sharedManager] arrayBasketCount];
         arrayView = [NSMutableArray new];
         arrayButtonUp  = [NSMutableArray new];
         arrayButtonDown = [NSMutableArray new];
         arrayLabelOrders = [NSMutableArray new];
-        NSArray * arrayNamesDelivery = [NSArray arrayWithObjects:
-                                        @"Курьерская доставка о Москве - ",
-                                        @"Курьерская доставка до 10 км от МКАД - ",
-                                        @"Самовывоз - ", nil];
         arrayPriceDelivery = [NSArray arrayWithObjects:
                              [NSNumber numberWithInteger:500],
                              [NSNumber numberWithInteger:1000],
@@ -71,7 +72,7 @@
             [self.arrayBasketCount addObject:numberCount];
         }
         //Создание таблицы заказов----
-        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 200)];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.frame.size.width, self.frame.size.height - 264)];
         if (isiPhone5 || isiPhone4s) {
             mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 180);
         }
@@ -186,96 +187,121 @@
             [arrayLabelOrders addObject:labelCount];
             
         }
+
+        
+#pragma mark - Delivery
         
         //Доставка----------------------------------------------
-        UIView * viewDelivery = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 200, self.frame.size.width, 200)];
+        self.viewDelivery = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 210, self.frame.size.width, 210)];
         if (isiPhone4s || isiPhone5) {
-            viewDelivery.frame = CGRectMake(0, self.frame.size.height - 180, self.frame.size.width, 180);
+            self.viewDelivery.frame = CGRectMake(0, self.frame.size.height - 180, self.frame.size.width, 180);
         }
-        viewDelivery.backgroundColor = [UIColor colorWithHexString:COLORLITEGRAY];
-        viewDelivery.userInteractionEnabled = YES;
-        [self addSubview:viewDelivery];
+        self.viewDelivery.backgroundColor = [UIColor colorWithHexString:COLORLITEGRAY];
+        self.viewDelivery.userInteractionEnabled = YES;
+        [self addSubview:self.viewDelivery];
         
         //Лейболы доставки---------------------------------------
-        for (int i = 0; i < 3; i++) {
-            CustomLabels * labelDontActive = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:20 + 25 * i andSizeWidht:10 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[arrayNamesDelivery objectAtIndex:i]];
+        for (int i = 0; i < self.delivery.count; i++) {
+            NSDictionary * dictDelivery = [self.delivery objectAtIndex:i];
+            CustomLabels * labelDontActive = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:25 + 25 * i andSizeWidht:10 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[dictDelivery objectForKey:@"name"]];
             labelDontActive.font = [UIFont fontWithName:FONTREGULAR size:14];
             labelDontActive.textAlignment = NSTextAlignmentLeft;
             [labelDontActive sizeToFit];
             if (isiPhone4s || isiPhone5) {
-                labelDontActive.frame = CGRectMake(10, 20 + 20 * i, 10, 20);
+                labelDontActive.frame = CGRectMake(10, 20 + 25 * i, 10, 20);
                 labelDontActive.font = [UIFont fontWithName:FONTREGULAR size:11];
                 [labelDontActive sizeToFit];
             }
-            [viewDelivery addSubview:labelDontActive];
+            [self.viewDelivery addSubview:labelDontActive];
             
             //Создаем строку цен доставки-----------------------
             NSString * stringPriceDelivery;
-            if ([[arrayPriceDelivery objectAtIndex:i] integerValue] == 0) {
+            if ([[dictDelivery objectForKey:@"price"] integerValue] == 0) {
                 stringPriceDelivery = @"бесплатно";
             } else {
-                stringPriceDelivery = [NSString stringWithFormat:@"%ld р.", (long)[[arrayPriceDelivery objectAtIndex:i] integerValue]];
+                stringPriceDelivery = [NSString stringWithFormat:@"%ld р.", (long)[[dictDelivery objectForKey:@"price"] integerValue]];
             }
             
-            CustomLabels * labelActive = [[CustomLabels alloc] initLabelTableWithWidht:labelDontActive.frame.size.width + 15 andHeight:20 + 25 * i andSizeWidht:10 andSizeHeight:20 andColor:COLORGREEN andText:stringPriceDelivery];
+            CustomLabels * labelActive = [[CustomLabels alloc] initLabelTableWithWidht:labelDontActive.frame.size.width + 15 andHeight:25 + 25 * i andSizeWidht:10 andSizeHeight:20 andColor:COLORGREEN andText:stringPriceDelivery];
             labelActive.font = [UIFont fontWithName:FONTREGULAR size:14];
             labelActive.textAlignment = NSTextAlignmentLeft;
             [labelActive sizeToFit];
             if (isiPhone5 || isiPhone4s) {
-                labelActive.frame = CGRectMake(labelDontActive.frame.size.width + 15, 20 + 20 * i, 10, 20);
+                labelActive.frame = CGRectMake(labelDontActive.frame.size.width + 15, 20 + 25 * i, 10, 20);
                 labelActive.font = [UIFont fontWithName:FONTREGULAR size:11];
                 [labelActive sizeToFit];
             }
-            [viewDelivery addSubview:labelActive];
+            [self.viewDelivery addSubview:labelActive];
             
             //Кнопка выбора доставки---------------------------
             UIButton * buttonChangeDelivery = [UIButton buttonWithType:UIButtonTypeCustom];
             UIImage * imageButtonDelivery = [UIImage imageNamed:@"imageButtonDelivery.png"];
-            buttonChangeDelivery.frame = CGRectMake(self.frame.size.width - 30, ((self.frame.size.height - 200) + 22.5) + 25 * i, 15, 15);
-            buttonChangeDelivery.layer.cornerRadius = 7.5f;
+            buttonChangeDelivery.frame = CGRectMake(self.frame.size.width - 30, 20 + 25 * i, 20, 20);
+            buttonChangeDelivery.layer.cornerRadius = 10;
             buttonChangeDelivery.tag = 120 + i;
             [buttonChangeDelivery setImage:imageButtonDelivery forState:UIControlStateNormal];
             [buttonChangeDelivery addTarget:self action:@selector(buttonChangeDeliveryAction:) forControlEvents:UIControlEventTouchUpInside];
             if (isiPhone4s || isiPhone5) {
-                buttonChangeDelivery.frame = CGRectMake(self.frame.size.width - 30, ((self.frame.size.height - 180) + 20) + 20 * i, 12, 12);
-                buttonChangeDelivery.layer.cornerRadius = 6.f;
+                buttonChangeDelivery.frame = CGRectMake(self.frame.size.width - 30, 20 + 25 * i, 20, 20);
+                buttonChangeDelivery.layer.cornerRadius = 10.f;
             }
-            [self addSubview:buttonChangeDelivery];
+            if (i == 2) {
+                buttonChangeDelivery.backgroundColor = [UIColor colorWithHexString:COLORGREEN];
+                buttonChangeDelivery.userInteractionEnabled = NO;
+                [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"id"] forKey:@"delivery_id"];
+                [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"price"] forKey:@"delivery_price"];
+            }
+            [self.viewDelivery addSubview:buttonChangeDelivery];
         }
+        
+        //Кнопка показа доп вариантов заказа----------------
+        CustomButton * buttonAddDelivery = [CustomButton buttonWithType:UIButtonTypeCustom];
+        buttonAddDelivery.frame =CGRectMake(10, 5, 15, 15);
+        UIImage * imageButtonAddDelivery = [UIImage imageNamed:@"buttonUp.png"];
+        [buttonAddDelivery setImage:imageButtonAddDelivery forState:UIControlStateNormal];
+        buttonAddDelivery.isBool = YES;
+        [buttonAddDelivery addTarget:self action:@selector(buttonAddDeliveryAction:) forControlEvents:UIControlEventTouchUpInside];
+        if (isiPhone5 || isiPhone4s) {
+            buttonAddDelivery.frame = CGRectMake(10, 5, 10, 10);
+        }
+        [self.viewDelivery addSubview:buttonAddDelivery];
+        
+#pragma mark - In total
+        
         //Общая цена---------------------------------------
-        CustomLabels * allPriceLabelNoAction = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 180 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORTEXTGRAY andText:@"Итого:"];
+        CustomLabels * allPriceLabelNoAction = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 180 andHeight:self.frame.size.height - 100 andSizeWidht:20 andSizeHeight:10 andColor:COLORTEXTGRAY andText:@"Итого:"];
         allPriceLabelNoAction.font = [UIFont fontWithName:FONTBOND size:18];
         allPriceLabelNoAction.textAlignment = NSTextAlignmentLeft;
         if (isiPhone5 || isiPhone4s) {
-            allPriceLabelNoAction.frame = CGRectMake(self.frame.size.width - 140, 85, 20, 10);
+            allPriceLabelNoAction.frame = CGRectMake(self.frame.size.width - 140, self.frame.size.height - 95, 20, 10);
             allPriceLabelNoAction.font = [UIFont fontWithName:FONTBOND size:16];
         }
         [allPriceLabelNoAction sizeToFit];
-        [viewDelivery addSubview:allPriceLabelNoAction];
+        [self addSubview:allPriceLabelNoAction];
         
         //Общая цена---------------------------------------
-        allPriceLabelAction = [[CustomLabels alloc] initLabelTableWithWidht:allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5 andHeight:100 andSizeWidht:20 andSizeHeight:10 andColor:COLORPINCK andText:[NSString stringWithFormat:@"%ld р", (long)allPrice]];
+        allPriceLabelAction = [[CustomLabels alloc] initLabelTableWithWidht:allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5 andHeight:self.frame.size.height - 100 andSizeWidht:20 andSizeHeight:10 andColor:COLORPINCK andText:[NSString stringWithFormat:@"%ld р", (long)allPrice]];
         allPriceLabelAction.font = [UIFont fontWithName:FONTBOND size:18];
         allPriceLabelAction.textAlignment = NSTextAlignmentLeft;
         if (isiPhone4s || isiPhone5) {
-            allPriceLabelAction.frame = CGRectMake(allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5, 85, 20, 10);
+            allPriceLabelAction.frame = CGRectMake(allPriceLabelNoAction.frame.size.width + allPriceLabelNoAction.frame.origin.x + 5, self.frame.size.height - 95, 20, 10);
             allPriceLabelAction.font = [UIFont fontWithName:FONTBOND size:16];
         }
         [allPriceLabelAction sizeToFit];
-        [viewDelivery addSubview:allPriceLabelAction];
+        [self addSubview:allPriceLabelAction];
         
         //Оформить заказ--------------------------------------
         UIButton * buttonCheckout = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonCheckout.frame = CGRectMake(20, 140, self.frame.size.width - 40, 35);
+        buttonCheckout.frame = CGRectMake(20, self.frame.size.height - 60, self.frame.size.width - 40, 35);
         buttonCheckout.backgroundColor = [UIColor colorWithHexString:@"85af02"];
         [buttonCheckout setTitle:@"ПЕРЕЙТИ К ОФОРМЛЕНИЮ" forState:UIControlStateNormal];
         [buttonCheckout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonCheckout.titleLabel.font = [UIFont fontWithName:FONTREGULAR size:18];
         [buttonCheckout addTarget:self action:@selector(buttonCheckoutAction) forControlEvents:UIControlEventTouchUpInside];
         if (isiPhone5 || isiPhone4s) {
-            buttonCheckout.frame = CGRectMake(20, 120, self.frame.size.width - 40, 35);
+            buttonCheckout.frame = CGRectMake(20, self.frame.size.height - 60, self.frame.size.width - 40, 35);
         }
-        [viewDelivery addSubview:buttonCheckout];
+        [self addSubview:buttonCheckout];
     }
     return self;
 }
@@ -298,7 +324,6 @@
             allPrice += intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
-            
         }
     }
 }
@@ -332,8 +357,8 @@
         UIView * viewAnim = [arrayView objectAtIndex:stap];
         CGFloat heidth = viewAnim.frame.origin.y;
         [Animation animatioMoveXWithView:viewAnim move_X:self.frame.size.width andBlock:^{
-            [self.mainArray removeObjectAtIndex:stap];
-            [self.arrayBasketCount removeObjectAtIndex:stap];
+            [[[SingleTone sharedManager] arrayBouquets] removeObjectAtIndex:stap];
+            [[[SingleTone sharedManager] arrayBasketCount] removeObjectAtIndex:stap];
             [arrayView removeObjectAtIndex:stap];
             [arrayButtonDown removeObjectAtIndex:stap];
             [arrayButtonUp removeObjectAtIndex:stap];
@@ -348,28 +373,61 @@
                         [Animation animationTestView:view move_Y:view.frame.size.height andBlock:^{}];
                     }
                 }
+            [UIView animateWithDuration:0.5 animations:^{
+                CGSize size = mainScrollView.contentSize;
+                size.height -= 120;
+                mainScrollView.contentSize = size;
+            }];
         }];
     }
 }
 
 - (void) buttonChangeDeliveryAction: (UIButton*) button
 {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < self.delivery.count; i++) {
+        NSDictionary * dictDelivery = [self.delivery objectAtIndex:i];
         UIButton * otherButton = (UIButton*)[self viewWithTag:120 + i];
         if (button.tag == 120 + i) {
-            
+            [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"id"] forKey:@"delivery_id"];
+            [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"price"] forKey:@"delivery_price"];
             button.backgroundColor = [UIColor colorWithHexString:COLORGREEN];
             button.userInteractionEnabled = NO;
             NSInteger intPrice = [[arrayPriceDelivery objectAtIndex:i] integerValue];
             countPrice = allPrice + intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)countPrice];
-            [allPriceLabelAction sizeToFit];
-            
+            [allPriceLabelAction sizeToFit]; 
         } else {
             otherButton.backgroundColor = [UIColor clearColor];
             otherButton.userInteractionEnabled = YES;
         }
     }
+}
+
+- (void) buttonAddDeliveryAction: (CustomButton*) button {
+    
+    
+    if (button.isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect = self.viewDelivery.frame;
+            rect.origin.y -= 100;
+            rect.size.height += 100;
+            self.viewDelivery.frame = rect;
+            button.transform = CGAffineTransformMakeRotation(M_PI);
+        } completion:^(BOOL finished) {
+                button.isBool = NO;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect = self.viewDelivery.frame;
+            rect.origin.y += 100;
+            rect.size.height -= 100;
+            self.viewDelivery.frame = rect;
+            button.transform = CGAffineTransformMakeRotation(M_PI * 2);
+        } completion:^(BOOL finished) {
+                button.isBool = YES;
+        }];
+    }
+
 }
 
 - (void) buttonCheckoutAction

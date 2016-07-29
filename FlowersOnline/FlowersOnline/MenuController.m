@@ -114,7 +114,9 @@
         return 250;
         }
     } else if (indexPath.row == 7) {
-        return 100;
+        return 0;
+    } else if (indexPath.row == 5) {
+        return 0;
     } else {
         return 40;
     }

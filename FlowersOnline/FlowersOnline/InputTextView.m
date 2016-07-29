@@ -24,6 +24,8 @@
                     andImage: (NSString*) imageName
           andTextPlaceHolder: (NSString*) placeHolder
               andScrollWidth: (CGFloat) scrollWidth
+                     andText: (NSString*) text
+             andKeyboardType: (UIKeyboardType) keyboardType
 {
     self = [super init];
     if (self) {
@@ -50,7 +52,7 @@
         [self addSubview:imageViewInput];
         
         //Ввод текста-------------
-        self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 70, 60)];
+        self.textFieldInput = [[CustomTextField alloc] initWithCustomFrame:CGRectMake(70, 0, self.frame.size.width - 70, 60) andText:text typeKeyBoardType:keyboardType];
         if (isiPhone5 || isiPhone4s) {
             self.textFieldInput.frame = CGRectMake(70, 0, self.frame.size.width - 70, 50);
         }
@@ -70,6 +72,15 @@
         labelPlaceHoldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
         [self addSubview:labelPlaceHoldInput];
         
+        //Проверка на начилие текста-------------------------
+        if (self.textFieldInput.text.length != 0) {
+            self.textFieldInput.isBoll = NO;
+            CGRect rect;
+            rect = labelPlaceHoldInput.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHoldInput.frame = rect;
+            labelPlaceHoldInput.alpha = 0.f;
+        }
     }
     return self;
 }
@@ -78,6 +89,8 @@
 - (instancetype)initCheckoutWithView: (UIView*) view
                               PointY: (CGFloat) pointY
                   andTextPlaceHolder: (NSString*) placeHolder
+                             andText: (NSString*) text
+                     andKeyboardType: (UIKeyboardType) keyboardType
 {
     self = [super init];
     if (self) {
@@ -93,7 +106,7 @@
         mainView = view;
         
         //Ввод текста-------------
-        self.textFieldInput = [[CustomTextField alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width - 70, 40)];
+        self.textFieldInput = [[CustomTextField alloc] initWithCustomFrame:CGRectMake(20, 0, self.frame.size.width - 70, 40) andText:text typeKeyBoardType:keyboardType];
         if (isiPhone5 || isiPhone4s) {
             self.textFieldInput.frame = CGRectMake(10, 0, self.frame.size.width - 70, 30);
         }
@@ -114,18 +127,19 @@
         labelPlaceHoldInput.font = [UIFont fontWithName:FONTLITE size:17];
         [self addSubview:labelPlaceHoldInput];
         
+        //Проверка--------------------
+        if (self.textFieldInput.text.length != 0) {
+            self.textFieldInput.isBoll = NO;
+            CGRect rect;
+            rect = labelPlaceHoldInput.frame;
+            rect.origin.x = rect.origin.x + 100.f;
+            labelPlaceHoldInput.frame = rect;
+            labelPlaceHoldInput.alpha = 0.f;
+        }
+        
     }
     return self;
 }
-
-
-
-
-
-
-
-
-
 
 
 - (void) setHeight:(CGFloat)height
@@ -182,6 +196,8 @@
     } completion:^(BOOL finished) {
     }];
     }
+    
+    
 }
 
 //Восстанавливаем стандартный размер-----------------------
@@ -199,6 +215,27 @@
     }
 }
 
+
+
+// NOTE: This code assumes you have set the UITextField(s)'s delegate property to the object that will contain this code, because otherwise it would never be called.
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+        [nf setNumberStyle:NSNumberFormatterNoStyle];
+        
+        NSString * newString = [NSString stringWithFormat:@"%@%@",textField.text,string];
+        NSNumber * number = [nf numberFromString:newString];
+        
+        if (number)
+            return YES;
+        else
+            return NO;
+    }
+    
+    return YES;
+}
 
 //Отвязка от всех нотификаций------------------------------
 - (void) dealloc

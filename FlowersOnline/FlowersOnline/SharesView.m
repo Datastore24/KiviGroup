@@ -11,17 +11,25 @@
 #import "UIColor+HexColor.h"
 #import "Macros.h"
 
+@interface SharesView ();
+
+@property (strong, nonatomic) NSArray * arrayData;
+
+@end
+
 @implementation SharesView
 {
     UIScrollView * mainScrollView;
     NSInteger countShares;
 }
 
-- (instancetype)initWithView: (UIView*) view
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) dataArray
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height - 64);
+        
+        self.arrayData = dataArray;
         
         //Создаем два тестовых массива изображения и заголовки--------------------------
         NSArray * arrayNames = [NSArray arrayWithObjects:
@@ -50,16 +58,20 @@
         [self addSubview:mainScrollView];
         
         //Создаем акции------------------
-        for (int i = 0; i < arrayNames.count; i++) {
+        for (int i = 0; i < self.arrayData.count; i++) {
+            NSDictionary * dictShates = [self.arrayData objectAtIndex:i];
+            NSArray * imagesArray = [dictShates objectForKey:@"img"];
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [imagesArray objectAtIndex:0]]];
+            UIImage * image = [UIImage imageWithData: imageData];
             if (i % 2 == 0) {
                 UIImageView * imageViewShares = [[UIImageView alloc] initWithFrame:CGRectMake(70, 50 + 150 * countShares, 100, 100)];
                 if (isiPhone5 || isiPhone4s) {
                     imageViewShares.frame = CGRectMake(40, 50 + 150 * countShares, 100, 100);
                 }
-                imageViewShares.image = [UIImage imageNamed:[arrayImages objectAtIndex:i]];
+                imageViewShares.image = image;
                 [mainScrollView addSubview:imageViewShares];
                 
-                CustomLabels * labelShares = [[CustomLabels alloc] initLabelTableWithWidht:70 andHeight:150 + 150 * countShares andSizeWidht:100 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[arrayNames objectAtIndex:i]];
+                CustomLabels * labelShares = [[CustomLabels alloc] initLabelTableWithWidht:70 andHeight:150 + 150 * countShares andSizeWidht:100 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[dictShates objectForKey:@"name"]];
                 if (isiPhone5 || isiPhone4s) {
                     labelShares.frame = CGRectMake(40, 150 + 150 * countShares, 100, 20);
                 }
@@ -72,10 +84,10 @@
                 if (isiPhone5 || isiPhone4s) {
                     imageViewShares.frame = CGRectMake(self.frame.size.width - 140, 50 + 150 * countShares, 100, 100);
                 }
-                imageViewShares.image = [UIImage imageNamed:[arrayImages objectAtIndex:i]];
+                imageViewShares.image = image;
                 [mainScrollView addSubview:imageViewShares];
                 
-                CustomLabels * labelShares = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 170 andHeight:150 + 150 * countShares andSizeWidht:100 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[arrayNames objectAtIndex:i]];
+                CustomLabels * labelShares = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 170 andHeight:150 + 150 * countShares andSizeWidht:100 andSizeHeight:20 andColor:COLORTEXTGRAY andText:[dictShates objectForKey:@"name"]];
                 if (isiPhone5 || isiPhone4s) {
                     labelShares.frame = CGRectMake(self.frame.size.width - 140, 150 + 150 * countShares, 100, 20);
                 }

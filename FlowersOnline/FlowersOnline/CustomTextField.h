@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CustomTextField : UITextField
 
 @property (assign, nonatomic) BOOL isBoll;
+
+- (instancetype)initWithCustomFrame: (CGRect) frame
+                            andText: (NSString*) text
+                   typeKeyBoardType: (UIKeyboardType) keyboard;
 
 @end
