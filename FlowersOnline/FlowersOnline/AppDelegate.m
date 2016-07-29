@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "UIColor+HexColor.h"
 #import "SingleTone.h"
+#import <MagicalRecord/MagicalRecord.h>
+
+
 
 @interface AppDelegate ()
 
@@ -25,6 +28,7 @@
     [[SingleTone sharedManager] setArrayBouquets:arrayBouquets];
     NSMutableArray * arrayBasketCount = [[NSMutableArray alloc] init];
     [[SingleTone sharedManager] setArrayBasketCount:arrayBasketCount];
+     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
     return YES;
 }
@@ -49,6 +53,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+     [MagicalRecord cleanUp];
 }
 
 @end

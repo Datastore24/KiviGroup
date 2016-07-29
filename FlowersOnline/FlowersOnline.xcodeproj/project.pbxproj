@@ -47,6 +47,10 @@
 		AD109AC41CCF5B120074BA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC21CCF5B120074BA7B /* Main.storyboard */; };
 		AD109AC61CCF5B120074BA7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC51CCF5B120074BA7B /* Assets.xcassets */; };
 		AD109AC91CCF5B120074BA7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */; };
+		AD16C95B1D4B3CE10046AF42 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD16C9591D4B3CE10046AF42 /* UserModel.xcdatamodeld */; };
+		AD16C9611D4B3DCF0046AF42 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C95E1D4B3DCF0046AF42 /* Auth+CoreDataProperties.m */; };
+		AD16C9621D4B3DCF0046AF42 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C9601D4B3DCF0046AF42 /* Auth.m */; };
+		AD16C9651D4B3DF40046AF42 /* AuthDBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C9641D4B3DF40046AF42 /* AuthDBClass.m */; };
 		FF2B22971D2BA49B003F501A /* imageRadioCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22961D2BA49B003F501A /* imageRadioCell.png */; };
 		FF2CD6FF1D420725001F2F6A /* ViewSectionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FA1D420725001F2F6A /* ViewSectionTable.m */; };
 		FF2CD7001D420725001F2F6A /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FC1D420725001F2F6A /* APIGetClass.m */; };
@@ -192,6 +196,13 @@
 		AD109AC51CCF5B120074BA7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD109AC81CCF5B120074BA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD109ACA1CCF5B120074BA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD16C95A1D4B3CE10046AF42 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
+		AD16C95D1D4B3DCF0046AF42 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD16C95E1D4B3DCF0046AF42 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AD16C95F1D4B3DCF0046AF42 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
+		AD16C9601D4B3DCF0046AF42 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		AD16C9631D4B3DF40046AF42 /* AuthDBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthDBClass.h; sourceTree = "<group>"; };
+		AD16C9641D4B3DF40046AF42 /* AuthDBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDBClass.m; sourceTree = "<group>"; };
 		BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2B22961D2BA49B003F501A /* imageRadioCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageRadioCell.png; sourceTree = "<group>"; };
 		FF2CD6F91D420725001F2F6A /* ViewSectionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSectionTable.h; sourceTree = "<group>"; };
@@ -500,6 +511,7 @@
 				AD109AC51CCF5B120074BA7B /* Assets.xcassets */,
 				AD109AC71CCF5B120074BA7B /* LaunchScreen.storyboard */,
 				AD109ACA1CCF5B120074BA7B /* Info.plist */,
+				AD16C95C1D4B3D200046AF42 /* CoreData */,
 				FF2CD6F81D42070F001F2F6A /* API */,
 				7731948F1CD76D0D002831E4 /* InputText */,
 				77B355331CD3C4C000A17546 /* Category */,
@@ -523,6 +535,20 @@
 				AD109ABA1CCF5B120074BA7B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD16C95C1D4B3D200046AF42 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AD16C95D1D4B3DCF0046AF42 /* Auth+CoreDataProperties.h */,
+				AD16C95E1D4B3DCF0046AF42 /* Auth+CoreDataProperties.m */,
+				AD16C95F1D4B3DCF0046AF42 /* Auth.h */,
+				AD16C9601D4B3DCF0046AF42 /* Auth.m */,
+				AD16C9631D4B3DF40046AF42 /* AuthDBClass.h */,
+				AD16C9641D4B3DF40046AF42 /* AuthDBClass.m */,
+				AD16C9591D4B3CE10046AF42 /* UserModel.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		D555E9AF147670AFEFE96D67 /* Pods */ = {
@@ -836,16 +862,20 @@
 				FF2CD7171D42074C001F2F6A /* UIImage+Alpha.m in Sources */,
 				FF2D67DF1D0AB1EE006AD0EC /* CustomLabels.m in Sources */,
 				FFC1ACE21D0B43BE00B30E4B /* SharesView.m in Sources */,
+				AD16C9611D4B3DCF0046AF42 /* Auth+CoreDataProperties.m in Sources */,
 				77B355321CD3BFBE00A17546 /* TitleClass.m in Sources */,
+				AD16C9621D4B3DCF0046AF42 /* Auth.m in Sources */,
 				FFE9553C1D03809A00AAAC0B /* BouquetsController.m in Sources */,
 				FF2CD7181D42074C001F2F6A /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				FF2CD7151D42074C001F2F6A /* UIBarButtonItem+Alpha.m in Sources */,
 				FF2CD71A1D42074C001F2F6A /* UIImage+Resize.m in Sources */,
 				FFC1ACF61D0B515000B30E4B /* DeliveryView.m in Sources */,
 				FFC1ACDF1D0B43AB00B30E4B /* SharesController.m in Sources */,
+				AD16C95B1D4B3CE10046AF42 /* UserModel.xcdatamodeld in Sources */,
 				7748A1931CD52B95001A5743 /* LoginView.m in Sources */,
 				77B3552A1CD3B8C100A17546 /* MenuController.m in Sources */,
 				FF5CCB421D075EE300990081 /* CustomButton.m in Sources */,
+				AD16C9651D4B3DF40046AF42 /* AuthDBClass.m in Sources */,
 				AD109ABB1CCF5B120074BA7B /* main.m in Sources */,
 				FF2CD7001D420725001F2F6A /* APIGetClass.m in Sources */,
 				7748A1471CD4ED9D001A5743 /* ButtonMenu.m in Sources */,
@@ -1015,6 +1045,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AD16C9591D4B3CE10046AF42 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AD16C95A1D4B3CE10046AF42 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = AD16C95A1D4B3CE10046AF42 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AD109AAE1CCF5B120074BA7B /* Project object */;
 }
