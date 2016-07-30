@@ -60,6 +60,33 @@
   
 }
 
+//Обновление токена
+- (void)updateUser:(NSString *)name
+          andEmail: (NSString*) email
+        andAddress: (NSString*) address
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
+    Auth *authFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.name = name;
+        authFounded.email = email;
+        authFounded.address = address;
+       
+
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+//
+
 
 
 

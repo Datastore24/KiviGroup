@@ -107,8 +107,9 @@
     } else if (address.textFieldInput.text.length == 0) {
         [self createAlerWithMessage:@"Введите адрес."];
     } else {
-    [authDbClass registerUser:name.textFieldInput.text andEmail:email.textFieldInput.text
-                   andAddress:address.textFieldInput.text andPhone:phone.textFieldInput.text];
+
+        
+        [authDbClass updateUser:name.textFieldInput.text andEmail:email.textFieldInput.text andAddress:address.textFieldInput.text];
         
         NSMutableArray * array = [NSMutableArray array];
         NSMutableArray * arrayCount = [[SingleTone sharedManager] arrayBasketCount];

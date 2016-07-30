@@ -18,6 +18,10 @@
 
 - (NSArray *) showAllUsers; //Показать всех пользователей
 
--(void) deleteAll; //Удалить все из базы
+- (void)updateUser:(NSString *)name
+          andEmail: (NSString*) email
+        andAddress: (NSString*) address;
+
+- (void) deleteAll; //Удалить все из базы
 
 @end
