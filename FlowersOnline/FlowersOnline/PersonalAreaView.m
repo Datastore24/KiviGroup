@@ -69,12 +69,12 @@
         
         AuthDBClass * authDbClass = [AuthDBClass new];
         if([authDbClass checkRegistration]){
-            NSLog(@"ДАННЫЕ ЕСТЬ");
             NSArray * userArray = [authDbClass showAllUsers];
             Auth * auth = [userArray objectAtIndex:0];
             labelName.text = auth.name;
             [labelName sizeToFit];
-            labelTintPhoneAct.text = auth.phone;
+            NSString * phoneString = [NSString stringWithFormat:@"+%@", auth.phone];
+            labelTintPhoneAct.text = phoneString;
             [labelTintPhoneAct sizeToFit];
             labelTintEmailAct.text = auth.email;
             [labelTintEmailAct sizeToFit];

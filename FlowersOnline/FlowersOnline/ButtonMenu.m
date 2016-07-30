@@ -8,6 +8,10 @@
 
 #import "ButtonMenu.h"
 
+@interface ButtonMenu ()
+
+@end
+
 @implementation ButtonMenu
 
 + (UIButton*) createButtonMenu
@@ -26,14 +30,14 @@
 + (UIButton*) createButtonBasket
 {
     UIImage *imageBarButton = [UIImage imageNamed:@"iconBasket.png"];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.bounds = CGRectMake(0, 0, 20, 16);
-    CGRect rect = button.frame;
+    UIButton *buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonBasket.bounds = CGRectMake(0, 0, 20, 16);
+    CGRect rect = buttonBasket.frame;
     rect.origin.y += 16;
-    button.frame = rect;
-    [button setImage:imageBarButton forState:UIControlStateNormal];
+    buttonBasket.frame = rect;
+    [buttonBasket setImage:imageBarButton forState:UIControlStateNormal];
     
-    return button;
+    return buttonBasket;
 }
 
 + (UIButton*) createButtonRegistrationWithName: (NSString*) title

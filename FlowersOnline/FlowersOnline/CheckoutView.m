@@ -26,7 +26,7 @@
                                       @"Email получателя", @"Адрес получателя",
                                       @"Комментарий к заказу", nil];
 
-        
+        UIKeyboardType type;
         if([authDbClass checkRegistration]){
             NSLog(@"ДАННЫЕ ЕСТЬ");
             NSArray * userArray = [authDbClass showAllUsers];
@@ -37,16 +37,20 @@
                                            @"",nil];
             
             for (int i = 0; i < arrayText.count; i++) {
-                InputTextView * inputText = [[InputTextView alloc] initCheckoutWithView:self PointY:80 + 50 * i andTextPlaceHolder:[arrayPlaceHolder objectAtIndex:i] andText:[arrayText objectAtIndex:i] andKeyboardType:UIKeyboardTypeDefault];
+                if (i == 1) {
+                    type = UIKeyboardTypeNumbersAndPunctuation;
+                } else {
+                    type = UIKeyboardTypeDefault;
+                }
+                InputTextView * inputText = [[InputTextView alloc] initCheckoutWithView:self PointY:80 + 50 * i andTextPlaceHolder:[arrayPlaceHolder objectAtIndex:i] andText:[arrayText objectAtIndex:i] andKeyboardType:type];
+                if (i == 1) {
+                    inputText.userInteractionEnabled = NO;
+                }
                 inputText.tag = 20 + i;
                 if (isiPhone5) {
                     inputText.height = 40 + 50 * i;
                 } else if (isiPhone4s) {
                     inputText.height = 15 + 38 * i;
-                }
-                
-                if (i == 1) {
-                    inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
                 }
                 
                 [self addSubview:inputText];
@@ -57,7 +61,12 @@
             NSLog(@"ДАННЫХ НЕТ");
             
             for (int i = 0; i < arrayPlaceHolder.count; i++) {
-                InputTextView * inputText = [[InputTextView alloc] initCheckoutWithView:self PointY:80 + 50 * i andTextPlaceHolder:[arrayPlaceHolder objectAtIndex:i] andText:nil andKeyboardType:UIKeyboardTypeDefault];
+                if (i == 1) {
+                    type = UIKeyboardTypeNumbersAndPunctuation;
+                } else {
+                    type = UIKeyboardTypeDefault;
+                }
+                InputTextView * inputText = [[InputTextView alloc] initCheckoutWithView:self PointY:80 + 50 * i andTextPlaceHolder:[arrayPlaceHolder objectAtIndex:i] andText:nil andKeyboardType:type];
                 inputText.tag = 20 + i;
                 if (isiPhone5) {
                     inputText.height = 40 + 50 * i;
@@ -108,9 +117,11 @@
         [self createAlerWithMessage:@"Введите адрес."];
     } else {
 
-        
+        if (![authDbClass checkRegistration]) {
+            [authDbClass registerUser:name.textFieldInput.text andEmail:email.textFieldInput.text andAddress:address.textFieldInput.text andPhone:phone.textFieldInput.text];
+        } else {
         [authDbClass updateUser:name.textFieldInput.text andEmail:email.textFieldInput.text andAddress:address.textFieldInput.text];
-        
+        }
         NSMutableArray * array = [NSMutableArray array];
         NSMutableArray * arrayCount = [[SingleTone sharedManager] arrayBasketCount];
         
@@ -139,7 +150,7 @@
         [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
 
 
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
         
     }
 }

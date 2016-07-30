@@ -114,7 +114,7 @@
         self.textFieldInput.delegate = self;
         self.textFieldInput.isBoll = YES;
         self.textFieldInput.tag = 90;
-        self.textFieldInput.keyboardType = UIKeyboardTypeDefault;
+        self.textFieldInput.keyboardType = keyboardType;
         self.textFieldInput.autocorrectionType = UITextAutocorrectionTypeNo;
         self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
         self.textFieldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
@@ -132,10 +132,13 @@
         
         labelUp = [[UILabel alloc] initWithFrame:CGRectMake(7, 0, 10, 35)];
         if (isiPhone5 || isiPhone4s) {
-            labelUp.frame = CGRectMake(3, 0, 10, 25);
+            labelUp.frame = CGRectMake(3, 1, 10, 25);
             
         }
         labelUp.text = @"+";
+        if (isiPhone5 || isiPhone4s) {
+        labelUp.font = [UIFont systemFontOfSize:10];
+        }
         if (self.textFieldInput.keyboardType == UIKeyboardTypeNumbersAndPunctuation && self.textFieldInput.text.length != 0) {
             labelUp.alpha = 1;
         } else {

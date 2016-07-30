@@ -15,6 +15,7 @@
 #import "AuthDBClass.h"
 #import "Auth.h"
 #import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface PersonalAreaController ()
 @property (strong, nonatomic) NSArray * arrayData;
@@ -40,6 +41,9 @@
     [buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:buttonBasket];
     self.navigationItem.rightBarButtonItem = mailbutton;
+    if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
+        mailbutton.enabled = NO;
+    }
     
 #pragma mark - InitializationView
     
@@ -78,7 +82,6 @@
         APIGetClass * apiGallery = [APIGetClass new];
         [apiGallery getDataFromServerWithParams:params method:@"get_orders" complitionBlock:^(id response) {
             self.arrayData = response;
-            NSLog(@"API %@",response);
             block();
             
         }];
