@@ -118,7 +118,7 @@
         self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
         self.textFieldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationStartid:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationStartid:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
@@ -164,6 +164,11 @@
 {
     
     CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length < 3) {
+            testField.text = [NSString stringWithFormat:@"7%@", testField.text];
+        }        
+    }
     if (testField.text.length != 0 && testField.isBoll) {
         [UIView animateWithDuration:0.2 animations:^{
             CGRect rect;
