@@ -43,6 +43,13 @@
     
 }
 
+- (void) downMethod {
+    mainScrollView.frame = CGRectMake(0, 0, self.frame.size.height, self.frame.size.height - 275 + 64);
+    if (isiPhone5 || isiPhone4s) {
+        mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 240 + 64);
+    }
+}
+
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSMutableArray*) data
                  andDelivery: (NSArray*) delivery
@@ -67,14 +74,16 @@
         stap = 0;
         maxCount = self.mainArray.count;
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downMethod) name:@"downNotification" object:nil];
+        
         for (int i = 0; i < self.mainArray.count; i++) {
             NSNumber * numberCount = [NSNumber numberWithInteger:1];
             [self.arrayBasketCount addObject:numberCount];
         }
         //Создание таблицы заказов----
-        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.frame.size.width, self.frame.size.height - 264)];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.frame.size.width, self.frame.size.height - 275)];
         if (isiPhone5 || isiPhone4s) {
-            mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 180);
+            mainScrollView.frame = CGRectMake(0, 64, self.frame.size.width, self.frame.size.height - 240);
         }
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
@@ -104,11 +113,11 @@
             [mainViewCell addSubview:imageTableCell];
             
             //Заголовок ячейки------------------------------------
-            CustomLabels * titleCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:22 andSizeWidht:400 andSizeHeight:18 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"name"]];
+            CustomLabels * titleCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:22 andSizeWidht:self.frame.size.width - 180 andSizeHeight:18 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"name"]];
             titleCell.font = [UIFont fontWithName:FONTBOND size:16];
             titleCell.textAlignment = NSTextAlignmentLeft;
             if (isiPhone5 || isiPhone4s) {
-                titleCell.frame = CGRectMake(85, 17, 400, 18);
+                titleCell.frame = CGRectMake(85, 17, self.frame.size.width - 170, 18);
                 titleCell.font = [UIFont fontWithName:FONTBOND size:14];
             }
             [mainViewCell addSubview:titleCell];
@@ -364,6 +373,10 @@
             [arrayButtonUp removeObjectAtIndex:stap];
             [arrayLabelOrders removeObjectAtIndex:stap];
             
+            if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
+                [self popBouquetsController];
+            }
+            
             NSInteger countOrder = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
             countOrder -= 1;
             [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)countOrder];
@@ -382,17 +395,21 @@
     }
 }
 
+- (void) popBouquetsController {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushBouquetsController" object:nil];
+}
+
 - (void) buttonChangeDeliveryAction: (UIButton*) button
 {
     for (int i = 0; i < self.delivery.count; i++) {
-        NSDictionary * dictDelivery = [self.delivery objectAtIndex:i];
         UIButton * otherButton = (UIButton*)[self viewWithTag:120 + i];
         if (button.tag == 120 + i) {
+            NSDictionary * dictDelivery = [self.delivery objectAtIndex:i];
             [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"id"] forKey:@"delivery_id"];
             [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"price"] forKey:@"delivery_price"];
             button.backgroundColor = [UIColor colorWithHexString:COLORGREEN];
             button.userInteractionEnabled = NO;
-            NSInteger intPrice = [[arrayPriceDelivery objectAtIndex:i] integerValue];
+            NSInteger intPrice = [[dictDelivery objectForKey:@"price"] integerValue];
             countPrice = allPrice + intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)countPrice];
             [allPriceLabelAction sizeToFit]; 

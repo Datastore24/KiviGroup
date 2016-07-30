@@ -130,9 +130,10 @@
             [buttonToGive addTarget:self action:@selector(buttonToGiveAction:) forControlEvents:UIControlEventTouchUpInside];
             [mainScrollView addSubview:buttonToGive];
             
+            NSLog(@"%@", self.arrayData);
             
             //Описание букета-------------------------------------------------------
-            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:@"Описание букета"];
+            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"body"]];
             labelText.numberOfLines = 2;
             labelText.font = [UIFont fontWithName:FONTLITE size:12];
             if (isiPhone5 || isiPhone4s) {
@@ -215,8 +216,6 @@
                 self.arrayPrice = [dictPrice objectForKey:@"variants"];
                 [tablePrice reloadData];
                 
-                NSLog(@"%@", dictPrice);
-                
                 NSMutableArray * testArray = [[SingleTone sharedManager] arrayBouquets];
                 for (int i = 0; i < testArray.count; i++) {
                     if ([[[testArray objectAtIndex:i] objectForKey:@"product_id"] isEqualToString:[dictPrice objectForKey:@"product_id"]]) {
@@ -258,7 +257,7 @@
 {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
-            
+            dictPrice = [self.arrayData objectAtIndex:i];
             mainScrollView.scrollEnabled = NO;
             CustomButton * buttonTup = (CustomButton*)[buttonsArray objectAtIndex:i];
             buttonTup.isBool = NO;
@@ -329,12 +328,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkOrderNotification" object:nil];
+    }
     [[[SingleTone sharedManager] arrayBouquets] addObject:dictPrice];
     tablePrice.allowsSelection = NO;
     NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
     count += 1;
-    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", count];
-    
+    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)count];
     [UIView animateWithDuration:0.15 animations:^{
         
     } completion:^(BOOL finished) {
@@ -356,21 +357,19 @@
     cellView.backgroundColor = [UIColor colorWithHexString:COLORGRAY];
     
     //Загаловок ячейки-----------------------------------
-    CustomLabels * labelTitleCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:15 andSizeWidht:200
-                                                                    andSizeHeight:26 andColor:@"000000" andText:name];
+    CustomLabels * labelTitleCell = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:0 andSizeWidht:self.frame.size.width - 130
+                                                                    andSizeHeight:tablePrice.frame.size.height / 3 andColor:@"000000" andText:[dictPrice objectForKey:@"name"]];
     labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:20];
-    if (isiPhone5) {
-        labelTitleCell.frame = CGRectMake(20, 10, 200, 26);
+    if (isiPhone5) {;
         labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:18];
     } else if (isiPhone4s) {
-        labelTitleCell.frame = CGRectMake(20, 0, 200, 20);
         labelTitleCell.font = [UIFont fontWithName:FONTREGULAR size:14];
     }
     labelTitleCell.textAlignment = NSTextAlignmentLeft;
     [cellView addSubview:labelTitleCell];
     
     //Данные по доставке-------------------------------
-    CustomLabels * labelDeliveryCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:45 andSizeWidht:200 andSizeHeight:20 andColor:@"858383" andText:@"Соберем и доставим до 15:00"];
+    CustomLabels * labelDeliveryCell = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:45 andSizeWidht:200 andSizeHeight:20 andColor:@"858383" andText:@""];
     labelDeliveryCell.font = [UIFont fontWithName:FONTREGULAR size:12];
     if (isiPhone5) {
         labelDeliveryCell.frame = CGRectMake(20, 35, 200, 20);

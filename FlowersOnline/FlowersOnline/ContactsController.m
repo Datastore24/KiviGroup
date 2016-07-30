@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "ContactsView.h"
 #import "BasketController.h"
+#import "SingleTone.h"
 
 @implementation ContactsController
 
@@ -34,6 +35,9 @@
     [buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:buttonBasket];
     self.navigationItem.rightBarButtonItem = mailbutton;
+    if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
+        mailbutton.enabled = NO;
+    }
     
 #pragma mark - Initialization
     

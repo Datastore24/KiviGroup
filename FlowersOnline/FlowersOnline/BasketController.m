@@ -14,6 +14,7 @@
 #import "CheckoutController.h"
 #import "SingleTone.h"
 #import "APIGetClass.h"
+#import "BouquetsController.h"
 
 @interface BasketController ()
 
@@ -39,6 +40,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushCheckout) name:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushBouquetsController) name:@"pushBouquetsController" object:nil];
 
     
     
@@ -47,8 +50,6 @@
     [self getAPIWithBlock:^{
         BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:[[SingleTone sharedManager] arrayBouquets] andDelivery:self.arrayDelivery];
         [self.view addSubview:mainView];
-        
-        NSLog(@"%@", self.arrayDelivery);
     }];
     
     
@@ -65,6 +66,10 @@
     [[SingleTone sharedManager] viewBasketBar]. alpha = 1;
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"downNotification" object:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -76,12 +81,14 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+- (void) pushBouquetsController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - API
 
 - (void) getAPIWithBlock: (void (^)(void))block
 {
-    
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:nil method:@"get_deliveryes" complitionBlock:^(id response) {\
         self.arrayDelivery = response;

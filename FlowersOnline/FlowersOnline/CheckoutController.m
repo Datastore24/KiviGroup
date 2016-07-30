@@ -12,6 +12,7 @@
 #import "TitleClass.h"
 #import "CheckoutView.h"
 #import "SingleTone.h"
+#import "BouquetsController.h"
 
 @implementation CheckoutController
 
@@ -21,6 +22,8 @@
     //Заголовок--------------------------------------------------
     TitleClass * title = [[TitleClass alloc]initWithTitle:@"ОФОРМЛЕНИЕ"];
     self.navigationItem.titleView = title;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMainView) name:@"sendDataandPushMainView" object:nil];
     
 #pragma mark - Initializayion
     
@@ -37,5 +40,14 @@
 {
     [[SingleTone sharedManager] viewBasketBar]. alpha = 1;
 }
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) pushMainView {
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+}
+
 
 @end
