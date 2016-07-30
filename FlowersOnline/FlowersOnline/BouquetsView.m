@@ -130,8 +130,6 @@
             [buttonToGive addTarget:self action:@selector(buttonToGiveAction:) forControlEvents:UIControlEventTouchUpInside];
             [mainScrollView addSubview:buttonToGive];
             
-            NSLog(@"%@", self.arrayData);
-            
             //Описание букета-------------------------------------------------------
             CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"body"]];
             labelText.numberOfLines = 2;
