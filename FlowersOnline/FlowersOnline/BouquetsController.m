@@ -78,8 +78,8 @@
 
 - (void) getAPIWithBlock: (void (^)(void))block
 {
-    
-//    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:@"", @"category_id", nil];
+//    
+//    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"category_id", nil];
     
     APIGetClass * apiGallery = [APIGetClass new];
     [apiGallery getDataFromServerWithParams:nil method:@"load_products" complitionBlock:^(id response) {\
