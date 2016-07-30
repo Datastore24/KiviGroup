@@ -15,6 +15,7 @@
 
 @interface PersonalAreaView ()
 
+@property (strong, nonatomic) NSArray * arrayData;
 
 @end
 
@@ -24,14 +25,17 @@
     NSMutableArray * testArray;
 }
 
-- (instancetype)initWithView: (UIView*) view
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) dataArray
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height);
+        
+        self.arrayData = dataArray;
+        
 
         //Имя пользовтаеля---------------------
-        CustomLabels * labelName = [[CustomLabels alloc] initLabelBondWithWidht:20 andHeight:15 andColor:COLORTEXTGRAY andText:@"Goust"];
+        CustomLabels * labelName = [[CustomLabels alloc] initLabelBondWithWidht:20 andHeight:15 andColor:COLORTEXTGRAY andText:@"Гость"];
 
         
         
@@ -116,7 +120,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return testArray.count;
+    return self.arrayData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,12 +137,12 @@
         [view removeFromSuperview];
     }
     cell.backgroundColor = nil;
-    NSDictionary * dictCell = [testArray objectAtIndex:indexPath.row];
+    NSDictionary * dictCell = [self.arrayData objectAtIndex:indexPath.row];
     
-    if (testArray.count != 0) {
+    if (self.arrayData.count != 0) {
         [cell.contentView addSubview:[self setTableCellWithDate:[dictCell objectForKey:@"date"]
                                                           andID:[dictCell objectForKey:@"id"]
-                                                        andName:[dictCell objectForKey:@"name"]
+                                                        andSumm:[dictCell objectForKey:@"total_price"]
                                                       andStatus:[dictCell objectForKey:@"status"]]];
     } else {
         NSLog(@"Нет категорий");
@@ -165,7 +169,7 @@
 //Кастомная ячейка---------------------------------------
 - (UIView*) setTableCellWithDate: (NSString*) date
                       andID: (NSString*) textID
-                         andName: (NSString*) name
+                         andSumm: (NSString*) summ
                            andStatus: (NSString*) status
 {
     //Основное окно ячейки--------------------------------
@@ -181,15 +185,18 @@
     [cellView addSubview:labelDate];
     
     //Лейбл id
-    CustomLabels * labelID = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width - 10 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:COLORTEXTGRAY andText:textID];
+    NSString * numOrder = [NSString stringWithFormat:@"№ %@",textID];
+    CustomLabels * labelID = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width - 10 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:COLORTEXTGRAY andText:numOrder];
     labelID.font = [UIFont fontWithName:FONTREGULAR size:13];
     if (isiPhone5 || isiPhone4s) {
         labelID.font = [UIFont fontWithName:FONTREGULAR size:11];
     }
     [cellView addSubview:labelID];
     
-    //Лейбл имени
-    CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width * 2 - 10 andHeight:0 andSizeWidht:labelDate.frame.size.width + 12 andSizeHeight:46 andColor:COLORTEXTGRAY andText:name];
+    //Лейбл суммы
+    
+    NSString * summOrder = [NSString stringWithFormat:@"%@ руб.",summ];
+    CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width * 2 - 10 andHeight:0 andSizeWidht:labelDate.frame.size.width + 12 andSizeHeight:46 andColor:COLORTEXTGRAY andText:summOrder];
     labelName.font = [UIFont fontWithName:FONTBOND size:13];
     if (isiPhone5 || isiPhone4s) {
         labelName.font = [UIFont fontWithName:FONTBOND size:11];
@@ -197,20 +204,36 @@
     [cellView addSubview:labelName];
     
     //Лейбл статуса
-    if ([status isEqualToString:@"В пути"]) {
-        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:8 + labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:COLORGREEN andText:status];
+    if ([status isEqualToString:@"0"]) {
+        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:8 + labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:COLORGREEN andText:@"Новый"];
         labelStatus.font = [UIFont fontWithName:FONTREGULAR size:13];
         if (isiPhone5 || isiPhone4s) {
             labelStatus.font = [UIFont fontWithName:FONTREGULAR size:11];
         }
         [cellView addSubview:labelStatus];
-    } else if ([status isEqualToString:@"Выполнен"]) {
-        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:@"b7b8b6" andText:status];
+    } else if ([status isEqualToString:@"1"]) {
+        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:8 + labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:COLORGREEN andText:@"Принят"];
         labelStatus.font = [UIFont fontWithName:FONTREGULAR size:13];
         if (isiPhone5 || isiPhone4s) {
             labelStatus.font = [UIFont fontWithName:FONTREGULAR size:11];
         }
         [cellView addSubview:labelStatus];
+    
+    } else if ([status isEqualToString:@"2"]) {
+        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:@"b7b8b6" andText:@"Выполнен"];
+        labelStatus.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5 || isiPhone4s) {
+            labelStatus.font = [UIFont fontWithName:FONTREGULAR size:11];
+        }
+        [cellView addSubview:labelStatus];
+    } else if ([status isEqualToString:@"3"]) {
+        CustomLabels * labelStatus = [[CustomLabels alloc] initLabelTableWithWidht:labelDate.frame.size.width * 3 andHeight:0 andSizeWidht:labelDate.frame.size.width andSizeHeight:46 andColor:@"b7b8b6" andText:@"Удален"];
+        labelStatus.font = [UIFont fontWithName:FONTREGULAR size:13];
+        if (isiPhone5 || isiPhone4s) {
+            labelStatus.font = [UIFont fontWithName:FONTREGULAR size:11];
+        }
+        [cellView addSubview:labelStatus];
+
     } else {
         NSLog(@"Error");
     }

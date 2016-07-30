@@ -10,6 +10,6 @@
 
 @interface PersonalAreaView : UIView <UITableViewDelegate, UITableViewDataSource>
 
-- (instancetype)initWithView: (UIView*) view;
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) dataArray;
 
 @end
