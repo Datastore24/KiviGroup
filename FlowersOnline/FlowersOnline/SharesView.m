@@ -31,18 +31,7 @@
         
         self.arrayData = dataArray;
         
-        //Создаем два тестовых массива изображения и заголовки--------------------------
-        NSArray * arrayNames = [NSArray arrayWithObjects:
-                                @"Букет 1", @"Букет 2", @"Букет 3",
-                                @"Букет 4", @"Букет 5", @"Букет 6",
-                                @"Букет 1", @"Букет 2", @"Букет 3",
-                                @"Букет 4", @"Букет 5", @"Букет 6", nil];
-        NSArray * arrayImages = [NSArray arrayWithObjects:
-                                 @"bouquets1.png", @"bouquets2.png", @"bouquets3.png",
-                                 @"bouquets4.png", @"bouquets5.png", @"bouquets6.png",
-                                 @"bouquets1.png", @"bouquets2.png", @"bouquets3.png",
-                                 @"bouquets4.png", @"bouquets5.png", @"bouquets6.png", nil];
-        
+
         countShares = 0;
         
         //Лейбл Заголовка-----------------

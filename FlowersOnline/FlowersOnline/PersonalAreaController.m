@@ -12,8 +12,12 @@
 #import "TitleClass.h"
 #import "PersonalAreaView.h"
 #import "BasketController.h"
+#import "AuthDBClass.h"
+#import "Auth.h"
+#import "APIGetClass.h"
 
 @interface PersonalAreaController ()
+@property (strong, nonatomic) NSArray * arrayData;
 
 @end
 
@@ -38,8 +42,13 @@
     self.navigationItem.rightBarButtonItem = mailbutton;
     
 #pragma mark - InitializationView
-    PersonalAreaView * mainView = [[PersonalAreaView alloc] initWithView:self.view];
-    [self.view addSubview:mainView];
+    
+    
+    [self getAPIWithBlock:^{
+        PersonalAreaView * mainView = [[PersonalAreaView alloc] initWithView:self.view andData:self.arrayData];
+        [self.view addSubview:mainView];
+     
+    }];
     
     
 }
@@ -55,6 +64,27 @@
 {
     BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    AuthDBClass * authDbClass = [AuthDBClass new];
+    NSArray * userInfo = [authDbClass showAllUsers];
+    if(userInfo.count >0){
+        Auth * auth = [userInfo objectAtIndex:0];
+        NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:auth.phone,@"phone", nil];
+        APIGetClass * apiGallery = [APIGetClass new];
+        [apiGallery getDataFromServerWithParams:params method:@"get_orders" complitionBlock:^(id response) {
+            self.arrayData = response;
+            NSLog(@"API %@",response);
+            block();
+            
+        }];
+    }
+   
+    
 }
 
 @end
