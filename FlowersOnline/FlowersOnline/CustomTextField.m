@@ -21,7 +21,7 @@
         self.frame = frame;
         self.text = text;
         self.keyboardType = keyboard;
-        if (self.text.length != 0) {
+        if (self.text.length == 0) {
         }
     }
     return self;
