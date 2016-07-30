@@ -119,11 +119,12 @@
             [dict setObject:[arrayCount objectAtIndex:i] forKey:@"count"];
             [array addObject:dict];
         }
+        NSString * stringNumber = [NSString stringWithFormat:@"+%@", phone.textFieldInput.text];
         NSDictionary * contactDataDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                           name.textFieldInput.text, @"name",
                                           email.textFieldInput.text, @"email",
                                           address.textFieldInput.text, @"address",
-                                          phone.textFieldInput.text, @"phone", nil];
+                                          stringNumber, @"phone", nil];
         NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:array, @"order",
                                    [[SingleTone sharedManager] delivery], @"delivery", contactDataDict, @"contactData", nil];
         

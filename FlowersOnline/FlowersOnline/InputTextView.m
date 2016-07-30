@@ -13,6 +13,7 @@
 {
 //    CustomTextField * textFieldInput;
     UILabel * labelPlaceHoldInput;
+    UILabel * labelUp;
     UIView * mainView;
     BOOL keyboardUp;
 }
@@ -118,7 +119,8 @@
         self.textFieldInput.font = [UIFont fontWithName:FONTREGULAR size:17];
         self.textFieldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationStartid:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationStartid:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationEnd:) name:UITextFieldTextDidEndEditingNotification object:self.textFieldInput];
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
@@ -127,6 +129,19 @@
         labelPlaceHoldInput.textColor = [UIColor colorWithHexString:COLORTEXTGRAY];
         labelPlaceHoldInput.font = [UIFont fontWithName:FONTLITE size:17];
         [self addSubview:labelPlaceHoldInput];
+        
+        labelUp = [[UILabel alloc] initWithFrame:CGRectMake(7, 0, 10, 35)];
+        if (isiPhone5 || isiPhone4s) {
+            labelUp.frame = CGRectMake(3, 0, 10, 25);
+            
+        }
+        labelUp.text = @"+";
+        if (self.textFieldInput.keyboardType == UIKeyboardTypeNumbersAndPunctuation && self.textFieldInput.text.length != 0) {
+            labelUp.alpha = 1;
+        } else {
+            labelUp.alpha = 0;
+        }
+        [self addSubview:labelUp];
         
         //Проверка--------------------
         if (self.textFieldInput.text.length != 0) {
@@ -165,9 +180,9 @@
     
     CustomTextField * testField = notification.object;
     if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
-        if (testField.text.length < 3) {
-            testField.text = [NSString stringWithFormat:@"7%@", testField.text];
-        }        
+        if ([testField.text isEqualToString:@""]) {
+            testField.text = @"7";
+        }
     }
     if (testField.text.length != 0 && testField.isBoll) {
         [UIView animateWithDuration:0.2 animations:^{
@@ -188,6 +203,43 @@
             testField.isBoll = YES;
         }];
     }
+}
+
+- (void) animationStartid: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length == 0 || [testField.text isEqualToString:@"7"]) {
+            testField.text = @"7";
+            labelUp.alpha = 1;
+            [UIView animateWithDuration:0.2 animations:^{
+                CGRect rect;
+                rect = labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x + 100.f;
+                labelPlaceHoldInput.frame = rect;
+                labelPlaceHoldInput.alpha = 0.f;
+                testField.isBoll = NO;
+            }];
+        }
+    }
+}
+
+- (void) animationEnd: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if ([testField.text isEqualToString:@"7"]) {
+            testField.text = @"";
+            labelUp.alpha = 0;
+            [UIView animateWithDuration:0.25 animations:^{
+                CGRect rect;
+                rect = labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x - 100.f;
+                labelPlaceHoldInput.frame = rect;
+                labelPlaceHoldInput.alpha = 1.f;
+                testField.isBoll = YES;
+            }];
+        }
+    }
+        
 }
 
 //Поднимаем текст вверх--------------------------------------
