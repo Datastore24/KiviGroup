@@ -1,14 +1,13 @@
 //
 //  AppDelegate.m
-//  Dolpirog
+//  TravelTogether
 //
-//  Created by Виктор Мишустин on 05/07/16.
+//  Created by Виктор Мишустин on 02/08/16.
 //  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "UIColor+HexColor.h"
-#import "SingleTone.h"
+#import "HexColors.h"
 #import "Macros.h"
 
 @interface AppDelegate ()
@@ -19,9 +18,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //Настройки NavigationBar
+    [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithHexString:COLORBLACK];
+
+
     return YES;
 }
 
