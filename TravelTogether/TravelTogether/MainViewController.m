@@ -15,17 +15,20 @@
 
 @implementation MainViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void) initializeCartBarButton {
+-(void) initializeCartBarButton
+{
     
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [UIButton createButtonMenu];
@@ -35,7 +38,8 @@
     
 }
 
-- (void) setCustomTitle: (NSString*) title {
+- (void) setCustomTitle: (NSString*) title
+{
     UILabel * CustomText = [[UILabel alloc]initWithTitle:title];
     self.navigationItem.titleView = CustomText;
 }

@@ -14,7 +14,8 @@
 
 - (UIView*) setCellListWithName: (NSString*) name
                    andImageName: (NSString*) imageName
-                    andMainView: (UIView*) view {
+                    andMainView: (UIView*) view
+{
     UIView * viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
     viewCell.backgroundColor = [UIColor clearColor];
     

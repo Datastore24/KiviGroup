@@ -25,6 +25,12 @@
           andTextPlaceHolder: (NSString*) placeHolder
               andScrollWidth: (CGFloat) scrollWidth;
 
+- (instancetype)initInputTextWithView: (UIView*) view
+                              andRect: (CGRect) frame
+                             andImage: (NSString*) imageName
+                   andTextPlaceHolder: (NSString*) placeHolder
+                          colorBorder: (NSString*) colorBorder;
+
 
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;

@@ -18,7 +18,8 @@
 
 @implementation MyTravelController
 
-- (void) viewDidLoad {
+- (void) viewDidLoad
+{
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
@@ -45,14 +46,16 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
@@ -112,7 +115,8 @@
 
 #pragma mark - Search Time Flight
 
-- (NSString*) flightTimeWirhStartTime: (NSString*) startTime andEndTime: (NSString*) endTime {
+- (NSString*) flightTimeWirhStartTime: (NSString*) startTime andEndTime: (NSString*) endTime
+{
     
     NSString * flightTime;
     NSDate * dateStartFlight = [self stringToDate:startTime];
@@ -132,7 +136,8 @@
 }
 
 //Метод превращающий строку в дату----------
-- (NSDate*) stringToDate: (NSString*) stringDate {
+- (NSDate*) stringToDate: (NSString*) stringDate
+{
     // Convert string to date object
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"HH:mm"];
@@ -155,7 +160,7 @@
                                  @"Рейс № RRX  2856", @"Рейс № Aero 5358", @"Рейс № RFT  5159", nil];
     
     NSArray * arrayTravelName = [NSArray arrayWithObjects:
-                                 @"Новосибирск - Сочи", @"Москва Питер - Анталья",
+                                 @"Новосибирск - Сочи", @"Москва - Питер - Анталья",
                                  @"Новосибирск - Сочи", @"Новосибирск - Сочи",
                                  @"Новосибирск - Сочи", @"Новосибирск - Сочи", nil];
     
@@ -166,7 +171,7 @@
                                   [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], nil];
     
     NSArray * arrayLabelTimeStart = [NSArray arrayWithObjects:
-                             @"12:00", @"12:00", @"12:00", @"12:00", @"12:00", @"12:00", nil];
+                                     @"12:00", @"12:00", @"12:00", @"12:00", @"12:00", @"12:00", nil];
     
     NSArray * arrayLabelTimeFinish = [NSArray arrayWithObjects:
                                      @"14:30", @"04:30",@"14:30",@"14:30",@"14:30",@"14:30", nil];

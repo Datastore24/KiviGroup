@@ -22,7 +22,8 @@
 
 @implementation MenuViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //Основной цвет--------------------------
@@ -48,7 +49,8 @@
     [UIView borderViewWithHeight:self.view.frame.size.height - 79 andWight:0 andView:self.view andColor:VM_COLOR_WHITE];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -101,7 +103,8 @@
 #pragma mark - UITableViewDelegate
 
 //Анимация нажатия ячейки--------------------------------------------------------------
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
