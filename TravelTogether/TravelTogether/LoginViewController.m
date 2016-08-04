@@ -19,7 +19,8 @@
 
 @implementation LoginViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
@@ -33,7 +34,8 @@
     
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:YES];
     
     [UIView backgroundViewWithView:self.view andImageName:@"logoImage.png"]; //Загрузка беграунда
@@ -48,16 +50,19 @@
 }
 
 #pragma mark - LoginViewDelegate
-- (void) buttonLoginActionWithLoginView: (LoginView*) loginView {
+- (void) buttonLoginActionWithLoginView: (LoginView*) loginView
+{
     MyTravelController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"MyTravelController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void) tapOnTermsOfUseWithLoginView: (LoginView*) loginView {
+- (void) tapOnTermsOfUseWithLoginView: (LoginView*) loginView
+{
     NSLog(@"Пользовательское соглашение");
     
 }
-- (void) tapPrivacyPolicyWithLoginView: (LoginView*) loginView {
+- (void) tapPrivacyPolicyWithLoginView: (LoginView*) loginView
+{
     NSLog(@"Политики конфиденциальности");
 }
 

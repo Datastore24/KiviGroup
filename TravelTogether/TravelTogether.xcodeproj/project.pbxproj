@@ -20,6 +20,9 @@
 		FF66A77B1D5208CD00F693DD /* imageSocNet4.png in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7771D5208CD00F693DD /* imageSocNet4.png */; };
 		FF66A77F1D53377700F693DD /* imageTravelStraightYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FF66A77D1D53377700F693DD /* imageTravelStraightYES.png */; };
 		FF66A7801D53377700F693DD /* imageTravelStraightNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FF66A77E1D53377700F693DD /* imageTravelStraightNO.png */; };
+		FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7831D53516500F693DD /* SearchTravelController.m */; };
+		FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7861D53517A00F693DD /* SearchTravelView.m */; };
+		FF66A78B1D536A1300F693DD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A78A1D536A1300F693DD /* Animation.m */; };
 		FFBB8EB41D508DCA0043ED9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB31D508DCA0043ED9D /* main.m */; };
 		FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB61D508DCA0043ED9D /* AppDelegate.m */; };
 		FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBB8EBB1D508DCA0043ED9D /* Main.storyboard */; };
@@ -99,6 +102,12 @@
 		FF66A7771D5208CD00F693DD /* imageSocNet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSocNet4.png; sourceTree = "<group>"; };
 		FF66A77D1D53377700F693DD /* imageTravelStraightYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageTravelStraightYES.png; sourceTree = "<group>"; };
 		FF66A77E1D53377700F693DD /* imageTravelStraightNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageTravelStraightNO.png; sourceTree = "<group>"; };
+		FF66A7821D53516500F693DD /* SearchTravelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTravelController.h; sourceTree = "<group>"; };
+		FF66A7831D53516500F693DD /* SearchTravelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelController.m; sourceTree = "<group>"; };
+		FF66A7851D53517A00F693DD /* SearchTravelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTravelView.h; sourceTree = "<group>"; };
+		FF66A7861D53517A00F693DD /* SearchTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelView.m; sourceTree = "<group>"; };
+		FF66A7891D536A1300F693DD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		FF66A78A1D536A1300F693DD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 		FFBB8EAF1D508DC90043ED9D /* TravelTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBB8EB31D508DCA0043ED9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFBB8EB51D508DCA0043ED9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +221,26 @@
 			name = ImagesMyTravel;
 			sourceTree = "<group>";
 		};
+		FF66A7811D53505400F693DD /* SearchTravel */ = {
+			isa = PBXGroup;
+			children = (
+				FF66A7851D53517A00F693DD /* SearchTravelView.h */,
+				FF66A7861D53517A00F693DD /* SearchTravelView.m */,
+				FF66A7821D53516500F693DD /* SearchTravelController.h */,
+				FF66A7831D53516500F693DD /* SearchTravelController.m */,
+			);
+			name = SearchTravel;
+			sourceTree = "<group>";
+		};
+		FF66A7881D5369FD00F693DD /* Animarhion */ = {
+			isa = PBXGroup;
+			children = (
+				FF66A7891D536A1300F693DD /* Animation.h */,
+				FF66A78A1D536A1300F693DD /* Animation.m */,
+			);
+			name = Animarhion;
+			sourceTree = "<group>";
+		};
 		FFBB8EA61D508DC90043ED9D = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +264,7 @@
 		FFBB8EB11D508DC90043ED9D /* TravelTogether */ = {
 			isa = PBXGroup;
 			children = (
+				FF66A7811D53505400F693DD /* SearchTravel */,
 				FFBB8F841D5138E30043ED9D /* MyTravel */,
 				FFBB8EEC1D508F6E0043ED9D /* Login */,
 				FFBB8EE51D508DDD0043ED9D /* Menu */,
@@ -246,6 +276,7 @@
 				FFBB8EBE1D508DCA0043ED9D /* Assets.xcassets */,
 				FFBB8EC01D508DCA0043ED9D /* LaunchScreen.storyboard */,
 				FFBB8EC31D508DCA0043ED9D /* Info.plist */,
+				FF66A7881D5369FD00F693DD /* Animarhion */,
 				FFBB8F321D50BE720043ED9D /* Fonts */,
 				FFBB8F7D1D5117880043ED9D /* CustomLabels */,
 				FFBB8F1D1D50AFEC0043ED9D /* Images */,
@@ -596,6 +627,7 @@
 			files = (
 				FFBB8F091D5093270043ED9D /* UIBarButtonItem+Alpha.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
+				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
 				FFBB8F0F1D5093270043ED9D /* UIImage+RoundedCorner.m in Sources */,
 				FFBB8F6F1D50F9F20043ED9D /* CustomTextField.m in Sources */,
 				FFBB8F2B1D50B57A0043ED9D /* HexColors.m in Sources */,
@@ -612,11 +644,13 @@
 				FFBB8EE81D508E140043ED9D /* SWRevealViewController.m in Sources */,
 				FFBB8F0E1D5093270043ED9D /* UIImage+Resize.m in Sources */,
 				FFBB8F251D50B2F40043ED9D /* MainViewController.m in Sources */,
+				FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */,
 				FFBB8F0B1D5093270043ED9D /* UIImage+Alpha.m in Sources */,
 				FFBB8EEB1D508F520043ED9D /* MenuViewController.m in Sources */,
 				FFBB8F101D5093270043ED9D /* UIButton+ButtonImage.m in Sources */,
 				FFBB8F391D50C3220043ED9D /* UILabel+TitleCategory.m in Sources */,
 				FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */,
+				FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */,
 				FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */,
 				FFBB8F5B1D50DD280043ED9D /* UIView+BorderView.m in Sources */,
 			);

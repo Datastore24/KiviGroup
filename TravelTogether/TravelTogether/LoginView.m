@@ -107,13 +107,15 @@
 
 #pragma mark - Action Methods
 
-- (void) tapOnTermsOfUseAction: (UIGestureRecognizer*) recognizer {
+- (void) tapOnTermsOfUseAction: (UIGestureRecognizer*) recognizer
+{
     if( [recognizer state] == UIGestureRecognizerStateEnded ) {
         [self.delegate tapOnTermsOfUseWithLoginView:self];
     }
 }
 
-- (void) tapPrivacyPolicyAction: (UIGestureRecognizer*) recognizer {
+- (void) tapPrivacyPolicyAction: (UIGestureRecognizer*) recognizer
+{
     if( [recognizer state] == UIGestureRecognizerStateEnded ) {
         [self.delegate tapPrivacyPolicyWithLoginView:self];
     }

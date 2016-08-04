@@ -21,7 +21,8 @@
                                   andLabelTimeStart: (NSString*) labelTimeStart //Время отправления
                                   andLabelTimeFinish: (NSString*) labelTimeFinish //Время прибытия
                                          andStraight: (BOOL) straight //Прямой или нет
-                                       andFlightTime: (NSString*) flightTime { //Время полета
+                                       andFlightTime: (NSString*) flightTime //Время полета
+{
     
     UIView * cellTable = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, cellView.frame.size.width, 80.f)];
     

@@ -38,6 +38,7 @@
 #define VM_COLOR_GREEN              @"598527"
 #define VM_COLOR_RED                @"ed1c24"
 #define VM_COLOR_LIGHT_GREY         @"a7a7a7"
+#define VM_COLOR_DARK_GREY          @"6b6b6b"
 
 //Цвета шрифтов-----------------------------------------
 #define VM_COLOR_TEXT_GREEN         @"48592d"
