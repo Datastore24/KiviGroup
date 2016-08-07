@@ -11,6 +11,7 @@
 #import "Macros.h"
 #import "CustomLabels.h"
 #import "UIView+BorderView.h"
+#import "UIButton+BackgroundColor.h"
 
 @implementation MyTravelView
 
@@ -37,50 +38,23 @@
     [cellTable addSubview:labelTravelName];
     
     //Buy view----------
-    UIView * viewBuy = [[UIView alloc] initWithFrame:CGRectMake(13.f, 42.f, 94.f, 21.25f)];
-    viewBuy.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
-    [self customRadiusWithView:viewBuy andRadius:10.625f];
-    [cellTable addSubview:viewBuy];
-    
-    UIView * viewBuyInput = [[UIView alloc] initWithFrame:CGRectMake(14.f, 43.f, 92.f, 19.25f)];
-    viewBuyInput.backgroundColor = [UIColor whiteColor];
-    [self customRadiusWithView:viewBuyInput andRadius:9.625f];
-    [cellTable addSubview:viewBuyInput];
-    
-    CustomLabels * labelBuy = [[CustomLabels alloc] initLabelTableWithWidht:13.f andHeight:41.f andSizeWidht:94.f
-                                                              andSizeHeight:21.25f andColor:VM_COLOR_PINK andText:@"Купить билет"];
-    labelBuy.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:8];
-    labelBuy.textAlignment = NSTextAlignmentCenter;
-    if (buyOrSearch) {
-        labelBuy.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE];
-        viewBuyInput.alpha = 0.f;
-    }
-    
-    [cellTable addSubview:labelBuy];
+    UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonBuy.frame = CGRectMake(13.f, 42.f, 94.f, 21.25f);
+    UIImage * imageButtonNO = [UIImage imageNamed:@"buyTicketNo.png"];
+    UIImage * imageButtonYES = [UIImage imageNamed:@"buyTicketYes.png"];
+    [buttonBuy setImage:imageButtonNO forState:UIControlStateNormal];
+    [buttonBuy setImage:imageButtonYES forState:UIControlStateHighlighted];
+    [cellTable addSubview:buttonBuy];
     
     //Search view-----------
-    UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(13.f + viewBuy.frame.size.width + 5.f, 42.f, 94.f, 21.25f)];
-    viewSearch.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
-    [self customRightRadiusWithView:viewSearch andRadius:10.625f];
-    [cellTable addSubview:viewSearch];
-    
-    UIView * viewSearchInput = [[UIView alloc] initWithFrame:CGRectMake(13.f + viewBuy.frame.size.width + 6.f, 43.f, 92.f, 19.25f)];
-    viewSearchInput.backgroundColor = [UIColor whiteColor];
-    [self customRightRadiusWithView:viewSearchInput andRadius:9.625f];
-    viewSearchInput.alpha = 0.f;
-    [cellTable addSubview:viewSearchInput];
-    
-    CustomLabels * labelSearch = [[CustomLabels alloc] initLabelTableWithWidht:13.f + viewBuy.frame.size.width + 5.f
-                                                                     andHeight:41.f andSizeWidht:94.f andSizeHeight:21.25f
-                                                                      andColor:VM_COLOR_WHITE andText:@"Искать попутчиков"];
-    labelSearch.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:8];
-    labelSearch.textAlignment = NSTextAlignmentCenter;
-    if (buyOrSearch) {
-        labelSearch.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
-        viewSearchInput.alpha = 1.f;
-    }
-    
-    [cellTable addSubview:labelSearch];
+    UIButton * buttonSearch = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonSearch.frame = CGRectMake(13.f + buttonBuy.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
+    UIImage * imageButtonSearchNO = [UIImage imageNamed:@"searchImageNo.png"];
+    UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchImageYes.png"];
+    [buttonSearch setImage:imageButtonSearchNO forState:UIControlStateNormal];
+    [buttonSearch setImage:imageButtonSearchYES forState:UIControlStateHighlighted];
+    [cellTable addSubview:buttonSearch];
+
     
     //Lables time start--------
     CustomLabels * labelTimeStartInd = [[CustomLabels alloc] initLabelWithWidht:130.f andHeight:13.75f andColor:VM_COLOR_BLACK
@@ -137,6 +111,12 @@
     [UIView borderViewWithHeight:79.5f andWight:13.f andView:cellTable andColor:VM_COLOR_LIGHT_GREY];
     
     return cellTable;
+}
+
+- (void) buttonHighlighted: (UIButton*) button {
+    [UIView animateWithDuration:0.3 animations:^{
+        NSLog(@"ho");
+    }];
 }
 
 //Два метода для создания загругления------

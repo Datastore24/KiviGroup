@@ -23,6 +23,18 @@
 		FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7831D53516500F693DD /* SearchTravelController.m */; };
 		FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7861D53517A00F693DD /* SearchTravelView.m */; };
 		FF66A78B1D536A1300F693DD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A78A1D536A1300F693DD /* Animation.m */; };
+		FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */; };
+		FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E51D548EC1007A7168 /* UIImage+Color.m */; };
+		FF9E77EA1D54944A007A7168 /* buyTicketYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9E77E81D54944A007A7168 /* buyTicketYes.png */; };
+		FF9E77EB1D54944A007A7168 /* buyTicketNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF9E77E91D54944A007A7168 /* buyTicketNo.png */; };
+		FFAE24641D575AC400E81AED /* searchImageNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE24621D575AC400E81AED /* searchImageNo.png */; };
+		FFAE24651D575AC400E81AED /* searchImageYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE24631D575AC400E81AED /* searchImageYes.png */; };
+		FFAE24681D575E1400E81AED /* imageData.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE24671D575E1400E81AED /* imageData.png */; };
+		FFAE246D1D5760F400E81AED /* sexMaleYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE24691D5760F400E81AED /* sexMaleYes.png */; };
+		FFAE246E1D5760F400E81AED /* sexFemaleNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE246A1D5760F400E81AED /* sexFemaleNo.png */; };
+		FFAE246F1D5760F400E81AED /* sexManNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE246B1D5760F400E81AED /* sexManNo.png */; };
+		FFAE24701D5760F400E81AED /* sexFemaleYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE246C1D5760F400E81AED /* sexFemaleYes.png */; };
+		FFAE24741D5761D300E81AED /* MBSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE24731D5761D300E81AED /* MBSwitch.m */; };
 		FFBB8EB41D508DCA0043ED9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB31D508DCA0043ED9D /* main.m */; };
 		FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB61D508DCA0043ED9D /* AppDelegate.m */; };
 		FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBB8EBB1D508DCA0043ED9D /* Main.storyboard */; };
@@ -108,6 +120,21 @@
 		FF66A7861D53517A00F693DD /* SearchTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelView.m; sourceTree = "<group>"; };
 		FF66A7891D536A1300F693DD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		FF66A78A1D536A1300F693DD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		FF9E77E21D548EC1007A7168 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
+		FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
+		FF9E77E41D548EC1007A7168 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		FF9E77E51D548EC1007A7168 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		FF9E77E81D54944A007A7168 /* buyTicketYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyTicketYes.png; sourceTree = "<group>"; };
+		FF9E77E91D54944A007A7168 /* buyTicketNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyTicketNo.png; sourceTree = "<group>"; };
+		FFAE24621D575AC400E81AED /* searchImageNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchImageNo.png; sourceTree = "<group>"; };
+		FFAE24631D575AC400E81AED /* searchImageYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchImageYes.png; sourceTree = "<group>"; };
+		FFAE24671D575E1400E81AED /* imageData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageData.png; sourceTree = "<group>"; };
+		FFAE24691D5760F400E81AED /* sexMaleYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sexMaleYes.png; sourceTree = "<group>"; };
+		FFAE246A1D5760F400E81AED /* sexFemaleNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sexFemaleNo.png; sourceTree = "<group>"; };
+		FFAE246B1D5760F400E81AED /* sexManNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sexManNo.png; sourceTree = "<group>"; };
+		FFAE246C1D5760F400E81AED /* sexFemaleYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sexFemaleYes.png; sourceTree = "<group>"; };
+		FFAE24721D5761D300E81AED /* MBSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSwitch.h; sourceTree = "<group>"; };
+		FFAE24731D5761D300E81AED /* MBSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSwitch.m; sourceTree = "<group>"; };
 		FFBB8EAF1D508DC90043ED9D /* TravelTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBB8EB31D508DCA0043ED9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFBB8EB51D508DCA0043ED9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -215,6 +242,10 @@
 		FF66A77C1D53376400F693DD /* ImagesMyTravel */ = {
 			isa = PBXGroup;
 			children = (
+				FFAE24621D575AC400E81AED /* searchImageNo.png */,
+				FFAE24631D575AC400E81AED /* searchImageYes.png */,
+				FF9E77E81D54944A007A7168 /* buyTicketYes.png */,
+				FF9E77E91D54944A007A7168 /* buyTicketNo.png */,
 				FF66A77D1D53377700F693DD /* imageTravelStraightYES.png */,
 				FF66A77E1D53377700F693DD /* imageTravelStraightNO.png */,
 			);
@@ -239,6 +270,27 @@
 				FF66A78A1D536A1300F693DD /* Animation.m */,
 			);
 			name = Animarhion;
+			sourceTree = "<group>";
+		};
+		FFAE24661D575E0600E81AED /* SearchImages */ = {
+			isa = PBXGroup;
+			children = (
+				FFAE24691D5760F400E81AED /* sexMaleYes.png */,
+				FFAE246A1D5760F400E81AED /* sexFemaleNo.png */,
+				FFAE246B1D5760F400E81AED /* sexManNo.png */,
+				FFAE246C1D5760F400E81AED /* sexFemaleYes.png */,
+				FFAE24671D575E1400E81AED /* imageData.png */,
+			);
+			name = SearchImages;
+			sourceTree = "<group>";
+		};
+		FFAE24711D5761B800E81AED /* SwichLib */ = {
+			isa = PBXGroup;
+			children = (
+				FFAE24721D5761D300E81AED /* MBSwitch.h */,
+				FFAE24731D5761D300E81AED /* MBSwitch.m */,
+			);
+			name = SwichLib;
 			sourceTree = "<group>";
 		};
 		FFBB8EA61D508DC90043ED9D = {
@@ -280,6 +332,7 @@
 				FFBB8F321D50BE720043ED9D /* Fonts */,
 				FFBB8F7D1D5117880043ED9D /* CustomLabels */,
 				FFBB8F1D1D50AFEC0043ED9D /* Images */,
+				FFAE24711D5761B800E81AED /* SwichLib */,
 				FFBB8EF31D5093170043ED9D /* Category */,
 				FFBB8F661D50F78B0043ED9D /* InputText */,
 				FFBB8EB21D508DCA0043ED9D /* Supporting Files */,
@@ -341,6 +394,10 @@
 		FFBB8EF31D5093170043ED9D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FF9E77E21D548EC1007A7168 /* UIButton+BackgroundColor.h */,
+				FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */,
+				FF9E77E41D548EC1007A7168 /* UIImage+Color.h */,
+				FF9E77E51D548EC1007A7168 /* UIImage+Color.m */,
 				FFBB8F2F1D50B6820043ED9D /* HeightForText.h */,
 				FFBB8F301D50B6820043ED9D /* HeightForText.m */,
 				FFBB8F2C1D50B67C0043ED9D /* TextAndImageHeight.h */,
@@ -373,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				FFBB8F5E1D50ED210043ED9D /* logoImage.png */,
+				FFAE24661D575E0600E81AED /* SearchImages */,
 				FF66A77C1D53376400F693DD /* ImagesMyTravel */,
 				FFBB8F701D510C400043ED9D /* Login */,
 				FFBB8F3D1D50D4EB0043ED9D /* Images Menu */,
@@ -576,9 +634,13 @@
 				FFBB8F511D50D8190043ED9D /* image6.png in Resources */,
 				FFBB8F361D50BE9E0043ED9D /* pfagoraslabpro-reg.ttf in Resources */,
 				FFBB8F7B1D510E740043ED9D /* emailLogin.png in Resources */,
+				FFAE24651D575AC400E81AED /* searchImageYes.png in Resources */,
 				FFBB8F5F1D50ED210043ED9D /* logoImage.png in Resources */,
+				FFAE246D1D5760F400E81AED /* sexMaleYes.png in Resources */,
 				FFBB8EC21D508DCA0043ED9D /* LaunchScreen.storyboard in Resources */,
+				FFAE246E1D5760F400E81AED /* sexFemaleNo.png in Resources */,
 				FF66A77A1D5208CD00F693DD /* imageSocNet1.png in Resources */,
+				FFAE24641D575AC400E81AED /* searchImageNo.png in Resources */,
 				FFBB8F4C1D50D5010043ED9D /* image2.png in Resources */,
 				FFBB8F461D50D5010043ED9D /* image5.png in Resources */,
 				FFBB8F7A1D510E740043ED9D /* mapLogin.png in Resources */,
@@ -588,17 +650,22 @@
 				FF66A7711D51E99F00F693DD /* SFUIDisplay-Bold.otf in Resources */,
 				FF66A77B1D5208CD00F693DD /* imageSocNet4.png in Resources */,
 				FF66A7721D51E9A100F693DD /* SFUIDisplay-Light.otf in Resources */,
+				FFAE24701D5760F400E81AED /* sexFemaleYes.png in Resources */,
 				FF66A7731D51E9A400F693DD /* SFUIDisplay-Regular.otf in Resources */,
 				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
+				FFAE24681D575E1400E81AED /* imageData.png in Resources */,
 				FFBB8EBF1D508DCA0043ED9D /* Assets.xcassets in Resources */,
 				FF66A77F1D53377700F693DD /* imageTravelStraightYES.png in Resources */,
 				FFBB8F4D1D50D5010043ED9D /* image1.png in Resources */,
 				FF66A76D1D51E98F00F693DD /* PFBeauSansPro-Light.otf in Resources */,
+				FF9E77EB1D54944A007A7168 /* buyTicketNo.png in Resources */,
 				FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */,
+				FFAE246F1D5760F400E81AED /* sexManNo.png in Resources */,
 				FFBB8F4B1D50D5010043ED9D /* image3.png in Resources */,
 				FFBB8F491D50D5010043ED9D /* image4.png in Resources */,
 				FFBB8F551D50DAC30043ED9D /* imageAva.png in Resources */,
 				FFBB8F481D50D5010043ED9D /* image7.png in Resources */,
+				FF9E77EA1D54944A007A7168 /* buyTicketYes.png in Resources */,
 				FF66A7781D5208CD00F693DD /* imageSocNet2.png in Resources */,
 				FFBB8F221D50B0120043ED9D /* IconButtonMenu.png in Resources */,
 			);
@@ -626,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFBB8F091D5093270043ED9D /* UIBarButtonItem+Alpha.m in Sources */,
+				FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
 				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
 				FFBB8F0F1D5093270043ED9D /* UIImage+RoundedCorner.m in Sources */,
@@ -640,6 +708,7 @@
 				FFBB8F281D50B3350043ED9D /* LoginViewController.m in Sources */,
 				FFBB8F311D50B6820043ED9D /* HeightForText.m in Sources */,
 				FFBB8F3C1D50C5B60043ED9D /* TableMenuCell.m in Sources */,
+				FFAE24741D5761D300E81AED /* MBSwitch.m in Sources */,
 				FFBB8F0D1D5093270043ED9D /* UIImage+ImageEffects.m in Sources */,
 				FFBB8EE81D508E140043ED9D /* SWRevealViewController.m in Sources */,
 				FFBB8F0E1D5093270043ED9D /* UIImage+Resize.m in Sources */,
@@ -651,6 +720,7 @@
 				FFBB8F391D50C3220043ED9D /* UILabel+TitleCategory.m in Sources */,
 				FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */,
 				FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */,
+				FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */,
 				FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */,
 				FFBB8F5B1D50DD280043ED9D /* UIView+BorderView.m in Sources */,
 			);
