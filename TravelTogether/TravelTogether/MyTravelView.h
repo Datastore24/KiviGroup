@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyTravelViewDelegate;
+
 @interface MyTravelView : UIView
 
-+ (UIView*) customCellTableTravelHistoryWithCellView: (UIView*) cellView //Окно ячейки
-                                       andNameFlight: (NSString*) nameFlight //Название рейса
-                                       andTravelName: (NSString*) travelName //Куда летит и откуда
-                                      andBuyOrSearch: (BOOL) buyOrSearch //Кубить билет или поиск попутчика
-                                   andLabelTimeStart: (NSString*) labelTimeStart //Время отправления
-                                  andLabelTimeFinish: (NSString*) labelTimeFinish //Время прибытия
-                                         andStraight: (BOOL) straight //Прямой или нет
-                                       andFlightTime: (NSString*) flightTime; //Время полета
+@property (weak, nonatomic) id <MyTravelViewDelegate> delegate;
+
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) data;
+
+@end
+
+@protocol MyTravelViewDelegate <NSObject>
+
+@required
+
+- (void) pushTuTravel: (MyTravelView*) myTravelView;
 
 @end

@@ -11,11 +11,20 @@
 #import "Macros.h"
 #import "CustomLabels.h"
 #import "InputTextView.h"
+#import "MBSwitch.h"
+#import "JBWatchActivityIndicator.h"
 
 @interface SearchTravelView ()
 
 @property (strong, nonatomic) UIButton * buttonAircraft;
 @property (strong, nonatomic) UIButton * buttonTrain;
+
+@property (strong, nonatomic) MBSwitch * swithMale;
+@property (strong, nonatomic) MBSwitch * swithFemale;
+@property (strong, nonatomic) UIImageView * imageMale;
+@property (strong, nonatomic) UIImageView * imageFemale;
+@property (strong, nonatomic) UIView * timeView;
+
 
 @end
 
@@ -77,7 +86,7 @@
                       forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.buttonTrain];
         
-        //Наносим мелкие загаловки-------------------
+        //Наносим повторяющиеся элементы-------------------
         
         for (int i = 0; i < 7; i++) {
             CustomLabels * tintLabels = [[CustomLabels alloc] initLabelWithWidht:12.5f andHeight:75.f + 46.25 * i
@@ -91,6 +100,7 @@
             
             InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self andRect:CGRectMake(13.5f, 88.5f + 46.f * i, 140.5f, 18.f) andImage:nil andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:VM_COLOR_PINK];
             
+            
             if (i > 1 && i < 4) {
                 tintLabels.frame = CGRectMake(26.f, 75.f + 46.25f * (i + 1.f), 100.f, 20.f);
                 [tintLabels sizeToFit];
@@ -98,6 +108,11 @@
                 tintLabels.frame = CGRectMake(175.f, 75.f + 46.25f * (i - 1.f), 100.f, 20.f);
                 [tintLabels sizeToFit];
             }
+            
+            if (i == 4 || i == 6) {
+                inputText.userInteractionEnabled = NO;
+            }
+            
             
             if (i > 2 && i < 5) {
                 [self customRadiusWithView:groudView andRadius:10.f];
@@ -111,15 +126,106 @@
                 [self customAllRadiusWithView:groudView andRadius:10.f];
                 [self customAllRadiusWithView:inputText andRadius:9.f];
             }
-            
-            
+
             [self addSubview: tintLabels];
             [self addSubview:groudView];
             [self addSubview:inputText];
         }
         
+        UIButton * buttonDateThere = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonDateThere.frame = CGRectMake(130.f, 275.f, 12.5f, 12.5f);
+        UIImage * buttonDateImage = [UIImage imageNamed:@"imageData.png"];
+        [buttonDateThere setImage:buttonDateImage forState:UIControlStateNormal];
+        [self addSubview:buttonDateThere];
+        
+        UIButton * buttonDateThence = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonDateThence.frame = CGRectMake(self.frame.size.width - 36.f, 275.f, 12.5f, 12.5f);
+        [buttonDateThence setImage:buttonDateImage forState:UIControlStateNormal];
+        [self addSubview:buttonDateThence];
+        
+        
+        
+        self.swithMale = [[MBSwitch alloc] initWithFrame:CGRectMake(90.f, self.frame.size.height - 132.5f, 33.75, 17.5)];
+        self.swithMale.onTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
+        self.swithMale.offTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
+        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
+        [self.swithMale addTarget:self action:@selector(swichMaleAction) forControlEvents:UIControlEventValueChanged];
+        [self addSubview:self.swithMale];
+        
+        self.swithFemale = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 90.f - 33.75, self.frame.size.height - 132.5f, 33.75, 17.5)];
+        self.swithFemale.onTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
+        self.swithFemale.offTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
+        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        self.swithFemale.on = YES;
+        [self.swithFemale addTarget:self action:@selector(swichFemaleAction) forControlEvents:UIControlEventValueChanged];
+        [self addSubview:self.swithFemale];
+        
+        
+        self.imageMale = [[UIImageView alloc] initWithFrame:CGRectMake(97.f, self.swithMale.frame.origin.y - 50.5f, 20.f, 43.5f)];
+        self.imageMale.image = [UIImage imageNamed:@"sexManNo.png"];
+        [self addSubview:self.imageMale];
+        
+        self.imageFemale = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 97.f - 20.f,
+                                                                                  self.swithMale.frame.origin.y - 50.5f, 20.f, 43.5f)];
+        self.imageFemale.image = [UIImage imageNamed:@"sexFemaleYes.png"];
+        [self addSubview:self.imageFemale];
+        
+        
+        
+        UIButton * mainButtonSearch = [UIButton buttonWithType:UIButtonTypeSystem];
+        mainButtonSearch.frame = CGRectMake(self.frame.size.width / 2 - 112.5f, self.frame.size.height - 95.f, 225.f, 46.f);
+        mainButtonSearch.layer.cornerRadius = 23.f;
+        mainButtonSearch.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        [mainButtonSearch setTitle:@"НАЧАТЬ ПОИСК" forState:UIControlStateNormal];
+        [mainButtonSearch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        mainButtonSearch.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [mainButtonSearch addTarget:self action:@selector(mainButtonSearchAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:mainButtonSearch];
+        
+        
+        JBWatchActivityIndicator * activiti = [[JBWatchActivityIndicator alloc] initWithType:JBWatchActivityIndicatorTypeDotsSmall];
+        activiti.indicatorScale = 2.f;
+        activiti.indicatorRadius = 15.f;
+        activiti.segmentRadius = 2.f;
+        activiti.numberOfSegments = 12;
+
+        
+        self.timeView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        self.timeView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.8f];
+        self.timeView.alpha = 0.f;
+        [self addSubview:self.timeView];
+        
+        
+        UIImageView * imaheView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 19.f, 167.5f, 38.f, 38.f)];
+        imaheView.image = [activiti animatedImageWithDuration:1.f];
+        [self.timeView addSubview:imaheView];
+        
+        UILabel * timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 205.f, self.frame.size.width, 60.f)];
+        timeLabel.text = @"ОЖИДАЙТЕ\nИДЕТ ПОИСК РЕЙСА";
+        timeLabel.textColor = [UIColor whiteColor];
+        timeLabel.numberOfLines = 2;
+        timeLabel.textAlignment = NSTextAlignmentCenter;
+        timeLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [self.timeView addSubview:timeLabel];
+        
+        
     }
     return self;
+}
+
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 
@@ -201,4 +307,50 @@
         
     }];
 }
+
+- (void) swichMaleAction
+{
+    if (self.swithMale.on) {
+        [self.swithFemale setOn:NO animated:YES];
+        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.imageMale.image = [UIImage imageNamed:@"sexMaleYes.png"];
+            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleNO.png"];
+        }];
+    } else {
+        [self.swithFemale setOn:YES animated:YES];
+        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
+        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.imageMale.image = [UIImage imageNamed:@"sexManNo.png"];
+            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleYes.png"];
+        }];
+    }
+}
+
+- (void) swichFemaleAction
+{
+    if (self.swithFemale.on) {
+        [self.swithMale setOn:NO animated:YES];
+    } else {
+        [self.swithMale setOn:YES animated:YES];
+    }
+}
+
+- (void) mainButtonSearchAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.timeView.alpha = 1.f;
+    }];
+    
+    [self performSelector:@selector(pushAction) withObject:self afterDelay:3.f];
+}
+
+- (void) pushAction {
+    [self.delegate pushToSearchList:self];
+    
+}
+
+
+
 @end

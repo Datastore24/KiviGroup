@@ -32,12 +32,6 @@
     NSArray * arrayImagesNetwork = [NSArray arrayWithObjects:@"imageSocNet1.png", @"imageSocNet2.png", @"imageSocNet3.png", @"imageSocNet4.png", nil];
     self.arrayData = [NSArray arrayWithObjects:arrayNames, arrayImages, arrayImagesNetwork, nil];
     
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    
     [UIView backgroundViewWithView:self.view andImageName:@"logoImage.png"]; //Загрузка беграунда
     LoginView * loginView = [[LoginView alloc] initMainViewMethodWithView:self.view andData:self.arrayData]; //Загрузка основного вью
     loginView.delegate = self;
