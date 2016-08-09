@@ -306,6 +306,15 @@
 		FFAE28DA1D57731500E81AED /* Activity7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE27CC1D57731500E81AED /* Activity7@2x.png */; };
 		FFAE28DB1D57731500E81AED /* Activity8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE27CD1D57731500E81AED /* Activity8@2x.png */; };
 		FFAE28DC1D57731500E81AED /* Activity9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE27CE1D57731500E81AED /* Activity9@2x.png */; };
+		FFAE28EB1D57841A00E81AED /* SearchDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE28EA1D57841A00E81AED /* SearchDetailView.m */; };
+		FFAE28EE1D57843200E81AED /* SearchDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE28ED1D57843200E81AED /* SearchDetailController.m */; };
+		FFAE28FE1D57906500E81AED /* buyTicetSmallImageYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE28F91D57906500E81AED /* buyTicetSmallImageYes.png */; };
+		FFAE28FF1D57906500E81AED /* inMyTravelImageNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE28FA1D57906500E81AED /* inMyTravelImageNo.png */; };
+		FFAE29001D57906500E81AED /* searchFreandsImageYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE28FB1D57906500E81AED /* searchFreandsImageYes.png */; };
+		FFAE29011D57906500E81AED /* searchFreandsImageNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE28FC1D57906500E81AED /* searchFreandsImageNo.png */; };
+		FFAE29021D57906500E81AED /* buyTikcetSmallImageNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE28FD1D57906500E81AED /* buyTikcetSmallImageNO.png */; };
+		FFAE29061D57959700E81AED /* TravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE29051D57959700E81AED /* TravelController.m */; };
+		FFAE29091D5795A900E81AED /* TravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE29081D5795A900E81AED /* TravelView.m */; };
 		FFBB8EB41D508DCA0043ED9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB31D508DCA0043ED9D /* main.m */; };
 		FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8EB61D508DCA0043ED9D /* AppDelegate.m */; };
 		FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBB8EBB1D508DCA0043ED9D /* Main.storyboard */; };
@@ -678,6 +687,19 @@
 		FFAE27CC1D57731500E81AED /* Activity7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity7@2x.png"; sourceTree = "<group>"; };
 		FFAE27CD1D57731500E81AED /* Activity8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity8@2x.png"; sourceTree = "<group>"; };
 		FFAE27CE1D57731500E81AED /* Activity9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity9@2x.png"; sourceTree = "<group>"; };
+		FFAE28E91D57841A00E81AED /* SearchDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailView.h; sourceTree = "<group>"; };
+		FFAE28EA1D57841A00E81AED /* SearchDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailView.m; sourceTree = "<group>"; };
+		FFAE28EC1D57843200E81AED /* SearchDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailController.h; sourceTree = "<group>"; };
+		FFAE28ED1D57843200E81AED /* SearchDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailController.m; sourceTree = "<group>"; };
+		FFAE28F91D57906500E81AED /* buyTicetSmallImageYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyTicetSmallImageYes.png; sourceTree = "<group>"; };
+		FFAE28FA1D57906500E81AED /* inMyTravelImageNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inMyTravelImageNo.png; sourceTree = "<group>"; };
+		FFAE28FB1D57906500E81AED /* searchFreandsImageYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFreandsImageYes.png; sourceTree = "<group>"; };
+		FFAE28FC1D57906500E81AED /* searchFreandsImageNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFreandsImageNo.png; sourceTree = "<group>"; };
+		FFAE28FD1D57906500E81AED /* buyTikcetSmallImageNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyTikcetSmallImageNO.png; sourceTree = "<group>"; };
+		FFAE29041D57959700E81AED /* TravelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelController.h; sourceTree = "<group>"; };
+		FFAE29051D57959700E81AED /* TravelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelController.m; sourceTree = "<group>"; };
+		FFAE29071D5795A900E81AED /* TravelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelView.h; sourceTree = "<group>"; };
+		FFAE29081D5795A900E81AED /* TravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelView.m; sourceTree = "<group>"; };
 		FFBB8EAF1D508DC90043ED9D /* TravelTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBB8EB31D508DCA0043ED9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFBB8EB51D508DCA0043ED9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -798,10 +820,8 @@
 		FF66A7811D53505400F693DD /* SearchTravel */ = {
 			isa = PBXGroup;
 			children = (
-				FF66A7851D53517A00F693DD /* SearchTravelView.h */,
-				FF66A7861D53517A00F693DD /* SearchTravelView.m */,
-				FF66A7821D53516500F693DD /* SearchTravelController.h */,
-				FF66A7831D53516500F693DD /* SearchTravelController.m */,
+				FFAE28DD1D57838B00E81AED /* SearchDetail */,
+				FFAE28DE1D57839300E81AED /* SearchMain */,
 			);
 			name = SearchTravel;
 			sourceTree = "<group>";
@@ -818,6 +838,11 @@
 		FFAE24661D575E0600E81AED /* SearchImages */ = {
 			isa = PBXGroup;
 			children = (
+				FFAE28F91D57906500E81AED /* buyTicetSmallImageYes.png */,
+				FFAE28FA1D57906500E81AED /* inMyTravelImageNo.png */,
+				FFAE28FB1D57906500E81AED /* searchFreandsImageYes.png */,
+				FFAE28FC1D57906500E81AED /* searchFreandsImageNo.png */,
+				FFAE28FD1D57906500E81AED /* buyTikcetSmallImageNO.png */,
 				FFAE24691D5760F400E81AED /* sexMaleYes.png */,
 				FFAE246A1D5760F400E81AED /* sexFemaleNo.png */,
 				FFAE246B1D5760F400E81AED /* sexManNo.png */,
@@ -1267,6 +1292,39 @@
 			path = 30;
 			sourceTree = "<group>";
 		};
+		FFAE28DD1D57838B00E81AED /* SearchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FFAE28EC1D57843200E81AED /* SearchDetailController.h */,
+				FFAE28ED1D57843200E81AED /* SearchDetailController.m */,
+				FFAE28E91D57841A00E81AED /* SearchDetailView.h */,
+				FFAE28EA1D57841A00E81AED /* SearchDetailView.m */,
+			);
+			name = SearchDetail;
+			sourceTree = "<group>";
+		};
+		FFAE28DE1D57839300E81AED /* SearchMain */ = {
+			isa = PBXGroup;
+			children = (
+				FF66A7851D53517A00F693DD /* SearchTravelView.h */,
+				FF66A7861D53517A00F693DD /* SearchTravelView.m */,
+				FF66A7821D53516500F693DD /* SearchTravelController.h */,
+				FF66A7831D53516500F693DD /* SearchTravelController.m */,
+			);
+			name = SearchMain;
+			sourceTree = "<group>";
+		};
+		FFAE29031D57955200E81AED /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+				FFAE29041D57959700E81AED /* TravelController.h */,
+				FFAE29051D57959700E81AED /* TravelController.m */,
+				FFAE29071D5795A900E81AED /* TravelView.h */,
+				FFAE29081D5795A900E81AED /* TravelView.m */,
+			);
+			name = Travel;
+			sourceTree = "<group>";
+		};
 		FFBB8EA61D508DC90043ED9D = {
 			isa = PBXGroup;
 			children = (
@@ -1290,6 +1348,7 @@
 		FFBB8EB11D508DC90043ED9D /* TravelTogether */ = {
 			isa = PBXGroup;
 			children = (
+				FFAE29031D57955200E81AED /* Travel */,
 				FF66A7811D53505400F693DD /* SearchTravel */,
 				FFBB8F841D5138E30043ED9D /* MyTravel */,
 				FFBB8EEC1D508F6E0043ED9D /* Login */,
@@ -1676,6 +1735,7 @@
 				FFAE246D1D5760F400E81AED /* sexMaleYes.png in Resources */,
 				FFAE28991D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFAE28B51D57731500E81AED /* Activity15@2x.png in Resources */,
+				FFAE28FE1D57906500E81AED /* buyTicetSmallImageYes.png in Resources */,
 				FFAE28111D57731500E81AED /* Activity16@2x.png in Resources */,
 				FFAE28151D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28441D57731500E81AED /* Activity21@2x.png in Resources */,
@@ -1694,6 +1754,7 @@
 				FFAE28B91D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE27DA1D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE28A41D57731500E81AED /* Activity27@2x.png in Resources */,
+				FFAE29001D57906500E81AED /* searchFreandsImageYes.png in Resources */,
 				FFAE27D71D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFBB8EC21D508DCA0043ED9D /* LaunchScreen.storyboard in Resources */,
 				FFAE28881D57731500E81AED /* Activity15@2x.png in Resources */,
@@ -1757,6 +1818,7 @@
 				FFAE28C01D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE285F1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28821D57731500E81AED /* Activity9@2x.png in Resources */,
+				FFAE29021D57906500E81AED /* buyTikcetSmallImageNO.png in Resources */,
 				FFAE28671D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFAE28AA1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28831D57731500E81AED /* Activity10@2x.png in Resources */,
@@ -1793,6 +1855,7 @@
 				FFAE284C1D57731500E81AED /* Activity29@2x.png in Resources */,
 				FF66A7731D51E9A400F693DD /* SFUIDisplay-Regular.otf in Resources */,
 				FFAE282C1D57731500E81AED /* Activity13@2x.png in Resources */,
+				FFAE28FF1D57906500E81AED /* inMyTravelImageNo.png in Resources */,
 				FFAE28C21D57731500E81AED /* Activity13@2x.png in Resources */,
 				FFAE28971D57731500E81AED /* Activity15@2x.png in Resources */,
 				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
@@ -1865,6 +1928,7 @@
 				FFAE287E1D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28601D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28521D57731500E81AED /* Activity6@2x.png in Resources */,
+				FFAE29011D57906500E81AED /* searchFreandsImageNo.png in Resources */,
 				FFAE28781D57731500E81AED /* Activity28@2x.png in Resources */,
 				FFAE289A1D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFBB8F491D50D5010043ED9D /* image4.png in Resources */,
@@ -1939,6 +2003,7 @@
 			files = (
 				FFBB8F091D5093270043ED9D /* UIBarButtonItem+Alpha.m in Sources */,
 				FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */,
+				FFAE28EE1D57843200E81AED /* SearchDetailController.m in Sources */,
 				FFAE26AD1D5772FF00E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
 				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
@@ -1958,12 +2023,15 @@
 				FFBB8F0D1D5093270043ED9D /* UIImage+ImageEffects.m in Sources */,
 				FFBB8EE81D508E140043ED9D /* SWRevealViewController.m in Sources */,
 				FFBB8F0E1D5093270043ED9D /* UIImage+Resize.m in Sources */,
+				FFAE28EB1D57841A00E81AED /* SearchDetailView.m in Sources */,
 				FFBB8F251D50B2F40043ED9D /* MainViewController.m in Sources */,
+				FFAE29091D5795A900E81AED /* TravelView.m in Sources */,
 				FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */,
 				FFBB8F0B1D5093270043ED9D /* UIImage+Alpha.m in Sources */,
 				FFBB8EEB1D508F520043ED9D /* MenuViewController.m in Sources */,
 				FFBB8F101D5093270043ED9D /* UIButton+ButtonImage.m in Sources */,
 				FFBB8F391D50C3220043ED9D /* UILabel+TitleCategory.m in Sources */,
+				FFAE29061D57959700E81AED /* TravelController.m in Sources */,
 				FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */,
 				FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */,
 				FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */,

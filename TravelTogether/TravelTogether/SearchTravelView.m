@@ -12,6 +12,7 @@
 #import "CustomLabels.h"
 #import "InputTextView.h"
 #import "MBSwitch.h"
+#import "JBWatchActivityIndicator.h"
 
 @interface SearchTravelView ()
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) MBSwitch * swithFemale;
 @property (strong, nonatomic) UIImageView * imageMale;
 @property (strong, nonatomic) UIImageView * imageFemale;
+@property (strong, nonatomic) UIView * timeView;
 
 
 @end
@@ -176,10 +178,35 @@
         mainButtonSearch.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
         [mainButtonSearch setTitle:@"НАЧАТЬ ПОИСК" forState:UIControlStateNormal];
         [mainButtonSearch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        mainButtonSearch.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [mainButtonSearch addTarget:self action:@selector(mainButtonSearchAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:mainButtonSearch];
         
         
+        JBWatchActivityIndicator * activiti = [[JBWatchActivityIndicator alloc] initWithType:JBWatchActivityIndicatorTypeDotsSmall];
+        activiti.indicatorScale = 2.f;
+        activiti.indicatorRadius = 15.f;
+        activiti.segmentRadius = 2.f;
+        activiti.numberOfSegments = 12;
+
         
+        self.timeView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        self.timeView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.8f];
+        self.timeView.alpha = 0.f;
+        [self addSubview:self.timeView];
+        
+        
+        UIImageView * imaheView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 19.f, 167.5f, 38.f, 38.f)];
+        imaheView.image = [activiti animatedImageWithDuration:1.f];
+        [self.timeView addSubview:imaheView];
+        
+        UILabel * timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 205.f, self.frame.size.width, 60.f)];
+        timeLabel.text = @"ОЖИДАЙТЕ\nИДЕТ ПОИСК РЕЙСА";
+        timeLabel.textColor = [UIColor whiteColor];
+        timeLabel.numberOfLines = 2;
+        timeLabel.textAlignment = NSTextAlignmentCenter;
+        timeLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [self.timeView addSubview:timeLabel];
         
         
     }
@@ -309,6 +336,19 @@
     } else {
         [self.swithMale setOn:YES animated:YES];
     }
+}
+
+- (void) mainButtonSearchAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.timeView.alpha = 1.f;
+    }];
+    
+    [self performSelector:@selector(pushAction) withObject:self afterDelay:3.f];
+}
+
+- (void) pushAction {
+    [self.delegate pushToSearchList:self];
+    
 }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -153,6 +153,20 @@
             </objects>
             <point key="canvasLocation" x="1017" y="226"/>
         </scene>
+        <!--Travel Controller-->
+        <scene sceneID="bIP-5s-I1F">
+            <objects>
+                <viewController storyboardIdentifier="TravelController" id="zjL-nK-sXh" customClass="TravelController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0di-zB-rGS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r9W-VY-uKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="226"/>
+        </scene>
         <!--Search Travel Controller-->
         <scene sceneID="tth-dO-OMa">
             <objects>
@@ -166,6 +180,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozX-zX-D3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1017" y="-404"/>
+        </scene>
+        <!--Search Detail Controller-->
+        <scene sceneID="rtd-Xd-prB">
+            <objects>
+                <viewController storyboardIdentifier="SearchDetailController" id="eis-Qg-H1B" customClass="SearchDetailController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q8i-gG-bJD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SoA-51-Q8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-404"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="miY-JZ-3bC">

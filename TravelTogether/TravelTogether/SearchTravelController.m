@@ -8,6 +8,11 @@
 
 #import "SearchTravelController.h"
 #import "SearchTravelView.h"
+#import "SearchDetailController.h"
+
+@interface SearchTravelController () <SearchTravelViewDelegate>
+
+@end
 
 @implementation SearchTravelController
 
@@ -18,14 +23,18 @@
     [self setCustomTitle:@"ИСКАТЬ ПОПУТЧИКОВ"]; //Ввод заголовка
     [self.navigationController setNavigationBarHidden:NO];
     
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];    
-    
     SearchTravelView * mainView = [[SearchTravelView alloc] initMainViewSearchTravelWithView:self.view];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
+}
+
+#pragma mark - SearchTravelViewDelegate
+
+- (void) pushToSearchList: (SearchTravelView*) searchTravelView
+{    
+    SearchDetailController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchDetailController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

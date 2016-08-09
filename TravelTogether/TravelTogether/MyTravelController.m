@@ -8,11 +8,9 @@
 
 #import "MyTravelController.h"
 #import "MyTravelView.h"
+#import "TravelController.h"
 
-@interface MyTravelController () <UITableViewDelegate, UITableViewDataSource>
-
-@property (strong, nonatomic) UITableView * tableTravelHistory;
-@property (strong, nonatomic) NSArray * temporaryArray; //Временный массив
+@interface MyTravelController () <MyTravelViewDelegate>
 
 @end
 
@@ -25,25 +23,11 @@
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"МОИ ПУТЕШЕСТВИЯ"]; //Ввод заголовка
     [self.navigationController setNavigationBarHidden:NO];
-    //Загружаем тестовый массив-----
-    self.temporaryArray = [NSArray arrayWithArray:[self setTemporaryArray]];
-    
-}
 
-- (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
-    self.tableTravelHistory = [[UITableView alloc] initWithFrame:self.view.frame];
-    //Убираем полосы разделяющие ячейки------------------------------
-    self.tableTravelHistory.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableTravelHistory.backgroundColor = nil;
-    self.tableTravelHistory.dataSource = self;
-    self.tableTravelHistory.delegate = self;
-    self.tableTravelHistory.showsVerticalScrollIndicator = NO;
-    //Очень полездное свойство, отключает дествие ячейки-------------
-    self.tableTravelHistory.allowsSelection = NO;
-    [self.view addSubview:self.tableTravelHistory];
-    
+    MyTravelView * mainView = [[MyTravelView alloc] initWithView:self.view andData:[self setTemporaryArray]];
+    mainView.delegate = self;
+    [self.view addSubview:mainView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,104 +36,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+#pragma mark - MyTravelViewDelegate
+- (void) pushTuTravel: (MyTravelView*) myTravelView {
+    
+    NSLog(@"Hello");
+    
+    TravelController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"TravelController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.temporaryArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"newFriendCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    for (UIView * view in cell.contentView.subviews) {
-        [view removeFromSuperview];
-    }
-    
-    NSDictionary * dictDataCell = [self.temporaryArray objectAtIndex:indexPath.row];
-    //Метод вычисления премени полета
-    NSString * flightTime = [self flightTimeWirhStartTime:[dictDataCell objectForKey:@"labelTimeStart"]
-                                               andEndTime:[dictDataCell objectForKey:@"labelTimeFinish"]];
-
-    
-    cell.backgroundColor = nil;
-    if (self.temporaryArray.count != 0) {
-        [cell.contentView addSubview:[MyTravelView customCellTableTravelHistoryWithCellView:cell
-                                                                              andNameFlight:[dictDataCell objectForKey:@"nameFlight"]
-                                                                              andTravelName:[dictDataCell objectForKey:@"travelName"]
-                                                                             andBuyOrSearch:[[dictDataCell objectForKey:@"buyOrSearch"] boolValue]
-                                                                          andLabelTimeStart:[dictDataCell objectForKey:@"labelTimeStart"]
-                                                                         andLabelTimeFinish:[dictDataCell objectForKey:@"labelTimeFinish"]
-                                                                                andStraight:[[dictDataCell objectForKey:@"straight"] boolValue]
-                                                                              andFlightTime:flightTime]];
-    } else {
-        NSLog(@"Нет категорий");
-    }
-    
-    
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
-//Анимация нажатия ячейки--------------------------------------------------------------
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 80.f;
-}
-
-
-#pragma mark - Search Time Flight
-
-- (NSString*) flightTimeWirhStartTime: (NSString*) startTime andEndTime: (NSString*) endTime
-{
-    
-    NSString * flightTime;
-    NSDate * dateStartFlight = [self stringToDate:startTime];
-    NSDate * datEndFlight = [self stringToDate:endTime];
-    NSTimeInterval secondsBetween = [datEndFlight timeIntervalSinceDate:dateStartFlight];
-    NSDate * newNow = [NSDate dateWithTimeIntervalSinceReferenceDate:secondsBetween];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd HH:mm"];
-    
-    flightTime = [NSString stringWithFormat:@"%@", newNow];
-    
-    NSRange range = NSMakeRange(11, 5);
-    flightTime = [flightTime substringWithRange:range];
-
-    return flightTime;
-    
-}
-
-//Метод превращающий строку в дату----------
-- (NSDate*) stringToDate: (NSString*) stringDate
-{
-    // Convert string to date object
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"HH:mm"];
-    NSDate *date = [dateFormat dateFromString:stringDate];
-    
-    
-    return date;
-}
 
 #pragma mark - Custom Array
-
-
 //создадим тестовый массив-----------
 - (NSMutableArray *) setTemporaryArray
 {
