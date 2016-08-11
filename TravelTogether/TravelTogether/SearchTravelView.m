@@ -13,8 +13,9 @@
 #import "InputTextView.h"
 #import "MBSwitch.h"
 #import "JBWatchActivityIndicator.h"
+#import "UIView+BorderView.h"
 
-@interface SearchTravelView ()
+@interface SearchTravelView () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UIButton * buttonAircraft;
 @property (strong, nonatomic) UIButton * buttonTrain;
@@ -24,11 +25,31 @@
 @property (strong, nonatomic) UIImageView * imageMale;
 @property (strong, nonatomic) UIImageView * imageFemale;
 @property (strong, nonatomic) UIView * timeView;
+@property (strong, nonatomic) UIButton * buttonDateThere;
+@property (strong, nonatomic) UIButton * buttonDateThence;
+
+@property (assign, nonatomic) NSInteger takeButton;
+
+//Свойства поиска
+@property (strong, nonatomic) UIView * searchView;
+@property (strong, nonatomic) NSArray * arrayCountry;
+@property (strong, nonatomic) UITableView * tableSearch;
+@property (strong, nonatomic) InputTextView * inputText;
+@property (strong, nonatomic) NSArray * timeArray;
+
+//Свойства пикера
+@property (strong, nonatomic) UIView * pickerView;
+@property (assign, nonatomic) NSInteger labelDateTag;
+@property (strong, nonatomic) UIDatePicker * datePicker;
 
 
 @end
 
 @implementation SearchTravelView
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initMainViewSearchTravelWithView: (UIView*) view
 {
@@ -36,12 +57,20 @@
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
         
+        //Сохранение нажатой кнопки;
+        self.takeButton = 0;
+        self.labelDateTag = 0;
+        
+        self.arrayCountry = [NSArray arrayWithObjects:
+                             @"Австралия", @"Австрия",@"Азербайджан",@"Белоруссия",@"Бенин",
+                             @"Вануату",@"Венесуэла",@"Гамбия",@"Германия",@"Иран",@"Казахстан",@"Лаос", nil];
+        self.timeArray = self.arrayCountry;
+        
+        
         NSArray * arrayTintText = [NSArray arrayWithObjects:               //Массив имен мелких заголовков
                                    @"Номер рейса", @"Выберете направление", @"Откуда", @"Туда", @"Куда", @"Обратно", @"", nil];
         
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"PTX 5467", @"Страна", @"Город",
-                                       @"Домодедово                 DME", @"19 августа, вт",
-                                       @"Рим                                 ROM", @"29 августа, пн", nil];
+        NSArray * arrayPlaysholders = [NSArray arrayWithObjects:@"PTX 5467", @"Страна", @"Город", @"Домодедово", @"19 августа, вт", @"Рим", @"29 августа, пн", nil];
         
         
         //Air view
@@ -97,8 +126,19 @@
             UIView * groudView = [[UIView alloc] initWithFrame:CGRectMake(12.5f, 87.5f + 46.f * i, 142.5f, 20.f)];
             groudView.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
             
+            UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(13.5f, 88.5f + 46.f * i, 140.5f, 18.f)];
+            borderView.backgroundColor = [UIColor whiteColor];
             
-            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self andRect:CGRectMake(13.5f, 88.5f + 46.f * i, 140.5f, 18.f) andImage:nil andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:VM_COLOR_PINK];
+            
+            UIButton * inputTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//            inputTextButton.backgroundColor = [UIColor whiteColor];
+            inputTextButton.tag = 50 + i;
+            inputTextButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [inputTextButton setTitle:[arrayPlaysholders objectAtIndex:i] forState:UIControlStateNormal];
+            [inputTextButton setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY] forState:UIControlStateNormal];
+            inputTextButton.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
+            inputTextButton.frame = CGRectMake(13.5f + 10.f, 88.5f + 46.f * i, 140.5f - 10.f, 18.f);
+            
             
             
             if (i > 1 && i < 4) {
@@ -109,39 +149,49 @@
                 [tintLabels sizeToFit];
             }
             
-            if (i == 4 || i == 6) {
-                inputText.userInteractionEnabled = NO;
+            if (i == 4 || i == 6 || i == 2) {
+                inputTextButton.userInteractionEnabled = NO;
             }
-            
             
             if (i > 2 && i < 5) {
                 [self customRadiusWithView:groudView andRadius:10.f];
-                [self customRadiusWithView:inputText andRadius:9.f];
+//                [self customRadiusWithView:inputTextButton andRadius:9.f];
+                [self customRadiusWithView:borderView andRadius:9.f];
             } else if (i > 4) {
                 groudView.frame = CGRectMake(self.frame.size.width - 12.5f - 142.5f, 87.5f + 46.f * (i - 2.f), 142.5f, 20.f);
-                inputText.frame = CGRectMake(self.frame.size.width - 11.5f - 142.5f, 88.5f + 46.f * (i - 2.f), 140.5f, 18.f);
+                inputTextButton.frame = CGRectMake(self.frame.size.width - 11.5f - 142.5f + 10.f, 88.5f + 46.f * (i - 2.f), 140.5f - 10.f, 18.f);
+                borderView.frame = CGRectMake(self.frame.size.width - 11.5f - 142.5f, 88.5f + 46.f * (i - 2.f), 140.5f, 18.f);
                 [self customRightRadiusWithView:groudView andRadius:10.f];
-                [self customRightRadiusWithView:inputText andRadius:9.f];
+//                [self customRightRadiusWithView:inputTextButton andRadius:9.f];
+                [self customRightRadiusWithView:borderView andRadius:9.f];
             }else {
                 [self customAllRadiusWithView:groudView andRadius:10.f];
-                [self customAllRadiusWithView:inputText andRadius:9.f];
+//                [self customAllRadiusWithView:inputTextButton andRadius:9.f];
+                [self customAllRadiusWithView:borderView andRadius:9.f];
             }
 
             [self addSubview: tintLabels];
             [self addSubview:groudView];
-            [self addSubview:inputText];
+            [inputTextButton addTarget:self action:@selector(inputTextButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:borderView];
+            [self addSubview:inputTextButton];
         }
         
-        UIButton * buttonDateThere = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonDateThere.frame = CGRectMake(130.f, 275.f, 12.5f, 12.5f);
+        self.buttonDateThere = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.buttonDateThere.frame = CGRectMake(130.f, 275.f, 12.5f, 12.5f);
+        self.buttonDateThere.tag = 20;
         UIImage * buttonDateImage = [UIImage imageNamed:@"imageData.png"];
-        [buttonDateThere setImage:buttonDateImage forState:UIControlStateNormal];
-        [self addSubview:buttonDateThere];
+        [self.buttonDateThere setImage:buttonDateImage forState:UIControlStateNormal];
+        [self.buttonDateThere addTarget:self action:@selector(actionDatePicker:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.buttonDateThere];
         
-        UIButton * buttonDateThence = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonDateThence.frame = CGRectMake(self.frame.size.width - 36.f, 275.f, 12.5f, 12.5f);
-        [buttonDateThence setImage:buttonDateImage forState:UIControlStateNormal];
-        [self addSubview:buttonDateThence];
+        self.buttonDateThence = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.buttonDateThence.frame = CGRectMake(self.frame.size.width - 36.f, 275.f, 12.5f, 12.5f);
+        self.buttonDateThence.tag = 21;
+        self.buttonDateThence.enabled = NO;
+        [self.buttonDateThence setImage:buttonDateImage forState:UIControlStateNormal];
+        [self.buttonDateThence addTarget:self action:@selector(actionDatePicker:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.buttonDateThence];
         
         
         
@@ -209,8 +259,287 @@
         [self.timeView addSubview:timeLabel];
         
         
+        
+        //ViewSerach
+        self.searchView = [self searchViewWith:self];
+        [self addSubview:self.searchView];
+        
+        //PickrView
+        self.pickerView = [self createDatePickerWithView:self];
+        [self addSubview:self.pickerView];
+        
     }
     return self;
+}
+
+
+
+
+
+#pragma mark - SearchView
+
+- (UIView*) searchViewWith: (UIView*) view {
+    UIView * viewSearch = [[UIView alloc] initWithFrame:CGRectMake(view.frame.size.width, 0.f, view.frame.size.width, view.frame.size.height)];
+    viewSearch.backgroundColor = [UIColor whiteColor];
+    
+    self.inputText = [[InputTextView alloc] initInputTextSearchWithView:viewSearch andRect:CGRectMake(0.f, 10.f, viewSearch.frame.size.width, 15.f) andImage:nil andTextPlaceHolder:@"Страна" colorBorder:nil];
+    [viewSearch addSubview:self.inputText];
+    [UIView borderViewWithHeight:35.f andWight:0.f andView:viewSearch andColor:VM_COLOR_PINK];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputSearchText) name:UITextFieldTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishInputSearchText) name:UITextFieldTextDidChangeNotification object:nil];
+    
+    self.tableSearch = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, viewSearch.frame.size.width, viewSearch.frame.size.height - 40.f)];
+     //Убираем полосы разделяющие ячейки------------------------------
+//    tableSearch.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableSearch.backgroundColor = nil;
+    self.tableSearch.dataSource = self;
+    self.tableSearch.delegate = self;
+    self.tableSearch.showsVerticalScrollIndicator = NO;
+    [viewSearch addSubview:self.tableSearch];
+    
+    return viewSearch;
+}
+
+
+#pragma mark - Action Methods
+
+- (void) buttonAircraftAction
+{
+    self.buttonAircraft.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
+        [self.buttonAircraft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
+        [self.buttonTrain setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+        self.buttonTrain.userInteractionEnabled = YES;
+        
+        //Остальной код действия кнопки
+        
+    }];
+}
+
+- (void) buttonTrainAction
+{
+    self.buttonTrain.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
+        [self.buttonTrain setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
+        [self.buttonAircraft setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+        self.buttonAircraft.userInteractionEnabled = YES;
+        
+        //Остальной код действия кнопки
+        
+    }];
+}
+
+- (void) inputTextButtonAction: (UIButton*) button {
+    for (int i = 0; i < 7; i++) {
+        if (button.tag == 50 + i) {
+            self.takeButton = button.tag;
+            [UIView animateWithDuration:0.2f animations:^{
+                CGRect rect = self.searchView.frame;
+                rect.origin.x -= self.searchView.frame.size.width;
+                self.searchView.frame = rect;
+            } completion:^(BOOL finished) { }];
+        }
+    }
+}
+
+- (void) actionDatePicker: (UIButton*) button {
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = self.pickerView.frame;
+        rect.origin.y -= 210;
+        self.pickerView.frame = rect;
+    }];
+    if (button.tag == 20) {
+        self.labelDateTag = 54;
+    } else {
+        self.labelDateTag = 56;
+    }
+    
+    self.buttonDateThence.enabled = NO;
+    self.buttonDateThere.enabled = NO;
+    
+    UIButton * buttonLabel = [self viewWithTag:self.labelDateTag];
+    NSDateFormatter * format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"d MMMM, E"];
+    [buttonLabel setTitle:[format stringFromDate:[self.datePicker date]] forState:UIControlStateNormal];
+}
+
+- (void) buttonConfirmAction: (UIButton*) button {
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = self.pickerView.frame;
+        rect.origin.y += 210;
+        self.pickerView.frame = rect;
+    }];
+    self.buttonDateThence.enabled = YES;
+    self.buttonDateThere.enabled = YES;
+    
+}
+
+
+#pragma mark - Swich Actions
+
+- (void) swichMaleAction
+{
+    if (self.swithMale.on) {
+        [self.swithFemale setOn:NO animated:YES];
+        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
+        [UIView animateWithDuration:0.3f animations:^{
+            self.imageMale.image = [UIImage imageNamed:@"sexMaleYes.png"];
+            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleNO.png"];
+        }];
+    } else {
+        [self.swithFemale setOn:YES animated:YES];
+        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
+        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
+        [UIView animateWithDuration:0.3f animations:^{
+            self.imageMale.image = [UIImage imageNamed:@"sexManNo.png"];
+            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleYes.png"];
+        }];
+    }
+}
+
+- (void) swichFemaleAction
+{
+    if (self.swithFemale.on) {
+        [self.swithMale setOn:NO animated:YES];
+    } else {
+        [self.swithMale setOn:YES animated:YES];
+    }
+}
+
+- (void) mainButtonSearchAction {
+    [UIView animateWithDuration:0.3f animations:^{
+        self.timeView.alpha = 1.f;
+    }];
+    
+    [self performSelector:@selector(pushAction) withObject:self afterDelay:3.f];
+}
+
+- (void) pushAction {
+    [self.delegate pushToSearchList:self];
+    
+}
+
+#pragma mark - UITableViewDelegate
+
+//Анимация нажатия ячейки--------------------------------------------------------------
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIButton * button = [self viewWithTag:self.takeButton];
+    UIButton * buttonCity = [self viewWithTag:52];
+    buttonCity.userInteractionEnabled = YES;
+    
+    [button setTitle:[self.arrayCountry objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    [self.inputText.textFieldInput resignFirstResponder];
+    [UIView animateWithDuration:0.3f animations:^{
+        CGRect rect = self.searchView.frame;
+        rect.origin.x += self.searchView.frame.size.width;
+        self.searchView.frame = rect;
+    }];
+    
+    self.inputText.textFieldInput.text = @"";
+    self.arrayCountry = self.timeArray;
+    [self reloadData:YES];
+    
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayCountry.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString * identifier = @"identifier";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    cell.textLabel.text = [self.arrayCountry objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+    cell.textLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_DARK_GREY];
+    
+    
+    return cell;
+    
+}
+
+#pragma mark - DatePicker
+
+- (UIView*) createDatePickerWithView: (UIView*) view {
+    UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 200.f)];
+    pickerView.userInteractionEnabled = YES;
+    pickerView.backgroundColor = [UIColor whiteColor];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, pickerView.frame.size.height - 20.f)];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    [self.datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker.minimumDate = [NSDate date];
+    [pickerView addSubview:self.datePicker];
+    
+    UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
+    buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f, 180.f, 200.f, 20.f);
+    [buttonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
+    [buttonConfirm setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
+    buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:13];
+    [buttonConfirm addTarget:self action:@selector(buttonConfirmAction:) forControlEvents:UIControlEventTouchUpInside];
+    [pickerView addSubview:buttonConfirm];
+    
+    
+    return pickerView;
+}
+
+- (void) datePickerAction: (UIDatePicker*) datePicker {
+    NSDateFormatter * format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"d MMMM, E"];
+    NSString * newDate = [format stringFromDate:[datePicker date]];
+    
+    UIButton * button = [self viewWithTag:self.labelDateTag];
+    [button setTitle:newDate forState:UIControlStateNormal];
+}
+
+
+
+#pragma mark - Other
+
+- (void) finishInputSearchText {
+    
+    NSMutableArray * arrayRefrash = [NSMutableArray array];
+    
+    if (self.inputText.textFieldInput.text.length != 0) {
+        for (int i = 0; i < self.timeArray.count; i++) {
+
+            if ([[self.timeArray objectAtIndex:i] rangeOfString:self.inputText.textFieldInput.text].location != NSNotFound) {
+                [arrayRefrash addObject:[self.timeArray objectAtIndex:i]];
+            }
+        }
+        self.arrayCountry = arrayRefrash;
+        [self reloadData:YES];
+    } else {
+        self.arrayCountry = self.timeArray;
+        [self reloadData:YES];
+    }
+
+}
+
+- (void)reloadData:(BOOL)animated
+{
+    [UIView transitionWithView:self.tableSearch
+                      duration:0.3f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^(void) {
+                        [self.tableSearch reloadData];
+                    } completion:NULL];
 }
 
 
@@ -260,7 +589,7 @@
 }
 
 - (void) customAllRadiusWithView: (UIView*) view
-                         andRadius: (CGFloat) radius
+                       andRadius: (CGFloat) radius
 {
     UIBezierPath *maskPath;
     maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
@@ -271,84 +600,6 @@
     maskLayer.frame = view.bounds;
     maskLayer.path = maskPath.CGPath;
     view.layer.mask = maskLayer;
-}
-
-
-#pragma mark - Action Methods
-
-- (void) buttonAircraftAction
-{
-    self.buttonAircraft.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
-        [self.buttonAircraft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
-        [self.buttonTrain setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
-    } completion:^(BOOL finished) {
-        self.buttonTrain.userInteractionEnabled = YES;
-        
-        //Остальной код действия кнопки
-        
-    }];
-}
-
-- (void) buttonTrainAction
-{
-    self.buttonTrain.userInteractionEnabled = NO;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
-        [self.buttonTrain setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
-        [self.buttonAircraft setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
-    } completion:^(BOOL finished) {
-        self.buttonAircraft.userInteractionEnabled = YES;
-        
-        //Остальной код действия кнопки
-        
-    }];
-}
-
-- (void) swichMaleAction
-{
-    if (self.swithMale.on) {
-        [self.swithFemale setOn:NO animated:YES];
-        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
-        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
-        [UIView animateWithDuration:0.3 animations:^{
-            self.imageMale.image = [UIImage imageNamed:@"sexMaleYes.png"];
-            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleNO.png"];
-        }];
-    } else {
-        [self.swithFemale setOn:YES animated:YES];
-        self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
-        self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
-        [UIView animateWithDuration:0.3 animations:^{
-            self.imageMale.image = [UIImage imageNamed:@"sexManNo.png"];
-            self.imageFemale.image = [UIImage imageNamed:@"sexFemaleYes.png"];
-        }];
-    }
-}
-
-- (void) swichFemaleAction
-{
-    if (self.swithFemale.on) {
-        [self.swithMale setOn:NO animated:YES];
-    } else {
-        [self.swithMale setOn:YES animated:YES];
-    }
-}
-
-- (void) mainButtonSearchAction {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.timeView.alpha = 1.f;
-    }];
-    
-    [self performSelector:@selector(pushAction) withObject:self afterDelay:3.f];
-}
-
-- (void) pushAction {
-    [self.delegate pushToSearchList:self];
-    
 }
 
 

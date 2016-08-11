@@ -24,7 +24,6 @@
     [self setCustomTitle:@"МОИ ПУТЕШЕСТВИЯ"]; //Ввод заголовка
     [self.navigationController setNavigationBarHidden:NO];
 
-    [super viewWillAppear:YES];
     MyTravelView * mainView = [[MyTravelView alloc] initWithView:self.view andData:[self setTemporaryArray]];
     mainView.delegate = self;
     [self.view addSubview:mainView];
@@ -38,8 +37,6 @@
 
 #pragma mark - MyTravelViewDelegate
 - (void) pushTuTravel: (MyTravelView*) myTravelView {
-    
-    NSLog(@"Hello");
     
     TravelController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"TravelController"];
     [self.navigationController pushViewController:detail animated:YES];
