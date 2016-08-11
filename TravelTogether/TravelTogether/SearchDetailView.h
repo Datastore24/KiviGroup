@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SearchDetailViewDelegate;
+
 @interface SearchDetailView : UIView
 
-+ (UIView*) customCellTableTravelHistoryWithCellView: (UIView*) cellView //Окно ячейки
-                                       andNameFlight: (NSString*) nameFlight //Название рейса
-                                       andTravelName: (NSString*) travelName //Куда летит и откуда
-                                      andBuyOrSearch: (BOOL) buyOrSearch //Кубить билет или поиск попутчика
-                                   andLabelTimeStart: (NSString*) labelTimeStart //Время отправления
-                                  andLabelTimeFinish: (NSString*) labelTimeFinish //Время прибытия
-                                         andStraight: (BOOL) straight //Прямой или нет
-                                       andFlightTime: (NSString*) flightTime //Время полета
-                                              andTag: (NSInteger) tag;
+@property (weak, nonatomic) id <SearchDetailViewDelegate> delegate;
+
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) data;
+
+@end
+
+@protocol SearchDetailViewDelegate <NSObject>
+
+@required
+
+- (void) pushToTravel: (SearchDetailView*) searchDetailView;
 
 @end

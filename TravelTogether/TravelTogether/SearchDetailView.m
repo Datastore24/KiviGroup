@@ -13,9 +13,105 @@
 #import "UIView+BorderView.h"
 #import "UIButton+BackgroundColor.h"
 
+@interface SearchDetailView () <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) UITableView * tableTravelHistory;
+@property (strong, nonatomic) NSArray * temporaryArray; //Временный массив
+
+@end
+
 @implementation SearchDetailView
 
-+ (UIView*) customCellTableTravelHistoryWithCellView: (UIView*) cellView //Окно ячейки
+- (instancetype)initWithView: (UIView*) view andData: (NSArray*) data
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+        
+        //Загружаем тестовый массив-----
+        self.temporaryArray = data;
+        
+        
+        self.tableTravelHistory = [[UITableView alloc] initWithFrame:self.frame];
+        //Убираем полосы разделяющие ячейки------------------------------
+        self.tableTravelHistory.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableTravelHistory.backgroundColor = nil;
+        self.tableTravelHistory.dataSource = self;
+        self.tableTravelHistory.delegate = self;
+        self.tableTravelHistory.showsVerticalScrollIndicator = NO;
+        //Очень полездное свойство, отключает дествие ячейки-------------
+        self.tableTravelHistory.allowsSelection = NO;
+        [self addSubview:self.tableTravelHistory];
+        
+        
+    }
+    return self;
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.temporaryArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"newFriendCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    for (UIView * view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    NSDictionary * dictDataCell = [self.temporaryArray objectAtIndex:indexPath.row];
+    //Метод вычисления премени полета
+    NSString * flightTime = [self flightTimeWirhStartTime:[dictDataCell objectForKey:@"labelTimeStart"]
+                                               andEndTime:[dictDataCell objectForKey:@"labelTimeFinish"]];
+    
+    
+    cell.backgroundColor = nil;
+    if (self.temporaryArray.count != 0) {
+        [cell.contentView addSubview:[self customCellTableTravelHistoryWithCellView:cell
+                                                                      andNameFlight:[dictDataCell objectForKey:@"nameFlight"]
+                                                                      andTravelName:[dictDataCell objectForKey:@"travelName"]
+                                                                     andBuyOrSearch:[[dictDataCell objectForKey:@"buyOrSearch"] boolValue]
+                                                                  andLabelTimeStart:[dictDataCell objectForKey:@"labelTimeStart"]
+                                                                 andLabelTimeFinish:[dictDataCell objectForKey:@"labelTimeFinish"]
+                                                                        andStraight:[[dictDataCell objectForKey:@"straight"] boolValue]
+                                                                      andFlightTime:flightTime
+                                                                         andCustTag:indexPath.row]];
+    } else {
+        NSLog(@"Нет категорий");
+    }
+    
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+//Анимация нажатия ячейки--------------------------------------------------------------
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80.f;
+}
+
+
+- (UIView*) customCellTableTravelHistoryWithCellView: (UIView*) cellView //Окно ячейки
                                        andNameFlight: (NSString*) nameFlight //Название рейса
                                        andTravelName: (NSString*) travelName //Куда летит и откуда
                                       andBuyOrSearch: (BOOL) buyOrSearch //Кубить билет или поиск попутчика
@@ -23,7 +119,7 @@
                                   andLabelTimeFinish: (NSString*) labelTimeFinish //Время прибытия
                                          andStraight: (BOOL) straight //Прямой или нет
                                        andFlightTime: (NSString*) flightTime //Время полета
-                                              andTag: (NSInteger) tag
+                                          andCustTag: (NSInteger) custTag
 {
     
     UIView * cellTable = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, cellView.frame.size.width, 80.f)];
@@ -41,31 +137,32 @@
     //Buy view----------
     UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonBuy.frame = CGRectMake(13.f, 42.f, 94.f, 21.25f);
-    UIImage * imageButtonBoxNO = [UIImage imageNamed:@"buyTikcetSmallImageNO.png"];
-    UIImage * imageButtonBoxYES = [UIImage imageNamed:@"buyTicetSmallImageYes.png"];
-    [buttonBuy setImage:imageButtonBoxNO forState:UIControlStateNormal];
-    [buttonBuy setImage:imageButtonBoxYES forState:UIControlStateHighlighted];
+    UIImage * imageButtonNO = [UIImage imageNamed:@"buyTicketNo.png"];
+    UIImage * imageButtonYES = [UIImage imageNamed:@"buyTicketYes.png"];
+    [buttonBuy setImage:imageButtonNO forState:UIControlStateNormal];
+    [buttonBuy setImage:imageButtonYES forState:UIControlStateHighlighted];
+    buttonBuy.tag = 10 + custTag;
+    [buttonBuy addTarget:self action:@selector(buttonBuyAction:) forControlEvents:UIControlEventTouchUpInside];
     [cellTable addSubview:buttonBuy];
     
     //Search view-----------
     UIButton * buttonSearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonSearch.frame = CGRectMake(13.f + buttonBuy.frame.size.width + 4.f, 42.f, 94.f, 21.25f);
-    UIImage * imageButtonSearchBoxNO = [UIImage imageNamed:@"searchFreandsImageNo.png"];
-    UIImage * imageButtonSearchBoxYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
-    [buttonSearch setImage:imageButtonSearchBoxNO forState:UIControlStateNormal];
-    [buttonSearch setImage:imageButtonSearchBoxYES forState:UIControlStateHighlighted];
-    buttonSearch.tag = 10 + tag;
+    buttonSearch.frame = CGRectMake(13.f + buttonBuy.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
+    UIImage * imageButtonSearchNO = [UIImage imageNamed:@"searchFreandsImageNo.png"];
+    UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
+    [buttonSearch setImage:imageButtonSearchNO forState:UIControlStateNormal];
+    [buttonSearch setImage:imageButtonSearchYES forState:UIControlStateHighlighted];
+    buttonSearch.tag = 20 + custTag;
+    [buttonSearch addTarget:self action:@selector(buttonSearchAction:) forControlEvents:UIControlEventTouchUpInside];
     [cellTable addSubview:buttonSearch];
     
-    NSLog(@"%d", buttonSearch.tag);
-
     //AddBookmark
     UIButton * buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonAdd.frame = CGRectMake(buttonSearch.frame.origin.x + buttonSearch.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
     UIImage * imagebuttonAddNO = [UIImage imageNamed:@"inMyTravelImageNo.png"];
-//    UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
+    //    UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
     [buttonAdd setImage:imagebuttonAddNO forState:UIControlStateNormal];
-//    [buttonSearch setImage:imageButtonSearchYES forState:UIControlStateHighlighted];
+    //    [buttonSearch setImage:imageButtonSearchYES forState:UIControlStateHighlighted];
     [cellTable addSubview:buttonAdd];
     
     
@@ -126,66 +223,71 @@
     return cellTable;
 }
 
-- (void) buttonHighlighted: (UIButton*) button {
-    [UIView animateWithDuration:0.3 animations:^{
-        NSLog(@"ho");
-    }];
+#pragma mark - Search Time Flight
+
+- (NSString*) flightTimeWirhStartTime: (NSString*) startTime andEndTime: (NSString*) endTime
+{
+    NSString * flightTime;
+    NSDate * dateStartFlight = [self stringToDate:startTime];
+    NSDate * datEndFlight = [self stringToDate:endTime];
+    NSTimeInterval secondsBetween = [datEndFlight timeIntervalSinceDate:dateStartFlight];
+    NSDate * newNow = [NSDate dateWithTimeIntervalSinceReferenceDate:secondsBetween];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd HH:mm"];
+    flightTime = [NSString stringWithFormat:@"%@", newNow];
+    NSRange range = NSMakeRange(11, 5);
+    flightTime = [flightTime substringWithRange:range];
+    return flightTime;
 }
 
-//Два метода для создания загругления------
-
-+ (void) customRadiusWithView: (UIView*) view
-                    andRadius: (CGFloat) radius
+//Метод превращающий строку в дату----------
+- (NSDate*) stringToDate: (NSString*) stringDate
 {
-    UIBezierPath *maskPath;
-    maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
-                                     byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft)
-                                           cornerRadii:CGSizeMake(radius, radius)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = view.bounds;
-    maskLayer.path = maskPath.CGPath;
-    view.layer.mask = maskLayer;
-}
-
-+ (void) customRightRadiusWithView: (UIView*) view
-                         andRadius: (CGFloat) radius
-{
-    UIBezierPath *maskPath;
-    maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
-                                     byRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomRight)
-                                           cornerRadii:CGSizeMake(radius, radius)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = view.bounds;
-    maskLayer.path = maskPath.CGPath;
-    view.layer.mask = maskLayer;
+    // Convert string to date object
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"HH:mm"];
+    NSDate *date = [dateFormat dateFromString:stringDate];
+    return date;
 }
 
 //Создаем строку полета--------------------------
 
-+ (NSString *) createFlightLabelTextWithString: (NSString*) flightText
+- (NSString *) createFlightLabelTextWithString: (NSString*) flightText
 {
     NSString * stringHaurs;
     NSString * stringMinutes;
-    
     if ([[flightText substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]) {
         stringHaurs = [flightText substringWithRange:NSMakeRange(1, 1)];
     } else {
         stringHaurs = [flightText substringWithRange:NSMakeRange(0, 2)];
     }
-    
     if ([[flightText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"0"]) {
         stringMinutes = [flightText substringWithRange:NSMakeRange(4, 1)];
     } else {
         stringMinutes = [flightText substringWithRange:NSMakeRange(3, 2)];
     }
-    
     NSString * stringTimeFlight = [NSString stringWithFormat:@"%@ ч %@ мин",stringHaurs, stringMinutes];
     return stringTimeFlight;
 }
 
+#pragma mark - Actions
 
+- (void) buttonBuyAction: (UIButton*) button {
+    for (int i = 0; i < self.temporaryArray.count; i++) {
+        if (button.tag == 10 + i) {
+            NSLog(@"buttonBuy %d", i);
+        }
+    }
+}
+
+
+- (void) buttonSearchAction: (UIButton*) button {
+    for (int i = 0; i < self.temporaryArray.count; i++) {
+        if (button.tag == 20 + i) {
+            [self.delegate pushToTravel:self];
+        }
+    }
+}
 
 
 @end

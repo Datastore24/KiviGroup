@@ -42,11 +42,11 @@
 
 + (UIButton*) createButtonBack
 {
-    UIImage *imageBarButton = [UIImage imageNamed:@"arrowBackImage.png"];
+    UIImage *imageBarButton = [UIImage imageNamed:@"buttonBackImage.png"];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.bounds = CGRectMake(0, 0, 20, 20);
+    button.bounds = CGRectMake(0, 0, 15, 15);
     CGRect rect = button.frame;
-    rect.origin.y += 16;
+    rect.origin.y += 10;
     button.frame = rect;
     [button setImage:imageBarButton forState:UIControlStateNormal];
     

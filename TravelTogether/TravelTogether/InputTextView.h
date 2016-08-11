@@ -31,6 +31,12 @@
                    andTextPlaceHolder: (NSString*) placeHolder
                           colorBorder: (NSString*) colorBorder;
 
+- (instancetype)initInputTextSearchWithView: (UIView*) view
+                                    andRect: (CGRect) frame
+                                   andImage: (NSString*) imageName
+                         andTextPlaceHolder: (NSString*) placeHolder
+                                colorBorder: (NSString*) colorBorder;
+
 
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;
