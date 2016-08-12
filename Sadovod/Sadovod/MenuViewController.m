@@ -47,7 +47,9 @@
                        @"Авторизация", @"Регистрация", @"Задать вопрос", @"Частые вопросы",
                        @"Доставка", @"Оплата", @"Контакты", @"О магазине", @"Возврат", @"Таблица размеров", @"Выход", nil];
     //Массив картинок-------
-    self.arrayImages = [NSArray arrayWithObjects:@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
+    self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"imageMenu3.png", @"imageMenu4.png",
+                        @"imageMenu5.png", @"imageMenu6.png", @"imageMenu7.png", @"imageMenu8.png", @"imageMenu9.png", @"imageMenu10.png",
+                        @"imageMenu11.png", @"imageMenu12.png", @"", nil];
 }
 
 - (void)didReceiveMemoryWarning
