@@ -8,6 +8,24 @@
 
 #import "CatalogController.h"
 
+@interface CatalogController ()
+
+@end
+
 @implementation CatalogController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initializeCartBarButton]; //Инициализация кнопок навигации
+    [self setCustomTitle:@"Южные Ворота"]; //Ввод заголовка
+//    [self.navigationController setNavigationBarHidden:NO];
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

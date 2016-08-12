@@ -9,6 +9,7 @@
 #import "TableMenuCell.h"
 #import "Macros.h"
 #import "HexColors.h"
+#import "UIView+BorderView.h"
 
 @implementation TableMenuCell
 
@@ -21,13 +22,15 @@
     
     UILabel * labelTint = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, viewCell.frame.size.width - 65, viewCell.frame.size.height)];
     labelTint.text = name;
-    labelTint.textColor = [UIColor whiteColor];
-    labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
+    labelTint.textColor = [UIColor blackColor];
+    labelTint.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:15];
     [viewCell addSubview:labelTint];
     
     UIImageView * imageMenu = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 30, 30)];
     imageMenu.image = [UIImage imageNamed:imageName];
     [viewCell addSubview:imageMenu];
+    
+    [UIView borderViewWithHeight:viewCell.frame.size.height - 1.f andWight:0 andView:viewCell andColor:@"d3d0ce"];
     
     return viewCell;
     

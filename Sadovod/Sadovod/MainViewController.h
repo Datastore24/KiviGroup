@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIButton+ButtonImage.h"
+#import "SWRevealViewController.h"
 
 @interface MainViewController : UIViewController
+
+
+-(void) initializeCartBarButton; //Инициализация контроллера с кнопками навигации
+
+- (void) setCustomTitle: (NSString*) title; //Установга загаловка в контроллер
 
 
 @end

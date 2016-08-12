@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
-@interface MenuViewController : UIViewController
+@interface MenuViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tableMenu;
 
 @end
