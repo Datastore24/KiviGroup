@@ -33,7 +33,7 @@
                       @"Cell6", @"Cell7", @"Cell8", nil];
     
     //Массив Заголовков-----
-    self.arrayTint = [NSArray arrayWithObjects:@"БУКЕТЫ", @"ЛИЧНЫЙ КАБИНЕТ", @"АКЦИИ", @"ДОСТАВКА", @"КОНТАКТЫ", @"НАСТРОЙКИ", @"", @"", nil];
+    self.arrayTint = [NSArray arrayWithObjects:@"КАТЕГОРИИ", @"ЛИЧНЫЙ КАБИНЕТ", @"АКЦИИ", @"ДОСТАВКА", @"КОНТАКТЫ", @"НАСТРОЙКИ", @"", @"", nil];
     
     //Массив картинок-------
     self.arrayImageMenu = [NSArray arrayWithObjects:
