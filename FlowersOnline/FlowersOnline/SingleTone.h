@@ -14,6 +14,8 @@
 @property (strong, nonatomic) UIView * viewBasketBar;
 @property (strong, nonatomic) UILabel * labelCountBasket;
 @property (strong, nonatomic) NSMutableArray * arrayBouquets;
+@property (strong, nonatomic) NSString * allPrice;
+
 @property (strong, nonatomic) NSMutableArray * arrayBasketCount;
 @property (strong, nonatomic) NSMutableDictionary * delivery;
 

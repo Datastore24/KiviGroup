@@ -108,6 +108,7 @@
     InputTextView * phone = (InputTextView *)[self viewWithTag:21];
     InputTextView * email = (InputTextView *)[self viewWithTag:22];
     InputTextView * address = (InputTextView *)[self viewWithTag:23];
+    InputTextView * comment = (InputTextView *)[self viewWithTag:24];
     if (name.textFieldInput.text.length == 0) {
         [self createAlerWithMessage:@"Введите имя."];
     } else if (phone.textFieldInput.text.length == 0) {
@@ -125,38 +126,88 @@
         }
         NSMutableArray * array = [NSMutableArray array];
         NSMutableArray * arrayCount = [[SingleTone sharedManager] arrayBasketCount];
-        
+       
         
         for (int i = 0; i < [[SingleTone sharedManager] arrayBouquets].count; i++) {
             NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithDictionary:[[[SingleTone sharedManager] arrayBouquets] objectAtIndex:i]];
             [dict setObject:[arrayCount objectAtIndex:i] forKey:@"count"];
             [array addObject:dict];
         }
+        
         NSString * stringNumber = [NSString stringWithFormat:@"+%@", phone.textFieldInput.text];
         NSDictionary * contactDataDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                           name.textFieldInput.text, @"name",
                                           email.textFieldInput.text, @"email",
                                           address.textFieldInput.text, @"address",
-                                          stringNumber, @"phone", nil];
-        NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:array, @"order",
+                                          stringNumber, @"phone",
+                                           [[SingleTone sharedManager] allPrice], @"total_price",
+                                          comment.textFieldInput.text, @"comment", nil];
+        
+        NSError * error;
+        
+        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:array
+                                                           options:NSJSONWritingPrettyPrinted error:&error];
+        NSString* newStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:newStr, @"order",
                                    [[SingleTone sharedManager] delivery], @"delivery", contactDataDict, @"contactData", nil];
         
-        
+       
+
         //То что отправляем---------------------------
-        NSLog(@"sendDict - %@", sendDict);
+            APIGetClass * apiOrder = [APIGetClass new];
         
- 
-        APIGetClass * apiOrder = [APIGetClass new];
-        [apiOrder getDataFromServerWithParams:sendDict method:@"get_orders" complitionBlock:^(id response) {
-            NSLog(@"%@",response);
-            [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
-            [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
-            [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
+        [apiOrder getDataFromServerJSONWithParams:sendDict method:@"add_order" complitionBlock:^(id response) {
+            NSLog(@"RESP %@",response);
+         NSDictionary * dictResponse = (NSDictionary*) response;
+            if([[dictResponse objectForKey:@"error"] integerValue] == 0){
+                
+                UIView * successView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, self.frame.size.height/2-64, self.frame.size.width-60, 100)];
+                successView.backgroundColor = [UIColor lightGrayColor];
+                successView.alpha=0.0f;
+                successView.center = CGPointMake(self.frame.size.width  / 2,
+                                                 self.frame.size.height / 2);
+                successView.layer.cornerRadius = 20;
+                successView.layer.masksToBounds = YES;
+                
+                UILabel * successLabel = [[UILabel alloc] initWithFrame:CGRectMake(successView.frame.size.width/2, successView.frame.size.height/2, successView.frame.size.width, 50)];
+                
+                
+                [successLabel setCenter:CGPointMake(successView.frame.size.width / 2, successView.frame.size.height / 2)];
+                successLabel.textAlignment = NSTextAlignmentCenter;
+                successLabel.text = @"Ваш заказ успешно принят!";
+                successLabel.textColor = [UIColor whiteColor];
+                successLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+                
+                
+                [successView addSubview:successLabel];
+                [self addSubview:successView];
+                
+                
+                [UIView animateWithDuration:1.0f animations:^{
+                    successView.alpha=0.9f;
+                } completion:^(BOOL finished) {
+                    NSLog(@"ANIM STOP");
+                    [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
+                    [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
+                    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
+                    sleep(1.3f);
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
+                    
+                }];
+                
+            }else{
+                [self createAlerWithMessage:[dictResponse objectForKey:@"error_msg"]];
+            }
+            
+
             
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
             
+
+        
         }];
+  
         
        
         
@@ -170,6 +221,7 @@
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     alert.customViewColor = [UIColor colorWithHexString:COLORGREEN];
     [alert showNotice:@"Внимание!" subTitle:message closeButtonTitle:@"Ок" duration:0.0f];
+    
     
 }
 
