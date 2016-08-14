@@ -53,6 +53,8 @@
 		AD16C9611D4B3DCF0046AF42 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C95E1D4B3DCF0046AF42 /* Auth+CoreDataProperties.m */; };
 		AD16C9621D4B3DCF0046AF42 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C9601D4B3DCF0046AF42 /* Auth.m */; };
 		AD16C9651D4B3DF40046AF42 /* AuthDBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD16C9641D4B3DF40046AF42 /* AuthDBClass.m */; };
+		AD5D4A2B1D6111CA008EF818 /* TextMethodClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5D4A2A1D6111C9008EF818 /* TextMethodClass.m */; };
+		AD5D4A2E1D611B4D008EF818 /* MessagePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5D4A2D1D611B4C008EF818 /* MessagePopUp.m */; };
 		FF2B22971D2BA49B003F501A /* imageRadioCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2B22961D2BA49B003F501A /* imageRadioCell.png */; };
 		FF2CD6FF1D420725001F2F6A /* ViewSectionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FA1D420725001F2F6A /* ViewSectionTable.m */; };
 		FF2CD7001D420725001F2F6A /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2CD6FC1D420725001F2F6A /* APIGetClass.m */; };
@@ -211,6 +213,10 @@
 		AD16C9601D4B3DCF0046AF42 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		AD16C9631D4B3DF40046AF42 /* AuthDBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthDBClass.h; sourceTree = "<group>"; };
 		AD16C9641D4B3DF40046AF42 /* AuthDBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDBClass.m; sourceTree = "<group>"; };
+		AD5D4A291D6111C9008EF818 /* TextMethodClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMethodClass.h; sourceTree = "<group>"; };
+		AD5D4A2A1D6111C9008EF818 /* TextMethodClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMethodClass.m; sourceTree = "<group>"; };
+		AD5D4A2C1D611B4C008EF818 /* MessagePopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePopUp.h; sourceTree = "<group>"; };
+		AD5D4A2D1D611B4C008EF818 /* MessagePopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePopUp.m; sourceTree = "<group>"; };
 		BB90C8DC672EBD8E609E37A4 /* Pods-FlowersOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowersOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowersOnline/Pods-FlowersOnline.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2B22961D2BA49B003F501A /* imageRadioCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageRadioCell.png; sourceTree = "<group>"; };
 		FF2CD6F91D420725001F2F6A /* ViewSectionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewSectionTable.h; sourceTree = "<group>"; };
@@ -563,6 +569,10 @@
 		AD109AB91CCF5B120074BA7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD5D4A2C1D611B4C008EF818 /* MessagePopUp.h */,
+				AD5D4A2D1D611B4C008EF818 /* MessagePopUp.m */,
+				AD5D4A291D6111C9008EF818 /* TextMethodClass.h */,
+				AD5D4A2A1D6111C9008EF818 /* TextMethodClass.m */,
 				FF73503A1D2255BA001DD7C2 /* SingleTone.h */,
 				FF73503B1D2255BA001DD7C2 /* SingleTone.m */,
 				77B3552F1CD3BFBE00A17546 /* TitleClass.h */,
@@ -876,12 +886,14 @@
 			files = (
 				7708B61B1D1850050083C029 /* CheckoutController.m in Sources */,
 				AD109AC11CCF5B120074BA7B /* ViewController.m in Sources */,
+				AD5D4A2E1D611B4D008EF818 /* MessagePopUp.m in Sources */,
 				7708B61E1D1850180083C029 /* CheckoutView.m in Sources */,
 				FF6DD5421D4B601000317495 /* NavController.m in Sources */,
 				FFE955461D03848200AAAC0B /* PersonalAreaView.m in Sources */,
 				FF2CD7161D42074C001F2F6A /* TextAndImageHeight.m in Sources */,
 				FF911C771D12FA0500D3BE87 /* Animation.m in Sources */,
 				FF2CD6FF1D420725001F2F6A /* ViewSectionTable.m in Sources */,
+				AD5D4A2B1D6111CA008EF818 /* TextMethodClass.m in Sources */,
 				771669D11D0E9C7E00037831 /* ContactsController.m in Sources */,
 				FF2CD7141D42074C001F2F6A /* HeightForText.m in Sources */,
 				7748A1371CD4E99D001A5743 /* UIColor+HexColor.m in Sources */,
