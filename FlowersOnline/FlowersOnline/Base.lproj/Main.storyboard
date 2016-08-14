@@ -304,26 +304,6 @@
             </objects>
             <point key="canvasLocation" x="523" y="-767"/>
         </scene>
-        <!--Category Controller-->
-        <scene sceneID="YGE-zJ-F9F">
-            <objects>
-                <viewController storyboardIdentifier="CategoryController" id="Kcf-Hz-ZHk" customClass="CategoryController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LTW-uu-ErO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="4Ly-6u-kYG">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="U1T-Ra-atY"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="buttonMenu" destination="U1T-Ra-atY" id="UjK-Gk-MhO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yMe-3N-6W3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1318" y="-1183"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HoE-ux-sPo"/>

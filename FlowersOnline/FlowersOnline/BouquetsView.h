@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BouquetsViewDelegate;
+
 @interface BouquetsView : UIView <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array;
+@property (weak, nonatomic) id <BouquetsViewDelegate> delegate;
+
+- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array andCategoryData: (NSArray*) catData;
+
+@end
+
+@protocol BouquetsViewDelegate <NSObject>
+
+@required
+
+- (void) setCategiry: (BouquetsView*) bouquetsView withIDString: (NSString*) idString;
 
 @end

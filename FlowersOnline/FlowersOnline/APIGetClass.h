@@ -13,6 +13,8 @@
 //Метод получающий данные с сервера
 -(void) getDataFromServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack; //Стандартный метод гет
 
+-(void) getDataFromServerJSONWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack; //Метод JSON
+
 -(void) getDataFromServerWithAudioParams: (NSDictionary *) params andAudioURL: (NSURL*) audioUrl method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack; //Пост аудио
 
 -(void) getDataFromServerWithImageParams: (NSDictionary *) params //пост картинки

@@ -41,8 +41,6 @@
 		77B355321CD3BFBE00A17546 /* TitleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B355301CD3BFBE00A17546 /* TitleClass.m */; };
 		77D57B9E1D0F0DCE00EEA42D /* ButtonImageDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D57B9C1D0F0DCE00EEA42D /* ButtonImageDown.png */; };
 		77D57B9F1D0F0DCE00EEA42D /* buttomInageUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D57B9D1D0F0DCE00EEA42D /* buttomInageUp.png */; };
-		77E44E841D5F87730060D57F /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E44E831D5F87730060D57F /* CategoryController.m */; };
-		77E44E871D5F878D0060D57F /* CategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E44E861D5F878D0060D57F /* CategoryView.m */; };
 		77E44E8A1D5F9A230060D57F /* UIView+BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E44E891D5F9A230060D57F /* UIView+BorderView.m */; };
 		77E44E8D1D5F9AE10060D57F /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E44E8C1D5F9AE10060D57F /* HexColors.m */; };
 		AD109ABB1CCF5B120074BA7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD109ABA1CCF5B120074BA7B /* main.m */; };
@@ -192,10 +190,6 @@
 		77B355311CD3BFBE00A17546 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		77D57B9C1D0F0DCE00EEA42D /* ButtonImageDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonImageDown.png; sourceTree = "<group>"; };
 		77D57B9D1D0F0DCE00EEA42D /* buttomInageUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttomInageUp.png; sourceTree = "<group>"; };
-		77E44E821D5F87730060D57F /* CategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryController.h; sourceTree = "<group>"; };
-		77E44E831D5F87730060D57F /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
-		77E44E851D5F878D0060D57F /* CategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryView.h; sourceTree = "<group>"; };
-		77E44E861D5F878D0060D57F /* CategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryView.m; sourceTree = "<group>"; };
 		77E44E881D5F9A230060D57F /* UIView+BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderView.h"; sourceTree = "<group>"; };
 		77E44E891D5F9A230060D57F /* UIView+BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BorderView.m"; sourceTree = "<group>"; };
 		77E44E8B1D5F9AE10060D57F /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
@@ -509,10 +503,6 @@
 		77E44E811D5F87500060D57F /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				77E44E821D5F87730060D57F /* CategoryController.h */,
-				77E44E831D5F87730060D57F /* CategoryController.m */,
-				77E44E851D5F878D0060D57F /* CategoryView.h */,
-				77E44E861D5F878D0060D57F /* CategoryView.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -903,7 +893,6 @@
 				FFE955431D03847100AAAC0B /* PersonalAreaController.m in Sources */,
 				FF2CD71B1D42074C001F2F6A /* UIImage+RoundedCorner.m in Sources */,
 				FF2CD7191D42074C001F2F6A /* UIImage+ImageEffects.m in Sources */,
-				77E44E841D5F87730060D57F /* CategoryController.m in Sources */,
 				773194991CD77CD4002831E4 /* CustomTextField.m in Sources */,
 				7748A1751CD4F977001A5743 /* CustomCellView.m in Sources */,
 				FF2CD7171D42074C001F2F6A /* UIImage+Alpha.m in Sources */,
@@ -932,7 +921,6 @@
 				77E44E8D1D5F9AE10060D57F /* HexColors.m in Sources */,
 				FFE9553F1D0380AC00AAAC0B /* BouquetsView.m in Sources */,
 				FF2CD71C1D42074C001F2F6A /* UIButton+ButtonImage.m in Sources */,
-				77E44E871D5F878D0060D57F /* CategoryView.m in Sources */,
 				771669DB1D0ED69A00037831 /* BasketView.m in Sources */,
 				77B3552E1CD3BF3900A17546 /* LoginController.m in Sources */,
 				FFC1ACF31D0B514300B30E4B /* DeliveryController.m in Sources */,

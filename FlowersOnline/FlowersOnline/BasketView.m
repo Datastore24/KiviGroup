@@ -449,6 +449,9 @@
 
 - (void) buttonCheckoutAction
 {
+    
+    [[SingleTone sharedManager] setAllPrice:[NSString stringWithFormat:@"%ld", (long)countPrice]];
+   
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
 
 }

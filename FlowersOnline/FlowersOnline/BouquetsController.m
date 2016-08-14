@@ -16,7 +16,7 @@
 #import "APIGetClass.h"
 #import <MONActivityIndicatorView.h>
 
-@interface BouquetsController () <MONActivityIndicatorViewDelegate>
+@interface BouquetsController () <MONActivityIndicatorViewDelegate, BouquetsViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayResponse;
 @property (strong, nonatomic) NSArray * arrayCetegory;
@@ -66,20 +66,21 @@
     
     //загрузка данных------
     
-    MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 20, 100, 40)];
+    MONActivityIndicatorView * indicatorView = [[MONActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 20, 100, 40)];
     indicatorView.numberOfCircles = 5;
     indicatorView.radius = 10;
     indicatorView.delegate = self;
     [indicatorView startAnimating];
-    [self.view addSubview:indicatorView];
+    [self.view addSubview: indicatorView];
     
     [self getAPIWithBlock:^{
         [indicatorView stopAnimating];
 
         //отображение----
-        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse];
+        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse andCategoryData:self.arrayCetegory];
+        mainView.delegate = self;
         [self.view addSubview:mainView];        
-    }];
+    } andIDString:nil];
 }
 
 - (void) dealloc
@@ -116,12 +117,15 @@
     }];
 }
 
-- (void) getAPIWithBlock: (void (^)(void))block
+- (void) getAPIWithBlock: (void (^)(void))block andIDString: (NSString*) idString
 {
     
     [self getAPIWithCategoryBlock:^{
         NSDictionary * dictCategory = [self.arrayCetegory objectAtIndex:0];
         NSString * idCategory = [dictCategory objectForKey:@"id"];
+        if (idString != nil) {
+            idCategory = idString;
+        }
         NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:idCategory, @"category_id", nil];
         
         APIGetClass * apiGallery = [APIGetClass new];
@@ -158,6 +162,29 @@
     return color;
 }
 
+#pragma mark - BouquetsViewDelegate
 
+- (void) setCategiry: (BouquetsView*) bouquetsView withIDString: (NSString*) idString {
+    
+    for (UIView *view in [self.view subviews])
+    {
+        [view removeFromSuperview];
+    }
+    MONActivityIndicatorView * indicatorView = [[MONActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 20, 100, 40)];
+    indicatorView.numberOfCircles = 5;
+    indicatorView.radius = 10;
+    indicatorView.delegate = self;
+    [indicatorView startAnimating];
+    [self.view addSubview: indicatorView];
+    
+    [self getAPIWithBlock:^{
+        [indicatorView stopAnimating];
+        
+        //отображение----
+        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse andCategoryData:self.arrayCetegory];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    } andIDString:idString]; 
+}
 
 @end

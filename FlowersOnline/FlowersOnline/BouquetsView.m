@@ -17,9 +17,14 @@
 @interface BouquetsView ()
 
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCategory;
 @property (strong, nonatomic) NSDictionary * mainDict;
 
 @property (strong, nonatomic) NSArray * arrayPrice;
+@property (strong, nonatomic) UIView * categoryMainView;
+
+@property (strong, nonatomic) UITableView * tableCategory;
+@property (strong, nonatomic) UIView * darkView;
 
 @end
 
@@ -37,13 +42,14 @@
 }
 
 
-- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array
+- (instancetype)initWithView: (UIView*) view andArrayData: (NSArray*) array andCategoryData: (NSArray*) catData
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height - 64);
         
         self.arrayData = array;
+        self.arrayCategory = catData;
         arrayScroll = [[NSMutableArray alloc] init];
         arrayControl = [[NSMutableArray alloc] init];
         buttonsArray = [[NSMutableArray alloc] init];
@@ -51,7 +57,7 @@
         
 
         //Наносим основной скрол вью
-        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40)];
         mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:mainScrollView];
         
@@ -63,8 +69,6 @@
             self.mainDict = [self.arrayData objectAtIndex:i];
             NSArray * arrayImages = [NSArray arrayWithArray:[self.mainDict objectForKey:@"img"]];
             
-            NSLog(@"%@", [arrayImages objectAtIndex:0]);
-            
             //Инициализация scrollView-----------------------------------------
             UIScrollView * scrollImages = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * i, self.frame.size.width, self.frame.size.width)];
             [scrollImages setDelegate:self];
@@ -74,9 +78,6 @@
             [scrollImages setBackgroundColor:[UIColor whiteColor]]; // цвет фона скролвью
             [arrayScroll addObject:scrollImages];
             [mainScrollView addSubview:scrollImages];
-            
-            
-            
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
             UIImage * image = [UIImage imageWithData: imageData];
             
@@ -141,7 +142,7 @@
         
         //Крытая таблица цен----------------------------------------------------
         //Создание таблицы заказов----
-        tablePrice = [[UITableView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, self.frame.size.height - self.frame.size.width)];
+        tablePrice = [[UITableView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, self.frame.size.height - self.frame.size.width)];
         //Убираем полосы разделяющие ячейки------------------------------
         tablePrice.separatorStyle = UITableViewCellSeparatorStyleNone;
         tablePrice.dataSource = self;
@@ -152,24 +153,30 @@
 
         [self addSubview:tablePrice];
         
+        CustomButton * buttonCategory = [CustomButton buttonWithType:UIButtonTypeSystem];
+        buttonCategory.frame = CGRectMake(20.f, 4.f, self.frame.size.width - 40.f, 32.f);
+        buttonCategory.layer.cornerRadius = 16.f;
+        buttonCategory.isBool = NO;
+        buttonCategory.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
+        buttonCategory.layer.borderWidth = 2.f;
+        [buttonCategory setTitle:@"ВЫБРАТЬ КАТЕГОРИЮ" forState:UIControlStateNormal];
+        [buttonCategory setTitleColor:[UIColor colorWithHexString:COLORGREEN] forState:UIControlStateNormal];
+        [buttonCategory addTarget:self action:@selector(buttonCategoryAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonCategory];
+        
+        self.darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.darkView.backgroundColor = [UIColor blackColor];
+        self.darkView.alpha = 0.f;
+        [self addSubview:self.darkView];
+        
+        
+        self.categoryMainView = [self caegoryViewWithView:self andData:nil];
+        [self addSubview:self.categoryMainView];
+        
         
     }
     return self;
 }
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    
-//        for (int i = 0; i < self.arrayData.count; i++) {
-//            if ([scrollView isEqual:[arrayScroll objectAtIndex:i]]) {
-//                CGFloat pageWidth = CGRectGetWidth(self.bounds);
-//                UIScrollView * scrol = [arrayScroll objectAtIndex:i];
-//                UIPageControl * control = [arrayControl objectAtIndex:i];
-//                CGFloat pageFraction = scrol.contentOffset.x / pageWidth;
-//                control.currentPage = roundf(pageFraction);
-//            }
-//        }
-//}
-
 
 #pragma mark - Buttons Action
 //Действие тача на букет--------------------------
@@ -196,9 +203,6 @@
                 } completion:^(BOOL finished) {
                 }];
                 button.isBool = NO;
-                
-                
-                
                 dictPrice = [self.arrayData objectAtIndex:i];
                 self.arrayPrice = [dictPrice objectForKey:@"variants"];
                 [tablePrice reloadData];
@@ -272,6 +276,55 @@
     }
 }
 
+- (void) buttonCategoryAction: (CustomButton*) button {
+    
+
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect rect = self.categoryMainView.frame;
+            rect.origin.x -= self.frame.size.width / 2 + 50.f;
+            self.categoryMainView.frame = rect;
+            self.darkView.alpha = 0.3f;
+        } completion:^(BOOL finished) {}];
+}
+
+- (void) buttonCanselAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = self.categoryMainView.frame;
+        rect.origin.x += self.frame.size.width / 2 + 50.f;
+        self.categoryMainView.frame = rect;
+        self.darkView.alpha = 0.f;
+    } completion:^(BOOL finished) {}];
+}
+
+#pragma mark - CategoryView
+
+- (UIView*) caegoryViewWithView: (UIView*) view
+                        andData: (NSArray*) data {
+    UIView * categoryView = [[UIView alloc] initWithFrame:CGRectMake(view.frame.size.width, 0.f, view.frame.size.width / 2 + 50, view.frame.size.height)];
+    categoryView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton * buttonCansel = [UIButton buttonWithType:UIButtonTypeSystem];
+    buttonCansel.frame = CGRectMake(categoryView.frame.size.width - 40, 10, 30, 30);
+    buttonCansel.layer.cornerRadius = 15.f;
+    buttonCansel.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
+    buttonCansel.layer.borderWidth = 1.f;
+    [buttonCansel setTitle:@"X" forState:UIControlStateNormal];
+    [buttonCansel setTitleColor:[UIColor colorWithHexString:COLORGREEN] forState:UIControlStateNormal];
+    [buttonCansel addTarget:self action:@selector(buttonCanselAction) forControlEvents:UIControlEventTouchUpInside];
+    [categoryView addSubview:buttonCansel];
+    
+    self.tableCategory = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, categoryView.frame.size.width, categoryView.frame.size.height - 40.f)];
+//    self.tableCategory.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableCategory.delegate = self;
+    self.tableCategory.dataSource = self;
+    self.tableCategory.showsVerticalScrollIndicator = NO;
+    self.tableCategory.scrollEnabled = NO;
+    [categoryView addSubview:self.tableCategory];
+    
+    
+    return categoryView;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -280,7 +333,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if ([tableView isEqual:self.tableCategory]) {
+        return self.arrayCategory.count;
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -293,12 +350,17 @@
     for (UIView * view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-    
+    if ([tableView isEqual:self.tableCategory]) {
+        NSDictionary * dictCellCat =[self.arrayCategory objectAtIndex:indexPath.row];
+            [cell.contentView addSubview:[self setCustomCellWithName:[dictCellCat objectForKey:@"name"]
+                                                            andImage:[dictCellCat objectForKey:@"img"]
+                                                             andView:cell]];
+    } else {
     NSDictionary * dictCell = [self.arrayPrice objectAtIndex:0];
-    
     [cell.contentView addSubview:[self setTableCellWithName:[dictCell objectForKey:@"name"]
                                                     andData:nil
                                                    andPrice:[dictCell objectForKey:@"price"]]];
+    }
     return cell;
 }
 
@@ -306,30 +368,41 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return tablePrice.frame.size.height / 3;
+    if (![tableView isEqual:self.tableCategory]) {
+        return tablePrice.frame.size.height / 3;
+    } else {
+        return 40.f;
+    }
+    
 }
-
-
 
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkOrderNotification" object:nil];
-    }
-    [[[SingleTone sharedManager] arrayBouquets] addObject:dictPrice];
-    tablePrice.allowsSelection = NO;
-    NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
-    count += 1;
-    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)count];
-    [UIView animateWithDuration:0.15 animations:^{
-        
-    } completion:^(BOOL finished) {
+    if (![tableView isEqual:self.tableCategory]) {
+        if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"checkOrderNotification" object:nil];
+        }
+        [[[SingleTone sharedManager] arrayBouquets] addObject:dictPrice];
+        tablePrice.allowsSelection = NO;
+        NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
+        count += 1;
+        [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)count];
         [UIView animateWithDuration:0.15 animations:^{
             
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.15 animations:^{
+                
+            }];
         }];
-    }];
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSDictionary * dictCategory = [self.arrayCategory objectAtIndex:indexPath.row];
+        [self.delegate setCategiry:self withIDString:[dictCategory objectForKey:@"id"]];
+        
+        
+        
+    }
 }
 
 #pragma mark - CustomCell
@@ -394,8 +467,38 @@
     borderView.backgroundColor = [UIColor whiteColor];
     [cellView addSubview:borderView];
     
+    
+    
     return cellView;
     
+}
+
+
+#pragma mark - Custom Cell
+
+- (UIView*) setCustomCellWithName: (NSString*) name
+                         andImage: (NSString*) imageName
+                          andView: (UIView*) view {
+    UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height)];
+    
+    UILabel * labelNameCell = [[UILabel alloc] initWithFrame:CGRectMake(70.f, 0.f, view.frame.size.width - 40.f, view.frame.size.height)];
+    labelNameCell.text = name;
+    labelNameCell.textColor = [UIColor colorWithHexString:COLORGREEN];
+    labelNameCell.font = [UIFont fontWithName:FONTREGULAR size:18];
+    [cellView addSubview:labelNameCell];
+    
+    NSLog(@"%@", imageName);
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageName]];
+    
+    UIImageView * imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(15.f, 5.f, 30.f, 30.f)];
+    imageViewCell.layer.cornerRadius = 5.f;
+    imageViewCell.clipsToBounds = YES;
+    imageViewCell.image = [UIImage imageWithData: imageData];
+    [cellView addSubview:imageViewCell];
+    
+    
+    return cellView;
 }
 
 

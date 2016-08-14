@@ -15,6 +15,7 @@
 @synthesize arrayBouquets;
 @synthesize arrayBasketCount;
 @synthesize delivery;
+@synthesize allPrice;
 
 
 #pragma mark Singleton Methods
