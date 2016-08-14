@@ -63,6 +63,8 @@
             self.mainDict = [self.arrayData objectAtIndex:i];
             NSArray * arrayImages = [NSArray arrayWithArray:[self.mainDict objectForKey:@"img"]];
             
+            NSLog(@"%@", [arrayImages objectAtIndex:0]);
+            
             //Инициализация scrollView-----------------------------------------
             UIScrollView * scrollImages = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.frame.size.width * i, self.frame.size.width, self.frame.size.width)];
             [scrollImages setDelegate:self];
@@ -73,13 +75,7 @@
             [arrayScroll addObject:scrollImages];
             [mainScrollView addSubview:scrollImages];
             
-//            //Инициализация pageControl-------------------------------------------
-//            UIPageControl * pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 30, scrollImages.frame.size.height-20 + self.frame.size.width * i, 60, 10)];
-//            [pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"303f9f"]]; //цвет "точек" при пролистывании экрана приветствия
-//            pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-//            [pageControl setNumberOfPages:3]; // задаем количетсво слайдов приветствия
-//            [arrayControl addObject:pageControl];
-//            [mainScrollView addSubview:pageControl];
+            
             
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
             UIImage * image = [UIImage imageWithData: imageData];
@@ -88,13 +84,6 @@
             view1.image = image;
             [scrollImages addSubview:view1];
             
-            UIImageView * view2 = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.width)];
-             view2.image = image;
-            [scrollImages addSubview:view2];
-            
-            UIImageView * view3 = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, self.frame.size.width)];
-             view3.image = image;
-            [scrollImages addSubview:view3];
             
             //Загаловок букета----------------------------------------------------
             CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:20 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"name"]];

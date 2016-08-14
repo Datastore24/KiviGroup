@@ -19,6 +19,7 @@
 @interface BouquetsController () <MONActivityIndicatorViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayResponse;
+@property (strong, nonatomic) NSArray * arrayCetegory;
 
 @end
 
@@ -72,8 +73,9 @@
     [indicatorView startAnimating];
     [self.view addSubview:indicatorView];
     
-    [self getAPIWithBlock:^{        
+    [self getAPIWithBlock:^{
         [indicatorView stopAnimating];
+
         //отображение----
         BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse];
         [self.view addSubview:mainView];        
@@ -100,22 +102,39 @@
 
 #pragma mark - API
 
-- (void) getAPIWithBlock: (void (^)(void))block
+- (void) getAPIWithCategoryBlock: (void (^)(void))block
 {
-//    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:@"5", @"category_id", nil];
-    
     APIGetClass * apiGallery = [APIGetClass new];
-    [apiGallery getDataFromServerWithParams:nil method:@"load_products" complitionBlock:^(id response) {\
+    [apiGallery getDataFromServerWithParams:nil method:@"get_categories" complitionBlock:^(id response) {\
         
         if ([response isKindOfClass:[NSArray class]]) {
-            _arrayResponse = response;
+            self.arrayCetegory = response;
         } else {
             NSLog(@"Что то другое");
         }
-
-                
         block();
+    }];
+}
 
+- (void) getAPIWithBlock: (void (^)(void))block
+{
+    
+    [self getAPIWithCategoryBlock:^{
+        NSDictionary * dictCategory = [self.arrayCetegory objectAtIndex:0];
+        NSString * idCategory = [dictCategory objectForKey:@"id"];
+        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:idCategory, @"category_id", nil];
+        
+        APIGetClass * apiGallery = [APIGetClass new];
+        [apiGallery getDataFromServerWithParams:dict method:@"load_products" complitionBlock:^(id response) {\
+            
+            if ([response isKindOfClass:[NSArray class]]) {
+                self.arrayResponse = response;
+                
+            } else {
+                NSLog(@"Что то другое");
+            }
+            block();
+        }];
     }];
 }
 
