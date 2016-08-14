@@ -12,6 +12,7 @@
 #import "AuthDBClass.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "SingleTone.h"
+#import "APIGetClass.h"
 
 @implementation CheckoutView
 
@@ -144,13 +145,21 @@
         //То что отправляем---------------------------
         NSLog(@"sendDict - %@", sendDict);
         
+ 
+        APIGetClass * apiOrder = [APIGetClass new];
+        [apiOrder getDataFromServerWithParams:sendDict method:@"get_orders" complitionBlock:^(id response) {
+            NSLog(@"%@",response);
+            [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
+            [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
+            [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
+            
+        }];
+        
        
-        [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
-        [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
-        [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
-
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
+        
         
     }
 }
