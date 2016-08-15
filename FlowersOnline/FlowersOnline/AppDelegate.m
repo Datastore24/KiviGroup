@@ -32,6 +32,8 @@
     NSMutableDictionary * deliveryDict = [[NSMutableDictionary alloc] init];
     [[SingleTone sharedManager] setDelivery:deliveryDict];
     
+    [[SingleTone sharedManager] setChaneCategory:0];
+    
     
     
     return YES;

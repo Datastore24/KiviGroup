@@ -86,7 +86,7 @@
             }
         }
         
-        mainScrollView.contentSize = CGSizeMake(0, 150 * countShares + 40);
+        mainScrollView.contentSize = CGSizeMake(0, 64 + 70 + 150 * countShares + 40);
 
     }
     return self;

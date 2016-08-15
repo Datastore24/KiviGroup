@@ -12,7 +12,8 @@
 #import "AuthDBClass.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "SingleTone.h"
-
+#import "APIGetClass.h"
+#import "MessagePopUp.h"
 
 @implementation CheckoutView
 
@@ -21,6 +22,11 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height - 64);
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+        [self addGestureRecognizer:gestureRecognizer];
+        
+        
         AuthDBClass * authDbClass = [AuthDBClass new];
         NSArray * arrayPlaceHolder = [NSArray arrayWithObjects:
                                       @"Имя получателя", @"Телефон получателя",
@@ -152,15 +158,29 @@
         
         NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:newStr, @"order",
                                    [[SingleTone sharedManager] delivery], @"delivery", contactDataDict, @"contactData", nil];
+        //То что отправляем---------------------------
+            APIGetClass * apiOrder = [APIGetClass new];
         
-       
+        [apiOrder getDataFromServerJSONWithParams:sendDict method:@"add_order" complitionBlock:^(id response) {
+            NSLog(@"RESP %@",response);
+         NSDictionary * dictResponse = (NSDictionary*) response;
+            if([[dictResponse objectForKey:@"error"] integerValue] == 0){
+                
+               [MessagePopUp showPopUpWithBlock:@"Ваш заказ успешно принят!" view:self complitionBlock:^{
+                   [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
+                   [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
+                   [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
+                   sleep(1.3f);
+                   [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
+               }];
+                
+            }else{
+                [self createAlerWithMessage:[dictResponse objectForKey:@"error_msg"]];
+            }
+        }];
+
         [self.delegate sendToServer:self withDict:sendDict];
-        
-  
-        
-       
-        
-        
+
     }
 }
 
@@ -172,6 +192,10 @@
     [alert showNotice:@"Внимание!" subTitle:message closeButtonTitle:@"Ок" duration:0.0f];
     
     
+}
+
+- (void) hideKeyboard {
+    [self endEditing:YES];
 }
 
 @end

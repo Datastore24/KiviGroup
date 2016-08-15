@@ -19,6 +19,9 @@
 @property (strong, nonatomic) NSMutableArray * arrayBasketCount;
 @property (strong, nonatomic) NSMutableDictionary * delivery;
 
+
+@property (assign, nonatomic) NSInteger chaneCategory;
+
 + (id)sharedManager;
 
 @end

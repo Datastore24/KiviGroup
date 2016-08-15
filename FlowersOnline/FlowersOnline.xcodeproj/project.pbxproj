@@ -506,13 +506,6 @@
 			name = CategoryDetail;
 			sourceTree = "<group>";
 		};
-		77E44E811D5F87500060D57F /* Category */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Category;
-			sourceTree = "<group>";
-		};
 		AD109AAD1CCF5B120074BA7B = {
 			isa = PBXGroup;
 			children = (
@@ -699,7 +692,6 @@
 		FFE955391D03808200AAAC0B /* Bouquets */ = {
 			isa = PBXGroup;
 			children = (
-				77E44E811D5F87500060D57F /* Category */,
 				77E44E801D5F872D0060D57F /* CategoryDetail */,
 				FF56E8301D2146B300D9DB40 /* Image */,
 			);
