@@ -41,6 +41,8 @@
     [super viewDidLoad];
 #pragma mark - Header
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeMethod) name:@"popNotificationToReleaseBouquetsView" object:nil];
+    
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [ButtonMenu createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -185,6 +187,28 @@
         mainView.delegate = self;
         [self.view addSubview:mainView];
     } andIDString:idString]; 
+}
+
+- (void) removeMethod {
+    for (UIView *view in [self.view subviews])
+    {
+        [view removeFromSuperview];
+    }
+    MONActivityIndicatorView * indicatorView = [[MONActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 20, 100, 40)];
+    indicatorView.numberOfCircles = 5;
+    indicatorView.radius = 10;
+    indicatorView.delegate = self;
+    [indicatorView startAnimating];
+    [self.view addSubview: indicatorView];
+    
+    [self getAPIWithBlock:^{
+        [indicatorView stopAnimating];
+        
+        //отображение----
+        BouquetsView * mainView = [[BouquetsView alloc] initWithView:self.view andArrayData:self.arrayResponse andCategoryData:self.arrayCetegory];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    } andIDString:nil];
 }
 
 @end

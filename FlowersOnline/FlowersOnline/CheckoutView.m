@@ -13,7 +13,7 @@
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "SingleTone.h"
 #import "APIGetClass.h"
-#import "MessagePopUp.h";
+#import "MessagePopUp.h"
 
 @implementation CheckoutView
 
@@ -22,6 +22,11 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 64, view.frame.size.width, view.frame.size.height - 64);
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+        [self addGestureRecognizer:gestureRecognizer];
+        
+        
         AuthDBClass * authDbClass = [AuthDBClass new];
         NSArray * arrayPlaceHolder = [NSArray arrayWithObjects:
                                       @"Имя получателя", @"Телефон получателя",
@@ -153,9 +158,6 @@
         
         NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:newStr, @"order",
                                    [[SingleTone sharedManager] delivery], @"delivery", contactDataDict, @"contactData", nil];
-        
-       
-
         //То что отправляем---------------------------
             APIGetClass * apiOrder = [APIGetClass new];
         
@@ -175,19 +177,7 @@
             }else{
                 [self createAlerWithMessage:[dictResponse objectForKey:@"error_msg"]];
             }
-            
-
-            
-            
-            
-
-        
         }];
-  
-        
-       
-        
-        
     }
 }
 
@@ -199,6 +189,10 @@
     [alert showNotice:@"Внимание!" subTitle:message closeButtonTitle:@"Ок" duration:0.0f];
     
     
+}
+
+- (void) hideKeyboard {
+    [self endEditing:YES];
 }
 
 @end

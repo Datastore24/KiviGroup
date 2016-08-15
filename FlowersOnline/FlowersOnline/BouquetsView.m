@@ -28,6 +28,11 @@
 @property (strong, nonatomic) UITableView * tableCategory;
 @property (strong, nonatomic) UIView * darkView;
 
+@property (strong, nonatomic) UIView * viewDescription;
+@property (strong, nonatomic) UILabel * labelDescriprion;
+@property (strong, nonatomic) UIScrollView * scrollDescripton;
+@property (strong, nonatomic) UIButton * buttonDescription;
+
 @end
 
 @implementation BouquetsView
@@ -89,9 +94,15 @@
             view1.image = image;
             [scrollImages addSubview:view1];
             
+            //Фоновое вью для отображения цены и наименования-------------------
+            UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f + self.frame.size.width * i, self.frame.size.width, 20.f)];
+            borderView.backgroundColor = [UIColor blackColor];
+            borderView.alpha = 0.7f;
+            [mainScrollView addSubview:borderView];
+            
             
             //Загаловок букета----------------------------------------------------
-            CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:20 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"name"]];
+            CustomLabels * labelTitle = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:0 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"name"]];
             labelTitle.font = [UIFont fontWithName:FONTLITE size:16];
             if (isiPhone5 || isiPhone4s) {
                 labelTitle.font = [UIFont fontWithName:FONTLITE size:14];
@@ -103,7 +114,7 @@
        
             NSDictionary * variants = [[self.mainDict objectForKey:@"variants"] objectAtIndex:0];
 
-            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ р.",[variants objectForKey:@"price"]]];
+            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:0 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ р.",[variants objectForKey:@"price"]]];
             labelPrice.font = [UIFont fontWithName:FONTLITE size:16];
             if (isiPhone5 || isiPhone4s) {
                 labelPrice.font = [UIFont fontWithName:FONTLITE size:14];
@@ -127,17 +138,17 @@
             [buttonToGive addTarget:self action:@selector(buttonToGiveAction:) forControlEvents:UIControlEventTouchUpInside];
             [mainScrollView addSubview:buttonToGive];
             
-            //Описание букета-------------------------------------------------------
-            NSString * fullText =[TextMethodClass stringByStrippingHTML:[self.mainDict objectForKey:@"body"]];
-            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:fullText];
-            labelText.numberOfLines = 2;
-            labelText.font = [UIFont fontWithName:FONTLITE size:12];
-            if (isiPhone5 || isiPhone4s) {
-                labelText.font = [UIFont fontWithName:FONTLITE size:10];
-            }
-            labelText.textAlignment = NSTextAlignmentLeft;
-            [labelText sizeToFit];
-            [mainScrollView addSubview:labelText];
+//            //Описание букета-------------------------------------------------------
+//            NSString * fullText =[TextMethodClass stringByStrippingHTML:[self.mainDict objectForKey:@"body"]];
+//            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:fullText];
+//            labelText.numberOfLines = 2;
+//            labelText.font = [UIFont fontWithName:FONTLITE size:12];
+//            if (isiPhone5 || isiPhone4s) {
+//                labelText.font = [UIFont fontWithName:FONTLITE size:10];
+//            }
+//            labelText.textAlignment = NSTextAlignmentLeft;
+//            [labelText sizeToFit];
+//            [mainScrollView addSubview:labelText];
             
             //Создаем кнопку увеличения scrollView
             CustomButton * buttonScroll = [CustomButton buttonWithType:UIButtonTypeSystem];
@@ -148,7 +159,9 @@
             [scrollImages addSubview:buttonScroll];
         }
         
-        //Крытая таблица цен----------------------------------------------------
+#pragma mark - TablePrice
+        
+        //Скрытая таблица цен----------------------------------------------------
         //Создание таблицы заказов----
         tablePrice = [[UITableView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, self.frame.size.height - self.frame.size.width)];
         //Убираем полосы разделяющие ячейки------------------------------
@@ -156,6 +169,7 @@
         tablePrice.dataSource = self;
         tablePrice.delegate = self;
         tablePrice.showsVerticalScrollIndicator = NO;
+        tablePrice.scrollEnabled = NO;
         tablePrice.backgroundColor = [UIColor colorWithHexString:COLORGRAY];
         //Очень полездное свойство, отключает дествие ячейки-------------
 
@@ -172,15 +186,29 @@
         [buttonCategory addTarget:self action:@selector(buttonCategoryAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonCategory];
         
+        self.buttonDescription = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.buttonDescription.frame = CGRectMake(20, (tablePrice.frame.size.height / 3) + ((tablePrice.frame.size.height / 3) / 2 - 10), self.frame.size.width - 40, 40);
+        self.buttonDescription.layer.cornerRadius = 20;
+        self.buttonDescription.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
+        self.buttonDescription.layer.borderWidth = 2.f;
+        [self.buttonDescription setTitle:@"ОПИСАНИЕ" forState:UIControlStateNormal];
+        [self.buttonDescription setTitleColor:[UIColor colorWithHexString:COLORGREEN] forState:UIControlStateNormal];
+        [self.buttonDescription addTarget:self action:@selector(buttonDescriptionAction) forControlEvents:UIControlEventTouchUpInside];
+        [tablePrice addSubview:self.buttonDescription];
+
+        
+        
         self.darkView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.darkView.backgroundColor = [UIColor blackColor];
         self.darkView.alpha = 0.f;
         [self addSubview:self.darkView];
         
-        
         self.categoryMainView = [self caegoryViewWithView:self andData:nil];
         [self addSubview:self.categoryMainView];
         
+        
+        self.viewDescription = [self setViewDescription];
+        [self addSubview:self.viewDescription];
         
     }
     return self;
@@ -257,6 +285,8 @@
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
             dictPrice = [self.arrayData objectAtIndex:i];
+            self.arrayPrice = [dictPrice objectForKey:@"variants"];
+            [tablePrice reloadData];
             mainScrollView.scrollEnabled = NO;
             CustomButton * buttonTup = (CustomButton*)[buttonsArray objectAtIndex:i];
             buttonTup.isBool = NO;
@@ -302,6 +332,32 @@
         self.categoryMainView.frame = rect;
         self.darkView.alpha = 0.f;
     } completion:^(BOOL finished) {}];
+}
+
+- (void) buttonCanselDescriptionAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = self.viewDescription.frame;
+        rect.origin.x += self.frame.size.width;
+        self.viewDescription.frame = rect;
+    }];
+    
+    self.buttonDescription.userInteractionEnabled = YES;
+}
+
+- (void) buttonDescriptionAction {
+    
+    NSString * body = [dictPrice objectForKey:@"body"];
+    self.labelDescriprion.text = [TextMethodClass stringByStrippingHTML:body];
+    [self.labelDescriprion sizeToFit];
+    self.scrollDescripton.contentSize = CGSizeMake(0, self.labelDescriprion.frame.size.height + 10);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = self.viewDescription.frame;
+        rect.origin.x -= self.frame.size.width;
+        self.viewDescription.frame = rect;
+    }];
+    
+    self.buttonDescription.userInteractionEnabled = NO;
 }
 
 #pragma mark - CategoryView
@@ -355,19 +411,27 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+
     for (UIView * view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
     if ([tableView isEqual:self.tableCategory]) {
+        if (indexPath.row == [[SingleTone sharedManager] chaneCategory]) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
         NSDictionary * dictCellCat =[self.arrayCategory objectAtIndex:indexPath.row];
             [cell.contentView addSubview:[self setCustomCellWithName:[dictCellCat objectForKey:@"name"]
                                                             andImage:[dictCellCat objectForKey:@"img"]
-                                                             andView:cell]];
+                                                             andView:cell andIndexPash:indexPath.row]];
+
+        
     } else {
     NSDictionary * dictCell = [self.arrayPrice objectAtIndex:0];
     [cell.contentView addSubview:[self setTableCellWithName:[dictCell objectForKey:@"name"]
                                                     andData:nil
                                                    andPrice:[dictCell objectForKey:@"price"]]];
+        
     }
     return cell;
 }
@@ -388,6 +452,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (![tableView isEqual:self.tableCategory]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if ([[SingleTone sharedManager] arrayBouquets].count == 0) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"checkOrderNotification" object:nil];
         }
@@ -405,12 +470,12 @@
             }];
         }];
     } else {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NSDictionary * dictCategory = [self.arrayCategory objectAtIndex:indexPath.row];
-        [self.delegate setCategiry:self withIDString:[dictCategory objectForKey:@"id"]];
-        
-        
-        
+        if (indexPath.row != [[SingleTone sharedManager] chaneCategory]) {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            NSDictionary * dictCategory = [self.arrayCategory objectAtIndex:indexPath.row];
+            [self.delegate setCategiry:self withIDString:[dictCategory objectForKey:@"id"]];
+            [[SingleTone sharedManager] setChaneCategory:indexPath.row];
+        }
     }
 }
 
@@ -482,21 +547,21 @@
     
 }
 
-
-#pragma mark - Custom Cell
-
 - (UIView*) setCustomCellWithName: (NSString*) name
                          andImage: (NSString*) imageName
-                          andView: (UIView*) view {
+                          andView: (UIView*) view
+                     andIndexPash: (NSInteger) indexPash {
     UIView * cellView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height)];
     
     UILabel * labelNameCell = [[UILabel alloc] initWithFrame:CGRectMake(70.f, 0.f, view.frame.size.width - 40.f, view.frame.size.height)];
     labelNameCell.text = name;
+    if (indexPash == [[SingleTone sharedManager] chaneCategory]) {
+        labelNameCell.textColor = [UIColor colorWithHexString:COLORPINCK];
+    } else {
     labelNameCell.textColor = [UIColor colorWithHexString:COLORGREEN];
+    }
     labelNameCell.font = [UIFont fontWithName:FONTREGULAR size:18];
     [cellView addSubview:labelNameCell];
-    
-    NSLog(@"кат %@", imageName);
     
     imageName =
     [imageName stringByReplacingOccurrencesOfString:@" "
@@ -513,6 +578,36 @@
     
     
     return cellView;
+}
+
+#pragma mark - View Description
+
+- (UIView*) setViewDescription {
+    UIView * viewDecrpt = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
+    viewDecrpt.backgroundColor = [UIColor whiteColor];
+    
+    self.scrollDescripton = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, self.frame.size.width, self.frame.size.height - ((tablePrice.frame.size.height / 3) * 2))];
+    self.scrollDescripton.backgroundColor = [UIColor whiteColor];
+    [viewDecrpt addSubview:self.scrollDescripton];
+    
+    self.labelDescriprion = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, self.scrollDescripton.frame.size.width - 40, self.scrollDescripton.frame.size.height - 20)];
+    self.labelDescriprion.numberOfLines = 0;
+    self.labelDescriprion.textColor = [UIColor blackColor];
+    self.labelDescriprion.font = [UIFont fontWithName:FONTREGULAR size:13];
+    [self.scrollDescripton addSubview:self.labelDescriprion];
+    
+    UIButton * buttonCanselDescription = [UIButton buttonWithType:UIButtonTypeSystem];
+    buttonCanselDescription.frame = CGRectMake(viewDecrpt.frame.size.width - 40, 10, 30, 30);
+    buttonCanselDescription.layer.cornerRadius = 15.f;
+    buttonCanselDescription.layer.borderColor = [UIColor colorWithHexString:COLORGREEN].CGColor;
+    buttonCanselDescription.layer.borderWidth = 1.f;
+    [buttonCanselDescription setTitle:@"X" forState:UIControlStateNormal];
+    [buttonCanselDescription setTitleColor:[UIColor colorWithHexString:COLORGREEN] forState:UIControlStateNormal];
+    [buttonCanselDescription addTarget:self action:@selector(buttonCanselDescriptionAction) forControlEvents:UIControlEventTouchUpInside];
+    [viewDecrpt addSubview:buttonCanselDescription];
+    
+    
+    return viewDecrpt;
 }
 
 
