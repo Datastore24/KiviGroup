@@ -158,6 +158,7 @@
         
         NSDictionary * sendDict = [NSDictionary dictionaryWithObjectsAndKeys:newStr, @"order",
                                    [[SingleTone sharedManager] delivery], @"delivery", contactDataDict, @"contactData", nil];
+<<<<<<< HEAD
         //То что отправляем---------------------------
             APIGetClass * apiOrder = [APIGetClass new];
         
@@ -178,6 +179,17 @@
                 [self createAlerWithMessage:[dictResponse objectForKey:@"error_msg"]];
             }
         }];
+=======
+        
+       
+        [self.delegate sendToServer:self withDict:sendDict];
+        
+  
+        
+       
+        
+        
+>>>>>>> 111
     }
 }
 
