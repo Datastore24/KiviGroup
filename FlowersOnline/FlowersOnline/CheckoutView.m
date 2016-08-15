@@ -13,6 +13,7 @@
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "SingleTone.h"
 #import "APIGetClass.h"
+#import "MessagePopUp.h";
 
 @implementation CheckoutView
 
@@ -30,6 +31,7 @@
         UIKeyboardType type;
         if([authDbClass checkRegistration]){
             NSLog(@"ДАННЫЕ ЕСТЬ");
+            NSLog(@"TOTAL %@",[[SingleTone sharedManager] allPrice]);
             NSArray * userArray = [authDbClass showAllUsers];
             Auth * auth = [userArray objectAtIndex:0];
             NSArray * arrayText = [NSArray arrayWithObjects:
@@ -162,39 +164,13 @@
          NSDictionary * dictResponse = (NSDictionary*) response;
             if([[dictResponse objectForKey:@"error"] integerValue] == 0){
                 
-                UIView * successView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, self.frame.size.height/2-64, self.frame.size.width-60, 100)];
-                successView.backgroundColor = [UIColor lightGrayColor];
-                successView.alpha=0.0f;
-                successView.center = CGPointMake(self.frame.size.width  / 2,
-                                                 self.frame.size.height / 2);
-                successView.layer.cornerRadius = 20;
-                successView.layer.masksToBounds = YES;
-                
-                UILabel * successLabel = [[UILabel alloc] initWithFrame:CGRectMake(successView.frame.size.width/2, successView.frame.size.height/2, successView.frame.size.width, 50)];
-                
-                
-                [successLabel setCenter:CGPointMake(successView.frame.size.width / 2, successView.frame.size.height / 2)];
-                successLabel.textAlignment = NSTextAlignmentCenter;
-                successLabel.text = @"Ваш заказ успешно принят!";
-                successLabel.textColor = [UIColor whiteColor];
-                successLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
-                
-                
-                [successView addSubview:successLabel];
-                [self addSubview:successView];
-                
-                
-                [UIView animateWithDuration:1.0f animations:^{
-                    successView.alpha=0.9f;
-                } completion:^(BOOL finished) {
-                    NSLog(@"ANIM STOP");
-                    [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
-                    [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
-                    [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
-                    sleep(1.3f);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
-                    
-                }];
+               [MessagePopUp showPopUpWithBlock:@"Ваш заказ успешно принят!" view:self complitionBlock:^{
+                   [[[SingleTone sharedManager] arrayBouquets] removeAllObjects];
+                   [[[SingleTone sharedManager] arrayBasketCount] removeAllObjects];
+                   [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%d", 0];
+                   sleep(1.3f);
+                   [[NSNotificationCenter defaultCenter] postNotificationName:@"sendDataandPushMainView" object:nil];
+               }];
                 
             }else{
                 [self createAlerWithMessage:[dictResponse objectForKey:@"error_msg"]];

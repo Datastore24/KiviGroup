@@ -13,6 +13,8 @@
 #import "Macros.h"
 #import "SingleTone.h"
 #import "ViewSectionTable.h"
+#import "TextMethodClass.h"
+#import "MessagePopUp.h"
 
 @interface BouquetsView ()
 
@@ -81,7 +83,9 @@
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [arrayImages objectAtIndex:0]]];
             UIImage * image = [UIImage imageWithData: imageData];
             
+            
             UIImageView * view1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
+            view1.contentMode=UIViewContentModeScaleAspectFill;
             view1.image = image;
             [scrollImages addSubview:view1];
             
@@ -96,7 +100,10 @@
             [mainScrollView addSubview:labelTitle];
             
             //Средняя цена букета--------------------------------------------------
-            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:@"500р"];
+       
+            NSDictionary * variants = [[self.mainDict objectForKey:@"variants"] objectAtIndex:0];
+
+            CustomLabels * labelPrice = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100 andHeight:20 + self.frame.size.width * i andSizeWidht:80 andSizeHeight:20 andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ р.",[variants objectForKey:@"price"]]];
             labelPrice.font = [UIFont fontWithName:FONTLITE size:16];
             if (isiPhone5 || isiPhone4s) {
                 labelPrice.font = [UIFont fontWithName:FONTLITE size:14];
@@ -121,7 +128,8 @@
             [mainScrollView addSubview:buttonToGive];
             
             //Описание букета-------------------------------------------------------
-            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:[self.mainDict objectForKey:@"body"]];
+            NSString * fullText =[TextMethodClass stringByStrippingHTML:[self.mainDict objectForKey:@"body"]];
+            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:20 andHeight:40 + self.frame.size.width * i andSizeWidht:200 andSizeHeight:20 andColor:@"ffffff" andText:fullText];
             labelText.numberOfLines = 2;
             labelText.font = [UIFont fontWithName:FONTLITE size:12];
             if (isiPhone5 || isiPhone4s) {
@@ -388,6 +396,7 @@
         NSInteger count = [[[SingleTone sharedManager] labelCountBasket].text integerValue];
         count += 1;
         [[SingleTone sharedManager] labelCountBasket].text = [NSString stringWithFormat:@"%ld", (long)count];
+        [MessagePopUp showPopUpWithDelay:@"Товар добавлен в корзину" view:self delay:1.3f];
         [UIView animateWithDuration:0.15 animations:^{
             
         } completion:^(BOOL finished) {
@@ -487,13 +496,18 @@
     labelNameCell.font = [UIFont fontWithName:FONTREGULAR size:18];
     [cellView addSubview:labelNameCell];
     
-    NSLog(@"%@", imageName);
+    NSLog(@"кат %@", imageName);
+    
+    imageName =
+    [imageName stringByReplacingOccurrencesOfString:@" "
+                                      withString:@"%20"];
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageName]];
     
     UIImageView * imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(15.f, 5.f, 30.f, 30.f)];
     imageViewCell.layer.cornerRadius = 5.f;
     imageViewCell.clipsToBounds = YES;
+    imageViewCell.contentMode=UIViewContentModeScaleAspectFill;
     imageViewCell.image = [UIImage imageWithData: imageData];
     [cellView addSubview:imageViewCell];
     

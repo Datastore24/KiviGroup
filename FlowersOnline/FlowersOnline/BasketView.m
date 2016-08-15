@@ -13,6 +13,7 @@
 #import "CustomButton.h"
 #import "Animation.h"
 #import "SingleTone.h"
+#import "TextMethodClass.h"
 
 @interface BasketView ()
 
@@ -38,6 +39,8 @@
     
     //-------------------------------
     NSInteger countPrice;
+    NSInteger intPrice;
+    NSInteger devPrice;
     NSInteger maxCount;
     NSInteger stap;
     
@@ -73,6 +76,8 @@
         countPrice = 0;
         stap = 0;
         maxCount = self.mainArray.count;
+        
+    
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downMethod) name:@"downNotification" object:nil];
         
@@ -123,7 +128,8 @@
             [mainViewCell addSubview:titleCell];
             
             //Основной текст---------------------------------------
-            CustomLabels * textCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:40  andSizeWidht:self.frame.size.width - 180 andSizeHeight:40 andColor:COLORTEXTGRAY andText:[dictCount objectForKey:@"body"]];
+            NSString * fullText =[TextMethodClass stringByStrippingHTML:[dictCount objectForKey:@"body"]];
+            CustomLabels * textCell = [[CustomLabels alloc] initLabelTableWithWidht:95 andHeight:40  andSizeWidht:self.frame.size.width - 180 andSizeHeight:40 andColor:COLORTEXTGRAY andText:fullText];
             textCell.numberOfLines = 2;
             textCell.font = [UIFont fontWithName:FONTREGULAR size:14];
             textCell.textAlignment = NSTextAlignmentLeft;
@@ -329,7 +335,7 @@
             NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
             NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
             NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
-            NSInteger intPrice = [[dictVariants objectForKey:@"price"] integerValue];
+            intPrice = [[dictVariants objectForKey:@"price"] integerValue];
             allPrice += intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
@@ -349,7 +355,7 @@
             NSDictionary * dictArray = [self.mainArray objectAtIndex:i];
             NSArray * arrayVariants = [dictArray objectForKey:@"variants"];
             NSDictionary * dictVariants = [arrayVariants objectAtIndex:0];
-            NSInteger intPrice = [[dictVariants objectForKey:@"price"] integerValue];
+            intPrice = [[dictVariants objectForKey:@"price"] integerValue];
             allPrice -= intPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)allPrice];
             [allPriceLabelAction sizeToFit];
@@ -409,8 +415,8 @@
             [[[SingleTone sharedManager] delivery] setObject:[dictDelivery objectForKey:@"price"] forKey:@"delivery_price"];
             button.backgroundColor = [UIColor colorWithHexString:COLORGREEN];
             button.userInteractionEnabled = NO;
-            NSInteger intPrice = [[dictDelivery objectForKey:@"price"] integerValue];
-            countPrice = allPrice + intPrice;
+            devPrice = [[dictDelivery objectForKey:@"price"] integerValue];
+            countPrice = allPrice + devPrice;
             allPriceLabelAction.text = [NSString stringWithFormat:@"%ld р", (long)countPrice];
             [allPriceLabelAction sizeToFit]; 
         } else {
@@ -449,8 +455,8 @@
 
 - (void) buttonCheckoutAction
 {
-    
-    [[SingleTone sharedManager] setAllPrice:[NSString stringWithFormat:@"%ld", (long)countPrice]];
+    NSInteger summTotal = allPrice + devPrice;
+    [[SingleTone sharedManager] setAllPrice:[NSString stringWithFormat:@"%ld", (long)summTotal]];
    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BASKET_CONTROLLER_PUSH_CHEKOUT_CONTROLLER object:nil];
 
