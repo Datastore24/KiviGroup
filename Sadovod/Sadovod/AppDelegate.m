@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  Sadovod
 //
-//  Created by Виктор Мишустин on 12/08/16.
+//  Created by Виктор Мишустин on 18/08/16.
 //  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 
@@ -19,11 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     //Настройки NavigationBar
     [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_NAV_MENU_COLOR];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-    
     
     return YES;
 }

@@ -36,6 +36,19 @@
 #define VM_COLOR_STATUS_BAR_COLOR               @"d55b26"
 
 
+//Цвета интерфейса----------------------------------------------------------------------------
+#define VM_COLOR_PINK               @"a91a58"
+#define VM_COLOR_WHITE              @"ffffff"
+#define VM_COLOR_BLACK              @"000000"
+#define VM_COLOR_GREEN              @"598527"
+#define VM_COLOR_RED                @"ed1c24"
+#define VM_COLOR_LIGHT_GREY         @"a7a7a7"
+#define VM_COLOR_DARK_GREY          @"6b6b6b"
+
+//Цвета шрифтов-----------------------------------------
+#define VM_COLOR_TEXT_GREEN         @"48592d"
+#define VM_COLOR_TEXT_GREY          @"919091"
+
 //Цвета шрифтов-----------------------------------------
 
 
