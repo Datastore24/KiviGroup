@@ -29,7 +29,7 @@
     if (self) {
         self.frame = frame;
         self.layer.cornerRadius = 23.f;
-        self.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_GREEN alpha:0.75f].CGColor;
+        self.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400 alpha:0.75f].CGColor;
         self.layer.borderWidth = 1.f;
         self.backgroundColor = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:0.75f];
         keyboardUp = NO;
@@ -57,7 +57,7 @@
         //Плесхолдер --------------
         labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
         labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_TEXT_GREEN alpha:0.5f];
+        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400 alpha:0.5f];
         labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
         [self addSubview:labelPlaceHoldInput];
         
@@ -93,7 +93,7 @@
         //Плесхолдер --------------
         labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
         labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
+        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
         labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
         [self addSubview:labelPlaceHoldInput];
         
@@ -129,7 +129,7 @@
         //Плесхолдер --------------
         labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
         labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
+        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
         labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
         [self addSubview:labelPlaceHoldInput];
         

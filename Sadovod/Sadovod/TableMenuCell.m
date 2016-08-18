@@ -26,7 +26,7 @@
     labelTint.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:15];
     [viewCell addSubview:labelTint];
     
-    UIImageView * imageMenu = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8.5f, 25, 25)];
+    UIImageView * imageMenu = [[UIImageView alloc] initWithFrame:CGRectMake(15, 11.f, 20.f, 20.f)];
     imageMenu.image = [UIImage imageNamed:imageName];
     [viewCell addSubview:imageMenu];
     
