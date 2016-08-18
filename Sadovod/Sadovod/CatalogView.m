@@ -21,7 +21,6 @@
 
 //ScrollProduct
 @property (strong, nonatomic) UIScrollView * mainScrolView;
-@property (strong, nonatomic) UIPageControl * pageControl;
 @property (nonatomic, assign) CGFloat lastContentOffset;
 @property (assign, nonatomic) NSInteger numberButton;
 
@@ -97,17 +96,10 @@
         self.mainScrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 95.f, self.frame.size.width, self.frame.size.height - 95.f)];
         self.mainScrolView.delegate = self;
         [self.mainScrolView setPagingEnabled:YES];
+        self.mainScrolView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.mainScrolView];
         self.mainScrolView.contentSize = CGSizeMake(self.frame.size.width * arrayName.count, 0.f);
-        
-        //Инициализация pageControl-------------------------------------------
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(10, self.frame.size.height-20, 60, 10)];
-        [self.pageControl setCurrentPageIndicatorTintColor:[UIColor whiteColor]]; //цвет "точек" при пролистывании экрана приветствия
-        self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-        [self.pageControl setNumberOfPages:arrayName.count]; // задаем количетсво слайдов приветствия
-        [self addSubview:self.pageControl];
-        
-        
+
         for (int j = 0; j < arrayName.count; j++) {
 
             
