@@ -563,14 +563,7 @@
 		AD109AB81CCF5B120074BA7B /* FlowersOnline */ = {
 			isa = PBXGroup;
 			children = (
-				AD2F3AD21D6334E400A9456E /* Default-568h@2x.png */,
-				AD2F3AD31D6334E500A9456E /* Default-667h@2x.png */,
-				AD2F3AD41D6334E500A9456E /* Default-Portrait-736h@3x.png */,
-				AD2F3AD51D6334E500A9456E /* Default-Portrait.png */,
-				AD2F3AD61D6334E500A9456E /* Default-Portrait@2x.png */,
-				AD2F3AD71D6334E500A9456E /* Default@2x.png */,
 				AD2F3A991D63239E00A9456E /* LaunchScreen */,
-				AD2F3A7E1D631FA800A9456E /* Icons */,
 				7708B6181D184FE70083C029 /* Checkout */,
 				771669D51D0ED60600037831 /* Basket */,
 				771669CE1D0E9C5600037831 /* Сontacts */,
@@ -589,6 +582,7 @@
 				AD109AC21CCF5B120074BA7B /* Main.storyboard */,
 				AD109AC51CCF5B120074BA7B /* Assets.xcassets */,
 				AD109ACA1CCF5B120074BA7B /* Info.plist */,
+				AD2F3A7E1D631FA800A9456E /* Icons */,
 				AD16C95C1D4B3D200046AF42 /* CoreData */,
 				FF2CD6F81D42070F001F2F6A /* API */,
 				7731948F1CD76D0D002831E4 /* InputText */,
@@ -656,6 +650,12 @@
 		AD2F3A991D63239E00A9456E /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
+				AD2F3AD21D6334E400A9456E /* Default-568h@2x.png */,
+				AD2F3AD31D6334E500A9456E /* Default-667h@2x.png */,
+				AD2F3AD41D6334E500A9456E /* Default-Portrait-736h@3x.png */,
+				AD2F3AD51D6334E500A9456E /* Default-Portrait.png */,
+				AD2F3AD61D6334E500A9456E /* Default-Portrait@2x.png */,
+				AD2F3AD71D6334E500A9456E /* Default@2x.png */,
 			);
 			name = LaunchScreen;
 			sourceTree = "<group>";

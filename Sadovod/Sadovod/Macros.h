@@ -32,24 +32,16 @@
 
 
 //Цвета интерфейса----------------------------------------------------------------------------
-#define VM_COLOR_NAV_MENU_COLOR                 @"e68231"
-#define VM_COLOR_STATUS_BAR_COLOR               @"d55b26"
-
-
-//Цвета интерфейса----------------------------------------------------------------------------
-#define VM_COLOR_PINK               @"a91a58"
-#define VM_COLOR_WHITE              @"ffffff"
-#define VM_COLOR_BLACK              @"000000"
-#define VM_COLOR_GREEN              @"598527"
-#define VM_COLOR_RED                @"ed1c24"
-#define VM_COLOR_LIGHT_GREY         @"a7a7a7"
-#define VM_COLOR_DARK_GREY          @"6b6b6b"
-
-//Цвета шрифтов-----------------------------------------
-#define VM_COLOR_TEXT_GREEN         @"48592d"
-#define VM_COLOR_TEXT_GREY          @"919091"
-
-//Цвета шрифтов-----------------------------------------
+#define VM_COLOR_50                         @"E8EAF6"
+#define VM_COLOR_100                        @"C5CAE9"
+#define VM_COLOR_200                        @"9FA8DA"
+#define VM_COLOR_300                        @"7986CB"
+#define VM_COLOR_400                        @"5C6BC0"
+#define VM_COLOR_500                        @"3F51B5"
+#define VM_COLOR_600                        @"3949AB"
+#define VM_COLOR_700                        @"303F9F"
+#define VM_COLOR_800                        @"283593"
+#define VM_COLOR_900                        @"1A237E"
 
 
 

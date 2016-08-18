@@ -18,11 +18,23 @@
 //Кнопка меню в приложении
 + (UIButton*) createButtonMenu;
 //Текстовая кнопка
-+ (UIButton*) createButtonTextWithName: (NSString*) name
-                              andFrame: (CGRect) rect
-                              fontName: (NSString*) font;
++ (UIButton*) customButtonSystemWithFrame: (CGRect) frame
+                                 andColor: (NSString*) colorName
+                          andAlphaBGColor: (CGFloat) alphaColor
+                           andBorderColor: (NSString*) borderColor
+                          andCornerRadius: (CGFloat) cornerRadius
+                              andTextName: (NSString*) textNameButton
+                             andColorText: (NSString*) colorText
+                              andSizeText: (CGFloat) sizeText
+                           andBorderWidht: (CGFloat) borderWidht;
 
 //Кнопка назад
 + (UIButton*) createButtonBack;
+
++ (UIButton*) createButtonCustomImageWithImage: (NSString*) imageName
+                                       andRect: (CGRect) rect;
+
++ (UIButton*) createButtonWriteWithImage: (NSString*) image;
+
 
 @end

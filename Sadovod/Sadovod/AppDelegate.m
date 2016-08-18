@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //Настройки NavigationBar
-    [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_NAV_MENU_COLOR];
+    [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
     return YES;

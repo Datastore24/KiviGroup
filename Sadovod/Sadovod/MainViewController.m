@@ -14,13 +14,15 @@
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) UIView *backView;
+
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setStatusBarBackgroundColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_STATUS_BAR_COLOR]];
+    [self setStatusBarBackgroundColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_900]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,12 +40,38 @@
     UIBarButtonItem * menuButton =[[UIBarButtonItem alloc] initWithCustomView:buttonMenu];
     self.navigationItem.leftBarButtonItem = menuButton;
     
+    //Параметры кнопки авторизации-------------------------------
+    UIButton * buttonAvtorization = [UIButton createButtonWriteWithImage:@"avtorizationButton.png"];
+    UIBarButtonItem * avtorizationButton =[[UIBarButtonItem alloc] initWithCustomView:buttonAvtorization];
+    self.navigationItem.rightBarButtonItem = avtorizationButton;
+    
+    
+    
 }
 
 - (void) setCustomTitle: (NSString*) title
 {
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:title];
-    self.navigationItem.titleView = CustomText;
+    self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
+    UILabel * customText = [[UILabel alloc]initWithTitle:title];
+    customText.frame = CGRectMake(20.f, 0.f, customText.frame.size.width , 44.5f);
+    [self.backView addSubview:customText];
+    
+
+    //Кнопка корзины------
+    UIButton *buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
+    [buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
+    [self.backView addSubview:buttonBasket];
+    
+    
+    //Кнопка бар кода------
+    UIButton * buttonBarCode = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonBarCode setFrame:CGRectMake(145, 10, 20, 20)];
+    [buttonBarCode setBackgroundImage:[UIImage imageNamed:@"barButtonImage.png"] forState:UIControlStateNormal];
+    [self.backView addSubview:buttonBarCode];
+    
+    
+    self.navigationItem.titleView = self.backView;
 }
 
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
