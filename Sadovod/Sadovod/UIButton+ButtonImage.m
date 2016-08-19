@@ -34,7 +34,7 @@
 {
     UIImage *imageBarButton = [UIImage imageNamed:imageName];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.bounds = rect;
+    button.frame = rect;
     [button setImage:imageBarButton forState:UIControlStateNormal];
     
     return button;

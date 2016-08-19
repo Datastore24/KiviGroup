@@ -38,6 +38,48 @@
             </objects>
             <point key="canvasLocation" x="601" y="715"/>
         </scene>
+        <!--Catalog Main List Controller-->
+        <scene sceneID="cOJ-VX-faL">
+            <objects>
+                <viewController storyboardIdentifier="CatalogMainListController" id="qy1-c4-zUg" customClass="CatalogMainListController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W49-RK-CUA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eU-DD-txa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979" y="721"/>
+        </scene>
+        <!--Catalog List Controller-->
+        <scene sceneID="PGV-V1-zlJ">
+            <objects>
+                <viewController storyboardIdentifier="CatalogListController" id="Wxh-BG-rNL" customClass="CatalogListController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mu6-Js-ioN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfn-mt-QIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1351" y="721"/>
+        </scene>
+        <!--Catalog Detail Controller-->
+        <scene sceneID="UV4-Z3-9bI">
+            <objects>
+                <viewController storyboardIdentifier="CatalogDetailController" id="hMm-S2-RCb" customClass="CatalogDetailController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sJx-oI-2nK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGQ-hF-hVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721" y="721"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="dlp-AM-1V0">
             <objects>

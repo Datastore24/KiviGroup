@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) UIView *backView;
 
+
 @end
 
 @implementation MainViewController
@@ -49,7 +50,7 @@
     
 }
 
-- (void) setCustomTitle: (NSString*) title
+- (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool
 {
     self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
     UILabel * customText = [[UILabel alloc]initWithTitle:title];
@@ -68,6 +69,9 @@
     UIButton * buttonBarCode = [UIButton buttonWithType:UIButtonTypeCustom];
     [buttonBarCode setFrame:CGRectMake(145, 10, 20, 20)];
     [buttonBarCode setBackgroundImage:[UIImage imageNamed:@"barButtonImage.png"] forState:UIControlStateNormal];
+    if (isBool) {
+        buttonBarCode.alpha = 0.f;
+    }
     [self.backView addSubview:buttonBarCode];
     
     

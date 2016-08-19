@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CatalogViewDelegate;
+
 @interface CatalogView : UIView
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@property (weak, nonatomic) id <CatalogViewDelegate> delegate;
+
+@end
+
+@protocol CatalogViewDelegate <NSObject>
+
+@required
+
+- (void) getCatalog: (CatalogView*) catalogView;
 
 @end
