@@ -17,6 +17,8 @@
 
 //Макросы для приложения ---------------------------------------------------
 
+#define API_URL @"http://prod.limelin.com/abpro/" //Адрес сервера
+
 //Элементы под разные устройства----------------------------------------------
 #define isiPhone6Plus                           ([[UIScreen mainScreen] bounds].size.height == 736)?TRUE:FALSE
 #define isiPhone6                               ([[UIScreen mainScreen] bounds].size.height == 667)?TRUE:FALSE

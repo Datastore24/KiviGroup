@@ -9,6 +9,8 @@
 #import "SingleTone.h"
 
 @implementation SingleTone
+@synthesize superKey;
+@synthesize catalogKey;
 
 
 #pragma mark Singleton Methods
