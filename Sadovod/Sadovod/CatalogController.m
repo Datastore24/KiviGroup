@@ -8,8 +8,9 @@
 
 #import "CatalogController.h"
 #import "CatalogView.h"
+#import "CatalogMainListController.h"
 
-@interface CatalogController ()
+@interface CatalogController () <CatalogViewDelegate>
 
 @end
 
@@ -19,12 +20,13 @@
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"САДОВОД"]; //Ввод заголовка
+    [self setCustomTitle:@"Садовод" andBarButtonAlpha: NO]; //Ввод заголовка
 //    [self.navigationController setNavigationBarHidden:NO];
     
 #pragma mark - View
     
     CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:[self setCustonArray]];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
 
 }
@@ -49,6 +51,13 @@
     }
     
     return mArray;
+}
+
+#pragma mark - CatalogViewDelegate
+
+- (void) getCatalog: (CatalogView*) catalogView {
+    CatalogMainListController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogMainListController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

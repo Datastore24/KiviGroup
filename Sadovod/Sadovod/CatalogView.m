@@ -11,6 +11,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "CustomLabels.h"
+#import "UIImage+Resize.h"
 
 @interface CatalogView () <UIScrollViewDelegate>
 //MainView
@@ -43,19 +44,24 @@
         self.numberButton = 0;
         
         //Лого
-        UIView * mainViewLogo = [[UIView alloc] initWithFrame:CGRectMake(10.f, 10.f, self.frame.size.width - 20.f, 40.f)];
-        mainViewLogo.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
-        mainViewLogo.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_500].CGColor;
-        mainViewLogo.layer.borderWidth = 1.f;
-        mainViewLogo.layer.cornerRadius = 3.f;
-        [self addSubview:mainViewLogo];
-        //Текст лого
-        CustomLabels * labelLogo = [[CustomLabels alloc] initLabelWithWidht:100.f andHeight:12.f andColor:@"ffffff" andText:@"Каталог товаров" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
-        [mainViewLogo addSubview:labelLogo];
-        //Картинка
-        UIImageView * bagImage = [[UIImageView alloc] initWithFrame:CGRectMake(75.f, 10.f, 15.f, 15.f)];
-        bagImage.image = [UIImage imageNamed:@"bagImage.png"];
-        [mainViewLogo addSubview:bagImage];
+        UIButton * buttonCategory = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonCategory.frame = CGRectMake(10.f, 10.f, self.frame.size.width - 20.f, 40.f);
+        buttonCategory.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+        buttonCategory.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_500].CGColor;
+        buttonCategory.layer.borderWidth = 1.f;
+        buttonCategory.layer.cornerRadius = 3.f;
+        [buttonCategory setTitle:@"Каталог товаров" forState:UIControlStateNormal];
+        [buttonCategory setTitleColor:[UIColor hx_colorWithHexRGBAString:@"ffffff"] forState:UIControlStateNormal];
+        buttonCategory.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        UIImage * image = [UIImage imageNamed:@"bagImage.png"];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(55.f, 8.f, 20.f, 20.f)];
+        imageView.image = image;
+        [buttonCategory addTarget:self action:@selector(buttonCategoryAction) forControlEvents:UIControlEventTouchUpInside];
+        [buttonCategory addSubview:imageView];
+        
+        
+        [self addSubview:buttonCategory];
+
         
         //Скрол товаров
         self.catalogScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 60.f, self.frame.size.width, 35.f)];
@@ -64,14 +70,13 @@
         [self addSubview:self.catalogScroll];
         
         //Массив имен для кнопок
-        NSArray * arrayName = [NSArray arrayWithObjects:@"Все", @"Женщинам", @"Мужчинам", @"Девочкам", @"Мальчикам", nil];
+        NSArray * arrayName = [NSArray arrayWithObjects:@"Все", @"Женщинам", @"Мужчинам", @"Девочкам", @"Мальчикам", @"Обувь", nil];
         NSInteger widhtCount = 0;
         
         for (int i = 0; i < arrayName.count; i++) {
             UIButton * buttonCategory = [UIButton customButtonSystemWithFrame:CGRectMake(0.f + widhtCount, 0.f, 100.f, 35.f) andColor:nil andAlphaBGColor:0.f andBorderColor:nil andCornerRadius:0.f andTextName:[arrayName objectAtIndex:i] andColorText:@"000000" andSizeText:15 andBorderWidht:0.f];
             if (i == 0) {
-                buttonCategory.frame = CGRectMake(0.f, 0.f, 50.f, 35.f);
-                buttonCategory.userInteractionEnabled = NO;
+                buttonCategory.frame = CGRectMake(0.f + widhtCount, 0.f, 50.f, 35.f);
             }
             buttonCategory.tag = 10 + i;
             [buttonCategory addTarget:self action:@selector(buttonCategoryAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -151,22 +156,19 @@
 #pragma mark - Action Methos
 
 - (void) buttonCategoryAction: (UIButton*) button {
-    for (int i = 0; i < 5; i++) {
-        UIButton * otherButton = (UIButton*)[self viewWithTag:10 + i];
+    for (int i = 0; i < 6; i++) {
         if (button.tag == 10 + i) {
-            button.userInteractionEnabled = NO;
-            
             for (int j = 0; j < self.arrayBorderView.count; j++) {
                 [UIView animateWithDuration:0.5f animations:^{
-                    self.mainScrolView.contentOffset = CGPointMake(self.frame.size.width * i, 0);
+                    self.mainScrolView.contentOffset = CGPointMake(self.frame.size.width * i, 0.f);
                 }];
-                
-
             }
-        } else {
-            otherButton.userInteractionEnabled = YES;
         }
     }
+}
+
+- (void) buttonCategoryAction {
+    [self.delegate getCatalog:self];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -185,22 +187,22 @@
         if (pageFraction <= 1) {
             UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
             CGRect rect = viewBorder.frame;
-            rect.origin.x = 50 * pageFraction;
-            rect.size.width = 50 + (50 * pageFraction);
+            rect.origin.x = 50.f * pageFraction;
+            rect.size.width = 50.f + (50.f * pageFraction);
             viewBorder.frame = rect;
-            self.catalogScroll.contentOffset = CGPointMake(50 * pageFraction * 0.6, 0);
+            self.catalogScroll.contentOffset = CGPointMake(50.f * pageFraction * 0.6f, 0.f);
             
         } else {
             UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
             CGRect rect = viewBorder.frame;
-            rect.origin.x = 50 + ((pageFraction - 1) * 100);
+            rect.origin.x = 50.f + ((pageFraction - 1.f) * 100.f);
+            rect.size.width = 50.f + (50.f * (pageFraction - (pageFraction - 1.f)));
             viewBorder.frame = rect;
-            if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 199) {
-                self.catalogScroll.contentOffset = CGPointMake((50 * 0.6) + ((pageFraction - 1) * 100), 0);
+            if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 412.f) {
+                self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
             }
         }
     }
-
 }
 
 @end

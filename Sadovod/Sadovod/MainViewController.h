@@ -12,10 +12,12 @@
 
 @interface MainViewController : UIViewController
 
+@property (strong, nonatomic) UIButton * buttonBarCode;
+
 
 -(void) initializeCartBarButton; //Инициализация контроллера с кнопками навигации
 
-- (void) setCustomTitle: (NSString*) title; //Установга загаловка в контроллер
+- (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool; //Установга загаловка в контроллер
 
 
 @end
