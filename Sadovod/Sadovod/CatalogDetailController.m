@@ -9,6 +9,12 @@
 #import "CatalogDetailController.h"
 #import "CatalogDetailView.h"
 
+@interface CatalogDetailController ()
+
+@property (strong, nonatomic) NSArray * arrayData;
+
+@end
+
 @implementation CatalogDetailController
 
 - (void)viewDidLoad {
@@ -24,8 +30,10 @@
     UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
+    self.arrayData = [self setCustonArray];
+    
 #pragma mark - View
-    CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:nil];
+    CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
     [self.view addSubview:mainView];
     
 }
@@ -39,6 +47,23 @@
 
 - (void) buttonBackAction {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSMutableArray*) setCustonArray
+{
+    NSArray * arrayImage = [NSArray arrayWithObjects:
+                            @"imageProduct1.jpg", @"imageProduct2.jpg", @"imageProduct3.jpg", @"imageProduct4.jpg",
+                            @"imageProduct5.jpg", @"imageProduct6.jpg", @"imageProduct7.jpg", @"imageProduct8.jpg",
+                            @"imageProduct9.jpg", @"imageProduct10.jpg", nil];
+    NSArray * arrayPrice = [NSArray arrayWithObjects:@"216", @"310", @"525", @"673", @"558", @"138", @"385", @"134", @"245", @"384", nil];
+    NSMutableArray * mArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < arrayImage.count; i++) {
+        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[arrayImage objectAtIndex:i], @"image", [arrayPrice objectAtIndex:i], @"price", nil];
+        [mArray addObject:dict];
+    }
+    
+    return mArray;
 }
 
 
