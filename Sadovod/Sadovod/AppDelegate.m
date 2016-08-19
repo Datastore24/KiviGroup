@@ -35,7 +35,7 @@
         NSArray * arrayUser = [authDbClass showAllUsers]; //Массив данных CoreData
         if(arrayUser.count>0){
             Auth * authCoreData = [arrayUser objectAtIndex:0];
-            NSLog(@"CORE %@",authCoreData.superkey);
+            NSLog(@"CORE %@",authCoreData.catalogkey);
         }else{
           NSLog(@"CORE FUCK");
         }
