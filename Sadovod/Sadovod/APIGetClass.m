@@ -19,6 +19,7 @@
 @implementation APIGetClass
 
 
+
 //Запрос на сервер
 -(void) getDataFromServerWithParams: (NSDictionary *) params method:(NSString*) method complitionBlock: (void (^) (id response)) compitionBack{
 //-----------
@@ -38,7 +39,7 @@
         
         //Ошибки
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"OPER: %@ Error: %@",operation , error);
         
     }];
 }
