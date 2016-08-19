@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "Auth.h"
+#import "AuthDbClass.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +28,53 @@
     [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    [self getKey:^{
+        AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+        NSArray * arrayUser = [authDbClass showAllUsers]; //Массив данных CoreData
+        if(arrayUser.count>0){
+            Auth * authCoreData = [arrayUser objectAtIndex:0];
+            NSLog(@"CORE %@",authCoreData.superkey);
+        }else{
+          NSLog(@"CORE FUCK");
+        }
+       
+    }];
+    
     return YES;
+}
+
+
+-(void) getKey:(void (^)(void))block {
+    AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+    NSArray * arrayUser = [authDbClass showAllUsers]; //Массив данных CoreData
+    NSDictionary * params;
+    if(arrayUser.count>0){
+        Auth * authCoreData = [arrayUser objectAtIndex:0];
+        
+        params = [[NSDictionary alloc] initWithObjectsAndKeys: authCoreData.superkey, @"super_key",
+                                                            authCoreData.catalogkey,@"catalog_key", nil];
+    }else{
+        params = nil;
+    }
+
+    APIGetClass * api = [APIGetClass new]; //Создаем экземпляр API
+    [api getDataFromServerWithParams:params method:@"check_keys" complitionBlock:^(id response) {
+     
+        NSLog(@"RESPONSE %@",response);
+        
+        NSDictionary * respDict =(NSDictionary *) response;
+        [authDbClass checkKey:[respDict objectForKey:@"super_key"] andCatalogKey:[respDict objectForKey:@"catalog_key"]];
+        
+        [[SingleTone sharedManager] setSuperKey:[respDict objectForKey:@"super_key"]];
+        [[SingleTone sharedManager] setCatalogKey:[respDict objectForKey:@"catalog_key"]];
+        
+        block();
+        
+        
+    }];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

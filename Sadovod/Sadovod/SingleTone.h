@@ -11,6 +11,9 @@
 
 @interface SingleTone : NSObject
 
+@property (strong,nonatomic) NSString* superKey;
+@property (strong,nonatomic) NSString* catalogKey;
+
 + (id)sharedManager;
 
 @end
