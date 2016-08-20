@@ -20,8 +20,7 @@
 
 @interface CatalogController () <CatalogViewDelegate>
 
-@property (strong, nonatomic) NSArray * arrayName; //Массив с Категориями
-@property (strong, nonatomic) NSMutableArray * arrayProduct; //Массив с Категориями
+
 
 
 @end
@@ -60,22 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSMutableArray*) setCustonArray
-{
-    NSArray * arrayImage = [NSArray arrayWithObjects:
-                            @"imageProduct1.jpg", @"imageProduct2.jpg", @"imageProduct3.jpg", @"imageProduct4.jpg",
-                            @"imageProduct5.jpg", @"imageProduct6.jpg", @"imageProduct7.jpg", @"imageProduct8.jpg",
-                            @"imageProduct9.jpg", @"imageProduct10.jpg", nil];
-    NSArray * arrayPrice = [NSArray arrayWithObjects:@"216", @"310", @"525", @"673", @"558", @"138", @"385", @"134", @"245", @"384", nil];
-    NSMutableArray * mArray = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < arrayImage.count; i++) {
-        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[arrayImage objectAtIndex:i], @"image", [arrayPrice objectAtIndex:i], @"price", nil];
-        [mArray addObject:dict];
-    }
-    
-    return mArray;
-}
+
 
 #pragma mark - CatalogViewDelegate
 
@@ -135,17 +119,17 @@
             
             
            
-            for(int i=0;i<self.arrayName.count;i++){
-                NSString * catID = [[self.arrayName objectAtIndex:i] objectForKey:@"cat"];
-                NSString * catName = [[self.arrayName objectAtIndex:i] objectForKey:@"title"];
+            
+                NSString * catID = [[self.arrayName objectAtIndex:0] objectForKey:@"cat"];
+            
                 
-                [self getApiTabProducts:catID andName:catName andPage:@"1" andCount:i+1 andMaxCount:self.arrayName.count andBlock:^{
+                [self getApiTabProducts:catID andPage:@"1" andBlock:^{
                     block();
                 }];
                 
                 
                 
-            }
+            
 
 
         }
@@ -154,8 +138,7 @@
     }];
 }
 
-- (void) getApiTabProducts:(NSString *) cat andName: (NSString *) catname andPage: (NSString *) page
-                    andCount: (NSInteger) count andMaxCount: (NSInteger) maxCount
+- (void) getApiTabProducts:(NSString *) cat andPage: (NSString *) page
                   andBlock:(void (^)(void))block
 {
     
@@ -176,12 +159,17 @@
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
-        
-            NSLog(@"CAT NAME %@",catname);
-            [self.arrayProduct addObject:[respDict objectForKey:@"list"]];
-            if(count == maxCount){
+            
+            if([response isKindOfClass:[NSDictionary class]]){
+                self.arrayProduct =[respDict objectForKey:@"list"];
+              
                 block();
+            }else{
+                NSLog(@"Пришел не Dictionary");
             }
+            
+            
+            
            
         }
         
