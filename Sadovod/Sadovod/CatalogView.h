@@ -13,7 +13,8 @@
 @interface CatalogView : UIView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data;
+                     andData: (NSMutableArray*) data
+                     andName:(NSArray*) arrayName;
 
 @property (weak, nonatomic) id <CatalogViewDelegate> delegate;
 
@@ -24,5 +25,6 @@
 @required
 
 - (void) getCatalog: (CatalogView*) catalogView;
+
 
 @end
