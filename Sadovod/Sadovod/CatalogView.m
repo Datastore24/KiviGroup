@@ -21,6 +21,7 @@
 @property (assign, nonatomic) BOOL isBoll;
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSArray * arrayName;
+@property (assign, nonatomic) NSInteger pageX;
 
 //ScrollProduct
 @property (strong, nonatomic) UIScrollView * mainScrolView;
@@ -40,7 +41,7 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
-        
+        self.pageX = 0;
         self.arrayBorderView = [[NSMutableArray alloc] init];
         self.isBoll = NO;
         self.arrayData = data;
@@ -110,10 +111,7 @@
         [self addSubview:self.mainScrolView];
         self.mainScrolView.contentSize = CGSizeMake(self.frame.size.width * self.arrayName.count, 0.f);
         
-        
 
-        
-            
             int j=0;
 
             
@@ -226,110 +224,6 @@
        
         if (button.tag == 10 + i) {
             
-            [self.delegate getApiTabProducts:[[self.arrayName objectAtIndex:i] objectForKey:@"cat"] andPage:@"1" andBlock:^{
-                NSArray * productArray =[self.delegate arrayProduct];
-                NSLog(@"%@ AND %@",[[self.arrayName objectAtIndex:i] objectForKey:@"cat"],productArray);
-                
-                int j=i;
-                
-                
-                
-                
-                UIScrollView * scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f + self.frame.size.width * j, 0.f , self.mainScrolView.frame.size.width, self.mainScrolView.frame.size.height)];
-                scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
-                scrollProduct.showsVerticalScrollIndicator = NO;
-                [self.mainScrolView addSubview:scrollProduct];
-                NSInteger lineProduct = 0; //Идентификатор строк
-                NSInteger columnProduct = 0; //Идентификатор столбцов
-                
-                
-                if(productArray.count>0){
-                    
-                    
-                    
-                    
-                    for (int i = 0; i < productArray.count; i++) {
-                        
-                        
-                        
-                        NSDictionary * dictProduct = [productArray objectAtIndex:i];
-                        NSLog(@"DICT --- %@",dictProduct);
-                        
-                        
-                        
-                        UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
-                        buttonProduct.frame = CGRectMake(0.f + ((self.frame.size.width / 2.f + 1.5f) * columnProduct),
-                                                         0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
-                                                         self.frame.size.width / 2.f - 1.5f,
-                                                         self.frame.size.width / 2.f - 1.5f );
-                        
-                        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
-                        
-                        
-                        NSURL *imgURL = [NSURL URLWithString:[dictProduct objectForKey:@"img"]];
-                        
-                        
-                        //SingleTone с ресайз изображения
-                        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                        [manager downloadImageWithURL:imgURL
-                                              options:0
-                                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                 // progression tracking code
-                                             }
-                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                
-                                                if(image){
-                                                    
-                                                    
-                                                    imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
-                                                    //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
-                                                    
-                                                    [imageView setClipsToBounds:YES];
-                                                    
-                                                    
-                                                    imageView.contentMode = UIViewContentModeScaleAspectFill;
-                                                    imageView.clipsToBounds =YES;
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    imageView.image = image;
-                                                    
-                                                    [buttonProduct addSubview:imageView];
-                                                    
-                                                }else{
-                                                    
-                                                }
-                                            }];
-                        
-                        
-                        
-                        [scrollProduct addSubview:buttonProduct];
-                        
-                        UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
-                                                                                         buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
-                        labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
-                        labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
-                        labelPrice.textColor = [UIColor whiteColor];
-                        labelPrice.textAlignment = NSTextAlignmentCenter;
-                        labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                        [buttonProduct addSubview:labelPrice];
-                        
-                        
-                        //Расчет таблицы---------------
-                        columnProduct += 1;
-                        if (columnProduct > 1) {
-                            columnProduct = 0;
-                            lineProduct += 1;
-                            
-                        }
-                    }
-                    
-                    
-                }
-                
-                scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
-            }];
             
             
             for (int j = 0; j < self.arrayBorderView.count; j++) {
@@ -357,7 +251,106 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
         CGFloat pageWidth = CGRectGetWidth(self.bounds);
         CGFloat pageFraction = self.mainScrolView.contentOffset.x / pageWidth;
+    NSInteger num = (NSInteger) pageFraction;
     
+    if(self.pageX!=num){
+        [self.delegate getApiTabProducts:[[self.arrayName objectAtIndex:num] objectForKey:@"cat"] andPage:@"1" andBlock:^{
+            NSArray * productArray =[self.delegate arrayProduct];
+            
+            int j=(int)num;
+
+            UIScrollView * scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f + self.frame.size.width * j, 0.f , self.mainScrolView.frame.size.width, self.mainScrolView.frame.size.height)];
+            scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            scrollProduct.showsVerticalScrollIndicator = NO;
+            [self.mainScrolView addSubview:scrollProduct];
+            NSInteger lineProduct = 0; //Идентификатор строк
+            NSInteger columnProduct = 0; //Идентификатор столбцов
+            
+            
+            if(productArray.count>0){
+
+                
+                for (int i = 0; i < productArray.count; i++) {
+                    
+                    
+                    NSDictionary * dictProduct = [productArray objectAtIndex:i];
+                    
+                    UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
+                    buttonProduct.frame = CGRectMake(0.f + ((self.frame.size.width / 2.f + 1.5f) * columnProduct),
+                                                     0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
+                                                     self.frame.size.width / 2.f - 1.5f,
+                                                     self.frame.size.width / 2.f - 1.5f );
+                    
+                    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
+                    
+                    
+                    NSURL *imgURL = [NSURL URLWithString:[dictProduct objectForKey:@"img"]];
+                    
+                    
+                    //SingleTone с ресайз изображения
+                    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                    [manager downloadImageWithURL:imgURL
+                                          options:0
+                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                             // progression tracking code
+                                         }
+                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                            
+                                            if(image){
+                                                
+                                                
+                                                imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
+                                                //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
+                                                
+                                                [imageView setClipsToBounds:YES];
+                                                
+                                                
+                                                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                                imageView.clipsToBounds =YES;
+                                                
+                                                
+                                                
+                                                
+                                                imageView.image = image;
+                                                
+                                                [buttonProduct addSubview:imageView];
+                                                
+                                            }else{
+                                                
+                                            }
+                                        }];
+                    
+                    
+                    
+                    [scrollProduct addSubview:buttonProduct];
+                    
+                    UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
+                                                                                     buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
+                    labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
+                    labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
+                    labelPrice.textColor = [UIColor whiteColor];
+                    labelPrice.textAlignment = NSTextAlignmentCenter;
+                    labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                    [buttonProduct addSubview:labelPrice];
+                    
+                    
+                    //Расчет таблицы---------------
+                    columnProduct += 1;
+                    if (columnProduct > 1) {
+                        columnProduct = 0;
+                        lineProduct += 1;
+                        
+                    }
+                }
+                
+                
+            }
+            
+            scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
+        }];
+
+        self.pageX=num;
+    }
   
     
     for (int j = 0; j < self.arrayBorderView.count; j++) {
