@@ -13,18 +13,23 @@
 @interface CatalogView : UIView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSMutableArray*) data
+                     andData: (NSArray*) data
                      andName:(NSArray*) arrayName;
 
 @property (weak, nonatomic) id <CatalogViewDelegate> delegate;
+
 
 @end
 
 @protocol CatalogViewDelegate <NSObject>
 
+@property (strong, nonatomic) NSArray * arrayProduct; //Массив с Категориями
+
 @required
 
 - (void) getCatalog: (CatalogView*) catalogView;
+- (void) getApiTabProducts:(NSString *) cat andPage: (NSString *) page
+                  andBlock:(void (^)(void))block;
 
 
 @end

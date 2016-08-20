@@ -13,6 +13,8 @@
 		AD89D1C21D678B61007771B6 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C01D678B61007771B6 /* Auth.m */; };
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
+		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
+		AD89D1D41D68E99E007771B6 /* x_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD89D1D31D68E99E007771B6 /* x_1.png */; };
 		FFAE2DF61D65A05D00E81AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF51D65A05D00E81AED /* main.m */; };
 		FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF81D65A05D00E81AED /* AppDelegate.m */; };
 		FFAE2E011D65A05D00E81AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2E001D65A05D00E81AED /* Assets.xcassets */; };
@@ -400,6 +402,9 @@
 		AD89D1C41D678B7C007771B6 /* AuthDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDbClass.m; sourceTree = "<group>"; };
 		AD89D1C71D678DAB007771B6 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
 		AD89D1C81D678DAB007771B6 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
+		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
+		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
+		AD89D1D31D68E99E007771B6 /* x_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_1.png; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
 		FFAE2DF11D65A05D00E81AED /* Sadovod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sadovod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAE2DF51D65A05D00E81AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -925,6 +930,9 @@
 				FFAE33111D65A3CE00E81AED /* Macros.h */,
 				FFAE33121D65A3CE00E81AED /* SingleTone.h */,
 				FFAE33131D65A3CE00E81AED /* SingleTone.m */,
+				AD89D1D31D68E99E007771B6 /* x_1.png */,
+				AD89D1D01D68E363007771B6 /* CheckDataServer.h */,
+				AD89D1D11D68E363007771B6 /* CheckDataServer.m */,
 				FFAE2DF51D65A05D00E81AED /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1746,6 +1754,7 @@
 				FFAE31D51D65A28900E81AED /* Activity7@2x.png in Resources */,
 				FFAE327E1D65A28900E81AED /* Activity11@2x.png in Resources */,
 				FFAE32191D65A28900E81AED /* Activity29@2x.png in Resources */,
+				AD89D1D41D68E99E007771B6 /* x_1.png in Resources */,
 				FFAE31F11D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE32851D65A28900E81AED /* Activity3@2x.png in Resources */,
 				FFAE320F1D65A28900E81AED /* Activity1@2x.png in Resources */,
@@ -2109,6 +2118,7 @@
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
+				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,
 				FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */,

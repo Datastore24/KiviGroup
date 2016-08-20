@@ -10,4 +10,7 @@
 
 @interface CatalogController : MainViewController
 
+@property (strong, nonatomic) NSArray * arrayName; //Массив с Категориями
+@property (strong, nonatomic) NSArray * arrayProduct; //Массив с Категориями
+
 @end
