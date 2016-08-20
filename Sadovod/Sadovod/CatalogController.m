@@ -41,10 +41,7 @@
     [self getKey:^{
         [self getApiName:^{
            
-            
-            for(int i=0; i<self.arrayName.count; i++){
-                NSLog(@"%@",[[self.arrayName objectAtIndex:i] objectForKey:@"title"]);
-            }
+    
           
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
