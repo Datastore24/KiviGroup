@@ -40,6 +40,11 @@
 #pragma mark - View
     [self getKey:^{
         [self getApiName:^{
+           
+            
+            for(int i=0; i<self.arrayName.count; i++){
+                NSLog(@"%@",[[self.arrayName objectAtIndex:i] objectForKey:@"title"]);
+            }
           
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
@@ -135,9 +140,9 @@
            
             for(int i=0;i<self.arrayName.count;i++){
                 NSString * catID = [[self.arrayName objectAtIndex:i] objectForKey:@"cat"];
-              
+                NSString * catName = [[self.arrayName objectAtIndex:i] objectForKey:@"title"];
                 
-                [self getApiTabProducts:catID andPage:@"1" andCount:i+1 andMaxCount:self.arrayName.count andBlock:^{
+                [self getApiTabProducts:catID andName:catName andPage:@"1" andCount:i+1 andMaxCount:self.arrayName.count andBlock:^{
                     block();
                 }];
                 
@@ -152,8 +157,8 @@
     }];
 }
 
-- (void) getApiTabProducts:(NSString *) cat andPage: (NSString *) page
-                  andCount: (NSInteger) count andMaxCount: (NSInteger) maxCount
+- (void) getApiTabProducts:(NSString *) cat andName: (NSString *) catname andPage: (NSString *) page
+                    andCount: (NSInteger) count andMaxCount: (NSInteger) maxCount
                   andBlock:(void (^)(void))block
 {
     
@@ -175,7 +180,7 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
         
-          
+            NSLog(@"CAT NAME %@",catname);
             [self.arrayProduct addObject:[respDict objectForKey:@"list"]];
             if(count == maxCount){
                 block();

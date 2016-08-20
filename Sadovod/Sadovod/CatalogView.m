@@ -33,7 +33,7 @@
 
 - (instancetype)initWithView: (UIView*) view andData: (NSMutableArray*) data andName:(NSArray*) arrayName
 {
-    NSLog(@"DATA %@",data);
+    
     
 #pragma mark - MainView
     
@@ -133,7 +133,7 @@
                 
                                 NSDictionary * dictProduct = [tabProductArray objectAtIndex:i];
                 
-                                NSLog(@"i--%i - %@",i,dictProduct);
+                              
                 
                                 UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
                                 buttonProduct.frame = CGRectMake(0.f + ((self.frame.size.width / 2.f + 1.5f) * columnProduct),
