@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.arrayProduct = [NSMutableArray new];
+    self.arrayProduct = [NSArray new];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"Садовод" andBarButtonAlpha: NO]; //Ввод заголовка

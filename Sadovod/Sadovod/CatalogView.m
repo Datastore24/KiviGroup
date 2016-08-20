@@ -13,6 +13,7 @@
 #import "CustomLabels.h"
 #import "UIImage+Resize.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "CheckDataServer.h"
 
 @interface CatalogView () <UIScrollViewDelegate>
 //MainView
@@ -114,17 +115,17 @@
 
             int j=0;
 
-            
+        
             
             UIScrollView * scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f + self.frame.size.width * j, 0.f , self.mainScrolView.frame.size.width, self.mainScrolView.frame.size.height)];
             scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
             scrollProduct.showsVerticalScrollIndicator = NO;
             [self.mainScrolView addSubview:scrollProduct];
-            NSInteger lineProduct = 0; //Идентификатор строк
-            NSInteger columnProduct = 0; //Идентификатор столбцов
+            __block NSInteger lineProduct = 0; //Идентификатор строк
+            __block NSInteger columnProduct = 0; //Идентификатор столбцов
             
-            
-            if(self.arrayData.count>0){
+            [CheckDataServer checkDataServerWithBlock:self.arrayData andMessage:@"В данной категории нет товаров" view:scrollProduct complitionBlock:^{
+                
                 
                 
                 
@@ -206,7 +207,8 @@
                             }
 
                 
-            }
+            
+                }];
             
             scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
         
@@ -254,6 +256,16 @@
     NSInteger num = (NSInteger) pageFraction;
     
     if(self.pageX!=num){
+        
+        for (UIView *view in self.mainScrolView.subviews){
+            if([view isKindOfClass:[UIScrollView class]]){
+                
+                [view removeFromSuperview];
+                
+            }
+        }
+        
+        
         [self.delegate getApiTabProducts:[[self.arrayName objectAtIndex:num] objectForKey:@"cat"] andPage:@"1" andBlock:^{
             NSArray * productArray =[self.delegate arrayProduct];
             
@@ -263,8 +275,11 @@
             scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
             scrollProduct.showsVerticalScrollIndicator = NO;
             [self.mainScrolView addSubview:scrollProduct];
-            NSInteger lineProduct = 0; //Идентификатор строк
-            NSInteger columnProduct = 0; //Идентификатор столбцов
+           __block NSInteger lineProduct = 0; //Идентификатор строк
+           __block NSInteger columnProduct = 0; //Идентификатор столбцов
+            
+            
+            [CheckDataServer checkDataServerWithBlock:productArray andMessage:@"В данной категории нет товаров" view:scrollProduct complitionBlock:^{
             
             
             if(productArray.count>0){
@@ -345,6 +360,8 @@
                 
                 
             }
+                
+            }];
             
             scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
         }];

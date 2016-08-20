@@ -1,0 +1,83 @@
+//
+//  MessagePopUp.m
+//  FlowersOnline
+//
+//  Created by Кирилл Ковыршин on 15.08.16.
+//  Copyright © 2016 datastore24. All rights reserved.
+//
+
+#import "CheckDataServer.h"
+#import "Macros.h"
+
+@implementation CheckDataServer
+
++ (void)checkDataServerWithBlock: (id)object andMessage:(NSString*)message view:(UIView *) view complitionBlock: (void (^) (void)) block
+{
+   
+    if([object isKindOfClass:[NSArray class]]){
+       
+        NSArray * objectArray = (NSArray *) object;
+        if(objectArray.count > 0){
+            block();
+        }else{
+            [self showEmptyMessage:message view:view];
+        }
+    }else if([object isKindOfClass:[NSMutableArray class]]){
+        
+        NSMutableArray * objectArray = (NSMutableArray *) object;
+        if(objectArray.count > 0){
+            block();
+        }else{
+            [self showEmptyMessage:message view:view];
+        }
+    }else if([object isKindOfClass:[NSDictionary class]]){
+       
+        NSDictionary * objectDict = (NSDictionary *) object;
+        
+        BOOL isEmpty = ([objectDict count] == 0);
+        
+        if(isEmpty){
+            [self showEmptyMessage:message view:view];
+        }else{
+            block();
+        }
+    }else{
+        
+        [self showEmptyMessage:message view:view];
+    }
+    
+    
+    
+    
+    
+}
+    
++ (void)showEmptyMessage: (NSString*)message view:(UIView *) view{
+    
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(view.frame.size.width / 2,
+                                                                            view.frame.size.height / 2 - 100, 50, 50)];
+    
+    [imageView setCenter:CGPointMake(view.bounds.size.width/2, view.bounds.size.height/2-40)];
+    UIImage *image = [UIImage imageNamed: @"x_1.png"];
+    
+    [imageView setImage:image];
+    
+    [view addSubview:imageView];
+    
+    
+    UILabel * successLabel = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width/2, view.frame.size.height/2, view.frame.size.width, 50)];
+    
+   
+        
+        [successLabel setCenter:CGPointMake(successLabel.frame.size.width / 2, view.frame.size.height / 2)];
+        successLabel.textAlignment = NSTextAlignmentCenter;
+        successLabel.text = message;
+        successLabel.textColor = [UIColor blackColor];
+        successLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:20];
+        
+        
+        [view addSubview:successLabel];
+    }
+
+@end
