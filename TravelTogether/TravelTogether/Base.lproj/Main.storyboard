@@ -195,6 +195,20 @@
             </objects>
             <point key="canvasLocation" x="1374" y="-404"/>
         </scene>
+        <!--Human Detail Controller-->
+        <scene sceneID="J1b-Il-GUc">
+            <objects>
+                <viewController storyboardIdentifier="HumanDetailController" id="s4x-gR-YSh" customClass="HumanDetailController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vye-6j-yaY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6j-9Y-LbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="-403"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="miY-JZ-3bC">
             <objects>

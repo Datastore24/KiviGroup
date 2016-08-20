@@ -363,6 +363,22 @@
 		FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F7F1D5117970043ED9D /* CustomLabels.m */; };
 		FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F861D5139030043ED9D /* MyTravelView.m */; };
 		FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F891D51398A0043ED9D /* MyTravelController.m */; };
+		FFC4FD881D6858A2007C2DDC /* imageAddOnMyTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */; };
+		FFC4FD8B1D6859B9007C2DDC /* imageBuyTicket.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */; };
+		FFC4FD921D686400007C2DDC /* imagePhoto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */; };
+		FFC4FD931D686400007C2DDC /* imagePhoto3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8D1D686400007C2DDC /* imagePhoto3.png */; };
+		FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8E1D686400007C2DDC /* imagePhoto5.png */; };
+		FFC4FD951D686400007C2DDC /* imagePhoto6.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8F1D686400007C2DDC /* imagePhoto6.png */; };
+		FFC4FD961D686400007C2DDC /* imagePhoto1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD901D686400007C2DDC /* imagePhoto1.png */; };
+		FFC4FD971D686400007C2DDC /* imagePhoto4.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD911D686400007C2DDC /* imagePhoto4.png */; };
+		FFC4FD9A1D687185007C2DDC /* buttonDetailImageYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD981D687185007C2DDC /* buttonDetailImageYES.png */; };
+		FFC4FD9B1D687185007C2DDC /* buttonDetailImageNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD991D687185007C2DDC /* buttonDetailImageNO.png */; };
+		FFC4FD9F1D689A54007C2DDC /* HumanDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FD9E1D689A54007C2DDC /* HumanDetailController.m */; };
+		FFC4FDA21D689A73007C2DDC /* HumanDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FDA11D689A73007C2DDC /* HumanDetailView.m */; };
+		FFC4FDA51D689D91007C2DDC /* humanDetailAvaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA41D689D91007C2DDC /* humanDetailAvaImage.png */; };
+		FFC4FDA81D68C91B007C2DDC /* likeButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA61D68C91B007C2DDC /* likeButtonImage.png */; };
+		FFC4FDA91D68C91B007C2DDC /* messageButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */; };
+		FFC4FDAE1D68CFE8007C2DDC /* MessegerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -782,6 +798,25 @@
 		FFBB8F861D5139030043ED9D /* MyTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTravelView.m; sourceTree = "<group>"; };
 		FFBB8F881D51398A0043ED9D /* MyTravelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTravelController.h; sourceTree = "<group>"; };
 		FFBB8F891D51398A0043ED9D /* MyTravelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTravelController.m; sourceTree = "<group>"; };
+		FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageAddOnMyTravel.png; sourceTree = "<group>"; };
+		FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageBuyTicket.png; sourceTree = "<group>"; };
+		FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto2.png; sourceTree = "<group>"; };
+		FFC4FD8D1D686400007C2DDC /* imagePhoto3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto3.png; sourceTree = "<group>"; };
+		FFC4FD8E1D686400007C2DDC /* imagePhoto5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto5.png; sourceTree = "<group>"; };
+		FFC4FD8F1D686400007C2DDC /* imagePhoto6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto6.png; sourceTree = "<group>"; };
+		FFC4FD901D686400007C2DDC /* imagePhoto1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto1.png; sourceTree = "<group>"; };
+		FFC4FD911D686400007C2DDC /* imagePhoto4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto4.png; sourceTree = "<group>"; };
+		FFC4FD981D687185007C2DDC /* buttonDetailImageYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonDetailImageYES.png; sourceTree = "<group>"; };
+		FFC4FD991D687185007C2DDC /* buttonDetailImageNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonDetailImageNO.png; sourceTree = "<group>"; };
+		FFC4FD9D1D689A54007C2DDC /* HumanDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanDetailController.h; sourceTree = "<group>"; };
+		FFC4FD9E1D689A54007C2DDC /* HumanDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanDetailController.m; sourceTree = "<group>"; };
+		FFC4FDA01D689A73007C2DDC /* HumanDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanDetailView.h; sourceTree = "<group>"; };
+		FFC4FDA11D689A73007C2DDC /* HumanDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanDetailView.m; sourceTree = "<group>"; };
+		FFC4FDA41D689D91007C2DDC /* humanDetailAvaImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanDetailAvaImage.png; sourceTree = "<group>"; };
+		FFC4FDA61D68C91B007C2DDC /* likeButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButtonImage.png; sourceTree = "<group>"; };
+		FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButtonImage.png; sourceTree = "<group>"; };
+		FFC4FDAC1D68CFE8007C2DDC /* MessegerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerController.h; sourceTree = "<group>"; };
+		FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1333,6 +1368,7 @@
 		FFAE2CEF1D5DF7AE00E81AED /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FFAE2CD51D5DF7AE00E81AED /* logoImage.png */,
 				FFAE2CE81D5DF7AE00E81AED /* imageSocNet2.png */,
 				FFAE2CE91D5DF7AE00E81AED /* imageSocNet3.png */,
 				FFAE2CEA1D5DF7AE00E81AED /* imageSocNet1.png */,
@@ -1363,6 +1399,7 @@
 		FFAE2CFB1D5DF7AE00E81AED /* ImagesButtons */ = {
 			isa = PBXGroup;
 			children = (
+				FFAE2CD41D5DF7AE00E81AED /* buttonBackImage.png */,
 				FFAE2CFA1D5DF7AE00E81AED /* IconButtonMenu.png */,
 			);
 			name = ImagesButtons;
@@ -1371,8 +1408,8 @@
 		FFAE2CFC1D5DF7AE00E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				FFAE2CD41D5DF7AE00E81AED /* buttonBackImage.png */,
-				FFAE2CD51D5DF7AE00E81AED /* logoImage.png */,
+				FFC4FDA31D689D84007C2DDC /* HumanDetailImage */,
+				FFC4FD851D685893007C2DDC /* TravelImage */,
 				FFAE2CE01D5DF7AE00E81AED /* SearchImages */,
 				FFAE2CE71D5DF7AE00E81AED /* ImagesMyTravel */,
 				FFAE2CEF1D5DF7AE00E81AED /* Login */,
@@ -1405,6 +1442,8 @@
 		FFBB8EB11D508DC90043ED9D /* TravelTogether */ = {
 			isa = PBXGroup;
 			children = (
+				FFC4FDAB1D68CFC7007C2DDC /* Messeger */,
+				FFC4FD9C1D689A3B007C2DDC /* HumanDetail */,
 				FFAE29031D57955200E81AED /* Travel */,
 				FF66A7811D53505400F693DD /* SearchTravel */,
 				FFBB8F841D5138E30043ED9D /* MyTravel */,
@@ -1566,6 +1605,53 @@
 			name = MyTravel;
 			sourceTree = "<group>";
 		};
+		FFC4FD851D685893007C2DDC /* TravelImage */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4FD981D687185007C2DDC /* buttonDetailImageYES.png */,
+				FFC4FD991D687185007C2DDC /* buttonDetailImageNO.png */,
+				FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */,
+				FFC4FD8D1D686400007C2DDC /* imagePhoto3.png */,
+				FFC4FD8E1D686400007C2DDC /* imagePhoto5.png */,
+				FFC4FD8F1D686400007C2DDC /* imagePhoto6.png */,
+				FFC4FD901D686400007C2DDC /* imagePhoto1.png */,
+				FFC4FD911D686400007C2DDC /* imagePhoto4.png */,
+				FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */,
+				FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */,
+			);
+			name = TravelImage;
+			sourceTree = "<group>";
+		};
+		FFC4FD9C1D689A3B007C2DDC /* HumanDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4FD9D1D689A54007C2DDC /* HumanDetailController.h */,
+				FFC4FD9E1D689A54007C2DDC /* HumanDetailController.m */,
+				FFC4FDA01D689A73007C2DDC /* HumanDetailView.h */,
+				FFC4FDA11D689A73007C2DDC /* HumanDetailView.m */,
+			);
+			name = HumanDetail;
+			sourceTree = "<group>";
+		};
+		FFC4FDA31D689D84007C2DDC /* HumanDetailImage */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4FDA61D68C91B007C2DDC /* likeButtonImage.png */,
+				FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */,
+				FFC4FDA41D689D91007C2DDC /* humanDetailAvaImage.png */,
+			);
+			name = HumanDetailImage;
+			sourceTree = "<group>";
+		};
+		FFC4FDAB1D68CFC7007C2DDC /* Messeger */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4FDAC1D68CFE8007C2DDC /* MessegerController.h */,
+				FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */,
+			);
+			name = Messeger;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1670,6 +1756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFAE287A1D57731500E81AED /* Activity2@2x.png in Resources */,
+				FFC4FD921D686400007C2DDC /* imagePhoto2.png in Resources */,
 				FFAE2D041D5DF7AE00E81AED /* sexMaleYes.png in Resources */,
 				FFAE28571D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE2D011D5DF7AE00E81AED /* searchFreandsImageYes.png in Resources */,
@@ -1677,6 +1764,7 @@
 				FFAE28481D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE27E61D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE28611D57731500E81AED /* Activity6@2x.png in Resources */,
+				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
 				FFAE2D131D5DF7AE00E81AED /* mapLogin.png in Resources */,
 				FFAE28C71D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE28CC1D57731500E81AED /* Activity22@2x.png in Resources */,
@@ -1688,17 +1776,22 @@
 				FFBB8F351D50BE9E0043ED9D /* pfagoraslabpro-bold.ttf in Resources */,
 				FFAE28B21D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFAE27EB1D57731500E81AED /* Activity22@2x.png in Resources */,
+				FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */,
 				FFAE28491D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE28241D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE286E1D57731500E81AED /* Activity19@2x.png in Resources */,
+				FFC4FD961D686400007C2DDC /* imagePhoto1.png in Resources */,
 				FFAE28341D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE27EE1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE27FC1D57731500E81AED /* Activity10@2x.png in Resources */,
+				FFC4FD8B1D6859B9007C2DDC /* imageBuyTicket.png in Resources */,
 				FFAE2D151D5DF7AE00E81AED /* nameLogin.png in Resources */,
 				FFBB8F361D50BE9E0043ED9D /* pfagoraslabpro-reg.ttf in Resources */,
 				FFAE28811D57731500E81AED /* Activity8@2x.png in Resources */,
+				FFC4FDA51D689D91007C2DDC /* humanDetailAvaImage.png in Resources */,
 				FFAE282B1D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFAE28531D57731500E81AED /* Activity7@2x.png in Resources */,
+				FFC4FD971D686400007C2DDC /* imagePhoto4.png in Resources */,
 				FFAE287F1D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE28401D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE2D1B1D5DF7AE00E81AED /* image4.png in Resources */,
@@ -1843,6 +1936,7 @@
 				FFAE27EC1D57731500E81AED /* Activity23@2x.png in Resources */,
 				FFAE287D1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE27D41D57731500E81AED /* Activity15@2x.png in Resources */,
+				FFC4FD951D686400007C2DDC /* imagePhoto6.png in Resources */,
 				FFAE2CFD1D5DF7AE00E81AED /* buttonBackImage.png in Resources */,
 				FFAE27FB1D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE28BC1D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -1868,7 +1962,6 @@
 				FFAE28971D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D0A1D5DF7AE00E81AED /* searchImageYes.png in Resources */,
 				FFAE2D0F1D5DF7AE00E81AED /* imageSocNet2.png in Resources */,
-				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
 				FFAE28D71D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28891D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28391D57731500E81AED /* Activity11@2x.png in Resources */,
@@ -1879,12 +1972,17 @@
 				FFAE28771D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE284A1D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE27DF1D57731500E81AED /* Activity11@2x.png in Resources */,
+				FFC4FD881D6858A2007C2DDC /* imageAddOnMyTravel.png in Resources */,
 				FFAE2D1A1D5DF7AE00E81AED /* image7.png in Resources */,
 				FFAE28D11D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE2D091D5DF7AE00E81AED /* searchImageNo.png in Resources */,
+				FFC4FDA91D68C91B007C2DDC /* messageButtonImage.png in Resources */,
+				FFC4FD931D686400007C2DDC /* imagePhoto3.png in Resources */,
+				FFC4FD9B1D687185007C2DDC /* buttonDetailImageNO.png in Resources */,
 				FFAE289C1D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28BF1D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE28A91D57731500E81AED /* Activity3@2x.png in Resources */,
+				FFC4FD9A1D687185007C2DDC /* buttonDetailImageYES.png in Resources */,
 				FFAE286F1D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28311D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE28961D57731500E81AED /* Activity14@2x.png in Resources */,
@@ -1922,6 +2020,7 @@
 				FFAE28DC1D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE282D1D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE2D1D1D5DF7AE00E81AED /* image2.png in Resources */,
+				FFC4FDA81D68C91B007C2DDC /* likeButtonImage.png in Resources */,
 				FFAE28CB1D57731500E81AED /* Activity21@2x.png in Resources */,
 				FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */,
 				FFAE28261D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2014,12 +2113,14 @@
 				FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */,
 				FFAE28EE1D57843200E81AED /* SearchDetailController.m in Sources */,
 				FFAE26AD1D5772FF00E81AED /* JBWatchActivityIndicator.m in Sources */,
+				FFC4FDA21D689A73007C2DDC /* HumanDetailView.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
 				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
 				FFBB8F0F1D5093270043ED9D /* UIImage+RoundedCorner.m in Sources */,
 				FFBB8F6F1D50F9F20043ED9D /* CustomTextField.m in Sources */,
 				FFBB8F2B1D50B57A0043ED9D /* HexColors.m in Sources */,
 				FFBB8F2E1D50B67C0043ED9D /* TextAndImageHeight.m in Sources */,
+				FFC4FD9F1D689A54007C2DDC /* HumanDetailController.m in Sources */,
 				FFBB8F0C1D5093270043ED9D /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				FFBB8F6E1D50F9F20043ED9D /* InputTextView.m in Sources */,
 				FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */,
@@ -2038,6 +2139,7 @@
 				FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */,
 				FFAE290E1D5CD0FB00E81AED /* SingleTone.m in Sources */,
 				FFBB8F0B1D5093270043ED9D /* UIImage+Alpha.m in Sources */,
+				FFC4FDAE1D68CFE8007C2DDC /* MessegerController.m in Sources */,
 				FFBB8EEB1D508F520043ED9D /* MenuViewController.m in Sources */,
 				FFBB8F101D5093270043ED9D /* UIButton+ButtonImage.m in Sources */,
 				FFBB8F391D50C3220043ED9D /* UILabel+TitleCategory.m in Sources */,

@@ -54,6 +54,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PFBeauSansPro-Regular.otf</string>
 		<string>SFUIDisplay-Regular.otf</string>
 		<string>PFBeauSansPro-Bold.otf</string>
 		<string>PFBeauSansPro-Light.otf</string>

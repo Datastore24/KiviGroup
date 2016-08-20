@@ -40,9 +40,6 @@
 #pragma mark - View
     [self getKey:^{
         [self getApiName:^{
-           
-    
-          
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
             [self.view addSubview:mainView];
