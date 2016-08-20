@@ -25,4 +25,7 @@
 //Кнопка назад
 + (UIButton*) createButtonBack;
 
++ (UIButton*) createButtonWithImage: (NSString*) image
+                           anfFrame: (CGRect) frame;
+
 @end

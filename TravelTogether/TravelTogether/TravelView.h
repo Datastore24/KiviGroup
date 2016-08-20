@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TravelViewDelegate;
+
 @interface TravelView : UIView
+
+@property (weak, nonatomic) id <TravelViewDelegate> delegate;
+
+- (instancetype)initWithView: (UIView*) view
+                     andData: (NSArray*) data;
+
+@end
+
+@protocol TravelViewDelegate <NSObject>
+
+@required
+
+- (void) pushToHumanDetail: (TravelView*) travelView andID: (NSString*) identifier;
 
 @end

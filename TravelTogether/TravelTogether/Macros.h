@@ -28,6 +28,7 @@
 #define VM_FONT_REGULAR             @"pfagoraslabpro-regular"
 #define VM_FONT_BEAU_SANS_BOLD      @"PFBeauSansPro-bold"
 #define VM_FONT_BEAU_SANS_LITE      @"PFBeauSansPro-light"
+#define VM_FONT_BEAU_SANS_REGULAR   @"PFBeauSansPro-regular"
 #define VM_FONT_SF_DISPLAY_REGULAR  @"SFUIDisplay-Regular"
 
 

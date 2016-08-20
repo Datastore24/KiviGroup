@@ -27,6 +27,15 @@
     return button;
 }
 
++ (UIButton*) createButtonWithImage: (NSString*) image
+                           anfFrame: (CGRect) frame {
+    UIImage *imageBarButton = [UIImage imageNamed:image];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    return button;
+}
+
 + (UIButton*) createButtonBasket
 {
     UIImage *imageBarButton = [UIImage imageNamed:@"iconBasket.png"];
