@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CatalogDetailViewDelegate;
+
 @interface CatalogDetailView : UIView
+
+@property (weak, nonatomic) id <CatalogDetailViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol CatalogDetailViewDelegate <NSObject>
+
+@required
+
+- (void) PushToOrderController: (CatalogDetailView*) catalogDetailView;
 
 @end

@@ -371,6 +371,9 @@
 		FFC4FD811D677DED007C2DDC /* buttonCollumImageOneNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */; };
 		FFC4FD821D677DED007C2DDC /* buttonCollumImageOneYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */; };
 		FFC4FD841D677F07007C2DDC /* imageButtonFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */; };
+		FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8733C1D6AEC6C00816FC1 /* OrderController.m */; };
+		FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873421D6B2BF900816FC1 /* OrderView.m */; };
+		FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873461D6B3A1900816FC1 /* StyledPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -803,6 +806,12 @@
 		FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneNO.png; sourceTree = "<group>"; };
 		FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneYES.png; sourceTree = "<group>"; };
 		FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFilter.png; sourceTree = "<group>"; };
+		FFF8733B1D6AEC6C00816FC1 /* OrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderController.h; sourceTree = "<group>"; };
+		FFF8733C1D6AEC6C00816FC1 /* OrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderController.m; sourceTree = "<group>"; };
+		FFF873411D6B2BF900816FC1 /* OrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderView.h; sourceTree = "<group>"; };
+		FFF873421D6B2BF900816FC1 /* OrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderView.m; sourceTree = "<group>"; };
+		FFF873451D6B3A1900816FC1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
+		FFF873461D6B3A1900816FC1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -896,6 +905,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFF8733A1D6AEC4D00816FC1 /* Order */,
 				FFC4FD6D1D67678B007C2DDC /* CatalogDetail */,
 				FFC4FD441D671312007C2DDC /* CatalogList */,
 				FFC4FD661D675E4D007C2DDC /* CatalogMainList */,
@@ -909,6 +919,7 @@
 				FFAE2E001D65A05D00E81AED /* Assets.xcassets */,
 				FFAE2E021D65A05D00E81AED /* LaunchScreen.storyboard */,
 				FFAE2E271D65A07900E81AED /* Info.plist */,
+				FFF873441D6B3A0800816FC1 /* PageControl */,
 				FFAE32F21D65A37100E81AED /* Images */,
 				FFAE32EB1D65A32C00E81AED /* InputText */,
 				FFAE32BC1D65A2F800E81AED /* SwichLib */,
@@ -1609,6 +1620,26 @@
 			name = ImagesCatalogDetail;
 			sourceTree = "<group>";
 		};
+		FFF8733A1D6AEC4D00816FC1 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				FFF8733B1D6AEC6C00816FC1 /* OrderController.h */,
+				FFF8733C1D6AEC6C00816FC1 /* OrderController.m */,
+				FFF873411D6B2BF900816FC1 /* OrderView.h */,
+				FFF873421D6B2BF900816FC1 /* OrderView.m */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
+		FFF873441D6B3A0800816FC1 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				FFF873451D6B3A1900816FC1 /* StyledPageControl.h */,
+				FFF873461D6B3A1900816FC1 /* StyledPageControl.m */,
+			);
+			name = PageControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2115,7 +2146,9 @@
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
+				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
+				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
@@ -2138,6 +2171,7 @@
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
+				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
 				FFAE2E361D65A10300E81AED /* SWRevealViewController.m in Sources */,
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,

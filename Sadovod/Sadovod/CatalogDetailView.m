@@ -121,6 +121,8 @@
         UIImage * imageProduct = [UIImage imageNamed:[dictProduct objectForKey:@"image"]];
         imageProduct = [self resizeImage:imageProduct imageSize:CGSizeMake(scrollProduct.frame.size.width, scrollProduct.frame.size.width)];
         [buttonProduct setImage:imageProduct forState:UIControlStateNormal];
+        buttonProduct.tag = 20 + i;
+        [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
         UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
                                                                          buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
         labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
@@ -168,8 +170,16 @@
 
 #pragma mark - Actions
 
+- (void) buttonProductAction: (UIButton*) button {
+    for (int i = 0; i < self.arrayData.count; i++) {
+        if (button.tag == 20 + i) {
+            [self.delegate PushToOrderController:self];
+        }
+    }
+}
+
 - (void) buttonSortAction {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         self.hideView.alpha = 1.f;
     }];
 }
@@ -178,7 +188,7 @@
     for (int i = 0; i < 4; i++) {
         if (button.tag == 10 + i) {
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
-            [UIView animateWithDuration:0.3 animations:^{
+            [UIView animateWithDuration:0.3f animations:^{
                 self.hideView.alpha = 0.f;
             }];
         }
@@ -198,7 +208,7 @@
     }
     self.hideView = [self createHideViewVithView];
     [self addSubview:self.hideView];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         [self.buttonColumnOne setImage:[UIImage imageNamed:@"buttonCollumImageOneYES.png"] forState:UIControlStateNormal];
         [self.buttonColumnTwo setImage:[UIImage imageNamed:@"buttonCollumImageNO.png"] forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
@@ -220,7 +230,7 @@
     }
     self.hideView = [self createHideViewVithView];
     [self addSubview:self.hideView];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         [self.buttonColumnOne setImage:[UIImage imageNamed:@"buttonCollumImageOneNO.png"] forState:UIControlStateNormal];
         [self.buttonColumnTwo setImage:[UIImage imageNamed:@"buttonCollumImageYES.png"] forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
@@ -248,7 +258,7 @@
 -(UIImage*)resizeImage:(UIImage *)image imageSize:(CGSize)size
 {
     UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    [image drawInRect:CGRectMake(0.f,0.f,size.width,size.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     //here is the scaled image which has been changed to the size specified
     UIGraphicsEndImageContext();

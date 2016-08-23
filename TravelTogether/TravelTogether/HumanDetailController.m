@@ -8,6 +8,7 @@
 
 #import "HumanDetailController.h"
 #import "HumanDetailView.h"
+#import "MessegerController.h"
 
 @interface HumanDetailController () <HumanDetailViewDelegate>
 
@@ -59,7 +60,8 @@
 #pragma mark - HumanDetailViewDelegate
 
 - (void) pushToMessegerController: (HumanDetailView*) humanDetailView {
-    
+    MessegerController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"MessegerController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
