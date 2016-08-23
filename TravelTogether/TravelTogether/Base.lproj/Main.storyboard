@@ -209,6 +209,20 @@
             </objects>
             <point key="canvasLocation" x="1732" y="-403"/>
         </scene>
+        <!--Messeger Controller-->
+        <scene sceneID="L13-6m-JO1">
+            <objects>
+                <viewController storyboardIdentifier="MessegerController" id="Qax-0Y-Gyj" customClass="MessegerController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P2Y-hl-MLw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qk-8o-gHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2086" y="-407"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="miY-JZ-3bC">
             <objects>

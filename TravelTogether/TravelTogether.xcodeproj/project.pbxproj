@@ -379,6 +379,9 @@
 		FFC4FDA81D68C91B007C2DDC /* likeButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA61D68C91B007C2DDC /* likeButtonImage.png */; };
 		FFC4FDA91D68C91B007C2DDC /* messageButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */; };
 		FFC4FDAE1D68CFE8007C2DDC /* MessegerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */; };
+		FFF8734A1D6C38D600816FC1 /* MessegerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873491D6C38D600816FC1 /* MessegerView.m */; };
+		FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */; };
+		FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734E1D6C3FA600816FC1 /* CustomTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -817,6 +820,12 @@
 		FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButtonImage.png; sourceTree = "<group>"; };
 		FFC4FDAC1D68CFE8007C2DDC /* MessegerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerController.h; sourceTree = "<group>"; };
 		FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerController.m; sourceTree = "<group>"; };
+		FFF873481D6C38D600816FC1 /* MessegerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerView.h; sourceTree = "<group>"; };
+		FFF873491D6C38D600816FC1 /* MessegerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerView.m; sourceTree = "<group>"; };
+		FFF8734B1D6C3FA600816FC1 /* InputTextToView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextToView.h; sourceTree = "<group>"; };
+		FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextToView.m; sourceTree = "<group>"; };
+		FFF8734D1D6C3FA600816FC1 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		FFF8734E1D6C3FA600816FC1 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1577,6 +1586,10 @@
 		FFBB8F661D50F78B0043ED9D /* InputText */ = {
 			isa = PBXGroup;
 			children = (
+				FFF8734B1D6C3FA600816FC1 /* InputTextToView.h */,
+				FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */,
+				FFF8734D1D6C3FA600816FC1 /* CustomTextView.h */,
+				FFF8734E1D6C3FA600816FC1 /* CustomTextView.m */,
 				FFBB8F6A1D50F9F20043ED9D /* InputTextView.h */,
 				FFBB8F6B1D50F9F20043ED9D /* InputTextView.m */,
 				FFBB8F6C1D50F9F20043ED9D /* CustomTextField.h */,
@@ -1648,6 +1661,8 @@
 			children = (
 				FFC4FDAC1D68CFE8007C2DDC /* MessegerController.h */,
 				FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */,
+				FFF873481D6C38D600816FC1 /* MessegerView.h */,
+				FFF873491D6C38D600816FC1 /* MessegerView.m */,
 			);
 			name = Messeger;
 			sourceTree = "<group>";
@@ -2114,6 +2129,7 @@
 				FFAE28EE1D57843200E81AED /* SearchDetailController.m in Sources */,
 				FFAE26AD1D5772FF00E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFC4FDA21D689A73007C2DDC /* HumanDetailView.m in Sources */,
+				FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
 				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
 				FFBB8F0F1D5093270043ED9D /* UIImage+RoundedCorner.m in Sources */,
@@ -2124,6 +2140,7 @@
 				FFBB8F0C1D5093270043ED9D /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				FFBB8F6E1D50F9F20043ED9D /* InputTextView.m in Sources */,
 				FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */,
+				FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */,
 				FFBB8EF21D508F8D0043ED9D /* LoginView.m in Sources */,
 				FFBB8EB41D508DCA0043ED9D /* main.m in Sources */,
 				FFBB8F281D50B3350043ED9D /* LoginViewController.m in Sources */,
@@ -2149,6 +2166,7 @@
 				FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */,
 				FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */,
 				FFBB8F5B1D50DD280043ED9D /* UIView+BorderView.m in Sources */,
+				FFF8734A1D6C38D600816FC1 /* MessegerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

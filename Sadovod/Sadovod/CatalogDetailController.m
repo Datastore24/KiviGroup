@@ -8,8 +8,9 @@
 
 #import "CatalogDetailController.h"
 #import "CatalogDetailView.h"
+#import "OrderController.h"
 
-@interface CatalogDetailController ()
+@interface CatalogDetailController () <CatalogDetailViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -34,6 +35,7 @@
     
 #pragma mark - View
     CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
 }
@@ -47,6 +49,13 @@
 
 - (void) buttonBackAction {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - CatalogDetailViewDelegate
+
+- (void) PushToOrderController: (CatalogDetailView*) catalogDetailView {
+    OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (NSMutableArray*) setCustonArray
