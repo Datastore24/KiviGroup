@@ -27,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         
         self.arrayData = data;
         

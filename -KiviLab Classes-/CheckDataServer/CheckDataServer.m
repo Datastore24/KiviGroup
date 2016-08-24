@@ -166,7 +166,7 @@
         
         [view bringSubviewToFront:imageView];
         [view bringSubviewToFront:successLabel];
-        [view addSubview:successLabel];
+
         
     }
         
