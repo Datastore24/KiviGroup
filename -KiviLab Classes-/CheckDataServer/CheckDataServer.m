@@ -41,18 +41,6 @@
         }else{
             block();
         }
-    }else if([object isKindOfClass:[NSMutableDictionary class]]){
-        
-        NSMutableDictionary * objectDict = (NSMutableDictionary *) object;
-        
-        BOOL isEmpty = ([objectDict count] == 0);
-        
-        if(isEmpty){
-            [self showEmptyMessage:message view:view];
-        }else{
-            block();
-        }
-
     }else{
         
         [self showEmptyMessage:message view:view];
