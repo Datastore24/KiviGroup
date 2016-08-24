@@ -11,6 +11,7 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "UIView+BorderView.h"
+#import "CheckDataServer.h"
 
 @interface CatalogMainListView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -52,6 +53,8 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    [CheckDataServer checkDataServer:self.arrayData andMessage:@"Нет категорий для отображения" view:tableView];
+    
     
     return self.arrayData.count;
 }
@@ -74,13 +77,11 @@
     
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
     
-    if (self.arrayData.count != 0) {
-        [cell.contentView addSubview:[self createCustomCellWithName:[dict objectForKey:@"name"]
-                                                           andCount:[dict objectForKey:@"count"]]];
-        
-    } else {
-        NSLog(@"Нет категорий");
-    }
+    
+        [cell.contentView addSubview:[self createCustomCellWithName:[dict objectForKey:@"cat_name"]
+                                                           andCount:[dict objectForKey:@"prod_cnt"]]];
+   
+   
     
     
     return cell;

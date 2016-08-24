@@ -9,10 +9,12 @@
 #import "CatalogMainListController.h"
 #import "CatalogMainListView.h"
 #import "CatalogListController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface CatalogMainListController () <CatalogMainListViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCatalog;
 
 @end
 
@@ -33,10 +35,12 @@
     
 #pragma mark - View
     
-    self.arrayData = [self getCustomArray];
-    CatalogMainListView * mainView = [[CatalogMainListView alloc] initWithView:self.view andData:self.arrayData];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
+    [self getApiCatalog:^{
+        CatalogMainListView * mainView = [[CatalogMainListView alloc] initWithView:self.view andData:self.arrayCatalog];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    }];
+    
     
 }
 
@@ -51,20 +55,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSMutableArray*) getCustomArray {
-    NSMutableArray * customArray = [NSMutableArray array];
-    NSArray * arrayNameItem0 = [NSArray arrayWithObjects:@"Женская одежда", @"Мужская одежда", @"Для девочек", @"Для мальчиков",
-                                @"Для малышей", @"Обувь", @"Сумки и Чемоданы", @"Детский спорт", nil];
-    NSArray * arrayCountItem0 = [NSArray arrayWithObjects:@"2777", @"538", @"138", @"53", @"1", @"182", @"3", @"2", nil];
-    for (int i = 0; i < arrayNameItem0.count; i++) {
-        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [arrayNameItem0 objectAtIndex:i], @"name",
-                               [arrayCountItem0 objectAtIndex:i], @"count", nil];
-        
-        [customArray addObject:dict];
-    }
-    return customArray;
-}
 
 
 #pragma mark - CatalogMainListViewDelegate
@@ -74,7 +64,35 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+-(void) getApiCatalog: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             @"0",@"cat",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios",@"appname",nil];
+    
+    
+    [api getDataFromServerWithParams:params method:@"cat_catalog" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            self.arrayCatalog = [respDict objectForKey:@"list"];
+            
+ 
+                block();
+            
+            
+        }
+        
+    }];
+    
+}
 
+        
 
 
 @end

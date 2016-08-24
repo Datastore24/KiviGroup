@@ -10,4 +10,7 @@
 
 @interface CheckDataServer : NSObject
 + (void)checkDataServerWithBlock: (id)object andMessage:(NSString*)message view:(UIView *) view complitionBlock: (void (^) (void)) block;
+
++ (void)checkDataServer: (id)object andMessage:(NSString*)message view:(id) view;
+
 @end
