@@ -30,6 +30,7 @@
 #define VM_FONT_BEAU_SANS_LITE      @"PFBeauSansPro-light"
 #define VM_FONT_BEAU_SANS_REGULAR   @"PFBeauSansPro-regular"
 #define VM_FONT_SF_DISPLAY_REGULAR  @"SFUIDisplay-Regular"
+#define VM_FONT_SF_DISPLAY_LIGHT    @"SFUIDisplay-Light"
 
 
 //Цвета интерфейса----------------------------------------------------------------------------

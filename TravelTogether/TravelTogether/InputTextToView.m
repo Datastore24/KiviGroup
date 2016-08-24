@@ -7,12 +7,12 @@
 //
 
 #import "InputTextToView.h"
-#import "CustomTextView.h"
+#import "HexColors.h"
 #import "Macros.h"
 
 @interface InputTextToView () <UITextViewDelegate>
 
-@property (strong, nonatomic) CustomTextView * mainTextView;
+
 @property (strong, nonatomic) UILabel * placeHolderLabel;
 
 @end
@@ -27,9 +27,12 @@
         _mainTextView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _mainTextView.delegate = self;
         _mainTextView.isBool = NO;
-        _mainTextView.font = [UIFont fontWithName:FONTREGULAR size:16];
+        _mainTextView.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:12];
+        _mainTextView.textColor = [UIColor hx_colorWithHexRGBAString:@"c8c8ce"];
+        _mainTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         [self addSubview:_mainTextView];
-        _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, 7, 200, 20)];
+        _placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, 5, 200, 20)];
+        _placeHolderLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"c8c8ce"];
         _placeHolderLabel.textAlignment = NSTextAlignmentLeft;
         _placeHolderLabel.font = _mainTextView.font;
         [_mainTextView addSubview:_placeHolderLabel];
@@ -45,10 +48,7 @@
 {
     _placeHolderLabel.text = placeholder;
 }
-- (void) setPlaceholderColor:(UIColor *)placeholderColor
-{
-    _placeHolderLabel.textColor = placeholderColor;
-}
+
 
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -80,6 +80,16 @@
         }
     }
 
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
