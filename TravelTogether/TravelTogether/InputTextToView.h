@@ -10,11 +10,12 @@
 //Шрифт плейсхолдера дублирыуется из основного текст вью (размер шрифта так же дублируется)
 
 #import <UIKit/UIKit.h>
+#import "CustomTextView.h"
 
 @interface InputTextToView : UIView
 
 @property (strong, nonatomic) NSString * placeholder; //Текст плейсхолдера
-@property (strong, nonatomic) UIColor * placeholderColor; //Цвет плейсхолдера
+@property (strong, nonatomic) CustomTextView * mainTextView; //Текст Филд
 
 
 - (instancetype)initWithTextViewFrame:(CGRect)frame; //Метод инициализации
