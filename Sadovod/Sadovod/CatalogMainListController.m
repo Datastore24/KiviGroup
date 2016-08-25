@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Категории" andBarButtonAlpha: YES]; //Ввод заголовка
+    [self setCustomTitle:@"Категории" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------

@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Блузки и кофточки" andBarButtonAlpha: YES]; //Ввод заголовка
+    [self setCustomTitle:@"Блузки и кофточки" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------

@@ -15,6 +15,8 @@
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
 		AD89D1D41D68E99E007771B6 /* x_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD89D1D31D68E99E007771B6 /* x_1.png */; };
+		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
+		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
 		FFAE2DF61D65A05D00E81AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF51D65A05D00E81AED /* main.m */; };
 		FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF81D65A05D00E81AED /* AppDelegate.m */; };
 		FFAE2E011D65A05D00E81AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2E001D65A05D00E81AED /* Assets.xcassets */; };
@@ -409,6 +411,10 @@
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		AD89D1D31D68E99E007771B6 /* x_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_1.png; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF997F6C1D6EDE890037684A /* OrderFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersController.h; sourceTree = "<group>"; };
+		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
+		FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersView.h; sourceTree = "<group>"; };
+		FF997F701D6EDE9B0037684A /* OrderFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersView.m; sourceTree = "<group>"; };
 		FFAE2DF11D65A05D00E81AED /* Sadovod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sadovod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAE2DF51D65A05D00E81AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFAE2DF71D65A05D00E81AED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -880,6 +886,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF997F6B1D6EDE6A0037684A /* OrderFilters */ = {
+			isa = PBXGroup;
+			children = (
+				FF997F6C1D6EDE890037684A /* OrderFiltersController.h */,
+				FF997F6D1D6EDE890037684A /* OrderFiltersController.m */,
+				FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */,
+				FF997F701D6EDE9B0037684A /* OrderFiltersView.m */,
+			);
+			name = OrderFilters;
+			sourceTree = "<group>";
+		};
 		FFAE2DE81D65A05D00E81AED = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +922,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FF997F6B1D6EDE6A0037684A /* OrderFilters */,
 				FFF8733A1D6AEC4D00816FC1 /* Order */,
 				FFC4FD6D1D67678B007C2DDC /* CatalogDetail */,
 				FFC4FD441D671312007C2DDC /* CatalogList */,
@@ -2147,6 +2165,7 @@
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
+				FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
@@ -2182,6 +2201,7 @@
 				FFAE2E351D65A10300E81AED /* TableMenuCell.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
+				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

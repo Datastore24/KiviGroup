@@ -50,7 +50,7 @@
     
 }
 
-- (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool
+- (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool andButtonBasket: (BOOL) barBasket
 {
     self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
     UILabel * customText = [[UILabel alloc]initWithTitle:title];
@@ -62,6 +62,9 @@
     UIButton *buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
     [buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
     [buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
+    if (barBasket) {
+        buttonBasket.alpha = 0.f;
+    }
     [self.backView addSubview:buttonBasket];
     
     

@@ -27,7 +27,7 @@
     NSLog(@"CATID %@",self.catID);
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Женская одежда" andBarButtonAlpha: YES]; //Ввод заголовка
+    [self setCustomTitle:@"Женская одежда" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------
