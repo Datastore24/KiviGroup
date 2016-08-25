@@ -16,7 +16,7 @@
     NSLog(@"CHECK");
     
         if([object isKindOfClass:[NSArray class]]){
-            NSLog(@"CHECK1");
+          
             NSArray * objectArray = (NSArray *) object;
             if(objectArray.count > 0){
                 block();
@@ -24,7 +24,7 @@
                 [self showEmptyMessage:message view:view];
             }
         }else if([object isKindOfClass:[NSMutableArray class]]){
-            NSLog(@"CHECK2");
+           
             NSMutableArray * objectArray = (NSMutableArray *) object;
             if(objectArray.count > 0){
                 block();
@@ -32,7 +32,7 @@
                 [self showEmptyMessage:message view:view];
             }
         }else if([object isKindOfClass:[NSDictionary class]]){
-            NSLog(@"CHECK3");
+           
             NSDictionary * objectDict = (NSDictionary *) object;
             
             BOOL isEmpty = ([objectDict count] == 0);
@@ -43,7 +43,7 @@
                 block();
             }
         }else if([object isKindOfClass:[NSMutableDictionary class]]){
-            NSLog(@"CHECK4");
+            
             NSMutableDictionary * objectDict = (NSMutableDictionary *) object;
             
             BOOL isEmpty = ([objectDict count] == 0);
@@ -55,7 +55,7 @@
             }
             
         }else{
-            NSLog(@"CHECK5");
+            
             [self showEmptyMessage:message view:view];
         }
 
@@ -72,20 +72,20 @@
     NSLog(@"CHECK");
     
     if([object isKindOfClass:[NSArray class]]){
-        NSLog(@"CHECK1");
+       
         NSArray * objectArray = (NSArray *) object;
         if(objectArray.count == 0){
         
             [self showEmptyMessage:message view:view];
         }
     }else if([object isKindOfClass:[NSMutableArray class]]){
-        NSLog(@"CHECK2");
+        
         NSMutableArray * objectArray = (NSMutableArray *) object;
         if(objectArray.count == 0){
             [self showEmptyMessage:message view:view];
         }
     }else if([object isKindOfClass:[NSDictionary class]]){
-        NSLog(@"CHECK3");
+        
         NSDictionary * objectDict = (NSDictionary *) object;
         
         BOOL isEmpty = ([objectDict count] == 0);
@@ -95,7 +95,7 @@
         }
         
     }else if([object isKindOfClass:[NSMutableDictionary class]]){
-        NSLog(@"CHECK4");
+        
         NSMutableDictionary * objectDict = (NSMutableDictionary *) object;
         
         BOOL isEmpty = ([objectDict count] == 0);
@@ -105,7 +105,7 @@
         }
         
     }else{
-        NSLog(@"CHECK5");
+       
         [self showEmptyMessage:message view:view];
     }
     
@@ -118,15 +118,15 @@
     BOOL check;
     
     if([view isKindOfClass:[UIView class]] || [view isKindOfClass:[UIScrollView class]]){
-        NSLog(@"CHECK UIVIEW");
+        
         check=YES;
     
     }else if([view isKindOfClass:[UITableView class]]){
-        NSLog(@"CHECK UITABLE");
+        
     
         check=NO;
     }else{
-       NSLog(@"CHECK XER");
+      check=YES;
     }
     
     return check;

@@ -29,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         
         self.arrayData = data;
         self.arrayHiden = [[NSMutableArray alloc] init];
@@ -70,11 +70,13 @@
     CGRect frame = tableView.frame;
     
     NSDictionary * dict = [self.arrayData objectAtIndex:section];
+    NSLog(@"LL-- %@",[dict objectForKey:@"l"]);
+    
     
     CustomButton *hideButton = [CustomButton buttonWithType:UIButtonTypeSystem];
     UILabel * labelIdentifier = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 13.f, 20.f, 20.f)];
      hideButton.frame = CGRectMake(0.f, 0.f, frame.size.width, 46.f);
-    [hideButton setTitle:[dict objectForKey:@"name"] forState:UIControlStateNormal];
+    [hideButton setTitle:[dict objectForKey:@"n"] forState:UIControlStateNormal];
     [hideButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     if ([[self.arrayHiden objectAtIndex:section] integerValue] > 0) {
         hideButton.isBool = YES;
@@ -90,8 +92,11 @@
     hideButton.tag = 20 + section;
     [hideButton addTarget:self action:@selector(hideButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, frame.size.height)];;
-    [headerView addSubview:hideButton];
-    [hideButton addSubview:labelIdentifier];
+    if([[dict objectForKey:@"l"] integerValue]==0){
+        [headerView addSubview:hideButton];
+        [hideButton addSubview:labelIdentifier];
+    }
+    
     
     return headerView;
 }
@@ -107,10 +112,16 @@
 {
     
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.section];
-    NSArray * array = [dict objectForKey:@"array"];
-    NSArray * arrayCount = [dict objectForKey:@"arrayCount"];
+    NSArray * array;
+    if([[dict objectForKey:@"l"] integerValue]==0){
+        array = [dict objectForKey:@"t"];
+        
+    }
     
     
+//    NSArray * arrayCount = [dict objectForKey:@"arrayCount"];
+//    
+//    
     static NSString *CellIdentifier = @"newFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -124,9 +135,9 @@
     
     
     
-    if (self.arrayData.count != 0) {
-        [cell.contentView addSubview:[self createCustomCellWithName:[array objectAtIndex:indexPath.row]
-                                                           andCount:[arrayCount objectAtIndex:indexPath.row]]];
+    if (self.arrayData.count != 0 && [[dict objectForKey:@"l"] integerValue]==0) {
+        [cell.contentView addSubview:[self createCustomCellWithName:[[array objectAtIndex:indexPath.row] objectForKey:@"n"]
+                                                           andCount:[[[array objectAtIndex:indexPath.row] objectForKey:@"c"] stringValue]]];
 
     } else {
         NSLog(@"Нет категорий");
@@ -188,7 +199,7 @@
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
             if (!button.isBool) {
-                NSArray * arrayCell = [[self.arrayData objectAtIndex:i] objectForKey:@"array"];
+                NSArray * arrayCell = [[self.arrayData objectAtIndex:i] objectForKey:@"t"];
                 [self.arrayHiden replaceObjectAtIndex:i withObject:[NSNumber numberWithInteger:arrayCell.count]];
             } else {
                 [self.arrayHiden replaceObjectAtIndex:i withObject:[NSNumber numberWithInteger:0]];

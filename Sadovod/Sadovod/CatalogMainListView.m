@@ -92,7 +92,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate pushToCatalogListController:self];
+    NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
+
+   
+    [self.delegate pushToCatalogListController:self andCatId:[dict objectForKey:@"cat_id"]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

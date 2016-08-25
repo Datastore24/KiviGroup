@@ -59,8 +59,9 @@
 
 #pragma mark - CatalogMainListViewDelegate
 
-- (void) pushToCatalogListController: (CatalogMainListView*) catalogMainListView {
+- (void) pushToCatalogListController: (CatalogMainListView*) catalogMainListView andCatId:(NSString *) catID {
     CatalogListController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogListController"];
+    detail.catID = catID;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
