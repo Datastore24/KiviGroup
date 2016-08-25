@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) id <CatalogListViewDelegate> delegate;
 
+
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
 

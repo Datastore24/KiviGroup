@@ -9,10 +9,13 @@
 #import "CatalogListController.h"
 #import "CatalogListView.h"
 #import "CatalogDetailController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface CatalogListController () <CatalogListViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCatalog;
+
 
 @end
 
@@ -20,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"CATID %@",self.catID);
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"Женская одежда" andBarButtonAlpha: YES]; //Ввод заголовка
@@ -33,12 +38,13 @@
     
 
 #pragma mark - View
+
+    [self getApiCatalog:^{
+        CatalogListView * mainView = [[CatalogListView alloc] initWithView:self.view andData:self.arrayCatalog];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    }];
     
-    self.arrayData = [self getCustomArray];
-    
-    CatalogListView * mainView = [[CatalogListView alloc] initWithView:self.view andData:self.arrayData];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
     
 }
 
@@ -53,42 +59,35 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSMutableArray*) getCustomArray {
 
+
+#pragma mark - API
+
+-(void) getApiCatalog: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
     
-    NSMutableArray * customArray = [NSMutableArray array];
-    NSArray * arrayNameItem0 = [NSArray arrayWithObjects: @"Повседневная одежда", @"Белье и купальники", @"Верхняя одежда", @"Одежда для спорта", nil];
-    NSArray * arrayCountItem0 = [NSArray arrayWithObjects:@"15", @"645", @"1286", @"3", nil];
-    NSArray * array = [[NSArray alloc] init];
-    NSArray * arrayCount = [[NSArray alloc] init];
-    for (int i = 0; i < arrayNameItem0.count; i++) {
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.catID,@"cat",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios",@"appname",nil];
+    
+    
+    [api getDataFromServerWithParams:params method:@"get_tree_by_catalog" complitionBlock:^(id response) {
         
-        if (i == 0) {
-            array = [NSArray arrayWithObjects:
-                     @"Блузки и кофточки", @"Платья", @"Футболки и топы", @"Домашняя одежда", @"Брюки", @"Юбки", @"Капри и приджи", @"Костюмы",
-                     @"Шорты", @"Пиджаки", @"Джинсы", @"Толстовки", @"Комбинезоны", @"Жилеты", nil];
-            arrayCount = [NSArray arrayWithObjects:@"890", @"813", @"330", @"177", @"140", @"132", @"71", @"41",
-                          @"33", @"32", @"16", @"7", @"7", @"5", nil];
-        } else if (i == 1) {
-            array = [NSArray arrayWithObjects:@"Трусы", @"Пляжные платья и парео", nil];
-            arrayCount = [NSArray arrayWithObjects:@"56", @"19", nil];
-        } else if (i == 2) {
-            array = [NSArray arrayWithObjects:@"Куртки", @"Накидки", @"Жилеты", nil];
-            arrayCount = [NSArray arrayWithObjects:@"26", @"26", @"1", nil];
-        } else if (i == 3) {
-            array = [NSArray arrayWithObjects:@"Спортивные костюмы", nil];
-            arrayCount = [NSArray arrayWithObjects:@"5", nil];
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            self.arrayCatalog = [respDict objectForKey:@"tree"];
+            
+            NSLog(@"%@",respDict);
+            block();
+            
+            
         }
         
-        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [arrayNameItem0 objectAtIndex:i], @"name",
-                               [arrayCountItem0 objectAtIndex:i], @"count",
-                               array, @"array", arrayCount, @"arrayCount", nil];
-        
-        [customArray addObject:dict];
-    }
-    
-    return customArray;
+    }];
     
 }
 

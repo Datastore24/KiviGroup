@@ -11,6 +11,7 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "UIView+BorderView.h"
+#import "CheckDataServer.h"
 
 @interface CatalogMainListView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -26,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         
         self.arrayData = data;
         
@@ -52,6 +53,8 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    [CheckDataServer checkDataServer:self.arrayData andMessage:@"Нет категорий для отображения" view:tableView];
+    
     
     return self.arrayData.count;
 }
@@ -74,13 +77,11 @@
     
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
     
-    if (self.arrayData.count != 0) {
-        [cell.contentView addSubview:[self createCustomCellWithName:[dict objectForKey:@"name"]
-                                                           andCount:[dict objectForKey:@"count"]]];
-        
-    } else {
-        NSLog(@"Нет категорий");
-    }
+    
+        [cell.contentView addSubview:[self createCustomCellWithName:[dict objectForKey:@"cat_name"]
+                                                           andCount:[dict objectForKey:@"prod_cnt"]]];
+   
+   
     
     
     return cell;
@@ -91,7 +92,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate pushToCatalogListController:self];
+    NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
+
+   
+    [self.delegate pushToCatalogListController:self andCatId:[dict objectForKey:@"cat_id"]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
