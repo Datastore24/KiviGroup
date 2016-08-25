@@ -13,7 +13,7 @@
 @interface InputTextToView () <UITextViewDelegate>
 
 
-@property (strong, nonatomic) UILabel * placeHolderLabel;
+
 
 @end
 
@@ -80,6 +80,19 @@
         }
     }
 
+}
+
+- (void) backAnimation {
+    if (_mainTextView.isBool) {
+    [UIView animateWithDuration:0.2 animations:^{
+        _placeHolderLabel.alpha = 1.f;
+        
+        CGRect rect = _placeHolderLabel.frame;
+        rect.origin.x -= 100;
+        _placeHolderLabel.frame = rect;
+    }];
+    _mainTextView.isBool = NO;
+    }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
