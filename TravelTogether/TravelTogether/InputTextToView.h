@@ -16,8 +16,10 @@
 
 @property (strong, nonatomic) NSString * placeholder; //Текст плейсхолдера
 @property (strong, nonatomic) CustomTextView * mainTextView; //Текст Филд
+@property (strong, nonatomic) UILabel * placeHolderLabel;
 
 
 - (instancetype)initWithTextViewFrame:(CGRect)frame; //Метод инициализации
+- (void) backAnimation;
 
 @end

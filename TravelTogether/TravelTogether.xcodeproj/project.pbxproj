@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CA60C214FA20A9CAB5D3583 /* libPods-TravelTogether.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B09DCE39B9FD022F735A6 /* libPods-TravelTogether.a */; };
+		A81933AA931ACE14AA784664 /* libPods-TravelTogetherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADC3D2ABDD1175A4A5A6C28 /* libPods-TravelTogetherTests.a */; };
+		C3BEBA3E323F5A858792BB8F /* libPods-TravelTogetherUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 605D797A115C91C82F815689 /* libPods-TravelTogetherUITests.a */; };
 		FF66A76D1D51E98F00F693DD /* PFBeauSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7681D51E98000F693DD /* PFBeauSansPro-Light.otf */; };
 		FF66A76E1D51E99500F693DD /* PFBeauSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7661D51E98000F693DD /* PFBeauSansPro-Bold.otf */; };
 		FF66A76F1D51E99B00F693DD /* PFBeauSansPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7671D51E98000F693DD /* PFBeauSansPro-Italic.otf */; };
@@ -17,6 +20,14 @@
 		FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7831D53516500F693DD /* SearchTravelController.m */; };
 		FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7861D53517A00F693DD /* SearchTravelView.m */; };
 		FF66A78B1D536A1300F693DD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A78A1D536A1300F693DD /* Animation.m */; };
+		FF997F4C1D6DA0070037684A /* MyFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4B1D6DA0070037684A /* MyFormController.m */; };
+		FF997F4F1D6DA0170037684A /* MyFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4E1D6DA0170037684A /* MyFormView.m */; };
+		FF997F591D6E18B00037684A /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F551D6E18B00037684A /* photo1.png */; };
+		FF997F5A1D6E18B00037684A /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F561D6E18B00037684A /* photo2.png */; };
+		FF997F5B1D6E18B00037684A /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F571D6E18B00037684A /* photo3.png */; };
+		FF997F5C1D6E18B00037684A /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F581D6E18B00037684A /* photo4.png */; };
+		FF997F5E1D6E23A80037684A /* imageButtonCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F5D1D6E23A80037684A /* imageButtonCancel.png */; };
+		FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F611D6E2A8D0037684A /* imageBigPhoto.png */; };
 		FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */; };
 		FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E51D548EC1007A7168 /* UIImage+Color.m */; };
 		FFAE24741D5761D300E81AED /* MBSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE24731D5761D300E81AED /* MBSwitch.m */; };
@@ -407,6 +418,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5059EFA89BF1F17E916A1038 /* Pods-TravelTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogether.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogether/Pods-TravelTogether.debug.xcconfig"; sourceTree = "<group>"; };
+		605D797A115C91C82F815689 /* libPods-TravelTogetherUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelTogetherUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		629744EF49C4E798F3F30442 /* Pods-TravelTogetherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherUITests/Pods-TravelTogetherUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8ADC3D2ABDD1175A4A5A6C28 /* libPods-TravelTogetherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelTogetherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		962724D9C5D57299A4550252 /* Pods-TravelTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherTests/Pods-TravelTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B9B09DCE39B9FD022F735A6 /* libPods-TravelTogether.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelTogether.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D207C8ADF4DEF5142A20C26 /* Pods-TravelTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogether.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogether/Pods-TravelTogether.release.xcconfig"; sourceTree = "<group>"; };
+		AD5DA1B105F4048FFFC4F7B8 /* Pods-TravelTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherTests/Pods-TravelTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5760CA63117AC04C9924C09 /* Pods-TravelTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherUITests/Pods-TravelTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FF66A7661D51E98000F693DD /* PFBeauSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Bold.otf"; sourceTree = "<group>"; };
 		FF66A7671D51E98000F693DD /* PFBeauSansPro-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Italic.otf"; sourceTree = "<group>"; };
 		FF66A7681D51E98000F693DD /* PFBeauSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Light.otf"; sourceTree = "<group>"; };
@@ -420,6 +440,16 @@
 		FF66A7861D53517A00F693DD /* SearchTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelView.m; sourceTree = "<group>"; };
 		FF66A7891D536A1300F693DD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		FF66A78A1D536A1300F693DD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		FF997F4A1D6DA0070037684A /* MyFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormController.h; sourceTree = "<group>"; };
+		FF997F4B1D6DA0070037684A /* MyFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFormController.m; sourceTree = "<group>"; };
+		FF997F4D1D6DA0170037684A /* MyFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormView.h; sourceTree = "<group>"; };
+		FF997F4E1D6DA0170037684A /* MyFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFormView.m; sourceTree = "<group>"; };
+		FF997F551D6E18B00037684A /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
+		FF997F561D6E18B00037684A /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
+		FF997F571D6E18B00037684A /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
+		FF997F581D6E18B00037684A /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
+		FF997F5D1D6E23A80037684A /* imageButtonCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonCancel.png; sourceTree = "<group>"; };
+		FF997F611D6E2A8D0037684A /* imageBigPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageBigPhoto.png; sourceTree = "<group>"; };
 		FF9E77E21D548EC1007A7168 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
 		FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		FF9E77E41D548EC1007A7168 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -843,6 +873,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA60C214FA20A9CAB5D3583 /* libPods-TravelTogether.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +881,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A81933AA931ACE14AA784664 /* libPods-TravelTogetherTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,12 +889,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BEBA3E323F5A858792BB8F /* libPods-TravelTogetherUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62BE3609AAF8B47E80E2B0F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B9B09DCE39B9FD022F735A6 /* libPods-TravelTogether.a */,
+				8ADC3D2ABDD1175A4A5A6C28 /* libPods-TravelTogetherTests.a */,
+				605D797A115C91C82F815689 /* libPods-TravelTogetherUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76BA66331EDA4BFD9010B15C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5059EFA89BF1F17E916A1038 /* Pods-TravelTogether.debug.xcconfig */,
+				9D207C8ADF4DEF5142A20C26 /* Pods-TravelTogether.release.xcconfig */,
+				962724D9C5D57299A4550252 /* Pods-TravelTogetherTests.debug.xcconfig */,
+				AD5DA1B105F4048FFFC4F7B8 /* Pods-TravelTogetherTests.release.xcconfig */,
+				629744EF49C4E798F3F30442 /* Pods-TravelTogetherUITests.debug.xcconfig */,
+				D5760CA63117AC04C9924C09 /* Pods-TravelTogetherUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF66A7811D53505400F693DD /* SearchTravel */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +935,19 @@
 				FF66A78A1D536A1300F693DD /* Animation.m */,
 			);
 			name = Animarhion;
+			sourceTree = "<group>";
+		};
+		FF997F541D6E18910037684A /* MyForm */ = {
+			isa = PBXGroup;
+			children = (
+				FF997F611D6E2A8D0037684A /* imageBigPhoto.png */,
+				FF997F5D1D6E23A80037684A /* imageButtonCancel.png */,
+				FF997F551D6E18B00037684A /* photo1.png */,
+				FF997F561D6E18B00037684A /* photo2.png */,
+				FF997F571D6E18B00037684A /* photo3.png */,
+				FF997F581D6E18B00037684A /* photo4.png */,
+			);
+			name = MyForm;
 			sourceTree = "<group>";
 		};
 		FFAE24711D5761B800E81AED /* SwichLib */ = {
@@ -1427,6 +1496,7 @@
 		FFAE2CFC1D5DF7AE00E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF997F541D6E18910037684A /* MyForm */,
 				FFF873541D6C63E800816FC1 /* Messeger */,
 				FFC4FDA31D689D84007C2DDC /* HumanDetailImage */,
 				FFC4FD851D685893007C2DDC /* TravelImage */,
@@ -1446,6 +1516,8 @@
 				FFBB8ECB1D508DCA0043ED9D /* TravelTogetherTests */,
 				FFBB8ED61D508DCA0043ED9D /* TravelTogetherUITests */,
 				FFBB8EB01D508DC90043ED9D /* Products */,
+				76BA66331EDA4BFD9010B15C /* Pods */,
+				62BE3609AAF8B47E80E2B0F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1462,6 +1534,7 @@
 		FFBB8EB11D508DC90043ED9D /* TravelTogether */ = {
 			isa = PBXGroup;
 			children = (
+				FFF8735F1D6D9F3D00816FC1 /* MyForm */,
 				FFC4FDAB1D68CFC7007C2DDC /* Messeger */,
 				FFC4FD9C1D689A3B007C2DDC /* HumanDetail */,
 				FFAE29031D57955200E81AED /* Travel */,
@@ -1690,6 +1763,17 @@
 			name = Messeger;
 			sourceTree = "<group>";
 		};
+		FFF8735F1D6D9F3D00816FC1 /* MyForm */ = {
+			isa = PBXGroup;
+			children = (
+				FF997F4A1D6DA0070037684A /* MyFormController.h */,
+				FF997F4B1D6DA0070037684A /* MyFormController.m */,
+				FF997F4D1D6DA0170037684A /* MyFormView.h */,
+				FF997F4E1D6DA0170037684A /* MyFormView.m */,
+			);
+			name = MyForm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1697,9 +1781,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFBB8EDC1D508DCA0043ED9D /* Build configuration list for PBXNativeTarget "TravelTogether" */;
 			buildPhases = (
+				0B114830AD240E1CAB672BBA /* [CP] Check Pods Manifest.lock */,
 				FFBB8EAB1D508DC90043ED9D /* Sources */,
 				FFBB8EAC1D508DC90043ED9D /* Frameworks */,
 				FFBB8EAD1D508DC90043ED9D /* Resources */,
+				C69F8CC3C74F32B742C01849 /* [CP] Embed Pods Frameworks */,
+				C41DED13FCEBAD318E0722B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1714,9 +1801,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFBB8EDF1D508DCA0043ED9D /* Build configuration list for PBXNativeTarget "TravelTogetherTests" */;
 			buildPhases = (
+				0268D8F36284A7935D011DCA /* [CP] Check Pods Manifest.lock */,
 				FFBB8EC41D508DCA0043ED9D /* Sources */,
 				FFBB8EC51D508DCA0043ED9D /* Frameworks */,
 				FFBB8EC61D508DCA0043ED9D /* Resources */,
+				ACC069EFF3349C29129CB8A5 /* [CP] Embed Pods Frameworks */,
+				C4C22256047A3A26FFF8A01E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1732,9 +1822,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFBB8EE21D508DCA0043ED9D /* Build configuration list for PBXNativeTarget "TravelTogetherUITests" */;
 			buildPhases = (
+				042E8E960072E5C24C64125B /* [CP] Check Pods Manifest.lock */,
 				FFBB8ECF1D508DCA0043ED9D /* Sources */,
 				FFBB8ED01D508DCA0043ED9D /* Frameworks */,
 				FFBB8ED11D508DCA0043ED9D /* Resources */,
+				783A9BC9647F0708608A5EF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1817,6 +1909,7 @@
 				FFAE27EB1D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */,
 				FFAE28491D57731500E81AED /* Activity26@2x.png in Resources */,
+				FF997F591D6E18B00037684A /* photo1.png in Resources */,
 				FFAE28241D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE286E1D57731500E81AED /* Activity19@2x.png in Resources */,
 				FFC4FD961D686400007C2DDC /* imagePhoto1.png in Resources */,
@@ -1860,7 +1953,9 @@
 				FFAE28621D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE286D1D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE2D1C1D5DF7AE00E81AED /* image3.png in Resources */,
+				FF997F5B1D6E18B00037684A /* photo3.png in Resources */,
 				FFF8735A1D6C6F4E00816FC1 /* imageAvatarChat.png in Resources */,
+				FF997F5A1D6E18B00037684A /* photo2.png in Resources */,
 				FFAE28801D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE286C1D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFAE283E1D57731500E81AED /* Activity16@2x.png in Resources */,
@@ -1918,6 +2013,7 @@
 				FFAE281B1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE28161D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28741D57731500E81AED /* Activity24@2x.png in Resources */,
+				FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */,
 				FFAE282A1D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28511D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28921D57731500E81AED /* Activity10@2x.png in Resources */,
@@ -1949,6 +2045,7 @@
 				FFAE28AD1D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE2D0D1D5DF7AE00E81AED /* imageTravelStraightYES.png in Resources */,
 				FFAE28361D57731500E81AED /* Activity8@2x.png in Resources */,
+				FF997F5C1D6E18B00037684A /* photo4.png in Resources */,
 				FFAE28641D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE28761D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE28021D57731500E81AED /* Activity1@2x.png in Resources */,
@@ -2066,6 +2163,7 @@
 				FFAE28CB1D57731500E81AED /* Activity21@2x.png in Resources */,
 				FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */,
 				FFAE28261D57731500E81AED /* Activity7@2x.png in Resources */,
+				FF997F5E1D6E23A80037684A /* imageButtonCancel.png in Resources */,
 				FFAE281A1D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28D61D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE28951D57731500E81AED /* Activity13@2x.png in Resources */,
@@ -2147,6 +2245,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0268D8F36284A7935D011DCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		042E8E960072E5C24C64125B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0B114830AD240E1CAB672BBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		783A9BC9647F0708608A5EF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelTogetherUITests/Pods-TravelTogetherUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACC069EFF3349C29129CB8A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelTogetherTests/Pods-TravelTogetherTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C41DED13FCEBAD318E0722B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelTogether/Pods-TravelTogether-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4C22256047A3A26FFF8A01E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelTogetherTests/Pods-TravelTogetherTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C69F8CC3C74F32B742C01849 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelTogether/Pods-TravelTogether-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFBB8EAB1D508DC90043ED9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2159,6 +2380,7 @@
 				FFC4FDA21D689A73007C2DDC /* HumanDetailView.m in Sources */,
 				FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */,
 				FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */,
+				FF997F4C1D6DA0070037684A /* MyFormController.m in Sources */,
 				FF66A78B1D536A1300F693DD /* Animation.m in Sources */,
 				FFBB8F0F1D5093270043ED9D /* UIImage+RoundedCorner.m in Sources */,
 				FFBB8F6F1D50F9F20043ED9D /* CustomTextField.m in Sources */,
@@ -2166,6 +2388,7 @@
 				FFBB8F2E1D50B67C0043ED9D /* TextAndImageHeight.m in Sources */,
 				FFC4FD9F1D689A54007C2DDC /* HumanDetailController.m in Sources */,
 				FFBB8F0C1D5093270043ED9D /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
+				FF997F4F1D6DA0170037684A /* MyFormView.m in Sources */,
 				FFBB8F6E1D50F9F20043ED9D /* InputTextView.m in Sources */,
 				FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */,
 				FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */,
@@ -2335,6 +2558,7 @@
 		};
 		FFBB8EDD1D508DCA0043ED9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5059EFA89BF1F17E916A1038 /* Pods-TravelTogether.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TravelTogether/Info.plist;
@@ -2347,6 +2571,7 @@
 		};
 		FFBB8EDE1D508DCA0043ED9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D207C8ADF4DEF5142A20C26 /* Pods-TravelTogether.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TravelTogether/Info.plist;
@@ -2359,6 +2584,7 @@
 		};
 		FFBB8EE01D508DCA0043ED9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 962724D9C5D57299A4550252 /* Pods-TravelTogetherTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelTogetherTests/Info.plist;
@@ -2371,6 +2597,7 @@
 		};
 		FFBB8EE11D508DCA0043ED9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD5DA1B105F4048FFFC4F7B8 /* Pods-TravelTogetherTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TravelTogetherTests/Info.plist;
@@ -2383,6 +2610,7 @@
 		};
 		FFBB8EE31D508DCA0043ED9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 629744EF49C4E798F3F30442 /* Pods-TravelTogetherUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelTogetherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2394,6 +2622,7 @@
 		};
 		FFBB8EE41D508DCA0043ED9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5760CA63117AC04C9924C09 /* Pods-TravelTogetherUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TravelTogetherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

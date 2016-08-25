@@ -22,8 +22,8 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) UIScrollView * chatScrollView;
 @property (assign, nonatomic) NSInteger lineCount; //Сохраняемое значение колличества строк
-@property (assign, nonatomic) CGFloat scrollHeight;
-@property (assign, nonatomic) CGFloat inputTextHeight;
+@property (assign, nonatomic) CGFloat scrollHeight; //Параметр для создания онаимации текст филда
+@property (assign, nonatomic) CGFloat inputTextHeight; //Параметр для создания онаимации текст филда
 
 //SendView
 
@@ -35,7 +35,9 @@
 
 //Floats for count scroll messege
 
-@property (assign,nonatomic) CGFloat messegeViewHeight;
+@property (assign,nonatomic) CGFloat messegeViewHeight; //
+@property (assign, nonatomic) CGFloat contentOffcet;
+
 
 
 @end
@@ -51,6 +53,7 @@
         self.arrayData = data;
         self.lineCount = 1;
         self.chatScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 529.5f - 80.f, self.frame.size.width, self.frame.size.height - 38.5f)];
+        self.scrollHeight = self.chatScrollView.frame.size.height;
         self.chatScrollView.delegate = self;
         [self addSubview:self.chatScrollView];
         
@@ -64,13 +67,8 @@
         
         for (int i = 0; i < self.arrayData.count; i++) {
             NSDictionary * dictMessege = [self.arrayData objectAtIndex:i];
-            
-            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:nil andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"]];
+            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:[dictMessege objectForKey:@"imageName"] andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"]];
             [self.chatScrollView addSubview:messageView];
-            
-
-            
-
         }
     }
     return self;
@@ -131,7 +129,7 @@
     labelMessage.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:12];
     [labelMessage sizeToFit];
     
-    
+    //Если сообщение идет от нас
     
     if (whoMessege) {
         messegeTextView.frame = CGRectMake(self.frame.size.width - (32.5 + labelMessage.frame.size.width), 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
@@ -148,7 +146,8 @@
         labelDate.textAlignment = NSTextAlignmentRight;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelDate];
-        
+    
+    //Если идет от другого пользователя
         
     } else {
         messegeTextView.frame = CGRectMake(50.f, 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
@@ -165,6 +164,10 @@
         labelDate.textAlignment = NSTextAlignmentLeft;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelDate];
+        
+        UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(12.f, messegeTextView.frame.size.height + 5.f, 26.f, 26.f)];
+        avatarView.image = [UIImage imageNamed:imageName];
+        [messegeView addSubview:avatarView];
     }
     
     messegeTextView.layer.cornerRadius = 10.f;
@@ -172,9 +175,11 @@
     [messegeView addSubview:messegeTextView];
     [messegeTextView addSubview:labelMessage];
     
+//Подсчет ведется пудем подъема скрол вью на высоту сообщения, если общая сумма высот сообщения превышает высоту скрол вью но начинает опускаться оффсет скрол вью
+    
     self.messegeViewHeight += messegeView.frame.size.height;
     
-    if (self.messegeViewHeight <= self.frame.size.height - (38.5f + 64)) {
+    if (self.messegeViewHeight <= self.chatScrollView.frame.size.height - 64.f) {
         CGRect rect = self.chatScrollView.frame;
         rect.origin.y -= messegeView.frame.size.height;
         self.chatScrollView.frame = rect;
@@ -185,6 +190,9 @@
         self.chatScrollView.contentSize = CGSizeMake(0, self.messegeViewHeight);
         self.chatScrollView.contentOffset = CGPointMake(0, self.messegeViewHeight - self.chatScrollView.frame.size.height);
     }
+    
+    self.contentOffcet = self.chatScrollView.contentOffset.y;
+    
     return messegeView;
     
 }
@@ -206,7 +214,7 @@
         self.sendView.frame = sendViewRect;
         self.chatScrollView.contentSize = CGSizeMake(0, self.messegeViewHeight + 100);
         
-        if (self.messegeViewHeight > self.chatScrollView.frame.size.height) {
+        if (self.messegeViewHeight > self.chatScrollView.frame.size.height - 64) {
             chatScrollRect.origin.y = 0.f;
             self.chatScrollView.frame = chatScrollRect;
             self.chatScrollView.contentSize = CGSizeMake(0, self.messegeViewHeight);
@@ -215,32 +223,71 @@
             NSLog(@"Меньше");
         }
         
-
+        self.contentOffcet = self.chatScrollView.contentOffset.y;
         
     }];
 }
 
 - (void)hideKeyboard:(NSNotification*)notification
 {
+    self.inputText.mainTextView.text = @"";
+    [self.inputText backAnimation];
+    [self animathionMethodWithDurqction:0.f];
     [UIView animateWithDuration:0.2f animations:^{
         CGRect chatScrollRect = self.chatScrollView.frame;
         chatScrollRect.origin.y += 216.f;
+        chatScrollRect.size.height += 216.f;
         self.chatScrollView.frame = chatScrollRect;
         
         CGRect sendViewRect = self.sendView.frame;
         sendViewRect.origin.y += 216.f;
         self.sendView.frame = sendViewRect;
+        
+        if (self.messegeViewHeight > self.chatScrollView.frame.size.height - 64) {
+            chatScrollRect.origin.y = 0.f;
+            self.chatScrollView.frame = chatScrollRect;
+            self.chatScrollView.contentSize = CGSizeMake(0, self.messegeViewHeight);
+            self.chatScrollView.contentOffset = CGPointMake(0, self.messegeViewHeight - self.chatScrollView.frame.size.height);
+        } else {
+            chatScrollRect.origin.y = (self.frame.size.height - (38.5f + 64.f)) - self.messegeViewHeight;
+            self.chatScrollView.frame = chatScrollRect;
+        }
 
     }];
 }
 
 - (void)checkText:(NSNotification*)notification
 {
+    [self animathionMethodWithDurqction:0.2f];
+}
+
+#pragma mark - Actions
+
+- (void) sendButtonAction {
+    NSString * stringText = self.inputText.mainTextView.text;
+    self.inputText.mainTextView.text = @"";
+    [self.inputText backAnimation];
+    [self animathionMethodWithDurqction:0.f];
+    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:stringText andDate:@"22:45"];
+    [self.chatScrollView addSubview:messageView];
+}
+
+#pragma mark - Other
+
+//метод вычисляет колличество строк в тексте
+
+- (NSInteger) countTextLineInText: (CustomTextView*) textView {
+    NSInteger countLine = (NSInteger)round((textView.contentSize.height - textView.textContainerInset.top - textView.textContainerInset.bottom) / textView.font.lineHeight);
+    
+    return countLine;
+}
+
+- (void) animathionMethodWithDurqction: (CGFloat) dutaction {
     NSInteger countLine = [self countTextLineInText:self.inputText.mainTextView];
     //Сравнение строк
     if (countLine != self.lineCount) {
         self.lineCount = countLine;
-        [UIView animateWithDuration:0.2f animations:^{
+        [UIView animateWithDuration:dutaction animations:^{
             
             CGRect chatScrollRect = self.chatScrollView.frame;
             chatScrollRect.size.height = (self.scrollHeight - 216.f) - 15.f * (self.lineCount - 1);
@@ -267,28 +314,12 @@
             inputTextViewButton.origin.y = (self.inputTextHeight / 2.f - 10.5f) + 15 * (self.lineCount - 1);
             self.sendButton.frame = inputTextViewButton;
             
+            self.chatScrollView.contentOffset = CGPointMake(0, self.contentOffcet + 15 * (self.lineCount - 1));
+            
+            
             
         } completion:^(BOOL finished) { }];
     }
-}
-
-#pragma mark - Actions
-
-- (void) sendButtonAction {
-    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:@"Привет, как дела?" andDate:@"22:45"];
-    [self.chatScrollView addSubview:messageView];
-    
-;
-}
-
-#pragma mark - Other
-
-//метод вычисляет колличество строк в тексте
-
-- (NSInteger) countTextLineInText: (CustomTextView*) textView {
-    NSInteger countLine = (NSInteger)round((textView.contentSize.height - textView.textContainerInset.top - textView.textContainerInset.bottom) / textView.font.lineHeight);
-    
-    return countLine;
 }
 
 @end

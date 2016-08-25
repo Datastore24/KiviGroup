@@ -286,12 +286,10 @@
     [viewSearch addSubview:self.inputText];
     [UIView borderViewWithHeight:35.f andWight:0.f andView:viewSearch andColor:VM_COLOR_PINK];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputSearchText) name:UITextFieldTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishInputSearchText) name:UITextFieldTextDidChangeNotification object:nil];
     
     self.tableSearch = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, viewSearch.frame.size.width, viewSearch.frame.size.height - 40.f)];
      //Убираем полосы разделяющие ячейки------------------------------
-//    tableSearch.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableSearch.backgroundColor = nil;
     self.tableSearch.dataSource = self;
     self.tableSearch.delegate = self;
