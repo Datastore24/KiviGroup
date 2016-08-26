@@ -173,7 +173,7 @@
 - (void) buttonProductAction: (UIButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
-            [self.delegate PushToOrderController:self];
+            [self.delegate pushToOrderController:self];
         }
     }
 }
@@ -240,7 +240,7 @@
 }
 
 - (void) buttonFilterAction {
-    NSLog(@"Переход в фильтр");
+    [self.delegate pushToOrderFilters: self];
 }
 
 

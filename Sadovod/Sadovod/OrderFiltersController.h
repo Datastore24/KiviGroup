@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "NMRangeSlider.h"
 
 @interface OrderFiltersController : MainViewController
 

@@ -9,6 +9,7 @@
 #import "CatalogDetailController.h"
 #import "CatalogDetailView.h"
 #import "OrderController.h"
+#import "OrderFiltersController.h"
 
 @interface CatalogDetailController () <CatalogDetailViewDelegate>
 
@@ -53,8 +54,13 @@
 
 #pragma mark - CatalogDetailViewDelegate
 
-- (void) PushToOrderController: (CatalogDetailView*) catalogDetailView {
+- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView {
     OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView {
+    OrderFiltersController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderFiltersController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

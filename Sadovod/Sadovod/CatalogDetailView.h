@@ -23,6 +23,7 @@
 
 @required
 
-- (void) PushToOrderController: (CatalogDetailView*) catalogDetailView;
+- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView;
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView;
 
 @end
