@@ -26,6 +26,8 @@
 		FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABB71D704A44004010F9 /* UIImage+Extra.m */; };
 		FFA8ABBA1D705249004010F9 /* imageCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABB91D705249004010F9 /* imageCancel.png */; };
 		FFA8ABBD1D705F54004010F9 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABBC1D705F54004010F9 /* ColorButton.m */; };
+		FFA8ABC11D708464004010F9 /* BuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABC01D708464004010F9 /* BuyViewController.m */; };
+		FFA8ABC41D70847E004010F9 /* BuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABC31D70847E004010F9 /* BuyView.m */; };
 		FFAE2DF61D65A05D00E81AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF51D65A05D00E81AED /* main.m */; };
 		FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF81D65A05D00E81AED /* AppDelegate.m */; };
 		FFAE2E011D65A05D00E81AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2E001D65A05D00E81AED /* Assets.xcassets */; };
@@ -436,6 +438,10 @@
 		FFA8ABB91D705249004010F9 /* imageCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCancel.png; sourceTree = "<group>"; };
 		FFA8ABBB1D705F54004010F9 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
 		FFA8ABBC1D705F54004010F9 /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
+		FFA8ABBF1D708464004010F9 /* BuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyViewController.h; sourceTree = "<group>"; };
+		FFA8ABC01D708464004010F9 /* BuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyViewController.m; sourceTree = "<group>"; };
+		FFA8ABC21D70847E004010F9 /* BuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyView.h; sourceTree = "<group>"; };
+		FFA8ABC31D70847E004010F9 /* BuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyView.m; sourceTree = "<group>"; };
 		FFAE2DF11D65A05D00E81AED /* Sadovod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sadovod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAE2DF51D65A05D00E81AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFAE2DF71D65A05D00E81AED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -940,6 +946,17 @@
 			name = OrderFilters;
 			sourceTree = "<group>";
 		};
+		FFA8ABBE1D70835C004010F9 /* BuyView */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8ABBF1D708464004010F9 /* BuyViewController.h */,
+				FFA8ABC01D708464004010F9 /* BuyViewController.m */,
+				FFA8ABC21D70847E004010F9 /* BuyView.h */,
+				FFA8ABC31D70847E004010F9 /* BuyView.m */,
+			);
+			name = BuyView;
+			sourceTree = "<group>";
+		};
 		FFAE2DE81D65A05D00E81AED = {
 			isa = PBXGroup;
 			children = (
@@ -965,6 +982,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFA8ABBE1D70835C004010F9 /* BuyView */,
 				FF997F6B1D6EDE6A0037684A /* OrderFilters */,
 				FFF8733A1D6AEC4D00816FC1 /* Order */,
 				FFC4FD6D1D67678B007C2DDC /* CatalogDetail */,
@@ -2241,6 +2259,7 @@
 				FFAE32EA1D65A31A00E81AED /* UIView+BorderView.m in Sources */,
 				FFAE32BF1D65A30300E81AED /* MBSwitch.m in Sources */,
 				FFAE32DF1D65A31A00E81AED /* HeightForText.m in Sources */,
+				FFA8ABC41D70847E004010F9 /* BuyView.m in Sources */,
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
 				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
@@ -2260,6 +2279,7 @@
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
+				FFA8ABC11D708464004010F9 /* BuyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
