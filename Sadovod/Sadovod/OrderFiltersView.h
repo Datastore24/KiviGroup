@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol OrderFiltersViewDelegate;
+
 @interface OrderFiltersView : UIView
+
+@property (weak, nonatomic) id <OrderFiltersViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol OrderFiltersViewDelegate <NSObject>
+
+@required
+
+- (void) backTuCatalog: (OrderFiltersView*) orderFiltersView;
 
 @end

@@ -9,7 +9,7 @@
 #import "OrderFiltersController.h"
 #import "OrderFiltersView.h"
 
-@interface OrderFiltersController ()
+@interface OrderFiltersController () <OrderFiltersViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -30,6 +30,7 @@
     
 #pragma mark - View
     OrderFiltersView * mainView = [[OrderFiltersView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];    
 }
 
@@ -37,6 +38,12 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - OrderFiltersViewDelegate
+
+- (void) backTuCatalog: (OrderFiltersView*) orderFiltersView {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -20,10 +20,11 @@
 
 //Main
 
-@property (strong, nonatomic) NSDictionary * dictData;
+@property (strong, nonatomic) NSDictionary * dictData; //Основной дикшенери приходит с сервера
 @property (strong, nonatomic) UIScrollView * mainScrollView;
-@property (strong, nonatomic) NSMutableArray * arrayAllButtons;
-@property (strong, nonatomic) NSMutableArray * arrayAllButtonsCancel;
+@property (strong, nonatomic) NSMutableArray * arrayAllButtons; //Массив всех активных снопок
+@property (strong, nonatomic) NSMutableArray * arrayAllButtonsCancel; //Массив всех кнопок отмены;
+@property (assign, nonatomic) NSInteger counter; //Общий параметр всех включенных кнопок
 
 //Price
 
@@ -31,6 +32,8 @@
 @property (strong, nonatomic) CustomLabels * labelFrom;
 @property (strong, nonatomic) CustomLabels * labelTo;
 @property (strong, nonatomic) UIButton * buttonCanselPrice;
+@property (assign, nonatomic) BOOL sliderBool; //Переменная для правильного вывода счетчика в слайдере;
+
 
 //Size
 
@@ -38,6 +41,7 @@
 @property (strong, nonatomic) NSArray * arraySize;
 @property (assign, nonatomic) NSInteger countSize;
 @property (strong, nonatomic) UIButton * buttonCanselSize;
+@property (assign, nonatomic) BOOL sizeBool; //Переменная для подсчета активных окнон
 
 //Color
 
@@ -45,6 +49,7 @@
 @property (assign, nonatomic) NSInteger countColor;
 @property (strong, nonatomic) NSArray * arrayColor;
 @property (strong, nonatomic) UIButton * buttonCanselColor;
+@property (assign, nonatomic) BOOL colorBool; //Переменная для подсчета активных окнон
 
 //Detail
 
@@ -52,6 +57,10 @@
 @property (strong, nonatomic) UIView * viewDetail;
 
 //Сonfirm
+
+@property (strong, nonatomic) UIButton * bigButtonConfirm;
+@property (strong, nonatomic) UIButton * buttonConfirm;
+@property (strong, nonatomic) UIButton * buttonCancel;
 
 
 
@@ -70,6 +79,8 @@
         self.arrayDetailButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtonsCancel = [[NSMutableArray alloc] init];
+        self.counter = 0;
+        
         
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.mainScrollView.showsVerticalScrollIndicator = NO;
@@ -98,6 +109,7 @@
 
 #pragma mark - PriceView
 - (UIView*) createPriceView {
+    self.sliderBool = NO;
     UIView * priceView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 160.f)];
     
     CustomLabels * priceTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цена" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
@@ -139,6 +151,7 @@
 - (UIView*) createSizeView {
     UIView * sizeView = [[UIView alloc] init];
     self.countSize = 0;
+    self.sizeBool = NO;
     
     self.arraySize = [self.dictData objectForKey:@"size"];
     
@@ -194,6 +207,7 @@
 - (UIView*) createColorView {
     UIView * colorView = [[UIView alloc] init];
     self.countColor = 0;
+    self.colorBool = NO;
     
     self.arrayColor = [self.dictData objectForKey:@"color"];
     
@@ -254,9 +268,10 @@
     for (int i = 0; i < arrayDetail.count; i++) {
         NSDictionary * dictDetail = [arrayDetail objectAtIndex:i];
         NSArray * arrayDictDetail = [dictDetail objectForKey:@"array"]; //Массив каждой детали
-        UIView * detailPartView = [[UIView alloc] init]; // Втю каждой детали
+        UIView * detailPartView = [[UIView alloc] init]; // Вью каждой детали
         NSMutableArray * detailArray = [[NSMutableArray alloc] init]; //Массив кнопок в каждой детали
-        NSInteger countDetail = 0; //Подсчет нажатых кнопок
+        NSInteger countDetail = 0; //счетчик деталей
+        BOOL booldetail = NO; //Для подсчета активных окон
         //Расчет таблицы-------
         NSInteger line = 0; //Строки
         CGFloat allHeight = 0; //общая ширина
@@ -307,10 +322,8 @@
         
         viewHeight += detailPartView.frame.size.height;
         
-        
-        
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:detailArray, @"buttonArray",
-                                      [NSNumber numberWithInteger:countDetail], @"count", buttonCancelDetail, @"cancel", nil]; //Дикшенери для хранения данных
+                                      [NSNumber numberWithInteger:countDetail], @"count", buttonCancelDetail, @"cancel", [NSNumber numberWithBool:booldetail], @"bool", nil]; //Дикшенери для хранения данных
         [self.arrayDetailButtons addObject:dict];
         
 
@@ -326,48 +339,48 @@
     confirmView.backgroundColor = [UIColor whiteColor];
     
     //Большая кнопка подтвердить
-    UIButton * bigButtonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-    bigButtonConfirm.frame = CGRectMake(20.f, 10.f, confirmView.frame.size.width - 40.f, 40.f);
-    bigButtonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
-    [bigButtonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
-    [bigButtonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    bigButtonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-    [bigButtonConfirm addTarget:self action:@selector(buttonConfirmAction) forControlEvents:UIControlEventTouchUpInside];
-    [confirmView addSubview:bigButtonConfirm];
+    self.bigButtonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.bigButtonConfirm.frame = CGRectMake(20.f, 10.f, confirmView.frame.size.width - 40.f, 40.f);
+    self.bigButtonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+    [self.bigButtonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
+    [self.bigButtonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.bigButtonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [self.bigButtonConfirm addTarget:self action:@selector(buttonConfirmAction) forControlEvents:UIControlEventTouchUpInside];
+    [confirmView addSubview:self.bigButtonConfirm];
     UIImageView * imageBigButton = [[UIImageView alloc] initWithFrame:CGRectMake(90.f, 8.f, 20.f, 20.f)];
     imageBigButton.image = [UIImage imageNamed:@"imageConfirm.png"];
-    bigButtonConfirm.alpha = 0.f;
-    [bigButtonConfirm addSubview:imageBigButton];
+    self.bigButtonConfirm.alpha = 1.f;
+    [self.bigButtonConfirm addSubview:imageBigButton];
     
     //Маленькая кнпока подтвердить
-    UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonConfirm.frame = CGRectMake(self.frame.size.width / 2 + 5.f, 10.f, confirmView.frame.size.width / 2 - 25.f, 40.f);
-    buttonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
-    [buttonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
-    [buttonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-    [buttonConfirm addTarget:self action:@selector(buttonConfirmAction) forControlEvents:UIControlEventTouchUpInside];
-    buttonConfirm.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
-    buttonConfirm.alpha = 1.f;
-    [confirmView addSubview:buttonConfirm];
+    self.buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.buttonConfirm.frame = CGRectMake(self.frame.size.width / 2 + 5.f, 10.f, confirmView.frame.size.width / 2 - 25.f, 40.f);
+    self.buttonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+    [self.buttonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
+    [self.buttonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [self.buttonConfirm addTarget:self action:@selector(buttonConfirmAction) forControlEvents:UIControlEventTouchUpInside];
+    self.buttonConfirm.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
+    self.buttonConfirm.alpha = 0.f;
+    [confirmView addSubview:self.buttonConfirm];
     UIImageView * imageButton = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 8.f, 20.f, 20.f)];
     imageButton.image = [UIImage imageNamed:@"imageConfirm.png"];
-    [buttonConfirm addSubview:imageButton];
+    [self.buttonConfirm addSubview:imageButton];
     
     //Маленькая кнпока отмена
-    UIButton * buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonCancel.frame = CGRectMake(20.f, 10.f, confirmView.frame.size.width / 2 - 25.f, 40.f);
-    buttonCancel.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
-    [buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
-    [buttonCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-    [buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
-    buttonCancel.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
-    buttonCancel.alpha = 1.f;
-    [confirmView addSubview:buttonCancel];
+    self.buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.buttonCancel.frame = CGRectMake(20.f, 10.f, confirmView.frame.size.width / 2 - 25.f, 40.f);
+    self.buttonCancel.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+    [self.buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
+    [self.buttonCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [self.buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
+    self.buttonCancel.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
+    self.buttonCancel.alpha = 0.f;
+    [confirmView addSubview:self.buttonCancel];
     UIImageView * imageButtonCancel = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 10.f, 20.f, 20.f)];
     imageButtonCancel.image = [UIImage imageNamed:@"imageCancel.png"];
-    [buttonCancel addSubview:imageButtonCancel];
+    [self.buttonCancel addSubview:imageButtonCancel];
     
 
     
@@ -386,6 +399,13 @@
     [UIView animateWithDuration:0.3 animations:^{
         button.alpha = 0.f;
     }];
+    
+    self.counter -= 1;
+    self.sliderBool = NO;
+    
+    
+    [self buttonActionCheck];
+    
 }
 
 //Кнопки выбора размера
@@ -393,7 +413,11 @@
     for (int i = 0; i < self.arraySize.count; i++) {
         if (button.tag == 10 + i) {
             if (!button.isBool) {
-                self.countSize+=1;
+                self.countSize += 1;
+                if (!self.sizeBool) {
+                    self.counter += 1;
+                    self.sizeBool = YES;
+                }
                 [UIView animateWithDuration:0.3f animations:^{
                     button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
                     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -406,7 +430,7 @@
                     }
                 }];
             } else {
-                self.countSize-=1;
+                self.countSize -= 1;
                 [UIView animateWithDuration:0.3f animations:^{
                     button.backgroundColor = [UIColor whiteColor];
                     [button setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -420,7 +444,14 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.buttonCanselSize.alpha = 0.f;
         }];
+        if (self.sizeBool) {
+            self.counter -= 1;
+            self.sizeBool = NO;
+        }
     }
+    
+    
+    [self buttonActionCheck];
 }
 
 //Отмена всех размеров
@@ -435,6 +466,11 @@
             self.buttonCanselSize.alpha = 0.f;
         }];
     }
+    
+    self.counter -= 1;
+    self.sizeBool = NO;
+    
+    [self buttonActionCheck];
 }
 
 //Кнопка выбора цвета
@@ -443,6 +479,10 @@
         if (button.tag == 100 + i) {
             if (!button.isBool) {
                 self.countColor += 1;
+                if (!self.colorBool) {
+                    self.counter += 1;
+                    self.colorBool = YES;
+                }
                 [UIView animateWithDuration:0.3f animations:^{
                     button.alpha = 0.3;
                 } completion:^(BOOL finished) {
@@ -467,7 +507,13 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.buttonCanselColor.alpha = 0.f;
         }];
+        if (self.colorBool) {
+            self.counter -= 1;
+            self.colorBool = NO;
+        }
     }
+    
+    [self buttonActionCheck];
 }
 
 //Отмена всех цветоа
@@ -481,6 +527,11 @@
             self.buttonCanselColor.alpha = 0.f;
         }];
     }
+    
+    self.counter -= 1;
+    self.colorBool = NO;
+    
+    [self buttonActionCheck];
 }
 
 //Кнопки выбора деталей------
@@ -490,10 +541,15 @@
         NSMutableArray * arrayDetail = [dict objectForKey:@"buttonArray"]; //Массив кнопок каждой детали
         NSInteger countDetail = [[dict objectForKey:@"count"] integerValue]; //Счетчик нажатых кнопок
         UIButton * buttonCancel = [dict objectForKey:@"cancel"];
+        BOOL boolDetail = [[dict objectForKey:@"bool"] boolValue];
         for (int j = 0; j < arrayDetail.count; j++) {
             if ([button isEqual:[arrayDetail objectAtIndex:j]]) {
                 if (!button.isBool) {
                     countDetail += 1;
+                    if (!boolDetail) {
+                        self.counter += 1;
+                        [dict setObject:[NSNumber numberWithBool:YES] forKey:@"bool"];
+                    }
                     [dict setObject:[NSNumber numberWithInteger:countDetail] forKey:@"count"];
                     [UIView animateWithDuration:0.3f animations:^{
                         button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
@@ -522,9 +578,15 @@
                 [UIView animateWithDuration:0.3 animations:^{
                     buttonCancel.alpha = 0.f;
                 }];
+                if ([[dict objectForKey:@"bool"] boolValue]) {
+                    self.counter -= 1;
+                    [dict setObject:[NSNumber numberWithBool:NO] forKey:@"bool"];
+                }
             }
         }
     }
+    
+    [self buttonActionCheck];
 }
 
 //Сброс активнеости в каждой детали
@@ -533,6 +595,8 @@
         if (button.tag == 1000 + i) {
             NSMutableDictionary * dict = [self.arrayDetailButtons objectAtIndex:i];
             [dict setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
+            [dict setObject:[NSNumber numberWithBool:NO] forKey:@"bool"];
+            self.counter -= 1;
             NSMutableArray * arrayButtons = [dict objectForKey:@"buttonArray"];
             for (CustomButton * ctButton in arrayButtons) {
                 ctButton.isBool = NO;
@@ -544,18 +608,33 @@
             }
         }
     }
+    
+    [self buttonActionCheck];
 }
 
 
 
 //Подтверждение всех фильтров и возврат назад
 - (void) buttonConfirmAction {
-    NSLog(@"buttonConfirm");
+    [self.delegate backTuCatalog:self];
 }
 
 //Отмена всех фильтров
 - (void) buttonCancelAction {
+    self.countColor = 0;
+    self.countSize = 0;
+    self.slider.lowerValue = 1;
+    self.slider.upperValue = 1012;
+    self.counter = 0;
+    self.sizeBool = NO;
+    self.sliderBool = NO;
+    self.colorBool = NO;
     
+    for (int i = 0; i < self.arrayDetailButtons.count; i++) {
+        NSMutableDictionary * dict = [self.arrayDetailButtons objectAtIndex:i];
+        [dict setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
+        [dict setObject:[NSNumber numberWithBool:NO] forKey:@"bool"];
+    }
     for (int i = 0; i < self.arrayAllButtons.count; i++) {
         if ([[self.arrayAllButtons objectAtIndex:i] isKindOfClass:[CustomButton class]]) {
             CustomButton * buttonText = [self.arrayAllButtons objectAtIndex:i];
@@ -582,6 +661,10 @@
             }];
         }
     }
+    
+    
+    [self buttonActionCheck];
+    
 }
 
 #pragma mark - Slider
@@ -618,9 +701,16 @@
 }
 
 - (void) sliderChange: (NMRangeSlider*) slider {
+    
     if (self.slider.lowerValue > 1 || self.slider.upperValue < 1012) {
         [UIView animateWithDuration:0.3 animations:^{
             self.buttonCanselPrice.alpha = 1.f;
+            
+            if (!self.sliderBool) {
+                self.counter += 1;
+                self.sliderBool = YES;
+            }
+            
         }];
     } else {
         if (self.buttonCanselPrice.alpha == 1.f) {
@@ -628,10 +718,17 @@
                 self.buttonCanselPrice.alpha = 0.f;
             }];
         }
+        if (self.sliderBool) {
+            self.counter -= 1;
+            self.sliderBool = NO;
+        }
     }
     self.labelFrom.text = [NSString stringWithFormat:@"ОТ %d", (NSInteger)self.slider.lowerValue];
     [self.labelFrom sizeToFit];
     self.labelTo.text = [NSString stringWithFormat:@"ОТ %d", (NSInteger)self.slider.upperValue];
+    
+    
+    [self buttonActionCheck];
 }
 
 #pragma mark - Other
@@ -642,6 +739,22 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+- (void) buttonActionCheck {
+    if (self.counter > 1) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.bigButtonConfirm.alpha = 0.f;
+            self.buttonConfirm.alpha = 1.f;
+            self.buttonCancel.alpha = 1.f;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.bigButtonConfirm.alpha = 1.f;
+            self.buttonConfirm.alpha = 0.f;
+            self.buttonCancel.alpha = 0.f;
+        }];
+    }
 }
 
 
