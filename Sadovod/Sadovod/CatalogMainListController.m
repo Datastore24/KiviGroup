@@ -15,15 +15,24 @@
 @interface CatalogMainListController () <CatalogMainListViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayCatalog;
+@property (strong, nonatomic) CatalogMainListView * mainView;
 
 @end
 
 @implementation CatalogMainListController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    CGRect rectView = self.mainView.frame;
+    rectView.origin.y = 0.f;
+    self.mainView.frame = rectView;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Категории" andBarButtonAlpha: YES]; //Ввод заголовка
+    [self setCustomTitle:@"Категории" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------
@@ -36,9 +45,9 @@
 #pragma mark - View
     
     [self getApiCatalog:^{
-        CatalogMainListView * mainView = [[CatalogMainListView alloc] initWithView:self.view andData:self.arrayCatalog];
-        mainView.delegate = self;
-        [self.view addSubview:mainView];
+        self.mainView = [[CatalogMainListView alloc] initWithView:self.view andData:self.arrayCatalog];
+        self.mainView.delegate = self;
+        [self.view addSubview:self.mainView];
     }];
     
     

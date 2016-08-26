@@ -15,6 +15,17 @@
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
 		AD89D1D41D68E99E007771B6 /* x_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD89D1D31D68E99E007771B6 /* x_1.png */; };
+		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
+		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
+		FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */; };
+		FFA8ABAB1D6F07EC004010F9 /* slideTuch.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABA91D6F07EC004010F9 /* slideTuch.png */; };
+		FFA8ABAE1D6F0A42004010F9 /* sliderTuchUp.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABAD1D6F0A42004010F9 /* sliderTuchUp.png */; };
+		FFA8ABB01D6F115E004010F9 /* slideTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABAF1D6F115E004010F9 /* slideTrack.png */; };
+		FFA8ABB31D6F155E004010F9 /* imageCross.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABB21D6F155E004010F9 /* imageCross.png */; };
+		FFA8ABB51D704929004010F9 /* imageConfirm.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABB41D704929004010F9 /* imageConfirm.png */; };
+		FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABB71D704A44004010F9 /* UIImage+Extra.m */; };
+		FFA8ABBA1D705249004010F9 /* imageCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABB91D705249004010F9 /* imageCancel.png */; };
+		FFA8ABBD1D705F54004010F9 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8ABBC1D705F54004010F9 /* ColorButton.m */; };
 		FFAE2DF61D65A05D00E81AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF51D65A05D00E81AED /* main.m */; };
 		FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAE2DF81D65A05D00E81AED /* AppDelegate.m */; };
 		FFAE2E011D65A05D00E81AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2E001D65A05D00E81AED /* Assets.xcassets */; };
@@ -409,6 +420,22 @@
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		AD89D1D31D68E99E007771B6 /* x_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_1.png; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF997F6C1D6EDE890037684A /* OrderFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersController.h; sourceTree = "<group>"; };
+		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
+		FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersView.h; sourceTree = "<group>"; };
+		FF997F701D6EDE9B0037684A /* OrderFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersView.m; sourceTree = "<group>"; };
+		FFA8AB5F1D6EF5EF004010F9 /* NMRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMRangeSlider.h; sourceTree = "<group>"; };
+		FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMRangeSlider.m; sourceTree = "<group>"; };
+		FFA8ABA91D6F07EC004010F9 /* slideTuch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideTuch.png; sourceTree = "<group>"; };
+		FFA8ABAD1D6F0A42004010F9 /* sliderTuchUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderTuchUp.png; sourceTree = "<group>"; };
+		FFA8ABAF1D6F115E004010F9 /* slideTrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideTrack.png; sourceTree = "<group>"; };
+		FFA8ABB21D6F155E004010F9 /* imageCross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCross.png; sourceTree = "<group>"; };
+		FFA8ABB41D704929004010F9 /* imageConfirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageConfirm.png; sourceTree = "<group>"; };
+		FFA8ABB61D704A44004010F9 /* UIImage+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extra.h"; sourceTree = "<group>"; };
+		FFA8ABB71D704A44004010F9 /* UIImage+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extra.m"; sourceTree = "<group>"; };
+		FFA8ABB91D705249004010F9 /* imageCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageCancel.png; sourceTree = "<group>"; };
+		FFA8ABBB1D705F54004010F9 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
+		FFA8ABBC1D705F54004010F9 /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
 		FFAE2DF11D65A05D00E81AED /* Sadovod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sadovod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAE2DF51D65A05D00E81AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFAE2DF71D65A05D00E81AED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -880,6 +907,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF997F6B1D6EDE6A0037684A /* OrderFilters */ = {
+			isa = PBXGroup;
+			children = (
+				FF997F6C1D6EDE890037684A /* OrderFiltersController.h */,
+				FF997F6D1D6EDE890037684A /* OrderFiltersController.m */,
+				FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */,
+				FF997F701D6EDE9B0037684A /* OrderFiltersView.m */,
+			);
+			name = OrderFilters;
+			sourceTree = "<group>";
+		};
+		FFA8AB531D6EE412004010F9 /* DoubleSlider */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8ABAF1D6F115E004010F9 /* slideTrack.png */,
+				FFA8ABAD1D6F0A42004010F9 /* sliderTuchUp.png */,
+				FFA8ABA91D6F07EC004010F9 /* slideTuch.png */,
+				FFA8AB5F1D6EF5EF004010F9 /* NMRangeSlider.h */,
+				FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */,
+			);
+			name = DoubleSlider;
+			sourceTree = "<group>";
+		};
+		FFA8ABB11D6F1554004010F9 /* OrderFilters */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8ABB91D705249004010F9 /* imageCancel.png */,
+				FFA8ABB41D704929004010F9 /* imageConfirm.png */,
+				FFA8ABB21D6F155E004010F9 /* imageCross.png */,
+			);
+			name = OrderFilters;
+			sourceTree = "<group>";
+		};
 		FFAE2DE81D65A05D00E81AED = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +965,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FF997F6B1D6EDE6A0037684A /* OrderFilters */,
 				FFF8733A1D6AEC4D00816FC1 /* Order */,
 				FFC4FD6D1D67678B007C2DDC /* CatalogDetail */,
 				FFC4FD441D671312007C2DDC /* CatalogList */,
@@ -926,11 +987,12 @@
 				FFAE32C01D65A30D00E81AED /* Category */,
 				FFAE32B81D65A2E000E81AED /* CustomLabels */,
 				FFAE32AE1D65A2C900E81AED /* Fonts */,
+				FFA8AB531D6EE412004010F9 /* DoubleSlider */,
 				FFAE2E3C1D65A13900E81AED /* Activiti */,
 				FFAE32AA1D65A29E00E81AED /* Animation */,
-				FFAE2DF41D65A05D00E81AED /* Supporting Files */,
 				AD89D1B91D678AC8007771B6 /* CoreData */,
 				AD89D1C61D678D6D007771B6 /* API */,
+				FFAE2DF41D65A05D00E81AED /* Supporting Files */,
 			);
 			path = Sadovod;
 			sourceTree = "<group>";
@@ -1498,6 +1560,10 @@
 				FFAE32DA1D65A31A00E81AED /* UILabel+TitleCategory.m */,
 				FFAE32DB1D65A31A00E81AED /* UIView+BorderView.h */,
 				FFAE32DC1D65A31A00E81AED /* UIView+BorderView.m */,
+				FFA8ABB61D704A44004010F9 /* UIImage+Extra.h */,
+				FFA8ABB71D704A44004010F9 /* UIImage+Extra.m */,
+				FFA8ABBB1D705F54004010F9 /* ColorButton.h */,
+				FFA8ABBC1D705F54004010F9 /* ColorButton.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1516,6 +1582,7 @@
 		FFAE32F21D65A37100E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFA8ABB11D6F1554004010F9 /* OrderFilters */,
 				FFC4FD741D676FDF007C2DDC /* ImagesCatalogDetail */,
 				FFC4FD051D65AE2F007C2DDC /* ImagesCatalog */,
 				FFAE33101D65A3B200E81AED /* ImageButtons */,
@@ -1785,6 +1852,7 @@
 				FFAE31D51D65A28900E81AED /* Activity7@2x.png in Resources */,
 				FFAE327E1D65A28900E81AED /* Activity11@2x.png in Resources */,
 				FFAE32191D65A28900E81AED /* Activity29@2x.png in Resources */,
+				FFA8ABB31D6F155E004010F9 /* imageCross.png in Resources */,
 				AD89D1D41D68E99E007771B6 /* x_1.png in Resources */,
 				FFAE31F11D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE32851D65A28900E81AED /* Activity3@2x.png in Resources */,
@@ -1876,6 +1944,7 @@
 				FFAE32261D65A28900E81AED /* Activity13@2x.png in Resources */,
 				FFAE32921D65A28900E81AED /* Activity16@2x.png in Resources */,
 				FFAE32A01D65A28900E81AED /* Activity29@2x.png in Resources */,
+				FFA8ABBA1D705249004010F9 /* imageCancel.png in Resources */,
 				FFAE323F1D65A28900E81AED /* Activity22@2x.png in Resources */,
 				FFAE31EA1D65A28900E81AED /* Activity27@2x.png in Resources */,
 				FFC4FD841D677F07007C2DDC /* imageButtonFilter.png in Resources */,
@@ -2009,16 +2078,19 @@
 				FFAE32451D65A28900E81AED /* Activity28@2x.png in Resources */,
 				FFAE32311D65A28900E81AED /* Activity9@2x.png in Resources */,
 				FFAE32A91D65A28900E81AED /* Activity9@2x.png in Resources */,
+				FFA8ABAE1D6F0A42004010F9 /* sliderTuchUp.png in Resources */,
 				FFAE326E1D65A28900E81AED /* Activity24@2x.png in Resources */,
 				FFAE31E21D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE319E1D65A28900E81AED /* Activity12@2x.png in Resources */,
 				FFAE324C1D65A28900E81AED /* Activity6@2x.png in Resources */,
 				FFAE31BF1D65A28900E81AED /* Activity29@2x.png in Resources */,
+				FFA8ABB01D6F115E004010F9 /* slideTrack.png in Resources */,
 				FFC4FD351D65EE15007C2DDC /* imageMenu1.png in Resources */,
 				FFAE32501D65A28900E81AED /* Activity10@2x.png in Resources */,
 				FFAE32991D65A28900E81AED /* Activity22@2x.png in Resources */,
 				FFAE2E011D65A05D00E81AED /* Assets.xcassets in Resources */,
 				FFAE31D41D65A28900E81AED /* Activity6@2x.png in Resources */,
+				FFA8ABAB1D6F07EC004010F9 /* slideTuch.png in Resources */,
 				FFAE31ED1D65A28900E81AED /* Activity2@2x.png in Resources */,
 				FFAE32231D65A28900E81AED /* Activity10@2x.png in Resources */,
 				FFAE324D1D65A28900E81AED /* Activity7@2x.png in Resources */,
@@ -2046,6 +2118,7 @@
 				FFAE32821D65A28900E81AED /* Activity15@2x.png in Resources */,
 				FFAE32381D65A28900E81AED /* Activity16@2x.png in Resources */,
 				FFAE31A81D65A28900E81AED /* Activity7@2x.png in Resources */,
+				FFA8ABB51D704929004010F9 /* imageConfirm.png in Resources */,
 				FFAE32591D65A28900E81AED /* Activity4@2x.png in Resources */,
 				FFAE31C11D65A28900E81AED /* Activity30@2x.png in Resources */,
 				FFAE31E51D65A28900E81AED /* Activity22@2x.png in Resources */,
@@ -2147,6 +2220,7 @@
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
+				FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
@@ -2154,6 +2228,7 @@
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,
+				FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */,
 				FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */,
 				FFAE32E81D65A31A00E81AED /* HexColors.m in Sources */,
 				FFAE32AD1D65A2B700E81AED /* Animation.m in Sources */,
@@ -2172,7 +2247,9 @@
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
 				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,
+				FFA8ABBD1D705F54004010F9 /* ColorButton.m in Sources */,
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
+				FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */,
 				FFAE2E361D65A10300E81AED /* SWRevealViewController.m in Sources */,
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,
 				FFC4FD731D676800007C2DDC /* CatalogDetailView.m in Sources */,
@@ -2182,6 +2259,7 @@
 				FFAE2E351D65A10300E81AED /* TableMenuCell.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
+				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

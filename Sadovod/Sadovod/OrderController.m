@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Штаны черные" andBarButtonAlpha: YES]; //Ввод заголовка
+    [self setCustomTitle:@"Штаны черные" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------

@@ -33,7 +33,7 @@
     self.arrayProduct = [NSArray new];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Садовод" andBarButtonAlpha: NO]; //Ввод заголовка
+    [self setCustomTitle:@"Садовод" andBarButtonAlpha: NO andButtonBasket: NO]; //Ввод заголовка
 //    [self.navigationController setNavigationBarHidden:NO];
     
 #pragma mark - View
