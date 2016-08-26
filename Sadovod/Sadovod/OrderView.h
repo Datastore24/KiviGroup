@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol OrderViewDelegate;
+
 @interface OrderView : UIView
+
+@property (weak, nonatomic) id <OrderViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol OrderViewDelegate <NSObject>
+
+@required
+
+- (void) pushTuBiyView: (OrderView*) orderView;
 
 @end

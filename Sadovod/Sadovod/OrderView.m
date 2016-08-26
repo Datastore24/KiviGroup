@@ -64,6 +64,7 @@
         UIButton * buyButton = [UIButton buttonWithType:UIButtonTypeSystem];
         buyButton.frame = CGRectMake(0, self.frame.size.width + 3.f, self.frame.size.width, 40.f);
         buyButton.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+        [buyButton addTarget:self action:@selector(buyButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.mainScrollView addSubview:buyButton];
         //--
         CustomLabels * buttonBuyPrice = [[CustomLabels alloc] initLabelTableWithWidht:5.f andHeight:0.f andSizeWidht:70.f andSizeHeight:40.f andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ руб", [dictData objectForKey:@"price"]]];
@@ -239,6 +240,10 @@
             }];
         }
     }
+}
+
+- (void) buyButtonAction {
+    [self.delegate pushTuBiyView:self];
 }
 
 @end

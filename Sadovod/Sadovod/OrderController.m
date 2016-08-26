@@ -8,8 +8,9 @@
 
 #import "OrderController.h"
 #import "OrderView.h"
+#import "BuyViewController.h"
 
-@interface OrderController ()
+@interface OrderController () <OrderViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -35,15 +36,23 @@
 #pragma mark - View
    
     OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
         
     
 }
 
+#pragma mark - OrderViewDelegate
+
+- (void) pushTuBiyView: (OrderView*) orderView {
+    BuyViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"];
+    [self.navigationController pushViewController:detail animated:NO];
+}
+
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (NSMutableArray*) setCustonArray
