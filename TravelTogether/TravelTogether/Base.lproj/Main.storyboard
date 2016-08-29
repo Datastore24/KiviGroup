@@ -76,6 +76,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tbd-6O-FSg" kind="custom" customClass="SWRevealViewControllerSegue" id="3kH-2E-pR6"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell5" id="SPL-mr-11q">
                                         <rect key="frame" x="0.0" y="204" width="320" height="44"/>
@@ -254,6 +257,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srT-Wg-Mwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1017" y="857"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="cff-2y-M8g">
+            <objects>
+                <viewController storyboardIdentifier="SettingsController" id="tbd-6O-FSg" customClass="SettingsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jTg-wi-pp1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEs-GW-7pu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="1492"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhP-xK-geB">
