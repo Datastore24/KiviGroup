@@ -9,6 +9,7 @@
 #import "HumanDetailController.h"
 #import "HumanDetailView.h"
 #import "MessegerController.h"
+#import "YouLikedController.h"
 
 @interface HumanDetailController () <HumanDetailViewDelegate>
 
@@ -25,6 +26,14 @@
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"АНКЕТА"]; //Ввод заголовка
     [self.navigationController setNavigationBarHidden:NO];
+    
+    if (self.navigationController.viewControllers.count > 1) {
+        //Кнопка Назад---------------------------------------------
+        UIButton * buttonBack = [UIButton createButtonBack];
+        [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
+        self.navigationItem.leftBarButtonItem = mailbuttonBack;
+    }
     
     self.arrayData = [self setTravelArray];
     
@@ -62,6 +71,15 @@
 - (void) pushToMessegerController: (HumanDetailView*) humanDetailView {
     MessegerController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"MessegerController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToLikedController: (HumanDetailView*) humanDetailView {
+    YouLikedController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YouLikedController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) buttonBackAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

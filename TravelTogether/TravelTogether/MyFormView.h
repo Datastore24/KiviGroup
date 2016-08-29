@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyFormViewDelegate;
+
 @interface MyFormView : UIView
+
+@property (weak, nonatomic) id <MyFormViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol MyFormViewDelegate <NSObject>
+
+@required
+
+- (void) pushToMessegerController: (MyFormView*) myFormView;
+
+- (void) pushToLikedController: (MyFormView*) myFormView;
 
 @end

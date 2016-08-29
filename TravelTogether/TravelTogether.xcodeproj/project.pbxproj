@@ -397,6 +397,21 @@
 		FFE10F041D742D3B00532346 /* icon_odnok.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F001D742D3B00532346 /* icon_odnok.png */; };
 		FFE10F051D742D3B00532346 /* icon_vk.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F011D742D3B00532346 /* icon_vk.png */; };
 		FFE10F061D742D3B00532346 /* icon_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F021D742D3B00532346 /* icon_facebook.png */; };
+		FFE10F0A1D74359C00532346 /* ConnectWithUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F091D74359C00532346 /* ConnectWithUsController.m */; };
+		FFE10F0D1D7435B100532346 /* ConnectWithUsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F0C1D7435B100532346 /* ConnectWithUsView.m */; };
+		FFE10F111D74430B00532346 /* ListMessegesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F101D74430B00532346 /* ListMessegesController.m */; };
+		FFE10F141D74432000532346 /* ListMessegesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F131D74432000532346 /* ListMessegesView.m */; };
+		FFE10F181D744D6200532346 /* buttonMessegeNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F161D744D6200532346 /* buttonMessegeNO.png */; };
+		FFE10F191D744D6200532346 /* buttonMessegeYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F171D744D6200532346 /* buttonMessegeYES.png */; };
+		FFE10F1D1D744E1000532346 /* YouLikedController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F1C1D744E1000532346 /* YouLikedController.m */; };
+		FFE10F201D744E2400532346 /* YouLikedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F1F1D744E2400532346 /* YouLikedView.m */; };
+		FFE10F291D74514400532346 /* likeBigImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F221D74514400532346 /* likeBigImage3.png */; };
+		FFE10F2A1D74514400532346 /* likeBigImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F231D74514400532346 /* likeBigImage2.png */; };
+		FFE10F2B1D74514400532346 /* likeImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F241D74514400532346 /* likeImage3.png */; };
+		FFE10F2C1D74514400532346 /* likeImage4.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F251D74514400532346 /* likeImage4.png */; };
+		FFE10F2D1D74514400532346 /* likeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F261D74514400532346 /* likeImage2.png */; };
+		FFE10F2E1D74514400532346 /* likeImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F271D74514400532346 /* likeImage1.png */; };
+		FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F281D74514400532346 /* likeBigImage1.png */; };
 		FFF8734A1D6C38D600816FC1 /* MessegerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873491D6C38D600816FC1 /* MessegerView.m */; };
 		FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */; };
 		FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734E1D6C3FA600816FC1 /* CustomTextView.m */; };
@@ -871,6 +886,27 @@
 		FFE10F001D742D3B00532346 /* icon_odnok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_odnok.png; sourceTree = "<group>"; };
 		FFE10F011D742D3B00532346 /* icon_vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_vk.png; sourceTree = "<group>"; };
 		FFE10F021D742D3B00532346 /* icon_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_facebook.png; sourceTree = "<group>"; };
+		FFE10F081D74359C00532346 /* ConnectWithUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithUsController.h; sourceTree = "<group>"; };
+		FFE10F091D74359C00532346 /* ConnectWithUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithUsController.m; sourceTree = "<group>"; };
+		FFE10F0B1D7435B100532346 /* ConnectWithUsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithUsView.h; sourceTree = "<group>"; };
+		FFE10F0C1D7435B100532346 /* ConnectWithUsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithUsView.m; sourceTree = "<group>"; };
+		FFE10F0F1D74430B00532346 /* ListMessegesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMessegesController.h; sourceTree = "<group>"; };
+		FFE10F101D74430B00532346 /* ListMessegesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMessegesController.m; sourceTree = "<group>"; };
+		FFE10F121D74432000532346 /* ListMessegesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMessegesView.h; sourceTree = "<group>"; };
+		FFE10F131D74432000532346 /* ListMessegesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMessegesView.m; sourceTree = "<group>"; };
+		FFE10F161D744D6200532346 /* buttonMessegeNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMessegeNO.png; sourceTree = "<group>"; };
+		FFE10F171D744D6200532346 /* buttonMessegeYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMessegeYES.png; sourceTree = "<group>"; };
+		FFE10F1B1D744E1000532346 /* YouLikedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouLikedController.h; sourceTree = "<group>"; };
+		FFE10F1C1D744E1000532346 /* YouLikedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouLikedController.m; sourceTree = "<group>"; };
+		FFE10F1E1D744E2400532346 /* YouLikedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouLikedView.h; sourceTree = "<group>"; };
+		FFE10F1F1D744E2400532346 /* YouLikedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouLikedView.m; sourceTree = "<group>"; };
+		FFE10F221D74514400532346 /* likeBigImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeBigImage3.png; sourceTree = "<group>"; };
+		FFE10F231D74514400532346 /* likeBigImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeBigImage2.png; sourceTree = "<group>"; };
+		FFE10F241D74514400532346 /* likeImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage3.png; sourceTree = "<group>"; };
+		FFE10F251D74514400532346 /* likeImage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage4.png; sourceTree = "<group>"; };
+		FFE10F261D74514400532346 /* likeImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage2.png; sourceTree = "<group>"; };
+		FFE10F271D74514400532346 /* likeImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage1.png; sourceTree = "<group>"; };
+		FFE10F281D74514400532346 /* likeBigImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeBigImage1.png; sourceTree = "<group>"; };
 		FFF873481D6C38D600816FC1 /* MessegerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerView.h; sourceTree = "<group>"; };
 		FFF873491D6C38D600816FC1 /* MessegerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerView.m; sourceTree = "<group>"; };
 		FFF8734B1D6C3FA600816FC1 /* InputTextToView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextToView.h; sourceTree = "<group>"; };
@@ -1420,10 +1456,10 @@
 		FFAE28DE1D57839300E81AED /* SearchMain */ = {
 			isa = PBXGroup;
 			children = (
-				FF66A7851D53517A00F693DD /* SearchTravelView.h */,
-				FF66A7861D53517A00F693DD /* SearchTravelView.m */,
 				FF66A7821D53516500F693DD /* SearchTravelController.h */,
 				FF66A7831D53516500F693DD /* SearchTravelController.m */,
+				FF66A7851D53517A00F693DD /* SearchTravelView.h */,
+				FF66A7861D53517A00F693DD /* SearchTravelView.m */,
 			);
 			name = SearchMain;
 			sourceTree = "<group>";
@@ -1512,6 +1548,8 @@
 		FFAE2CFC1D5DF7AE00E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F211D74512E00532346 /* YouLikedImage */,
+				FFE10F151D744D4800532346 /* ListOfMesseges */,
 				FFE10EFC1D74262200532346 /* MySettings */,
 				FF997F541D6E18910037684A /* MyForm */,
 				FFF873541D6C63E800816FC1 /* Messeger */,
@@ -1551,6 +1589,9 @@
 		FFBB8EB11D508DC90043ED9D /* TravelTogether */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F1A1D744DF000532346 /* YouLiked */,
+				FFE10F0E1D7442D600532346 /* ListOfMessages */,
+				FFE10F071D74357900532346 /* ConnectWithUs */,
 				FFE10EF51D74160300532346 /* Settings */,
 				FFF8735F1D6D9F3D00816FC1 /* MyForm */,
 				FFC4FDAB1D68CFC7007C2DDC /* Messeger */,
@@ -1613,10 +1654,10 @@
 		FFBB8EE51D508DDD0043ED9D /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				FFBB8F3A1D50C5B60043ED9D /* TableMenuCell.h */,
-				FFBB8F3B1D50C5B60043ED9D /* TableMenuCell.m */,
 				FFBB8EE91D508F520043ED9D /* MenuViewController.h */,
 				FFBB8EEA1D508F520043ED9D /* MenuViewController.m */,
+				FFBB8F3A1D50C5B60043ED9D /* TableMenuCell.h */,
+				FFBB8F3B1D50C5B60043ED9D /* TableMenuCell.m */,
 				FFBB8EE61D508E140043ED9D /* SWRevealViewController.h */,
 				FFBB8EE71D508E140043ED9D /* SWRevealViewController.m */,
 			);
@@ -1626,10 +1667,10 @@
 		FFBB8EEC1D508F6E0043ED9D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FFBB8EF01D508F8D0043ED9D /* LoginView.h */,
-				FFBB8EF11D508F8D0043ED9D /* LoginView.m */,
 				FFBB8F261D50B3350043ED9D /* LoginViewController.h */,
 				FFBB8F271D50B3350043ED9D /* LoginViewController.m */,
+				FFBB8EF01D508F8D0043ED9D /* LoginView.h */,
+				FFBB8EF11D508F8D0043ED9D /* LoginView.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1712,10 +1753,10 @@
 		FFBB8F841D5138E30043ED9D /* MyTravel */ = {
 			isa = PBXGroup;
 			children = (
-				FFBB8F851D5139030043ED9D /* MyTravelView.h */,
-				FFBB8F861D5139030043ED9D /* MyTravelView.m */,
 				FFBB8F881D51398A0043ED9D /* MyTravelController.h */,
 				FFBB8F891D51398A0043ED9D /* MyTravelController.m */,
+				FFBB8F851D5139030043ED9D /* MyTravelView.h */,
+				FFBB8F861D5139030043ED9D /* MyTravelView.m */,
 			);
 			name = MyTravel;
 			sourceTree = "<group>";
@@ -1790,6 +1831,62 @@
 				FFE10EFD1D74263300532346 /* arrowPinck.png */,
 			);
 			name = MySettings;
+			sourceTree = "<group>";
+		};
+		FFE10F071D74357900532346 /* ConnectWithUs */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F081D74359C00532346 /* ConnectWithUsController.h */,
+				FFE10F091D74359C00532346 /* ConnectWithUsController.m */,
+				FFE10F0B1D7435B100532346 /* ConnectWithUsView.h */,
+				FFE10F0C1D7435B100532346 /* ConnectWithUsView.m */,
+			);
+			name = ConnectWithUs;
+			sourceTree = "<group>";
+		};
+		FFE10F0E1D7442D600532346 /* ListOfMessages */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F0F1D74430B00532346 /* ListMessegesController.h */,
+				FFE10F101D74430B00532346 /* ListMessegesController.m */,
+				FFE10F121D74432000532346 /* ListMessegesView.h */,
+				FFE10F131D74432000532346 /* ListMessegesView.m */,
+			);
+			name = ListOfMessages;
+			sourceTree = "<group>";
+		};
+		FFE10F151D744D4800532346 /* ListOfMesseges */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F161D744D6200532346 /* buttonMessegeNO.png */,
+				FFE10F171D744D6200532346 /* buttonMessegeYES.png */,
+			);
+			name = ListOfMesseges;
+			sourceTree = "<group>";
+		};
+		FFE10F1A1D744DF000532346 /* YouLiked */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F1B1D744E1000532346 /* YouLikedController.h */,
+				FFE10F1C1D744E1000532346 /* YouLikedController.m */,
+				FFE10F1E1D744E2400532346 /* YouLikedView.h */,
+				FFE10F1F1D744E2400532346 /* YouLikedView.m */,
+			);
+			name = YouLiked;
+			sourceTree = "<group>";
+		};
+		FFE10F211D74512E00532346 /* YouLikedImage */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F221D74514400532346 /* likeBigImage3.png */,
+				FFE10F231D74514400532346 /* likeBigImage2.png */,
+				FFE10F241D74514400532346 /* likeImage3.png */,
+				FFE10F251D74514400532346 /* likeImage4.png */,
+				FFE10F261D74514400532346 /* likeImage2.png */,
+				FFE10F271D74514400532346 /* likeImage1.png */,
+				FFE10F281D74514400532346 /* likeBigImage1.png */,
+			);
+			name = YouLikedImage;
 			sourceTree = "<group>";
 		};
 		FFF873541D6C63E800816FC1 /* Messeger */ = {
@@ -1926,6 +2023,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF66A7711D51E99F00F693DD /* SFUIDisplay-Bold.otf in Resources */,
 				FFAE287A1D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFC4FD921D686400007C2DDC /* imagePhoto2.png in Resources */,
 				FF66A7721D51E9A100F693DD /* SFUIDisplay-Light.otf in Resources */,
@@ -1977,6 +2075,8 @@
 				FFAE27FA1D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFF873581D6C68AA00816FC1 /* buttonSendImage.png in Resources */,
 				FFAE286B1D57731500E81AED /* Activity16@2x.png in Resources */,
+				FFE10F2E1D74514400532346 /* likeImage1.png in Resources */,
+				FFE10F2A1D74514400532346 /* likeBigImage2.png in Resources */,
 				FFAE284F1D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE2D0C1D5DF7AE00E81AED /* buyTicketNo.png in Resources */,
 				FFAE27DB1D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -1990,6 +2090,7 @@
 				FFAE27F51D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE28D21D57731500E81AED /* Activity28@2x.png in Resources */,
 				FFAE28271D57731500E81AED /* Activity8@2x.png in Resources */,
+				FFE10F2D1D74514400532346 /* likeImage2.png in Resources */,
 				FFAE28CF1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE288D1D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28621D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2026,6 +2127,7 @@
 				FFAE280E1D57731500E81AED /* Activity13@2x.png in Resources */,
 				FFAE28A11D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28211D57731500E81AED /* Activity30@2x.png in Resources */,
+				FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */,
 				FFAE27DE1D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE28421D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28A71D57731500E81AED /* Activity2@2x.png in Resources */,
@@ -2043,6 +2145,7 @@
 				FFBB8EC21D508DCA0043ED9D /* LaunchScreen.storyboard in Resources */,
 				FFAE28881D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE28501D57731500E81AED /* Activity4@2x.png in Resources */,
+				FFE10F2B1D74514400532346 /* likeImage3.png in Resources */,
 				FFAE289B1D57731500E81AED /* Activity19@2x.png in Resources */,
 				FFAE28A61D57731500E81AED /* Activity29@2x.png in Resources */,
 				FFAE2D171D5DF7AE00E81AED /* image8.png in Resources */,
@@ -2055,9 +2158,11 @@
 				FFAE281B1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE28161D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28741D57731500E81AED /* Activity24@2x.png in Resources */,
+				FFE10F291D74514400532346 /* likeBigImage3.png in Resources */,
 				FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */,
 				FFAE282A1D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28511D57731500E81AED /* Activity5@2x.png in Resources */,
+				FFE10F191D744D6200532346 /* buttonMessegeYES.png in Resources */,
 				FFAE28921D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE2D141D5DF7AE00E81AED /* emailLogin.png in Resources */,
 				FFAE28A81D57731500E81AED /* Activity30@2x.png in Resources */,
@@ -2094,7 +2199,6 @@
 				FFAE28761D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE28021D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28051D57731500E81AED /* Activity4@2x.png in Resources */,
-				FF66A7711D51E99F00F693DD /* SFUIDisplay-Bold.otf in Resources */,
 				FFAE27E51D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFAE28C61D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFAE27E71D57731500E81AED /* Activity19@2x.png in Resources */,
@@ -2111,6 +2215,7 @@
 				FFAE287B1D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFAE27F41D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFAE283F1D57731500E81AED /* Activity17@2x.png in Resources */,
+				FFE10F2C1D74514400532346 /* likeImage4.png in Resources */,
 				FFAE28B41D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE285A1D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE28D01D57731500E81AED /* Activity26@2x.png in Resources */,
@@ -2199,6 +2304,7 @@
 				FFAE28711D57731500E81AED /* Activity21@2x.png in Resources */,
 				FFAE28751D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE28C81D57731500E81AED /* Activity19@2x.png in Resources */,
+				FFE10F181D744D6200532346 /* buttonMessegeNO.png in Resources */,
 				FFAE28861D57731500E81AED /* Activity13@2x.png in Resources */,
 				FFAE2D161D5DF7AE00E81AED /* imageAva.png in Resources */,
 				FFAE28DC1D57731500E81AED /* Activity9@2x.png in Resources */,
@@ -2434,24 +2540,29 @@
 				FFBB8F2E1D50B67C0043ED9D /* TextAndImageHeight.m in Sources */,
 				FFC4FD9F1D689A54007C2DDC /* HumanDetailController.m in Sources */,
 				FFE10EF81D74165800532346 /* SettingsController.m in Sources */,
+				FFE10F141D74432000532346 /* ListMessegesView.m in Sources */,
 				FFBB8F0C1D5093270043ED9D /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				FFE10EFB1D74167300532346 /* SettingsView.m in Sources */,
 				FF997F4F1D6DA0170037684A /* MyFormView.m in Sources */,
 				FFBB8F6E1D50F9F20043ED9D /* InputTextView.m in Sources */,
 				FFBB8EB71D508DCA0043ED9D /* AppDelegate.m in Sources */,
+				FFE10F0D1D7435B100532346 /* ConnectWithUsView.m in Sources */,
 				FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */,
 				FFBB8EF21D508F8D0043ED9D /* LoginView.m in Sources */,
+				FFE10F0A1D74359C00532346 /* ConnectWithUsController.m in Sources */,
 				FFBB8EB41D508DCA0043ED9D /* main.m in Sources */,
 				FFBB8F281D50B3350043ED9D /* LoginViewController.m in Sources */,
 				FFBB8F311D50B6820043ED9D /* HeightForText.m in Sources */,
 				FFBB8F3C1D50C5B60043ED9D /* TableMenuCell.m in Sources */,
 				FFAE24741D5761D300E81AED /* MBSwitch.m in Sources */,
+				FFE10F111D74430B00532346 /* ListMessegesController.m in Sources */,
 				FFBB8F0D1D5093270043ED9D /* UIImage+ImageEffects.m in Sources */,
 				FFBB8EE81D508E140043ED9D /* SWRevealViewController.m in Sources */,
 				FFBB8F0E1D5093270043ED9D /* UIImage+Resize.m in Sources */,
 				FFAE28EB1D57841A00E81AED /* SearchDetailView.m in Sources */,
 				FFBB8F251D50B2F40043ED9D /* MainViewController.m in Sources */,
 				FFAE29091D5795A900E81AED /* TravelView.m in Sources */,
+				FFE10F1D1D744E1000532346 /* YouLikedController.m in Sources */,
 				FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */,
 				FFAE290E1D5CD0FB00E81AED /* SingleTone.m in Sources */,
 				FFBB8F0B1D5093270043ED9D /* UIImage+Alpha.m in Sources */,
@@ -2461,6 +2572,7 @@
 				FFBB8F391D50C3220043ED9D /* UILabel+TitleCategory.m in Sources */,
 				FFAE29061D57959700E81AED /* TravelController.m in Sources */,
 				FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */,
+				FFE10F201D744E2400532346 /* YouLikedView.m in Sources */,
 				FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */,
 				FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */,
 				FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */,

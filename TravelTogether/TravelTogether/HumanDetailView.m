@@ -73,11 +73,14 @@
         
         UIButton * buttonLike = [UIButton createButtonWithImage:@"likeButtonImage.png" anfFrame:CGRectMake(70.f, 140.f, 33.f, 33.f)];
         buttonLike.alpha = 0.7f;
+        [buttonLike addTarget:self action:@selector(buttonLikeAction) forControlEvents:UIControlEventTouchUpInside];
+        buttonLike.userInteractionEnabled = NO;
         [self addSubview:buttonLike];
         
         UIButton * buttonMessege = [UIButton createButtonWithImage:@"messageButtonImage.png" anfFrame:CGRectMake(self.frame.size.width - 103.f, 140.f, 33.f, 33.f)];
         buttonMessege.alpha = 0.7f;
         [buttonMessege addTarget:self action:@selector(buttonMessegeAction) forControlEvents:UIControlEventTouchUpInside];
+        buttonMessege.userInteractionEnabled = NO;
         [self addSubview:buttonMessege];
         
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:103.f andHeight:148.f
@@ -103,6 +106,10 @@
 
 - (void) buttonMessegeAction {
     [self.delegate pushToMessegerController:self];
+}
+
+- (void) buttonLikeAction {
+    [self.delegate pushToLikedController:self];
 }
 
 @end

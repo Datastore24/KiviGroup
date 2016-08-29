@@ -25,4 +25,6 @@
 
 - (void) pushToMessegerController: (HumanDetailView*) humanDetailView;
 
+- (void) pushToLikedController: (HumanDetailView*) humanDetailView;
+
 @end

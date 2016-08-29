@@ -8,8 +8,11 @@
 
 #import "SettingsController.h"
 #import "SettingsView.h"
+#import "ListMessegesController.h"
+#import "YouLikedController.h"
+#import "ConnectWithUsController.h"
 
-@interface SettingsController ()
+@interface SettingsController () <SettingsViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -28,6 +31,7 @@
 #pragma mark - View
     
     SettingsView * mainView = [[SettingsView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
 }
@@ -59,6 +63,24 @@
                                 @"5", @"countMessage", arrayImege, @"arrayImage", nil];
     [mainArray addObject:dictImage];
     return mainArray;
+}
+
+
+#pragma mark - SettingsViewDelegate
+
+- (void) pushToMessegerController:(SettingsView *)settingsView {
+    ListMessegesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ListMessegesController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToLikedController:(SettingsView *)settingsView {
+    YouLikedController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YouLikedController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushTuConnectWithUs: (SettingsView*) settingsView {
+    ConnectWithUsController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ConnectWithUsController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

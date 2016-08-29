@@ -8,6 +8,7 @@
 
 #import "MessegerController.h"
 #import "MessegerView.h"
+#import "UIButton+ButtonImage.h"
 
 @interface MessegerController ()
 
@@ -24,6 +25,14 @@
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"СООБЩЕНИЯ"]; //Ввод заголовка    
     self.arrayData = [self setTemporaryArray];
+    
+    if (self.navigationController.viewControllers.count > 1) {
+        //Кнопка Назад---------------------------------------------
+        UIButton * buttonBack = [UIButton createButtonBack];
+        [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
+        self.navigationItem.leftBarButtonItem = mailbuttonBack;
+    }
     
     
 #pragma mark - View
@@ -77,6 +86,10 @@
     }
     
     return temporaryArray;
+}
+
+- (void) buttonBackAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
