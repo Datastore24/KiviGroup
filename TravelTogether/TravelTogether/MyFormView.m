@@ -114,6 +114,7 @@
     
     UIButton * buttonLike = [UIButton createButtonWithImage:@"likeButtonImage.png" anfFrame:CGRectMake(70.f, 140.f, 33.f, 33.f)];
     buttonLike.alpha = 0.7f;
+    [buttonLike addTarget:self action:@selector(buttonLikeAction) forControlEvents:UIControlEventTouchUpInside];
     [viewAva addSubview:buttonLike];
     
     CustomLabels * labelbuttonLike = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
@@ -123,6 +124,7 @@
     
     UIButton * buttonMessege = [UIButton createButtonWithImage:@"messageButtonImage.png" anfFrame:CGRectMake(self.frame.size.width - 103.f, 140.f, 33.f, 33.f)];
     buttonMessege.alpha = 0.7f;
+    [buttonMessege addTarget:self action:@selector(buttonMessegeAction) forControlEvents:UIControlEventTouchUpInside];
     [viewAva addSubview:buttonMessege];
     
     CustomLabels * labelbuttonMessege = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
@@ -422,6 +424,15 @@
 }
 
 #pragma mark - Actions
+
+//Действие кнопки мои сообщения
+- (void) buttonMessegeAction {
+    [self.delegate pushToMessegerController:self];
+}
+//Действие кнопки мои симпатии
+- (void) buttonLikeAction {
+    [self.delegate pushToLikedController:self];
+}
 
 //Выбор категории основного скрола
 - (void) buttonScrollAction: (UIButton*) button {

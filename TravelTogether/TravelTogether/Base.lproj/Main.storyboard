@@ -87,6 +87,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Bk2-t5-Ea8" kind="custom" customClass="SWRevealViewControllerSegue" id="YxU-45-NAB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell6" id="ePG-1H-JL3">
                                         <rect key="frame" x="0.0" y="248" width="320" height="44"/>
@@ -95,6 +98,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="I9K-2Y-iVN" kind="custom" customClass="SWRevealViewControllerSegue" id="hHj-dx-Hsy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell7" id="lK4-se-fWW">
                                         <rect key="frame" x="0.0" y="292" width="320" height="44"/>
@@ -103,6 +109,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="E99-Xn-QvY" kind="custom" customClass="SWRevealViewControllerSegue" id="GMv-M7-5EW"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell8" id="GSi-my-7vI">
                                         <rect key="frame" x="0.0" y="336" width="320" height="44"/>
@@ -127,6 +136,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Fre-PI-44v" kind="custom" customClass="SWRevealViewControllerSegue" id="MjG-Zj-b14"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -258,6 +270,34 @@
             </objects>
             <point key="canvasLocation" x="1017" y="857"/>
         </scene>
+        <!--Connect With Us Controller-->
+        <scene sceneID="mSW-gS-b1U">
+            <objects>
+                <viewController storyboardIdentifier="ConnectWithUsController" id="Bk2-t5-Ea8" customClass="ConnectWithUsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6hV-wJ-pTi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJv-I6-16v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="857"/>
+        </scene>
+        <!--You Liked Controller-->
+        <scene sceneID="Ske-pr-hr6">
+            <objects>
+                <viewController storyboardIdentifier="YouLikedController" id="E99-Xn-QvY" customClass="YouLikedController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cIc-Cd-Zso">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mzm-sI-kKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="857"/>
+        </scene>
         <!--Settings Controller-->
         <scene sceneID="cff-2y-M8g">
             <objects>
@@ -271,6 +311,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEs-GW-7pu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1017" y="1492"/>
+        </scene>
+        <!--List Messeges Controller-->
+        <scene sceneID="4W7-yg-Cju">
+            <objects>
+                <viewController storyboardIdentifier="ListMessegesController" id="I9K-2Y-iVN" customClass="ListMessegesController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BqL-cd-bob">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9B-kc-ctK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="1492"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhP-xK-geB">
@@ -291,4 +345,7 @@
             <point key="canvasLocation" x="571" y="735"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MjG-Zj-b14"/>
+    </inferredMetricsTieBreakers>
 </document>

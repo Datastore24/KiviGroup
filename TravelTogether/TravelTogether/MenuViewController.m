@@ -106,8 +106,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
 }
 
 //Высота ячеки меню-------------------------------------

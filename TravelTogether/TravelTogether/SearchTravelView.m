@@ -139,6 +139,19 @@
             inputTextButton.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
             inputTextButton.frame = CGRectMake(13.5f + 10.f, 88.5f + 46.f * i, 140.5f - 10.f, 18.f);
             
+            if (i == 0) {
+                inputTextButton.alpha = 0.f;
+                groudView.alpha = 0.f;
+                borderView.alpha = 0.f;
+                InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self andRect:CGRectMake(13.5f, 88.5f, 140.5 - 10.f, 18.f) andImage:nil andTextPlaceHolder:@"PTX 5467" colorBorder:VM_COLOR_PINK];
+                inputText.layer.borderWidth = 1.f;
+                inputText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
+                inputText.layer.cornerRadius = 9.f;
+                inputText.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY];
+                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
+                [self addSubview:inputText];
+            }
+            
             
             
             if (i > 1 && i < 4) {

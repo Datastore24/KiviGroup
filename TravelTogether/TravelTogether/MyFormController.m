@@ -8,8 +8,10 @@
 
 #import "MyFormController.h"
 #import "MyFormView.h"
+#import "ListMessegesController.h"
+#import "YouLikedController.h"
 
-@interface MyFormController ()
+@interface MyFormController () <MyFormViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -28,6 +30,7 @@
 #pragma mark - View
     
     MyFormView * mainView = [[MyFormView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
 }
@@ -60,6 +63,18 @@
                                 @"5", @"countMessage", arrayImege, @"arrayImage", nil];
     [mainArray addObject:dictImage];
     return mainArray;
+}
+
+#pragma mark - MyFormViewDelegate
+
+- (void) pushToMessegerController:(MyFormView *)myFormView {
+    ListMessegesController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ListMessegesController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToLikedController:(MyFormView *)myFormView {
+    YouLikedController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YouLikedController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 

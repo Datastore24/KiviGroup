@@ -67,9 +67,7 @@
         
         //Social NetWork
         [self addSubview:[self createViewSocialNetWork]];
-        
-        
-        
+
     }
     return self;
 }
@@ -88,6 +86,7 @@
     
     UIButton * buttonLike = [UIButton createButtonWithImage:@"likeButtonImage.png" anfFrame:CGRectMake(70.f, 140.f, 33.f, 33.f)];
     buttonLike.alpha = 0.7f;
+    [buttonLike addTarget:self action:@selector(buttonLikeAction) forControlEvents:UIControlEventTouchUpInside];
     [viewAva addSubview:buttonLike];
     
     CustomLabels * labelbuttonLike = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
@@ -97,6 +96,7 @@
     
     UIButton * buttonMessege = [UIButton createButtonWithImage:@"messageButtonImage.png" anfFrame:CGRectMake(self.frame.size.width - 103.f, 140.f, 33.f, 33.f)];
     buttonMessege.alpha = 0.7f;
+    [buttonMessege addTarget:self action:@selector(buttonMessegeAction) forControlEvents:UIControlEventTouchUpInside];
     [viewAva addSubview:buttonMessege];
     
     CustomLabels * labelbuttonMessege = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
@@ -161,6 +161,7 @@
         buttonCommunication.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
         buttonCommunication.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         buttonCommunication.tag = 20 + i;
+        [buttonCommunication addTarget:self action:@selector(buttonCommunicationAction:) forControlEvents:UIControlEventTouchUpInside];
         [viewCommunication addSubview:buttonCommunication];
         
         UIImageView * imageArrow = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 27.5f, 12.f + 22.f * i, 6.f, 12.f)];
@@ -218,20 +219,18 @@
         centr.y += 28.f;
         labelNetWork.center = centr;
         [netWorkView addSubview:labelNetWork];
- 
     }
-    
-    
-    
-    
     return netWorkView;
 }
 
-
-
-
-
 #pragma mark - Actions
+
+- (void) buttonCommunicationAction: (UIButton*) button {
+        if (button.tag == 20) {
+            [self.delegate pushTuConnectWithUs:self];
+        }
+}
+
 
 //Дейсвия свичей в настройках
 - (void) swithElementsAction: (MBSwitch*) mbSwitch {
@@ -246,6 +245,16 @@
             }
         }
     }
+}
+
+
+//Действие кнопки мои сообщения
+- (void) buttonMessegeAction {
+    [self.delegate pushToMessegerController:self];
+}
+//Действие кнопки мои симпатии
+- (void) buttonLikeAction {
+    [self.delegate pushToLikedController:self];
 }
 
 @end
