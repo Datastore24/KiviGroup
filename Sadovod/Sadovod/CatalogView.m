@@ -14,6 +14,7 @@
 #import "UIImage+Resize.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "CheckDataServer.h"
+#import "SingleTone.h"
 
 
 @interface CatalogView () <UIScrollViewDelegate>
@@ -49,6 +50,7 @@
         self.arrayData = data;
         self.arrayName = arrayName;
         self.numberButton = 0;
+        
         
         //Лого
         UIButton * buttonCategory = [UIButton buttonWithType:UIButtonTypeSystem];

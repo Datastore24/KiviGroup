@@ -10,8 +10,10 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "SingleTone.h"
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -26,14 +28,12 @@
     [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
-    
-    
-    
+
+
+
     
     return YES;
 }
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

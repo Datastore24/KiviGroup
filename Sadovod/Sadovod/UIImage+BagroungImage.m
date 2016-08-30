@@ -1,17 +1,17 @@
 //
-//  UIImage+Color.m
-//  UIButton+BackgroundColor
+//  UIImage+BagroungImage.m
+//  Sadovod
 //
-//  Created by Luu Gia Thuy on 7/28/15.
-//
+//  Created by Виктор Мишустин on 30/08/16.
+//  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 
-#import "UIImage+Color.h"
+#import "UIImage+BagroungImage.h"
 
-@implementation UIImage (Color)
+@implementation UIImage (BagroungImage)
 
 + (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 60.0f, 60.0f);
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
