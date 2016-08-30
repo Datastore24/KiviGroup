@@ -14,7 +14,6 @@
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
-		AD89D1D41D68E99E007771B6 /* x_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD89D1D31D68E99E007771B6 /* x_1.png */; };
 		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
 		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
 		FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */; };
@@ -384,6 +383,9 @@
 		FFC4FD811D677DED007C2DDC /* buttonCollumImageOneNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */; };
 		FFC4FD821D677DED007C2DDC /* buttonCollumImageOneYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */; };
 		FFC4FD841D677F07007C2DDC /* imageButtonFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */; };
+		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
+		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
+		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
 		FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8733C1D6AEC6C00816FC1 /* OrderController.m */; };
 		FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873421D6B2BF900816FC1 /* OrderView.m */; };
 		FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873461D6B3A1900816FC1 /* StyledPageControl.m */; };
@@ -420,7 +422,6 @@
 		AD89D1C81D678DAB007771B6 /* APIGetClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGetClass.m; sourceTree = "<group>"; };
 		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
-		AD89D1D31D68E99E007771B6 /* x_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_1.png; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
 		FF997F6C1D6EDE890037684A /* OrderFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersController.h; sourceTree = "<group>"; };
 		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
@@ -839,6 +840,10 @@
 		FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneNO.png; sourceTree = "<group>"; };
 		FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneYES.png; sourceTree = "<group>"; };
 		FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFilter.png; sourceTree = "<group>"; };
+		FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BagroungImage.h"; sourceTree = "<group>"; };
+		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
+		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
+		FFE10F381D759BF300532346 /* imageForButtonMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageForButtonMax.png; sourceTree = "<group>"; };
 		FFF8733B1D6AEC6C00816FC1 /* OrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderController.h; sourceTree = "<group>"; };
 		FFF8733C1D6AEC6C00816FC1 /* OrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderController.m; sourceTree = "<group>"; };
 		FFF873411D6B2BF900816FC1 /* OrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderView.h; sourceTree = "<group>"; };
@@ -1021,7 +1026,6 @@
 				FFAE33111D65A3CE00E81AED /* Macros.h */,
 				FFAE33121D65A3CE00E81AED /* SingleTone.h */,
 				FFAE33131D65A3CE00E81AED /* SingleTone.m */,
-				AD89D1D31D68E99E007771B6 /* x_1.png */,
 				AD89D1D01D68E363007771B6 /* CheckDataServer.h */,
 				AD89D1D11D68E363007771B6 /* CheckDataServer.m */,
 				FFAE2DF51D65A05D00E81AED /* main.m */,
@@ -1582,6 +1586,8 @@
 				FFA8ABB71D704A44004010F9 /* UIImage+Extra.m */,
 				FFA8ABBB1D705F54004010F9 /* ColorButton.h */,
 				FFA8ABBC1D705F54004010F9 /* ColorButton.m */,
+				FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */,
+				FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1600,6 +1606,7 @@
 		FFAE32F21D65A37100E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F331D75995B00532346 /* BuyViewImages */,
 				FFA8ABB11D6F1554004010F9 /* OrderFilters */,
 				FFC4FD741D676FDF007C2DDC /* ImagesCatalogDetail */,
 				FFC4FD051D65AE2F007C2DDC /* ImagesCatalog */,
@@ -1703,6 +1710,15 @@
 				FFC4FD751D676FEF007C2DDC /* imageArrowDown.png */,
 			);
 			name = ImagesCatalogDetail;
+			sourceTree = "<group>";
+		};
+		FFE10F331D75995B00532346 /* BuyViewImages */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F381D759BF300532346 /* imageForButtonMax.png */,
+				FFE10F341D75996900532346 /* confirmButtonCount.png */,
+			);
+			name = BuyViewImages;
 			sourceTree = "<group>";
 		};
 		FFF8733A1D6AEC4D00816FC1 /* Order */ = {
@@ -1871,7 +1887,6 @@
 				FFAE327E1D65A28900E81AED /* Activity11@2x.png in Resources */,
 				FFAE32191D65A28900E81AED /* Activity29@2x.png in Resources */,
 				FFA8ABB31D6F155E004010F9 /* imageCross.png in Resources */,
-				AD89D1D41D68E99E007771B6 /* x_1.png in Resources */,
 				FFAE31F11D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE32851D65A28900E81AED /* Activity3@2x.png in Resources */,
 				FFAE320F1D65A28900E81AED /* Activity1@2x.png in Resources */,
@@ -2011,6 +2026,7 @@
 				FFAE31E31D65A28900E81AED /* Activity20@2x.png in Resources */,
 				FFAE31CF1D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE31F31D65A28900E81AED /* Activity7@2x.png in Resources */,
+				FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */,
 				FFAE31BD1D65A28900E81AED /* Activity27@2x.png in Resources */,
 				FFAE324B1D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE323E1D65A28900E81AED /* Activity21@2x.png in Resources */,
@@ -2070,6 +2086,7 @@
 				FFAE31B21D65A28900E81AED /* Activity17@2x.png in Resources */,
 				FFAE31A11D65A28900E81AED /* Activity15@2x.png in Resources */,
 				FFAE32661D65A28900E81AED /* Activity17@2x.png in Resources */,
+				FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */,
 				FFAE328E1D65A28900E81AED /* Activity12@2x.png in Resources */,
 				FFAE320C1D65A28900E81AED /* Activity17@2x.png in Resources */,
 				FFAE32951D65A28900E81AED /* Activity19@2x.png in Resources */,
@@ -2263,6 +2280,7 @@
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
 				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
+				FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */,
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
 				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,

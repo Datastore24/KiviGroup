@@ -14,10 +14,13 @@
 
 @property (strong, nonatomic) UIButton * buttonBarCode;
 
+@property (strong, nonatomic) UIView * mainViewOrder;
+
 
 -(void) initializeCartBarButton; //Инициализация контроллера с кнопками навигации
 
 - (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool andButtonBasket: (BOOL) barBasket; //Установга загаловка в контроллер
+
 
 
 @end

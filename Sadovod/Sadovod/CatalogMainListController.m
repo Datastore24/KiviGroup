@@ -12,6 +12,7 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 
+
 @interface CatalogMainListController () <CatalogMainListViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayCatalog;
@@ -49,7 +50,7 @@
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
     }];
-    
+
     
 }
 
