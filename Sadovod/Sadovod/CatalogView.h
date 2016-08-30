@@ -10,6 +10,7 @@
 
 @protocol CatalogViewDelegate;
 
+
 @interface CatalogView : UIView
 
 - (instancetype)initWithView: (UIView*) view
@@ -30,6 +31,8 @@
 - (void) getCatalog: (CatalogView*) catalogView;
 - (void) getApiTabProducts:(NSString *) cat andPage: (NSString *) page
                   andBlock:(void (^)(void))block;
+
+- (void) pushToBuyView: (CatalogView*) catalogView;
 
 
 @end

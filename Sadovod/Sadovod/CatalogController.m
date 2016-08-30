@@ -11,11 +11,11 @@
 #import "CatalogMainListController.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "OrderController.h"
 
 #import "Auth.h"
 #import "AuthDbClass.h"
 #import "APIGetClass.h"
-#import "SingleTone.h"
 
 
 @interface CatalogController () <CatalogViewDelegate>
@@ -59,6 +59,11 @@
 
 - (void) getCatalog: (CatalogView*) catalogView {
     CatalogMainListController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogMainListController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) pushToBuyView: (CatalogView*) catalogView {
+    OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 
