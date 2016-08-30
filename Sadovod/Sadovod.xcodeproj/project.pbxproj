@@ -386,6 +386,8 @@
 		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
 		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
 		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
+		FFE10F3D1D75BF0C00532346 /* BasketController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F3C1D75BF0C00532346 /* BasketController.m */; };
+		FFE10F401D75BF6F00532346 /* BasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F3F1D75BF6F00532346 /* BasketView.m */; };
 		FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8733C1D6AEC6C00816FC1 /* OrderController.m */; };
 		FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873421D6B2BF900816FC1 /* OrderView.m */; };
 		FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873461D6B3A1900816FC1 /* StyledPageControl.m */; };
@@ -844,6 +846,10 @@
 		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
 		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
 		FFE10F381D759BF300532346 /* imageForButtonMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageForButtonMax.png; sourceTree = "<group>"; };
+		FFE10F3B1D75BF0C00532346 /* BasketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketController.h; sourceTree = "<group>"; };
+		FFE10F3C1D75BF0C00532346 /* BasketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketController.m; sourceTree = "<group>"; };
+		FFE10F3E1D75BF6F00532346 /* BasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketView.h; sourceTree = "<group>"; };
+		FFE10F3F1D75BF6F00532346 /* BasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketView.m; sourceTree = "<group>"; };
 		FFF8733B1D6AEC6C00816FC1 /* OrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderController.h; sourceTree = "<group>"; };
 		FFF8733C1D6AEC6C00816FC1 /* OrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderController.m; sourceTree = "<group>"; };
 		FFF873411D6B2BF900816FC1 /* OrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderView.h; sourceTree = "<group>"; };
@@ -987,6 +993,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F3A1D75BEF400532346 /* Basket */,
 				FFA8ABBE1D70835C004010F9 /* BuyView */,
 				FF997F6B1D6EDE6A0037684A /* OrderFilters */,
 				FFF8733A1D6AEC4D00816FC1 /* Order */,
@@ -1721,6 +1728,17 @@
 			name = BuyViewImages;
 			sourceTree = "<group>";
 		};
+		FFE10F3A1D75BEF400532346 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				FFE10F3B1D75BF0C00532346 /* BasketController.h */,
+				FFE10F3C1D75BF0C00532346 /* BasketController.m */,
+				FFE10F3E1D75BF6F00532346 /* BasketView.h */,
+				FFE10F3F1D75BF6F00532346 /* BasketView.m */,
+			);
+			name = Basket;
+			sourceTree = "<group>";
+		};
 		FFF8733A1D6AEC4D00816FC1 /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -2266,6 +2284,7 @@
 				FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */,
 				FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */,
 				FFAE32E81D65A31A00E81AED /* HexColors.m in Sources */,
+				FFE10F3D1D75BF0C00532346 /* BasketController.m in Sources */,
 				FFAE32AD1D65A2B700E81AED /* Animation.m in Sources */,
 				FFAE32E51D65A31A00E81AED /* UIImage+Resize.m in Sources */,
 				FFAE32E91D65A31A00E81AED /* UILabel+TitleCategory.m in Sources */,
@@ -2294,6 +2313,7 @@
 				FFAE33141D65A3CE00E81AED /* SingleTone.m in Sources */,
 				FFAE2DF61D65A05D00E81AED /* main.m in Sources */,
 				FFAE2E351D65A10300E81AED /* TableMenuCell.m in Sources */,
+				FFE10F401D75BF6F00532346 /* BasketView.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,

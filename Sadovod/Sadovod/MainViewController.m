@@ -26,11 +26,11 @@
     [self setStatusBarBackgroundColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_900]];
     
 
-    self.mainViewOrder = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
-    self.mainViewOrder.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.3];
-    self.mainViewOrder.alpha = 0.f;
-    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
-    [mainWindow addSubview: self.mainViewOrder];
+//    self.mainViewOrder = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
+//    self.mainViewOrder.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.3];
+//    self.mainViewOrder.alpha = 0.f;
+//    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
+//    [mainWindow addSubview: self.mainViewOrder];
     
 }
 
