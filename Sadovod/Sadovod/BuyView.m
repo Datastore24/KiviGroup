@@ -8,6 +8,20 @@
 
 #import "BuyView.h"
 
+@interface BuyView ()
+
+@end
+
 @implementation BuyView
+
+- (instancetype)initWithView: (UIView*) view
+                     andData: (NSArray*) data
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+    }
+    return self;
+}
 
 @end

@@ -15,6 +15,7 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "CheckDataServer.h"
 
+
 @interface CatalogView () <UIScrollViewDelegate>
 //MainView
 @property (strong, nonatomic) UIScrollView * catalogScroll;
@@ -143,6 +144,7 @@
                                                                  0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                                  self.frame.size.width / 2.f - 1.5f,
                                                                  self.frame.size.width / 2.f - 1.5f );
+                                [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                
                                 UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
                                 
@@ -178,6 +180,17 @@
                                                             
                                                             [buttonProduct addSubview:imageView];
                                                             
+                                                            [scrollProduct addSubview:buttonProduct];
+                                                            
+                                                            UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
+                                                                                                                             buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
+                                                            labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
+                                                            labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
+                                                            labelPrice.textColor = [UIColor whiteColor];
+                                                            labelPrice.textAlignment = NSTextAlignmentCenter;
+                                                            labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                                            [buttonProduct addSubview:labelPrice];
+                                                            
                                                         }else{
                                                             
                                                         }
@@ -185,16 +198,7 @@
                                 
                                 
     
-                                [scrollProduct addSubview:buttonProduct];
-                
-                                UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
-                                                                                                 buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
-                                labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
-                                labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
-                                labelPrice.textColor = [UIColor whiteColor];
-                                labelPrice.textAlignment = NSTextAlignmentCenter;
-                                labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                                [buttonProduct addSubview:labelPrice];
+
                                 
                                 
                                 //Расчет таблицы---------------
@@ -239,6 +243,10 @@
 
 - (void) buttonCategoryAction {
     [self.delegate getCatalog:self];
+}
+
+- (void) buttonProductAction: (UIButton*) button {
+    [self.delegate pushToBuyView:self];
 }
 
 
@@ -295,6 +303,7 @@
                                                      0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                      self.frame.size.width / 2.f - 1.5f,
                                                      self.frame.size.width / 2.f - 1.5f );
+                    [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                     
                     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
                     
@@ -324,29 +333,25 @@
                                                 imageView.clipsToBounds =YES;
                                                 
                                                 
-                                                
-                                                
                                                 imageView.image = image;
                                                 
                                                 [buttonProduct addSubview:imageView];
+                                                
+                                                [scrollProduct addSubview:buttonProduct];
+                                                
+                                                UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
+                                                                                                                 buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
+                                                labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
+                                                labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
+                                                labelPrice.textColor = [UIColor whiteColor];
+                                                labelPrice.textAlignment = NSTextAlignmentCenter;
+                                                labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                                [buttonProduct addSubview:labelPrice];
                                                 
                                             }else{
                                                 
                                             }
                                         }];
-                    
-                    
-                    
-                    [scrollProduct addSubview:buttonProduct];
-                    
-                    UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
-                                                                                     buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
-                    labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
-                    labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
-                    labelPrice.textColor = [UIColor whiteColor];
-                    labelPrice.textAlignment = NSTextAlignmentCenter;
-                    labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                    [buttonProduct addSubview:labelPrice];
                     
                     
                     //Расчет таблицы---------------
