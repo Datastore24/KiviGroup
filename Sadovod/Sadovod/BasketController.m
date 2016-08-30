@@ -9,6 +9,7 @@
 #import "BasketController.h"
 #import "Macros.h"
 #import "HexColors.h"
+#import "BasketView.h"
 
 @interface BasketController ()
 
@@ -29,20 +30,33 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     self.arrayData = [self setCustonArray];
     
+#pragma mark - View
+    
+    BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:self.arrayData];
+    [self.view addSubview:mainView];
+
+    
     
 }
 
 - (NSMutableArray*) setCustonArray
 {
     NSMutableArray * arrayDetails = [[NSMutableArray alloc] init];
-    NSArray * arraySizes = [NSArray arrayWithObjects:
-                            @"36", @"37", @"38", @"39", @"40", @"41", nil];
-    NSArray * arrayOrderCount = [NSArray arrayWithObjects:@"1", @"0", @"0", @"0", @"1", @"0", nil];
+    NSArray * arrayName = [NSArray arrayWithObjects: @"Кеды", @"Свитер", @"Штаны", @"Рубашка", nil];
+    NSArray * arraySize = [NSArray arrayWithObjects:@"37", @"40", @"35", @"39", nil];
+    NSArray * arrayCount = [NSArray arrayWithObjects:@"1", @"2", @"1", @"1", nil];
+    NSArray * arrayPrice = [NSArray arrayWithObjects:@"453", @"347", @"275", @"393", nil];
+    NSArray * arrayImage = [NSArray arrayWithObjects:@"basketImage4.png", @"basketImage1.png", @"basketImage2.png", @"busketImage3.png", nil];
     
-    for (int i = 0; i < arraySizes.count; i++) {
+    
+    
+    for (int i = 0; i < arrayName.count; i++) {
         NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [arraySizes objectAtIndex:i], @"size",
-                               [arrayOrderCount objectAtIndex:i], @"count", nil];
+                               [arrayName objectAtIndex:i], @"name",
+                               [arraySize objectAtIndex:i], @"size",
+                               [arrayCount objectAtIndex:i], @"count",
+                               [arrayPrice objectAtIndex:i], @"price",
+                               [arrayImage objectAtIndex:i], @"image", nil];
         [arrayDetails addObject:dict];
     }
     
