@@ -27,12 +27,10 @@
     [self setCustomTitle:@"ЛОГИН"]; //Ввод заголовка
     [self.navigationController setNavigationBarHidden:YES];
     
-    NSArray * arrayNames = [NSArray arrayWithObjects:@"Имя", @"Email", @"Город", nil];
-    NSArray * arrayImages = [NSArray arrayWithObjects:@"nameLogin.png", @"emailLogin.png", @"mapLogin.png", nil];
-    NSArray * arrayImagesNetwork = [NSArray arrayWithObjects:@"imageSocNet1.png", @"imageSocNet2.png", @"imageSocNet3.png", @"imageSocNet4.png", nil];
-    self.arrayData = [NSArray arrayWithObjects:arrayNames, arrayImages, arrayImagesNetwork, nil];
+    NSArray * arrayImagesNetwork = [NSArray arrayWithObjects:@"VKImageForLogin.png", @"FBKImageForLogin.png", @"IGImageForLogin.png", @"OKImageForLogin.png", nil];
+    self.arrayData = [NSArray arrayWithObjects:arrayImagesNetwork, nil];
     
-    [UIView backgroundViewWithView:self.view andImageName:@"logoImage.png"]; //Загрузка беграунда
+    [UIView backgroundViewWithView:self.view andImageName:@"logoNew.png"]; //Загрузка беграунда
     LoginView * loginView = [[LoginView alloc] initMainViewMethodWithView:self.view andData:self.arrayData]; //Загрузка основного вью
     loginView.delegate = self;
     [self.view addSubview:loginView];

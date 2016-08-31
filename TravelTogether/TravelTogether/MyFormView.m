@@ -373,10 +373,10 @@
     
     for (int i = 0; i < self.arrayImages.count; i++) {
         UIButton * buttonPhoto = [UIButton createButtonWithImage:[self.arrayImages objectAtIndex:i]
-                                                        anfFrame:CGRectMake(0.f + (self.frame.size.width / 3) * column,
+                                                        anfFrame:CGRectMake(0.625f + (self.frame.size.width / 3) * column,
                                                                             0.f + (self.frame.size.width / 3) * line,
-                                                                            self.frame.size.width / 3,
-                                                                            self.frame.size.width / 3)];
+                                                                            self.frame.size.width / 3 - 1.25,
+                                                                            self.frame.size.width / 3 - 1.25)];
         buttonPhoto.tag = 60 + i;
         [buttonPhoto addTarget:self action:@selector(buttonPhotoAction:) forControlEvents:UIControlEventTouchUpInside];
         [scrollViewPhoto addSubview:buttonPhoto];

@@ -160,9 +160,9 @@
     UIButton * buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonAdd.frame = CGRectMake(buttonSearch.frame.origin.x + buttonSearch.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
     UIImage * imagebuttonAddNO = [UIImage imageNamed:@"inMyTravelImageNo.png"];
-    //    UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
+    UIImage * imageButtonAddYES = [UIImage imageNamed:@"inMyTravelNewImageYes.png"];
     [buttonAdd setImage:imagebuttonAddNO forState:UIControlStateNormal];
-    //    [buttonSearch setImage:imageButtonSearchYES forState:UIControlStateHighlighted];
+    [buttonAdd setImage:imageButtonAddYES forState:UIControlStateHighlighted];
     [cellTable addSubview:buttonAdd];
     
     
