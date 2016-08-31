@@ -325,13 +325,6 @@
 		FFAE2D0C1D5DF7AE00E81AED /* buyTicketNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CE41D5DF7AE00E81AED /* buyTicketNo.png */; };
 		FFAE2D0D1D5DF7AE00E81AED /* imageTravelStraightYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CE51D5DF7AE00E81AED /* imageTravelStraightYES.png */; };
 		FFAE2D0E1D5DF7AE00E81AED /* imageTravelStraightNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CE61D5DF7AE00E81AED /* imageTravelStraightNO.png */; };
-		FFAE2D0F1D5DF7AE00E81AED /* imageSocNet2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CE81D5DF7AE00E81AED /* imageSocNet2.png */; };
-		FFAE2D101D5DF7AE00E81AED /* imageSocNet3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CE91D5DF7AE00E81AED /* imageSocNet3.png */; };
-		FFAE2D111D5DF7AE00E81AED /* imageSocNet1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CEA1D5DF7AE00E81AED /* imageSocNet1.png */; };
-		FFAE2D121D5DF7AE00E81AED /* imageSocNet4.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CEB1D5DF7AE00E81AED /* imageSocNet4.png */; };
-		FFAE2D131D5DF7AE00E81AED /* mapLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CEC1D5DF7AE00E81AED /* mapLogin.png */; };
-		FFAE2D141D5DF7AE00E81AED /* emailLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CED1D5DF7AE00E81AED /* emailLogin.png */; };
-		FFAE2D151D5DF7AE00E81AED /* nameLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CEE1D5DF7AE00E81AED /* nameLogin.png */; };
 		FFAE2D161D5DF7AE00E81AED /* imageAva.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CF01D5DF7AE00E81AED /* imageAva.png */; };
 		FFAE2D171D5DF7AE00E81AED /* image8.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CF11D5DF7AE00E81AED /* image8.png */; };
 		FFAE2D181D5DF7AE00E81AED /* image6.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAE2CF21D5DF7AE00E81AED /* image6.png */; };
@@ -374,8 +367,6 @@
 		FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F7F1D5117970043ED9D /* CustomLabels.m */; };
 		FFBB8F871D5139030043ED9D /* MyTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F861D5139030043ED9D /* MyTravelView.m */; };
 		FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBB8F891D51398A0043ED9D /* MyTravelController.m */; };
-		FFC4FD881D6858A2007C2DDC /* imageAddOnMyTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */; };
-		FFC4FD8B1D6859B9007C2DDC /* imageBuyTicket.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */; };
 		FFC4FD921D686400007C2DDC /* imagePhoto2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */; };
 		FFC4FD931D686400007C2DDC /* imagePhoto3.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8D1D686400007C2DDC /* imagePhoto3.png */; };
 		FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD8E1D686400007C2DDC /* imagePhoto5.png */; };
@@ -412,6 +403,16 @@
 		FFE10F2D1D74514400532346 /* likeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F261D74514400532346 /* likeImage2.png */; };
 		FFE10F2E1D74514400532346 /* likeImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F271D74514400532346 /* likeImage1.png */; };
 		FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F281D74514400532346 /* likeBigImage1.png */; };
+		FFE10F5C1D76C72F00532346 /* buttonBuyTicketNONew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */; };
+		FFE10F5D1D76C72F00532346 /* ButtonAddToMyTravelNONew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */; };
+		FFE10F5E1D76C72F00532346 /* buttonBuyTicketYESNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */; };
+		FFE10F5F1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */; };
+		FFE10F611D76CA3C00532346 /* inMyTravelNewImageYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */; };
+		FFE10F631D76CD3400532346 /* logoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F621D76CD3400532346 /* logoNew.png */; };
+		FFE10F681D76D04100532346 /* OKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F641D76D04100532346 /* OKImageForLogin.png */; };
+		FFE10F691D76D04100532346 /* IGImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F651D76D04100532346 /* IGImageForLogin.png */; };
+		FFE10F6A1D76D04100532346 /* VKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F661D76D04100532346 /* VKImageForLogin.png */; };
+		FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F671D76D04100532346 /* FBKImageForLogin.png */; };
 		FFF8734A1D6C38D600816FC1 /* MessegerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873491D6C38D600816FC1 /* MessegerView.m */; };
 		FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */; };
 		FFF873501D6C3FA600816FC1 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734E1D6C3FA600816FC1 /* CustomTextView.m */; };
@@ -778,13 +779,6 @@
 		FFAE2CE41D5DF7AE00E81AED /* buyTicketNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyTicketNo.png; sourceTree = "<group>"; };
 		FFAE2CE51D5DF7AE00E81AED /* imageTravelStraightYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageTravelStraightYES.png; sourceTree = "<group>"; };
 		FFAE2CE61D5DF7AE00E81AED /* imageTravelStraightNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageTravelStraightNO.png; sourceTree = "<group>"; };
-		FFAE2CE81D5DF7AE00E81AED /* imageSocNet2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSocNet2.png; sourceTree = "<group>"; };
-		FFAE2CE91D5DF7AE00E81AED /* imageSocNet3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSocNet3.png; sourceTree = "<group>"; };
-		FFAE2CEA1D5DF7AE00E81AED /* imageSocNet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSocNet1.png; sourceTree = "<group>"; };
-		FFAE2CEB1D5DF7AE00E81AED /* imageSocNet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageSocNet4.png; sourceTree = "<group>"; };
-		FFAE2CEC1D5DF7AE00E81AED /* mapLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapLogin.png; sourceTree = "<group>"; };
-		FFAE2CED1D5DF7AE00E81AED /* emailLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailLogin.png; sourceTree = "<group>"; };
-		FFAE2CEE1D5DF7AE00E81AED /* nameLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nameLogin.png; sourceTree = "<group>"; };
 		FFAE2CF01D5DF7AE00E81AED /* imageAva.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageAva.png; sourceTree = "<group>"; };
 		FFAE2CF11D5DF7AE00E81AED /* image8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image8.png; sourceTree = "<group>"; };
 		FFAE2CF21D5DF7AE00E81AED /* image6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image6.png; sourceTree = "<group>"; };
@@ -858,8 +852,6 @@
 		FFBB8F861D5139030043ED9D /* MyTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTravelView.m; sourceTree = "<group>"; };
 		FFBB8F881D51398A0043ED9D /* MyTravelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTravelController.h; sourceTree = "<group>"; };
 		FFBB8F891D51398A0043ED9D /* MyTravelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTravelController.m; sourceTree = "<group>"; };
-		FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageAddOnMyTravel.png; sourceTree = "<group>"; };
-		FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageBuyTicket.png; sourceTree = "<group>"; };
 		FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto2.png; sourceTree = "<group>"; };
 		FFC4FD8D1D686400007C2DDC /* imagePhoto3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto3.png; sourceTree = "<group>"; };
 		FFC4FD8E1D686400007C2DDC /* imagePhoto5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhoto5.png; sourceTree = "<group>"; };
@@ -907,6 +899,16 @@
 		FFE10F261D74514400532346 /* likeImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage2.png; sourceTree = "<group>"; };
 		FFE10F271D74514400532346 /* likeImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage1.png; sourceTree = "<group>"; };
 		FFE10F281D74514400532346 /* likeBigImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeBigImage1.png; sourceTree = "<group>"; };
+		FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyTicketNONew.png; sourceTree = "<group>"; };
+		FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAddToMyTravelNONew.png; sourceTree = "<group>"; };
+		FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyTicketYESNew.png; sourceTree = "<group>"; };
+		FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAddToMyTravelYESNew.png; sourceTree = "<group>"; };
+		FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inMyTravelNewImageYes.png; sourceTree = "<group>"; };
+		FFE10F621D76CD3400532346 /* logoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoNew.png; sourceTree = "<group>"; };
+		FFE10F641D76D04100532346 /* OKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OKImageForLogin.png; sourceTree = "<group>"; };
+		FFE10F651D76D04100532346 /* IGImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IGImageForLogin.png; sourceTree = "<group>"; };
+		FFE10F661D76D04100532346 /* VKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKImageForLogin.png; sourceTree = "<group>"; };
+		FFE10F671D76D04100532346 /* FBKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FBKImageForLogin.png; sourceTree = "<group>"; };
 		FFF873481D6C38D600816FC1 /* MessegerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerView.h; sourceTree = "<group>"; };
 		FFF873491D6C38D600816FC1 /* MessegerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerView.m; sourceTree = "<group>"; };
 		FFF8734B1D6C3FA600816FC1 /* InputTextToView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextToView.h; sourceTree = "<group>"; };
@@ -1478,6 +1480,7 @@
 		FFAE2CE01D5DF7AE00E81AED /* SearchImages */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */,
 				FFAE2CD61D5DF7AE00E81AED /* buyTicetSmallImageYes.png */,
 				FFAE2CD71D5DF7AE00E81AED /* inMyTravelImageNo.png */,
 				FFAE2CD81D5DF7AE00E81AED /* searchFreandsImageYes.png */,
@@ -1508,14 +1511,12 @@
 		FFAE2CEF1D5DF7AE00E81AED /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FFE10F621D76CD3400532346 /* logoNew.png */,
 				FFAE2CD51D5DF7AE00E81AED /* logoImage.png */,
-				FFAE2CE81D5DF7AE00E81AED /* imageSocNet2.png */,
-				FFAE2CE91D5DF7AE00E81AED /* imageSocNet3.png */,
-				FFAE2CEA1D5DF7AE00E81AED /* imageSocNet1.png */,
-				FFAE2CEB1D5DF7AE00E81AED /* imageSocNet4.png */,
-				FFAE2CEC1D5DF7AE00E81AED /* mapLogin.png */,
-				FFAE2CED1D5DF7AE00E81AED /* emailLogin.png */,
-				FFAE2CEE1D5DF7AE00E81AED /* nameLogin.png */,
+				FFE10F641D76D04100532346 /* OKImageForLogin.png */,
+				FFE10F651D76D04100532346 /* IGImageForLogin.png */,
+				FFE10F661D76D04100532346 /* VKImageForLogin.png */,
+				FFE10F671D76D04100532346 /* FBKImageForLogin.png */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1772,8 +1773,10 @@
 				FFC4FD8F1D686400007C2DDC /* imagePhoto6.png */,
 				FFC4FD901D686400007C2DDC /* imagePhoto1.png */,
 				FFC4FD911D686400007C2DDC /* imagePhoto4.png */,
-				FFC4FD8A1D6859B9007C2DDC /* imageBuyTicket.png */,
-				FFC4FD861D6858A2007C2DDC /* imageAddOnMyTravel.png */,
+				FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */,
+				FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */,
+				FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */,
+				FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */,
 			);
 			name = TravelImage;
 			sourceTree = "<group>";
@@ -2035,7 +2038,6 @@
 				FFAE27E61D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE28611D57731500E81AED /* Activity6@2x.png in Resources */,
 				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
-				FFAE2D131D5DF7AE00E81AED /* mapLogin.png in Resources */,
 				FFAE28C71D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE28CC1D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFAE28091D57731500E81AED /* Activity8@2x.png in Resources */,
@@ -2045,19 +2047,19 @@
 				FFAE280B1D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFBB8F351D50BE9E0043ED9D /* pfagoraslabpro-bold.ttf in Resources */,
 				FFAE28B21D57731500E81AED /* Activity12@2x.png in Resources */,
+				FFE10F5C1D76C72F00532346 /* buttonBuyTicketNONew.png in Resources */,
 				FFAE27EB1D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */,
 				FFAE28491D57731500E81AED /* Activity26@2x.png in Resources */,
 				FF997F591D6E18B00037684A /* photo1.png in Resources */,
 				FFAE28241D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE286E1D57731500E81AED /* Activity19@2x.png in Resources */,
+				FFE10F631D76CD3400532346 /* logoNew.png in Resources */,
 				FFC4FD961D686400007C2DDC /* imagePhoto1.png in Resources */,
 				FFAE28341D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFE10F031D742D3B00532346 /* icon_instagram.png in Resources */,
 				FFAE27EE1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE27FC1D57731500E81AED /* Activity10@2x.png in Resources */,
-				FFC4FD8B1D6859B9007C2DDC /* imageBuyTicket.png in Resources */,
-				FFAE2D151D5DF7AE00E81AED /* nameLogin.png in Resources */,
 				FFBB8F361D50BE9E0043ED9D /* pfagoraslabpro-reg.ttf in Resources */,
 				FFAE28811D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFC4FDA51D689D91007C2DDC /* humanDetailAvaImage.png in Resources */,
@@ -2080,7 +2082,6 @@
 				FFAE284F1D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE2D0C1D5DF7AE00E81AED /* buyTicketNo.png in Resources */,
 				FFAE27DB1D57731500E81AED /* Activity7@2x.png in Resources */,
-				FFAE2D101D5DF7AE00E81AED /* imageSocNet3.png in Resources */,
 				FFAE28BB1D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE28061D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE27F91D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2107,7 +2108,6 @@
 				FFAE28001D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE288A1D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFAE285E1D57731500E81AED /* Activity3@2x.png in Resources */,
-				FFAE2D111D5DF7AE00E81AED /* imageSocNet1.png in Resources */,
 				FFAE28681D57731500E81AED /* Activity13@2x.png in Resources */,
 				FFAE28901D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFAE27E11D57731500E81AED /* Activity13@2x.png in Resources */,
@@ -2116,7 +2116,6 @@
 				FFAE288B1D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE283C1D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE282F1D57731500E81AED /* Activity1@2x.png in Resources */,
-				FFAE2D121D5DF7AE00E81AED /* imageSocNet4.png in Resources */,
 				FFAE28991D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFAE28B51D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D061D5DF7AE00E81AED /* sexManNo.png in Resources */,
@@ -2125,6 +2124,7 @@
 				FFAE28151D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28441D57731500E81AED /* Activity21@2x.png in Resources */,
 				FFAE280E1D57731500E81AED /* Activity13@2x.png in Resources */,
+				FFE10F6A1D76D04100532346 /* VKImageForLogin.png in Resources */,
 				FFAE28A11D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28211D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */,
@@ -2133,6 +2133,7 @@
 				FFAE28A71D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFAE2D1E1D5DF7AE00E81AED /* image1.png in Resources */,
 				FFAE28871D57731500E81AED /* Activity14@2x.png in Resources */,
+				FFE10F5D1D76C72F00532346 /* ButtonAddToMyTravelNONew.png in Resources */,
 				FFAE281C1D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE280F1D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE27D51D57731500E81AED /* Activity1@2x.png in Resources */,
@@ -2162,9 +2163,9 @@
 				FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */,
 				FFAE282A1D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28511D57731500E81AED /* Activity5@2x.png in Resources */,
+				FFE10F5F1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png in Resources */,
 				FFE10F191D744D6200532346 /* buttonMessegeYES.png in Resources */,
 				FFAE28921D57731500E81AED /* Activity10@2x.png in Resources */,
-				FFAE2D141D5DF7AE00E81AED /* emailLogin.png in Resources */,
 				FFAE28A81D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFAE28101D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D051D5DF7AE00E81AED /* sexFemaleNo.png in Resources */,
@@ -2213,6 +2214,7 @@
 				FFAE28AA1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28831D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE287B1D57731500E81AED /* Activity30@2x.png in Resources */,
+				FFE10F5E1D76C72F00532346 /* buttonBuyTicketYESNew.png in Resources */,
 				FFAE27F41D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFAE283F1D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFE10F2C1D74514400532346 /* likeImage4.png in Resources */,
@@ -2223,6 +2225,8 @@
 				FFAE27EC1D57731500E81AED /* Activity23@2x.png in Resources */,
 				FFF873561D6C640A00816FC1 /* imageAddMessage.png in Resources */,
 				FFAE287D1D57731500E81AED /* Activity4@2x.png in Resources */,
+				FFE10F611D76CA3C00532346 /* inMyTravelNewImageYes.png in Resources */,
+				FFE10F681D76D04100532346 /* OKImageForLogin.png in Resources */,
 				FFAE27D41D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFC4FD951D686400007C2DDC /* imagePhoto6.png in Resources */,
 				FFAE2CFD1D5DF7AE00E81AED /* buttonBackImage.png in Resources */,
@@ -2242,6 +2246,7 @@
 				FFAE27FE1D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFAE28541D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFAE28DA1D57731500E81AED /* Activity7@2x.png in Resources */,
+				FFE10F691D76D04100532346 /* IGImageForLogin.png in Resources */,
 				FFAE281D1D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE28371D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE284C1D57731500E81AED /* Activity29@2x.png in Resources */,
@@ -2250,7 +2255,6 @@
 				FFAE28C21D57731500E81AED /* Activity13@2x.png in Resources */,
 				FFAE28971D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D0A1D5DF7AE00E81AED /* searchImageYes.png in Resources */,
-				FFAE2D0F1D5DF7AE00E81AED /* imageSocNet2.png in Resources */,
 				FFAE28D71D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28891D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28391D57731500E81AED /* Activity11@2x.png in Resources */,
@@ -2261,7 +2265,6 @@
 				FFAE28771D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE284A1D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE27DF1D57731500E81AED /* Activity11@2x.png in Resources */,
-				FFC4FD881D6858A2007C2DDC /* imageAddOnMyTravel.png in Resources */,
 				FFAE2D1A1D5DF7AE00E81AED /* image7.png in Resources */,
 				FFAE28D11D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE2D091D5DF7AE00E81AED /* searchImageNo.png in Resources */,
@@ -2344,6 +2347,7 @@
 				FFAE28661D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE27F81D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE28411D57731500E81AED /* Activity19@2x.png in Resources */,
+				FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */,
 				FFAE288F1D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE28041D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFF8735D1D6C7FF800816FC1 /* tailRight.png in Resources */,

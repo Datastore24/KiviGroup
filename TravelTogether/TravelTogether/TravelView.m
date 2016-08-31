@@ -31,9 +31,11 @@
         
         self.arrayData = data;
         
-        UIButton * buttonBuyTicket = [UIButton createButtonWithImage:@"imageBuyTicket.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 138.5f, 15.f, 139.f, 21.25f)];
+        UIButton * buttonBuyTicket = [UIButton createButtonWithImage:@"buttonBuyTicketNONew.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 140.f, 15.f, 139.f, 21.25f)];
+        [buttonBuyTicket setImage:[UIImage imageNamed:@"buttonBuyTicketYESNew.png"] forState:UIControlStateHighlighted];
         [self addSubview:buttonBuyTicket];
-        UIButton * buttonAddOnMyTravel = [UIButton createButtonWithImage:@"imageAddOnMyTravel.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 0.5f, 15.f, 139.f, 21.25f)];
+        UIButton * buttonAddOnMyTravel = [UIButton createButtonWithImage:@"ButtonAddToMyTravelNONew.png" anfFrame:CGRectMake(self.frame.size.width / 2.f + 1.f, 15.f, 139.f, 21.25f)];
+        [buttonAddOnMyTravel setImage:[UIImage imageNamed:@"ButtonAddToMyTravelYESNew.png"] forState:UIControlStateHighlighted];
         [self addSubview:buttonAddOnMyTravel];
         
         self.tableTravel = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, self.frame.size.width, self.frame.size.height - 30.f)];
