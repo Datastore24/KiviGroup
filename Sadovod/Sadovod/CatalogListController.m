@@ -80,7 +80,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              self.catID,@"cat",
                              [[SingleTone sharedManager] catalogKey], @"token",
-                             @"ios",@"appname",nil];
+                             @"ios_sadovod",@"appname",nil];
     
     
     [api getDataFromServerWithParams:params method:@"get_tree_by_catalog" complitionBlock:^(id response) {
