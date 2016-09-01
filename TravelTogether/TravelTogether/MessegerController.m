@@ -60,6 +60,8 @@
                                  @"Отличная идея!",
                                  @"Отлично!", nil];
     
+    NSArray * arraySend = [NSArray arrayWithObjects:@"2", @"2", @"1", @"2", @"0", nil];
+    
     
     NSArray * arrayWho =  [NSArray arrayWithObjects:
                                    [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO],
@@ -80,6 +82,7 @@
                                      [arrayText objectAtIndex:i],      @"text",
                                      [arrayWho objectAtIndex:i],     @"who",
                                      [arrayDate objectAtIndex:i],  @"date",
+                                     [arraySend objectAtIndex:i], @"send",
                                      @"imageAvatarChat.png", @"imageName", nil];
         
         [temporaryArray addObject:dictOrder];

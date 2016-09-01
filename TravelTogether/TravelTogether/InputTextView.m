@@ -12,7 +12,6 @@
 @implementation InputTextView
 {
 //    CustomTextField * textFieldInput;
-    UILabel * labelPlaceHoldInput;
     UIView * mainView;
     BOOL keyboardUp;
 }
@@ -55,11 +54,11 @@
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_TEXT_GREEN alpha:0.5f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_TEXT_GREEN alpha:0.5f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -91,11 +90,11 @@
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -127,11 +126,11 @@
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY alpha:1.f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -161,36 +160,35 @@
     if (testField.text.length != 0 && testField.isBoll) {
         [UIView animateWithDuration:0.2f animations:^{
             CGRect rect;
-            rect = labelPlaceHoldInput.frame;
+            rect = self.labelPlaceHoldInput.frame;
             rect.origin.x = rect.origin.x + 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 0.f;
+            self.labelPlaceHoldInput.frame = rect;
+            self.labelPlaceHoldInput.alpha = 0.f;
             testField.isBoll = NO;
         }];
     } else if (testField.text.length == 0 && !testField.isBoll) {
         [UIView animateWithDuration:0.25f animations:^{
             CGRect rect;
-            rect = labelPlaceHoldInput.frame;
+            rect = self.labelPlaceHoldInput.frame;
             rect.origin.x = rect.origin.x - 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 1.f;
+            self.labelPlaceHoldInput.frame = rect;
+            self.labelPlaceHoldInput.alpha = 1.f;
             testField.isBoll = YES;
         }];
     }
 }
 
 - (void) endEditingCustomLabel: (NSNotification*) notification {
-    CustomTextField * testField = notification.object;
-    if (testField.text.length != 0) {
-        [UIView animateWithDuration:0.25f animations:^{
-            CGRect rect;
-            rect = labelPlaceHoldInput.frame;
-            rect.origin.x = rect.origin.x - 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 1.f;
-            testField.isBoll = YES;
-        }];
-    }
+//    CustomTextField * testField = notification.object;
+//    testField.text = @"";
+//        [UIView animateWithDuration:0.25f animations:^{
+//            CGRect rect;
+//            rect = labelPlaceHoldInput.frame;
+//            rect.origin.x = rect.origin.x - 100.f;
+//            labelPlaceHoldInput.frame = rect;
+//            labelPlaceHoldInput.alpha = 1.f;
+//            testField.isBoll = YES;
+//        }];
 }
 
 

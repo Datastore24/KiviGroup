@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "UIView+BorderView.h"
-#import "MyTravelController.h"
+#import "SearchTravelController.h"
 
 @interface LoginViewController () <LoginViewDelegate>
 
@@ -44,7 +44,7 @@
 #pragma mark - LoginViewDelegate
 - (void) buttonLoginActionWithLoginView: (LoginView*) loginView
 {
-    MyTravelController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"MyTravelController"];
+    SearchTravelController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchTravelController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

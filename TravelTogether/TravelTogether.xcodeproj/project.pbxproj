@@ -20,6 +20,12 @@
 		FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7831D53516500F693DD /* SearchTravelController.m */; };
 		FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7861D53517A00F693DD /* SearchTravelView.m */; };
 		FF66A78B1D536A1300F693DD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A78A1D536A1300F693DD /* Animation.m */; };
+		FF7901231D76DBFB00C04B81 /* imageAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901221D76DBFB00C04B81 /* imageAdd.png */; };
+		FF7901261D76E5C400C04B81 /* imageMessegeSendNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901241D76E5C400C04B81 /* imageMessegeSendNO.png */; };
+		FF7901271D76E5C400C04B81 /* sendMessegeImageYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901251D76E5C400C04B81 /* sendMessegeImageYES.png */; };
+		FF7901291D76E8A900C04B81 /* buttonCityCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901281D76E8A900C04B81 /* buttonCityCancel.png */; };
+		FF79012B1D76F35C00C04B81 /* sendMessegeImageSend.png in Resources */ = {isa = PBXBuildFile; fileRef = FF79012A1D76F35C00C04B81 /* sendMessegeImageSend.png */; };
+		FF79012D1D76F82E00C04B81 /* logoMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = FF79012C1D76F82E00C04B81 /* logoMenu.png */; };
 		FF997F4C1D6DA0070037684A /* MyFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4B1D6DA0070037684A /* MyFormController.m */; };
 		FF997F4F1D6DA0170037684A /* MyFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4E1D6DA0170037684A /* MyFormView.m */; };
 		FF997F591D6E18B00037684A /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F551D6E18B00037684A /* photo1.png */; };
@@ -463,6 +469,12 @@
 		FF66A7861D53517A00F693DD /* SearchTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelView.m; sourceTree = "<group>"; };
 		FF66A7891D536A1300F693DD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		FF66A78A1D536A1300F693DD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
+		FF7901221D76DBFB00C04B81 /* imageAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageAdd.png; sourceTree = "<group>"; };
+		FF7901241D76E5C400C04B81 /* imageMessegeSendNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMessegeSendNO.png; sourceTree = "<group>"; };
+		FF7901251D76E5C400C04B81 /* sendMessegeImageYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendMessegeImageYES.png; sourceTree = "<group>"; };
+		FF7901281D76E8A900C04B81 /* buttonCityCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCityCancel.png; sourceTree = "<group>"; };
+		FF79012A1D76F35C00C04B81 /* sendMessegeImageSend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendMessegeImageSend.png; sourceTree = "<group>"; };
+		FF79012C1D76F82E00C04B81 /* logoMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoMenu.png; sourceTree = "<group>"; };
 		FF997F4A1D6DA0070037684A /* MyFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormController.h; sourceTree = "<group>"; };
 		FF997F4B1D6DA0070037684A /* MyFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFormController.m; sourceTree = "<group>"; };
 		FF997F4D1D6DA0170037684A /* MyFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormView.h; sourceTree = "<group>"; };
@@ -994,6 +1006,7 @@
 		FF997F541D6E18910037684A /* MyForm */ = {
 			isa = PBXGroup;
 			children = (
+				FF7901221D76DBFB00C04B81 /* imageAdd.png */,
 				FF997F611D6E2A8D0037684A /* imageBigPhoto.png */,
 				FF997F5D1D6E23A80037684A /* imageButtonCancel.png */,
 				FF997F551D6E18B00037684A /* photo1.png */,
@@ -1480,6 +1493,7 @@
 		FFAE2CE01D5DF7AE00E81AED /* SearchImages */ = {
 			isa = PBXGroup;
 			children = (
+				FF7901281D76E8A900C04B81 /* buttonCityCancel.png */,
 				FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */,
 				FFAE2CD61D5DF7AE00E81AED /* buyTicetSmallImageYes.png */,
 				FFAE2CD71D5DF7AE00E81AED /* inMyTravelImageNo.png */,
@@ -1524,6 +1538,7 @@
 		FFAE2CF91D5DF7AE00E81AED /* Images Menu */ = {
 			isa = PBXGroup;
 			children = (
+				FF79012C1D76F82E00C04B81 /* logoMenu.png */,
 				FFAE2CF01D5DF7AE00E81AED /* imageAva.png */,
 				FFAE2CF11D5DF7AE00E81AED /* image8.png */,
 				FFAE2CF21D5DF7AE00E81AED /* image6.png */,
@@ -1895,6 +1910,9 @@
 		FFF873541D6C63E800816FC1 /* Messeger */ = {
 			isa = PBXGroup;
 			children = (
+				FF79012A1D76F35C00C04B81 /* sendMessegeImageSend.png */,
+				FF7901241D76E5C400C04B81 /* imageMessegeSendNO.png */,
+				FF7901251D76E5C400C04B81 /* sendMessegeImageYES.png */,
 				FFF8735B1D6C7FF800816FC1 /* tailRight.png */,
 				FFF8735C1D6C7FF800816FC1 /* tailLeft.png */,
 				FFF873591D6C6F4E00816FC1 /* imageAvatarChat.png */,
@@ -2089,6 +2107,7 @@
 				FFAE28331D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28A51D57731500E81AED /* Activity28@2x.png in Resources */,
 				FFAE27F51D57731500E81AED /* Activity3@2x.png in Resources */,
+				FF7901271D76E5C400C04B81 /* sendMessegeImageYES.png in Resources */,
 				FFAE28D21D57731500E81AED /* Activity28@2x.png in Resources */,
 				FFAE28271D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFE10F2D1D74514400532346 /* likeImage2.png in Resources */,
@@ -2120,6 +2139,7 @@
 				FFAE28B51D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D061D5DF7AE00E81AED /* sexManNo.png in Resources */,
 				FFAE28111D57731500E81AED /* Activity16@2x.png in Resources */,
+				FF7901261D76E5C400C04B81 /* imageMessegeSendNO.png in Resources */,
 				FFAE2D021D5DF7AE00E81AED /* searchFreandsImageNo.png in Resources */,
 				FFAE28151D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28441D57731500E81AED /* Activity21@2x.png in Resources */,
@@ -2173,6 +2193,7 @@
 				FFAE27DC1D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFAE28701D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28911D57731500E81AED /* Activity9@2x.png in Resources */,
+				FF79012D1D76F82E00C04B81 /* logoMenu.png in Resources */,
 				FFAE28181D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFAE2D0E1D5DF7AE00E81AED /* imageTravelStraightNO.png in Resources */,
 				FF66A76E1D51E99500F693DD /* PFBeauSansPro-Bold.otf in Resources */,
@@ -2194,6 +2215,7 @@
 				FFAE28AD1D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE2D0D1D5DF7AE00E81AED /* imageTravelStraightYES.png in Resources */,
 				FFAE28361D57731500E81AED /* Activity8@2x.png in Resources */,
+				FF7901291D76E8A900C04B81 /* buttonCityCancel.png in Resources */,
 				FF997F5C1D6E18B00037684A /* photo4.png in Resources */,
 				FFE10EFE1D74263300532346 /* arrowPinck.png in Resources */,
 				FFAE28641D57731500E81AED /* Activity9@2x.png in Resources */,
@@ -2350,9 +2372,11 @@
 				FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */,
 				FFAE288F1D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE28041D57731500E81AED /* Activity3@2x.png in Resources */,
+				FF7901231D76DBFB00C04B81 /* imageAdd.png in Resources */,
 				FFF8735D1D6C7FF800816FC1 /* tailRight.png in Resources */,
 				FFAE27E91D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28081D57731500E81AED /* Activity7@2x.png in Resources */,
+				FF79012B1D76F35C00C04B81 /* sendMessegeImageSend.png in Resources */,
 				FFAE28461D57731500E81AED /* Activity23@2x.png in Resources */,
 				FFAE28251D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE27D21D57731500E81AED /* Activity13@2x.png in Resources */,

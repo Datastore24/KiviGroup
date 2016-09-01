@@ -32,7 +32,7 @@
         self.temporaryArray = data;
         
         
-        self.tableTravelHistory = [[UITableView alloc] initWithFrame:self.frame];
+        self.tableTravelHistory = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         //Убираем полосы разделяющие ячейки------------------------------
         self.tableTravelHistory.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableTravelHistory.backgroundColor = nil;
@@ -107,7 +107,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.f;
+    if (isiPhone6) {
+        return 95.f;
+    } else {
+        return 80.f;
+    }
 }
 
 
@@ -122,7 +126,7 @@
                                           andCustTag: (NSInteger) custTag
 {
     
-    UIView * cellTable = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, cellView.frame.size.width, 80.f)];
+    UIView * cellTable = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 80.f)];
     
     CustomLabels * labelNameFlight = [[CustomLabels alloc] initLabelWithWidht:13.f andHeight:12.5f andColor:VM_COLOR_PINK
                                                                       andText:nameFlight andTextSize:12 andLineSpacing:0.f
