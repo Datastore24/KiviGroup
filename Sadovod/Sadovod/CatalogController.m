@@ -106,7 +106,7 @@
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                     [[SingleTone sharedManager] catalogKey], @"token",
-                    @"ios",@"appname",nil];
+                    @"ios_sadovod",@"appname",nil];
    
     
     [api getDataFromServerWithParams:params method:@"guest_index" complitionBlock:^(id response) {
@@ -147,7 +147,7 @@
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              [[SingleTone sharedManager] catalogKey], @"token",
-                             @"ios",@"appname",
+                             @"ios_sadovod",@"appname",
                              cat, @"cat",
                              page, @"page",
                              nil];
