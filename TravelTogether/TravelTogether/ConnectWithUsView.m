@@ -24,6 +24,10 @@
         
         CustomLabels * titleLabel = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:51.f andSizeWidht:self.frame.size.width andSizeHeight:15.f andColor:@"626262" andText:@"НАПИШИТЕ НАМ И МЫ СВЯЖЕМСЯ С ВАМИ"];
         titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
+        if (isiPhone6) {
+            titleLabel.frame = CGRectMake(0, 60.f, self.frame.size.width, 16);
+            titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        }
         [self addSubview:titleLabel];
         
         NSArray * arrayHolders = [NSArray arrayWithObjects:@"Имя", @"Email", nil];
@@ -32,6 +36,17 @@
             inputText.layer.borderWidth = 0.5f;
             inputText.layer.cornerRadius = 34.f / 2;
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
+            inputText.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
+            inputText.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
+            if (isiPhone6) {
+                inputText.frame = CGRectMake(15.f, 95.f + 80 * i, self.frame.size.width - 30.f, 40.f);
+                inputText.layer.cornerRadius = 20.f;
+                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+                inputText.textFieldInput.frame = CGRectMake(15.f, 0, inputText.frame.size.width - 15.f, 40.f);
+                                inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+                inputText.labelPlaceHoldInput.frame = CGRectMake(15.f, 0, inputText.frame.size.width - 15.f, 40.f);
+                inputText.layer.borderWidth = 0.8f;
+            }
             inputText.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
             [self addSubview:inputText];
         }
@@ -45,7 +60,14 @@
         messegeText.mainTextView.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
         messegeText.placeholder = @"Сообщение";
         messegeText.placeHolderLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
-        messegeText.placeHolderLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY];
+        messegeText.placeHolderLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
+        if (isiPhone6) {
+            messegeText.frame = CGRectMake(15.f, 255.f, self.frame.size.width - 30.f, 165.f);
+            messegeText.layer.borderWidth = 0.8f;
+            messegeText.layer.cornerRadius = 18.f;
+            messegeText.mainTextView.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+            messegeText.placeHolderLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        }
         [self addSubview:messegeText];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startInputText:) name:UITextViewTextDidBeginEditingNotification object:nil];
@@ -58,6 +80,11 @@
         [buttonSend setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSend.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_BOLD size:13];
         buttonSend.layer.cornerRadius = 37.5f / 2;
+        if (isiPhone6) {
+            buttonSend.frame = CGRectMake(15.f, self.frame.size.height - 135.f, self.frame.size.width - 30.f, 45.f);
+            buttonSend.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_BOLD size:15];
+            buttonSend.layer.cornerRadius = 45.f / 2;
+        }
         [self addSubview:buttonSend];
         
         

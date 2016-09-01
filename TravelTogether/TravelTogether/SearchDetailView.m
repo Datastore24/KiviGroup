@@ -127,20 +127,36 @@
 {
     
     UIView * cellTable = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 80.f)];
+    if (isiPhone6) {
+        cellTable.frame = CGRectMake(0.f, 0.f, self.frame.size.width, 95.f);
+    }
     
     CustomLabels * labelNameFlight = [[CustomLabels alloc] initLabelWithWidht:13.f andHeight:12.5f andColor:VM_COLOR_PINK
                                                                       andText:nameFlight andTextSize:12 andLineSpacing:0.f
                                                                      fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelNameFlight.frame = CGRectMake(15.f, 17.5f, 10.f, 20.f);
+        labelNameFlight.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:14];
+        [labelNameFlight sizeToFit];
+    }
     [cellTable addSubview:labelNameFlight];
     
     CustomLabels * labelTravelName = [[CustomLabels alloc] initLabelWithWidht:13.f andHeight:27.5f andColor:VM_COLOR_TEXT_GREY
                                                                       andText:travelName andTextSize:9 andLineSpacing:0.f
                                                                      fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelTravelName.frame = CGRectMake(15.f, 32.5f, 10.f, 20.f);
+        labelTravelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
+        [labelTravelName sizeToFit];
+    }
     [cellTable addSubview:labelTravelName];
     
     //Buy view----------
     UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonBuy.frame = CGRectMake(13.f, 42.f, 94.f, 21.25f);
+    if (isiPhone6) {
+        buttonBuy.frame = CGRectMake(15.f, 50.f, 110.f, 25.f);
+    }
     UIImage * imageButtonNO = [UIImage imageNamed:@"buyTicketNo.png"];
     UIImage * imageButtonYES = [UIImage imageNamed:@"buyTicketYes.png"];
     [buttonBuy setImage:imageButtonNO forState:UIControlStateNormal];
@@ -152,6 +168,9 @@
     //Search view-----------
     UIButton * buttonSearch = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonSearch.frame = CGRectMake(13.f + buttonBuy.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
+    if (isiPhone6) {
+        buttonSearch.frame = CGRectMake(15.f + buttonBuy.frame.size.width + 6.25f, 50.f, 110.f, 25.f);
+    }
     UIImage * imageButtonSearchNO = [UIImage imageNamed:@"searchFreandsImageNo.png"];
     UIImage * imageButtonSearchYES = [UIImage imageNamed:@"searchFreandsImageYes.png"];
     [buttonSearch setImage:imageButtonSearchNO forState:UIControlStateNormal];
@@ -163,6 +182,9 @@
     //AddBookmark
     UIButton * buttonAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonAdd.frame = CGRectMake(buttonSearch.frame.origin.x + buttonSearch.frame.size.width + 5.f, 42.f, 94.f, 21.25f);
+    if (isiPhone6) {
+        buttonAdd.frame = CGRectMake(buttonSearch.frame.origin.x + buttonSearch.frame.size.width + 6.25f, 50.f, 110.f, 25.f);
+    }
     UIImage * imagebuttonAddNO = [UIImage imageNamed:@"inMyTravelImageNo.png"];
     UIImage * imageButtonAddYES = [UIImage imageNamed:@"inMyTravelNewImageYes.png"];
     [buttonAdd setImage:imagebuttonAddNO forState:UIControlStateNormal];
@@ -174,11 +196,21 @@
     CustomLabels * labelTimeStartInd = [[CustomLabels alloc] initLabelWithWidht:130.f andHeight:13.75f andColor:VM_COLOR_BLACK
                                                                         andText:@"OVB" andTextSize:11 andLineSpacing:0.f
                                                                        fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelTimeStartInd.frame = CGRectMake(155.f, 18.75f, 10.f, 20.f);
+        labelTimeStartInd.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
+        [labelTimeStartInd sizeToFit];
+    }
     [cellTable addSubview:labelTimeStartInd];
     
     CustomLabels * labelStartTime = [[CustomLabels alloc] initLabelWithWidht:130.f andHeight:27.5f andColor:VM_COLOR_TEXT_GREY
                                                                      andText:labelTimeStart andTextSize:9 andLineSpacing:0.f
                                                                     fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelStartTime.frame = CGRectMake(155.f, 32.5f, 10.f, 20.f);
+        labelStartTime.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+        [labelStartTime sizeToFit];
+    }
     [cellTable addSubview:labelStartTime];
     
     
@@ -186,15 +218,30 @@
     CustomLabels * labelTimeFinishInd = [[CustomLabels alloc] initLabelWithWidht:cellTable.frame.size.width - 31.25f andHeight:13.75f
                                                                         andColor:VM_COLOR_BLACK andText:@"AER" andTextSize:11
                                                                   andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelTimeFinishInd.frame = CGRectMake(cellTable.frame.size.width - 36.25f, 18.75f, 10.f, 20.f);
+        labelTimeFinishInd.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
+        [labelTimeFinishInd sizeToFit];
+    }
+    [cellTable addSubview:labelTimeStartInd];
     [cellTable addSubview:labelTimeFinishInd];
     
     CustomLabels * labelFinishTime = [[CustomLabels alloc] initLabelWithWidht:cellTable.frame.size.width - 32.5f andHeight:27.5f
                                                                      andColor:VM_COLOR_TEXT_GREY andText:labelTimeFinish andTextSize:9
                                                                andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    if (isiPhone6) {
+        labelFinishTime.frame = CGRectMake(cellTable.frame.size.width - 36.25f, 32.5f, 10.f, 20.f);
+        labelFinishTime.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+        [labelFinishTime sizeToFit];
+    }
+    [cellTable addSubview:labelStartTime];
     [cellTable addSubview:labelFinishTime];
     
     //Image straight----------
     UIImageView * imageStraight = [[UIImageView alloc] initWithFrame:CGRectMake(cellTable.frame.size.width - 160.f, 21.25, 120.f, 6.f)];
+    if (isiPhone6) {
+        imageStraight.frame = CGRectMake(cellTable.frame.size.width - 186.25f, 27.5f, 140.f, 7.5f);
+    }
     NSString * stringImageTravel;
     NSString * textStraight;
     if (straight) {
@@ -212,6 +259,9 @@
                                                                              andText:textStraight];
     labelTextStraight.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:8];
     labelTextStraight.textAlignment = NSTextAlignmentCenter;
+    if (isiPhone6) {
+        labelTextStraight.frame = CGRectMake(cellTable.frame.size.width - 186.25f, 35.f, 140.f, 10.f);
+    }
     [cellTable addSubview:labelTextStraight];
     
     
@@ -220,9 +270,18 @@
                                                                            andText:[self createFlightLabelTextWithString:flightTime]];
     labelTextFlidht.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:8];
     labelTextFlidht.textAlignment = NSTextAlignmentCenter;
+    if (isiPhone6) {
+        labelTextFlidht.frame = CGRectMake(cellTable.frame.size.width - 186.25f, 18.f, 140.f, 10.f);
+    }
     [cellTable addSubview:labelTextFlidht];
     
-    [UIView borderViewWithHeight:79.5f andWight:13.f andView:cellTable andColor:VM_COLOR_LIGHT_GREY];
+    if (isiPhone6) {
+        [UIView borderViewWithHeight:94.5f andWight:15.f andView:cellTable andColor:VM_COLOR_LIGHT_GREY];
+    } else {
+        [UIView borderViewWithHeight:79.5f andWight:13.f andView:cellTable andColor:VM_COLOR_LIGHT_GREY];
+    }
+    
+    
     
     return cellTable;
 }

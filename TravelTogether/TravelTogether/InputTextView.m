@@ -87,6 +87,8 @@
         self.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
         self.textFieldInput.textColor = [UIColor blackColor];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelStart:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEnd:) name:UITextFieldTextDidEndEditingNotification object:self.textFieldInput];
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
@@ -176,19 +178,52 @@
             testField.isBoll = YES;
         }];
     }
+    
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            testField.text = @"+7";
+        }
+    }
+    
+}
+
+- (void) animationLabelStart: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            testField.text = @"+7";
+            [UIView animateWithDuration:0.2f animations:^{
+                CGRect rect;
+                rect = self.labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x + 100.f;
+                self.labelPlaceHoldInput.frame = rect;
+                self.labelPlaceHoldInput.alpha = 0.f;
+                testField.isBoll = NO;
+            }];
+        }
+    }
+}
+
+- (void) animationLabelEnd: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            [UIView animateWithDuration:0.2f animations:^{
+                CGRect rect;
+                rect = self.labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x - 100.f;
+                self.labelPlaceHoldInput.frame = rect;
+                self.labelPlaceHoldInput.alpha = 1.f;
+                testField.isBoll = YES;
+            }];
+            testField.text = @"";
+        }
+        
+    }
 }
 
 - (void) endEditingCustomLabel: (NSNotification*) notification {
-//    CustomTextField * testField = notification.object;
-//    testField.text = @"";
-//        [UIView animateWithDuration:0.25f animations:^{
-//            CGRect rect;
-//            rect = labelPlaceHoldInput.frame;
-//            rect.origin.x = rect.origin.x - 100.f;
-//            labelPlaceHoldInput.frame = rect;
-//            labelPlaceHoldInput.alpha = 1.f;
-//            testField.isBoll = YES;
-//        }];
+
 }
 
 
