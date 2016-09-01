@@ -67,7 +67,7 @@
         
         for (int i = 0; i < self.arrayData.count; i++) {
             NSDictionary * dictMessege = [self.arrayData objectAtIndex:i];
-            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:[dictMessege objectForKey:@"imageName"] andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"]];
+            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:[dictMessege objectForKey:@"imageName"] andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"] andSend:[dictMessege objectForKey:@"send"]];
             [self.chatScrollView addSubview:messageView];
         }
     }
@@ -93,6 +93,7 @@
     
     self.sendButton = [UIButton createButtonWithImage:@"buttonSendImage.png" anfFrame:CGRectMake(self.frame.size.width - 60.f, 38.5f / 2.f - 10.5f, 47.5f, 21.f)];
     [self.sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.sendButton.userInteractionEnabled = NO;
     [self.sendViewCust addSubview:self.sendButton];
     
     
@@ -117,7 +118,8 @@
                                     andName: (NSString*) name
                                    andImage: (NSString*) imageName
                              andTextMessage: (NSString*) textMessege
-                                    andDate: (NSString*) date{
+                                    andDate: (NSString*) date
+                                    andSend: (NSString*) send {
     
     
     UIView * messegeView = [[UIView alloc] init]; //Основное окно
@@ -137,15 +139,25 @@
         UIImageView * viewTailRight = [[UIImageView alloc] initWithFrame:CGRectMake(messegeTextView.frame.size.width - 6.4f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
         viewTailRight.image = [UIImage imageNamed:@"tailRight.png"];
         [messegeTextView addSubview:viewTailRight];
-        CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - (labelMessage.frame.size.width + 26.f) andHeight: 0.f andSizeWidht:labelMessage.frame.size.width andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
+        CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 80.f andHeight: 0.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentRight;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelName];
         
-        CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - (labelMessage.frame.size.width + 26.f) andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:labelMessage.frame.size.width andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
+        CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100.f andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
         labelDate.textAlignment = NSTextAlignmentRight;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelDate];
+        
+        UIImageView * imageSend = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 38.f, messegeTextView.frame.size.height + 25.f, 20.f, 8.f)];
+        if ([send integerValue] == 1) {
+            imageSend.image = [UIImage imageNamed:@"imageMessegeSendNO.png"];
+        } else if ([send integerValue] == 2) {
+            imageSend.image = [UIImage imageNamed:@"sendMessegeImageYES.png"];
+        } else if ([send integerValue] == 0) {
+            imageSend.image = [UIImage imageNamed:@"sendMessegeImageSend.png"];
+        }
+        [messegeView addSubview:imageSend];
     
     //Если идет от другого пользователя
         
@@ -155,12 +167,12 @@
         UIImageView * viewTailLeft = [[UIImageView alloc] initWithFrame:CGRectMake(- 3.f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
         viewTailLeft.image = [UIImage imageNamed:@"tailLeft.png"];
         [messegeTextView addSubview:viewTailLeft];
-        CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:60.f andHeight: 0.f andSizeWidht:labelMessage.frame.size.width andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
+        CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:55.f andHeight: 0.f andSizeWidht:100.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentLeft;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelName];
         
-        CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:60.f andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:labelMessage.frame.size.width andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
+        CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:55.f andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
         labelDate.textAlignment = NSTextAlignmentLeft;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
         [messegeView addSubview:labelDate];
@@ -231,6 +243,7 @@
 - (void)hideKeyboard:(NSNotification*)notification
 {
     self.inputText.mainTextView.text = @"";
+    self.sendButton.userInteractionEnabled = NO;
     [self.inputText backAnimation];
     [self animathionMethodWithDurqction:0.f];
     [UIView animateWithDuration:0.2f animations:^{
@@ -259,6 +272,11 @@
 - (void)checkText:(NSNotification*)notification
 {
     [self animathionMethodWithDurqction:0.2f];
+    if (self.inputText.mainTextView.text.length > 0) {
+        self.sendButton.userInteractionEnabled = YES;
+    } else {
+        self.sendButton.userInteractionEnabled = NO;
+    }
 }
 
 #pragma mark - Actions
@@ -268,7 +286,7 @@
     self.inputText.mainTextView.text = @"";
     [self.inputText backAnimation];
     [self animathionMethodWithDurqction:0.f];
-    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:stringText andDate:@"22:45"];
+    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:stringText andDate:@"22:45" andSend: @"1"];
     [self.chatScrollView addSubview:messageView];
 }
 

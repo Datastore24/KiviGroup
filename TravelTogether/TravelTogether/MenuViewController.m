@@ -34,6 +34,13 @@
     self.tableMenu.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableMenu.backgroundColor = [UIColor clearColor];
     
+    CGRect rectMenu;
+    if (isiPhone6) {
+        rectMenu = self.tableMenu.frame;
+        rectMenu.origin.y += 30;
+        self.tableMenu.frame = rectMenu;
+    }
+    
     //Массив ячеек----------
     self.arrayCell = [NSArray arrayWithObjects:@"Cell1", @"Cell2", @"Cell3", @"Cell4", @"Cell5",
                       @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10", nil];
@@ -45,8 +52,20 @@
     //Массив картинок-------
     self.arrayImages = [NSArray arrayWithObjects:@"image1.png", @"image2.png", @"image3.png", @"image4.png",
                         @"image5.png", @"image6.png", @"image7.png", @"image8.png", @"", @"", nil];
+    
+    if (isiPhone6) {
+        [UIView borderViewWithHeight:self.view.frame.size.height - 86 andWight:0 andView:self.view andColor:VM_COLOR_WHITE];
+    } else {
     //Наносим границу
     [UIView borderViewWithHeight:self.view.frame.size.height - 79 andWight:0 andView:self.view andColor:VM_COLOR_WHITE];
+    }
+    //Logo
+    UIImageView * imageLogo = [[UIImageView alloc] initWithFrame:CGRectMake(25.f, 35.f, 206.f, 51.f)];
+    if (isiPhone6) {
+        imageLogo.frame = CGRectMake(25.f, 50.f, 206.f, 51.f);
+    }
+    imageLogo.image = [UIImage imageNamed:@"logoMenu.png"];
+    [self.view addSubview:imageLogo];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,11 +132,25 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 9) {
-        return 80;
+        if (isiPhone6) {
+            return 100;
+        } else {
+           return 80;
+        }
     } else if (indexPath.row == 8) {
-        return 60;
-    } else
-    return 40;
+        
+        if (isiPhone6) {
+            return 80;
+        } else {
+            return 60;
+        }
+    } else {
+        if (isiPhone6) {
+            return 45;
+        } else {
+           return 40;
+        }
+        
 }
-
+}
 @end

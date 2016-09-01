@@ -252,6 +252,7 @@
     
     InputTextToView * appearanceText = [[InputTextToView alloc] initWithTextViewFrame:CGRectMake(12.5f, 185.f, self.frame.size.width - 25.f, 38.5f)];
     appearanceText.mainTextView.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+    appearanceText.mainTextView.textColor = [UIColor blackColor];
     appearanceText.layer.borderWidth = 1.f;
     appearanceText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"bdbcbc"].CGColor;
     appearanceText.placeholder = @"Внешность";
@@ -261,6 +262,7 @@
     
     InputTextToView * aboutMeText = [[InputTextToView alloc] initWithTextViewFrame:CGRectMake(12.5f, 235.f, self.frame.size.width - 25.f, 72.5f)];
     aboutMeText.mainTextView.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+    aboutMeText.mainTextView.textColor = [UIColor blackColor];
     aboutMeText.layer.borderWidth = 1.f;
     aboutMeText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"bdbcbc"].CGColor;
     aboutMeText.placeholder = @"О себе";
@@ -373,12 +375,16 @@
     
     for (int i = 0; i < self.arrayImages.count; i++) {
         UIButton * buttonPhoto = [UIButton createButtonWithImage:[self.arrayImages objectAtIndex:i]
-                                                        anfFrame:CGRectMake(0.625f + (self.frame.size.width / 3) * column,
-                                                                            0.f + (self.frame.size.width / 3) * line,
-                                                                            self.frame.size.width / 3 - 1.25,
-                                                                            self.frame.size.width / 3 - 1.25)];
+                                                        anfFrame:CGRectMake(0.f + (self.frame.size.width / 3 + 0.5) * column,
+                                                                            0.f + (self.frame.size.width / 3 + 0.5) * line,
+                                                                            self.frame.size.width / 3 - 0.5f,
+                                                                            self.frame.size.width / 3 - 0.5f)];
         buttonPhoto.tag = 60 + i;
+        if (i == 0) {
+            [buttonPhoto addTarget:self action:@selector(buttonPhotoAdd) forControlEvents:UIControlEventTouchUpInside];
+        } else {
         [buttonPhoto addTarget:self action:@selector(buttonPhotoAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
         [scrollViewPhoto addSubview:buttonPhoto];
         if (i != self.arrayImages.count - 1) {
             column += 1;
@@ -595,6 +601,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.mainPhotoView.alpha = 0.f;
     }];
+}
+
+//Добавление нового фото
+- (void) buttonPhotoAdd {
+    NSLog(@"Добавление фото");
 }
 
 #pragma mark - SearchView

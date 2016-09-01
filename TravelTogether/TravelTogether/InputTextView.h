@@ -40,5 +40,6 @@
 
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;
+@property (strong, nonatomic)    UILabel * labelPlaceHoldInput;
 
 @end
