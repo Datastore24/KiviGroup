@@ -33,10 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"CATID %@",self.catID);
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Женская одежда" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
+    [self setCustomTitle:self.catName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------
@@ -90,7 +89,7 @@
             NSDictionary * respDict = (NSDictionary *) response;
             self.arrayCatalog = [respDict objectForKey:@"tree"];
             
-            NSLog(@"%@",respDict);
+        
             block();
             
             
@@ -102,8 +101,11 @@
 
 #pragma mark - CatalogListViewDelegate
 
-- (void) pushToCatalogDetail: (CatalogListView*) catalogListView {
+- (void) pushToCatalogDetail: (CatalogListView*) catalogListView andCatId:(NSString *) catID
+                                                        andCatName:(NSString *) catName{
     CatalogDetailController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogDetailController"];
+    detail.catID=catID;
+    detail.catName=catName;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

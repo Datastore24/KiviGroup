@@ -9,5 +9,9 @@
 #import "MainViewController.h"
 
 @interface CatalogDetailController : MainViewController
+@property (strong, nonatomic) NSString * catID;
+@property (strong, nonatomic) NSString * catName;
+@property (strong, nonatomic) NSArray * arrayData;
+
 
 @end

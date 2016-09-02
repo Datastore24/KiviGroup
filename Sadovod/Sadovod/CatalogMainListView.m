@@ -95,7 +95,7 @@
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
 
    
-    [self.delegate pushToCatalogListController:self andCatId:[dict objectForKey:@"cat_id"]];
+    [self.delegate pushToCatalogListController:self andCatId:[dict objectForKey:@"cat_id"] andCatName:[dict objectForKey:@"cat_name"] ];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -22,8 +22,10 @@
 @protocol CatalogDetailViewDelegate <NSObject>
 
 @required
-
+@property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSString * catID;
 - (void) pushToOrderController: (CatalogDetailView*) catalogDetailView;
-- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView;
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID;
+- (void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort;
 
 @end

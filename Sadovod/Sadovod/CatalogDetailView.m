@@ -11,6 +11,8 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "UIButton+ButtonImage.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "CheckDataServer.h"
 
 @interface CatalogDetailView ()
 
@@ -19,6 +21,7 @@
 @property (strong, nonatomic) UIButton * buttonColumnOne;
 @property (strong, nonatomic) UIButton * buttonColumnTwo;
 @property (strong, nonatomic) NSArray * arrayData;
+@property (assign, nonatomic) BOOL isColumn;
 
 //ScrollView
 @property (strong, nonatomic) UIView * scrollView;
@@ -64,7 +67,8 @@
         [topBarView addSubview:buttonFilter];
         
         //Scroll------------
-        self.scrollView = [self createScrollViewWithView:self andData:nil andColumn:YES];
+        self.isColumn=YES;
+        self.scrollView = [self createScrollViewWithView:self andData:self.arrayData andColumn:YES];
         [self addSubview:self.scrollView];
         
         //Hide---------
@@ -95,9 +99,9 @@
     [mainViewForScroll addSubview:scrollProduct];
     NSInteger lineProduct = 0; //Идентификатор строк
     NSInteger columnProduct = 0; //Идентификатор столбцов
-    for (int i = 0; i < self.arrayData.count; i++) {
+    for (int i = 0; i < data.count; i++) {
         
-        NSDictionary * dictProduct = [self.arrayData objectAtIndex:i];
+        NSDictionary * dictProduct = [data objectAtIndex:i];
         UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
         
         if (isColumn) {
@@ -118,20 +122,64 @@
                                              scrollProduct.frame.size.width);
         }
         buttonProduct.backgroundColor = [UIColor blueColor];
-        UIImage * imageProduct = [UIImage imageNamed:[dictProduct objectForKey:@"image"]];
-        imageProduct = [self resizeImage:imageProduct imageSize:CGSizeMake(scrollProduct.frame.size.width, scrollProduct.frame.size.width)];
-        [buttonProduct setImage:imageProduct forState:UIControlStateNormal];
+        
         buttonProduct.tag = 20 + i;
         [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
-        UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
-                                                                         buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
-        labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
-        labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"price"]];
-        labelPrice.textColor = [UIColor whiteColor];
-        labelPrice.textAlignment = NSTextAlignmentCenter;
-        labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-        [buttonProduct addSubview:labelPrice];
-        [scrollProduct addSubview:buttonProduct];
+        
+       
+        
+        
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
+        
+        
+        NSURL *imgURL = [NSURL URLWithString:[dictProduct objectForKey:@"img_med"]];
+        
+        //SingleTone с ресайз изображения
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                
+                                if(image){
+                                    
+                                    
+                                    imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
+                                    //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
+                                    
+                                    [imageView setClipsToBounds:YES];
+                                    
+                                    
+                                    imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                    imageView.clipsToBounds =YES;
+                                    
+                                    
+                                    
+                                    
+                                    imageView.image = image;
+                                    
+                                    [buttonProduct addSubview:imageView];
+                                    
+                                    [scrollProduct addSubview:buttonProduct];
+                                    
+                                    UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
+                                                                                                     buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
+                                    labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
+                                    labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
+                                    labelPrice.textColor = [UIColor whiteColor];
+                                    labelPrice.textAlignment = NSTextAlignmentCenter;
+                                    labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                    [buttonProduct addSubview:labelPrice];
+                                    [scrollProduct addSubview:buttonProduct];
+                                    
+                                }else{
+                                    
+                                }
+                            }];
+        
+
 
     }
     if (isColumn) {
@@ -187,7 +235,39 @@
 - (void) buttonSortChangeAction: (UIButton*) button {
     for (int i = 0; i < 4; i++) {
         if (button.tag == 10 + i) {
+            NSString * sort;
+            NSLog(@"TAG %i",button.tag);
+            if(button.tag == 11){
+                sort =@"cst-0";
+            }else if (button.tag == 12){
+                sort =@"cst-1";
+            }else if (button.tag == 13){
+                sort =@"upd-1";
+            }else if (button.tag == 14){
+                sort =@"upd-0";
+            }
+            
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
+            [self.delegate getApiCatalog:self andBlock:^{
+                NSLog(@"LIST %@",[self.delegate arrayData]);
+                
+                for (UIView *view in self.scrollView.subviews){
+                    if([view isKindOfClass:[UIScrollView class]]){
+                        
+                        [view removeFromSuperview];
+                        
+                    }
+                }
+                
+                //Scroll------------
+                self.arrayData = [self.delegate arrayData];
+                self.scrollView = [self createScrollViewWithView:self andData:[self.delegate arrayData] andColumn:self.isColumn];
+                
+                [self insertSubview:self.scrollView atIndex:0];
+                
+
+
+            } andSort:sort];
             [UIView animateWithDuration:0.3f animations:^{
                 self.hideView.alpha = 0.f;
             }];
@@ -200,7 +280,8 @@
         [view removeFromSuperview];
     }
     //Scroll------------
-    self.scrollView = [self createScrollViewWithView:self andData:nil andColumn:NO];
+    self.scrollView = [self createScrollViewWithView:self andData:self.arrayData andColumn:NO];
+    self.isColumn=NO;
     [self addSubview:self.scrollView];
     
     for (UIView * view in self.hideView.subviews) {
@@ -222,7 +303,8 @@
         [view removeFromSuperview];
     }
     //Scroll------------
-    self.scrollView = [self createScrollViewWithView:self andData:nil andColumn:YES];
+    self.scrollView = [self createScrollViewWithView:self andData:self.arrayData andColumn:YES];
+    self.isColumn=YES;
     [self addSubview:self.scrollView];
     
     for (UIView * view in self.hideView.subviews) {
@@ -240,7 +322,7 @@
 }
 
 - (void) buttonFilterAction {
-    [self.delegate pushToOrderFilters: self];
+    [self.delegate pushToOrderFilters: self andCatID:[self.delegate catID]];
 }
 
 

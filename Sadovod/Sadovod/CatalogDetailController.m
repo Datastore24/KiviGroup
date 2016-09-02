@@ -10,10 +10,13 @@
 #import "CatalogDetailView.h"
 #import "OrderController.h"
 #import "OrderFiltersController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface CatalogDetailController () <CatalogDetailViewDelegate>
 
-@property (strong, nonatomic) NSArray * arrayData;
+
+
 
 @end
 
@@ -23,7 +26,7 @@
     [super viewDidLoad];
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Блузки и кофточки" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
+    [self setCustomTitle:self.catName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------
@@ -32,12 +35,15 @@
     UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
-    self.arrayData = [self setCustonArray];
+    self.arrayData = [NSArray new];
     
 #pragma mark - View
-    CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
+    [self getApiCatalog:^{
+        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    }];
+    
     
 }
 
@@ -59,26 +65,72 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView {
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID{
     OrderFiltersController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderFiltersController"];
+    detail.catID = catID;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (NSMutableArray*) setCustonArray
+-(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort
 {
-    NSArray * arrayImage = [NSArray arrayWithObjects:
-                            @"imageProduct1.jpg", @"imageProduct2.jpg", @"imageProduct3.jpg", @"imageProduct4.jpg",
-                            @"imageProduct5.jpg", @"imageProduct6.jpg", @"imageProduct7.jpg", @"imageProduct8.jpg",
-                            @"imageProduct9.jpg", @"imageProduct10.jpg", nil];
-    NSArray * arrayPrice = [NSArray arrayWithObjects:@"216", @"310", @"525", @"673", @"558", @"138", @"385", @"134", @"245", @"384", nil];
-    NSMutableArray * mArray = [[NSMutableArray alloc] init];
+    APIGetClass * api =[APIGetClass new]; //создаем API
     
-    for (int i = 0; i < arrayImage.count; i++) {
-        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[arrayImage objectAtIndex:i], @"image", [arrayPrice objectAtIndex:i], @"price", nil];
-        [mArray addObject:dict];
-    }
     
-    return mArray;
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.catID,@"cat",
+                             sort,@"sort",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",nil];
+    
+    NSLog(@"TOKEN: %@",[[SingleTone sharedManager] catalogKey]);
+    NSLog(@"CAT: %@",self.catID);
+    [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            self.arrayData = [respDict objectForKey:@"list"];
+            
+               block();
+            
+            
+        }
+        
+    }];
+    
+}
+
+
+
+#pragma mark - API
+
+-(void) getApiCatalog: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.catID,@"cat",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",nil];
+    
+    NSLog(@"TOKEN: %@",[[SingleTone sharedManager] catalogKey]);
+    NSLog(@"CAT: %@",self.catID);
+    [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            self.arrayData = [respDict objectForKey:@"list"];
+            
+        
+            block();
+            
+            
+        }
+        
+    }];
+    
 }
 
 
