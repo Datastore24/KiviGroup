@@ -123,11 +123,11 @@
     [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
     [priceView addSubview:self.slider];
     
-    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[self.dictData objectForKey:@"cost_min_orig"] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
      [self configureSlider];
     [priceView addSubview:self.labelFrom];
     
-    self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[self.dictData objectForKey:@"cost_max_orig"] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     self.labelTo.frame = CGRectMake(self.frame.size.width - 115.f, 120.f, 100.f, self.labelFrom.frame.size.height);
     self.labelTo.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:self.labelTo];
@@ -728,7 +728,7 @@
     }
     self.labelFrom.text = [NSString stringWithFormat:@"ОТ %d", (NSInteger)self.slider.lowerValue];
     [self.labelFrom sizeToFit];
-    self.labelTo.text = [NSString stringWithFormat:@"ОТ %d", (NSInteger)self.slider.upperValue];
+    self.labelTo.text = [NSString stringWithFormat:@"ДО %d", (NSInteger)self.slider.upperValue];
     
     
     [self buttonActionCheck];
