@@ -74,7 +74,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         self.dictData = [data objectAtIndex:0];
         self.arrayDetailButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtons = [[NSMutableArray alloc] init];
@@ -82,7 +82,7 @@
         self.counter = 0;
         
         
-        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0, self.frame.size.width, self.frame.size.height)];
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
         
@@ -119,14 +119,15 @@
     backgroundSlider.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
     [priceView addSubview:backgroundSlider];
     self.slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(30.f, 65, self.frame.size.width - 60, 20)];
-    [self configureSlider];
+   
     [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
     [priceView addSubview:self.slider];
     
-    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:@"ОТ 1" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[self.dictData objectForKey:@"cost_min_orig"] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+     [self configureSlider];
     [priceView addSubview:self.labelFrom];
     
-    self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:@"ДО 1012" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[self.dictData objectForKey:@"cost_max_orig"] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     self.labelTo.frame = CGRectMake(self.frame.size.width - 115.f, 120.f, 100.f, self.labelFrom.frame.size.height);
     self.labelTo.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:self.labelTo];
@@ -394,8 +395,8 @@
 
 //Сброс фильта цены
 - (void) buttonCanselPriceAction: (UIButton*) button {
-    self.slider.lowerValue = 1;
-    self.slider.upperValue = 1012;
+    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
     [UIView animateWithDuration:0.3 animations:^{
         button.alpha = 0.f;
     }];
@@ -623,8 +624,8 @@
 - (void) buttonCancelAction {
     self.countColor = 0;
     self.countSize = 0;
-    self.slider.lowerValue = 1;
-    self.slider.upperValue = 1012;
+    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
     self.counter = 0;
     self.sizeBool = NO;
     self.sliderBool = NO;
@@ -693,16 +694,18 @@
 - (void) configureSlider
 {
     [self configureMetalThemeForSlider:self.slider];
-    self.slider.minimumValue = 1;
-    self.slider.maximumValue = 1012;
-    self.slider.lowerValue = 1;
-    self.slider.upperValue = 1012;
-    self.slider.minimumRange = 1;
+    self.slider.minimumValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+    self.slider.maximumValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+    self.slider.minimumRange = 10;
 }
 
 - (void) sliderChange: (NMRangeSlider*) slider {
+    NSLog(@"LOWER %f",self.slider.lowerValue );
     
-    if (self.slider.lowerValue > 1 || self.slider.upperValue < 1012) {
+    if (self.slider.lowerValue > [[self.dictData objectForKey:@"cost_min_orig"] floatValue]
+        || self.slider.upperValue < [[self.dictData objectForKey:@"cost_max_orig"] floatValue]) {
         [UIView animateWithDuration:0.3 animations:^{
             self.buttonCanselPrice.alpha = 1.f;
             

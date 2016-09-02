@@ -22,6 +22,7 @@
 @protocol CatalogMainListViewDelegate <NSObject>
 
 @required
-- (void) pushToCatalogListController: (CatalogMainListView*) catalogMainListView andCatId:(NSString *) catID;
+- (void) pushToCatalogListController: (CatalogMainListView*) catalogMainListView andCatId:(NSString *) catID
+                          andCatName:(NSString *) catName;
 
 @end

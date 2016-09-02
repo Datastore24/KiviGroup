@@ -10,5 +10,6 @@
 #import "NMRangeSlider.h"
 
 @interface OrderFiltersController : MainViewController
+@property (strong, nonatomic) NSString * catID;
 
 @end

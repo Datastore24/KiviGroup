@@ -70,7 +70,6 @@
     CGRect frame = tableView.frame;
     
     NSDictionary * dict = [self.arrayData objectAtIndex:section];
-    NSLog(@"LL-- %@",[dict objectForKey:@"l"]);
     
     
     CustomButton *hideButton = [CustomButton buttonWithType:UIButtonTypeSystem];
@@ -153,7 +152,14 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];    
     //Для логики выбора в каждой секции необходимо выполнить условие indexPath.section
-    [self.delegate pushToCatalogDetail:self];
+    NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.section];
+    NSArray * array;
+    if([[dict objectForKey:@"l"] integerValue]==0){
+        array = [dict objectForKey:@"t"];
+        
+    }
+    [self.delegate pushToCatalogDetail:self andCatId:[[array objectAtIndex:indexPath.row] objectForKey:@"i"]
+     andCatName:[[array objectAtIndex:indexPath.row] objectForKey:@"n"]];
     
 }
 

@@ -24,6 +24,7 @@
 
 @optional
 
-- (void) pushToCatalogDetail: (CatalogListView*) catalogListView;
+- (void) pushToCatalogDetail: (CatalogListView*) catalogListView andCatId:(NSString *) catID
+                  andCatName:(NSString *) catName;
 
 @end

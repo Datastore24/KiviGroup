@@ -10,4 +10,5 @@
 
 @interface CatalogListController : MainViewController
 @property (strong, nonatomic) NSString * catID;
+@property (strong, nonatomic) NSString * catName;
 @end
