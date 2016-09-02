@@ -839,7 +839,7 @@
     for (int i = 0; i < self.arrayImages.count; i++) {
         if (button.tag == 60 + i) {
 //            UIImage * imagePhoto = button.imageView.image;
-            //Загружаем тестовую картинку
+//            Загружаем тестовую картинку
             UIImage * imagePhoto = [UIImage imageNamed:@"imageBigPhoto.png"];
             self.imageViewPhoto.image = imagePhoto;
             [UIView animateWithDuration:0.3f animations:^{
