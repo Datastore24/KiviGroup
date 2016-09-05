@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) UIImageView * imageViewPhoto;
 @property (strong, nonatomic) UIView * mainPhotoView;
+@property (strong, nonatomic) CustomLabels * labelbuttonLike;
 
 
 @end
@@ -122,8 +123,16 @@
         }
         buttonLike.alpha = 0.7f;
         [buttonLike addTarget:self action:@selector(buttonLikeAction) forControlEvents:UIControlEventTouchUpInside];
-        buttonLike.userInteractionEnabled = NO;
         [self addSubview:buttonLike];
+        
+        self.labelbuttonLike = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
+                                                                         andSizeHeight:33.f andColor:VM_COLOR_PINK andText:@"10"];
+        self.labelbuttonLike.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:7];
+        if (isiPhone6) {
+            self.labelbuttonLike.frame = CGRectMake(0.f, 0.f, 40.f, 40.f);
+            self.labelbuttonLike.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
+        }
+        [buttonLike addSubview:self.labelbuttonLike];
         
         UIButton * buttonMessege = [UIButton createButtonWithImage:@"messageButtonImage.png" anfFrame:CGRectMake(self.frame.size.width - 103.f, 140.f, 33.f, 33.f)];
         if (isiPhone6) {
@@ -131,7 +140,6 @@
         }
         buttonMessege.alpha = 0.7f;
         [buttonMessege addTarget:self action:@selector(buttonMessegeAction) forControlEvents:UIControlEventTouchUpInside];
-        buttonMessege.userInteractionEnabled = NO;
         [self addSubview:buttonMessege];
         
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:103.f andHeight:148.f
@@ -225,7 +233,7 @@
     
     
     
-    UIButton * buttonPhotoCancel = [UIButton createButtonWithImage:@"imageButtonCancel.png"
+    UIButton * buttonPhotoCancel = [UIButton createButtonWithImage:@"buttonCancelNew.png"
                                                           anfFrame:CGRectMake(self.frame.size.width - 40.f, 5.f, 30.f, 30.f)];
     [buttonPhotoCancel addTarget:self action:@selector(buttonPhotoCancel) forControlEvents:UIControlEventTouchUpInside];
     [imageViewFone addSubview:buttonPhotoCancel];
@@ -247,7 +255,11 @@
 }
 
 - (void) buttonLikeAction {
-    [self.delegate pushToLikedController:self];
+    NSInteger countLike = [self.labelbuttonLike.text integerValue];
+    countLike += 1;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.labelbuttonLike.text = [NSString stringWithFormat:@"%d", countLike];
+    }];
 }
 
 //Скрытие картинки во весь экран

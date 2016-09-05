@@ -28,4 +28,6 @@
 + (UIButton*) createButtonWithImage: (NSString*) image
                            anfFrame: (CGRect) frame;
 
++ (UIButton*) createButtonCancel;
+
 @end

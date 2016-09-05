@@ -20,19 +20,24 @@
 		FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7831D53516500F693DD /* SearchTravelController.m */; };
 		FF66A7871D53517A00F693DD /* SearchTravelView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A7861D53517A00F693DD /* SearchTravelView.m */; };
 		FF66A78B1D536A1300F693DD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66A78A1D536A1300F693DD /* Animation.m */; };
-		FF7901231D76DBFB00C04B81 /* imageAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901221D76DBFB00C04B81 /* imageAdd.png */; };
 		FF7901261D76E5C400C04B81 /* imageMessegeSendNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901241D76E5C400C04B81 /* imageMessegeSendNO.png */; };
 		FF7901271D76E5C400C04B81 /* sendMessegeImageYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901251D76E5C400C04B81 /* sendMessegeImageYES.png */; };
 		FF7901291D76E8A900C04B81 /* buttonCityCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7901281D76E8A900C04B81 /* buttonCityCancel.png */; };
 		FF79012B1D76F35C00C04B81 /* sendMessegeImageSend.png in Resources */ = {isa = PBXBuildFile; fileRef = FF79012A1D76F35C00C04B81 /* sendMessegeImageSend.png */; };
 		FF79012D1D76F82E00C04B81 /* logoMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = FF79012C1D76F82E00C04B81 /* logoMenu.png */; };
+		FF7FCED81D7B04150064E755 /* addButtonNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCED71D7B04150064E755 /* addButtonNew.png */; };
+		FF7FCEDA1D7B05440064E755 /* buttonCancelNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCED91D7B05440064E755 /* buttonCancelNew.png */; };
+		FF7FCEDE1D7B078F0064E755 /* alertPrice.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEDD1D7B078F0064E755 /* alertPrice.png */; };
+		FF7FCEE11D7B09450064E755 /* imageStarYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEDF1D7B09450064E755 /* imageStarYES.png */; };
+		FF7FCEE21D7B09450064E755 /* imageStarNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEE01D7B09450064E755 /* imageStarNO.png */; };
+		FF7FCEE61D7C432D0064E755 /* buttonCancelImageBar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEE51D7C432D0064E755 /* buttonCancelImageBar.png */; };
+		FF7FCEEA1D7C46120064E755 /* MessagePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEE91D7C46120064E755 /* MessagePopUp.m */; };
 		FF997F4C1D6DA0070037684A /* MyFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4B1D6DA0070037684A /* MyFormController.m */; };
 		FF997F4F1D6DA0170037684A /* MyFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F4E1D6DA0170037684A /* MyFormView.m */; };
 		FF997F591D6E18B00037684A /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F551D6E18B00037684A /* photo1.png */; };
 		FF997F5A1D6E18B00037684A /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F561D6E18B00037684A /* photo2.png */; };
 		FF997F5B1D6E18B00037684A /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F571D6E18B00037684A /* photo3.png */; };
 		FF997F5C1D6E18B00037684A /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F581D6E18B00037684A /* photo4.png */; };
-		FF997F5E1D6E23A80037684A /* imageButtonCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F5D1D6E23A80037684A /* imageButtonCancel.png */; };
 		FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = FF997F611D6E2A8D0037684A /* imageBigPhoto.png */; };
 		FF9E77E61D548EC1007A7168 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */; };
 		FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9E77E51D548EC1007A7168 /* UIImage+Color.m */; };
@@ -469,12 +474,19 @@
 		FF66A7861D53517A00F693DD /* SearchTravelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTravelView.m; sourceTree = "<group>"; };
 		FF66A7891D536A1300F693DD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		FF66A78A1D536A1300F693DD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
-		FF7901221D76DBFB00C04B81 /* imageAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageAdd.png; sourceTree = "<group>"; };
 		FF7901241D76E5C400C04B81 /* imageMessegeSendNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageMessegeSendNO.png; sourceTree = "<group>"; };
 		FF7901251D76E5C400C04B81 /* sendMessegeImageYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendMessegeImageYES.png; sourceTree = "<group>"; };
 		FF7901281D76E8A900C04B81 /* buttonCityCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCityCancel.png; sourceTree = "<group>"; };
 		FF79012A1D76F35C00C04B81 /* sendMessegeImageSend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendMessegeImageSend.png; sourceTree = "<group>"; };
 		FF79012C1D76F82E00C04B81 /* logoMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoMenu.png; sourceTree = "<group>"; };
+		FF7FCED71D7B04150064E755 /* addButtonNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButtonNew.png; sourceTree = "<group>"; };
+		FF7FCED91D7B05440064E755 /* buttonCancelNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCancelNew.png; sourceTree = "<group>"; };
+		FF7FCEDD1D7B078F0064E755 /* alertPrice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alertPrice.png; sourceTree = "<group>"; };
+		FF7FCEDF1D7B09450064E755 /* imageStarYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageStarYES.png; sourceTree = "<group>"; };
+		FF7FCEE01D7B09450064E755 /* imageStarNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageStarNO.png; sourceTree = "<group>"; };
+		FF7FCEE51D7C432D0064E755 /* buttonCancelImageBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCancelImageBar.png; sourceTree = "<group>"; };
+		FF7FCEE81D7C46120064E755 /* MessagePopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePopUp.h; sourceTree = "<group>"; };
+		FF7FCEE91D7C46120064E755 /* MessagePopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePopUp.m; sourceTree = "<group>"; };
 		FF997F4A1D6DA0070037684A /* MyFormController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormController.h; sourceTree = "<group>"; };
 		FF997F4B1D6DA0070037684A /* MyFormController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFormController.m; sourceTree = "<group>"; };
 		FF997F4D1D6DA0170037684A /* MyFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormView.h; sourceTree = "<group>"; };
@@ -483,7 +495,6 @@
 		FF997F561D6E18B00037684A /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
 		FF997F571D6E18B00037684A /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
 		FF997F581D6E18B00037684A /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
-		FF997F5D1D6E23A80037684A /* imageButtonCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonCancel.png; sourceTree = "<group>"; };
 		FF997F611D6E2A8D0037684A /* imageBigPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageBigPhoto.png; sourceTree = "<group>"; };
 		FF9E77E21D548EC1007A7168 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
 		FF9E77E31D548EC1007A7168 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
@@ -1003,12 +1014,21 @@
 			name = Animarhion;
 			sourceTree = "<group>";
 		};
+		FF7FCEE71D7C46080064E755 /* AddAlert */ = {
+			isa = PBXGroup;
+			children = (
+				FF7FCEE81D7C46120064E755 /* MessagePopUp.h */,
+				FF7FCEE91D7C46120064E755 /* MessagePopUp.m */,
+			);
+			name = AddAlert;
+			sourceTree = "<group>";
+		};
 		FF997F541D6E18910037684A /* MyForm */ = {
 			isa = PBXGroup;
 			children = (
-				FF7901221D76DBFB00C04B81 /* imageAdd.png */,
+				FF7FCED91D7B05440064E755 /* buttonCancelNew.png */,
+				FF7FCED71D7B04150064E755 /* addButtonNew.png */,
 				FF997F611D6E2A8D0037684A /* imageBigPhoto.png */,
-				FF997F5D1D6E23A80037684A /* imageButtonCancel.png */,
 				FF997F551D6E18B00037684A /* photo1.png */,
 				FF997F561D6E18B00037684A /* photo2.png */,
 				FF997F571D6E18B00037684A /* photo3.png */,
@@ -1555,6 +1575,7 @@
 		FFAE2CFB1D5DF7AE00E81AED /* ImagesButtons */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FCEE51D7C432D0064E755 /* buttonCancelImageBar.png */,
 				FFAE2CD41D5DF7AE00E81AED /* buttonBackImage.png */,
 				FFAE2CFA1D5DF7AE00E81AED /* IconButtonMenu.png */,
 			);
@@ -1632,6 +1653,7 @@
 				FFAE24711D5761B800E81AED /* SwichLib */,
 				FFAE2CFC1D5DF7AE00E81AED /* Images */,
 				FFBB8EF31D5093170043ED9D /* Category */,
+				FF7FCEE71D7C46080064E755 /* AddAlert */,
 				FFBB8F661D50F78B0043ED9D /* InputText */,
 				FFBB8EB21D508DCA0043ED9D /* Supporting Files */,
 			);
@@ -1780,6 +1802,9 @@
 		FFC4FD851D685893007C2DDC /* TravelImage */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FCEDF1D7B09450064E755 /* imageStarYES.png */,
+				FF7FCEE01D7B09450064E755 /* imageStarNO.png */,
+				FF7FCEDD1D7B078F0064E755 /* alertPrice.png */,
 				FFC4FD981D687185007C2DDC /* buttonDetailImageYES.png */,
 				FFC4FD991D687185007C2DDC /* buttonDetailImageNO.png */,
 				FFC4FD8C1D686400007C2DDC /* imagePhoto2.png */,
@@ -2114,6 +2139,7 @@
 				FFAE28CF1D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE288D1D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28621D57731500E81AED /* Activity7@2x.png in Resources */,
+				FF7FCEDA1D7B05440064E755 /* buttonCancelNew.png in Resources */,
 				FFAE286D1D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE2D1C1D5DF7AE00E81AED /* image3.png in Resources */,
 				FF997F5B1D6E18B00037684A /* photo3.png in Resources */,
@@ -2187,6 +2213,7 @@
 				FFE10F191D744D6200532346 /* buttonMessegeYES.png in Resources */,
 				FFAE28921D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE28A81D57731500E81AED /* Activity30@2x.png in Resources */,
+				FF7FCEE21D7B09450064E755 /* imageStarNO.png in Resources */,
 				FFAE28101D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE2D051D5DF7AE00E81AED /* sexFemaleNo.png in Resources */,
 				FFAE27D61D57731500E81AED /* Activity2@2x.png in Resources */,
@@ -2196,6 +2223,7 @@
 				FF79012D1D76F82E00C04B81 /* logoMenu.png in Resources */,
 				FFAE28181D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFAE2D0E1D5DF7AE00E81AED /* imageTravelStraightNO.png in Resources */,
+				FF7FCED81D7B04150064E755 /* addButtonNew.png in Resources */,
 				FF66A76E1D51E99500F693DD /* PFBeauSansPro-Bold.otf in Resources */,
 				FFAE27F71D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE285C1D57731500E81AED /* Activity1@2x.png in Resources */,
@@ -2310,6 +2338,7 @@
 				FFAE27F11D57731500E81AED /* Activity28@2x.png in Resources */,
 				FFAE28851D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFAE284E1D57731500E81AED /* Activity30@2x.png in Resources */,
+				FF7FCEE61D7C432D0064E755 /* buttonCancelImageBar.png in Resources */,
 				FFAE28321D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE287C1D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE280C1D57731500E81AED /* Activity11@2x.png in Resources */,
@@ -2337,12 +2366,13 @@
 				FFAE2D1D1D5DF7AE00E81AED /* image2.png in Resources */,
 				FFC4FDA81D68C91B007C2DDC /* likeButtonImage.png in Resources */,
 				FFAE28CB1D57731500E81AED /* Activity21@2x.png in Resources */,
+				FF7FCEDE1D7B078F0064E755 /* alertPrice.png in Resources */,
 				FFBB8EBD1D508DCA0043ED9D /* Main.storyboard in Resources */,
 				FFAE28261D57731500E81AED /* Activity7@2x.png in Resources */,
-				FF997F5E1D6E23A80037684A /* imageButtonCancel.png in Resources */,
 				FFAE281A1D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28D61D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFAE28951D57731500E81AED /* Activity13@2x.png in Resources */,
+				FF7FCEE11D7B09450064E755 /* imageStarYES.png in Resources */,
 				FFAE28C31D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE28451D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFAE288C1D57731500E81AED /* Activity4@2x.png in Resources */,
@@ -2372,7 +2402,6 @@
 				FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */,
 				FFAE288F1D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE28041D57731500E81AED /* Activity3@2x.png in Resources */,
-				FF7901231D76DBFB00C04B81 /* imageAdd.png in Resources */,
 				FFF8735D1D6C7FF800816FC1 /* tailRight.png in Resources */,
 				FFAE27E91D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28081D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2601,6 +2630,7 @@
 				FFAE29061D57959700E81AED /* TravelController.m in Sources */,
 				FFBB8F801D5117970043ED9D /* CustomLabels.m in Sources */,
 				FFE10F201D744E2400532346 /* YouLikedView.m in Sources */,
+				FF7FCEEA1D7C46120064E755 /* MessagePopUp.m in Sources */,
 				FF66A7841D53516500F693DD /* SearchTravelController.m in Sources */,
 				FF9E77E71D548EC1007A7168 /* UIImage+Color.m in Sources */,
 				FFBB8F8A1D51398A0043ED9D /* MyTravelController.m in Sources */,

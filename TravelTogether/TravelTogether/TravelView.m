@@ -18,6 +18,12 @@
 @property (strong, nonatomic) UITableView * tableTravel;
 @property (strong, nonatomic) NSArray * arrayData;
 
+//AlertPrice
+
+@property (strong, nonatomic) UIView * viewAlertPrice;
+
+@property (assign, nonatomic) BOOL isBoolStar; //Временная переменная
+
 @end
 
 @implementation TravelView
@@ -30,6 +36,8 @@
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height- 64.f);
         
         self.arrayData = data;
+        
+        self.isBoolStar = NO;
         
         UIButton * buttonBuyTicket = [UIButton createButtonWithImage:@"buttonBuyTicketNONew.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 140.f, 15.f, 139.f, 21.25f)];
         if (isiPhone6) {
@@ -54,6 +62,11 @@
         //Очень полездное свойство, отключает дествие ячейки-------------
         self.tableTravel.allowsSelection = NO;
         [self addSubview:self.tableTravel];
+        
+        
+        self.viewAlertPrice = [self createAlertPriceView];
+        self.viewAlertPrice.alpha = 0.f;
+        [self addSubview:self.viewAlertPrice];
         
         
     }
@@ -205,15 +218,93 @@
     return customCellView;
 }
 
+#pragma mark - AlertPrice
+
+- (UIView*) createAlertPriceView {
+    UIView * foneView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+    foneView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4];
+    UIImageView * alertPriceView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 100.f, self.frame.size.height / 2 - 100.f, 200.f, 178.f)];
+    alertPriceView.userInteractionEnabled = YES;
+    alertPriceView.image = [UIImage imageNamed:@"alertPrice.png"];
+    [foneView addSubview:alertPriceView];
+
+    
+    for (int i = 0; i < 5; i++) {
+        UIButton * buttonStar = [UIButton createButtonWithImage:@"imageStarNO.png" anfFrame:CGRectMake(22.f + 32.f * i, 70.f, 25.f, 25.f)];
+        if (i == 0) {
+            [buttonStar setImage:[UIImage imageNamed:@"imageStarYES.png"] forState:UIControlStateNormal];
+        }
+        buttonStar.tag = 100 + i;
+        [buttonStar addTarget:self action:@selector(buttonStar:) forControlEvents:UIControlEventTouchUpInside];
+        [alertPriceView addSubview:buttonStar];
+    }
+    
+    NSArray * arrayNameButtonStar = [NSArray arrayWithObjects:@"Написать отзыв", @"Написать потом", nil];
+    
+    for (int i = 0; i < 2; i++) {
+        UIButton * buttonStarAction = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonStarAction.frame = CGRectMake(alertPriceView.frame.size.width / 2 - 74.5f, 110.5f + 32.f * i, 149.f, 21.f);
+        buttonStarAction.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"cacaca"].CGColor;
+        buttonStarAction.layer.borderWidth = 1.f;
+        buttonStarAction.layer.cornerRadius = 10.5f;
+        [buttonStarAction setTitle:[arrayNameButtonStar objectAtIndex:i] forState:UIControlStateNormal];
+        [buttonStarAction setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
+        buttonStarAction.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:10];
+        [buttonStarAction addTarget:self action:@selector(buttonStarActionSelect:) forControlEvents:UIControlEventTouchUpInside];
+        buttonStarAction.tag = 200 + i;
+        [alertPriceView addSubview:buttonStarAction];
+    }
+    
+    
+    return foneView;
+}
+
 #pragma mark - Actions
+
+- (void) buttonStarActionSelect: (UIButton*) button {
+    if (button.tag == 200) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewAlertPrice.alpha = 0.f;
+        }];
+    } else if (button.tag == 201) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewAlertPrice.alpha = 0.f;
+        }];
+    }
+}
 
 - (void) buttonDetailAction: (UIButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 40 + i) {
-            [self.delegate pushToHumanDetail:self andID:[NSString stringWithFormat:@"%d", i]];
+            if (!self.isBoolStar) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.viewAlertPrice.alpha = 1.f;
+                }];
+                self.isBoolStar = YES;
+            } else {
+                [self.delegate pushToHumanDetail:self andID:[NSString stringWithFormat:@"%d", i]];
+            }
         }
     }
 }
 
+- (void) buttonStar: (UIButton*) button {
+    for (int i = 0; i < 5; i++) {
+        if (button.tag == 100 + i) {
+            for (int j = 0; j < 5; j++) {
+                UIButton * otherButton = (UIButton*)[self viewWithTag:100 + j];
+                if (otherButton.tag <= button.tag) {
+                    [UIView animateWithDuration:0.4 animations:^{
+                        [otherButton setImage:[UIImage imageNamed:@"imageStarYES.png"] forState:UIControlStateNormal];
+                    }];
+                } else {
+                    [UIView animateWithDuration:0.4 animations:^{
+                        [otherButton setImage:[UIImage imageNamed:@"imageStarNO.png"] forState:UIControlStateNormal];
+                    }];
+                }
+            }
+        }
+    }
+}
 
 @end

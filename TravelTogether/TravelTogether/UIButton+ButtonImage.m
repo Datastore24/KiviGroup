@@ -62,6 +62,19 @@
     return button;
 }
 
++ (UIButton*) createButtonCancel;
+{
+    UIImage *imageBarButton = [UIImage imageNamed:@"buttonCancelImageBar.png"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake(0, 0, 20, 20);
+    CGRect rect = button.frame;
+    rect.origin.y += 10;
+    button.frame = rect;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    
+    return button;
+}
+
 + (UIButton*) createButtonTextWithName: (NSString*) name
                               andFrame: (CGRect) rect
                               fontName: (NSString*) font

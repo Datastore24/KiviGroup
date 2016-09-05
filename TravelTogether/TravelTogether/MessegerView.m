@@ -33,6 +33,8 @@
 @property (strong, nonatomic) UIImageView * imageAddMessage;
 @property (strong, nonatomic) UIButton * sendButton;
 
+@property (strong, nonatomic) UIImage * sendImage; //Параметр для сохранения локальной картинки для добавления ее в чат
+
 //Floats for count scroll messege
 
 @property (assign,nonatomic) CGFloat messegeViewHeight; //
@@ -71,7 +73,7 @@
         
         for (int i = 0; i < self.arrayData.count; i++) {
             NSDictionary * dictMessege = [self.arrayData objectAtIndex:i];
-            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:[dictMessege objectForKey:@"imageName"] andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"] andSend:[dictMessege objectForKey:@"send"]];
+            UIView * messageView = [self createMessegeViewWithWhoMessege:[[dictMessege objectForKey:@"who"] boolValue] andName:[dictMessege objectForKey:@"name"] andImage:[dictMessege objectForKey:@"imageName"] andTextMessage:[dictMessege objectForKey:@"text"] andDate:[dictMessege objectForKey:@"date"] andSend:[dictMessege objectForKey:@"send"] andType:[dictMessege objectForKey:@"type"] whoSend:NO];
             [self.chatScrollView addSubview:messageView];
         }
     }
@@ -90,10 +92,9 @@
     
     self.inputTextHeight = self.inputText.frame.size.height;
     
-    
-    self.imageAddMessage = [[UIImageView alloc] initWithFrame:CGRectMake(14.f, 38.5f / 2.f - 8.75f, 17.5f, 17.5f)];
-    self.imageAddMessage.image = [UIImage imageNamed:@"imageAddMessage.png"];
-    [self.sendViewCust addSubview:self.imageAddMessage];
+    UIButton * buttomAddImage = [UIButton createButtonWithImage:@"imageAddMessage.png" anfFrame:CGRectMake(14.f, 38.5f / 2.f - 8.75f, 17.5f, 17.5f)];
+    [buttomAddImage addTarget:self action:@selector(buttomAddImageAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.sendViewCust addSubview:buttomAddImage];
     
     self.sendButton = [UIButton createButtonWithImage:@"buttonSendImage.png" anfFrame:CGRectMake(self.frame.size.width - 60.f, 38.5f / 2.f - 10.5f, 47.5f, 21.f)];
     [self.sendButton addTarget:self action:@selector(sendButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -108,6 +109,7 @@
                                                  name:UITextViewTextDidEndEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkText:)
                                                  name:UITextViewTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getImage:) name:@"NOTIFICATION_SEND_IMAGE_FOR_DUSCUSSIONS_VIEW" object:nil];
     
     return self.sendViewCust;
 }
@@ -123,7 +125,9 @@
                                    andImage: (NSString*) imageName
                              andTextMessage: (NSString*) textMessege
                                     andDate: (NSString*) date
-                                    andSend: (NSString*) send {
+                                    andSend: (NSString*) send
+                                    andType: (NSString*) type
+                                    whoSend: (BOOL) whosend { //Кто отправляет если YES то отправляем мы, если NO приходит с сервера
     
     
     UIView * messegeView = [[UIView alloc] init]; //Основное окно
@@ -141,11 +145,31 @@
     //Если сообщение идет от нас
     
     if (whoMessege) {
-        messegeTextView.frame = CGRectMake(self.frame.size.width - (32.5 + labelMessage.frame.size.width), 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
-        messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e4b8cb"];
-        UIImageView * viewTailRight = [[UIImageView alloc] initWithFrame:CGRectMake(messegeTextView.frame.size.width - 6.4f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
-        viewTailRight.image = [UIImage imageNamed:@"tailRight.png"];
-        [messegeTextView addSubview:viewTailRight];
+        
+        if ([type integerValue] == 2) {
+                messegeTextView.frame = CGRectMake(self.frame.size.width - (32.5 + 117.5f), 20.f, 121.5f, 121.5);
+                messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e4b8cb"];
+                UIImageView * viewTailRight = [[UIImageView alloc] initWithFrame:CGRectMake(messegeTextView.frame.size.width - 6.4f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
+                viewTailRight.image = [UIImage imageNamed:@"tailRight.png"];
+                [messegeTextView addSubview:viewTailRight];
+                UIImageView * testImage = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 117.5f, 117.5)];
+                [messegeTextView addSubview:testImage];
+                if (whosend) {
+                    testImage.image = self.sendImage;
+                } else {
+                testImage.image = [UIImage imageNamed:textMessege];
+                }
+                testImage.clipsToBounds = YES;
+                testImage.layer.cornerRadius = 10.f;
+                labelMessage.alpha = 0.f;
+        } else {
+            messegeTextView.frame = CGRectMake(self.frame.size.width - (32.5 + labelMessage.frame.size.width), 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
+            messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e4b8cb"];
+            UIImageView * viewTailRight = [[UIImageView alloc] initWithFrame:CGRectMake(messegeTextView.frame.size.width - 6.4f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
+            viewTailRight.image = [UIImage imageNamed:@"tailRight.png"];
+            [messegeTextView addSubview:viewTailRight];
+        }
+
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 80.f andHeight: 0.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentRight;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
@@ -175,11 +199,28 @@
     //Если идет от другого пользователя
         
     } else {
-        messegeTextView.frame = CGRectMake(50.f, 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
-        messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e5e5ea"];
-        UIImageView * viewTailLeft = [[UIImageView alloc] initWithFrame:CGRectMake(- 3.f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
-        viewTailLeft.image = [UIImage imageNamed:@"tailLeft.png"];
-        [messegeTextView addSubview:viewTailLeft];
+        
+        
+        if ([type integerValue] == 2) {
+            messegeTextView.frame = CGRectMake(50.f, 20.f, 121.5f, 121.5);
+            messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e5e5ea"];
+            UIImageView * viewTailLeft = [[UIImageView alloc] initWithFrame:CGRectMake(- 3.f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
+            viewTailLeft.image = [UIImage imageNamed:@"tailLeft.png"];
+            [messegeTextView addSubview:viewTailLeft];
+            UIImageView * testImage = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 117.5f, 117.5)];
+            [messegeTextView addSubview:testImage];
+            testImage.image = [UIImage imageNamed:textMessege];
+            testImage.clipsToBounds = YES;
+            testImage.layer.cornerRadius = 10.f;
+            labelMessage.alpha = 0.f;
+        } else {
+            messegeTextView.frame = CGRectMake(50.f, 20.f, labelMessage.frame.size.width + 20.f, labelMessage.frame.size.height + 10.f);
+            UIImageView * viewTailLeft = [[UIImageView alloc] initWithFrame:CGRectMake(- 3.f, messegeTextView.frame.size.height - 8.4f, 10.f, 8.f)];
+            viewTailLeft.image = [UIImage imageNamed:@"tailLeft.png"];
+            [messegeTextView addSubview:viewTailLeft];
+            messegeTextView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e5e5ea"];
+        }
+        
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:55.f andHeight: 0.f andSizeWidht:100.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentLeft;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
@@ -211,21 +252,28 @@
     self.messegeViewHeight += messegeView.frame.size.height;
     
     if (self.messegeViewHeight <= self.chatScrollView.frame.size.height - 64.f) {
+        
+        NSLog(@"Норм");
+        
         CGRect rect = self.chatScrollView.frame;
         rect.origin.y -= messegeView.frame.size.height;
         self.chatScrollView.frame = rect;
     } else {
+        
+        NSLog(@"Больше");
+        
         CGRect rect = self.chatScrollView.frame;
         rect.origin.y = 0.f;
         self.chatScrollView.frame = rect;
         self.chatScrollView.contentSize = CGSizeMake(0, self.messegeViewHeight);
-        self.chatScrollView.contentOffset = CGPointMake(0, self.messegeViewHeight - self.chatScrollView.frame.size.height);
+        if (whosend) {
+            self.chatScrollView.contentOffset = CGPointMake(0, self.messegeViewHeight - (self.chatScrollView.frame.size.height));
+        } else {
+            self.chatScrollView.contentOffset = CGPointMake(0, self.messegeViewHeight - (self.chatScrollView.frame.size.height - 64));
+        }
     }
-    
     self.contentOffcet = self.chatScrollView.contentOffset.y;
-    
     return messegeView;
-    
 }
 
 #pragma mark - Notification Methods
@@ -300,13 +348,26 @@
 
 #pragma mark - Actions
 
+- (void) getImage: (NSNotification*) notification {
+    
+    self.sendImage = notification.object;
+    
+    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:@"" andDate:@"22:45" andSend: @"1" andType: @"2" whoSend:YES];
+    [self.chatScrollView addSubview:messageView];
+}
+
 - (void) sendButtonAction {
     NSString * stringText = self.inputText.mainTextView.text;
     self.inputText.mainTextView.text = @"";
     [self.inputText backAnimation];
     [self animathionMethodWithDurqction:0.f];
-    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:stringText andDate:@"22:45" andSend: @"1"];
+    UIView * messageView = [self createMessegeViewWithWhoMessege:YES andName:@"Виктор" andImage:nil andTextMessage:stringText andDate:@"22:45" andSend: @"1" andType: @"1" whoSend:YES];
     [self.chatScrollView addSubview:messageView];
+}
+
+//Загрузка картинки
+- (void) buttomAddImageAction {
+    [self.delegate addImage:self];
 }
 
 #pragma mark - Other

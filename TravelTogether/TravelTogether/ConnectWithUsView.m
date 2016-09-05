@@ -12,6 +12,7 @@
 #import "Macros.h"
 #import "InputTextView.h"
 #import "InputTextToView.h"
+#import "MessagePopUp.h"
 
 @implementation ConnectWithUsView
 
@@ -37,6 +38,9 @@
             inputText.layer.cornerRadius = 34.f / 2;
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
             inputText.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
+            if (i == 1) {
+                inputText.textFieldInput.keyboardType = UIKeyboardTypeEmailAddress;
+            }
             inputText.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"626262"];
             if (isiPhone6) {
                 inputText.frame = CGRectMake(15.f, 95.f + 80 * i, self.frame.size.width - 30.f, 40.f);
@@ -79,6 +83,7 @@
         [buttonSend setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
         [buttonSend setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSend.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_BOLD size:13];
+        [buttonSend addTarget:self action:@selector(buttonSendAction) forControlEvents:UIControlEventTouchUpInside];
         buttonSend.layer.cornerRadius = 37.5f / 2;
         if (isiPhone6) {
             buttonSend.frame = CGRectMake(15.f, self.frame.size.height - 135.f, self.frame.size.width - 30.f, 45.f);
@@ -117,6 +122,10 @@
         selfRect.origin.y += 75.f;
         self.frame = selfRect;
     }];
+}
+
+- (void) buttonSendAction {
+    [MessagePopUp showPopUpWithDelay:@"Сообщение отправленно" view:self delay:0.3];
 }
 
 @end
