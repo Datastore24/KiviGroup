@@ -21,6 +21,8 @@
 @property (strong, nonatomic) UIButton * buttonColumnOne;
 @property (strong, nonatomic) UIButton * buttonColumnTwo;
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSDictionary * dictFilter;
+@property (strong, nonatomic) NSString * sort;
 @property (assign, nonatomic) BOOL isColumn;
 
 //ScrollView
@@ -37,6 +39,11 @@
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
         
         self.arrayData = data;
+        self.dictFilter = [NSDictionary new];
+        self.sort = @"upd-1";
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilter:) name:@"NOTIFICATION_FILTER_APPLY" object:nil];
+       
         
 #pragma mark - TopBar
         
@@ -236,7 +243,7 @@
     for (int i = 0; i < 4; i++) {
         if (button.tag == 10 + i) {
             NSString * sort;
-            NSLog(@"TAG %i",button.tag);
+        
             if(button.tag == 11){
                 sort =@"cst-0";
             }else if (button.tag == 12){
@@ -246,10 +253,21 @@
             }else if (button.tag == 14){
                 sort =@"upd-0";
             }
+            self.sort = sort;
+            NSString * filter;
+            NSString * cost;
+            BOOL isEmpty = ([self.dictFilter count] == 0);
+            if(isEmpty){
+                filter=@"";
+                cost=@"";
+            }else{
+                filter=[self.dictFilter objectForKey:@"string"];
+                cost=[self.dictFilter objectForKey:@"cost"];
+            }
             
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
             [self.delegate getApiCatalog:self andBlock:^{
-                NSLog(@"LIST %@",[self.delegate arrayData]);
+            
                 
                 for (UIView *view in self.scrollView.subviews){
                     if([view isKindOfClass:[UIScrollView class]]){
@@ -267,7 +285,7 @@
                 
 
 
-            } andSort:sort];
+            } andSort:sort andFilter:filter andCost:cost];
             [UIView animateWithDuration:0.3f animations:^{
                 self.hideView.alpha = 0.f;
             }];
@@ -322,7 +340,7 @@
 }
 
 - (void) buttonFilterAction {
-    [self.delegate pushToOrderFilters: self andCatID:[self.delegate catID]];
+    [self.delegate pushToOrderFilters: self andCatID:[self.delegate catID] andCost:[self.dictFilter objectForKey:@"cost"] andFilter:[self.dictFilter objectForKey:@"string"]];
 }
 
 
@@ -345,6 +363,37 @@
     //here is the scaled image which has been changed to the size specified
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+#pragma mark - ApplyFilter
+
+- (void) applyFilter: (NSNotification*) notification {
+   self.dictFilter = notification.object;
+
+            [self.delegate getApiCatalog:self andBlock:^{
+                
+                for (UIView *view in self.scrollView.subviews){
+                    if([view isKindOfClass:[UIScrollView class]]){
+                        
+                        [view removeFromSuperview];
+                        
+                    }
+                }
+                
+                //Scroll------------
+                self.arrayData = [self.delegate arrayData];
+                self.scrollView = [self createScrollViewWithView:self andData:[self.delegate arrayData] andColumn:self.isColumn];
+                
+                [self insertSubview:self.scrollView atIndex:0];
+                
+                
+                
+            } andSort:self.sort andFilter:[self.dictFilter objectForKey:@"string"] andCost:[self.dictFilter objectForKey:@"cost"]];
+            [UIView animateWithDuration:0.3f animations:^{
+                self.hideView.alpha = 0.f;
+            }];
+    
+    
 }
 
 

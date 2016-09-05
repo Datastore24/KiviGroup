@@ -94,7 +94,7 @@
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
         
-        NSLog(@"DATA %@",data);
+       
         for (int i=0;i<data.count;i++){
             
             if([[self.dictData objectForKey:@"id"] integerValue]==81){
@@ -125,11 +125,9 @@
                          self.viewColor = [self createColorView];
                          [self.mainScrollView addSubview:self.viewColor];
                          
-                     }else if([[self.dictData objectForKey:@"id"] integerValue]==-2){
-                         NSLog(@"ID %@ NAME %@",[self.dictData objectForKey:@"id"],[self.dictData objectForKey:@"name"]);
-                         
+                      
                      }else{
-                         NSLog(@"ID %@ NAME %@",[self.dictData objectForKey:@"id"],[self.dictData objectForKey:@"name"]);
+                        
                          //Detail
                          [self.mArrayDetail addObject:self.dictData];
                          
@@ -158,6 +156,7 @@
         [self addSubview:[self createConfirmView]];
         
         self.mainScrollView.contentSize = CGSizeMake(0, self.viewDetail.frame.size.height + self.viewDetail.frame.origin.y + 60);
+         [self buttonActionCheck];
 
     }
     return self;
@@ -180,11 +179,25 @@
     [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
     [priceView addSubview:self.slider];
     
-    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min_orig"] ] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    if([[self.dictData objectForKey:@"cost_min"] floatValue]!=0
+       && [[self.dictData objectForKey:@"cost_max"] floatValue]!=0){
+        
+        self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min"] ] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+        self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+        self.counter +=1;
+        
+        
+    }else{
+        self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min_orig"] ] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+          self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+        
+    }
+    
+    
     
     [priceView addSubview:self.labelFrom];
     
-    self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+  
     self.labelTo.frame = CGRectMake(self.frame.size.width - 115.f, 120.f, 100.f, self.labelFrom.frame.size.height);
     self.labelTo.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:self.labelTo];
@@ -217,21 +230,46 @@
     //Расчет таблицы-------
     NSInteger line = 0; //Строки
     NSInteger column = 0; //Столбци
+    
+    
+    //Кнопка отмены
+    self.buttonCanselSize = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
+    [self.buttonCanselSize addTarget:self action:@selector(buttonCanselSizeAction:) forControlEvents:UIControlEventTouchUpInside];
+     self.buttonCanselSize.alpha = 0.f;
+    
     for (int i = 0; i < self.arraySize.count; i++) {
         CustomButton * buttonSize = [CustomButton buttonWithType:UIButtonTypeSystem];
         buttonSize.frame = CGRectMake(20.f + (self.frame.size.width / 7.f - 5) * column,
                                       50.f + (self.frame.size.width / 7 - 15) * line,
                                       self.frame.size.width / 7 - 10, self.frame.size.width / 7 - 20);
         buttonSize.layer.borderWidth = 1.5f;
-        buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+      buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
         buttonSize.layer.cornerRadius = 6.f;
         [buttonSize setTitle:[[self.arraySize objectAtIndex:i] objectForKey:@"name"]  forState:UIControlStateNormal];
-        [buttonSize setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
+       
         buttonSize.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         buttonSize.tag = 10 + i;
-        buttonSize.customName =[[self.arraySize objectAtIndex:i] objectForKey:@"name"];
+        buttonSize.customName =[self.dictData objectForKey:@"id"];
         buttonSize.customValue = [[self.arraySize objectAtIndex:i] objectForKey:@"value"];
-        buttonSize.isBool = NO;
+        
+        
+   
+       
+        
+        if([[[self.arraySize objectAtIndex:i] objectForKey:@"selected"] integerValue] == 1){
+            buttonSize.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+            [buttonSize setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            buttonSize.isBool = YES;
+            if (self.buttonCanselSize.alpha == 0.f) {
+                    self.buttonCanselSize.alpha = 1.f;
+            }
+            self.counter+=1;
+        }else{
+            buttonSize.backgroundColor = [UIColor whiteColor];
+             [buttonSize setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
+            buttonSize.isBool = NO;
+        }
+        
         [buttonSize addTarget:self action:@selector(buttonSizeAction:) forControlEvents:UIControlEventTouchUpInside];
         [sizeView addSubview: buttonSize];
         [self.mArraySizes addObject:buttonSize];
@@ -250,9 +288,8 @@
     CustomLabels * sizeTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Размеры" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [sizeView addSubview:sizeTitl];
     
-    self.buttonCanselSize = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
-    [self.buttonCanselSize addTarget:self action:@selector(buttonCanselSizeAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.buttonCanselSize.alpha = 0.f;
+   
+    
     [sizeView addSubview:self.buttonCanselSize];
     
     //Коллекция хранения всех кнопок отмены и числовых значений
@@ -278,6 +315,12 @@
     //Расчет таблицы-------
     NSInteger line = 0; //Строки
     NSInteger column = 0; //Столбци
+    
+    //Кнопка отмены
+    self.buttonCanselColor = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
+    [self.buttonCanselColor addTarget:self action:@selector(buttonCanselColorAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.buttonCanselColor.alpha = 0.f;
+    
     for (int i = 0; i < self.arrayColor.count; i++) {
         int value =[[[self.arrayColor objectAtIndex:i] objectForKey:@"name"] intValue];
         NSString * color;
@@ -338,13 +381,27 @@
         buttonColor.layer.cornerRadius = 6.f;
         buttonColor.backgroundColor = [UIColor hx_colorWithHexRGBAString:color];
         buttonColor.tag = 100 + i;
-        buttonColor.customName =[[self.arrayColor objectAtIndex:i] objectForKey:@"name"];
+        buttonColor.customName =[self.dictData objectForKey:@"id"];
         buttonColor.customValue = [[self.arrayColor objectAtIndex:i] objectForKey:@"value"];
-        buttonColor.isBool = NO;
+        
+        if([[[self.arrayColor objectAtIndex:i] objectForKey:@"selected"] integerValue] == 1){
+            buttonColor.alpha = 0.3f;
+            buttonColor.isBool = YES;
+            if (self.buttonCanselColor.alpha == 0.f) {
+                self.buttonCanselColor.alpha = 1.f;
+            }
+            self.counter+=1;
+        }else{
+            buttonColor.alpha = 1.f;
+            buttonColor.isBool = NO;
+        }
+        
+        
+        [self.mArrayColor addObject:buttonColor];
         
         [buttonColor addTarget:self action:@selector(buttonColorAction:) forControlEvents:UIControlEventTouchUpInside];
         [colorView addSubview: buttonColor];
-        [self.mArrayColor addObject:buttonColor];
+        
         [self.arrayAllButtons addObject:buttonColor];
         if (i != self.arrayColor.count - 1) {
             column += 1;
@@ -361,9 +418,7 @@
     CustomLabels * colorTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цвет" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [colorView addSubview:colorTitl];
     
-    self.buttonCanselColor = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
-    [self.buttonCanselColor addTarget:self action:@selector(buttonCanselColorAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.buttonCanselColor.alpha = 0.f;
+    
     [colorView addSubview:self.buttonCanselColor];
     
     //Коллекция хранения всех кнопок отмены и числовых значений
@@ -389,6 +444,7 @@
     for (int i = 0; i < arrayDetail.count; i++) {
         NSDictionary * dictDetail = [arrayDetail objectAtIndex:i];
         NSArray * arrayDictDetail = [dictDetail objectForKey:@"options"]; //Массив каждой детали
+      
         UIView * detailPartView = [[UIView alloc] init]; // Вью каждой детали
         NSMutableArray * detailArray = [[NSMutableArray alloc] init]; //Массив кнопок в каждой детали
         NSInteger countDetail = 0; //счетчик деталей
@@ -396,12 +452,27 @@
         //Расчет таблицы-------
         NSInteger line = 0; //Строки
         CGFloat allHeight = 0; //общая ширина
+        
+        //Конпка отмены
+        UIButton * buttonCancelDetail = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
+        [buttonCancelDetail addTarget:self action:@selector(buttonCanselDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+        buttonCancelDetail.alpha = 0.f;
+        buttonCancelDetail.tag = 1000 + i;
+        
         for (int j = 0; j < arrayDictDetail.count; j++) {
             CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
             buttonDetail.layer.borderWidth = 1.5f;
             buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
             buttonDetail.layer.cornerRadius = 6.f;
-            buttonDetail.customName =[[arrayDictDetail objectAtIndex:j] objectForKey:@"name"];
+
+            if([[dictDetail objectForKey:@"id"] integerValue] ==-2){
+                buttonDetail.customName = [[arrayDictDetail objectAtIndex:j] objectForKey:@"id"];
+            }else{
+                buttonDetail.customName = [dictDetail objectForKey:@"id"];
+              
+            }
+           
+            
             buttonDetail.customValue = [[arrayDictDetail objectAtIndex:j] objectForKey:@"value"];
             buttonDetail.group = i+1;
             [buttonDetail setTitle:[[arrayDictDetail objectAtIndex:j] objectForKey:@"name"] forState:UIControlStateNormal];
@@ -417,7 +488,23 @@
                                               50.f + (self.frame.size.width / 7 - 15) * line,
                                               8 * letterCount + 20,
                                               self.frame.size.width / 7 - 20);
-            buttonDetail.isBool = NO;
+           
+        
+            if([[[arrayDictDetail objectAtIndex:j] objectForKey:@"selected"] integerValue] == 1){
+                buttonDetail.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+                [buttonDetail setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                buttonDetail.isBool = YES;
+                if (buttonCancelDetail.alpha == 0.f) {
+                    buttonCancelDetail.alpha = 1.f;
+                }
+                self.counter+=1;
+            }else{
+                buttonDetail.backgroundColor = [UIColor whiteColor];
+                [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
+                buttonDetail.isBool = NO;
+            }
+            
+            
             [detailPartView addSubview: buttonDetail];
             allHeight += buttonDetail.frame.size.width + 5;
             [detailArray addObject:buttonDetail];
@@ -430,10 +517,7 @@
         [detailPartView addSubview:colorTitl];
         
         
-        UIButton * buttonCancelDetail = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
-        [buttonCancelDetail addTarget:self action:@selector(buttonCanselDetailAction:) forControlEvents:UIControlEventTouchUpInside];
-        buttonCancelDetail.alpha = 0.f;
-        buttonCancelDetail.tag = 1000 + i;
+        
         [detailPartView addSubview:buttonCancelDetail];
         
         //Коллекция хранения всех кнопок отмены и числовых значений
@@ -611,11 +695,13 @@
                 if (!self.colorBool) {
                     self.counter += 1;
                     self.colorBool = YES;
+                    
                 }
                 [UIView animateWithDuration:0.3f animations:^{
                     button.alpha = 0.3;
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
+                   
                     if (self.buttonCanselColor.alpha == 0.f) {
                         [UIView animateWithDuration:0.3 animations:^{
                             self.buttonCanselColor.alpha = 1.f;
@@ -628,6 +714,7 @@
                     button.alpha = 1.f;
                 } completion:^(BOOL finished) {
                     button.isBool = NO;
+                    
                 }];
             }
         }
@@ -747,127 +834,123 @@
 - (void) buttonConfirmAction {
     NSString * parametrs = @"";
     //Цена
-    NSLog(@"PRICE %i - %i",(NSInteger)self.slider.lowerValue,(NSInteger)self.slider.upperValue);
-    NSMutableArray * allInfo = [NSMutableArray new];
+    NSString * price= [NSString stringWithFormat:@"%i-%i",
+                       (NSInteger)self.slider.lowerValue,(NSInteger)self.slider.upperValue];
+    
     
     //Детали
-    int group = 1;
-    NSMutableArray * arrayAllDetail = [NSMutableArray new];
-    NSString * stringArrayGroup=@"";
-    NSString * stringArrayOtherGroup=@"";
+   
+
+    NSString * parametrsDetails=@"_";
+    int countDetail=0;
+    
     
     for (int i = 0; i < self.arrayDetailButtons.count; i++) {
         NSMutableDictionary * dict = [self.arrayDetailButtons objectAtIndex:i]; //Дикшенери для хранения всех элементов
         NSMutableArray * arrayDetail = [dict objectForKey:@"buttonArray"]; //Массив кнопок каждой детали
+        id lastDetail = [arrayDetail lastObject];
         
         for (CustomButton * button in arrayDetail) {
-            NSLog(@"GROUP %i=%i",group,button.group);
-            
-            
-                if (button.isBool) {
-                    
-                    if(button.group==group){
-                        stringArrayGroup = [NSString stringWithFormat:@"%@%@-%@."
-                                       ,stringArrayGroup,button.customName,button.customValue];
-                    }else{
-                        
-                        stringArrayOtherGroup = [NSString stringWithFormat:@"%@-%@"
-                                                 ,button.customName,button.customValue];
-                        [arrayAllDetail addObject:stringArrayOtherGroup];
-                        
-                    }
-                    
-                    
-                   
-                    
-
-                    NSLog(@"DETAIL %@ - %@ - %i",button.customName, button.customValue, button.group);
-                    
-                    
-                }
-            
            
             
+                if (button.isBool) {
+            
 
+                        parametrsDetails = [NSString stringWithFormat:@"%@%@-%@."
+                                            ,parametrsDetails,button.customName,button.customValue];
+                
+                    
+                    countDetail += 1;
+                }
+            if(button==lastDetail){
+                if(countDetail>0){
+                    parametrsDetails = [NSString stringWithFormat:@"%@_._"
+                                        ,parametrsDetails];
+                    countDetail=0;
+                }
+                
+                
+            }
+
+        }
+        
+        
+    }
+    
+    if ([parametrsDetails length] > 0) {
+        parametrsDetails = [parametrsDetails substringToIndex:[parametrsDetails length] - 1];
+    }
+    
+    
+
+    
+    //ЦВЕТА
+  
+    id lastColor = [self.mArrayColor lastObject];
+    int countColor=0;
+    NSString * parametrsColor = @"";
+    
+    for (ColorButton * buttonColor in self.mArrayColor) {
+  
+    
+            if (buttonColor.isBool) {
+               
+                parametrsColor = [NSString stringWithFormat:@"%@%@-%@.",parametrsColor,buttonColor.customName,buttonColor.customValue];
+                 countColor +=1;
+                
+            }
+        if(buttonColor == lastColor){
+            if(countColor>0){
+                    parametrsColor = [NSString stringWithFormat:@"_%@_.",parametrsColor];
+                countColor=0;
+            }
+
+            
+        }
+        
+    }
+    
+    //РАЗМЕРЫ
+
+    id lastSize = [self.mArraySizes lastObject];
+    int countSizes=0;
+    NSString * parametrsSizes = @"";
+    for (CustomButton * buttonSize in self.mArraySizes) {
+        
+        
+        
+        if (buttonSize.isBool) {
+           
+            parametrsSizes = [NSString stringWithFormat:@"%@%@-%@.",parametrsSizes,buttonSize.customName,buttonSize.customValue];
+            countSizes +=1;
+            
+           
+        }
+        if(buttonSize == lastSize){
+            if(countSizes>0){
+                parametrsSizes = [NSString stringWithFormat:@"_%@_.",parametrsSizes];
+            }
             
             
         }
         
         
-//        if(i+1==self.arrayDetailButtons.count){
-//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
-//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._."
-//                                                            withString:@"_."];
-//            
-//            
-//            
-//        }
-       
     }
+   
     
-    NSLog(@"ARRAY %@",arrayAllDetail);
+    parametrs = [NSString stringWithFormat:@"%@%@%@",parametrsColor,parametrsSizes,parametrsDetails];
+    parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._."
+                                                     withString:@"_."];
     
-//    //ЦВЕТА
-//    id firstColor = [self.mArrayColor firstObject];
-//    id lastColor = [self.mArrayColor lastObject];
-//    
-//    for (ColorButton * buttonColor in self.mArrayColor) {
-//        if(buttonColor == firstColor){
-//            parametrs = [NSString stringWithFormat:@"_%@",parametrs];
-//           
-//            
-//        }
-//    
-//            if (buttonColor.isBool) {
-//                NSLog(@"COLOR %@ - %@",buttonColor.customName, buttonColor.customValue);
-//                parametrs = [NSString stringWithFormat:@"%@%@-%@.",parametrs,buttonColor.customName,buttonColor.customValue];
-//                
-//            }
-//        if(buttonColor == lastColor){
-//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
-//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._"
-//                                                             withString:@"_"];
-//            
-//        }
-//        
-//    }
-//    
-//    //РАЗМЕРЫ
-//    id firstSize = [self.mArraySizes firstObject];
-//    id lastSize = [self.mArraySizes lastObject];
-//    
-//    for (CustomButton * buttonSize in self.mArraySizes) {
-//        
-//        if(buttonSize == firstSize){
-//            parametrs = [NSString stringWithFormat:@"%@._",parametrs];
-//           
-//            
-//        }
-//        
-//        if (buttonSize.isBool) {
-//            NSLog(@"SIZE %@ - %@",buttonSize.customName, buttonSize.customValue);
-//            parametrs = [NSString stringWithFormat:@"%@%@-%@.",parametrs,buttonSize.customName,buttonSize.customValue];
-//            
-//           
-//        }
-//        if(buttonSize == lastSize){
-//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
-//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._"
-//                                                 withString:@"_"];
-//            
-//        }
-//        
-//        
-//    }
     
-    NSLog(@"PARAMS %@", parametrs);
-    
-
-    //[self.delegate backTuCatalog:self];
+    [self.delegate backTuCatalog:self andCost:price andString:parametrs];
 }
 
 //Отмена всех фильтров
 - (void) buttonCancelAction {
+    
+
+    
     self.countColor = 0;
     self.countSize = 0;
     self.slider.lowerValue = self.minPrice;
@@ -943,14 +1026,30 @@
 {
     
     [self configureMetalThemeForSlider:self.slider];
+    
+    
+    
     self.slider.minimumValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.slider.maximumValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
     self.minPrice=[[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.maxPrice=[[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+    
+    if([[self.dictData objectForKey:@"cost_min"] floatValue]!=0
+        && [[self.dictData objectForKey:@"cost_max"] floatValue]!=0){
+        
+        self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min"] floatValue];
+        self.slider.upperValue = [[self.dictData objectForKey:@"cost_max"] floatValue];
+        
 
-    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
-    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+        
+    }else{
+        
+        self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+        self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
 
+        
+    }
+   
     
     float range =self.slider.maximumValue * 0.1;
     
@@ -1006,6 +1105,7 @@
             self.bigButtonConfirm.alpha = 0.f;
             self.buttonConfirm.alpha = 1.f;
             self.buttonCancel.alpha = 1.f;
+
         }];
     } else {
         [UIView animateWithDuration:0.3 animations:^{
