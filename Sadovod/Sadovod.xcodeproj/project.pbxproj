@@ -14,6 +14,8 @@
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
+		FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */; };
+		FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEF21D7D874B0064E755 /* FormalizationView.m */; };
 		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
 		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
 		FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */; };
@@ -430,6 +432,10 @@
 		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF7FCEEE1D7D873B0064E755 /* FormalizationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationController.h; sourceTree = "<group>"; };
+		FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationController.m; sourceTree = "<group>"; };
+		FF7FCEF11D7D874B0064E755 /* FormalizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationView.h; sourceTree = "<group>"; };
+		FF7FCEF21D7D874B0064E755 /* FormalizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationView.m; sourceTree = "<group>"; };
 		FF997F6C1D6EDE890037684A /* OrderFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersController.h; sourceTree = "<group>"; };
 		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
 		FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersView.h; sourceTree = "<group>"; };
@@ -934,6 +940,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF7FCEED1D7D87260064E755 /* Formalization */ = {
+			isa = PBXGroup;
+			children = (
+				FF7FCEEE1D7D873B0064E755 /* FormalizationController.h */,
+				FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */,
+				FF7FCEF11D7D874B0064E755 /* FormalizationView.h */,
+				FF7FCEF21D7D874B0064E755 /* FormalizationView.m */,
+			);
+			name = Formalization;
+			sourceTree = "<group>";
+		};
 		FF997F6B1D6EDE6A0037684A /* OrderFilters */ = {
 			isa = PBXGroup;
 			children = (
@@ -1003,6 +1020,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FCEED1D7D87260064E755 /* Formalization */,
 				FFE10F3A1D75BEF400532346 /* Basket */,
 				FFA8ABBE1D70835C004010F9 /* BuyView */,
 				FF997F6B1D6EDE6A0037684A /* OrderFilters */,
@@ -2302,10 +2320,12 @@
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
 				FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */,
+				FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
+				FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */,
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,
