@@ -73,11 +73,6 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void) pushToLikedController: (HumanDetailView*) humanDetailView {
-    YouLikedController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"YouLikedController"];
-    [self.navigationController pushViewController:detail animated:YES];
-}
-
 - (void) buttonBackAction {
     [self.navigationController popViewControllerAnimated:YES];
 }

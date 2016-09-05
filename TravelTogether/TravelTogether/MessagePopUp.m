@@ -27,7 +27,7 @@
     successLabel.textAlignment = NSTextAlignmentCenter;
     successLabel.text = message;
     successLabel.textColor = [UIColor whiteColor];
-    successLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+    successLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:20];
     
     
     [successView addSubview:successLabel];
@@ -61,7 +61,7 @@
     successLabel.textAlignment = NSTextAlignmentCenter;
     successLabel.text = message;
     successLabel.textColor = [UIColor whiteColor];
-    successLabel.font = [UIFont fontWithName:FONTREGULAR size:20];
+    successLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:20];
     
     
     [successView addSubview:successLabel];

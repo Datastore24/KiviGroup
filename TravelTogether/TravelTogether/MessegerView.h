@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MessegerViewDelegate;
+
 @interface MessegerView : UIView
+
+@property (weak, nonatomic) id <MessegerViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol MessegerViewDelegate <NSObject>
+
+@required
+
+- (void) addImage: (MessegerView*) messegerView;
 
 @end

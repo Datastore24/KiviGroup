@@ -1018,49 +1018,64 @@
     UIView * imageViewFone = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
     imageViewFone.backgroundColor = [UIColor whiteColor];
     
-    self.imageViewPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
-                                                                        imageViewFone.frame.size.height - 34.f)];
-    if (isiPhone6) {
-        self.imageViewPhoto.frame = CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
-                                               imageViewFone.frame.size.height - 40.f);
-    }
-    //Временное условие----------------
-    self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFit;
-    if (isiPhone6) {
-        self.imageViewPhoto.contentMode = UIViewContentModeScaleToFill;
-    }
-    [imageViewFone addSubview:self.imageViewPhoto];
+    UIScrollView * scrollPhotoBig = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+    scrollPhotoBig.pagingEnabled = YES;
+    scrollPhotoBig.showsHorizontalScrollIndicator = NO;
+    scrollPhotoBig.contentSize = CGSizeMake(self.frame.size.width * 3, 0);
+    [imageViewFone addSubview:scrollPhotoBig];
     
-    UIButton * buttonPhotoCancel = [UIButton createButtonWithImage:@"imageButtonCancel.png"
+    for (int i = 0; i < 3; i++) {
+        UIView * viewPhotoScroll = [[UIView alloc] initWithFrame:CGRectMake(0.f + self.frame.size.width * i, 0.f, self.frame.size.width, self.frame.size.height)];
+        [scrollPhotoBig addSubview:viewPhotoScroll];
+        
+        self.imageViewPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
+                                                                            imageViewFone.frame.size.height - 34.f)];
+        if (isiPhone6) {
+            self.imageViewPhoto.frame = CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
+                                                   imageViewFone.frame.size.height - 40.f);
+        }
+        UIImage * imagePhoto = [UIImage imageNamed:@"imageBigPhoto.png"];
+        self.imageViewPhoto.image = imagePhoto;
+        //Временное условие----------------
+        self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFit;
+        if (isiPhone6) {
+            self.imageViewPhoto.contentMode = UIViewContentModeScaleToFill;
+        }
+        [viewPhotoScroll addSubview:self.imageViewPhoto];
+        
+        
+        
+        CustomLabels * labelName = [[CustomLabels alloc] initLabelWithWidht:12.5f andHeight:imageViewFone.frame.size.height - 27.5f andColor:VM_COLOR_PINK andText:@"Дженифер Энистон" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+        if (isiPhone6) {
+            labelName.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 32.5f, 20, 40);
+            labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
+            [labelName sizeToFit];
+        }
+        [viewPhotoScroll addSubview:labelName];
+        
+        CustomLabels * labelComment = [[CustomLabels alloc] initLabelWithWidht:labelName.frame.size.width + 15.f andHeight:imageViewFone.frame.size.height - 27.5f andColor:@"707070" andText:@"Пляж на мальдивах" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+        if (isiPhone6) {
+            labelComment.frame = CGRectMake(labelName.frame.size.width + 18.f, imageViewFone.frame.size.height - 32.5f, 20, 30);
+            labelComment.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
+            [labelComment sizeToFit];
+        }
+        [viewPhotoScroll addSubview:labelComment];
+        
+        CustomLabels * labelDate = [[CustomLabels alloc] initLabelWithWidht:12.5 andHeight:imageViewFone.frame.size.height - 16.f andColor:@"b7b6b6" andText:@"2 дня назад" andTextSize:8 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+        if (isiPhone6) {
+            labelDate.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 18.5f, 20, 40);
+            labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
+            [labelDate sizeToFit];
+        }
+        [viewPhotoScroll addSubview:labelDate];
+    }
+    
+    
+    
+    UIButton * buttonPhotoCancel = [UIButton createButtonWithImage:@"buttonCancelNew.png"
                                                           anfFrame:CGRectMake(self.frame.size.width - 40.f, 5.f, 30.f, 30.f)];
     [buttonPhotoCancel addTarget:self action:@selector(buttonPhotoCancel) forControlEvents:UIControlEventTouchUpInside];
     [imageViewFone addSubview:buttonPhotoCancel];
-    
-    CustomLabels * labelName = [[CustomLabels alloc] initLabelWithWidht:12.5f andHeight:imageViewFone.frame.size.height - 27.5f andColor:VM_COLOR_PINK andText:@"Дженифер Энистон" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-    if (isiPhone6) {
-        labelName.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 32.5f, 20, 40);
-        labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-        [labelName sizeToFit];
-    }
-    [imageViewFone addSubview:labelName];
-    
-    CustomLabels * labelComment = [[CustomLabels alloc] initLabelWithWidht:labelName.frame.size.width + 15.f andHeight:imageViewFone.frame.size.height - 27.5f andColor:@"707070" andText:@"Пляж на мальдивах" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-    if (isiPhone6) {
-        labelComment.frame = CGRectMake(labelName.frame.size.width + 18.f, imageViewFone.frame.size.height - 32.5f, 20, 30);
-        labelComment.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-        [labelComment sizeToFit];
-    }
-    [imageViewFone addSubview:labelComment];
-    
-    CustomLabels * labelDate = [[CustomLabels alloc] initLabelWithWidht:12.5 andHeight:imageViewFone.frame.size.height - 16.f andColor:@"b7b6b6" andText:@"2 дня назад" andTextSize:8 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-    if (isiPhone6) {
-        labelDate.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 18.5f, 20, 40);
-        labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-        [labelDate sizeToFit];
-    }
-    [imageViewFone addSubview:labelDate];
-
-    
     
     return imageViewFone;
 }

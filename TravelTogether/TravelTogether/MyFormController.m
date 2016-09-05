@@ -49,7 +49,7 @@
                            @"Гетеро",
                            @"Спортивное телосложение, шатенка с карими глазами))", nil];
     
-    NSArray * arrayImege = [NSArray arrayWithObjects: @"imageAdd.png",
+    NSArray * arrayImege = [NSArray arrayWithObjects: @"addButtonNew.png",
                             @"photo1", @"photo2", @"photo3",
                             @"photo4", @"photo2", @"photo1",
                             @"photo4", @"photo3", @"photo1", @"photo2", @"photo4", nil];
