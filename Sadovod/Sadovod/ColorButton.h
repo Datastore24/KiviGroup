@@ -11,5 +11,7 @@
 @interface ColorButton : UIButton
 
 @property (assign, nonatomic) BOOL isBool;
+@property (assign, nonatomic) NSString * customName;
+@property (assign, nonatomic) NSString * customValue;
 
 @end
