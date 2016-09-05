@@ -44,7 +44,8 @@
 @property (strong, nonatomic) NSArray * arraySize;
 @property (assign, nonatomic) NSInteger countSize;
 @property (strong, nonatomic) UIButton * buttonCanselSize;
-@property (assign, nonatomic) BOOL sizeBool; //Переменная для подсчета активных окнон
+@property (assign, nonatomic) BOOL sizeBool; //Переменная для подсчета активных окно
+@property (strong, nonatomic) NSMutableArray * mArraySizes;
 
 //Color
 
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSArray * arrayColor;
 @property (strong, nonatomic) UIButton * buttonCanselColor;
 @property (assign, nonatomic) BOOL colorBool; //Переменная для подсчета активных окнон
+@property (strong, nonatomic) NSMutableArray * mArrayColor;
 
 //Detail
 
@@ -92,7 +94,7 @@
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
         
-        
+        NSLog(@"DATA %@",data);
         for (int i=0;i<data.count;i++){
             
             if([[self.dictData objectForKey:@"id"] integerValue]==81){
@@ -206,6 +208,7 @@
 #pragma mark - SizeView
 - (UIView*) createSizeView {
     UIView * sizeView = [[UIView alloc] init];
+    self.mArraySizes =[[NSMutableArray alloc] init];
     self.countSize = 0;
     self.sizeBool = NO;
     
@@ -226,9 +229,12 @@
         [buttonSize setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
         buttonSize.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         buttonSize.tag = 10 + i;
+        buttonSize.customName =[[self.arraySize objectAtIndex:i] objectForKey:@"name"];
+        buttonSize.customValue = [[self.arraySize objectAtIndex:i] objectForKey:@"value"];
         buttonSize.isBool = NO;
         [buttonSize addTarget:self action:@selector(buttonSizeAction:) forControlEvents:UIControlEventTouchUpInside];
         [sizeView addSubview: buttonSize];
+        [self.mArraySizes addObject:buttonSize];
         [self.arrayAllButtons addObject:buttonSize];
         if (i != self.arraySize.count - 1) {
             column += 1;
@@ -262,6 +268,7 @@
 
 - (UIView*) createColorView {
     UIView * colorView = [[UIView alloc] init];
+    self.mArrayColor = [[NSMutableArray alloc] init];
     self.countColor = 0;
     self.colorBool = NO;
     
@@ -331,9 +338,13 @@
         buttonColor.layer.cornerRadius = 6.f;
         buttonColor.backgroundColor = [UIColor hx_colorWithHexRGBAString:color];
         buttonColor.tag = 100 + i;
+        buttonColor.customName =[[self.arrayColor objectAtIndex:i] objectForKey:@"name"];
+        buttonColor.customValue = [[self.arrayColor objectAtIndex:i] objectForKey:@"value"];
         buttonColor.isBool = NO;
+        
         [buttonColor addTarget:self action:@selector(buttonColorAction:) forControlEvents:UIControlEventTouchUpInside];
         [colorView addSubview: buttonColor];
+        [self.mArrayColor addObject:buttonColor];
         [self.arrayAllButtons addObject:buttonColor];
         if (i != self.arrayColor.count - 1) {
             column += 1;
@@ -390,6 +401,9 @@
             buttonDetail.layer.borderWidth = 1.5f;
             buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
             buttonDetail.layer.cornerRadius = 6.f;
+            buttonDetail.customName =[[arrayDictDetail objectAtIndex:j] objectForKey:@"name"];
+            buttonDetail.customValue = [[arrayDictDetail objectAtIndex:j] objectForKey:@"value"];
+            buttonDetail.group = i+1;
             [buttonDetail setTitle:[[arrayDictDetail objectAtIndex:j] objectForKey:@"name"] forState:UIControlStateNormal];
             [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
             buttonDetail.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
@@ -731,7 +745,125 @@
 
 //Подтверждение всех фильтров и возврат назад
 - (void) buttonConfirmAction {
-    [self.delegate backTuCatalog:self];
+    NSString * parametrs = @"";
+    //Цена
+    NSLog(@"PRICE %i - %i",(NSInteger)self.slider.lowerValue,(NSInteger)self.slider.upperValue);
+    NSMutableArray * allInfo = [NSMutableArray new];
+    
+    //Детали
+    int group = 1;
+    NSMutableArray * arrayAllDetail = [NSMutableArray new];
+    NSString * stringArrayGroup=@"";
+    NSString * stringArrayOtherGroup=@"";
+    
+    for (int i = 0; i < self.arrayDetailButtons.count; i++) {
+        NSMutableDictionary * dict = [self.arrayDetailButtons objectAtIndex:i]; //Дикшенери для хранения всех элементов
+        NSMutableArray * arrayDetail = [dict objectForKey:@"buttonArray"]; //Массив кнопок каждой детали
+        
+        for (CustomButton * button in arrayDetail) {
+            NSLog(@"GROUP %i=%i",group,button.group);
+            
+            
+                if (button.isBool) {
+                    
+                    if(button.group==group){
+                        stringArrayGroup = [NSString stringWithFormat:@"%@%@-%@."
+                                       ,stringArrayGroup,button.customName,button.customValue];
+                    }else{
+                        
+                        stringArrayOtherGroup = [NSString stringWithFormat:@"%@-%@"
+                                                 ,button.customName,button.customValue];
+                        [arrayAllDetail addObject:stringArrayOtherGroup];
+                        
+                    }
+                    
+                    
+                   
+                    
+
+                    NSLog(@"DETAIL %@ - %@ - %i",button.customName, button.customValue, button.group);
+                    
+                    
+                }
+            
+           
+            
+
+            
+            
+        }
+        
+        
+//        if(i+1==self.arrayDetailButtons.count){
+//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
+//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._."
+//                                                            withString:@"_."];
+//            
+//            
+//            
+//        }
+       
+    }
+    
+    NSLog(@"ARRAY %@",arrayAllDetail);
+    
+//    //ЦВЕТА
+//    id firstColor = [self.mArrayColor firstObject];
+//    id lastColor = [self.mArrayColor lastObject];
+//    
+//    for (ColorButton * buttonColor in self.mArrayColor) {
+//        if(buttonColor == firstColor){
+//            parametrs = [NSString stringWithFormat:@"_%@",parametrs];
+//           
+//            
+//        }
+//    
+//            if (buttonColor.isBool) {
+//                NSLog(@"COLOR %@ - %@",buttonColor.customName, buttonColor.customValue);
+//                parametrs = [NSString stringWithFormat:@"%@%@-%@.",parametrs,buttonColor.customName,buttonColor.customValue];
+//                
+//            }
+//        if(buttonColor == lastColor){
+//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
+//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._"
+//                                                             withString:@"_"];
+//            
+//        }
+//        
+//    }
+//    
+//    //РАЗМЕРЫ
+//    id firstSize = [self.mArraySizes firstObject];
+//    id lastSize = [self.mArraySizes lastObject];
+//    
+//    for (CustomButton * buttonSize in self.mArraySizes) {
+//        
+//        if(buttonSize == firstSize){
+//            parametrs = [NSString stringWithFormat:@"%@._",parametrs];
+//           
+//            
+//        }
+//        
+//        if (buttonSize.isBool) {
+//            NSLog(@"SIZE %@ - %@",buttonSize.customName, buttonSize.customValue);
+//            parametrs = [NSString stringWithFormat:@"%@%@-%@.",parametrs,buttonSize.customName,buttonSize.customValue];
+//            
+//           
+//        }
+//        if(buttonSize == lastSize){
+//            parametrs = [NSString stringWithFormat:@"%@_.",parametrs];
+//            parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._"
+//                                                 withString:@"_"];
+//            
+//        }
+//        
+//        
+//    }
+    
+    NSLog(@"PARAMS %@", parametrs);
+    
+
+    //[self.delegate backTuCatalog:self];
 }
 
 //Отмена всех фильтров

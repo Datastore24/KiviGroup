@@ -11,5 +11,8 @@
 @interface CustomButton : UIButton
 
 @property (assign, nonatomic) BOOL isBool;
+@property (strong, nonatomic) NSString* customName;
+@property (strong, nonatomic) NSString* customValue;
+@property (assign, nonatomic) int group;
 
 @end
