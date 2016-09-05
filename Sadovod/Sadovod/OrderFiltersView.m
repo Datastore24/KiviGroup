@@ -38,6 +38,7 @@
 //Size
 
 @property (strong, nonatomic) UIView * viewSize;
+@property (assign, nonatomic) NSInteger countColumn;
 @property (strong, nonatomic) NSArray * arraySize;
 @property (assign, nonatomic) NSInteger countSize;
 @property (strong, nonatomic) UIButton * buttonCanselSize;
@@ -55,6 +56,7 @@
 
 @property (strong, nonatomic) NSMutableArray * arrayDetailButtons;
 @property (strong, nonatomic) UIView * viewDetail;
+@property (strong, nonatomic) NSArray * arrayDetail;
 
 //Сonfirm
 
@@ -75,7 +77,7 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
-        self.dictData = [data objectAtIndex:0];
+       
         self.arrayDetailButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtonsCancel = [[NSMutableArray alloc] init];
@@ -86,17 +88,61 @@
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
         
-        //PriceView----------------
-        [self.mainScrollView addSubview:[self createPriceView]];
-        //SizeView------------------
-        self.viewSize = [self createSizeView];
-        [self.mainScrollView addSubview:self.viewSize];
-        //ColorView-----------------
-        self.viewColor = [self createColorView];
-        [self.mainScrollView addSubview:self.viewColor];
-        //Detail
-        self.viewDetail = [self createDetailView];
-        [self.mainScrollView addSubview:self.viewDetail];
+        
+        for (int i=0;i<data.count;i++){
+            
+            if([[self.dictData objectForKey:@"id"] integerValue]==81){
+                NSArray * sizeArray =[self.dictData objectForKey:@"options"];
+                self.countColumn = sizeArray.count-1;
+                
+            }
+            
+           
+            if(i+1==data.count){
+                 for (int i=0;i<data.count;i++){
+                     self.dictData = [data objectAtIndex:i];
+                     
+                     if([[self.dictData objectForKey:@"id"] integerValue]==-1){
+                         //PriceView----------------
+                         [self.mainScrollView addSubview:[self createPriceView]];
+                         
+                     }else if([[self.dictData objectForKey:@"id"] integerValue]==81){
+                         
+                         //SizeView------------------
+                         self.viewSize = [self createSizeView];
+                         [self.mainScrollView addSubview:self.viewSize];
+                         
+                         
+                         
+                     }else if([[self.dictData objectForKey:@"id"] integerValue]==2){
+                         //ColorView-----------------
+                         self.viewColor = [self createColorView];
+                         [self.mainScrollView addSubview:self.viewColor];
+                         
+                     }else if([[self.dictData objectForKey:@"id"] integerValue]==-2){
+                         NSLog(@"ID %@ NAME %@",[self.dictData objectForKey:@"id"],[self.dictData objectForKey:@"name"]);
+                         
+                     }else{
+                         NSLog(@"ID %@ NAME %@",[self.dictData objectForKey:@"id"],[self.dictData objectForKey:@"name"]);
+                         //Detail
+                         self.viewDetail = [self createDetailView];
+                         [self.mainScrollView addSubview:self.viewDetail];
+                     }
+
+                 }
+                
+                
+            }
+            
+           
+        }
+        
+       
+        
+       
+        
+        
+        
         //Confirm
         [self addSubview:[self createConfirmView]];
         
@@ -119,12 +165,12 @@
     backgroundSlider.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
     [priceView addSubview:backgroundSlider];
     self.slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(30.f, 65, self.frame.size.width - 60, 20)];
-   
+   [self configureSlider];
     [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
     [priceView addSubview:self.slider];
     
-    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
-     [self configureSlider];
+    self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min_orig"] ] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    
     [priceView addSubview:self.labelFrom];
     
     self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max_orig"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
@@ -154,7 +200,7 @@
     self.countSize = 0;
     self.sizeBool = NO;
     
-    self.arraySize = [self.dictData objectForKey:@"size"];
+    self.arraySize = [self.dictData objectForKey:@"options"];
     
     //Расчет таблицы-------
     NSInteger line = 0; //Строки
@@ -167,7 +213,7 @@
         buttonSize.layer.borderWidth = 1.5f;
         buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
         buttonSize.layer.cornerRadius = 6.f;
-        [buttonSize setTitle:[self.arraySize objectAtIndex:i] forState:UIControlStateNormal];
+        [buttonSize setTitle:[[self.arraySize objectAtIndex:i] objectForKey:@"name"]  forState:UIControlStateNormal];
         [buttonSize setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
         buttonSize.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         buttonSize.tag = 10 + i;
@@ -210,12 +256,63 @@
     self.countColor = 0;
     self.colorBool = NO;
     
-    self.arrayColor = [self.dictData objectForKey:@"color"];
+    self.arrayColor = [self.dictData objectForKey:@"options"];
+    
     
     //Расчет таблицы-------
     NSInteger line = 0; //Строки
     NSInteger column = 0; //Столбци
     for (int i = 0; i < self.arrayColor.count; i++) {
+        int value =[[[self.arrayColor objectAtIndex:i] objectForKey:@"name"] intValue];
+        NSString * color;
+        switch (value) {
+            case 13:
+                color=@"000000";
+                break;
+            case 12:
+                color=@"9801cc";
+                break;
+            case 11:
+                color=@"3233ff";
+                break;
+            case 10:
+                color=@"666666";
+                break;
+            case 9:
+                color=@"fe00ba";
+                break;
+            case 8:
+                color=@"ffffff";
+                break;
+            case 7:
+                color=@"fe6700";
+                break;
+            case 6:
+                color=@"fe0000";
+                break;
+            case 5:
+                color=@"653300";
+                break;
+            case 4:
+                color=@"009800";
+                break;
+            case 3:
+                color=@"feff00";
+                break;
+            case 2:
+                color=@"84d6fe";
+                break;
+            case 1:
+                color=@"feeede";
+                break;
+            case 0:
+                color=@"000000";
+                break;
+                
+            default:
+                break;
+        }
+        
         ColorButton * buttonColor = [ColorButton buttonWithType:UIButtonTypeSystem];
         buttonColor.frame = CGRectMake(20.f + (self.frame.size.width / 7.f - 5) * column,
                                       50.f + (self.frame.size.width / 7 - 15) * line,
@@ -223,7 +320,7 @@
         buttonColor.layer.borderWidth = 1.5f;
         buttonColor.layer.borderColor = [UIColor blackColor].CGColor;
         buttonColor.layer.cornerRadius = 6.f;
-        buttonColor.backgroundColor = [UIColor hx_colorWithHexRGBAString:[self.arrayColor objectAtIndex:i]];
+        buttonColor.backgroundColor = [UIColor hx_colorWithHexRGBAString:color];
         buttonColor.tag = 100 + i;
         buttonColor.isBool = NO;
         [buttonColor addTarget:self action:@selector(buttonColorAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -238,7 +335,8 @@
         }
         
     }
-    colorView.frame = CGRectMake(0.f, self.viewSize.frame.size.height + self.viewSize.frame.origin.y, self.frame.size.width,
+    CGFloat colorCustomHeight = 50.f + (self.frame.size.width / 7 - 15) * (int)(self.countColumn/7 + 1) ;
+    colorView.frame = CGRectMake(0.f, colorCustomHeight+220, self.frame.size.width,
                                 (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
     CustomLabels * colorTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цвет" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [colorView addSubview:colorTitl];
@@ -262,7 +360,9 @@
 - (UIView*) createDetailView {
     UIView * detailView = [[UIView alloc] init];
     
-    NSArray * arrayDetail = [self.dictData objectForKey:@"detail"];
+    
+    
+    NSArray * arrayDetail = [self.dictData objectForKey:@"options"];
     
     //Общий параметр высоты вью каждой детали
     CGFloat viewHeight = 0; //Старторвая высота
@@ -276,30 +376,30 @@
         //Расчет таблицы-------
         NSInteger line = 0; //Строки
         CGFloat allHeight = 0; //общая ширина
-        for (int j = 0; j < arrayDictDetail.count; j++) {
-            CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
-            buttonDetail.layer.borderWidth = 1.5f;
-            buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
-            buttonDetail.layer.cornerRadius = 6.f;
-            [buttonDetail setTitle:[arrayDictDetail objectAtIndex:j] forState:UIControlStateNormal];
-            [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
-            buttonDetail.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
-            [buttonDetail addTarget:self action:@selector(buttonDetailAction:) forControlEvents:UIControlEventTouchUpInside];
-            NSInteger letterCount = buttonDetail.titleLabel.text.length;
-            if (allHeight + (8 * letterCount + 20) > self.frame.size.width - 40) {
-                allHeight = 0.f;
-                line += 1;
-            }
-            buttonDetail.frame = CGRectMake(20.f + allHeight,
-                                              50.f + (self.frame.size.width / 7 - 15) * line,
-                                              8 * letterCount + 20,
-                                              self.frame.size.width / 7 - 20);
-            buttonDetail.isBool = NO;
-            [detailPartView addSubview: buttonDetail];
-            allHeight += buttonDetail.frame.size.width + 5;
-            [detailArray addObject:buttonDetail];
-            [self.arrayAllButtons addObject:buttonDetail];
-        }
+//        for (int j = 0; j < arrayDictDetail.count; j++) {
+//            CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
+//            buttonDetail.layer.borderWidth = 1.5f;
+//            buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+//            buttonDetail.layer.cornerRadius = 6.f;
+//            [buttonDetail setTitle:[arrayDictDetail objectAtIndex:j] forState:UIControlStateNormal];
+//            [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
+//            buttonDetail.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+//            [buttonDetail addTarget:self action:@selector(buttonDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+//            NSInteger letterCount = buttonDetail.titleLabel.text.length;
+//            if (allHeight + (8 * letterCount + 20) > self.frame.size.width - 40) {
+//                allHeight = 0.f;
+//                line += 1;
+//            }
+//            buttonDetail.frame = CGRectMake(20.f + allHeight,
+//                                              50.f + (self.frame.size.width / 7 - 15) * line,
+//                                              8 * letterCount + 20,
+//                                              self.frame.size.width / 7 - 20);
+//            buttonDetail.isBool = NO;
+//            [detailPartView addSubview: buttonDetail];
+//            allHeight += buttonDetail.frame.size.width + 5;
+//            [detailArray addObject:buttonDetail];
+//            [self.arrayAllButtons addObject:buttonDetail];
+//        }
         detailPartView.frame = CGRectMake(0.f, viewHeight, self.frame.size.width,
                                      (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
         [detailView addSubview:detailPartView];
@@ -693,16 +793,21 @@
 
 - (void) configureSlider
 {
+    
     [self configureMetalThemeForSlider:self.slider];
     self.slider.minimumValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.slider.maximumValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
     self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
-    self.slider.minimumRange = 10;
+
+    
+    float range =self.slider.maximumValue * 0.1;
+    
+    self.slider.minimumRange = range;
 }
 
 - (void) sliderChange: (NMRangeSlider*) slider {
-    NSLog(@"LOWER %f",self.slider.lowerValue );
+
     
     if (self.slider.lowerValue > [[self.dictData objectForKey:@"cost_min_orig"] floatValue]
         || self.slider.upperValue < [[self.dictData objectForKey:@"cost_max_orig"] floatValue]) {

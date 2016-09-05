@@ -123,20 +123,20 @@ NSUInteger DeviceSystemMajorVersion() {
 - (void) setLowerValue:(float)lowerValue
 {
     float value = lowerValue;
+//    
+//    if(_stepValueInternal>0)
+//    {
+//        value = roundf(value / _stepValueInternal) * _stepValueInternal;
+//    }
+//    
+//    value = MIN(value, _maximumValue);
+//    value = MAX(value, _minimumValue);
+//    
+//    if (!isnan(_lowerMaximumValue)) {
+//        value = MIN(value, _lowerMaximumValue);
+//    }
     
-    if(_stepValueInternal>0)
-    {
-        value = roundf(value / _stepValueInternal) * _stepValueInternal;
-    }
-    
-    value = MIN(value, _maximumValue);
-    value = MAX(value, _minimumValue);
-    
-    if (!isnan(_lowerMaximumValue)) {
-        value = MIN(value, _lowerMaximumValue);
-    }
-    
-    value = MIN(value, _upperValue - _minimumRange);
+//    value = MIN(value, _upperValue - _minimumRange);
     
     _lowerValue = value;
     
