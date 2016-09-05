@@ -14,7 +14,7 @@
 #import "HexColors.h"
 #import "Macros.h"
 
-@interface BasketView ()
+@interface BasketView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 //Main
 
@@ -22,10 +22,15 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSMutableArray * arrayView; //Массив отображения всю каждого заказа (для анимации)
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
+@property (assign, nonatomic) NSInteger tagButton; //Параметр сохраняет тег нажатой кнопки при выборе колличества товара
 
 //Counter
 
 @property (strong, nonatomic) UIView * viewCounter;
+@property (strong, nonatomic) NSArray * arrayForPickerView;
+@property (strong, nonatomic) UIPickerView * counterPicker;
+@property (assign, nonatomic) NSInteger countOrder; //Переменная для подсчета колличества товаров
+@property (assign, nonatomic) NSInteger pickerCount; //значение выдаваемое при скроле пикера
 
 
 @end
@@ -39,6 +44,7 @@
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.arrayData = data;
+        self.tagButton = 0;
         
         self.arrayView = [[NSMutableArray alloc] init];
         
@@ -127,13 +133,56 @@
     counterView.backgroundColor = [UIColor whiteColor];
     counterView.layer.cornerRadius = 5.f;
     
-    CustomLabels * labelTitl = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:15.f andSizeWidht:280.f andSizeHeight:60.f andColor:@"808080" andText:@"Установите нужное количество товаров"];
+    CustomLabels * labelTitl = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:20.f andSizeWidht:240.f andSizeHeight:80.f andColor:@"808080" andText:@"Установите нужное количество товаров"];
     labelTitl.numberOfLines = 0.f;
     labelTitl.textAlignment = NSTextAlignmentLeft;
     labelTitl.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
     [labelTitl sizeToFit];
     [counterView addSubview:labelTitl];
     
+    self.arrayForPickerView = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", nil];
+    
+    self.counterPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.f, 30.f, 260.f, 200.f)];
+    self.counterPicker.delegate = self;
+    self.counterPicker.dataSource = self;
+    self.counterPicker.showsSelectionIndicator = NO;
+    [self.counterPicker reloadAllComponents];
+    
+    [counterView addSubview: self.counterPicker];
+    
+    //Create Two borderView for picker
+    
+    for (int i = 0; i < 2; i++) {
+        UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(130.f - 40.f, 100.f + 54 * i, 80.f, 3.f)];
+        borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+        [counterView addSubview:borderView];
+    }
+    
+    //Create buttons for confirm and exit
+    
+    NSArray * arrayNameButtons = [NSArray arrayWithObjects:@"Отмена", @"Изменить", nil];
+    
+    for (int i = 0; i < 2; i++) {
+        UIButton * buttonPicker = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonPicker.frame = CGRectMake(20 + 120 * i, 240.f, 100.f, 40.f);
+        [buttonPicker setTitle:[arrayNameButtons objectAtIndex:i] forState:UIControlStateNormal];
+        if (i == 0) {
+            [buttonPicker setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        } else {
+            buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
+            buttonPicker.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+            buttonPicker.layer.borderWidth = 1.f;
+            [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            buttonPicker.layer.cornerRadius = 3.f;
+        }
+        
+        buttonPicker.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        buttonPicker.tag = 1000 + i;
+        [buttonPicker addTarget:self action:@selector(buttonPickerAction:) forControlEvents:UIControlEventTouchUpInside];
+        [counterView addSubview:buttonPicker];
+    }
+    
+   
     return counterView;
 }
 
@@ -143,6 +192,16 @@
 - (void) buttonCountAction: (UIButton*) button {
     for (int i = 0; i < self.arrayData.count; i ++) {
         if (button.tag == 10 + i) {
+            
+            self.tagButton = 10 + i;
+            
+            self.countOrder = [button.titleLabel.text integerValue];
+            if (self.countOrder < 10) {
+                [self.counterPicker selectRow:self.countOrder - 1 inComponent:0 animated:NO];
+            } else {
+                [self.counterPicker selectRow:9 inComponent:0 animated:NO];
+            }
+            
             [UIView animateWithDuration:0.3 animations:^{
                 self.viewFone.alpha = 0.5;
                 self.viewCounter.alpha = 1.f;
@@ -153,5 +212,64 @@
     }
     
 }
+
+//Подтверждение кол-ва товара или отмена выбранного колличества
+- (void) buttonPickerAction: (UIButton*) button {
+    if (button.tag == 1000) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewFone.alpha = 0.f;
+            self.viewCounter.alpha = 0.f;
+        }];
+    } else if (button.tag == 1001) {
+        UIButton * button = (UIButton*)[self viewWithTag:self.tagButton];
+        [button setTitle:[NSString stringWithFormat:@"%d", self.pickerCount] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewFone.alpha = 0.f;
+            self.viewCounter.alpha = 0.f;
+        }];
+    }
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return  self.arrayForPickerView.count;
+}
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.arrayForPickerView[row];
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    
+    return 60.f;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel * label = nil;
+    view = [[UIView alloc] init];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 260, 60)];
+    label.text = self.arrayForPickerView[row];
+    label.font = [UIFont fontWithName:VM_FONT_BOLD size:25];
+    label.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:label];
+    
+    [[pickerView.subviews objectAtIndex:1] setHidden:TRUE];
+    [[pickerView.subviews objectAtIndex:2] setHidden:TRUE];
+
+    return view;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.pickerCount = row + 1;
+}
+
 
 @end
