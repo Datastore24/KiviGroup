@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSArray * arrayData;
-@property (strong, nonatomic) NSMutableArray * arrayView; //Массив отображения всю каждого заказа (для анимации)
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
 @property (assign, nonatomic) NSInteger tagButton; //Параметр сохраняет тег нажатой кнопки при выборе колличества товара
 
@@ -31,6 +30,9 @@
 @property (strong, nonatomic) UIPickerView * counterPicker;
 @property (assign, nonatomic) NSInteger countOrder; //Переменная для подсчета колличества товаров
 @property (assign, nonatomic) NSInteger pickerCount; //значение выдаваемое при скроле пикера
+
+//AnimathionDel (все свойства вязанные с анимацией)
+@property (strong, nonatomic) NSMutableArray * arrayView; //Массив отображения всю каждого заказа (для анимации)
 
 
 @end
@@ -58,6 +60,7 @@
             
             UIView * viewOrder = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 180 * i, self.frame.size.width, 180)];
             [self.mainScrollView addSubview:viewOrder];
+            [self.arrayView addObject:viewOrder]; //Добавляем каждый обект корзины;
             
             [UIView borderViewWithHeight:179 andWight:0 andView:viewOrder andColor:@"B8B8B8"];
             
@@ -107,6 +110,8 @@
             [buttonBasket setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
             buttonBasket.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             buttonBasket.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            buttonBasket.tag = 500 + i;
+            [buttonBasket addTarget:self action:@selector(buttonBasketAction:) forControlEvents:UIControlEventTouchUpInside];
             buttonBasket.layer.borderWidth = 0.5f;
             buttonBasket.layer.cornerRadius = 2.f;
             [viewOrder addSubview:buttonBasket];
@@ -193,7 +198,8 @@
     for (int i = 0; i < self.arrayData.count; i ++) {
         if (button.tag == 10 + i) {
             
-            self.tagButton = 10 + i;
+            self.tagButton = button.tag;
+            NSLog(@"%d", self.tagButton);
             
             self.countOrder = [button.titleLabel.text integerValue];
             if (self.countOrder < 10) {
@@ -227,6 +233,45 @@
             self.viewFone.alpha = 0.f;
             self.viewCounter.alpha = 0.f;
         }];
+    }
+}
+
+//Удаление товара из корзины
+- (void) buttonBasketAction: (UIButton*) button {
+    if (self.arrayView.count == 1) {
+        [self.delegate backTuCatalog:self];
+    } else {
+    for (int i = 0; i < self.arrayView.count; i++) {
+        if (button.tag == 500 + i) {
+            UIView * viewTakeOrder = [self.arrayView objectAtIndex:i];
+            for (int j = 0; j < self.arrayView.count; j++) {
+                UIButton * butonTrash = (UIButton*)[self viewWithTag:500 + j];
+                UIButton * buttonCount = (UIButton*)[self viewWithTag:10 + j];
+                UIView * viewOther = [self.arrayView objectAtIndex:j];
+                if (buttonCount.tag == 10 + i) {
+                    buttonCount.tag = 0;
+                    buttonCount = nil;
+                }
+                if (butonTrash.tag > 500 + i) {
+                    butonTrash.tag -= 1;
+                    buttonCount.tag -= 1;
+                    [UIView animateWithDuration:0.3 delay:0.2 options:0 animations:^{
+                        CGRect rectButtontrash = viewOther.frame;
+                        rectButtontrash.origin.y -= 180.f;
+                        viewOther.frame = rectButtontrash;
+                    } completion:^(BOOL finished) {}];
+                }
+            }
+            
+            [self.arrayView removeObjectAtIndex:i];
+            [UIView animateWithDuration:0.3 animations:^{
+                CGRect rectView = viewTakeOrder.frame;
+                rectView.origin.x -= self.frame.size.width;
+                viewTakeOrder.frame = rectView;
+            }];
+            
+        }
+    }
     }
 }
 

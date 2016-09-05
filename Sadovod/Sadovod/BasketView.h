@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BasketViewGelegate;
+
 @interface BasketView : UIView
+
+@property (weak, nonatomic) id <BasketViewGelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol BasketViewGelegate <NSObject>
+
+@required
+
+- (void) backTuCatalog: (BasketView*) basketView;
 
 @end

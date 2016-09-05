@@ -10,8 +10,9 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "BasketView.h"
+#import "CatalogController.h"
 
-@interface BasketController ()
+@interface BasketController () <BasketViewGelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -33,6 +34,7 @@
 #pragma mark - View
     
     BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:self.arrayData];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
 
     
@@ -69,6 +71,15 @@
 
 - (void) buttonBackAction {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark - BasketViewGelegate
+
+- (void) backTuCatalog: (BasketView*) basketView {
+    
+    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 @end
