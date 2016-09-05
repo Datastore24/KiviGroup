@@ -10,4 +10,19 @@
 
 @implementation FormalizationController
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    [self setCustomTitle:@"Оформление заказа" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    
+    //Кнопка Назад---------------------------------------------
+    UIButton * buttonBack = [UIButton createButtonBack];
+    [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
+    self.navigationItem.leftBarButtonItem = mailbuttonBack;
+    self.arrayData = [self setCustonArray];
+    
+#pragma mark - View
+    
+}
+
 @end
