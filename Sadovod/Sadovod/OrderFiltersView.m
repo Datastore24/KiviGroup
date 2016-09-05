@@ -31,6 +31,8 @@
 @property (strong, nonatomic) NMRangeSlider * slider;
 @property (strong, nonatomic) CustomLabels * labelFrom;
 @property (strong, nonatomic) CustomLabels * labelTo;
+@property (assign, nonatomic) float minPrice;
+@property (assign, nonatomic) float maxPrice;
 @property (strong, nonatomic) UIButton * buttonCanselPrice;
 @property (assign, nonatomic) BOOL sliderBool; //Переменная для правильного вывода счетчика в слайдере;
 
@@ -57,6 +59,7 @@
 @property (strong, nonatomic) NSMutableArray * arrayDetailButtons;
 @property (strong, nonatomic) UIView * viewDetail;
 @property (strong, nonatomic) NSArray * arrayDetail;
+@property (strong, nonatomic) NSMutableArray * mArrayDetail;
 
 //Сonfirm
 
@@ -82,6 +85,7 @@
         self.arrayAllButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtonsCancel = [[NSMutableArray alloc] init];
         self.counter = 0;
+        self.mArrayDetail = [[ NSMutableArray alloc] init];
         
         
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0, self.frame.size.width, self.frame.size.height)];
@@ -99,8 +103,8 @@
             
            
             if(i+1==data.count){
-                 for (int i=0;i<data.count;i++){
-                     self.dictData = [data objectAtIndex:i];
+                 for (int j=0;j<data.count;j++){
+                     self.dictData = [data objectAtIndex:j];
                      
                      if([[self.dictData objectForKey:@"id"] integerValue]==-1){
                          //PriceView----------------
@@ -125,6 +129,11 @@
                      }else{
                          NSLog(@"ID %@ NAME %@",[self.dictData objectForKey:@"id"],[self.dictData objectForKey:@"name"]);
                          //Detail
+                         [self.mArrayDetail addObject:self.dictData];
+                         
+                         
+                     }
+                     if(j+1==data.count){
                          self.viewDetail = [self createDetailView];
                          [self.mainScrollView addSubview:self.viewDetail];
                      }
@@ -362,13 +371,13 @@
     
     
     
-    NSArray * arrayDetail = [self.dictData objectForKey:@"options"];
+    NSArray * arrayDetail = self.mArrayDetail;
     
     //Общий параметр высоты вью каждой детали
     CGFloat viewHeight = 0; //Старторвая высота
     for (int i = 0; i < arrayDetail.count; i++) {
         NSDictionary * dictDetail = [arrayDetail objectAtIndex:i];
-        NSArray * arrayDictDetail = [dictDetail objectForKey:@"array"]; //Массив каждой детали
+        NSArray * arrayDictDetail = [dictDetail objectForKey:@"options"]; //Массив каждой детали
         UIView * detailPartView = [[UIView alloc] init]; // Вью каждой детали
         NSMutableArray * detailArray = [[NSMutableArray alloc] init]; //Массив кнопок в каждой детали
         NSInteger countDetail = 0; //счетчик деталей
@@ -376,30 +385,30 @@
         //Расчет таблицы-------
         NSInteger line = 0; //Строки
         CGFloat allHeight = 0; //общая ширина
-//        for (int j = 0; j < arrayDictDetail.count; j++) {
-//            CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
-//            buttonDetail.layer.borderWidth = 1.5f;
-//            buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
-//            buttonDetail.layer.cornerRadius = 6.f;
-//            [buttonDetail setTitle:[arrayDictDetail objectAtIndex:j] forState:UIControlStateNormal];
-//            [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
-//            buttonDetail.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
-//            [buttonDetail addTarget:self action:@selector(buttonDetailAction:) forControlEvents:UIControlEventTouchUpInside];
-//            NSInteger letterCount = buttonDetail.titleLabel.text.length;
-//            if (allHeight + (8 * letterCount + 20) > self.frame.size.width - 40) {
-//                allHeight = 0.f;
-//                line += 1;
-//            }
-//            buttonDetail.frame = CGRectMake(20.f + allHeight,
-//                                              50.f + (self.frame.size.width / 7 - 15) * line,
-//                                              8 * letterCount + 20,
-//                                              self.frame.size.width / 7 - 20);
-//            buttonDetail.isBool = NO;
-//            [detailPartView addSubview: buttonDetail];
-//            allHeight += buttonDetail.frame.size.width + 5;
-//            [detailArray addObject:buttonDetail];
-//            [self.arrayAllButtons addObject:buttonDetail];
-//        }
+        for (int j = 0; j < arrayDictDetail.count; j++) {
+            CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
+            buttonDetail.layer.borderWidth = 1.5f;
+            buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+            buttonDetail.layer.cornerRadius = 6.f;
+            [buttonDetail setTitle:[[arrayDictDetail objectAtIndex:j] objectForKey:@"name"] forState:UIControlStateNormal];
+            [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
+            buttonDetail.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+            [buttonDetail addTarget:self action:@selector(buttonDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+            NSInteger letterCount = buttonDetail.titleLabel.text.length;
+            if (allHeight + (8 * letterCount + 20) > self.frame.size.width - 40) {
+                allHeight = 0.f;
+                line += 1;
+            }
+            buttonDetail.frame = CGRectMake(20.f + allHeight,
+                                              50.f + (self.frame.size.width / 7 - 15) * line,
+                                              8 * letterCount + 20,
+                                              self.frame.size.width / 7 - 20);
+            buttonDetail.isBool = NO;
+            [detailPartView addSubview: buttonDetail];
+            allHeight += buttonDetail.frame.size.width + 5;
+            [detailArray addObject:buttonDetail];
+            [self.arrayAllButtons addObject:buttonDetail];
+        }
         detailPartView.frame = CGRectMake(0.f, viewHeight, self.frame.size.width,
                                      (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
         [detailView addSubview:detailPartView];
@@ -495,8 +504,13 @@
 
 //Сброс фильта цены
 - (void) buttonCanselPriceAction: (UIButton*) button {
-    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
-    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+
+    self.slider.lowerValue = self.minPrice;
+    self.slider.upperValue = self.maxPrice;
+    
+    self.labelFrom.text=[NSString stringWithFormat:@"ОТ %i", (int)self.minPrice];
+    self.labelTo.text=[NSString stringWithFormat:@"ДО %i", (int)self.maxPrice];
+
     [UIView animateWithDuration:0.3 animations:^{
         button.alpha = 0.f;
     }];
@@ -724,8 +738,10 @@
 - (void) buttonCancelAction {
     self.countColor = 0;
     self.countSize = 0;
-    self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
-    self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+    self.slider.lowerValue = self.minPrice;
+    self.slider.upperValue = self.maxPrice;
+    self.labelFrom.text=[NSString stringWithFormat:@"ОТ %i", (int)self.minPrice];
+    self.labelTo.text=[NSString stringWithFormat:@"ДО %i", (int)self.maxPrice];
     self.counter = 0;
     self.sizeBool = NO;
     self.sliderBool = NO;
@@ -797,6 +813,9 @@
     [self configureMetalThemeForSlider:self.slider];
     self.slider.minimumValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.slider.maximumValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+    self.minPrice=[[self.dictData objectForKey:@"cost_min_orig"] floatValue];
+    self.maxPrice=[[self.dictData objectForKey:@"cost_max_orig"] floatValue];
+
     self.slider.lowerValue = [[self.dictData objectForKey:@"cost_min_orig"] floatValue];
     self.slider.upperValue = [[self.dictData objectForKey:@"cost_max_orig"] floatValue];
 
