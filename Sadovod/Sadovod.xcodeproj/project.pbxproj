@@ -16,6 +16,10 @@
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
 		FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */; };
 		FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEF21D7D874B0064E755 /* FormalizationView.m */; };
+		FF7FCEFC1D7DCFEA0064E755 /* imageButtonFaceNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */; };
+		FF7FCEFE1D7DD07D0064E755 /* imageButtonFaceYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFD1D7DD07D0064E755 /* imageButtonFaceYes.png */; };
+		FF7FCF011D7DF0C60064E755 /* buttonFaceNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFF1D7DF0C60064E755 /* buttonFaceNo.png */; };
+		FF7FCF021D7DF0C60064E755 /* buttonFaceYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCF001D7DF0C60064E755 /* buttonFaceYes.png */; };
 		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
 		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
 		FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */; };
@@ -436,6 +440,10 @@
 		FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationController.m; sourceTree = "<group>"; };
 		FF7FCEF11D7D874B0064E755 /* FormalizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationView.h; sourceTree = "<group>"; };
 		FF7FCEF21D7D874B0064E755 /* FormalizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationView.m; sourceTree = "<group>"; };
+		FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFaceNo.png; sourceTree = "<group>"; };
+		FF7FCEFD1D7DD07D0064E755 /* imageButtonFaceYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFaceYes.png; sourceTree = "<group>"; };
+		FF7FCEFF1D7DF0C60064E755 /* buttonFaceNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonFaceNo.png; sourceTree = "<group>"; };
+		FF7FCF001D7DF0C60064E755 /* buttonFaceYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonFaceYes.png; sourceTree = "<group>"; };
 		FF997F6C1D6EDE890037684A /* OrderFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersController.h; sourceTree = "<group>"; };
 		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
 		FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersView.h; sourceTree = "<group>"; };
@@ -949,6 +957,17 @@
 				FF7FCEF21D7D874B0064E755 /* FormalizationView.m */,
 			);
 			name = Formalization;
+			sourceTree = "<group>";
+		};
+		FF7FCEF41D7DCE560064E755 /* FormalizationImages */ = {
+			isa = PBXGroup;
+			children = (
+				FF7FCEFF1D7DF0C60064E755 /* buttonFaceNo.png */,
+				FF7FCF001D7DF0C60064E755 /* buttonFaceYes.png */,
+				FF7FCEFD1D7DD07D0064E755 /* imageButtonFaceYes.png */,
+				FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */,
+			);
+			name = FormalizationImages;
 			sourceTree = "<group>";
 		};
 		FF997F6B1D6EDE6A0037684A /* OrderFilters */ = {
@@ -1641,6 +1660,7 @@
 		FFAE32F21D65A37100E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FCEF41D7DCE560064E755 /* FormalizationImages */,
 				FFE10F411D75D51800532346 /* BasketImages */,
 				FFE10F331D75995B00532346 /* BuyViewImages */,
 				FFA8ABB11D6F1554004010F9 /* OrderFilters */,
@@ -2059,6 +2079,7 @@
 				FFAE326F1D65A28900E81AED /* Activity25@2x.png in Resources */,
 				FFAE31B51D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE32391D65A28900E81AED /* Activity17@2x.png in Resources */,
+				FF7FCF011D7DF0C60064E755 /* buttonFaceNo.png in Resources */,
 				FFAE323C1D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE322E1D65A28900E81AED /* Activity6@2x.png in Resources */,
 				FFAE32441D65A28900E81AED /* Activity27@2x.png in Resources */,
@@ -2130,6 +2151,7 @@
 				FFAE31D31D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE325A1D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE32091D65A28900E81AED /* Activity14@2x.png in Resources */,
+				FF7FCEFE1D7DD07D0064E755 /* imageButtonFaceYes.png in Resources */,
 				FFAE32871D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE31D01D65A28900E81AED /* Activity2@2x.png in Resources */,
 				FFAE325D1D65A28900E81AED /* Activity8@2x.png in Resources */,
@@ -2220,12 +2242,14 @@
 				FFAE32591D65A28900E81AED /* Activity4@2x.png in Resources */,
 				FFAE31C11D65A28900E81AED /* Activity30@2x.png in Resources */,
 				FFAE31E51D65A28900E81AED /* Activity22@2x.png in Resources */,
+				FF7FCF021D7DF0C60064E755 /* buttonFaceYes.png in Resources */,
 				FFAE32671D65A28900E81AED /* Activity18@2x.png in Resources */,
 				FFAE32751D65A28900E81AED /* Activity30@2x.png in Resources */,
 				FFAE31CD1D65A28900E81AED /* Activity14@2x.png in Resources */,
 				FFAE31B31D65A28900E81AED /* Activity18@2x.png in Resources */,
 				FFAE323D1D65A28900E81AED /* Activity20@2x.png in Resources */,
 				FFAE31CE1D65A28900E81AED /* Activity15@2x.png in Resources */,
+				FF7FCEFC1D7DCFEA0064E755 /* imageButtonFaceNo.png in Resources */,
 				FFAE328F1D65A28900E81AED /* Activity13@2x.png in Resources */,
 				FFAE321D1D65A28900E81AED /* Activity4@2x.png in Resources */,
 				FFAE31A51D65A28900E81AED /* Activity4@2x.png in Resources */,

@@ -7,6 +7,11 @@
 //
 
 #import "FormalizationController.h"
+#import "FormalizationView.h"
+
+@interface FormalizationController()
+
+@end
 
 @implementation FormalizationController
 
@@ -22,6 +27,15 @@
     
 #pragma mark - View
     
+    FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:nil];
+    [self.view addSubview:mainView];
+    
+}
+
+#pragma mark - Actions
+
+- (void) buttonBackAction {
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end
