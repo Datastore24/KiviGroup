@@ -8,7 +8,14 @@
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Filter" representedClassName="Filter" syncable="YES">
+        <attribute name="catID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="max_cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="min_cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Auth" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Filter" positionX="-63" positionY="27" width="128" height="105"/>
     </elements>
 </model>
