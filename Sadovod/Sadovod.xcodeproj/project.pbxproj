@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		30164E106F6F26125F5D3348 /* libPods-Sadovod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3521C90A5FF2D82BD0B1E5E0 /* libPods-Sadovod.a */; };
+		AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */; };
+		AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */; };
+		AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */; };
 		AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */; };
 		AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */; };
 		AD89D1C21D678B61007771B6 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C01D678B61007771B6 /* Auth.m */; };
@@ -424,6 +427,12 @@
 /* Begin PBXFileReference section */
 		3521C90A5FF2D82BD0B1E5E0 /* libPods-Sadovod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sadovod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D23E6A548603C0D402D4695 /* Pods-Sadovod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.release.xcconfig"; sourceTree = "<group>"; };
+		AD6F0AA81D7EA7C1005E8FD9 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		AD6F0AAA1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Filter+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Filter+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AD6F0AAC1D7EA7C1005E8FD9 /* FilterDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDbClass.h; sourceTree = "<group>"; };
+		AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDbClass.m; sourceTree = "<group>"; };
 		AD89D1BB1D678AF2007771B6 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 		AD89D1BD1D678B61007771B6 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -926,6 +935,12 @@
 				AD89D1C31D678B7C007771B6 /* AuthDbClass.h */,
 				AD89D1C41D678B7C007771B6 /* AuthDbClass.m */,
 				AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */,
+				AD6F0AA81D7EA7C1005E8FD9 /* Filter.h */,
+				AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */,
+				AD6F0AAA1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.h */,
+				AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */,
+				AD6F0AAC1D7EA7C1005E8FD9 /* FilterDbClass.h */,
+				AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -2340,6 +2355,7 @@
 				FFAE32E11D65A31A00E81AED /* UIBarButtonItem+Alpha.m in Sources */,
 				FFAE32E41D65A31A00E81AED /* UIImage+ImageEffects.m in Sources */,
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
+				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
@@ -2360,6 +2376,7 @@
 				FFAE32AD1D65A2B700E81AED /* Animation.m in Sources */,
 				FFAE32E51D65A31A00E81AED /* UIImage+Resize.m in Sources */,
 				FFAE32E91D65A31A00E81AED /* UILabel+TitleCategory.m in Sources */,
+				AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */,
 				FFC4FD6C1D675E9C007C2DDC /* CatalogMainListView.m in Sources */,
 				FFAE307A1D65A25800E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFAE32E71D65A31A00E81AED /* UIButton+ButtonImage.m in Sources */,
@@ -2371,6 +2388,7 @@
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
 				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
+				AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */,
 				FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */,
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
