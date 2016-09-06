@@ -165,7 +165,7 @@
 
 #pragma mark - PriceView
 - (UIView*) createPriceView {
-    self.sliderBool = NO;
+    
     UIView * priceView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 160.f)];
     
     CustomLabels * priceTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цена" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
@@ -179,12 +179,24 @@
     [self.slider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
     [priceView addSubview:self.slider];
     
+    self.buttonCanselPrice = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
+    [self.buttonCanselPrice addTarget:self action:@selector(buttonCanselPriceAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.buttonCanselPrice.alpha = 0.f;
+
     if([[self.dictData objectForKey:@"cost_min"] floatValue]!=0
        && [[self.dictData objectForKey:@"cost_max"] floatValue]!=0){
         
         self.labelFrom = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ОТ %@", [self.dictData objectForKey:@"cost_min"] ] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         self.labelTo = [[CustomLabels alloc] initLabelWithWidht:self.frame.size.width - 15.f andHeight:120.f andColor:VM_COLOR_800 andText:[NSString stringWithFormat:@"ДО %@",[self.dictData objectForKey:@"cost_max"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
-        self.counter +=1;
+
+        if(self.minPrice != [[self.dictData objectForKey:@"cost_min"] floatValue] ||
+           self.maxPrice != [[self.dictData objectForKey:@"cost_max"] floatValue]){
+            self.buttonCanselPrice.alpha = 1.f;
+            self.counter+=1;
+            
+        }
+        self.sliderBool=YES;
+        
         
         
     }else{
@@ -202,10 +214,7 @@
     self.labelTo.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:self.labelTo];
     
-    self.buttonCanselPrice = [UIButton createButtonCustomImageWithImage:@"imageCross.png" andRect:CGRectMake(self.frame.size.width - 35.f, 20.f, 15.f, 15.f)];
-    [self.buttonCanselPrice addTarget:self action:@selector(buttonCanselPriceAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.buttonCanselPrice.alpha = 0.f;
-    [priceView addSubview:self.buttonCanselPrice];
+       [priceView addSubview:self.buttonCanselPrice];
     
     
     //Коллекция хранения всех кнопок отмены и числовых значений
@@ -224,6 +233,7 @@
     self.mArraySizes =[[NSMutableArray alloc] init];
     self.countSize = 0;
     self.sizeBool = NO;
+    BOOL isCount = NO;
     
     self.arraySize = [self.dictData objectForKey:@"options"];
     
@@ -263,7 +273,17 @@
             if (self.buttonCanselSize.alpha == 0.f) {
                     self.buttonCanselSize.alpha = 1.f;
             }
-            self.counter+=1;
+            
+            self.countSize+=1;
+            
+            if(!isCount){
+                self.counter+=1;
+                self.sizeBool=YES;
+                isCount=YES;
+                
+                
+            }
+            
         }else{
             buttonSize.backgroundColor = [UIColor whiteColor];
              [buttonSize setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -283,6 +303,9 @@
         }
         
     }
+   
+
+        
     sizeView.frame = CGRectMake(0.f, 160.f, self.frame.size.width,
                                 (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
     CustomLabels * sizeTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Размеры" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
@@ -308,6 +331,7 @@
     self.mArrayColor = [[NSMutableArray alloc] init];
     self.countColor = 0;
     self.colorBool = NO;
+    BOOL isCount = NO;
     
     self.arrayColor = [self.dictData objectForKey:@"options"];
     
@@ -324,6 +348,7 @@
     for (int i = 0; i < self.arrayColor.count; i++) {
         int value =[[[self.arrayColor objectAtIndex:i] objectForKey:@"name"] intValue];
         NSString * color;
+        
         switch (value) {
             case 13:
                 color=@"000000";
@@ -390,7 +415,15 @@
             if (self.buttonCanselColor.alpha == 0.f) {
                 self.buttonCanselColor.alpha = 1.f;
             }
-            self.counter+=1;
+            self.countColor+=1;
+            if(!isCount){
+                self.counter+=1;
+                self.colorBool=YES;
+                isCount=YES;
+                
+            }
+            
+           
         }else{
             buttonColor.alpha = 1.f;
             buttonColor.isBool = NO;
@@ -442,6 +475,7 @@
     //Общий параметр высоты вью каждой детали
     CGFloat viewHeight = 0; //Старторвая высота
     for (int i = 0; i < arrayDetail.count; i++) {
+        BOOL isCount = NO;
         NSDictionary * dictDetail = [arrayDetail objectAtIndex:i];
         NSArray * arrayDictDetail = [dictDetail objectForKey:@"options"]; //Массив каждой детали
       
@@ -460,6 +494,8 @@
         buttonCancelDetail.tag = 1000 + i;
         
         for (int j = 0; j < arrayDictDetail.count; j++) {
+            
+            
             CustomButton * buttonDetail = [CustomButton buttonWithType:UIButtonTypeSystem];
             buttonDetail.layer.borderWidth = 1.5f;
             buttonDetail.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
@@ -497,7 +533,14 @@
                 if (buttonCancelDetail.alpha == 0.f) {
                     buttonCancelDetail.alpha = 1.f;
                 }
-                self.counter+=1;
+                
+                countDetail +=1;
+                if(!isCount){
+                    self.counter+=1;
+                    isCount = YES;
+                    booldetail = YES;
+                }
+                
             }else{
                 buttonDetail.backgroundColor = [UIColor whiteColor];
                 [buttonDetail setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -623,6 +666,7 @@
 
 //Кнопки выбора размера
 - (void) buttonSizeAction: (CustomButton*) button {
+
     for (int i = 0; i < self.arraySize.count; i++) {
         if (button.tag == 10 + i) {
             if (!button.isBool) {
@@ -1057,10 +1101,10 @@
 }
 
 - (void) sliderChange: (NMRangeSlider*) slider {
-
     
-    if (self.slider.lowerValue > [[self.dictData objectForKey:@"cost_min_orig"] floatValue]
-        || self.slider.upperValue < [[self.dictData objectForKey:@"cost_max_orig"] floatValue]) {
+
+    if (self.slider.lowerValue > self.minPrice
+        || self.slider.upperValue < self.maxPrice) {
         [UIView animateWithDuration:0.3 animations:^{
             self.buttonCanselPrice.alpha = 1.f;
             
@@ -1100,6 +1144,7 @@
 }
 
 - (void) buttonActionCheck {
+    NSLog(@"COUNTER %i",self.counter);
     if (self.counter > 1) {
         [UIView animateWithDuration:0.3 animations:^{
             self.bigButtonConfirm.alpha = 0.f;

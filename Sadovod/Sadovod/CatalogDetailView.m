@@ -36,6 +36,7 @@
                      andData: (NSArray*) data {
     self = [super init];
     if (self) {
+      
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
         
         self.arrayData = data;
@@ -195,6 +196,8 @@
         scrollProduct.contentSize = CGSizeMake(0, 5 + ((self.frame.size.width + 1.5) * self.arrayData.count));
     }
     
+    NSLog(@"HEIGHT SCROLL %f UI %d",scrollProduct.contentSize.height,[scrollProduct isUserInteractionEnabled]);
+    
     return mainViewForScroll;
 }
 
@@ -281,7 +284,20 @@
                 self.arrayData = [self.delegate arrayData];
                 self.scrollView = [self createScrollViewWithView:self andData:[self.delegate arrayData] andColumn:self.isColumn];
                 
-                [self insertSubview:self.scrollView atIndex:0];
+                [self addSubview:self.scrollView];
+                
+                for (UIView * view in self.hideView.subviews) {
+                    [view removeFromSuperview];
+                }
+                self.hideView = [self createHideViewVithView];
+                [self addSubview:self.hideView];
+                [UIView animateWithDuration:0.3f animations:^{
+                    [self.buttonColumnOne setImage:[UIImage imageNamed:@"buttonCollumImageOneNO.png"] forState:UIControlStateNormal];
+                    [self.buttonColumnTwo setImage:[UIImage imageNamed:@"buttonCollumImageYES.png"] forState:UIControlStateNormal];
+                } completion:^(BOOL finished) {
+                    self.buttonColumnTwo.userInteractionEnabled = NO;
+                    self.buttonColumnOne.userInteractionEnabled = YES;
+                }];
                 
 
 
@@ -383,8 +399,24 @@
                 //Scroll------------
                 self.arrayData = [self.delegate arrayData];
                 self.scrollView = [self createScrollViewWithView:self andData:[self.delegate arrayData] andColumn:self.isColumn];
+               
                 
-                [self insertSubview:self.scrollView atIndex:0];
+                [self addSubview:self.scrollView];
+                
+                for (UIView * view in self.hideView.subviews) {
+                    [view removeFromSuperview];
+                }
+                self.hideView = [self createHideViewVithView];
+                [self addSubview:self.hideView];
+                [UIView animateWithDuration:0.3f animations:^{
+                    [self.buttonColumnOne setImage:[UIImage imageNamed:@"buttonCollumImageOneNO.png"] forState:UIControlStateNormal];
+                    [self.buttonColumnTwo setImage:[UIImage imageNamed:@"buttonCollumImageYES.png"] forState:UIControlStateNormal];
+                } completion:^(BOOL finished) {
+                    self.buttonColumnTwo.userInteractionEnabled = NO;
+                    self.buttonColumnOne.userInteractionEnabled = YES;
+                }];
+
+               
                 
                 
                 
