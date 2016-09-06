@@ -15,6 +15,7 @@
 #import "CheckDataServer.h"
 #import "FilterDbClass.h"
 #import "Filter.h"
+#import "CustomButton.h"
 
 @interface CatalogDetailView ()
 
@@ -112,8 +113,9 @@
     for (int i = 0; i < data.count; i++) {
         
         NSDictionary * dictProduct = [data objectAtIndex:i];
-        UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
-        
+        CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
+        buttonProduct.customID = [dictProduct objectForKey:@"id"];
+   
         if (isColumn) {
             buttonProduct.frame = CGRectMake(0.f + ((scrollProduct.frame.size.width / 2.f + 1.5f) * columnProduct),
                                              0.f + ((scrollProduct.frame.size.width / 2.f + 1.5f) * lineProduct),
@@ -225,10 +227,11 @@
 
 #pragma mark - Actions
 
-- (void) buttonProductAction: (UIButton*) button {
+- (void) buttonProductAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
-            [self.delegate pushToOrderController:self];
+            NSLog(@"CUSTOM ID %@", button.customID);
+            [self.delegate pushToOrderController:self andProductID: button.customID];
         }
     }
 }

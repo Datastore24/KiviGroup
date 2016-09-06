@@ -9,10 +9,12 @@
 #import "OrderController.h"
 #import "OrderView.h"
 #import "BuyViewController.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface OrderController () <OrderViewDelegate>
 
-@property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSDictionary * arrayData;
 
 @end
 
@@ -31,13 +33,15 @@
     UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
-    self.arrayData = [self setCustonArray];
     
 #pragma mark - View
+    [self getApiProduct:^{
+        OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+    } andProductID:self.productID];
    
-    OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
+    
         
     
 }
@@ -77,6 +81,41 @@
     
     return mArray;
 }
+
+#pragma  mark - API
+
+
+-(void) getApiProduct: (void (^)(void))block andProductID: (NSString *) productID
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"product",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"product" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            NSLog(@"RESP: %@",respDict);
+            
+            self.arrayData = [respDict objectForKey:@"product"];
+            
+            
+            block();
+            
+            
+        }
+        
+    }];
+    
+}
+
 
 
 
