@@ -65,30 +65,38 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID{
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID
+                    andCost:(NSString*) cost andFilter:(NSString*) filter{
     OrderFiltersController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderFiltersController"];
     detail.catID = catID;
+    detail.filter = filter;
+    detail.cost = cost;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
--(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort
+-(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort andFilter:(NSString*) filter andCost:(NSString *) cost
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             filter,@"o",
+                             cost,@"cost",
                              self.catID,@"cat",
                              sort,@"sort",
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",nil];
     
+    
     NSLog(@"TOKEN: %@",[[SingleTone sharedManager] catalogKey]);
     NSLog(@"CAT: %@",self.catID);
+    NSLog(@"PARAMS: %@", params);
     [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
+           
             self.arrayData = [respDict objectForKey:@"list"];
             
                block();

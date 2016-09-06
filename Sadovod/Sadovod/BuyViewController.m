@@ -11,6 +11,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "BasketController.h"
+#import "FormalizationController.h"
 
 @interface BuyViewController () <BuyViewDelegate>
 
@@ -135,7 +136,8 @@
 }
 
 - (void) buttonContentsAction {
-    NSLog(@"buttonContentsAction");
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:NO];
 }
  
 @end

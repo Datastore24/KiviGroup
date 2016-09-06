@@ -10,4 +10,7 @@
 
 @interface FormalizationView : UIView
 
+- (instancetype)initWithView: (UIView*) view
+                     andData: (NSArray*) data;
+
 @end

@@ -45,6 +45,8 @@
 #define VM_COLOR_800                        @"283593"
 #define VM_COLOR_900                        @"1A237E"
 
+//Нотификации
+#define NOTIFICATION_FILTER_APPLY = @"NOTIFICATIONFILTERAPLLY"
 
 
 #endif /* Macros_h */

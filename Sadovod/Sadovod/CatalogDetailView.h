@@ -25,7 +25,8 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSString * catID;
 - (void) pushToOrderController: (CatalogDetailView*) catalogDetailView;
-- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID;
-- (void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort;
+- (void) pushToOrderFilters: (CatalogDetailView*) catalogDetailView andCatID: (NSString*) catID
+                    andCost:(NSString*) cost andFilter:(NSString*) filter;
+-(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort andFilter:(NSString*) filter andCost:(NSString *) cost;
 
 @end

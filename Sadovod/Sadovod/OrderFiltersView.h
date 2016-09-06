@@ -23,6 +23,6 @@
 
 @required
 
-- (void) backTuCatalog: (OrderFiltersView*) orderFiltersView;
+- (void) backTuCatalog: (OrderFiltersView*) orderFiltersView andCost:(NSString*) cost andString:(NSString*) string;
 
 @end
