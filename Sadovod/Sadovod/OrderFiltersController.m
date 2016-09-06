@@ -10,6 +10,8 @@
 #import "OrderFiltersView.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "Filter.h"
+#import "FilterDbClass.h"
 
 @interface OrderFiltersController () <OrderFiltersViewDelegate>
 
@@ -30,6 +32,18 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
 #pragma mark - View
+   
+    FilterDbClass * filterDb = [[FilterDbClass alloc] init];
+    
+    Filter * filter = [filterDb filterCatID:[NSString stringWithFormat:@"%@",self.catID] ];
+    
+    
+    if(filter.o.length !=0 && self.filter.length == 0){
+        NSString * cost = [NSString stringWithFormat:@"%@-%@",filter.min_cost,filter.max_cost];
+        self.cost=cost;
+        self.filter=filter.o;
+    }
+    
     [self getApiCatalog:^{
         NSString * filterTitle = [NSString stringWithFormat:@"Фильтр - %@ товаров",[self.arrayData objectForKey:@"count"]];
         NSArray * filterArray =(NSArray *)[self.arrayData objectForKey:@"list"];
@@ -57,6 +71,30 @@
     NSDictionary * dictFilter = [[NSDictionary alloc] initWithObjectsAndKeys:
                                             cost,@"cost",
                                             string,@"string", nil];
+    
+    if([string length]==0){
+        string = @"";
+    }
+    
+    NSString * min_cost;
+    NSString * max_cost;
+    
+    if([cost length]==0){
+        min_cost = @"";
+        max_cost = @"";
+    }else{
+        
+        NSArray *arrayCost = [cost componentsSeparatedByString:@"-"];
+        min_cost = [arrayCost objectAtIndex:0];
+        max_cost = [arrayCost objectAtIndex:1];
+    }
+    
+    FilterDbClass * filterDb = [[FilterDbClass alloc] init];
+    if([filterDb checkFilter:[NSString stringWithFormat:@"%@",self.catID]  andMinCost: min_cost andMaxCost:max_cost andO:string]){
+        
+        [filterDb updateFilter:[NSString stringWithFormat:@"%@",self.catID]  andMinCost:min_cost andMaxCost:max_cost andO:string];
+    }
+    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_FILTER_APPLY" object:dictFilter];
     

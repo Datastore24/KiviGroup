@@ -13,6 +13,8 @@
 #import "UIButton+ButtonImage.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "CheckDataServer.h"
+#import "FilterDbClass.h"
+#import "Filter.h"
 
 @interface CatalogDetailView ()
 
@@ -53,7 +55,7 @@
         [UIView borderViewWithHeight:49.f andWight:0.f andView:topBarView andColor:VM_COLOR_900];
         
         self.buttonSort = [UIButton customButtonSystemWithFrame:CGRectMake(0.f, 0.f, 160.f, 50.f) andColor:nil
-                                                      andAlphaBGColor:1.f andBorderColor:nil andCornerRadius:0.f andTextName:@"Сортировать"
+                                                      andAlphaBGColor:1.f andBorderColor:nil andCornerRadius:0.f andTextName:@"По Новизне"
                                                          andColorText:VM_COLOR_800 andSizeText:13 andBorderWidht:0.f];
         [self.buttonSort addTarget:self action:@selector(buttonSortAction) forControlEvents:UIControlEventTouchUpInside];
         [topBarView addSubview:self.buttonSort];
@@ -129,7 +131,7 @@
                                              scrollProduct.frame.size.width,
                                              scrollProduct.frame.size.width);
         }
-        buttonProduct.backgroundColor = [UIColor blueColor];
+        buttonProduct.backgroundColor = [UIColor whiteColor];
         
         buttonProduct.tag = 20 + i;
         [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -153,14 +155,10 @@
                                 
                                 if(image){
                                     
-                                    
-                                    imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
-                                    //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
-                                    
+                                
                                     [imageView setClipsToBounds:YES];
-                                    
-                                    
-                                    imageView.contentMode = UIViewContentModeScaleAspectFill;
+  
+                                    imageView.contentMode = UIViewContentModeScaleAspectFit;
                                     imageView.clipsToBounds =YES;
                                     
                                     
@@ -196,7 +194,6 @@
         scrollProduct.contentSize = CGSizeMake(0, 5 + ((self.frame.size.width + 1.5) * self.arrayData.count));
     }
     
-    NSLog(@"HEIGHT SCROLL %f UI %d",scrollProduct.contentSize.height,[scrollProduct isUserInteractionEnabled]);
     
     return mainViewForScroll;
 }
@@ -210,7 +207,7 @@
     [self addSubview:self.hideView];
     
     //Массив имен кнопок---------
-    NSArray * arrayNameButtons = [NSArray arrayWithObjects:@"Сортировать", @"По возрастанию цен",@"По снижению цен",@"По новизне", nil];
+    NSArray * arrayNameButtons = [NSArray arrayWithObjects:@"Сортировать",@"По новизне", @"По возрастанию цен",@"По снижению цен", nil];
     
     for (int i = 0; i < 4; i++) {
         UIButton * buttonSortChange = [UIButton customButtonSystemWithFrame:CGRectMake(0.f, 0.f + 30.f * i, 150.f, 30) andColor:nil
@@ -246,27 +243,41 @@
     for (int i = 0; i < 4; i++) {
         if (button.tag == 10 + i) {
             NSString * sort;
-        
-            if(button.tag == 11){
-                sort =@"cst-0";
-            }else if (button.tag == 12){
-                sort =@"cst-1";
-            }else if (button.tag == 13){
+            
+            if(button.tag == 10){
                 sort =@"upd-1";
-            }else if (button.tag == 14){
-                sort =@"upd-0";
+            }else if(button.tag == 11){
+                sort =@"upd-1";
+            }else if(button.tag == 12){
+                sort =@"cst-0";
+            }else if (button.tag == 13){
+                sort =@"cst-1";
             }
             self.sort = sort;
+            [self.delegate setSort:sort];
+            
+            
             NSString * filter;
             NSString * cost;
             BOOL isEmpty = ([self.dictFilter count] == 0);
             if(isEmpty){
-                filter=@"";
-                cost=@"";
+                FilterDbClass * filterDb = [[FilterDbClass alloc] init];
+                
+                Filter * filterCore = [filterDb filterCatID:[NSString stringWithFormat:@"%@",[self.delegate catID]] ];
+                
+                
+                if(filterCore.o.length !=0){
+                    NSString * costPrice = [NSString stringWithFormat:@"%@-%@",filterCore.min_cost,filterCore.max_cost];
+                    cost=costPrice;
+                    filter=filterCore.o;
+                }
+
             }else{
                 filter=[self.dictFilter objectForKey:@"string"];
                 cost=[self.dictFilter objectForKey:@"cost"];
             }
+            
+            NSLog(@"SORT:%@ FILTER:%@ COST:%@",sort,filter,cost);
             
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
             [self.delegate getApiCatalog:self andBlock:^{

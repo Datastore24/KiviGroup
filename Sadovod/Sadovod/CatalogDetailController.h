@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSString * catID;
 @property (strong, nonatomic) NSString * catName;
 @property (strong, nonatomic) NSString * cost;
+@property (strong, nonatomic) NSString * sort;
 @property (strong, nonatomic) NSString * filter;
 @property (strong, nonatomic) NSArray * arrayData;
 

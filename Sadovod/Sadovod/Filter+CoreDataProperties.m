@@ -16,7 +16,6 @@
 @dynamic catID;
 @dynamic min_cost;
 @dynamic max_cost;
-@dynamic sort;
 @dynamic o;
 
 @end

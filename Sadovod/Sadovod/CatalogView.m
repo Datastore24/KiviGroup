@@ -123,6 +123,7 @@
             UIScrollView * scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f + self.frame.size.width * j, 0.f , self.mainScrolView.frame.size.width, self.mainScrolView.frame.size.height)];
             scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
             scrollProduct.showsVerticalScrollIndicator = NO;
+        
             [self.mainScrolView addSubview:scrollProduct];
             __block NSInteger lineProduct = 0; //Идентификатор строк
             __block NSInteger columnProduct = 0; //Идентификатор столбцов
@@ -146,9 +147,11 @@
                                                                  0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                                  self.frame.size.width / 2.f - 1.5f,
                                                                  self.frame.size.width / 2.f - 1.5f );
+                                buttonProduct.backgroundColor = [UIColor whiteColor];
                                 [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                
                                 UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
+                                imageView.backgroundColor = [UIColor whiteColor];
                                 
                                 
                                 NSURL *imgURL = [NSURL URLWithString:[dictProduct objectForKey:@"img"]];
@@ -165,14 +168,12 @@
                                                         
                                                         if(image){
                                                            
-                                                            
-                                                            imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
-                                                            //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
+                                                        
                                                             
                                                             [imageView setClipsToBounds:YES];
                                                             
                                                             
-                                                                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                                                imageView.contentMode = UIViewContentModeScaleAspectFit;
                                                                 imageView.clipsToBounds =YES;
                                                             
                                                             
@@ -305,6 +306,7 @@
                                                      0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                      self.frame.size.width / 2.f - 1.5f,
                                                      self.frame.size.width / 2.f - 1.5f );
+                    buttonProduct.backgroundColor =[UIColor whiteColor];
                     [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                     
                     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
@@ -325,13 +327,12 @@
                                             if(image){
                                                 
                                                 
-                                                imageView.contentMode = UIViewContentModeScaleAspectFill; // Растягивает, но режет ноги
-                                                //_viewOne.contentMode = UIViewContentModeScaleAspectFit; // Пропорционально на весь экран
+            
                                                 
                                                 [imageView setClipsToBounds:YES];
                                                 
                                                 
-                                                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                                imageView.contentMode = UIViewContentModeScaleAspectFit;
                                                 imageView.clipsToBounds =YES;
                                                 
                                                 
