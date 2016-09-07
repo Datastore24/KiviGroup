@@ -19,6 +19,7 @@
 //Main
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSMutableArray * arrayView; //массив всех вью
+@property (strong, nonatomic) NSArray * arrayData;
 
 //TypeBuyer
 
@@ -40,25 +41,47 @@
 @property (strong, nonatomic) UIView * viewDeliveryTypes;
 @property (strong, nonatomic) UIView * whiteViewDelivery;
 @property (strong, nonatomic) UIPickerView * counterPicker;
+@property (strong, nonatomic) CustomButton * buttonMoscow;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewUpper;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewLower;
 @property (assign, nonatomic) NSInteger pickerCountUpper; //значение выдаваемое при скроле пикера
 @property (assign, nonatomic) NSInteger pickerCountLower; //значение выдаваемое при скроле пикера
 @property (assign, nonatomic) BOOL isScrollPicker; //Значение когда пикер скролиться
-
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
 @property (strong, nonatomic) UIView * viewCounter; //Счетчик
 @property (assign, nonatomic) BOOL pickerChenge; //Выбор нужного пикера    YES -- с какого времени    NO -- по какое
 @property (assign, nonatomic) NSInteger customTag; //Переменная сохраняет тег выбранной кнопки времени;
-
 @property (assign, nonatomic) NSInteger rowUpper; //Параметр хранит выбранное значение пикера для времени ОТ
 @property (assign, nonatomic) NSInteger rowLower; //Параметр хранит выбранное значение пикера для времени ДО
-
 @property (assign, nonatomic) NSInteger rowUppTag;
 
 //DelivaryCompany
 
 @property (strong, nonatomic) UIView * viewDeliveryCompany;
+@property (strong, nonatomic) UIView * whiteViewCompany;
+@property (assign, nonatomic) CGFloat heightCompany; //Ширина на которую надо сметь вь вверх
+@property (strong, nonatomic) CustomButton * buttonCompany;
+
+//DelivetyMain
+
+@property (strong, nonatomic) UIView * whiteMainView;
+@property (strong, nonatomic) UIView * viewDelivaryMail;
+@property (strong, nonatomic) CustomButton * buttonMail;
+
+//PriceView
+
+@property (strong, nonatomic) UIView * whitePriceView;
+@property (strong, nonatomic) UIView * viewPrice;
+@property (strong, nonatomic) UIView * viewText;
+
+//Comments View
+
+@property (strong, nonatomic) UILabel * labelNumberComments;
+@property (strong, nonatomic) UIView * viewComments;
+
+//OtherView
+
+@property (strong, nonatomic) UIView * viewOther;
 
 @end
 
@@ -73,11 +96,12 @@
     if (self) {
         
         self.isScrollPicker=NO;
+        self.arrayData = data;
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.arrayView = [[NSMutableArray alloc] init];
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
         self.mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        self.mainScrollView.contentSize = CGSizeMake(0, 1300);
+        self.mainScrollView.contentSize = CGSizeMake(0, 1430);
         [self addSubview:self.mainScrollView];
         
         
@@ -108,6 +132,31 @@
         self.viewDeliveryCompany = [self createDelivaryCompanyView];
         [self.mainScrollView addSubview:self.viewDeliveryCompany];
         [self.arrayView addObject:self.viewDeliveryCompany];
+        [self customHideViewWithHeight:self.heightCompany andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+        
+        //View Delivary Mail
+        self.viewDelivaryMail = [self createDeliveryMailView];
+        [self.mainScrollView addSubview:self.viewDelivaryMail];
+        [self.arrayView addObject:self.viewDelivaryMail];
+        [self customHideViewWithHeight:175.f andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+        
+        //View Price
+        self.viewPrice = [self createPraceView];
+        [self.mainScrollView addSubview:self.viewPrice];
+        [self.arrayView addObject:self.viewPrice];
+        
+        //View Comments
+        
+        self.viewComments = [self createCommentsView];
+        [self.mainScrollView addSubview:self.viewComments];
+        [self.arrayView addObject:self.viewComments];
+        
+        //View Other
+        
+        self.viewOther = [self createOtherView];
+        [self.mainScrollView addSubview:self.viewOther];
+        [self.arrayView addObject:self.viewOther];
+        
         
         //СКРЫТЫЕ ДОП ЭЛЕМЕНТЫ-----------
         self.viewFone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -115,7 +164,9 @@
         self.viewFone.alpha = 0.f;
         [self addSubview:self.viewFone];
         
-        //CounterView
+        
+        
+        //Counter View
         self.viewCounter = [self createCounterView];
         self.viewCounter.alpha = 0.f;
         [self addSubview:self.viewCounter];
@@ -202,6 +253,7 @@
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteViewAddress.frame.size.width - 20.f, whiteViewAddress.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
         textView.delegate = self;
+        textView.tag = 3000;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
 //        textView.autocorrectionType = UITextAutocorrectionTypeNo;
         [whiteViewAddress addSubview:textView];
@@ -226,11 +278,11 @@
         [self animathionMethodUpAndDownWithView:self.whiteViewDelivery endHieght:20.f andUpAndDown:NO addOther:^{
         }];  //Смещение белого центра вниз
         
-        CustomButton * buttonMoscow = [self buttonCreatePush];
-        buttonMoscow.tag = 20;
-        [buttonMoscow addTarget:self action:@selector(buttonMoscow:) forControlEvents:UIControlEventTouchUpInside];
-        buttonMoscow.isBool = NO;
-        [self.whiteViewDelivery addSubview:buttonMoscow];
+        self.buttonMoscow = [self buttonCreatePush];
+        self.buttonMoscow.tag = 20;
+        [self.buttonMoscow addTarget:self action:@selector(buttonMoscow:) forControlEvents:UIControlEventTouchUpInside];
+        self.buttonMoscow.isBool = NO;
+        [self.whiteViewDelivery addSubview:self.buttonMoscow];
         
         CustomLabels * deliveryNameLabel = [[CustomLabels alloc] initLabelWithWidht:34.f andHeight:18.f andColor:@"000000" andText:@"Курьерская доставка" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         [self.whiteViewDelivery addSubview:deliveryNameLabel];
@@ -296,21 +348,252 @@
 #pragma mark - Delivery Company
 
 - (UIView*) createDelivaryCompanyView {
-    UIView * whiteViewCompany = [[UIView alloc] init];
-    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 170) andTitlName:@"" andView:whiteViewCompany andBlock:^{
+    self.whiteViewCompany = [[UIView alloc] init];
+    self.whiteViewCompany.clipsToBounds = YES;
+    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 350 + (30 * self.arrayData.count + 15)) andTitlName:@"" andView:self.whiteViewCompany andBlock:^{
     
-    
-    
-    
+        self.buttonCompany = [self buttonCreatePush];
+        self.buttonCompany.tag = 20;
+        [self.buttonCompany addTarget:self action:@selector(buttonCompany:) forControlEvents:UIControlEventTouchUpInside];
+        self.buttonCompany.isBool = NO;
+        [self.whiteViewCompany addSubview:self.buttonCompany];
+        
+        CustomLabels * labelTitleCompany = [[CustomLabels alloc] initLabelTableWithWidht:34.f andHeight:5.f
+                                                                      andSizeWidht:self.whiteViewCompany.frame.size.width - 60 andSizeHeight:40 andColor:@"000000"
+                                                                           andText:@"Бесплатная доставка до \nтранспортной компании"];
+        labelTitleCompany.numberOfLines = 2;
+        labelTitleCompany.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        labelTitleCompany.textAlignment = NSTextAlignmentLeft;
+        [self.whiteViewCompany addSubview:labelTitleCompany];
+        
+        CustomLabels * labelCutsivCompany = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:36.f
+                                                                      andSizeWidht:self.whiteViewDelivery.frame.size.width - 20 andSizeHeight:70 andColor:@"787878"
+                                                                           andText:@"Мы рекомендуем пользоваться \nуслугами транспортных компаний, \nэто надежнее и быстрее"];
+        labelCutsivCompany.numberOfLines = 3;
+        labelCutsivCompany.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        labelCutsivCompany.textAlignment = NSTextAlignmentLeft;
+        [self.whiteViewCompany addSubview:labelCutsivCompany];
+        
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
+        for (int i = 0; i < 3; i++) {
+            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
+                                                                             andRect:CGRectMake(0.f, 100.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
+                                                                  andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+            inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+            inputText.textFieldInput.textColor = [UIColor blackColor];
+            inputText.textFieldInput.tag = 225 + i;
+            inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+            inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+            inputText.labelPlaceHoldInput.tag = 900 + i;
+            if (i == 2) {
+                inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            }
+            [self.whiteViewCompany addSubview:inputText];
+            
+            [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
+        }
+        
+        CustomLabels * deliveryDate = [[CustomLabels alloc] initLabelWithWidht:10.f andHeight:240.f andColor:@"000000" andText:@"Транспортные компании *" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+        [self.whiteViewCompany addSubview:deliveryDate];
+        
+        
+        for (int i = 0; i < self.arrayData.count; i++) {
+            UIButton * buttonTransport = [UIButton buttonWithType:UIButtonTypeCustom];
+            buttonTransport.tag = 700 + i;
+            buttonTransport.frame = CGRectMake(10.f, 260.f + 30 * i, self.whiteViewCompany.frame.size.width - 20, 30);
+            [buttonTransport setImage:[UIImage imageNamed:@"buttonBuyerYes.png"] forState:UIControlStateSelected];
+            buttonTransport.userInteractionEnabled = YES;
+            [buttonTransport addTarget:self action:@selector(buttonTransportAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [self.whiteViewCompany addSubview:buttonTransport];
+            
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 10.f, 20.f, 20.f)];
+            imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+            if (i == 0) {
+                imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                buttonTransport.userInteractionEnabled = NO;
+            }
+            imageView.tag = 750 + i;
+            [buttonTransport addSubview:imageView];
+            
+            CustomLabels * labelButtons = [[CustomLabels alloc] initLabelWithWidht:40.f andHeight:14 andColor:@"000000"
+                                                                           andText:[self.arrayData objectAtIndex:i] andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+            [buttonTransport addSubview:labelButtons];
+        }
+        
+        self.heightCompany = 200 + (30 * self.arrayData.count + 15);
     
     
     }];
+    
+    CustomLabels * labelRegion = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:16 andSizeWidht:self.frame.size.width andSizeHeight:20 andColor:@"000000" andText:@"РЕГИОНЫ"];
+    labelRegion.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    labelRegion.textAlignment = NSTextAlignmentCenter;
+    [deliveryCompanyView addSubview:labelRegion];
+    
     
     
     return deliveryCompanyView;
     
 }
 
+#pragma mark - DeliveryMail
+
+- (UIView*) createDeliveryMailView {
+    self.whiteMainView = [[UIView alloc] init];
+    self.whiteMainView.clipsToBounds = YES;
+    UIView * deliveryMailView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryCompany.frame.size.height + self.viewDeliveryCompany.frame.origin.y - 420, self.frame.size.width, 310) andTitlName:@"" andView:self.whiteMainView andBlock:^{
+        
+        self.buttonMail = [self buttonCreatePush];
+        self.buttonMail.tag = 400;
+        [self.buttonMail addTarget:self action:@selector(buttonMail:) forControlEvents:UIControlEventTouchUpInside];
+        self.buttonMail.isBool = NO;
+        [self.whiteMainView addSubview:self.buttonMail];
+        
+        CustomLabels * labelTitleMail = [[CustomLabels alloc] initLabelTableWithWidht:34.f andHeight:5.f
+                                                                            andSizeWidht:self.whiteViewCompany.frame.size.width - 60 andSizeHeight:40 andColor:@"000000"
+                                                                                 andText:@"Бесплатная доставкадо почты\nРоссии"];
+        labelTitleMail.numberOfLines = 2;
+        labelTitleMail.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        labelTitleMail.textAlignment = NSTextAlignmentLeft;
+        [self.whiteMainView addSubview:labelTitleMail];
+        
+        CustomLabels * labelCutsivMail = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:36.f
+                                                                             andSizeWidht:self.whiteViewDelivery.frame.size.width - 20 andSizeHeight:60 andColor:@"787878"
+                                                                                  andText:@"Доставка до почты осуществляется в\nтечении дня после сбора заказа"];
+        labelCutsivMail.numberOfLines = 2;
+        labelCutsivMail.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        labelCutsivMail.textAlignment = NSTextAlignmentLeft;
+        [self.whiteMainView addSubview:labelCutsivMail];
+        
+        
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
+        for (int i = 0; i < 4; i++) {
+            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
+                                                                             andRect:CGRectMake(0.f, 90.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
+                                                                  andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+            inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+            inputText.textFieldInput.textColor = [UIColor blackColor];
+            inputText.textFieldInput.tag = 800 + i;
+            inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+            inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+            inputText.labelPlaceHoldInput.tag = 1700 + i;
+            if (i == 2) {
+                inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            }
+            [self.whiteMainView addSubview:inputText];
+            
+            [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
+        }
+        
+    }];
+    
+    
+    return deliveryMailView;
+}
+
+
+#pragma mark - PriceView
+
+- (UIView*) createPraceView {
+    self.whitePriceView = [[UIView alloc] init];
+    self.whitePriceView.clipsToBounds = YES;
+        UIView * priceView = [self customViewWithFrame:CGRectMake(0.f, self.viewDelivaryMail.frame.size.height + self.viewDelivaryMail.frame.origin.y - 175.f, self.frame.size.width, 255) andTitlName:@"Способы оплаты *" andView:self.whitePriceView andBlock:^{
+            
+            NSArray * arrayNames = [NSArray arrayWithObjects:@"Visa, MasterCard, Сбербанк", @"Яндекс деньги", @"WebMoney", @"Qiwi", @"Квитанция сбербанка", nil];
+            for (int i = 0; i < arrayNames.count; i++) {
+                UIButton * buttonPrice = [UIButton buttonWithType:UIButtonTypeCustom];
+                buttonPrice.tag = 2000 + i;
+                buttonPrice.frame = CGRectMake(0.f, 0.f + 30 * i, self.whiteViewCompany.frame.size.width - 20, 30);
+                [buttonPrice setImage:[UIImage imageNamed:@"buttonBuyerYes.png"] forState:UIControlStateSelected];
+                buttonPrice.userInteractionEnabled = YES;
+                [buttonPrice addTarget:self action:@selector(buttonPriceAction:) forControlEvents:UIControlEventTouchUpInside];
+                
+                [self.whitePriceView addSubview:buttonPrice];
+                
+                UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 10.f, 20.f, 20.f)];
+                imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                if (i == 0) {
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonPrice.userInteractionEnabled = NO;
+                }
+                imageView.tag = 2100 + i;
+                [buttonPrice addSubview:imageView];
+                
+                CustomLabels * labelButtons = [[CustomLabels alloc] initLabelWithWidht:40.f andHeight:14 andColor:@"000000"
+                                                                               andText:[arrayNames objectAtIndex:i] andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+                labelButtons.tag = 2500 + i;
+                [buttonPrice addSubview:labelButtons];
+            }
+            
+        }];
+    
+    self.viewText = [[UIView alloc] initWithFrame:CGRectMake(15.f, 195.f, self.frame.size.width - 30.f, 60.f)];
+    self.viewText.backgroundColor = [UIColor whiteColor];
+    [priceView addSubview:self.viewText];
+    CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f
+                                                                            andSizeWidht:self.whiteViewDelivery.frame.size.width - 20 andSizeHeight:60 andColor:@"787878"
+                                                                                 andText:@"Счет и инструкции по оплате будут\nвысланы на Email после принятия\nзаказа оператором"];
+                labelText.numberOfLines = 3;
+                labelText.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                labelText.textAlignment = NSTextAlignmentLeft;
+                [self.viewText addSubview:labelText];
+    
+    
+    return priceView;
+    
+}
+
+#pragma mark - Comments
+
+- (UIView*) createCommentsView {
+    UIView * whiteCommentsView = [[UIView alloc] init];
+    UIView * commentsView = [self customViewWithFrame:CGRectMake(0.f, self.viewPrice.frame.size.height + self.viewPrice.frame.origin.y, self.frame.size.width, 170) andTitlName:@"Комментарий к заказу" andView:whiteCommentsView andBlock:^{
+        
+        UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteCommentsView.frame.size.width - 20.f, whiteCommentsView.frame.size.height - 20.f)];
+        textView.textColor = [UIColor blackColor];
+        textView.delegate = self;
+        textView.tag = 3001;
+        textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        //        textView.autocorrectionType = UITextAutocorrectionTypeNo;
+        [whiteCommentsView addSubview:textView];
+        
+    }];
+    
+    self.labelNumberComments = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 80.f andHeight:13.f andSizeWidht:60.f andSizeHeight:20.f andColor:VM_COLOR_300 andText:@"200"];
+    self.labelNumberComments.font = [UIFont fontWithName:VM_FONT_BEAU_SANS_LITE size:13];
+    self.labelNumberComments.textAlignment = NSTextAlignmentRight;
+    [commentsView addSubview:self.labelNumberComments];
+    
+    return commentsView;
+}
+
+#pragma mark - OtherView
+
+- (UIView*) createOtherView {
+    UIView * otherView = [[UIView alloc] initWithFrame:CGRectMake(0, self.viewComments.frame.size.height + self.viewComments.frame.origin.y, self.frame.size.width, 110)];
+    
+    CustomLabels * labelPrice = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:15 andColor:@"787878"
+                                                                   andText:@"Итоговая стоимость:" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    [otherView addSubview:labelPrice];
+    
+    CustomLabels * labelPriceAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:15 andColor:VM_COLOR_800
+                                                                 andText:@"8100 руб" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    [otherView addSubview:labelPriceAction];
+    
+    UIButton * buttonText = [UIButton buttonWithType:UIButtonTypeSystem];
+    buttonText.frame = CGRectMake(15.f, 45.f, self.frame.size.width - 30.f, 40);
+    buttonText.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+    [buttonText setTitle:@"Оформить заказ" forState:UIControlStateNormal];
+    [buttonText setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    buttonText.layer.cornerRadius = 3.f;
+    buttonText.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+    [otherView addSubview:buttonText];
+    
+    
+    
+    return otherView;
+}
 
 
 #pragma mark - PickerViewTime
@@ -381,16 +664,16 @@
 #pragma mark - Notifications
 //Действие переl вводом данных в TextField
 - (void) inputTextStart {
-    [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:50.f andUpAndDown:YES addOther:^{
-        self.mainScrollView.contentOffset = CGPointMake(0.f, 20.f);
-    }];
+//    [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:50.f andUpAndDown:YES addOther:^{
+//        self.mainScrollView.contentOffset = CGPointMake(0.f, 20.f);
+//    }];
     
 }
 //Действие после воода данных в TextField
 - (void) inputTextEnd {
-    [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:50.f andUpAndDown:NO addOther:^{
-        
-    }];
+//    [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:50.f andUpAndDown:NO addOther:^{
+//        
+//    }];
 }
 
 
@@ -403,24 +686,69 @@
     UIImageView * imageViewTwo = [self viewWithTag:11];
     
     if (button.tag == 5) {
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
+        for (int i = 0; i < 3; i++) {
+            UILabel * label = [self viewWithTag:900 + i];
+            label.text = [arrauNameYUr objectAtIndex:i];
+            
+        }
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
+        for (int i = 0; i < 4; i++) {
+            UILabel * label = [self viewWithTag:1700 + i];
+            label.text = [arrayPlaysHolders objectAtIndex:i];
+            
+        }
         buttonOne.userInteractionEnabled = NO;
         buttonTwo.userInteractionEnabled = YES;
+        UILabel * labelButton = [self viewWithTag:2500];
+        labelButton.text = @"Visa, MasterCard, Сбербанк";
         self.chooseButton = YES;
         [UIView animateWithDuration:0.3 animations:^{
             imageViewOne.image = [UIImage imageNamed:@"buttonFaceYes.png"];
             imageViewTwo.image = [UIImage imageNamed:@"buttonFaceNo.png"];
             [self animationUpPersonalData];
         }];
+        self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 80.f);
+        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:NO andDuraction:0.f];
+        CGRect textRect = self.viewText.frame;
+        textRect.origin.y += 120;
+        self.viewText.frame = textRect;
+        if (self.buttonMail.isBool) {
+            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 40.f);
+        }
     } else if (button.tag == 6) {
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
+            for (int i = 0; i < 3; i++) {
+                UILabel * label = [self viewWithTag:900 + i];
+                label.text = [arrauNameYUr objectAtIndex:i];
+                
+            }
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", @"КПП", nil];
+        for (int i = 0; i < 4; i++) {
+            UILabel * label = [self viewWithTag:1700 + i];
+            label.text = [arrayPlaysHolders objectAtIndex:i];
+            
+        }
         buttonOne.userInteractionEnabled = YES;
         buttonTwo.userInteractionEnabled = NO;
+        UILabel * labelButton = [self viewWithTag:2500];
+        labelButton.text = @"Счет на оплату";
         self.chooseButton = NO;
         [UIView animateWithDuration:0.3 animations:^{
             imageViewOne.image = [UIImage imageNamed:@"buttonFaceNo.png"];
             imageViewTwo.image = [UIImage imageNamed:@"buttonFaceYes.png"];
             [self animationDownPersonalData];
-
         }];
+        self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 80.f);
+        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:YES andDuraction:0.f];
+        CGRect textRect = self.viewText.frame;
+        textRect.origin.y -= 120;
+        self.viewText.frame = textRect;
+        if (self.buttonMail.isBool) {
+            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 40.f);
+        }
     }
 }
 
@@ -471,54 +799,33 @@
             self.rowUpper = self.pickerCountUpper; //Сохранение выбранного параметра пикера в пикере
             label.text = [self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper]; //Изменение текста лейбла в зависимости от пикера
             [label sizeToFit];
-            
             self.rowUppTag = self.rowUppTag - self.rowUpper; //Сохранение параметров выбраных в самом пикере
             self.rowLower += self.rowUppTag;
-            
             //У нас есть всегда от 9 до ограничения второго пикера
- 
             [self.arrayForPickerViewLower removeAllObjects]; //Перерисовываем массив
             NSLog(@"PICK: %d",[[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]);
-    
             for(int i= [[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]; i<23; i++){
                 NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
-                
                 [self.arrayForPickerViewLower addObject:stringNumber];
-                
             }
-            
-            
         } else {
             self.rowLower = self.pickerCountLower; //Сохранение выбранного параметра пикера в пикере (2 параметра смотря какой пикер)
- 
-            
             label.text = [self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower]; //Изменение текста лейбла в зависимости от пикера
             [label sizeToFit];
-
                 [self.arrayForPickerViewUpper removeAllObjects]; //Перерисовываем массив
-           
             for(int i=9; i<=[[self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower] integerValue]; i++){
                 NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
-
                 [self.arrayForPickerViewUpper addObject:stringNumber];
-                
             }
-         
-           
-
         }
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
             self.viewCounter.alpha = 0.f;
         }];
-            
         }else{
             [self buttonCancel];
-            
         }
     }
-    
-
 }
 
 //Выбор доставки курьером
@@ -527,17 +834,148 @@
         [UIView animateWithDuration:0.3 animations:^{
             button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
             button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400].CGColor;
+            self.buttonCompany.backgroundColor = [UIColor whiteColor];
+            self.buttonCompany.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            self.buttonMail.backgroundColor = [UIColor whiteColor];
+            self.buttonMail.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             if (self.chooseButton) {
                 self.mainScrollView.contentOffset = CGPointMake(0, 460);
             } else {
                 self.mainScrollView.contentOffset = CGPointMake(0, 500);
             }
+            if (self.buttonCompany.isBool) {
+                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
+            }
+            if (self.buttonMail.isBool) {
+                if (self.chooseButton) {
+                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
+                } else {
+                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
+                }
+            }
+            [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3];
+            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 70);
             
         }];
-        [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3];
+        self.buttonCompany.isBool = NO;
+        self.buttonMail.isBool = NO;
         button.isBool = YES;
     }
 }
+
+//Выбор доставки транспортной компанией
+- (void) buttonCompany: (CustomButton*) button {
+    if (!button.isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+            button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400].CGColor;
+            self.buttonMoscow.backgroundColor = [UIColor whiteColor];
+            self.buttonMoscow.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            self.buttonMail.backgroundColor = [UIColor whiteColor];
+            self.buttonMail.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            if (self.buttonMoscow.isBool) {
+                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 70);
+            }
+            if (self.buttonMail.isBool) {
+                if (self.chooseButton) {
+                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
+                } else {
+                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
+                }
+            }
+            [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:NO andDuraction:0.f];
+            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + (self.heightCompany - 45));
+            if (self.chooseButton) {
+                self.mainScrollView.contentOffset = CGPointMake(0, 620);
+            } else {
+                self.mainScrollView.contentOffset = CGPointMake(0, 660);
+            }
+            
+        }];
+        self.buttonMoscow.isBool = NO;
+        self.buttonMail.isBool = NO;
+        button.isBool = YES;
+    }
+}
+
+//Выбор доставки почтой
+- (void) buttonMail: (CustomButton*) button {
+    if (!button.isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+            button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400].CGColor;
+            self.buttonMoscow.backgroundColor = [UIColor whiteColor];
+            self.buttonMoscow.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            self.buttonCompany.backgroundColor = [UIColor whiteColor];
+            self.buttonCompany.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            if (self.buttonCompany.isBool) {
+                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
+            }
+            if (self.buttonMoscow.isBool) {
+                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 70);
+            }
+            if (self.chooseButton) {
+                self.mainScrollView.contentOffset = CGPointMake(0, 745);
+                [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 130);
+            } else {
+                self.mainScrollView.contentOffset = CGPointMake(0, 785);
+                [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 170);
+            }
+        }];
+    }
+    self.buttonMoscow.isBool = NO;
+    self.buttonCompany.isBool = NO;
+    button.isBool = YES;
+}
+
+//Выбор транспортной компании
+- (void) buttonTransportAction: (UIButton*) button {
+    for (int i = 0; i < self.arrayData.count; i++) {
+        UIButton * otherButton = (UIButton*)[self viewWithTag:700 + i];
+        if (button.tag == 700 + i) {
+            UIImageView * imageView = (UIImageView*)[self viewWithTag:750 + i];
+            [UIView animateWithDuration:0.3 animations:^{
+                imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+            } completion:^(BOOL finished) {
+                button.userInteractionEnabled = NO;
+            }];
+        } else {
+            otherButton.userInteractionEnabled = YES;
+            UIImageView * imageView = (UIImageView*)[self viewWithTag:750 + i];
+            imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+        }
+    }
+}
+
+- (void) buttonPriceAction: (UIButton*) button {
+    for (int i = 0; i < 5; i++) {
+        UIButton * otherButton = (UIButton*)[self viewWithTag:2000 + i];
+        if (button.tag == 2000 + i) {
+            UIImageView * imageView = (UIImageView*)[self viewWithTag:2100 + i];
+            [UIView animateWithDuration:0.3 animations:^{
+                imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+            } completion:^(BOOL finished) {
+                button.userInteractionEnabled = NO;
+            }];
+        } else {
+            otherButton.userInteractionEnabled = YES;
+            UIImageView * imageView = (UIImageView*)[self viewWithTag:2100 + i];
+            imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+        }
+    }
+    
+}
+
 
 
 #pragma mark - UITextViewDelegate
@@ -552,7 +990,12 @@
     }
     NSUInteger newLength = (textView.text.length - range.length) + text.length;
     NSInteger labelCount = 200 - newLength;
-    self.labelNumberWords.text = [NSString stringWithFormat:@"%d", labelCount];
+    if (textView.tag == 3000) {
+        self.labelNumberWords.text = [NSString stringWithFormat:@"%d", labelCount];
+    } else if (textView.tag == 3001) {
+        self.labelNumberComments.text = [NSString stringWithFormat:@"%d", labelCount];
+    }
+    
     if(newLength <= 199)
     {
         return YES;
@@ -566,10 +1009,18 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
-        self.mainScrollView.contentOffset = CGPointMake(0.f, 40.f);
-        
-    }];
+    if (textView.tag == 3000) {
+        [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
+            self.mainScrollView.contentOffset = CGPointMake(0.f, 40.f);
+            
+        }];
+    } else if (textView.tag == 3001) {
+        [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
+            self.mainScrollView.contentOffset = CGPointMake(0.f, 850.f);
+            
+        }];
+    }
+
 }
 
 #pragma mark - UIPickerViewDataSource
