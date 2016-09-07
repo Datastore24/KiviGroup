@@ -18,4 +18,10 @@
 + (void) backgroundViewWithView: (UIView*) view
                    andImageName: (NSString*) imageName;
 
++ (void) borderViewWithHeight: (CGFloat) height
+                     andWight: (CGFloat) wight
+                      andView: (UIView*) view
+                     andColor: (NSString*) color
+              andHieghtBorder: (CGFloat) hieghtBorder;
+
 @end

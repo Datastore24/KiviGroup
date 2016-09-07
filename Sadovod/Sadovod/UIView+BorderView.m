@@ -22,6 +22,18 @@
     
 }
 
++ (void) borderViewWithHeight: (CGFloat) height
+                     andWight: (CGFloat) wight
+                      andView: (UIView*) view
+                     andColor: (NSString*) color
+              andHieghtBorder: (CGFloat) hieghtBorder
+{
+    UIView * borderView = [[UIView alloc] initWithFrame: CGRectMake(wight, height, view.frame.size.width - wight * 2, hieghtBorder)];
+    borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:color];
+    [view addSubview:borderView];
+    
+}
+
 + (void) backgroundViewWithView: (UIView*) view
                       andImageName: (NSString*) imageName
 {
