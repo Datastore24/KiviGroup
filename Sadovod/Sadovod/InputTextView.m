@@ -179,7 +179,11 @@
             testField.isBoll = YES;
         }];
     }
-    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 225 && testField.tag < 250) {
+
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
+        
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         if (testField.text.length <= 2) {
             testField.text = @"+7";
         }
@@ -188,7 +192,11 @@
 
 - (void) animationLabelStart: (NSNotification*) notification {
     CustomTextField * testField = notification.object;
-    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 225 && testField.tag < 250) {
+
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
+        
+    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         if (testField.text.length <= 2) {
             testField.text = @"+7";
             [UIView animateWithDuration:0.2f animations:^{
@@ -205,7 +213,11 @@
 
 - (void) animationLabelEnd: (NSNotification*) notification {
     CustomTextField * testField = notification.object;
-    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 225 && testField.tag < 250) {
+   
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
+        
+    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         if (testField.text.length <= 2) {
             [UIView animateWithDuration:0.2f animations:^{
                 CGRect rect;
@@ -217,7 +229,6 @@
             }];
             testField.text = @"";
         }
-        
     }
 }
 

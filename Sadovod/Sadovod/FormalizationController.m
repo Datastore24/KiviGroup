@@ -27,7 +27,7 @@
     
 #pragma mark - View
     
-    FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:nil];
+    FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:[self setCustonArray]];
     [self.view addSubview:mainView];
     
 }
@@ -36,6 +36,12 @@
 
 - (void) buttonBackAction {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (NSArray*) setCustonArray
+{
+    NSArray * arrayCompany = [NSArray arrayWithObjects:@"Байкал-Сервис", @"ПЭК", @"Деловые линии", @"ЖелДорЭкспедиция", @"КИТ", @"Энергия", nil];
+    return arrayCompany;
 }
 
 @end
