@@ -64,7 +64,7 @@
         
         //BuyButton
         UIButton * buyButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        buyButton.frame = CGRectMake(0, self.frame.size.width + 3.f, self.frame.size.width, 40.f);
+        buyButton.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, 40.f);
         buyButton.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
         [buyButton addTarget:self action:@selector(buyButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.mainScrollView addSubview:buyButton];
@@ -231,7 +231,7 @@
 #pragma mark - Details
 - (UIView*) createViewDetailsWithView: (UIView*) view
                       andDetailsArray: (NSArray*) detailsArray {
-    UIView * viewDetail = [[UIView alloc] initWithFrame:CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 47.f, self.frame.size.width - 6.f, 40.f * self.detailsArray.count)];
+    UIView * viewDetail = [[UIView alloc] initWithFrame:CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 47.f, self.frame.size.width - 6.f, 40.f * (self.detailsArray.count+1))];
     viewDetail.backgroundColor = [UIColor whiteColor];
     
     for (int i = 0; i < self.detailsArray.count; i++) {
@@ -247,6 +247,25 @@
         [viewDetail addSubview:labelText];
         if (i < self.detailsArray.count - 1) {
             [UIView borderViewWithHeight:39.f + 40.f * i andWight:0.f andView:viewDetail andColor:@"D8D8D8"];
+        }
+        
+        if(i+1==self.detailsArray.count){
+           
+            
+            CustomLabels * labelTint = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f + 40.f * (i+1) andSizeWidht:80.f andSizeHeight:40.f andColor:@"9e9e9e" andText:@"ID"];
+            labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+            labelTint.textAlignment = NSTextAlignmentLeft;
+            [viewDetail addSubview:labelTint];
+            
+            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:100.f andHeight:0.f + 40.f * (i+1) andSizeWidht:120.f andSizeHeight:40.f andColor:@"000000" andText:[self.arrayData objectForKey:@"art"]];
+            labelText.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+            labelText.textAlignment = NSTextAlignmentLeft;
+            [viewDetail addSubview:labelText];
+            if (i < self.detailsArray.count) {
+                [UIView borderViewWithHeight:39.f + 40.f * i+1 andWight:0.f andView:viewDetail andColor:@"D8D8D8"];
+            }
+
+            
         }
     }
     

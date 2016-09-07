@@ -15,6 +15,7 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "CheckDataServer.h"
 #import "SingleTone.h"
+#import "CustomButton.h"
 
 
 @interface CatalogView () <UIScrollViewDelegate>
@@ -142,12 +143,15 @@
                 
                               
                 
-                                UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
+                                CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
                                 buttonProduct.frame = CGRectMake(0.f + ((self.frame.size.width / 2.f + 1.5f) * columnProduct),
                                                                  0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                                  self.frame.size.width / 2.f - 1.5f,
                                                                  self.frame.size.width / 2.f - 1.5f );
                                 buttonProduct.backgroundColor = [UIColor whiteColor];
+                                buttonProduct.customID = [dictProduct objectForKey:@"id"];
+                                buttonProduct.customName = [dictProduct objectForKey:@"name"];
+                                buttonProduct.tag = 30 + i;
                                 [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                
                                 UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
@@ -248,8 +252,14 @@
     [self.delegate getCatalog:self];
 }
 
-- (void) buttonProductAction: (UIButton*) button {
-    [self.delegate pushToBuyView:self];
+- (void) buttonProductAction: (CustomButton*) button {
+    for (int i = 0; i < self.arrayData.count; i++) {
+        if (button.tag == 30 + i) {
+            NSLog(@"CUSTOM ID %@", button.customID);
+            [self.delegate pushToBuyView:self andProductID:button.customID andProductName:button.customName];
+        }
+    }
+    
 }
 
 
@@ -301,12 +311,15 @@
                     
                     NSDictionary * dictProduct = [productArray objectAtIndex:i];
                     
-                    UIButton * buttonProduct = [UIButton buttonWithType:UIButtonTypeCustom];
+                    CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
                     buttonProduct.frame = CGRectMake(0.f + ((self.frame.size.width / 2.f + 1.5f) * columnProduct),
                                                      0.f + ((self.frame.size.width / 2.f + 1.5f) * lineProduct),
                                                      self.frame.size.width / 2.f - 1.5f,
                                                      self.frame.size.width / 2.f - 1.5f );
                     buttonProduct.backgroundColor =[UIColor whiteColor];
+                    buttonProduct.customID = [dictProduct objectForKey:@"id"];
+                    buttonProduct.customName = [dictProduct objectForKey:@"name"];
+                    buttonProduct.tag = 30+i;
                     [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                     
                     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];

@@ -22,9 +22,8 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
-    [self initializeCartBarButton]; //Инициализация кнопок навигации
-    [self setCustomTitle:@"Штаны черные" andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
+            [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод
+     [self initializeCartBarButton]; //Инициализация кнопок навигации
     //    [self.navigationController setNavigationBarHidden:NO];
     
     //Кнопка Назад---------------------------------------------
@@ -37,6 +36,8 @@
 #pragma mark - View
     [self getApiProduct:^{
         OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
+       
+
         mainView.delegate = self;
         [self.view addSubview:mainView];
     } andProductID:self.productID];

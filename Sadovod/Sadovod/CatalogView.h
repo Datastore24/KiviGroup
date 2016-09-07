@@ -32,7 +32,8 @@
 - (void) getApiTabProducts:(NSString *) cat andPage: (NSString *) page
                   andBlock:(void (^)(void))block;
 
-- (void) pushToBuyView: (CatalogView*) catalogView;
+- (void) pushToBuyView: (CatalogView*) catalogView andProductID:(NSString *) productID
+        andProductName:(NSString *) productName;
 
 
 @end

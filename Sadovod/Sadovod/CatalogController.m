@@ -62,8 +62,11 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-- (void) pushToBuyView: (CatalogView*) catalogView {
+- (void) pushToBuyView: (CatalogView*) catalogView andProductID:(NSString *) productID
+        andProductName:(NSString *) productName {
     OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
+    detail.productID = productID;
+    detail.productName = productName;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

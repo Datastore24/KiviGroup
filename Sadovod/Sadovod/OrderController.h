@@ -10,4 +10,5 @@
 
 @interface OrderController : MainViewController
 @property (strong,nonatomic) NSString* productID;
+@property (strong,nonatomic) NSString* productName;
 @end
