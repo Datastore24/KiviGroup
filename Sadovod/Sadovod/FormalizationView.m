@@ -42,7 +42,10 @@
 @property (strong, nonatomic) UIPickerView * counterPicker;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewUpper;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewLower;
-@property (assign, nonatomic) NSInteger pickerCount; //значение выдаваемое при скроле пикера
+@property (assign, nonatomic) NSInteger pickerCountUpper; //значение выдаваемое при скроле пикера
+@property (assign, nonatomic) NSInteger pickerCountLower; //значение выдаваемое при скроле пикера
+@property (assign, nonatomic) BOOL isScrollPicker; //Значение когда пикер скролиться
+
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
 @property (strong, nonatomic) UIView * viewCounter; //Счетчик
 @property (assign, nonatomic) BOOL pickerChenge; //Выбор нужного пикера    YES -- с какого времени    NO -- по какое
@@ -68,6 +71,8 @@
 {
     self = [super init];
     if (self) {
+        
+        self.isScrollPicker=NO;
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.arrayView = [[NSMutableArray alloc] init];
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
@@ -421,9 +426,12 @@
 
 //Выбор премени доставки товара
 - (void) buttonChooseTimeAction: (UIButton*) button {
+        self.isScrollPicker = NO;
+    
         if (button.tag == 100) {
             self.customTag = 0;
             self.pickerChenge = YES;
+            
             [self.counterPicker reloadAllComponents];
             [self.counterPicker selectRow:self.rowUpper inComponent:0 animated:NO]; //Выбор ячейки пикера по сохраненным значениям
             self.rowUppTag = self.rowUpper;
@@ -442,61 +450,75 @@
 
 }
 
+//Метод для отмены пикера
+- (void) buttonCancel{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewFone.alpha = 0.f;
+        self.viewCounter.alpha = 0.f;
+    }];
+}
+
 //Подтверждение кол-ва товара или отмена выбранного колличества
 - (void) buttonPickerAction: (UIButton*) button {
+
     if (button.tag == 1000) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.viewFone.alpha = 0.f;
-            self.viewCounter.alpha = 0.f;
-        }];
+        [self buttonCancel];
     } else if (button.tag == 1001) {
+        if(self.isScrollPicker){
         UILabel * label = (UILabel*)[self viewWithTag:110 + self.customTag];
         if (self.pickerChenge) {
-            self.rowUpper = self.pickerCount; //Сохранение выбранного параметра пикера в пикере
-//            label.text = [self.arrayForPickerViewUpper objectAtIndex:self.pickerCount]; //Изменение текста лейбла в зависимости от пикера
+            self.rowUpper = self.pickerCountUpper; //Сохранение выбранного параметра пикера в пикере
+            label.text = [self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper]; //Изменение текста лейбла в зависимости от пикера
             [label sizeToFit];
             
             self.rowUppTag = self.rowUppTag - self.rowUpper; //Сохранение параметров выбраных в самом пикере
             self.rowLower += self.rowUppTag;
             
-            
+            //У нас есть всегда от 9 до ограничения второго пикера
+ 
             [self.arrayForPickerViewLower removeAllObjects]; //Перерисовываем массив
-            for (int i = [[self.arrayForPickerViewUpper objectAtIndex:self.pickerCount] integerValue]; i <= 22; i++) {
-                    NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
-                NSLog(@"stringNumber1 %@", stringNumber);
+            NSLog(@"PICK: %d",[[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]);
+    
+            for(int i= [[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]; i<23; i++){
+                NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
                 
-                    [self.arrayForPickerViewLower addObject:stringNumber];
-                
-                
+                [self.arrayForPickerViewLower addObject:stringNumber];
                 
             }
             
+            
         } else {
-            self.rowLower = self.pickerCount; //Сохранение выбранного параметра пикера в пикере (2 параметра смотря какой пикер)
-            NSLog(@"pickerCount %d", self.pickerCount);
-            NSLog(@"COUNT %i",self.arrayForPickerViewLower.count);
+            self.rowLower = self.pickerCountLower; //Сохранение выбранного параметра пикера в пикере (2 параметра смотря какой пикер)
+ 
             
-//            label.text = [self.arrayForPickerViewLower objectAtIndex:self.pickerCount]; //Изменение текста лейбла в зависимости от пикера
+            label.text = [self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower]; //Изменение текста лейбла в зависимости от пикера
             [label sizeToFit];
-            
-            NSInteger countUpper = [[self.arrayForPickerViewUpper objectAtIndex:0] integerValue];
 
                 [self.arrayForPickerViewUpper removeAllObjects]; //Перерисовываем массив
-            NSLog(@"arrayForPickerViewLower %d", [[self.arrayForPickerViewLower objectAtIndex:self.pickerCount] integerValue]);
-                for (int i = countUpper; i <= [[self.arrayForPickerViewLower objectAtIndex:self.pickerCount] integerValue]; i++) {
-                    NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
-                    
-//                    NSLog(@"stringNumber %@", stringNumber);
-                    
-                    [self.arrayForPickerViewUpper addObject:stringNumber];
-                    
-                }
+           
+            for(int i=9; i<=[[self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower] integerValue]; i++){
+                NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
+
+                [self.arrayForPickerViewUpper addObject:stringNumber];
+                
+            }
+         
+           
+
         }
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
             self.viewCounter.alpha = 0.f;
         }];
+            
+        }else{
+            [self buttonCancel];
+            
+        }
     }
+    
+
 }
 
 //Выбор доставки курьером
@@ -600,7 +622,16 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.pickerCount = row;
+    if(!self.isScrollPicker){
+       self.isScrollPicker=YES;
+        
+    }
+    if(self.pickerChenge){
+        self.pickerCountUpper=row;
+    }else{
+        self.pickerCountLower=row;
+    }
+    
     
 }
 
