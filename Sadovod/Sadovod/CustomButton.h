@@ -13,6 +13,7 @@
 @property (assign, nonatomic) BOOL isBool;
 @property (strong, nonatomic) NSString* customName;
 @property (strong, nonatomic) NSString* customValue;
+@property (strong, nonatomic) NSString* customID;
 @property (assign, nonatomic) int group;
 
 @end

@@ -13,13 +13,15 @@
 #import "UIButton+ButtonImage.h"
 #import "CustomLabels.h"
 #import "UIView+BorderView.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "CustomButton.h"
 
 @interface OrderView () <UIScrollViewDelegate>
 
 //Main
 
 @property (strong, nonatomic) UIScrollView * mainScrollView;
-@property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSDictionary * arrayData;
 @property (strong, nonatomic) NSArray * arraySizes;
 @property (strong, nonatomic) NSArray * detailsArray;
 
@@ -39,18 +41,18 @@
 #pragma mark - Main
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data {
+                     andData: (NSDictionary*) data {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         
         self.arrayData = data;
-        NSDictionary * dictData = [data objectAtIndex:0];
-        NSArray * arrayImage = [dictData objectForKey:@"imageArray"];
-        self.arraySizes = [dictData objectForKey:@"sizeArray"];
-        self.detailsArray = [dictData objectForKey:@"details"];
+       
+        NSArray * arrayImage = [data objectForKey:@"images"];
+        self.arraySizes = [data objectForKey:@"sizes"];
+        self.detailsArray = [data objectForKey:@"opts"];
         
-        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 64.f, self.frame.size.width, self.frame.size.height-64.f)];
         self.mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
@@ -62,12 +64,12 @@
         
         //BuyButton
         UIButton * buyButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        buyButton.frame = CGRectMake(0, self.frame.size.width + 3.f, self.frame.size.width, 40.f);
+        buyButton.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, 40.f);
         buyButton.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
         [buyButton addTarget:self action:@selector(buyButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.mainScrollView addSubview:buyButton];
         //--
-        CustomLabels * buttonBuyPrice = [[CustomLabels alloc] initLabelTableWithWidht:5.f andHeight:0.f andSizeWidht:70.f andSizeHeight:40.f andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ руб", [dictData objectForKey:@"price"]]];
+        CustomLabels * buttonBuyPrice = [[CustomLabels alloc] initLabelTableWithWidht:5.f andHeight:0.f andSizeWidht:70.f andSizeHeight:40.f andColor:@"ffffff" andText:[NSString stringWithFormat:@"%@ руб", [data objectForKey:@"cost"]]];
         buttonBuyPrice.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         [buyButton addSubview:buttonBuyPrice];
         //--
@@ -109,6 +111,7 @@
     UIView * viewForScrollImage = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.width)];
     self.scrollImage = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, viewForScrollImage.frame.size.width, viewForScrollImage.frame.size.height)];
     self.scrollImage.pagingEnabled = YES;
+    self.scrollImage.backgroundColor = [UIColor whiteColor];
     self.scrollImage.delegate = self;
     self.scrollImage.showsHorizontalScrollIndicator = NO;
     self.scrollImage.contentSize = CGSizeMake(viewForScrollImage.frame.size.width * arrayImage.count, 0.f);
@@ -116,7 +119,38 @@
     
     for (int i = 0; i < arrayImage.count; i++) {
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollImage.frame.size.width * i, 0.f, self.scrollImage.frame.size.width, self.scrollImage.frame.size.height)];
-        imageView.image = [UIImage imageNamed:[arrayImage objectAtIndex:i]];
+        
+        NSURL *imgURL = [NSURL URLWithString:[arrayImage objectAtIndex:i]];
+        
+        //SingleTone с ресайз изображения
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                
+                                if(image){
+                                    
+                                    
+                                    [imageView setClipsToBounds:YES];
+                                    
+                                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                                    imageView.clipsToBounds =YES;
+  
+                                    imageView.image = image;
+                                    
+                            
+                                    
+                                }else{
+                                    
+                                }
+                            }];
+        
+        
+        
+        
         [self.scrollImage addSubview:imageView];
     }
     
@@ -124,7 +158,7 @@
     self.pageControl = [[StyledPageControl alloc] init];
     self.pageControl.frame = CGRectMake(5.f, viewForScrollImage.frame.size.height - 20.f, 60.f, 20.f);
     [self.pageControl setPageControlStyle:PageControlStyleStrokedCircle];
-    [self.pageControl setNumberOfPages:3];
+    [self.pageControl setNumberOfPages:arrayImage.count];
     [self.pageControl setCurrentPage:0];
     [self.pageControl setDiameter:12];
     self.pageControl.strokeWidth = 1;
@@ -147,11 +181,16 @@
     UIView * viewSizes = [[UIView alloc] init];
     
     for (int i = 0; i < arraySizes.count; i++) {
-        UIButton * buttonSize = [UIButton buttonWithType:UIButtonTypeSystem];
+        
+        if([[[arraySizes objectAtIndex:i] objectForKey:@"aviable"] integerValue] == 1){
+            
+        
+        CustomButton * buttonSize = [CustomButton buttonWithType:UIButtonTypeSystem];
         buttonSize.frame = CGRectMake(10.f + (10.f * column) + (((self.frame.size.width - 46.f) / 3.f) * column), 10.f + 50.f * line, (self.frame.size.width - 46.f) / 3.f, 40.f);
         buttonSize.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_200];
         buttonSize.tag = 50 + i;
-        [buttonSize setTitle:[arraySizes objectAtIndex:i] forState:UIControlStateNormal];
+        buttonSize.customID=[[arraySizes objectAtIndex:i] objectForKey:@"id"];
+        [buttonSize setTitle:[[arraySizes objectAtIndex:i] objectForKey:@"value"] forState:UIControlStateNormal];
         buttonSize.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         [buttonSize addTarget:self action:@selector(buttonSizeAction:) forControlEvents:UIControlEventTouchUpInside];
         [buttonSize setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -177,6 +216,7 @@
                 line += 1;
             }
         }
+        }
     }
     
     viewSizes.frame = CGRectMake(3.f, mainView.frame.size.width + 90.f, mainView.frame.size.width - 6.f, 10.f + 50.f * (line + 1));
@@ -191,22 +231,41 @@
 #pragma mark - Details
 - (UIView*) createViewDetailsWithView: (UIView*) view
                       andDetailsArray: (NSArray*) detailsArray {
-    UIView * viewDetail = [[UIView alloc] initWithFrame:CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 47.f, self.frame.size.width - 6.f, 40.f * self.detailsArray.count)];
+    UIView * viewDetail = [[UIView alloc] initWithFrame:CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 47.f, self.frame.size.width - 6.f, 40.f * (self.detailsArray.count+1))];
     viewDetail.backgroundColor = [UIColor whiteColor];
     
     for (int i = 0; i < self.detailsArray.count; i++) {
         NSDictionary * dictDetails = [self.detailsArray objectAtIndex:i];
-        CustomLabels * labelTint = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f + 40.f * i andSizeWidht:80.f andSizeHeight:40.f andColor:@"9e9e9e" andText:[dictDetails objectForKey:@"titl"]];
+        CustomLabels * labelTint = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f + 40.f * i andSizeWidht:80.f andSizeHeight:40.f andColor:@"9e9e9e" andText:[dictDetails objectForKey:@"name"]];
         labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
         labelTint.textAlignment = NSTextAlignmentLeft;
         [viewDetail addSubview:labelTint];
         
-        CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:100.f andHeight:0.f + 40.f * i andSizeWidht:120.f andSizeHeight:40.f andColor:@"000000" andText:[dictDetails objectForKey:@"text"]];
+        CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:100.f andHeight:0.f + 40.f * i andSizeWidht:120.f andSizeHeight:40.f andColor:@"000000" andText:[dictDetails objectForKey:@"value"]];
         labelText.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
         labelText.textAlignment = NSTextAlignmentLeft;
         [viewDetail addSubview:labelText];
         if (i < self.detailsArray.count - 1) {
             [UIView borderViewWithHeight:39.f + 40.f * i andWight:0.f andView:viewDetail andColor:@"D8D8D8"];
+        }
+        
+        if(i+1==self.detailsArray.count){
+           
+            
+            CustomLabels * labelTint = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f + 40.f * (i+1) andSizeWidht:80.f andSizeHeight:40.f andColor:@"9e9e9e" andText:@"ID"];
+            labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+            labelTint.textAlignment = NSTextAlignmentLeft;
+            [viewDetail addSubview:labelTint];
+            
+            CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:100.f andHeight:0.f + 40.f * (i+1) andSizeWidht:120.f andSizeHeight:40.f andColor:@"000000" andText:[self.arrayData objectForKey:@"art"]];
+            labelText.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+            labelText.textAlignment = NSTextAlignmentLeft;
+            [viewDetail addSubview:labelText];
+            if (i < self.detailsArray.count) {
+                [UIView borderViewWithHeight:39.f + 40.f * i+1 andWight:0.f andView:viewDetail andColor:@"D8D8D8"];
+            }
+
+            
         }
     }
     

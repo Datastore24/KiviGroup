@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *catID;
 @property (nullable, nonatomic, retain) NSString *min_cost;
 @property (nullable, nonatomic, retain) NSString *max_cost;
-@property (nullable, nonatomic, retain) NSString *sort;
 @property (nullable, nonatomic, retain) NSString *o;
 
 @end

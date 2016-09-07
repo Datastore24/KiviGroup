@@ -12,6 +12,7 @@
 @interface OrderFiltersController : MainViewController
 @property (strong, nonatomic) NSString * catID;
 @property (strong, nonatomic) NSString * cost;
+@property (strong, nonatomic) NSString * sort;
 @property (strong, nonatomic) NSString * filter;
 
 @end

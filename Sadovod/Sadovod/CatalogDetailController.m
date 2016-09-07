@@ -12,6 +12,8 @@
 #import "OrderFiltersController.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "Filter.h"
+#import "FilterDbClass.h"
 
 @interface CatalogDetailController () <CatalogDetailViewDelegate>
 
@@ -60,8 +62,9 @@
 
 #pragma mark - CatalogDetailViewDelegate
 
-- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView {
+- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView andProductID: (NSString *) productID {
     OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
+    detail.productID = productID;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -71,6 +74,7 @@
     detail.catID = catID;
     detail.filter = filter;
     detail.cost = cost;
+    detail.sort = self.sort;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -80,17 +84,16 @@
     
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
                              filter,@"o",
                              cost,@"cost",
                              self.catID,@"cat",
                              sort,@"sort",
-                             [[SingleTone sharedManager] catalogKey], @"token",
-                             @"ios_sadovod",@"appname",nil];
+                             nil];
+    NSLog(@"PARAMS: %@",params);
     
-    
-    NSLog(@"TOKEN: %@",[[SingleTone sharedManager] catalogKey]);
-    NSLog(@"CAT: %@",self.catID);
-    NSLog(@"PARAMS: %@", params);
     [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
@@ -117,13 +120,36 @@
     APIGetClass * api =[APIGetClass new]; //создаем API
     
     
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             self.catID,@"cat",
-                             [[SingleTone sharedManager] catalogKey], @"token",
-                             @"ios_sadovod",@"appname",nil];
+    FilterDbClass * filterDb = [[FilterDbClass alloc] init];
     
-    NSLog(@"TOKEN: %@",[[SingleTone sharedManager] catalogKey]);
-    NSLog(@"CAT: %@",self.catID);
+    Filter * filter = [filterDb filterCatID:[NSString stringWithFormat:@"%@",self.catID] ];
+    
+    NSString * cost;
+    NSString * o;
+   
+    
+    
+    if(filter.o.length !=0){
+        cost = [NSString stringWithFormat:@"%@-%@",filter.min_cost,filter.max_cost];
+        o=filter.o;
+        
+    }else{
+        cost=@"";
+        o=@"";
+    }
+
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             self.catID,@"cat",
+                             o,@"o",
+                             cost,@"cost",
+                             @"upd-1",@"sort",
+                             nil];
+    
     [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){

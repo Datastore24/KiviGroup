@@ -1144,7 +1144,7 @@
 }
 
 - (void) buttonActionCheck {
-    NSLog(@"COUNTER %i",self.counter);
+    
     if (self.counter > 1) {
         [UIView animateWithDuration:0.3 animations:^{
             self.bigButtonConfirm.alpha = 0.f;
