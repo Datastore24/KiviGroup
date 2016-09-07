@@ -103,7 +103,6 @@
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
-            NSLog(@"RESP: %@",respDict);
             
             self.arrayData = [respDict objectForKey:@"product"];
             

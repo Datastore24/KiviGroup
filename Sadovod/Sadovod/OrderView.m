@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSDictionary * arrayData;
 @property (strong, nonatomic) NSArray * arraySizes;
 @property (strong, nonatomic) NSArray * detailsArray;
+@property (strong, nonatomic) CustomLabels * sizesTitle;
 
 //ScrollImage
 
@@ -37,7 +38,6 @@
 @end
 
 @implementation OrderView
-
 #pragma mark - Main
 
 - (instancetype)initWithView: (UIView*) view
@@ -78,13 +78,35 @@
         [buyButton addSubview:buttonBuyLabel];
         
         //Sizes------
+       
         
-        CustomLabels * sizesTitle = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:self.frame.size.width + 53.f andSizeWidht:150.f andSizeHeight:40.f andColor:VM_COLOR_900 andText:[NSString stringWithFormat:@"Доступные размеры"]];
-        sizesTitle.font = [UIFont fontWithName:VM_FONT_BOLD size:14];
-        sizesTitle.textAlignment = NSTextAlignmentLeft;
-        [self.mainScrollView addSubview:sizesTitle];
+        self.sizesTitle = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:self.frame.size.width + 53.f andSizeWidht:150.f andSizeHeight:40.f andColor:VM_COLOR_900 andText:[NSString stringWithFormat:@"Доступные размеры"]];
+        
+        
+        
+        
+        
+        self.sizesTitle.font = [UIFont fontWithName:VM_FONT_BOLD size:14];
+        self.sizesTitle.textAlignment = NSTextAlignmentLeft;
+        [self.mainScrollView addSubview:self.sizesTitle];
 
         self.viewSizes = [self createViewSizesWithMainView:self.mainScrollView andArraySizes:self.arraySizes];
+        
+        
+        if(self.arraySizes.count == 1){
+            if([[[self.arraySizes objectAtIndex:0] objectForKey:@"value"] isEqualToString:@"Без размера"]){
+                NSLog(@"БЕЗ РАЗМЕРА НАХ");
+                CGRect rectSizes = self.viewSizes.frame;
+                rectSizes.size.height = 0.f;
+                self.viewSizes.frame = rectSizes;
+                self.viewSizes.clipsToBounds = YES;
+                
+                CGRect rectSizesTitle = self.sizesTitle.frame;
+                rectSizesTitle.size.height = 0.f;
+                self.sizesTitle.frame = rectSizesTitle;
+                self.sizesTitle.clipsToBounds = YES;
+            }
+        }
         [self.mainScrollView addSubview:self.viewSizes];
         
         //Details-----
@@ -183,6 +205,9 @@
     for (int i = 0; i < arraySizes.count; i++) {
         
         if([[[arraySizes objectAtIndex:i] objectForKey:@"aviable"] integerValue] == 1){
+            NSLog(@"VALUE %@",[[arraySizes objectAtIndex:i] objectForKey:@"value"] );
+            
+          
             
         
         CustomButton * buttonSize = [CustomButton buttonWithType:UIButtonTypeSystem];
