@@ -12,7 +12,7 @@
 @implementation InputTextView
 {
 //    CustomTextField * textFieldInput;
-    UILabel * labelPlaceHoldInput;
+    
     UIView * mainView;
     BOOL keyboardUp;
 }
@@ -55,11 +55,11 @@
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400 alpha:0.5f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400 alpha:0.5f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -88,14 +88,16 @@
         self.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
         self.textFieldInput.textColor = [UIColor blackColor];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabel:) name:UITextFieldTextDidChangeNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelStart:) name:UITextFieldTextDidBeginEditingNotification object:self.textFieldInput];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationLabelEnd:) name:UITextFieldTextDidEndEditingNotification object:self.textFieldInput];
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -127,11 +129,11 @@
         [self addSubview:self.textFieldInput];
         
         //Плесхолдер --------------
-        labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
-        labelPlaceHoldInput.text = placeHolder;
-        labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
-        labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
-        [self addSubview:labelPlaceHoldInput];
+        self.labelPlaceHoldInput = [[UILabel alloc] initWithFrame:self.textFieldInput.frame];
+        self.labelPlaceHoldInput.text = placeHolder;
+        self.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300 alpha:1.f];
+        self.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
+        [self addSubview:self.labelPlaceHoldInput];
         
     }
     return self;
@@ -161,21 +163,61 @@
     if (testField.text.length != 0 && testField.isBoll) {
         [UIView animateWithDuration:0.2f animations:^{
             CGRect rect;
-            rect = labelPlaceHoldInput.frame;
+            rect = self.labelPlaceHoldInput.frame;
             rect.origin.x = rect.origin.x + 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 0.f;
+            self.labelPlaceHoldInput.frame = rect;
+            self.labelPlaceHoldInput.alpha = 0.f;
             testField.isBoll = NO;
         }];
     } else if (testField.text.length == 0 && !testField.isBoll) {
         [UIView animateWithDuration:0.25f animations:^{
             CGRect rect;
-            rect = labelPlaceHoldInput.frame;
+            rect = self.labelPlaceHoldInput.frame;
             rect.origin.x = rect.origin.x - 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 1.f;
+            self.labelPlaceHoldInput.frame = rect;
+            self.labelPlaceHoldInput.alpha = 1.f;
             testField.isBoll = YES;
         }];
+    }
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            testField.text = @"+7";
+        }
+    }
+}
+
+- (void) animationLabelStart: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            testField.text = @"+7";
+            [UIView animateWithDuration:0.2f animations:^{
+                CGRect rect;
+                rect = self.labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x + 100.f;
+                self.labelPlaceHoldInput.frame = rect;
+                self.labelPlaceHoldInput.alpha = 0.f;
+                testField.isBoll = NO;
+            }];
+        }
+    }
+}
+
+- (void) animationLabelEnd: (NSNotification*) notification {
+    CustomTextField * testField = notification.object;
+    if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if (testField.text.length <= 2) {
+            [UIView animateWithDuration:0.2f animations:^{
+                CGRect rect;
+                rect = self.labelPlaceHoldInput.frame;
+                rect.origin.x = rect.origin.x - 100.f;
+                self.labelPlaceHoldInput.frame = rect;
+                self.labelPlaceHoldInput.alpha = 1.f;
+                testField.isBoll = YES;
+            }];
+            testField.text = @"";
+        }
+        
     }
 }
 
@@ -184,10 +226,10 @@
     if (testField.text.length != 0) {
         [UIView animateWithDuration:0.25f animations:^{
             CGRect rect;
-            rect = labelPlaceHoldInput.frame;
+            rect = self.labelPlaceHoldInput.frame;
             rect.origin.x = rect.origin.x - 100.f;
-            labelPlaceHoldInput.frame = rect;
-            labelPlaceHoldInput.alpha = 1.f;
+            self.labelPlaceHoldInput.frame = rect;
+            self.labelPlaceHoldInput.alpha = 1.f;
             testField.isBoll = YES;
         }];
     }
@@ -198,6 +240,15 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        return ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0) || [string isEqualToString:@""];
+    }
+
+    return YES;
 }
 
 
