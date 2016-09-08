@@ -180,6 +180,14 @@
         }];
     }
     if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 225 && testField.tag < 250) {
+        
+        if (testField.text.length == 5) {
+            testField.text = [testField.text substringToIndex:[testField.text length] - 1];
+        }
+        
+        if (testField.text.length > 11) {
+            testField.text = [testField.text substringToIndex:[testField.text length] - 1];
+        }
 
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
         
@@ -193,6 +201,7 @@
 - (void) animationLabelStart: (NSNotification*) notification {
     CustomTextField * testField = notification.object;
     if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 225 && testField.tag < 250) {
+        
 
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
         
@@ -254,10 +263,39 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && textField.tag >= 225 && textField.tag < 250) {
+            NSString *text = [textField.text stringByReplacingCharactersInRange:range
+                                                                     withString: string];
+        
+            if (text.length == 4) { //or probably better, check if int
+                textField.text = [NSString stringWithFormat: @"%@ ", text];
+                return NO;
+            }
+        
+        if (text.length > 10) {
+            return YES;
+        }
+
+    }
+    
+    
+    
     if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         NSCharacterSet *nonNumberSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         return ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0) || [string isEqualToString:@""];
+    } else if (textField.keyboardType == UIKeyboardTypeDefault) {
+        NSRange spaceRange = [string rangeOfString:@" "];
+        if (spaceRange.location != NSNotFound)
+        {
+            return NO;
+        } else {
+            return YES;
+        }
     }
+    
+    
 
     return YES;
 }
