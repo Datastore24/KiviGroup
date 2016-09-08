@@ -25,6 +25,14 @@
 		FF7FCF021D7DF0C60064E755 /* buttonFaceYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCF001D7DF0C60064E755 /* buttonFaceYes.png */; };
 		FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F6D1D6EDE890037684A /* OrderFiltersController.m */; };
 		FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF997F701D6EDE9B0037684A /* OrderFiltersView.m */; };
+		FFA500011D818F6A00CD6E7F /* FAQController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA500001D818F6A00CD6E7F /* FAQController.m */; };
+		FFA500041D818F7E00CD6E7F /* FAQView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA500031D818F7E00CD6E7F /* FAQView.m */; };
+		FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFE91D816A7E00CD6E7F /* AuthorizationController.m */; };
+		FFA5FFED1D816A9900CD6E7F /* AuthorizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFEC1D816A9900CD6E7F /* AuthorizationView.m */; };
+		FFA5FFF11D81755000CD6E7F /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFF01D81755000CD6E7F /* RegistrationController.m */; };
+		FFA5FFF41D81756600CD6E7F /* RegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFF31D81756600CD6E7F /* RegistrationView.m */; };
+		FFA5FFF91D81794D00CD6E7F /* QuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFF81D81794D00CD6E7F /* QuestionController.m */; };
+		FFA5FFFD1D81796000CD6E7F /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA5FFFC1D81796000CD6E7F /* QuestionView.m */; };
 		FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */; };
 		FFA8ABAB1D6F07EC004010F9 /* slideTuch.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABA91D6F07EC004010F9 /* slideTuch.png */; };
 		FFA8ABAE1D6F0A42004010F9 /* sliderTuchUp.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA8ABAD1D6F0A42004010F9 /* sliderTuchUp.png */; };
@@ -457,6 +465,22 @@
 		FF997F6D1D6EDE890037684A /* OrderFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersController.m; sourceTree = "<group>"; };
 		FF997F6F1D6EDE9B0037684A /* OrderFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFiltersView.h; sourceTree = "<group>"; };
 		FF997F701D6EDE9B0037684A /* OrderFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFiltersView.m; sourceTree = "<group>"; };
+		FFA500001D818F6A00CD6E7F /* FAQController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQController.m; sourceTree = "<group>"; };
+		FFA500021D818F7E00CD6E7F /* FAQView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQView.h; sourceTree = "<group>"; };
+		FFA500031D818F7E00CD6E7F /* FAQView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQView.m; sourceTree = "<group>"; };
+		FFA5FFE81D816A7E00CD6E7F /* AuthorizationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationController.h; sourceTree = "<group>"; };
+		FFA5FFE91D816A7E00CD6E7F /* AuthorizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationController.m; sourceTree = "<group>"; };
+		FFA5FFEB1D816A9900CD6E7F /* AuthorizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationView.h; sourceTree = "<group>"; };
+		FFA5FFEC1D816A9900CD6E7F /* AuthorizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationView.m; sourceTree = "<group>"; };
+		FFA5FFEF1D81755000CD6E7F /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
+		FFA5FFF01D81755000CD6E7F /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
+		FFA5FFF21D81756600CD6E7F /* RegistrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationView.h; sourceTree = "<group>"; };
+		FFA5FFF31D81756600CD6E7F /* RegistrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationView.m; sourceTree = "<group>"; };
+		FFA5FFF71D81794D00CD6E7F /* QuestionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionController.h; sourceTree = "<group>"; };
+		FFA5FFF81D81794D00CD6E7F /* QuestionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionController.m; sourceTree = "<group>"; };
+		FFA5FFFB1D81796000CD6E7F /* QuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView.h; sourceTree = "<group>"; };
+		FFA5FFFC1D81796000CD6E7F /* QuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView.m; sourceTree = "<group>"; };
+		FFA5FFFF1D818F6A00CD6E7F /* FAQController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQController.h; sourceTree = "<group>"; };
 		FFA8AB5F1D6EF5EF004010F9 /* NMRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMRangeSlider.h; sourceTree = "<group>"; };
 		FFA8AB601D6EF5EF004010F9 /* NMRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMRangeSlider.m; sourceTree = "<group>"; };
 		FFA8ABA91D6F07EC004010F9 /* slideTuch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideTuch.png; sourceTree = "<group>"; };
@@ -996,6 +1020,50 @@
 			name = OrderFilters;
 			sourceTree = "<group>";
 		};
+		FFA5FFE71D816A4900CD6E7F /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				FFA5FFE81D816A7E00CD6E7F /* AuthorizationController.h */,
+				FFA5FFE91D816A7E00CD6E7F /* AuthorizationController.m */,
+				FFA5FFEB1D816A9900CD6E7F /* AuthorizationView.h */,
+				FFA5FFEC1D816A9900CD6E7F /* AuthorizationView.m */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		FFA5FFEE1D8174D600CD6E7F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FFA5FFEF1D81755000CD6E7F /* RegistrationController.h */,
+				FFA5FFF01D81755000CD6E7F /* RegistrationController.m */,
+				FFA5FFF21D81756600CD6E7F /* RegistrationView.h */,
+				FFA5FFF31D81756600CD6E7F /* RegistrationView.m */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		FFA5FFF61D81793A00CD6E7F /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				FFA5FFF71D81794D00CD6E7F /* QuestionController.h */,
+				FFA5FFF81D81794D00CD6E7F /* QuestionController.m */,
+				FFA5FFFB1D81796000CD6E7F /* QuestionView.h */,
+				FFA5FFFC1D81796000CD6E7F /* QuestionView.m */,
+			);
+			name = Question;
+			sourceTree = "<group>";
+		};
+		FFA5FFFE1D818F3F00CD6E7F /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				FFA5FFFF1D818F6A00CD6E7F /* FAQController.h */,
+				FFA500001D818F6A00CD6E7F /* FAQController.m */,
+				FFA500021D818F7E00CD6E7F /* FAQView.h */,
+				FFA500031D818F7E00CD6E7F /* FAQView.m */,
+			);
+			name = FAQ;
+			sourceTree = "<group>";
+		};
 		FFA8AB531D6EE412004010F9 /* DoubleSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1122,10 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFA5FFFE1D818F3F00CD6E7F /* FAQ */,
+				FFA5FFF61D81793A00CD6E7F /* Question */,
+				FFA5FFEE1D8174D600CD6E7F /* Registration */,
+				FFA5FFE71D816A4900CD6E7F /* Authorization */,
 				FF7FCEED1D7D87260064E755 /* Formalization */,
 				FFE10F3A1D75BEF400532346 /* Basket */,
 				FFA8ABBE1D70835C004010F9 /* BuyView */,
@@ -2351,10 +2423,13 @@
 				FFC4FD651D674B08007C2DDC /* CustomButton.m in Sources */,
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
+				FFA500011D818F6A00CD6E7F /* FAQController.m in Sources */,
+				FFA5FFF41D81756600CD6E7F /* RegistrationView.m in Sources */,
 				FFC4FD591D672189007C2DDC /* CatalogListView.m in Sources */,
 				FFAE32E11D65A31A00E81AED /* UIBarButtonItem+Alpha.m in Sources */,
 				FFAE32E41D65A31A00E81AED /* UIImage+ImageEffects.m in Sources */,
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
+				FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */,
 				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
@@ -2381,14 +2456,17 @@
 				FFAE307A1D65A25800E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFAE32E71D65A31A00E81AED /* UIButton+ButtonImage.m in Sources */,
 				AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */,
+				FFA5FFF11D81755000CD6E7F /* RegistrationController.m in Sources */,
 				FFAE32EA1D65A31A00E81AED /* UIView+BorderView.m in Sources */,
 				FFAE32BF1D65A30300E81AED /* MBSwitch.m in Sources */,
+				FFA500041D818F7E00CD6E7F /* FAQView.m in Sources */,
 				FFAE32DF1D65A31A00E81AED /* HeightForText.m in Sources */,
 				FFA8ABC41D70847E004010F9 /* BuyView.m in Sources */,
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
 				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
 				AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */,
+				FFA5FFED1D816A9900CD6E7F /* AuthorizationView.m in Sources */,
 				FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */,
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
@@ -2400,11 +2478,13 @@
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,
 				FFC4FD731D676800007C2DDC /* CatalogDetailView.m in Sources */,
 				AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */,
+				FFA5FFFD1D81796000CD6E7F /* QuestionView.m in Sources */,
 				FFAE33141D65A3CE00E81AED /* SingleTone.m in Sources */,
 				FFAE2DF61D65A05D00E81AED /* main.m in Sources */,
 				FFAE2E351D65A10300E81AED /* TableMenuCell.m in Sources */,
 				FFE10F401D75BF6F00532346 /* BasketView.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
+				FFA5FFF91D81794D00CD6E7F /* QuestionController.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
 				FFA8ABC11D708464004010F9 /* BuyViewController.m in Sources */,
