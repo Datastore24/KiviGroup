@@ -30,6 +30,7 @@
 
 @property (strong, nonatomic) UIView * viewPersonalData;
 @property (strong, nonatomic) UIView * whiteViewPerson;
+@property (strong, nonatomic) UIView * borderViewPerson;
 
 //Address
 
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) UIView * viewDeliveryTypes;
 @property (strong, nonatomic) UIView * whiteViewDelivery;
 @property (strong, nonatomic) UIPickerView * counterPicker;
+@property (strong, nonatomic) UIView * borderDeliveryTypes;
 @property (strong, nonatomic) CustomButton * buttonMoscow;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewUpper;
 @property (strong, nonatomic) NSMutableArray * arrayForPickerViewLower;
@@ -59,6 +61,7 @@
 
 @property (strong, nonatomic) UIView * viewDeliveryCompany;
 @property (strong, nonatomic) UIView * whiteViewCompany;
+@property (strong, nonatomic) UIView * borderDeliveryCompany;
 @property (assign, nonatomic) CGFloat heightCompany; //Ширина на которую надо сметь вь вверх
 @property (strong, nonatomic) CustomButton * buttonCompany;
 
@@ -66,6 +69,7 @@
 
 @property (strong, nonatomic) UIView * whiteMainView;
 @property (strong, nonatomic) UIView * viewDelivaryMail;
+@property (strong, nonatomic) UIView * borderDeliveryMail;
 @property (strong, nonatomic) CustomButton * buttonMail;
 
 //PriceView
@@ -73,6 +77,7 @@
 @property (strong, nonatomic) UIView * whitePriceView;
 @property (strong, nonatomic) UIView * viewPrice;
 @property (strong, nonatomic) UIView * viewText;
+@property (strong, nonatomic) UIView * borderPriceView;
 
 //Comments View
 
@@ -126,19 +131,19 @@
         self.viewDeliveryTypes = [self createDeliveryTypesView];
         [self.mainScrollView addSubview:self.viewDeliveryTypes];
         [self.arrayView addObject:self.viewDeliveryTypes];
-        [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.f];
+        [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryTypes];
         
         //View Delivery Company
         self.viewDeliveryCompany = [self createDelivaryCompanyView];
         [self.mainScrollView addSubview:self.viewDeliveryCompany];
         [self.arrayView addObject:self.viewDeliveryCompany];
-        [self customHideViewWithHeight:self.heightCompany andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+        [self customHideViewWithHeight:self.heightCompany andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryCompany];
         
         //View Delivary Mail
         self.viewDelivaryMail = [self createDeliveryMailView];
         [self.mainScrollView addSubview:self.viewDelivaryMail];
         [self.arrayView addObject:self.viewDelivaryMail];
-        [self customHideViewWithHeight:175.f andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+        [self customHideViewWithHeight:175.f andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
         
         //View Price
         self.viewPrice = [self createPraceView];
@@ -180,8 +185,10 @@
 - (UIView*) createBuyerView {
     
     UIView * whiteViewBuyer = [[UIView alloc] init];
+    UIView * viewBorder = [[UIView alloc] init];
     self.chooseButton = YES;
-    UIView * buyerView = [self customViewWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 130) andTitlName:@"Тип плательщика" andView:whiteViewBuyer andBlock:^{
+    UIView * buyerView = [self customViewWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 130) andTitlName:@"Тип плательщика" andView:whiteViewBuyer andBorderView:viewBorder andBlock:^{
+
         NSArray * arrayNameTitl = [NSArray arrayWithObjects:@"Физическое лицо", @"Юридическое лицо", nil];
         for (int i = 0; i < 2; i++) {
             UIButton * buttonFace = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -206,6 +213,10 @@
             [buttonFace addSubview:labelButtons];
         }
     }];
+    
+
+    
+    
     return buyerView;
 }
 
@@ -213,8 +224,9 @@
 
 - (UIView*) createPesonalData {
     self.whiteViewPerson = [[UIView alloc] init];
+    self.borderViewPerson = [[UIView alloc] init];
     self.whiteViewPerson.clipsToBounds = YES;
-    UIView * personalDataView = [self customViewWithFrame:CGRectMake(0.f, self.viewBuyer.frame.size.height, self.frame.size.width, 210) andTitlName:@"Личные Данные" andView:self.whiteViewPerson andBlock:^{
+    UIView * personalDataView = [self customViewWithFrame:CGRectMake(0.f, self.viewBuyer.frame.size.height, self.frame.size.width, 210) andTitlName:@"Личные Данные" andView:self.whiteViewPerson andBorderView:self.borderViewPerson andBlock:^{
         
         NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Имя получателя, только имя *", @"Телефон", @"Email *", @"Название организации *", nil];
         for (int i = 0; i < 4; i++) {
@@ -241,6 +253,7 @@
         
         
     }];
+    
     return personalDataView;
 }
 
@@ -248,14 +261,14 @@
 
 - (UIView*) createAddress {
     UIView * whiteViewAddress = [[UIView alloc] init];
-    UIView * addressDataView = [self customViewWithFrame:CGRectMake(0.f, self.viewPersonalData.frame.size.height + self.viewPersonalData.frame.origin.y - 40.f, self.frame.size.width, 170) andTitlName:@"Адрес доставки *" andView:whiteViewAddress andBlock:^{
+    UIView * borderAdreeView = [[UIView alloc] init];
+    UIView * addressDataView = [self customViewWithFrame:CGRectMake(0.f, self.viewPersonalData.frame.size.height + self.viewPersonalData.frame.origin.y - 40.f, self.frame.size.width, 170) andTitlName:@"Адрес доставки *" andView:whiteViewAddress andBorderView:borderAdreeView andBlock:^{
         
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteViewAddress.frame.size.width - 20.f, whiteViewAddress.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
         textView.delegate = self;
         textView.tag = 3000;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-//        textView.autocorrectionType = UITextAutocorrectionTypeNo;
         [whiteViewAddress addSubview:textView];
         
     }];
@@ -266,17 +279,24 @@
     [addressDataView addSubview:self.labelNumberWords];
     
     return addressDataView;
+    
+
 }
 
 #pragma mark - DeliveryTypes
 
 - (UIView*) createDeliveryTypesView {
     self.whiteViewDelivery = [[UIView alloc] init];
+    self.borderDeliveryTypes = [[UIView alloc] init];
     self.whiteViewDelivery.clipsToBounds = YES;
-    UIView * deliveryTypesView = [self customViewWithFrame:CGRectMake(0.f, self.viewaArddress.frame.size.height + self.viewaArddress.frame.origin.y, self.frame.size.width, 250)andTitlName:@"Способы доставки *" andView:self.whiteViewDelivery andBlock:^{
+    UIView * deliveryTypesView = [self customViewWithFrame:CGRectMake(0.f, self.viewaArddress.frame.size.height + self.viewaArddress.frame.origin.y, self.frame.size.width, 250)andTitlName:@"Способы доставки *" andView:self.whiteViewDelivery andBorderView:self.borderDeliveryTypes andBlock:^{
         
         [self animathionMethodUpAndDownWithView:self.whiteViewDelivery endHieght:20.f andUpAndDown:NO addOther:^{
         }];  //Смещение белого центра вниз
+        [self animathionMethodUpAndDownWithView:self.borderDeliveryTypes endHieght:20.f andUpAndDown:NO addOther:^{
+        }];  //Смещение белого центра вниз
+        
+
         
         self.buttonMoscow = [self buttonCreatePush];
         self.buttonMoscow.tag = 20;
@@ -289,7 +309,7 @@
         
         CustomLabels * labelText = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:40.f
                                                                     andSizeWidht:self.whiteViewDelivery.frame.size.width - 20 andSizeHeight:60 andColor:@"787878"
-                                                                         andText:@"Стоимость - 450 руб. в пределах МКАД \nЗа МКАД курьерская доставка не\nосуществляется"];
+                                                                         andText:@"Стоимость - 450 руб. в пределах МКАД \nЗа МКАД курьерская доставка не\nосуществляется."];
         labelText.numberOfLines = 3;
         labelText.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         labelText.textAlignment = NSTextAlignmentLeft;
@@ -349,8 +369,9 @@
 
 - (UIView*) createDelivaryCompanyView {
     self.whiteViewCompany = [[UIView alloc] init];
+    self.borderDeliveryCompany = [[UIView alloc] init];
     self.whiteViewCompany.clipsToBounds = YES;
-    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 350 + (30 * self.arrayData.count + 15)) andTitlName:@"" andView:self.whiteViewCompany andBlock:^{
+    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 350 + (30 * self.arrayData.count + 15)) andTitlName:@"" andView:self.whiteViewCompany andBorderView:self.borderDeliveryCompany andBlock:^{
     
         self.buttonCompany = [self buttonCreatePush];
         self.buttonCompany.tag = 20;
@@ -441,8 +462,9 @@
 
 - (UIView*) createDeliveryMailView {
     self.whiteMainView = [[UIView alloc] init];
+    self.borderDeliveryMail = [[UIView alloc] init];
     self.whiteMainView.clipsToBounds = YES;
-    UIView * deliveryMailView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryCompany.frame.size.height + self.viewDeliveryCompany.frame.origin.y - 420, self.frame.size.width, 310) andTitlName:@"" andView:self.whiteMainView andBlock:^{
+    UIView * deliveryMailView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryCompany.frame.size.height + self.viewDeliveryCompany.frame.origin.y - 420, self.frame.size.width, 310) andTitlName:@"" andView:self.whiteMainView andBorderView:self.borderDeliveryMail andBlock:^{
         
         self.buttonMail = [self buttonCreatePush];
         self.buttonMail.tag = 400;
@@ -497,8 +519,9 @@
 
 - (UIView*) createPraceView {
     self.whitePriceView = [[UIView alloc] init];
+    self.borderPriceView = [[UIView alloc] init];
     self.whitePriceView.clipsToBounds = YES;
-        UIView * priceView = [self customViewWithFrame:CGRectMake(0.f, self.viewDelivaryMail.frame.size.height + self.viewDelivaryMail.frame.origin.y - 175.f, self.frame.size.width, 255) andTitlName:@"Способы оплаты *" andView:self.whitePriceView andBlock:^{
+        UIView * priceView = [self customViewWithFrame:CGRectMake(0.f, self.viewDelivaryMail.frame.size.height + self.viewDelivaryMail.frame.origin.y - 175.f, self.frame.size.width, 255) andTitlName:@"Способы оплаты *" andView:self.whitePriceView andBorderView:self.borderPriceView andBlock:^{
             
             NSArray * arrayNames = [NSArray arrayWithObjects:@"Visa, MasterCard, Сбербанк", @"Яндекс деньги", @"WebMoney", @"Qiwi", @"Квитанция сбербанка", nil];
             for (int i = 0; i < arrayNames.count; i++) {
@@ -528,6 +551,11 @@
             
         }];
     
+    CGRect rectBorder = self.borderPriceView.frame;
+    rectBorder.size.height += 10;
+    self.borderPriceView.frame = rectBorder;
+    
+    
     self.viewText = [[UIView alloc] initWithFrame:CGRectMake(15.f, 195.f, self.frame.size.width - 30.f, 60.f)];
     self.viewText.backgroundColor = [UIColor whiteColor];
     [priceView addSubview:self.viewText];
@@ -548,7 +576,8 @@
 
 - (UIView*) createCommentsView {
     UIView * whiteCommentsView = [[UIView alloc] init];
-    UIView * commentsView = [self customViewWithFrame:CGRectMake(0.f, self.viewPrice.frame.size.height + self.viewPrice.frame.origin.y, self.frame.size.width, 170) andTitlName:@"Комментарий к заказу" andView:whiteCommentsView andBlock:^{
+    UIView * borderComment = [[UIView alloc] init];
+    UIView * commentsView = [self customViewWithFrame:CGRectMake(0.f, self.viewPrice.frame.size.height + self.viewPrice.frame.origin.y, self.frame.size.width, 170) andTitlName:@"Комментарий к заказу" andView:whiteCommentsView andBorderView:borderComment andBlock:^{
         
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteCommentsView.frame.size.width - 20.f, whiteCommentsView.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
@@ -564,6 +593,7 @@
     self.labelNumberComments.font = [UIFont fontWithName:VM_FONT_BEAU_SANS_LITE size:13];
     self.labelNumberComments.textAlignment = NSTextAlignmentRight;
     [commentsView addSubview:self.labelNumberComments];
+    
     
     return commentsView;
 }
@@ -709,12 +739,12 @@
             [self animationUpPersonalData];
         }];
         self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 80.f);
-        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:NO andDuraction:0.f];
+        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:NO andDuraction:0.f andBorderView:self.borderPriceView];
         CGRect textRect = self.viewText.frame;
         textRect.origin.y += 120;
         self.viewText.frame = textRect;
         if (self.buttonMail.isBool) {
-            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 40.f);
         }
     } else if (button.tag == 6) {
@@ -741,12 +771,12 @@
             [self animationDownPersonalData];
         }];
         self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 80.f);
-        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:YES andDuraction:0.f];
+        [self customHideViewWithHeight:120 andView:self.whitePriceView andNumberParams:6 andBool:YES andDuraction:0.f andBorderView:self.borderPriceView];
         CGRect textRect = self.viewText.frame;
         textRect.origin.y -= 120;
         self.viewText.frame = textRect;
         if (self.buttonMail.isBool) {
-            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+            [self customHideViewWithHeight:40 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f andBorderView:self.borderDeliveryMail];
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 40.f);
         }
     }
@@ -844,19 +874,19 @@
                 self.mainScrollView.contentOffset = CGPointMake(0, 500);
             }
             if (self.buttonCompany.isBool) {
-                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryCompany];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
             }
             if (self.buttonMail.isBool) {
                 if (self.chooseButton) {
-                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
                     self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
                 } else {
-                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
                     self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
                 }
             }
-            [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3];
+            [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3 andBorderView:self.borderDeliveryTypes];
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 70);
             
         }];
@@ -877,19 +907,19 @@
             self.buttonMail.backgroundColor = [UIColor whiteColor];
             self.buttonMail.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             if (self.buttonMoscow.isBool) {
-                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3];
+                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3 andBorderView:self.borderDeliveryTypes];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 70);
             }
             if (self.buttonMail.isBool) {
                 if (self.chooseButton) {
-                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
                     self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
                 } else {
-                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f];
+                    [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
                     self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
                 }
             }
-            [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:NO andDuraction:0.f];
+            [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:NO andDuraction:0.f andBorderView:self.borderDeliveryCompany];
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + (self.heightCompany - 45));
             if (self.chooseButton) {
                 self.mainScrollView.contentOffset = CGPointMake(0, 620);
@@ -915,20 +945,20 @@
             self.buttonCompany.backgroundColor = [UIColor whiteColor];
             self.buttonCompany.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             if (self.buttonCompany.isBool) {
-                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f];
+                [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryCompany];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
             }
             if (self.buttonMoscow.isBool) {
-                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3];
+                [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:YES andDuraction:0.3 andBorderView:self.borderDeliveryTypes];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 70);
             }
             if (self.chooseButton) {
                 self.mainScrollView.contentOffset = CGPointMake(0, 745);
-                [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+                [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f andBorderView:self.borderDeliveryMail];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 130);
             } else {
                 self.mainScrollView.contentOffset = CGPointMake(0, 785);
-                [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f];
+                [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:NO andDuraction:0.f andBorderView:self.borderDeliveryMail];
                 self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 170);
             }
         }];
@@ -1089,22 +1119,20 @@
 
 #pragma mark - Other
 //Структура для создания оформления закказа
-- (UIView*) customViewWithFrame: (CGRect) frame andTitlName: (NSString*) nameTitl andView: (UIView*) actionView andBlock: (void(^)(void)) block {
+- (UIView*) customViewWithFrame: (CGRect) frame andTitlName: (NSString*) nameTitl andView: (UIView*) actionView andBorderView: (UIView*) borderView andBlock: (void(^)(void)) block {
     UIView * viewTypeBuyer = [[UIView alloc] initWithFrame:frame];
     
     CustomLabels * labelBuyer = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:15.f andColor:VM_COLOR_900
                                                                  andText:nameTitl andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [viewTypeBuyer addSubview:labelBuyer];
     
+    borderView.frame = CGRectMake(14.f, 39.f, self.frame.size.width - 28.f, viewTypeBuyer.frame.size.height - 48.f);
+    borderView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    borderView.layer.borderWidth = 1.f;
+    [viewTypeBuyer addSubview:borderView];
+    
     actionView.frame = CGRectMake(15.f, 40.f, self.frame.size.width - 30.f, viewTypeBuyer.frame.size.height - 50.f);
     actionView.backgroundColor = [UIColor whiteColor];
-//    actionView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-//    actionView.layer.borderWidth = 0.3f;
-//    actionView.layer.cornerRadius = 2.f;
-//    actionView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    actionView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-//    actionView.layer.shadowRadius = 1.0f;
-//    actionView.layer.shadowOpacity = 0.5f;
     [viewTypeBuyer addSubview:actionView];
 
     block();
@@ -1153,6 +1181,11 @@
     CGRect rectWhitePerson = self.whiteViewPerson.frame;
     rectWhitePerson.size.height -= 40.f;
     self.whiteViewPerson.frame = rectWhitePerson;
+    
+    CGRect rectBorder = self.borderViewPerson.frame;
+    rectBorder.size.height -= 40.f;
+    self.borderViewPerson.frame = rectBorder;
+    
     for (int i = 0; i < self.arrayView.count; i++) {
         UIView * viewBlock = [self.arrayView objectAtIndex:i];
         if (i > 1) {
@@ -1167,6 +1200,11 @@
     CGRect rectWhitePerson = self.whiteViewPerson.frame;
     rectWhitePerson.size.height += 40.f;
     self.whiteViewPerson.frame = rectWhitePerson;
+    
+    CGRect rectBorder = self.borderViewPerson.frame;
+    rectBorder.size.height += 40.f;
+    self.borderViewPerson.frame = rectBorder;
+    
     for (int i = 0; i < self.arrayView.count; i++) {
         UIView * viewBlock = [self.arrayView objectAtIndex:i];
         if (i > 1) {
@@ -1179,7 +1217,7 @@
 
 
 //Общий параметр поднятия анимации
-- (void) customHideViewWithHeight: (CGFloat) costHeight andView: (UIView*) view andNumberParams: (NSInteger) numbarParams andBool: (BOOL) upAndDown andDuraction: (CGFloat) duraction {
+- (void) customHideViewWithHeight: (CGFloat) costHeight andView: (UIView*) view andNumberParams: (NSInteger) numbarParams andBool: (BOOL) upAndDown andDuraction: (CGFloat) duraction andBorderView: (UIView*) borderView {
     [UIView animateWithDuration:duraction animations:^{
         CGRect rect = view.frame;
         if (upAndDown) {
@@ -1188,7 +1226,15 @@
             rect.size.height += costHeight;
         }
         
+        CGRect borderRect = borderView.frame;
+        if (upAndDown) {
+            borderRect.size.height -= costHeight;
+        } else {
+            borderRect.size.height += costHeight;
+        }
+        
         view.frame = rect;
+        borderView.frame = borderRect;
         for (int i = 0; i < self.arrayView.count; i++) {
             UIView * viewBlock = [self.arrayView objectAtIndex:i];
             if (i > numbarParams) {
