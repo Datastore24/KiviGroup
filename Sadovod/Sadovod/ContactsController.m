@@ -1,0 +1,39 @@
+//
+//  ContactsController.m
+//  Sadovod
+//
+//  Created by Виктор Мишустин on 09/09/16.
+//  Copyright © 2016 Виктор Мишустин. All rights reserved.
+//
+
+#import "ContactsController.h"
+#import "CatalogController.h"
+#import "ContactsView.h"
+
+@implementation ContactsController
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    [self setCustomTitle:@"Контакты" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    
+    //Кнопка Назад---------------------------------------------
+    UIButton * buttonBack = [UIButton createButtonBack];
+    [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
+    self.navigationItem.leftBarButtonItem = mailbuttonBack;
+    
+#pragma mark - View
+    
+    ContactsView * mainView = [[ContactsView alloc] initWithView:self.view andData:nil];
+    [self.view addSubview:mainView];
+    
+}
+
+#pragma mark - Actions
+
+- (void) buttonBackAction {
+    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:NO];
+}
+
+@end

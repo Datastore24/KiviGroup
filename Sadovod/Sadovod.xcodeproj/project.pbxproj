@@ -362,6 +362,17 @@
 		FFBF91BD1D829FC300F8A0A1 /* ArrayTextForFAQ.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91BC1D829FC300F8A0A1 /* ArrayTextForFAQ.m */; };
 		FFBF91C11D82C05300F8A0A1 /* DeliveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91C01D82C05300F8A0A1 /* DeliveryController.m */; };
 		FFBF91C41D82C06700F8A0A1 /* DeliveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */; };
+		FFBF91CF1D82D61900F8A0A1 /* imageQuestion.png in Resources */ = {isa = PBXBuildFile; fileRef = FFBF91CC1D82D61900F8A0A1 /* imageQuestion.png */; };
+		FFBF91D11D82D61900F8A0A1 /* imageHous.png in Resources */ = {isa = PBXBuildFile; fileRef = FFBF91CE1D82D61900F8A0A1 /* imageHous.png */; };
+		FFBF91D71D82D99D00F8A0A1 /* seeQuestion.png in Resources */ = {isa = PBXBuildFile; fileRef = FFBF91D61D82D99D00F8A0A1 /* seeQuestion.png */; };
+		FFBF91DB1D82DACF00F8A0A1 /* PriceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91DA1D82DACF00F8A0A1 /* PriceController.m */; };
+		FFBF91DE1D82DADE00F8A0A1 /* PriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91DD1D82DADE00F8A0A1 /* PriceView.m */; };
+		FFBF91E21D82E00E00F8A0A1 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91E11D82E00E00F8A0A1 /* ContactsController.m */; };
+		FFBF91E51D82E01D00F8A0A1 /* ContactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91E41D82E01D00F8A0A1 /* ContactsView.m */; };
+		FFBF91EC1D82E52A00F8A0A1 /* AboutStoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91EB1D82E52A00F8A0A1 /* AboutStoreView.m */; };
+		FFBF91EF1D82E53D00F8A0A1 /* AboutStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91EE1D82E53D00F8A0A1 /* AboutStoreController.m */; };
+		FFBF91F31D82EFAE00F8A0A1 /* ReturnController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91F21D82EFAE00F8A0A1 /* ReturnController.m */; };
+		FFBF91F61D82EFBC00F8A0A1 /* ReturnView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91F51D82EFBC00F8A0A1 /* ReturnView.m */; };
 		FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FD031D65A7E9007C2DDC /* CatalogView.m */; };
 		FFC4FD121D65D3C5007C2DDC /* imageProduct10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD081D65D3C5007C2DDC /* imageProduct10.jpg */; };
 		FFC4FD131D65D3C5007C2DDC /* imageProduct9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD091D65D3C5007C2DDC /* imageProduct9.jpg */; };
@@ -854,6 +865,25 @@
 		FFBF91C01D82C05300F8A0A1 /* DeliveryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryController.m; sourceTree = "<group>"; };
 		FFBF91C21D82C06700F8A0A1 /* DeliveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryView.h; sourceTree = "<group>"; };
 		FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryView.m; sourceTree = "<group>"; };
+		FFBF91CC1D82D61900F8A0A1 /* imageQuestion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageQuestion.png; sourceTree = "<group>"; };
+		FFBF91CE1D82D61900F8A0A1 /* imageHous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageHous.png; sourceTree = "<group>"; };
+		FFBF91D61D82D99D00F8A0A1 /* seeQuestion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seeQuestion.png; sourceTree = "<group>"; };
+		FFBF91D91D82DACF00F8A0A1 /* PriceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceController.h; sourceTree = "<group>"; };
+		FFBF91DA1D82DACF00F8A0A1 /* PriceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceController.m; sourceTree = "<group>"; };
+		FFBF91DC1D82DADE00F8A0A1 /* PriceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceView.h; sourceTree = "<group>"; };
+		FFBF91DD1D82DADE00F8A0A1 /* PriceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceView.m; sourceTree = "<group>"; };
+		FFBF91E01D82E00E00F8A0A1 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		FFBF91E11D82E00E00F8A0A1 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		FFBF91E31D82E01D00F8A0A1 /* ContactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		FFBF91E41D82E01D00F8A0A1 /* ContactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsView.m; sourceTree = "<group>"; };
+		FFBF91EA1D82E52A00F8A0A1 /* AboutStoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutStoreView.h; sourceTree = "<group>"; };
+		FFBF91EB1D82E52A00F8A0A1 /* AboutStoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutStoreView.m; sourceTree = "<group>"; };
+		FFBF91ED1D82E53D00F8A0A1 /* AboutStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutStoreController.h; sourceTree = "<group>"; };
+		FFBF91EE1D82E53D00F8A0A1 /* AboutStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutStoreController.m; sourceTree = "<group>"; };
+		FFBF91F11D82EFAE00F8A0A1 /* ReturnController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReturnController.h; sourceTree = "<group>"; };
+		FFBF91F21D82EFAE00F8A0A1 /* ReturnController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReturnController.m; sourceTree = "<group>"; };
+		FFBF91F41D82EFBC00F8A0A1 /* ReturnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReturnView.h; sourceTree = "<group>"; };
+		FFBF91F51D82EFBC00F8A0A1 /* ReturnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReturnView.m; sourceTree = "<group>"; };
 		FFC4FD021D65A7E9007C2DDC /* CatalogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogView.h; sourceTree = "<group>"; };
 		FFC4FD031D65A7E9007C2DDC /* CatalogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogView.m; sourceTree = "<group>"; };
 		FFC4FD081D65D3C5007C2DDC /* imageProduct10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imageProduct10.jpg; sourceTree = "<group>"; };
@@ -1133,6 +1163,10 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFBF91F01D82EF9900F8A0A1 /* Return */,
+				FFBF91E61D82E50400F8A0A1 /* AboutStore */,
+				FFBF91DF1D82DFDE00F8A0A1 /* Сontacts */,
+				FFBF91D81D82DAB700F8A0A1 /* Price */,
 				FFBF91BE1D82C03800F8A0A1 /* Delivery */,
 				FFA5FFFE1D818F3F00CD6E7F /* FAQ */,
 				FFA5FFF61D81793A00CD6E7F /* Question */,
@@ -1159,6 +1193,7 @@
 				FFF873441D6B3A0800816FC1 /* PageControl */,
 				FFAE32F21D65A37100E81AED /* Images */,
 				FFAE32EB1D65A32C00E81AED /* InputText */,
+				FFAE32C01D65A30D00E81AED /* Category */,
 				FFAE32BC1D65A2F800E81AED /* SwichLib */,
 				FFAE32B81D65A2E000E81AED /* CustomLabels */,
 				FFAE32AE1D65A2C900E81AED /* Fonts */,
@@ -1695,7 +1730,6 @@
 		FFAE32BC1D65A2F800E81AED /* SwichLib */ = {
 			isa = PBXGroup;
 			children = (
-				FFAE32C01D65A30D00E81AED /* Category */,
 				FFAE32BD1D65A30300E81AED /* MBSwitch.h */,
 				FFAE32BE1D65A30300E81AED /* MBSwitch.m */,
 			);
@@ -1759,6 +1793,7 @@
 		FFAE32F21D65A37100E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFBF91CB1D82D60200F8A0A1 /* ImagesDelivery */,
 				FF7FCEF41D7DCE560064E755 /* FormalizationImages */,
 				FFE10F411D75D51800532346 /* BasketImages */,
 				FFE10F331D75995B00532346 /* BuyViewImages */,
@@ -1812,6 +1847,60 @@
 				FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */,
 			);
 			name = Delivery;
+			sourceTree = "<group>";
+		};
+		FFBF91CB1D82D60200F8A0A1 /* ImagesDelivery */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91D61D82D99D00F8A0A1 /* seeQuestion.png */,
+				FFBF91CC1D82D61900F8A0A1 /* imageQuestion.png */,
+				FFBF91CE1D82D61900F8A0A1 /* imageHous.png */,
+			);
+			name = ImagesDelivery;
+			sourceTree = "<group>";
+		};
+		FFBF91D81D82DAB700F8A0A1 /* Price */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91D91D82DACF00F8A0A1 /* PriceController.h */,
+				FFBF91DA1D82DACF00F8A0A1 /* PriceController.m */,
+				FFBF91DC1D82DADE00F8A0A1 /* PriceView.h */,
+				FFBF91DD1D82DADE00F8A0A1 /* PriceView.m */,
+			);
+			name = Price;
+			sourceTree = "<group>";
+		};
+		FFBF91DF1D82DFDE00F8A0A1 /* Сontacts */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91E01D82E00E00F8A0A1 /* ContactsController.h */,
+				FFBF91E11D82E00E00F8A0A1 /* ContactsController.m */,
+				FFBF91E31D82E01D00F8A0A1 /* ContactsView.h */,
+				FFBF91E41D82E01D00F8A0A1 /* ContactsView.m */,
+			);
+			name = "Сontacts";
+			sourceTree = "<group>";
+		};
+		FFBF91E61D82E50400F8A0A1 /* AboutStore */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91ED1D82E53D00F8A0A1 /* AboutStoreController.h */,
+				FFBF91EE1D82E53D00F8A0A1 /* AboutStoreController.m */,
+				FFBF91EA1D82E52A00F8A0A1 /* AboutStoreView.h */,
+				FFBF91EB1D82E52A00F8A0A1 /* AboutStoreView.m */,
+			);
+			name = AboutStore;
+			sourceTree = "<group>";
+		};
+		FFBF91F01D82EF9900F8A0A1 /* Return */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91F11D82EFAE00F8A0A1 /* ReturnController.h */,
+				FFBF91F21D82EFAE00F8A0A1 /* ReturnController.m */,
+				FFBF91F41D82EFBC00F8A0A1 /* ReturnView.h */,
+				FFBF91F51D82EFBC00F8A0A1 /* ReturnView.m */,
+			);
+			name = Return;
 			sourceTree = "<group>";
 		};
 		FFC4FD051D65AE2F007C2DDC /* ImagesCatalog */ = {
@@ -2071,6 +2160,7 @@
 				FFAE31EF1D65A28900E81AED /* Activity3@2x.png in Resources */,
 				FFAE31AA1D65A28900E81AED /* Activity9@2x.png in Resources */,
 				FFAE32521D65A28900E81AED /* Activity12@2x.png in Resources */,
+				FFBF91D71D82D99D00F8A0A1 /* seeQuestion.png in Resources */,
 				FFAE31E01D65A28900E81AED /* Activity18@2x.png in Resources */,
 				FFC4FD2A1D65EE15007C2DDC /* imageMenu9.png in Resources */,
 				FFAE31D51D65A28900E81AED /* Activity7@2x.png in Resources */,
@@ -2195,6 +2285,7 @@
 				FFAE32441D65A28900E81AED /* Activity27@2x.png in Resources */,
 				FFAE31C71D65A28900E81AED /* Activity8@2x.png in Resources */,
 				FFAE31A91D65A28900E81AED /* Activity8@2x.png in Resources */,
+				FFBF91CF1D82D61900F8A0A1 /* imageQuestion.png in Resources */,
 				FFAE31BA1D65A28900E81AED /* Activity24@2x.png in Resources */,
 				FFAE31D11D65A28900E81AED /* Activity3@2x.png in Resources */,
 				FFAE322A1D65A28900E81AED /* Activity2@2x.png in Resources */,
@@ -2235,6 +2326,7 @@
 				FFAE31C31D65A28900E81AED /* Activity4@2x.png in Resources */,
 				FFAE31A31D65A28900E81AED /* Activity2@2x.png in Resources */,
 				FFAE32961D65A28900E81AED /* Activity1@2x.png in Resources */,
+				FFBF91D11D82D61900F8A0A1 /* imageHous.png in Resources */,
 				FFAE2E041D65A05D00E81AED /* LaunchScreen.storyboard in Resources */,
 				FFAE32981D65A28900E81AED /* Activity21@2x.png in Resources */,
 				FFAE32801D65A28900E81AED /* Activity13@2x.png in Resources */,
@@ -2447,6 +2539,7 @@
 				FFC4FD651D674B08007C2DDC /* CustomButton.m in Sources */,
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
+				FFBF91E51D82E01D00F8A0A1 /* ContactsView.m in Sources */,
 				FFA500011D818F6A00CD6E7F /* FAQController.m in Sources */,
 				FFA5FFF41D81756600CD6E7F /* RegistrationView.m in Sources */,
 				FFC4FD591D672189007C2DDC /* CatalogListView.m in Sources */,
@@ -2455,6 +2548,7 @@
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
 				FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */,
 				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
+				FFBF91F31D82EFAE00F8A0A1 /* ReturnController.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
@@ -2462,7 +2556,9 @@
 				FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
+				FFBF91DB1D82DACF00F8A0A1 /* PriceController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
+				FFBF91DE1D82DADE00F8A0A1 /* PriceView.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
 				FFBF91C11D82C05300F8A0A1 /* DeliveryController.m in Sources */,
 				FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */,
@@ -2480,12 +2576,14 @@
 				AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */,
 				FFC4FD6C1D675E9C007C2DDC /* CatalogMainListView.m in Sources */,
 				FFAE307A1D65A25800E81AED /* JBWatchActivityIndicator.m in Sources */,
+				FFBF91F61D82EFBC00F8A0A1 /* ReturnView.m in Sources */,
 				FFAE32E71D65A31A00E81AED /* UIButton+ButtonImage.m in Sources */,
 				AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */,
 				FFA5FFF11D81755000CD6E7F /* RegistrationController.m in Sources */,
 				FFAE32EA1D65A31A00E81AED /* UIView+BorderView.m in Sources */,
 				FFAE32BF1D65A30300E81AED /* MBSwitch.m in Sources */,
 				FFA500041D818F7E00CD6E7F /* FAQView.m in Sources */,
+				FFBF91EC1D82E52A00F8A0A1 /* AboutStoreView.m in Sources */,
 				FFAE32DF1D65A31A00E81AED /* HeightForText.m in Sources */,
 				FFA8ABC41D70847E004010F9 /* BuyView.m in Sources */,
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
@@ -2494,6 +2592,7 @@
 				AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */,
 				FFA5FFED1D816A9900CD6E7F /* AuthorizationView.m in Sources */,
 				FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */,
+				FFBF91EF1D82E53D00F8A0A1 /* AboutStoreController.m in Sources */,
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
 				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,
@@ -2513,6 +2612,7 @@
 				FFA5FFF91D81794D00CD6E7F /* QuestionController.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
+				FFBF91E21D82E00E00F8A0A1 /* ContactsController.m in Sources */,
 				FFA8ABC11D708464004010F9 /* BuyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
