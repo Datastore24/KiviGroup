@@ -359,6 +359,9 @@
 		FFAE33211D65A54700E81AED /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFAE32B51D65A2D500E81AED /* SFUIDisplay-Regular.otf */; };
 		FFAE33221D65A54800E81AED /* pfagoraslabpro-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFAE32B61D65A2D500E81AED /* pfagoraslabpro-bold.ttf */; };
 		FFAE33231D65A54900E81AED /* pfagoraslabpro-reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFAE32B71D65A2D500E81AED /* pfagoraslabpro-reg.ttf */; };
+		FFBF91BD1D829FC300F8A0A1 /* ArrayTextForFAQ.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91BC1D829FC300F8A0A1 /* ArrayTextForFAQ.m */; };
+		FFBF91C11D82C05300F8A0A1 /* DeliveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91C01D82C05300F8A0A1 /* DeliveryController.m */; };
+		FFBF91C41D82C06700F8A0A1 /* DeliveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */; };
 		FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FD031D65A7E9007C2DDC /* CatalogView.m */; };
 		FFC4FD121D65D3C5007C2DDC /* imageProduct10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD081D65D3C5007C2DDC /* imageProduct10.jpg */; };
 		FFC4FD131D65D3C5007C2DDC /* imageProduct9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD091D65D3C5007C2DDC /* imageProduct9.jpg */; };
@@ -845,6 +848,12 @@
 		FFAE33161D65A42E00E81AED /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
 		FFAE33171D65A42E00E81AED /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		FFAE33181D65A42E00E81AED /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		FFBF91BB1D829FC300F8A0A1 /* ArrayTextForFAQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayTextForFAQ.h; sourceTree = "<group>"; };
+		FFBF91BC1D829FC300F8A0A1 /* ArrayTextForFAQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayTextForFAQ.m; sourceTree = "<group>"; };
+		FFBF91BF1D82C05300F8A0A1 /* DeliveryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryController.h; sourceTree = "<group>"; };
+		FFBF91C01D82C05300F8A0A1 /* DeliveryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryController.m; sourceTree = "<group>"; };
+		FFBF91C21D82C06700F8A0A1 /* DeliveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryView.h; sourceTree = "<group>"; };
+		FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryView.m; sourceTree = "<group>"; };
 		FFC4FD021D65A7E9007C2DDC /* CatalogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogView.h; sourceTree = "<group>"; };
 		FFC4FD031D65A7E9007C2DDC /* CatalogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogView.m; sourceTree = "<group>"; };
 		FFC4FD081D65D3C5007C2DDC /* imageProduct10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imageProduct10.jpg; sourceTree = "<group>"; };
@@ -1060,6 +1069,8 @@
 				FFA500001D818F6A00CD6E7F /* FAQController.m */,
 				FFA500021D818F7E00CD6E7F /* FAQView.h */,
 				FFA500031D818F7E00CD6E7F /* FAQView.m */,
+				FFBF91BB1D829FC300F8A0A1 /* ArrayTextForFAQ.h */,
+				FFBF91BC1D829FC300F8A0A1 /* ArrayTextForFAQ.m */,
 			);
 			name = FAQ;
 			sourceTree = "<group>";
@@ -1122,6 +1133,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFBF91BE1D82C03800F8A0A1 /* Delivery */,
 				FFA5FFFE1D818F3F00CD6E7F /* FAQ */,
 				FFA5FFF61D81793A00CD6E7F /* Question */,
 				FFA5FFEE1D8174D600CD6E7F /* Registration */,
@@ -1791,6 +1803,17 @@
 			name = ImageButtons;
 			sourceTree = "<group>";
 		};
+		FFBF91BE1D82C03800F8A0A1 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				FFBF91BF1D82C05300F8A0A1 /* DeliveryController.h */,
+				FFBF91C01D82C05300F8A0A1 /* DeliveryController.m */,
+				FFBF91C21D82C06700F8A0A1 /* DeliveryView.h */,
+				FFBF91C31D82C06700F8A0A1 /* DeliveryView.m */,
+			);
+			name = Delivery;
+			sourceTree = "<group>";
+		};
 		FFC4FD051D65AE2F007C2DDC /* ImagesCatalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -2420,6 +2443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFBF91BD1D829FC300F8A0A1 /* ArrayTextForFAQ.m in Sources */,
 				FFC4FD651D674B08007C2DDC /* CustomButton.m in Sources */,
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
@@ -2440,10 +2464,12 @@
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
+				FFBF91C11D82C05300F8A0A1 /* DeliveryController.m in Sources */,
 				FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */,
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,
+				FFBF91C41D82C06700F8A0A1 /* DeliveryView.m in Sources */,
 				FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */,
 				FFAE2DF91D65A05D00E81AED /* AppDelegate.m in Sources */,
 				FFAE32E81D65A31A00E81AED /* HexColors.m in Sources */,
