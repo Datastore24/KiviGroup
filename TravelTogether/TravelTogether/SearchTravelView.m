@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIView * timeView;
 @property (strong, nonatomic) UIButton * buttonDateThere;
 @property (strong, nonatomic) UIButton * buttonDateThence;
+@property (strong, nonatomic) UIView * fonView;
 
 @property (assign, nonatomic) NSInteger takeButton;
 
@@ -211,8 +212,10 @@
                 }
             }
             
-            if (i == 4 || i == 6 || i == 2) {
-                inputTextButton.userInteractionEnabled = NO;
+            if (i == 4 || i == 6) {
+                [inputTextButton addTarget:self action:@selector(actionDatePicker:) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [inputTextButton addTarget:self action:@selector(inputTextButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             if (i > 2 && i < 5) {
@@ -233,8 +236,8 @@
                     [self customRightRadiusWithView:groudView andRadius:12.5f];
                     [self customRightRadiusWithView:borderView andRadius:11.5f];
                 }
-            }
-            else {
+                
+            } else {
                 [self customAllRadiusWithView:groudView andRadius:10.f];
                 [self customAllRadiusWithView:borderView andRadius:9.f];
                 if (isiPhone6) {
@@ -245,7 +248,6 @@
 
             [self addSubview: tintLabels];
             [self addSubview:groudView];
-            [inputTextButton addTarget:self action:@selector(inputTextButtonAction:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:borderView];
             [self addSubview:inputTextButton];
         }
@@ -370,9 +372,18 @@
         self.searchView = [self searchViewWith:self];
         [self addSubview:self.searchView];
         
+        self.fonView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        self.fonView.backgroundColor = [UIColor blackColor];
+        self.fonView.alpha = 0.f;
+        [self addSubview:self.fonView];
+        
         //PickrView
         self.pickerView = [self createDatePickerWithView:self];
         [self addSubview:self.pickerView];
+        
+        
+        
+        
         
     }
     return self;
@@ -500,11 +511,13 @@
 - (void) actionDatePicker: (UIButton*) button {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.pickerView.frame;
+        
+        self.fonView.alpha = 0.4;
 
         if (isiPhone6) {
             rect.origin.y -= 240;
         } else {
-            rect.origin.y -= 210;
+            rect.origin.y -= 200;
         }
         self.pickerView.frame = rect;
     }];
@@ -525,11 +538,16 @@
 
 - (void) buttonConfirmAction: (UIButton*) button {
     [UIView animateWithDuration:0.3 animations:^{
+        
+        
+        self.fonView.alpha = 0.f;
+        
+        
         CGRect rect = self.pickerView.frame;
         if (isiPhone6) {
             rect.origin.y += 240;
         } else {
-            rect.origin.y += 210;
+            rect.origin.y += 200;
         }
         self.pickerView.frame = rect;
     }];
