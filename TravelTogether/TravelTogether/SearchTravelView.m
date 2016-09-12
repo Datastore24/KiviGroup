@@ -140,6 +140,9 @@
                                                                         andColor:VM_COLOR_DARK_GREY
                                                                          andText:[arrayTintText objectAtIndex:i] andTextSize:10
                                                                   andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+            if (i == 0) {
+                tintLabels.tag = 1000;
+            }
             if (isiPhone6) {
                 tintLabels.frame = CGRectMake(15.f, 85.f + 55.f * i, 100, 30);
                 tintLabels.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
@@ -465,12 +468,19 @@
 
 - (void) buttonAircraftAction
 {
+    
+    UILabel * labelAction = (UILabel*)[self viewWithTag:1000];
+    if ([labelAction.text isEqualToString:@"Номер поезда"]) {
+        labelAction.text = @"Номер рейса";
+        [labelAction sizeToFit];
+    }
     self.buttonAircraft.userInteractionEnabled = NO;
     [UIView animateWithDuration:0.3f animations:^{
         self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
         [self.buttonAircraft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
         [self.buttonTrain setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
+
     } completion:^(BOOL finished) {
         self.buttonTrain.userInteractionEnabled = YES;
         
@@ -481,6 +491,11 @@
 
 - (void) buttonTrainAction
 {
+    UILabel * labelAction = (UILabel*)[self viewWithTag:1000];
+    if ([labelAction.text isEqualToString:@"Номер рейса"]) {
+        labelAction.text = @"Номер поезда";
+        [labelAction sizeToFit];
+    }
     self.buttonTrain.userInteractionEnabled = NO;
     [UIView animateWithDuration:0.3f animations:^{
         self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];

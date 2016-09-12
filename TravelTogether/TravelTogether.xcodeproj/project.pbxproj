@@ -392,12 +392,24 @@
 		FFC4FDA81D68C91B007C2DDC /* likeButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA61D68C91B007C2DDC /* likeButtonImage.png */; };
 		FFC4FDA91D68C91B007C2DDC /* messageButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */; };
 		FFC4FDAE1D68CFE8007C2DDC /* MessegerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */; };
+		FFD270811D86A9A300ED86E4 /* buttonAddImageNewNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD2707B1D86A9A300ED86E4 /* buttonAddImageNewNo.png */; };
+		FFD270821D86A9A300ED86E4 /* buttonAddImageNewYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD2707C1D86A9A300ED86E4 /* buttonAddImageNewYes.png */; };
+		FFD270831D86A9A300ED86E4 /* buttonShareImageNewNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD2707D1D86A9A300ED86E4 /* buttonShareImageNewNo.png */; };
+		FFD270841D86A9A300ED86E4 /* buttonBuyImageNewNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD2707E1D86A9A300ED86E4 /* buttonBuyImageNewNo.png */; };
+		FFD270851D86A9A300ED86E4 /* buttonBuyImageNewYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD2707F1D86A9A300ED86E4 /* buttonBuyImageNewYes.png */; };
+		FFD270861D86A9A300ED86E4 /* buttonShareImageNewYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD270801D86A9A300ED86E4 /* buttonShareImageNewYes.png */; };
+		FFDB7C4A1D86AFB600CF60A2 /* faceImageTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C461D86AFB600CF60A2 /* faceImageTravel.png */; };
+		FFDB7C4B1D86AFB600CF60A2 /* instImageTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C471D86AFB600CF60A2 /* instImageTravel.png */; };
+		FFDB7C4C1D86AFB600CF60A2 /* okImageTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C481D86AFB600CF60A2 /* okImageTravel.png */; };
+		FFDB7C4F1D86E0FC00CF60A2 /* logoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C4E1D86E0FC00CF60A2 /* logoNew.png */; };
+		FFDB7C511D86E1E800CF60A2 /* VKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C501D86E1E800CF60A2 /* VKImageForLogin.png */; };
+		FFDB7C531D86E27600CF60A2 /* vkImageTravel.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C521D86E27600CF60A2 /* vkImageTravel.png */; };
+		FFDB7C551D86E2E600CF60A2 /* icon_vk.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDB7C541D86E2E600CF60A2 /* icon_vk.png */; };
 		FFE10EF81D74165800532346 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10EF71D74165800532346 /* SettingsController.m */; };
 		FFE10EFB1D74167300532346 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10EFA1D74167300532346 /* SettingsView.m */; };
 		FFE10EFE1D74263300532346 /* arrowPinck.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10EFD1D74263300532346 /* arrowPinck.png */; };
 		FFE10F031D742D3B00532346 /* icon_instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10EFF1D742D3B00532346 /* icon_instagram.png */; };
 		FFE10F041D742D3B00532346 /* icon_odnok.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F001D742D3B00532346 /* icon_odnok.png */; };
-		FFE10F051D742D3B00532346 /* icon_vk.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F011D742D3B00532346 /* icon_vk.png */; };
 		FFE10F061D742D3B00532346 /* icon_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F021D742D3B00532346 /* icon_facebook.png */; };
 		FFE10F0A1D74359C00532346 /* ConnectWithUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F091D74359C00532346 /* ConnectWithUsController.m */; };
 		FFE10F0D1D7435B100532346 /* ConnectWithUsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F0C1D7435B100532346 /* ConnectWithUsView.m */; };
@@ -414,15 +426,9 @@
 		FFE10F2D1D74514400532346 /* likeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F261D74514400532346 /* likeImage2.png */; };
 		FFE10F2E1D74514400532346 /* likeImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F271D74514400532346 /* likeImage1.png */; };
 		FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F281D74514400532346 /* likeBigImage1.png */; };
-		FFE10F5C1D76C72F00532346 /* buttonBuyTicketNONew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */; };
-		FFE10F5D1D76C72F00532346 /* ButtonAddToMyTravelNONew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */; };
-		FFE10F5E1D76C72F00532346 /* buttonBuyTicketYESNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */; };
-		FFE10F5F1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */; };
 		FFE10F611D76CA3C00532346 /* inMyTravelNewImageYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */; };
-		FFE10F631D76CD3400532346 /* logoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F621D76CD3400532346 /* logoNew.png */; };
 		FFE10F681D76D04100532346 /* OKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F641D76D04100532346 /* OKImageForLogin.png */; };
 		FFE10F691D76D04100532346 /* IGImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F651D76D04100532346 /* IGImageForLogin.png */; };
-		FFE10F6A1D76D04100532346 /* VKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F661D76D04100532346 /* VKImageForLogin.png */; };
 		FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F671D76D04100532346 /* FBKImageForLogin.png */; };
 		FFF8734A1D6C38D600816FC1 /* MessegerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF873491D6C38D600816FC1 /* MessegerView.m */; };
 		FFF8734F1D6C3FA600816FC1 /* InputTextToView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF8734C1D6C3FA600816FC1 /* InputTextToView.m */; };
@@ -892,6 +898,19 @@
 		FFC4FDA71D68C91B007C2DDC /* messageButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageButtonImage.png; sourceTree = "<group>"; };
 		FFC4FDAC1D68CFE8007C2DDC /* MessegerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerController.h; sourceTree = "<group>"; };
 		FFC4FDAD1D68CFE8007C2DDC /* MessegerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerController.m; sourceTree = "<group>"; };
+		FFD2707B1D86A9A300ED86E4 /* buttonAddImageNewNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAddImageNewNo.png; sourceTree = "<group>"; };
+		FFD2707C1D86A9A300ED86E4 /* buttonAddImageNewYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonAddImageNewYes.png; sourceTree = "<group>"; };
+		FFD2707D1D86A9A300ED86E4 /* buttonShareImageNewNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonShareImageNewNo.png; sourceTree = "<group>"; };
+		FFD2707E1D86A9A300ED86E4 /* buttonBuyImageNewNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyImageNewNo.png; sourceTree = "<group>"; };
+		FFD2707F1D86A9A300ED86E4 /* buttonBuyImageNewYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyImageNewYes.png; sourceTree = "<group>"; };
+		FFD270801D86A9A300ED86E4 /* buttonShareImageNewYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonShareImageNewYes.png; sourceTree = "<group>"; };
+		FFDB7C461D86AFB600CF60A2 /* faceImageTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceImageTravel.png; sourceTree = "<group>"; };
+		FFDB7C471D86AFB600CF60A2 /* instImageTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instImageTravel.png; sourceTree = "<group>"; };
+		FFDB7C481D86AFB600CF60A2 /* okImageTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = okImageTravel.png; sourceTree = "<group>"; };
+		FFDB7C4E1D86E0FC00CF60A2 /* logoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoNew.png; sourceTree = "<group>"; };
+		FFDB7C501D86E1E800CF60A2 /* VKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKImageForLogin.png; sourceTree = "<group>"; };
+		FFDB7C521D86E27600CF60A2 /* vkImageTravel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkImageTravel.png; sourceTree = "<group>"; };
+		FFDB7C541D86E2E600CF60A2 /* icon_vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_vk.png; sourceTree = "<group>"; };
 		FFE10EF61D74165800532346 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		FFE10EF71D74165800532346 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		FFE10EF91D74167300532346 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
@@ -899,7 +918,6 @@
 		FFE10EFD1D74263300532346 /* arrowPinck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowPinck.png; sourceTree = "<group>"; };
 		FFE10EFF1D742D3B00532346 /* icon_instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_instagram.png; sourceTree = "<group>"; };
 		FFE10F001D742D3B00532346 /* icon_odnok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_odnok.png; sourceTree = "<group>"; };
-		FFE10F011D742D3B00532346 /* icon_vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_vk.png; sourceTree = "<group>"; };
 		FFE10F021D742D3B00532346 /* icon_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_facebook.png; sourceTree = "<group>"; };
 		FFE10F081D74359C00532346 /* ConnectWithUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithUsController.h; sourceTree = "<group>"; };
 		FFE10F091D74359C00532346 /* ConnectWithUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithUsController.m; sourceTree = "<group>"; };
@@ -922,15 +940,9 @@
 		FFE10F261D74514400532346 /* likeImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage2.png; sourceTree = "<group>"; };
 		FFE10F271D74514400532346 /* likeImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeImage1.png; sourceTree = "<group>"; };
 		FFE10F281D74514400532346 /* likeBigImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeBigImage1.png; sourceTree = "<group>"; };
-		FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyTicketNONew.png; sourceTree = "<group>"; };
-		FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAddToMyTravelNONew.png; sourceTree = "<group>"; };
-		FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBuyTicketYESNew.png; sourceTree = "<group>"; };
-		FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAddToMyTravelYESNew.png; sourceTree = "<group>"; };
 		FFE10F601D76CA3C00532346 /* inMyTravelNewImageYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inMyTravelNewImageYes.png; sourceTree = "<group>"; };
-		FFE10F621D76CD3400532346 /* logoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoNew.png; sourceTree = "<group>"; };
 		FFE10F641D76D04100532346 /* OKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OKImageForLogin.png; sourceTree = "<group>"; };
 		FFE10F651D76D04100532346 /* IGImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IGImageForLogin.png; sourceTree = "<group>"; };
-		FFE10F661D76D04100532346 /* VKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKImageForLogin.png; sourceTree = "<group>"; };
 		FFE10F671D76D04100532346 /* FBKImageForLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FBKImageForLogin.png; sourceTree = "<group>"; };
 		FFF873481D6C38D600816FC1 /* MessegerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessegerView.h; sourceTree = "<group>"; };
 		FFF873491D6C38D600816FC1 /* MessegerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessegerView.m; sourceTree = "<group>"; };
@@ -1545,11 +1557,11 @@
 		FFAE2CEF1D5DF7AE00E81AED /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FFE10F621D76CD3400532346 /* logoNew.png */,
+				FFDB7C501D86E1E800CF60A2 /* VKImageForLogin.png */,
+				FFDB7C4E1D86E0FC00CF60A2 /* logoNew.png */,
 				FFAE2CD51D5DF7AE00E81AED /* logoImage.png */,
 				FFE10F641D76D04100532346 /* OKImageForLogin.png */,
 				FFE10F651D76D04100532346 /* IGImageForLogin.png */,
-				FFE10F661D76D04100532346 /* VKImageForLogin.png */,
 				FFE10F671D76D04100532346 /* FBKImageForLogin.png */,
 			);
 			name = Login;
@@ -1802,6 +1814,16 @@
 		FFC4FD851D685893007C2DDC /* TravelImage */ = {
 			isa = PBXGroup;
 			children = (
+				FFDB7C521D86E27600CF60A2 /* vkImageTravel.png */,
+				FFDB7C461D86AFB600CF60A2 /* faceImageTravel.png */,
+				FFDB7C471D86AFB600CF60A2 /* instImageTravel.png */,
+				FFDB7C481D86AFB600CF60A2 /* okImageTravel.png */,
+				FFD2707B1D86A9A300ED86E4 /* buttonAddImageNewNo.png */,
+				FFD2707C1D86A9A300ED86E4 /* buttonAddImageNewYes.png */,
+				FFD2707D1D86A9A300ED86E4 /* buttonShareImageNewNo.png */,
+				FFD2707E1D86A9A300ED86E4 /* buttonBuyImageNewNo.png */,
+				FFD2707F1D86A9A300ED86E4 /* buttonBuyImageNewYes.png */,
+				FFD270801D86A9A300ED86E4 /* buttonShareImageNewYes.png */,
 				FF7FCEDF1D7B09450064E755 /* imageStarYES.png */,
 				FF7FCEE01D7B09450064E755 /* imageStarNO.png */,
 				FF7FCEDD1D7B078F0064E755 /* alertPrice.png */,
@@ -1813,10 +1835,6 @@
 				FFC4FD8F1D686400007C2DDC /* imagePhoto6.png */,
 				FFC4FD901D686400007C2DDC /* imagePhoto1.png */,
 				FFC4FD911D686400007C2DDC /* imagePhoto4.png */,
-				FFE10F581D76C72F00532346 /* buttonBuyTicketNONew.png */,
-				FFE10F591D76C72F00532346 /* ButtonAddToMyTravelNONew.png */,
-				FFE10F5A1D76C72F00532346 /* buttonBuyTicketYESNew.png */,
-				FFE10F5B1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png */,
 			);
 			name = TravelImage;
 			sourceTree = "<group>";
@@ -1868,8 +1886,8 @@
 			isa = PBXGroup;
 			children = (
 				FFE10EFF1D742D3B00532346 /* icon_instagram.png */,
+				FFDB7C541D86E2E600CF60A2 /* icon_vk.png */,
 				FFE10F001D742D3B00532346 /* icon_odnok.png */,
-				FFE10F011D742D3B00532346 /* icon_vk.png */,
 				FFE10F021D742D3B00532346 /* icon_facebook.png */,
 				FFE10EFD1D74263300532346 /* arrowPinck.png */,
 			);
@@ -2078,6 +2096,7 @@
 				FFAE2D011D5DF7AE00E81AED /* searchFreandsImageYes.png in Resources */,
 				FFAE2D071D5DF7AE00E81AED /* sexFemaleYes.png in Resources */,
 				FFAE28481D57731500E81AED /* Activity25@2x.png in Resources */,
+				FFDB7C4B1D86AFB600CF60A2 /* instImageTravel.png in Resources */,
 				FFAE27E61D57731500E81AED /* Activity18@2x.png in Resources */,
 				FFAE28611D57731500E81AED /* Activity6@2x.png in Resources */,
 				FF66A7701D51E99D00F693DD /* PFBeauSansPro-Regular.otf in Resources */,
@@ -2090,14 +2109,12 @@
 				FFAE280B1D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFBB8F351D50BE9E0043ED9D /* pfagoraslabpro-bold.ttf in Resources */,
 				FFAE28B21D57731500E81AED /* Activity12@2x.png in Resources */,
-				FFE10F5C1D76C72F00532346 /* buttonBuyTicketNONew.png in Resources */,
 				FFAE27EB1D57731500E81AED /* Activity22@2x.png in Resources */,
 				FFC4FD941D686400007C2DDC /* imagePhoto5.png in Resources */,
 				FFAE28491D57731500E81AED /* Activity26@2x.png in Resources */,
 				FF997F591D6E18B00037684A /* photo1.png in Resources */,
 				FFAE28241D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE286E1D57731500E81AED /* Activity19@2x.png in Resources */,
-				FFE10F631D76CD3400532346 /* logoNew.png in Resources */,
 				FFC4FD961D686400007C2DDC /* imagePhoto1.png in Resources */,
 				FFAE28341D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFE10F031D742D3B00532346 /* icon_instagram.png in Resources */,
@@ -2137,6 +2154,7 @@
 				FFAE28271D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFE10F2D1D74514400532346 /* likeImage2.png in Resources */,
 				FFAE28CF1D57731500E81AED /* Activity25@2x.png in Resources */,
+				FFDB7C551D86E2E600CF60A2 /* icon_vk.png in Resources */,
 				FFAE288D1D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28621D57731500E81AED /* Activity7@2x.png in Resources */,
 				FF7FCEDA1D7B05440064E755 /* buttonCancelNew.png in Resources */,
@@ -2144,6 +2162,7 @@
 				FFAE2D1C1D5DF7AE00E81AED /* image3.png in Resources */,
 				FF997F5B1D6E18B00037684A /* photo3.png in Resources */,
 				FFF8735A1D6C6F4E00816FC1 /* imageAvatarChat.png in Resources */,
+				FFD270811D86A9A300ED86E4 /* buttonAddImageNewNo.png in Resources */,
 				FF997F5A1D6E18B00037684A /* photo2.png in Resources */,
 				FFAE28801D57731500E81AED /* Activity7@2x.png in Resources */,
 				FFAE286C1D57731500E81AED /* Activity17@2x.png in Resources */,
@@ -2170,7 +2189,6 @@
 				FFAE28151D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28441D57731500E81AED /* Activity21@2x.png in Resources */,
 				FFAE280E1D57731500E81AED /* Activity13@2x.png in Resources */,
-				FFE10F6A1D76D04100532346 /* VKImageForLogin.png in Resources */,
 				FFAE28A11D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28211D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFE10F2F1D74514400532346 /* likeBigImage1.png in Resources */,
@@ -2179,7 +2197,6 @@
 				FFAE28A71D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFAE2D1E1D5DF7AE00E81AED /* image1.png in Resources */,
 				FFAE28871D57731500E81AED /* Activity14@2x.png in Resources */,
-				FFE10F5D1D76C72F00532346 /* ButtonAddToMyTravelNONew.png in Resources */,
 				FFAE281C1D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE280F1D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE27D51D57731500E81AED /* Activity1@2x.png in Resources */,
@@ -2190,6 +2207,7 @@
 				FFAE28A41D57731500E81AED /* Activity27@2x.png in Resources */,
 				FFAE27D71D57731500E81AED /* Activity3@2x.png in Resources */,
 				FFBB8EC21D508DCA0043ED9D /* LaunchScreen.storyboard in Resources */,
+				FFD270831D86A9A300ED86E4 /* buttonShareImageNewNo.png in Resources */,
 				FFAE28881D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE28501D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFE10F2B1D74514400532346 /* likeImage3.png in Resources */,
@@ -2209,7 +2227,6 @@
 				FF997F621D6E2A8D0037684A /* imageBigPhoto.png in Resources */,
 				FFAE282A1D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28511D57731500E81AED /* Activity5@2x.png in Resources */,
-				FFE10F5F1D76C72F00532346 /* ButtonAddToMyTravelYESNew.png in Resources */,
 				FFE10F191D744D6200532346 /* buttonMessegeYES.png in Resources */,
 				FFAE28921D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE28A81D57731500E81AED /* Activity30@2x.png in Resources */,
@@ -2229,6 +2246,7 @@
 				FFAE285C1D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE285B1D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE28D41D57731500E81AED /* Activity2@2x.png in Resources */,
+				FFDB7C531D86E27600CF60A2 /* vkImageTravel.png in Resources */,
 				FFAE27CF1D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE28931D57731500E81AED /* Activity11@2x.png in Resources */,
 				FF66A76F1D51E99B00F693DD /* PFBeauSansPro-Italic.otf in Resources */,
@@ -2238,6 +2256,7 @@
 				FFAE28A31D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE27E01D57731500E81AED /* Activity12@2x.png in Resources */,
 				FFE10F041D742D3B00532346 /* icon_odnok.png in Resources */,
+				FFDB7C4F1D86E0FC00CF60A2 /* logoNew.png in Resources */,
 				FFAE28BA1D57731500E81AED /* Activity5@2x.png in Resources */,
 				FFAE28841D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28AD1D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2264,12 +2283,13 @@
 				FFAE28AA1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28831D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE287B1D57731500E81AED /* Activity30@2x.png in Resources */,
-				FFE10F5E1D76C72F00532346 /* buttonBuyTicketYESNew.png in Resources */,
+				FFDB7C4C1D86AFB600CF60A2 /* okImageTravel.png in Resources */,
 				FFAE27F41D57731500E81AED /* Activity30@2x.png in Resources */,
 				FFAE283F1D57731500E81AED /* Activity17@2x.png in Resources */,
 				FFE10F2C1D74514400532346 /* likeImage4.png in Resources */,
 				FFAE28B41D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE285A1D57731500E81AED /* Activity14@2x.png in Resources */,
+				FFD270821D86A9A300ED86E4 /* buttonAddImageNewYes.png in Resources */,
 				FFAE28D01D57731500E81AED /* Activity26@2x.png in Resources */,
 				FFAE28B01D57731500E81AED /* Activity10@2x.png in Resources */,
 				FFAE27EC1D57731500E81AED /* Activity23@2x.png in Resources */,
@@ -2310,6 +2330,7 @@
 				FFAE28391D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE28471D57731500E81AED /* Activity24@2x.png in Resources */,
 				FFAE28231D57731500E81AED /* Activity4@2x.png in Resources */,
+				FFDB7C511D86E1E800CF60A2 /* VKImageForLogin.png in Resources */,
 				FFAE27E21D57731500E81AED /* Activity14@2x.png in Resources */,
 				FFAE28C91D57731500E81AED /* Activity1@2x.png in Resources */,
 				FFAE28771D57731500E81AED /* Activity27@2x.png in Resources */,
@@ -2354,8 +2375,10 @@
 				FFAE27F61D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE289D1D57731500E81AED /* Activity20@2x.png in Resources */,
 				FFAE28031D57731500E81AED /* Activity2@2x.png in Resources */,
+				FFD270851D86A9A300ED86E4 /* buttonBuyImageNewYes.png in Resources */,
 				FFAE28AC1D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE28711D57731500E81AED /* Activity21@2x.png in Resources */,
+				FFD270841D86A9A300ED86E4 /* buttonBuyImageNewNo.png in Resources */,
 				FFAE28751D57731500E81AED /* Activity25@2x.png in Resources */,
 				FFAE28C81D57731500E81AED /* Activity19@2x.png in Resources */,
 				FFE10F181D744D6200532346 /* buttonMessegeNO.png in Resources */,
@@ -2389,7 +2412,6 @@
 				FFAE28011D57731500E81AED /* Activity15@2x.png in Resources */,
 				FFAE285D1D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFAE2D081D5DF7AE00E81AED /* imageData.png in Resources */,
-				FFE10F051D742D3B00532346 /* icon_vk.png in Resources */,
 				FFAE28B71D57731500E81AED /* Activity2@2x.png in Resources */,
 				FFAE28BD1D57731500E81AED /* Activity8@2x.png in Resources */,
 				FFAE28381D57731500E81AED /* Activity10@2x.png in Resources */,
@@ -2398,6 +2420,7 @@
 				FFAE2D0B1D5DF7AE00E81AED /* buyTicketYes.png in Resources */,
 				FFAE28661D57731500E81AED /* Activity11@2x.png in Resources */,
 				FFAE27F81D57731500E81AED /* Activity6@2x.png in Resources */,
+				FFD270861D86A9A300ED86E4 /* buttonShareImageNewYes.png in Resources */,
 				FFAE28411D57731500E81AED /* Activity19@2x.png in Resources */,
 				FFE10F6B1D76D04100532346 /* FBKImageForLogin.png in Resources */,
 				FFAE288F1D57731500E81AED /* Activity7@2x.png in Resources */,
@@ -2409,6 +2432,7 @@
 				FFAE28461D57731500E81AED /* Activity23@2x.png in Resources */,
 				FFAE28251D57731500E81AED /* Activity6@2x.png in Resources */,
 				FFAE27D21D57731500E81AED /* Activity13@2x.png in Resources */,
+				FFDB7C4A1D86AFB600CF60A2 /* faceImageTravel.png in Resources */,
 				FFAE2D1F1D5DF7AE00E81AED /* IconButtonMenu.png in Resources */,
 				FFAE2CFE1D5DF7AE00E81AED /* logoImage.png in Resources */,
 				FFAE288E1D57731500E81AED /* Activity6@2x.png in Resources */,
