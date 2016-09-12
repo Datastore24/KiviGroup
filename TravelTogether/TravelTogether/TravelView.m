@@ -18,6 +18,11 @@
 @property (strong, nonatomic) UITableView * tableTravel;
 @property (strong, nonatomic) NSArray * arrayData;
 
+
+//ShareView
+
+@property (strong, nonatomic) UIView * viewShare;
+
 //AlertPrice
 
 @property (strong, nonatomic) UIView * viewAlertPrice;
@@ -39,18 +44,26 @@
         
         self.isBoolStar = NO;
         
-        UIButton * buttonBuyTicket = [UIButton createButtonWithImage:@"buttonBuyTicketNONew.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 140.f, 15.f, 139.f, 21.25f)];
+        UIButton * buttonBuyTicket = [UIButton createButtonWithImage:@"buttonBuyImageNewNo.png" anfFrame:CGRectMake(self.frame.size.width / 2.f - 140.f + 2, 15.f, 139.f - 139 / 3, 21.25f)];
         if (isiPhone6) {
             buttonBuyTicket.frame = CGRectMake(self.frame.size.width / 2.f - 162.5f, 17.5f, 163.5f, 25.f);
         }
-        [buttonBuyTicket setImage:[UIImage imageNamed:@"buttonBuyTicketYESNew.png"] forState:UIControlStateHighlighted];
+        [buttonBuyTicket setImage:[UIImage imageNamed:@"buttonBuyImageNewYes.png"] forState:UIControlStateHighlighted];
         [self addSubview:buttonBuyTicket];
-        UIButton * buttonAddOnMyTravel = [UIButton createButtonWithImage:@"ButtonAddToMyTravelNONew.png" anfFrame:CGRectMake(self.frame.size.width / 2.f + 1.f, 15.f, 139.f, 21.25f)];
+        UIButton * buttonAddOnMyTravel = [UIButton createButtonWithImage:@"buttonAddImageNewNo.png" anfFrame:CGRectMake(self.frame.size.width / 2.f + 139 / 3, 15.f, 139.f - 139 / 3, 21.25f)];
         if (isiPhone6) {
             buttonAddOnMyTravel.frame = CGRectMake(self.frame.size.width / 2.f - 1, 17.5f, 163.5f, 25.f);
         }
-        [buttonAddOnMyTravel setImage:[UIImage imageNamed:@"ButtonAddToMyTravelYESNew.png"] forState:UIControlStateHighlighted];
+        [buttonAddOnMyTravel setImage:[UIImage imageNamed:@"buttonAddImageNewYes.png"] forState:UIControlStateHighlighted];
         [self addSubview:buttonAddOnMyTravel];
+        
+        UIButton * buttonSharenMyTravel = [UIButton createButtonWithImage:@"buttonShareImageNewNo.png" anfFrame:CGRectMake(buttonBuyTicket.frame.size.width + buttonBuyTicket.frame.origin.y + 6, 15.f, 139.f - 139 / 3, 21.25f)];
+        if (isiPhone6) {
+            buttonSharenMyTravel.frame = CGRectMake(self.frame.size.width / 2.f - 1, 17.5f, 163.5f, 25.f);
+        }
+        [buttonSharenMyTravel setImage:[UIImage imageNamed:@"buttonShareImageNewYes.png"] forState:UIControlStateHighlighted];
+        [buttonSharenMyTravel addTarget:self action:@selector(buttonSharenMyTravelAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonSharenMyTravel];
         
         self.tableTravel = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, self.frame.size.width, self.frame.size.height - 30.f)];
         //Убираем полосы разделяющие ячейки------------------------------
@@ -67,6 +80,10 @@
         self.viewAlertPrice = [self createAlertPriceView];
         self.viewAlertPrice.alpha = 0.f;
         [self addSubview:self.viewAlertPrice];
+        
+        self.viewShare = [self createShareView];
+        self.viewShare.alpha = 0.f;
+        [self addSubview:self.viewShare];
         
         
     }
@@ -218,6 +235,33 @@
     return customCellView;
 }
 
+
+#pragma mark - ShareView
+
+- (UIView*) createShareView {
+    UIView * foneView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+    foneView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4];
+    UIImageView * alertShareView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 100.f, self.frame.size.height / 2 - 100.f, 200.f, 178.f)];
+    alertShareView.backgroundColor = [UIColor whiteColor];
+    alertShareView.layer.cornerRadius = 5.f;
+    alertShareView.userInteractionEnabled = YES;
+    [foneView addSubview:alertShareView];
+    
+    
+    NSArray * arrayImagesNetwork = [NSArray arrayWithObjects:@"vkImageTravel.png", @"faceImageTravel.png", @"instImageTravel.png", @"okImageTravel.png", nil];
+    for (int i = 0; i < arrayImagesNetwork.count; i++) {
+        UIButton * buttonSocNetwork = [UIButton createButtonWithImage:[arrayImagesNetwork objectAtIndex:i] anfFrame:CGRectMake(20, 20 + 38.f * i, 160.f, 28.f)];
+        if (isiPhone6) {
+            buttonSocNetwork.frame = CGRectMake(self.frame.size.width / 2 - 118.75f, 302.5f + 46.25f * i, 237.75f, 41.25f);
+        }
+        [buttonSocNetwork addTarget:self action:@selector(buttonSocNetworkAction) forControlEvents:UIControlEventTouchUpInside];
+        [alertShareView addSubview:buttonSocNetwork];
+    }
+
+    return foneView;
+}
+
+
 #pragma mark - AlertPrice
 
 - (UIView*) createAlertPriceView {
@@ -260,6 +304,20 @@
 }
 
 #pragma mark - Actions
+
+//Действие кнопки Поделиться
+- (void) buttonSharenMyTravelAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewShare.alpha = 1.f;
+    }];
+}
+
+//Действие выбора соц сети
+- (void) buttonSocNetworkAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewShare.alpha = 0.f;
+    }];
+}
 
 - (void) buttonStarActionSelect: (UIButton*) button {
     if (button.tag == 200) {

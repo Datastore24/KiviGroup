@@ -47,11 +47,11 @@
     
     //Массив заголовков-----
     self.arrayNames = [NSArray arrayWithObjects:@"МОИ ПУТЕШЕСТВИЯ", @"ИСКАТЬ ПОПУТЧИКОВ",
-                       @"АНКЕТА", @"НАСТРОЙКИ", @"СВЯЗАТЬСЯ С НАМИ", @"СООБЩЕНИЯ", @"ВЫ ПОНРАВИЛИСЬ", @"ОЦЕНИТЬ ПРИЛОЖЕНИЕ", @"", @"", nil];
+                       @"АНКЕТА", @"НАСТРОЙКИ", @"СВЯЗАТЬСЯ С НАМИ", @"СООБЩЕНИЯ", @"ВЫ ПОНРАВИЛИСЬ", @"", @"", @"", nil];
     
     //Массив картинок-------
     self.arrayImages = [NSArray arrayWithObjects:@"image1.png", @"image2.png", @"image3.png", @"image4.png",
-                        @"image5.png", @"image6.png", @"image7.png", @"image8.png", @"", @"", nil];
+                        @"image5.png", @"image6.png", @"image7.png", @"", @"", @"", nil];
     
     if (isiPhone6) {
         [UIView borderViewWithHeight:self.view.frame.size.height - 86 andWight:0 andView:self.view andColor:VM_COLOR_WHITE];
@@ -93,7 +93,7 @@
                                         andImageName:[self.arrayImages objectAtIndex:indexPath.row]
                                          andMainView:cell]];
     
-    if ([cellIdentifier isEqualToString:@"Cell9"]) {
+    if ([cellIdentifier isEqualToString:@"Cell9"] || [cellIdentifier isEqualToString:@"Cell8"]) {
         cell.userInteractionEnabled = NO;
     } else if ([cellIdentifier isEqualToString:@"Cell10"]) {
         [cell addSubview:[customCell customCellQuitWithView:cell]];

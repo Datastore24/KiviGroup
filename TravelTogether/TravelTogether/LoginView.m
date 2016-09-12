@@ -46,10 +46,10 @@
         
         CustomLabels * labelDescription = [[CustomLabels alloc] initLabelWithWidht:22.5f andHeight:517.5f andColor:VM_COLOR_WHITE
                                                                            andText:@"Продолжая, вы подтверждаете, что прочитали и принимаете \n\bПользовательское Соглашение и \bПолитику \nконфиденциальности."
-                                                                       andTextSize:9.f andLineSpacing:5.f fontName:VM_FONT_BEAU_SANS_LITE];
+                                                                       andTextSize:8.f andLineSpacing:5.f fontName:VM_FONT_BEAU_SANS_LITE];
         if (isiPhone6) {
             labelDescription.frame = CGRectMake(41.5, 617.5f, 10, 20);
-            labelDescription.font = [UIFont fontWithName:VM_FONT_BEAU_SANS_LITE size:10.f];
+            labelDescription.font = [UIFont fontWithName:VM_FONT_BEAU_SANS_LITE size:9.f];
             [labelDescription sizeToFit];
         }
         [self addSubview:labelDescription];
@@ -70,7 +70,7 @@
         
         CustomLabels * labelAnd = [[CustomLabels alloc] initLabelWithWidht:labelTermsOfUse.frame.origin.x + labelTermsOfUse.frame.size.width + 2.f andHeight:529.f andColor:VM_COLOR_WHITE
                                                                           andText:@"и"
-                                                                      andTextSize:9.f andLineSpacing:5.f fontName:VM_FONT_BEAU_SANS_LITE];
+                                                                      andTextSize:8.f andLineSpacing:5.f fontName:VM_FONT_BEAU_SANS_LITE];
         if (isiPhone6) {
             labelAnd.frame = CGRectMake(labelTermsOfUse.frame.origin.x + labelTermsOfUse.frame.size.width + 2.f, 629.5f, 10, 20);
             labelAnd.font = [UIFont fontWithName:VM_FONT_BEAU_SANS_LITE size:9.f];
