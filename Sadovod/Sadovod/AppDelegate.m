@@ -28,6 +28,9 @@
     [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
+    //Тестовый синглтон для проверки авторизованного пользователя
+    [[SingleTone sharedManager] setTypeMenu:@"1"]; //Если 0 то не авторизован
+    
 
 
 

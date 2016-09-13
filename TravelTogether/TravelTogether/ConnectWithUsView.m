@@ -125,7 +125,7 @@
 }
 
 - (void) buttonSendAction {
-    [MessagePopUp showPopUpWithDelay:@"Сообщение отправленно" view:self delay:0.3];
+    [MessagePopUp showPopUpWithDelay:@"Сообщение отправленно" view:self delay:1.f];
 }
 
 @end

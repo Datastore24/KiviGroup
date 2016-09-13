@@ -1,25 +1,21 @@
 //
-//  RegistrationController.m
+//  SizesController.m
 //  Sadovod
 //
-//  Created by Виктор Мишустин on 08/09/16.
+//  Created by Виктор Мишустин on 13.09.16.
 //  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 
-#import "RegistrationController.h"
+#import "SizesController.h"
 #import "CatalogController.h"
-#import "RegistrationView.h"
-#import "SingleTone.h"
+#import "SizesView.h"
 
-@implementation RegistrationController
+@implementation SizesController
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
-    [self setCustomTitle:@"Регистрация" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
-    } else {
-    [self setCustomTitle:@"Мои заказы" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
-    }
+    [self setCustomTitle:@"Таблица размеров" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    
     //Кнопка Назад---------------------------------------------
     UIButton * buttonBack = [UIButton createButtonBack];
     [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
@@ -28,7 +24,7 @@
     
 #pragma mark - View
     
-    RegistrationView * mainView = [[RegistrationView alloc] initWithView:self.view andData:nil];
+    SizesView * mainView = [[SizesView alloc] initWithView:self.view andData:nil];
     [self.view addSubview:mainView];
     
 }
@@ -39,5 +35,6 @@
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
     [self.navigationController pushViewController:detail animated:NO];
 }
+
 
 @end

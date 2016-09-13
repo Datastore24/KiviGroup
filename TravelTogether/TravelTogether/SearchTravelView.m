@@ -29,6 +29,7 @@
 @property (strong, nonatomic) UIButton * buttonDateThere;
 @property (strong, nonatomic) UIButton * buttonDateThence;
 @property (strong, nonatomic) UIView * fonView;
+@property (strong, nonatomic) InputTextView * inputTextName;
 
 @property (assign, nonatomic) NSInteger takeButton;
 
@@ -180,20 +181,20 @@
                 inputTextButton.alpha = 0.f;
                 groudView.alpha = 0.f;
                 borderView.alpha = 0.f;
-                InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self andRect:CGRectMake(13.5f, 88.5f, 140.5 - 10.f, 18.f) andImage:nil andTextPlaceHolder:@"PTX 5467" colorBorder:VM_COLOR_PINK];
-                inputText.layer.borderWidth = 1.f;
-                inputText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
-                inputText.layer.cornerRadius = 9.f;
-                inputText.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY];
-                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
+                self.inputTextName = [[InputTextView alloc] initInputTextWithView:self andRect:CGRectMake(13.5f, 88.5f, 140.5 - 10.f, 18.f) andImage:nil andTextPlaceHolder:@"PTX 5467" colorBorder:VM_COLOR_PINK];
+                self.inputTextName.layer.borderWidth = 1.f;
+                self.inputTextName.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
+                self.inputTextName.layer.cornerRadius = 9.f;
+                self.inputTextName.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY];
+                self.inputTextName.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
                 if (isiPhone6) {
-                    inputText.frame = CGRectMake(15.f, 100, 170.f, 25.f);
-                    inputText.layer.cornerRadius = 12.5f;
-                    inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
-                    inputText.textFieldInput.frame = CGRectMake(15.75, 0, inputText.frame.size.width - 40, 25);
-                    inputText.labelPlaceHoldInput.frame = CGRectMake(15.75, 0, inputText.frame.size.width - 40, 25);
+                    self.inputTextName.frame = CGRectMake(15.f, 100, 170.f, 25.f);
+                    self.inputTextName.layer.cornerRadius = 12.5f;
+                    self.inputTextName.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
+                    self.inputTextName.textFieldInput.frame = CGRectMake(15.75, 0, self.inputTextName.frame.size.width - 40, 25);
+                    self.inputTextName.labelPlaceHoldInput.frame = CGRectMake(15.75, 0, self.inputTextName.frame.size.width - 40, 25);
                 }
-                [self addSubview:inputText];
+                [self addSubview:self.inputTextName];
             }
             
             
@@ -513,6 +514,9 @@
 - (void) inputTextButtonAction: (UIButton*) button {
     for (int i = 0; i < 7; i++) {
         if (button.tag == 50 + i) {
+            
+            [self.inputTextName.textFieldInput resignFirstResponder];
+            
             self.takeButton = button.tag;
             [UIView animateWithDuration:0.2f animations:^{
                 CGRect rect = self.searchView.frame;
@@ -524,15 +528,19 @@
 }
 
 - (void) actionDatePicker: (UIButton*) button {
+    
+    [self.inputTextName.textFieldInput resignFirstResponder];
+    
+    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.pickerView.frame;
         
         self.fonView.alpha = 0.4;
 
         if (isiPhone6) {
-            rect.origin.y -= 240;
+            rect.origin.y -= 250;
         } else {
-            rect.origin.y -= 200;
+            rect.origin.y -= 220;
         }
         self.pickerView.frame = rect;
     }];
@@ -560,9 +568,9 @@
         
         CGRect rect = self.pickerView.frame;
         if (isiPhone6) {
-            rect.origin.y += 240;
+            rect.origin.y += 250;
         } else {
-            rect.origin.y += 200;
+            rect.origin.y += 220;
         }
         self.pickerView.frame = rect;
     }];
@@ -677,20 +685,20 @@
 #pragma mark - DatePicker
 
 - (UIView*) createDatePickerWithView: (UIView*) view {
-    UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 200.f)];
+    UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 220.f)];
     if (isiPhone6) {
         pickerView.frame = CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 230.f);
     }
     pickerView.userInteractionEnabled = YES;
     pickerView.backgroundColor = [UIColor whiteColor];
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, pickerView.frame.size.height - 20.f)];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, pickerView.frame.size.height - 30.f)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     [self.datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
     self.datePicker.minimumDate = [NSDate date];
     [pickerView addSubview:self.datePicker];
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
-    buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f, 180.f, 200.f, 20.f);
+    buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f, 190.f, 200.f, 20.f);
     [buttonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
     [buttonConfirm setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
     buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:13];

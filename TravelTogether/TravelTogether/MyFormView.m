@@ -608,27 +608,23 @@
 
 //AgeDatePicker
 - (UIView*) setDatePicker {
-    UIView * viewDatePicker = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height + 182.5f, self.frame.size.width, 240.f)];
+    UIView * viewDatePicker = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height + 182.5f, self.frame.size.width, 220.f)];
     viewDatePicker.backgroundColor = [UIColor whiteColor];
     
-    UIDatePicker * datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 200.f)];
+    UIDatePicker * datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 190.f)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     NSDate * oldDate = [self logicalYearAgo:[NSDate date]];
     datePicker.maximumDate = oldDate;
     [datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
     [viewDatePicker addSubview:datePicker];
     
-    [UIView borderViewWithHeight:200.f andWight:0.f andView:viewDatePicker andColor:@"000000"];
     self.buttonPushDate = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.buttonPushDate.frame = CGRectMake(self.frame.size.width - 162.5f, 210, 150.f, 20.f);
+    self.buttonPushDate.frame = CGRectMake(viewDatePicker.frame.size.width / 2.f, 190.f, 200.f, 20.f);
     self.buttonPushDate.backgroundColor = [UIColor whiteColor];
     [self.buttonPushDate setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
-    [self.buttonPushDate setTitle:@"Выбрать" forState:UIControlStateNormal];
-    self.buttonPushDate.layer.borderWidth = 0.7f;
-    self.buttonPushDate.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
-    self.buttonPushDate.layer.cornerRadius = 10.f;
+    [self.buttonPushDate setTitle:@"Готово" forState:UIControlStateNormal];
     self.buttonPushDate.enabled = NO;
-    self.buttonPushDate.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
+    self.buttonPushDate.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:13];
     [self.buttonPushDate addTarget:self action:@selector(buttonPushDateAction) forControlEvents:UIControlEventTouchUpInside];
     [viewDatePicker addSubview:self.buttonPushDate];
     
@@ -742,7 +738,7 @@
 - (void) buttonAgeAction {
     [UIView animateWithDuration:0.3f animations:^{
         CGRect pickerRect = self.datePickerView.frame;
-        pickerRect.origin.y -= (240.f + 182.5f);
+        pickerRect.origin.y -= (220.f + 182.5f);
         self.datePickerView.frame = pickerRect;
         
         self.foneView.alpha = 0.4f;
@@ -1092,7 +1088,7 @@
 - (void) backAnimationDatePicker {
     [UIView animateWithDuration:0.3f animations:^{
         CGRect pickerRect = self.datePickerView.frame;
-        pickerRect.origin.y += 240.f + 182.5f;
+        pickerRect.origin.y += 220.f + 182.5f;
         self.datePickerView.frame = pickerRect;
         self.foneView.alpha = 0.f;
     }];

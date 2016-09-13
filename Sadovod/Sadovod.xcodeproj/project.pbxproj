@@ -17,6 +17,10 @@
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
+		FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EC1D87F50C009012E8 /* SizesController.m */; };
+		FF3A05F01D87F521009012E8 /* SizesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EF1D87F521009012E8 /* SizesView.m */; };
+		FF3A05F31D8844C4009012E8 /* personMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F11D8844C4009012E8 /* personMenuImage.png */; };
+		FF3A05F41D8844C4009012E8 /* registrationMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F21D8844C4009012E8 /* registrationMenuImage.png */; };
 		FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */; };
 		FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEF21D7D874B0064E755 /* FormalizationView.m */; };
 		FF7FCEFC1D7DCFEA0064E755 /* imageButtonFaceNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */; };
@@ -467,6 +471,12 @@
 		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3A05EB1D87F50C009012E8 /* SizesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesController.h; sourceTree = "<group>"; };
+		FF3A05EC1D87F50C009012E8 /* SizesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesController.m; sourceTree = "<group>"; };
+		FF3A05EE1D87F521009012E8 /* SizesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesView.h; sourceTree = "<group>"; };
+		FF3A05EF1D87F521009012E8 /* SizesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesView.m; sourceTree = "<group>"; };
+		FF3A05F11D8844C4009012E8 /* personMenuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personMenuImage.png; sourceTree = "<group>"; };
+		FF3A05F21D8844C4009012E8 /* registrationMenuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registrationMenuImage.png; sourceTree = "<group>"; };
 		FF7FCEEE1D7D873B0064E755 /* FormalizationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationController.h; sourceTree = "<group>"; };
 		FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationController.m; sourceTree = "<group>"; };
 		FF7FCEF11D7D874B0064E755 /* FormalizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationView.h; sourceTree = "<group>"; };
@@ -1026,6 +1036,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF3A05EA1D87F4D1009012E8 /* Sizes */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A05EB1D87F50C009012E8 /* SizesController.h */,
+				FF3A05EC1D87F50C009012E8 /* SizesController.m */,
+				FF3A05EE1D87F521009012E8 /* SizesView.h */,
+				FF3A05EF1D87F521009012E8 /* SizesView.m */,
+			);
+			name = Sizes;
+			sourceTree = "<group>";
+		};
 		FF7FCEED1D7D87260064E755 /* Formalization */ = {
 			isa = PBXGroup;
 			children = (
@@ -1163,6 +1184,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FF3A05EA1D87F4D1009012E8 /* Sizes */,
 				FFBF91F01D82EF9900F8A0A1 /* Return */,
 				FFBF91E61D82E50400F8A0A1 /* AboutStore */,
 				FFBF91DF1D82DFDE00F8A0A1 /* Сontacts */,
@@ -1809,6 +1831,8 @@
 		FFAE32F71D65A39200E81AED /* ImagesMenu */ = {
 			isa = PBXGroup;
 			children = (
+				FF3A05F11D8844C4009012E8 /* personMenuImage.png */,
+				FF3A05F21D8844C4009012E8 /* registrationMenuImage.png */,
 				FFC4FD361D65EE85007C2DDC /* imageMenu10.png */,
 				FFC4FD1C1D65EE15007C2DDC /* imageMenu13.png */,
 				FFC4FD1D1D65EE15007C2DDC /* imageMenu9.png */,
@@ -2130,11 +2154,13 @@
 				FFAE329B1D65A28900E81AED /* Activity24@2x.png in Resources */,
 				FFAE31B81D65A28900E81AED /* Activity22@2x.png in Resources */,
 				FFAE331B1D65A53E00E81AED /* PFBeauSansPro-Bold.otf in Resources */,
+				FF3A05F31D8844C4009012E8 /* personMenuImage.png in Resources */,
 				FFAE32721D65A28900E81AED /* Activity28@2x.png in Resources */,
 				FFAE32831D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE329F1D65A28900E81AED /* Activity28@2x.png in Resources */,
 				FFAE322B1D65A28900E81AED /* Activity3@2x.png in Resources */,
 				FFAE331C1D65A53F00E81AED /* PFBeauSansPro-Italic.otf in Resources */,
+				FF3A05F41D8844C4009012E8 /* registrationMenuImage.png in Resources */,
 				FFAE323A1D65A28900E81AED /* Activity18@2x.png in Resources */,
 				FFAE331D1D65A54100E81AED /* PFBeauSansPro-Light.otf in Resources */,
 				FFAE331E1D65A54200E81AED /* PFBeauSansPro-Regular.otf in Resources */,
@@ -2589,6 +2615,7 @@
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
 				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
+				FF3A05F01D87F521009012E8 /* SizesView.m in Sources */,
 				AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */,
 				FFA5FFED1D816A9900CD6E7F /* AuthorizationView.m in Sources */,
 				FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */,
@@ -2597,6 +2624,7 @@
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
 				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,
 				FFA8ABBD1D705F54004010F9 /* ColorButton.m in Sources */,
+				FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */,
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
 				FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */,
 				FFAE2E361D65A10300E81AED /* SWRevealViewController.m in Sources */,

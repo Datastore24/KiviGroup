@@ -13,6 +13,7 @@
 
 @property (strong,nonatomic) NSString* superKey;
 @property (strong,nonatomic) NSString* catalogKey;
+@property (strong, nonatomic) NSString * typeMenu;
 
 + (id)sharedManager;
 
