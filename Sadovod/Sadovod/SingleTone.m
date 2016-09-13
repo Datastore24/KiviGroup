@@ -11,6 +11,7 @@
 @implementation SingleTone
 @synthesize superKey;
 @synthesize catalogKey;
+@synthesize typeMenu;
 
 
 #pragma mark Singleton Methods

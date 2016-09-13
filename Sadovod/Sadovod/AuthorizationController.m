@@ -9,13 +9,18 @@
 #import "AuthorizationController.h"
 #import "CatalogController.h"
 #import "AuthorizationView.h"
+#import "SingleTone.h"
 
 @implementation AuthorizationController
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    [self setCustomTitle:@"Войти" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
+    if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+    [self setCustomTitle:@"Войти" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    } else {
+       [self setCustomTitle:@"Профиль" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка 
+    }
     //Кнопка Назад---------------------------------------------
     UIButton * buttonBack = [UIButton createButtonBack];
     [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];

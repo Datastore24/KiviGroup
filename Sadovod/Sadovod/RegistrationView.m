@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "UIView+BorderView.h"
+#import "SingleTone.h"
 
 @implementation RegistrationView
 
@@ -22,6 +23,9 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64);
+        
+        if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+        
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         
@@ -62,7 +66,9 @@
         buttonEntrance.layer.cornerRadius = 3.f;
         buttonEntrance.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
         [viewCentre addSubview:buttonEntrance];
-        
+        } else {
+            
+        }
         
     }
     
