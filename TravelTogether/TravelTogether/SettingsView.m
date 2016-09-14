@@ -160,7 +160,7 @@
     NSArray * arrayNamesLables = [NSArray arrayWithObjects:@"Отправлять Push уведомления",
                                   @"Вкл звук уведомлений", @"Включить вибрацию", nil];
     for (int i = 0; i < 3; i++) {
-        CustomLabels * labelForElement = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:39.f + 21.f * i andColor:@"706f6f" andText:[arrayNamesLables objectAtIndex:i] andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+        CustomLabels * labelForElement = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:17.f + 29.6f * i andColor:@"706f6f" andText:[arrayNamesLables objectAtIndex:i] andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
         if (isiPhone6) {
             labelForElement.frame = CGRectMake(25.f, 46.25 + 25.f * i, 20, 10);
             labelForElement.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
@@ -171,7 +171,7 @@
         if (isiPhone6) {
             swithElements = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 65.f, 40.f + 25.f * i, 40.f, 20.f)];
         } else {
-            swithElements = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 56.f, 33.75f + 22.5f * i, 35.f, 16.5f)];
+            swithElements = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 56.f, 14.f + 29.6f * i, 35.f, 16.5f)];
         }
         swithElements.onTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
         swithElements.offTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
@@ -270,14 +270,14 @@
         netWorkView.frame = CGRectMake(0.f, 125.f + 215.f + 70.f + 65.f, self.frame.size.width, 125.f);
     }
     
-    UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 25.f)];
+    UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 20.f)];
     if (isiPhone6) {
         borderView.frame = CGRectMake(0.f, 0.f, self.frame.size.width, 30.f);
     }
     borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e6e6e6"];
     [netWorkView addSubview:borderView];
     
-    CustomLabels * labelTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:7.5f andColor:VM_COLOR_PINK andText:@"Поделиться в сетях" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
+    CustomLabels * labelTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:5.f andColor:VM_COLOR_PINK andText:@"Поделиться в сетях" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
     if (isiPhone6) {
         labelTitl.frame = CGRectMake(25.f, 7.5f, 20.f, 10.f);
         labelTitl.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
@@ -288,7 +288,7 @@
     NSArray * imagesNetWork = [NSArray arrayWithObjects:@"icon_odnok.png", @"icon_vk.png", @"icon_facebook.png", @"icon_instagram.png", nil];
     NSArray * arrayNameLabels = [NSArray arrayWithObjects:@"Одноклассники", @"В контакте", @"Фейсбук", @"Инстаграм", nil];
     for (int i = 0; i < 4; i++) {
-        UIButton * buttonNetwork = [UIButton createButtonWithImage:[imagesNetWork objectAtIndex:i] anfFrame:CGRectMake(29.f + 74.f * i, 37.5f, 38.5f, 38.5f)];
+        UIButton * buttonNetwork = [UIButton createButtonWithImage:[imagesNetWork objectAtIndex:i] anfFrame:CGRectMake(29.f + 74.f * i, 33.f, 38.5f, 38.5f)];
         if (isiPhone6) {
             buttonNetwork.frame = CGRectMake(35.f + 85.f * i, 45.f, 45.f, 45.f);
         }
@@ -302,7 +302,7 @@
             labelNetWork.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:9];
             [labelNetWork sizeToFit];
         } else {
-            centr.y += 28.f;
+            centr.y += 30.f;
         }
         labelNetWork.center = centr;
         [netWorkView addSubview:labelNetWork];

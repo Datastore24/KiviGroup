@@ -137,8 +137,6 @@
             self.imageView.alpha = 0.f;
             [viewController.view addSubview:self.imageView];
             self.imageViewImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, viewController.view.frame.size.width, viewController.view.frame.size.height - 120.f)];
-//            self.imageViewImage.layer.borderWidth = 1.f;
-//            self.imageViewImage.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
             self.imageViewImage.contentMode = UIViewContentModeScaleAspectFill;
             self.imageViewImage.clipsToBounds = YES;
             [self.imageView addSubview:self.imageViewImage];
@@ -147,13 +145,10 @@
             for (int i = 0; i < 2; i ++) {
                 UIButton * buttonImage = [UIButton buttonWithType:UIButtonTypeSystem];
                 buttonImage.frame = CGRectMake(viewController.view.frame.size.width / 2 - 125 + 150 * i, viewController.view.frame.size.height - 106, 100, 30);
-//                buttonImage.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
-//                buttonImage.layer.borderWidth = 1.f;
-//                buttonImage.layer.cornerRadius = 15.f;
                 buttonImage.tag = 2000 + i;
                 [buttonImage setTitle:[arrayNameButtons objectAtIndex:i] forState:UIControlStateNormal];
                 [buttonImage setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
-                buttonImage.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
+                buttonImage.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:15];
                 [buttonImage addTarget:self action:@selector(buttonImageAction:) forControlEvents:UIControlEventTouchUpInside];
                 [self.imageView addSubview:buttonImage];
             }

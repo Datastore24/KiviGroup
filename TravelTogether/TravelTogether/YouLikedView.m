@@ -30,7 +30,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
+        self.frame = CGRectMake(0.f, 34.f, view.frame.size.width, view.frame.size.height - 34.f);
         self.dictData = [data objectAtIndex:0];
         
         self.viewNewLiked = [self createNewLikedView];

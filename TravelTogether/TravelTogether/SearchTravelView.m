@@ -540,7 +540,7 @@
         if (isiPhone6) {
             rect.origin.y -= 250;
         } else {
-            rect.origin.y -= 220;
+            rect.origin.y -= 230;
         }
         self.pickerView.frame = rect;
     }];
@@ -570,7 +570,7 @@
         if (isiPhone6) {
             rect.origin.y += 250;
         } else {
-            rect.origin.y += 220;
+            rect.origin.y += 230;
         }
         self.pickerView.frame = rect;
     }];
@@ -685,30 +685,31 @@
 #pragma mark - DatePicker
 
 - (UIView*) createDatePickerWithView: (UIView*) view {
-    UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 220.f)];
+    UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 230.f)];
     if (isiPhone6) {
         pickerView.frame = CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 230.f);
     }
     pickerView.userInteractionEnabled = YES;
     pickerView.backgroundColor = [UIColor whiteColor];
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, pickerView.frame.size.height - 30.f)];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, 190)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     [self.datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
     self.datePicker.minimumDate = [NSDate date];
     [pickerView addSubview:self.datePicker];
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
-    buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f, 190.f, 200.f, 20.f);
+    buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f + 50, 190.f, 80.f, 20.f);
+    [buttonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
     [buttonConfirm setTitle:@"Готово" forState:UIControlStateNormal];
     [buttonConfirm setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
-    buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:13];
-    if (isiPhone6) {
-        buttonConfirm.frame = CGRectMake(pickerView.frame.size.width / 2.f, 210.f, 200.f, 20.f);
-        buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:14];
-    }
+
+    //    self.buttonPushDate.layer.borderWidth = 0.7f;
+    //    self.buttonPushDate.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK].CGColor;
+    buttonConfirm.layer.cornerRadius = 10.f;
+    buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:15];
     [buttonConfirm addTarget:self action:@selector(buttonConfirmAction:) forControlEvents:UIControlEventTouchUpInside];
     [pickerView addSubview:buttonConfirm];
-    
     
     return pickerView;
 }
