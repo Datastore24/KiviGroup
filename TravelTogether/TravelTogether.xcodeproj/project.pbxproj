@@ -10,6 +10,8 @@
 		9CA60C214FA20A9CAB5D3583 /* libPods-TravelTogether.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B09DCE39B9FD022F735A6 /* libPods-TravelTogether.a */; };
 		A81933AA931ACE14AA784664 /* libPods-TravelTogetherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADC3D2ABDD1175A4A5A6C28 /* libPods-TravelTogetherTests.a */; };
 		C3BEBA3E323F5A858792BB8F /* libPods-TravelTogetherUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 605D797A115C91C82F815689 /* libPods-TravelTogetherUITests.a */; };
+		FF3A05F71D8872C8009012E8 /* pickerButtonAnd.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F51D8872C8009012E8 /* pickerButtonAnd.png */; };
+		FF3A05F81D8872C8009012E8 /* pickerButtonFinish.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F61D8872C8009012E8 /* pickerButtonFinish.png */; };
 		FF66A76D1D51E98F00F693DD /* PFBeauSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7681D51E98000F693DD /* PFBeauSansPro-Light.otf */; };
 		FF66A76E1D51E99500F693DD /* PFBeauSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7661D51E98000F693DD /* PFBeauSansPro-Bold.otf */; };
 		FF66A76F1D51E99B00F693DD /* PFBeauSansPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF66A7671D51E98000F693DD /* PFBeauSansPro-Italic.otf */; };
@@ -467,6 +469,8 @@
 		9D207C8ADF4DEF5142A20C26 /* Pods-TravelTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogether.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogether/Pods-TravelTogether.release.xcconfig"; sourceTree = "<group>"; };
 		AD5DA1B105F4048FFFC4F7B8 /* Pods-TravelTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherTests/Pods-TravelTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5760CA63117AC04C9924C09 /* Pods-TravelTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelTogetherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelTogetherUITests/Pods-TravelTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FF3A05F51D8872C8009012E8 /* pickerButtonAnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerButtonAnd.png; sourceTree = "<group>"; };
+		FF3A05F61D8872C8009012E8 /* pickerButtonFinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerButtonFinish.png; sourceTree = "<group>"; };
 		FF66A7661D51E98000F693DD /* PFBeauSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Bold.otf"; sourceTree = "<group>"; };
 		FF66A7671D51E98000F693DD /* PFBeauSansPro-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Italic.otf"; sourceTree = "<group>"; };
 		FF66A7681D51E98000F693DD /* PFBeauSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PFBeauSansPro-Light.otf"; sourceTree = "<group>"; };
@@ -1968,6 +1972,8 @@
 		FFF8735F1D6D9F3D00816FC1 /* MyForm */ = {
 			isa = PBXGroup;
 			children = (
+				FF3A05F51D8872C8009012E8 /* pickerButtonAnd.png */,
+				FF3A05F61D8872C8009012E8 /* pickerButtonFinish.png */,
 				FF997F4A1D6DA0070037684A /* MyFormController.h */,
 				FF997F4B1D6DA0070037684A /* MyFormController.m */,
 				FF997F4D1D6DA0170037684A /* MyFormView.h */,
@@ -2277,6 +2283,7 @@
 				FFE10F061D742D3B00532346 /* icon_facebook.png in Resources */,
 				FFAE28281D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE28C01D57731500E81AED /* Activity11@2x.png in Resources */,
+				FF3A05F81D8872C8009012E8 /* pickerButtonFinish.png in Resources */,
 				FFAE285F1D57731500E81AED /* Activity4@2x.png in Resources */,
 				FFAE28821D57731500E81AED /* Activity9@2x.png in Resources */,
 				FFAE28671D57731500E81AED /* Activity12@2x.png in Resources */,
@@ -2295,6 +2302,7 @@
 				FFAE27EC1D57731500E81AED /* Activity23@2x.png in Resources */,
 				FFF873561D6C640A00816FC1 /* imageAddMessage.png in Resources */,
 				FFAE287D1D57731500E81AED /* Activity4@2x.png in Resources */,
+				FF3A05F71D8872C8009012E8 /* pickerButtonAnd.png in Resources */,
 				FFE10F611D76CA3C00532346 /* inMyTravelNewImageYes.png in Resources */,
 				FFE10F681D76D04100532346 /* OKImageForLogin.png in Resources */,
 				FFAE27D41D57731500E81AED /* Activity15@2x.png in Resources */,
