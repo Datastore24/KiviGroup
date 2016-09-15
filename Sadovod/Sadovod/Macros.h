@@ -47,6 +47,8 @@
 
 //Нотификации
 #define NOTIFICATION_FILTER_APPLY = @"NOTIFICATIONFILTERAPLLY"
+//Проверка заказанных товаров (влияет на корзину)
+#define NOTIFICATION_CHECK_COUNT_ORDER @"NOTIFICATION_CHECK_COUNT_ORDER"
 
 
 #endif /* Macros_h */

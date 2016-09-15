@@ -202,26 +202,19 @@
                                                             
                                                         }
                                                     }];
-                                
-                                
-    
-
-                                
-                                
                                 //Расчет таблицы---------------
-                                columnProduct += 1;
-                                if (columnProduct > 1) {
-                                    columnProduct = 0;
-                                    lineProduct += 1;
-                                    
+                                if (i < self.arrayData.count - 1) {
+                                    columnProduct += 1;
+                                    if (columnProduct > 1) {
+                                        columnProduct = 0;
+                                        lineProduct += 1;
+                                        
+                                    }
                                 }
                             }
-
-                
-            
                 }];
             
-            scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
+            scrollProduct.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (lineProduct + 1));
         
     }
     return self;
@@ -338,19 +331,10 @@
                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                             
                                             if(image){
-                                                
-                                                
-            
-                                                
                                                 [imageView setClipsToBounds:YES];
-                                                
-                                                
                                                 imageView.contentMode = UIViewContentModeScaleAspectFit;
                                                 imageView.clipsToBounds =YES;
-                                                
-                                                
                                                 imageView.image = image;
-                                                
                                                 [buttonProduct addSubview:imageView];
                                                 
                                                 [scrollProduct addSubview:buttonProduct];
@@ -371,20 +355,20 @@
                     
                     
                     //Расчет таблицы---------------
-                    columnProduct += 1;
-                    if (columnProduct > 1) {
-                        columnProduct = 0;
-                        lineProduct += 1;
-                        
+                    if (i < self.arrayData.count - 1) {
+                        columnProduct += 1;
+                        if (columnProduct > 1) {
+                            columnProduct = 0;
+                            lineProduct += 1;
+                            
+                        }
+                    }
                     }
                 }
-                
-                
-            }
-                
             }];
-            
-            scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
+                
+                scrollProduct.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (lineProduct + 1));
+
         }];
 
         self.pageX=num;
@@ -408,7 +392,7 @@
             rect.origin.x = 50.f + ((pageFraction - 1.f) * 100.f);
             rect.size.width = 50.f + (50.f * (pageFraction - (pageFraction - 1.f)));
             viewBorder.frame = rect;
-            if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 412.f) {
+            if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1082.f) {
                 self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
             }
         }

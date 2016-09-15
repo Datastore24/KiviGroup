@@ -16,6 +16,7 @@
 #import "Auth.h"
 #import "AuthDbClass.h"
 #import "APIGetClass.h"
+#import "Macros.h"
 
 
 @interface CatalogController () <CatalogViewDelegate>
@@ -44,13 +45,24 @@
             [self.view addSubview:mainView];
         }];
     }];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
+    
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 0.4;
+    self.buttonBasket.userInteractionEnabled = NO;
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) checkOrder: (NSNotification*) notification {
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 1.;
+    self.buttonBasket.userInteractionEnabled = YES;
 }
 
 
