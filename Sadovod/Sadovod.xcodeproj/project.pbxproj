@@ -418,6 +418,7 @@
 		FFC4FD811D677DED007C2DDC /* buttonCollumImageOneNO.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */; };
 		FFC4FD821D677DED007C2DDC /* buttonCollumImageOneYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */; };
 		FFC4FD841D677F07007C2DDC /* imageButtonFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */; };
+		FFD1D3891D8A8FDE00E5BE8B /* gift.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D3881D8A8FDE00E5BE8B /* gift.png */; };
 		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
 		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
 		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
@@ -943,6 +944,7 @@
 		FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneNO.png; sourceTree = "<group>"; };
 		FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCollumImageOneYES.png; sourceTree = "<group>"; };
 		FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFilter.png; sourceTree = "<group>"; };
+		FFD1D3881D8A8FDE00E5BE8B /* gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gift.png; sourceTree = "<group>"; };
 		FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BagroungImage.h"; sourceTree = "<group>"; };
 		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
 		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
@@ -1815,6 +1817,7 @@
 		FFAE32F21D65A37100E81AED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFD1D3831D8A8E2D00E5BE8B /* MyOrders */,
 				FFBF91CB1D82D60200F8A0A1 /* ImagesDelivery */,
 				FF7FCEF41D7DCE560064E755 /* FormalizationImages */,
 				FFE10F411D75D51800532346 /* BasketImages */,
@@ -1989,6 +1992,14 @@
 				FFC4FD751D676FEF007C2DDC /* imageArrowDown.png */,
 			);
 			name = ImagesCatalogDetail;
+			sourceTree = "<group>";
+		};
+		FFD1D3831D8A8E2D00E5BE8B /* MyOrders */ = {
+			isa = PBXGroup;
+			children = (
+				FFD1D3881D8A8FDE00E5BE8B /* gift.png */,
+			);
+			name = MyOrders;
 			sourceTree = "<group>";
 		};
 		FFE10F331D75995B00532346 /* BuyViewImages */ = {
@@ -2359,6 +2370,7 @@
 				FFAE325F1D65A28900E81AED /* Activity10@2x.png in Resources */,
 				FFAE31F91D65A28900E81AED /* Activity13@2x.png in Resources */,
 				FFAE31C21D65A28900E81AED /* Activity3@2x.png in Resources */,
+				FFD1D3891D8A8FDE00E5BE8B /* gift.png in Resources */,
 				FFAE32A81D65A28900E81AED /* Activity8@2x.png in Resources */,
 				FFAE32011D65A28900E81AED /* Activity6@2x.png in Resources */,
 				FFAE31F71D65A28900E81AED /* Activity11@2x.png in Resources */,
