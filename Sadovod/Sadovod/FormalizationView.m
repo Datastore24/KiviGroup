@@ -987,6 +987,7 @@
     }
 }
 
+//Выбор способа оплаты
 - (void) buttonPriceAction: (UIButton*) button {
     for (int i = 0; i < 5; i++) {
         UIButton * otherButton = (UIButton*)[self viewWithTag:2000 + i];
