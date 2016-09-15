@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) UIView * mainViewOrder;
 
+@property (strong, nonatomic) UIButton *buttonBasket;
+
 
 -(void) initializeCartBarButton; //Инициализация контроллера с кнопками навигации
 

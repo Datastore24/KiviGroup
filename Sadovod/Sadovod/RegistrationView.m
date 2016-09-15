@@ -97,8 +97,6 @@
                 buttonBack.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
                 [self addSubview:buttonBack];
                 
-                
-                
             } else {
                 //Создание таблицы заказов----
                 self.mainTable = [[UITableView alloc] initWithFrame:CGRectMake(0.f, - 64.f, self.frame.size.width, self.frame.size.height + 64.f)];

@@ -11,6 +11,7 @@
 #import "BuyViewController.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "Macros.h"
 
 @interface OrderController () <OrderViewDelegate>
 
@@ -33,6 +34,7 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
     
+    
 #pragma mark - View
     [self getApiProduct:^{
         OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
@@ -41,9 +43,13 @@
         mainView.delegate = self;
         [self.view addSubview:mainView];
     } andProductID:self.productID];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
    
     
-        
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 0.4;
+    self.buttonBasket.userInteractionEnabled = NO;
     
 }
 
@@ -83,6 +89,12 @@
     return mArray;
 }
 
+- (void) checkOrder: (NSNotification*) notification {
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 1.;
+    self.buttonBasket.userInteractionEnabled = YES;
+}
+
 #pragma  mark - API
 
 
@@ -114,6 +126,10 @@
         
     }];
     
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

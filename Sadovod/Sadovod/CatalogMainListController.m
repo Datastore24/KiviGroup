@@ -11,6 +11,7 @@
 #import "CatalogListController.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "Macros.h"
 
 
 @interface CatalogMainListController () <CatalogMainListViewDelegate>
@@ -50,6 +51,12 @@
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
+    
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 0.4;
+    self.buttonBasket.userInteractionEnabled = NO;
 
     
 }
@@ -65,6 +72,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void) checkOrder: (NSNotification*) notification {
+    //Параметры кнопки корзины
+    self.buttonBasket.alpha = 1.;
+    self.buttonBasket.userInteractionEnabled = YES;
+}
 
 
 #pragma mark - CatalogMainListViewDelegate

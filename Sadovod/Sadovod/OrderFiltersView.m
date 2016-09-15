@@ -82,76 +82,43 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
-       
         self.arrayDetailButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtons = [[NSMutableArray alloc] init];
         self.arrayAllButtonsCancel = [[NSMutableArray alloc] init];
         self.counter = 0;
         self.mArrayDetail = [[ NSMutableArray alloc] init];
-        
-        
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0, self.frame.size.width, self.frame.size.height)];
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
-        
-       
         for (int i=0;i<data.count;i++){
-            
             if([[self.dictData objectForKey:@"id"] integerValue]==81){
                 NSArray * sizeArray =[self.dictData objectForKey:@"options"];
-                self.countColumn = sizeArray.count-1;
-                
             }
-            
-           
             if(i+1==data.count){
                  for (int j=0;j<data.count;j++){
                      self.dictData = [data objectAtIndex:j];
-                     
                      if([[self.dictData objectForKey:@"id"] integerValue]==-1){
                          //PriceView----------------
                          [self.mainScrollView addSubview:[self createPriceView]];
-                         
                      }else if([[self.dictData objectForKey:@"id"] integerValue]==81){
-                         
-                         //SizeView------------------
+                                                  //SizeView------------------
                          self.viewSize = [self createSizeView];
                          [self.mainScrollView addSubview:self.viewSize];
-                         
-                         
-                         
                      }else if([[self.dictData objectForKey:@"id"] integerValue]==2){
                          //ColorView-----------------
                          self.viewColor = [self createColorView];
                          [self.mainScrollView addSubview:self.viewColor];
-                         
-                      
                      }else{
-                        
                          //Detail
                          [self.mArrayDetail addObject:self.dictData];
-                         
-                         
                      }
                      if(j+1==data.count){
                          self.viewDetail = [self createDetailView];
                          [self.mainScrollView addSubview:self.viewDetail];
                      }
-
                  }
-                
-                
             }
-            
-           
         }
-        
-       
-        
-       
-        
-        
-        
         //Confirm
         [self addSubview:[self createConfirmView]];
         

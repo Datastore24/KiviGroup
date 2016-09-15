@@ -10,6 +10,9 @@
 #import "UILabel+TitleCategory.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import "SingleTone.h"
+#import "BasketController.h"
+#import "AuthorizationController.h"
 
 
 @interface MainViewController ()
@@ -49,9 +52,14 @@
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * menuButton =[[UIBarButtonItem alloc] initWithCustomView:buttonMenu];
     self.navigationItem.leftBarButtonItem = menuButton;
-    
+    UIButton * buttonAvtorization;
     //Параметры кнопки авторизации-------------------------------
-    UIButton * buttonAvtorization = [UIButton createButtonWriteWithImage:@"avtorizationButton.png"];
+    if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+    buttonAvtorization = [UIButton createButtonWriteWithImage:@"entrance.png"];
+    } else {
+    buttonAvtorization = [UIButton createButtonWriteWithImage:@"avtorizationButton.png"];
+    }
+    [buttonAvtorization addTarget:self action:@selector(buttonAvtorization) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * avtorizationButton =[[UIBarButtonItem alloc] initWithCustomView:buttonAvtorization];
     self.navigationItem.rightBarButtonItem = avtorizationButton;
     
@@ -68,19 +76,21 @@
     
 
     //Кнопка корзины------
-    UIButton *buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
-    [buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
+    self.buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
+    [self.buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
+    [self.buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
     if (barBasket) {
-        buttonBasket.alpha = 0.f;
+        self.buttonBasket.alpha = 0.f;
     }
-    [self.backView addSubview:buttonBasket];
+    [self.backView addSubview:self.buttonBasket];
     
     
     //Кнопка бар кода------
     UIButton * buttonBarCode = [UIButton buttonWithType:UIButtonTypeCustom];
     [buttonBarCode setFrame:CGRectMake(145, 10, 20, 20)];
-    [buttonBarCode setBackgroundImage:[UIImage imageNamed:@"barButtonImage.png"] forState:UIControlStateNormal];
+    buttonBarCode.userInteractionEnabled = NO;
+//    [buttonBarCode setBackgroundImage:[UIImage imageNamed:@"barButtonImage.png"] forState:UIControlStateNormal];
     if (isBool) {
         buttonBarCode.alpha = 0.f;
     }
@@ -97,6 +107,17 @@
     if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
         statusBar.backgroundColor = color;
     }
+}
+
+- (void) buttonBasketAction {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void) buttonAvtorization {
+    AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 @end

@@ -30,6 +30,7 @@
 
 @property (strong, nonatomic) StyledPageControl * pageControl;
 @property (strong, nonatomic) UIScrollView * scrollImage;
+@property (assign, nonatomic) NSInteger counterOrder; //Колличество выбранного товара
 
 //Sizes
 
@@ -45,7 +46,7 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
-        
+        self.counterOrder = 0.f;
         self.arrayData = data;
        
         NSArray * arrayImage = [data objectForKey:@"images"];
@@ -112,6 +113,9 @@
         //Details-----
         
         CustomLabels * detailsTitle = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 10 andSizeWidht:150.f andSizeHeight:40.f andColor:VM_COLOR_900 andText:[NSString stringWithFormat:@"Детально"]];
+        if(self.arraySizes.count == 1){
+            detailsTitle.frame = CGRectMake(10.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y - 40, 150.f, 40);
+        }
         detailsTitle.font = [UIFont fontWithName:VM_FONT_BOLD size:14];
         detailsTitle.textAlignment = NSTextAlignmentLeft;
         [self.mainScrollView addSubview:detailsTitle];
@@ -257,6 +261,9 @@
 - (UIView*) createViewDetailsWithView: (UIView*) view
                       andDetailsArray: (NSArray*) detailsArray {
     UIView * viewDetail = [[UIView alloc] initWithFrame:CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y + 47.f, self.frame.size.width - 6.f, 40.f * (self.detailsArray.count+1))];
+    if(self.arraySizes.count == 1){
+        viewDetail.frame = CGRectMake(3.f, self.viewSizes.frame.size.height + self.viewSizes.frame.origin.y - 5.f, self.frame.size.width - 6.f, 40.f * (self.detailsArray.count+1));
+    }
     viewDetail.backgroundColor = [UIColor whiteColor];
     
     for (int i = 0; i < self.detailsArray.count; i++) {
@@ -318,11 +325,22 @@
             UIButton * buttonLabelSize = [self viewWithTag:60 + i];
             NSInteger count = [buttonLabelSize.titleLabel.text integerValue];
             count += 1;
+            self.counterOrder += 1;
             [UIView animateWithDuration:0.3 animations:^{
                 [buttonLabelSize setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
                 buttonLabelSize.alpha = 1.f;
             }];
         }
+    }
+    
+    [self checkMethod];
+
+}
+
+//Проверка товара
+- (void) checkMethod {
+    if (self.counterOrder > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CHECK_COUNT_ORDER object:[NSNumber numberWithInteger:self.counterOrder]];
     }
 }
 

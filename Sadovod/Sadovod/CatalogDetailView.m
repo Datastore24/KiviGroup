@@ -324,6 +324,10 @@
 }
 
 - (void) buttonColumnOneAction {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.hideView.alpha = 0.f;
+    }];
     for (UIView * view in self.scrollView.subviews) {
         [view removeFromSuperview];
     }
@@ -347,6 +351,11 @@
 }
 
 - (void) buttonColumnTwoAction {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.hideView.alpha = 0.f;
+    }];
+    
     for (UIView * view in self.scrollView.subviews) {
         [view removeFromSuperview];
     }

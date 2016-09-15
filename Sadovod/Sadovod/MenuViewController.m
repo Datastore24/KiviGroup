@@ -49,7 +49,7 @@
                            @"Авторизация", @"Регистрация", @"Задать вопрос", @"Частые вопросы",
                            @"Доставка", @"Оплата", @"Контакты", @"О магазине", @"Возврат", @"Таблица размеров", @"", nil];
         //Массив картинок-------
-        self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"imageMenu3.png", @"registrationMenuImage.png",
+        self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"imageMenu13.png", @"registrationMenuImage.png",
                             @"imageMenu5.png", @"imageMenu6.png", @"imageMenu7.png", @"imageMenu8.png", @"imageMenu9.png", @"imageMenu10.png",
                             @"imageMenu11.png", @"imageMenu12.png", @"", nil];
     } else {
@@ -60,7 +60,7 @@
         //Массив картинок-------
         self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"personMenuImage.png", @"imageMenu4.png",
                             @"imageMenu5.png", @"imageMenu6.png", @"imageMenu7.png", @"imageMenu8.png", @"imageMenu9.png", @"imageMenu10.png",
-                            @"imageMenu11.png", @"imageMenu12.png", @"imageMenu13.png", nil];
+                            @"imageMenu11.png", @"imageMenu12.png", @"exitMenu.png", nil];
     }
 
 }
