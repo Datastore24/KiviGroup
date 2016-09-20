@@ -15,14 +15,19 @@
 @property (weak, nonatomic) id <BuyViewDelegate> deleagte;
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data;
+                     andData: (NSArray*) data
+                     andCart: (NSArray *) cart;
 
 @end
 
 @protocol BuyViewDelegate <NSObject>
 
+
 - (void) addCountOrder: (BuyView*) buyView;
 
 - (void) hideCountOrder: (BuyView*) buyView;
+
+- (void) getApiAddToBasket: (NSString *) productID;
+- (void) getApiDelToBasket: (NSString *) productID;
 
 @end
