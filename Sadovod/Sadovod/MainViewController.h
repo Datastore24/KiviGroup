@@ -20,17 +20,11 @@
 
 @property (strong, nonatomic) NSString * countOrder;
 @property (strong, nonatomic) NSString * priceOrder;
-@property (strong, nonatomic) BottomBasketView * mainViewOrder;
 
 
 -(void) initializeCartBarButton; //Инициализация контроллера с кнопками навигации
 
 - (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool andButtonBasket: (BOOL) barBasket; //Установга загаловка в контроллер
-
-- (void) createMainBasketWithCount: (NSString*) count andPrice: (NSString*) price;
-
-- (void) changeCountString;
-
 
 
 @end

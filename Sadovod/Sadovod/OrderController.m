@@ -27,14 +27,10 @@
     [super viewWillAppear:YES];
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0;
+    rectView.size.height = self.view.frame.size.height;
     self.mainView.frame = rectView;
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-//        self.mainViewOrder.alpha = 0.f;
-        self.mainView.mainScrollView.frame = rectView;
-    } else {
-//        self.mainViewOrder.alpha = 1.f;
-        self.mainView.mainScrollView.frame = rectView;
-    }
+    self.mainView.mainScrollView.frame = rectView;
+
 }
 
 - (void) viewDidLoad {
@@ -59,12 +55,7 @@
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
         
-        [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-        if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-            self.mainViewOrder.alpha = 0.f;
-        } else {
-            self.mainViewOrder.alpha = 1.f;
-        }
+
     } andProductID:self.productID];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
@@ -115,7 +106,7 @@
 }
 
 - (void) showBottomBar: (OrderView*) orderView {
-    [self changeCountString];
+
 }
 
 #pragma mark - Actions

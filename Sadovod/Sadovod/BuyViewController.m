@@ -26,11 +26,7 @@
 //Кастомный лейбл наносится на верхний бар
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
+
     if (self.label == nil) {
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 24, 80, 40)];
         self.label.text = @"220 руб";
@@ -59,12 +55,7 @@
     mainView.deleagte = self;
     [self.view addSubview:mainView];
     
-    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
+
     
 }
 

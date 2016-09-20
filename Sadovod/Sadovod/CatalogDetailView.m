@@ -191,9 +191,9 @@
 
     }
     if (isColumn) {
-        scrollProduct.contentSize = CGSizeMake(0, 5 + (self.frame.size.width / 2.f) * lineProduct);
+        scrollProduct.contentSize = CGSizeMake(0, 10 + (self.frame.size.width / 2.f) * lineProduct);
     } else {
-        scrollProduct.contentSize = CGSizeMake(0, 5 + ((self.frame.size.width + 1.5) * self.arrayData.count));
+        scrollProduct.contentSize = CGSizeMake(0, 0 + ((self.frame.size.width + 1.5) * self.arrayData.count));
     }
     
     
