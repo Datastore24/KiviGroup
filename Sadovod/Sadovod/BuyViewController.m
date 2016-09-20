@@ -15,6 +15,8 @@
 #import "SingleTone.h"
 #import "FormalizationController.h"
 #import "BasketController.h"
+#import "SingleTone.h"
+#import "APIGetClass.h"
 
 @interface BuyViewController () <BuyViewDelegate, BottomBasketViewDelegate>
 
@@ -142,6 +144,38 @@
 - (void) actionFormalization: (BottomBasketView*) bottomBasketView {
     FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+-(void) getApiProduct: (void (^)(void))block andProductID: (NSString *) productID
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"product",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"product" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            self.arrayData = [respDict objectForKey:@"product"];
+            
+            
+            block();
+            
+            
+        }
+        
+    }];
+    
 }
  
 @end
