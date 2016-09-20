@@ -40,6 +40,13 @@
         [self.navigationController.view.window addSubview:self.label];
     } else {
         self.label.alpha = 1.f;
+    } 
+    
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }  else {
+        self.basketView.alpha = 0.f;
     }
 }
 
@@ -115,11 +122,17 @@
 #pragma mark - BuyViewDelegate
 
 - (void) addCountOrder: (BuyView*) buyView {
-//    self.mainViewOrder.alpha = 1.f;
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+        self.basketView.alpha = 1.f;
+
 }
 
 - (void) hideCountOrder: (BuyView*) buyView {
-//    self.mainViewOrder.alpha = 0.f;
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    if ([[[SingleTone sharedManager] countType] integerValue] == 0) {
+        self.basketView.alpha = 0.f;
+    }
+
 }
 
 

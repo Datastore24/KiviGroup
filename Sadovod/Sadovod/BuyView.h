@@ -25,4 +25,6 @@
 
 - (void) hideCountOrder: (BuyView*) buyView;
 
+- (void) showBasketView: (BuyView*) buyView;
+
 @end

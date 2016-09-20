@@ -13,6 +13,7 @@
 #import "UIView+BorderView.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import "SingleTone.h"
 
 @interface BasketView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) UIPickerView * counterPicker;
 @property (assign, nonatomic) NSInteger countOrder; //Переменная для подсчета колличества товаров
 @property (assign, nonatomic) NSInteger pickerCount; //значение выдаваемое при скроле пикера
+@property (assign, nonatomic) NSInteger countForBasket; //Переменная хранит число выбранного товара для сравнения с пикером
 
 //AnimathionDel (все свойства вязанные с анимацией)
 @property (strong, nonatomic) NSMutableArray * arrayView; //Массив отображения всю каждого заказа (для анимации)
@@ -225,9 +227,14 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
             self.viewCounter.alpha = 0.f;
+            
+            
         }];
     } else if (button.tag == 1001) {
         UIButton * button = (UIButton*)[self viewWithTag:self.tagButton];
+        NSInteger baseCount = [button.titleLabel.text integerValue];
+        NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue];
+        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount + (self.pickerCount - baseCount) ]];
         [button setTitle:[NSString stringWithFormat:@"%d", self.pickerCount] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
@@ -239,10 +246,15 @@
 //Удаление товара из корзины
 - (void) buttonBasketAction: (UIButton*) button {
     if (self.arrayView.count == 1) {
+        [[SingleTone sharedManager] setCountType:@"0"];
         [self.delegate backTuCatalog:self];
     } else {
     for (int i = 0; i < self.arrayView.count; i++) {
         if (button.tag == 500 + i) {
+            UIButton * buttonCountOne = [self viewWithTag:10 + i];
+            NSInteger countButton = [buttonCountOne.titleLabel.text integerValue];
+            NSInteger singInt = [[[SingleTone sharedManager] countType] integerValue];
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singInt - countButton]];
             UIView * viewTakeOrder = [self.arrayView objectAtIndex:i];
             for (int j = 0; j < self.arrayView.count; j++) {
                 UIButton * butonTrash = (UIButton*)[self viewWithTag:500 + j];
