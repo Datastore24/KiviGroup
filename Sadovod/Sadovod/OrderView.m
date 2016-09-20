@@ -324,7 +324,7 @@
 
 #pragma mark - Actions
 
-- (void) buttonSizeAction: (UIButton*) button {
+- (void) buttonSizeAction: (CustomButton*) button {
     for (int i = 0; i < self.arraySizes.count; i++) {
         if (button.tag == 50 + i) {
             UIButton * buttonLabelSize = [self viewWithTag:60 + i];
@@ -333,7 +333,9 @@
             self.counterOrder += 1;
             NSInteger priceCount = [[[SingleTone sharedManager] countType] integerValue];
             priceCount += 1;
+            NSLog(@"%@",button.customID);
             [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", priceCount]];
+            [self.delegate getApiAddCart:self andProductID:button.customID andCount:[NSString stringWithFormat:@"%ld",(long)count]];
             [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{
                 [buttonLabelSize setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];

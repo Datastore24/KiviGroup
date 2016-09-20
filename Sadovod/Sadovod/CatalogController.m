@@ -120,6 +120,7 @@
         
         
         NSDictionary * respDict =(NSDictionary *) response;
+        NSLog(@"TOKENS %@",respDict);
         [authDbClass checkKey:[respDict objectForKey:@"super_key"] andCatalogKey:[respDict objectForKey:@"catalog_key"]];
         
         [[SingleTone sharedManager] setSuperKey:[respDict objectForKey:@"super_key"]];

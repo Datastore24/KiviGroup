@@ -40,6 +40,7 @@
     {
         return YES;
     }else{
+        [self deleteAuth];
         [self addKey:superKey andCatalogKey:catalogKey];
         return NO;
     }
