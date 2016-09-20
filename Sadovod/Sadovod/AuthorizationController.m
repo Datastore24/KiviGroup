@@ -21,15 +21,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        if (![[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 1.f;
-        } else {
-          self.mainViewOrder.alpha = 0.f;
-        }
-    }
 }
 
 - (void) viewDidLoad {
@@ -52,12 +43,6 @@
     mainView.delegate = self;
     [self.view addSubview:mainView];
     
-    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
     
 }
 

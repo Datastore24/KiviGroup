@@ -12,8 +12,10 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "Macros.h"
+#import "BasketController.h"
+#import "FormalizationController.h"
 
-@interface CatalogListController () <CatalogListViewDelegate>
+@interface CatalogListController () <CatalogListViewDelegate, BottomBasketViewDelegate>
 
 @property (strong, nonatomic) NSArray * arrayCatalog;
 @property (strong, nonatomic) CatalogListView * mainView;
@@ -27,20 +29,16 @@
     [super viewWillAppear:YES];
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0.f;
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-    rectView.size.height += 64;
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        rectView.size.height = self.view.frame.size.height - 50;
     } else {
-       rectView.size.height += 14;
+        rectView.size.height = self.view.frame.size.height;
     }
     self.mainView.frame = rectView;
     self.mainView.tableCatalog.frame = rectView;
     
     
-        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-            self.mainViewOrder.alpha = 0.f;
-        } else {
-            self.mainViewOrder.alpha = 1.f;
-        }
+
 
 }
 
@@ -66,12 +64,14 @@
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
         
-        [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-        if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-            self.mainViewOrder.alpha = 0.f;
-        } else {
-            self.mainViewOrder.alpha = 1.f;
+        BottomBasketView * basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        basketView.delegate = self;
+        if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+            basketView.alpha = 1.f;
         }
+        [self.view addSubview:basketView];
+        
+
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
@@ -136,6 +136,17 @@
     CatalogDetailController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogDetailController"];
     detail.catID=catID;
     detail.catName=catName;
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

@@ -13,6 +13,7 @@
 @interface CatalogMainListView : UIView
 
 @property (weak, nonatomic) id <CatalogMainListViewDelegate> delegate;
+@property (strong, nonatomic) UITableView * tableCatalog;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;

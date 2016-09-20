@@ -12,10 +12,11 @@
 #import "Macros.h"
 #import "UIView+BorderView.h"
 #import "CheckDataServer.h"
+#import "SingleTone.h"
 
 @interface CatalogMainListView () <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) UITableView * tableCatalog;
+
 @property (strong, nonatomic) NSArray * arrayData;
 
 @end
@@ -33,6 +34,9 @@
         
         //Создание таблицы заказов----
         self.tableCatalog = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+            self.tableCatalog.frame = CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height - 50);
+        }
         //Убираем полосы разделяющие ячейки------------------------------
         self.tableCatalog.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableCatalog.backgroundColor = nil;

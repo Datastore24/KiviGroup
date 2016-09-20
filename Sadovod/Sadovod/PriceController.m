@@ -15,11 +15,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
+
 }
 
 - (void) viewDidLoad {
@@ -37,12 +33,7 @@
     PriceView * mainView = [[PriceView alloc] initWithView:self.view andData:nil];
     [self.view addSubview:mainView];
     
-    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
+
     
 
     

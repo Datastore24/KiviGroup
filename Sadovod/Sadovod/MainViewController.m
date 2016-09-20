@@ -17,7 +17,7 @@
 #import "FormalizationController.h"
 
 
-@interface MainViewController () <BottomBasketViewDelegate>
+@interface MainViewController ()
 
 @property (strong, nonatomic) UIView *backView;
 
@@ -35,21 +35,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-}
-
-- (void) createMainBasketWithCount: (NSString*) count andPrice: (NSString*) price {
-    self.mainViewOrder = [[BottomBasketView alloc] initBottomBasketViewWithPrice:price andCount:count andView:self.view];
-    self.mainViewOrder.delegate = self;
-    [self.view addSubview:self.mainViewOrder];
-}
-
-- (void) changeCountString {
-        [self.mainViewOrder.buttonBasket setTitle:[NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"500"] forState:UIControlStateNormal];
-    [self performSelector:@selector(alphaMethod) withObject:nil afterDelay:0.1];
-}
-
-- (void) alphaMethod {
-    self.mainViewOrder.alpha = 1.f;
 }
 
 -(void) initializeCartBarButton
@@ -122,18 +107,6 @@
     AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
     [self.navigationController pushViewController:detail animated:YES];
     
-}
-
-
-#pragma mark - BottomBasketViewDelegate
-
-- (void) actionBasket: (BottomBasketView*) bottomBasketView {
-    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
-    [self.navigationController pushViewController:detail animated:YES];
-}
-- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
-    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
-    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

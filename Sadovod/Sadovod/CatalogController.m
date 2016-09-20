@@ -17,9 +17,12 @@
 #import "AuthDbClass.h"
 #import "APIGetClass.h"
 #import "Macros.h"
+#import "BottomBasketView.h"
+#import "FormalizationController.h"
+#import "BasketController.h"
 
 
-@interface CatalogController () <CatalogViewDelegate>
+@interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate>
 
 
 
@@ -30,22 +33,15 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.arrayProduct = [NSArray new];
-    
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:@"Садовод" andBarButtonAlpha: NO andButtonBasket: NO]; //Ввод заголовка
-//    [self.navigationController setNavigationBarHidden:NO];
+
     
 #pragma mark - View
     [self getKey:^{
@@ -53,13 +49,12 @@
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
             [self.view addSubview:mainView];
-            
-            [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-            if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-                self.mainViewOrder.alpha = 0.f;
-            } else {
-                self.mainViewOrder.alpha = 1.f;
+            BottomBasketView * basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+            basketView.delegate = self;
+            if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+                basketView.alpha = 1.f;
             }
+            [self.view addSubview:basketView];
         }];
         
     }];
@@ -148,25 +143,11 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
             self.arrayName = [respDict objectForKey:@"list"];
-            
-            
-           
-            
                 NSString * catID = [[self.arrayName objectAtIndex:0] objectForKey:@"cat"];
-            
-                
                 [self getApiTabProducts:catID andPage:@"1" andBlock:^{
                     block();
                 }];
-                
-                
-                
-            
-
-
         }
-        
-        
     }];
 }
 
@@ -185,7 +166,6 @@
                              page, @"page",
                              nil];
     
-    
     [api getDataFromServerWithParams:params method:@"get_tab_products" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
@@ -199,14 +179,20 @@
             }else{
                 NSLog(@"Пришел не Dictionary");
             }
-            
-            
-            
-           
         }
-        
-        
+
     }];
+}
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

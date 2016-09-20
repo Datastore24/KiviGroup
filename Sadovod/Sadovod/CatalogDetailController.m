@@ -24,11 +24,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 0.f;
-    } else {
-        self.mainViewOrder.alpha = 1.f;
-    }
 }
 
 - (void)viewDidLoad {
@@ -52,12 +47,6 @@
         mainView.delegate = self;
         [self.view addSubview:mainView];
         
-        [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
-        if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
-            self.mainViewOrder.alpha = 0.f;
-        } else {
-            self.mainViewOrder.alpha = 1.f;
-        }
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

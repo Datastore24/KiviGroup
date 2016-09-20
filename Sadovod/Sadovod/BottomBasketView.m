@@ -10,6 +10,13 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "CustomLabels.h"
+#import "MainViewController.h"
+
+@interface BottomBasketView ()
+
+@property (strong, nonatomic) MainViewController * mainController;
+
+@end
 
 @implementation BottomBasketView
 
@@ -19,6 +26,8 @@
     if (self) {
         self.frame = CGRectMake(0.f, view.frame.size.height - 50.f, view.frame.size.width, 50.f);
         self.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4C4C4C" alpha:0.8];
+        
+        self.mainController = [[MainViewController alloc] init];
         
         
         self.buttonBasket = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -41,6 +50,8 @@
         buttonContents.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         [buttonContents addTarget:self action:@selector(buttonContentsAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonContents];
+        
+        self.alpha = 0.f;
     }
     return self;
 }
