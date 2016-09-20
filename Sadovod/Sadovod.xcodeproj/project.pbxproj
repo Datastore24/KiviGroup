@@ -424,6 +424,7 @@
 		FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */; };
 		FFD1D3961D917E0500E5BE8B /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3951D917E0500E5BE8B /* ChangePasswordController.m */; };
 		FFD1D3991D917E1200E5BE8B /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3981D917E1200E5BE8B /* ChangePasswordView.m */; };
+		FFD1D39B1D91863400E5BE8B /* imageButtonFilterYES.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D39A1D91863400E5BE8B /* imageButtonFilterYES.png */; };
 		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
 		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
 		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
@@ -958,6 +959,7 @@
 		FFD1D3951D917E0500E5BE8B /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		FFD1D3971D917E1200E5BE8B /* ChangePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
 		FFD1D3981D917E1200E5BE8B /* ChangePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
+		FFD1D39A1D91863400E5BE8B /* imageButtonFilterYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFilterYES.png; sourceTree = "<group>"; };
 		FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BagroungImage.h"; sourceTree = "<group>"; };
 		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
 		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
@@ -2002,6 +2004,7 @@
 		FFC4FD741D676FDF007C2DDC /* ImagesCatalogDetail */ = {
 			isa = PBXGroup;
 			children = (
+				FFD1D39A1D91863400E5BE8B /* imageButtonFilterYES.png */,
 				FFC4FD831D677F07007C2DDC /* imageButtonFilter.png */,
 				FFC4FD7F1D677DED007C2DDC /* buttonCollumImageOneNO.png */,
 				FFC4FD801D677DED007C2DDC /* buttonCollumImageOneYES.png */,
@@ -2270,6 +2273,7 @@
 				FFAE319D1D65A28900E81AED /* Activity11@2x.png in Resources */,
 				FFAE32001D65A28900E81AED /* Activity5@2x.png in Resources */,
 				FFAE32251D65A28900E81AED /* Activity12@2x.png in Resources */,
+				FFD1D39B1D91863400E5BE8B /* imageButtonFilterYES.png in Resources */,
 				FFAE32931D65A28900E81AED /* Activity17@2x.png in Resources */,
 				FFAE32691D65A28900E81AED /* Activity1@2x.png in Resources */,
 				FFAE326D1D65A28900E81AED /* Activity23@2x.png in Resources */,
