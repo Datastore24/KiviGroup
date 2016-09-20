@@ -25,5 +25,6 @@
 @required
 
 - (void) pushTuBiyView: (OrderView*) orderView;
+- (void) showBottomBar: (OrderView*) orderView;
 
 @end

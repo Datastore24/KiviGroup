@@ -335,6 +335,10 @@
                     label.text = [NSString stringWithFormat:@"%d", 1];
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
+                    
+                    NSInteger count = [[[SingleTone sharedManager] countType] integerValue];
+                    count += 1;
+                    [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", count]];
                 }];
             } else {
                 [UIView animateWithDuration:0.2 animations:^{
