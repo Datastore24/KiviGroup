@@ -335,7 +335,7 @@
             priceCount += 1;
             NSLog(@"%@",button.customID);
             [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", priceCount]];
-            [self.delegate getApiAddCart:self andProductID:button.customID andCount:[NSString stringWithFormat:@"%ld",(long)count]];
+            [self.delegate getApiAddCart:self andProductID:button.customID];
             [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{
                 [buttonLabelSize setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
