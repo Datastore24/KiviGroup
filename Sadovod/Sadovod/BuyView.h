@@ -31,6 +31,7 @@
 
 - (void) getApiAddToBasket: (NSString *) productID;
 - (void) getApiDelToBasket: (NSString *) productID;
+- (void) getApiClearSizeToBasket: (NSString *) productID;
 
 
 @end

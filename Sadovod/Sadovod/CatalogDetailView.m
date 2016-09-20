@@ -115,6 +115,8 @@
         NSDictionary * dictProduct = [data objectAtIndex:i];
         CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonProduct.customID = [dictProduct objectForKey:@"id"];
+        buttonProduct.customName = [dictProduct objectForKey:@"name"];
+        buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
    
         if (isColumn) {
             buttonProduct.frame = CGRectMake(0.f + ((scrollProduct.frame.size.width / 2.f + 1.5f) * columnProduct),
