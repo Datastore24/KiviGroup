@@ -174,6 +174,12 @@
         buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
         buttonSize.isBool = YES;
     }
+    if ([count integerValue] != 0) {
+        NSInteger countInt = [count integerValue];
+        NSInteger countAll = [[[SingleTone sharedManager] countType] integerValue] + countInt;
+        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countAll]];
+    }
+
     [buttonSize setImage:[UIImage imageNamed:@"confirmButtonCount.png"] forState:UIControlStateNormal];
     [self.buttonMax setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [buttonSize addTarget:self action:@selector(buttonSizeAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -314,7 +320,11 @@
             buttonSize.isBool = NO;
             if (countUp > 0) {
                 countUp -= 1;
-                    [self.deleagte hideCountOrder:self];
+                NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
+                countSinglOrder -= 1;
+                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
+                NSLog(@"[[SingleTone sharedManager] countType] %@", [[SingleTone sharedManager] countType]);
+                [self.deleagte hideCountOrder:self];
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
                 }];
