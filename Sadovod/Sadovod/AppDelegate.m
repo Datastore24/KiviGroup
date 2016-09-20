@@ -34,10 +34,6 @@
     [[SingleTone sharedManager] setCountType:@"0"];
     [[SingleTone sharedManager] setPriceType:@"0"];
     
-
-
-
-    
     return YES;
 }
 

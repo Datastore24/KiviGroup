@@ -10,6 +10,14 @@
 #import "CatalogController.h"
 #import "ContactsView.h"
 #import "SingleTone.h"
+#import "FormalizationController.h"
+#import "BasketController.h"
+
+@interface ContactsController () <BottomBasketViewDelegate>
+
+@property (strong, nonatomic) BottomBasketView * basketView;
+
+@end
 
 @implementation ContactsController
 
@@ -34,6 +42,12 @@
     [self.view addSubview:mainView];
     
 
+    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+    self.basketView.delegate = self;
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }
+    [self.view addSubview:self.basketView];
     
 }
 
@@ -43,5 +57,17 @@
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
     [self.navigationController pushViewController:detail animated:NO];
 }
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
 
 @end

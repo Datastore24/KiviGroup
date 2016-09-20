@@ -13,11 +13,14 @@
 #import "BasketController.h"
 #import "FormalizationController.h"
 #import "SingleTone.h"
+#import "FormalizationController.h"
+#import "BasketController.h"
 
-@interface BuyViewController () <BuyViewDelegate>
+@interface BuyViewController () <BuyViewDelegate, BottomBasketViewDelegate>
 
 @property (strong, nonatomic) UILabel * label;
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
 
@@ -55,8 +58,24 @@
     mainView.deleagte = self;
     [self.view addSubview:mainView];
     
-
+    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+    self.basketView.delegate = self;
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }
+    [self.view addSubview:self.basketView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     
+}
+
+- (void) showBasketView: (NSNotification*) notification {
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.alpha = 1.f;
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -112,6 +131,17 @@
 - (void) buttonContentsAction {
     FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
     [self.navigationController pushViewController:detail animated:NO];
+}
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
  
 @end
