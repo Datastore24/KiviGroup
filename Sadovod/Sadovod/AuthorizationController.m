@@ -14,6 +14,7 @@
 #import "RegistrationController.h"
 #import "FormalizationController.h"
 #import "BasketController.h"
+#import "ChangePasswordController.h"
 
 @interface AuthorizationController () <AuthorizationViewDelegate, BottomBasketViewDelegate>
 
@@ -75,6 +76,11 @@
 - (void) methodRegistration: (AuthorizationView*) authorizationView {
     RegistrationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RegistrationController"];
     [self.navigationController pushViewController:detail animated:NO];
+}
+
+- (void) pushChangePassWork: (AuthorizationView*) authorizationView {
+    ChangePasswordController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - BottomBasketViewDelegate

@@ -45,7 +45,7 @@
 {
     NSMutableArray * arrayDetails = [[NSMutableArray alloc] init];
     NSArray * arrayName = [NSArray arrayWithObjects: @"Кеды", @"Свитер", @"Штаны", @"Рубашка", nil];
-    NSArray * arraySize = [NSArray arrayWithObjects:@"37", @"40", @"35", @"39", nil];
+    NSArray * arraySize = [NSArray arrayWithObjects:@"37", @"40", @"Без размера", @"39", nil];
     NSArray * arrayCount = [NSArray arrayWithObjects:@"1", @"2", @"1", @"1", nil];
     NSArray * arrayPrice = [NSArray arrayWithObjects:@"453", @"347", @"275", @"393", nil];
     NSArray * arrayImage = [NSArray arrayWithObjects:@"basketImage4.png", @"basketImage1.png", @"basketImage2.png", @"busketImage3.png", nil];
