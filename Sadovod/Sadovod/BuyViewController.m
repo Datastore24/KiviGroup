@@ -32,7 +32,7 @@
 
     if (self.label == nil) {
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 24, 80, 40)];
-        self.label.text = @"220 руб";
+        self.label.text = [NSString stringWithFormat:@"%@ руб",self.productPrice];
         self.label.textColor = [UIColor whiteColor];
         self.label.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         [self.navigationController.view.window addSubview:self.label];
@@ -43,7 +43,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    [self setCustomTitle:@"Капри" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
     UIButton * buttonBack = [UIButton createButtonBack];

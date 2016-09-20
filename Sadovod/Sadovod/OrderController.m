@@ -77,8 +77,11 @@
 
 #pragma mark - OrderViewDelegate
 
-- (void) pushTuBiyView: (OrderView*) orderView {
+- (void) pushTuBiyView: (OrderView*) orderView{
     BuyViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"];
+    detail.productID = self.productID;
+    detail.productName = self.productName;
+    detail.productPrice = self.productPrice;
     [self.navigationController pushViewController:detail animated:NO];
 }
 
