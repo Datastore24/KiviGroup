@@ -29,6 +29,8 @@
 
 - (void) createMainBasketWithCount: (NSString*) count andPrice: (NSString*) price;
 
+- (void) changeCountString;
+
 
 
 @end

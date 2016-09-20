@@ -13,6 +13,7 @@
 @interface BottomBasketView : UIView
 
 @property (weak,nonatomic) id <BottomBasketViewDelegate> delegate;
+@property (strong, nonatomic) UIButton * buttonBasket;
 
 - (instancetype)initBottomBasketViewWithPrice: (NSString*) price andCount: (NSString*) count andView: (UIView*) view;
 

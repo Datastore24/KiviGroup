@@ -35,6 +35,7 @@
     } else {
         self.mainViewOrder.alpha = 1.f;
     }
+    
 }
 
 - (void)viewDidLoad {

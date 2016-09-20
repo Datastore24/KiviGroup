@@ -331,6 +331,10 @@
             NSInteger count = [buttonLabelSize.titleLabel.text integerValue];
             count += 1;
             self.counterOrder += 1;
+            NSInteger priceCount = [[[SingleTone sharedManager] countType] integerValue];
+            priceCount += 1;
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", priceCount]];
+            [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{
                 [buttonLabelSize setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
                 buttonLabelSize.alpha = 1.f;

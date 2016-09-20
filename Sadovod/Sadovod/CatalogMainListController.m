@@ -25,6 +25,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    [self changeCountString];
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0.f;
     self.mainView.frame = rectView;
