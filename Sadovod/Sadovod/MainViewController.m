@@ -43,6 +43,14 @@
     [self.view addSubview:self.mainViewOrder];
 }
 
+- (void) changeCountString {
+        [self.mainViewOrder.buttonBasket setTitle:[NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"500"] forState:UIControlStateNormal];
+    [self performSelector:@selector(alphaMethod) withObject:nil afterDelay:0.1];
+}
+
+- (void) alphaMethod {
+    self.mainViewOrder.alpha = 1.f;
+}
 
 -(void) initializeCartBarButton
 {

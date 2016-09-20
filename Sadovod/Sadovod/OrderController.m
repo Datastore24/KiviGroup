@@ -29,17 +29,17 @@
     rectView.origin.y = 0;
     self.mainView.frame = rectView;
     if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainViewOrder.alpha = 0.f;
+//        self.mainViewOrder.alpha = 0.f;
         self.mainView.mainScrollView.frame = rectView;
     } else {
-        self.mainViewOrder.alpha = 1.f;
+//        self.mainViewOrder.alpha = 1.f;
         self.mainView.mainScrollView.frame = rectView;
     }
 }
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-            [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод
+    [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод
      [self initializeCartBarButton]; //Инициализация кнопок навигации
     //    [self.navigationController setNavigationBarHidden:NO];
     
@@ -81,6 +81,10 @@
 - (void) pushTuBiyView: (OrderView*) orderView {
     BuyViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"];
     [self.navigationController pushViewController:detail animated:NO];
+}
+
+- (void) showBottomBar: (OrderView*) orderView {
+    [self changeCountString];
 }
 
 #pragma mark - Actions
