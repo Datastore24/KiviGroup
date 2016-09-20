@@ -327,14 +327,17 @@
 - (void) buttonSizeAction: (CustomButton*) button {
     for (int i = 0; i < self.arraySizes.count; i++) {
         if (button.tag == 50 + i) {
+           
             UIButton * buttonLabelSize = [self viewWithTag:60 + i];
             NSInteger count = [buttonLabelSize.titleLabel.text integerValue];
             count += 1;
             self.counterOrder += 1;
             NSInteger priceCount = [[[SingleTone sharedManager] countType] integerValue];
             priceCount += 1;
-            NSLog(@"%@",button.customID);
+            
             [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", priceCount]];
+            
+            
             [self.delegate getApiAddCart:self andProductID:button.customID];
             [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{

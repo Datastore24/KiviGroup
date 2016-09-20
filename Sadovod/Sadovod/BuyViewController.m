@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) UILabel * label;
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCart;
 @property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
@@ -59,13 +60,19 @@
     [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
-    self.arrayData = [self setCustonArray];
+   
+    [self getApiProduct:^{
+        
+
+        BuyView * mainView = [[BuyView alloc] initWithView:self.view andData:self.arrayData andCart:self.arrayCart];
+        mainView.deleagte = self;
+        [self.view addSubview:mainView];
+        
+    } andProductID:self.productID];
     
 #pragma mark - View
     
-    BuyView * mainView = [[BuyView alloc] initWithView:self.view andData:self.arrayData];
-    mainView.deleagte = self;
-    [self.view addSubview:mainView];
+    
     
     self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
     self.basketView.delegate = self;
@@ -94,24 +101,6 @@
     
 }
 
-- (NSMutableArray*) setCustonArray
-{
-    NSMutableArray * arrayDetails = [[NSMutableArray alloc] init];
-    NSArray * arraySizes = [NSArray arrayWithObjects:
-                            @"36", @"37", @"38", @"39", @"40", @"41", nil];
-    NSArray * arrayOrderCount = [NSArray arrayWithObjects:@"1", @"0", @"0", @"0", @"1", @"0", nil];
-
-    for (int i = 0; i < arraySizes.count; i++) {
-        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [arraySizes objectAtIndex:i], @"size",
-                               [arrayOrderCount objectAtIndex:i], @"count", nil];
-        [arrayDetails addObject:dict];
-    }
-
-    
-    
-    return arrayDetails;
-}
 
 #pragma mark - Actions
 
@@ -159,6 +148,62 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
+-(void) getApiAddToBasket: (NSString *) productID
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"size",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"buy_product_add" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            
+            NSLog(@"RESP %@",respDict);
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getApiDelToBasket: (NSString *) productID
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"size",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"buy_product_del" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            
+            NSLog(@"RESP %@",respDict);
+            
+            
+        }
+        
+    }];
+    
+}
+
 #pragma mark - API
 
 -(void) getApiProduct: (void (^)(void))block andProductID: (NSString *) productID
@@ -179,7 +224,39 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
             
-            self.arrayData = [respDict objectForKey:@"product"];
+            
+            self.arrayData = [[respDict objectForKey:@"product"] objectForKey:@"sizes"];
+            
+            [self getApiCart:^{
+                block();
+            }];
+
+        }
+        
+    }];
+    
+}
+
+-(void) getApiCart: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"cart_info_detail" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+           
+            
+            self.arrayCart = [respDict objectForKey:@"list"] ;
             
             
             block();
@@ -190,5 +267,7 @@
     }];
     
 }
+
+
  
 @end

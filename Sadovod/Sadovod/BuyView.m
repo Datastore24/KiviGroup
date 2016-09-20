@@ -21,6 +21,7 @@
 //Main
 
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCart;
 
 //TableSize
 
@@ -37,11 +38,13 @@
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data
+                     andCart: (NSArray *) cart
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         self.arrayData = data;
+        self.arrayCart = cart;
         
         //Table Size
         
@@ -115,7 +118,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    [CheckDataServer checkDataServer:self.arrayData andMessage:@"Нет категорий для отображения" view:tableView];
+    [CheckDataServer checkDataServer:self.arrayData andMessage:@"Нет размеров для отображения" view:tableView];
     
     
     return self.arrayData.count;
@@ -136,10 +139,30 @@
     
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
     
+    if([[dict objectForKey:@"aviable"] integerValue] == 1){
+        NSString * count;
+        for (int i=0; i<self.arrayCart.count; i++) {
+            NSLog(@"SIZE ID %@ CART %@",[dict objectForKey:@"id"],[[self.arrayCart objectAtIndex:i] objectForKey:@"price_id"]);
+            
+            
+            if([[dict objectForKey:@"id"] integerValue] == [[[self.arrayCart objectAtIndex:i] objectForKey:@"price_id"] integerValue]){
+                count =[[self.arrayCart objectAtIndex:i] objectForKey:@"count"];
+            }else{
+                count =@"0";
+            }
+        }
+        if(self.arrayCart.count ==0){
+            count = @"0";
+        }
+        NSLog(@"COUNT %@",count);
+        [cell.contentView addSubview:[self createCustomCellWithSize:[dict objectForKey:@"value"]
+                                                           andCount:count
+                                                       andProductID:[dict objectForKey:@"id"]
+                                                      andCounterTag:indexPath.row]];
+    }
     
-    [cell.contentView addSubview:[self createCustomCellWithSize:[dict objectForKey:@"size"]
-                                                       andCount:[dict objectForKey:@"count"]
-                                                  andCounterTag:indexPath.row]];
+    
+   
 
     return cell;
 }
@@ -159,6 +182,7 @@
 
 - (UIView*) createCustomCellWithSize: (NSString*) size
                             andCount: (NSString*) count
+                        andProductID: (NSString*) productID
                        andCounterTag: (NSInteger) counterTag {
     UIView * customCell = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 46.f)];
     
@@ -188,8 +212,9 @@
     CustomLabels * labelSize = [[CustomLabels alloc] initLabelWithWidht:45.f andHeight:16.f andColor:@"000000" andText:[NSString stringWithFormat:@"размер: %@", size] andTextSize:13 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [customCell addSubview:labelSize];
     
-    UIButton * buttonDown = [UIButton buttonWithType:UIButtonTypeSystem];
+    CustomButton * buttonDown = [CustomButton buttonWithType:UIButtonTypeSystem];
     buttonDown.frame = CGRectMake(self.frame.size.width - 100.f, 17.f, 15.f, 15.f);
+    buttonDown.customID = productID;
     [buttonDown setTitle:@"-" forState:UIControlStateNormal];
     [buttonDown setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_300] forState:UIControlStateNormal];
     buttonDown.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:30];
@@ -197,8 +222,9 @@
     [buttonDown addTarget:self action:@selector(buttonDownAction:) forControlEvents:UIControlEventTouchUpInside];
     [customCell addSubview:buttonDown];
     
-    UIButton * buttonUp = [UIButton buttonWithType:UIButtonTypeSystem];
+    CustomButton * buttonUp = [CustomButton buttonWithType:UIButtonTypeSystem];
     buttonUp.frame = CGRectMake(self.frame.size.width - 40.f, 17.f, 15.f, 15.f);
+    buttonUp.customID = productID;
     [buttonUp setTitle:@"+" forState:UIControlStateNormal];
     [buttonUp setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_300] forState:UIControlStateNormal];
     buttonUp.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:30];
@@ -282,11 +308,12 @@
 }
 
 //действие кнопки увеличивающей колличестко конкретного товара
-- (void) buttonUpAction: (UIButton*) button {
+- (void) buttonUpAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 200 + i) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
+            [self.deleagte getApiAddToBasket:button.customID];
             NSInteger countUp = [label.text integerValue];
             countUp += 1;
             NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
@@ -308,11 +335,12 @@
 }
 
 //действие кнопки уменьшения колличестко конкретного товара
-- (void) buttonDownAction: (UIButton*) button {
+- (void) buttonDownAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 100 + i) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
+             [self.deleagte getApiDelToBasket:button.customID];
             NSInteger countUp = [label.text integerValue];
             if (countUp == 1) {
                 [UIView animateWithDuration:0.2 animations:^{
@@ -331,6 +359,7 @@
                     label.text = [NSString stringWithFormat:@"%d", countUp];
                 }];
             }
+            
         }
     }
 }
