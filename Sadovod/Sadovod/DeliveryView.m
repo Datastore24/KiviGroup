@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "UIView+BorderView.h"
+#import "SingleTone.h"
 
 @interface DeliveryView ()
 
@@ -29,7 +30,11 @@
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
-        self.mainScrollView.contentSize = CGSizeMake(0, 550);
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainScrollView.contentSize = CGSizeMake(0, 550);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0, 550 + 40);
+        }
         [self addSubview:self.mainScrollView];
         
         CustomLabels * labelTitl = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:15.f andSizeWidht:self.frame.size.width - 30 andSizeHeight:40 andColor:@"000000"

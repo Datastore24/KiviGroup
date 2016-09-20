@@ -18,12 +18,18 @@
 
 @interface CatalogDetailController () <CatalogDetailViewDelegate>
 
-
-
-
 @end
 
 @implementation CatalogDetailController
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +51,8 @@
         CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
         mainView.delegate = self;
         [self.view addSubview:mainView];
+        
+        [self createMainBasketWithCount:@"4" andPrice:@"5700"];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

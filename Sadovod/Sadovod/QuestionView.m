@@ -31,7 +31,7 @@
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         
-        UIView * viewCentre = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 130.f, 20.f, 260.f, self.frame.size.height - 30.f)];
+        UIView * viewCentre = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 130.f, 20.f, 260.f, self.frame.size.height - 90.f)];
         viewCentre.backgroundColor = [UIColor whiteColor];
         [viewCentre.layer setBorderColor:[UIColor colorWithWhite:0.8f alpha:0.6f].CGColor];
         viewCentre.layer.borderWidth = 1.5f;
@@ -66,7 +66,7 @@
         }
         
         
-        UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 240.f, viewCentre.frame.size.width - 30.f, 160.f)];
+        UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 240.f, viewCentre.frame.size.width - 30.f, 100.f)];
         textView.textColor = [UIColor blackColor];
         textView.delegate = self;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
@@ -83,7 +83,7 @@
         [viewCentre addSubview:self.labelNumberComments];
     
         UIButton * buttonEntrance = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonEntrance.frame = CGRectMake(15.f, 415.f, viewCentre.frame.size.width - 30.f, 40);
+        buttonEntrance.frame = CGRectMake(15.f, 355.f, viewCentre.frame.size.width - 30.f, 40);
         buttonEntrance.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
         [buttonEntrance setTitle:@"Оставить вопрос" forState:UIControlStateNormal];
         [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

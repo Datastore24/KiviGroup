@@ -13,9 +13,11 @@
 #import "SingleTone.h"
 #import "BasketController.h"
 #import "AuthorizationController.h"
+#import "BasketController.h"
+#import "FormalizationController.h"
 
 
-@interface MainViewController ()
+@interface MainViewController () <BottomBasketViewDelegate>
 
 @property (strong, nonatomic) UIView *backView;
 
@@ -27,14 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setStatusBarBackgroundColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_900]];
-    
-
-//    self.mainViewOrder = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50)];
-//    self.mainViewOrder.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.3];
-//    self.mainViewOrder.alpha = 0.f;
-//    UIWindow* mainWindow = [[UIApplication sharedApplication] keyWindow];
-//    [mainWindow addSubview: self.mainViewOrder];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,10 +37,15 @@
     
 }
 
+- (void) createMainBasketWithCount: (NSString*) count andPrice: (NSString*) price {
+    self.mainViewOrder = [[BottomBasketView alloc] initBottomBasketViewWithPrice:price andCount:count andView:self.view];
+    self.mainViewOrder.delegate = self;
+    [self.view addSubview:self.mainViewOrder];
+}
+
 
 -(void) initializeCartBarButton
 {
-    
     //Пареметры кнопки меню------------------------------------
     UIButton * buttonMenu = [UIButton createButtonMenu];
     [buttonMenu addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -62,9 +61,6 @@
     [buttonAvtorization addTarget:self action:@selector(buttonAvtorization) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * avtorizationButton =[[UIBarButtonItem alloc] initWithCustomView:buttonAvtorization];
     self.navigationItem.rightBarButtonItem = avtorizationButton;
-    
-    
-    
 }
 
 - (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool andButtonBasket: (BOOL) barBasket
@@ -118,6 +114,18 @@
     AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
     [self.navigationController pushViewController:detail animated:YES];
     
+}
+
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

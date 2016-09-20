@@ -13,6 +13,7 @@
 @interface CatalogListView : UIView
 
 @property (weak, nonatomic) id <CatalogListViewDelegate> delegate;
+@property (strong, nonatomic) UITableView * tableCatalog;
 
 
 - (instancetype)initWithView: (UIView*) view

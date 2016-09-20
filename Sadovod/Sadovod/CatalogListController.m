@@ -27,8 +27,21 @@
     [super viewWillAppear:YES];
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0.f;
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+    rectView.size.height += 64;
+    } else {
+       rectView.size.height += 14;
+    }
     self.mainView.frame = rectView;
+    self.mainView.tableCatalog.frame = rectView;
     
+    
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainViewOrder.alpha = 0.f;
+        } else {
+            self.mainViewOrder.alpha = 1.f;
+        }
+
 }
 
 - (void)viewDidLoad {
@@ -52,6 +65,8 @@
         self.mainView = [[CatalogListView alloc] initWithView:self.view andData:self.arrayCatalog];
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
+        
+        [self createMainBasketWithCount:@"4" andPrice:@"5700"];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

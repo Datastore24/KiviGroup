@@ -15,6 +15,11 @@
 @property (strong,nonatomic) NSString* catalogKey;
 @property (strong, nonatomic) NSString * typeMenu;
 
+//Временные синглтоны корзины (после подвязки базы удалить)
+
+@property (strong, nonatomic) NSString * countType; //Колличество выбранного товара
+@property (strong, nonatomic) NSString * priceType; //Общая цена выбранных товаров
+
 + (id)sharedManager;
 
 @end

@@ -9,8 +9,18 @@
 #import "AboutStoreController.h"
 #import "CatalogController.h"
 #import "AboutStoreView.h"
+#import "SingleTone.h"
 
 @implementation AboutStoreController
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
+}
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +36,8 @@
     
     AboutStoreView * mainView = [[AboutStoreView alloc] initWithView:self.view andData:nil];
     [self.view addSubview:mainView];
+    
+    [self createMainBasketWithCount:@"4" andPrice:@"5700"];
     
 }
 

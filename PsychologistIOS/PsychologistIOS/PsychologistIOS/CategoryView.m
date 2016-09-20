@@ -275,20 +275,12 @@
     
     static NSString *CellIdentifier = @"newFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     for (UIView * view in cell.contentView.subviews) {
-        
         [view removeFromSuperview];
     }
-    
-
-   
-
-    
     cell.backgroundColor = nil;
     NSDictionary * dictCell ;
      if (isSearching) {

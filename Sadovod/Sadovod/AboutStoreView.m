@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "UIView+BorderView.h"
+#import "SingleTone.h"
 
 @interface AboutStoreView ()
 
@@ -29,7 +30,11 @@
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
-        self.mainScrollView.contentSize = CGSizeMake(0, 570);
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainScrollView.contentSize = CGSizeMake(0.f, 570.f);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0.f, 570.f + 50);
+        }
         [self addSubview:self.mainScrollView];
         
         

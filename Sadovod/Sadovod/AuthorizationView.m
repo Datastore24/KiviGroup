@@ -71,11 +71,13 @@
             [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             buttonEntrance.layer.cornerRadius = 3.f;
             buttonEntrance.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+            [buttonEntrance addTarget:self action:@selector(buttonEntranceAction) forControlEvents:UIControlEventTouchUpInside];
             [viewCentre addSubview:buttonEntrance];
             
             UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonRegistration.frame = CGRectMake(30.f, 260.f, 100, 20);
             [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
+            [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction) forControlEvents:UIControlEventTouchUpInside];
             [buttonRegistration setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
             buttonRegistration.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
             [self addSubview:buttonRegistration];
@@ -283,5 +285,20 @@
         return NO;
         
     }
+}
+
+#pragma mark - Actions
+
+//Дествие кнопки Войти
+- (void) buttonEntranceAction {
+    [[SingleTone sharedManager] setTypeMenu:@"1"]; //Меняем синглтон авторизации
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTORIZATION object:nil]; //Производим оповещение требуемых окон
+    
+    [self.delegate methodInput:self];
+}
+
+//Действие кнопки регистрация
+- (void) buttonRegistrationAction {
+    [self.delegate methodRegistration:self];
 }
 @end

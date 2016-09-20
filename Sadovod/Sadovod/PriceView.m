@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "UIView+BorderView.h"
+#import "SingleTone.h"
 
 @interface PriceView ()
 
@@ -30,6 +31,11 @@
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
         [self addSubview:self.mainScrollView];
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainScrollView.contentSize = CGSizeMake(0, 0);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0, self.frame.size.height - 20);
+        }
         
         UILabel * textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 15.f, self.frame.size.width - 30, 130)];
         textLabel.textColor = [UIColor blackColor];

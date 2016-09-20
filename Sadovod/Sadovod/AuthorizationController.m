@@ -10,8 +10,27 @@
 #import "CatalogController.h"
 #import "AuthorizationView.h"
 #import "SingleTone.h"
+#import "CatalogController.h"
+#import "RegistrationController.h"
+
+@interface AuthorizationController () <AuthorizationViewDelegate>
+
+@end
 
 @implementation AuthorizationController
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        if (![[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 1.f;
+        } else {
+          self.mainViewOrder.alpha = 0.f;
+        }
+    }
+}
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +49,10 @@
 #pragma mark - View
     
     AuthorizationView * mainView = [[AuthorizationView alloc] initWithView:self.view andData:nil];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
+    
+    [self createMainBasketWithCount:@"4" andPrice:@"5700"];
     
 }
 
@@ -38,6 +60,17 @@
 
 - (void) buttonBackAction {
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:NO];
+}
+
+#pragma mark - AuthorizationViewDelegate
+
+- (void) methodInput: (AuthorizationView*) authorizationView {
+    [self buttonBackAction];
+}
+
+- (void) methodRegistration: (AuthorizationView*) authorizationView {
+    RegistrationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RegistrationController"];
     [self.navigationController pushViewController:detail animated:NO];
 }
 
