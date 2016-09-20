@@ -422,6 +422,8 @@
 		FFD1D38B1D8ABFF200E5BE8B /* exitMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D38A1D8ABFF200E5BE8B /* exitMenu.png */; };
 		FFD1D38F1D8AC36D00E5BE8B /* entrance.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D38E1D8AC36D00E5BE8B /* entrance.png */; };
 		FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */; };
+		FFD1D3961D917E0500E5BE8B /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3951D917E0500E5BE8B /* ChangePasswordController.m */; };
+		FFD1D3991D917E1200E5BE8B /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3981D917E1200E5BE8B /* ChangePasswordView.m */; };
 		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
 		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
 		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
@@ -952,6 +954,10 @@
 		FFD1D38E1D8AC36D00E5BE8B /* entrance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entrance.png; sourceTree = "<group>"; };
 		FFD1D3901D8FF50200E5BE8B /* BottomBasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBasketView.h; sourceTree = "<group>"; };
 		FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBasketView.m; sourceTree = "<group>"; };
+		FFD1D3941D917E0500E5BE8B /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
+		FFD1D3951D917E0500E5BE8B /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
+		FFD1D3971D917E1200E5BE8B /* ChangePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
+		FFD1D3981D917E1200E5BE8B /* ChangePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
 		FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BagroungImage.h"; sourceTree = "<group>"; };
 		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
 		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
@@ -1193,6 +1199,7 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
+				FFD1D3931D917DC500E5BE8B /* ChangePassword */,
 				FF3A05EA1D87F4D1009012E8 /* Sizes */,
 				FFBF91F01D82EF9900F8A0A1 /* Return */,
 				FFBF91E61D82E50400F8A0A1 /* AboutStore */,
@@ -2013,6 +2020,17 @@
 			name = MyOrders;
 			sourceTree = "<group>";
 		};
+		FFD1D3931D917DC500E5BE8B /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				FFD1D3941D917E0500E5BE8B /* ChangePasswordController.h */,
+				FFD1D3951D917E0500E5BE8B /* ChangePasswordController.m */,
+				FFD1D3971D917E1200E5BE8B /* ChangePasswordView.h */,
+				FFD1D3981D917E1200E5BE8B /* ChangePasswordView.m */,
+			);
+			name = ChangePassword;
+			sourceTree = "<group>";
+		};
 		FFE10F331D75995B00532346 /* BuyViewImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -2654,6 +2672,7 @@
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
 				FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */,
 				FFAE2E361D65A10300E81AED /* SWRevealViewController.m in Sources */,
+				FFD1D3961D917E0500E5BE8B /* ChangePasswordController.m in Sources */,
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,
 				FFC4FD731D676800007C2DDC /* CatalogDetailView.m in Sources */,
 				AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */,
@@ -2664,6 +2683,7 @@
 				FFE10F401D75BF6F00532346 /* BasketView.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFA5FFF91D81794D00CD6E7F /* QuestionController.m in Sources */,
+				FFD1D3991D917E1200E5BE8B /* ChangePasswordView.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
 				FFBF91E21D82E00E00F8A0A1 /* ContactsController.m in Sources */,
