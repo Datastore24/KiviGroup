@@ -82,7 +82,7 @@
     [self.navigationController pushViewController:detail animated:NO];
 }
 
-- (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID andCount: (NSString *) countProduct
+- (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -91,11 +91,11 @@
                              
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
-                             productID,@"price",
-                             countProduct, @"count",
+                             productID,@"size",
+  
                              nil];
     
-    [api getDataFromServerWithParams:params method:@"cart_change_count" complitionBlock:^(id response) {
+    [api getDataFromServerWithParams:params method:@"buy_product_add" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
             
