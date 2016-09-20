@@ -38,8 +38,12 @@
     self.mainView.frame = rectView;
     self.mainView.tableCatalog.frame = rectView;
     
-    
-
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }  else {
+        self.basketView.alpha = 0.f;
+    }
 
 }
 
@@ -76,7 +80,7 @@
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
+
     
     //Параметры кнопки корзины
     self.buttonBasket.alpha = 0.4;
@@ -86,12 +90,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) showBasketView: (NSNotification*) notification {
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
-    self.basketView.alpha = 1.f;
-    
 }
 
 - (void) dealloc {

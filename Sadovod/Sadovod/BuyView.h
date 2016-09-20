@@ -27,7 +27,10 @@
 
 - (void) hideCountOrder: (BuyView*) buyView;
 
+- (void) showBasketView: (BuyView*) buyView;
+
 - (void) getApiAddToBasket: (NSString *) productID;
 - (void) getApiDelToBasket: (NSString *) productID;
+
 
 @end

@@ -198,11 +198,11 @@
         buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
         buttonSize.isBool = YES;
     }
-    if ([count integerValue] != 0) {
-        NSInteger countInt = [count integerValue];
-        NSInteger countAll = [[[SingleTone sharedManager] countType] integerValue] + countInt;
-        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countAll]];
-    }
+//    if ([count integerValue] != 0) {
+//        NSInteger countInt = [count integerValue];
+//        NSInteger countAll = [[[SingleTone sharedManager] countType] integerValue] + countInt;
+//        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countAll]];
+//    }
 
     [buttonSize setImage:[UIImage imageNamed:@"confirmButtonCount.png"] forState:UIControlStateNormal];
     [self.buttonMax setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
@@ -316,6 +316,9 @@
             [self.deleagte getApiAddToBasket:button.customID];
             NSInteger countUp = [label.text integerValue];
             countUp += 1;
+            NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
+            countSinglOrder += 1;
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
             //Тестовый привер вспывающего вью
             [self.deleagte addCountOrder:self];            
             
@@ -351,7 +354,6 @@
                 NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
                 countSinglOrder -= 1;
                 [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
-                NSLog(@"[[SingleTone sharedManager] countType] %@", [[SingleTone sharedManager] countType]);
                 [self.deleagte hideCountOrder:self];
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
