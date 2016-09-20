@@ -33,7 +33,8 @@
                   andBlock:(void (^)(void))block;
 
 - (void) pushToBuyView: (CatalogView*) catalogView andProductID:(NSString *) productID
-        andProductName:(NSString *) productName;
+       andProductPrice:(NSString *) productPrice
+        andProductName:(NSString *) productName ;
 
 
 @end

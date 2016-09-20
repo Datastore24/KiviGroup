@@ -151,6 +151,7 @@
                                 buttonProduct.backgroundColor = [UIColor whiteColor];
                                 buttonProduct.customID = [dictProduct objectForKey:@"id"];
                                 buttonProduct.customName = [dictProduct objectForKey:@"name"];
+                                buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
                                 buttonProduct.tag = 30 + i;
                                 [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                
@@ -249,7 +250,7 @@
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 30 + i) {
             NSLog(@"CUSTOM ID %@", button.customID);
-            [self.delegate pushToBuyView:self andProductID:button.customID andProductName:button.customName];
+            [self.delegate pushToBuyView:self andProductID:button.customID andProductPrice:button.customValueTwo andProductName:button.customName];
         }
     }
     
