@@ -24,7 +24,7 @@
 
 @interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate>
 
-
+@property (strong, nonatomic) BottomBasketView * basketView;
 
 
 @end
@@ -49,17 +49,19 @@
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
             [self.view addSubview:mainView];
-            BottomBasketView * basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
-            basketView.delegate = self;
+            
+            self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+            self.basketView.delegate = self;
             if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
-                basketView.alpha = 1.f;
+                self.basketView.alpha = 1.f;
             }
-            [self.view addSubview:basketView];
+            [self.view addSubview:self.basketView];
         }];
         
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     
     //Параметры кнопки корзины
     self.buttonBasket.alpha = 0.4;
@@ -77,6 +79,18 @@
     self.buttonBasket.alpha = 1.;
     self.buttonBasket.userInteractionEnabled = YES;
 }
+
+- (void) showBasketView: (NSNotification*) notification {
+        self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+        self.basketView.alpha = 1.f;
+ 
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 
 
 

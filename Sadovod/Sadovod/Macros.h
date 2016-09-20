@@ -51,5 +51,7 @@
 #define NOTIFICATION_CHECK_COUNT_ORDER @"NOTIFICATION_CHECK_COUNT_ORDER"
 //Нотификация авторизации
 #define NOTIFICATION_AUTORIZATION @"NOTIFICATION_AUTORIZATION"
+//Нотификация определения колличества и цены заказов
+#define NOTIFICATION_SHOW_BASKET_VIEW @"NOTIFICATION_SHOW_BASKET_VIEW"
 
 #endif /* Macros_h */

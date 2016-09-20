@@ -16,6 +16,8 @@
 
 @property (strong, nonatomic) MainViewController * mainController;
 
+
+
 @end
 
 @implementation BottomBasketView
@@ -32,12 +34,20 @@
         
         self.buttonBasket = [UIButton buttonWithType:UIButtonTypeSystem];
         self.buttonBasket.frame = CGRectMake(10.f, 0.f, view.frame.size.width - 110.f, 50.f);
-        [self.buttonBasket setTitle:[NSString stringWithFormat:@"Итого %@ шт на %@ руб", count, price] forState:UIControlStateNormal];
-        [self.buttonBasket setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self.buttonBasket setTitle:[NSString stringWithFormat:@"Итого %@ шт на %@ руб", count, price] forState:UIControlStateNormal];
+//        [self.buttonBasket setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.buttonBasket.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         self.buttonBasket.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.buttonBasket];
+        
+        self.labelButtonBasket = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, view.frame.size.width - 110.f, 50.f)];
+        self.labelButtonBasket.textColor = [UIColor whiteColor];
+        self.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", count, price];
+        self.labelButtonBasket.textAlignment = NSTextAlignmentLeft;
+        self.labelButtonBasket.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        [self.buttonBasket addSubview:self.labelButtonBasket];
+        
         
         UIView * backgroundView = [[UIView alloc] initWithFrame:CGRectMake(view.frame.size.width - 100.f, 0.f, 1.f, 50.f)];
         backgroundView.backgroundColor = [UIColor blackColor];

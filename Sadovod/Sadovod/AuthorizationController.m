@@ -12,8 +12,12 @@
 #import "SingleTone.h"
 #import "CatalogController.h"
 #import "RegistrationController.h"
+#import "FormalizationController.h"
+#import "BasketController.h"
 
-@interface AuthorizationController () <AuthorizationViewDelegate>
+@interface AuthorizationController () <AuthorizationViewDelegate, BottomBasketViewDelegate>
+
+@property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
 
@@ -43,6 +47,15 @@
     mainView.delegate = self;
     [self.view addSubview:mainView];
     
+    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+    self.basketView.delegate = self;
+
+    if ([[[SingleTone sharedManager] typeMenu] integerValue] != 0) {
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }
+    }
+    [self.view addSubview:self.basketView];
     
 }
 
@@ -62,6 +75,17 @@
 - (void) methodRegistration: (AuthorizationView*) authorizationView {
     RegistrationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RegistrationController"];
     [self.navigationController pushViewController:detail animated:NO];
+}
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 

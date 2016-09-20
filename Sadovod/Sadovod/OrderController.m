@@ -12,11 +12,14 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "Macros.h"
+#import "BasketController.h"
+#import "FormalizationController.h"
 
-@interface OrderController () <OrderViewDelegate>
+@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
 @property (strong, nonatomic) OrderView * mainView;
+@property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
 
@@ -50,10 +53,15 @@
 #pragma mark - View
     [self getApiProduct:^{
         self.mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
-       
-
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
+        
+        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        self.basketView.delegate = self;
+        if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+            self.basketView.alpha = 1.f;
+        }
+        [self.view addSubview:self.basketView];
         
 
     } andProductID:self.productID];
@@ -96,16 +104,18 @@
             //self.arrayData = [respDict objectForKey:@"product"];
             
             NSLog(@"%@",[respDict objectForKey:@"message"]);
-            
-            
-            
+
         }
-        
     }];
-    
 }
 
 - (void) showBottomBar: (OrderView*) orderView {
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.basketView.alpha = 1.f;
+    } completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
+    }];
 
 }
 
@@ -181,7 +191,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - BottomBasketViewDelegate
 
-
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
 
 @end

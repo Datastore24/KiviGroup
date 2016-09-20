@@ -15,8 +15,12 @@
 #import "Filter.h"
 #import "FilterDbClass.h"
 #import "Macros.h"
+#import "FormalizationController.h"
+#import "BasketController.h"
 
-@interface CatalogDetailController () <CatalogDetailViewDelegate>
+@interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate>
+
+@property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
 
@@ -47,13 +51,31 @@
         mainView.delegate = self;
         [self.view addSubview:mainView];
         
+        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        self.basketView.delegate = self;
+        if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+            self.basketView.alpha = 1.f;
+        }
+        [self.view addSubview:self.basketView];
+        
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     
     //Параметры кнопки корзины
     self.buttonBasket.alpha = 0.4;
     self.buttonBasket.userInteractionEnabled = NO;
+}
+
+- (void) showBasketView: (NSNotification*) notification {
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.alpha = 1.f;
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -178,6 +200,17 @@
         
     }];
     
+}
+
+#pragma mark - BottomBasketViewDelegate
+
+- (void) actionBasket: (BottomBasketView*) bottomBasketView {
+    BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 
