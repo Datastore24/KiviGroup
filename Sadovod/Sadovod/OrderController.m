@@ -74,6 +74,37 @@
     [self.navigationController pushViewController:detail animated:NO];
 }
 
+- (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID andCount: (NSString *) countProduct
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"price",
+                             countProduct, @"count",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"cart_change_count" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            //self.arrayData = [respDict objectForKey:@"product"];
+            
+            NSLog(@"%@",[respDict objectForKey:@"message"]);
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
 - (void) showBottomBar: (OrderView*) orderView {
 
 }
