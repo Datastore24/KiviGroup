@@ -313,6 +313,7 @@
                     buttonProduct.backgroundColor =[UIColor whiteColor];
                     buttonProduct.customID = [dictProduct objectForKey:@"id"];
                     buttonProduct.customName = [dictProduct objectForKey:@"name"];
+                    buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
                     buttonProduct.tag = 30+i;
                     [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
                     

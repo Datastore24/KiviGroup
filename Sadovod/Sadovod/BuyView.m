@@ -142,19 +142,22 @@
     if([[dict objectForKey:@"aviable"] integerValue] == 1){
         NSString * count;
         for (int i=0; i<self.arrayCart.count; i++) {
-            NSLog(@"SIZE ID %@ CART %@",[dict objectForKey:@"id"],[[self.arrayCart objectAtIndex:i] objectForKey:@"price_id"]);
-            
-            
-            if([[dict objectForKey:@"id"] integerValue] == [[[self.arrayCart objectAtIndex:i] objectForKey:@"price_id"] integerValue]){
-                count =[[self.arrayCart objectAtIndex:i] objectForKey:@"count"];
+
+            if([[dict objectForKey:@"id"] longLongValue] == [[[self.arrayCart objectAtIndex:i] objectForKey:@"id"] longLongValue]){
+                
+                count =[NSString stringWithFormat:@"%@",[[self.arrayCart objectAtIndex:i] objectForKey:@"count"]] ;
+                
+                break;
             }else{
                 count =@"0";
+             
             }
         }
         if(self.arrayCart.count ==0){
             count = @"0";
+     
         }
-        NSLog(@"COUNT %@",count);
+     
         [cell.contentView addSubview:[self createCustomCellWithSize:[dict objectForKey:@"value"]
                                                            andCount:count
                                                        andProductID:[dict objectForKey:@"id"]
@@ -191,6 +194,7 @@
     buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"e8e8e8"].CGColor;
     buttonSize.layer.borderWidth = 2.f;
     buttonSize.layer.cornerRadius = 3.f;
+    buttonSize.customID = productID;
     buttonSize.isBool = NO;
     buttonSize.tag = 10 + counterTag;
     if (![count isEqualToString:@"0"]) {
@@ -369,11 +373,13 @@
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 10 + i) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
+            
             if (!button.isBool) {
                 [UIView animateWithDuration:0.2 animations:^{
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
                     button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
                     label.text = [NSString stringWithFormat:@"%d", 1];
+                    [self.deleagte getApiAddToBasket:button.customID];
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
                 
@@ -383,6 +389,7 @@
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"e8e8e8"].CGColor;
                     button.backgroundColor = [UIColor whiteColor];
                     label.text = [NSString stringWithFormat:@"%d", 0];
+                    [self.deleagte getApiClearSizeToBasket:button.customID];
                 } completion:^(BOOL finished) {
                     button.isBool = NO;
                 }];
