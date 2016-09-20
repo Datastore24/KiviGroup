@@ -37,7 +37,12 @@
     DeliveryView * mainView = [[DeliveryView alloc] initWithView:self.view andData:nil];
     [self.view addSubview:mainView];
     
-    [self createMainBasketWithCount:@"4" andPrice:@"5700"];
+    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
+    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
     
 }
 

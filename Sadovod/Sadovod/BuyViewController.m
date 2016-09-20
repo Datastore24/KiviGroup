@@ -12,6 +12,7 @@
 #import "HexColors.h"
 #import "BasketController.h"
 #import "FormalizationController.h"
+#import "SingleTone.h"
 
 @interface BuyViewController () <BuyViewDelegate>
 
@@ -25,6 +26,11 @@
 //Кастомный лейбл наносится на верхний бар
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
     if (self.label == nil) {
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 24, 80, 40)];
         self.label.text = @"220 руб";
@@ -52,6 +58,13 @@
     BuyView * mainView = [[BuyView alloc] initWithView:self.view andData:self.arrayData];
     mainView.deleagte = self;
     [self.view addSubview:mainView];
+    
+    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
+    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
     
 }
 

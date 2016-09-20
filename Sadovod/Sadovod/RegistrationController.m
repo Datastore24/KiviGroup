@@ -44,7 +44,12 @@
     RegistrationView * mainView = [[RegistrationView alloc] initWithView:self.view andData:[self createArray]];
     [self.view addSubview:mainView];
     
-    [self createMainBasketWithCount:@"4" andPrice:@"5700"];
+    [self createMainBasketWithCount:[[SingleTone sharedManager] countType] andPrice:@"5700"];
+    if ([[[SingleTone sharedManager] countType]integerValue] == 0) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
     
 }
 
