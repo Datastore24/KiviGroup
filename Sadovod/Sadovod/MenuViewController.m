@@ -30,6 +30,8 @@
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
     view.backgroundColor=[UIColor blackColor];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(autorization:) name:NOTIFICATION_AUTORIZATION object:nil];
+    
     
     //Основной цвет--------------------------
     self.view.backgroundColor = [UIColor whiteColor];
@@ -86,7 +88,15 @@
     cell.backgroundColor = nil;
     //Подвязываем картинки и заголовки--------
     TableMenuCell * customCell = [[TableMenuCell alloc] init];
-    [cell addSubview:[customCell setCellListWithName:[self.arrayNames objectAtIndex:indexPath.row]
+    for (UIView * view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    if ([[self.arrayNames objectAtIndex:indexPath.row] isEqualToString:@""]) {
+        cell.userInteractionEnabled = NO;
+    } else {
+        cell.userInteractionEnabled = YES;
+    }
+    [cell.contentView addSubview:[customCell setCellListWithName:[self.arrayNames objectAtIndex:indexPath.row]
                                         andImageName:[self.arrayImages objectAtIndex:indexPath.row]
                                          andMainView:cell]];
     
@@ -116,10 +126,44 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 12) {
+        [[SingleTone sharedManager] setTypeMenu:@"0"];
+        //Массив заголовков-----
+        self.arrayNames = [NSArray arrayWithObjects:@"Каталог товаров", @"Позвонить нам",
+                           @"Авторизация", @"Регистрация", @"Задать вопрос", @"Частые вопросы",
+                           @"Доставка", @"Оплата", @"Контакты", @"О магазине", @"Возврат", @"Таблица размеров", @"", nil];
+        //Массив картинок-------
+        self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"imageMenu13.png", @"registrationMenuImage.png",
+                            @"imageMenu5.png", @"imageMenu6.png", @"imageMenu7.png", @"imageMenu8.png", @"imageMenu9.png", @"imageMenu10.png",
+                            @"imageMenu11.png", @"imageMenu12.png", @"", nil];
+        [self.tableMenu reloadData];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 42.1f;
+}
+
+#pragma mark - Actions
+
+- (void) autorization: (NSNotification*) notification {
+    
+    //Массив заголовков-----
+    self.arrayNames = [NSArray arrayWithObjects:@"Каталог товаров", @"Позвонить нам",
+                       @"Мой профиль", @"Мои заказы", @"Задать вопрос", @"Частые вопросы",
+                       @"Доставка", @"Оплата", @"Контакты", @"О магазине", @"Возврат", @"Таблица размеров", @"Выход", nil];
+    //Массив картинок-------
+    self.arrayImages = [NSArray arrayWithObjects:@"imageMenu1.png", @"imageMenu2.png", @"personMenuImage.png", @"imageMenu4.png",
+                        @"imageMenu5.png", @"imageMenu6.png", @"imageMenu7.png", @"imageMenu8.png", @"imageMenu9.png", @"imageMenu10.png",
+                        @"imageMenu11.png", @"imageMenu12.png", @"exitMenu.png", nil];
+    
+    [self.tableMenu reloadData];
+}
+
+#pragma mark - Other
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

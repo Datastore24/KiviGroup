@@ -16,10 +16,26 @@
 @interface OrderController () <OrderViewDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
+@property (strong, nonatomic) OrderView * mainView;
 
 @end
 
 @implementation OrderController
+
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    CGRect rectView = self.mainView.frame;
+    rectView.origin.y = 0;
+    self.mainView.frame = rectView;
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+        self.mainView.mainScrollView.frame = rectView;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+        self.mainView.mainScrollView.frame = rectView;
+    }
+}
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -37,11 +53,13 @@
     
 #pragma mark - View
     [self getApiProduct:^{
-        OrderView * mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
+        self.mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
        
 
-        mainView.delegate = self;
-        [self.view addSubview:mainView];
+        self.mainView.delegate = self;
+        [self.view addSubview:self.mainView];
+        
+        [self createMainBasketWithCount:@"1" andPrice:@"5700"];
     } andProductID:self.productID];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

@@ -53,36 +53,6 @@
     mainView.deleagte = self;
     [self.view addSubview:mainView];
     
-    
-    //Временное вью для отображения корзины и оформления
-    //--------------------------
-    UIView * viewBasket = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.view.frame.size.height - 50.f, self.view.frame.size.width, 50.f)];
-    viewBasket.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.5];
-    
-    UIButton * buttonBasket = [UIButton buttonWithType:UIButtonTypeSystem];
-    buttonBasket.frame = CGRectMake(10.f, 0.f, self.view.frame.size.width - 110.f, 50.f);
-    [buttonBasket setTitle:@"Итого 1 шт на 400 руб" forState:UIControlStateNormal];
-    [buttonBasket setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    buttonBasket.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-    buttonBasket.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
-    [viewBasket addSubview:buttonBasket];
-    
-    UIView * backgroundView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 100.f, 0.f, 1.f, 50.f)];
-    backgroundView.backgroundColor = [UIColor blackColor];
-    [viewBasket addSubview:backgroundView];
-    
-    UIButton * buttonContents = [UIButton buttonWithType:UIButtonTypeSystem];
-    buttonContents.frame = CGRectMake(self.view.frame.size.width - 99.f, 0.f, 99.f, 50.f);
-    [buttonContents setTitle:@"Оформить" forState:UIControlStateNormal];
-    [buttonContents setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    buttonContents.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
-    [buttonContents addTarget:self action:@selector(buttonContentsAction) forControlEvents:UIControlEventTouchUpInside];
-    [viewBasket addSubview:buttonContents];
-    
-    
-    [self.view addSubview:viewBasket];
-    
 }
 
 - (void) viewDidDisappear:(BOOL)animated {

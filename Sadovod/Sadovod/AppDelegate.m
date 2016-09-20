@@ -29,7 +29,9 @@
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
     //Тестовый синглтон для проверки авторизованного пользователя
-    [[SingleTone sharedManager] setTypeMenu:@"1"]; //Если 0 то не авторизован
+    [[SingleTone sharedManager] setTypeMenu:@"0"]; //Если 0 то не авторизован
+    [[SingleTone sharedManager] setCountType:@"1"];
+    [[SingleTone sharedManager] setPriceType:@"0"];
     
 
 

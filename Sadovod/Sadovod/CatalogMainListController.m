@@ -28,7 +28,12 @@
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0.f;
     self.mainView.frame = rectView;
-    
+
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainViewOrder.alpha = 0.f;
+        } else {
+            self.mainViewOrder.alpha = 1.f;
+        }    
 }
 
 - (void)viewDidLoad {
@@ -50,6 +55,8 @@
         self.mainView = [[CatalogMainListView alloc] initWithView:self.view andData:self.arrayCatalog];
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
+        
+        [self createMainBasketWithCount:@"4" andPrice:@"5700"];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

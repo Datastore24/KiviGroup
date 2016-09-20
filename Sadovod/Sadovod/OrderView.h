@@ -16,6 +16,7 @@
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSDictionary*) data;
+@property (strong, nonatomic) UIScrollView * mainScrollView;;
 
 @end
 

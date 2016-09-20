@@ -277,6 +277,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bXM-cF-0wx" kind="custom" customClass="SWRevealViewControllerSegue" id="lUv-rv-Qpw"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell12" id="MIw-xj-YBQ">
                                         <rect key="frame" x="0.0" y="512" width="320" height="44"/>
@@ -286,7 +289,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="VN7-Nj-zeZ" kind="custom" customClass="SWRevealViewControllerSegue" id="3zF-9D-hPD"/>
+                                            <segue destination="VN7-Nj-zeZ" kind="custom" customClass="SWRevealViewControllerSegue" id="oBv-E3-8Tm"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell13" id="vts-bw-xnf">
@@ -296,6 +299,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fZB-zl-CYH" kind="custom" customClass="SWRevealViewControllerSegue" id="Tqf-cJ-hDA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

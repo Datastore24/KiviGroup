@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "HexColors.h"
 #import "UIView+BorderView.h"
+#import "SingleTone.h"
 
 @interface ReturnView ()
 
@@ -29,7 +30,11 @@
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
-        self.mainScrollView.contentSize = CGSizeMake(0, 570);
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            self.mainScrollView.contentSize = CGSizeMake(0.f, 570.f);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0.f, 570.f + 40);
+        }
         [self addSubview:self.mainScrollView];
         
         NSString * textString = @"Наш магазин несет ответственность за реализуемую продукцию и свою работу. Поскольку каждый покупатель должен быть уверен в качестве товара, то при покупке мы предоставляем возможность проверить изделия на отсутствие дефектов и правильность комплектации. В противном случае клиент вправе вернуть некачественный товар.\n\nПретензии принимаются в течени 6 дней с момента получения заказа через почту info@tk-sad.ru. Обработка претензий может составить 3-5 рабочих дней, не считая дня подачи претензии. Присылайте полное описание проблемы вместе с фото, если имеется. При недовложении указывайте так же номер заказ, артикул, и стоимость не вложенных вещей. По недовложению фото можно взять с сайта либо указать ссылки на товар. При несоответствии размера, фото делайте с сантиметровой лентой.";

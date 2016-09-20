@@ -28,6 +28,15 @@
 
 @implementation CatalogController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,7 +52,10 @@
             CatalogView * mainView = [[CatalogView alloc] initWithView:self.view andData:self.arrayProduct andName:self.arrayName];
             mainView.delegate = self;
             [self.view addSubview:mainView];
+            
+            [self createMainBasketWithCount:@"4" andPrice:@"5700"];
         }];
+        
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];

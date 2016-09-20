@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AuthorizationViewDelegate;
+
 @interface AuthorizationView : UIView
+
+@property (weak, nonatomic) id <AuthorizationViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol AuthorizationViewDelegate <NSObject>
+
+@required
+
+- (void) methodInput: (AuthorizationView*) authorizationView;
+- (void) methodRegistration: (AuthorizationView*) authorizationView;
 
 @end

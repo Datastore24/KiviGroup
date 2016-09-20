@@ -15,12 +15,13 @@
 #import "UIView+BorderView.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "CustomButton.h"
+#import "SingleTone.h"
 
 @interface OrderView () <UIScrollViewDelegate>
 
 //Main
 
-@property (strong, nonatomic) UIScrollView * mainScrollView;
+
 @property (strong, nonatomic) NSDictionary * arrayData;
 @property (strong, nonatomic) NSArray * arraySizes;
 @property (strong, nonatomic) NSArray * detailsArray;
@@ -124,7 +125,11 @@
         [self.mainScrollView addSubview:viewDetails];
         
         //Height scroll--------
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
         self.mainScrollView.contentSize = CGSizeMake(0.f, viewDetails.frame.size.height + viewDetails.frame.origin.y + 3.f);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0.f, viewDetails.frame.size.height + viewDetails.frame.origin.y + 53.f);
+        }
     }
     return self;
 }

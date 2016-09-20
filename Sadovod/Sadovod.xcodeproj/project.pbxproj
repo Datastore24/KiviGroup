@@ -421,6 +421,7 @@
 		FFD1D3891D8A8FDE00E5BE8B /* gift.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D3881D8A8FDE00E5BE8B /* gift.png */; };
 		FFD1D38B1D8ABFF200E5BE8B /* exitMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D38A1D8ABFF200E5BE8B /* exitMenu.png */; };
 		FFD1D38F1D8AC36D00E5BE8B /* entrance.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1D38E1D8AC36D00E5BE8B /* entrance.png */; };
+		FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */; };
 		FFE10F321D75980B00532346 /* UIImage+BagroungImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */; };
 		FFE10F351D75996900532346 /* confirmButtonCount.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F341D75996900532346 /* confirmButtonCount.png */; };
 		FFE10F391D759BF300532346 /* imageForButtonMax.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE10F381D759BF300532346 /* imageForButtonMax.png */; };
@@ -949,6 +950,8 @@
 		FFD1D3881D8A8FDE00E5BE8B /* gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gift.png; sourceTree = "<group>"; };
 		FFD1D38A1D8ABFF200E5BE8B /* exitMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitMenu.png; sourceTree = "<group>"; };
 		FFD1D38E1D8AC36D00E5BE8B /* entrance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entrance.png; sourceTree = "<group>"; };
+		FFD1D3901D8FF50200E5BE8B /* BottomBasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBasketView.h; sourceTree = "<group>"; };
+		FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBasketView.m; sourceTree = "<group>"; };
 		FFE10F301D75980B00532346 /* UIImage+BagroungImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BagroungImage.h"; sourceTree = "<group>"; };
 		FFE10F311D75980B00532346 /* UIImage+BagroungImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BagroungImage.m"; sourceTree = "<group>"; };
 		FFE10F341D75996900532346 /* confirmButtonCount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmButtonCount.png; sourceTree = "<group>"; };
@@ -1214,6 +1217,8 @@
 				FFAE2DF81D65A05D00E81AED /* AppDelegate.m */,
 				FFAE2E2B1D65A0E000E81AED /* MainViewController.h */,
 				FFAE2E2C1D65A0E000E81AED /* MainViewController.m */,
+				FFD1D3901D8FF50200E5BE8B /* BottomBasketView.h */,
+				FFD1D3911D8FF50200E5BE8B /* BottomBasketView.m */,
 				FFAE2E291D65A0CB00E81AED /* Main.storyboard */,
 				FFAE2E001D65A05D00E81AED /* Assets.xcassets */,
 				FFAE2E021D65A05D00E81AED /* LaunchScreen.storyboard */,
@@ -2594,6 +2599,7 @@
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
 				FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */,
 				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
+				FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */,
 				FFBF91F31D82EFAE00F8A0A1 /* ReturnController.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,

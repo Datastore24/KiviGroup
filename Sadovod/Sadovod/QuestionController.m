@@ -9,10 +9,19 @@
 #import "QuestionController.h"
 #import "CatalogController.h"
 #import "QuestionView.h"
+#import "SingleTone.h"
 
 
 @implementation QuestionController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        self.mainViewOrder.alpha = 0.f;
+    } else {
+        self.mainViewOrder.alpha = 1.f;
+    }
+}
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self setCustomTitle:@"Задать вопрос" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
@@ -27,6 +36,8 @@
     
     QuestionView * mainView = [[QuestionView alloc] initWithView:self.view andData:nil];
     [self.view addSubview:mainView];
+    
+    [self createMainBasketWithCount:@"4" andPrice:@"5700"];
 }
 
 #pragma mark - Actions
