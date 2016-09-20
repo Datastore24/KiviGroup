@@ -17,7 +17,7 @@
 
 //Макросы для приложения ---------------------------------------------------
 
-#define API_URL @"http://amorce.ru/abpro" //Адрес сервера
+#define API_URL @"http://tk-sad.ru/abpro" //Адрес сервера
 
 //Элементы под разные устройства----------------------------------------------
 #define isiPhone6Plus                           ([[UIScreen mainScreen] bounds].size.height == 736)?TRUE:FALSE
