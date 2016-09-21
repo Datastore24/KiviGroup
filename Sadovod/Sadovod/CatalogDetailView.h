@@ -15,7 +15,8 @@
 @property (weak, nonatomic) id <CatalogDetailViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data;
+                     andData: (NSArray*) data
+            andisFilterEmpty: (BOOL) isEmptyFilter;
 
 @end
 

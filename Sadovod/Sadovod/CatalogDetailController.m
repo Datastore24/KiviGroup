@@ -22,6 +22,7 @@
 @interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
+@property (assign, nonatomic) BOOL isEmptyFilter;
 
 @end
 
@@ -55,7 +56,7 @@
     
 #pragma mark - View
     [self getApiCatalog:^{
-        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
+        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData andisFilterEmpty:self.isEmptyFilter];
         mainView.delegate = self;
         [self.view addSubview:mainView];
         
@@ -173,10 +174,12 @@
     if(filter.o.length !=0){
         cost = [NSString stringWithFormat:@"%@-%@",filter.min_cost,filter.max_cost];
         o=filter.o;
+        self.isEmptyFilter=NO;
         
     }else{
         cost=@"";
         o=@"";
+        self.isEmptyFilter=YES;
     }
 
     
