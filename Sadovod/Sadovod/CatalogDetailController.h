@@ -17,4 +17,7 @@
 @property (strong, nonatomic) NSArray * arrayData;
 
 
+@property (strong,nonatomic) NSString* productName;
+@property (strong,nonatomic) NSString* productPrice;
+
 @end

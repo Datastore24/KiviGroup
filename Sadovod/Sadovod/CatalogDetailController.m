@@ -98,9 +98,14 @@
 
 #pragma mark - CatalogDetailViewDelegate
 
-- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView andProductID: (NSString *) productID {
+- (void) pushToOrderController: (CatalogDetailView*) catalogDetailView andProductID: (NSString *) productID
+                andProductName:(NSString *) productName
+               andProductPrice:(NSString *) productPrice{
     OrderController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderController"];
     detail.productID = productID;
+    detail.productName = productName;
+    detail.productPrice = productPrice;
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 

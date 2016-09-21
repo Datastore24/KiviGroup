@@ -153,7 +153,7 @@
     }
 }
 
--(void) getApiAddToBasket: (NSString *) productID
+-(void) getApiAddToBasket: (NSString *) sizeID
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -162,7 +162,7 @@
                              
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
-                             productID,@"size",
+                             sizeID,@"size",
                              nil];
     
     [api getDataFromServerWithParams:params method:@"buy_product_add" complitionBlock:^(id response) {
@@ -181,7 +181,7 @@
     
 }
 
--(void) getApiDelToBasket: (NSString *) productID
+-(void) getApiDelToBasket: (NSString *) sizeID
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -190,7 +190,7 @@
                              
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
-                             productID,@"size",
+                             sizeID,@"size",
                              nil];
     
     [api getDataFromServerWithParams:params method:@"buy_product_del" complitionBlock:^(id response) {
@@ -209,7 +209,7 @@
     
 }
 
--(void) getApiClearSizeToBasket: (NSString *) productID
+-(void) getApiClearSizeToBasket: (NSString *) sizeID
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -218,7 +218,7 @@
                              
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
-                             productID,@"size",
+                             sizeID,@"size",
                              nil];
     
     [api getDataFromServerWithParams:params method:@"buy_product_clear" complitionBlock:^(id response) {
@@ -228,6 +228,88 @@
             NSDictionary * respDict = (NSDictionary *) response;
             
             
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getApiClearAllSizeToBasket
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+   
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.productID,@"product",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"buy_product_clear_all" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+      
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getApiAddAllSizeToBasket
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.productID,@"product",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"buy_product_plus_one" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+           
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getApiDelAllSizeToBasket
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+  
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.productID,@"product",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"buy_product_minus_one" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+         
             
             
             
@@ -287,14 +369,11 @@
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
-            NSLog(@"RESP %@",respDict);
+            
            
             
             self.arrayCart = [respDict objectForKey:@"list"] ;
-            
-            
-            
-            
+
             block();
             
             

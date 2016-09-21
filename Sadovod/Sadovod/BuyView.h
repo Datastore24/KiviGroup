@@ -29,9 +29,12 @@
 
 - (void) showBasketView: (BuyView*) buyView;
 
-- (void) getApiAddToBasket: (NSString *) productID;
-- (void) getApiDelToBasket: (NSString *) productID;
-- (void) getApiClearSizeToBasket: (NSString *) productID;
+- (void) getApiAddToBasket: (NSString *) sizeID;
+- (void) getApiDelToBasket: (NSString *) sizeID;
+- (void) getApiClearSizeToBasket: (NSString *) sizeID;
+- (void) getApiClearAllSizeToBasket;
+- (void) getApiAddAllSizeToBasket;
+- (void) getApiDelAllSizeToBasket;
 
 
 @end
