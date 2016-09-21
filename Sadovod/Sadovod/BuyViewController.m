@@ -18,8 +18,10 @@
 #import "SingleTone.h"
 #import "APIGetClass.h"
 #import "AlertClassCustom.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface BuyViewController () <BuyViewDelegate, BottomBasketViewDelegate>
+@interface BuyViewController () <BuyViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UILabel * label;
 @property (strong, nonatomic) NSArray * arrayData;
@@ -33,6 +35,8 @@
 //Кастомный лейбл наносится на верхний бар
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    self.navigationController.delegate = self;
 
     if (self.label == nil) {
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 24, 80, 40)];
@@ -54,6 +58,8 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    
     [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
@@ -381,6 +387,21 @@
         
     }];
     
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 

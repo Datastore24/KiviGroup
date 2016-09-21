@@ -14,9 +14,11 @@
 #import "BasketController.h"
 #import "AlertClassCustom.h"
 #import "QuestionController.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
 
-@interface FAQController () <BottomBasketViewDelegate, FAQViewDelegate>
+@interface FAQController () <BottomBasketViewDelegate, FAQViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -26,11 +28,12 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-
+    self.navigationController.delegate = self;
 }
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self setCustomTitle:@"Частые вопросы" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
@@ -86,6 +89,21 @@
 - (void) pushTuQuestion: (FAQView*) fAQView {
     QuestionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

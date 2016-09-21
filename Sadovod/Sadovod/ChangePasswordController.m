@@ -12,12 +12,19 @@
 #import "SingleTone.h"
 #import "CatalogController.h"
 #import "ChangePasswordView.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
+
+@interface ChangePasswordController () <UINavigationControllerDelegate>
+
+@end
 
 
 @implementation ChangePasswordController
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.navigationController.delegate = self;
 }
 
 - (void) viewDidLoad {
@@ -46,5 +53,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
+}
 
 @end
