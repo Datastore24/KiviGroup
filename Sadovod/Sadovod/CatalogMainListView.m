@@ -43,6 +43,7 @@
         self.tableCatalog.dataSource = self;
         self.tableCatalog.delegate = self;
         self.tableCatalog.showsVerticalScrollIndicator = NO;
+        self.tableCatalog.scrollEnabled = NO;
         
         //Очень полездное свойство, отключает дествие ячейки-------------
         //        self.tableCatalog.allowsSelection = NO;

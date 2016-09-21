@@ -17,6 +17,7 @@
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
+		FF1618E21D9272BA009D2BAD /* AlertClassCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */; };
 		FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EC1D87F50C009012E8 /* SizesController.m */; };
 		FF3A05F01D87F521009012E8 /* SizesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EF1D87F521009012E8 /* SizesView.m */; };
 		FF3A05F31D8844C4009012E8 /* personMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F11D8844C4009012E8 /* personMenuImage.png */; };
@@ -478,6 +479,8 @@
 		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF1618E01D9272BA009D2BAD /* AlertClassCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClassCustom.h; sourceTree = "<group>"; };
+		FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClassCustom.m; sourceTree = "<group>"; };
 		FF3A05EB1D87F50C009012E8 /* SizesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesController.h; sourceTree = "<group>"; };
 		FF3A05EC1D87F50C009012E8 /* SizesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesController.m; sourceTree = "<group>"; };
 		FF3A05EE1D87F521009012E8 /* SizesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesView.h; sourceTree = "<group>"; };
@@ -1053,6 +1056,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FF1618E31D9272BD009D2BAD /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				FF1618E01D9272BA009D2BAD /* AlertClassCustom.h */,
+				FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */,
+			);
+			name = Alerts;
+			sourceTree = "<group>";
+		};
 		FF3A05EA1D87F4D1009012E8 /* Sizes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,7 +1213,6 @@
 		FFAE2DF31D65A05D00E81AED /* Sadovod */ = {
 			isa = PBXGroup;
 			children = (
-				FFD1D3931D917DC500E5BE8B /* ChangePassword */,
 				FF3A05EA1D87F4D1009012E8 /* Sizes */,
 				FFBF91F01D82EF9900F8A0A1 /* Return */,
 				FFBF91E61D82E50400F8A0A1 /* AboutStore */,
@@ -1211,6 +1222,7 @@
 				FFA5FFFE1D818F3F00CD6E7F /* FAQ */,
 				FFA5FFF61D81793A00CD6E7F /* Question */,
 				FFA5FFEE1D8174D600CD6E7F /* Registration */,
+				FFD1D3931D917DC500E5BE8B /* ChangePassword */,
 				FFA5FFE71D816A4900CD6E7F /* Authorization */,
 				FF7FCEED1D7D87260064E755 /* Formalization */,
 				FFE10F3A1D75BEF400532346 /* Basket */,
@@ -1241,6 +1253,7 @@
 				FFAE32AE1D65A2C900E81AED /* Fonts */,
 				FFA8AB531D6EE412004010F9 /* DoubleSlider */,
 				FFAE2E3C1D65A13900E81AED /* Activiti */,
+				FF1618E31D9272BD009D2BAD /* Alerts */,
 				FFAE32AA1D65A29E00E81AED /* Animation */,
 				AD89D1B91D678AC8007771B6 /* CoreData */,
 				AD89D1C61D678D6D007771B6 /* API */,
@@ -2636,6 +2649,7 @@
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
 				FFBF91C11D82C05300F8A0A1 /* DeliveryController.m in Sources */,
 				FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */,
+				FF1618E21D9272BA009D2BAD /* AlertClassCustom.m in Sources */,
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,

@@ -25,5 +25,6 @@
 
 - (void) methodInput: (AuthorizationView*) authorizationView;
 - (void) methodRegistration: (AuthorizationView*) authorizationView;
+- (void) pushChangePassWork: (AuthorizationView*) authorizationView;
 
 @end

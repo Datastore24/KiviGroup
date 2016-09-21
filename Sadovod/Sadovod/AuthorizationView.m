@@ -38,7 +38,7 @@
             self.backgroundColor = [UIColor groupTableViewBackgroundColor];
             
             
-            UIView * viewCentre = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 130.f, self.frame.size.height / 2 - 164.f, 260.f, 160.f)];
+            UIView * viewCentre = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 130.f, self.frame.size.height / 2 - 124.f, 260.f, 160.f)];
             viewCentre.backgroundColor = [UIColor whiteColor];
             [viewCentre.layer setBorderColor:[UIColor colorWithWhite:0.8f alpha:0.6f].CGColor];
             viewCentre.layer.borderWidth = 1.5f;
@@ -75,7 +75,7 @@
             [viewCentre addSubview:buttonEntrance];
             
             UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
-            buttonRegistration.frame = CGRectMake(30.f, 260.f, 100, 20);
+            buttonRegistration.frame = CGRectMake(30.f, 300.f, 100, 20);
             [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
             [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction) forControlEvents:UIControlEventTouchUpInside];
             [buttonRegistration setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -84,10 +84,11 @@
             
             
             UIButton * buttonPassword = [UIButton buttonWithType:UIButtonTypeSystem];
-            buttonPassword.frame = CGRectMake(140.f, 260.f, 150, 20);
+            buttonPassword.frame = CGRectMake(140.f, 300.f, 150, 20);
             [buttonPassword setTitle:@"Напомнить пароль" forState:UIControlStateNormal];
             [buttonPassword setTitleColor:[UIColor hx_colorWithHexRGBAString:@"5C5C5C"] forState:UIControlStateNormal];
             buttonPassword.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+            [buttonPassword addTarget:self action:@selector(buttonPasswordAction) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonPassword];
         } else { //Если мой профиль
             
@@ -288,6 +289,11 @@
 }
 
 #pragma mark - Actions
+
+//Действие кнопки изменить пароль
+- (void) buttonPasswordAction {
+    [self.delegate pushChangePassWork:self];
+}
 
 //Дествие кнопки Войти
 - (void) buttonEntranceAction {

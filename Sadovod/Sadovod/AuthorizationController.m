@@ -14,6 +14,8 @@
 #import "RegistrationController.h"
 #import "FormalizationController.h"
 #import "BasketController.h"
+#import "ChangePasswordController.h"
+#import "AlertClassCustom.h"
 
 @interface AuthorizationController () <AuthorizationViewDelegate, BottomBasketViewDelegate>
 
@@ -77,6 +79,11 @@
     [self.navigationController pushViewController:detail animated:NO];
 }
 
+- (void) pushChangePassWork: (AuthorizationView*) authorizationView {
+    ChangePasswordController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
 #pragma mark - BottomBasketViewDelegate
 
 - (void) actionBasket: (BottomBasketView*) bottomBasketView {
@@ -84,8 +91,12 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 - (void) actionFormalization: (BottomBasketView*) bottomBasketView {
-    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
-    [self.navigationController pushViewController:detail animated:YES];
+    if ([[[SingleTone sharedManager] priceType] integerValue] < 1990) {
+        [AlertClassCustom createAlertMinPrice];
+    } else {
+        FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 
