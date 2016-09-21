@@ -24,6 +24,9 @@
 
 @required
 
+@property (strong,nonatomic) NSString* productName;
+@property (strong,nonatomic) NSString* productPrice;
+
 
 - (void) pushTuBiyView: (OrderView*) orderView;
 - (void) showBottomBar: (OrderView*) orderView;

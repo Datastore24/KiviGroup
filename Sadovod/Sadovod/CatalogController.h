@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSArray * arrayName; //Массив с Категориями
 @property (strong, nonatomic) NSArray * arrayProduct; //Массив с Категориями
 @property (strong,nonatomic) NSString* productName;
+@property (strong,nonatomic) NSDictionary* cartDict;
 
 @end

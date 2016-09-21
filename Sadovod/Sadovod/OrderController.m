@@ -111,9 +111,6 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
             
-            //self.arrayData = [respDict objectForKey:@"product"];
-            
-            NSLog(@"%@",[respDict objectForKey:@"message"]);
 
         }
     }];

@@ -255,9 +255,11 @@
 //Действие каждого элемента в скрытом окне
 - (void) buttonChangeAllAction: (UIButton*) button {
     if (button.tag == 400) {
+        [self.deleagte getApiClearAllSizeToBasket];
         for (int i = 0; i < self.arrayData.count; i++) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
+            
             [UIView animateWithDuration:0.2 animations:^{
                 label.text = @"0";
                 buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"e8e8e8"].CGColor;
@@ -267,6 +269,7 @@
             }];
         }
     } else if (button.tag == 401) {
+        [self.deleagte getApiAddAllSizeToBasket];
         for (int i = 0; i < self.arrayData.count; i++) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
@@ -283,6 +286,7 @@
             }];
         }
     } else if (button.tag == 402) {
+        [self.deleagte getApiDelAllSizeToBasket];
         for (int i = 0; i < self.arrayData.count; i++) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];

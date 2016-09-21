@@ -115,6 +115,7 @@
         NSDictionary * dictProduct = [data objectAtIndex:i];
         CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonProduct.customID = [dictProduct objectForKey:@"id"];
+        NSLog(@"NAME %@",[dictProduct objectForKey:@"name"]);
         buttonProduct.customName = [dictProduct objectForKey:@"name"];
         buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
    
@@ -232,8 +233,9 @@
 - (void) buttonProductAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
-            NSLog(@"CUSTOM ID %@", button.customID);
-            [self.delegate pushToOrderController:self andProductID: button.customID];
+            NSLog(@"CUSTOM ID %@ NAME %@", button.customID, button.customName);
+            [self.delegate pushToOrderController:self andProductID: button.customID andProductName:button.customName andProductPrice:button.customValueTwo];
+         
         }
     }
 }

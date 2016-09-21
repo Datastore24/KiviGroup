@@ -12,6 +12,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "SingleTone.h"
 
+
 @interface AppDelegate ()
 
 
@@ -30,12 +31,13 @@
     
     //Тестовый синглтон для проверки авторизованного пользователя
     [[SingleTone sharedManager] setTypeMenu:@"0"]; //Если 0 то не авторизован
-    //Тестовые синглтоны для подсчета колличества выбранных товаров
-    [[SingleTone sharedManager] setCountType:@"0"];
-    [[SingleTone sharedManager] setPriceType:@"0"];
+   
+
     
     return YES;
 }
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
