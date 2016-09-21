@@ -31,14 +31,10 @@
     
     //Тестовый синглтон для проверки авторизованного пользователя
     [[SingleTone sharedManager] setTypeMenu:@"0"]; //Если 0 то не авторизован
-<<<<<<< HEAD
     //Тестовые синглтоны для подсчета колличества выбранных товаров
     [[SingleTone sharedManager] setCountType:@"0"];
     [[SingleTone sharedManager] setPriceType:@"700"];
-=======
-   
 
->>>>>>> 111
     
     return YES;
 }
