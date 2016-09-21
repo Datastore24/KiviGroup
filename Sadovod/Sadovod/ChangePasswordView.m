@@ -64,13 +64,24 @@
             [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             buttonEntrance.layer.cornerRadius = 3.f;
             buttonEntrance.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
-//            [buttonEntrance addTarget:self action:@selector(buttonEntranceAction) forControlEvents:UIControlEventTouchUpInside];
+            [buttonEntrance addTarget:self action:@selector(buttonEntranceAction) forControlEvents:UIControlEventTouchUpInside];
             [viewCentre addSubview:buttonEntrance];
-            
 
-        }
-        return self;
+        
     }
+    return self;
+}
+
+
+#pragma mark - Actions
+
+- (void) buttonEntranceAction {
+    
+    NSLog(@"Смена пароля");
+    
+}
     
 
 @end
+
+

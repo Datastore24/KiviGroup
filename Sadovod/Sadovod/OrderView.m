@@ -374,7 +374,7 @@
 //Действие кнопок авторизации
 - (void) buttonQuestienAction: (UIButton*) button {
     if (button.tag == 400) {
-        NSLog(@"Авторизация");
+        [self.delegate pushAuthorization:self];
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             self.viewAuthorization.alpha = 0.f;

@@ -64,8 +64,8 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
-    [self.navigationController pushViewController:detail animated:NO];
+        CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+        [self.navigationController pushViewController:detail animated:NO];
 }
 
 #pragma mark - AuthorizationViewDelegate

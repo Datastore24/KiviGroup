@@ -87,6 +87,8 @@
 //OtherView
 
 @property (strong, nonatomic) UIView * viewOther;
+@property (strong, nonatomic) CustomLabels * labelDelivery;
+@property (strong, nonatomic) CustomLabels * labelDeliveryAction;
 
 @end
 
@@ -603,13 +605,24 @@
 - (UIView*) createOtherView {
     UIView * otherView = [[UIView alloc] initWithFrame:CGRectMake(0, self.viewComments.frame.size.height + self.viewComments.frame.origin.y, self.frame.size.width, 110)];
     
-    CustomLabels * labelPrice = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:15 andColor:@"787878"
+    CustomLabels * labelPrice = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:20 andColor:@"787878"
                                                                    andText:@"Итоговая стоимость:" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [otherView addSubview:labelPrice];
     
-    CustomLabels * labelPriceAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:15 andColor:VM_COLOR_800
+    CustomLabels * labelPriceAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:20 andColor:VM_COLOR_800
                                                                  andText:@"8100 руб" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [otherView addSubview:labelPriceAction];
+    
+    self.labelDelivery = [[CustomLabels alloc] initLabelWithWidht:94.f andHeight:0 andColor:@"787878"
+                                                                 andText:@"Доставка: " andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelDelivery.alpha = 0.f;
+    
+    [otherView addSubview:self.labelDelivery];
+    
+    self.labelDeliveryAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:0 andColor:VM_COLOR_800
+                                                                       andText:@"450 руб" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+    self.labelDeliveryAction.alpha = 0.f;
+    [otherView addSubview:self.labelDeliveryAction];
     
     UIButton * buttonText = [UIButton buttonWithType:UIButtonTypeSystem];
     buttonText.frame = CGRectMake(15.f, 45.f, self.frame.size.width - 30.f, 40);
@@ -860,6 +873,10 @@
 
 //Выбор доставки курьером
 - (void) buttonMoscow: (CustomButton*) button {
+    
+    self.labelDeliveryAction.alpha = 1.f;
+    self.labelDelivery.alpha = 1.f;
+    
     if (!button.isBool) {
         [UIView animateWithDuration:0.3 animations:^{
             button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
@@ -898,6 +915,10 @@
 
 //Выбор доставки транспортной компанией
 - (void) buttonCompany: (CustomButton*) button {
+    
+    self.labelDeliveryAction.alpha = 0.f;
+    self.labelDelivery.alpha = 0.f;
+    
     if (!button.isBool) {
         [UIView animateWithDuration:0.3 animations:^{
             button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
@@ -936,6 +957,10 @@
 
 //Выбор доставки почтой
 - (void) buttonMail: (CustomButton*) button {
+    
+    self.labelDeliveryAction.alpha = 0.f;
+    self.labelDelivery.alpha = 0.f;
+    
     if (!button.isBool) {
         [UIView animateWithDuration:0.3 animations:^{
             button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];

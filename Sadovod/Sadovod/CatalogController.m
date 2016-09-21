@@ -237,6 +237,15 @@
 
 - (void) actionBasket: (BottomBasketView*) bottomBasketView {
     BasketController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BasketController"];
+//    [self.navigationController pushViewController:detail animated:YES];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromTop;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 - (void) actionFormalization: (BottomBasketView*) bottomBasketView {

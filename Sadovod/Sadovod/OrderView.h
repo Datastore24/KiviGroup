@@ -31,6 +31,7 @@
 - (void) pushTuBiyView: (OrderView*) orderView;
 - (void) showBottomBar: (OrderView*) orderView;
 - (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID ;
+- (void) pushAuthorization: (OrderView*) orderView;
 
 
 @end

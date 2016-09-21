@@ -53,5 +53,7 @@
 #define NOTIFICATION_AUTORIZATION @"NOTIFICATION_AUTORIZATION"
 //Нотификация определения колличества и цены заказов
 #define NOTIFICATION_SHOW_BASKET_VIEW @"NOTIFICATION_SHOW_BASKET_VIEW"
+//Нотификация отображения телефона
+#define NOTIFICATION_SHOW_PHONE @"NOTIFICATION_SHOW_PHONE"
 
 #endif /* Macros_h */

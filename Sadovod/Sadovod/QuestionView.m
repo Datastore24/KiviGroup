@@ -89,12 +89,19 @@
         [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonEntrance.layer.cornerRadius = 3.f;
         buttonEntrance.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+        [buttonEntrance addTarget:self action:@selector(buttonEntranceActions) forControlEvents:UIControlEventTouchUpInside];
         [viewCentre addSubview:buttonEntrance];
         
         
     }
     
     return self;
+}
+
+#pragma mark - Actions
+
+- (void) buttonEntranceActions {
+    NSLog(@"Задать вопрос");
 }
 
 #pragma mark - Notification Actions

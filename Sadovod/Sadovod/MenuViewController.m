@@ -125,6 +125,11 @@
 //Анимация нажатия ячейки--------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 1) {
+        [[SingleTone sharedManager] setBoolPhone:YES];
+    } else {
+        [[SingleTone sharedManager] setBoolPhone:NO];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 12) {
         [[SingleTone sharedManager] setTypeMenu:@"0"];

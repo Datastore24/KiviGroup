@@ -22,10 +22,15 @@
 @property (strong, nonatomic) UILabel * labelTextView;
 @property (strong, nonatomic) UITextView * textView;
 @property (strong, nonatomic) UIView * viewPuss;
+@property (strong, nonatomic) UIButton * buttonSave;
 
 @end
 
 @implementation AuthorizationView
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data
@@ -119,6 +124,8 @@
                     [buttonChange setTitle:@"Изменить" forState:UIControlStateNormal];
                     [buttonChange setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
                     buttonChange.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
+                    buttonChange.tag = 60 + i;
+                    [buttonChange addTarget:self action:@selector(buttonChangeAction:) forControlEvents:UIControlEventTouchUpInside];
                     [self addSubview:buttonChange];
                 }
             }
@@ -161,8 +168,19 @@
             [self addSubview: self.viewPuss];
             
             
+            self.buttonSave = [UIButton buttonWithType:UIButtonTypeSystem];
+            self.buttonSave.frame = CGRectMake(15.f, 400.f, self.frame.size.width - 30.f, 40);
+            self.buttonSave.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+            self.buttonSave.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+            self.buttonSave.layer.borderWidth = 1.f;
+            [self.buttonSave setTitle:@"Сохранить" forState:UIControlStateNormal];
+            [self.buttonSave setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.buttonSave.layer.cornerRadius = 3.f;
+            self.buttonSave.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+            [self.buttonSave addTarget:self action:@selector(buttonSaveAction) forControlEvents:UIControlEventTouchUpInside];
+            self.buttonSave.alpha = 0.f;
+            [self addSubview:self.buttonSave];
 
-            
         }
         
     }
@@ -192,6 +210,7 @@
     [buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
     [buttonCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [buttonCancel addTarget:self action:@selector(buttonCancelNameAction) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:buttonCancel];
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -201,6 +220,7 @@
     [buttonConfirm setTitle:@"Сохранить" forState:UIControlStateNormal];
     [buttonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [buttonConfirm addTarget:self action:@selector(buttonConfirmNameAction) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:buttonConfirm];
     
     
@@ -237,6 +257,7 @@
     [buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
     [buttonCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [buttonCancel addTarget:self action:@selector(buttonCancelPassAction) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:buttonCancel];
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -246,6 +267,7 @@
     [buttonConfirm setTitle:@"Сохранить" forState:UIControlStateNormal];
     [buttonConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buttonConfirm.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    [buttonConfirm addTarget:self action:@selector(buttonConfirmPassAction) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:buttonConfirm];
     
     
@@ -255,8 +277,16 @@
 - (void) changeText {
     if (self.textView.text.length != 0) {
         self.labelTextView.alpha = 0.f;
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.buttonSave.alpha = 1.f;
+        }];
     } else {
         self.labelTextView.alpha = 1.f;
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.buttonSave.alpha = 0.f;
+        }];
     }
 }
 
@@ -289,6 +319,49 @@
 }
 
 #pragma mark - Actions
+
+//Отмена изменении имени
+- (void) buttonCancelNameAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewChangeName.alpha = 0.f;
+    }];
+}
+
+//Подтверждение изменения имени
+- (void) buttonConfirmNameAction {
+    NSLog(@"Имя сменено");
+}
+
+//Отмена изменении Пароля
+- (void) buttonCancelPassAction {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewPuss.alpha = 0.f;
+    }];
+}
+
+//Сохранение комметнария
+- (void) buttonSaveAction {
+    NSLog(@"Сохранение комментария");
+}
+
+//Подтверждение изменения Пароля
+- (void) buttonConfirmPassAction {
+    NSLog(@"Пароль сменен");
+}
+
+//Действие кнопок смены имени и пароля
+- (void) buttonChangeAction: (UIButton*) button {
+    if (button.tag == 60) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewChangeName.alpha = 1.f;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewPuss.alpha = 1.f;
+        }];
+    }
+ 
+}
 
 //Действие кнопки изменить пароль
 - (void) buttonPasswordAction {

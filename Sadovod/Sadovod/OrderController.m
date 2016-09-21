@@ -15,6 +15,7 @@
 #import "BasketController.h"
 #import "FormalizationController.h"
 #import "AlertClassCustom.h"
+#import "AuthorizationController.h"
 
 @interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate>
 
@@ -125,6 +126,11 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     }];
 
+}
+
+- (void) pushAuthorization: (OrderView*) orderView {
+    AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - Actions

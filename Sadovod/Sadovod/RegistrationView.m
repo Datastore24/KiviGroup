@@ -73,6 +73,7 @@
         [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonEntrance.layer.cornerRadius = 3.f;
         buttonEntrance.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+            [buttonEntrance addTarget:self action:@selector(buttonEntranceAction) forControlEvents:UIControlEventTouchUpInside];
         [viewCentre addSubview:buttonEntrance];
         } else {
             if (self.arrayData.count == 0) {
@@ -95,6 +96,7 @@
                 [buttonBack setTitle:@"Вернуться на главную" forState:UIControlStateNormal];
                 [buttonBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 buttonBack.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:14];
+                [buttonBack addTarget:self action:@selector(buttonBackAction) forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:buttonBack];
                 
             } else {
@@ -115,6 +117,10 @@
     }
     
     return self;
+}
+
+- (void) buttonEntranceAction {
+    NSLog(@"Регистрация");
 }
 
 
@@ -209,8 +215,11 @@
     return mainViewCell;
 }
 
+#pragma mark - Actions
 
-
+- (void) buttonBackAction {
+    [self.delegate backToMainView:self];
+}
 
 
 

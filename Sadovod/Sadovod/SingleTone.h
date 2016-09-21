@@ -20,6 +20,9 @@
 @property (strong, nonatomic) NSString * countType; //Колличество выбранного товара
 @property (strong, nonatomic) NSString * priceType; //Общая цена выбранных товаров
 
+//Булевая переменная для отобрадения вкладки телефона
+@property (assign, nonatomic) BOOL boolPhone;
+
 + (id)sharedManager;
 
 @end

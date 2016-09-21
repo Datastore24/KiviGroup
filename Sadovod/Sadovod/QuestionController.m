@@ -55,8 +55,12 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
-    [self.navigationController pushViewController:detail animated:NO];
+    if (self.navigationController.viewControllers.count > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+        [self.navigationController pushViewController:detail animated:NO];
+    }
 }
 
 #pragma mark - BottomBasketViewDelegate
