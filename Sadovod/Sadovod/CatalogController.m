@@ -168,8 +168,7 @@
             //     self.arrayCart = [respDict objectForKey:@"list"] ;
             
             block();
-            
-            
+        
         }
         
     }];
