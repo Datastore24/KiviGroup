@@ -12,6 +12,7 @@
 @synthesize superKey;
 @synthesize catalogKey;
 @synthesize typeMenu;
+@synthesize boolPhone;
 
 
 #pragma mark Singleton Methods

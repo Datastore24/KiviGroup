@@ -16,6 +16,7 @@
 #import "CheckDataServer.h"
 #import "SingleTone.h"
 #import "CustomButton.h"
+#import "UIView+BorderView.h"
 
 
 @interface CatalogView () <UIScrollViewDelegate>
@@ -32,9 +33,16 @@
 @property (nonatomic, assign) CGFloat lastContentOffset;
 @property (assign, nonatomic) NSInteger numberButton;
 
+//PhoneView
+@property (strong, nonatomic) UIView * viewPhone;
+
 @end
 
 @implementation CatalogView
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initWithView: (UIView*) view andData: (NSArray*) data andName:(NSArray*) arrayName
 {
@@ -51,7 +59,6 @@
         self.arrayData = data;
         self.arrayName = arrayName;
         self.numberButton = 0;
-        
         
         //Лого
         UIButton * buttonCategory = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -218,11 +225,84 @@
             scrollProduct.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (lineProduct + 1));
         
     }
+    
+    self.viewPhone = [self createPhoneView];
+    if (![[SingleTone sharedManager] boolPhone]) {
+        self.viewPhone.alpha = 0.f;
+    } else {
+       self.viewPhone.alpha = 1.f;
+    }
+    
+    [self addSubview:self.viewPhone];
+    
     return self;
+}
+
+#pragma mark - PhoneView
+
+- (UIView*) createPhoneView {
+    UIView * fonView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+    fonView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.6];
+    
+    UIView * whiteView = [[UIView alloc] initWithFrame:CGRectMake(10.f, self.frame.size.height / 2 - 100, self.frame.size.width - 20.f, 180)];
+    whiteView.layer.cornerRadius = 5.f;
+    whiteView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [fonView addSubview:whiteView];
+    
+    UIView * phoneView = [[UIView alloc] initWithFrame:CGRectMake(10.f, 5, whiteView.frame.size.width - 20, whiteView.frame.size.height - 10)];
+    phoneView.backgroundColor = [UIColor whiteColor];
+    phoneView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    phoneView.layer.borderWidth = 0.5f;
+    phoneView.layer.cornerRadius = 5.f;
+    phoneView.clipsToBounds = NO;
+    phoneView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    phoneView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    phoneView.layer.shadowRadius = 2.0f;
+    phoneView.layer.shadowOpacity = 0.5f;
+    [whiteView addSubview:phoneView];
+    
+    CustomLabels * labelTipe = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20 andColor:VM_COLOR_800 andText:@"Номер телефона" andTextSize:20 andLineSpacing:0.f fontName:VM_FONT_BOLD];
+    [phoneView addSubview:labelTipe];
+    
+    [UIView borderViewWithHeight:60 andWight:0.f andView:phoneView andColor:VM_COLOR_800 andHieghtBorder:2.f];
+    
+    CustomLabels * labelPhone = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:80 andColor:@"000000" andText:@"+74957687838" andTextSize:20 andLineSpacing:0.f fontName:VM_FONT_BOLD];
+    [phoneView addSubview:labelPhone];
+    
+    NSArray * arrayName = [NSArray arrayWithObjects:@"Закрыть", @"Добавить в контакты", nil];
+    for (int i = 0; i < 2; i++) {
+        UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeSystem];
+        if (i == 0) {
+            buttonPhone.frame = CGRectMake(0, 120, 100, 50.);
+        } else {
+            buttonPhone.frame = CGRectMake(99, 120, 181, 50.);
+        }
+        buttonPhone.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+        buttonPhone.layer.borderWidth = 1.f;
+        [buttonPhone setTitle:[arrayName objectAtIndex:i] forState:UIControlStateNormal];
+        [buttonPhone setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        buttonPhone.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+        buttonPhone.tag = 1300 + i;
+        [buttonPhone addTarget:self action:@selector(buttonPhoneAction:) forControlEvents:UIControlEventTouchUpInside];
+        [phoneView addSubview:buttonPhone];
+    }
+    
+    
+    return fonView;
 }
 
 
 #pragma mark - Action Methos
+
+- (void) buttonPhoneAction: (UIButton*) button {
+    if (button.tag == 1300) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewPhone.alpha = 0.f;
+        }];
+    } else {
+        NSLog(@"Добавить в контакты");
+    }
+}
 
 - (void) buttonCategoryAction: (UIButton*) button {
     
@@ -255,7 +335,6 @@
     }
     
 }
-
 
 
 #pragma mark - UIScrollViewDelegate

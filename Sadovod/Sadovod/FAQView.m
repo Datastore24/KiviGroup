@@ -131,6 +131,7 @@
         buttonQuestien.layer.borderWidth = 1.f;
         buttonQuestien.layer.cornerRadius = 3.f;
         buttonQuestien.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
+        [buttonQuestien addTarget:self action:@selector(buttonQuestienAction) forControlEvents:UIControlEventTouchUpInside];
         [self.mainScrollView addSubview:buttonQuestien];
     }
     return self;
@@ -144,6 +145,10 @@
             [self setOffcetWithHeight:[[self.arrayOffset objectAtIndex:i]floatValue] - 60];
         }
     }
+}
+
+- (void) buttonQuestienAction {
+    [self.delegate pushTuQuestion:self];
 }
 
 #pragma mark - Other

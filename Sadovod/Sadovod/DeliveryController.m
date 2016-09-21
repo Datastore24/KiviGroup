@@ -13,8 +13,11 @@
 #import "FormalizationController.h"
 #import "BasketController.h"
 #import "AlertClassCustom.h"
+#import "QuestionController.h"
+#import "FAQController.h"
+#import "CatalogController.h"
 
-@interface DeliveryController () <BottomBasketViewDelegate>
+@interface DeliveryController () <BottomBasketViewDelegate, DeliveryViewDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -40,6 +43,7 @@
 #pragma mark - View
     
     DeliveryView * mainView = [[DeliveryView alloc] initWithView:self.view andData:nil];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
     self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
@@ -56,8 +60,12 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
-    [self.navigationController pushViewController:detail animated:NO];
+    if (self.navigationController.viewControllers.count > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+        [self.navigationController pushViewController:detail animated:NO];
+    }
 }
 
 #pragma mark - BottomBasketViewDelegate
@@ -73,6 +81,21 @@
         FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
         [self.navigationController pushViewController:detail animated:YES];
     }
+}
+
+#pragma mark - DeliveryViewDelegate
+
+- (void) pushToQuestion: (DeliveryView*) deliveryView {
+    QuestionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) pushToFAQ: (DeliveryView*) deliveryView {
+    FAQController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FAQController"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+- (void) backToMain: (DeliveryView*) deliveryView {
+    CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

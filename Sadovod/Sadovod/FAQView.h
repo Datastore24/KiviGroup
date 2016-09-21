@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FAQViewDelegate;
+
 @interface FAQView : UIView
+
+@property (weak, nonatomic) id <FAQViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@end
+
+@protocol FAQViewDelegate <NSObject>
+
+@required
+
+- (void) pushTuQuestion: (FAQView*) fAQView;
 
 @end

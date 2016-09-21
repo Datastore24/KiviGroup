@@ -114,6 +114,8 @@
             buttonQuestien.layer.cornerRadius = 3.f;
             buttonQuestien.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
             buttonQuestien.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
+            buttonQuestien.tag = 1000 + i;
+            [buttonQuestien addTarget:self action:@selector(buttonQuestienAction:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonQuestien];
             
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 12, 15.f, 15.f)];
@@ -134,6 +136,7 @@
         buttonMain.layer.cornerRadius = 3.f;
         buttonMain.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
         buttonMain.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
+        [buttonMain addTarget:self action:@selector(buttonMainAction) forControlEvents:UIControlEventTouchUpInside];
         [self.mainScrollView addSubview:buttonMain];
         
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(60, 12, 15.f, 15.f)];
@@ -146,6 +149,21 @@
     }
     return self;
 }
+
+#pragma mark - Actions
+
+- (void) buttonQuestienAction: (UIButton*) button {
+    if (button.tag == 1000) {
+        [self.delegate pushToQuestion:self];
+    } else {
+        [self.delegate pushToFAQ:self];
+    }
+}
+
+- (void) buttonMainAction {
+    [self.delegate backToMain:self];
+}
+
 
 #pragma mark - Other
 
