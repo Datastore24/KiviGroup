@@ -20,6 +20,7 @@
 #import "BottomBasketView.h"
 #import "FormalizationController.h"
 #import "BasketController.h"
+#import "AlertClassCustom.h"
 
 
 @interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate>
@@ -206,8 +207,12 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 - (void) actionFormalization: (BottomBasketView*) bottomBasketView {
+    if ([[[SingleTone sharedManager] priceType] integerValue] < 1990) {
+        [AlertClassCustom createAlertMinPrice];
+    } else {
     FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
     [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 @end

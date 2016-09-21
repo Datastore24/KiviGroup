@@ -37,6 +37,14 @@
 
 @property (strong, nonatomic) UIView * viewSizes;
 
+//AuthrizationView
+
+@property (strong, nonatomic) UIView * viewAuthorization;
+
+//Other
+
+@property (assign, nonatomic) BOOL isBoolAuthorization; //Временная переменная для всплывашки авторизации
+
 @end
 
 @implementation OrderView
@@ -49,6 +57,7 @@
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.counterOrder = 0.f;
         self.arrayData = data;
+        self.isBoolAuthorization = NO;
        
         NSArray * arrayImage = [data objectForKey:@"images"];
         self.arraySizes = [data objectForKey:@"sizes"];
@@ -83,10 +92,6 @@
        
         
         self.sizesTitle = [[CustomLabels alloc] initLabelTableWithWidht:10 andHeight:self.frame.size.width + 53.f andSizeWidht:150.f andSizeHeight:40.f andColor:VM_COLOR_900 andText:[NSString stringWithFormat:@"Доступные размеры"]];
-        
-        
-        
-        
         
         self.sizesTitle.font = [UIFont fontWithName:VM_FONT_BOLD size:14];
         self.sizesTitle.textAlignment = NSTextAlignmentLeft;
@@ -131,6 +136,13 @@
             self.mainScrollView.contentSize = CGSizeMake(0.f, viewDetails.frame.size.height + viewDetails.frame.origin.y + 53.f);
         }
     }
+    
+    
+    
+    self.viewAuthorization = [self createAuthorizationView];
+    self.viewAuthorization.alpha = 0.f;
+    [self addSubview:self.viewAuthorization];
+    
     return self;
 }
 
@@ -327,6 +339,14 @@
 - (void) buttonSizeAction: (CustomButton*) button {
     for (int i = 0; i < self.arraySizes.count; i++) {
         if (button.tag == 50 + i) {
+            
+            if (!self.isBoolAuthorization) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.viewAuthorization.alpha = 1.f;
+                } completion:^(BOOL finished) {
+                    self.isBoolAuthorization = YES;
+                }];
+            }
            
             UIButton * buttonLabelSize = [self viewWithTag:60 + i];
             NSInteger count = [buttonLabelSize.titleLabel.text integerValue];
@@ -351,6 +371,17 @@
 
 }
 
+//Действие кнопок авторизации
+- (void) buttonQuestienAction: (UIButton*) button {
+    if (button.tag == 400) {
+        NSLog(@"Авторизация");
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewAuthorization.alpha = 0.f;
+        }];
+    }
+}
+
 //Проверка товара
 - (void) checkMethod {
     if (self.counterOrder > 0) {
@@ -360,6 +391,63 @@
 
 - (void) buyButtonAction {
     [self.delegate pushTuBiyView:self];
+}
+
+#pragma mark - ViewAuthorization
+
+- (UIView*) createAuthorizationView {
+    
+    UIView * fonView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    fonView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.6];
+    
+    UIView * authorizationView = [[UIView alloc] initWithFrame:CGRectMake(15.f, self.frame.size.height / 2 - 90.f, self.frame.size.width - 30.f, 180)];
+    authorizationView.backgroundColor = [UIColor whiteColor];
+    authorizationView.layer.cornerRadius = 5.f;
+    authorizationView.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.6].CGColor;
+    authorizationView.layer.borderWidth = 1.f;
+    [fonView addSubview:authorizationView];
+    
+    CustomLabels * titlLabel = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:20.f andSizeWidht:authorizationView.frame.size.width andSizeHeight:20
+                                                                    andColor:VM_COLOR_800 andText:@"Вы забыли авторизоваться?"];
+    titlLabel.textAlignment = NSTextAlignmentCenter;
+    titlLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
+    [authorizationView addSubview:titlLabel];
+    
+    CustomLabels * textLabel = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:45.f andSizeWidht:authorizationView.frame.size.width andSizeHeight:60
+                                                                    andColor:@"000000" andText:@"Если у Вас уже есть аккаунт мы советуем\nВам авторизоваться что бы Вы имели\nдоступ к корзине на всех своих\nустройствах"];
+    textLabel.numberOfLines = 4.f;
+    textLabel.textAlignment = NSTextAlignmentLeft;
+    textLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
+    [authorizationView addSubview:textLabel];
+    
+    NSArray * arrayButtonsName = [NSArray arrayWithObjects:@"Авторизация", @"Скрыть", nil];
+    NSArray * arrayImages = [NSArray arrayWithObjects:@"entrance.png", @"imageCancel.png", nil];
+    for (int i = 0; i < 2; i++) {
+        UIButton * buttonQuestien = [UIButton buttonWithType:UIButtonTypeSystem];
+        buttonQuestien.frame = CGRectMake(15.f, 120, self.frame.size.width / 2 - 12.5f, 40);
+        if (i == 1) {
+            buttonQuestien.frame = CGRectMake(15.f + 160, 120, self.frame.size.width / 2 - 62.5f, 40);
+        }
+        buttonQuestien.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
+        [buttonQuestien setTitle:[arrayButtonsName objectAtIndex:i] forState:UIControlStateNormal];
+        [buttonQuestien setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        buttonQuestien.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800].CGColor;
+        buttonQuestien.layer.borderWidth = 1.f;
+        buttonQuestien.layer.cornerRadius = 3.f;
+        buttonQuestien.tag = 400 + i;
+        buttonQuestien.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+        buttonQuestien.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
+        [authorizationView addSubview:buttonQuestien];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 12, 15.f, 15.f)];
+        if (i == 1) {
+            imageView.frame = CGRectMake(10, 12, 15.f, 15.f);
+        }
+        imageView.image = [UIImage imageNamed:[arrayImages objectAtIndex:i]];
+        [buttonQuestien addTarget:self action:@selector(buttonQuestienAction:) forControlEvents:UIControlEventTouchUpInside];
+        [buttonQuestien addSubview:imageView];
+    }
+    
+    return fonView;
 }
 
 @end
