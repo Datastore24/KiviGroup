@@ -11,6 +11,8 @@
 		AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */; };
 		AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */; };
 		AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */; };
+		AD7199C01D92DC5C00F3B0E1 /* PushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */; };
+		AD7199C31D92DCA600F3B0E1 /* PopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */; };
 		AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */; };
 		AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */; };
 		AD89D1C21D678B61007771B6 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C01D678B61007771B6 /* Auth.m */; };
@@ -467,6 +469,10 @@
 		AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Filter+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AD6F0AAC1D7EA7C1005E8FD9 /* FilterDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDbClass.h; sourceTree = "<group>"; };
 		AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDbClass.m; sourceTree = "<group>"; };
+		AD7199BE1D92DC5C00F3B0E1 /* PushAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushAnimator.h; sourceTree = "<group>"; };
+		AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushAnimator.m; sourceTree = "<group>"; };
+		AD7199C11D92DCA600F3B0E1 /* PopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopAnimator.h; sourceTree = "<group>"; };
+		AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopAnimator.m; sourceTree = "<group>"; };
 		AD89D1BB1D678AF2007771B6 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 		AD89D1BD1D678B61007771B6 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
 		AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -1236,6 +1242,10 @@
 				FFAE2E2E1D65A0F400E81AED /* Menu */,
 				FFAE2DF71D65A05D00E81AED /* AppDelegate.h */,
 				FFAE2DF81D65A05D00E81AED /* AppDelegate.m */,
+				AD7199C11D92DCA600F3B0E1 /* PopAnimator.h */,
+				AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */,
+				AD7199BE1D92DC5C00F3B0E1 /* PushAnimator.h */,
+				AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */,
 				FFAE2E2B1D65A0E000E81AED /* MainViewController.h */,
 				FFAE2E2C1D65A0E000E81AED /* MainViewController.m */,
 				FFD1D3901D8FF50200E5BE8B /* BottomBasketView.h */,
@@ -2633,6 +2643,7 @@
 				FFAE32E41D65A31A00E81AED /* UIImage+ImageEffects.m in Sources */,
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
 				FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */,
+				AD7199C01D92DC5C00F3B0E1 /* PushAnimator.m in Sources */,
 				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
 				FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */,
 				FFBF91F31D82EFAE00F8A0A1 /* ReturnController.m in Sources */,
@@ -2652,6 +2663,7 @@
 				FF1618E21D9272BA009D2BAD /* AlertClassCustom.m in Sources */,
 				AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */,
 				FFAE32E31D65A31A00E81AED /* UIImage+Blured_And_SnapShot_Image.m in Sources */,
+				AD7199C31D92DCA600F3B0E1 /* PopAnimator.m in Sources */,
 				AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */,
 				FFBF91C41D82C06700F8A0A1 /* DeliveryView.m in Sources */,
 				FFA8ABB81D704A44004010F9 /* UIImage+Extra.m in Sources */,

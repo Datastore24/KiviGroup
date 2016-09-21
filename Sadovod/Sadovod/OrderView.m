@@ -355,13 +355,19 @@
             NSInteger priceCount = [[[SingleTone sharedManager] countType] integerValue];
             priceCount += 1;
             
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", priceCount]];
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", priceCount]];
             
+            
+            
+             NSInteger priceType= [[[SingleTone sharedManager] priceType] integerValue];
+            priceType +=[[self.arrayData objectForKey:@"cost"] integerValue];
+            NSLog(@"PRICE TYPE %ld",priceType);
+            [[SingleTone sharedManager] setPriceType:[NSString stringWithFormat:@"%ld", priceType]];
             
             [self.delegate getApiAddCart:self andProductID:button.customID];
             [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{
-                [buttonLabelSize setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
+                [buttonLabelSize setTitle:[NSString stringWithFormat:@"%ld", count] forState:UIControlStateNormal];
                 buttonLabelSize.alpha = 1.f;
             }];
         }

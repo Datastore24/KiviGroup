@@ -23,10 +23,13 @@
 @property (strong, nonatomic) UIButton * buttonSort;
 @property (strong, nonatomic) UIButton * buttonColumnOne;
 @property (strong, nonatomic) UIButton * buttonColumnTwo;
+@property (strong, nonatomic) UIButton * buttonFilter;
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSDictionary * dictFilter;
 @property (strong, nonatomic) NSString * sort;
 @property (assign, nonatomic) BOOL isColumn;
+@property (assign, nonatomic) BOOL isEmptyFilter;
+
 
 //ScrollView
 @property (strong, nonatomic) UIView * scrollView;
@@ -36,12 +39,14 @@
 @implementation CatalogDetailView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data {
+                     andData: (NSArray*) data
+            andisFilterEmpty: (BOOL) isEmptyFilter{
     self = [super init];
     if (self) {
       
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
-        
+        NSLog(@"FILTE %i",isEmptyFilter);
+        self.isEmptyFilter = isEmptyFilter;
         self.arrayData = data;
         self.dictFilter = [NSDictionary new];
         self.sort = @"upd-1";
@@ -73,9 +78,19 @@
         [self.buttonColumnTwo addTarget:self action:@selector(buttonColumnTwoAction) forControlEvents:UIControlEventTouchUpInside];
         self.buttonColumnTwo.userInteractionEnabled = NO;
         [topBarView addSubview:self.buttonColumnTwo];
-        UIButton * buttonFilter = [UIButton createButtonCustomImageWithImage:@"imageButtonFilter.png" andRect:CGRectMake((self.frame.size.width / 2.f + 40.f) + 40.f * 2.f, 15.f, 20.f, 20.f)];
-        [buttonFilter addTarget:self action:@selector(buttonFilterAction) forControlEvents:UIControlEventTouchUpInside];
-        [topBarView addSubview:buttonFilter];
+        
+        self.buttonFilter = [UIButton createButtonCustomImageWithImage:@"imageButtonFilter.png" andRect:CGRectMake((self.frame.size.width / 2.f + 40.f) + 40.f * 2.f, 15.f, 20.f, 20.f)];
+        
+        if(self.isEmptyFilter){
+            NSLog(@"EMPTY YES");
+            [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilter.png"] forState:UIControlStateNormal];
+           
+        }else{
+            NSLog(@"EMPTY NO");
+            [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilterYES.png"] forState:UIControlStateNormal];
+        }
+        [self.buttonFilter addTarget:self action:@selector(buttonFilterAction) forControlEvents:UIControlEventTouchUpInside];
+        [topBarView addSubview:self.buttonFilter];
         
         //Scroll------------
         self.isColumn=YES;
@@ -115,7 +130,7 @@
         NSDictionary * dictProduct = [data objectAtIndex:i];
         CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonProduct.customID = [dictProduct objectForKey:@"id"];
-        NSLog(@"NAME %@",[dictProduct objectForKey:@"name"]);
+        
         buttonProduct.customName = [dictProduct objectForKey:@"name"];
         buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
    
@@ -233,7 +248,7 @@
 - (void) buttonProductAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 20 + i) {
-            NSLog(@"CUSTOM ID %@ NAME %@", button.customID, button.customName);
+           
             [self.delegate pushToOrderController:self andProductID: button.customID andProductName:button.customName andProductPrice:button.customValueTwo];
          
         }
@@ -266,8 +281,8 @@
             
             NSString * filter;
             NSString * cost;
-            BOOL isEmpty = ([self.dictFilter count] == 0);
-            if(isEmpty){
+           self.isEmptyFilter = ([self.dictFilter count] == 0);
+            if(self.isEmptyFilter){
                 FilterDbClass * filterDb = [[FilterDbClass alloc] init];
                 
                 Filter * filterCore = [filterDb filterCatID:[NSString stringWithFormat:@"%@",[self.delegate catID]] ];
@@ -280,11 +295,12 @@
                 }
 
             }else{
+                self.isEmptyFilter=NO;
                 filter=[self.dictFilter objectForKey:@"string"];
                 cost=[self.dictFilter objectForKey:@"cost"];
             }
             
-            NSLog(@"SORT:%@ FILTER:%@ COST:%@",sort,filter,cost);
+      
             
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
             [self.delegate getApiCatalog:self andBlock:^{
@@ -423,9 +439,25 @@
                     }
                 }
                 
+                self.isEmptyFilter=NO;
+                
                 //Scroll------------
                 self.arrayData = [self.delegate arrayData];
                 self.scrollView = [self createScrollViewWithView:self andData:[self.delegate arrayData] andColumn:self.isColumn];
+                
+                //Кнопка
+                
+                if([[self.dictFilter objectForKey:@"string"] length]==0){
+                    NSLog(@"EMPTY YES");
+                    self.isEmptyFilter=YES;
+                    [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilter.png"] forState:UIControlStateNormal];
+                    
+                }else{
+                    NSLog(@"EMPTY NO");
+                    self.isEmptyFilter=NO;
+                    [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilterYES.png"] forState:UIControlStateNormal];
+                }
+                
                
                 
                 [self addSubview:self.scrollView];

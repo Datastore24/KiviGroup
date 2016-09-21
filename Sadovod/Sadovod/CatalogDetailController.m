@@ -22,6 +22,7 @@
 @interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
+@property (assign, nonatomic) BOOL isEmptyFilter;
 
 @end
 
@@ -30,7 +31,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
     }  else {
@@ -55,11 +56,11 @@
     
 #pragma mark - View
     [self getApiCatalog:^{
-        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData];
+        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData andisFilterEmpty:self.isEmptyFilter];
         mainView.delegate = self;
         [self.view addSubview:mainView];
         
-        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
         self.basketView.delegate = self;
         if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
             self.basketView.alpha = 1.f;
@@ -173,10 +174,12 @@
     if(filter.o.length !=0){
         cost = [NSString stringWithFormat:@"%@-%@",filter.min_cost,filter.max_cost];
         o=filter.o;
+        self.isEmptyFilter=NO;
         
     }else{
         cost=@"";
         o=@"";
+        self.isEmptyFilter=YES;
     }
 
     

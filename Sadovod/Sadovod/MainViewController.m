@@ -16,9 +16,11 @@
 #import "BasketController.h"
 #import "FormalizationController.h"
 #import "AlertClassCustom.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
 
-@interface MainViewController ()
+@interface MainViewController () <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIView *backView;
 
@@ -29,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.delegate = self;
     [self setStatusBarBackgroundColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_900]];
 }
 
@@ -108,6 +111,21 @@
     AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
     [self.navigationController pushViewController:detail animated:YES];
     
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end
