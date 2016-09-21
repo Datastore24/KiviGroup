@@ -31,7 +31,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
     }  else {
@@ -60,7 +60,7 @@
         mainView.delegate = self;
         [self.view addSubview:mainView];
         
-        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
         self.basketView.delegate = self;
         if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
             self.basketView.alpha = 1.f;

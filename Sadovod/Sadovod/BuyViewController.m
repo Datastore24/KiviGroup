@@ -44,7 +44,7 @@
         self.label.alpha = 1.f;
     } 
     
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
     }  else {
@@ -75,7 +75,7 @@
     
     
     
-    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:@"700" andCount:[[SingleTone sharedManager] countType] andView:self.view];
+    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
     self.basketView.delegate = self;
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
@@ -86,7 +86,7 @@
 }
 
 - (void) showBasketView: (NSNotification*) notification {
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     self.basketView.alpha = 1.f;
     
 }
@@ -112,13 +112,13 @@
 #pragma mark - BuyViewDelegate
 
 - (void) addCountOrder: (BuyView*) buyView {
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
         self.basketView.alpha = 1.f;
 
 }
 
 - (void) hideCountOrder: (BuyView*) buyView {
-    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], @"700"];
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] == 0) {
         self.basketView.alpha = 0.f;
     }
