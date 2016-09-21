@@ -12,8 +12,10 @@
 #import "TableMenuCell.h"
 #import "UIView+BorderView.h"
 #import "SingleTone.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSArray * arrayCell;
 @property (strong, nonatomic) NSArray * arrayNames;
@@ -23,9 +25,16 @@
 
 @implementation MenuViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+//    self.navigationController.delegate = self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 20)];
     view.backgroundColor=[UIColor blackColor];
@@ -169,6 +178,21 @@
 
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

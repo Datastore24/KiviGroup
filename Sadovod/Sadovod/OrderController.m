@@ -16,8 +16,10 @@
 #import "FormalizationController.h"
 #import "AlertClassCustom.h"
 #import "AuthorizationController.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate>
+@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
 @property (strong, nonatomic) OrderView * mainView;
@@ -30,6 +32,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.navigationController.delegate = self;
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0;
     rectView.size.height = self.view.frame.size.height;
@@ -47,6 +50,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self setCustomTitle:self.productName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод
      [self initializeCartBarButton]; //Инициализация кнопок навигации
     //    [self.navigationController setNavigationBarHidden:NO];
@@ -197,6 +201,21 @@
         FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
         [self.navigationController pushViewController:detail animated:YES];
     }
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

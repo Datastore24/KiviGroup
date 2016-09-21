@@ -12,8 +12,10 @@
 #import "SingleTone.h"
 #import "Filter.h"
 #import "FilterDbClass.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface OrderFiltersController () <OrderFiltersViewDelegate>
+@interface OrderFiltersController () <OrderFiltersViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
 
@@ -21,8 +23,14 @@
 
 @implementation OrderFiltersController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.navigationController.delegate = self;
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
+
     
  
     //Кнопка Назад---------------------------------------------
@@ -156,6 +164,21 @@
         
     }];
     
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

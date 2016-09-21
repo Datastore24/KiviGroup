@@ -8,15 +8,25 @@
 
 #import "FormalizationController.h"
 #import "FormalizationView.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface FormalizationController()
+@interface FormalizationController() <UINavigationControllerDelegate>
 
 @end
 
 @implementation FormalizationController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.navigationController.delegate = self;
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     [self setCustomTitle:@"Оформление заказа" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
@@ -35,13 +45,28 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSArray*) setCustonArray
 {
     NSArray * arrayCompany = [NSArray arrayWithObjects:@"Байкал-Сервис", @"ПЭК", @"Деловые линии", @"ЖелДорЭкспедиция", @"КИТ", @"Энергия", nil];
     return arrayCompany;
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

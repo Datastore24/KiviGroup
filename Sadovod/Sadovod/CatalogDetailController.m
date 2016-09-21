@@ -18,8 +18,10 @@
 #import "FormalizationController.h"
 #import "BasketController.h"
 #import "AlertClassCustom.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate>
+@interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 @property (assign, nonatomic) BOOL isEmptyFilter;
@@ -31,6 +33,8 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+    self.navigationController.delegate = self;
+    
      self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
@@ -41,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     [self initializeCartBarButton]; //Инициализация кнопок навигации
     [self setCustomTitle:self.catName andBarButtonAlpha: YES andButtonBasket: NO]; //Ввод заголовка
@@ -224,6 +229,21 @@
         FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
         [self.navigationController pushViewController:detail animated:YES];
     }
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 

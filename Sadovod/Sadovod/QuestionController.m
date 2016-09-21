@@ -13,8 +13,11 @@
 #import "FormalizationController.h"
 #import "BasketController.h"
 #import "AlertClassCustom.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface QuestionController () <BottomBasketViewDelegate>
+
+@interface QuestionController () <BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -25,10 +28,11 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-
+    self.navigationController.delegate = self;
 }
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self setCustomTitle:@"Задать вопрос" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
@@ -76,6 +80,21 @@
         FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
         [self.navigationController pushViewController:detail animated:YES];
     }
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end

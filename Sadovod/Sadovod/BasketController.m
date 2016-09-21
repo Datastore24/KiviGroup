@@ -11,8 +11,10 @@
 #import "HexColors.h"
 #import "BasketView.h"
 #import "CatalogController.h"
+#import "PopAnimator.h"
+#import "PushAnimator.h"
 
-@interface BasketController () <BasketViewGelegate>
+@interface BasketController () <BasketViewGelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
 
@@ -20,8 +22,15 @@
 
 @implementation BasketController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.navigationController.delegate = self;
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    
     [self setCustomTitle:@"Корзина" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
@@ -70,7 +79,7 @@
 #pragma mark - Actions
 
 - (void) buttonBackAction {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - BasketViewGelegate
@@ -80,6 +89,21 @@
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
     [self.navigationController pushViewController:detail animated:YES];
     
+}
+
+#pragma mark - ANIMATION POP PUSH
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[PushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[PopAnimator alloc] init];
+    
+    return nil;
 }
 
 @end
