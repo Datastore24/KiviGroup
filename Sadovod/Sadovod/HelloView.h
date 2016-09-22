@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HelloViewDelegate;
+
 @interface HelloView : UIView
 
+@property (weak, nonatomic) id <HelloViewDelegate> delegate;
+
 - (instancetype)initWithView: (UIView*) view;
+
+@end
+
+@protocol HelloViewDelegate <NSObject>
+
+@required
+
+- (void) pushToQuestion: (HelloView*) helloView;
 
 @end

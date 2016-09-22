@@ -90,8 +90,8 @@
             }
 
             buttonQuestien.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
-            buttonQuestien.tag = 1000 + i;
-//            [buttonQuestien addTarget:self action:@selector(buttonQuestienAction:) forControlEvents:UIControlEventTouchUpInside];
+            buttonQuestien.tag = 1300 + i;
+            [buttonQuestien addTarget:self action:@selector(buttonQuestienAction:) forControlEvents:UIControlEventTouchUpInside];
             [helloView addSubview:buttonQuestien];
             
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 12, 15.f, 15.f)];
@@ -105,6 +105,21 @@
         
     }
     return self;
+}
+
+#pragma mark - Actions
+
+- (void) buttonQuestienAction: (UIButton*) button {
+    if (button.tag == 1300) {
+            [self.delegate pushToQuestion:self];
+        [self performSelector:@selector(hideView) withObject:nil afterDelay:1.];
+    } else {
+        self.alpha = 0.f;
+    }
+}
+
+- (void) hideView {
+    self.alpha = 0.f;
 }
 
 @end

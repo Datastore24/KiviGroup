@@ -24,9 +24,10 @@
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "QuestionController.h"
 
 
-@interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
+@interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, HelloViewDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -63,6 +64,7 @@
             [self.view addSubview:self.basketView];
             
             HelloView * helloView = [[HelloView alloc] initWithView:self.view];
+            helloView.delegate = self;
             [self.view addSubview:helloView];
             
         }];
@@ -276,6 +278,14 @@
         return [[PopAnimator alloc] init];
     
     return nil;
+}
+
+#pragma mark - HelloViewDelegate 
+
+- (void) pushToQuestion: (HelloView*) helloView {
+    QuestionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionController"];
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 @end
