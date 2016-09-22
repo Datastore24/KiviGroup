@@ -2,7 +2,7 @@
 //  Auth+CoreDataProperties.h
 //  Sadovod
 //
-//  Created by Кирилл Ковыршин on 19.08.16.
+//  Created by Кирилл Ковыршин on 22.09.16.
 //  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,11 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Auth (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *catalogkey;
-@property (nullable, nonatomic, retain) NSString *superkey;
 @property (nullable, nonatomic, retain) NSString *login;
 @property (nullable, nonatomic, retain) NSString *password;
+@property (nullable, nonatomic, retain) NSString *superkey;
 @property (nullable, nonatomic, retain) NSString *token;
 @property (nullable, nonatomic, retain) NSString *uid;
+@property (nullable, nonatomic, retain) NSNumber *popUp;
 
 @end
 

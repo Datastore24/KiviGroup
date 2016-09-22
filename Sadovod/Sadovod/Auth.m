@@ -2,7 +2,7 @@
 //  Auth.m
 //  Sadovod
 //
-//  Created by Кирилл Ковыршин on 19.08.16.
+//  Created by Кирилл Ковыршин on 22.09.16.
 //  Copyright © 2016 Виктор Мишустин. All rights reserved.
 //
 
