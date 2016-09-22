@@ -16,6 +16,8 @@
 - (BOOL)checkKey:(NSString*) superKey andCatalogKey: (NSString*) catalogKey;
 - (void)updateToken:(NSString *)token;
 - (void)DeleteUserWithOutKey;
+- (BOOL)checkPopUp;
+- (void)updatePopUp;
 
 
 @end

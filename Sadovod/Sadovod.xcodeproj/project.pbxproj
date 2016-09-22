@@ -13,9 +13,9 @@
 		AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */; };
 		AD7199C01D92DC5C00F3B0E1 /* PushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */; };
 		AD7199C31D92DCA600F3B0E1 /* PopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */; };
+		AD7199C81D93E32200F3B0E1 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */; };
+		AD7199C91D93E32200F3B0E1 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C71D93E32200F3B0E1 /* Auth.m */; };
 		AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */; };
-		AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */; };
-		AD89D1C21D678B61007771B6 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C01D678B61007771B6 /* Auth.m */; };
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
@@ -474,11 +474,11 @@
 		AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushAnimator.m; sourceTree = "<group>"; };
 		AD7199C11D92DCA600F3B0E1 /* PopAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopAnimator.h; sourceTree = "<group>"; };
 		AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopAnimator.m; sourceTree = "<group>"; };
+		AD7199C41D93E32200F3B0E1 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AD7199C61D93E32200F3B0E1 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
+		AD7199C71D93E32200F3B0E1 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		AD89D1BB1D678AF2007771B6 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
-		AD89D1BD1D678B61007771B6 /* Auth+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth+CoreDataProperties.h"; sourceTree = "<group>"; };
-		AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
-		AD89D1BF1D678B61007771B6 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
-		AD89D1C01D678B61007771B6 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		AD89D1C31D678B7C007771B6 /* AuthDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthDbClass.h; sourceTree = "<group>"; };
 		AD89D1C41D678B7C007771B6 /* AuthDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDbClass.m; sourceTree = "<group>"; };
 		AD89D1C71D678DAB007771B6 /* APIGetClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGetClass.h; sourceTree = "<group>"; };
@@ -1030,10 +1030,10 @@
 		AD89D1B91D678AC8007771B6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				AD89D1BD1D678B61007771B6 /* Auth+CoreDataProperties.h */,
-				AD89D1BE1D678B61007771B6 /* Auth+CoreDataProperties.m */,
-				AD89D1BF1D678B61007771B6 /* Auth.h */,
-				AD89D1C01D678B61007771B6 /* Auth.m */,
+				AD7199C41D93E32200F3B0E1 /* Auth+CoreDataProperties.h */,
+				AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */,
+				AD7199C61D93E32200F3B0E1 /* Auth.h */,
+				AD7199C71D93E32200F3B0E1 /* Auth.m */,
 				AD89D1C31D678B7C007771B6 /* AuthDbClass.h */,
 				AD89D1C41D678B7C007771B6 /* AuthDbClass.m */,
 				AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */,
@@ -2699,6 +2699,7 @@
 				FFC4FD6C1D675E9C007C2DDC /* CatalogMainListView.m in Sources */,
 				FFAE307A1D65A25800E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFBF91F61D82EFBC00F8A0A1 /* ReturnView.m in Sources */,
+				AD7199C81D93E32200F3B0E1 /* Auth+CoreDataProperties.m in Sources */,
 				FFAE32E71D65A31A00E81AED /* UIButton+ButtonImage.m in Sources */,
 				AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */,
 				FFA5FFF11D81755000CD6E7F /* RegistrationController.m in Sources */,
@@ -2709,7 +2710,6 @@
 				FFAE32DF1D65A31A00E81AED /* HeightForText.m in Sources */,
 				FFA8ABC41D70847E004010F9 /* BuyView.m in Sources */,
 				FFAE2E371D65A10300E81AED /* MenuViewController.m in Sources */,
-				AD89D1C21D678B61007771B6 /* Auth.m in Sources */,
 				FFAE32E01D65A31A00E81AED /* TextAndImageHeight.m in Sources */,
 				FF3A05F01D87F521009012E8 /* SizesView.m in Sources */,
 				AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */,
@@ -2719,6 +2719,7 @@
 				FFAE2E2D1D65A0E000E81AED /* MainViewController.m in Sources */,
 				FFAE33191D65A42E00E81AED /* InputTextView.m in Sources */,
 				FFF873431D6B2BF900816FC1 /* OrderView.m in Sources */,
+				AD7199C91D93E32200F3B0E1 /* Auth.m in Sources */,
 				FFA8ABBD1D705F54004010F9 /* ColorButton.m in Sources */,
 				FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */,
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
@@ -2727,7 +2728,6 @@
 				FFD1D3961D917E0500E5BE8B /* ChangePasswordController.m in Sources */,
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,
 				FFC4FD731D676800007C2DDC /* CatalogDetailView.m in Sources */,
-				AD89D1C11D678B61007771B6 /* Auth+CoreDataProperties.m in Sources */,
 				FFA5FFFD1D81796000CD6E7F /* QuestionView.m in Sources */,
 				FFAE33141D65A3CE00E81AED /* SingleTone.m in Sources */,
 				FFAE2DF61D65A05D00E81AED /* main.m in Sources */,

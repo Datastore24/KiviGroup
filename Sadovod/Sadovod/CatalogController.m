@@ -63,9 +63,21 @@
             }
             [self.view addSubview:self.basketView];
             
+<<<<<<< HEAD
             HelloView * helloView = [[HelloView alloc] initWithView:self.view];
             helloView.delegate = self;
             [self.view addSubview:helloView];
+=======
+            AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+            
+            if(![authDbClass checkPopUp]){
+                HelloView * helloView = [[HelloView alloc] initWithView:self.view];
+                [self.view addSubview:helloView];
+                [authDbClass updatePopUp];
+            }
+            
+            
+>>>>>>> 111
             
         }];
         

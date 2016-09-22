@@ -46,6 +46,46 @@
     }
 }
 
+- (BOOL)checkPopUp{
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:
+                                               @"popUp == 1 AND uid ==[c] 1"];
+    Auth *keyFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    // If a person was founded
+    if (keyFounded)
+    {
+        return YES;
+    }else{
+        
+        return NO;
+    }
+}
+
+- (void)updatePopUp
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
+    Auth *authFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.popUp = [NSNumber numberWithUnsignedInt:1];
+        
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+
 - (void)deleteAuth
 {
     // Get the local context
