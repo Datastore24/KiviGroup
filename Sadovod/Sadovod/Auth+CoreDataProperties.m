@@ -21,4 +21,5 @@
 @dynamic uid;
 @dynamic popUp;
 
+
 @end

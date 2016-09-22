@@ -13,8 +13,6 @@
 @implementation AuthDbClass
 
 
-
-
 - (void)addKey: (NSString *) superKey andCatalogKey: (NSString*) catalogKey{
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];

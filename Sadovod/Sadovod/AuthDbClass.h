@@ -19,5 +19,4 @@
 - (BOOL)checkPopUp;
 - (void)updatePopUp;
 
-
 @end
