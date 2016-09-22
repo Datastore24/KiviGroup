@@ -13,4 +13,6 @@
 @property (strong,nonatomic) NSString* productName;
 @property (strong,nonatomic) NSString* productPrice;
 
+@property (strong, nonatomic) NSArray * arrayCartNew;
+
 @end

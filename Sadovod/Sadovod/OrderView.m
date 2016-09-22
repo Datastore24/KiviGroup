@@ -71,6 +71,9 @@
         self.mainScrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:self.mainScrollView];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applySize)
+                                                     name:@"NOTIFICATION_SIZE_APPLY" object:nil];
+        
         //Scroll Image-----
         
         UIView * scrollImageView = [self createScrollImageWithArrayImage:arrayImage andMainView:self.mainScrollView];
@@ -100,7 +103,7 @@
         self.sizesTitle.textAlignment = NSTextAlignmentLeft;
         [self.mainScrollView addSubview:self.sizesTitle];
 
-        self.viewSizes = [self createViewSizesWithMainView:self.mainScrollView andArraySizes:self.arraySizes];
+        self.viewSizes = [self createViewSizesWithMainView:self.mainScrollView andArraySizes:self.arraySizes andArrayCart:self.arrayCart];
         
         
         if(self.arraySizes.count == 1){
@@ -224,7 +227,8 @@
 #pragma mark - Sizes
 
 - (UIView*) createViewSizesWithMainView: (UIView*) mainView
-                          andArraySizes: (NSArray*) arraySizes {
+                          andArraySizes: (NSArray*) arraySizes
+                           andArrayCart: (NSArray *) arrayCart{
     //Переменные для создания таблицы
     CGFloat line = 0.f; //Строки
     CGFloat column = 0.f; //Столбцы
@@ -234,7 +238,7 @@
     for (int i = 0; i < arraySizes.count; i++) {
         
         if([[[arraySizes objectAtIndex:i] objectForKey:@"aviable"] integerValue] == 1){
-            NSLog(@"VALUE %@",[[arraySizes objectAtIndex:i] objectForKey:@"value"] );
+           
             
           
             
@@ -255,19 +259,19 @@
         buttonSizeLabel.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_900];
             
             NSString * count;
-            NSLog(@"CART %@",self.arrayCart);
-            for (int k=0; k<self.arrayCart.count; k++) {
+          
+            for (int k=0; k<arrayCart.count; k++) {
                
-                if(([[[arraySizes objectAtIndex:i] objectForKey:@"id"] longLongValue] == [[[self.arrayCart objectAtIndex:k] objectForKey:@"id"] longLongValue])
-                   && ([[[self.arrayCart objectAtIndex:k] objectForKey:@"count"] longLongValue] != 0)){
-                    NSLog(@"YES");
+                if(([[[arraySizes objectAtIndex:i] objectForKey:@"id"] longLongValue] == [[[arrayCart objectAtIndex:k] objectForKey:@"id"] longLongValue])
+                   && ([[[arrayCart objectAtIndex:k] objectForKey:@"count"] longLongValue] != 0)){
+                
                     
                     buttonSizeLabel.alpha = 1.f;
-                    count =[NSString stringWithFormat:@"%@",[[self.arrayCart objectAtIndex:k] objectForKey:@"count"]] ;
+                    count =[NSString stringWithFormat:@"%@",[[arrayCart objectAtIndex:k] objectForKey:@"count"]] ;
                     
                     break;
                 }else{
-                    NSLog(@"NO");
+                    
                     count =@"0";
                     buttonSizeLabel.alpha = 0.f;
                     
@@ -275,7 +279,7 @@
             }
             if(self.arrayCart.count ==0){
                 count = @"0";
-                NSLog(@"NO");
+              
                 buttonSizeLabel.alpha = 0.f;
                 
             }
@@ -405,7 +409,7 @@
             
              NSInteger priceType= [[[SingleTone sharedManager] priceType] integerValue];
             priceType +=[[self.arrayData objectForKey:@"cost"] integerValue];
-            NSLog(@"PRICE TYPE %ld",(long)priceType);
+        
             [[SingleTone sharedManager] setPriceType:[NSString stringWithFormat:@"%ld", (long)priceType]];
             
             [self.delegate getApiAddCart:self andProductID:button.customID];
@@ -499,5 +503,44 @@
     
     return fonView;
 }
+
+
+#pragma mark - ApplySize
+- (void) applySize {
+    NSLog(@"APPLYSize");
+
+    //Sizes------
+  
+    [self.delegate getApiCart:self andBlock:^{
+          [self.viewSizes removeFromSuperview];
+        self.viewSizes = [self createViewSizesWithMainView:self.mainScrollView andArraySizes:self.arraySizes andArrayCart:[self.delegate arrayCartNew]];
+        
+        NSLog(@"CART %@",[self.delegate arrayCartNew]);
+        
+        if(self.arraySizes.count == 1){
+            if([[[self.arraySizes objectAtIndex:0] objectForKey:@"value"] isEqualToString:@"Без размера"]){
+                
+                CGRect rectSizes = self.viewSizes.frame;
+                rectSizes.size.height = 0.f;
+                self.viewSizes.frame = rectSizes;
+                self.viewSizes.clipsToBounds = YES;
+                
+                CGRect rectSizesTitle = self.sizesTitle.frame;
+                rectSizesTitle.size.height = 0.f;
+                self.sizesTitle.frame = rectSizesTitle;
+                self.sizesTitle.clipsToBounds = YES;
+            }
+        }
+        [self.mainScrollView addSubview:self.viewSizes];
+
+        
+    } andProductID:[self.delegate productID]];
+    
+
+   
+    
+    
+}
+
 
 @end

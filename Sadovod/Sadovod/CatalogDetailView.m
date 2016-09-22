@@ -52,6 +52,8 @@
         self.sort = @"upd-1";
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilter:) name:@"NOTIFICATION_FILTER_APPLY" object:nil];
+        
+
        
         
 #pragma mark - TopBar
