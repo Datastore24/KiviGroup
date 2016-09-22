@@ -239,7 +239,7 @@
         [buttonSize setTitle:[[arraySizes objectAtIndex:i] objectForKey:@"value"] forState:UIControlStateNormal];
         buttonSize.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         [buttonSize addTarget:self action:@selector(buttonSizeAction:) forControlEvents:UIControlEventTouchUpInside];
-        [buttonSize setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [buttonSize setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [viewSizes addSubview:buttonSize];
         
         UIButton * buttonSizeLabel = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -355,19 +355,19 @@
             NSInteger priceCount = [[[SingleTone sharedManager] countType] integerValue];
             priceCount += 1;
             
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", priceCount]];
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", (long)priceCount]];
             
             
             
              NSInteger priceType= [[[SingleTone sharedManager] priceType] integerValue];
             priceType +=[[self.arrayData objectForKey:@"cost"] integerValue];
-            NSLog(@"PRICE TYPE %ld",priceType);
-            [[SingleTone sharedManager] setPriceType:[NSString stringWithFormat:@"%ld", priceType]];
+            NSLog(@"PRICE TYPE %ld",(long)priceType);
+            [[SingleTone sharedManager] setPriceType:[NSString stringWithFormat:@"%ld", (long)priceType]];
             
             [self.delegate getApiAddCart:self andProductID:button.customID];
             [self.delegate showBottomBar:self];
             [UIView animateWithDuration:0.3 animations:^{
-                [buttonLabelSize setTitle:[NSString stringWithFormat:@"%ld", count] forState:UIControlStateNormal];
+                [buttonLabelSize setTitle:[NSString stringWithFormat:@"%ld", (long)count] forState:UIControlStateNormal];
                 buttonLabelSize.alpha = 1.f;
             }];
         }

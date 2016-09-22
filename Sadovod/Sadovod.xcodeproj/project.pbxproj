@@ -20,6 +20,7 @@
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
 		FF1618E21D9272BA009D2BAD /* AlertClassCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */; };
+		FF1618EE1D93C8E1009D2BAD /* HelloView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1618ED1D93C8E1009D2BAD /* HelloView.m */; };
 		FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EC1D87F50C009012E8 /* SizesController.m */; };
 		FF3A05F01D87F521009012E8 /* SizesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EF1D87F521009012E8 /* SizesView.m */; };
 		FF3A05F31D8844C4009012E8 /* personMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F11D8844C4009012E8 /* personMenuImage.png */; };
@@ -487,6 +488,8 @@
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
 		FF1618E01D9272BA009D2BAD /* AlertClassCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClassCustom.h; sourceTree = "<group>"; };
 		FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClassCustom.m; sourceTree = "<group>"; };
+		FF1618EC1D93C8E1009D2BAD /* HelloView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloView.h; sourceTree = "<group>"; };
+		FF1618ED1D93C8E1009D2BAD /* HelloView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloView.m; sourceTree = "<group>"; };
 		FF3A05EB1D87F50C009012E8 /* SizesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesController.h; sourceTree = "<group>"; };
 		FF3A05EC1D87F50C009012E8 /* SizesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesController.m; sourceTree = "<group>"; };
 		FF3A05EE1D87F521009012E8 /* SizesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizesView.h; sourceTree = "<group>"; };
@@ -1071,6 +1074,26 @@
 			name = Alerts;
 			sourceTree = "<group>";
 		};
+		FF1618EA1D93C1DD009D2BAD /* NavigationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				AD7199C11D92DCA600F3B0E1 /* PopAnimator.h */,
+				AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */,
+				AD7199BE1D92DC5C00F3B0E1 /* PushAnimator.h */,
+				AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */,
+			);
+			name = NavigationAnimation;
+			sourceTree = "<group>";
+		};
+		FF1618EB1D93C8C5009D2BAD /* AddViewClass */ = {
+			isa = PBXGroup;
+			children = (
+				FF1618EC1D93C8E1009D2BAD /* HelloView.h */,
+				FF1618ED1D93C8E1009D2BAD /* HelloView.m */,
+			);
+			name = AddViewClass;
+			sourceTree = "<group>";
+		};
 		FF3A05EA1D87F4D1009012E8 /* Sizes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,10 +1265,6 @@
 				FFAE2E2E1D65A0F400E81AED /* Menu */,
 				FFAE2DF71D65A05D00E81AED /* AppDelegate.h */,
 				FFAE2DF81D65A05D00E81AED /* AppDelegate.m */,
-				AD7199C11D92DCA600F3B0E1 /* PopAnimator.h */,
-				AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */,
-				AD7199BE1D92DC5C00F3B0E1 /* PushAnimator.h */,
-				AD7199BF1D92DC5C00F3B0E1 /* PushAnimator.m */,
 				FFAE2E2B1D65A0E000E81AED /* MainViewController.h */,
 				FFAE2E2C1D65A0E000E81AED /* MainViewController.m */,
 				FFD1D3901D8FF50200E5BE8B /* BottomBasketView.h */,
@@ -1256,6 +1275,8 @@
 				FFAE2E271D65A07900E81AED /* Info.plist */,
 				FFF873441D6B3A0800816FC1 /* PageControl */,
 				FFAE32F21D65A37100E81AED /* Images */,
+				FF1618EB1D93C8C5009D2BAD /* AddViewClass */,
+				FF1618EA1D93C1DD009D2BAD /* NavigationAnimation */,
 				FFAE32EB1D65A32C00E81AED /* InputText */,
 				FFAE32C01D65A30D00E81AED /* Category */,
 				FFAE32BC1D65A2F800E81AED /* SwichLib */,
@@ -2636,6 +2657,7 @@
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
 				FFBF91E51D82E01D00F8A0A1 /* ContactsView.m in Sources */,
+				FF1618EE1D93C8E1009D2BAD /* HelloView.m in Sources */,
 				FFA500011D818F6A00CD6E7F /* FAQController.m in Sources */,
 				FFA5FFF41D81756600CD6E7F /* RegistrationView.m in Sources */,
 				FFC4FD591D672189007C2DDC /* CatalogListView.m in Sources */,

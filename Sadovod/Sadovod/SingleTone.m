@@ -13,6 +13,7 @@
 @synthesize catalogKey;
 @synthesize typeMenu;
 @synthesize boolPhone;
+@synthesize helloBool;
 
 
 #pragma mark Singleton Methods
