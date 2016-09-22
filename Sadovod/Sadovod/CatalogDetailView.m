@@ -45,7 +45,7 @@
     if (self) {
       
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64.f);
-        NSLog(@"FILTE %i",isEmptyFilter);
+
         self.isEmptyFilter = isEmptyFilter;
         self.arrayData = data;
         self.dictFilter = [NSDictionary new];
@@ -82,11 +82,11 @@
         self.buttonFilter = [UIButton createButtonCustomImageWithImage:@"imageButtonFilter.png" andRect:CGRectMake((self.frame.size.width / 2.f + 40.f) + 40.f * 2.f, 15.f, 20.f, 20.f)];
         
         if(self.isEmptyFilter){
-            NSLog(@"EMPTY YES");
+           
             [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilter.png"] forState:UIControlStateNormal];
            
         }else{
-            NSLog(@"EMPTY NO");
+            
             [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilterYES.png"] forState:UIControlStateNormal];
         }
         [self.buttonFilter addTarget:self action:@selector(buttonFilterAction) forControlEvents:UIControlEventTouchUpInside];
@@ -325,6 +325,8 @@
                 }
                 self.hideView = [self createHideViewVithView];
                 [self addSubview:self.hideView];
+                
+
                 [UIView animateWithDuration:0.3f animations:^{
                     [self.buttonColumnOne setImage:[UIImage imageNamed:@"buttonCollumImageOneNO.png"] forState:UIControlStateNormal];
                     [self.buttonColumnTwo setImage:[UIImage imageNamed:@"buttonCollumImageYES.png"] forState:UIControlStateNormal];
@@ -448,12 +450,12 @@
                 //Кнопка
                 
                 if([[self.dictFilter objectForKey:@"string"] length]==0){
-                    NSLog(@"EMPTY YES");
+
                     self.isEmptyFilter=YES;
                     [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilter.png"] forState:UIControlStateNormal];
                     
                 }else{
-                    NSLog(@"EMPTY NO");
+                
                     self.isEmptyFilter=NO;
                     [self.buttonFilter setImage:[UIImage imageNamed:@"imageButtonFilterYES.png"] forState:UIControlStateNormal];
                 }

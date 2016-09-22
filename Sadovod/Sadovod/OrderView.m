@@ -23,6 +23,7 @@
 
 
 @property (strong, nonatomic) NSDictionary * arrayData;
+@property (strong, nonatomic) NSArray * arrayCart;
 @property (strong, nonatomic) NSArray * arraySizes;
 @property (strong, nonatomic) NSArray * detailsArray;
 @property (strong, nonatomic) CustomLabels * sizesTitle;
@@ -51,12 +52,14 @@
 #pragma mark - Main
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSDictionary*) data {
+                     andData: (NSDictionary*) data
+                    andCart: (NSArray *) cart{
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.counterOrder = 0.f;
         self.arrayData = data;
+        self.arrayCart = cart;
         self.isBoolAuthorization = NO;
        
         NSArray * arrayImage = [data objectForKey:@"images"];
@@ -102,7 +105,7 @@
         
         if(self.arraySizes.count == 1){
             if([[[self.arraySizes objectAtIndex:0] objectForKey:@"value"] isEqualToString:@"Без размера"]){
-                NSLog(@"БЕЗ РАЗМЕРА НАХ");
+               
                 CGRect rectSizes = self.viewSizes.frame;
                 rectSizes.size.height = 0.f;
                 self.viewSizes.frame = rectSizes;
@@ -245,10 +248,42 @@
         UIButton * buttonSizeLabel = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonSizeLabel.frame = CGRectMake(((self.frame.size.width - 46.f) / 3.f) - 11.f, - 7.f, 18.f, 18.f);
         buttonSizeLabel.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_900];
-        [buttonSizeLabel setTitle:@"0" forState:UIControlStateNormal];
+            
+            NSString * count;
+            NSLog(@"CART %@",self.arrayCart);
+            for (int k=0; k<self.arrayCart.count; k++) {
+               
+                if(([[[arraySizes objectAtIndex:i] objectForKey:@"id"] longLongValue] == [[[self.arrayCart objectAtIndex:k] objectForKey:@"id"] longLongValue])
+                   && ([[[self.arrayCart objectAtIndex:k] objectForKey:@"count"] longLongValue] != 0)){
+                    NSLog(@"YES");
+                    
+                    buttonSizeLabel.alpha = 1.f;
+                    count =[NSString stringWithFormat:@"%@",[[self.arrayCart objectAtIndex:k] objectForKey:@"count"]] ;
+                    
+                    break;
+                }else{
+                    NSLog(@"NO");
+                    count =@"0";
+                    buttonSizeLabel.alpha = 0.f;
+                    
+                }
+            }
+            if(self.arrayCart.count ==0){
+                count = @"0";
+                NSLog(@"NO");
+                buttonSizeLabel.alpha = 0.f;
+                
+            }
+            
+            
+            
+            
+            
+        [buttonSizeLabel setTitle:count forState:UIControlStateNormal];
+        
         [buttonSizeLabel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buttonSizeLabel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:10];
-        buttonSizeLabel.alpha = 0.f;
+        
         buttonSizeLabel.userInteractionEnabled = NO;
         buttonSizeLabel.tag = 60 + i;
         buttonSizeLabel.layer.cornerRadius = 9.f;

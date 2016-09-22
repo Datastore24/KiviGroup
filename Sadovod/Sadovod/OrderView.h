@@ -15,7 +15,9 @@
 @property (weak, nonatomic) id <OrderViewDelegate> delegate;
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSDictionary*) data;
+                     andData: (NSDictionary*) data
+                     andCart: (NSArray *) cart;
+
 @property (strong, nonatomic) UIScrollView * mainScrollView;;
 
 @end
