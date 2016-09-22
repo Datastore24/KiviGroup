@@ -129,23 +129,34 @@
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
+    if(filter.length ==0){
+        
+        filter=@"";
+    }
+    
+    if(cost.length ==0){
+        
+        cost=@"";
+    }
+
     
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
+                              self.catID,@"cat",
+                             sort,@"sort",
                              filter,@"o",
                              cost,@"cost",
-                             self.catID,@"cat",
-                             sort,@"sort",
+                            
                              nil];
-    NSLog(@"PARAMS: %@",params);
+    
     
     [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
+            
            
             self.arrayData = [respDict objectForKey:@"list"];
             
@@ -194,9 +205,9 @@
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
                              self.catID,@"cat",
+                             @"upd-1",@"sort",
                              o,@"o",
                              cost,@"cost",
-                             @"upd-1",@"sort",
                              nil];
     
     [api getDataFromServerWithParams:params method:@"cat_prods_catalog" complitionBlock:^(id response) {

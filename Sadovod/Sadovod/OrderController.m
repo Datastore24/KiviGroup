@@ -22,6 +22,7 @@
 @interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
+@property (strong, nonatomic) NSArray * arrayCart;
 @property (strong, nonatomic) OrderView * mainView;
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -65,7 +66,7 @@
     
 #pragma mark - View
     [self getApiProduct:^{
-        self.mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData];
+        self.mainView = [[OrderView alloc] initWithView:self.view andData:self.arrayData andCart:self.arrayCart];
         self.mainView.delegate = self;
         [self.view addSubview:self.mainView];
         
@@ -174,6 +175,39 @@
             
             self.arrayData = [respDict objectForKey:@"product"];
             
+            [self getApiCart:^{
+                 block();
+            } andProductID:productID];
+           
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getApiCart: (void (^)(void))block andProductID: (NSString *) productID
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             productID,@"product",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"get_sizes_product_buy" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            
+            
+            self.arrayCart = [respDict objectForKey:@"list"] ;
             
             block();
             
