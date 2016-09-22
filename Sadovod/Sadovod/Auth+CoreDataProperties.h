@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *uid;
 @property (nullable, nonatomic, retain) NSNumber *popUp;
 
+
 @end
 
 NS_ASSUME_NONNULL_END
