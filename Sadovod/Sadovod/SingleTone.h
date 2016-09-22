@@ -23,6 +23,9 @@
 //Булевая переменная для отобрадения вкладки телефона
 @property (assign, nonatomic) BOOL boolPhone;
 
+//Временная булевая переменная для окна приветсвия
+@property (assign, nonatomic) BOOL helloBool;
+
 + (id)sharedManager;
 
 @end

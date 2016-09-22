@@ -12,6 +12,7 @@
 #import "APIGetClass.h"
 #import "SingleTone.h"
 #import "OrderController.h"
+#import "HelloView.h"
 
 #import "Auth.h"
 #import "AuthDbClass.h"
@@ -60,6 +61,10 @@
                 self.basketView.alpha = 1.f;
             }
             [self.view addSubview:self.basketView];
+            
+            HelloView * helloView = [[HelloView alloc] initWithView:self.view];
+            [self.view addSubview:helloView];
+            
         }];
         
     }];
