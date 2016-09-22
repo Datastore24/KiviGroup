@@ -28,11 +28,14 @@
 
 @property (strong,nonatomic) NSString* productName;
 @property (strong,nonatomic) NSString* productPrice;
+@property (strong, nonatomic) NSArray * arrayCartNew;
+@property (strong,nonatomic) NSString* productID;
 
 
 - (void) pushTuBiyView: (OrderView*) orderView;
 - (void) showBottomBar: (OrderView*) orderView;
 - (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID ;
+- (void) getApiCart: (OrderView*) orderView  andBlock:(void (^)(void))block andProductID: (NSString *) productID;
 - (void) pushAuthorization: (OrderView*) orderView;
 
 

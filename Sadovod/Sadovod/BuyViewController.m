@@ -97,21 +97,14 @@
     
 }
 
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:YES];
-    
-    self.label.alpha = 0.f;
-    
-}
 
 
 #pragma mark - Actions
 
 - (void) buttonBackAction {
+    NSLog(@"BACK");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_SIZE_APPLY" object:nil];
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -404,6 +397,16 @@
     return nil;
 }
 
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    
+    self.label.alpha = 0.f;
+    
+}
 
  
 @end
