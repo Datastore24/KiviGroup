@@ -62,12 +62,7 @@
                 self.basketView.alpha = 1.f;
             }
             [self.view addSubview:self.basketView];
-            
-<<<<<<< HEAD
-            HelloView * helloView = [[HelloView alloc] initWithView:self.view];
-            helloView.delegate = self;
-            [self.view addSubview:helloView];
-=======
+
             AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
             
             if(![authDbClass checkPopUp]){
@@ -75,9 +70,6 @@
                 [self.view addSubview:helloView];
                 [authDbClass updatePopUp];
             }
-            
-            
->>>>>>> 111
             
         }];
         
