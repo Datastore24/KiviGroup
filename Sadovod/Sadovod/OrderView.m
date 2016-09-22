@@ -165,6 +165,10 @@
     
     for (int i = 0; i < arrayImage.count; i++) {
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollImage.frame.size.width * i, 0.f, self.scrollImage.frame.size.width, self.scrollImage.frame.size.height)];
+        UIButton * buttonImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonImage.frame = CGRectMake(self.scrollImage.frame.size.width * i, 0.f, self.scrollImage.frame.size.width, self.scrollImage.frame.size.height);
+        [buttonImage addTarget:self action:@selector(buttonImageAction) forControlEvents:UIControlEventTouchUpInside];
+        
         
         NSURL *imgURL = [NSURL URLWithString:[arrayImage objectAtIndex:i]];
         
@@ -198,6 +202,7 @@
         
         
         [self.scrollImage addSubview:imageView];
+        [self.scrollImage addSubview:buttonImage];
     }
     
     //Инициализация pageControl-------------------------------------------
@@ -370,6 +375,10 @@
 }
 
 #pragma mark - Actions
+
+- (void) buttonImageAction {
+    NSLog(@"buttonImageAction");
+}
 
 - (void) buttonSizeAction: (CustomButton*) button {
     for (int i = 0; i < self.arraySizes.count; i++) {

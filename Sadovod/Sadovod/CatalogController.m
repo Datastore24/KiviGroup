@@ -24,9 +24,10 @@
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "QuestionController.h"
 
 
-@interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
+@interface CatalogController () <CatalogViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, HelloViewDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
 
@@ -61,7 +62,7 @@
                 self.basketView.alpha = 1.f;
             }
             [self.view addSubview:self.basketView];
-            
+
             AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
             
             if(![authDbClass checkPopUp]){
@@ -69,8 +70,6 @@
                 [self.view addSubview:helloView];
                 [authDbClass updatePopUp];
             }
-            
-            
             
         }];
         
@@ -283,6 +282,14 @@
         return [[PopAnimator alloc] init];
     
     return nil;
+}
+
+#pragma mark - HelloViewDelegate 
+
+- (void) pushToQuestion: (HelloView*) helloView {
+    QuestionController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionController"];
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 @end
