@@ -625,6 +625,7 @@
     
     self.counter -= 1;
     self.sliderBool = NO;
+    [self getParametrs:NO];
     
     
     [self buttonActionCheck];
@@ -647,6 +648,7 @@
                     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
+                    [self getParametrs:NO];
                     if (self.buttonCanselSize.alpha == 0.f) {
                         [UIView animateWithDuration:0.3 animations:^{
                             self.buttonCanselSize.alpha = 1.f;
@@ -660,6 +662,7 @@
                     [button setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
                 } completion:^(BOOL finished) {
                     button.isBool = NO;
+                    [self getParametrs:NO];
                 }];
             }
         }
@@ -693,12 +696,14 @@
     
     self.counter -= 1;
     self.sizeBool = NO;
+    [self getParametrs:NO];
     
     [self buttonActionCheck];
 }
 
 //Кнопка выбора цвета
 - (void) buttonColorAction: (ColorButton*) button {
+    
     for (int i = 0; i < self.arrayColor.count; i++) {
         if (button.tag == 100 + i) {
             if (!button.isBool) {
@@ -712,7 +717,7 @@
                     button.alpha = 0.3;
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
-                   
+                   [self getParametrs:NO];
                     if (self.buttonCanselColor.alpha == 0.f) {
                         [UIView animateWithDuration:0.3 animations:^{
                             self.buttonCanselColor.alpha = 1.f;
@@ -725,6 +730,7 @@
                     button.alpha = 1.f;
                 } completion:^(BOOL finished) {
                     button.isBool = NO;
+                    [self getParametrs:NO];
                     
                 }];
             }
@@ -757,6 +763,7 @@
     
     self.counter -= 1;
     self.colorBool = NO;
+    [self getParametrs:NO];
     
     [self buttonActionCheck];
 }
@@ -783,6 +790,7 @@
                         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     } completion:^(BOOL finished) {
                         button.isBool = YES;
+                        [self getParametrs:NO];
                         if (buttonCancel.alpha == 0.f) {
                             [UIView animateWithDuration:0.3 animations:^{
                                 buttonCancel.alpha = 1.f;
@@ -797,6 +805,7 @@
                         [button setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
                     } completion:^(BOOL finished) {
                         button.isBool = NO;
+                        [self getParametrs:NO];
                     }];
                 }
             }
@@ -827,6 +836,7 @@
             NSMutableArray * arrayButtons = [dict objectForKey:@"buttonArray"];
             for (CustomButton * ctButton in arrayButtons) {
                 ctButton.isBool = NO;
+                
                 [UIView animateWithDuration:0.3 animations:^{
                     ctButton.backgroundColor = [UIColor whiteColor];
                     [ctButton setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -835,6 +845,8 @@
             }
         }
     }
+    [self getParametrs:NO];
+    
     
     [self buttonActionCheck];
 }
@@ -842,7 +854,13 @@
 
 
 //Подтверждение всех фильтров и возврат назад
-- (void) buttonConfirmAction {
+
+- (void) buttonConfirmAction{
+    [self getParametrs:YES];
+}
+
+
+- (void) getParametrs: (BOOL) isConfirm {
     NSString * parametrs = @"";
     //Цена
     NSString * price= [NSString stringWithFormat:@"%i-%i",
@@ -953,8 +971,19 @@
     parametrs = [parametrs stringByReplacingOccurrencesOfString:@"._."
                                                      withString:@"_."];
     
-    
-    [self.delegate backTuCatalog:self andCost:price andString:parametrs];
+    if(isConfirm){
+        [self.delegate backTuCatalog:self andCost:price andString:parametrs];
+    }else{
+        [self.delegate getApiCatalog:self andBlock:^{
+            if([[self.delegate countProduct] longLongValue]==0){
+                [UIView animateWithDuration:0.3f animations:^{
+                    self.bigButtonConfirm.alpha = 0.f;
+                    self.buttonConfirm.alpha = 0.f;
+                }];
+            }
+            
+        } andCost:price andFilter:parametrs];
+    }
 }
 
 //Отмена всех фильтров
@@ -973,10 +1002,18 @@
     self.sliderBool = NO;
     self.colorBool = NO;
     
+    BOOL detailButtons = NO;
+    BOOL allButtons = NO;
+   
+    
     for (int i = 0; i < self.arrayDetailButtons.count; i++) {
         NSMutableDictionary * dict = [self.arrayDetailButtons objectAtIndex:i];
         [dict setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
         [dict setObject:[NSNumber numberWithBool:NO] forKey:@"bool"];
+        if(i-1<=self.arrayDetailButtons.count){
+            detailButtons=YES;
+        }
+        
     }
     for (int i = 0; i < self.arrayAllButtons.count; i++) {
         if ([[self.arrayAllButtons objectAtIndex:i] isKindOfClass:[CustomButton class]]) {
@@ -986,6 +1023,7 @@
                 [buttonText setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
             } completion:^(BOOL finished) {
                 buttonText.isBool = NO;
+                
             }];
         } else if ([[self.arrayAllButtons objectAtIndex:i] isKindOfClass:[ColorButton class]]) {
             ColorButton * buttonColor = [self.arrayAllButtons objectAtIndex:i];
@@ -993,8 +1031,14 @@
                 buttonColor.alpha = 1.f;
             } completion:^(BOOL finished) {
                 buttonColor.isBool = NO;
+                
             }];
         }
+        
+        if(i-1<=self.arrayAllButtons.count){
+            allButtons=YES;
+        }
+        
     }
     for (NSMutableDictionary * dict in self.arrayAllButtonsCancel) {
         if ([dict objectForKey:@"button"]) {
@@ -1005,10 +1049,21 @@
         }
     }
     
+    [self performSelector:@selector(getParametrsTime) withObject:nil afterDelay:0.4f];
+    
+   
+    
+    
+    
     
     [self buttonActionCheck];
     
 }
+
+-(void) getParametrsTime{
+     [self getParametrs:NO];
+}
+
 
 #pragma mark - Slider
 
@@ -1078,6 +1133,7 @@
             if (!self.sliderBool) {
                 self.counter += 1;
                 self.sliderBool = YES;
+                
             }
             
         }];
@@ -1090,13 +1146,14 @@
         if (self.sliderBool) {
             self.counter -= 1;
             self.sliderBool = NO;
+          
         }
     }
     self.labelFrom.text = [NSString stringWithFormat:@"ОТ %d", (NSInteger)self.slider.lowerValue];
     [self.labelFrom sizeToFit];
     self.labelTo.text = [NSString stringWithFormat:@"ДО %d", (NSInteger)self.slider.upperValue];
     
-    
+    [self getParametrs:NO];
     [self buttonActionCheck];
 }
 
@@ -1112,20 +1169,26 @@
 
 - (void) buttonActionCheck {
     
-    if (self.counter > 1) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.bigButtonConfirm.alpha = 0.f;
-            self.buttonConfirm.alpha = 1.f;
-            self.buttonCancel.alpha = 1.f;
-
-        }];
-    } else {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.bigButtonConfirm.alpha = 1.f;
-            self.buttonConfirm.alpha = 0.f;
-            self.buttonCancel.alpha = 0.f;
-        }];
+    
+    if([[self.delegate countProduct] longLongValue]!=0){
+        if (self.counter > 1) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.bigButtonConfirm.alpha = 0.f;
+                self.buttonConfirm.alpha = 1.f;
+                self.buttonCancel.alpha = 1.f;
+                
+            }];
+        } else {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.bigButtonConfirm.alpha = 1.f;
+                self.buttonConfirm.alpha = 0.f;
+                self.buttonCancel.alpha = 0.f;
+            }];
+        }
+        
     }
+    
+    
 }
 
 
