@@ -30,6 +30,8 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    [self setCustomTitle:@"" andBarButtonAlpha:YES andButtonBasket:YES];
 
     
  
@@ -55,8 +57,11 @@
     [self getApiCatalog:^{
         NSString * filterTitle = [NSString stringWithFormat:@"Фильтр - %@ товаров",[self.arrayData objectForKey:@"count"]];
         NSArray * filterArray =(NSArray *)[self.arrayData objectForKey:@"list"];
+        
+        self.customText.text = filterTitle;
+//        [self.customText sizeToFit];
    
-        [self setCustomTitle:filterTitle andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+//        [self setCustomTitle:filterTitle andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
       
         OrderFiltersView * mainView = [[OrderFiltersView alloc] initWithView:self.view andData:filterArray];
         mainView.delegate = self;

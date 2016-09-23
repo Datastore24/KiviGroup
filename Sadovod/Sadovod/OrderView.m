@@ -381,7 +381,7 @@
 #pragma mark - Actions
 
 - (void) buttonImageAction {
-    NSLog(@"buttonImageAction");
+    [self.delegate showGalery:self];
 }
 
 - (void) buttonSizeAction: (CustomButton*) button {

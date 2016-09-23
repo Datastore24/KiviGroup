@@ -63,13 +63,17 @@
 {
     self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
     self.customText = [[UILabel alloc]initWithTitle:title];
-    self.customText.frame = CGRectMake(20.f, 0.f, self.customText.frame.size.width , 44.5f);
+    self.customText.frame = CGRectMake(20.f, 0.f, 160, 44.5f);
+    self.customText.textAlignment = NSTextAlignmentLeft;
     [self.backView addSubview:self.customText];
     
 
     //Кнопка корзины------
     self.buttonBasket = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
+    if (isiPhone6) {
+        [self.buttonBasket setFrame:CGRectMake(205, 10, 20, 20)];
+    }
     [self.buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
     [self.buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
     if (barBasket) {

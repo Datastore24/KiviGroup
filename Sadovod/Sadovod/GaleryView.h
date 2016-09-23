@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GaleryViewDelegate;
+
 @interface GaleryView : UIView
+
+@property (weak, nonatomic) id <GaleryViewDelegate> delegate;
+
+- (instancetype)initWithView: (UIView*) view andData: (NSDictionary *) data;
+
+@end
+
+@protocol GaleryViewDelegate <NSObject>
+
+@required
+
+- (void) hideGaleryView: (GaleryView*) galeryView;
 
 @end

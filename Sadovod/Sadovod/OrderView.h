@@ -37,6 +37,7 @@
 - (void) getApiAddCart: (OrderView*) orderView andProductID: (NSString *) productID ;
 - (void) getApiCart: (OrderView*) orderView  andBlock:(void (^)(void))block andProductID: (NSString *) productID;
 - (void) pushAuthorization: (OrderView*) orderView;
+- (void) showGalery: (OrderView*) orderView;
 
 
 @end
