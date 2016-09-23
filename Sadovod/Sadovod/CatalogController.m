@@ -67,6 +67,7 @@
             
             if(![authDbClass checkPopUp]){
                 HelloView * helloView = [[HelloView alloc] initWithView:self.view];
+                helloView.delegate = self;
                 [self.view addSubview:helloView];
                 [authDbClass updatePopUp];
             }
