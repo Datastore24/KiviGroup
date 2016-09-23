@@ -23,6 +23,10 @@
 
 @required
 
+@property (strong, nonatomic) NSString * countProduct;
+
 - (void) backTuCatalog: (OrderFiltersView*) orderFiltersView andCost:(NSString*) cost andString:(NSString*) string;
+- (void) getApiCatalog: (OrderFiltersView*) orderFiltersView andBlock: (void (^)(void))block andCost:(NSString *) cost
+            andFilter: (NSString *) filter;
 
 @end

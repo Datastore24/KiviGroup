@@ -62,9 +62,9 @@
 - (void) setCustomTitle: (NSString*) title andBarButtonAlpha: (BOOL) isBool andButtonBasket: (BOOL) barBasket
 {
     self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
-    UILabel * customText = [[UILabel alloc]initWithTitle:title];
-    customText.frame = CGRectMake(20.f, 0.f, customText.frame.size.width , 44.5f);
-    [self.backView addSubview:customText];
+    self.customText = [[UILabel alloc]initWithTitle:title];
+    self.customText.frame = CGRectMake(20.f, 0.f, self.customText.frame.size.width , 44.5f);
+    [self.backView addSubview:self.customText];
     
 
     //Кнопка корзины------

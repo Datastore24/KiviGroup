@@ -34,11 +34,16 @@
         
         self.arrayData = data;
         self.arrayHiden = [[NSMutableArray alloc] init];
+
+        
         for (int i = 0; i < self.arrayData.count; i++) {
-            NSArray * arrayCell = [[self.arrayData objectAtIndex:i] objectForKey:@"array"];
+            NSArray * arrayCell = [[self.arrayData objectAtIndex:i] objectForKey:@"t"];
             NSNumber * number = [NSNumber numberWithInteger:arrayCell.count];
             [self.arrayHiden addObject:number];
         }
+        
+        
+       
         
         //Создание таблицы заказов----
         self.tableCatalog = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
@@ -77,10 +82,14 @@
     
     
     CustomButton *hideButton = [CustomButton buttonWithType:UIButtonTypeSystem];
+    
+    
+    
     UILabel * labelIdentifier = [[UILabel alloc] initWithFrame:CGRectMake(10.f, 13.f, 20.f, 20.f)];
      hideButton.frame = CGRectMake(0.f, 0.f, frame.size.width, 46.f);
     [hideButton setTitle:[dict objectForKey:@"n"] forState:UIControlStateNormal];
     [hideButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
     if ([[self.arrayHiden objectAtIndex:section] integerValue] > 0) {
         hideButton.isBool = YES;
         labelIdentifier.text = @"-";

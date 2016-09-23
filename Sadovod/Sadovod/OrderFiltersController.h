@@ -14,5 +14,7 @@
 @property (strong, nonatomic) NSString * cost;
 @property (strong, nonatomic) NSString * sort;
 @property (strong, nonatomic) NSString * filter;
+@property (strong, nonatomic) NSString * countProduct;
+
 
 @end

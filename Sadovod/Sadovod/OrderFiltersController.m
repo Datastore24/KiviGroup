@@ -57,6 +57,7 @@
         NSArray * filterArray =(NSArray *)[self.arrayData objectForKey:@"list"];
    
         [self setCustomTitle:filterTitle andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+      
         OrderFiltersView * mainView = [[OrderFiltersView alloc] initWithView:self.view andData:filterArray];
         mainView.delegate = self;
         [self.view addSubview:mainView];
@@ -111,6 +112,58 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void) getApiCatalog: (OrderFiltersView*) orderFiltersView andBlock: (void (^)(void))block andCost:(NSString *) cost
+            andFilter: (NSString *) filter
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    if([filter length]==0){
+        filter = @"";
+    }
+    
+    NSString * min_cost;
+    NSString * max_cost;
+    
+    if([cost length]==0){
+        min_cost = @"";
+        max_cost = @"";
+    }else{
+        
+        NSArray *arrayCost = [cost componentsSeparatedByString:@"-"];
+        min_cost = [arrayCost objectAtIndex:0];
+        max_cost = [arrayCost objectAtIndex:1];
+    }
+    
+    
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.catID,@"cat",
+                             filter,@"o",
+                             min_cost,@"min_cost",
+                             max_cost,@"max_cost",
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",nil];
+    
+    
+    [api getDataFromServerWithParams:params method:@"get_filter" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            self.countProduct = [NSString stringWithFormat:@"%@",[respDict objectForKey:@"count"]];
+            
+            self.customText.text=[NSString stringWithFormat:@"Фильтр - %@ товаров",self.countProduct];
+            
+            
+            block();
+            
+            
+        }
+        
+    }];
+    
+}
+
 
 
 
@@ -156,7 +209,7 @@
             NSDictionary * respDict = (NSDictionary *) response;
             self.arrayData = respDict;
             
-            
+       
             block();
             
             

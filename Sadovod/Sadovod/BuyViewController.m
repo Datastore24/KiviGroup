@@ -32,6 +32,12 @@
 
 @implementation BuyViewController
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_SIZE_APPLY" object:nil];
+    
+}
+
 //Кастомный лейбл наносится на верхний бар
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -104,7 +110,7 @@
 - (void) buttonBackAction {
     NSLog(@"BACK");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_SIZE_APPLY" object:nil];
+
     [self.navigationController popViewControllerAnimated:NO];
 }
 
