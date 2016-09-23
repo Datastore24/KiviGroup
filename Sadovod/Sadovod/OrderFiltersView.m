@@ -415,6 +415,10 @@
     CGFloat colorCustomHeight = 50.f + (self.frame.size.width / 7 - 15) * (int)(self.countColumn/7 + 1) ;
     colorView.frame = CGRectMake(0.f, colorCustomHeight+220, self.frame.size.width,
                                 (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
+    if (isiPhone6) {
+        colorView.frame = CGRectMake(0.f, colorCustomHeight+250, self.frame.size.width,
+                                     (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
+    }
     CustomLabels * colorTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цвет" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [colorView addSubview:colorTitl];
     

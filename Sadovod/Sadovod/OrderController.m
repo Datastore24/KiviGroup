@@ -18,14 +18,16 @@
 #import "AuthorizationController.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "GaleryView.h"
 
-@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
+@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, GaleryViewDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
 
 @property (strong, nonatomic) OrderView * mainView;
 @property (strong, nonatomic) BottomBasketView * basketView;
 @property (strong, nonatomic) NSArray * arrayCart;
+@property (strong, nonatomic) GaleryView * galeryView;
 
 @end
 
@@ -78,6 +80,11 @@
         }
         [self.view addSubview:self.basketView];
         
+        self.galeryView = [[GaleryView alloc] initWithView:self.view andData:self.arrayData];
+        self.galeryView.delegate = self;
+        self.galeryView.alpha = 0.f;
+        [self.view addSubview:self.galeryView];
+        
 
     } andProductID:self.productID];
     
@@ -121,6 +128,12 @@
             
 
         }
+    }];
+}
+
+- (void) showGalery: (OrderView*) orderView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.galeryView.alpha = 1.f;
     }];
 }
 
@@ -283,5 +296,14 @@
     
     return nil;
 }
+
+#pragma mark - GaleryViewDelegate 
+
+- (void) hideGaleryView: (GaleryView*) galeryView {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.galeryView setAlpha:0.f];
+    }];
+}
+
 
 @end
