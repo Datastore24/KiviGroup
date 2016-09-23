@@ -256,9 +256,13 @@
 - (void) buttonChangeAllAction: (UIButton*) button {
     if (button.tag == 400) {
         [self.deleagte getApiClearAllSizeToBasket];
+        NSInteger allCount; //Колличество выбранных товаров
+        allCount = 0;
         for (int i = 0; i < self.arrayData.count; i++) {
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
+            
+            allCount += [label.text integerValue];
             
             [UIView animateWithDuration:0.2 animations:^{
                 label.text = @"0";
@@ -266,8 +270,13 @@
                 buttonSize.backgroundColor = [UIColor whiteColor];
             } completion:^(BOOL finished) {
                 buttonSize.isBool = NO;
+                NSLog(@"allCount %d", allCount);
+                
             }];
         }
+        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", [[[SingleTone sharedManager] countType] integerValue] - allCount]];
+        [self.deleagte addCountOrder:self];
+        
     } else if (button.tag == 401) {
         [self.deleagte getApiAddAllSizeToBasket];
         for (int i = 0; i < self.arrayData.count; i++) {
@@ -275,14 +284,18 @@
             CustomButton * buttonSize = (CustomButton*)[self viewWithTag:10 + i];
             NSInteger countUp = [label.text integerValue];
             countUp += 1;
+            NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue]; //Добавить сюда цену
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount + 1]];
             [UIView animateWithDuration:0.2 animations:^{
                 label.text = [NSString stringWithFormat:@"%d", countUp];
                 if (!buttonSize.isBool) {
+                    
                     buttonSize.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
                     buttonSize.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
                 }
             } completion:^(BOOL finished) {
                 buttonSize.isBool = YES;
+                [self.deleagte addCountOrder:self];
             }];
         }
     } else if (button.tag == 402) {
@@ -300,8 +313,12 @@
             buttonSize.isBool = NO;
             if (countUp > 0) {
                 countUp -= 1;
+                NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue]; //Добавить сюда цену
+                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount - 1]];
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
+                } completion:^(BOOL finished) {
+                   [self.deleagte addCountOrder:self];
                 }];
             }
         }
@@ -362,7 +379,7 @@
                 NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
                 countSinglOrder -= 1;
                 [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
-                [self.deleagte hideCountOrder:self];
+                [self.deleagte addCountOrder:self];
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
                 }];
@@ -379,16 +396,22 @@
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             
             if (!button.isBool) {
+                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d",[[[SingleTone sharedManager] countType] integerValue]  + 1]]; //Сюда цену
+                [self.deleagte addCountOrder:self];
                 [UIView animateWithDuration:0.2 animations:^{
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
                     button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
                     label.text = [NSString stringWithFormat:@"%d", 1];
+                    
+                    
                     [self.deleagte getApiAddToBasket:button.customID];
                 } completion:^(BOOL finished) {
                     button.isBool = YES;
-                
                 }];
+                
             } else {
+                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d",[[[SingleTone sharedManager] countType] integerValue] - [label.text integerValue]]]; //Сюда цену
+                [self.deleagte addCountOrder:self];
                 [UIView animateWithDuration:0.2 animations:^{
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"e8e8e8"].CGColor;
                     button.backgroundColor = [UIColor whiteColor];
