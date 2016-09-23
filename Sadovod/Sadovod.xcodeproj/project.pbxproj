@@ -19,6 +19,7 @@
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
 		AD89D1D21D68E363007771B6 /* CheckDataServer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1D11D68E363007771B6 /* CheckDataServer.m */; };
+		FF0732BB1D95442200F7BAC0 /* GaleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0732BA1D95442200F7BAC0 /* GaleryView.m */; };
 		FF1618E21D9272BA009D2BAD /* AlertClassCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */; };
 		FF1618EE1D93C8E1009D2BAD /* HelloView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1618ED1D93C8E1009D2BAD /* HelloView.m */; };
 		FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EC1D87F50C009012E8 /* SizesController.m */; };
@@ -486,6 +487,8 @@
 		AD89D1D01D68E363007771B6 /* CheckDataServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataServer.h; sourceTree = "<group>"; };
 		AD89D1D11D68E363007771B6 /* CheckDataServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataServer.m; sourceTree = "<group>"; };
 		E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0732B91D95442200F7BAC0 /* GaleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaleryView.h; sourceTree = "<group>"; };
+		FF0732BA1D95442200F7BAC0 /* GaleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaleryView.m; sourceTree = "<group>"; };
 		FF1618E01D9272BA009D2BAD /* AlertClassCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertClassCustom.h; sourceTree = "<group>"; };
 		FF1618E11D9272BA009D2BAD /* AlertClassCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertClassCustom.m; sourceTree = "<group>"; };
 		FF1618EC1D93C8E1009D2BAD /* HelloView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloView.h; sourceTree = "<group>"; };
@@ -2117,6 +2120,8 @@
 				FFF8733C1D6AEC6C00816FC1 /* OrderController.m */,
 				FFF873411D6B2BF900816FC1 /* OrderView.h */,
 				FFF873421D6B2BF900816FC1 /* OrderView.m */,
+				FF0732B91D95442200F7BAC0 /* GaleryView.h */,
+				FF0732BA1D95442200F7BAC0 /* GaleryView.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2655,6 +2660,7 @@
 				FFBF91BD1D829FC300F8A0A1 /* ArrayTextForFAQ.m in Sources */,
 				FFC4FD651D674B08007C2DDC /* CustomButton.m in Sources */,
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
+				FF0732BB1D95442200F7BAC0 /* GaleryView.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
 				FFBF91E51D82E01D00F8A0A1 /* ContactsView.m in Sources */,
 				FF1618EE1D93C8E1009D2BAD /* HelloView.m in Sources */,
