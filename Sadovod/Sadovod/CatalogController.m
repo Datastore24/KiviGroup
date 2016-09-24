@@ -40,6 +40,13 @@
     [super viewWillAppear:YES];
     
     self.navigationController.delegate = self;
+    
+    self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        self.basketView.alpha = 1.f;
+    }  else {
+        self.basketView.alpha = 0.f;
+    }
 }
 
 - (void)viewDidLoad {
