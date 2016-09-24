@@ -71,7 +71,7 @@
                 [self.view addSubview:helloView];
                 [authDbClass updatePopUp];
             }
-            
+         
         }];
         
     }];

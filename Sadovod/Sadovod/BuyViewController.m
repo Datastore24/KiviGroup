@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSArray * arrayCart;
 @property (strong, nonatomic) BottomBasketView * basketView;
+@property (strong, nonatomic) BuyView * mainView;
 
 @end
 
@@ -41,8 +42,17 @@
 //Кастомный лейбл наносится на верхний бар
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
     self.navigationController.delegate = self;
+    
+    CGRect rectView = self.mainView.frame;
+    rectView.origin.y = 0.f;
+    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+        rectView.size.height = self.view.frame.size.height - 50;
+    } else {
+        rectView.size.height = self.view.frame.size.height;
+    }
+    self.mainView.frame = rectView;
+    self.mainView.tableSize.frame = rectView;
 
     if (self.label == nil) {
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 24, 80, 40)];
@@ -77,9 +87,16 @@
     [self getApiProduct:^{
         
 
-        BuyView * mainView = [[BuyView alloc] initWithView:self.view andData:self.arrayData andCart:self.arrayCart];
-        mainView.deleagte = self;
-        [self.view addSubview:mainView];
+        self.mainView = [[BuyView alloc] initWithView:self.view andData:self.arrayData andCart:self.arrayCart];
+        self.mainView.deleagte = self;
+        [self.view addSubview:self.mainView];
+        
+        self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
+        self.basketView.delegate = self;
+        if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+            self.basketView.alpha = 1.f;
+        }
+        [self.view addSubview:self.basketView];
         
     } andProductID:self.productID];
     
@@ -87,12 +104,8 @@
     
     
     
-    self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
-    self.basketView.delegate = self;
-    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
-        self.basketView.alpha = 1.f;
-    }
-    [self.view addSubview:self.basketView];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     
 }

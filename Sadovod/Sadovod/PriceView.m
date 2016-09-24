@@ -88,6 +88,9 @@
         for (int i = 0; i < 2; i++) {
             UIButton * buttonQuestien = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonQuestien.frame = CGRectMake(15.f + (self.frame.size.width / 2 - 7.5) * i, 390, self.frame.size.width / 2 - 22.5f, 40);
+//            if (isiPhone6) {
+//                buttonQuestien.frame = CGRectMake(15.f + (self.frame.size.width / 2 - 7.5) * i, 450, self.frame.size.width / 2 - 22.5f, 40);
+//            }
             buttonQuestien.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
             [buttonQuestien setTitle:[arrayButtonsName objectAtIndex:i] forState:UIControlStateNormal];
             [buttonQuestien setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -110,6 +113,9 @@
         
         UIButton * buttonMain = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonMain.frame = CGRectMake(15.f, 440, self.frame.size.width - 30.f, 40);
+//        if (isiPhone6) {
+//            buttonMain.frame = CGRectMake(15.f, 500, self.frame.size.width - 30.f, 40);
+//        }
         buttonMain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
         [buttonMain setTitle:@"Вернуться на главную" forState:UIControlStateNormal];
         [buttonMain setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

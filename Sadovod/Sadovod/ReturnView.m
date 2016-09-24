@@ -87,6 +87,9 @@
         }
         
         UIView * bordView = [[UIView alloc] initWithFrame:CGRectMake(118.f, 424.f, 165.f, 1.f)];
+        if (isiPhone6 || isiPhone6Plus) {
+            bordView.frame = CGRectMake(118.f, 424.f, 135.f, 1.f);
+        }
         bordView.backgroundColor = [UIColor blackColor];
         [self.mainScrollView addSubview:bordView];
         

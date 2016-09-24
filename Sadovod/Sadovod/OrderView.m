@@ -479,8 +479,14 @@
     for (int i = 0; i < 2; i++) {
         UIButton * buttonQuestien = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonQuestien.frame = CGRectMake(15.f, 120, self.frame.size.width / 2 - 12.5f, 40);
+        if (isiPhone6 || isiPhone6Plus) {
+            buttonQuestien.frame = CGRectMake(15.f, 120, self.frame.size.width / 2 - 7.5f, 40);
+        }
         if (i == 1) {
             buttonQuestien.frame = CGRectMake(15.f + 160, 120, self.frame.size.width / 2 - 62.5f, 40);
+            if (isiPhone6 || isiPhone6Plus) {
+                buttonQuestien.frame = CGRectMake(15.f + 190, 120, self.frame.size.width / 2 - 62.5f, 40);
+            }
         }
         buttonQuestien.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
         [buttonQuestien setTitle:[arrayButtonsName objectAtIndex:i] forState:UIControlStateNormal];
