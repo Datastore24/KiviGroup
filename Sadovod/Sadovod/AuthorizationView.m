@@ -81,6 +81,9 @@
             
             UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonRegistration.frame = CGRectMake(30.f, 300.f, 100, 20);
+            if (isiPhone6 || isiPhone6Plus) {
+                buttonRegistration.frame = CGRectMake(60.f, 350.f, 100, 20);
+            }
             [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
             [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction) forControlEvents:UIControlEventTouchUpInside];
             [buttonRegistration setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_800] forState:UIControlStateNormal];
@@ -90,6 +93,9 @@
             
             UIButton * buttonPassword = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonPassword.frame = CGRectMake(140.f, 300.f, 150, 20);
+            if (isiPhone6 || isiPhone6Plus) {
+                buttonPassword.frame = CGRectMake(167.f, 350.f, 150, 20);
+            }
             [buttonPassword setTitle:@"Напомнить пароль" forState:UIControlStateNormal];
             [buttonPassword setTitleColor:[UIColor hx_colorWithHexRGBAString:@"5C5C5C"] forState:UIControlStateNormal];
             buttonPassword.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];

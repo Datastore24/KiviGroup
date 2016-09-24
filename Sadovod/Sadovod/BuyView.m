@@ -23,9 +23,7 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) NSArray * arrayCart;
 
-//TableSize
 
-@property (strong, nonatomic) UITableView * tableSize;
 
 //ButtonCount
 

@@ -204,7 +204,7 @@
                                                             labelPrice.textColor = [UIColor whiteColor];
                                                             labelPrice.textAlignment = NSTextAlignmentCenter;
                                                             labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                                                            if (isiPhone6) {
+                                                            if (isiPhone6 || isiPhone6Plus) {
                                                                 labelPrice.frame = CGRectMake(buttonProduct.frame.size.width - 50.f,
                                                                                     buttonProduct.frame.size.height - 20.f, 50.f, 20.f);
                                                                 labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
@@ -279,8 +279,14 @@
         UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeSystem];
         if (i == 0) {
             buttonPhone.frame = CGRectMake(0, 120, 100, 50.);
+            if (isiPhone6 || isiPhone6Plus) {
+                 buttonPhone.frame = CGRectMake(0, 120, 130, 50.);
+            }
         } else {
             buttonPhone.frame = CGRectMake(99, 120, 181, 50.);
+            if (isiPhone6 || isiPhone6Plus) {
+                buttonPhone.frame = CGRectMake(129, 120, 206, 50.);
+            }
         }
         buttonPhone.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         buttonPhone.layer.borderWidth = 1.f;
@@ -432,7 +438,7 @@
                                                 labelPrice.textColor = [UIColor whiteColor];
                                                 labelPrice.textAlignment = NSTextAlignmentCenter;
                                                 labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                                                if (isiPhone6) {
+                                                if (isiPhone6 || isiPhone6Plus) {
                                                     labelPrice.frame = CGRectMake(buttonProduct.frame.size.width - 50.f,
                                                                                   buttonProduct.frame.size.height - 20.f, 50.f, 20.f);
                                                     labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
@@ -483,9 +489,16 @@
             rect.origin.x = 50.f + ((pageFraction - 1.f) * 100.f);
             rect.size.width = 50.f + (50.f * (pageFraction - (pageFraction - 1.f)));
             viewBorder.frame = rect;
-            if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1082.f) {
-                self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
+            if (isiPhone5) {
+                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1082.f) {
+                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
+                }
+            } else if (isiPhone6 || isiPhone6Plus) {
+                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1210.f) {
+                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
+                }
             }
+
         }
     }
 }

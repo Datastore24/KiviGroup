@@ -13,6 +13,9 @@
 @interface BuyView : UIView
 
 @property (weak, nonatomic) id <BuyViewDelegate> deleagte;
+//TableSize
+
+@property (strong, nonatomic) UITableView * tableSize;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data

@@ -415,7 +415,7 @@
     CGFloat colorCustomHeight = 50.f + (self.frame.size.width / 7 - 15) * (int)(self.countColumn/7 + 1) ;
     colorView.frame = CGRectMake(0.f, colorCustomHeight+220, self.frame.size.width,
                                 (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
-    if (isiPhone6) {
+    if (isiPhone6 || isiPhone6Plus) {
         colorView.frame = CGRectMake(0.f, colorCustomHeight+250, self.frame.size.width,
                                      (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
     }

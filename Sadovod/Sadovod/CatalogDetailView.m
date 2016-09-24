@@ -199,7 +199,7 @@
                                     labelPrice.textColor = [UIColor whiteColor];
                                     labelPrice.textAlignment = NSTextAlignmentCenter;
                                     labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
-                                    if (isiPhone6) {
+                                    if (isiPhone6 || isiPhone6Plus) {
                                         labelPrice.frame = CGRectMake(buttonProduct.frame.size.width - 50.f,
                                                                       buttonProduct.frame.size.height - 20.f, 50.f, 20.f);
                                         labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
