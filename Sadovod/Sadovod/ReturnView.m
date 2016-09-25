@@ -77,6 +77,9 @@
             viewRound.frame = CGRectMake(15.f, 399, 6.f, 6.f);
             if (i == 1) {
                 viewRound.frame = CGRectMake(15.f, 440, 6.f, 6.f);
+                if (isiPhone6) {
+                    viewRound.frame = CGRectMake(15.f, 450, 6.f, 6.f);
+                }
             }
             if (i == 2) {
                 viewRound.frame = CGRectMake(15.f, 513, 6.f, 6.f);
@@ -88,7 +91,7 @@
         
         UIView * bordView = [[UIView alloc] initWithFrame:CGRectMake(118.f, 424.f, 165.f, 1.f)];
         if (isiPhone6 || isiPhone6Plus) {
-            bordView.frame = CGRectMake(118.f, 424.f, 135.f, 1.f);
+            bordView.frame = CGRectMake(85.f, 424.f, 169.f, 1.f);
         }
         bordView.backgroundColor = [UIColor blackColor];
         [self.mainScrollView addSubview:bordView];

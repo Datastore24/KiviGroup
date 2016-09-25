@@ -571,7 +571,8 @@
     [confirmView addSubview:self.bigButtonConfirm];
     UIImageView * imageBigButton = [[UIImageView alloc] initWithFrame:CGRectMake(90.f, 8.f, 20.f, 20.f)];
     imageBigButton.image = [UIImage imageNamed:@"imageConfirm.png"];
-    self.bigButtonConfirm.alpha = 1.f;
+    self.bigButtonConfirm.alpha = 0.f;
+
     [self.bigButtonConfirm addSubview:imageBigButton];
     
     //Маленькая кнпока подтвердить
@@ -603,9 +604,6 @@
     UIImageView * imageButtonCancel = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 10.f, 20.f, 20.f)];
     imageButtonCancel.image = [UIImage imageNamed:@"imageCancel.png"];
     [self.buttonCancel addSubview:imageButtonCancel];
-    
-
-    
     
     return confirmView;
 }
@@ -1176,16 +1174,16 @@
     [self performSelector:@selector(buttonActionCheckTime) withObject:nil afterDelay:0.4];
 }
 
-- (void) buttonActionCheckTime {
+- (void) buttonActionCheckTime {    
     
     if (self.counter > 1) {
         [UIView animateWithDuration:0.3 animations:^{
             self.bigButtonConfirm.alpha = 0.f;
-            
             if ([[self.delegate countProduct] integerValue] > 0) {
                 self.buttonConfirm.alpha = 1.f;
+                self.buttonCancel.alpha = 1.f;
             }
-            self.buttonCancel.alpha = 1.f;
+            
             
             
         }];

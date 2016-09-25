@@ -59,8 +59,14 @@
         for (int i = 0; i < 3; i++) {
             UIView * viewRound = [[UIView alloc] init];
             viewRound.frame = CGRectMake(20.f, 90.f + 20.f * i, 6.f, 6.f);
+            if (isiPhone6) {
+                viewRound.frame = CGRectMake(20.f, 97.f + 20.f * i, 6.f, 6.f);
+            }
             if (i > 0) {
                 viewRound.frame = CGRectMake(20.f, 105.f + 16.f * i + 1, 6.f, 6.f);
+                if (isiPhone6) {
+                    viewRound.frame = CGRectMake(20.f, 96.f + 16.f * i + 1, 6.f, 6.f);
+                }
             }
             viewRound.backgroundColor = [UIColor blackColor];
             viewRound.layer.cornerRadius = 3.f;
