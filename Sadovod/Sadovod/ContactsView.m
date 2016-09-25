@@ -80,8 +80,8 @@
         labelRequisitesTitl.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         [self.mainScrollView addSubview:labelRequisitesTitl];
         
-        CustomLabels * labelRequisites = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:330.f andSizeWidht:self.frame.size.width - 30 andSizeHeight:120 andColor:@"000000"
-                                                                         andText:@"ИП Сопов Е. Г.\n\nАдрес: г.Москва, Семеновская набережная, 2/1\n\nИНН: 770171048486\n\nОГРНИП: 314774628300711"];
+        CustomLabels * labelRequisites = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:330.f andSizeWidht:self.frame.size.width - 30 andSizeHeight:140 andColor:@"000000"
+                                                                         andText:@"ООО \"Одежда\"\n\nАдрес: Россия, Москва, Севастопольский проспект, д.6\n\nИНН: 7726087967\n\nОГРН: 1037739097296\n\nКПП: 772601001   ОКПО: 17715714"];
         labelRequisites.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
         labelRequisites.numberOfLines = 0;
         [self.mainScrollView addSubview:labelRequisites];

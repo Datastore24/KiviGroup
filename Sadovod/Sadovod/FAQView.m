@@ -37,9 +37,9 @@
         
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
         if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
-        self.mainScrollView.contentSize = CGSizeMake(0.f, 2080.f);
+        self.mainScrollView.contentSize = CGSizeMake(0.f, 2040.f);
         } else {
-           self.mainScrollView.contentSize = CGSizeMake(0.f, 2080.f + 50);
+           self.mainScrollView.contentSize = CGSizeMake(0.f, 2040.f + 50);
         }
         [self addSubview:self.mainScrollView];
         
@@ -69,7 +69,7 @@
         
         
         //Если пришел брак?
-        UIView * viewMarriage = [self customViewTextWithTitl:@"Если пришел брак?" andFrame:CGRectMake(0.f, 300.f, self.frame.size.width, 210.f) andText: [self.arrayText objectAtIndex:0] andBoldText: @"рабочих"];
+        UIView * viewMarriage = [self customViewTextWithTitl:@"Если пришел брак?" andFrame:CGRectMake(0.f, 300.f, self.frame.size.width, 200.f) andText: [self.arrayText objectAtIndex:0] andBoldText: @"рабочих"];
         [self.mainScrollView addSubview:viewMarriage];
         [self.arrayOffset addObject:[NSNumber numberWithFloat:300.f]];
         
@@ -108,19 +108,28 @@
         [self.arrayOffset addObject:[NSNumber numberWithFloat:viewPost.frame.size.height + viewPost.frame.origin.y + 30]];
         
         //Способ доставки?
-        UIView * viewDeliveryTypes = [self customViewTextWithTitl:@"Способ доставки?" andFrame:CGRectMake(0.f, viewPrice.frame.size.height + viewPrice.frame.origin.y + 30, self.frame.size.width, 320.f) andText: [self.arrayText objectAtIndex:5] andBoldText: nil];
+        UIView * viewDeliveryTypes = [self customViewTextWithTitl:@"Способ доставки?" andFrame:CGRectMake(0.f, viewPrice.frame.size.height + viewPrice.frame.origin.y + 30, self.frame.size.width, 290.f) andText: [self.arrayText objectAtIndex:5] andBoldText: nil];
         [self.mainScrollView addSubview:viewDeliveryTypes];
         [self.arrayOffset addObject:[NSNumber numberWithFloat:viewPrice.frame.size.height + viewPrice.frame.origin.y + 30]];
         
         //Как вы работаете в выходные?
         UIView * viewWeekend = [self customViewTextWithTitl:@"Как вы работаете в выходные?" andFrame:CGRectMake(0.f, viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y + 30, self.frame.size.width, 115.f) andText: [self.arrayText objectAtIndex:6] andBoldText: nil];
         [self.mainScrollView addSubview:viewWeekend];
-        [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+        } else {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
+        }
+        
         
         //Сколько дней поступает оплата?
         UIView * viewPay = [self customViewTextWithTitl:@"Сколько дней поступает оплата?" andFrame:CGRectMake(0.f, viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 30, self.frame.size.width, 100.f) andText: [self.arrayText objectAtIndex:7] andBoldText: nil];
         [self.mainScrollView addSubview:viewPay];
-        [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+        } else {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
+        }
         
         UIButton * buttonQuestien = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonQuestien.frame = CGRectMake(15.f, viewPay.frame.size.height + viewPay.frame.origin.y + 55, self.frame.size.width - 30.f, 40);
