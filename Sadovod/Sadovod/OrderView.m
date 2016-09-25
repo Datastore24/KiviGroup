@@ -141,6 +141,7 @@
         } else {
             self.mainScrollView.contentSize = CGSizeMake(0.f, viewDetails.frame.size.height + viewDetails.frame.origin.y + 53.f);
         }
+        [[SingleTone sharedManager] setScrollHeight:viewDetails.frame.size.height + viewDetails.frame.origin.y + 3.f];
     }
     
     

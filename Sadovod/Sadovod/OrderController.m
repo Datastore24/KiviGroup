@@ -47,12 +47,12 @@
     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
-        self.mainView.mainScrollView.contentSize = CGSizeMake(0, 1060);
+        self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight] + 50);
         self.buttonBasket.alpha = 1.f;
         self.buttonBasket.userInteractionEnabled = YES;
     } else {
         self.basketView.alpha = 0.f;
-        self.mainView.mainScrollView.contentSize = CGSizeMake(0, 1010);
+        self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight]);
         self.buttonBasket.alpha = 0.4f;
         self.buttonBasket.userInteractionEnabled = NO;
     }

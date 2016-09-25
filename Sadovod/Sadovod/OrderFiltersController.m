@@ -59,11 +59,9 @@
         NSArray * filterArray =(NSArray *)[self.arrayData objectForKey:@"list"];
         
         self.customText.text = filterTitle;
-//        [self.customText sizeToFit];
-   
-//        [self setCustomTitle:filterTitle andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
       
-        OrderFiltersView * mainView = [[OrderFiltersView alloc] initWithView:self.view andData:filterArray];
+        OrderFiltersView * mainView;
+        mainView = [[OrderFiltersView alloc] initWithView:self.view andData:filterArray];
         mainView.delegate = self;
         [self.view addSubview:mainView];
     } andCost:self.cost andFilter:self.filter];

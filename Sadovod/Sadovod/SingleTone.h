@@ -26,6 +26,9 @@
 //Временная булевая переменная для окна приветсвия
 @property (assign, nonatomic) BOOL helloBool;
 
+//Переменная сохранения рахмера скрола
+@property (assign, nonatomic) CGFloat scrollHeight;
+
 + (id)sharedManager;
 
 @end
