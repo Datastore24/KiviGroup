@@ -382,6 +382,8 @@
 
 - (void) buttonImageAction {
     [self.delegate showGalery:self];
+    
+    
 }
 
 - (void) buttonSizeAction: (CustomButton*) button {
@@ -396,6 +398,10 @@
                 }];
             }
            
+            if ([[[SingleTone sharedManager] countType] integerValue] == 0) {
+                self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 50);
+                NSLog(@"%f", self.mainScrollView.contentSize.height);
+            }
             UIButton * buttonLabelSize = [self viewWithTag:60 + i];
             NSInteger count = [buttonLabelSize.titleLabel.text integerValue];
             count += 1;
