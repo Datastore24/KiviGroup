@@ -44,8 +44,12 @@
     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
+        self.buttonBasket.alpha = 1.f;
+        self.buttonBasket.userInteractionEnabled = YES;
     }  else {
         self.basketView.alpha = 0.f;
+        self.buttonBasket.alpha = 0.4;
+        self.buttonBasket.userInteractionEnabled = NO;
     }
 }
 
@@ -67,6 +71,11 @@
             self.basketView.delegate = self;
             if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
                 self.basketView.alpha = 1.f;
+                self.buttonBasket.alpha = 1.f;
+                self.buttonBasket.userInteractionEnabled = YES;
+            } else {
+                self.buttonBasket.alpha = 0.4;
+                self.buttonBasket.userInteractionEnabled = NO;
             }
             [self.view addSubview:self.basketView];
 
@@ -86,9 +95,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBasketView:) name:NOTIFICATION_SHOW_BASKET_VIEW object:nil];
     
-    //Параметры кнопки корзины
-    self.buttonBasket.alpha = 0.4;
-    self.buttonBasket.userInteractionEnabled = NO;
+//    if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
+//        //Параметры кнопки корзины
+//        self.buttonBasket.alpha = 1.f;
+//        self.buttonBasket.userInteractionEnabled = YES;
+//    } else {
+//        //Параметры кнопки корзины
+//        self.buttonBasket.alpha = 0.4;
+//        self.buttonBasket.userInteractionEnabled = NO;
+//    }
+
 
 }
 

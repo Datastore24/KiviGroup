@@ -84,6 +84,11 @@
         self.basketView.delegate = self;
         if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
             self.basketView.alpha = 1.f;
+            self.buttonBasket.alpha = 1.f;
+            self.buttonBasket.userInteractionEnabled = YES;
+        } else {
+            self.buttonBasket.alpha = 0.4;
+            self.buttonBasket.userInteractionEnabled = NO;
         }
         [self.view addSubview:self.basketView];
         
@@ -96,11 +101,7 @@
     } andProductID:self.productID];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
-   
-    
-    //Параметры кнопки корзины
-    self.buttonBasket.alpha = 0.4;
-    self.buttonBasket.userInteractionEnabled = NO;
+
     
 }
 
