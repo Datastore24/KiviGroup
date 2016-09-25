@@ -1066,6 +1066,7 @@
 
 -(void) getParametrsTime{
      [self getParametrs:NO];
+    
 }
 
 
@@ -1172,26 +1173,32 @@
 }
 
 - (void) buttonActionCheck {
+    [self performSelector:@selector(buttonActionCheckTime) withObject:nil afterDelay:0.4];
+}
+
+- (void) buttonActionCheckTime {
     
-    
-    if([[self.delegate countProduct] longLongValue]!=0){
-        if (self.counter > 1) {
-            [UIView animateWithDuration:0.3 animations:^{
-                self.bigButtonConfirm.alpha = 0.f;
+    if (self.counter > 1) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.bigButtonConfirm.alpha = 0.f;
+            
+            if ([[self.delegate countProduct] integerValue] > 0) {
                 self.buttonConfirm.alpha = 1.f;
-                self.buttonCancel.alpha = 1.f;
-                
-            }];
-        } else {
-            [UIView animateWithDuration:0.3 animations:^{
-                self.bigButtonConfirm.alpha = 1.f;
-                self.buttonConfirm.alpha = 0.f;
-                self.buttonCancel.alpha = 0.f;
-            }];
-        }
-        
+            }
+            self.buttonCancel.alpha = 1.f;
+            
+            
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.bigButtonConfirm.alpha = 1.f;
+            
+            self.buttonConfirm.alpha = 0.f;
+            self.buttonCancel.alpha = 0.f;
+            
+        }];
     }
-    
     
 }
 
