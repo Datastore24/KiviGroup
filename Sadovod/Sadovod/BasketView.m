@@ -90,7 +90,7 @@
             CustomLabels * labelSize = [[CustomLabels alloc] initLabelWithWidht:220 andHeight:60 andColor: @"808080"
                                                                          andText:[NSString stringWithFormat:@"размер %@", [dictData objectForKey:@"size"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
             if ([[dictData objectForKey:@"size"] isEqualToString:@"Без размера"]) {
-                labelSize.text = @"Без\nразмера";
+                labelSize.text = @"";
                 labelSize.numberOfLines = 2;
                 [labelSize sizeToFit];
                 
