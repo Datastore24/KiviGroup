@@ -415,8 +415,11 @@
     CGFloat colorCustomHeight = 50.f + (self.frame.size.width / 7 - 15) * (int)(self.countColumn/7 + 1) ;
     colorView.frame = CGRectMake(0.f, colorCustomHeight+220, self.frame.size.width,
                                 (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
-    if (isiPhone6 || isiPhone6Plus) {
+    if (isiPhone6) {
         colorView.frame = CGRectMake(0.f, colorCustomHeight+250, self.frame.size.width,
+                                     (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
+    } else if (isiPhone6Plus) {
+        colorView.frame = CGRectMake(0.f, colorCustomHeight+260, self.frame.size.width,
                                      (50.f + ((self.frame.size.width / 7 - 15) * (line + 1)) + 10));
     }
     CustomLabels * colorTitl = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:20.f andColor:VM_COLOR_800 andText:@"Цвет" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
@@ -572,6 +575,9 @@
     UIImageView * imageBigButton = [[UIImageView alloc] initWithFrame:CGRectMake(90.f, 8.f, 20.f, 20.f)];
     imageBigButton.image = [UIImage imageNamed:@"imageConfirm.png"];
     self.bigButtonConfirm.alpha = 0.f;
+    if (self.counter <= 1) {
+        self.bigButtonConfirm.alpha = 1.f;
+    }
 
     [self.bigButtonConfirm addSubview:imageBigButton];
     
@@ -585,6 +591,9 @@
     [self.buttonConfirm addTarget:self action:@selector(buttonConfirmAction) forControlEvents:UIControlEventTouchUpInside];
     self.buttonConfirm.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
     self.buttonConfirm.alpha = 0.f;
+    if (self.counter > 1) {
+        self.buttonConfirm.alpha = 1.f;
+    }
     [confirmView addSubview:self.buttonConfirm];
     UIImageView * imageButton = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 8.f, 20.f, 20.f)];
     imageButton.image = [UIImage imageNamed:@"imageConfirm.png"];
@@ -600,6 +609,9 @@
     [self.buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
     self.buttonCancel.contentEdgeInsets = UIEdgeInsetsMake(0.f, 20.f, 0.f, 0.f);
     self.buttonCancel.alpha = 0.f;
+    if (self.counter > 1) {
+        self.buttonCancel.alpha = 1.f;
+    }
     [confirmView addSubview:self.buttonCancel];
     UIImageView * imageButtonCancel = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 10.f, 20.f, 20.f)];
     imageButtonCancel.image = [UIImage imageNamed:@"imageCancel.png"];
