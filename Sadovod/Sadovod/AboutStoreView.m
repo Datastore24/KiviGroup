@@ -32,6 +32,8 @@
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
         if (isiPhone6) {
             self.mainScrollView.frame = CGRectMake(0.f, - 25.f, self.frame.size.width, self.frame.size.height);
+        } else if (isiPhone6Plus) {
+            self.mainScrollView.frame = CGRectMake(0.f, - 55.f, self.frame.size.width, self.frame.size.height);
         }
         if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
             self.mainScrollView.contentSize = CGSizeMake(0.f, 570.f);
@@ -45,6 +47,8 @@
                                                                          andText:@"Почему мы?"];
         if (isiPhone6) {
             labelTitl.frame = CGRectMake(15.f, 40.f, self.frame.size.width - 30, 20);
+        } else if (isiPhone6Plus) {
+            labelTitl.frame = CGRectMake(15.f, 70.f, self.frame.size.width - 30, 20);
         }
         labelTitl.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
         labelTitl.textAlignment = NSTextAlignmentLeft;
@@ -72,6 +76,16 @@
                     floatHeight += 40;
                 } else {
                     labelPrice.frame = CGRectMake(15.f, 75.f + floatHeight, self.frame.size.width - 30, 20);
+                    floatHeight += 20;
+                    labelPrice.numberOfLines = 1;
+                }
+            } else if (isiPhone6Plus) {
+                if (i == 5) {
+                    labelPrice.frame = CGRectMake(15.f, 100.f + floatHeight, self.frame.size.width - 30, 40);
+                    labelPrice.numberOfLines = 2;
+                    floatHeight += 40;
+                } else {
+                    labelPrice.frame = CGRectMake(15.f, 100.f + floatHeight, self.frame.size.width - 30, 20);
                     floatHeight += 20;
                     labelPrice.numberOfLines = 1;
                 }

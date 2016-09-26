@@ -81,8 +81,10 @@
             
             UIButton * buttonRegistration = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonRegistration.frame = CGRectMake(30.f, 300.f, 100, 20);
-            if (isiPhone6 || isiPhone6Plus) {
+            if (isiPhone6) {
                 buttonRegistration.frame = CGRectMake(60.f, 350.f, 100, 20);
+            } else if (isiPhone6Plus) {
+                buttonRegistration.frame = CGRectMake(74.f, 380.f, 100, 20);
             }
             [buttonRegistration setTitle:@"Регистрация" forState:UIControlStateNormal];
             [buttonRegistration addTarget:self action:@selector(buttonRegistrationAction) forControlEvents:UIControlEventTouchUpInside];
@@ -93,8 +95,10 @@
             
             UIButton * buttonPassword = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonPassword.frame = CGRectMake(140.f, 300.f, 150, 20);
-            if (isiPhone6 || isiPhone6Plus) {
+            if (isiPhone6) {
                 buttonPassword.frame = CGRectMake(167.f, 350.f, 150, 20);
+            } else if (isiPhone6Plus) {
+                buttonPassword.frame = CGRectMake(191.f, 380.f, 150, 20);
             }
             [buttonPassword setTitle:@"Напомнить пароль" forState:UIControlStateNormal];
             [buttonPassword setTitleColor:[UIColor hx_colorWithHexRGBAString:@"5C5C5C"] forState:UIControlStateNormal];
@@ -213,6 +217,11 @@
     
     UIButton * buttonCancel = [UIButton buttonWithType:UIButtonTypeSystem];
     buttonCancel.frame = CGRectMake(90, 60.f, 90, 30);
+    if (isiPhone6) {
+        buttonCancel.frame = CGRectMake(140, 60.f, 90, 30);
+    } else if (isiPhone6Plus) {
+        buttonCancel.frame = CGRectMake(180, 60.f, 90, 30);
+    }
     [buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
     [buttonCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -221,6 +230,11 @@
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
     buttonConfirm.frame = CGRectMake(190, 60.f, 90, 30);
+    if (isiPhone6) {
+        buttonConfirm.frame = CGRectMake(240, 60.f, 90, 30);
+    } else if (isiPhone6Plus) {
+        buttonConfirm.frame = CGRectMake(280, 60.f, 90, 30);
+    }
     buttonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     buttonConfirm.layer.cornerRadius = 3.f;
     [buttonConfirm setTitle:@"Сохранить" forState:UIControlStateNormal];
@@ -260,6 +274,11 @@
     
     UIButton * buttonCancel = [UIButton buttonWithType:UIButtonTypeSystem];
     buttonCancel.frame = CGRectMake(90, 160.f, 90, 30);
+    if (isiPhone6) {
+        buttonCancel.frame = CGRectMake(140, 160.f, 90, 30);
+    } else if (isiPhone6Plus) {
+        buttonCancel.frame = CGRectMake(180, 160.f, 90, 30);
+    }
     [buttonCancel setTitle:@"Отмена" forState:UIControlStateNormal];
     [buttonCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     buttonCancel.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -268,6 +287,11 @@
     
     UIButton * buttonConfirm = [UIButton buttonWithType:UIButtonTypeSystem];
     buttonConfirm.frame = CGRectMake(190, 160.f, 90, 30);
+    if (isiPhone6) {
+        buttonConfirm.frame = CGRectMake(240, 160.f, 90, 30);
+    } else if (isiPhone6Plus) {
+        buttonConfirm.frame = CGRectMake(280, 160.f, 90, 30);
+    }
     buttonConfirm.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     buttonConfirm.layer.cornerRadius = 3.f;
     [buttonConfirm setTitle:@"Сохранить" forState:UIControlStateNormal];

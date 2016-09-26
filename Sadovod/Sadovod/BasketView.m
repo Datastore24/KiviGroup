@@ -207,8 +207,6 @@
         if (button.tag == 10 + i) {
             
             self.tagButton = button.tag;
-            NSLog(@"%d", self.tagButton);
-            
             self.countOrder = [button.titleLabel.text integerValue];
             if (self.countOrder < 10) {
                 [self.counterPicker selectRow:self.countOrder - 1 inComponent:0 animated:NO];
@@ -240,8 +238,8 @@
         UIButton * button = (UIButton*)[self viewWithTag:self.tagButton];
         NSInteger baseCount = [button.titleLabel.text integerValue];
         NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue];
-        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount + (self.pickerCount - baseCount) ]];
-        [button setTitle:[NSString stringWithFormat:@"%d", self.pickerCount] forState:UIControlStateNormal];
+        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", singlCount + (self.pickerCount - baseCount) ]];
+        [button setTitle:[NSString stringWithFormat:@"%ld", (long)self.pickerCount] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
             self.viewCounter.alpha = 0.f;
@@ -260,7 +258,7 @@
             UIButton * buttonCountOne = [self viewWithTag:10 + i];
             NSInteger countButton = [buttonCountOne.titleLabel.text integerValue];
             NSInteger singInt = [[[SingleTone sharedManager] countType] integerValue];
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singInt - countButton]];
+            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", singInt - countButton]];
             UIView * viewTakeOrder = [self.arrayView objectAtIndex:i];
             for (int j = 0; j < self.arrayView.count; j++) {
                 UIButton * butonTrash = (UIButton*)[self viewWithTag:500 + j];

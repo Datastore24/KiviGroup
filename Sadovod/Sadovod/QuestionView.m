@@ -32,8 +32,10 @@
         
         
         UIView * viewCentre = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 130.f, 20.f, 260.f, self.frame.size.height - 90.f)];
-        if (isiPhone6 || isiPhone6Plus) {
+        if (isiPhone6) {
             viewCentre.frame = CGRectMake(self.frame.size.width / 2 - 170.f, 60.f, 340.f, self.frame.size.height - 180.f);
+        } else if (isiPhone6Plus) {
+            viewCentre.frame = CGRectMake(self.frame.size.width / 2 - 170.f, 60.f, 340.f, self.frame.size.height - 240.f);
         }
         viewCentre.backgroundColor = [UIColor whiteColor];
         [viewCentre.layer setBorderColor:[UIColor colorWithWhite:0.8f alpha:0.6f].CGColor];
@@ -87,9 +89,6 @@
     
         UIButton * buttonEntrance = [UIButton buttonWithType:UIButtonTypeSystem];
         buttonEntrance.frame = CGRectMake(15.f, 355.f, viewCentre.frame.size.width - 30.f, 40);
-        if (isiPhone6 || isiPhone6Plus) {
-            buttonEntrance.frame = CGRectMake(15.f, 355.f, viewCentre.frame.size.width - 30.f, 40);
-        }
         buttonEntrance.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
         [buttonEntrance setTitle:@"Оставить вопрос" forState:UIControlStateNormal];
         [buttonEntrance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -146,7 +145,7 @@
     NSUInteger newLength = (textView.text.length - range.length) + text.length;
     NSInteger labelCount = 300 - newLength;
 
-        self.labelNumberComments.text = [NSString stringWithFormat:@"%d", labelCount];
+        self.labelNumberComments.text = [NSString stringWithFormat:@"%ld", (long)labelCount];
     
     if(newLength <= 299)
     {

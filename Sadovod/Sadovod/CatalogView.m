@@ -279,14 +279,18 @@
         UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeSystem];
         if (i == 0) {
             buttonPhone.frame = CGRectMake(0, 120, 100, 50.);
-            if (isiPhone6 || isiPhone6Plus) {
+            if (isiPhone6) {
                  buttonPhone.frame = CGRectMake(0, 120, 130, 50.);
+            } else if (isiPhone6Plus) {
+                buttonPhone.frame = CGRectMake(0, 120, 150, 50.);
             }
         } else {
             buttonPhone.frame = CGRectMake(99, 120, 181, 50.);
-            if (isiPhone6 || isiPhone6Plus) {
+            if (isiPhone6) {
                 buttonPhone.frame = CGRectMake(129, 120, 206, 50.);
-            }
+            } else if (isiPhone6Plus) {
+                buttonPhone.frame = CGRectMake(149, 120, 225, 50.);
+        }
         }
         buttonPhone.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         buttonPhone.layer.borderWidth = 1.f;

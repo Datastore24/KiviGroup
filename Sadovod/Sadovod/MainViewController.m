@@ -64,6 +64,8 @@
     self.backView =[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 40.f)];
     if (isiPhone6) {
         self.backView.frame = CGRectMake(0.f, 0.f, 260.f, 40.f);
+    } else if (isiPhone6Plus) {
+        self.backView.frame = CGRectMake(0.f, 0.f, 290.f, 40.f);
     }
     self.customText = [[UILabel alloc]initWithTitle:title];
     self.customText.frame = CGRectMake(20.f, 0.f, 160, 44.5f);
@@ -76,6 +78,8 @@
     [self.buttonBasket setFrame:CGRectMake(185, 10, 20, 20)];
     if (isiPhone6) {
         [self.buttonBasket setFrame:CGRectMake(240, 10, 20, 20)];
+    }  else if (isiPhone6Plus) {
+        [self.buttonBasket setFrame:CGRectMake(270, 10, 20, 20)];
     }
     [self.buttonBasket setBackgroundImage:[UIImage imageNamed:@"buttonImageBasket.png"] forState:UIControlStateNormal];
     [self.buttonBasket addTarget:self action:@selector(buttonBasketAction) forControlEvents:UIControlEventTouchUpInside];
