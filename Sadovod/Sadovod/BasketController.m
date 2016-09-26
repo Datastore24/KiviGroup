@@ -13,10 +13,13 @@
 #import "CatalogController.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface BasketController () <BasketViewGelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSArray * arrayCart;
 
 @end
 
@@ -41,6 +44,10 @@
     self.arrayData = [self setCustonArray];
     
 #pragma mark - View
+    
+    [self getApiCart:^{
+        
+    }];
     
     BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:self.arrayData];
     mainView.delegate = self;
@@ -105,5 +112,37 @@
     
     return nil;
 }
+
+#pragma mark - API
+-(void) getApiCart: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"cart_info_detail" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            
+            NSLog(@"CART %@",respDict);
+            self.arrayCart = [respDict objectForKey:@"list"] ;
+            
+            block();
+            
+            
+        }
+        
+    }];
+    
+}
+
 
 @end
