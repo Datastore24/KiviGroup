@@ -15,6 +15,8 @@
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "SingleTone.h"
+#import "APIGetClass.h"
 
 @interface RegistrationController () <BottomBasketViewDelegate, RegistrationViewDelegate, UINavigationControllerDelegate>
 
@@ -124,6 +126,51 @@
     [self.navigationController pushViewController:detail animated:NO];
 }
 
+-(void) getApiCart: (RegistrationView*) registrationView andblock:(void (^)(void))block
+          andphone: (NSString *) phone andEmail: (NSString *) email
+           andName: (NSString *) name andPassword: (NSString *) password
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    NSString * phoneString;
+    if(phone.length !=0){
+        phoneString =@"";
+    }else{
+        phoneString = phone;
+    }
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             phone,@"phone",
+                             email,@"email",
+                             name,@"name",
+                             password,@"password",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"register" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            
+            NSLog(@"CART %@",respDict);
+            NSLog(@"MESSAGE %@", [respDict objectForKey:@"message"]);
+            
+            
+            block();
+            
+            
+        }
+        
+    }];
+    
+}
+
 #pragma mark - ANIMATION POP PUSH
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
@@ -138,5 +185,7 @@
     
     return nil;
 }
+
+
 
 @end

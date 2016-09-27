@@ -10,4 +10,15 @@
 
 @implementation CustomButton
 
++ (CustomButton*) createButtonCustomImageWithImage: (NSString*) imageName
+                                       andRect: (CGRect) rect
+{
+    UIImage *imageBarButton = [UIImage imageNamed:imageName];
+    CustomButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
+    button.frame = rect;
+    [button setImage:imageBarButton forState:UIControlStateNormal];
+    
+    return button;
+}
+
 @end

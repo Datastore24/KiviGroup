@@ -14,6 +14,9 @@
 
 @dynamic imageButton;
 @dynamic isBool;
+@dynamic customID;
+@dynamic customValue;
+@dynamic customValueTwo;
 
 
 + (UIButton*) createButtonMenu

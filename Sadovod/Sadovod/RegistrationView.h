@@ -24,5 +24,8 @@
 @required
 
 - (void) backToMainView: (RegistrationView*) registrationView;
+-(void) getApiCart: (RegistrationView*) registrationView andblock:(void (^)(void))block
+          andphone: (NSString *) phone andEmail: (NSString *) email
+           andName: (NSString *) name andPassword: (NSString *) password;
 
 @end
