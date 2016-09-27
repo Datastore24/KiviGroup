@@ -26,4 +26,13 @@
     
 }
 
++ (void) createAlertWithMessage: (NSString*) message {
+    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+    alert.customViewColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+    
+    [alert showSuccess:@"Внимание!" subTitle:message closeButtonTitle:@"Ok" duration:0.0f];
+    
+    
+}
+
 @end

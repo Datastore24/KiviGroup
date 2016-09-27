@@ -14,6 +14,7 @@
 #import "HexColors.h"
 #import "UIView+BorderView.h"
 #import "SingleTone.h"
+#import "AlertClassCustom.h"
 
 @interface RegistrationView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -121,6 +122,11 @@
 }
 
 - (void) buttonEntranceAction {
+    
+    if (YES) {
+        [AlertClassCustom createAlertWithMessage:@"Сюда сообщение"];
+    } else {
+    
     NSString * phone;
     NSString * email;
     NSString * name;
@@ -140,9 +146,9 @@
     NSLog(@"EMAIL: %@ NAME: %@ PHONE: %@ PASS: %@",email,name,phone,password);
     
     [self.delegate getApiCart:self andblock:^{
-     NSLog(@"Регистрация");
+        
     } andphone:phone andEmail:email andName:name andPassword:password];
-   
+    }
 }
 
 

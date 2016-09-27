@@ -12,4 +12,6 @@
 
 + (void) createAlertMinPrice;
 
++ (void) createAlertWithMessage: (NSString*) message;
+
 @end
