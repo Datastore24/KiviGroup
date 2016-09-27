@@ -24,5 +24,7 @@
 @required
 
 - (void) backTuCatalog: (BasketView*) basketView;
+- (void) getApiClearSizeToBasket: (BasketView*) basketView andSizeID: (NSString *) sizeID;
+- (void) getApiChangeSizeCountBasket: (BasketView*) basketView andSizeID: (NSString *) sizeID andCount: (NSString *) count;
 
 @end

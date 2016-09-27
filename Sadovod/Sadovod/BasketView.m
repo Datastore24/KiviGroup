@@ -14,6 +14,7 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "SingleTone.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 @interface BasketView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -23,6 +24,8 @@
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
 @property (assign, nonatomic) NSInteger tagButton; //Параметр сохраняет тег нажатой кнопки при выборе колличества товара
+@property (strong, nonatomic) NSString * sizeID;
+@property (strong, nonatomic) NSString * priceCount;
 
 //Counter
 
@@ -46,7 +49,7 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height-64.f);
         self.arrayData = data;
         self.tagButton = 0;
         
@@ -61,21 +64,62 @@
             NSDictionary * dictData = [self.arrayData objectAtIndex:i];
             
             UIView * viewOrder = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 180 * i, self.frame.size.width, 180)];
+            
+            
             [self.mainScrollView addSubview:viewOrder];
             [self.arrayView addObject:viewOrder]; //Добавляем каждый обект корзины;
             
             [UIView borderViewWithHeight:179 andWight:0 andView:viewOrder andColor:@"B8B8B8"];
             
             UIImageView * imageOrder = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 160, 160)];
-            imageOrder.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
+            
             imageOrder.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             imageOrder.layer.borderWidth = 0.3f;
             imageOrder.layer.cornerRadius = 2.f;
             imageOrder.layer.shadowColor = [[UIColor blackColor] CGColor];
-            imageOrder.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+            imageOrder.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
             imageOrder.layer.shadowRadius = 1.0f;
             imageOrder.layer.shadowOpacity = 0.5f;
+            
+            
+            NSURL *imgURL = [NSURL URLWithString:[dictData objectForKey:@"img"]];
+            
+            NSLog(@"IMAGE %@",[dictData objectForKey:@"img"]);
+            //SingleTone с ресайз изображения
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:imgURL
+                                  options:0
+                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                     // progression tracking code
+                                 }
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                    
+                                    if(image){
+                                        
+                                        
+                                        [imageOrder setClipsToBounds:YES];
+                                        
+                                        imageOrder.contentMode = UIViewContentModeScaleAspectFill;
+                                        imageOrder.clipsToBounds =YES;
+                                        
+                                        //            imageOrder.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
+                                        
+                                        
+                                        imageOrder.image = image;
+                                        
+                                        
+                                        
+                                    }else{
+                                        
+                                    }
+                                }];
+            
+            
+           
+            
             [viewOrder addSubview:imageOrder];
+        
+
             
             
             
@@ -84,12 +128,12 @@
             [viewOrder addSubview:labelName];
             
             CustomLabels * labelPrice = [[CustomLabels alloc] initLabelWithWidht:220 andHeight:35 andColor: VM_COLOR_800
-                                                                        andText:[NSString stringWithFormat:@"%@ руб", [dictData objectForKey:@"price"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_BOLD];
+                                                                        andText:[NSString stringWithFormat:@"%@ руб", [dictData objectForKey:@"cost"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_BOLD];
             [viewOrder addSubview:labelPrice];
             
             CustomLabels * labelSize = [[CustomLabels alloc] initLabelWithWidht:220 andHeight:60 andColor: @"808080"
-                                                                         andText:[NSString stringWithFormat:@"размер %@", [dictData objectForKey:@"size"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
-            if ([[dictData objectForKey:@"size"] isEqualToString:@"Без размера"]) {
+                                                                         andText:[NSString stringWithFormat:@"%@", [dictData objectForKey:@"note"]] andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+            if ([[dictData objectForKey:@"note"] isEqualToString:@"Без размера"]) {
                 labelSize.text = @"";
                 labelSize.numberOfLines = 2;
                 [labelSize sizeToFit];
@@ -101,7 +145,7 @@
                                                                         andText:@"Кол-во:" andTextSize:13 andLineSpacing:0.f fontName:VM_FONT_BOLD];
             [viewOrder addSubview:labelCount];
             
-            UIButton * buttonCount = [UIButton buttonWithType:UIButtonTypeSystem];
+            CustomButton * buttonCount = [CustomButton buttonWithType:UIButtonTypeSystem];
             buttonCount.frame = CGRectMake(220.f, 120.f, 40, 40);
             [buttonCount setTitle:[dictData objectForKey:@"count"] forState:UIControlStateNormal];
             [buttonCount setTitleColor:[UIColor hx_colorWithHexRGBAString:@"666666"] forState:UIControlStateNormal];
@@ -111,14 +155,18 @@
             buttonCount.layer.borderWidth = 0.5f;
             buttonCount.layer.cornerRadius = 0.f;
             buttonCount.tag = 10 + i;
+            buttonCount.customID =[dictData objectForKey:@"price_id"];
+            buttonCount.customValue = [dictData objectForKey:@"cost"];
             [buttonCount addTarget:self action:@selector(buttonCountAction:) forControlEvents:UIControlEventTouchUpInside];
             [viewOrder addSubview:buttonCount];
             
-            UIButton * buttonBasket = [UIButton createButtonCustomImageWithImage:@"trash.png" andRect:CGRectMake(270, 120, 40, 40)];
+            CustomButton * buttonBasket = [CustomButton createButtonCustomImageWithImage:@"trash.png" andRect:CGRectMake(270, 120, 40, 40)];
             [buttonBasket setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
             buttonBasket.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
             buttonBasket.backgroundColor = [UIColor groupTableViewBackgroundColor];
             buttonBasket.tag = 500 + i;
+            buttonBasket.customID = [dictData objectForKey:@"price_id"];
+            buttonBasket.customValue = [dictData objectForKey:@"cost"];
             [buttonBasket addTarget:self action:@selector(buttonBasketAction:) forControlEvents:UIControlEventTouchUpInside];
             buttonBasket.layer.borderWidth = 0.5f;
             buttonBasket.layer.cornerRadius = 2.f;
@@ -202,11 +250,13 @@
 #pragma mark - Action
 
 //Выбор колличества товара в корзине
-- (void) buttonCountAction: (UIButton*) button {
+- (void) buttonCountAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i ++) {
         if (button.tag == 10 + i) {
             
             self.tagButton = button.tag;
+            self.sizeID = button.customID;
+            self.priceCount = button.customValue;
             self.countOrder = [button.titleLabel.text integerValue];
             if (self.countOrder < 10) {
                 [self.counterPicker selectRow:self.countOrder - 1 inComponent:0 animated:NO];
@@ -236,9 +286,11 @@
         }];
     } else if (button.tag == 1001) {
         UIButton * button = (UIButton*)[self viewWithTag:self.tagButton];
-        NSInteger baseCount = [button.titleLabel.text integerValue];
-        NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue];
-        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", singlCount + (self.pickerCount - baseCount) ]];
+        NSLog(@"COUNT %@",button.titleLabel.text);
+        
+        [self.delegate getApiChangeSizeCountBasket:self andSizeID:self.sizeID andCount:[NSString stringWithFormat:@"%ld", (long)self.pickerCount]];
+
+        
         [button setTitle:[NSString stringWithFormat:@"%ld", (long)self.pickerCount] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             self.viewFone.alpha = 0.f;
@@ -248,21 +300,21 @@
 }
 
 //Удаление товара из корзины
-- (void) buttonBasketAction: (UIButton*) button {
+- (void) buttonBasketAction: (CustomButton*) button {
+    
+    [self.delegate getApiClearSizeToBasket:self andSizeID:button.customID];
     if (self.arrayView.count == 1) {
         [[SingleTone sharedManager] setCountType:@"0"];
+        [[SingleTone sharedManager] setPriceType:@"0"];
         [self.delegate backTuCatalog:self];
     } else {
     for (int i = 0; i < self.arrayView.count; i++) {
         if (button.tag == 500 + i) {
-            UIButton * buttonCountOne = [self viewWithTag:10 + i];
-            NSInteger countButton = [buttonCountOne.titleLabel.text integerValue];
-            NSInteger singInt = [[[SingleTone sharedManager] countType] integerValue];
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%ld", singInt - countButton]];
-            UIView * viewTakeOrder = [self.arrayView objectAtIndex:i];
+            
+                        UIView * viewTakeOrder = [self.arrayView objectAtIndex:i];
             for (int j = 0; j < self.arrayView.count; j++) {
-                UIButton * butonTrash = (UIButton*)[self viewWithTag:500 + j];
-                UIButton * buttonCount = (UIButton*)[self viewWithTag:10 + j];
+                CustomButton * butonTrash = (CustomButton*)[self viewWithTag:500 + j];
+                CustomButton * buttonCount = (CustomButton*)[self viewWithTag:10 + j];
                 UIView * viewOther = [self.arrayView objectAtIndex:j];
                 if (buttonCount.tag == 10 + i) {
                     buttonCount.tag = 0;

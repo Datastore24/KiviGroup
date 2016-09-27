@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) UIImage * imageButton;
 @property (assign, nonatomic) BOOL isBool; //параметр для двух положений кнопки
+@property (strong, nonatomic) NSString * customID;
+@property (strong, nonatomic) NSString * customValue;
+@property (strong, nonatomic) NSString * customValueTwo;
 
 //Кнопка корзины
 + (UIButton*) createButtonBasket;

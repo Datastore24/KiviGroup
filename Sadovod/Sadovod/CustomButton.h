@@ -17,4 +17,7 @@
 @property (strong, nonatomic) NSString* customID;
 @property (assign, nonatomic) int group;
 
+
++ (CustomButton*) createButtonCustomImageWithImage: (NSString*) imageName
+                                           andRect: (CGRect) rect;
 @end
