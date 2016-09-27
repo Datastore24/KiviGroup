@@ -58,6 +58,7 @@
                 inputText.textFieldInput.secureTextEntry = YES;
             }
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+            inputText.tag = 2000+i;
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
@@ -120,7 +121,28 @@
 }
 
 - (void) buttonEntranceAction {
-    NSLog(@"Регистрация");
+    NSString * phone;
+    NSString * email;
+    NSString * name;
+    NSString * password;
+    
+     InputTextView * inputTextEmail =(InputTextView *)[self viewWithTag:2000];
+    InputTextView * inputTextName =(InputTextView *)[self viewWithTag:2001];
+    InputTextView * inputTextPhone =(InputTextView *)[self viewWithTag:2002];
+    InputTextView * inputTextPassword =(InputTextView *)[self viewWithTag:2003];
+    
+    
+    email = inputTextEmail.textFieldInput.text;
+    name = inputTextName.textFieldInput.text;
+    phone = inputTextPhone.textFieldInput.text;
+    password = inputTextPassword.textFieldInput.text;
+    
+    NSLog(@"EMAIL: %@ NAME: %@ PHONE: %@ PASS: %@",email,name,phone,password);
+    
+    [self.delegate getApiCart:self andblock:^{
+     NSLog(@"Регистрация");
+    } andphone:phone andEmail:email andName:name andPassword:password];
+   
 }
 
 
