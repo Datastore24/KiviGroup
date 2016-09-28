@@ -183,15 +183,22 @@
         
     }
     
+
     
-    
-   
-    
-    
-    
-//    [self.delegate getApiCart:self andblock:^{
-//        
-//    } andphone:phone andEmail:email andName:name andPassword:password];
+    if(countErr==0){
+        [self.delegate getApiCart:self andblock:^{
+        
+            NSLog(@"RESULT: %@", [self.delegate regDict]);
+            NSDictionary * regDict =[self.delegate regDict];
+            if([[regDict objectForKey:@"status"] integerValue] == 1){
+                NSLog(@"OK");
+            }else{
+                [AlertClassCustom createAlertWithMessage:[regDict objectForKey:@"message"]];
+
+            }
+        
+        } andphone:phone andEmail:email andName:name andPassword:password];
+    }
     
 }
 

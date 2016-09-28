@@ -9,5 +9,5 @@
 #import "MainViewController.h"
 
 @interface RegistrationController : MainViewController
-
+    @property (strong, nonatomic) NSDictionary * regDict;
 @end

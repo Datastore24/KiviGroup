@@ -95,7 +95,7 @@
                                [dateArray objectAtIndex:i], @"date",
                                [arrayPrice objectAtIndex:i], @"price",
                                [arrayStatus objectAtIndex:i], @"status", nil];
-//        [arrayData addObject:dict];
+        [arrayData addObject:dict];
     
     }
     NSArray * mainArray = [NSArray arrayWithArray:arrayData];
@@ -156,10 +156,9 @@
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
+        
             
-            
-            NSLog(@"CART %@",respDict);
-            NSLog(@"MESSAGE %@", [respDict objectForKey:@"message"]);
+            self.regDict = respDict;
             
             
             block();

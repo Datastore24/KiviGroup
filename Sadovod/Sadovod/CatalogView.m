@@ -274,7 +274,7 @@
     CustomLabels * labelPhone = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:80 andColor:@"000000" andText:@"+74957687838" andTextSize:20 andLineSpacing:0.f fontName:VM_FONT_BOLD];
     [phoneView addSubview:labelPhone];
     
-    NSArray * arrayName = [NSArray arrayWithObjects:@"Закрыть", @"Добавить в контакты", nil];
+    NSArray * arrayName = [NSArray arrayWithObjects:@"Закрыть", @"Позвонить", nil];
     for (int i = 0; i < 2; i++) {
         UIButton * buttonPhone = [UIButton buttonWithType:UIButtonTypeSystem];
         if (i == 0) {
@@ -315,7 +315,9 @@
             self.viewPhone.alpha = 0.f;
         }];
     } else {
-        NSLog(@"Добавить в контакты");
+        NSLog(@"Звонок");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74957687838"]];
+        
     }
 }
 
