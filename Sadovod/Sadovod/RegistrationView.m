@@ -123,32 +123,97 @@
 
 - (void) buttonEntranceAction {
     
-    if (YES) {
-        [AlertClassCustom createAlertWithMessage:@"Сюда сообщение"];
-    } else {
+    
     
     NSString * phone;
     NSString * email;
     NSString * name;
     NSString * password;
+    NSString * passwordTwo;
     
      InputTextView * inputTextEmail =(InputTextView *)[self viewWithTag:2000];
     InputTextView * inputTextName =(InputTextView *)[self viewWithTag:2001];
     InputTextView * inputTextPhone =(InputTextView *)[self viewWithTag:2002];
     InputTextView * inputTextPassword =(InputTextView *)[self viewWithTag:2003];
+    InputTextView * inputTextPasswordTwo =(InputTextView *)[self viewWithTag:2004];
     
     
     email = inputTextEmail.textFieldInput.text;
     name = inputTextName.textFieldInput.text;
     phone = inputTextPhone.textFieldInput.text;
     password = inputTextPassword.textFieldInput.text;
+    passwordTwo = inputTextPasswordTwo.textFieldInput.text;
+    
+    phone = [phone stringByReplacingOccurrencesOfString:@"+"
+                                         withString:@""];
     
     NSLog(@"EMAIL: %@ NAME: %@ PHONE: %@ PASS: %@",email,name,phone,password);
     
-    [self.delegate getApiCart:self andblock:^{
+    int countErr = 0;
+    
+    
+    if(![self validateEmail:email] || email.length==0){
+        [AlertClassCustom createAlertWithMessage:@"Введите верный Email"];
+        countErr +=1;
+
         
-    } andphone:phone andEmail:email andName:name andPassword:password];
+    }else{
+        if (name.length<=3) {
+            [AlertClassCustom createAlertWithMessage:@"Имя должны быть больше 3 символов"];
+            countErr +=1;
+            
+        }else{
+            if(phone.length <11){
+                [AlertClassCustom createAlertWithMessage:@"Телефон должны быть больше 10 символов"];
+                countErr +=1;
+            
+            }else{
+                if(![password isEqualToString: passwordTwo] || password.length==0 || passwordTwo.length==0){
+                    [AlertClassCustom createAlertWithMessage:@"Пароли должны совпадать"];
+                    countErr +=1;
+                }else{
+                    if(password.length<5 || passwordTwo.length<5){
+                        [AlertClassCustom createAlertWithMessage:@"Пароль должен быть не менее 5 символов"];
+                        countErr +=1;
+                    }
+                }
+            
+            }
+        }
+        
     }
+    
+
+    
+    if(countErr==0){
+        [self.delegate getApiCart:self andblock:^{
+        
+            NSLog(@"RESULT: %@", [self.delegate regDict]);
+            NSDictionary * regDict =[self.delegate regDict];
+            if([[regDict objectForKey:@"status"] integerValue] == 1){
+                NSLog(@"OK");
+            }else{
+                [AlertClassCustom createAlertWithMessage:[regDict objectForKey:@"message"]];
+
+            }
+        
+        } andphone:phone andEmail:email andName:name andPassword:password];
+    }
+    
+}
+
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex =
+    @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+    @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+    @"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+    @"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
+    @"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"
+    @"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"
+    @"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:candidate];
 }
 
 
