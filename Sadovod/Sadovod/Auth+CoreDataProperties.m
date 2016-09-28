@@ -20,6 +20,7 @@
 @dynamic token;
 @dynamic uid;
 @dynamic popUp;
+@dynamic enter;
 
 
 @end

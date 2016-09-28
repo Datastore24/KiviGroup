@@ -64,6 +64,7 @@
                 inputText.textFieldInput.textColor = [UIColor blackColor];
                 inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+                inputText.tag = 2100+i;
                 [viewCentre addSubview:inputText];
                 [UIView borderViewWithHeight:39.f andWight:10.f andView:inputText andColor:@"efeff4" andHieghtBorder:1.f];
             }
@@ -400,10 +401,17 @@
 
 //Дествие кнопки Войти
 - (void) buttonEntranceAction {
-    [[SingleTone sharedManager] setTypeMenu:@"1"]; //Меняем синглтон авторизации
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTORIZATION object:nil]; //Производим оповещение требуемых окон
     
-    [self.delegate methodInput:self];
+    InputTextView * inputTextLogin =(InputTextView *)[self viewWithTag:2100];
+    InputTextView * inputTextPassword =(InputTextView *)[self viewWithTag:2101];
+    
+    [self.delegate getApiAutorisation:self andblock:^{
+        
+        [self.delegate methodInput:self];
+        
+    } andEmail:inputTextLogin.textFieldInput.text andPassword:inputTextPassword.textFieldInput.text];
+    
+   
 }
 
 //Действие кнопки регистрация

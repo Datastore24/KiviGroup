@@ -26,5 +26,8 @@
 - (void) methodInput: (AuthorizationView*) authorizationView;
 - (void) methodRegistration: (AuthorizationView*) authorizationView;
 - (void) pushChangePassWork: (AuthorizationView*) authorizationView;
+- (void) getApiAutorisation: (AuthorizationView*) registrationView andblock:(void (^)(void))block
+                  andEmail: (NSString *) email
+               andPassword: (NSString *) password;
 
 @end

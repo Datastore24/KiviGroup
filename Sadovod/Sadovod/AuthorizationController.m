@@ -18,6 +18,11 @@
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "APIGetClass.h"
+#import "AuthDbClass.h"
+#import "Auth.h"
+#import "Macros.h"
+
 
 @interface AuthorizationController () <AuthorizationViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
@@ -87,6 +92,62 @@
 - (void) pushChangePassWork: (AuthorizationView*) authorizationView {
     ChangePasswordController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordController"];
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+-(void) getApiAutorisation: (AuthorizationView*) registrationView andblock:(void (^)(void))block
+         andEmail: (NSString *) email
+        andPassword: (NSString *) password
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      
+                             email,@"login",
+                             password,@"password",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"auth" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            
+            
+//            self.regDict = respDict;
+            
+            if([[respDict objectForKey:@"status"] integerValue] == 1){
+                AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+                [authDbClass checkKey:[respDict objectForKey:@"token"] andCatalogKey:[respDict objectForKey:@"token"]];
+                
+                
+                [[SingleTone sharedManager] setSuperKey:[respDict objectForKey:@"super_key"]];
+                [[SingleTone sharedManager] setCatalogKey:[respDict objectForKey:@"catalog_key"]];
+                [authDbClass changeEnter:@"1"];
+                [[SingleTone sharedManager] setTypeMenu:@"1"]; //Меняем синглтон авторизации
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTORIZATION object:nil]; //Производим оповещение требуемых окон
+                //    
+
+                 block();
+            }else{
+                NSLog(@"MESSAGE %@",[respDict objectForKey:@"message"]);
+            }
+            
+          
+            
+           
+            
+            
+        }
+        
+    }];
+    
 }
 
 #pragma mark - BottomBasketViewDelegate

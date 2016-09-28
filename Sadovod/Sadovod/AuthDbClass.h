@@ -18,5 +18,7 @@
 - (void)DeleteUserWithOutKey;
 - (BOOL)checkPopUp;
 - (void)updatePopUp;
+- (void)changeEnter:(NSString *) enter;
+- (BOOL)checkEnter;
 
 @end
