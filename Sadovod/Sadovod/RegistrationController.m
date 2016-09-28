@@ -17,6 +17,7 @@
 #import "PushAnimator.h"
 #import "SingleTone.h"
 #import "APIGetClass.h"
+#import "AuthorizationController.h"
 
 @interface RegistrationController () <BottomBasketViewDelegate, RegistrationViewDelegate, UINavigationControllerDelegate>
 
@@ -123,6 +124,11 @@
 
 - (void) backToMainView: (RegistrationView*) registrationView {
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
+    [self.navigationController pushViewController:detail animated:NO];
+}
+
+- (void) pushToAuthorization: (RegistrationView*) registrationView {
+    AuthorizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthorizationController"];
     [self.navigationController pushViewController:detail animated:NO];
 }
 

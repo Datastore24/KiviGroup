@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSDictionary * regDict;
 
 - (void) backToMainView: (RegistrationView*) registrationView;
+- (void) pushToAuthorization: (RegistrationView*) registrationView;
 -(void) getApiCart: (RegistrationView*) registrationView andblock:(void (^)(void))block
           andphone: (NSString *) phone andEmail: (NSString *) email
            andName: (NSString *) name andPassword: (NSString *) password;
