@@ -164,7 +164,7 @@
             countErr +=1;
             
         }else{
-            if(phone.length <11){
+            if(phone.length <11 && phone.length!=0){
                 [AlertClassCustom createAlertWithMessage:@"Телефон должны быть больше 10 символов"];
                 countErr +=1;
             

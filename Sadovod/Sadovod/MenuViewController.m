@@ -14,6 +14,7 @@
 #import "SingleTone.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "AuthDbClass.h"
 
 @interface MenuViewController () <UINavigationControllerDelegate>
 
@@ -55,6 +56,7 @@
                       @"Cell6", @"Cell7", @"Cell8", @"Cell9", @"Cell10", @"Cell11", @"Cell12", @"Cell13", nil];
     
     if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+        NSLog(@"MENU REG");
         //Массив заголовков-----
         self.arrayNames = [NSArray arrayWithObjects:@"Каталог товаров", @"Позвонить нам",
                            @"Авторизация", @"Регистрация", @"Задать вопрос", @"Частые вопросы",
@@ -65,6 +67,7 @@
                             @"imageMenu11.png", @"imageMenu12.png", @"", nil];
     } else {
         //Массив заголовков-----
+        NSLog(@"MENU ENTER 1");
         self.arrayNames = [NSArray arrayWithObjects:@"Каталог товаров", @"Позвонить нам",
                            @"Мой профиль", @"Мои заказы", @"Задать вопрос", @"Частые вопросы",
                            @"Доставка", @"Оплата", @"Контакты", @"О магазине", @"Возврат", @"Таблица размеров", @"Выход", nil];
@@ -142,6 +145,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 12) {
         [[SingleTone sharedManager] setTypeMenu:@"0"];
+        AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+        [authDbClass changeEnter:@"0"];
+        
         //Массив заголовков-----
         self.arrayNames = [NSArray arrayWithObjects:@"Каталог товаров", @"Позвонить нам",
                            @"Авторизация", @"Регистрация", @"Задать вопрос", @"Частые вопросы",

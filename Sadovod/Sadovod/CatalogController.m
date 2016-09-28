@@ -166,6 +166,15 @@
         NSLog(@"TOKENS %@",respDict);
         [authDbClass checkKey:[respDict objectForKey:@"super_key"] andCatalogKey:[respDict objectForKey:@"catalog_key"]];
         
+        NSLog(@"ENTER %d",[authDbClass checkEnter]);
+        if([authDbClass checkEnter]){
+            [[SingleTone sharedManager] setTypeMenu:@"1"]; //Меняем синглтон авторизации
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTORIZATION object:nil]; //Производим оповещение требуемых окон
+        }else{
+            NSLog(@"EXIT");
+            [[SingleTone sharedManager] setTypeMenu:@"0"];
+        }
+        
         [[SingleTone sharedManager] setSuperKey:[respDict objectForKey:@"super_key"]];
         [[SingleTone sharedManager] setCatalogKey:[respDict objectForKey:@"catalog_key"]];
         
