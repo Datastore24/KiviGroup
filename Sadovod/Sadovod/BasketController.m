@@ -15,8 +15,11 @@
 #import "PushAnimator.h"
 #import "APIGetClass.h"
 #import "SingleTone.h"
+#import "FormalizationController.h"
 
 @interface BasketController () <BasketViewGelegate, UINavigationControllerDelegate>
+
+@property (strong, nonatomic) BasketView * mainView;
 
 
 @property (strong, nonatomic) NSArray * arrayCart;
@@ -28,6 +31,11 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     self.navigationController.delegate = self;
+    CGRect rectView = self.mainView.frame;
+    rectView.origin.y = 0.f;
+    rectView.size.height = self.view.frame.size.height + 64;
+    self.mainView.buttonContents.frame = CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40);
+    self.mainView.frame = rectView;
 }
 
 - (void) viewDidLoad {
@@ -47,9 +55,9 @@
     
     [self getApiCart:^{
         
-        BasketView * mainView = [[BasketView alloc] initWithView:self.view andData:self.arrayCart];
-        mainView.delegate = self;
-        [self.view addSubview:mainView];
+        self.mainView = [[BasketView alloc] initWithView:self.view andData:self.arrayCart];
+        self.mainView.delegate = self;
+        [self.view addSubview:self.mainView];
         
     }];
     
@@ -73,6 +81,11 @@
     CatalogController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"CatalogController"];
     [self.navigationController pushViewController:detail animated:YES];
     
+}
+
+- (void) pushToFormalization: (BasketView*) basketView {
+    FormalizationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FormalizationController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 -(void) getApiClearSizeToBasket: (BasketView*) basketView andSizeID: (NSString *) sizeID

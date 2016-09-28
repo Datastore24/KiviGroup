@@ -15,6 +15,7 @@
 #import "UIView+BorderView.h"
 #import "SingleTone.h"
 #import "AlertClassCustom.h"
+#import <SCLAlertView.h>
 
 @interface RegistrationView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -191,7 +192,10 @@
             NSLog(@"RESULT: %@", [self.delegate regDict]);
             NSDictionary * regDict =[self.delegate regDict];
             if([[regDict objectForKey:@"status"] integerValue] == 1){
-                NSLog(@"OK");
+                SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+                alert.customViewColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+                [alert addButton:@"Авторизация" target:self selector:@selector(firstButton)];
+                [alert showSuccess:@"Внимание!" subTitle:@"Регистрация прошла успешна." closeButtonTitle:nil duration:0.0f];
             }else{
                 [AlertClassCustom createAlertWithMessage:[regDict objectForKey:@"message"]];
 
@@ -200,6 +204,10 @@
         } andphone:phone andEmail:email andName:name andPassword:password];
     }
     
+}
+
+- (void) firstButton {
+    [[self delegate] pushToAuthorization:self];
 }
 
 - (BOOL) validateEmail: (NSString *) candidate {

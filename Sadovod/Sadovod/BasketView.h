@@ -13,6 +13,8 @@
 @interface BasketView : UIView
 
 @property (weak, nonatomic) id <BasketViewGelegate> delegate;
+@property (strong, nonatomic) UIScrollView * mainScrollView;
+@property (strong, nonatomic) UIButton * buttonContents;
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
@@ -26,5 +28,6 @@
 - (void) backTuCatalog: (BasketView*) basketView;
 - (void) getApiClearSizeToBasket: (BasketView*) basketView andSizeID: (NSString *) sizeID;
 - (void) getApiChangeSizeCountBasket: (BasketView*) basketView andSizeID: (NSString *) sizeID andCount: (NSString *) count;
+- (void) pushToFormalization: (BasketView*) basketView;
 
 @end

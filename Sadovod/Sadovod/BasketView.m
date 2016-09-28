@@ -20,7 +20,7 @@
 
 //Main
 
-@property (strong, nonatomic) UIScrollView * mainScrollView;
+
 @property (strong, nonatomic) NSArray * arrayData;
 @property (strong, nonatomic) UIView * viewFone; //Фоновое вью для блокировки действий
 @property (assign, nonatomic) NSInteger tagButton; //Параметр сохраняет тег нажатой кнопки при выборе колличества товара
@@ -71,20 +71,19 @@
             
             [UIView borderViewWithHeight:179 andWight:0 andView:viewOrder andColor:@"B8B8B8"];
             
+            UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 160, 160)];
+            shadowView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+            shadowView.layer.borderWidth = 0.5f;
+            shadowView.layer.cornerRadius = 2.f;
+            shadowView.layer.shadowColor = [[UIColor blackColor] CGColor];
+            shadowView.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+            shadowView.layer.shadowRadius = 1.0f;
+            shadowView.layer.shadowOpacity = 0.5f;
+            [viewOrder addSubview:shadowView];
+            
             UIImageView * imageOrder = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 160, 160)];
             
-            imageOrder.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-            imageOrder.layer.borderWidth = 0.3f;
-            imageOrder.layer.cornerRadius = 2.f;
-            imageOrder.layer.shadowColor = [[UIColor blackColor] CGColor];
-            imageOrder.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
-            imageOrder.layer.shadowRadius = 1.0f;
-            imageOrder.layer.shadowOpacity = 0.5f;
-            
-            
             NSURL *imgURL = [NSURL URLWithString:[dictData objectForKey:@"img"]];
-            
-            NSLog(@"IMAGE %@",[dictData objectForKey:@"img"]);
             //SingleTone с ресайз изображения
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadImageWithURL:imgURL
@@ -182,6 +181,15 @@
             self.viewCounter.alpha = 0.f;
             [self addSubview:self.viewCounter];
         }
+        
+        self.buttonContents = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.buttonContents.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4C4C4C" alpha:0.8];
+        self.buttonContents.frame = CGRectMake(0, self.frame.size.height - 40, view.frame.size.width, 40.f);
+        [self.buttonContents setTitle:@"Оформить" forState:UIControlStateNormal];
+        [self.buttonContents setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.buttonContents.titleLabel.font = [UIFont fontWithName:VM_FONT_BOLD size:15];
+        [self.buttonContents addTarget:self action:@selector(buttonContentsAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.buttonContents];
     }
     return self;
 }
@@ -248,6 +256,11 @@
 }
 
 #pragma mark - Action
+
+//Переход в оформление
+- (void) buttonContentsAction {
+    [[self delegate] pushToFormalization:self];
+}
 
 //Выбор колличества товара в корзине
 - (void) buttonCountAction: (CustomButton*) button {
@@ -342,6 +355,7 @@
     }
     }
 }
+
 
 #pragma mark - UIPickerViewDataSource
 
