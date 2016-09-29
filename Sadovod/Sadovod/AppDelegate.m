@@ -23,7 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"UserModel.sqlite"];
 
     //Настройки NavigationBar
     [UINavigationBar appearance].barTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];

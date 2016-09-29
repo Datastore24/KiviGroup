@@ -17,8 +17,7 @@
 
 - (void)addFilter: (NSString *) catID
        andMinCost: (NSString*) minCost andMaxCost: (NSString*) maxCost andO: (NSString*) o {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     Filter *filter = [Filter MR_createEntityInContext:localContext];
     filter.catID = catID;
     filter.min_cost = minCost;
@@ -30,7 +29,6 @@
 
 - (BOOL)checkFilter:(NSString*) catID
          andMinCost: (NSString*) minCost andMaxCost: (NSString*) maxCost andO: (NSString*) o{
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
     
@@ -54,7 +52,7 @@
           andMinCost: (NSString*) minCost andMaxCost: (NSString*) maxCost andO: (NSString*) o
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"catID ==[c] %@",catID];
@@ -81,7 +79,7 @@
 - (void)deleteFilter:(NSString*) catID
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"catID ==[c] %@",catID];

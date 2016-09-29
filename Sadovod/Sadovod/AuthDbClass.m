@@ -16,8 +16,7 @@
 
 
 - (void)addKey: (NSString *) superKey andCatalogKey: (NSString*) catalogKey{
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     Auth *auth = [Auth MR_createEntityInContext:localContext];
     auth.superkey=superKey;
     auth.catalogkey=catalogKey;
@@ -27,9 +26,8 @@
 }
 
 - (BOOL)checkKey:(NSString*) superKey andCatalogKey: (NSString*) catalogKey{
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:
@@ -50,9 +48,8 @@
 }
 
 - (BOOL)checkPopUp{
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:
@@ -72,7 +69,7 @@
 - (void)updatePopUp
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
@@ -92,7 +89,7 @@
 - (void)changeEnter:(NSString *) enter
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
@@ -110,9 +107,8 @@
 }
 
 - (BOOL)checkEnter{
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Auth.sqlite"];
     
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:
@@ -133,7 +129,7 @@
 - (void)deleteAuth
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
@@ -153,7 +149,7 @@
 - (void)updateToken:(NSString *)token
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
@@ -173,7 +169,7 @@
 - (void)DeleteUserWithOutKey
 {
     // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_context];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     
     // Retrieve the first person who have the given firstname
     NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
