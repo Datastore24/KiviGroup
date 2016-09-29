@@ -272,8 +272,8 @@
                 
             }];
         }
-        [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", [[[SingleTone sharedManager] countType] integerValue] - allCount]];
-        [self.deleagte addCountOrder:self];
+        
+    
         
     } else if (button.tag == 401) {
         [self.deleagte getApiAddAllSizeToBasket];
@@ -283,7 +283,6 @@
             NSInteger countUp = [label.text integerValue];
             countUp += 1;
             NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue]; //Добавить сюда цену
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount + 1]];
             [UIView animateWithDuration:0.2 animations:^{
                 label.text = [NSString stringWithFormat:@"%d", countUp];
                 if (!buttonSize.isBool) {
@@ -293,7 +292,7 @@
                 }
             } completion:^(BOOL finished) {
                 buttonSize.isBool = YES;
-                [self.deleagte addCountOrder:self];
+                
             }];
         }
     } else if (button.tag == 402) {
@@ -312,11 +311,11 @@
             if (countUp > 0) {
                 countUp -= 1;
                 NSInteger singlCount = [[[SingleTone sharedManager] countType] integerValue]; //Добавить сюда цену
-                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", singlCount - 1]];
+                
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
                 } completion:^(BOOL finished) {
-                   [self.deleagte addCountOrder:self];
+                   
                 }];
             }
         }
@@ -341,9 +340,8 @@
             countUp += 1;
             NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
             countSinglOrder += 1;
-            [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
             //Тестовый привер вспывающего вью
-            [self.deleagte addCountOrder:self];            
+            
             
             [UIView animateWithDuration:0.2 animations:^{
                 label.text = [NSString stringWithFormat:@"%d", countUp];
@@ -376,8 +374,8 @@
                 countUp -= 1;
                 NSInteger countSinglOrder = [[[SingleTone sharedManager] countType] integerValue];
                 countSinglOrder -= 1;
-                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d", countSinglOrder]];
-                [self.deleagte addCountOrder:self];
+                
+                
                 [UIView animateWithDuration:0.3 animations:^{
                     label.text = [NSString stringWithFormat:@"%d", countUp];
                 }];
@@ -394,8 +392,8 @@
             CustomLabels * label = (CustomLabels*)[self viewWithTag:300 + i];
             
             if (!button.isBool) {
-                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d",[[[SingleTone sharedManager] countType] integerValue]  + 1]]; //Сюда цену
-                [self.deleagte addCountOrder:self];
+                
+                
                 [UIView animateWithDuration:0.2 animations:^{
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300].CGColor;
                     button.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
@@ -408,8 +406,8 @@
                 }];
                 
             } else {
-                [[SingleTone sharedManager] setCountType:[NSString stringWithFormat:@"%d",[[[SingleTone sharedManager] countType] integerValue] - [label.text integerValue]]]; //Сюда цену
-                [self.deleagte addCountOrder:self];
+                
+                
                 [UIView animateWithDuration:0.2 animations:^{
                     button.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"e8e8e8"].CGColor;
                     button.backgroundColor = [UIColor whiteColor];
