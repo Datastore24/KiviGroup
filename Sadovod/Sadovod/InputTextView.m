@@ -159,6 +159,7 @@
 //Анимация Лейблов при вводе SMS-------------------------
 - (void) animationLabel: (NSNotification*) notification
 {
+    [self.delegate inputText:self];
     CustomTextField * testField = notification.object;
     if (testField.text.length != 0 && testField.isBoll) {
         [UIView animateWithDuration:0.2f animations:^{
@@ -263,6 +264,8 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    
     
     
     if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && textField.tag >= 225 && textField.tag < 250) {

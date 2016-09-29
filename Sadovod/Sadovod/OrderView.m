@@ -57,6 +57,15 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
+        
+        
+        //Проверка статуса товара новый или старый
+        //Если товар старый
+        
+        if (YES) {
+            self.frame = CGRectMake(0.f, 50.f, view.frame.size.width, view.frame.size.height - 50);
+        }
+        
         self.counterOrder = 0.f;
         self.arrayData = data;
         self.arrayCart = cart;

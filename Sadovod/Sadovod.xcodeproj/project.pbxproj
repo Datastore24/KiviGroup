@@ -29,8 +29,9 @@
 		FF3A05F01D87F521009012E8 /* SizesView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3A05EF1D87F521009012E8 /* SizesView.m */; };
 		FF3A05F31D8844C4009012E8 /* personMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F11D8844C4009012E8 /* personMenuImage.png */; };
 		FF3A05F41D8844C4009012E8 /* registrationMenuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3A05F21D8844C4009012E8 /* registrationMenuImage.png */; };
+		FF3C733E1D9D370600DC7F18 /* OldOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C733D1D9D370600DC7F18 /* OldOrderView.m */; };
 		FF7FCEF01D7D873B0064E755 /* FormalizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */; };
-		FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEF21D7D874B0064E755 /* FormalizationView.m */; };
+		FF7FCEF31D7D874B0064E755 /*  FormalizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FCEF21D7D874B0064E755 /*  FormalizationView.m */; };
 		FF7FCEFC1D7DCFEA0064E755 /* imageButtonFaceNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */; };
 		FF7FCEFE1D7DD07D0064E755 /* imageButtonFaceYes.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFD1D7DD07D0064E755 /* imageButtonFaceYes.png */; };
 		FF7FCF011D7DF0C60064E755 /* buttonFaceNo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7FCEFF1D7DF0C60064E755 /* buttonFaceNo.png */; };
@@ -508,10 +509,12 @@
 		FF3A05EF1D87F521009012E8 /* SizesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizesView.m; sourceTree = "<group>"; };
 		FF3A05F11D8844C4009012E8 /* personMenuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personMenuImage.png; sourceTree = "<group>"; };
 		FF3A05F21D8844C4009012E8 /* registrationMenuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registrationMenuImage.png; sourceTree = "<group>"; };
+		FF3C733C1D9D370600DC7F18 /* OldOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldOrderView.h; sourceTree = "<group>"; };
+		FF3C733D1D9D370600DC7F18 /* OldOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldOrderView.m; sourceTree = "<group>"; };
 		FF7FCEEE1D7D873B0064E755 /* FormalizationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationController.h; sourceTree = "<group>"; };
 		FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationController.m; sourceTree = "<group>"; };
 		FF7FCEF11D7D874B0064E755 /* FormalizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormalizationView.h; sourceTree = "<group>"; };
-		FF7FCEF21D7D874B0064E755 /* FormalizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormalizationView.m; sourceTree = "<group>"; };
+		FF7FCEF21D7D874B0064E755 /*  FormalizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = " FormalizationView.m"; sourceTree = "<group>"; };
 		FF7FCEFA1D7DCFEA0064E755 /* imageButtonFaceNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFaceNo.png; sourceTree = "<group>"; };
 		FF7FCEFD1D7DD07D0064E755 /* imageButtonFaceYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageButtonFaceYes.png; sourceTree = "<group>"; };
 		FF7FCEFF1D7DF0C60064E755 /* buttonFaceNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonFaceNo.png; sourceTree = "<group>"; };
@@ -1129,7 +1132,7 @@
 				FF7FCEEE1D7D873B0064E755 /* FormalizationController.h */,
 				FF7FCEEF1D7D873B0064E755 /* FormalizationController.m */,
 				FF7FCEF11D7D874B0064E755 /* FormalizationView.h */,
-				FF7FCEF21D7D874B0064E755 /* FormalizationView.m */,
+				FF7FCEF21D7D874B0064E755 /*  FormalizationView.m */,
 			);
 			name = Formalization;
 			sourceTree = "<group>";
@@ -2137,6 +2140,8 @@
 				FFF873421D6B2BF900816FC1 /* OrderView.m */,
 				FF0732B91D95442200F7BAC0 /* GaleryView.h */,
 				FF0732BA1D95442200F7BAC0 /* GaleryView.m */,
+				FF3C733C1D9D370600DC7F18 /* OldOrderView.h */,
+				FF3C733D1D9D370600DC7F18 /* OldOrderView.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2696,7 +2701,7 @@
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
 				FF997F6E1D6EDE890037684A /* OrderFiltersController.m in Sources */,
-				FF7FCEF31D7D874B0064E755 /* FormalizationView.m in Sources */,
+				FF7FCEF31D7D874B0064E755 /*  FormalizationView.m in Sources */,
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFBF91DB1D82DACF00F8A0A1 /* PriceController.m in Sources */,
@@ -2723,6 +2728,7 @@
 				FFAE307A1D65A25800E81AED /* JBWatchActivityIndicator.m in Sources */,
 				FFBF91F61D82EFBC00F8A0A1 /* ReturnView.m in Sources */,
 				AD7199C81D93E32200F3B0E1 /* Auth+CoreDataProperties.m in Sources */,
+				FF3C733E1D9D370600DC7F18 /* OldOrderView.m in Sources */,
 				FFAE32E71D65A31A00E81AED /* UIButton+ButtonImage.m in Sources */,
 				AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */,
 				FFA5FFF11D81755000CD6E7F /* RegistrationController.m in Sources */,

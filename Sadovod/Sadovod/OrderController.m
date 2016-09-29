@@ -19,6 +19,7 @@
 #import "PopAnimator.h"
 #import "PushAnimator.h"
 #import "GaleryView.h"
+#import "OldOrderView.h"
 
 @interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, GaleryViewDelegate>
 
@@ -92,10 +93,16 @@
         }
         [self.view addSubview:self.basketView];
         
+        OldOrderView * oldOrderView = [[OldOrderView alloc] initWithView:self.view];
+        [self.view addSubview:oldOrderView];
+        
         self.galeryView = [[GaleryView alloc] initWithView:self.view andData:self.arrayData];
         self.galeryView.delegate = self;
         self.galeryView.alpha = 0.f;
         [self.view addSubview:self.galeryView];
+        
+
+        
         
 
     } andProductID:self.productID];

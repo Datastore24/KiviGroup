@@ -15,7 +15,11 @@
 #import "HexColors.h"
 #import "CustomTextField.h"
 
+@protocol InputTextViewDelegate;
+
 @interface InputTextView : UIView <UITextFieldDelegate>
+
+@property (weak, nonatomic) id <InputTextViewDelegate> delegate;
 // Метод инициализации объекта для ввода текста-----------
 // Элемент scrollWidth используется только в расширенном экране
 // скрол вью для смещения объектов в оcи Х
@@ -41,5 +45,13 @@
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) CustomTextField * textFieldInput;
 @property (strong, nonatomic) UILabel * labelPlaceHoldInput;
+
+@end
+
+@protocol InputTextViewDelegate <NSObject>
+
+@optional
+
+- (void) inputText: (InputTextView*) inputTextView;
 
 @end
