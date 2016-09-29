@@ -13,6 +13,8 @@
 #import "InputTextView.h"
 #import "UIView+BorderView.h"
 #import "CustomButton.h"
+#import "UserInfo.h"
+#import "UserInfoDbClass.h"
 
 @interface FormalizationView() <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -20,6 +22,7 @@
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSMutableArray * arrayView; //массив всех вью
 @property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) UserInfo * userInfo;
 
 //TypeBuyer
 
@@ -101,6 +104,19 @@
 {
     self = [super init];
     if (self) {
+        
+        UserInfoDbClass * userInfoDbclass = [[UserInfoDbClass alloc] init];
+        NSArray * userArray = [userInfoDbclass showAllUsersInfo];
+        
+        NSLog(@"COUNT %lu",(unsigned long)userArray.count);
+        if(userArray.count>0){
+            self.userInfo = (UserInfo *)[userArray objectAtIndex:0];
+            NSLog(@"TYPE %@",self.userInfo.us_type);
+        }else{
+            self.userInfo = nil;
+             NSLog(@"USERINFO EMPTY");
+        }
+        
         
         self.isScrollPicker=NO;
         self.arrayData = data;
@@ -197,15 +213,35 @@
             buttonFace.tag = 5 + i;
             buttonFace.frame = CGRectMake(0.f, 0.f + (whiteViewBuyer.frame.size.height / 2) * i, whiteViewBuyer.frame.size.width, whiteViewBuyer.frame.size.height / 2);
             [buttonFace addTarget:self action:@selector(buttonFaceAction:) forControlEvents:UIControlEventTouchUpInside];
-            [buttonFace setImage:[UIImage imageNamed:@"buttonBuyerYes.png"] forState:UIControlStateSelected];
-            buttonFace.userInteractionEnabled = NO;
+   
+                [buttonFace setImage:[UIImage imageNamed:@"buttonBuyerYes.png"] forState:UIControlStateSelected];
+                
+            
+            
+            
+            
             [whiteViewBuyer addSubview:buttonFace];
             
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 10.f, 20.f, 20.f)];
-            imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+            if(i == 0){
+                if([self.userInfo.us_type integerValue]==0){
+                   imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonFace.userInteractionEnabled = NO;
+                }else{
+                    imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                    buttonFace.userInteractionEnabled = YES;
+                }
+            }
+            
             if (i == 1) {
-                imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
-                buttonFace.userInteractionEnabled = YES;
+                if([self.userInfo.us_type integerValue]==1){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonFace.userInteractionEnabled = NO;
+                }else{
+                    imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                    buttonFace.userInteractionEnabled = YES;
+                }
+                
             }
             imageView.tag = 10 + i;
             [buttonFace addSubview:imageView];
@@ -723,12 +759,28 @@
 #pragma mark - Actions
 //Выбор типа покупателя (юр лицо или физ лицо)
 - (void) buttonFaceAction: (UIButton*) button {
+    
+    UserInfoDbClass * userInfoDbclass = [[UserInfoDbClass alloc] init];
+    NSArray * userArray = [userInfoDbclass showAllUsersInfo];
+    UserInfo * userInfo ;
+    if(userArray.count>0){
+        userInfo = (UserInfo *)[userArray objectAtIndex:0];
+        NSLog(@"TYPE %@",userInfo.us_type);
+    }else{
+        userInfo = nil;
+        NSLog(@"USER INFO - EMPTY");
+    }
+    
+    
     UIButton * buttonOne = [self viewWithTag:5];
     UIButton * buttonTwo = [self viewWithTag:6];
     UIImageView * imageViewOne = [self viewWithTag:10];
     UIImageView * imageViewTwo = [self viewWithTag:11];
     
     if (button.tag == 5) {
+        
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        
         NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
         for (int i = 0; i < 3; i++) {
             UILabel * label = [self viewWithTag:900 + i];
@@ -761,6 +813,8 @@
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 40.f);
         }
     } else if (button.tag == 6) {
+        
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
         NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
             for (int i = 0; i < 3; i++) {
                 UILabel * label = [self viewWithTag:900 + i];

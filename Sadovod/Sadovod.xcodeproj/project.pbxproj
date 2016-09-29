@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		30164E106F6F26125F5D3348 /* libPods-Sadovod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3521C90A5FF2D82BD0B1E5E0 /* libPods-Sadovod.a */; };
+		AD6ED3731D9CFE6000FF967A /* UserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3701D9CFE6000FF967A /* UserInfo+CoreDataProperties.m */; };
+		AD6ED3741D9CFE6000FF967A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3721D9CFE6000FF967A /* UserInfo.m */; };
+		AD6ED3771D9CFE7500FF967A /* UserInfoDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3761D9CFE7500FF967A /* UserInfoDbClass.m */; };
 		AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */; };
 		AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */; };
 		AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */; };
@@ -465,6 +468,12 @@
 /* Begin PBXFileReference section */
 		3521C90A5FF2D82BD0B1E5E0 /* libPods-Sadovod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sadovod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D23E6A548603C0D402D4695 /* Pods-Sadovod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sadovod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sadovod/Pods-Sadovod.release.xcconfig"; sourceTree = "<group>"; };
+		AD6ED36F1D9CFE6000FF967A /* UserInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD6ED3701D9CFE6000FF967A /* UserInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AD6ED3711D9CFE6000FF967A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		AD6ED3721D9CFE6000FF967A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		AD6ED3751D9CFE7500FF967A /* UserInfoDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoDbClass.h; sourceTree = "<group>"; };
+		AD6ED3761D9CFE7500FF967A /* UserInfoDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoDbClass.m; sourceTree = "<group>"; };
 		AD6F0AA81D7EA7C1005E8FD9 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		AD6F0AAA1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Filter+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1033,6 +1042,12 @@
 		AD89D1B91D678AC8007771B6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				AD6ED36F1D9CFE6000FF967A /* UserInfo+CoreDataProperties.h */,
+				AD6ED3701D9CFE6000FF967A /* UserInfo+CoreDataProperties.m */,
+				AD6ED3711D9CFE6000FF967A /* UserInfo.h */,
+				AD6ED3721D9CFE6000FF967A /* UserInfo.m */,
+				AD6ED3751D9CFE7500FF967A /* UserInfoDbClass.h */,
+				AD6ED3761D9CFE7500FF967A /* UserInfoDbClass.m */,
 				AD7199C41D93E32200F3B0E1 /* Auth+CoreDataProperties.h */,
 				AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */,
 				AD7199C61D93E32200F3B0E1 /* Auth.h */,
@@ -2670,11 +2685,13 @@
 				FFAE32E11D65A31A00E81AED /* UIBarButtonItem+Alpha.m in Sources */,
 				FFAE32E41D65A31A00E81AED /* UIImage+ImageEffects.m in Sources */,
 				FFC4FD041D65A7E9007C2DDC /* CatalogView.m in Sources */,
+				AD6ED3741D9CFE6000FF967A /* UserInfo.m in Sources */,
 				FFA5FFEA1D816A7E00CD6E7F /* AuthorizationController.m in Sources */,
 				AD7199C01D92DC5C00F3B0E1 /* PushAnimator.m in Sources */,
 				AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */,
 				FFD1D3921D8FF50200E5BE8B /* BottomBasketView.m in Sources */,
 				FFBF91F31D82EFAE00F8A0A1 /* ReturnController.m in Sources */,
+				AD6ED3731D9CFE6000FF967A /* UserInfo+CoreDataProperties.m in Sources */,
 				FFAE32DD1D65A31A00E81AED /* UIButton+BackgroundColor.m in Sources */,
 				FFC4FD691D675E85007C2DDC /* CatalogMainListController.m in Sources */,
 				FFF873471D6B3A1900816FC1 /* StyledPageControl.m in Sources */,
@@ -2730,6 +2747,7 @@
 				FF3A05ED1D87F50C009012E8 /* SizesController.m in Sources */,
 				FFAE32E61D65A31A00E81AED /* UIImage+RoundedCorner.m in Sources */,
 				FFA8AB611D6EF5EF004010F9 /* NMRangeSlider.m in Sources */,
+				AD6ED3771D9CFE7500FF967A /* UserInfoDbClass.m in Sources */,
 				FFAE2E361D65A10300E81AED /* SWRevealViewController.m in Sources */,
 				FFD1D3961D917E0500E5BE8B /* ChangePasswordController.m in Sources */,
 				FFC4FD581D672189007C2DDC /* CatalogListController.m in Sources */,

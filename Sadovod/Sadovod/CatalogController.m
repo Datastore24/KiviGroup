@@ -166,12 +166,10 @@
         NSLog(@"TOKENS %@",respDict);
         [authDbClass checkKey:[respDict objectForKey:@"super_key"] andCatalogKey:[respDict objectForKey:@"catalog_key"]];
         
-        NSLog(@"ENTER %d",[authDbClass checkEnter]);
         if([authDbClass checkEnter]){
             [[SingleTone sharedManager] setTypeMenu:@"1"]; //Меняем синглтон авторизации
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTORIZATION object:nil]; //Производим оповещение требуемых окон
         }else{
-            NSLog(@"EXIT");
             [[SingleTone sharedManager] setTypeMenu:@"0"];
         }
         
@@ -203,7 +201,6 @@
         if([response isKindOfClass:[NSDictionary class]]){
             
             NSDictionary * respDict = (NSDictionary *) response;
-            NSLog(@"RESP %@",respDict);
             
             self.cartDict =respDict;
             //Тестовые синглтоны для подсчета колличества выбранных товаров
