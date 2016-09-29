@@ -26,7 +26,7 @@
 @protocol BuyViewDelegate <NSObject>
 
 
-- (void) addCountOrder: (BuyView*) buyView;
+
 
 - (void) hideCountOrder: (BuyView*) buyView;
 
