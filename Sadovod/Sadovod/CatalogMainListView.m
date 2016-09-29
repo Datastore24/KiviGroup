@@ -130,6 +130,21 @@
     [customCell addSubview:viewLabel];
     [customCell addSubview:labelCount];
     
+    UILabel * labelNew = [[UILabel alloc] init];
+    labelNew.text = [NSString stringWithFormat:@"+%d", 10 + arc4random() % 500]; //Это случайное число (необходимо добавить строку колличества нового товара)
+    labelNew.textColor = [UIColor whiteColor];
+    labelNew.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+    labelNew.textAlignment = NSTextAlignmentCenter;
+    labelNew.frame = CGRectMake(customCell.frame.size.width - (viewLabel.frame.size.width) - (10.f + (15.f + 10.f * labelNew.text.length)), 12.f, 5.f + 9.f * labelNew.text.length, 22.f);
+    
+    UIView * viewNewLabel = [[UIView alloc] initWithFrame:labelNew.frame];
+    viewNewLabel.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"198B20"];
+    viewNewLabel.layer.cornerRadius = 3.f;
+    [customCell addSubview:viewNewLabel];
+    [customCell addSubview:labelNew];
+    
+    
+    
     [UIView borderViewWithHeight:45.9f andWight:0.f andView:customCell andColor:VM_COLOR_200];
     
     return customCell;

@@ -61,6 +61,7 @@
         self.arrayData = data;
         self.arrayCart = cart;
         self.isBoolAuthorization = NO;
+        
        
         NSArray * arrayImage = [data objectForKey:@"images"];
         self.arraySizes = [data objectForKey:@"sizes"];

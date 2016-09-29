@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3893DC3832C6E1997C4FC2728B7DD58FC0252902",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1" : 0,
+    "3893DC3832C6E1997C4FC2728B7DD58FC0252902" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CFB59544-E394-4C49-8572-774F71AF3F97",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1" : "",
+    "3893DC3832C6E1997C4FC2728B7DD58FC0252902" : "KiviGroup\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FlowersOnline",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FlowersOnline\/FlowersOnline.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Datastore24\/KiviGroup.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3893DC3832C6E1997C4FC2728B7DD58FC0252902"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Datastore24\/Sadovod.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1"
+    }
+  ]
+}

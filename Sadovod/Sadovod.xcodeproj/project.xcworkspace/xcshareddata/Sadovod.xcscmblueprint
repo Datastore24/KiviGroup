@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "70E5AC63769921FD69ADDF077559E4CE40340AA1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1" : 0,
+    "70E5AC63769921FD69ADDF077559E4CE40340AA1" : 0,
+    "3893DC3832C6E1997C4FC2728B7DD58FC0252902" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C43DF575-D06F-4610-9430-445A1402F26F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1" : "",
+    "70E5AC63769921FD69ADDF077559E4CE40340AA1" : "myRepo\/",
+    "3893DC3832C6E1997C4FC2728B7DD58FC0252902" : "KiviGroup\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sadovod",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Sadovod\/Sadovod.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Datastore24\/KiviGroup.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3893DC3832C6E1997C4FC2728B7DD58FC0252902"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mrGyugo\/myRepo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70E5AC63769921FD69ADDF077559E4CE40340AA1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Datastore24\/Sadovod.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CB7B35A956572ACCE38A31CC293B8DFE2EE43AD1"
+    }
+  ]
+}

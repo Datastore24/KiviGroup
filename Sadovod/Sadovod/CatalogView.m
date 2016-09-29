@@ -211,6 +211,29 @@
                                                             }
                                                             [buttonProduct addSubview:labelPrice];
                                                             
+                                                            UILabel * statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 30, 15)];
+                                                            if (isiPhone6 || isiPhone6Plus) {
+                                                                statusLabel.frame = CGRectMake(0.f, 0.f, 38, 12);
+                                                                statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
+                                                            }
+                                                            //Случайный выбор параметра-----------
+                                                            NSString * stringStatus;
+                                                            if (arc4random() % 2) {
+                                                                stringStatus = @"NEW";
+                                                                statusLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+                                                                statusLabel.backgroundColor = [UIColor clearColor];
+                                                            } else {
+                                                                stringStatus = @"OLD";
+                                                                statusLabel.backgroundColor = [UIColor lightGrayColor];
+                                                                statusLabel.textColor = [UIColor whiteColor];
+                                                            }
+                                                            statusLabel.text = stringStatus;
+                                                            statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                                            statusLabel.textAlignment = NSTextAlignmentCenter;
+                                                            [buttonProduct addSubview:statusLabel];
+                                                            
+                                                            
+                                                            
                                                         }else{
                                                             
                                                         }
@@ -450,6 +473,28 @@
                                                     labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
                                                 }
                                                 [buttonProduct addSubview:labelPrice];
+                                                
+                                                UILabel * statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 30, 15)];
+                                                if (isiPhone6 || isiPhone6Plus) {
+                                                    statusLabel.frame = CGRectMake(0.f, 0.f, 38, 12);
+                                                    statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
+                                                }
+                                                //Случайный выбор параметра-----------
+                                                NSString * stringStatus;
+                                                if (arc4random() % 2) {
+                                                    stringStatus = @"NEW";
+                                                    statusLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+                                                    statusLabel.backgroundColor = [UIColor clearColor];
+                                                    
+                                                } else {
+                                                    stringStatus = @"OLD";
+                                                    statusLabel.backgroundColor = [UIColor lightGrayColor];
+                                                    statusLabel.textColor = [UIColor whiteColor];
+                                                }
+                                                statusLabel.text = stringStatus;
+                                                statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                                statusLabel.textAlignment = NSTextAlignmentCenter;
+                                                [buttonProduct addSubview:statusLabel];
                                                 
                                             }else{
                                                 
