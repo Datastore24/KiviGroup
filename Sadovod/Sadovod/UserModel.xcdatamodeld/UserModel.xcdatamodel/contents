@@ -16,8 +16,33 @@
         <attribute name="min_cost" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="o" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="UserInfo" representedClassName="UserInfo" syncable="YES">
+        <attribute name="addr_index" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deli_end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deli_start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doc_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doc_num" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doc_vend" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kpp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="like_delivery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="like_pay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="like_tk" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ord_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="org_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transport" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="us_fam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="us_otch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="us_type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Auth" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="Filter" positionX="-63" positionY="27" width="128" height="105"/>
+        <element name="UserInfo" positionX="-63" positionY="45" width="128" height="375"/>
     </elements>
 </model>

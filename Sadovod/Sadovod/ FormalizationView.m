@@ -16,7 +16,7 @@
 #import "UserInfo.h"
 #import "UserInfoDbClass.h"
 
-@interface FormalizationView() <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface FormalizationView() <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, InputTextViewDelegate>
 
 //Main
 @property (strong, nonatomic) UIScrollView * mainScrollView;
@@ -194,6 +194,9 @@
         self.viewCounter.alpha = 0.f;
         [self addSubview:self.viewCounter];
         
+        
+
+        
     }
     return self;
 }
@@ -271,6 +274,8 @@
             InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
                                                                              andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+            inputText.delegate = self;
+            
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.textFieldInput.tag=5000+i;
@@ -439,6 +444,7 @@
             InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
                                                                              andRect:CGRectMake(0.f, 100.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+            inputText.delegate = self;
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.textFieldInput.tag = 225 + i;
@@ -533,6 +539,7 @@
             InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
                                                                              andRect:CGRectMake(0.f, 90.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+            inputText.delegate = self;
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.textFieldInput.tag = 800 + i;
@@ -1092,6 +1099,9 @@
 #pragma mark - UITextViewDelegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    
+    
+    
     if([text isEqualToString:@"\n"]) {
         [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:NO addOther:^{
             
@@ -1109,6 +1119,7 @@
     
     if(newLength <= 199)
     {
+
         return YES;
     } else {
         NSUInteger emptySpace = 199 - (textView.text.length - range.length);
@@ -1117,6 +1128,7 @@
                          stringByAppendingString:[textView.text substringFromIndex:(range.location + range.length)]];
         return NO;
     }
+    
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
@@ -1140,6 +1152,11 @@
         }];
     }
 
+}
+
+
+- (void)textViewDidChange:(UITextView *)textView {
+    NSLog(@"%@", textView.text);
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -1355,6 +1372,12 @@
 
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - InputTextViewDelegate
+
+- (void) inputText: (InputTextView*) inputTextView {
+    NSLog(@"%@", inputTextView.textFieldInput.text);
 }
 
 @end
