@@ -273,6 +273,7 @@
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
+            inputText.textFieldInput.tag=5000+i;
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
             if (i == 1) {
@@ -1119,6 +1120,14 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    NSLog(@"TEXTEDIT %@",textView.text);
+    
+    if(textView.tag == 5000){
+        NSLog(@"TEXT %@",textView.text);
+    }
+    
+    
     if (textView.tag == 3000) {
         [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
             self.mainScrollView.contentOffset = CGPointMake(0.f, 40.f);
