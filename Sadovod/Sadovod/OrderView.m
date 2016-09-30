@@ -63,7 +63,7 @@
         //Если товар старый
         
         if (YES) {
-            self.frame = CGRectMake(0.f, 50.f, view.frame.size.width, view.frame.size.height - 50);
+            self.frame = CGRectMake(0.f, 30.f, view.frame.size.width, view.frame.size.height - 30);
         }
         
         self.counterOrder = 0.f;

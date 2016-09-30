@@ -45,7 +45,7 @@
             } else if (isiPhone6Plus) {
                 self.mainScrollView.contentSize = CGSizeMake(0.f, 1800.f);
             } else {
-                self.mainScrollView.contentSize = CGSizeMake(0.f, 2040.f);
+                self.mainScrollView.contentSize = CGSizeMake(0.f, 2450.f);
             }
         } else {
             if (isiPhone6) {
@@ -53,7 +53,7 @@
             } else if (isiPhone6Plus) {
                 self.mainScrollView.contentSize = CGSizeMake(0.f, 1800.f + 50);
             } else {
-                self.mainScrollView.contentSize = CGSizeMake(0.f, 2040.f + 50);
+                self.mainScrollView.contentSize = CGSizeMake(0.f, 2450.f + 50);
             }
         }
         [self addSubview:self.mainScrollView];
@@ -68,8 +68,8 @@
         NSArray * arrayTheme = [NSArray arrayWithObjects:
                                 @"Если пришел брак?", @"Сроки сборки заказа?", @"Стоимость и сроки доставки",
                                 @"Когда отправляете товар?", @"Как оплатить товар?", @"Способ доставки?",
-                                @"Как вы работаете в выходные?", @"Сколько дней поступает оплата?", nil];
-        for (int i = 0; i < 8; i++) {
+                                @"Как вы работаете в выходные?", @"Сколько дней поступает оплата?", @"Что означает NEW и OLD?", nil];
+        for (int i = 0; i < 9; i++) {
             UIButton * buttonTheme = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonTheme.frame = CGRectMake(15.f, 70.f + 30 * i, self.frame.size.width - 30.f, 20.f);
             buttonTheme.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -84,9 +84,9 @@
         
         
         //Если пришел брак?
-        UIView * viewMarriage = [self customViewTextWithTitl:@"Если пришел брак?" andFrame:CGRectMake(0.f, 300.f, self.frame.size.width, 200.f) andText: [self.arrayText objectAtIndex:0] andBoldText: @"рабочих"];
+        UIView * viewMarriage = [self customViewTextWithTitl:@"Если пришел брак?" andFrame:CGRectMake(0.f, 340.f, self.frame.size.width, 200.f) andText: [self.arrayText objectAtIndex:0] andBoldText: @"рабочих"];
         [self.mainScrollView addSubview:viewMarriage];
-        [self.arrayOffset addObject:[NSNumber numberWithFloat:300.f]];
+        [self.arrayOffset addObject:[NSNumber numberWithFloat:340.f]];
         
         //Сроки сборки заказа?
         UIView * viewTerms = [self customViewTextWithTitl:@"Сроки сборки заказа?" andFrame:CGRectMake(0.f, viewMarriage.frame.size.height + viewMarriage.frame.origin.y + 30, self.frame.size.width, 170.f) andText: [self.arrayText objectAtIndex:1] andBoldText: @"от 1 до 7 рабочих дней"];
@@ -175,7 +175,7 @@
         if (isiPhone6) {
             [self.arrayOffset addObject:[NSNumber numberWithFloat:viewPrice.frame.size.height + viewPrice.frame.origin.y + 40]];
         } else if (isiPhone6Plus) {
-            if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+//            if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
                 if (isiPhone6) {
                     [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265]];
                 } else if (isiPhone6Plus) {
@@ -184,16 +184,16 @@
                     [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
                 }
                 
-            } else {
-                if (isiPhone6) {
-                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
-                } else if (isiPhone6Plus) {
-                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
-                } else {
-                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
-                }
-                
-            }
+//            } else {
+//                if (isiPhone6) {
+//                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
+//                } else if (isiPhone6Plus) {
+//                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
+//                } else {
+//                    [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
+//                }
+//                
+//            }
         } else {
             [self.arrayOffset addObject:[NSNumber numberWithFloat:viewPrice.frame.size.height + viewPrice.frame.origin.y + 30]];
         }
@@ -207,25 +207,25 @@
             viewWeekend.frame = CGRectMake(0.f, viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 60, self.frame.size.width, 115.f);
         }
         [self.mainScrollView addSubview:viewWeekend];
-        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+//        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
             if (isiPhone6) {
                 [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265]];
             } else if (isiPhone6Plus) {
                 [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385]];
             } else {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y + 30]];
             }
             
-        } else {
-            if (isiPhone6) {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
-            } else if (isiPhone6Plus) {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
-            } else {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
-            }
-            
-        }
+//        } else {
+//            if (isiPhone6) {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
+//            } else if (isiPhone6Plus) {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
+//            } else {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y + 30 + 50]];
+//            }
+//            
+//        }
         
         
         //Сколько дней поступает оплата?
@@ -234,28 +234,58 @@
             viewPay.frame = CGRectMake(0.f, viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 0, self.frame.size.width, 100.f);
         }
         [self.mainScrollView addSubview:viewPay];
-        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+//        if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
             if (isiPhone6) {
                 [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265]];
             } else if (isiPhone6Plus) {
                 [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385]];
             } else {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115]];
+                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 30]];
             }
             
+//        } else {
+//            if (isiPhone6) {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
+//            } else if (isiPhone6Plus) {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
+//            } else {
+//                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 30 + 50]];
+//            }
+//            
+//        }
+        
+        //Стоимость и сроки доставки
+        UIView * viewNew = [self customViewTextWithTitl:@"Что означает NEW и OLD" andFrame:CGRectMake(0.f, viewPay.frame.size.height + viewPay.frame.origin.y + 30, self.frame.size.width, 340.f) andText: [self.arrayText objectAtIndex:8] andBoldText: @"Мы рекомендуем"];
+        if (isiPhone6) {
+            viewNew.frame = CGRectMake(0.f, viewPay.frame.size.height + viewPay.frame.origin.y, self.frame.size.width, 177.f);
+        } else if (isiPhone6Plus) {
+            viewNew.frame = CGRectMake(0.f, viewPay.frame.size.height + viewPay.frame.origin.y, self.frame.size.width, 177.f);
+        }
+        [self.mainScrollView addSubview:viewNew];
+                if ([[[SingleTone sharedManager] countType] isEqualToString:@"0"]) {
+        if (isiPhone6) {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265]];
+        } else if (isiPhone6Plus) {
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385]];
         } else {
-            if (isiPhone6) {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
-            } else if (isiPhone6Plus) {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
-            } else {
-                [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 115 + 50]];
-            }
-            
+            [self.arrayOffset addObject:[NSNumber numberWithFloat:viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 110]];
         }
         
+                } else {
+                    if (isiPhone6) {
+                        [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 265 + 50]];
+                    } else if (isiPhone6Plus) {
+                        [self.arrayOffset addObject:[NSNumber numberWithFloat:viewDeliveryTypes.frame.size.height + viewDeliveryTypes.frame.origin.y - 385 + 50]];
+                    } else {
+                        [self.arrayOffset addObject:[NSNumber numberWithFloat:viewWeekend.frame.size.height + viewWeekend.frame.origin.y + 110 + 50]];
+                    }
+                    
+                }
+        
+        
+        
         UIButton * buttonQuestien = [UIButton buttonWithType:UIButtonTypeSystem];
-        buttonQuestien.frame = CGRectMake(15.f, viewPay.frame.size.height + viewPay.frame.origin.y + 55, self.frame.size.width - 30.f, 40);
+        buttonQuestien.frame = CGRectMake(15.f, viewNew.frame.size.height + viewNew.frame.origin.y + 55, self.frame.size.width - 30.f, 40);
         buttonQuestien.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_300];
         [buttonQuestien setTitle:@"Задать вопрос" forState:UIControlStateNormal];
         [buttonQuestien setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -272,7 +302,7 @@
 #pragma mark - Actions
 
 - (void) buttonThemeAction: (UIButton*) button {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         if (button.tag == 10 + i) {
             [self setOffcetWithHeight:[[self.arrayOffset objectAtIndex:i]floatValue] - 60];
         }
