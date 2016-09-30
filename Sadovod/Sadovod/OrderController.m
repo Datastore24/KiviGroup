@@ -20,8 +20,9 @@
 #import "PushAnimator.h"
 #import "GaleryView.h"
 #import "OldOrderView.h"
+#import "FAQController.h"
 
-@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, GaleryViewDelegate>
+@interface OrderController () <OrderViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate, GaleryViewDelegate, OldOrderViewDelegate>
 
 @property (strong, nonatomic) NSDictionary * arrayData;
 
@@ -39,11 +40,17 @@
     [super viewWillAppear:YES];
     
     self.navigationController.delegate = self;
+    
+    //Доработать после ввода API---------
+    
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0;
-    rectView.size.height = self.view.frame.size.height;
+    rectView.size.height = self.view.frame.size.height + 30;
     self.mainView.frame = rectView;
-    self.mainView.mainScrollView.frame = rectView;
+    CGRect rectViewScroll = self.mainView.frame;
+    rectViewScroll.origin.y = 30;
+    rectViewScroll.size.height = self.view.frame.size.height + 30;
+    self.mainView.mainScrollView.frame = rectViewScroll;
     
     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
@@ -94,6 +101,7 @@
         [self.view addSubview:self.basketView];
         
         OldOrderView * oldOrderView = [[OldOrderView alloc] initWithView:self.view];
+        oldOrderView.delegate = self;
         [self.view addSubview:oldOrderView];
         
         self.galeryView = [[GaleryView alloc] initWithView:self.view andData:self.arrayData];
@@ -318,6 +326,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.galeryView setAlpha:0.f];
     }];
+}
+
+- (void) puthToFAQ: (OldOrderView*) oldOrderView {
+    FAQController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"FAQController"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 

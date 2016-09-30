@@ -209,7 +209,7 @@
                                     
                                     UILabel * statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 30, 15)];
                                     if (isiPhone6 || isiPhone6Plus) {
-                                        statusLabel.frame = CGRectMake(0.f, 0.f, 38, 12);
+                                        statusLabel.frame = CGRectMake(0.f, 0.f, 38, 20);
                                         statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
                                     }
                                     //Случайный выбор параметра-----------
