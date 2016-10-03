@@ -27,6 +27,7 @@
             addr_index: (NSString*) addr_index contact: (NSString*) contact
         address: (NSString*) address deli_start: (NSString*) deli_start
        deli_end: (NSString*) deli_end transport: (NSString*) transport
+         comment: (NSString *) comment
 
 {
     
@@ -57,6 +58,7 @@
     deli_start.length != 0 ? userInfo.deli_start=deli_start : nil;
     deli_end.length != 0 ? userInfo.deli_end=deli_end : nil;
     transport.length != 0 ? userInfo.transport=transport : nil;
+    comment.length != 0 ? userInfo.comment=comment : nil;
     
 
     
@@ -72,7 +74,7 @@ doc_date: (NSString*) doc_date doc_vend: (NSString*) doc_vend
 doc_num: (NSString*) doc_num org_name: (NSString*) org_name
 addr_index: (NSString*) addr_index contact: (NSString*) contact
 address: (NSString*) address deli_start: (NSString*) deli_start
-deli_end: (NSString*) deli_end transport: (NSString*) transport
+              deli_end: (NSString*) deli_end transport: (NSString*) transport comment: (NSString *) comment
 {
     // Get the local context
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
@@ -105,6 +107,7 @@ deli_end: (NSString*) deli_end transport: (NSString*) transport
         deli_start.length != 0 ? userInfo.deli_start=deli_start : nil;
         deli_end.length != 0 ? userInfo.deli_end=deli_end : nil;
         transport.length != 0 ? userInfo.transport=transport : nil;
+        comment.length != 0 ? userInfo.comment=comment : nil;
     
         
         // Save the modification in the local context
@@ -122,7 +125,8 @@ deli_end: (NSString*) deli_end transport: (NSString*) transport
                doc_num: (NSString*) doc_num org_name: (NSString*) org_name
             addr_index: (NSString*) addr_index contact: (NSString*) contact
                address: (NSString*) address deli_start: (NSString*) deli_start
-              deli_end: (NSString*) deli_end transport: (NSString*) transport{
+              deli_end: (NSString*) deli_end transport: (NSString*) transport
+                comment: (NSString*) comment{
  
     
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
@@ -135,10 +139,10 @@ deli_end: (NSString*) deli_end transport: (NSString*) transport
     // If a person was founded
     if (keyFounded)
     {
-        [self updateUserInfo:email phone:phone ord_name:ord_name us_fam:us_fam us_otch:us_otch us_type:us_type inn:inn kpp:kpp like_delivery:like_delivery like_tk:like_tk like_pay:like_pay doc_date:doc_date doc_vend:doc_vend doc_num:doc_num org_name:org_name addr_index:addr_index contact:contact address:address deli_start:deli_start deli_end:deli_end transport:transport];
+        [self updateUserInfo:email phone:phone ord_name:ord_name us_fam:us_fam us_otch:us_otch us_type:us_type inn:inn kpp:kpp like_delivery:like_delivery like_tk:like_tk like_pay:like_pay doc_date:doc_date doc_vend:doc_vend doc_num:doc_num org_name:org_name addr_index:addr_index contact:contact address:address deli_start:deli_start deli_end:deli_end transport:transport comment:comment];
         return YES;
     }else{
-        [self addInfo:email phone:phone ord_name:ord_name us_fam:us_fam us_otch:us_otch us_type:us_type inn:inn kpp:kpp like_delivery:like_delivery like_tk:like_tk like_pay:like_pay doc_date:doc_date doc_vend:doc_vend doc_num:doc_num org_name:org_name addr_index:addr_index contact:contact address:address deli_start:deli_start deli_end:deli_end transport:transport];
+        [self addInfo:email phone:phone ord_name:ord_name us_fam:us_fam us_otch:us_otch us_type:us_type inn:inn kpp:kpp like_delivery:like_delivery like_tk:like_tk like_pay:like_pay doc_date:doc_date doc_vend:doc_vend doc_num:doc_num org_name:org_name addr_index:addr_index contact:contact address:address deli_start:deli_start deli_end:deli_end transport:transport comment:comment];
         
         return NO;
     }

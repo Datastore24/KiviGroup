@@ -98,7 +98,6 @@
     NSData *imageLoad = UIImageJPEGRepresentation(image,0.8);
   
     NSUInteger imageSize = [imageLoad length];
-    NSLog(@"SIZE %lu",imageSize);
     //-------------------
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

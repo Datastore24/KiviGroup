@@ -35,5 +35,6 @@
 @dynamic deli_end;
 @dynamic transport;
 @dynamic uid;
+@dynamic comment;
 
 @end

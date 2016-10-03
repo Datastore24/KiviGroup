@@ -21,7 +21,7 @@
          doc_num: (NSString*) doc_num org_name: (NSString*) org_name
       addr_index: (NSString*) addr_index contact: (NSString*) contact
          address: (NSString*) address deli_start: (NSString*) deli_start
-        deli_end: (NSString*) deli_end transport: (NSString*) transport;
+        deli_end: (NSString*) deli_end transport: (NSString*) transport comment: (NSString*) comment;
 
 - (BOOL) checkUserInfo:(NSString *) email phone: (NSString*) phone ord_name: (NSString*) ord_name
                 us_fam: (NSString*) us_fam us_otch: (NSString*) us_otch
@@ -32,5 +32,5 @@
                doc_num: (NSString*) doc_num org_name: (NSString*) org_name
             addr_index: (NSString*) addr_index contact: (NSString*) contact
                address: (NSString*) address deli_start: (NSString*) deli_start
-              deli_end: (NSString*) deli_end transport: (NSString*) transport;
+              deli_end: (NSString*) deli_end transport: (NSString*) transport comment: (NSString*) comment;
 @end
