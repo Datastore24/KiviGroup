@@ -275,10 +275,30 @@
                                                                              andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
             inputText.delegate = self;
+         
+            if(self.userInfo.ord_name.length !=0 && i==0){
+                inputText.textFieldInput.text = self.userInfo.ord_name;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
+            if(self.userInfo.phone.length !=0 && i==1){
+                inputText.textFieldInput.text = self.userInfo.phone;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
+            if(self.userInfo.email.length !=0 && i==2){
+                inputText.textFieldInput.text = self.userInfo.email;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
+            if(self.userInfo.org_name.length !=0 && i==3){
+                inputText.textFieldInput.text = self.userInfo.org_name;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
             
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
-            inputText.textFieldInput.tag=5000+i;
+            inputText.tag=5000+i;
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
             if (i == 1) {
@@ -310,6 +330,7 @@
         
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteViewAddress.frame.size.width - 20.f, whiteViewAddress.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
+        textView.text = self.userInfo.address;
         textView.delegate = self;
         textView.tag = 3000;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -347,6 +368,49 @@
         [self.buttonMoscow addTarget:self action:@selector(buttonMoscow:) forControlEvents:UIControlEventTouchUpInside];
         self.buttonMoscow.isBool = NO;
         [self.whiteViewDelivery addSubview:self.buttonMoscow];
+        
+        NSLog(@"ДОСТАВКА: %@",self.userInfo.like_delivery);
+        
+        if([self.userInfo.like_delivery integerValue] == 0 && self.userInfo.like_delivery.length !=0){
+            self.labelDeliveryAction.alpha = 1.f;
+            self.labelDelivery.alpha = 1.f;
+            
+            if (!self.buttonMoscow.isBool) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.buttonMoscow.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
+                    self.buttonMoscow.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400].CGColor;
+                    self.buttonCompany.backgroundColor = [UIColor whiteColor];
+                    self.buttonCompany.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+                    self.buttonMail.backgroundColor = [UIColor whiteColor];
+                    self.buttonMail.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+                    if (self.chooseButton) {
+                        self.mainScrollView.contentOffset = CGPointMake(0, 460);
+                    } else {
+                        self.mainScrollView.contentOffset = CGPointMake(0, 500);
+                    }
+                    if (self.buttonCompany.isBool) {
+                        [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryCompany];
+                        self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
+                    }
+                    if (self.buttonMail.isBool) {
+                        if (self.chooseButton) {
+                            [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
+                            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
+                        } else {
+                            [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
+                            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
+                        }
+                    }
+                    [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3 andBorderView:self.borderDeliveryTypes];
+                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 70);
+                    
+                }];
+                self.buttonCompany.isBool = NO;
+                self.buttonMail.isBool = NO;
+                self.buttonMoscow.isBool = YES;
+            }
+
+        }
         
         CustomLabels * deliveryNameLabel = [[CustomLabels alloc] initLabelWithWidht:34.f andHeight:18.f andColor:@"000000" andText:@"Курьерская доставка" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         [self.whiteViewDelivery addSubview:deliveryNameLabel];
@@ -448,6 +512,23 @@
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.textFieldInput.tag = 225 + i;
+            inputText.tag = 225 + i;
+            
+            if(self.userInfo.us_fam.length !=0 && i==0){
+                inputText.textFieldInput.text = self.userInfo.us_fam;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
+            if(self.userInfo.us_otch.length !=0 && i==1){
+                inputText.textFieldInput.text = self.userInfo.us_otch;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
+            if(self.userInfo.doc_num.length !=0 && i==2){
+                inputText.textFieldInput.text = self.userInfo.doc_num;
+                inputText.labelPlaceHoldInput.text = @"";
+            }
+            
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
             inputText.labelPlaceHoldInput.tag = 900 + i;
@@ -969,9 +1050,14 @@
             self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 70);
             
         }];
+        
         self.buttonCompany.isBool = NO;
         self.buttonMail.isBool = NO;
         button.isBool = YES;
+        
+        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+        
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"0" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
     }
 }
 
@@ -1014,6 +1100,7 @@
         self.buttonMoscow.isBool = NO;
         self.buttonMail.isBool = NO;
         button.isBool = YES;
+        
     }
 }
 
@@ -1133,11 +1220,6 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     
-    NSLog(@"TEXTEDIT %@",textView.text);
-    
-    if(textView.tag == 5000){
-        NSLog(@"TEXT %@",textView.text);
-    }
     
     
     if (textView.tag == 3000) {
@@ -1156,7 +1238,26 @@
 
 
 - (void)textViewDidChange:(UITextView *)textView {
-    NSLog(@"%@", textView.text);
+    NSLog(@"LOG %@", textView.text);
+    
+    if(textView.tag == 3000){
+        
+        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+        
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:textView.text deli_start:@"" deli_end:@"" transport:@""];
+        
+    }
+    
+    if(textView.tag == 3001){
+        
+        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+        
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        
+    }
+    
+   
+
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -1378,6 +1479,51 @@
 
 - (void) inputText: (InputTextView*) inputTextView {
     NSLog(@"%@", inputTextView.textFieldInput.text);
+    
+    InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
+    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
+    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
+    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
+    InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
+    InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
+    InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
+    
+    NSString * name = nameTextView.textFieldInput.text;
+    NSString * phone = phoneTextView.textFieldInput.text;
+    NSString * email = emailTextView.textFieldInput.text;
+    NSString * org =  orgTextView.textFieldInput.text;
+    NSString * fam =  famTextView.textFieldInput.text;
+    NSString * oth =  othTextView.textFieldInput.text;
+    NSString * passport =  passTextView.textFieldInput.text;
+    
+    if(name.length == 0){
+        name = @"";
+    }
+    if(phone.length == 0){
+        phone = @"";
+    }
+    if(email.length == 0){
+        email = @"";
+    }
+    if(org.length == 0 ){
+        org = @"";
+    }
+    if(fam.length == 0 ){
+        fam = @"";
+    }
+    if(oth.length == 0 ){
+        oth = @"";
+    }
+    if(passport.length == 0 ){
+        passport = @"";
+    }
+    
+    
+    //
+        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+    
+        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+
 }
 
 @end
