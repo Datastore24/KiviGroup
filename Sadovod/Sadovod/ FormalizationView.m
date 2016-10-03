@@ -868,7 +868,7 @@
     
     if (button.tag == 5) {
         
-        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
         NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
         for (int i = 0; i < 3; i++) {
@@ -903,7 +903,7 @@
         }
     } else if (button.tag == 6) {
         
-        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
             for (int i = 0; i < 3; i++) {
                 UILabel * label = [self viewWithTag:900 + i];
@@ -1057,7 +1057,7 @@
         
         UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
         
-        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"0" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"0" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
     }
 }
 
@@ -1244,7 +1244,7 @@
         
         UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
         
-        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:textView.text deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:textView.text deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
     }
     
@@ -1252,7 +1252,7 @@
         
         UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
         
-        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:textView.text];
         
     }
     
@@ -1522,7 +1522,7 @@
     //
         UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
-        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@""];
+        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
 
 }
 

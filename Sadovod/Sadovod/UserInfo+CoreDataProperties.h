@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *deli_end;
 @property (nullable, nonatomic, retain) NSString *transport;
 @property (nullable, nonatomic, retain) NSString *uid;
+@property (nullable, nonatomic, retain) NSString *comment;
 
 @end
 
