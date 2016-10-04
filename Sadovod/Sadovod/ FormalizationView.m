@@ -298,25 +298,7 @@
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
             inputText.delegate = self;
          
-            if(self.userInfo.ord_name.length !=0 && i==0){
-                inputText.textFieldInput.text = self.userInfo.ord_name;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
-            
-            if(self.userInfo.phone.length !=0 && i==1){
-                inputText.textFieldInput.text = self.userInfo.phone;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
-            
-            if(self.userInfo.email.length !=0 && i==2){
-                inputText.textFieldInput.text = self.userInfo.email;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
-            
-            if(self.userInfo.org_name.length !=0 && i==3){
-                inputText.textFieldInput.text = self.userInfo.org_name;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
+       
             
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
@@ -495,20 +477,6 @@
             inputText.textFieldInput.tag = 225 + i;
             inputText.tag = 225 + i;
             
-            if(self.userInfo.us_fam.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.us_fam;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
-            
-            if(self.userInfo.us_otch.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.us_otch;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
-            
-            if(self.userInfo.doc_num.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.doc_num;
-                inputText.labelPlaceHoldInput.text = @"";
-            }
             
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
@@ -603,38 +571,6 @@
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
             inputText.delegate = self;
             
-            if(self.userInfo.us_fam.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.us_fam;
-                inputText.labelPlaceHoldInput.text = @"";
-            }else if (self.userInfo.org_name.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 1){
-                inputText.textFieldInput.text = self.userInfo.org_name;
-                inputText.labelPlaceHoldInput.text = @"";
-                
-            }
-            
-            if(self.userInfo.us_otch.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.us_otch;
-                inputText.labelPlaceHoldInput.text = @"";
-            }else if (self.userInfo.contact.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 1){
-                inputText.textFieldInput.text = self.userInfo.contact;
-                inputText.labelPlaceHoldInput.text = @"";
-                
-            }
-            
-            if(self.userInfo.addr_index.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 0){
-                inputText.textFieldInput.text = self.userInfo.addr_index;
-                inputText.labelPlaceHoldInput.text = @"";
-            }else if (self.userInfo.inn.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 1){
-                inputText.textFieldInput.text = self.userInfo.inn;
-                inputText.labelPlaceHoldInput.text = @"";
-                
-            }
-            
-            if (self.userInfo.kpp.length !=0 && i==3 && [self.userInfo.us_type integerValue] == 1){
-                inputText.textFieldInput.text = self.userInfo.kpp;
-                inputText.labelPlaceHoldInput.text = @"";
-                
-            }
             
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
@@ -885,61 +821,20 @@
     
     if (button.tag == 5) {
         
-        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+   
         
-        NSString * fam;
-        NSString * oth;
-        NSString * passp;
         
-        if(self.userInfo.us_fam.length ==0  ){
-            fam=@"Фамилия *";
-        }else{
-            fam=@"";
-        }
         
-        if(self.userInfo.us_otch.length ==0  ){
-            oth=@"Отчество *";
-        }else{
-            oth=@"";
-        }
-        
-        if(self.userInfo.us_otch.length ==0  ){
-            passp=@"Серия, номер паспорта *";
-        }else{
-            passp=@"";
-        }
-        
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:fam, oth, passp, nil];
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Пасорт, серия номер", nil];
         for (int i = 0; i < 3; i++) {
             UILabel * label = [self viewWithTag:900 + i];
             label.text = [arrauNameYUr objectAtIndex:i];
             
         }
         
-        NSString * famTwo;
-        NSString * othTwo;
-        NSString * indexTwo;
+
         
-        
-        if(self.userInfo.us_fam.length ==0  ){
-            famTwo=@"Фамилия *";
-        }else{
-            famTwo=@"";
-        }
-        
-        if(self.userInfo.us_otch.length ==0  ){
-            othTwo=@"Отчество *";
-        }else{
-            othTwo=@"";
-        }
-        
-        if(self.userInfo.addr_index.length ==0  ){
-            indexTwo=@"Индекс *";
-        }else{
-            indexTwo=@"";
-        }
-        
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:famTwo, othTwo, indexTwo, @"Скрытое окно", nil];
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
         for (int i = 0; i < 4; i++) {
             UILabel * label = [self viewWithTag:1700 + i];
             label.text = [arrayPlaysHolders objectAtIndex:i];
@@ -966,46 +861,21 @@
         }
     } else if (button.tag == 6) {
         
-        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+
+
+        
+
+        
+     
         
         
-        NSString * orgName;
-        NSString * contact;
-        NSString * inn;
-        NSString * kpp;
-        
-        if(self.userInfo.org_name.length ==0  ){
-            orgName=@"Название организации *";
-        }else{
-            orgName=@"";
-        }
-        
-        if(self.userInfo.contact.length ==0  ){
-            contact=@"Контактное лицо *";
-        }else{
-            contact=@"";
-        }
-        
-        if(self.userInfo.inn.length ==0  ){
-            inn=@"ИНН *";
-        }else{
-            inn=@"";
-        }
-        
-        if(self.userInfo.kpp.length ==0  ){
-            kpp=@"КПП *";
-        }else{
-            kpp=@"";
-        }
-        
-        
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:orgName, contact, inn, nil];
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
             for (int i = 0; i < 3; i++) {
                 UILabel * label = [self viewWithTag:900 + i];
                 label.text = [arrauNameYUr objectAtIndex:i];
                 
             }
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:orgName, contact, inn, kpp, nil];
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", @"КПП *", nil];
         for (int i = 0; i < 4; i++) {
             UILabel * label = [self viewWithTag:1700 + i];
             label.text = [arrayPlaysHolders objectAtIndex:i];
@@ -1343,17 +1213,13 @@
     
     if(textView.tag == 3000){
         
-        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
-        
-        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:textView.text deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+      
         
     }
     
     if(textView.tag == 3001){
         
-        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
-        
-        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:textView.text];
+       
         
     }
     
@@ -1579,77 +1445,77 @@
 #pragma mark - InputTextViewDelegate
 
 - (void) inputText: (InputTextView*) inputTextView {
-    NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
-    
-    InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
-    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
-    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
-    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
-    InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
-    InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
-    InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
-    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
-    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
-    InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
-    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
-    
-   
-    
-    NSString * name = nameTextView.textFieldInput.text;
-    NSString * phone = phoneTextView.textFieldInput.text;
-    NSString * email = emailTextView.textFieldInput.text;
-    NSString * org =  orgTextView.textFieldInput.text;
-    NSString * fam =  famTextView.textFieldInput.text;
-    NSString * oth =  othTextView.textFieldInput.text;
-    NSString * passport =  passTextView.textFieldInput.text;
-    NSString * index = indexTextView.textFieldInput.text;
-    NSString * pochFam = pochFamTextView.textFieldInput.text;
-    NSString * pochOth = pochOthTextView.textFieldInput.text;
-    NSString * pochKpp = kppTextView.textFieldInput.text;
-
-    
-
-    
-    if(name.length == 0){
-        name = @"";
-    }
-    if(phone.length == 0){
-        phone = @"";
-    }
-    if(email.length == 0){
-        email = @"";
-    }
-    if(org.length == 0 ){
-        org = @"";
-    }
-    if(fam.length == 0 ){
-        if(pochFam.length == 0){
-         fam = @"";
-        }else{
-            fam=pochFam;
-        }
-        
-    }
-    if(oth.length == 0 ){
-        if(pochOth.length == 0){
-            fam = @"";
-        }else{
-            fam=pochOth;
-        }
-    }
-    if(passport.length == 0 ){
-        passport = @"";
-    }
-    if(index.length == 0){
-        index = @"";
-    }
-    
-       UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
-    
-    if([self.userInfo.us_type integerValue]==0){
-        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
-        
-    }
+//    NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
+//    
+//    InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
+//    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
+//    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
+//    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
+//    InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
+//    InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
+//    InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
+//    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
+//    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
+//    InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
+//    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
+//    
+//   
+//    
+//    NSString * name = nameTextView.textFieldInput.text;
+//    NSString * phone = phoneTextView.textFieldInput.text;
+//    NSString * email = emailTextView.textFieldInput.text;
+//    NSString * org =  orgTextView.textFieldInput.text;
+//    NSString * fam =  famTextView.textFieldInput.text;
+//    NSString * oth =  othTextView.textFieldInput.text;
+//    NSString * passport =  passTextView.textFieldInput.text;
+//    NSString * index = indexTextView.textFieldInput.text;
+//    NSString * pochFam = pochFamTextView.textFieldInput.text;
+//    NSString * pochOth = pochOthTextView.textFieldInput.text;
+//    NSString * pochKpp = kppTextView.textFieldInput.text;
+//
+//    
+//
+//    
+//    if(name.length == 0){
+//        name = @"";
+//    }
+//    if(phone.length == 0){
+//        phone = @"";
+//    }
+//    if(email.length == 0){
+//        email = @"";
+//    }
+//    if(org.length == 0 ){
+//        org = @"";
+//    }
+//    if(fam.length == 0 ){
+//        if(pochFam.length == 0){
+//         fam = @"";
+//        }else{
+//            fam=pochFam;
+//        }
+//        
+//    }
+//    if(oth.length == 0 ){
+//        if(pochOth.length == 0){
+//            fam = @"";
+//        }else{
+//            fam=pochOth;
+//        }
+//    }
+//    if(passport.length == 0 ){
+//        passport = @"";
+//    }
+//    if(index.length == 0){
+//        index = @"";
+//    }
+//    
+//       UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+//    
+//    if([self.userInfo.us_type integerValue]==0){
+//        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+//        
+//    }
 
 
     //
