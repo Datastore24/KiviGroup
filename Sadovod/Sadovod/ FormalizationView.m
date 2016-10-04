@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic) UIView * viewBuyer;
 @property (assign, nonatomic) BOOL chooseButton; //Какое физ лицо выбранно
+@property (strong, nonatomic) UIButton * buttonFaceYur;
 
 //PersonalData
 
@@ -194,6 +195,24 @@
         self.viewCounter.alpha = 0.f;
         [self addSubview:self.viewCounter];
         
+        NSLog(@"ДОСТАВКА: %@",self.userInfo.like_delivery);
+        
+        if([self.userInfo.like_delivery integerValue] == 0 && self.userInfo.like_delivery.length !=0){
+            [self buttonMoscow:self.buttonMoscow];
+        }
+        
+        if([self.userInfo.like_delivery integerValue] == 1 && self.userInfo.like_delivery.length !=0){
+            [self buttonMail:self.buttonMail];
+        }
+        
+        if([self.userInfo.like_delivery integerValue] == 2 && self.userInfo.like_delivery.length !=0){
+            [self buttonCompany:self.buttonCompany];
+        }
+        
+        if([self.userInfo.us_type integerValue] == 1){
+            [self buttonFaceAction:self.buttonFaceYur];
+        }
+        
         
 
         
@@ -239,6 +258,9 @@
             if (i == 1) {
                 if([self.userInfo.us_type integerValue]==1){
                     imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    
+                    self.buttonFaceYur = buttonFace;
+                    
                     buttonFace.userInteractionEnabled = NO;
                 }else{
                     imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
@@ -369,48 +391,7 @@
         self.buttonMoscow.isBool = NO;
         [self.whiteViewDelivery addSubview:self.buttonMoscow];
         
-        NSLog(@"ДОСТАВКА: %@",self.userInfo.like_delivery);
         
-        if([self.userInfo.like_delivery integerValue] == 0 && self.userInfo.like_delivery.length !=0){
-            self.labelDeliveryAction.alpha = 1.f;
-            self.labelDelivery.alpha = 1.f;
-            
-            if (!self.buttonMoscow.isBool) {
-                [UIView animateWithDuration:0.3 animations:^{
-                    self.buttonMoscow.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400];
-                    self.buttonMoscow.layer.borderColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_400].CGColor;
-                    self.buttonCompany.backgroundColor = [UIColor whiteColor];
-                    self.buttonCompany.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-                    self.buttonMail.backgroundColor = [UIColor whiteColor];
-                    self.buttonMail.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-                    if (self.chooseButton) {
-                        self.mainScrollView.contentOffset = CGPointMake(0, 460);
-                    } else {
-                        self.mainScrollView.contentOffset = CGPointMake(0, 500);
-                    }
-                    if (self.buttonCompany.isBool) {
-                        [self customHideViewWithHeight:self.heightCompany - 45 andView:self.whiteViewCompany andNumberParams:4 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryCompany];
-                        self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - (self.heightCompany - 45));
-                    }
-                    if (self.buttonMail.isBool) {
-                        if (self.chooseButton) {
-                            [self customHideViewWithHeight:130 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
-                            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 130);
-                        } else {
-                            [self customHideViewWithHeight:170 andView:self.whiteMainView andNumberParams:5 andBool:YES andDuraction:0.f andBorderView:self.borderDeliveryMail];
-                            self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height - 170);
-                        }
-                    }
-                    [self customHideViewWithHeight:70.f andView:self.whiteViewDelivery andNumberParams:3 andBool:NO andDuraction:0.3 andBorderView:self.borderDeliveryTypes];
-                    self.mainScrollView.contentSize = CGSizeMake(0, self.mainScrollView.contentSize.height + 70);
-                    
-                }];
-                self.buttonCompany.isBool = NO;
-                self.buttonMail.isBool = NO;
-                self.buttonMoscow.isBool = YES;
-            }
-
-        }
         
         CustomLabels * deliveryNameLabel = [[CustomLabels alloc] initLabelWithWidht:34.f andHeight:18.f andColor:@"000000" andText:@"Курьерская доставка" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         [self.whiteViewDelivery addSubview:deliveryNameLabel];
@@ -514,17 +495,17 @@
             inputText.textFieldInput.tag = 225 + i;
             inputText.tag = 225 + i;
             
-            if(self.userInfo.us_fam.length !=0 && i==0){
+            if(self.userInfo.us_fam.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 0){
                 inputText.textFieldInput.text = self.userInfo.us_fam;
                 inputText.labelPlaceHoldInput.text = @"";
             }
             
-            if(self.userInfo.us_otch.length !=0 && i==1){
+            if(self.userInfo.us_otch.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 0){
                 inputText.textFieldInput.text = self.userInfo.us_otch;
                 inputText.labelPlaceHoldInput.text = @"";
             }
             
-            if(self.userInfo.doc_num.length !=0 && i==2){
+            if(self.userInfo.doc_num.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 0){
                 inputText.textFieldInput.text = self.userInfo.doc_num;
                 inputText.labelPlaceHoldInput.text = @"";
             }
@@ -600,7 +581,7 @@
         
         CustomLabels * labelTitleMail = [[CustomLabels alloc] initLabelTableWithWidht:34.f andHeight:5.f
                                                                             andSizeWidht:self.whiteViewCompany.frame.size.width - 60 andSizeHeight:40 andColor:@"000000"
-                                                                                 andText:@"Бесплатная доставкадо почты\nРоссии"];
+                                                                                 andText:@"Бесплатная доставка до почты\nРоссии"];
         labelTitleMail.numberOfLines = 2;
         labelTitleMail.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         labelTitleMail.textAlignment = NSTextAlignmentLeft;
@@ -621,9 +602,44 @@
                                                                              andRect:CGRectMake(0.f, 90.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                   andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
             inputText.delegate = self;
+            
+            if(self.userInfo.us_fam.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 0){
+                inputText.textFieldInput.text = self.userInfo.us_fam;
+                inputText.labelPlaceHoldInput.text = @"";
+            }else if (self.userInfo.org_name.length !=0 && i==0 && [self.userInfo.us_type integerValue] == 1){
+                inputText.textFieldInput.text = self.userInfo.org_name;
+                inputText.labelPlaceHoldInput.text = @"";
+                
+            }
+            
+            if(self.userInfo.us_otch.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 0){
+                inputText.textFieldInput.text = self.userInfo.us_otch;
+                inputText.labelPlaceHoldInput.text = @"";
+            }else if (self.userInfo.contact.length !=0 && i==1 && [self.userInfo.us_type integerValue] == 1){
+                inputText.textFieldInput.text = self.userInfo.contact;
+                inputText.labelPlaceHoldInput.text = @"";
+                
+            }
+            
+            if(self.userInfo.addr_index.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 0){
+                inputText.textFieldInput.text = self.userInfo.addr_index;
+                inputText.labelPlaceHoldInput.text = @"";
+            }else if (self.userInfo.inn.length !=0 && i==2 && [self.userInfo.us_type integerValue] == 1){
+                inputText.textFieldInput.text = self.userInfo.inn;
+                inputText.labelPlaceHoldInput.text = @"";
+                
+            }
+            
+            if (self.userInfo.kpp.length !=0 && i==3 && [self.userInfo.us_type integerValue] == 1){
+                inputText.textFieldInput.text = self.userInfo.kpp;
+                inputText.labelPlaceHoldInput.text = @"";
+                
+            }
+            
             inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.textFieldInput.textColor = [UIColor blackColor];
             inputText.textFieldInput.tag = 800 + i;
+            inputText.tag = 800 +i;
             inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
             inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
             inputText.labelPlaceHoldInput.tag = 1700 + i;
@@ -709,6 +725,7 @@
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteCommentsView.frame.size.width - 20.f, whiteCommentsView.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
         textView.delegate = self;
+        textView.text = self.userInfo.comment;
         textView.tag = 3001;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         //        textView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -870,13 +887,59 @@
         
         [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
+        NSString * fam;
+        NSString * oth;
+        NSString * passp;
+        
+        if(self.userInfo.us_fam.length ==0  ){
+            fam=@"Фамилия *";
+        }else{
+            fam=@"";
+        }
+        
+        if(self.userInfo.us_otch.length ==0  ){
+            oth=@"Отчество *";
+        }else{
+            oth=@"";
+        }
+        
+        if(self.userInfo.us_otch.length ==0  ){
+            passp=@"Серия, номер паспорта *";
+        }else{
+            passp=@"";
+        }
+        
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:fam, oth, passp, nil];
         for (int i = 0; i < 3; i++) {
             UILabel * label = [self viewWithTag:900 + i];
             label.text = [arrauNameYUr objectAtIndex:i];
             
         }
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
+        
+        NSString * famTwo;
+        NSString * othTwo;
+        NSString * indexTwo;
+        
+        
+        if(self.userInfo.us_fam.length ==0  ){
+            famTwo=@"Фамилия *";
+        }else{
+            famTwo=@"";
+        }
+        
+        if(self.userInfo.us_otch.length ==0  ){
+            othTwo=@"Отчество *";
+        }else{
+            othTwo=@"";
+        }
+        
+        if(self.userInfo.addr_index.length ==0  ){
+            indexTwo=@"Индекс *";
+        }else{
+            indexTwo=@"";
+        }
+        
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:famTwo, othTwo, indexTwo, @"Скрытое окно", nil];
         for (int i = 0; i < 4; i++) {
             UILabel * label = [self viewWithTag:1700 + i];
             label.text = [arrayPlaysHolders objectAtIndex:i];
@@ -904,13 +967,45 @@
     } else if (button.tag == 6) {
         
         [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
+        
+        
+        NSString * orgName;
+        NSString * contact;
+        NSString * inn;
+        NSString * kpp;
+        
+        if(self.userInfo.org_name.length ==0  ){
+            orgName=@"Название организации *";
+        }else{
+            orgName=@"";
+        }
+        
+        if(self.userInfo.contact.length ==0  ){
+            contact=@"Контактное лицо *";
+        }else{
+            contact=@"";
+        }
+        
+        if(self.userInfo.inn.length ==0  ){
+            inn=@"ИНН *";
+        }else{
+            inn=@"";
+        }
+        
+        if(self.userInfo.kpp.length ==0  ){
+            kpp=@"КПП *";
+        }else{
+            kpp=@"";
+        }
+        
+        
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:orgName, contact, inn, nil];
             for (int i = 0; i < 3; i++) {
                 UILabel * label = [self viewWithTag:900 + i];
                 label.text = [arrauNameYUr objectAtIndex:i];
                 
             }
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", @"КПП", nil];
+        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:orgName, contact, inn, kpp, nil];
         for (int i = 0; i < 4; i++) {
             UILabel * label = [self viewWithTag:1700 + i];
             label.text = [arrayPlaysHolders objectAtIndex:i];
@@ -1100,6 +1195,9 @@
         self.buttonMoscow.isBool = NO;
         self.buttonMail.isBool = NO;
         button.isBool = YES;
+        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+        
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"2" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
     }
 }
@@ -1140,6 +1238,9 @@
     self.buttonMoscow.isBool = NO;
     self.buttonCompany.isBool = NO;
     button.isBool = YES;
+    UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+    
+    [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"1" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
 }
 
 //Выбор транспортной компании
@@ -1478,7 +1579,7 @@
 #pragma mark - InputTextViewDelegate
 
 - (void) inputText: (InputTextView*) inputTextView {
-    NSLog(@"%@", inputTextView.textFieldInput.text);
+    NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
     
     InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
     InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
@@ -1487,6 +1588,12 @@
     InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
     InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
     InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
+    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
+    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
+    InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
+    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
+    
+   
     
     NSString * name = nameTextView.textFieldInput.text;
     NSString * phone = phoneTextView.textFieldInput.text;
@@ -1495,6 +1602,13 @@
     NSString * fam =  famTextView.textFieldInput.text;
     NSString * oth =  othTextView.textFieldInput.text;
     NSString * passport =  passTextView.textFieldInput.text;
+    NSString * index = indexTextView.textFieldInput.text;
+    NSString * pochFam = pochFamTextView.textFieldInput.text;
+    NSString * pochOth = pochOthTextView.textFieldInput.text;
+    NSString * pochKpp = kppTextView.textFieldInput.text;
+
+    
+
     
     if(name.length == 0){
         name = @"";
@@ -1509,20 +1623,39 @@
         org = @"";
     }
     if(fam.length == 0 ){
-        fam = @"";
+        if(pochFam.length == 0){
+         fam = @"";
+        }else{
+            fam=pochFam;
+        }
+        
     }
     if(oth.length == 0 ){
-        oth = @"";
+        if(pochOth.length == 0){
+            fam = @"";
+        }else{
+            fam=pochOth;
+        }
     }
     if(passport.length == 0 ){
         passport = @"";
     }
+    if(index.length == 0){
+        index = @"";
+    }
     
+       UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
+    if([self.userInfo.us_type integerValue]==0){
+        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+        
+    }
+
+
     //
-        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
-        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+    
+    
 
 }
 
