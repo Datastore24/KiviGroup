@@ -142,6 +142,7 @@
         [self.arrayView addObject:self.viewBuyer];
         
         //View PersonalData
+        
         self.viewPersonalData = [self createPesonalData];
         [self.mainScrollView addSubview:self.viewPersonalData];
         [self.arrayView addObject:self.viewPersonalData];
@@ -309,12 +310,16 @@
                                                                                  andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                       andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
                 inputText.delegate = self;
-                
+                if([self.userInfo.us_type integerValue] == 0 && i==0 && j==0){
+                    inputText.textFieldInput.text = self.userInfo.org_name;
+                }else if([self.userInfo.us_type integerValue] == 0 && i==0 && j==1){
+                    inputText.textFieldInput.text = self.userInfo.org_name;
+                }
                 
                 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
-                inputText.tag=5000+i; //Изменить тег напрмиер так 5000 * i + 1000 * j
+                inputText.tag=5000 + i + 1000 * j; //Изменить тег напрмиер так 5000 * i + 1000 * j
                 inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
                 if (i == 1) {
@@ -867,6 +872,9 @@
         buttonOne.userInteractionEnabled = NO;
         buttonTwo.userInteractionEnabled = YES;
         UILabel * labelButton = [self viewWithTag:2500];
+        
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"0" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+        
         labelButton.text = @"Visa, MasterCard, Сбербанк";
         self.chooseButton = YES;
         [UIView animateWithDuration:0.3 animations:^{
@@ -891,6 +899,9 @@
         buttonOne.userInteractionEnabled = YES;
         buttonTwo.userInteractionEnabled = NO;
         UILabel * labelButton = [self viewWithTag:2500];
+        
+        [userInfoDbclass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"1" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+        
         labelButton.text = @"Счет на оплату";
         self.chooseButton = NO;
         [UIView animateWithDuration:0.3 animations:^{
