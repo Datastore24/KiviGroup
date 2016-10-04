@@ -310,11 +310,48 @@
                                                                                  andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                       andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
                 inputText.delegate = self;
-                if([self.userInfo.us_type integerValue] == 0 && i==0 && j==0){
-                    inputText.textFieldInput.text = self.userInfo.org_name;
-                }else if([self.userInfo.us_type integerValue] == 0 && i==0 && j==1){
-                    inputText.textFieldInput.text = self.userInfo.org_name;
+                
+                NSLog(@"NAME %@",self.userInfo.ord_name);
+                
+                if([self.userInfo.us_type integerValue] == 0 && j == 0){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.ord_name;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.phone;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.email;
+
+                        default:
+                            break;
+                    }
+                }else if([self.userInfo.us_type integerValue] == 1 && j == 1){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.ord_name;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.phone;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.email;
+                            break;
+                        case 3:
+                            inputText.textFieldInput.text = self.userInfo.org_name;
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    
                 }
+                   
+                
+                
+                
+               
                 
                 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -1487,77 +1524,83 @@
 #pragma mark - InputTextViewDelegate
 
 - (void) inputText: (InputTextView*) inputTextView {
-//    NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
-//    
-//    InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
-//    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
-//    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
-//    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
-//    InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
-//    InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
-//    InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
-//    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
-//    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
-//    InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
-//    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
-//    
-//   
-//    
-//    NSString * name = nameTextView.textFieldInput.text;
-//    NSString * phone = phoneTextView.textFieldInput.text;
-//    NSString * email = emailTextView.textFieldInput.text;
-//    NSString * org =  orgTextView.textFieldInput.text;
-//    NSString * fam =  famTextView.textFieldInput.text;
-//    NSString * oth =  othTextView.textFieldInput.text;
-//    NSString * passport =  passTextView.textFieldInput.text;
-//    NSString * index = indexTextView.textFieldInput.text;
-//    NSString * pochFam = pochFamTextView.textFieldInput.text;
-//    NSString * pochOth = pochOthTextView.textFieldInput.text;
-//    NSString * pochKpp = kppTextView.textFieldInput.text;
-//
-//    
-//
-//    
-//    if(name.length == 0){
-//        name = @"";
-//    }
-//    if(phone.length == 0){
-//        phone = @"";
-//    }
-//    if(email.length == 0){
-//        email = @"";
-//    }
-//    if(org.length == 0 ){
-//        org = @"";
-//    }
-//    if(fam.length == 0 ){
-//        if(pochFam.length == 0){
-//         fam = @"";
-//        }else{
-//            fam=pochFam;
-//        }
-//        
-//    }
-//    if(oth.length == 0 ){
-//        if(pochOth.length == 0){
-//            fam = @"";
-//        }else{
-//            fam=pochOth;
-//        }
-//    }
-//    if(passport.length == 0 ){
-//        passport = @"";
-//    }
-//    if(index.length == 0){
-//        index = @"";
-//    }
-//    
-//       UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
-//    
-//    if([self.userInfo.us_type integerValue]==0){
-//        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
-//        
-//    }
+    NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
+    
+    InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
+    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
+    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
+    
+    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
+    InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
+    InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
+    InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
+    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
+    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
+    InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
+    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
+    
+   
+    
+    NSString * name = nameTextView.textFieldInput.text;
+    NSLog(@"NAME %@", name);
+    NSString * phone = phoneTextView.textFieldInput.text;
+    NSString * email = emailTextView.textFieldInput.text;
+    
+    
+    NSString * org =  orgTextView.textFieldInput.text;
+    NSString * fam =  famTextView.textFieldInput.text;
+    NSString * oth =  othTextView.textFieldInput.text;
+    NSString * passport =  passTextView.textFieldInput.text;
+    NSString * index = indexTextView.textFieldInput.text;
+    NSString * pochFam = pochFamTextView.textFieldInput.text;
+    NSString * pochOth = pochOthTextView.textFieldInput.text;
+    NSString * pochKpp = kppTextView.textFieldInput.text;
+
+    
+
+    
+    if(name.length == 0){
+        name = @"";
+    }
+    if(phone.length == 0){
+        phone = @"";
+    }
+    if(email.length == 0){
+        email = @"";
+    }
+    
+    
+    if(org.length == 0 ){
+        org = @"";
+    }
+    if(fam.length == 0 ){
+        if(pochFam.length == 0){
+         fam = @"";
+        }else{
+            fam=pochFam;
+        }
+        
+    }
+    if(oth.length == 0 ){
+        if(pochOth.length == 0){
+            fam = @"";
+        }else{
+            fam=pochOth;
+        }
+    }
+    if(passport.length == 0 ){
+        passport = @"";
+    }
+    if(index.length == 0){
+        index = @"";
+    }
+    
+       UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+    
+    
+        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+        
+    
 
 
     //
