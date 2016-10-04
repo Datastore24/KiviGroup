@@ -94,6 +94,11 @@
 @property (strong, nonatomic) CustomLabels * labelDelivery;
 @property (strong, nonatomic) CustomLabels * labelDeliveryAction;
 
+
+//FotTextFilds
+@property (strong, nonatomic) NSMutableArray * arrayTextFildFiz; //Массив текст филдов для физического лица
+@property (strong, nonatomic) NSMutableArray * arrayTextFildYur; //Массив текст филдов для юридического лица
+
 @end
 
 
@@ -108,6 +113,8 @@
         
         UserInfoDbClass * userInfoDbclass = [[UserInfoDbClass alloc] init];
         NSArray * userArray = [userInfoDbclass showAllUsersInfo];
+        self.arrayTextFildFiz = [NSMutableArray array];
+        self.arrayTextFildYur = [NSMutableArray array];
         
         NSLog(@"COUNT %lu",(unsigned long)userArray.count);
         if(userArray.count>0){
@@ -187,6 +194,10 @@
         self.viewFone.backgroundColor = [UIColor blackColor];
         self.viewFone.alpha = 0.f;
         [self addSubview:self.viewFone];
+        
+        //Скрытие ненужных текст филдов
+        [self hideTestFildsWithCustomer:YES];
+        
         
         
         
@@ -292,27 +303,35 @@
     UIView * personalDataView = [self customViewWithFrame:CGRectMake(0.f, self.viewBuyer.frame.size.height, self.frame.size.width, 210) andTitlName:@"Личные Данные" andView:self.whiteViewPerson andBorderView:self.borderViewPerson andBlock:^{
         
         NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Имя получателя, только имя *", @"Телефон", @"Email *", @"Название организации *", nil];
-        for (int i = 0; i < 4; i++) {
-            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
-                                                                             andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
-                                                                  andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
-            inputText.delegate = self;
-         
-       
-            
-            inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.textFieldInput.textColor = [UIColor blackColor];
-            inputText.tag=5000+i;
-            inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
-            if (i == 1) {
-                inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-            } else if (i == 2) {
-                inputText.textFieldInput.keyboardType = UIKeyboardTypeEmailAddress;
+        for (int j = 0; j < 2; j++) {
+            for (int i = 0; i < 4; i++) {
+                InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
+                                                                                 andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
+                                                                      andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+                inputText.delegate = self;
+                
+                
+                
+                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.textFieldInput.textColor = [UIColor blackColor];
+                inputText.tag=5000+i; //Изменить тег напрмиер так 5000 * i + 1000 * j
+                inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+                if (i == 1) {
+                    inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                } else if (i == 2) {
+                    inputText.textFieldInput.keyboardType = UIKeyboardTypeEmailAddress;
+                }
+                [self.whiteViewPerson addSubview:inputText];
+                
+                [UIView borderViewWithHeight:38.5f andWight:0 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
+                if (j == 0) {
+                    [self.arrayTextFildFiz addObject: inputText];
+                } else {
+                    [self.arrayTextFildYur addObject: inputText];
+                }
             }
-            [self.whiteViewPerson addSubview:inputText];
             
-            [UIView borderViewWithHeight:38.5f andWight:0 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
         }
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextStart) name:UITextFieldTextDidBeginEditingNotification object:nil];
@@ -467,27 +486,39 @@
         [self.whiteViewCompany addSubview:labelCutsivCompany];
         
         NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Серия, номер паспорта *", nil];
-        for (int i = 0; i < 3; i++) {
-            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
-                                                                             andRect:CGRectMake(0.f, 100.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
-                                                                  andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
-            inputText.delegate = self;
-            inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.textFieldInput.textColor = [UIColor blackColor];
-            inputText.textFieldInput.tag = 225 + i;
-            inputText.tag = 225 + i;
-            
-            
-            inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
-            inputText.labelPlaceHoldInput.tag = 900 + i;
-            if (i == 2) {
-                inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
+        for (int j = 0; j < 2; j++) {
+            for (int i = 0; i < 3; i++) {
+                InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
+                                                                                 andRect:CGRectMake(0.f, 100.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
+                                                                      andTextPlaceHolder:nil colorBorder:nil];
+                inputText.delegate = self;
+                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.textFieldInput.textColor = [UIColor blackColor];
+                inputText.textFieldInput.tag = 225 + i;
+                inputText.tag = 225 + i; //Прописать новый тег с учетом параметра j
+                
+                
+                inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+                inputText.labelPlaceHoldInput.tag = 900 + i; //Прописать новый тег с учетом параметра j
+                if (i == 2) {
+                    inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                }
+                [self.whiteViewCompany addSubview:inputText];
+                
+                [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
+                
+                if (j == 0) {
+                    inputText.labelPlaceHoldInput.text = [arrayPlaysHolders objectAtIndex:i];
+                    [self.arrayTextFildFiz addObject:inputText];
+                } else {
+                    inputText.labelPlaceHoldInput.text = [arrauNameYUr objectAtIndex:i];
+                    [self.arrayTextFildYur addObject:inputText];
+                }
             }
-            [self.whiteViewCompany addSubview:inputText];
-            
-            [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
         }
+
         
         CustomLabels * deliveryDate = [[CustomLabels alloc] initLabelWithWidht:10.f andHeight:240.f andColor:@"000000" andText:@"Транспортные компании *" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         [self.whiteViewCompany addSubview:deliveryDate];
@@ -565,27 +596,38 @@
         
         
         NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
-        for (int i = 0; i < 4; i++) {
-            InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
-                                                                             andRect:CGRectMake(0.f, 90.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
-                                                                  andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
-            inputText.delegate = self;
-            
-            
-            inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.textFieldInput.textColor = [UIColor blackColor];
-            inputText.textFieldInput.tag = 800 + i;
-            inputText.tag = 800 +i;
-            inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
-            inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
-            inputText.labelPlaceHoldInput.tag = 1700 + i;
-            if (i == 2) {
-                inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        NSArray * arrayPlaysHoldersYur = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", @"КПП *", nil];
+        for (int j = 0; j < 2; j++) {
+            for (int i = 0; i < 4; i++) {
+                InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:self.whiteViewPerson
+                                                                                 andRect:CGRectMake(0.f, 90.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
+                                                                      andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
+                inputText.delegate = self;
+                
+                
+                inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.textFieldInput.textColor = [UIColor blackColor];
+                inputText.textFieldInput.tag = 800 + i; //Изменить параметры с учетом j
+                inputText.tag = 800 +i; //Изменить параметры с учетом j
+                inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
+                inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
+                inputText.labelPlaceHoldInput.tag = 1700 + i; //Изменить параметры с учетом j
+                if (i == 2) {
+                    inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                }
+                if (j == 0) {
+                    inputText.labelPlaceHoldInput.text = [arrayPlaysHolders objectAtIndex:i];
+                    [self.arrayTextFildFiz addObject:inputText];
+                } else {
+                    inputText.labelPlaceHoldInput.text = [arrayPlaysHoldersYur objectAtIndex:i];
+                    [self.arrayTextFildYur addObject:inputText];
+                }
+                [self.whiteMainView addSubview:inputText];
+                
+                [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
             }
-            [self.whiteMainView addSubview:inputText];
-            
-            [UIView borderViewWithHeight:38.5f andWight:10 andView:inputText andColor:@"efeff4" andHieghtBorder:1.5f];
         }
+
         
     }];
     
@@ -813,6 +855,8 @@
         NSLog(@"USER INFO - EMPTY");
     }
     
+    [self hideTestFildsWithCustomer:YES];
+    
     
     UIButton * buttonOne = [self viewWithTag:5];
     UIButton * buttonTwo = [self viewWithTag:6];
@@ -820,26 +864,6 @@
     UIImageView * imageViewTwo = [self viewWithTag:11];
     
     if (button.tag == 5) {
-        
-   
-        
-        
-        
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Пасорт, серия номер", nil];
-        for (int i = 0; i < 3; i++) {
-            UILabel * label = [self viewWithTag:900 + i];
-            label.text = [arrauNameYUr objectAtIndex:i];
-            
-        }
-        
-
-        
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Фамилия *", @"Отчество *", @"Индекс *", @"Скрытое окно", nil];
-        for (int i = 0; i < 4; i++) {
-            UILabel * label = [self viewWithTag:1700 + i];
-            label.text = [arrayPlaysHolders objectAtIndex:i];
-            
-        }
         buttonOne.userInteractionEnabled = NO;
         buttonTwo.userInteractionEnabled = YES;
         UILabel * labelButton = [self viewWithTag:2500];
@@ -861,26 +885,9 @@
         }
     } else if (button.tag == 6) {
         
-
-
         
-
+        [self hideTestFildsWithCustomer:NO];
         
-     
-        
-        
-        NSArray * arrauNameYUr = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", nil];
-            for (int i = 0; i < 3; i++) {
-                UILabel * label = [self viewWithTag:900 + i];
-                label.text = [arrauNameYUr objectAtIndex:i];
-                
-            }
-        NSArray * arrayPlaysHolders = [NSArray arrayWithObjects:@"Название организации *", @"Контактное лицо *", @"ИНН *", @"КПП *", nil];
-        for (int i = 0; i < 4; i++) {
-            UILabel * label = [self viewWithTag:1700 + i];
-            label.text = [arrayPlaysHolders objectAtIndex:i];
-            
-        }
         buttonOne.userInteractionEnabled = YES;
         buttonTwo.userInteractionEnabled = NO;
         UILabel * labelButton = [self viewWithTag:2500];
@@ -1442,6 +1449,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+//Если принимает YES показывает физ текст филды, иначе показываает юр текст филды
+- (void) hideTestFildsWithCustomer:(BOOL) customer {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        if (customer) {
+            for (UIView * view in self.arrayTextFildFiz) {
+                view.alpha = 1;
+            }
+            for (UIView * view in self.arrayTextFildYur) {
+                view.alpha = 0.f;
+            }
+        } else {
+            for (UIView * view in self.arrayTextFildFiz) {
+                view.alpha = 0;
+            }
+            for (UIView * view in self.arrayTextFildYur) {
+                view.alpha = 1.f;
+            }
+        }
+    }];
+
+}
+
 #pragma mark - InputTextViewDelegate
 
 - (void) inputText: (InputTextView*) inputTextView {
@@ -1519,10 +1550,10 @@
 
 
     //
-    
-    
-    
 
 }
+
+//Метод скрывает все текст филды если булл YES скрываются юр лица, если BOOL NO скрываются физ лица
+
 
 @end
