@@ -8,6 +8,7 @@
 
 #import "InputTextView.h"
 #import "CustomTextField.h"
+#import "Macros.h"
 
 @implementation InputTextView
 {
@@ -198,6 +199,8 @@
         }
     }
 }
+
+
 
 - (void) animationLabelStart: (NSNotification*) notification {
     CustomTextField * testField = notification.object;
