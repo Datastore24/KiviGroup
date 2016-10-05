@@ -207,8 +207,6 @@
         self.viewCounter.alpha = 0.f;
         [self addSubview:self.viewCounter];
         
-        NSLog(@"ДОСТАВКА: %@",self.userInfo.like_delivery);
-        
         if([self.userInfo.like_delivery integerValue] == 0 && self.userInfo.like_delivery.length !=0){
             [self buttonMoscow:self.buttonMoscow];
         }
@@ -311,9 +309,8 @@
                                                                       andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
                 inputText.delegate = self;
                 
-                NSLog(@"NAME %@",self.userInfo.ord_name);
                 
-                if([self.userInfo.us_type integerValue] == 0 && j == 0){
+                if(j==0){
                     switch (i) {
                         case 0:
                             inputText.textFieldInput.text = self.userInfo.ord_name;
@@ -323,11 +320,12 @@
                             break;
                         case 2:
                             inputText.textFieldInput.text = self.userInfo.email;
+            
 
                         default:
                             break;
                     }
-                }else if([self.userInfo.us_type integerValue] == 1 && j == 1){
+                }else if(j==1){
                     switch (i) {
                         case 0:
                             inputText.textFieldInput.text = self.userInfo.ord_name;
@@ -469,7 +467,26 @@
         CustomLabels * chooseLabel = [[CustomLabels alloc] initLabelWithWidht:10.f andHeight:132.f andColor:@"000000" andText:@"Выберите желаемое время" andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
         [self.whiteViewDelivery addSubview:chooseLabel];
         
-        NSArray * arrayNumberTime = [NSArray arrayWithObjects:@"9", @"19", nil];
+        NSString * startDelivery;
+        NSString * endDelivery;
+        
+        
+        if(self.userInfo.deli_start.length != 0){
+            startDelivery = self.userInfo.deli_start;
+        }else{
+            startDelivery = @"9";
+            
+        }
+        
+        if(self.userInfo.deli_end.length != 0){
+            endDelivery = self.userInfo.deli_end;
+            
+        }else{
+            endDelivery = @"19";
+            
+        }
+        
+        NSArray * arrayNumberTime = [NSArray arrayWithObjects:startDelivery, endDelivery, nil];
         for (int i = 0; i < 2; i++) {
             UIButton * buttonChooseTime = [UIButton buttonWithType:UIButtonTypeCustom];
             buttonChooseTime.frame = CGRectMake(25.f + 120.f * i, 160.f, 90.f, 30);
@@ -549,7 +566,46 @@
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
                 inputText.textFieldInput.tag = 225 + i;
-                inputText.tag = 225 + i; //Прописать новый тег с учетом параметра j
+                inputText.tag=225 + i + 1000 * j; //Изменить тег напрмиер так 5000 * i + 1000 * j
+                
+                
+                
+                if(j == 0){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.us_fam;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.us_otch;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.doc_num;
+                            
+                        default:
+                            break;
+                    }
+                }else if(j == 1 ){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.org_name;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.contact;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.inn;
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    
+                }
+                
+                if (inputText.textFieldInput.text.length != 0) {
+                    [self animationPlaceHolderWithInputText:inputText];
+                }
+                
                 
                 
                 inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -661,10 +717,59 @@
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
                 inputText.textFieldInput.tag = 800 + i; //Изменить параметры с учетом j
-                inputText.tag = 800 +i; //Изменить параметры с учетом j
+                inputText.tag = 800 +i + 1000 * j; //Изменить параметры с учетом j
+                
+                if(j== 0){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.us_fam;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.us_otch;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.addr_index;
+                            
+                        default:
+                            break;
+                    }
+                }else if(j == 1 ){
+                    switch (i) {
+                        case 0:
+                            inputText.textFieldInput.text = self.userInfo.org_name;
+                            break;
+                        case 1:
+                            inputText.textFieldInput.text = self.userInfo.contact;
+                            break;
+                        case 2:
+                            inputText.textFieldInput.text = self.userInfo.inn;
+                            break;
+                        case 3:
+                            inputText.textFieldInput.text = self.userInfo.kpp;
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    
+                }
+                
+                if (inputText.textFieldInput.text.length != 0) {
+                    [self animationPlaceHolderWithInputText:inputText];
+                }
+                
+                
+                
+                
                 inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
                 inputText.labelPlaceHoldInput.tag = 1700 + i; //Изменить параметры с учетом j
+                
+                
+                
+                
+                
+                
                 if (i == 2) {
                     inputText.textFieldInput.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
                 }
@@ -698,7 +803,11 @@
         UIView * priceView = [self customViewWithFrame:CGRectMake(0.f, self.viewDelivaryMail.frame.size.height + self.viewDelivaryMail.frame.origin.y - 175.f, self.frame.size.width, 255) andTitlName:@"Способы оплаты *" andView:self.whitePriceView andBorderView:self.borderPriceView andBlock:^{
             
             NSArray * arrayNames = [NSArray arrayWithObjects:@"Visa, MasterCard, Сбербанк", @"Яндекс деньги", @"WebMoney", @"Qiwi", @"Квитанция сбербанка", nil];
+            
             for (int i = 0; i < arrayNames.count; i++) {
+                
+                
+                
                 UIButton * buttonPrice = [UIButton buttonWithType:UIButtonTypeCustom];
                 buttonPrice.tag = 2000 + i;
                 buttonPrice.frame = CGRectMake(0.f, 0.f + 30 * i, self.whiteViewCompany.frame.size.width - 20, 30);
@@ -709,11 +818,37 @@
                 [self.whitePriceView addSubview:buttonPrice];
                 
                 UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 10.f, 20.f, 20.f)];
-                imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
-                if (i == 0) {
+                
+                if([self.userInfo.like_pay integerValue] == 1 && i==0){
                     imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
                     buttonPrice.userInteractionEnabled = NO;
+                    
+                }else if([self.userInfo.like_pay integerValue] == 3 && i==1){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonPrice.userInteractionEnabled = NO;
+                    
+                }else if([self.userInfo.like_pay integerValue] == 2 && i==2){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonPrice.userInteractionEnabled = NO;
+                    
+                }else if([self.userInfo.like_pay integerValue] == 4 && i==3){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonPrice.userInteractionEnabled = NO;
+                    
+                }else if([self.userInfo.like_pay integerValue] == 6 && i==4){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonPrice.userInteractionEnabled = NO;
+                    
+                }else{
+                    imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                    buttonPrice.userInteractionEnabled = YES;
                 }
+                
+                
+                
+                
+                
+               
                 imageView.tag = 2100 + i;
                 [buttonPrice addSubview:imageView];
                 
@@ -826,11 +961,58 @@
     [labelTitl sizeToFit];
     [counterView addSubview:labelTitl];
     
-    self.rowLower = 10;
-    self.rowUpper = 0;
-    self.arrayForPickerViewUpper = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
-    self.arrayForPickerViewLower = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20", @"21", @"22", nil];
+    
+    self.arrayForPickerViewUpper = [NSMutableArray new];
+    self.arrayForPickerViewLower = [NSMutableArray new];
+    
+    if(self.userInfo.deli_start.length !=0){
+        NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
+        NSInteger counterLower = [self.userInfo.deli_end integerValue]-9;
+        
+        self.rowUpper = counterUpper; //1
+        [self.arrayForPickerViewUpper removeAllObjects];
+        
+        
+        for(int i=0; i<counterLower+1; i++){
+            
+            [self.arrayForPickerViewUpper addObject:[NSString stringWithFormat:@"%d",9+i]];
+        }
+        
+        
+        
+    }else{
+        self.rowUpper = 0; //1
+           self.arrayForPickerViewUpper = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
+    }
+    
+    //Значения из базы для второго пикера
+    if(self.userInfo.deli_end.length !=0){
+        NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
+        NSInteger counterLower = [self.userInfo.deli_end integerValue]-[self.userInfo.deli_start integerValue];
+        
+        self.rowLower = counterLower;
+        
+        for(int i=counterUpper; i<14; i++){
+            
+            
+            [self.arrayForPickerViewLower addObject:[NSString stringWithFormat:@"%d",9+i]];
+        }
 
+       
+        
+    }else{
+        self.rowLower = 10;
+        self.arrayForPickerViewLower = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20", @"21", @"22", nil];
+
+        
+    }
+    
+    
+    
+//    self.rowLower = 10; // 2
+    
+ 
+    
     
     self.counterPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.f, 30.f, 260.f, 200.f)];
     self.counterPicker.delegate = self;
@@ -1012,6 +1194,8 @@
     } else if (button.tag == 1001) {
         if(self.isScrollPicker){
         UILabel * label = (UILabel*)[self viewWithTag:110 + self.customTag];
+            UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+            
         if (self.pickerChenge) {
             self.rowUpper = self.pickerCountUpper; //Сохранение выбранного параметра пикера в пикере
             label.text = [self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper]; //Изменение текста лейбла в зависимости от пикера
@@ -1020,7 +1204,12 @@
             self.rowLower += self.rowUppTag;
             //У нас есть всегда от 9 до ограничения второго пикера
             [self.arrayForPickerViewLower removeAllObjects]; //Перерисовываем массив
-            NSLog(@"PICK: %d",[[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]);
+            
+            NSString * pickerUpper = [self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper];
+            
+            [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:pickerUpper deli_end:@"" transport:@"" comment:@""];
+          
+            
             for(int i= [[self.arrayForPickerViewUpper objectAtIndex:self.pickerCountUpper] integerValue]; i<23; i++){
                 NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
                 [self.arrayForPickerViewLower addObject:stringNumber];
@@ -1030,6 +1219,12 @@
             label.text = [self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower]; //Изменение текста лейбла в зависимости от пикера
             [label sizeToFit];
                 [self.arrayForPickerViewUpper removeAllObjects]; //Перерисовываем массив
+            
+            NSString * pickerLower = [self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower];
+            
+            [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:pickerLower transport:@"" comment:@""];
+            
+            
             for(int i=9; i<=[[self.arrayForPickerViewLower objectAtIndex:self.pickerCountLower] integerValue]; i++){
                 NSString * stringNumber = [NSString stringWithFormat:@"%d", i];
                 [self.arrayForPickerViewUpper addObject:stringNumber];
@@ -1202,7 +1397,35 @@
 - (void) buttonPriceAction: (UIButton*) button {
     for (int i = 0; i < 5; i++) {
         UIButton * otherButton = (UIButton*)[self viewWithTag:2000 + i];
+        
         if (button.tag == 2000 + i) {
+            
+            NSString * payMethod;
+            
+            switch (button.tag) {
+                case 2000:
+                    payMethod = @"1";
+                    break;
+                case 2001:
+                    payMethod = @"3";
+                    break;
+                case 2002:
+                    payMethod = @"2";
+                    break;
+                case 2003:
+                    payMethod = @"4";
+                    break;
+                case 2004:
+                    payMethod = @"6";
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            UserInfoDbClass * userInfoDbClass =[[UserInfoDbClass alloc] init];
+             [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:payMethod doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+            
             UIImageView * imageView = (UIImageView*)[self viewWithTag:2100 + i];
             [UIView animateWithDuration:0.3 animations:^{
                 imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
@@ -1260,12 +1483,13 @@
     
     
     if (textView.tag == 3000) {
+      
         [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
             self.mainScrollView.contentOffset = CGPointMake(0.f, 40.f);
             
         }];
     } else if (textView.tag == 3001) {
-        [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
+              [self animathionMethodUpAndDownWithView:self.mainScrollView endHieght:200.f andUpAndDown:YES addOther:^{
             self.mainScrollView.contentOffset = CGPointMake(0.f, 850.f);
             
         }];
@@ -1276,15 +1500,32 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
     NSLog(@"LOG %@", textView.text);
+    UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
     if(textView.tag == 3000){
+     NSString * string = textView.text;
+        if(string.length == 0){
+            string = @"EMPTY";
+        }else{
+            string = textView.text;
+        }
+        
+          [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:string deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
       
         
     }
     
     if(textView.tag == 3001){
+        NSString * string = textView.text;
+        if(string.length == 0){
+            string = @"EMPTY";
+        }else{
+            string = textView.text;
+        }
         
+        [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:string];
+
        
         
     }
@@ -1538,78 +1779,386 @@
     NSLog(@"%@ TAG %ld", inputTextView.textFieldInput.text,inputTextView.tag);
     
     InputTextView * nameTextView = (InputTextView *) [self viewWithTag:5000];
-    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
-    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
+    NSString * name = nameTextView.textFieldInput.text;
     
-    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:5003];
+    InputTextView * phoneTextView = (InputTextView *) [self viewWithTag:5001];
+    NSString * phone = phoneTextView.textFieldInput.text;
+    
+    InputTextView * emailTextView = (InputTextView *) [self viewWithTag:5002];
+     NSString * email = emailTextView.textFieldInput.text;
+    
     InputTextView * famTextView = (InputTextView *) [self viewWithTag:225];
+     NSString * fam =  famTextView.textFieldInput.text;
+    
     InputTextView * othTextView = (InputTextView *) [self viewWithTag:226];
+    NSString * oth =  othTextView.textFieldInput.text;
+    
     InputTextView * passTextView = (InputTextView *) [self viewWithTag:227];
-    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
-    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
+     NSString * passport =  passTextView.textFieldInput.text;
+    
     InputTextView * indexTextView = (InputTextView *) [self viewWithTag:802];
-    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:803];
+    NSString * index = indexTextView.textFieldInput.text;
+    
+    
+    InputTextView * pochFamTextView = (InputTextView *) [self viewWithTag:800];
+    NSString * pochFam =  pochFamTextView.textFieldInput.text;
+    
+    InputTextView * pochOthTextView = (InputTextView *) [self viewWithTag:801];
+    NSString * pochOth =  pochOthTextView.textFieldInput.text;
+    
+    /////
+    
+ 
+   
     
    
     
-    NSString * name = nameTextView.textFieldInput.text;
-    NSLog(@"NAME %@", name);
-    NSString * phone = phoneTextView.textFieldInput.text;
-    NSString * email = emailTextView.textFieldInput.text;
+    InputTextView * nameOrgTextView = (InputTextView *) [self viewWithTag:6000];
+    NSString * nameOrg =  nameOrgTextView.textFieldInput.text;
     
+    InputTextView * phoneOrgTextView = (InputTextView *) [self viewWithTag:6001];
+    NSString * phoneOrg =  phoneOrgTextView.textFieldInput.text;
     
+    InputTextView * emailOrgTextView = (InputTextView *) [self viewWithTag:6002];
+    NSString * emailOrg =  emailOrgTextView.textFieldInput.text;
+    
+    InputTextView * orgTextView = (InputTextView *) [self viewWithTag:6003];
     NSString * org =  orgTextView.textFieldInput.text;
-    NSString * fam =  famTextView.textFieldInput.text;
-    NSString * oth =  othTextView.textFieldInput.text;
-    NSString * passport =  passTextView.textFieldInput.text;
-    NSString * index = indexTextView.textFieldInput.text;
-    NSString * pochFam = pochFamTextView.textFieldInput.text;
-    NSString * pochOth = pochOthTextView.textFieldInput.text;
+    
+    
+    InputTextView * orgNameTextView = (InputTextView *) [self viewWithTag:1225];
+    NSString * orgName = orgNameTextView.textFieldInput.text;
+    
+    InputTextView * contactTextView = (InputTextView *) [self viewWithTag:1226];
+    NSString * contact = contactTextView.textFieldInput.text;
+    
+    InputTextView * innTextView = (InputTextView *) [self viewWithTag:1227];
+    NSString * inn = innTextView.textFieldInput.text;
+    
+    
+    InputTextView * orgNamePochtTextView = (InputTextView *) [self viewWithTag:1800];
+    NSString * orgNamePocht = orgNamePochtTextView.textFieldInput.text;
+    
+    InputTextView * pochContactTextView = (InputTextView *) [self viewWithTag:1801];
+    NSString * pochContact = pochContactTextView.textFieldInput.text;
+    
+    InputTextView * pochInnTextView = (InputTextView *) [self viewWithTag:1802];
+    NSString * pochInn = pochInnTextView.textFieldInput.text;
+    
+    
+    InputTextView * kppTextView = (InputTextView *) [self viewWithTag:1803];
     NSString * pochKpp = kppTextView.textFieldInput.text;
-
-    
-
-    
-    if(name.length == 0){
-        name = @"";
-    }
-    if(phone.length == 0){
-        phone = @"";
-    }
-    if(email.length == 0){
-        email = @"";
-    }
     
     
-    if(org.length == 0 ){
-        org = @"";
+    NSString * trueFam;
+    NSString * trueOth;
+   
+    NSString * trueOrgName;
+    NSString * trueName;
+    NSString * truePhone;
+    NSString * trueEmail;
+    NSString * trueInn;
+    NSString * trueContact;
+    
+   
+    
+    
+    switch (inputTextView.tag) {
+        case 5000:
+            trueName = name;
+            nameOrgTextView.textFieldInput.text=name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+        case 6000:
+            trueName = name;
+            nameTextView.textFieldInput.text=nameOrg;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+            
+        case 5001:
+            truePhone = phone;
+            phoneOrgTextView.textFieldInput.text=phone;
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+        case 6001:
+            truePhone = phone;
+            phoneTextView.textFieldInput.text=phoneOrg;
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+            
+        case 5002:
+            trueEmail = email;
+            emailOrgTextView.textFieldInput.text=email;
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+            
+        case 6002:
+            trueEmail = email;
+            emailTextView.textFieldInput.text=emailOrg;
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            break;
+            
+            //Зависимости
+        case 6003:
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            
+            orgNameTextView.textFieldInput.text=org;
+            orgNamePochtTextView.textFieldInput.text=org;
+            
+            break;
+        case 1225:
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueInn = inn;
+            trueContact = contact;
+            
+            trueOrgName = orgName;
+            orgTextView.textFieldInput.text=orgName;
+            orgNamePochtTextView.textFieldInput.text=orgName;
+            
+            break;
+        case 1800:
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueInn = inn;
+            trueContact = contact;
+            
+            trueOrgName = orgNamePocht;
+            orgTextView.textFieldInput.text=orgNamePocht;
+            orgNameTextView.textFieldInput.text=orgNamePocht;
+            
+            break;
+            
+        case 1227:
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueContact = contact;
+            
+            trueInn = inn;
+            pochInnTextView.textFieldInput.text = inn;
+            
+        case 1802:
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueContact = contact;
+            
+            trueInn = pochInn;
+            innTextView.textFieldInput.text = pochInn;
+            break;
+            
+        case 1226:
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueContact = contact;
+            pochContactTextView.textFieldInput.text = contact;
+            break;
+            
+        case 1801:
+            
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueContact = pochContact;
+            contactTextView.textFieldInput.text = pochContact;
+            break;
+            
+        case 225:
+            
+            trueName = name;
+            
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueFam = fam;
+            pochFamTextView.textFieldInput.text = fam;
+            break;
+            
+        case 800:
+            
+            trueName = name;
+            
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueFam = pochFam;
+            famTextView.textFieldInput.text = pochFam;
+            break;
+            
+        case 226:
+            
+            trueName = name;
+            trueFam = fam;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueOth = oth;
+            pochOthTextView.textFieldInput.text = oth;
+            break;
+        case 801:
+            
+            trueName = name;
+            trueFam = fam;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            
+            trueOth = pochOth;
+            othTextView.textFieldInput.text = pochOth;
+            break;
+            
+        default:
+            trueName = name;
+            trueFam = fam;
+            trueOth = oth;
+            truePhone = phone;
+            trueEmail = email;
+            trueOrgName = org;
+            trueInn = inn;
+            trueContact = contact;
+            
+            break;
     }
-    if(fam.length == 0 ){
-        if(pochFam.length == 0){
-         fam = @"";
-        }else{
-            fam=pochFam;
-        }
-        
+    
+     NSLog(@"TRUE NAME %@",trueName);
+    
+    
+    //Частник
+    if(trueName.length == 0){
+        trueName = @"EMPTY";
     }
-    if(oth.length == 0 ){
-        if(pochOth.length == 0){
-            fam = @"";
-        }else{
-            fam=pochOth;
-        }
+    if(trueFam.length == 0){
+        trueFam = @"EMPTY";
     }
+    if(trueOth.length == 0){
+        trueOth = @"EMPTY";
+    }
+    if([truePhone isEqualToString:@"+7"] || [truePhone isEqualToString:@"+"]){
+        truePhone = @"EMPTY";
+    }
+    if(truePhone.length == 0){
+        truePhone = @"EMPTY";
+    }
+    
+    if(trueEmail.length == 0){
+        trueEmail = @"EMPTY";
+    }
+    
+    //ЮР Лицо
+    if(trueOrgName.length == 0 ){
+        trueOrgName = @"EMPTY";
+    }
+    
+    if(trueContact.length == 0 ){
+        trueContact = @"EMPTY";
+    }
+    
+    if(trueInn.length == 0 ){
+        trueInn = @"EMPTY";
+    }
+    
+    if(pochKpp.length == 0){
+        pochKpp = @"EMPTY";
+    }
+    
     if(passport.length == 0 ){
-        passport = @"";
+        passport = @"EMPTY";
     }
     if(index.length == 0){
-        index = @"";
+        index = @"EMPTY";
     }
+    
+    if(pochContact.length == 0){
+        pochContact = @"EMPTY";
+    }
+    
+    
     
        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
     
-        [userInfoDbClass checkUserInfo:email phone:phone ord_name:name us_fam:fam us_otch:oth us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:org addr_index:index contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
+        [userInfoDbClass checkUserInfo:trueEmail phone:truePhone ord_name:trueName us_fam:trueFam us_otch:trueOth us_type:@"" inn:trueInn kpp:pochKpp like_delivery:@"" like_tk:@"" like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:passport org_name:trueOrgName addr_index:index contact:trueContact address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
         
     
 

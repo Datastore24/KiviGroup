@@ -108,6 +108,31 @@ address: (NSString*) address deli_start: (NSString*) deli_start
         deli_end.length != 0 ? userInfo.deli_end=deli_end : nil;
         transport.length != 0 ? userInfo.transport=transport : nil;
         comment.length != 0 ? userInfo.comment=comment : nil;
+        
+        
+        
+        [email isEqualToString:@"EMPTY"] ? userInfo.email=@"" : nil;
+        [phone isEqualToString:@"EMPTY"] ? userInfo.phone=@"" : nil;
+        [ord_name isEqualToString:@"EMPTY"] ? userInfo.ord_name=@"" : nil;
+        [us_fam isEqualToString:@"EMPTY"] ? userInfo.us_fam=@"" : nil;
+        [us_otch  isEqualToString:@"EMPTY"]  ? userInfo.us_otch=@"" : nil;
+        [us_type isEqualToString:@"EMPTY"] ? userInfo.us_type=@"" : nil;
+        [inn  isEqualToString:@"EMPTY"] ? userInfo.inn=@"" : nil;
+        [kpp isEqualToString:@"EMPTY"] ? userInfo.kpp=@"" : nil;
+        [like_delivery isEqualToString:@"EMPTY"] ? userInfo.like_delivery=@"" : nil;
+        [like_tk isEqualToString:@"EMPTY"] ? userInfo.like_tk=@"" : nil;
+        [like_pay  isEqualToString:@"EMPTY"] ? userInfo.like_pay=@"" : nil;
+        [doc_date isEqualToString:@"EMPTY"] ? userInfo.doc_date=@"" : nil;
+        [doc_vend isEqualToString:@"EMPTY"] ? userInfo.doc_vend=@"" : nil;
+        [doc_num isEqualToString:@"EMPTY"] ? userInfo.doc_num=@"" : nil;
+        [org_name isEqualToString:@"EMPTY"] ? userInfo.org_name=@"" : nil;
+        [addr_index isEqualToString:@"EMPTY"] ? userInfo.addr_index=@"" : nil;
+        [contact isEqualToString:@"EMPTY"] ? userInfo.contact=@"" : nil;
+        [address isEqualToString:@"EMPTY"] ? userInfo.address=@"" : nil;
+        [deli_start isEqualToString:@"EMPTY"]? userInfo.deli_start=@"" : nil;
+        [deli_end isEqualToString:@"EMPTY"]? userInfo.deli_end=@"" : nil;
+        [transport isEqualToString:@"EMPTY"] ? userInfo.transport=@"" : nil;
+        [comment isEqualToString:@"EMPTY"]? userInfo.comment=@"" : nil;
     
         
         // Save the modification in the local context
