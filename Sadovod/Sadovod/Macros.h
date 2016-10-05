@@ -58,4 +58,7 @@
 //Нотификация отображения телефона
 #define NOTIFICATION_SHOW_PHONE @"NOTIFICATION_SHOW_PHONE"
 
+//Нотификация проверки наличия текст
+#define NOTIFICATION_FORMALIZATION_CONTROLLER_CHECK @"NOTIFICATION_FORMALIZATION_CONTROLLER_CHECK"
+
 #endif /* Macros_h */

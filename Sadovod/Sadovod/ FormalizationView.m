@@ -347,12 +347,15 @@
                     }
                     
                 }
+                
+                if (inputText.textFieldInput.text.length != 0) {
+                    [self animationPlaceHolderWithInputText:inputText];
+                }
+                
+
+                
+
                    
-                
-                
-                
-               
-                
                 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
@@ -372,7 +375,15 @@
                 } else {
                     [self.arrayTextFildYur addObject: inputText];
                 }
+                
+                NSString * textString = inputText.textFieldInput.text;
+                
+                NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:textString, @"text", nil];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FORMALIZATION_CONTROLLER_CHECK object:nil userInfo:dict];
             }
+            
+            
             
         }
         
@@ -1608,6 +1619,17 @@
 }
 
 //Метод скрывает все текст филды если булл YES скрываются юр лица, если BOOL NO скрываются физ лица
+
+- (void) animationPlaceHolderWithInputText: (InputTextView*) inputTextView {
+    if (inputTextView.textFieldInput.isBoll == YES) {
+        CGRect rect;
+        rect = inputTextView.labelPlaceHoldInput.frame;
+        rect.origin.x = rect.origin.x + 100.f;
+        inputTextView.labelPlaceHoldInput.frame = rect;
+        inputTextView.labelPlaceHoldInput.alpha = 0.f;
+        inputTextView.textFieldInput.isBoll = NO;
+    }
+}
 
 
 @end

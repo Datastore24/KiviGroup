@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface FormalizationView : UIView
+
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
 
 @end
+
+
