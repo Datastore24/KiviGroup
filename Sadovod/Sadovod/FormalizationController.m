@@ -10,9 +10,11 @@
 #import "FormalizationView.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "APIGetClass.h"
+#import "SingleTone.h"
 
 @interface FormalizationController() <UINavigationControllerDelegate>
-
+@property (strong, nonatomic) NSDictionary * dictInfo;
 @end
 
 @implementation FormalizationController
@@ -36,9 +38,11 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
 #pragma mark - View
+    [self getApiInfoOrder:^{
+        FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:self.dictInfo];
+        [self.view addSubview:mainView];
+    }];
     
-    FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:[self setCustonArray]];
-    [self.view addSubview:mainView];
     
 }
 
@@ -67,6 +71,35 @@
         return [[PopAnimator alloc] init];
     
     return nil;
+}
+
+#pragma mark - API
+-(void) getApiInfoOrder: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"get_info_order" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            NSLog(@"RESP NEW %@",respDict);
+            self.dictInfo = respDict;
+            block();
+            
+            
+            
+        }
+        
+    }];
+    
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @interface CustomLabels : UILabel
 
+@property (strong, nonatomic) NSString * customID;
+
 - (instancetype)initLabelWithWidht: (CGFloat) widht
                              andHeight: (CGFloat) height
                               andColor: (NSString*) hexColor
