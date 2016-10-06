@@ -191,6 +191,12 @@
             testField.text = [testField.text substringToIndex:[testField.text length] - 1];
         }
 
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && (testField.tag == 1802 || testField.tag == 1227)) {
+        
+        NSLog(@"ИНН привет");
+        
+        
+        
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
         
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
@@ -209,7 +215,13 @@
 
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
         
-    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && (testField.tag == 1802 || testField.tag == 1227)) {
+        
+        NSLog(@"ИНН привет");
+        
+        
+        
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         if (testField.text.length <= 2) {
             testField.text = @"+7";
             [UIView animateWithDuration:0.2f animations:^{
@@ -230,7 +242,13 @@
    
     } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && testField.tag >= 800 && testField.tag < 810) {
         
-    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    }  else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation && (testField.tag == 1802 || testField.tag == 1227)) {
+        
+        NSLog(@"ИНН привет");
+        
+        
+        
+    } else if (testField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         if (testField.text.length <= 2) {
             [UIView animateWithDuration:0.2f animations:^{
                 CGRect rect;
@@ -292,16 +310,18 @@
         NSCharacterSet *nonNumberSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         return ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0) || [string isEqualToString:@""];
     } else if (textField.keyboardType == UIKeyboardTypeDefault) {
-        NSRange spaceRange = [string rangeOfString:@" "];
-        if (spaceRange.location != NSNotFound)
-        {
-            return NO;
+        if (textField.tag == 6003 || textField.tag == 1225 || textField.tag == 1800 || textField.tag == 1801) {
+            
         } else {
-            return YES;
+            NSRange spaceRange = [string rangeOfString:@" "];
+            if (spaceRange.location != NSNotFound)
+            {
+                return NO;
+            } else {
+                return YES;
+            }
         }
     }
-    
-    
 
     return YES;
 }

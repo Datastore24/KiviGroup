@@ -224,6 +224,10 @@
         }
         
         
+        
+        self.mainScrollView.contentOffset = CGPointZero;
+        
+        
 
         
     }
@@ -357,6 +361,7 @@
                 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
+                inputText.textFieldInput.tag=5000 + i + 1000 * j;
                 inputText.tag=5000 + i + 1000 * j; //Изменить тег напрмиер так 5000 * i + 1000 * j
                 inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.labelPlaceHoldInput.textColor = [UIColor lightGrayColor];
@@ -565,7 +570,7 @@
                 inputText.delegate = self;
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
-                inputText.textFieldInput.tag = 225 + i;
+                inputText.textFieldInput.tag = 225 + i + 1000 * j;
                 inputText.tag=225 + i + 1000 * j; //Изменить тег напрмиер так 5000 * i + 1000 * j
                 
                 
@@ -716,7 +721,7 @@
                 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
-                inputText.textFieldInput.tag = 800 + i; //Изменить параметры с учетом j
+                inputText.textFieldInput.tag = 800 +i + 1000 * j; //Изменить параметры с учетом j
                 inputText.tag = 800 +i + 1000 * j; //Изменить параметры с учетом j
                 
                 if(j== 0){
