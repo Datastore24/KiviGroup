@@ -14,7 +14,7 @@
 
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data;
+                     andData: (NSDictionary*) data;
 
 @end
 

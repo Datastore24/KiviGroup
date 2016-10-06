@@ -21,7 +21,8 @@
 //Main
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSMutableArray * arrayView; //массив всех вью
-@property (strong, nonatomic) NSArray * arrayData;
+@property (strong, nonatomic) NSDictionary * dictData;
+@property (strong, nonatomic) NSArray * arrayDataDelivery;
 @property (strong, nonatomic) UserInfo * userInfo;
 
 //TypeBuyer
@@ -106,7 +107,7 @@
 @implementation FormalizationView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data
+                     andData: (NSDictionary*) data
 {
     self = [super init];
     if (self) {
@@ -127,10 +128,11 @@
         
         
         self.isScrollPicker=NO;
-        self.arrayData = data;
+        self.dictData = data;
+        self.arrayDataDelivery= [self.dictData objectForKey:@"transport"];
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.arrayView = [[NSMutableArray alloc] init];
-        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
+        self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 64.f, self.frame.size.width, self.frame.size.height-64.f)];
         self.mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.mainScrollView.contentSize = CGSizeMake(0, 1430);
         [self addSubview:self.mainScrollView];
@@ -536,7 +538,8 @@
     self.whiteViewCompany = [[UIView alloc] init];
     self.borderDeliveryCompany = [[UIView alloc] init];
     self.whiteViewCompany.clipsToBounds = YES;
-    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 350 + (30 * self.arrayData.count + 15)) andTitlName:@"" andView:self.whiteViewCompany andBorderView:self.borderDeliveryCompany andBlock:^{
+    
+    UIView * deliveryCompanyView = [self customViewWithFrame:CGRectMake(0.f, self.viewDeliveryTypes.frame.size.height + self.viewDeliveryTypes.frame.origin.y - 70, self.frame.size.width, 350 + (30 * self.arrayDataDelivery.count + 15)) andTitlName:@"" andView:self.whiteViewCompany andBorderView:self.borderDeliveryCompany andBlock:^{
     
         self.buttonCompany = [self buttonCreatePush];
         self.buttonCompany.tag = 20;
@@ -638,31 +641,55 @@
         [self.whiteViewCompany addSubview:deliveryDate];
         
         
-        for (int i = 0; i < self.arrayData.count; i++) {
-            UIButton * buttonTransport = [UIButton buttonWithType:UIButtonTypeCustom];
+        for (int i = 0; i < self.arrayDataDelivery.count; i++) {
+            
+            NSDictionary * transport =[self.arrayDataDelivery objectAtIndex:i];
+            NSString * nameTransport = [transport objectForKey:@"name"];
+            NSString * idTransport = [NSString stringWithFormat:@"%@",[transport objectForKey:@"id"]];
+            
+            CustomButton * buttonTransport = [CustomButton buttonWithType:UIButtonTypeCustom];
             buttonTransport.tag = 700 + i;
+            buttonTransport.customID = idTransport;
             buttonTransport.frame = CGRectMake(10.f, 260.f + 30 * i, self.whiteViewCompany.frame.size.width - 20, 30);
             [buttonTransport setImage:[UIImage imageNamed:@"buttonBuyerYes.png"] forState:UIControlStateSelected];
-            buttonTransport.userInteractionEnabled = YES;
+            
             [buttonTransport addTarget:self action:@selector(buttonTransportAction:) forControlEvents:UIControlEventTouchUpInside];
             
             [self.whiteViewCompany addSubview:buttonTransport];
             
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.f, 10.f, 20.f, 20.f)];
-            imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
-            if (i == 0) {
-                imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
-                buttonTransport.userInteractionEnabled = NO;
+            
+            if(self.userInfo.like_tk !=0){
+                if([self.userInfo.like_tk integerValue] == [[transport objectForKey:@"id"] integerValue]){
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonTransport.userInteractionEnabled = NO;
+                }else{
+                    imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                    buttonTransport.userInteractionEnabled = YES;
+                    
+                }
+                
+            }else{
+                imageView.image = [UIImage imageNamed:@"buttonFaceNo.png"];
+                if (i == 0) {
+                    imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
+                    buttonTransport.userInteractionEnabled = NO;
+                }
+                
             }
+            
             imageView.tag = 750 + i;
             [buttonTransport addSubview:imageView];
             
+            
             CustomLabels * labelButtons = [[CustomLabels alloc] initLabelWithWidht:40.f andHeight:14 andColor:@"000000"
-                                                                           andText:[self.arrayData objectAtIndex:i] andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+                                                                           andText:nameTransport
+                                                                       andTextSize:15 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+            
             [buttonTransport addSubview:labelButtons];
         }
         
-        self.heightCompany = 200 + (30 * self.arrayData.count + 15);
+        self.heightCompany = 200 + (30 * self.arrayDataDelivery.count + 15);
     
     
     }];
@@ -1380,10 +1407,14 @@
 }
 
 //Выбор транспортной компании
-- (void) buttonTransportAction: (UIButton*) button {
-    for (int i = 0; i < self.arrayData.count; i++) {
+- (void) buttonTransportAction: (CustomButton*) button {
+    
+    NSLog(@"BUTTON CUSTOMID %@",button.customID);
+    for (int i = 0; i < self.arrayDataDelivery.count; i++) {
         UIButton * otherButton = (UIButton*)[self viewWithTag:700 + i];
         if (button.tag == 700 + i) {
+            UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
+            [userInfoDbClass checkUserInfo:@"" phone:@"" ord_name:@"" us_fam:@"" us_otch:@"" us_type:@"" inn:@"" kpp:@"" like_delivery:@"" like_tk:button.customID like_pay:@"" doc_date:@"" doc_vend:@"" doc_num:@"" org_name:@"" addr_index:@"" contact:@"" address:@"" deli_start:@"" deli_end:@"" transport:@"" comment:@""];
             UIImageView * imageView = (UIImageView*)[self viewWithTag:750 + i];
             [UIView animateWithDuration:0.3 animations:^{
                 imageView.image = [UIImage imageNamed:@"buttonFaceYes.png"];
@@ -1840,6 +1871,8 @@
     InputTextView * innTextView = (InputTextView *) [self viewWithTag:1227];
     NSString * inn = innTextView.textFieldInput.text;
     
+    NSLog(@"INN %@",inn);
+    
     
     InputTextView * orgNamePochtTextView = (InputTextView *) [self viewWithTag:1800];
     NSString * orgNamePocht = orgNamePochtTextView.textFieldInput.text;
@@ -1926,7 +1959,7 @@
             trueOth = oth;
             truePhone = phone;
             trueOrgName = org;
-            trueInn = inn;
+            //trueInn = inn;
             trueContact = contact;
             break;
             
@@ -1987,6 +2020,7 @@
             break;
             
         case 1227:
+            NSLog(@"1227");
             trueName = name;
             trueFam = fam;
             trueOth = oth;
@@ -1997,9 +2031,10 @@
             
             trueInn = inn;
             pochInnTextView.textFieldInput.text = inn;
+            break;
             
         case 1802:
-            
+            NSLog(@"1802");
             trueName = name;
             trueFam = fam;
             trueOth = oth;
@@ -2139,6 +2174,8 @@
         trueContact = @"EMPTY";
     }
     
+    NSLog(@"TRUEINN: %@",trueInn);
+    
     if(trueInn.length == 0 ){
         trueInn = @"EMPTY";
     }
@@ -2158,7 +2195,16 @@
         pochContact = @"EMPTY";
     }
     
+    for(InputTextView * ourFiz in self.arrayTextFildFiz ){
+        
+         [self animationPlaceHolderWithInputText:ourFiz];
+    }
     
+    for(InputTextView * ourYour in self.arrayTextFildYur){
+        
+        [self animationPlaceHolderWithInputText:ourYour];
+    }
+   
     
        UserInfoDbClass * userInfoDbClass = [[UserInfoDbClass alloc] init];
     
@@ -2175,13 +2221,20 @@
 //Метод скрывает все текст филды если булл YES скрываются юр лица, если BOOL NO скрываются физ лица
 
 - (void) animationPlaceHolderWithInputText: (InputTextView*) inputTextView {
-    if (inputTextView.textFieldInput.isBoll == YES) {
+    if (inputTextView.textFieldInput.isBoll == YES && inputTextView.textFieldInput.text.length !=0) {
         CGRect rect;
         rect = inputTextView.labelPlaceHoldInput.frame;
         rect.origin.x = rect.origin.x + 100.f;
         inputTextView.labelPlaceHoldInput.frame = rect;
         inputTextView.labelPlaceHoldInput.alpha = 0.f;
         inputTextView.textFieldInput.isBoll = NO;
+    }else if(inputTextView.textFieldInput.isBoll == NO && inputTextView.textFieldInput.text.length ==0){
+        CGRect rect;
+        rect = inputTextView.labelPlaceHoldInput.frame;
+        rect.origin.x = rect.origin.x - 100.f;
+        inputTextView.labelPlaceHoldInput.frame = rect;
+        inputTextView.labelPlaceHoldInput.alpha = 1.f;
+        inputTextView.textFieldInput.isBoll = YES;
     }
 }
 
