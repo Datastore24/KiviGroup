@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIScrollView * mainScrollView;
 @property (strong, nonatomic) NSMutableArray * arrayView; //массив всех вью
 @property (strong, nonatomic) NSDictionary * dictData;
+@property (strong, nonatomic) NSDictionary * dictDataInfo;
 @property (strong, nonatomic) NSArray * arrayDataDelivery;
 @property (strong, nonatomic) UserInfo * userInfo;
 
@@ -129,6 +130,7 @@
         
         self.isScrollPicker=NO;
         self.dictData = data;
+        self.dictDataInfo = [self.dictData objectForKey:@"info"];
         self.arrayDataDelivery= [self.dictData objectForKey:@"transport"];
         self.frame = CGRectMake(0.f, 0.f, view.frame.size.width, view.frame.size.height);
         self.arrayView = [[NSMutableArray alloc] init];
@@ -314,18 +316,49 @@
                                                                                  andRect:CGRectMake(0.f, 0.f + (40) * i, self.whiteViewPerson.frame.size.width, 40) andImage:nil
                                                                       andTextPlaceHolder:[arrayPlaysHolders objectAtIndex:i] colorBorder:nil];
                 inputText.delegate = self;
-                
+             
                 
                 if(j==0){
                     switch (i) {
                         case 0:
-                            inputText.textFieldInput.text = self.userInfo.ord_name;
+                            switch ([[self.dictDataInfo objectForKey:@"ord_name"] length]) {
+                                case 0:
+                                    inputText.textFieldInput.text = self.userInfo.ord_name;
+                                    
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"ord_name"];
+                                    break;
+                            }
+                            
                             break;
                         case 1:
-                            inputText.textFieldInput.text = self.userInfo.phone;
+                            switch ([[self.dictDataInfo objectForKey:@"phone"] length]) {
+                                case 0:
+                                    inputText.textFieldInput.text = self.userInfo.phone;
+                                    
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"phone"];
+                                    break;
+                            }
+                            
                             break;
                         case 2:
-                            inputText.textFieldInput.text = self.userInfo.email;
+                        
+                            switch ([[self.dictDataInfo objectForKey:@"email"] length]) {
+                                case 0:
+                                    
+                                    inputText.textFieldInput.text = self.userInfo.email;
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"email"];
+                                    
+                                    break;
+                            }
             
 
                         default:
@@ -334,16 +367,57 @@
                 }else if(j==1){
                     switch (i) {
                         case 0:
-                            inputText.textFieldInput.text = self.userInfo.ord_name;
+                            switch ([[self.dictDataInfo objectForKey:@"ord_name"] length]) {
+                                case 0:
+                                    inputText.textFieldInput.text = self.userInfo.ord_name;
+                                    
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"ord_name"];
+                                    break;
+                            }
+                            
                             break;
                         case 1:
-                            inputText.textFieldInput.text = self.userInfo.phone;
+                            switch ([[self.dictDataInfo objectForKey:@"phone"] length]) {
+                                case 0:
+                                    inputText.textFieldInput.text = self.userInfo.phone;
+                                    
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"phone"];
+                                    break;
+                            }
+                            
                             break;
                         case 2:
-                            inputText.textFieldInput.text = self.userInfo.email;
-                            break;
+                            
+                            switch ([[self.dictDataInfo objectForKey:@"email"] length]) {
+                                case 0:
+                                    
+                                    inputText.textFieldInput.text = self.userInfo.email;
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"email"];
+                                    
+                                    break;
+                            }
                         case 3:
-                            inputText.textFieldInput.text = self.userInfo.org_name;
+                            switch ([[self.dictDataInfo objectForKey:@"org_name"] length]) {
+                                case 0:
+                                    
+                                    inputText.textFieldInput.text = self.userInfo.org_name;
+                                    break;
+                                    
+                                default:
+                                    inputText.textFieldInput.text = [self.dictDataInfo objectForKey:@"org_name"];
+                                    
+                                    break;
+                            }
+                            
                             break;
                             
                         default:
@@ -411,7 +485,13 @@
         
         UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, whiteViewAddress.frame.size.width - 20.f, whiteViewAddress.frame.size.height - 20.f)];
         textView.textColor = [UIColor blackColor];
-        textView.text = self.userInfo.address;
+        
+        if([[self.dictDataInfo objectForKey:@"address"] length]!=0){
+            textView.text = [self.dictDataInfo objectForKey:@"address"];
+        }else{
+            textView.text = self.userInfo.address;
+        }
+        
         textView.delegate = self;
         textView.tag = 3000;
         textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
@@ -477,21 +557,35 @@
         NSString * startDelivery;
         NSString * endDelivery;
         
-        
-        if(self.userInfo.deli_start.length != 0){
-            startDelivery = self.userInfo.deli_start;
-        }else{
-            startDelivery = @"9";
+        if([[self.dictDataInfo objectForKey:@"deli_start"] integerValue]>0){
             
-        }
-        
-        if(self.userInfo.deli_end.length != 0){
-            endDelivery = self.userInfo.deli_end;
+            startDelivery = [NSString stringWithFormat:@"%@",[self.dictDataInfo objectForKey:@"deli_start"]];
             
         }else{
-            endDelivery = @"19";
-            
+            if(self.userInfo.deli_start.length != 0){
+                startDelivery = self.userInfo.deli_start;
+            }else{
+                startDelivery = @"9";
+                
+            }
         }
+        
+        if([[self.dictDataInfo objectForKey:@"deli_end"] integerValue]>0){
+            
+            endDelivery = [NSString stringWithFormat:@"%@",[self.dictDataInfo objectForKey:@"deli_end"]];
+            
+        }else{
+            if(self.userInfo.deli_end.length != 0){
+                endDelivery = self.userInfo.deli_end;
+                
+            }else{
+                endDelivery = @"19";
+                
+            }
+        }
+       
+        NSLog(@"START %@ END %@",startDelivery,endDelivery);
+        
         
         NSArray * arrayNumberTime = [NSArray arrayWithObjects:startDelivery, endDelivery, nil];
         for (int i = 0; i < 2; i++) {
@@ -997,47 +1091,85 @@
     self.arrayForPickerViewUpper = [NSMutableArray new];
     self.arrayForPickerViewLower = [NSMutableArray new];
     
-    if(self.userInfo.deli_start.length !=0){
-        NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
-        NSInteger counterLower = [self.userInfo.deli_end integerValue]-9;
+    
+    
+    if([[self.dictDataInfo objectForKey:@"deli_start"] integerValue]>0 && [[self.dictDataInfo objectForKey:@"deli_end"] integerValue]>0){
         
-        self.rowUpper = counterUpper; //1
+        NSInteger  counterUpperOne = [[self.dictDataInfo objectForKey:@"deli_start"] integerValue]-9;
+        NSInteger counterLowerOne = [[self.dictDataInfo objectForKey:@"deli_end"] integerValue]-9;
+        
+        self.rowUpper = counterUpperOne; //1
         [self.arrayForPickerViewUpper removeAllObjects];
         
         
-        for(int i=0; i<counterLower+1; i++){
+        for(int i=0; i<counterLowerOne+1; i++){
             
             [self.arrayForPickerViewUpper addObject:[NSString stringWithFormat:@"%d",9+i]];
         }
         
+        NSInteger  counterUpperTwo = [[self.dictDataInfo objectForKey:@"deli_start"] integerValue]-9;
+        NSInteger counterLowerTwo = [[self.dictDataInfo objectForKey:@"deli_end"] integerValue]-[[self.dictDataInfo objectForKey:@"deli_start"] integerValue];
         
+        self.rowLower = counterLowerTwo;
         
-    }else{
-        self.rowUpper = 0; //1
-           self.arrayForPickerViewUpper = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
-    }
-    
-    //Значения из базы для второго пикера
-    if(self.userInfo.deli_end.length !=0){
-        NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
-        NSInteger counterLower = [self.userInfo.deli_end integerValue]-[self.userInfo.deli_start integerValue];
-        
-        self.rowLower = counterLower;
-        
-        for(int i=counterUpper; i<14; i++){
+        for(int i=counterUpperTwo; i<14; i++){
             
             
             [self.arrayForPickerViewLower addObject:[NSString stringWithFormat:@"%d",9+i]];
         }
+        
+        
 
-       
         
     }else{
-        self.rowLower = 10;
-        self.arrayForPickerViewLower = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20", @"21", @"22", nil];
-
+        if(self.userInfo.deli_start.length !=0){
+            NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
+            NSInteger counterLower = [self.userInfo.deli_end integerValue]-9;
+            
+            self.rowUpper = counterUpper; //1
+            [self.arrayForPickerViewUpper removeAllObjects];
+            
+            
+            for(int i=0; i<counterLower+1; i++){
+                
+                [self.arrayForPickerViewUpper addObject:[NSString stringWithFormat:@"%d",9+i]];
+            }
+            
+            
+            
+        }else{
+            self.rowUpper = 0; //1
+            self.arrayForPickerViewUpper = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", nil];
+        }
+        
+        //Значения из базы для второго пикера
+        if(self.userInfo.deli_end.length !=0){
+            NSInteger  counterUpper = [self.userInfo.deli_start integerValue]-9;
+            NSInteger counterLower = [self.userInfo.deli_end integerValue]-[self.userInfo.deli_start integerValue];
+            
+            self.rowLower = counterLower;
+            
+            for(int i=counterUpper; i<14; i++){
+                
+                
+                [self.arrayForPickerViewLower addObject:[NSString stringWithFormat:@"%d",9+i]];
+            }
+            
+            
+            
+        }else{
+            self.rowLower = 10;
+            self.arrayForPickerViewLower = [NSMutableArray arrayWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20", @"21", @"22", nil];
+            
+            
+        }
+       
         
     }
+    
+   
+    
+   
     
     
     
