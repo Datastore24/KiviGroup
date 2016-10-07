@@ -970,6 +970,7 @@
     buttonText.frame = CGRectMake(15.f, 45.f, self.frame.size.width - 30.f, 40);
     buttonText.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
     [buttonText setTitle:@"Оформить заказ" forState:UIControlStateNormal];
+    [buttonText addTarget:self action:@selector(buttonTextAction:) forControlEvents:UIControlEventTouchUpInside];
     [buttonText setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buttonText.layer.cornerRadius = 3.f;
     buttonText.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:16];
@@ -1477,6 +1478,10 @@
         }
     }
     
+}
+
+- (void) buttonTextAction: (UIButton*) button {
+    NSLog(@"Оформить заказ");
 }
 
 
