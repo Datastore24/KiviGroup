@@ -16,6 +16,7 @@
 #import "SingleTone.h"
 #import "AlertClassCustom.h"
 #import <SCLAlertView.h>
+#import "CheckRequiredField.h"
 
 @interface RegistrationView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -153,56 +154,54 @@
     int countErr = 0;
     
     
-    if(![self validateEmail:email] || email.length==0){
-        [AlertClassCustom createAlertWithMessage:@"Введите верный Email"];
-        countErr +=1;
-
+    if([CheckRequiredField checkField:email andFieldTwo:nil countText:0
+                              andType:@"email" andErrorMessage:@"Введите верный Email"]){
+        countErr+=1;
         
-    }else{
-        if (name.length<=3) {
-            [AlertClassCustom createAlertWithMessage:@"Имя должны быть больше 3 символов"];
-            countErr +=1;
-            
-        }else{
-            if(phone.length <11 && phone.length!=0){
-                [AlertClassCustom createAlertWithMessage:@"Телефон должны быть больше 10 символов"];
-                countErr +=1;
-            
-            }else{
-                if(![password isEqualToString: passwordTwo] || password.length==0 || passwordTwo.length==0){
-                    [AlertClassCustom createAlertWithMessage:@"Пароли должны совпадать"];
-                    countErr +=1;
-                }else{
-                    if(password.length<5 || passwordTwo.length<5){
-                        [AlertClassCustom createAlertWithMessage:@"Пароль должен быть не менее 5 символов"];
-                        countErr +=1;
-                    }
-                }
-            
-            }
-        }
+    }else if([CheckRequiredField checkField:name andFieldTwo:nil countText:3
+                              andType:@"text" andErrorMessage:@"Имя должны быть больше 3 символов"]){
+        countErr+=1;
+        
+    }else if([CheckRequiredField checkField:phone andFieldTwo:nil countText:11
+                              andType:@"phone" andErrorMessage:@"Телефон должны быть больше 10 символов"]){
+        countErr+=1;
+        
+    }else if([CheckRequiredField checkField:password andFieldTwo:passwordTwo countText:0
+                              andType:@"password" andErrorMessage:@"Пароли должны совпадать"]){
+        countErr+=1;
+        
+    }else if([CheckRequiredField checkField:password andFieldTwo:nil countText:5
+                              andType:@"text" andErrorMessage:@"Пароль должен быть не менее 5 символов"]){
+        countErr+=1;
+        
+    }else if([CheckRequiredField checkField:passwordTwo andFieldTwo:nil countText:5
+                              andType:@"text" andErrorMessage:@"Пароль должен быть не менее 5 символов"]){
+        countErr+=1;
         
     }
     
-
     
-    if(countErr==0){
-        [self.delegate getApiCart:self andblock:^{
-        
-            NSLog(@"RESULT: %@", [self.delegate regDict]);
-            NSDictionary * regDict =[self.delegate regDict];
-            if([[regDict objectForKey:@"status"] integerValue] == 1){
-                SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
-                alert.customViewColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
-                [alert addButton:@"Авторизация" target:self selector:@selector(firstButton)];
-                [alert showSuccess:@"Внимание!" subTitle:@"Регистрация прошла успешна." closeButtonTitle:nil duration:0.0f];
-            }else{
-                [AlertClassCustom createAlertWithMessage:[regDict objectForKey:@"message"]];
 
-            }
-        
-        } andphone:phone andEmail:email andName:name andPassword:password];
-    }
+    NSLog(@"COUNT %i",countErr);
+
+//    
+//    if(countErr==0){
+//        [self.delegate getApiCart:self andblock:^{
+//        
+//            NSLog(@"RESULT: %@", [self.delegate regDict]);
+//            NSDictionary * regDict =[self.delegate regDict];
+//            if([[regDict objectForKey:@"status"] integerValue] == 1){
+//                SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+//                alert.customViewColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+//                [alert addButton:@"Авторизация" target:self selector:@selector(firstButton)];
+//                [alert showSuccess:@"Внимание!" subTitle:@"Регистрация прошла успешна." closeButtonTitle:nil duration:0.0f];
+//            }else{
+//                [AlertClassCustom createAlertWithMessage:[regDict objectForKey:@"message"]];
+//
+//            }
+//        
+//        } andphone:phone andEmail:email andName:name andPassword:password];
+//    }
     
 }
 

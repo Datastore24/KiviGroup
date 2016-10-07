@@ -15,6 +15,7 @@
 #import "CustomButton.h"
 #import "UserInfo.h"
 #import "UserInfoDbClass.h"
+#import "SingleTone.h"
 
 @interface FormalizationView() <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, InputTextViewDelegate>
 
@@ -948,9 +949,9 @@
     CustomLabels * labelPrice = [[CustomLabels alloc] initLabelWithWidht:15.f andHeight:20 andColor:@"787878"
                                                                    andText:@"Итоговая стоимость:" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
     [otherView addSubview:labelPrice];
-    
+    NSString * totalPrice= [NSString stringWithFormat:@"%d руб", [[[SingleTone sharedManager] priceType] integerValue]+450];
     CustomLabels * labelPriceAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:20 andColor:VM_COLOR_800
-                                                                 andText:@"8100 руб" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];
+                                                                 andText:totalPrice andTextSize:16 andLineSpacing:0.f fontName: VM_FONT_REGULAR];
     [otherView addSubview:labelPriceAction];
     
     self.labelDelivery = [[CustomLabels alloc] initLabelWithWidht:94.f andHeight:0 andColor:@"787878"
@@ -958,6 +959,7 @@
     self.labelDelivery.alpha = 0.f;
     
     [otherView addSubview:self.labelDelivery];
+
     
     self.labelDeliveryAction = [[CustomLabels alloc] initLabelWithWidht:15.f + labelPrice.frame.size.width + 2 andHeight:0 andColor:VM_COLOR_800
                                                                        andText:@"450 руб" andTextSize:16 andLineSpacing:0.f fontName:VM_FONT_REGULAR];

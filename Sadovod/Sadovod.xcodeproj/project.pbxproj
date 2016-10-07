@@ -11,6 +11,7 @@
 		AD6ED3731D9CFE6000FF967A /* UserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3701D9CFE6000FF967A /* UserInfo+CoreDataProperties.m */; };
 		AD6ED3741D9CFE6000FF967A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3721D9CFE6000FF967A /* UserInfo.m */; };
 		AD6ED3771D9CFE7500FF967A /* UserInfoDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3761D9CFE7500FF967A /* UserInfoDbClass.m */; };
+		AD6ED37A1DA7BAD400FF967A /* CheckRequiredField.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3791DA7BAD400FF967A /* CheckRequiredField.m */; };
 		AD6F0AB01D7EA7C1005E8FD9 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */; };
 		AD6F0AB11D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */; };
 		AD6F0AB21D7EA7C1005E8FD9 /* FilterDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */; };
@@ -475,6 +476,8 @@
 		AD6ED3721D9CFE6000FF967A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		AD6ED3751D9CFE7500FF967A /* UserInfoDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoDbClass.h; sourceTree = "<group>"; };
 		AD6ED3761D9CFE7500FF967A /* UserInfoDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoDbClass.m; sourceTree = "<group>"; };
+		AD6ED3781DA7BAD400FF967A /* CheckRequiredField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckRequiredField.h; sourceTree = "<group>"; };
+		AD6ED3791DA7BAD400FF967A /* CheckRequiredField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckRequiredField.m; sourceTree = "<group>"; };
 		AD6F0AA81D7EA7C1005E8FD9 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		AD6F0AA91D7EA7C1005E8FD9 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		AD6F0AAA1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Filter+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1317,6 +1320,8 @@
 		FFAE2DF41D65A05D00E81AED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD6ED3781DA7BAD400FF967A /* CheckRequiredField.h */,
+				AD6ED3791DA7BAD400FF967A /* CheckRequiredField.m */,
 				FFAE33111D65A3CE00E81AED /* Macros.h */,
 				FFAE33121D65A3CE00E81AED /* SingleTone.h */,
 				FFAE33131D65A3CE00E81AED /* SingleTone.m */,
@@ -2679,6 +2684,7 @@
 			files = (
 				FFBF91BD1D829FC300F8A0A1 /* ArrayTextForFAQ.m in Sources */,
 				FFC4FD651D674B08007C2DDC /* CustomButton.m in Sources */,
+				AD6ED37A1DA7BAD400FF967A /* CheckRequiredField.m in Sources */,
 				FFAE2E3B1D65A12400E81AED /* CatalogController.m in Sources */,
 				FF0732BB1D95442200F7BAC0 /* GaleryView.m in Sources */,
 				FFC4FD701D6767EE007C2DDC /* CatalogDetailController.m in Sources */,
