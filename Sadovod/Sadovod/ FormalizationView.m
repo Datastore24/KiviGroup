@@ -135,7 +135,7 @@
         self.arrayView = [[NSMutableArray alloc] init];
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 64.f, self.frame.size.width, self.frame.size.height-64.f)];
         self.mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        self.mainScrollView.contentSize = CGSizeMake(0, 1430);
+        self.mainScrollView.contentSize = CGSizeMake(0, 1460);
         [self addSubview:self.mainScrollView];
         
         
@@ -1481,7 +1481,10 @@
 }
 
 - (void) buttonTextAction: (UIButton*) button {
-    NSLog(@"Оформить заказ");
+    NSLog(@"Оформить заказ Перед блоком");
+    [self.delegate getApiCreateOrder:self andBlock:^{
+        NSLog(@"Оформить заказ");
+    }];
 }
 
 
