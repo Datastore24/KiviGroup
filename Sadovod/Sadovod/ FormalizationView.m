@@ -1509,14 +1509,97 @@
 //        
 //    }
     
+    
     if([self.userInfo.us_type integerValue] == 0){ //ФИЗ лицо
+        
+        if ([CheckRequiredField checkField:self.userInfo.ord_name andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верное имя"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.phone andFieldTwo:nil countText:11 andType:@"phone" andErrorMessage:@"Введите верный номер телефона"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.email andFieldTwo:nil countText:0 andType:@"email" andErrorMessage:@"Введите верный Email"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.address andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верный адрес"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.like_delivery andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите тип доставки"]) {
+            countErr+=1;
+        } else if ([self.userInfo.like_delivery integerValue] == 0) {
+            if ([CheckRequiredField checkField:self.userInfo.deli_start andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите время доставки"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.deli_end andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите время доставки"]) {
+                countErr+=1;
+            }
+        } else if ([self.userInfo.like_delivery integerValue] == 1) { //доставка по почте
+            if ([CheckRequiredField checkField:self.userInfo.us_fam andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите фамилию"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.us_otch andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите отчество"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.addr_index andFieldTwo:nil countText:6 andType:@"text" andErrorMessage:@"Введите индекс"]) {
+                countErr+=1;
+            }
+        } else if ([self.userInfo.like_delivery integerValue] == 2) { //доставка транспортной компанией
+            if ([CheckRequiredField checkField:self.userInfo.us_fam andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите фамилию"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.us_otch andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите отчество"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.doc_num andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите серию и номер паспорта"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.transport andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите транспортную компанию"]) {
+                countErr+=1;
+            }
+        } else if ([CheckRequiredField checkField:self.userInfo.like_pay andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите тип оплаты"]) {
+            countErr+=1;
+        }
+        
         
         
     }else if ([self.userInfo.us_type integerValue] == 1){//ЮР лицо
-        //self.userInfo.like_delivery;
+        if ([CheckRequiredField checkField:self.userInfo.ord_name andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верное имя"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.phone andFieldTwo:nil countText:11 andType:@"phone" andErrorMessage:@"Введите верный номер телефона"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.email andFieldTwo:nil countText:0 andType:@"email" andErrorMessage:@"Введите верный Email"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.org_name andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верное название организации"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.address andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верный адрес"]) {
+            countErr+=1;
+        } else if ([CheckRequiredField checkField:self.userInfo.like_delivery andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите тип доставки"]) {
+            countErr+=1;
+        } else if ([self.userInfo.like_delivery integerValue] == 0) {
+            if ([CheckRequiredField checkField:self.userInfo.deli_start andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите время доставки"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.deli_end andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите время доставки"]) {
+                countErr+=1;
+            }
+        } else if ([self.userInfo.like_delivery integerValue] == 1) { //доставка по почте
+            if ([CheckRequiredField checkField:self.userInfo.org_name andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верное название организации"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.contact andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите контактное лицо"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.inn andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите ИНН"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.kpp andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите КПП"]) {
+                countErr+=1;
+            }
+        } else if ([self.userInfo.like_delivery integerValue] == 2) { //доставка транспортной компанией
+            if ([CheckRequiredField checkField:self.userInfo.org_name andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите верное название организации"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.contact andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите контактное лицо"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.inn andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Введите ИНН"]) {
+                countErr+=1;
+            } else if ([CheckRequiredField checkField:self.userInfo.transport andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите транспортную компанию"]) {
+                countErr+=1;
+            }
+        } else if ([CheckRequiredField checkField:self.userInfo.like_pay andFieldTwo:nil countText:0 andType:@"text" andErrorMessage:@"Выберите тип оплаты"]) {
+            countErr+=1;
+        }
+
         
     }
-
+    
+    NSLog(@"%d", countErr);
+    
     if(countErr == 0){
         [self.delegate getApiCreateOrder:self];
     }
