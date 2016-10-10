@@ -8,13 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-
+@protocol FormalizationViewDelegate;
 
 @interface FormalizationView : UIView
+
+@property (weak, nonatomic) id <FormalizationViewDelegate> delegate;
 
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSDictionary*) data;
+
+@end
+
+@protocol FormalizationViewDelegate <NSObject>
+
+@required
+
+-(void) getApiCreateOrder:(FormalizationView*) catalogDetailView;
 
 @end
 

@@ -16,6 +16,7 @@
 #import "UserInfo.h"
 #import "UserInfoDbClass.h"
 #import "SingleTone.h"
+#import "CheckRequiredField.h"
 
 @interface FormalizationView() <UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, InputTextViewDelegate>
 
@@ -135,7 +136,7 @@
         self.arrayView = [[NSMutableArray alloc] init];
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 64.f, self.frame.size.width, self.frame.size.height-64.f)];
         self.mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        self.mainScrollView.contentSize = CGSizeMake(0, 1430);
+        self.mainScrollView.contentSize = CGSizeMake(0, 1460);
         [self addSubview:self.mainScrollView];
         
         
@@ -1481,7 +1482,44 @@
 }
 
 - (void) buttonTextAction: (UIButton*) button {
-    NSLog(@"Оформить заказ");
+    NSLog(@"Оформить заказ Перед блоком");
+    
+    //ПРОВЕРКИ
+    
+    int countErr = 0;
+    
+    //Типы доставки
+    
+//    if([self.userInfo.like_delivery integerValue] == 0 && self.userInfo.like_delivery.length !=0){
+//        [self buttonMoscow:self.buttonMoscow];
+//    }
+//    
+//    if([self.userInfo.like_delivery integerValue] == 1 && self.userInfo.like_delivery.length !=0){
+//        [self buttonMail:self.buttonMail];
+//    }
+//    
+//    if([self.userInfo.like_delivery integerValue] == 2 && self.userInfo.like_delivery.length !=0){
+//        [self buttonCompany:self.buttonCompany];
+//    }
+//    
+    
+//    if([CheckRequiredField checkField:email andFieldTwo:nil countText:0
+//                              andType:@"email" andErrorMessage:@"Введите верный Email"]){
+//        countErr+=1;
+//        
+//    }
+    
+    if([self.userInfo.us_type integerValue] == 0){ //ФИЗ лицо
+        
+        
+    }else if ([self.userInfo.us_type integerValue] == 1){//ЮР лицо
+        //self.userInfo.like_delivery;
+        
+    }
+
+    if(countErr == 0){
+        [self.delegate getApiCreateOrder:self];
+    }
 }
 
 

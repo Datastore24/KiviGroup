@@ -15,7 +15,7 @@
 #import "UserInfoDbClass.h"
 #import "UserInfo.h"
 
-@interface FormalizationController() <UINavigationControllerDelegate>
+@interface FormalizationController() <UINavigationControllerDelegate,FormalizationViewDelegate>
 @property (strong, nonatomic) NSDictionary * dictInfo;
 @property (strong, nonatomic) UserInfo * userInfo;
 @end
@@ -54,6 +54,7 @@
     [self getApiInfoOrder:^{
         FormalizationView * mainView = [[FormalizationView alloc] initWithView:self.view andData:self.dictInfo];
         [self.view addSubview:mainView];
+        mainView.delegate = self;
     }];
     
     
@@ -117,6 +118,87 @@
     }];
     
 }
+
+#pragma mark - DELEGATE
+
+
+
+-(void) getApiCreateOrder:(FormalizationView*) catalogDetailView 
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    self.userInfo.email.length == 0 ? self.userInfo.email = @"" : nil;
+    self.userInfo.phone.length == 0 ? self.userInfo.phone=@"" : nil;
+    self.userInfo.ord_name.length == 0 ? self.userInfo.ord_name=@"" : nil;
+    self.userInfo.us_fam.length == 0 ? self.userInfo.us_fam=@"" : nil;
+    self.userInfo.us_otch.length == 0 ? self.userInfo.us_otch=@"" : nil;
+    self.userInfo.us_type.length == 0 ? self.userInfo.us_type=@"" : nil;
+    self.userInfo.inn.length == 0 ? self.userInfo.inn=@"" : nil;
+    self.userInfo.kpp.length == 0 ? self.userInfo.kpp=@"" : nil;
+    self.userInfo.like_delivery.length == 0 ? self.userInfo.like_delivery=@"" : nil;
+    self.userInfo.like_tk.length == 0 ? self.userInfo.like_tk=@"" : nil;
+    self.userInfo.like_pay.length == 0 ? self.userInfo.like_pay=@"" : nil;
+    self.userInfo.doc_date.length == 0 ? self.userInfo.doc_date=@"" : nil;
+    self.userInfo.doc_vend.length == 0 ? self.userInfo.doc_vend=@"" : nil;
+    self.userInfo.doc_num.length == 0 ? self.userInfo.doc_num=@"" : nil;
+    self.userInfo.org_name.length == 0 ? self.userInfo.org_name=@"" : nil;
+    self.userInfo.addr_index.length == 0 ? self.userInfo.addr_index=@"" : nil;
+    self.userInfo.contact.length == 0 ? self.userInfo.contact=@"" : nil;
+    self.userInfo.address.length == 0 ? self.userInfo.address=@"" : nil;
+    self.userInfo.deli_start.length == 0 ? self.userInfo.deli_start=@"" : nil;
+    self.userInfo.deli_end.length == 0 ? self.userInfo.deli_end=@"" : nil;
+    self.userInfo.transport.length == 0 ? self.userInfo.transport=@"" : nil;
+    self.userInfo.comment.length == 0 ? self.userInfo.comment=@"" : nil;
+
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.userInfo.us_type,@"user_type",
+                             self.userInfo.ord_name,@"name",
+                             self.userInfo.phone,@"phone",
+                             self.userInfo.email,@"email",
+                             self.userInfo.address,@"address",
+                             self.userInfo.like_delivery,@"delivery_type",
+                             self.userInfo.deli_start,@"delivery_begin",
+                             self.userInfo.deli_end,@"delivery_end",
+                             self.userInfo.us_fam,@"user_family,",
+                             self.userInfo.us_otch,@"user_otch",
+                             self.userInfo.addr_index,@"index",
+                             self.userInfo.doc_num,@"passport_serial",
+                             self.userInfo.doc_date,@"passport_date",
+                             self.userInfo.doc_vend,@"passport_why",
+                             self.userInfo.transport,@"transport_id",
+                             self.userInfo.org_name,@"org_name",
+                             self.userInfo.inn,@"org_inn",
+                             self.userInfo.kpp,@"org_kpp",
+                             self.userInfo.contact,@"contact_name",
+                             self.userInfo.like_pay,@"pay_type",
+                             self.userInfo.comment, @"comment",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"package",
+                             nil];
+    
+    
+       NSLog(@"ОТПРАВЛЯЕМ %@",params);
+    [api getDataFromServerWithParams:params method:@"send_order" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            NSLog(@"RESP NEW %@",respDict);
+            if([[respDict objectForKey:@"order"] length] != 0){
+                //ТУТ ПЕРЕХОД
+            }
+            
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+#pragma mark - CheckCoreDate
 
 -(void) checkCoreDateAndServer:(NSDictionary *) dict andBlock: (void (^)(void))block{
     NSDictionary * dictInfo = [dict objectForKey:@"info"];
