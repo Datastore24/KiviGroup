@@ -118,6 +118,56 @@
     
 }
 
+-(void) getApiCreateOrder: (void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             self.userInfo.us_type,@"user_type",
+                             self.userInfo.ord_name,@"name",
+                             self.userInfo.phone,@"phone",
+                             self.userInfo.email,@"email",
+                             self.userInfo.address,@"address",
+                             self.userInfo.like_delivery,@"delivery_type",
+                             self.userInfo.deli_start,@"delivery_begin",
+                             self.userInfo.deli_end,@"delivery_end",
+                             self.userInfo.us_fam,@"user_family,",
+                             self.userInfo.us_otch,@"user_otch",
+                             self.userInfo.addr_index,@"index",
+                             self.userInfo.doc_num,@"passport_serial",
+                             self.userInfo.doc_date,@"passport_date",
+                             self.userInfo.doc_vend,@"passport_why",
+                             self.userInfo.transport,@"transport_id",
+                             self.userInfo.org_name,@"org_name",
+                             self.userInfo.inn,@"org_inn",
+                             self.userInfo.kpp,@"org_kpp",
+                             self.userInfo.contact,@"contact_name",
+                             self.userInfo.like_pay,@"pay_type",
+                             self.userInfo.comment, @"comment",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"package",
+                             nil];
+    
+    [api getDataFromServerWithParams:params method:@"send_order" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            NSLog(@"RESP NEW %@",respDict);
+            
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+#pragma mark - CheckCoreDate
+
 -(void) checkCoreDateAndServer:(NSDictionary *) dict andBlock: (void (^)(void))block{
     NSDictionary * dictInfo = [dict objectForKey:@"info"];
     NSString * email = [dictInfo objectForKey:@"email"];
