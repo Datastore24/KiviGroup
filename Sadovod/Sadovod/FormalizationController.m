@@ -185,7 +185,9 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
             NSLog(@"RESP NEW %@",respDict);
-            
+            if([[respDict objectForKey:@"order"] length] != 0){
+                //ТУТ ПЕРЕХОД
+            }
             
             
             
