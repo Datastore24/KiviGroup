@@ -14,6 +14,9 @@
 #import "HexColors.h"
 #import "UIView+BorderView.h"
 #import "SingleTone.h"
+#import "AlertClassCustom.h"
+#import "AuthDbClass.h";
+#import "Auth.h";
 
 @interface AuthorizationView () <UITextViewDelegate>
 
@@ -23,6 +26,7 @@
 @property (strong, nonatomic) UITextView * textView;
 @property (strong, nonatomic) UIView * viewPuss;
 @property (strong, nonatomic) UIButton * buttonSave;
+@property (strong, nonatomic) NSDictionary * dataDict;
 
 @end
 
@@ -33,11 +37,12 @@
 }
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data
+                     andData: (NSDictionary*) data
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0.f, 64.f, view.frame.size.width, view.frame.size.height - 64);
+        self.dataDict = data;
         
         if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) { //Если окно авторизации
             self.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -118,10 +123,11 @@
                 [self addSubview:labelTitl];
             }
             
-            NSArray * arrayNamesData = [NSArray arrayWithObjects:@"Viktor", @"mrdoro@gmail.com", @"* * * * * * * * * *", nil];
+            NSArray * arrayNamesData = [NSArray arrayWithObjects:[data objectForKey:@"name"], [data objectForKey:@"email"], @"* * * * * * * * * *", nil];
             for (int i = 0; i < 3; i++) {
                 CustomLabels * labelTitl = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:35.f + 60 * i andSizeWidht:self.frame.size.width - 30 andSizeHeight:20 andColor:@"000000"
                                                                                  andText:[arrayNamesData objectAtIndex:i]];
+                labelTitl.tag=6000+i;
                 labelTitl.font = [UIFont fontWithName:VM_FONT_BOLD size:13];
                 labelTitl.textAlignment = NSTextAlignmentLeft;
                 labelTitl.numberOfLines = 1;
@@ -144,6 +150,11 @@
             self.textView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 220.f, self.frame.size.width - 30.f, 160)];
             self.textView.textColor = [UIColor blackColor];
             self.textView.delegate = self;
+            
+            if([[data objectForKey:@"pay"] length]>0){
+                self.textView.text = [data objectForKey:@"pay"];
+            }
+            
             self.textView.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
             //        textView.autocorrectionType = UITextAutocorrectionTypeNo;
             [self addSubview:self.textView];
@@ -157,7 +168,12 @@
         [self addSubview:self.labelNumberComments];
             
             self.labelTextView = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 221.f, self.frame.size.width - 30.f, 40)];
-            self.labelTextView.text = @"Эти данные необходимы для более быстрой идентификации Ваших платежей.";
+            if([[data objectForKey:@"pay"] length]>0){
+                self.labelTextView.text = @"";
+            }else{
+                self.labelTextView.text = @"Эти данные необходимы для более быстрой идентификации Ваших платежей.";
+            }
+           
             self.labelTextView.textColor = [UIColor hx_colorWithHexRGBAString:@"5C5C5C"];
             self.labelTextView.numberOfLines = 2.f;
             self.labelTextView.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
@@ -210,7 +226,8 @@
     [viewFon addSubview:mainView];
     
     InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:mainView andRect:CGRectMake(0.f, 20.f, mainView.frame.size.width, 20) andImage:nil andTextPlaceHolder:@"" colorBorder:nil];
-    inputText.textFieldInput.text = @"Viktor";
+    inputText.textFieldInput.text = [self.dataDict objectForKey:@"name"];
+    inputText.tag = 7000;
     inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
     [mainView addSubview: inputText];
     
@@ -264,6 +281,7 @@
         InputTextView * inputText = [[InputTextView alloc] initInputTextWithView:mainView andRect:CGRectMake(0.f, 20.f + 50 * i, mainView.frame.size.width, 20) andImage:nil andTextPlaceHolder:[arrayName objectAtIndex:i] colorBorder:nil];
         inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         inputText.textFieldInput.secureTextEntry = YES;
+        inputText.tag=7100+i;
         inputText.labelPlaceHoldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
         inputText.labelPlaceHoldInput.textColor = [UIColor hx_colorWithHexRGBAString:@"5C5C5C"];
         [mainView addSubview: inputText];
@@ -360,7 +378,14 @@
 
 //Подтверждение изменения имени
 - (void) buttonConfirmNameAction {
-    NSLog(@"Имя сменено");
+    
+    InputTextView * inputText = (InputTextView *)[self viewWithTag:7000];
+    CustomLabels * labelTitl = (CustomLabels *)[self viewWithTag:6000];
+    labelTitl.text=inputText.textFieldInput.text;
+    [self.delegate getUserInfo:self andName:inputText.textFieldInput.text andblock:^{
+        [self buttonCancelNameAction];
+    }];
+    
 }
 
 //Отмена изменении Пароля
@@ -372,12 +397,54 @@
 
 //Сохранение комметнария
 - (void) buttonSaveAction {
-    NSLog(@"Сохранение комментария");
+    [self.delegate getUserInfo:self andPay:self.textView.text andblock:^{
+        [AlertClassCustom createAlertWithMessage:@"Данные платежного счета сохранены"];
+    }];
+    
 }
 
 //Подтверждение изменения Пароля
 - (void) buttonConfirmPassAction {
+    
+    InputTextView * oldPasswordinputText = (InputTextView *)[self viewWithTag:7100];
+    InputTextView * newOnePasswordinputText = (InputTextView *)[self viewWithTag:7101];
+    InputTextView * newTwoPasswordinputText = (InputTextView *)[self viewWithTag:7102];
+    
+    NSString * oldPassText = oldPasswordinputText.textFieldInput.text;
+    NSString * newOnePassText = newOnePasswordinputText.textFieldInput.text;
+    NSString * newTwoPassText = newTwoPasswordinputText.textFieldInput.text;
+    
+    AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
+    
+    if([authDbClass checkPassword:oldPassText]){
+        if([newOnePassText isEqualToString:newTwoPassText] && newOnePassText.length>0 && newTwoPassText.length>0){
+            
+            [authDbClass updatePassword:newOnePassText]; //ТУТ АПИ НУЖНО ЕЩЕ ПРОПИСАТЬ
+            [self buttonCancelPassAction];
+            
+        }else{
+            if(![newOnePassText isEqualToString:newTwoPassText]){
+                [AlertClassCustom createAlertWithMessage:@"Пароли должны совпадать"];
+            }else{
+                
+                if(newOnePassText.length==0){
+                    [AlertClassCustom createAlertWithMessage:@"Новый пароль должен быть введен"];
+                    
+                }else if(newTwoPassText.length==0){
+                    [AlertClassCustom createAlertWithMessage:@"Повтор нового пароля должен быть введен"];
+                    
+                }
+                
+            }
+            
+        }
+    }else{
+        [AlertClassCustom createAlertWithMessage:@"Старый пароль не верен"];
+    }
+    
+    
     NSLog(@"Пароль сменен");
+    
 }
 
 //Действие кнопок смены имени и пароля

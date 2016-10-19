@@ -47,6 +47,65 @@
     }
 }
 
+- (BOOL)checkPassword:(NSString*) password{
+    
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    
+    
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:
+                                               @"password ==[c] %@ AND uid ==[c] 1", password];
+    Auth *keyFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    // If a person was founded
+    if (keyFounded)
+    {
+        
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (void)updatePassword:(NSString *)password
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
+    Auth *authFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.password = password;
+        
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+
+- (void)updateLogin:(NSString *)login
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    
+    // Retrieve the first person who have the given firstname
+    NSPredicate *predicate                  = [NSPredicate predicateWithFormat:@"uid ==[c] 1"];
+    Auth *authFounded                   = [Auth MR_findFirstWithPredicate:predicate inContext:localContext];
+    
+    if (authFounded)
+    {
+        
+        authFounded.login = login;
+        
+        // Save the modification in the local context
+        // With MagicalRecords 2.0.8 or newer you should use the MR_saveNestedContexts
+        [localContext MR_saveToPersistentStoreAndWait];
+    }
+}
+
 - (BOOL)checkPopUp{
     
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];

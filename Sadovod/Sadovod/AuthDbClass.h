@@ -21,4 +21,9 @@
 - (void)changeEnter:(NSString *) enter;
 - (BOOL)checkEnter;
 
+- (BOOL)checkPassword:(NSString*) password;
+- (void)updatePassword:(NSString *)password;
+- (void)updateLogin:(NSString *)login;
+
+
 @end
