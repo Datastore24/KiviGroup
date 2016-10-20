@@ -419,8 +419,12 @@
     if([authDbClass checkPassword:oldPassText]){
         if([newOnePassText isEqualToString:newTwoPassText] && newOnePassText.length>0 && newTwoPassText.length>0){
             
-            [authDbClass updatePassword:newOnePassText]; //ТУТ АПИ НУЖНО ЕЩЕ ПРОПИСАТЬ
-            [self buttonCancelPassAction];
+            
+            [self.delegate getChangePassword:self oldPass:oldPassText pass:newOnePassText andblock:^{
+                [authDbClass updatePassword:newOnePassText]; //ТУТ АПИ НУЖНО ЕЩЕ ПРОПИСАТЬ
+                [self buttonCancelPassAction];
+            }];
+            
             
         }else{
             if(![newOnePassText isEqualToString:newTwoPassText]){

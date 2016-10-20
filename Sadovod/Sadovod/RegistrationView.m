@@ -105,7 +105,7 @@
                 
             } else {
                 //Создание таблицы заказов----
-                self.mainTable = [[UITableView alloc] initWithFrame:CGRectMake(0.f, - 64.f, self.frame.size.width, self.frame.size.height + 64.f)];
+                self.mainTable = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, self.frame.size.height)];
                 //Убираем полосы разделяющие ячейки------------------------------
                 self.mainTable.separatorStyle = UITableViewCellSeparatorStyleNone;
                 self.mainTable.backgroundColor = nil;
@@ -228,7 +228,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    NSLog(@"COUNT %ld",self.arrayData.count);
     return self.arrayData.count;
 }
 
@@ -247,12 +247,12 @@
     cell.backgroundColor = nil;
     
     NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
+    NSLog(@"DICT %@",dict);
     
-    
-    [cell.contentView addSubview:[self createCustomCellWithNumber:[dict objectForKey:@"number"]
-                                                          andDate:[dict objectForKey:@"date"]
-                                                         andPrice:[dict objectForKey:@"price"]
-                                                        andStatus:[dict objectForKey:@"status"]]];
+    [cell.contentView addSubview:[self createCustomCellWithNumber:[dict objectForKey:@"id"]
+                                                          andDate:[dict objectForKey:@"dt"]
+                                                         andPrice:[dict objectForKey:@"summ"]
+                                                        andStatus:[dict objectForKey:@"ord_status"]]];
     
     
     

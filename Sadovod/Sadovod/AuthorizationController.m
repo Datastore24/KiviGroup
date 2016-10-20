@@ -192,6 +192,37 @@
     
 }
 
+-(void) getChangePassword:(AuthorizationView*) authorizationView oldPass:(NSString *) oldPass pass:(NSString *) pass andblock:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             oldPass, @"old_pass",
+                             pass, @"new_pass",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/change_pass" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            
+            block();
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
 - (void) methodRegistration: (AuthorizationView*) authorizationView {
     RegistrationController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RegistrationController"];
     [self.navigationController pushViewController:detail animated:NO];
@@ -246,6 +277,7 @@
 
                  block();
             }else{
+                [AlertClassCustom createAlertWithMessage:[respDict objectForKey:@"message"]];
                 NSLog(@"MESSAGE %@",[respDict objectForKey:@"message"]);
             }
             

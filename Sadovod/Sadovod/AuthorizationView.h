@@ -32,5 +32,6 @@
 -(void) getUserInfo:(AuthorizationView*) authorizationView andName:(NSString *) name andblock:(void (^)(void))block;
 -(void) getUserInfo:(AuthorizationView*) authorizationView andPassword:(NSString *) password andblock:(void (^)(void))block;
 -(void) getUserInfo:(AuthorizationView*) authorizationView andPay:(NSString *) pay andblock:(void (^)(void))block;
+-(void) getChangePassword:(AuthorizationView*) authorizationView oldPass:(NSString *) oldPass pass:(NSString *) pass andblock:(void (^)(void))block;
 
 @end
