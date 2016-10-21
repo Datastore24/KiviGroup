@@ -18,6 +18,7 @@
 @interface SizesView ()
 
 @property (strong, nonatomic) UIScrollView * mainScrollView;
+@property (strong, nonatomic) NSMutableArray * arrayButtons; //Массив всех кнопок размеров
 
 @end
 
@@ -36,6 +37,8 @@
             self.mainScrollView.contentSize = CGSizeMake(0.f, 1450.f + 40);
         }
         [self addSubview:self.mainScrollView];
+        
+        self.arrayButtons = [NSMutableArray array];
         
         
         CustomLabels * labelTitl = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:15.f andSizeWidht:self.frame.size.width - 30 andSizeHeight:20 andColor:VM_COLOR_800
@@ -153,8 +156,10 @@
             [buttonWoman setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonWoman.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonWoman.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-            [buttonWoman addTarget:self action:@selector(actionButtonWoman:) forControlEvents:UIControlEventTouchUpInside];
+            [buttonWoman addTarget:self action:@selector(actionButtonSize:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonWoman];
+            
+            [self.arrayButtons addObject:buttonWoman];
         }
         
         CustomLabels * labelMan = [[CustomLabels alloc] initLabelTableWithWidht:15.f andHeight:865.f andSizeWidht:self.frame.size.width - 30 andSizeHeight:20 andColor:VM_COLOR_800
@@ -177,7 +182,10 @@
             [buttonMan setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonMan.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonMan.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonMan addTarget:self action:@selector(actionButtonSize:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonMan];
+            
+            [self.arrayButtons addObject:buttonMan];
         }
         
         
@@ -196,7 +204,10 @@
             [buttonKid setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonKid.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonKid.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonKid addTarget:self action:@selector(actionButtonSize:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonKid];
+            
+            [self.arrayButtons addObject:buttonKid];
         }
         
         
@@ -215,7 +226,10 @@
             [buttonShoes setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonShoes.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonShoes.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonShoes addTarget:self action:@selector(actionButtonSize:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonShoes];
+            
+            [self.arrayButtons addObject:buttonShoes];
         }
         
         NSArray * otherTitl = [NSArray arrayWithObjects:@"Головные уборы", @"Браслеты", @"Кольца", nil];
@@ -234,7 +248,10 @@
             [buttonOther setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonOther.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonOther.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonOther addTarget:self action:@selector(actionButtonSize:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonOther];
+            
+            [self.arrayButtons addObject:buttonOther];
         }
         
         
@@ -245,8 +262,15 @@
 
 #pragma mark - Action
 
-- (void) actionButtonWoman: (UIButton*) button {
+- (void) actionButtonSize: (UIButton*) button {
+    for (int i = 0; i < 20; i++) {
+        if ([button isEqual:[self.arrayButtons objectAtIndex:i]]) {
+            [[SingleTone sharedManager] setTitlSize:button.titleLabel.text];
+            [[SingleTone sharedManager] setHtmlSize:[NSString stringWithFormat:@"size_%d", i]];
+        }
+    }
     
+    [self.delegate pushToWebSize:self];
 }
 
 
