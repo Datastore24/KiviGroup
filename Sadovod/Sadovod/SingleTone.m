@@ -14,6 +14,9 @@
 @synthesize typeMenu;
 @synthesize boolPhone;
 @synthesize helloBool;
+@synthesize titlSize;
+@synthesize htmlSize;
+
 
 
 #pragma mark Singleton Methods

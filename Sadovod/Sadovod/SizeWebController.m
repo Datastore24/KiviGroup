@@ -7,14 +7,8 @@
 //
 
 #import "SizeWebController.h"
-#import "CatalogController.h"
-#import "SizesView.h"
 #import "SingleTone.h"
-#import "FormalizationController.h"
-#import "BasketController.h"
-#import "AlertClassCustom.h"
-#import "PopAnimator.h"
-#import "PushAnimator.h"
+
 
 @interface SizeWebController ()
 
@@ -25,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setCustomTitle:@"Таблица размеров" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
+    [self setCustomTitle:[[SingleTone sharedManager] titlSize] andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     
     //Кнопка Назад---------------------------------------------
     UIButton * buttonBack = [UIButton createButtonBack];
@@ -33,7 +27,11 @@
     UIBarButtonItem *mailbuttonBack =[[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
-    
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:[[SingleTone sharedManager] htmlSize] ofType:@"html"];
+    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    [webView loadHTMLString:htmlString baseURL: [[NSBundle mainBundle] bundleURL]];
+    [self.view addSubview:webView];
     
 }
 

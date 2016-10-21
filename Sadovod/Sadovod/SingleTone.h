@@ -29,6 +29,9 @@
 //Переменная сохранения рахмера скрола
 @property (assign, nonatomic) CGFloat scrollHeight;
 
+@property (strong, nonatomic) NSString * titlSize;
+@property (strong, nonatomic) NSString * htmlSize;
+
 + (id)sharedManager;
 
 @end

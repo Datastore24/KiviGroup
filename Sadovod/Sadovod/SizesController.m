@@ -15,8 +15,9 @@
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+#import "SizeWebController.h"
 
-@interface SizesController () <BottomBasketViewDelegate, UINavigationControllerDelegate>
+@interface SizesController () <BottomBasketViewDelegate, UINavigationControllerDelegate, SizesViewDelegate>
 @property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
@@ -42,6 +43,7 @@
 #pragma mark - View
     
     SizesView * mainView = [[SizesView alloc] initWithView:self.view andData:nil];
+    mainView.delegate = self;
     [self.view addSubview:mainView];
     
     self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
@@ -92,6 +94,17 @@
     
     return nil;
 }
+
+#pragma mark - SizesViewDelegate
+
+- (void) pushToWebSize: (SizesView*) sizesView {
+    
+    SizeWebController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"SizeWebController"];
+    [self.navigationController pushViewController:detail animated:YES];
+    
+}
+
+
 
 
 @end

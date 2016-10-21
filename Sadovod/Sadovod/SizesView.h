@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SizesViewDelegate;
+
 @interface SizesView : UIView
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data;
+
+@property (weak, nonatomic) id <SizesViewDelegate> delegate;
+
+@end
+
+@protocol SizesViewDelegate <NSObject>
+
+@optional
+
+- (void) pushToWebSize: (SizesView*) sizesView;
 
 @end
