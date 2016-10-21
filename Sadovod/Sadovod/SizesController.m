@@ -17,7 +17,6 @@
 #import "PushAnimator.h"
 
 @interface SizesController () <BottomBasketViewDelegate, UINavigationControllerDelegate>
-
 @property (strong, nonatomic) BottomBasketView * basketView;
 
 @end
@@ -51,6 +50,8 @@
         self.basketView.alpha = 1.f;
     }
     [self.view addSubview:self.basketView];
+    
+
 
     
 }

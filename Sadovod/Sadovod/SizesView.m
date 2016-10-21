@@ -153,6 +153,7 @@
             [buttonWoman setTitleColor:[UIColor hx_colorWithHexRGBAString:@"000000"] forState:UIControlStateNormal];
             buttonWoman.titleLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
             buttonWoman.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [buttonWoman addTarget:self action:@selector(actionButtonWoman:) forControlEvents:UIControlEventTouchUpInside];
             [self.mainScrollView addSubview:buttonWoman];
         }
         
@@ -241,5 +242,12 @@
     }
     return self;
 }
+
+#pragma mark - Action
+
+- (void) actionButtonWoman: (UIButton*) button {
+    
+}
+
 
 @end
