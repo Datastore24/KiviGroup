@@ -26,7 +26,7 @@
 @implementation CatalogListView
 
 - (instancetype)initWithView: (UIView*) view
-                     andData: (NSArray*) data
+                     andData: (NSDictionary*) data
 {
     self = [super init];
     if (self) {

@@ -27,6 +27,7 @@
 @interface AuthorizationController () <AuthorizationViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
+@property (strong, nonatomic) NSDictionary * userInfo;
 
 @end
 
@@ -40,6 +41,8 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
+    self.userInfo = [NSDictionary new];
+    
     if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
     [self setCustomTitle:@"Войти" andBarButtonAlpha: YES andButtonBasket: YES]; //Ввод заголовка
     } else {
@@ -52,10 +55,21 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
 #pragma mark - View
+   
+     if ([[[SingleTone sharedManager] typeMenu] isEqualToString:@"0"]) {
+          AuthorizationView * mainView = [[AuthorizationView alloc] initWithView:self.view andData:nil];
+         mainView.delegate = self;
+         [self.view addSubview:mainView];
+     }else{
+         [self getUserInfo:^{
+           
+              AuthorizationView * mainView = [[AuthorizationView alloc] initWithView:self.view andData:self.userInfo];
+             mainView.delegate = self;
+             [self.view addSubview:mainView];
+         }];
+         
+     }
     
-    AuthorizationView * mainView = [[AuthorizationView alloc] initWithView:self.view andData:nil];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
     
     self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
     
@@ -82,6 +96,131 @@
 
 - (void) methodInput: (AuthorizationView*) authorizationView {
     [self buttonBackAction];
+}
+
+
+-(void) getUserInfo:(AuthorizationView*) authorizationView andName:(NSString *) name andblock:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             name, @"name",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/change_name" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            block();
+            
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getUserInfo:(AuthorizationView*) authorizationView andPassword:(NSString *) password andblock:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             password, @"password",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/change_pass" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            block();
+            
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getUserInfo:(AuthorizationView*) authorizationView andPay:(NSString *) pay andblock:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             pay, @"score",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/change_pay_score" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            
+            block();
+            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getChangePassword:(AuthorizationView*) authorizationView oldPass:(NSString *) oldPass pass:(NSString *) pass andblock:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             oldPass, @"old_pass",
+                             pass, @"new_pass",
+                             [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/change_pass" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            
+            block();
+            
+            
+            
+        }
+        
+    }];
+    
 }
 
 - (void) methodRegistration: (AuthorizationView*) authorizationView {
@@ -125,6 +264,8 @@
             if([[respDict objectForKey:@"status"] integerValue] == 1){
                 AuthDbClass * authDbClass = [[AuthDbClass alloc] init];
                 [authDbClass checkKey:[respDict objectForKey:@"token"] andCatalogKey:[respDict objectForKey:@"token"]];
+                [authDbClass updateLogin:email];
+                [authDbClass updatePassword:password];
                 
                 
                 [[SingleTone sharedManager] setSuperKey:[respDict objectForKey:@"super_key"]];
@@ -136,12 +277,43 @@
 
                  block();
             }else{
+                [AlertClassCustom createAlertWithMessage:[respDict objectForKey:@"message"]];
                 NSLog(@"MESSAGE %@",[respDict objectForKey:@"message"]);
             }
             
           
             
            
+            
+            
+        }
+        
+    }];
+    
+}
+
+-(void) getUserInfo:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                            [[SingleTone sharedManager] catalogKey], @"key",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"user/get" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+            self.userInfo = [respDict objectForKey:@"user"];
+            block();
             
             
         }

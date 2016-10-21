@@ -22,6 +22,7 @@
 @interface RegistrationController () <BottomBasketViewDelegate, RegistrationViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BottomBasketView * basketView;
+@property (strong, nonatomic) NSArray * orderInfo;
 
 @end
 
@@ -48,10 +49,13 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
 #pragma mark - View
+    [self getUserOrder:^{
+        RegistrationView * mainView = [[RegistrationView alloc] initWithView:self.view andData:self.orderInfo];
+        mainView.delegate = self;
+        [self.view addSubview:mainView];
+        
+    }];
     
-    RegistrationView * mainView = [[RegistrationView alloc] initWithView:self.view andData:[self createArray]];
-    mainView.delegate = self;
-    [self.view addSubview:mainView];
     
     self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
     self.basketView.delegate = self;
@@ -167,6 +171,38 @@
             self.regDict = respDict;
             
             
+            block();
+            
+            
+        }
+        
+    }];
+    
+}
+
+#pragma mark - API
+-(void) getUserOrder:(void (^)(void))block
+{
+    APIGetClass * api =[APIGetClass new]; //создаем API
+    
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             
+                             [[SingleTone sharedManager] catalogKey], @"token",
+                             @"ios_sadovod",@"appname",
+                             nil];
+    
+    NSLog(@"PARAMS %@",params);
+    
+    [api getDataFromServerWithParams:params method:@"get_my_orders" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary * respDict = (NSDictionary *) response;
+            
+            NSLog(@"AUTO %@",respDict);
+//            self.userInfo = [respDict objectForKey:@"user"];
+            self.orderInfo = [respDict objectForKey:@"list"];
             block();
             
             
