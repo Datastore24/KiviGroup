@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSArray * arrayName;
 @property (assign, nonatomic) NSInteger pageX;
 @property (strong, nonatomic) NSString * countPage;
+@property (assign, nonatomic) BOOL isLoadMore;
 
 //ScrollProduct
 @property (strong, nonatomic) UIScrollView * mainScrolView;
@@ -62,10 +63,12 @@
         self.pageX = 0;
         self.arrayBorderView = [[NSMutableArray alloc] init];
         self.isBoll = NO;
+        self.isLoadMore = NO;
         self.arrayData = data;
         self.arrayName = arrayName;
         self.numberButton = 0;
         self.countPage=@"1";
+        
         
         self.lineProduct = 0; //Идентификатор строк
         self.columnProduct = 0; //Идентификатор столбцов
@@ -375,7 +378,7 @@
             self.viewPhone.alpha = 0.f;
         }];
     } else {
-        NSLog(@"Звонок");
+        
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74957687838"]];
         
     }
@@ -406,7 +409,7 @@
 - (void) buttonProductAction: (CustomButton*) button {
     for (int i = 0; i < self.arrayData.count; i++) {
         if (button.tag == 30 + i) {
-            NSLog(@"CUSTOM ID %@", button.customID);
+            
             [self.delegate pushToBuyView:self andProductID:button.customID andProductPrice:button.customValueTwo andProductName:button.customName];
         }
     }
@@ -428,7 +431,36 @@
         CGFloat pageWidth = CGRectGetWidth(self.bounds);
         CGFloat pageFraction = self.mainScrolView.contentOffset.x / pageWidth;
         NSInteger num = (NSInteger) pageFraction;
-    NSLog(@"NUM %d",num);
+    
+    for (int j = 0; j <  self.arrayBorderView.count; j++) {
+        
+        
+        if (pageFraction <= 1) {
+            UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
+            CGRect rect = viewBorder.frame;
+            rect.origin.x = 50.f * pageFraction;
+            rect.size.width = 50.f + (50.f * pageFraction);
+            viewBorder.frame = rect;
+            self.catalogScroll.contentOffset = CGPointMake(50.f * pageFraction * 0.6f, 0.f);
+            
+        } else {
+            UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
+            CGRect rect = viewBorder.frame;
+            rect.origin.x = 50.f + ((pageFraction - 1.f) * 100.f);
+            rect.size.width = 50.f + (50.f * (pageFraction - (pageFraction - 1.f)));
+            viewBorder.frame = rect;
+            if (isiPhone5) {
+                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1082.f) {
+                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
+                }
+            } else if (isiPhone6 || isiPhone6Plus) {
+                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1210.f) {
+                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
+                }
+            }
+            
+        }
+    }
     
     if(self.pageX!=num){
       
@@ -571,7 +603,7 @@
         }];
 
         self.pageX=num;
-    }else{
+    }else if(self.pageX==num){
         // Get the current size of the refresh controller
         CGRect refreshBounds = self.productScrollView.bounds;
         
@@ -586,26 +618,24 @@
         
         
         
-        CGPoint offset = scrollView.contentOffset; // текущее положение
-        CGRect bounds = scrollView.bounds; // контент на экране
-        CGSize size = scrollView.contentSize; //весь контент
-        UIEdgeInsets inset = scrollView.contentInset; //положение на экране верх и низ
+        CGPoint offset = self.productScrollView.contentOffset; // текущее положение
+        CGRect bounds = self.productScrollView.bounds; // контент на экране
+        CGSize size = self.productScrollView.contentSize; //весь контент
+        UIEdgeInsets inset = self.productScrollView.contentInset; //положение на экране верх и низ
         float y = offset.y + bounds.size.height - inset.bottom; //высота текущего положения
         float h = size.height; // высота всего
         
-        NSLog(@"pos: %f of %f", y, h);
+        float reload_distance = 10; // Дистанция, которая срабатывает для дозагрузки
         
-        float reload_distance = 20; // Дистанция, которая срабатывает для дозагрузки
+        NSLog(@"position y %f h %f",y,h);
         
-        
-        
-        if(y > h + reload_distance) {
+        if((y > h + reload_distance) && !self.isLoadMore) {
             
             self.spinner.frame = CGRectMake(self.productScrollView.frame.size.width/2-10, h + reload_distance/2-54, 24, 24);
             
             [self.spinner startAnimating];
             
-            self.productScrollView.userActivity = NO;
+            
             NSLog(@"load more rows h %f",h);
             [self loadMore];
             
@@ -614,47 +644,21 @@
     }
   
     
-    for (int j = 0; j <  self.arrayBorderView.count; j++) {
-       
-        
-        if (pageFraction <= 1) {
-            UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
-            CGRect rect = viewBorder.frame;
-            rect.origin.x = 50.f * pageFraction;
-            rect.size.width = 50.f + (50.f * pageFraction);
-            viewBorder.frame = rect;
-            self.catalogScroll.contentOffset = CGPointMake(50.f * pageFraction * 0.6f, 0.f);
-            
-        } else {
-            UIView * viewBorder = [self.arrayBorderView objectAtIndex:j];
-            CGRect rect = viewBorder.frame;
-            rect.origin.x = 50.f + ((pageFraction - 1.f) * 100.f);
-            rect.size.width = 50.f + (50.f * (pageFraction - (pageFraction - 1.f)));
-            viewBorder.frame = rect;
-            if (isiPhone5) {
-                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1082.f) {
-                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
-                }
-            } else if (isiPhone6 || isiPhone6Plus) {
-                if ((self.frame.size.width * pageFraction) < self.catalogScroll.contentSize.width + 1210.f) {
-                    self.catalogScroll.contentOffset = CGPointMake((50.f * 0.6f) + ((pageFraction - 1.f) * 100.f), 0.f);
-                }
-            }
-
-        }
-    }
+  
     
     
     
 }
 
 -(void) loadMore{
-    NSLog(@"LOAD MORE");
+ 
     
     [self.spinner stopAnimating];
+    self.isLoadMore=YES;
     NSInteger newIntCountPage = [self.countPage integerValue]+1;
     NSString * newStrCountPage = [NSString stringWithFormat:@"%ld",(long)newIntCountPage];
     self.countPage =newStrCountPage;
+   
     NSLog(@"COUNT %@",self.countPage);
     
     CGFloat pageWidth = CGRectGetWidth(self.bounds);
@@ -667,9 +671,13 @@
         [self.delegate getApiTabProducts:[[self.arrayName objectAtIndex:num] objectForKey:@"cat"] andPage:newStrCountPage andBlock:^{
             NSArray * productArray =[self.delegate arrayProduct];
             
-            int j=(int)num;
-            
-           
+            NSLog(@"COLUM %ld LINE %ld",(long)self.columnProduct,(long)self.lineProduct);
+                self.columnProduct += 1;
+                if (self.columnProduct > 1) {
+                    self.columnProduct = 0;
+                    self.lineProduct += 1;
+                    
+                }
             
             
             
@@ -780,7 +788,8 @@
                 }
             }];
             
-            self.productScrollView.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (self.lineProduct + 1));
+            self.productScrollView.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (self.lineProduct + 1)+64);
+            self.isLoadMore=NO;
             
         }];
         
