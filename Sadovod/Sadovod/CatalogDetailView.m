@@ -214,15 +214,23 @@
                                     }
                                     //Случайный выбор параметра-----------
                                     NSString * stringStatus;
-                                    if (arc4random() % 2) {
+                                    
+                                    if([[dictProduct objectForKey:@"mark"] integerValue] ==1)
+                                    {
                                         stringStatus = @"NEW";
                                         statusLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
                                         statusLabel.backgroundColor = [UIColor clearColor];
-                                    } else {
+                                    }else if([[dictProduct objectForKey:@"mark"] integerValue] ==2){
                                         stringStatus = @"OLD";
                                         statusLabel.backgroundColor = [UIColor lightGrayColor];
                                         statusLabel.textColor = [UIColor whiteColor];
+                                        
+                                    }else if([[dictProduct objectForKey:@"mark"] integerValue] ==0){
+                                        statusLabel.alpha = 0.f;
                                     }
+                                    
+                                    
+                                   
                                     statusLabel.text = stringStatus;
                                     statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
                                     statusLabel.textAlignment = NSTextAlignmentCenter;
