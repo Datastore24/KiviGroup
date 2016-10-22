@@ -100,9 +100,13 @@
         }
         [self.view addSubview:self.basketView];
         
-        OldOrderView * oldOrderView = [[OldOrderView alloc] initWithView:self.view];
-        oldOrderView.delegate = self;
-        [self.view addSubview:oldOrderView];
+        if([[self.arrayData objectForKey:@"mark"] integerValue]==2){
+            OldOrderView * oldOrderView = [[OldOrderView alloc] initWithView:self.view];
+            oldOrderView.delegate = self;
+            [self.view addSubview:oldOrderView];
+        }
+        
+        
         
         self.galeryView = [[GaleryView alloc] initWithView:self.view andData:self.arrayData];
         self.galeryView.delegate = self;
@@ -242,6 +246,7 @@
             NSDictionary * respDict = (NSDictionary *) response;
             
             self.arrayData = [respDict objectForKey:@"product"];
+            
             
             [self getApiCart:^{
                  block();

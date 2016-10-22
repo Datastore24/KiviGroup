@@ -222,6 +222,7 @@
             
             NSDictionary * respDict = (NSDictionary *) response;
             self.arrayData = [respDict objectForKey:@"list"];
+           
             
         
             block();

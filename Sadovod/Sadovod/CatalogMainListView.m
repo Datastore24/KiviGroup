@@ -84,7 +84,8 @@
     
     
         [cell.contentView addSubview:[self createCustomCellWithName:[dict objectForKey:@"cat_name"]
-                                                           andCount:[dict objectForKey:@"prod_cnt"]]];
+                                                           andCount:[dict objectForKey:@"prod_cnt"]
+                                      andCountNews:[dict objectForKey:@"news"]]];
    
    
     
@@ -109,7 +110,8 @@
 }
 
 - (UIView*) createCustomCellWithName: (NSString*) name
-                            andCount: (NSString*) count {
+                            andCount: (NSString*) count
+                            andCountNews: (NSString*) news{
     UIView * customCell = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.frame.size.width, 46.f)];
     
     CustomLabels * nameLabel = [[CustomLabels alloc] initLabelTableWithWidht:10.f andHeight:0.f andSizeWidht:200.f andSizeHeight:46.f andColor:@"000000" andText:name];
@@ -131,7 +133,8 @@
     [customCell addSubview:labelCount];
     
     UILabel * labelNew = [[UILabel alloc] init];
-    labelNew.text = [NSString stringWithFormat:@"+%d", 10 + arc4random() % 500]; //Это случайное число (необходимо добавить строку колличества нового товара)
+    labelNew.text = news; //Это случайное число (необходимо добавить строку колличества нового товара)
+    
     labelNew.textColor = [UIColor whiteColor];
     labelNew.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
     labelNew.textAlignment = NSTextAlignmentCenter;
@@ -140,6 +143,12 @@
     UIView * viewNewLabel = [[UIView alloc] initWithFrame:labelNew.frame];
     viewNewLabel.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"198B20"];
     viewNewLabel.layer.cornerRadius = 3.f;
+    
+    if([news integerValue]==0){
+        labelNew.alpha=0;
+        viewNewLabel.alpha=0;
+    }
+    
     [customCell addSubview:viewNewLabel];
     [customCell addSubview:labelNew];
     
