@@ -265,7 +265,7 @@
             
             if([response isKindOfClass:[NSDictionary class]]){
                 self.arrayProduct =[respDict objectForKey:@"list"];
-                NSLog(@"RESP %@",[respDict objectForKey:@"list"]);
+                
               
                 block();
             }else{
