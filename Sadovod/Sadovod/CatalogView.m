@@ -29,6 +29,7 @@
 @property (assign, nonatomic) NSInteger pageX;
 @property (strong, nonatomic) NSString * countPage;
 @property (assign, nonatomic) BOOL isLoadMore;
+@property (strong, nonatomic) NSMutableDictionary * loadedPage;
 
 //ScrollProduct
 @property (strong, nonatomic) UIScrollView * mainScrolView;
@@ -68,6 +69,7 @@
         self.arrayName = arrayName;
         self.numberButton = 0;
         self.countPage=@"1";
+        self.loadedPage = [NSMutableDictionary new];
         
         
         self.lineProduct = 0; //Идентификатор строк
@@ -116,6 +118,7 @@
             buttonCategory.tag = 10 + i;
             [buttonCategory addTarget:self action:@selector(buttonCategoryAction:) forControlEvents:UIControlEventTouchUpInside];
             widhtCount += buttonCategory.frame.size.width;
+            [self.loadedPage setObject:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d",i]];
             [self.catalogScroll addSubview:buttonCategory];
             
             
@@ -153,6 +156,8 @@
                                                                                  self.frame.size.width / 2.f - 1.5f,
                                                                                  self.frame.size.width / 2.f - 1.5f )];
                 buttonProduct.backgroundColor = [UIColor whiteColor];
+                buttonProduct.tag = 9000+j;
+                buttonProduct.alpha =1.f;
                 [self.mainScrolView addSubview:buttonProduct];
                 
                 
@@ -316,13 +321,14 @@
 //                self.lineProduct = 0;
                 
             }];
-            
-            UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(100, 300, 200, 40)];
-            label.text = @"Привет";
 
+        for(UIView * view in self.mainScrolView.subviews){
+            if(view.tag == 9000){
+                view.alpha = 0.f;
+            }
+        }
+        [self.loadedPage setValue:[NSNumber numberWithBool:YES] forKey:@"0"];
         
-            
-            
             self.productScrollView.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (self.lineProduct + 1));
 //        }
 
@@ -379,7 +385,7 @@
     
     [UIView borderViewWithHeight:60 andWight:0.f andView:phoneView andColor:VM_COLOR_800 andHieghtBorder:2.f];
     
-    CustomLabels * labelPhone = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:80 andColor:@"000000" andText:@"+74957687838" andTextSize:20 andLineSpacing:0.f fontName:VM_FONT_BOLD];
+    CustomLabels * labelPhone = [[CustomLabels alloc] initLabelWithWidht:20.f andHeight:80 andColor:@"000000" andText:@"+7 495 642-25-13" andTextSize:20 andLineSpacing:0.f fontName:VM_FONT_BOLD];
     [phoneView addSubview:labelPhone];
     
     NSArray * arrayName = [NSArray arrayWithObjects:@"Закрыть", @"Позвонить", nil];
@@ -424,7 +430,7 @@
         }];
     } else {
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74957687838"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74956422513"]];
         
     }
 }
@@ -477,6 +483,7 @@
         CGFloat pageFraction = self.mainScrolView.contentOffset.x / pageWidth;
         NSInteger num = (NSInteger) pageFraction;
     
+    
     for (int j = 0; j <  self.arrayBorderView.count; j++) {
         
         
@@ -506,20 +513,15 @@
             
         }
     }
+    NSLog(@"NUM %d",num);
     
-    if(self.pageX!=num){
+    
+    if(self.pageX!=num && ![[self.loadedPage objectForKey:[NSString stringWithFormat:@"%d",num]] boolValue]){
       
         self.columnProduct=0;
         self.lineProduct=0;
         self.countPage=0;
-        for (UIView *view in self.mainScrolView.subviews){
-            if([view isKindOfClass:[UIScrollView class]]){
-                
-                [view removeFromSuperview];
-                
-            }
-        }
-    
+        
         
         [self.delegate getApiTabProducts:[[self.arrayName objectAtIndex:num] objectForKey:@"cat"] andPage:self.countPage andBlock:^{
             NSArray * productArray =[self.delegate arrayProduct];
@@ -642,13 +644,20 @@
                     }
                 }
             }];
-                
+            
+            for(UIView * view in self.mainScrolView.subviews){
+                if(view.tag == 9000+num){
+                    view.alpha = 0.f;
+                }
+            }
+            [self.loadedPage setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",num]];
                 self.productScrollView.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (self.lineProduct + 1));
 
         }];
 
         self.pageX=num;
-    }else if(self.pageX==num){
+    }else if(self.pageX==num && [[self.loadedPage objectForKey:[NSString stringWithFormat:@"%d",num]] boolValue]){
+        
         // Get the current size of the refresh controller
         CGRect refreshBounds = self.productScrollView.bounds;
         
