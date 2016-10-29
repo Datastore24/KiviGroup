@@ -115,8 +115,10 @@
 
         self.viewSizes = [self createViewSizesWithMainView:self.mainScrollView andArraySizes:self.arraySizes andArrayCart:self.arrayCart];
         
+        NSLog(@"self.arraySizes.count - %d", self.arraySizes.count);
         
         if(self.arraySizes.count == 1){
+            self.sizesTitle.alpha = 0.f;
             if([[[self.arraySizes objectAtIndex:0] objectForKey:@"value"] isEqualToString:@"Без размера"]){
                
                 CGRect rectSizes = self.viewSizes.frame;
