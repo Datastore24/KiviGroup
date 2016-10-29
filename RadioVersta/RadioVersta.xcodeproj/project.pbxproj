@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD8DE8481DC1F3F000CD1412 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8DE8471DC1F3F000CD1412 /* main.m */; };
+		AD8DE84B1DC1F3F000CD1412 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8DE84A1DC1F3F000CD1412 /* AppDelegate.m */; };
+		AD8DE84E1DC1F3F000CD1412 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8DE84D1DC1F3F000CD1412 /* ViewController.m */; };
+		AD8DE8511DC1F3F000CD1412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8DE84F1DC1F3F000CD1412 /* Main.storyboard */; };
+		AD8DE8531DC1F3F000CD1412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8DE8521DC1F3F000CD1412 /* Assets.xcassets */; };
+		AD8DE8561DC1F3F000CD1412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8DE8541DC1F3F000CD1412 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AD8DE8431DC1F3F000CD1412 /* RadioVersta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioVersta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8DE8471DC1F3F000CD1412 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD8DE8491DC1F3F000CD1412 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD8DE84A1DC1F3F000CD1412 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD8DE84C1DC1F3F000CD1412 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AD8DE84D1DC1F3F000CD1412 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AD8DE8501DC1F3F000CD1412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD8DE8521DC1F3F000CD1412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD8DE8551DC1F3F000CD1412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD8DE8571DC1F3F000CD1412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD8DE8401DC1F3EF00CD1412 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD8DE83A1DC1F3EF00CD1412 = {
+			isa = PBXGroup;
+			children = (
+				AD8DE8451DC1F3F000CD1412 /* RadioVersta */,
+				AD8DE8441DC1F3F000CD1412 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD8DE8441DC1F3F000CD1412 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD8DE8431DC1F3F000CD1412 /* RadioVersta.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD8DE8451DC1F3F000CD1412 /* RadioVersta */ = {
+			isa = PBXGroup;
+			children = (
+				AD8DE8491DC1F3F000CD1412 /* AppDelegate.h */,
+				AD8DE84A1DC1F3F000CD1412 /* AppDelegate.m */,
+				AD8DE84C1DC1F3F000CD1412 /* ViewController.h */,
+				AD8DE84D1DC1F3F000CD1412 /* ViewController.m */,
+				AD8DE84F1DC1F3F000CD1412 /* Main.storyboard */,
+				AD8DE8521DC1F3F000CD1412 /* Assets.xcassets */,
+				AD8DE8541DC1F3F000CD1412 /* LaunchScreen.storyboard */,
+				AD8DE8571DC1F3F000CD1412 /* Info.plist */,
+				AD8DE8461DC1F3F000CD1412 /* Supporting Files */,
+			);
+			path = RadioVersta;
+			sourceTree = "<group>";
+		};
+		AD8DE8461DC1F3F000CD1412 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD8DE8471DC1F3F000CD1412 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD8DE8421DC1F3EF00CD1412 /* RadioVersta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8DE85A1DC1F3F000CD1412 /* Build configuration list for PBXNativeTarget "RadioVersta" */;
+			buildPhases = (
+				AD8DE83F1DC1F3EF00CD1412 /* Sources */,
+				AD8DE8401DC1F3EF00CD1412 /* Frameworks */,
+				AD8DE8411DC1F3EF00CD1412 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioVersta;
+			productName = RadioVersta;
+			productReference = AD8DE8431DC1F3F000CD1412 /* RadioVersta.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD8DE83B1DC1F3EF00CD1412 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = datastore24;
+				TargetAttributes = {
+					AD8DE8421DC1F3EF00CD1412 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 6598R4ULA4;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AD8DE83E1DC1F3EF00CD1412 /* Build configuration list for PBXProject "RadioVersta" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD8DE83A1DC1F3EF00CD1412;
+			productRefGroup = AD8DE8441DC1F3F000CD1412 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD8DE8421DC1F3EF00CD1412 /* RadioVersta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD8DE8411DC1F3EF00CD1412 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8DE8561DC1F3F000CD1412 /* LaunchScreen.storyboard in Resources */,
+				AD8DE8531DC1F3F000CD1412 /* Assets.xcassets in Resources */,
+				AD8DE8511DC1F3F000CD1412 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD8DE83F1DC1F3EF00CD1412 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8DE84E1DC1F3F000CD1412 /* ViewController.m in Sources */,
+				AD8DE84B1DC1F3F000CD1412 /* AppDelegate.m in Sources */,
+				AD8DE8481DC1F3F000CD1412 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AD8DE84F1DC1F3F000CD1412 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8DE8501DC1F3F000CD1412 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD8DE8541DC1F3F000CD1412 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8DE8551DC1F3F000CD1412 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD8DE8581DC1F3F000CD1412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AD8DE8591DC1F3F000CD1412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD8DE85B1DC1F3F000CD1412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6598R4ULA4;
+				INFOPLIST_FILE = RadioVersta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.RadioVersta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AD8DE85C1DC1F3F000CD1412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6598R4ULA4;
+				INFOPLIST_FILE = RadioVersta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.RadioVersta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD8DE83E1DC1F3EF00CD1412 /* Build configuration list for PBXProject "RadioVersta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8DE8581DC1F3F000CD1412 /* Debug */,
+				AD8DE8591DC1F3F000CD1412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8DE85A1DC1F3F000CD1412 /* Build configuration list for PBXNativeTarget "RadioVersta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8DE85B1DC1F3F000CD1412 /* Debug */,
+				AD8DE85C1DC1F3F000CD1412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD8DE83B1DC1F3EF00CD1412 /* Project object */;
+}
