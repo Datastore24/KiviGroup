@@ -43,24 +43,40 @@
     
     //Доработать после ввода API---------
     
+
+    
     CGRect rectView = self.mainView.frame;
     rectView.origin.y = 0;
-    rectView.size.height = self.view.frame.size.height + 30;
+    rectView.size.height = self.view.frame.size.height;
     self.mainView.frame = rectView;
     CGRect rectViewScroll = self.mainView.frame;
-    rectViewScroll.origin.y = 30;
-    rectViewScroll.size.height = self.view.frame.size.height + 30;
+    rectViewScroll.origin.y = 0;
+    rectViewScroll.size.height = self.view.frame.size.height;
     self.mainView.mainScrollView.frame = rectViewScroll;
+    
+    if([[self.arrayData objectForKey:@"mark"] integerValue]==2){
+        rectViewScroll.origin.y = 30;
+        self.mainView.mainScrollView.frame = rectViewScroll;
+    }
+    
     
     self.basketView.labelButtonBasket.text = [NSString stringWithFormat:@"Итого %@ шт на %@ руб", [[SingleTone sharedManager] countType], [[SingleTone sharedManager] priceType]];
     if ([[[SingleTone sharedManager] countType] integerValue] != 0) {
         self.basketView.alpha = 1.f;
-        self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight] + 50);
+        if([[self.arrayData objectForKey:@"mark"] integerValue]==2){
+            self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight] + 80);
+        } else {
+           self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight] + 50);
+        }
         self.buttonBasket.alpha = 1.f;
         self.buttonBasket.userInteractionEnabled = YES;
     } else {
         self.basketView.alpha = 0.f;
-        self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight]);
+        if([[self.arrayData objectForKey:@"mark"] integerValue]==2){
+            self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight] + 30);
+        } else {
+            self.mainView.mainScrollView.contentSize = CGSizeMake(0, [[SingleTone sharedManager] scrollHeight]);
+        }
         self.buttonBasket.alpha = 0.4f;
         self.buttonBasket.userInteractionEnabled = NO;
     }
@@ -104,6 +120,13 @@
             OldOrderView * oldOrderView = [[OldOrderView alloc] initWithView:self.view];
             oldOrderView.delegate = self;
             [self.view addSubview:oldOrderView];
+        } else {
+            CGRect mainRect = self.mainView.frame;
+            mainRect.origin.y -= 30;
+            self.mainView.frame = mainRect;
+            CGRect mainRectScroll = self.mainView.mainScrollView.frame;
+            mainRectScroll.size.height += 30;
+            self.mainView.mainScrollView.frame = mainRectScroll;
         }
         
         

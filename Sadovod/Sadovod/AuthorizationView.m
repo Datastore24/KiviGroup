@@ -17,6 +17,7 @@
 #import "AlertClassCustom.h"
 #import "AuthDbClass.h";
 #import "Auth.h";
+#import "CheckRequiredField.h"
 
 @interface AuthorizationView () <UITextViewDelegate>
 
@@ -476,12 +477,26 @@
     InputTextView * inputTextLogin =(InputTextView *)[self viewWithTag:2100];
     InputTextView * inputTextPassword =(InputTextView *)[self viewWithTag:2101];
     
-    [self.delegate getApiAutorisation:self andblock:^{
-        
-        [self.delegate methodInput:self];
-        
-    } andEmail:inputTextLogin.textFieldInput.text andPassword:inputTextPassword.textFieldInput.text];
     
+    int countErr = 0;
+    
+    if([CheckRequiredField checkField:inputTextLogin.textFieldInput.text andFieldTwo:nil countText:0
+                              andType:@"text" andErrorMessage:@"Введите Email"]){
+        countErr+=1;
+        
+    } else if ([CheckRequiredField checkField:inputTextPassword.textFieldInput.text andFieldTwo:nil countText:0
+                                      andType:@"text" andErrorMessage:@"Введите Пароль"]) {
+       countErr+=1; 
+    }
+    
+    
+    if (countErr == 0) {
+        [self.delegate getApiAutorisation:self andblock:^{
+            
+            [self.delegate methodInput:self];
+            
+        } andEmail:inputTextLogin.textFieldInput.text andPassword:inputTextPassword.textFieldInput.text];
+    }
    
 }
 

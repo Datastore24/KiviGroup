@@ -151,7 +151,7 @@
         for (int j = 0; j < self.arrayName.count; j++) {
             for (int i = 0; i < self.arrayData.count; i++) {
                 
-                UIView * buttonProduct = [[UIView alloc] initWithFrame:CGRectMake((self.mainScrolView.frame.size.width * j) + ((self.frame.size.width / 2.f + 1.5f) * self.columnProduct),
+                UIView * buttonProduct = [[UIView alloc] initWithFrame:CGRectMake(3 + (self.mainScrolView.frame.size.width * j) + ((self.frame.size.width / 2.f + 1.5f) * self.columnProduct),
                                                                                  0.f + ((self.frame.size.width / 2.f + 1.5f) * self.lineProduct),
                                                                                  self.frame.size.width / 2.f - 1.5f,
                                                                                  self.frame.size.width / 2.f - 1.5f )];
