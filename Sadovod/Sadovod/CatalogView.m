@@ -516,7 +516,7 @@
     NSLog(@"NUM %d",num);
     
     
-    if(self.pageX!=num && ![[self.loadedPage objectForKey:[NSString stringWithFormat:@"%d",num]] boolValue]){
+    if(self.pageX!=num && ![[self.loadedPage objectForKey:[NSString stringWithFormat:@"%ld",num]] boolValue]){
       
         self.columnProduct=0;
         self.lineProduct=0;
@@ -650,13 +650,13 @@
                     view.alpha = 0.f;
                 }
             }
-            [self.loadedPage setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",num]];
+            [self.loadedPage setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%ld",num]];
                 self.productScrollView.contentSize = CGSizeMake(0, 20 + (self.frame.size.width / 2.f) * (self.lineProduct + 1));
 
         }];
 
         self.pageX=num;
-    }else if(self.pageX==num && [[self.loadedPage objectForKey:[NSString stringWithFormat:@"%d",num]] boolValue]){
+    }else if(self.pageX==num && [[self.loadedPage objectForKey:[NSString stringWithFormat:@"%ld",num]] boolValue]){
         
         // Get the current size of the refresh controller
         CGRect refreshBounds = self.productScrollView.bounds;

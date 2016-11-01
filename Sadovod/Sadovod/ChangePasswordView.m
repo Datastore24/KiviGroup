@@ -14,6 +14,7 @@
 #import "HexColors.h"
 #import "UIView+BorderView.h"
 #import "SingleTone.h"
+#import "AlertClassCustom.h"
 
 @implementation ChangePasswordView
 
@@ -40,6 +41,7 @@
                                                                       andTextPlaceHolder:@"Email" colorBorder:nil];
 
                 inputText.textFieldInput.keyboardType = UIKeyboardTypeEmailAddress;
+                inputText.tag=8000;
 
                 inputText.textFieldInput.font = [UIFont fontWithName:VM_FONT_REGULAR size:15];
                 inputText.textFieldInput.textColor = [UIColor blackColor];
@@ -77,7 +79,21 @@
 
 - (void) buttonEntranceAction {
     
-    NSLog(@"Смена пароля");
+    InputTextView * inputText = [self viewWithTag:8000];
+    if(inputText.textFieldInput.text.length == 0){
+        [AlertClassCustom createAlertWithMessage:@"Заполните поле Email"];
+        
+    }else{
+        [self.delegate getApiPassword:self andblock:^{
+            
+            [self.delegate buttonBackActionDelegate:self];
+            
+        } andEmail:inputText.textFieldInput.text];
+        
+        NSLog(@"Смена пароля %@",inputText.textFieldInput.text);
+        
+    }
+    
     
 }
     
