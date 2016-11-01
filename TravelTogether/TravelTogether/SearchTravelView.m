@@ -81,20 +81,12 @@
                                  CGRectMake(12.5f, 39.f, self.frame.size.width / 2.f - 12.5f, 21.f)];
         viewAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
         [self customRadiusWithView:viewAircraft andRadius:10.5f];
-        if (isiPhone6) {
-            viewAircraft.frame = CGRectMake(13.75f, 46.25f, self.frame.size.width / 2.f - 13.75f, 25.f);
-            [self customRadiusWithView:viewAircraft andRadius:12.5f];
-        }
         [self addSubview:viewAircraft];
         
         self.buttonAircraft = [UIButton buttonWithType:UIButtonTypeSystem];
         self.buttonAircraft.frame = CGRectMake(13.5f, 40.f, self.frame.size.width / 2.f - 14.5f, 19.f);
         self.buttonAircraft.backgroundColor = [UIColor whiteColor];
         [self customRadiusWithView:self.buttonAircraft andRadius:9.5f];
-        if (isiPhone6) {
-            self.buttonAircraft.frame = CGRectMake(14.75f, 47.25f, self.frame.size.width / 2.f - 15.75f, 23.f);
-            [self customRadiusWithView:self.buttonAircraft andRadius:11.5f];
-        }
         self.buttonAircraft.userInteractionEnabled = NO;
         self.buttonAircraft.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:0.f];
         [self.buttonAircraft setTitle:@"Самолет" forState:UIControlStateNormal];
@@ -111,10 +103,6 @@
                                          self.frame.size.width / 2.f - 12.5f, 21.f)];
         viewTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
         [self customRightRadiusWithView:viewTrain andRadius:10.5f];
-        if (isiPhone6) {
-            viewTrain.frame = CGRectMake(self.frame.size.width / 2, 46.25f, self.frame.size.width / 2.f - 13.75f, 25.f);
-            [self customRightRadiusWithView:viewTrain andRadius:12.5f];
-        }
         [self addSubview:viewTrain];
         
         self.buttonTrain = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -122,10 +110,6 @@
                                        self.frame.size.width / 2.f - 14.5f, 19.f);
         self.buttonTrain.backgroundColor = [UIColor whiteColor];
         [self customRightRadiusWithView:self.buttonTrain andRadius:9.5f];
-        if (isiPhone6) {
-            self.buttonTrain.frame = CGRectMake(viewTrain.frame.origin.x + 1.f, 47.25f, self.frame.size.width / 2.f - 15.75f, 23.f);
-            [self customRightRadiusWithView:self.buttonTrain andRadius:11.5f];
-        }
         self.buttonTrain.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_WHITE alpha:1.f];
         [self.buttonTrain setTitle:@"Поезд" forState:UIControlStateNormal];
         [self.buttonTrain setTitleColor:[UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK] forState:UIControlStateNormal];
@@ -144,23 +128,12 @@
             if (i == 0) {
                 tintLabels.tag = 1000;
             }
-            if (isiPhone6) {
-                tintLabels.frame = CGRectMake(15.f, 85.f + 55.f * i, 100, 30);
-                tintLabels.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
-                [tintLabels sizeToFit];
-            }
 
             
             UIView * groudView = [[UIView alloc] initWithFrame:CGRectMake(12.5f, 87.5f + 46.f * i, 142.5f, 20.f)];
-            if (isiPhone6) {
-                groudView.frame = CGRectMake(15.f, 100.f + 55.f * i, 170.f, 25.f);
-            }
             groudView.backgroundColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
             
             UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(13.5f, 88.5f + 46.f * i, 140.5f, 18.f)];
-            if (isiPhone6) {
-                borderView.frame = CGRectMake(16.f, 101.f + 55.f * i, 168.f, 23.f);
-            }
             borderView.backgroundColor = [UIColor whiteColor];
             
             
@@ -172,10 +145,6 @@
             inputTextButton.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
             inputTextButton.frame = CGRectMake(13.5f + 10.f, 88.5f + 46.f * i, 140.5f - 10.f, 18.f);
             
-            if (isiPhone6) {
-                inputTextButton.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
-                inputTextButton.frame = CGRectMake(18.f + 15.75f, 101.f + 55.f * i, 168.f - 15.75f, 23.f);
-            }
             
             if (i == 0) {
                 inputTextButton.alpha = 0.f;
@@ -187,13 +156,6 @@
                 self.inputTextName.layer.cornerRadius = 9.f;
                 self.inputTextName.textFieldInput.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_LIGHT_GREY];
                 self.inputTextName.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-                if (isiPhone6) {
-                    self.inputTextName.frame = CGRectMake(15.f, 100, 170.f, 25.f);
-                    self.inputTextName.layer.cornerRadius = 12.5f;
-                    self.inputTextName.textFieldInput.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:11];
-                    self.inputTextName.textFieldInput.frame = CGRectMake(15.75, 0, self.inputTextName.frame.size.width - 40, 25);
-                    self.inputTextName.labelPlaceHoldInput.frame = CGRectMake(15.75, 0, self.inputTextName.frame.size.width - 40, 25);
-                }
                 [self addSubview:self.inputTextName];
             }
             
@@ -202,18 +164,9 @@
             if (i > 1 && i < 4) {
                 tintLabels.frame = CGRectMake(26.f, 75.f + 46.25f * (i + 1.f), 100.f, 20.f);
                 [tintLabels sizeToFit];
-                if (isiPhone6) {
-                    tintLabels.frame = CGRectMake(32.5f, 85.f + 55.f * (i + 1.f), 100, 30);
-                    tintLabels.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
-                    [tintLabels sizeToFit];
-                }
             } else if (i > 3) {
                 tintLabels.frame = CGRectMake(175.f, 75.f + 46.25f * (i - 1.f), 100.f, 20.f);
                 [tintLabels sizeToFit];
-                if (isiPhone6) {
-                tintLabels.frame = CGRectMake(208.5f, 85.f + 55.f * (i - 1.f), 100, 30);
-                [tintLabels sizeToFit];
-                }
             }
             
             if (i == 4 || i == 6) {
@@ -233,21 +186,10 @@
                 [self customRightRadiusWithView:groudView andRadius:10.f];
                 [self customRightRadiusWithView:borderView andRadius:9.f];
                 
-                if (isiPhone6) {
-                    groudView.frame = CGRectMake(190.f, 100.f + 55.f * (i - 2), 170.f, 25.f);
-                    borderView.frame = CGRectMake(191.f, 101.f + 55.f * (i - 2), 168.f, 23.f);
-                    inputTextButton.frame = CGRectMake(191.f + 15.75f, 101.f + 55.f * (i - 2), 168.f - 15.75f, 23.f);
-                    [self customRightRadiusWithView:groudView andRadius:12.5f];
-                    [self customRightRadiusWithView:borderView andRadius:11.5f];
-                }
                 
             } else {
                 [self customAllRadiusWithView:groudView andRadius:10.f];
                 [self customAllRadiusWithView:borderView andRadius:9.f];
-                if (isiPhone6) {
-                    [self customAllRadiusWithView:groudView andRadius:12.5f];
-                    [self customAllRadiusWithView:borderView andRadius:11.5f];
-                }
             }
 
             [self addSubview: tintLabels];
@@ -258,9 +200,6 @@
         
         self.buttonDateThere = [UIButton buttonWithType:UIButtonTypeCustom];
         self.buttonDateThere.frame = CGRectMake(130.f, 275.f, 12.5f, 12.5f);
-        if (isiPhone6) {
-            self.buttonDateThere.frame = CGRectMake(157.5f, 325.f, 15.f, 15.f);
-        }
         self.buttonDateThere.tag = 20;
         UIImage * buttonDateImage = [UIImage imageNamed:@"imageData.png"];
         [self.buttonDateThere setImage:buttonDateImage forState:UIControlStateNormal];
@@ -269,9 +208,6 @@
         
         self.buttonDateThence = [UIButton buttonWithType:UIButtonTypeCustom];
         self.buttonDateThence.frame = CGRectMake(self.frame.size.width - 36.f, 275.f, 12.5f, 12.5f);
-        if (isiPhone6) {
-            self.buttonDateThence.frame = CGRectMake(self.frame.size.width - 45.f, 325.f, 15.f, 15.f);
-        }
         self.buttonDateThence.tag = 21;
         self.buttonDateThence.enabled = NO;
         [self.buttonDateThence setImage:buttonDateImage forState:UIControlStateNormal];
@@ -280,23 +216,12 @@
         
         
         
-        
-        if (isiPhone6) {
-            self.swithMale = [[MBSwitch alloc] initWithFrame:CGRectMake(82.5f, self.frame.size.height - 155.f, 45.f, 20)];
-        } else {
-            self.swithMale = [[MBSwitch alloc] initWithFrame:CGRectMake(90.f, self.frame.size.height - 132.5f, 33.75, 17.5)];
-        }
         self.swithMale.onTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
         self.swithMale.offTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
         self.swithMale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:@"b7b7b7"];
         [self.swithMale addTarget:self action:@selector(swichMaleAction) forControlEvents:UIControlEventValueChanged];
         [self addSubview:self.swithMale];
         
-        if (isiPhone6) {
-            self.swithFemale = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 125.f, self.frame.size.height - 155.f, 45.f, 20)];
-        } else {
-            self.swithFemale = [[MBSwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 90.f - 33.75, self.frame.size.height - 132.5f, 33.75, 17.5)];
-        }
         self.swithFemale.onTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
         self.swithFemale.offTintColor = [UIColor hx_colorWithHexRGBAString:@"e9e5e5"];
         self.swithFemale.thumbTintColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_PINK];
@@ -306,17 +231,11 @@
         
         
         self.imageMale = [[UIImageView alloc] initWithFrame:CGRectMake(97.f, self.swithMale.frame.origin.y - 50.5f, 20.f, 43.5f)];
-        if (isiPhone6) {
-            self.imageMale.frame = CGRectMake(93.5f, self.frame.size.height - 221.5f, 21.5f, 52.f);
-        }
         self.imageMale.image = [UIImage imageNamed:@"sexManNo.png"];
         [self addSubview:self.imageMale];
         
         self.imageFemale = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 97.f - 20.f,
                                                                                   self.swithMale.frame.origin.y - 50.5f, 20.f, 43.5f)];
-        if (isiPhone6) {
-            self.imageFemale.frame = CGRectMake(self.frame.size.width - 117.5f, self.frame.size.height - 221.5f, 21.5f, 52.f);
-        }
         self.imageFemale.image = [UIImage imageNamed:@"sexFemaleYes.png"];
         [self addSubview:self.imageFemale];
         
@@ -329,11 +248,6 @@
         [mainButtonSearch setTitle:@"НАЧАТЬ ПОИСК" forState:UIControlStateNormal];
         [mainButtonSearch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         mainButtonSearch.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
-        if (isiPhone6) {
-            mainButtonSearch.frame = CGRectMake(self.frame.size.width / 2 - 132.5f, self.frame.size.height - 110.f, 265.f, 55.f);
-            mainButtonSearch.layer.cornerRadius = 27.5f;
-            mainButtonSearch.titleLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:14];
-        }
         [mainButtonSearch addTarget:self action:@selector(mainButtonSearchAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:mainButtonSearch];
         
@@ -352,9 +266,6 @@
         
         
         UIImageView * imaheView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 - 19.f, 167.5f, 38.f, 38.f)];
-        if (isiPhone6) {
-            imaheView.frame = CGRectMake(self.frame.size.width / 2 - 22.f, 180.5f, 44.f, 44.f);
-        }
         imaheView.image = [activiti animatedImageWithDuration:1.f];
         [self.timeView addSubview:imaheView];
         
@@ -364,10 +275,6 @@
         timeLabel.numberOfLines = 2;
         timeLabel.textAlignment = NSTextAlignmentCenter;
         timeLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:13];
-        if (isiPhone6) {
-            timeLabel.frame = CGRectMake(0.f, 225.f, self.frame.size.width, 60.f);
-            timeLabel.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:14];
-        }
         [self.timeView addSubview:timeLabel];
         
         
@@ -404,21 +311,13 @@
     viewSearch.backgroundColor = [UIColor whiteColor];
     
     self.inputText = [[InputTextView alloc] initInputTextSearchWithView:viewSearch andRect:CGRectMake(0.f, 10.f, viewSearch.frame.size.width, 15.f) andImage:nil andTextPlaceHolder:@"Страна" colorBorder:nil];
-    if (isiPhone6) {
-        self.inputText.frame = CGRectMake(0.f, 12.f, viewSearch.frame.size.width, 20.f);
-    }
     [viewSearch addSubview:self.inputText];
-    if (isiPhone6) {
-        [UIView borderViewWithHeight:40.f andWight:0.f andView:viewSearch andColor:VM_COLOR_PINK];
-    } else {
+
         [UIView borderViewWithHeight:35.f andWight:0.f andView:viewSearch andColor:VM_COLOR_PINK];
-    }
+
     
     
     UIButton * buttonCancel = [UIButton createButtonWithImage:@"buttonCityCancel.png" anfFrame:CGRectMake(self.frame.size.width - 50.f, 3.f, 30.f, 30.f)];
-    if (isiPhone6) {
-        buttonCancel.frame = CGRectMake(self.frame.size.width - 50.f, 5.f, 30.f, 30.f);
-    }
     [buttonCancel addTarget:self action:@selector(buttonCancelAction) forControlEvents:UIControlEventTouchUpInside];
     [viewSearch addSubview:buttonCancel];
     
@@ -427,9 +326,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishInputSearchText) name:UITextFieldTextDidChangeNotification object:nil];
     
     self.tableSearch = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 40.f, viewSearch.frame.size.width, viewSearch.frame.size.height - 40.f)];
-    if (isiPhone6) {
-        self.tableSearch.frame = CGRectMake(0.f, 45.f, viewSearch.frame.size.width, viewSearch.frame.size.height - 45.f);
-    }
      //Убираем полосы разделяющие ячейки------------------------------
     self.tableSearch.backgroundColor = nil;
     self.tableSearch.dataSource = self;
@@ -536,12 +432,7 @@
         CGRect rect = self.pickerView.frame;
         
         self.fonView.alpha = 0.4;
-
-        if (isiPhone6) {
-            rect.origin.y -= 250;
-        } else {
             rect.origin.y -= 230;
-        }
         self.pickerView.frame = rect;
     }];
     if (button.tag == 20) {
@@ -567,11 +458,9 @@
         
         
         CGRect rect = self.pickerView.frame;
-        if (isiPhone6) {
-            rect.origin.y += 250;
-        } else {
+
             rect.origin.y += 230;
-        }
+
         self.pickerView.frame = rect;
     }];
     self.buttonDateThence.enabled = YES;
@@ -686,9 +575,6 @@
 
 - (UIView*) createDatePickerWithView: (UIView*) view {
     UIView * pickerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 230.f)];
-    if (isiPhone6) {
-        pickerView.frame = CGRectMake(0.f, self.frame.size.height, self.frame.size.width, 230.f);
-    }
     pickerView.userInteractionEnabled = YES;
     pickerView.backgroundColor = [UIColor whiteColor];
     self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.f, 0.f, pickerView.frame.size.width, 190)];

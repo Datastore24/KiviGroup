@@ -55,9 +55,6 @@
         self.arrayData = data;
         self.lineCount = 1;
         self.chatScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 529.5f - 80.f, self.frame.size.width, self.frame.size.height - 38.5f)];
-        if (isiPhone6) {
-            self.chatScrollView.frame = CGRectMake(0.f, 632.5f - 80.f, self.frame.size.width, self.frame.size.height - 38.5f);
-        }
 
         self.scrollHeight = self.chatScrollView.frame.size.height;
         self.chatScrollView.delegate = self;
@@ -137,9 +134,6 @@
     labelMessage.numberOfLines = 0;
     labelMessage.textAlignment = NSTextAlignmentLeft;
     labelMessage.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:12];
-    if (isiPhone6) {
-        labelMessage.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:14];
-    }
     [labelMessage sizeToFit];
     
     //Если сообщение идет от нас
@@ -173,17 +167,11 @@
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 80.f andHeight: 0.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentRight;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
-        if (isiPhone6) {
-            labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:9];
-        }
         [messegeView addSubview:labelName];
         
         CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:self.frame.size.width - 100.f andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
         labelDate.textAlignment = NSTextAlignmentRight;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
-        if (isiPhone6) {
-            labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:9];
-        }
         [messegeView addSubview:labelDate];
         
         UIImageView * imageSend = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 38.f, messegeTextView.frame.size.height + 25.f, 20.f, 8.f)];
@@ -224,17 +212,11 @@
         CustomLabels * labelName = [[CustomLabels alloc] initLabelTableWithWidht:55.f andHeight: 0.f andSizeWidht:100.f andSizeHeight:20.f andColor:@"A6A6AA" andText:name];
         labelName.textAlignment = NSTextAlignmentLeft;
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
-        if (isiPhone6) {
-            labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:9];
-        }
         [messegeView addSubview:labelName];
         
         CustomLabels * labelDate = [[CustomLabels alloc] initLabelTableWithWidht:55.f andHeight:messegeTextView.frame.size.height + 20.f andSizeWidht:60.f andSizeHeight:20.f andColor:@"A6A6AA" andText:date];
         labelDate.textAlignment = NSTextAlignmentLeft;
         labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
-        if (isiPhone6) {
-            labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:9];
-        }
         [messegeView addSubview:labelDate];
         
         UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(12.f, messegeTextView.frame.size.height + 5.f, 26.f, 26.f)];
