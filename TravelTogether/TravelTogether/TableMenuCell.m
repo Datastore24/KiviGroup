@@ -23,16 +23,9 @@
     labelTint.text = name;
     labelTint.textColor = [UIColor whiteColor];
     labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:12];
-    if (isiPhone6) {
-        labelTint.frame = CGRectMake (70, 0, viewCell.frame.size.width - 65, viewCell.frame.size.height);
-        labelTint.font = [UIFont fontWithName:VM_FONT_REGULAR size:13];
-    }
     [viewCell addSubview:labelTint];
     
     UIImageView * imageMenu = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 30, 30)];
-    if (isiPhone6) {
-        imageMenu.frame = CGRectMake (20, 5, 35, 35);
-    }
     imageMenu.image = [UIImage imageNamed:imageName];
     [viewCell addSubview:imageMenu];
     

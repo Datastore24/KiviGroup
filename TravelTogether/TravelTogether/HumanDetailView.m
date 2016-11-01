@@ -50,9 +50,6 @@
         
         for (int i = 0; i < 3; i++) {
             UIButton * buttonAva = [UIButton createButtonWithImage:[dictData objectForKey:@"image"] anfFrame:CGRectMake(0.f + self.frame.size.width * i, 0.f, self.frame.size.width, 182.5f)];
-            if (isiPhone6) {
-                buttonAva.frame = CGRectMake(0.f + self.frame.size.width * i, 0.f, self.frame.size.width, 215.5f);
-            }
             [buttonAva addTarget:self action:@selector(buttonAvaAction:) forControlEvents:UIControlEventTouchUpInside];
             [scrollPhoto addSubview:buttonAva];
         }
@@ -60,67 +57,37 @@
 
         
         UIView * viewGray = [[UIView alloc] initWithFrame:CGRectMake(0.f, 182.5f, self.frame.size.width, 24.f)];
-        if (isiPhone6) {
-            viewGray.frame = CGRectMake(0.f, 215.5f, self.frame.size.width, 29.f);
-        }
         viewGray.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"e6e6e6"];
         [self addSubview:viewGray];
         
         for (int i = 0; i < arrayTitls.count; i++) {
             UILabel * labelTitl = [[UILabel alloc] initWithFrame:CGRectMake(21.5f, self.heighter + 206.5, 61.f, 20.f)];
             UILabel * labelText = [[UILabel alloc] initWithFrame:CGRectMake(85.f, self.heighter + 206.5, 227.f, 20.f)];
-            if (isiPhone6) {
-                labelTitl.frame = CGRectMake(15.f, 275.f + self.heighter, 80.f, 20.f);
-                labelText.frame = CGRectMake(95.f, 275.f + self.heighter, 265.f, 20.f);
-            }
             if (i == 0) {
                 labelText.numberOfLines = 3;
                 labelText.frame = CGRectMake(85.f, self.heighter + 206.5, 227.f, 45.f);
-                if (isiPhone6) {
-                    labelText.frame = CGRectMake(95.f, self.heighter + 275.f, 265.f, 50.f);
-                    self.heighter += 55.f;
-                } else {
                     self.heighter += 47.5f;
-                }
             } else if (i == 3 || i == 6) {
                 labelText.numberOfLines = 2;
                 labelText.frame = CGRectMake(85.f, self.heighter + 206.5, 227.f, 32.f);
-                if (isiPhone6) {
-                    labelText.frame = CGRectMake(95.f, self.heighter + 275.f, 265.f, 37.f);
-                    self.heighter += 46.25f;
-                } else {
                     self.heighter += 40.f;
-                }
                 
             } else {
                 labelText.numberOfLines = 1;
-                if (isiPhone6) {
-                    self.heighter += 35.f;
-                } else {
                     self.heighter += 30.f;
-                }
             }
             labelTitl.text = [arrayTitls objectAtIndex:i];
             labelTitl.textColor = [UIColor hx_colorWithHexRGBAString:@"bdbcbc"];
             labelTitl.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-            if (isiPhone6) {
-                labelTitl.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-            }
             [self addSubview:labelTitl];
             
             labelText.text = [arrayText objectAtIndex:i];
             labelText.textColor = [UIColor hx_colorWithHexRGBAString:@"807e7e"];
             labelText.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-            if (isiPhone6) {
-                labelText.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-            }
             [self addSubview:labelText];
         }
         
         UIButton * buttonLike = [UIButton createButtonWithImage:@"likeButtonImage.png" anfFrame:CGRectMake(70.f, 140.f, 33.f, 33.f)];
-        if (isiPhone6) {
-            buttonLike.frame = CGRectMake(82.5f, 162.5f, 40.f, 40.f);
-        }
         buttonLike.alpha = 0.7f;
         [buttonLike addTarget:self action:@selector(buttonLikeAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonLike];
@@ -128,16 +95,9 @@
         self.labelbuttonLike = [[CustomLabels alloc] initLabelTableWithWidht:0.f andHeight:0.f andSizeWidht:33.f
                                                                          andSizeHeight:33.f andColor:VM_COLOR_PINK andText:@"10"];
         self.labelbuttonLike.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:7];
-        if (isiPhone6) {
-            self.labelbuttonLike.frame = CGRectMake(0.f, 0.f, 40.f, 40.f);
-            self.labelbuttonLike.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:8];
-        }
         [buttonLike addSubview:self.labelbuttonLike];
         
         UIButton * buttonMessege = [UIButton createButtonWithImage:@"messageButtonImage.png" anfFrame:CGRectMake(self.frame.size.width - 103.f, 140.f, 33.f, 33.f)];
-        if (isiPhone6) {
-            buttonMessege.frame = CGRectMake(self.frame.size.width - 122.5f, 162.5f, 40.f, 40.f);
-        }
         buttonMessege.alpha = 0.7f;
         [buttonMessege addTarget:self action:@selector(buttonMessegeAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonMessege];
@@ -146,20 +106,12 @@
                                                                     andSizeWidht:114.f andSizeHeight:20
                                                                         andColor:@"ffffff" andText:[dictData objectForKey:@"name"]];
         labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-        if (isiPhone6) {
-            labelName.frame = CGRectMake(122.5f, 161.25f, 136.25f, 40.f);
-            labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:12];
-        }
         labelName.textColor = [UIColor whiteColor];
         [self addSubview:labelName];
         
         CustomLabels * labelCity = [[CustomLabels alloc] initLabelTableWithWidht:103.f andHeight:160.f
                                                                     andSizeWidht:114.f andSizeHeight:20
                                                                         andColor:@"ffffff" andText:[dictData objectForKey:@"city"]];
-        if (isiPhone6) {
-            labelCity.frame = CGRectMake(122.5f, 175.f, 136.25f, 40.f);
-            labelCity.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_LIGHT size:12];
-        }
         labelCity.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
         labelCity.textColor = [UIColor whiteColor];
         [self addSubview:labelCity];
@@ -191,43 +143,21 @@
         
         self.imageViewPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
                                                                             imageViewFone.frame.size.height - 34.f)];
-        if (isiPhone6) {
-            self.imageViewPhoto.frame = CGRectMake(0.f, 0.f, imageViewFone.frame.size.width,
-                                                   imageViewFone.frame.size.height - 40.f);
-        }
         UIImage * imagePhoto = [UIImage imageNamed:@"imageBigPhoto.png"];
         self.imageViewPhoto.image = imagePhoto;
         //Временное условие----------------
         self.imageViewPhoto.contentMode = UIViewContentModeScaleAspectFit;
-        if (isiPhone6) {
-            self.imageViewPhoto.contentMode = UIViewContentModeScaleToFill;
-        }
         [viewPhotoScroll addSubview:self.imageViewPhoto];
         
         
         
         CustomLabels * labelName = [[CustomLabels alloc] initLabelWithWidht:12.5f andHeight:imageViewFone.frame.size.height - 27.5f andColor:VM_COLOR_PINK andText:@"Дженифер Энистон" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-        if (isiPhone6) {
-            labelName.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 32.5f, 20, 40);
-            labelName.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-            [labelName sizeToFit];
-        }
         [viewPhotoScroll addSubview:labelName];
         
         CustomLabels * labelComment = [[CustomLabels alloc] initLabelWithWidht:labelName.frame.size.width + 15.f andHeight:imageViewFone.frame.size.height - 27.5f andColor:@"707070" andText:@"Пляж на мальдивах" andTextSize:10 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-        if (isiPhone6) {
-            labelComment.frame = CGRectMake(labelName.frame.size.width + 18.f, imageViewFone.frame.size.height - 32.5f, 20, 30);
-            labelComment.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:12];
-            [labelComment sizeToFit];
-        }
         [viewPhotoScroll addSubview:labelComment];
         
         CustomLabels * labelDate = [[CustomLabels alloc] initLabelWithWidht:12.5 andHeight:imageViewFone.frame.size.height - 16.f andColor:@"b7b6b6" andText:@"2 дня назад" andTextSize:8 andLineSpacing:0.f fontName:VM_FONT_SF_DISPLAY_REGULAR];
-        if (isiPhone6) {
-            labelDate.frame = CGRectMake(15.f, imageViewFone.frame.size.height - 18.5f, 20, 40);
-            labelDate.font = [UIFont fontWithName:VM_FONT_SF_DISPLAY_REGULAR size:10];
-            [labelDate sizeToFit];
-        }
         [viewPhotoScroll addSubview:labelDate];
     }
     
