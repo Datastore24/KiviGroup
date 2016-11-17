@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4673EDE51176BC06DBFE1A /* libPods-Kinopro365.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B9C1DDDC46000F937BD /* ViewController.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
 		FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA11DDDC46000F937BD /* Assets.xcassets */; };
 		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
+		FFDE8BAE1DDDD5CE00F937BD /* LeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */; };
+		FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB61DDDE85B00F937BD /* BackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.debug.xcconfig"; sourceTree = "<group>"; };
+		57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.release.xcconfig"; sourceTree = "<group>"; };
+		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +32,10 @@
 		FFDE8BA11DDDC46000F937BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDE8BA41DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDE8BA61DDDC46000F937BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFDE8BAC1DDDD5CE00F937BD /* LeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSideViewController.h; sourceTree = "<group>"; };
+		FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideViewController.m; sourceTree = "<group>"; };
+		FFDE8BB51DDDE85B00F937BD /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
+		FFDE8BB61DDDE85B00F937BD /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E4673EDE51176BC06DBFE1A /* libPods-Kinopro365.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		024121D3396F9F694D25306F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */,
+				57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B1BA7514A6C0947729AA2F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FFDE8B891DDDC45F00F937BD = {
 			isa = PBXGroup;
 			children = (
+				FFDE8BB51DDDE85B00F937BD /* BackViewController.h */,
+				FFDE8BB61DDDE85B00F937BD /* BackViewController.m */,
+				FFDE8BAC1DDDD5CE00F937BD /* LeftSideViewController.h */,
+				FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */,
 				FFDE8B941DDDC46000F937BD /* Kinopro365 */,
 				FFDE8B931DDDC46000F937BD /* Products */,
+				024121D3396F9F694D25306F /* Pods */,
+				7B1BA7514A6C0947729AA2F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFDE8BA91DDDC46000F937BD /* Build configuration list for PBXNativeTarget "Kinopro365" */;
 			buildPhases = (
+				5B5B68FBD34407FF59C054F7 /* [CP] Check Pods Manifest.lock */,
 				FFDE8B8E1DDDC45F00F937BD /* Sources */,
 				FFDE8B8F1DDDC45F00F937BD /* Frameworks */,
 				FFDE8B901DDDC45F00F937BD /* Resources */,
+				109B912859C83BFC81BB2527 /* [CP] Embed Pods Frameworks */,
+				828CE999A5504644BABD1774 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,6 +182,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		109B912859C83BFC81BB2527 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B5B68FBD34407FF59C054F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		828CE999A5504644BABD1774 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFDE8B8E1DDDC45F00F937BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -152,6 +237,8 @@
 			files = (
 				FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
+				FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */,
+				FFDE8BAE1DDDD5CE00F937BD /* LeftSideViewController.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +355,7 @@
 		};
 		FFDE8BAA1DDDC46000F937BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kinopro365/Info.plist;
@@ -279,6 +367,7 @@
 		};
 		FFDE8BAB1DDDC46000F937BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kinopro365/Info.plist;
@@ -307,6 +396,7 @@
 				FFDE8BAB1DDDC46000F937BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
