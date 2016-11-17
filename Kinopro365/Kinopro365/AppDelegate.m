@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <MMDrawerController.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +17,44 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+
+    UIStoryboard * mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+
+    UIViewController * centerViewController =
+                        [mainStoryboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    UIViewController * leftViewController =
+                        [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftSideViewController"];
+
+    
+    
+    UINavigationController * leftSideNav = [[UINavigationController alloc]
+                                            initWithRootViewController:leftViewController];
+    UINavigationController * centerNav = [[UINavigationController alloc]
+                                            initWithRootViewController:centerViewController];
+
+    
+    MMDrawerController * centerContainer = [[MMDrawerController alloc]
+                                            initWithCenterViewController:centerNav
+                                            leftDrawerViewController:leftSideNav];
+    
+    centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+//    [centerContainer setShowsShadow:NO];
+    
+    
+    
+    
+    [self.window setRootViewController:centerContainer];
+    [self.window makeKeyAndVisible];
+
+    
+    
+    
+    
+    
     return YES;
 }
 

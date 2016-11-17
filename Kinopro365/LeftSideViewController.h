@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LeftSideViewController.h
 //  Kinopro365
 //
 //  Created by Виктор Мишустин on 17.11.16.
@@ -10,13 +10,8 @@
 #import <MMDrawerController.h>
 #import <MMDrawerBarButtonItem.h>
 #import <UIViewController+MMDrawerController.h>
-#import "AppDelegate.h"
 
-@interface ViewController : UIViewController
-- (IBAction)leftSideButtonMenu:(id)sender;
-
-- (IBAction)actionTestButton:(id)sender;
-
+@interface LeftSideViewController : UIViewController
+- (IBAction)actionButtonBack:(id)sender;
 
 @end
-

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
@@ -15,15 +16,35 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.mm_drawerController.maximumLeftDrawerWidth = 200;
+ 
 }
 
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
+
+
+- (IBAction)leftSideButtonMenu:(id)sender {
+    
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    
+}
+
+- (IBAction)actionTestButton:(id)sender {
+    
+    
+    NSLog(@"Hello");
+    
+}
+
+
 
 
 @end
