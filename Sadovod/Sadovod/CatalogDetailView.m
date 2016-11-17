@@ -15,9 +15,11 @@
 #import "CheckDataServer.h"
 #import "FilterDbClass.h"
 #import "Filter.h"
+#import "Sorting+CoreDataClass.h"
+#import "SortingDbClass.h"
 #import "CustomButton.h"
 
-@interface CatalogDetailView ()
+@interface CatalogDetailView () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIView * hideView;
 @property (strong, nonatomic) UIButton * buttonSort;
@@ -30,9 +32,21 @@
 @property (assign, nonatomic) BOOL isColumn;
 @property (assign, nonatomic) BOOL isEmptyFilter;
 
+@property (strong, nonatomic) NSString * countPage;
+@property (assign, nonatomic) BOOL isLoadMore;
+@property (strong, nonatomic) NSMutableDictionary * loadedPage;
+
+@property (assign, nonatomic) NSInteger lineProduct;
+@property (assign, nonatomic) NSInteger columnProduct;
+
+
+
 
 //ScrollView
 @property (strong, nonatomic) UIView * scrollView;
+@property (strong, nonatomic) UIView * mainViewForScroll;
+@property (strong, nonatomic) UIScrollView * scrollProduct;
+@property (strong, nonatomic) UIActivityIndicatorView * spinner;
 
 @end
 
@@ -40,7 +54,8 @@
 
 - (instancetype)initWithView: (UIView*) view
                      andData: (NSArray*) data
-            andisFilterEmpty: (BOOL) isEmptyFilter{
+            andisFilterEmpty: (BOOL) isEmptyFilter
+                    andCatID:(NSString *)catID{
     self = [super init];
     if (self) {
       
@@ -49,9 +64,27 @@
         self.isEmptyFilter = isEmptyFilter;
         self.arrayData = data;
         self.dictFilter = [NSDictionary new];
-        self.sort = @"upd-1";
+        
+        
+        self.countPage=@"1";
+        self.loadedPage = [NSMutableDictionary new];
+        self.isLoadMore = NO;
+        
+        self.lineProduct = 0; //Идентификатор строк
+        self.columnProduct = 0; //Идентификатор столбцов
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilter:) name:@"NOTIFICATION_FILTER_APPLY" object:nil];
+        
+        SortingDbClass * sortingDb = [[SortingDbClass alloc] init];
+        
+        Sorting * sortingCore = [sortingDb sortCatID:[NSString stringWithFormat:@"%@",catID] ];
+        
+        NSLog(@"SORT DEF %@",sortingCore.sort);
+        if(sortingCore.sort.length !=0){
+            self.sort=sortingCore.sort;
+        }else{
+            self.sort = @"upd-1";
+        }
         
 
        
@@ -62,8 +95,20 @@
         [self addSubview:topBarView];
         [UIView borderViewWithHeight:49.f andWight:0.f andView:topBarView andColor:VM_COLOR_900];
         
+        NSString * sortName;
+        if([sortingCore.sort isEqualToString:@"upd-1"]){
+            sortName =@"По новизне";
+
+        }else if([sortingCore.sort isEqualToString:@"cst-0"]){
+            sortName =@"По возрастанию цен";
+        }else if([sortingCore.sort isEqualToString:@"cst-1"]){
+            sortName =@"По снижению цен";
+        }else{
+            sortName =@"По новизне";
+        }
+        
         self.buttonSort = [UIButton customButtonSystemWithFrame:CGRectMake(0.f, 0.f, 160.f, 50.f) andColor:nil
-                                                      andAlphaBGColor:1.f andBorderColor:nil andCornerRadius:0.f andTextName:@"По Новизне"
+                                                      andAlphaBGColor:1.f andBorderColor:nil andCornerRadius:0.f andTextName:sortName
                                                          andColorText:VM_COLOR_800 andSizeText:13 andBorderWidht:0.f];
         [self.buttonSort addTarget:self action:@selector(buttonSortAction) forControlEvents:UIControlEventTouchUpInside];
         [topBarView addSubview:self.buttonSort];
@@ -107,6 +152,7 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];
         [self addGestureRecognizer:singleFingerTap];
+        
 
     }
     return self;
@@ -117,16 +163,19 @@
 - (UIView*) createScrollViewWithView: (UIView *) view
                              andData: (NSArray*) data andColumn: (BOOL) isColumn {
     
-    UIView * mainViewForScroll = [[UIView alloc] initWithFrame:CGRectMake(0.f, 50.f, view.frame.size.width, view.frame.size.height - 50.f)];
+   
+    
+    
+    self.mainViewForScroll = [[UIView alloc] initWithFrame:CGRectMake(0.f, 50.f, view.frame.size.width, view.frame.size.height - 50.f)];
     
     
     
-    UIScrollView * scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f , mainViewForScroll.frame.size.width, mainViewForScroll.frame.size.height)];
-    scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    scrollProduct.showsVerticalScrollIndicator = NO;
-    [mainViewForScroll addSubview:scrollProduct];
-    NSInteger lineProduct = 0; //Идентификатор строк
-    NSInteger columnProduct = 0; //Идентификатор столбцов
+    self.scrollProduct = [[UIScrollView alloc] initWithFrame:CGRectMake(0.f, 0.f , self.mainViewForScroll.frame.size.width, self.mainViewForScroll.frame.size.height)];
+    self.scrollProduct.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.scrollProduct.showsVerticalScrollIndicator = NO;
+    self.scrollProduct.delegate = self;
+    [self.mainViewForScroll addSubview:self.scrollProduct];
+
     for (int i = 0; i < data.count; i++) {
         
         NSDictionary * dictProduct = [data objectAtIndex:i];
@@ -137,21 +186,21 @@
         buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
    
         if (isColumn) {
-            buttonProduct.frame = CGRectMake(0.f + ((scrollProduct.frame.size.width / 2.f + 1.5f) * columnProduct),
-                                             0.f + ((scrollProduct.frame.size.width / 2.f + 1.5f) * lineProduct),
-                                             scrollProduct.frame.size.width / 2.f - 1.5f,
-                                             scrollProduct.frame.size.width / 2.f - 1.5f );
+            buttonProduct.frame = CGRectMake(0.f + ((self.scrollProduct.frame.size.width / 2.f + 1.5f) * self.columnProduct),
+                                             0.f + ((self.scrollProduct.frame.size.width / 2.f + 1.5f) * self.lineProduct),
+                                             self.scrollProduct.frame.size.width / 2.f - 1.5f,
+                                             self.scrollProduct.frame.size.width / 2.f - 1.5f );
             //Расчет таблицы---------------
-            columnProduct += 1;
-            if (columnProduct > 1) {
-                columnProduct = 0;
-                lineProduct += 1;
+            self.columnProduct += 1;
+            if (self.columnProduct > 1) {
+                self.columnProduct = 0;
+                self.lineProduct += 1;
             }
         } else {
             buttonProduct.frame = CGRectMake(0,
-                                             0.f + ((scrollProduct.frame.size.width + 1.5f) * i),
-                                             scrollProduct.frame.size.width,
-                                             scrollProduct.frame.size.width);
+                                             0.f + ((self.scrollProduct.frame.size.width + 1.5f) * i),
+                                             self.scrollProduct.frame.size.width,
+                                             self.scrollProduct.frame.size.width);
         }
         buttonProduct.backgroundColor = [UIColor whiteColor];
         
@@ -190,7 +239,12 @@
                                     
                                     [buttonProduct addSubview:imageView];
                                     
-                                    [scrollProduct addSubview:buttonProduct];
+                                    
+                                    
+                                    [self.scrollProduct addSubview:buttonProduct];
+                                    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                                    
+                                    [self.scrollProduct addSubview:self.spinner];
                                     
                                     UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
                                                                                                      buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
@@ -205,7 +259,7 @@
                                         labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
                                     }
                                     [buttonProduct addSubview:labelPrice];
-                                    [scrollProduct addSubview:buttonProduct];
+                                    [self.scrollProduct addSubview:buttonProduct];
                                     
                                     UILabel * statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 30, 15)];
                                     if (isiPhone6 || isiPhone6Plus) {
@@ -245,13 +299,13 @@
 
     }
     if (isColumn) {
-        scrollProduct.contentSize = CGSizeMake(0, 10 + (self.frame.size.width / 2.f) * lineProduct);
+        self.scrollProduct.contentSize = CGSizeMake(0, 10 + (self.frame.size.width / 2.f) * self.lineProduct);
     } else {
-        scrollProduct.contentSize = CGSizeMake(0, 0 + ((self.frame.size.width + 1.5) * self.arrayData.count));
+        self.scrollProduct.contentSize = CGSizeMake(0, 0 + ((self.frame.size.width + 1.5) * self.arrayData.count));
     }
     
     
-    return mainViewForScroll;
+    return self.mainViewForScroll;
 }
 
 #pragma mark - HideView
@@ -312,6 +366,9 @@
                 sort =@"cst-1";
             }
             self.sort = sort;
+            SortingDbClass * sortingDbClass = [[SortingDbClass alloc] init];
+            NSLog(@"SORTING %@",sort);
+            [sortingDbClass checkSort:[NSString stringWithFormat:@"%@",[self.delegate catID]]  andSort:sort];
             [self.delegate setSort:sort];
             
             
@@ -339,6 +396,10 @@
       
             
             [self.buttonSort setTitle:button.titleLabel.text forState:UIControlStateNormal];
+            
+            self.lineProduct = 0; //Идентификатор строк
+            self.columnProduct = 0; //Идентификатор столбцов
+            self.countPage=@"1";
             [self.delegate getApiCatalog:self andBlock:^{
             
                 
@@ -373,7 +434,7 @@
                 
 
 
-            } andSort:sort andFilter:filter andCost:cost];
+            } andSort:sort andFilter:filter andCost:cost andPage:self.countPage];
             [UIView animateWithDuration:0.3f animations:^{
                 self.hideView.alpha = 0.f;
             }];
@@ -466,6 +527,10 @@
 
 - (void) applyFilter: (NSNotification*) notification {
    self.dictFilter = notification.object;
+    
+    self.lineProduct = 0; //Идентификатор строк
+    self.columnProduct = 0; //Идентификатор столбцов
+    self.countPage=@"1";
 
             [self.delegate getApiCatalog:self andBlock:^{
                 
@@ -517,7 +582,7 @@
                 
                 
                 
-            } andSort:self.sort andFilter:[self.dictFilter objectForKey:@"string"] andCost:[self.dictFilter objectForKey:@"cost"]];
+            } andSort:self.sort andFilter:[self.dictFilter objectForKey:@"string"] andCost:[self.dictFilter objectForKey:@"cost"] andPage:self.countPage];
             [UIView animateWithDuration:0.3f animations:^{
                 self.hideView.alpha = 0.f;
             }];
@@ -525,5 +590,208 @@
     
 }
 
+#pragma  mark - SCROLL DELEGATE
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    // Get the current size of the refresh controller
+    CGRect refreshBounds = self.scrollProduct.bounds;
+    
+    // Distance the table has been pulled >= 0
+    CGFloat pullDistance = MAX(0.0, -self.scrollProduct.frame.origin.y);
+    
+    
+    
+    
+    // Set the encompassing view's frames
+    refreshBounds.size.height = pullDistance;
+    
+    
+    
+    CGPoint offset = self.scrollProduct.contentOffset; // текущее положение
+    CGRect bounds = self.scrollProduct.bounds; // контент на экране
+    CGSize size = self.scrollProduct.contentSize; //весь контент
+    UIEdgeInsets inset = self.scrollProduct .contentInset; //положение на экране верх и низ
+    float y = offset.y + bounds.size.height - inset.bottom; //высота текущего положения
+    float h = size.height; // высота всего
+    
+    float reload_distance = 10; // Дистанция, которая срабатывает для дозагрузки
+    
+    NSLog(@"position y %f h %f",y,h);
+    
+    if((y > h + reload_distance) && !self.isLoadMore) {
+        
+        self.spinner.frame = CGRectMake(self.scrollProduct.frame.size.width/2-10, h + reload_distance/2-54, 24, 24);
+        
+        [self.spinner startAnimating];
+        
+        
+        NSLog(@"load more rows h %f",h);
+        [self loadMore];
+        
+        
+    }
+
+}
+
+- (void) loadMore{
+    
+    [self.spinner stopAnimating];
+    self.isLoadMore=YES;
+    
+    NSInteger newIntCountPage = [self.countPage integerValue]+1;
+    NSString * newStrCountPage = [NSString stringWithFormat:@"%ld",(long)newIntCountPage];
+    self.countPage =newStrCountPage;
+    
+    [self.delegate getApiCatalog:self andBlock:^{
+
+        NSLog(@"COLUM %ld LINE %ld",(long)self.columnProduct,(long)self.lineProduct);
+//        self.columnProduct += 1;
+//        if (self.columnProduct > 1) {
+//            self.columnProduct = 0;
+//            self.lineProduct += 1;
+//            
+//        }
+//        
+        
+   
+        NSArray * data = [self.delegate arrayData];
+        for (int i = 0; i < data.count; i++) {
+            
+            NSDictionary * dictProduct = [data objectAtIndex:i];
+            CustomButton * buttonProduct = [CustomButton buttonWithType:UIButtonTypeCustom];
+            buttonProduct.customID = [dictProduct objectForKey:@"id"];
+            
+            buttonProduct.customName = [dictProduct objectForKey:@"name"];
+            buttonProduct.customValueTwo =[dictProduct objectForKey:@"cost"];
+            
+            if (self.isColumn) {
+                buttonProduct.frame = CGRectMake(0.f + ((self.scrollProduct.frame.size.width / 2.f + 1.5f) * self.columnProduct),
+                                                 0.f + ((self.scrollProduct.frame.size.width / 2.f + 1.5f) * self.lineProduct),
+                                                 self.scrollProduct.frame.size.width / 2.f - 1.5f,
+                                                 self.scrollProduct.frame.size.width / 2.f - 1.5f );
+                //Расчет таблицы---------------
+                self.columnProduct += 1;
+                if (self.columnProduct > 1) {
+                    self.columnProduct = 0;
+                    self.lineProduct += 1;
+                }
+            } else {
+                buttonProduct.frame = CGRectMake(0,
+                                                 0.f + ((self.scrollProduct.frame.size.width + 1.5f) * i),
+                                                 self.scrollProduct.frame.size.width,
+                                                 self.scrollProduct.frame.size.width);
+            }
+            buttonProduct.backgroundColor = [UIColor whiteColor];
+            
+            buttonProduct.tag = 20 + i;
+            [buttonProduct addTarget:self action:@selector(buttonProductAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
+            
+            
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, buttonProduct.frame.size.width, buttonProduct.frame.size.height)];
+            
+            
+            NSURL *imgURL = [NSURL URLWithString:[dictProduct objectForKey:@"img_med"]];
+            
+            //SingleTone с ресайз изображения
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:imgURL
+                                  options:0
+                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                     // progression tracking code
+                                 }
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                    
+                                    if(image){
+                                        
+                                        
+                                        [imageView setClipsToBounds:YES];
+                                        
+                                        imageView.contentMode = UIViewContentModeScaleAspectFit;
+                                        imageView.clipsToBounds =YES;
+                                        
+                                        
+                                        
+                                        
+                                        imageView.image = image;
+                                        
+                                        [buttonProduct addSubview:imageView];
+                                        
+                                        
+                                        
+                                        [self.scrollProduct addSubview:buttonProduct];
+                                        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                                        
+                                        [self.scrollProduct addSubview:self.spinner];
+                                        
+                                        UILabel * labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(buttonProduct.frame.size.width - 40.f,
+                                                                                                         buttonProduct.frame.size.height - 15.f, 40.f, 15.f)];
+                                        labelPrice.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"000000" alpha:0.4f];
+                                        labelPrice.text = [NSString  stringWithFormat:@"%@ руб.", [dictProduct objectForKey:@"cost"]];
+                                        labelPrice.textColor = [UIColor whiteColor];
+                                        labelPrice.textAlignment = NSTextAlignmentCenter;
+                                        labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                        if (isiPhone6 || isiPhone6Plus) {
+                                            labelPrice.frame = CGRectMake(buttonProduct.frame.size.width - 50.f,
+                                                                          buttonProduct.frame.size.height - 20.f, 50.f, 20.f);
+                                            labelPrice.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
+                                        }
+                                        [buttonProduct addSubview:labelPrice];
+                                        [self.scrollProduct addSubview:buttonProduct];
+                                        
+                                        UILabel * statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 30, 15)];
+                                        if (isiPhone6 || isiPhone6Plus) {
+                                            statusLabel.frame = CGRectMake(0.f, 0.f, 38, 20);
+                                            statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:11];
+                                        }
+                                        //Случайный выбор параметра-----------
+                                        NSString * stringStatus;
+                                        
+                                        if([[dictProduct objectForKey:@"mark"] integerValue] ==1)
+                                        {
+                                            stringStatus = @"NEW";
+                                            statusLabel.textColor = [UIColor hx_colorWithHexRGBAString:VM_COLOR_800];
+                                            statusLabel.backgroundColor = [UIColor clearColor];
+                                        }else if([[dictProduct objectForKey:@"mark"] integerValue] ==2){
+                                            stringStatus = @"OLD";
+                                            statusLabel.backgroundColor = [UIColor lightGrayColor];
+                                            statusLabel.textColor = [UIColor whiteColor];
+                                            
+                                        }else if([[dictProduct objectForKey:@"mark"] integerValue] ==0){
+                                            statusLabel.alpha = 0.f;
+                                        }
+                                        
+                                        
+                                        
+                                        statusLabel.text = stringStatus;
+                                        statusLabel.font = [UIFont fontWithName:VM_FONT_REGULAR size:9];
+                                        statusLabel.textAlignment = NSTextAlignmentCenter;
+                                        [buttonProduct addSubview:statusLabel];
+                                        
+                                    }else{
+                                        
+                                    }
+                                }];
+            
+            
+            
+        }
+        self.isLoadMore = NO;
+        if (self.isColumn) {
+            self.scrollProduct.contentSize = CGSizeMake(0, 10 + (self.frame.size.width / 2.f) * self.lineProduct +15);
+        } else {
+            self.scrollProduct.contentSize = CGSizeMake(0, 0 + ((self.frame.size.width + 1.5) * self.arrayData.count +15));
+        }
+        
+        
+    } andSort:self.sort andFilter:[self.dictFilter objectForKey:@"string"] andCost:[self.dictFilter objectForKey:@"cost"] andPage:self.countPage];
+    
+    
+
+    
+    
+}
 
 @end

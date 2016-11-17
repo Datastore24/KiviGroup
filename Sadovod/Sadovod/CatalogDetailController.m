@@ -14,12 +14,16 @@
 #import "SingleTone.h"
 #import "Filter.h"
 #import "FilterDbClass.h"
+#import "SortingDbClass.h"
+#import "Sorting+CoreDataClass.h"
 #import "Macros.h"
 #import "FormalizationController.h"
 #import "BasketController.h"
 #import "AlertClassCustom.h"
 #import "PopAnimator.h"
 #import "PushAnimator.h"
+
+
 
 @interface CatalogDetailController () <CatalogDetailViewDelegate, BottomBasketViewDelegate, UINavigationControllerDelegate>
 
@@ -62,11 +66,13 @@
     self.navigationItem.leftBarButtonItem = mailbuttonBack;
     
     self.arrayData = [NSArray new];
+    NSLog(@"CATT %@",self.catID);
     
 #pragma mark - View
     [self getApiCatalog:^{
-        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData andisFilterEmpty:self.isEmptyFilter];
+        CatalogDetailView * mainView = [[CatalogDetailView alloc] initWithView:self.view andData:self.arrayData andisFilterEmpty:self.isEmptyFilter andCatID:self.catID];
         mainView.delegate = self;
+        
         [self.view addSubview:mainView];
         
         self.basketView = [[BottomBasketView alloc] initBottomBasketViewWithPrice:[[SingleTone sharedManager] priceType] andCount:[[SingleTone sharedManager] countType] andView:self.view];
@@ -81,7 +87,7 @@
         }
         [self.view addSubview:self.basketView];
         
-    }];
+    } andPage:@"1"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkOrder:) name:NOTIFICATION_CHECK_COUNT_ORDER object:nil];
 
@@ -131,7 +137,7 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
--(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort andFilter:(NSString*) filter andCost:(NSString *) cost
+-(void) getApiCatalog:(CatalogDetailView*) catalogDetailView andBlock: (void (^)(void))block andSort:(NSString *) sort andFilter:(NSString*) filter andCost:(NSString *) cost andPage: (NSString *) page
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -150,6 +156,7 @@
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
                               self.catID,@"cat",
+                             page,@"page",
                              sort,@"sort",
                              filter,@"o",
                              cost,@"cost",
@@ -165,7 +172,6 @@
             
            
             self.arrayData = [respDict objectForKey:@"list"];
-            
                block();
             
             
@@ -179,7 +185,7 @@
 
 #pragma mark - API
 
--(void) getApiCatalog: (void (^)(void))block
+-(void) getApiCatalog: (void (^)(void))block andPage: (NSString *) page
 {
     APIGetClass * api =[APIGetClass new]; //создаем API
     
@@ -190,6 +196,16 @@
     
     NSString * cost;
     NSString * o;
+    
+    SortingDbClass * sortingDb = [[SortingDbClass alloc] init];
+    
+    Sorting * sortingCore = [sortingDb sortCatID:[NSString stringWithFormat:@"%@",self.catID]];
+    NSString * sort;
+    if(sortingCore.sort.length !=0){
+        sort=sortingCore.sort;
+    }else{
+        sort = @"upd-1";
+    }
    
     
     
@@ -211,7 +227,8 @@
                              [[SingleTone sharedManager] catalogKey], @"token",
                              @"ios_sadovod",@"appname",
                              self.catID,@"cat",
-                             @"upd-1",@"sort",
+                             page, @"page",
+                             sort,@"sort",
                              o,@"o",
                              cost,@"cost",
                              nil];

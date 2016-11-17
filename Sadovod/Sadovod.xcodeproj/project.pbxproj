@@ -19,6 +19,9 @@
 		AD7199C31D92DCA600F3B0E1 /* PopAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C21D92DCA600F3B0E1 /* PopAnimator.m */; };
 		AD7199C81D93E32200F3B0E1 /* Auth+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */; };
 		AD7199C91D93E32200F3B0E1 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7199C71D93E32200F3B0E1 /* Auth.m */; };
+		AD7796071DC7464200C0333B /* SortingDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7796061DC7464200C0333B /* SortingDbClass.m */; };
+		AD77960C1DC74AFC00C0333B /* Sorting+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7796091DC74AFC00C0333B /* Sorting+CoreDataClass.m */; };
+		AD77960D1DC74AFC00C0333B /* Sorting+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AD77960B1DC74AFC00C0333B /* Sorting+CoreDataProperties.m */; };
 		AD89D1BC1D678AF2007771B6 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1BA1D678AF2007771B6 /* UserModel.xcdatamodeld */; };
 		AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C41D678B7C007771B6 /* AuthDbClass.m */; };
 		AD89D1C91D678DAB007771B6 /* APIGetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AD89D1C81D678DAB007771B6 /* APIGetClass.m */; };
@@ -243,6 +246,12 @@
 		AD7199C51D93E32200F3B0E1 /* Auth+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AD7199C61D93E32200F3B0E1 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		AD7199C71D93E32200F3B0E1 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		AD7796051DC7464200C0333B /* SortingDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortingDbClass.h; sourceTree = "<group>"; };
+		AD7796061DC7464200C0333B /* SortingDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortingDbClass.m; sourceTree = "<group>"; };
+		AD7796081DC74AFC00C0333B /* Sorting+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sorting+CoreDataClass.h"; sourceTree = "<group>"; };
+		AD7796091DC74AFC00C0333B /* Sorting+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sorting+CoreDataClass.m"; sourceTree = "<group>"; };
+		AD77960A1DC74AFC00C0333B /* Sorting+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sorting+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AD77960B1DC74AFC00C0333B /* Sorting+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sorting+CoreDataProperties.m"; sourceTree = "<group>"; };
 		AD89D1BB1D678AF2007771B6 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 		AD89D1C31D678B7C007771B6 /* AuthDbClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthDbClass.h; sourceTree = "<group>"; };
 		AD89D1C41D678B7C007771B6 /* AuthDbClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthDbClass.m; sourceTree = "<group>"; };
@@ -569,6 +578,12 @@
 				AD6F0AAB1D7EA7C1005E8FD9 /* Filter+CoreDataProperties.m */,
 				AD6F0AAC1D7EA7C1005E8FD9 /* FilterDbClass.h */,
 				AD6F0AAD1D7EA7C1005E8FD9 /* FilterDbClass.m */,
+				AD7796081DC74AFC00C0333B /* Sorting+CoreDataClass.h */,
+				AD7796091DC74AFC00C0333B /* Sorting+CoreDataClass.m */,
+				AD77960A1DC74AFC00C0333B /* Sorting+CoreDataProperties.h */,
+				AD77960B1DC74AFC00C0333B /* Sorting+CoreDataProperties.m */,
+				AD7796051DC7464200C0333B /* SortingDbClass.h */,
+				AD7796061DC7464200C0333B /* SortingDbClass.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1571,6 +1586,7 @@
 				FFAE331A1D65A42E00E81AED /* CustomTextField.m in Sources */,
 				FFF8733D1D6AEC6C00816FC1 /* OrderController.m in Sources */,
 				FFBF91DB1D82DACF00F8A0A1 /* PriceController.m in Sources */,
+				AD77960D1DC74AFC00C0333B /* Sorting+CoreDataProperties.m in Sources */,
 				FFAE32BB1D65A2EF00E81AED /* CustomLabels.m in Sources */,
 				FFBF91DE1D82DADE00F8A0A1 /* PriceView.m in Sources */,
 				FFAE32E21D65A31A00E81AED /* UIImage+Alpha.m in Sources */,
@@ -1629,10 +1645,12 @@
 				FFAE2DF61D65A05D00E81AED /* main.m in Sources */,
 				FFAE2E351D65A10300E81AED /* TableMenuCell.m in Sources */,
 				FFE10F401D75BF6F00532346 /* BasketView.m in Sources */,
+				AD7796071DC7464200C0333B /* SortingDbClass.m in Sources */,
 				AD89D1C51D678B7C007771B6 /* AuthDbClass.m in Sources */,
 				FFA5FFF91D81794D00CD6E7F /* QuestionController.m in Sources */,
 				FFD1D3991D917E1200E5BE8B /* ChangePasswordView.m in Sources */,
 				FFAE32DE1D65A31A00E81AED /* UIImage+Color.m in Sources */,
+				AD77960C1DC74AFC00C0333B /* Sorting+CoreDataClass.m in Sources */,
 				FF997F711D6EDE9B0037684A /* OrderFiltersView.m in Sources */,
 				FFBF91E21D82E00E00F8A0A1 /* ContactsController.m in Sources */,
 				FFA8ABC11D708464004010F9 /* BuyViewController.m in Sources */,

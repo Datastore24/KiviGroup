@@ -840,8 +840,6 @@
             
             for (int i = 0; i < arrayNames.count; i++) {
                 
-                
-                
                 UIButton * buttonPrice = [UIButton buttonWithType:UIButtonTypeCustom];
                 buttonPrice.tag = 2000 + i;
                 buttonPrice.frame = CGRectMake(0.f, 0.f + 30 * i, self.whiteViewCompany.frame.size.width - 20, 30);
