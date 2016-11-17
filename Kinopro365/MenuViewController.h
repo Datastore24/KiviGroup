@@ -11,7 +11,7 @@
 #import <MMDrawerBarButtonItem.h>
 #import <UIViewController+MMDrawerController.h>
 
-@interface LeftSideViewController : UIViewController
+@interface MenuViewController : UIViewController
 - (IBAction)actionButtonBack:(id)sender;
 
 @end

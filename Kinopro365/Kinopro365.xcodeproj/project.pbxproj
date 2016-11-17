@@ -14,7 +14,7 @@
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
 		FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA11DDDC46000F937BD /* Assets.xcassets */; };
 		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
-		FFDE8BAE1DDDD5CE00F937BD /* LeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */; };
+		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
 		FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB61DDDE85B00F937BD /* BackViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +32,8 @@
 		FFDE8BA11DDDC46000F937BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDE8BA41DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDE8BA61DDDC46000F937BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFDE8BAC1DDDD5CE00F937BD /* LeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSideViewController.h; sourceTree = "<group>"; };
-		FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideViewController.m; sourceTree = "<group>"; };
+		FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		FFDE8BB51DDDE85B00F937BD /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
 		FFDE8BB61DDDE85B00F937BD /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +72,8 @@
 			children = (
 				FFDE8BB51DDDE85B00F937BD /* BackViewController.h */,
 				FFDE8BB61DDDE85B00F937BD /* BackViewController.m */,
-				FFDE8BAC1DDDD5CE00F937BD /* LeftSideViewController.h */,
-				FFDE8BAD1DDDD5CE00F937BD /* LeftSideViewController.m */,
+				FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */,
+				FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */,
 				FFDE8B941DDDC46000F937BD /* Kinopro365 */,
 				FFDE8B931DDDC46000F937BD /* Products */,
 				024121D3396F9F694D25306F /* Pods */,
@@ -238,7 +238,7 @@
 				FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */,
-				FFDE8BAE1DDDD5CE00F937BD /* LeftSideViewController.m in Sources */,
+				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
