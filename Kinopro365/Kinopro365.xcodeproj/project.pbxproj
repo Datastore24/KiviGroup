@@ -15,7 +15,8 @@
 		FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA11DDDC46000F937BD /* Assets.xcassets */; };
 		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
 		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
-		FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB61DDDE85B00F937BD /* BackViewController.m */; };
+		FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */; };
+		FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BBF1DDED88800F937BD /* NewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,10 @@
 		FFDE8BA61DDDC46000F937BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		FFDE8BB51DDDE85B00F937BD /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
-		FFDE8BB61DDDE85B00F937BD /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
+		FFDE8BB81DDEC7BA00F937BD /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
+		FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
+		FFDE8BBE1DDED88800F937BD /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		FFDE8BBF1DDED88800F937BD /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +73,10 @@
 		FFDE8B891DDDC45F00F937BD = {
 			isa = PBXGroup;
 			children = (
-				FFDE8BB51DDDE85B00F937BD /* BackViewController.h */,
-				FFDE8BB61DDDE85B00F937BD /* BackViewController.m */,
+				FFDE8BBE1DDED88800F937BD /* NewViewController.h */,
+				FFDE8BBF1DDED88800F937BD /* NewViewController.m */,
+				FFDE8BB81DDEC7BA00F937BD /* TwoViewController.h */,
+				FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */,
 				FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */,
 				FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */,
 				FFDE8B941DDDC46000F937BD /* Kinopro365 */,
@@ -237,7 +242,8 @@
 			files = (
 				FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
-				FFDE8BB71DDDE85B00F937BD /* BackViewController.m in Sources */,
+				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
+				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 			);

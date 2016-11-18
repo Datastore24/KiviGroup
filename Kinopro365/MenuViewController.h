@@ -12,6 +12,8 @@
 #import <UIViewController+MMDrawerController.h>
 
 @interface MenuViewController : UIViewController
-- (IBAction)actionButtonBack:(id)sender;
+- (IBAction)actionFirstViewButton:(id)sender;
+
+- (IBAction)actionSecondViewButton:(id)sender;
 
 @end

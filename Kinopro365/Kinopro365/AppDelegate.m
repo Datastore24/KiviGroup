@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import <MMDrawerController.h>
+
 
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -36,18 +38,18 @@
                                             initWithRootViewController:centerViewController];
 
     
-    MMDrawerController * centerContainer = [[MMDrawerController alloc]
+    self.centerContainer = [[MMDrawerController alloc]
                                             initWithCenterViewController:centerNav
                                             leftDrawerViewController:leftSideNav];
     
-    centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    self.centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
 //    [centerContainer setShowsShadow:NO];
     
     
     
     
-    [self.window setRootViewController:centerContainer];
+    [self.window setRootViewController:self.centerContainer];
     [self.window makeKeyAndVisible];
 
     

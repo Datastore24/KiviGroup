@@ -19,7 +19,7 @@
     
     [super viewDidLoad];
     
-    self.mm_drawerController.maximumLeftDrawerWidth = 200;
+//    self.mm_drawerController.maximumLeftDrawerWidth = 200;
  
 }
 
@@ -33,7 +33,8 @@
 
 - (IBAction)leftSideButtonMenu:(id)sender {
     
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     
 }
 
