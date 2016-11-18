@@ -7,7 +7,7 @@
 //
 
 #import "MenuViewController.h"
-#import "BackViewController.h"
+#import "AppDelegate.h"
 
 @interface MenuViewController ()
 
@@ -25,11 +25,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)actionButtonBack:(id)sender {
-    BackViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"BackViewController"];
-    [self.mm_drawerController
-     setCenterViewController:detail
-     withCloseAnimation:YES
-     completion:nil];
+
+- (IBAction)actionFirstViewButton:(id)sender {
+    
+    [self pushMethodWithIdentifier:@"ViewController"];
+    
+}
+
+- (IBAction)actionSecondViewButton:(id)sender {
+    
+    [self pushMethodWithIdentifier:@"TwoViewController"];
+    
+}
+
+
+- (void) pushMethodWithIdentifier: (NSString*) identifier {
+    
+    UIViewController * nextController =
+    [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    UINavigationController * nextNavNav = [[UINavigationController alloc]
+                                          initWithRootViewController:nextController];
+    
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.centerContainer.centerViewController = nextNavNav;
+    [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    
+    
 }
 @end
