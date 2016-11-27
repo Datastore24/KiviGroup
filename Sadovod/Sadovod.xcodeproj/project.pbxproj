@@ -600,6 +600,7 @@
 		D73C0B2892ACE3DADD653A9A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				07B1531E81C1049F89E1FC1D /* Frameworks */,
 				E7889BE0740BC30C61745E88 /* Pods-Sadovod.debug.xcconfig */,
 				8D23E6A548603C0D402D4695 /* Pods-Sadovod.release.xcconfig */,
 			);
@@ -766,7 +767,6 @@
 				FFAE2E181D65A05D00E81AED /* SadovodUITests */,
 				FFAE2DF21D65A05D00E81AED /* Products */,
 				D73C0B2892ACE3DADD653A9A /* Pods */,
-				07B1531E81C1049F89E1FC1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
