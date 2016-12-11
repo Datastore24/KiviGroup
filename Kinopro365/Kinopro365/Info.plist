@@ -34,5 +34,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Istok-Regular.ttf</string>
+		<string>Istok-Italic.ttf</string>
+		<string>Istok-BoldItalic.ttf</string>
+		<string>Istok-Bold.ttf</string>
+	</array>
 </dict>
 </plist>

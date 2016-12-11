@@ -9,5 +9,6 @@ target 'Kinopro365' do
 
 
 pod 'MMDrawerController', '~> 0.5.7'
+pod 'NYAlertViewController', '~> 1.3'
 
 end

@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		8E4673EDE51176BC06DBFE1A /* libPods-Kinopro365.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */; };
+		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
+		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
+		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
+		FF25B9DD1DFAB37000D59716 /* Istok-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D91DFAB35100D59716 /* Istok-BoldItalic.ttf */; };
+		FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DA1DFAB35100D59716 /* Istok-Italic.ttf */; };
+		FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */; };
+		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
+		FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */; };
+		FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
-		FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B9C1DDDC46000F937BD /* ViewController.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
 		FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA11DDDC46000F937BD /* Assets.xcassets */; };
 		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
@@ -23,12 +31,25 @@
 		03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.debug.xcconfig"; sourceTree = "<group>"; };
 		57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.release.xcconfig"; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
+		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
+		FF25B9771DF97CF900D59716 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		FF25B9781DF97CF900D59716 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FF25B97F1DF9808B00D59716 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-Bold.ttf"; path = "Fonts/Istok-Bold.ttf"; sourceTree = "<group>"; };
+		FF25B9D91DFAB35100D59716 /* Istok-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-BoldItalic.ttf"; path = "Fonts/Istok-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FF25B9DA1DFAB35100D59716 /* Istok-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-Italic.ttf"; path = "Fonts/Istok-Italic.ttf"; sourceTree = "<group>"; };
+		FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-Regular.ttf"; path = "Fonts/Istok-Regular.ttf"; sourceTree = "<group>"; };
+		FF25B9E71DFAF72000D59716 /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
+		FF25B9E81DFAF72000D59716 /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
+		FF90942B1DFDC2AD0062F556 /* PersonalDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataController.h; sourceTree = "<group>"; };
+		FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
+		FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CheckNumber.h"; sourceTree = "<group>"; };
+		FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CheckNumber.m"; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFDE8B991DDDC46000F937BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FFDE8B9B1DDDC46000F937BD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FFDE8B9C1DDDC46000F937BD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FFDE8B9F1DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFDE8BA11DDDC46000F937BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDE8BA41DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,6 +91,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF25B97A1DF97CFE00D59716 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF25B9771DF97CF900D59716 /* LoginViewController.h */,
+				FF25B9781DF97CF900D59716 /* LoginViewController.m */,
+			);
+			name = Login;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FF25B9D71DFAB31400D59716 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */,
+				FF25B9D91DFAB35100D59716 /* Istok-BoldItalic.ttf */,
+				FF25B9DA1DFAB35100D59716 /* Istok-Italic.ttf */,
+				FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */,
+			);
+			name = Fonts;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FF25B9E61DFAF6E400D59716 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FF25B9E71DFAF72000D59716 /* HexColors.h */,
+				FF25B9E81DFAF72000D59716 /* HexColors.m */,
+				FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */,
+				FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */,
+			);
+			name = Category;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FF90942A1DFDC2870062F556 /* PersonalData */ = {
+			isa = PBXGroup;
+			children = (
+				FF90942B1DFDC2AD0062F556 /* PersonalDataController.h */,
+				FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */,
+			);
+			name = PersonalData;
+			sourceTree = "<group>";
+		};
 		FFDE8B891DDDC45F00F937BD = {
 			isa = PBXGroup;
 			children = (
@@ -97,14 +161,16 @@
 		FFDE8B941DDDC46000F937BD /* Kinopro365 */ = {
 			isa = PBXGroup;
 			children = (
+				FF90942A1DFDC2870062F556 /* PersonalData */,
+				FF25B97A1DF97CFE00D59716 /* Login */,
 				FFDE8B981DDDC46000F937BD /* AppDelegate.h */,
 				FFDE8B991DDDC46000F937BD /* AppDelegate.m */,
-				FFDE8B9B1DDDC46000F937BD /* ViewController.h */,
-				FFDE8B9C1DDDC46000F937BD /* ViewController.m */,
+				FF25B9741DF97CBF00D59716 /* MainViewController.h */,
+				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
 				FFDE8B9E1DDDC46000F937BD /* Main.storyboard */,
-				FFDE8BA11DDDC46000F937BD /* Assets.xcassets */,
 				FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */,
-				FFDE8BA61DDDC46000F937BD /* Info.plist */,
+				FF25B9E61DFAF6E400D59716 /* Category */,
+				FF25B9D71DFAB31400D59716 /* Fonts */,
 				FFDE8B951DDDC46000F937BD /* Supporting Files */,
 			);
 			path = Kinopro365;
@@ -113,7 +179,10 @@
 		FFDE8B951DDDC46000F937BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FFDE8BA11DDDC46000F937BD /* Assets.xcassets */,
+				FFDE8BA61DDDC46000F937BD /* Info.plist */,
 				FFDE8B961DDDC46000F937BD /* main.m */,
+				FF25B97F1DF9808B00D59716 /* Macros.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -179,6 +248,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */,
+				FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */,
+				FF25B9DD1DFAB37000D59716 /* Istok-BoldItalic.ttf in Resources */,
+				FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */,
 				FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */,
 				FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */,
 				FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */,
@@ -215,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		828CE999A5504644BABD1774 /* [CP] Copy Pods Resources */ = {
@@ -240,10 +313,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFDE8B9D1DDDC46000F937BD /* ViewController.m in Sources */,
+				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
 				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
+				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
+				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
+				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
+				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 			);
