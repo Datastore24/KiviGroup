@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <NYAlertViewController/NYAlertViewController.h>
 
 @interface MainViewController ()
 
