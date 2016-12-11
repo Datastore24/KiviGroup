@@ -11,13 +11,16 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
+  - NYAlertViewController (1.3.0)
 
 DEPENDENCIES:
   - MMDrawerController (~> 0.5.7)
+  - NYAlertViewController (~> 1.3)
 
 SPEC CHECKSUMS:
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  NYAlertViewController: b93f82e2c1fc6d5e9485512ddbe7b481f463a074
 
-PODFILE CHECKSUM: a436fe018bf5cc94cca6a82d55cba8f4979960de
+PODFILE CHECKSUM: 4c95f7b5d1fbf95b2c7aab6a93be1899f92b6bda
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

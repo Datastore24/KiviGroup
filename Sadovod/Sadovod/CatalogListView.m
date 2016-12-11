@@ -80,6 +80,8 @@
     
     NSDictionary * dict = [self.arrayData objectAtIndex:section];
     
+    NSLog(@"dict %@", dict);
+    
     
     CustomButton *hideButton = [CustomButton buttonWithType:UIButtonTypeSystem];
     

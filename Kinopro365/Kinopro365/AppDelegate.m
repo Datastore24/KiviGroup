@@ -26,7 +26,7 @@
     
 
     UIViewController * centerViewController =
-                        [mainStoryboard instantiateViewControllerWithIdentifier:@"ViewController"];
+                        [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     UIViewController * leftViewController =
                         [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftSideViewController"];
 
