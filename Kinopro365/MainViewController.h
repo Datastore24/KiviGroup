@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <NYAlertViewController/NYAlertViewController.h>
 #import "HexColors.h"
 #import "Macros.h"
 
