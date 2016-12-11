@@ -163,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="575" y="135"/>
+            <point key="canvasLocation" x="945" y="134"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="tkD-CT-Ozu">
@@ -206,7 +206,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVb-VH-sQT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AOp-cv-2ta">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AOp-cv-2ta">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -527,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgs-9x-CCc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="135"/>
+            <point key="canvasLocation" x="1734" y="133"/>
         </scene>
     </scenes>
     <resources>
