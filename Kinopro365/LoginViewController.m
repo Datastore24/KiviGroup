@@ -101,7 +101,11 @@
 - (IBAction)actionButtonVK:(UIButton *)sender {
     
     NSLog(@"actionButtonVK");
+
 }
+
+
+
 
 //Джестер на сворачивание клавиатуры
 - (void) actionTapOnSelfView: (UITapGestureRecognizer*) tapGesture {
