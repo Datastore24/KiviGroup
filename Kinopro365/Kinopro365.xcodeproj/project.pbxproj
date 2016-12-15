@@ -17,6 +17,9 @@
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
 		FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */; };
 		FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */; };
+		FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2411E02EAAD007ED49F /* CountryViewController.m */; };
+		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
+		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
@@ -46,6 +49,12 @@
 		FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
 		FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CheckNumber.h"; sourceTree = "<group>"; };
 		FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CheckNumber.m"; sourceTree = "<group>"; };
+		FF9DE2401E02EAAD007ED49F /* CountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryViewController.h; path = ../CountryViewController.h; sourceTree = "<group>"; };
+		FF9DE2411E02EAAD007ED49F /* CountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryViewController.m; path = ../CountryViewController.m; sourceTree = "<group>"; };
+		FF9DE2441E02EB46007ED49F /* CoutryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoutryModel.h; sourceTree = "<group>"; };
+		FF9DE2451E02EB46007ED49F /* CoutryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoutryModel.m; sourceTree = "<group>"; };
+		FF9DE2471E03086C007ED49F /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
+		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -134,7 +143,7 @@
 			name = PersonalData;
 			sourceTree = "<group>";
 		};
-		FFDE8B891DDDC45F00F937BD = {
+		FF9DE23F1E02B2FE007ED49F /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				FFDE8BBE1DDED88800F937BD /* NewViewController.h */,
@@ -143,7 +152,26 @@
 				FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */,
 				FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */,
 				FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		FF9DE2431E02EB1D007ED49F /* CountryController */ = {
+			isa = PBXGroup;
+			children = (
+				FF9DE2401E02EAAD007ED49F /* CountryViewController.h */,
+				FF9DE2411E02EAAD007ED49F /* CountryViewController.m */,
+				FF9DE2441E02EB46007ED49F /* CoutryModel.h */,
+				FF9DE2451E02EB46007ED49F /* CoutryModel.m */,
+			);
+			name = CountryController;
+			sourceTree = "<group>";
+		};
+		FFDE8B891DDDC45F00F937BD = {
+			isa = PBXGroup;
+			children = (
 				FFDE8B941DDDC46000F937BD /* Kinopro365 */,
+				FF9DE23F1E02B2FE007ED49F /* Other */,
 				FFDE8B931DDDC46000F937BD /* Products */,
 				024121D3396F9F694D25306F /* Pods */,
 				7B1BA7514A6C0947729AA2F3 /* Frameworks */,
@@ -169,6 +197,7 @@
 				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
 				FFDE8B9E1DDDC46000F937BD /* Main.storyboard */,
 				FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */,
+				FF9DE2431E02EB1D007ED49F /* CountryController */,
 				FF25B9E61DFAF6E400D59716 /* Category */,
 				FF25B9D71DFAB31400D59716 /* Fonts */,
 				FFDE8B951DDDC46000F937BD /* Supporting Files */,
@@ -179,6 +208,8 @@
 		FFDE8B951DDDC46000F937BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF9DE2471E03086C007ED49F /* SingleTone.h */,
+				FF9DE2481E03086C007ED49F /* SingleTone.m */,
 				FFDE8BA11DDDC46000F937BD /* Assets.xcassets */,
 				FFDE8BA61DDDC46000F937BD /* Info.plist */,
 				FFDE8B961DDDC46000F937BD /* main.m */,
@@ -315,10 +346,13 @@
 			files = (
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
+				FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
 				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
+				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
+				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,

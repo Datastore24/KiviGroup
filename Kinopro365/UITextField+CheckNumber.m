@@ -41,7 +41,7 @@
         NSString * number = [newString substringFromIndex:(int)newString.length - localNumberLength];
         [resultString appendString:number];
         if ([resultString length] > 3) {
-            [resultString insertString:@"-" atIndex:3];
+            [resultString insertString:@"" atIndex:3];
         }
     }
     
@@ -49,7 +49,7 @@
         NSInteger areaCodeLength = MIN((int)newString.length - localNumberMaxLength, areaCodeMaxLength);
         NSRange areaRange = NSMakeRange((int)newString.length - localNumberMaxLength - areaCodeLength, areaCodeLength);
         NSString * area = [newString substringWithRange:areaRange];
-        area = [NSString stringWithFormat:@"(%@) ", area];
+        area = [NSString stringWithFormat:@"(%@)", area];
         [resultString insertString:area atIndex:0];
     }
     
@@ -64,5 +64,49 @@
     
     return NO;
 }
+
+- (BOOL)checkForRussianWordsWithTextField:(UITextField *)textField withString:(NSString *)string {
+    
+    NSCharacterSet * validationSet = [[NSCharacterSet characterSetWithCharactersInString:
+                                                                    @"ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁЯЧСМИТЬБЮ"
+                                                                    @"йцукенгшщзхъфывапролджэячсмитьбю"] invertedSet];
+
+     NSArray * components = [string componentsSeparatedByCharactersInSet:validationSet];
+    if ([components count] > 1) {
+        return NO;
+    }
+    return YES;  
+}
+
+- (BOOL)checkForEnglishWordsWithTextField:(UITextField *)textField withString:(NSString *)string {
+    
+    NSCharacterSet * validationSet = [[NSCharacterSet characterSetWithCharactersInString:
+                                                                    @"QWERTYUIOPASDFGHJKLZXCVBNM"
+                                                                    @"qwertyuiopasdfghjklzxcvbnm"] invertedSet];
+    
+    NSArray * components = [string componentsSeparatedByCharactersInSet:validationSet];
+    if ([components count] > 1) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)validationEmailFor:(UITextField *)textField replacementString:(NSString *)string {
+    NSCharacterSet *invalidCharSet = [[NSCharacterSet characterSetWithCharactersInString:
+                                                                   @".ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw"
+                                                                   @"xyz@0123456789_"] invertedSet];
+    NSString *filtered = [[string componentsSeparatedByCharactersInSet:invalidCharSet] componentsJoinedByString:@""];
+    
+    if ([textField.text rangeOfString:@"@"].location == NSNotFound && [string rangeOfString:@"@"].location != NSNotFound) {
+        return [string isEqualToString:filtered];
+        
+    } else if ([string rangeOfString:@"@"].location == NSNotFound) {
+        
+        return [string isEqualToString:filtered];
+    } else {
+        return NO;
+    }
+}
+
 
 @end
