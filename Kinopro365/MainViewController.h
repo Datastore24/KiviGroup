@@ -12,6 +12,11 @@
 
 @interface MainViewController : UIViewController
 
+//Алерты----
 - (void) showAlertWithMessage: (NSString*) message;
+- (void) showDataPickerBirthdayWithButton: (UIButton*) button;
+
+//Джестер на скрытие всех textFilds
+- (void) hideAllTextFildWithMainView: (UIView*) view;
 
 @end

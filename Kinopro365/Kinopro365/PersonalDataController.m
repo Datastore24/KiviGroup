@@ -7,8 +7,12 @@
 //
 
 #import "PersonalDataController.h"
+#import "CountryViewController.h"
+#import "CoutryModel.h"
+#import "SingleTone.h"
 
-@interface PersonalDataController ()
+
+@interface PersonalDataController () <CountryViewControllerDelegate>
 
 @end
 
@@ -16,13 +20,14 @@
 
 - (void) loadView {
     [super loadView];
-    
-    self.mainViewPersonalData.layer.cornerRadius = 5.f;
+
+    self.mainTopView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.mainTopView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.mainTopView.layer.shadowOpacity = 1.0f;
+    self.mainTopView.layer.shadowRadius = 4.0f;
     self.buttonNext.layer.cornerRadius = 5.f;
-    self.buttonChoiceProfession.layer.cornerRadius = 5.f;
-    self.viewRedRound.layer.cornerRadius = 4.5f;
     
-    
+    [self hideAllTextFildWithMainView:self.mainTopView];
 }
 
 - (void)viewDidLoad {
@@ -30,23 +35,113 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    
-//    self.navigationController.navigationBarHidden = YES;
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        return [textField checkForNamberPhoneWithTextField:textField shouldChangeCharactersInRange:range
+                                                                                 replacementString:string];
+    } else if ([textField isEqual:self.textFildName] || [textField isEqual:self.textFildLastName]) {
+        return [textField checkForRussianWordsWithTextField:textField withString:string];
+    } else if ([textField isEqual:self.textFildNameEN] || [textField isEqual:self.textFildLastNameEN]) {
+        return [textField checkForEnglishWordsWithTextField:textField withString:string];
+    } else {
+        return [textField validationEmailFor:textField replacementString:string];
+    }
+
+    return YES;
+}
+
+#pragma mark - CountryViewControllerDelegate
+
+- (void) changeButtonText: (CountryViewController*) controller withString: (NSString*) string {
+    
+    if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
+        [self.buttonCountry setTitle:string forState:UIControlStateNormal];
+        [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    } else {
+        [self.buttonCity setTitle:string forState:UIControlStateNormal];
+        [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    } 
+}
+
 
 
 #pragma mark - Action
 
-- (IBAction)actionButtonHelp:(UIButton *)sender {
-    [self showAlertWithMessage:@"\nУкажите ваше имя и фамилию\nангл. буквами для правильного"
-                               @"\nотображения в международном\nформате\n"];
+- (IBAction)actionButtonAvatar:(UIButton *)sender {
+    NSLog(@"actionButtonAvatar");
 }
+
+- (IBAction)actionButtonCountry:(UIButton *)sender {
+    [[SingleTone sharedManager] setCountry_citi:@"country"];
+    [self pushCountryController];
+}
+
+- (IBAction)actionButtonCity:(UIButton *)sender {
+    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]) {
+        [self showAlertWithMessage:@"\nВведите страну!\n"];
+    } else {
+        [[SingleTone sharedManager] setCountry_citi:@"city"];
+        [self pushCountryController];
+    }
+}
+
+- (IBAction)actionButtonBirthday:(UIButton *)sender {
+    [self showDataPickerBirthdayWithButton:sender];
+}
+
+- (IBAction)actionButtonQuestion:(UIButton *)sender {
+    [self showAlertWithMessage:@"\nУкажите ваше имя и фамилию\nангл. буквами для правильного\n"
+                               @"отображения в международном\nформате.\n"];
+}
+
+- (IBAction)actionButtonProfession:(UIButton *)sender {
+    NSLog(@"actionButtonProfession");
+}
+
+- (IBAction)actionButtonPhoto:(UIButton *)sender {
+    NSLog(@"actionButtonPhoto");
+}
+
+- (IBAction)actionButtonVideo:(UIButton *)sender {
+    NSLog(@"actionButtonVideo");
+}
+
+- (IBAction)actionButtonAddInfo:(UIButton *)sender {
+    NSLog(@"actionButtonAddInfo");
+}
+
+- (IBAction)actionButtonAddParams:(UIButton *)sender {
+    NSLog(@"actionButtonAddParams");
+}
+
+- (IBAction)actionButtonNext:(UIButton *)sender {
+    NSLog(@"actionButtonNext");
+}
+
+#pragma mark - Other
+
+- (void) pushCountryController {
+    CountryViewController * detai = [self.storyboard instantiateViewControllerWithIdentifier:@"CountryViewController"];
+    detai.delegate = self;
+    [self.navigationController pushViewController:detai animated:YES];
+}
+
 @end

@@ -42,8 +42,8 @@
                                             initWithCenterViewController:centerNav
                                             leftDrawerViewController:leftSideNav];
     
-    self.centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+//    self.centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+//    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
 //    [centerContainer setShowsShadow:NO];
     
     

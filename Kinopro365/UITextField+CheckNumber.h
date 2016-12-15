@@ -10,7 +10,14 @@
 
 @interface UITextField (CheckNumber)
 
+//Проверка ввода телефона---
 - (BOOL)checkForNamberPhoneWithTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
                        replacementString:(NSString *)string;
+//Проверка ввода русского Имени/Фамилии
+- (BOOL)checkForRussianWordsWithTextField:(UITextField *)textField withString:(NSString *)string;
+//Проверка ввода Английского Имени/Фамилии
+- (BOOL)checkForEnglishWordsWithTextField:(UITextField *)textField withString:(NSString *)string;
+//Проверка ввода e-mail
+- (BOOL)validationEmailFor:(UITextField *)textField replacementString:(NSString *)string;
 
 @end

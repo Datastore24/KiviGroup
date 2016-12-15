@@ -22,8 +22,9 @@
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
     
-    UITapGestureRecognizer * gester = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTapOnSelfView:)];
-    [self.view addGestureRecognizer:gester];
+    [self hideAllTextFildWithMainView:self.view];
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -102,17 +103,6 @@
     
     NSLog(@"actionButtonVK");
 
-}
-
-
-
-
-//Джестер на сворачивание клавиатуры
-- (void) actionTapOnSelfView: (UITapGestureRecognizer*) tapGesture {
-    
-    for (UITextField * textFild in self.view.subviews) {
-        [textFild resignFirstResponder];
-    }    
 }
 
 #pragma mark - Timer
