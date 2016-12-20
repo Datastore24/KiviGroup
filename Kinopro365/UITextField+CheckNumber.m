@@ -57,7 +57,7 @@
         NSInteger countryCodeLength = MIN((int)newString.length - localNumberMaxLength - areaCodeMaxLength, countryCodeMaxLength);
         NSRange countryRange = NSMakeRange(0, countryCodeLength);
         NSString * coutry = [newString substringWithRange:countryRange];
-        coutry = [NSString stringWithFormat:@"+%@ ", coutry];
+        coutry = [NSString stringWithFormat:@"+%@", coutry];
         [resultString insertString:coutry atIndex:0];
     }
     textField.text = resultString;

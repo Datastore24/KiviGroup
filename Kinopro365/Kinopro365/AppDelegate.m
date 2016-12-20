@@ -18,9 +18,7 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
     UIStoryboard * mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -46,16 +44,11 @@
 //    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
 //    [centerContainer setShowsShadow:NO];
     
-    
-    
-    
     [self.window setRootViewController:self.centerContainer];
     [self.window makeKeyAndVisible];
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
 
-    
-    
-    
-    
     
     return YES;
 }

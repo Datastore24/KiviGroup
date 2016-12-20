@@ -36,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone1;
 @property (weak, nonatomic) IBOutlet UITextField *textFildEmail;
 
+//ImageView
+@property (weak, nonatomic) IBOutlet UIImageView *imageButtonProffecional;
+
 
 //Actions------
 - (IBAction)actionButtonAvatar:(UIButton *)sender;

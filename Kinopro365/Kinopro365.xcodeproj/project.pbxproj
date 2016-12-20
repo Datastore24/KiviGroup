@@ -17,9 +17,24 @@
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
 		FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */; };
 		FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */; };
+		FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED2C1E03C15600094F6D /* ChooseProfessionalModel.m */; };
+		FF90ED301E03C9FB00094F6D /* nazad.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED2F1E03C9FB00094F6D /* nazad.png */; };
+		FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED321E03CB1400094F6D /* ProfeccionalTableViewCell.m */; };
+		FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED351E03D47300094F6D /* UILabel+TitleCategory.m */; };
+		FF90ED3F1E03D79F00094F6D /* actorsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED371E03D79F00094F6D /* actorsImage.png */; };
+		FF90ED401E03D79F00094F6D /* choreographersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED381E03D79F00094F6D /* choreographersImage.png */; };
+		FF90ED411E03D79F00094F6D /* designersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED391E03D79F00094F6D /* designersImage.png */; };
+		FF90ED421E03D79F00094F6D /* dressersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED3A1E03D79F00094F6D /* dressersImage.png */; };
+		FF90ED431E03D79F00094F6D /* gamersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED3B1E03D79F00094F6D /* gamersImage.png */; };
+		FF90ED441E03D79F00094F6D /* massActorsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED3C1E03D79F00094F6D /* massActorsImage.png */; };
+		FF90ED451E03D79F00094F6D /* operatorsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED3D1E03D79F00094F6D /* operatorsImage.png */; };
+		FF90ED461E03D79F00094F6D /* ProductionOperatorImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED3E1E03D79F00094F6D /* ProductionOperatorImage.png */; };
+		FF90ED491E03DB8100094F6D /* activ_galka.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED471E03DB8100094F6D /* activ_galka.png */; };
+		FF90ED4A1E03DB8100094F6D /* neactiv_galka.png in Resources */ = {isa = PBXBuildFile; fileRef = FF90ED481E03DB8100094F6D /* neactiv_galka.png */; };
 		FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2411E02EAAD007ED49F /* CountryViewController.m */; };
 		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
 		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
+		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
@@ -28,6 +43,10 @@
 		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
 		FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */; };
 		FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BBF1DDED88800F937BD /* NewViewController.m */; };
+		FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD1A461E092FFB00626219 /* AddInfoemationController.m */; };
+		FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD1A4A1E09489300626219 /* AddParamsController.m */; };
+		FFFD1A4D1E09539800626219 /* arrowForAge.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFD1A4C1E09539800626219 /* arrowForAge.png */; };
+		FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD1A4F1E0969C600626219 /* AddParamsModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,12 +68,31 @@
 		FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
 		FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CheckNumber.h"; sourceTree = "<group>"; };
 		FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CheckNumber.m"; sourceTree = "<group>"; };
+		FF90ED2B1E03C15600094F6D /* ChooseProfessionalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionalModel.h; sourceTree = "<group>"; };
+		FF90ED2C1E03C15600094F6D /* ChooseProfessionalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionalModel.m; sourceTree = "<group>"; };
+		FF90ED2F1E03C9FB00094F6D /* nazad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nazad.png; path = Images/PersonalData/nazad.png; sourceTree = SOURCE_ROOT; };
+		FF90ED311E03CB1400094F6D /* ProfeccionalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfeccionalTableViewCell.h; sourceTree = "<group>"; };
+		FF90ED321E03CB1400094F6D /* ProfeccionalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfeccionalTableViewCell.m; sourceTree = "<group>"; };
+		FF90ED341E03D47300094F6D /* UILabel+TitleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+TitleCategory.h"; sourceTree = "<group>"; };
+		FF90ED351E03D47300094F6D /* UILabel+TitleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+TitleCategory.m"; sourceTree = "<group>"; };
+		FF90ED371E03D79F00094F6D /* actorsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = actorsImage.png; path = Images/PersonalData/actorsImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED381E03D79F00094F6D /* choreographersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = choreographersImage.png; path = Images/PersonalData/choreographersImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED391E03D79F00094F6D /* designersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = designersImage.png; path = Images/PersonalData/designersImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED3A1E03D79F00094F6D /* dressersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dressersImage.png; path = Images/PersonalData/dressersImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED3B1E03D79F00094F6D /* gamersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gamersImage.png; path = Images/PersonalData/gamersImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED3C1E03D79F00094F6D /* massActorsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = massActorsImage.png; path = Images/PersonalData/massActorsImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED3D1E03D79F00094F6D /* operatorsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = operatorsImage.png; path = Images/PersonalData/operatorsImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED3E1E03D79F00094F6D /* ProductionOperatorImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProductionOperatorImage.png; path = Images/PersonalData/ProductionOperatorImage.png; sourceTree = SOURCE_ROOT; };
+		FF90ED471E03DB8100094F6D /* activ_galka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = activ_galka.png; path = Images/PersonalData/activ_galka.png; sourceTree = SOURCE_ROOT; };
+		FF90ED481E03DB8100094F6D /* neactiv_galka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = neactiv_galka.png; path = Images/PersonalData/neactiv_galka.png; sourceTree = SOURCE_ROOT; };
 		FF9DE2401E02EAAD007ED49F /* CountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryViewController.h; path = ../CountryViewController.h; sourceTree = "<group>"; };
 		FF9DE2411E02EAAD007ED49F /* CountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryViewController.m; path = ../CountryViewController.m; sourceTree = "<group>"; };
 		FF9DE2441E02EB46007ED49F /* CoutryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoutryModel.h; sourceTree = "<group>"; };
 		FF9DE2451E02EB46007ED49F /* CoutryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoutryModel.m; sourceTree = "<group>"; };
 		FF9DE2471E03086C007ED49F /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
+		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +107,13 @@
 		FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		FFDE8BBE1DDED88800F937BD /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		FFDE8BBF1DDED88800F937BD /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		FFFD1A451E092FFB00626219 /* AddInfoemationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoemationController.h; sourceTree = "<group>"; };
+		FFFD1A461E092FFB00626219 /* AddInfoemationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoemationController.m; sourceTree = "<group>"; };
+		FFFD1A491E09489300626219 /* AddParamsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsController.h; sourceTree = "<group>"; };
+		FFFD1A4A1E09489300626219 /* AddParamsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsController.m; sourceTree = "<group>"; };
+		FFFD1A4C1E09539800626219 /* arrowForAge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowForAge.png; path = Images/arrowForAge.png; sourceTree = SOURCE_ROOT; };
+		FFFD1A4E1E0969C600626219 /* AddParamsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsModel.h; sourceTree = "<group>"; };
+		FFFD1A4F1E0969C600626219 /* AddParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +170,8 @@
 		FF25B9E61DFAF6E400D59716 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FF90ED341E03D47300094F6D /* UILabel+TitleCategory.h */,
+				FF90ED351E03D47300094F6D /* UILabel+TitleCategory.m */,
 				FF25B9E71DFAF72000D59716 /* HexColors.h */,
 				FF25B9E81DFAF72000D59716 /* HexColors.m */,
 				FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */,
@@ -139,8 +186,44 @@
 			children = (
 				FF90942B1DFDC2AD0062F556 /* PersonalDataController.h */,
 				FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */,
+				FF9DE2431E02EB1D007ED49F /* CountryController */,
+				FFFD1A441E092FC900626219 /* AddInformation */,
+				FF90ED271E03C04900094F6D /* ChooseProfession */,
+				FFFD1A481E09486B00626219 /* AddParams */,
 			);
 			name = PersonalData;
+			sourceTree = "<group>";
+		};
+		FF90ED271E03C04900094F6D /* ChooseProfession */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */,
+				FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */,
+				FF90ED2B1E03C15600094F6D /* ChooseProfessionalModel.h */,
+				FF90ED2C1E03C15600094F6D /* ChooseProfessionalModel.m */,
+				FF90ED311E03CB1400094F6D /* ProfeccionalTableViewCell.h */,
+				FF90ED321E03CB1400094F6D /* ProfeccionalTableViewCell.m */,
+			);
+			name = ChooseProfession;
+			sourceTree = "<group>";
+		};
+		FF90ED2E1E03C9EF00094F6D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD1A4C1E09539800626219 /* arrowForAge.png */,
+				FF90ED471E03DB8100094F6D /* activ_galka.png */,
+				FF90ED481E03DB8100094F6D /* neactiv_galka.png */,
+				FF90ED2F1E03C9FB00094F6D /* nazad.png */,
+				FF90ED371E03D79F00094F6D /* actorsImage.png */,
+				FF90ED381E03D79F00094F6D /* choreographersImage.png */,
+				FF90ED391E03D79F00094F6D /* designersImage.png */,
+				FF90ED3A1E03D79F00094F6D /* dressersImage.png */,
+				FF90ED3B1E03D79F00094F6D /* gamersImage.png */,
+				FF90ED3C1E03D79F00094F6D /* massActorsImage.png */,
+				FF90ED3D1E03D79F00094F6D /* operatorsImage.png */,
+				FF90ED3E1E03D79F00094F6D /* ProductionOperatorImage.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		FF9DE23F1E02B2FE007ED49F /* Other */ = {
@@ -197,8 +280,8 @@
 				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
 				FFDE8B9E1DDDC46000F937BD /* Main.storyboard */,
 				FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */,
-				FF9DE2431E02EB1D007ED49F /* CountryController */,
 				FF25B9E61DFAF6E400D59716 /* Category */,
+				FF90ED2E1E03C9EF00094F6D /* Images */,
 				FF25B9D71DFAB31400D59716 /* Fonts */,
 				FFDE8B951DDDC46000F937BD /* Supporting Files */,
 			);
@@ -216,6 +299,26 @@
 				FF25B97F1DF9808B00D59716 /* Macros.h */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFFD1A441E092FC900626219 /* AddInformation */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD1A451E092FFB00626219 /* AddInfoemationController.h */,
+				FFFD1A461E092FFB00626219 /* AddInfoemationController.m */,
+			);
+			name = AddInformation;
+			sourceTree = "<group>";
+		};
+		FFFD1A481E09486B00626219 /* AddParams */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD1A491E09489300626219 /* AddParamsController.h */,
+				FFFD1A4A1E09489300626219 /* AddParamsController.m */,
+				FFFD1A4E1E0969C600626219 /* AddParamsModel.h */,
+				FFFD1A4F1E0969C600626219 /* AddParamsModel.m */,
+			);
+			name = AddParams;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,12 +383,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */,
+				FF90ED441E03D79F00094F6D /* massActorsImage.png in Resources */,
 				FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */,
+				FF90ED421E03D79F00094F6D /* dressersImage.png in Resources */,
+				FF90ED461E03D79F00094F6D /* ProductionOperatorImage.png in Resources */,
+				FF90ED4A1E03DB8100094F6D /* neactiv_galka.png in Resources */,
+				FF90ED301E03C9FB00094F6D /* nazad.png in Resources */,
+				FF90ED431E03D79F00094F6D /* gamersImage.png in Resources */,
 				FF25B9DD1DFAB37000D59716 /* Istok-BoldItalic.ttf in Resources */,
 				FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */,
+				FF90ED401E03D79F00094F6D /* choreographersImage.png in Resources */,
+				FF90ED411E03D79F00094F6D /* designersImage.png in Resources */,
 				FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */,
+				FF90ED3F1E03D79F00094F6D /* actorsImage.png in Resources */,
+				FF90ED491E03DB8100094F6D /* activ_galka.png in Resources */,
 				FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */,
+				FF90ED451E03D79F00094F6D /* operatorsImage.png in Resources */,
 				FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */,
+				FFFD1A4D1E09539800626219 /* arrowForAge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,12 +465,19 @@
 				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
 				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
+				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
+				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
 				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
+				FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */,
+				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
+				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
+				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
+				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
