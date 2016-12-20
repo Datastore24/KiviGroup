@@ -8,11 +8,14 @@
 
 #import "PersonalDataController.h"
 #import "CountryViewController.h"
+#import "ChooseProfessionViewController.h"
+#import "AddInfoemationController.h"
+#import "AddParamsController.h"
 #import "CoutryModel.h"
 #import "SingleTone.h"
 
 
-@interface PersonalDataController () <CountryViewControllerDelegate>
+@interface PersonalDataController () <CountryViewControllerDelegate, ChooseProfessionViewControllerDelegate>
 
 @end
 
@@ -41,6 +44,9 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    if (self.navigationController.navigationBarHidden == NO) {
+        [self.navigationController setNavigationBarHidden: YES animated:YES];
+    }    
 }
 
 #pragma mark - UITextFieldDelegate
@@ -81,6 +87,17 @@ replacementString:(NSString *)string {
     } 
 }
 
+#pragma mark - ChooseProfessionalViewControllerDelegate
+
+- (void) setTitlForButtonDelegate: (ChooseProfessionViewController*) chooseProfessionViewController
+                         withTitl: (NSString*) titl {
+    
+    [self.buttonProfession setTitle:titl forState:UIControlStateNormal];
+    self.imageButtonProffecional.alpha = 0.f;
+    
+    
+}
+
 
 
 #pragma mark - Action
@@ -113,7 +130,10 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonProfession:(UIButton *)sender {
-    NSLog(@"actionButtonProfession");
+    ChooseProfessionViewController * detai = [self.storyboard
+                                                instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
+    detai.delegate = self;
+    [self.navigationController pushViewController:detai animated:YES];
 }
 
 - (IBAction)actionButtonPhoto:(UIButton *)sender {
@@ -125,11 +145,11 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonAddInfo:(UIButton *)sender {
-    NSLog(@"actionButtonAddInfo");
+    [self pushCountryControllerWithIdentifier:@"AddInfoemationController"];
 }
 
 - (IBAction)actionButtonAddParams:(UIButton *)sender {
-    NSLog(@"actionButtonAddParams");
+    [self pushCountryControllerWithIdentifier:@"AddParamsController"];
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {

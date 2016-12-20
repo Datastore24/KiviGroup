@@ -12,6 +12,7 @@
 @interface SingleTone : NSObject
 
 @property (strong, nonatomic) NSString * country_citi;
+@property (strong, nonatomic) NSMutableArray * arrayButtonsProfessional;
 
 
 + (id)sharedManager;

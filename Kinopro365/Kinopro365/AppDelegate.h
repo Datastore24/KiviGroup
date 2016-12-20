@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MMDrawerController.h>
+#import "HexColors.h"
+#import "Macros.h"
+#import "SingleTone.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

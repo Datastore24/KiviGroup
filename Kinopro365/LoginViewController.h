@@ -11,9 +11,6 @@
 #import "PersonalDataController.h"
 #import "UITextField+CheckNumber.h"
 
-
-
-
 @interface LoginViewController : MainViewController <UITextFieldDelegate>
 
 //Buttons--

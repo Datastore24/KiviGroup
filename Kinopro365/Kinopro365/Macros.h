@@ -31,7 +31,8 @@
 
 //Цвета----------------------------------------------------------------------------
 #define COLOR_ACCENTUATION_BLUE @"4e7db0"
-#define COLOR_ALERT_BUTTON_COLOR @"5581a8"
+#define COLOR_ALERT_BUTTON_COLOR @"4682AC"
+#define COLOR_PLACEHOLDER @"C7C7CD"
 
 
 
