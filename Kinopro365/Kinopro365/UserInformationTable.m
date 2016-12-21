@@ -1,0 +1,61 @@
+//
+//  UserInformationTable.m
+//  Kinopro365
+//
+//  Created by Кирилл Ковыршин on 21.12.16.
+//  Copyright © 2016 kiviLab.com. All rights reserved.
+//
+
+#import "UserInformationTable.h"
+
+@implementation UserInformationTable
+
++ (NSString *)primaryKey
+{
+    return @"userID";
+}
+
+-(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID fbToken:(NSString *) fbToken andFbID:(NSString *)fbID siteToken:(NSString *) siteToken
+{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    @try {
+        
+        [realm beginWriteTransaction];
+        
+        self.userID = @"1";
+        self.vkToken = vkToken;
+        self.vkID = vkID;
+        self.fbToken = fbToken;
+        self.fbID = fbID;
+        self.siteToken = siteToken;
+        
+        [realm addOrUpdateObject:self];
+        [realm commitWriteTransaction];
+        
+    }
+    
+    @catch (NSException *exception) {
+        NSLog(@"exception");
+        if ([realm inWriteTransaction]) {
+            [realm cancelWriteTransaction];
+        }
+    }
+    
+}
+
+-(void) updateDataInDataBase {
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    //    selectedDataObject.name=name;
+    //    selectedDataObject.city=city;
+    [realm commitWriteTransaction];
+    
+}
+
+-(void) deleteDataInDataBase:(id) array {
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObjects:array];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+@end

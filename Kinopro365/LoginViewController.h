@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone;
 @property (weak, nonatomic) IBOutlet UITextField *textFildPassword;
 
+//Auth
+@property (assign, nonatomic) BOOL isAuth;
+
 
 
 //--------------------------------------------------------------------
@@ -34,6 +37,7 @@
 - (IBAction)actionButtonEntrance:(UIButton *)sender;
 - (IBAction)actionButtonFacebook:(UIButton *)sender;
 - (IBAction)actionButtonVK:(UIButton *)sender;
+- (void) authComplete;
 
 
 

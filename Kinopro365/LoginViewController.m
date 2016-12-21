@@ -7,10 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "VkLoginViewController.h"
+#import "UserInformationTable.h"
+#import "VKAPI.h"
 
 @interface LoginViewController ()
 
 @property (assign, nonatomic) NSInteger timerStep; //Счетчик таймера
+@property (strong, nonatomic) UserInformationTable * selectedDataObject;
+@property (strong, nonatomic) RLMResults *tableDataArray;
+@property (strong, nonatomic) NSDictionary * dictResponse;
 
 @end
 
@@ -18,10 +24,10 @@
 
 - (void) loadView {
     [super loadView];
-    
+    self.isAuth = NO;
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
-    
+    [self checkAuthVK];
     [self hideAllTextFildWithMainView:self.view];
     
     
@@ -102,6 +108,10 @@
 - (IBAction)actionButtonVK:(UIButton *)sender {
     
     NSLog(@"actionButtonVK");
+    VkLoginViewController *vk = [[VkLoginViewController alloc] init];
+    vk.appID = @"5773251";
+    vk.delegate = self;
+    [self presentViewController:vk animated:YES completion:nil];
 
 }
 
@@ -135,5 +145,43 @@
             self.buttonSendCode.userInteractionEnabled = YES;
         }];        
     }
+}
+
+- (void) authComplete {
+    self.isAuth = YES;
+    PersonalDataController * tmpViewController = [self.storyboard
+                                                  instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+    [self.navigationController pushViewController:tmpViewController animated:YES];
+    NSLog(@"isAuth: YES");
+}
+
+-(void) checkAuthVK {
+    
+    self.tableDataArray=[UserInformationTable allObjects];
+    if (self.tableDataArray.count >0 ){
+        
+    
+        self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
+        NSLog(@"FETCH %@",self.selectedDataObject);
+        NSString * userID = self.selectedDataObject.vkID;
+        NSString * vkToken = self.selectedDataObject.vkToken;
+        
+        VKAPI * vkAPI = [[VKAPI alloc] init];
+        [vkAPI getUserWithParams:userID andVkToken:vkToken complitionBlock:^(id response) {
+            self.dictResponse = (NSDictionary*) response;
+            
+            if (![[self.dictResponse objectForKey:@"error"] isKindOfClass: [NSDictionary class]]){
+                NSLog(@"DICT %@",self.dictResponse);
+                [self authComplete];
+            }else{
+                NSLog(@"ERROR AUTH");
+            }
+            
+        }];
+    
+//    //Теперь попробуем вытяныть некую информацию
+   
+
+  }
 }
 @end

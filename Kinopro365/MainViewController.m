@@ -8,12 +8,17 @@
 
 #import "MainViewController.h"
 #import <NYAlertViewController/NYAlertViewController.h>
+#import "UserInformationTable.h"
+
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) UIActivityIndicatorView * activiti;
+
 @property (strong, nonatomic) NSArray * arrayPickerView;
 @property (strong, nonatomic) NSString * pickerViewString; //Сохраняет выбранный параметр в пикерВью
+
+
 
 @end
 
@@ -22,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"FILE URL %@", [[RLMRealm defaultRealm] configuration].fileURL);
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -252,5 +259,9 @@
     UILabel * CustomText = [[UILabel alloc]initWithTitle:title];
     self.navigationItem.titleView = CustomText;
 }
+
+#pragma mark - TEST REALM
+
+
 
 @end

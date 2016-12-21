@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8E4673EDE51176BC06DBFE1A /* libPods-Kinopro365.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */; };
+		AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A51E0AB873007B78CA /* UserInformationTable.m */; };
+		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
+		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
 		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
@@ -52,6 +55,12 @@
 /* Begin PBXFileReference section */
 		03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.debug.xcconfig"; sourceTree = "<group>"; };
 		57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kinopro365.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kinopro365/Pods-Kinopro365.release.xcconfig"; sourceTree = "<group>"; };
+		AD2624A41E0AB873007B78CA /* UserInformationTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationTable.h; sourceTree = "<group>"; };
+		AD2624A51E0AB873007B78CA /* UserInformationTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationTable.m; sourceTree = "<group>"; };
+		AD2624A71E0AC639007B78CA /* VkLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkLoginViewController.h; sourceTree = "<group>"; };
+		AD2624A81E0AC639007B78CA /* VkLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkLoginViewController.m; sourceTree = "<group>"; };
+		AD2624AA1E0AD565007B78CA /* VKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPI.h; sourceTree = "<group>"; };
+		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
@@ -145,11 +154,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD2624A31E0AB779007B78CA /* RealmBase */ = {
+			isa = PBXGroup;
+			children = (
+				AD2624A41E0AB873007B78CA /* UserInformationTable.h */,
+				AD2624A51E0AB873007B78CA /* UserInformationTable.m */,
+			);
+			name = RealmBase;
+			sourceTree = "<group>";
+		};
 		FF25B97A1DF97CFE00D59716 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				FF25B9771DF97CF900D59716 /* LoginViewController.h */,
 				FF25B9781DF97CF900D59716 /* LoginViewController.m */,
+				AD2624A71E0AC639007B78CA /* VkLoginViewController.h */,
+				AD2624A81E0AC639007B78CA /* VkLoginViewController.m */,
+				AD2624AA1E0AD565007B78CA /* VKAPI.h */,
+				AD2624AB1E0AD565007B78CA /* VKAPI.m */,
 			);
 			name = Login;
 			path = ..;
@@ -283,6 +305,7 @@
 				FF25B9E61DFAF6E400D59716 /* Category */,
 				FF90ED2E1E03C9EF00094F6D /* Images */,
 				FF25B9D71DFAB31400D59716 /* Fonts */,
+				AD2624A31E0AB779007B78CA /* RealmBase */,
 				FFDE8B951DDDC46000F937BD /* Supporting Files */,
 			);
 			path = Kinopro365;
@@ -464,6 +487,7 @@
 				FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
 				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
+				AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
@@ -474,7 +498,9 @@
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
+				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
+				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
 				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
 				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
