@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "VkLoginViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "UserInformationTable.h"
 #import "VKAPI.h"
 
@@ -17,6 +19,7 @@
 @property (strong, nonatomic) UserInformationTable * selectedDataObject;
 @property (strong, nonatomic) RLMResults *tableDataArray;
 @property (strong, nonatomic) NSDictionary * dictResponse;
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 
 @end
 
@@ -28,8 +31,9 @@
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
     [self checkAuthVK];
-    [self hideAllTextFildWithMainView:self.view];
+    [self checkAuthFB];
     
+    [self hideAllTextFildWithMainView:self.view];
     
 }
 
@@ -101,6 +105,24 @@
 - (IBAction)actionButtonFacebook:(UIButton *)sender {
     
     NSLog(@"actionButtonFacebook");
+    
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+             [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+//             FBSDKProfile * currentProfile = [[FBSDKProfile alloc] init];
+//             NSLog(@"NAME: %@",currentProfile.firstName);
+             [self authComplete];
+         }
+     }];
 }
 
 
@@ -155,6 +177,16 @@
     NSLog(@"isAuth: YES");
 }
 
+-(void) checkAuthFB{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+        [self authComplete];
+    }else{
+        NSLog(@"ERROR ENTER FB");
+    }
+}
+
 -(void) checkAuthVK {
     
     self.tableDataArray=[UserInformationTable allObjects];
@@ -174,7 +206,7 @@
                 NSLog(@"DICT %@",self.dictResponse);
                 [self authComplete];
             }else{
-                NSLog(@"ERROR AUTH");
+                NSLog(@"ERROR AUTH VK");
             }
             
         }];

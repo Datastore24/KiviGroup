@@ -15,7 +15,7 @@
     return @"userID";
 }
 
--(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID fbToken:(NSString *) fbToken andFbID:(NSString *)fbID siteToken:(NSString *) siteToken
+-(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken
 {
     RLMRealm *realm = [RLMRealm defaultRealm];
     
@@ -26,8 +26,6 @@
         self.userID = @"1";
         self.vkToken = vkToken;
         self.vkID = vkID;
-        self.fbToken = fbToken;
-        self.fbID = fbID;
         self.siteToken = siteToken;
         
         [realm addOrUpdateObject:self];

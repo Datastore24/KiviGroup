@@ -13,12 +13,10 @@
 @property NSString *userID;
 @property NSString *vkToken;
 @property NSString *vkID;
-@property NSString *fbToken;
-@property NSString *fbID;
 @property NSString *siteToken;
 
 + (NSString *)primaryKey;
--(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID fbToken:(NSString *) fbToken andFbID:(NSString *)fbID siteToken:(NSString *) siteToken;
+-(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken;
 -(void) updateDataInDataBase;
 -(void) deleteDataInDataBase:(id) array;
 
