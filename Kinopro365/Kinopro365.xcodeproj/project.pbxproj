@@ -18,6 +18,7 @@
 		FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DA1DFAB35100D59716 /* Istok-Italic.ttf */; };
 		FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */; };
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
+		FF68933B1E0D4FDC0022EE7D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68933A1E0D4FDC0022EE7D /* Photos.framework */; };
 		FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */; };
 		FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9094321DFDC5E20062F556 /* UITextField+CheckNumber.m */; };
 		FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF90ED2C1E03C15600094F6D /* ChooseProfessionalModel.m */; };
@@ -73,6 +74,7 @@
 		FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-Regular.ttf"; path = "Fonts/Istok-Regular.ttf"; sourceTree = "<group>"; };
 		FF25B9E71DFAF72000D59716 /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
 		FF25B9E81DFAF72000D59716 /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
+		FF68933A1E0D4FDC0022EE7D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		FF90942B1DFDC2AD0062F556 /* PersonalDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataController.h; sourceTree = "<group>"; };
 		FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
 		FF9094311DFDC5E20062F556 /* UITextField+CheckNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CheckNumber.h"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF68933B1E0D4FDC0022EE7D /* Photos.framework in Frameworks */,
 				8E4673EDE51176BC06DBFE1A /* libPods-Kinopro365.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +152,7 @@
 		7B1BA7514A6C0947729AA2F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF68933A1E0D4FDC0022EE7D /* Photos.framework */,
 				EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */,
 			);
 			name = Frameworks;

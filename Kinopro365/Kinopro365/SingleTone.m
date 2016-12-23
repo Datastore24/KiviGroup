@@ -11,6 +11,7 @@
 @implementation SingleTone
 
 @synthesize country_citi;
+@synthesize professionControllerCode;
 
 #pragma mark Singleton Methods
 

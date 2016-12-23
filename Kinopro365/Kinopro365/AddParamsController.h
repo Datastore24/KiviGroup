@@ -14,12 +14,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttonsInternationalPass;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttonsChooseParams;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLanguages;
 
 //Actions
 - (IBAction)actionButtonInternationalPass:(id)sender;
 - (IBAction)actionBackBarButton:(id)sender;
 - (IBAction)actionButtonSave:(UIButton *)sender;
 - (IBAction)actionButtonsChooseParams:(UIButton *)sender;
+
+- (IBAction)actionButtonLanguages:(UIButton *)sender;
 
 
 @end

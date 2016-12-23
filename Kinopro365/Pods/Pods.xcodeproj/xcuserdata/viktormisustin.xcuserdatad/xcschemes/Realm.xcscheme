@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CDA73F4D9CE4FF0DD907BF739A44F823'
-               BlueprintName = 'Motis'
+               BlueprintIdentifier = '9866C59D291001F1A4E6BAFD3B106FBC'
+               BlueprintName = 'Realm'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libMotis.a'>
+               BuildableName = 'libRealm.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

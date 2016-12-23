@@ -8,8 +8,10 @@
 
 #import "AddParamsController.h"
 #import "AddParamsModel.h"
+#import "ChooseProfessionViewController.h"
+#import "SingleTone.h"
 
-@interface AddParamsController ()
+@interface AddParamsController () <ChooseProfessionViewControllerDelegate>
 
 @end
 
@@ -59,6 +61,17 @@
     }
 }
 
+- (IBAction)actionButtonLanguages:(UIButton *)sender {
+    
+    ChooseProfessionViewController * detai = [self.storyboard
+                                              instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
+    detai.mainArrayData = [AddParamsModel setArrayData];
+    [[SingleTone sharedManager] setProfessionControllerCode:@"1"];
+    detai.delegate = self;
+    [self.navigationController pushViewController:detai animated:YES];
+    
+}
+
 - (IBAction)actionButtonInternationalPass:(id)sender {
     
     for (UIButton * button in self.buttonsInternationalPass) {
@@ -81,6 +94,15 @@
 - (IBAction)actionButtonSave:(UIButton *)sender {
     [self createActivitiIndicatorAlertWithView];
     [self performSelector:@selector(testMethod) withObject:nil afterDelay:3.f];
+}
+
+#pragma mark - ChooseProfessionalViewControllerDelegate
+
+- (void) setTitlForButtonDelegate: (ChooseProfessionViewController*) chooseProfessionViewController
+                         withTitl: (NSString*) titl {
+    
+    [self.buttonLanguages setTitle:titl forState:UIControlStateNormal];    
+    
 }
 
 #pragma mark - Other

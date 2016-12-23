@@ -32,11 +32,14 @@
     NSArray * clothesSize = [NSArray arrayWithObjects:
                             @"46 мм", @"47 мм", @"48 мм", @"49 мм", @"50 мм", @"51 мм", @"52 мм", @"53 мм", @"54 мм", nil];
     
+    NSArray * arrayVocals = [NSArray arrayWithObjects:@"Хорошо пою", @"Не умею петь", nil];
+    
     [mArray addObject:arrayHeight];
     [mArray addObject:arrayDrive];
     [mArray addObject:arrayEyeColor];
     [mArray addObject:arrayHairColor];
     [mArray addObject:clothesSize];
+    [mArray addObject:arrayVocals];
     
     NSArray * arrayResult = [NSArray arrayWithArray:mArray];
     
@@ -46,8 +49,33 @@
 + (NSArray*) setArrayTitl {    
     NSArray * arrayTitls = [NSArray arrayWithObjects:
                             @"\n Выберите ваш рост", @"\n Выберите вашу категорию", @"\n Выберите ваш цвет глаз",
-                            @"\n Выберите ваш цвет волос", @"\n Выберите ваш размер\nодежды", nil];
+                            @"\n Выберите ваш цвет волос", @"\n Выберите ваш размер\nодежды", @"\n Выберите навык вокала",
+                            nil];
     return arrayTitls;
+}
+
++ (NSArray*) setArrayData {
+    
+    NSMutableArray * array = [[NSMutableArray alloc] init];
+    
+    NSArray * arrayNames = [NSArray arrayWithObjects:@"Русский", @"Английский", @"Немецкий",  @"Французский",
+                                                     @"Испанский", @"Китайский", @"Итальянский", @"Японский", nil];
+    
+
+    NSArray * arrayChoose = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],  nil];
+    
+    
+    for (int i = 0; i < arrayNames.count; i++) {
+        
+        NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[arrayNames objectAtIndex:i], @"name",
+                                      [arrayChoose objectAtIndex:i], @"choose", nil];
+        [array addObject:dict];
+    }
+    
+    NSArray * resultArray = [NSArray arrayWithArray:array];
+    return resultArray;
 }
 
 @end

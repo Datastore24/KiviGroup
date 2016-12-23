@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) id <ChooseProfessionViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
+@property (strong, nonatomic) NSArray * mainArrayData;
 
 - (IBAction)actionBackButton:(id)sender;
 - (IBAction)actionButtonSave:(UIButton *)sender;

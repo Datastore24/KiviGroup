@@ -13,6 +13,8 @@
 #import "AddParamsController.h"
 #import "CoutryModel.h"
 #import "SingleTone.h"
+#import "ChooseProfessionalModel.h"
+
 
 
 @interface PersonalDataController () <CountryViewControllerDelegate, ChooseProfessionViewControllerDelegate>
@@ -132,12 +134,15 @@ replacementString:(NSString *)string {
 - (IBAction)actionButtonProfession:(UIButton *)sender {
     ChooseProfessionViewController * detai = [self.storyboard
                                                 instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
+    detai.mainArrayData = [ChooseProfessionalModel setArrayData];
+    [[SingleTone sharedManager] setProfessionControllerCode:@"0"];
     detai.delegate = self;
     [self.navigationController pushViewController:detai animated:YES];
 }
 
 - (IBAction)actionButtonPhoto:(UIButton *)sender {
     NSLog(@"actionButtonPhoto");
+
 }
 
 - (IBAction)actionButtonVideo:(UIButton *)sender {

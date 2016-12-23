@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CDA73F4D9CE4FF0DD907BF739A44F823'
-               BlueprintName = 'Motis'
+               BlueprintIdentifier = '5DC7D7B380A5FEAE815A0DDD986A0174'
+               BlueprintName = 'FBSDKLoginKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libMotis.a'>
+               BuildableName = 'libFBSDKLoginKit.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

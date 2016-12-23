@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CDA73F4D9CE4FF0DD907BF739A44F823'
-               BlueprintName = 'Motis'
+               BlueprintIdentifier = '3C7B23B3FE0CE1A6131C7E09B3F47DA3'
+               BlueprintName = 'FBSDKCoreKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libMotis.a'>
+               BuildableName = 'libFBSDKCoreKit.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
