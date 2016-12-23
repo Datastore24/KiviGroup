@@ -6,69 +6,58 @@
 	<dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FBSDKShareKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>MagicalRecord.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Motis.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>NYAlertViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-Kinopro365.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -78,17 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>417EA9844EC286C5B1B8FCB029C00130</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5DC7D7B380A5FEAE815A0DDD986A0174</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6C4F686AAFC880CE3289CAFF30F049FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -103,22 +82,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1F655C94DD316A80EE66E8BE40C247B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>AFAFB55453D161D2BB5CFB30C68A54D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B5835252C1DF3B1EF1545BE13CE24CC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C291584097F74ABEFCD2A8F046EC08D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

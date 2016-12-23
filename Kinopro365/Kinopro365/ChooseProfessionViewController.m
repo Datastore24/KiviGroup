@@ -9,10 +9,10 @@
 #import "ChooseProfessionViewController.h"
 #import "UILabel+TitleCategory.h"
 #import "ChooseProfessionalModel.h"
+#import "SingleTone.h"
 
 @interface ChooseProfessionViewController ()
 
-@property (strong, nonatomic) NSArray * mainArrayData;
 @property (strong, nonatomic) NSMutableString * professianString;
 
 @end
@@ -26,14 +26,21 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.buttonSave.layer.cornerRadius = 5.f;
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Выберите профессию"];
-    self.navigationItem.titleView = CustomText;
+    if ([[[SingleTone sharedManager] professionControllerCode] isEqualToString:@"0"]) {
+        UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Выберите профессию"];
+        self.navigationItem.titleView = CustomText;
+    } else {
+        UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Выберите языки"];
+        self.navigationItem.titleView = CustomText;
+    }
+    
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mainArrayData = [ChooseProfessionalModel setArrayData];
+//    self.mainArrayData = [ChooseProfessionalModel setArrayData];
     self.professianString = [NSMutableString string];
     
 }
@@ -98,7 +105,12 @@
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
     if ([self.professianString isEqualToString:@""]) {
-        [self showAlertWithMessage:@"\nВыберите хотя-бы одну\nпрофессию\n"];
+        if ([[[SingleTone sharedManager] professionControllerCode] isEqualToString:@"0"]) {
+            [self showAlertWithMessage:@"\nВыберите хотя-бы одну\nпрофессию\n"];
+        } else {
+            [self showAlertWithMessage:@"\nВыберите хотя-бы один\nязык\n"];
+        }
+        
 
     } else {
         [self.delegate setTitlForButtonDelegate:self withTitl:self.professianString];
@@ -109,6 +121,9 @@
 #pragma mark - Other
 
 - (void) creationStringWithString: (NSString*) string andChooseParams: (BOOL) chooseParams {
+    
+    string = [self methodCodeLenguageWithString:string];
+    
     
     if (chooseParams) {
         if ([self.professianString isEqualToString:@""]) {
@@ -133,6 +148,27 @@
 - (void) helpMethodForRange: (NSString*) string {
     NSRange range = [self.professianString rangeOfString:string];
     [self.professianString deleteCharactersInRange:range];
+}
+
+
+//Преобразование языка в код
+- (NSString*) methodCodeLenguageWithString: (NSString*) string {
+    
+    NSArray * arrayNames = [NSArray arrayWithObjects:@"Русский", @"Английский", @"Немецкий",  @"Французский",
+                            @"Испанский", @"Китайский", @"Итальянский", @"Японский", nil];
+    
+    NSArray * arrayCode = [NSArray arrayWithObjects:@"RU", @"EG", @"DE", @"FR", @"ES", @"CN", @"IT", @"JP", nil];
+    
+    for (int i = 0; i < arrayNames.count; i++) {
+    
+        if ([string isEqualToString:[arrayNames objectAtIndex:i]]) {
+            string = [arrayCode objectAtIndex:i];
+        }
+        
+    }
+    
+    return string;
+    
 }
 
 

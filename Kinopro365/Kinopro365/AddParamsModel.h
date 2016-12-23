@@ -10,7 +10,11 @@
 
 @interface AddParamsModel : NSObject
 
-+ (NSArray*) setArrayHeight;
-+ (NSArray*) setArrayTitl;
++ (NSArray*) setArrayHeight; //Данные пикер вью
++ (NSArray*) setArrayTitl; //Заголовки для пикер вью
+
+
+//Массив языков
++ (NSArray*) setArrayData;
 
 @end

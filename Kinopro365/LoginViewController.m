@@ -169,7 +169,7 @@
     }
 }
 
-
+#pragma mark - Autorization
 
 - (void) authComplete {
     self.isAuth = YES;
@@ -181,7 +181,6 @@
 
 -(void) checkAuthFB{
     if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
         [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
         [self authComplete];
     }else{
