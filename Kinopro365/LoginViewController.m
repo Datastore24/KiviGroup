@@ -7,10 +7,19 @@
 //
 
 #import "LoginViewController.h"
+#import "VkLoginViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "UserInformationTable.h"
+#import "VKAPI.h"
 
 @interface LoginViewController ()
 
 @property (assign, nonatomic) NSInteger timerStep; //Счетчик таймера
+@property (strong, nonatomic) UserInformationTable * selectedDataObject;
+@property (strong, nonatomic) RLMResults *tableDataArray;
+@property (strong, nonatomic) NSDictionary * dictResponse;
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 
 @end
 
@@ -18,12 +27,13 @@
 
 - (void) loadView {
     [super loadView];
-    
+    self.isAuth = NO;
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
+    [self checkAuthVK];
+    [self checkAuthFB];
     
     [self hideAllTextFildWithMainView:self.view];
-    
     
 }
 
@@ -95,6 +105,24 @@
 - (IBAction)actionButtonFacebook:(UIButton *)sender {
     
     NSLog(@"actionButtonFacebook");
+    
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+             [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+//             FBSDKProfile * currentProfile = [[FBSDKProfile alloc] init];
+//             NSLog(@"NAME: %@",currentProfile.firstName);
+             [self authComplete];
+         }
+     }];
 }
 
 
@@ -102,6 +130,10 @@
 - (IBAction)actionButtonVK:(UIButton *)sender {
     
     NSLog(@"actionButtonVK");
+    VkLoginViewController *vk = [[VkLoginViewController alloc] init];
+    vk.appID = @"5773251";
+    vk.delegate = self;
+    [self presentViewController:vk animated:YES completion:nil];
 
 }
 
@@ -135,5 +167,53 @@
             self.buttonSendCode.userInteractionEnabled = YES;
         }];        
     }
+}
+
+- (void) authComplete {
+    self.isAuth = YES;
+    PersonalDataController * tmpViewController = [self.storyboard
+                                                  instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+    [self.navigationController pushViewController:tmpViewController animated:YES];
+    NSLog(@"isAuth: YES");
+}
+
+-(void) checkAuthFB{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+        [self authComplete];
+    }else{
+        NSLog(@"ERROR ENTER FB");
+    }
+}
+
+-(void) checkAuthVK {
+    
+    self.tableDataArray=[UserInformationTable allObjects];
+    if (self.tableDataArray.count >0 ){
+        
+    
+        self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
+        NSLog(@"FETCH %@",self.selectedDataObject);
+        NSString * userID = self.selectedDataObject.vkID;
+        NSString * vkToken = self.selectedDataObject.vkToken;
+        
+        VKAPI * vkAPI = [[VKAPI alloc] init];
+        [vkAPI getUserWithParams:userID andVkToken:vkToken complitionBlock:^(id response) {
+            self.dictResponse = (NSDictionary*) response;
+            
+            if (![[self.dictResponse objectForKey:@"error"] isKindOfClass: [NSDictionary class]]){
+                NSLog(@"DICT %@",self.dictResponse);
+                [self authComplete];
+            }else{
+                NSLog(@"ERROR AUTH VK");
+            }
+            
+        }];
+    
+//    //Теперь попробуем вытяныть некую информацию
+   
+
+  }
 }
 @end
