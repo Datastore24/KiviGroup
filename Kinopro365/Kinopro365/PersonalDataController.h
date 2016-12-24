@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIView *mainTopView;
 @property (strong, nonatomic) NSString * tmpStringTest; //Сохранение строкового параметра
 
+//Labels-----------
+@property (weak, nonatomic) IBOutlet UILabel *labelCountPhoto;
+
 //Buttons----------
 @property (weak, nonatomic) IBOutlet UIButton *buttonAvatar;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
@@ -36,11 +39,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone1;
 @property (weak, nonatomic) IBOutlet UITextField *textFildEmail;
 
-//ImageView
+//ImageView-------------
 @property (weak, nonatomic) IBOutlet UIImageView *imageButtonProffecional;
 
 
-//Actions------
+//Actions----------------
 - (IBAction)actionButtonAvatar:(UIButton *)sender;
 - (IBAction)actionButtonCountry:(UIButton *)sender;
 - (IBAction)actionButtonCity:(UIButton *)sender;
