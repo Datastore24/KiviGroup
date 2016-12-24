@@ -14,10 +14,17 @@
 #import "CoutryModel.h"
 #import "SingleTone.h"
 #import "ChooseProfessionalModel.h"
+#import "HMImagePickerController.h"
 
 
 
-@interface PersonalDataController () <CountryViewControllerDelegate, ChooseProfessionViewControllerDelegate>
+@interface PersonalDataController () <CountryViewControllerDelegate, ChooseProfessionViewControllerDelegate,
+                                      HMImagePickerControllerDelegate>
+
+@property (strong, nonatomic) NSArray * images;
+@property (nonatomic) NSArray * selectedAssets;
+@property (strong, nonatomic) HMImagePickerController * pickerAvatar; //Фото контроллер для выбора аватара
+@property (strong, nonatomic) UIImage * imageAvatar; //Картинка аватара;
 
 @end
 
@@ -100,12 +107,38 @@ replacementString:(NSString *)string {
     
 }
 
+#pragma mark - HMImagePickerControllerDelegate
+- (void)imagePickerController:(HMImagePickerController *)picker
+      didFinishSelectedImages:(NSArray<UIImage *> *)images
+               selectedAssets:(NSArray<PHAsset *> *)selectedAssets {
+    
+   
+    
+    if ([picker isEqual:self.pickerAvatar]) {
+        self.imageAvatar = [images objectAtIndex:0];
+        [self.buttonAvatar setImage:self.imageAvatar forState:UIControlStateNormal];
+        self.buttonAvatar.layer.cornerRadius = CGRectGetWidth(self.buttonAvatar.bounds) / 2;
+        self.buttonAvatar.clipsToBounds = YES;
+    } else {
+        self.images = images;
+        self.selectedAssets = selectedAssets;
+        self.labelCountPhoto.text = [NSString stringWithFormat:@"%lu из 10", (unsigned long)self.images.count];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 #pragma mark - Action
 
 - (IBAction)actionButtonAvatar:(UIButton *)sender {
-    NSLog(@"actionButtonAvatar");
+    self.pickerAvatar = [[HMImagePickerController alloc] initWithSelectedAssets:nil];
+    self.pickerAvatar.pickerDelegate = self;
+    self.pickerAvatar.targetSize = CGSizeMake(600, 600);
+    self.pickerAvatar.maxPickerCount = 1;
+    
+    [self presentViewController:self.pickerAvatar animated:YES completion:nil];
 }
 
 - (IBAction)actionButtonCountry:(UIButton *)sender {
@@ -141,7 +174,12 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonPhoto:(UIButton *)sender {
-    NSLog(@"actionButtonPhoto");
+    HMImagePickerController *picker = [[HMImagePickerController alloc] initWithSelectedAssets:self.selectedAssets];
+    picker.pickerDelegate = self;
+    picker.targetSize = CGSizeMake(600, 600);
+    picker.maxPickerCount = 10 - self.images.count;
+    
+    [self presentViewController:picker animated:YES completion:nil];
 
 }
 
