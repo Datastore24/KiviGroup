@@ -11,6 +11,7 @@
 		AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A51E0AB873007B78CA /* UserInformationTable.m */; };
 		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
 		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
+		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
 		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
@@ -75,6 +76,8 @@
 		AD2624A81E0AC639007B78CA /* VkLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkLoginViewController.m; sourceTree = "<group>"; };
 		AD2624AA1E0AD565007B78CA /* VKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPI.h; sourceTree = "<group>"; };
 		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
+		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
@@ -204,6 +207,15 @@
 				AD2624A51E0AB873007B78CA /* UserInformationTable.m */,
 			);
 			name = RealmBase;
+			sourceTree = "<group>";
+		};
+		AD887E741E105CE600CA7B8F /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AD887E711E105CD900CA7B8F /* LaunchViewController.h */,
+				AD887E721E105CDA00CA7B8F /* LaunchViewController.m */,
+			);
+			name = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		FF25B97A1DF97CFE00D59716 /* Login */ = {
@@ -380,6 +392,7 @@
 			children = (
 				FF90942A1DFDC2870062F556 /* PersonalData */,
 				FF25B97A1DF97CFE00D59716 /* Login */,
+				AD887E741E105CE600CA7B8F /* LaunchScreen */,
 				FFDE8B981DDDC46000F937BD /* AppDelegate.h */,
 				FFDE8B991DDDC46000F937BD /* AppDelegate.m */,
 				FF25B9741DF97CBF00D59716 /* MainViewController.h */,
@@ -588,6 +601,7 @@
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
+				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
 				FF88DF551E0E696B0002FBBC /* HMViewerViewController.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,

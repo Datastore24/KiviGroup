@@ -213,12 +213,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uyS-U5-KTF"/>
+                        <segue destination="A2o-WC-FrC" kind="relationship" relationship="rootViewController" id="y5s-U5-45w"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLJ-ss-0r7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="135"/>
+            <point key="canvasLocation" x="-728" y="133"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="fWd-oA-pNL">
@@ -773,22 +773,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvi-st-V9f">
-                                                    <rect key="frame" x="40" y="11" width="190" height="20"/>
+                                                    <rect key="frame" x="39" y="11" width="191" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOH-O6-dA0">
-                                                    <rect key="frame" x="12" y="14" width="15" height="14"/>
+                                                    <rect key="frame" x="11" y="14" width="15" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0OD-mf-RbO">
-                                                    <rect key="frame" x="290" y="14" width="22" height="15"/>
+                                                    <rect key="frame" x="289" y="14" width="22" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WNg-Mt-Cib">
-                                                    <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="41" width="319" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -1279,6 +1279,32 @@
             </objects>
             <point key="canvasLocation" x="3001.875" y="-1219.0140845070423"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="1Mt-eX-gCF">
+            <objects>
+                <viewController id="A2o-WC-FrC" customClass="LaunchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k9m-qb-mrm"/>
+                        <viewControllerLayoutGuide type="bottom" id="yHC-7X-kMD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NEQ-Gl-go9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoImage" translatesAutoresizingMaskIntoConstraints="NO" id="wuH-60-iFl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kv7-A9-3dE"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5e7-J1-TOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="133"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrowForAge.png" width="12" height="6"/>
@@ -1291,6 +1317,7 @@
         <image name="imageButtonPhoto" width="51" height="52"/>
         <image name="imageButtonQuestion" width="23" height="24"/>
         <image name="imageButtonVideo" width="51" height="52"/>
+        <image name="logoImage" width="375" height="667"/>
         <image name="logoLoginImage" width="181" height="39"/>
         <image name="nazad.png" width="10" height="19"/>
         <image name="vkImage" width="28" height="28"/>

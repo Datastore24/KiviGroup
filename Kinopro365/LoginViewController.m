@@ -16,10 +16,7 @@
 @interface LoginViewController ()
 
 @property (assign, nonatomic) NSInteger timerStep; //Счетчик таймера
-@property (strong, nonatomic) UserInformationTable * selectedDataObject;
-@property (strong, nonatomic) RLMResults *tableDataArray;
-@property (strong, nonatomic) NSDictionary * dictResponse;
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+
 
 @end
 
@@ -30,9 +27,7 @@
     self.isAuth = NO;
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
-    [self checkAuthVK];
-    [self checkAuthFB];
-    
+
     [self hideAllTextFildWithMainView:self.view];
     
 }
@@ -179,42 +174,6 @@
     NSLog(@"isAuth: YES");
 }
 
--(void) checkAuthFB{
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
-        [self authComplete];
-    }else{
-        NSLog(@"ERROR ENTER FB");
-    }
-}
 
--(void) checkAuthVK {
-    
-    self.tableDataArray=[UserInformationTable allObjects];
-    if (self.tableDataArray.count >0 ){
-        
-    
-        self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
-        NSLog(@"FETCH %@",self.selectedDataObject);
-        NSString * userID = self.selectedDataObject.vkID;
-        NSString * vkToken = self.selectedDataObject.vkToken;
-        
-        VKAPI * vkAPI = [[VKAPI alloc] init];
-        [vkAPI getUserWithParams:userID andVkToken:vkToken complitionBlock:^(id response) {
-            self.dictResponse = (NSDictionary*) response;
-            
-            if (![[self.dictResponse objectForKey:@"error"] isKindOfClass: [NSDictionary class]]){
-                NSLog(@"DICT %@",self.dictResponse);
-                [self authComplete];
-            }else{
-                NSLog(@"ERROR AUTH VK");
-            }
-            
-        }];
-    
-//    //Теперь попробуем вытяныть некую информацию
-   
 
-  }
-}
 @end
