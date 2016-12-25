@@ -59,6 +59,7 @@
 		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
 		FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */; };
 		FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BBF1DDED88800F937BD /* NewViewController.m */; };
+		FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF493391E0FDBD900C26176 /* VideoViewController.m */; };
 		FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD1A461E092FFB00626219 /* AddInfoemationController.m */; };
 		FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD1A4A1E09489300626219 /* AddParamsController.m */; };
 		FFFD1A4D1E09539800626219 /* arrowForAge.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFD1A4C1E09539800626219 /* arrowForAge.png */; };
@@ -154,6 +155,8 @@
 		FFDE8BB91DDEC7BA00F937BD /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		FFDE8BBE1DDED88800F937BD /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		FFDE8BBF1DDED88800F937BD /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		FFF493381E0FDBD900C26176 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		FFF493391E0FDBD900C26176 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		FFFD1A451E092FFB00626219 /* AddInfoemationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoemationController.h; sourceTree = "<group>"; };
 		FFFD1A461E092FFB00626219 /* AddInfoemationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoemationController.m; sourceTree = "<group>"; };
 		FFFD1A491E09489300626219 /* AddParamsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsController.h; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 				FF90942B1DFDC2AD0062F556 /* PersonalDataController.h */,
 				FF90942C1DFDC2AD0062F556 /* PersonalDataController.m */,
 				FF9DE2431E02EB1D007ED49F /* CountryController */,
+				FFF493371E0FDBBE00C26176 /* WebViewVideo */,
 				FF88DF301E0E69260002FBBC /* PhotoController */,
 				FFFD1A441E092FC900626219 /* AddInformation */,
 				FF90ED271E03C04900094F6D /* ChooseProfession */,
@@ -402,6 +406,15 @@
 				FF25B97F1DF9808B00D59716 /* Macros.h */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFF493371E0FDBBE00C26176 /* WebViewVideo */ = {
+			isa = PBXGroup;
+			children = (
+				FFF493381E0FDBD900C26176 /* VideoViewController.h */,
+				FFF493391E0FDBD900C26176 /* VideoViewController.m */,
+			);
+			name = WebViewVideo;
 			sourceTree = "<group>";
 		};
 		FFFD1A441E092FC900626219 /* AddInformation */ = {
@@ -589,6 +602,7 @@
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
+				FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */,
 				FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */,
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
