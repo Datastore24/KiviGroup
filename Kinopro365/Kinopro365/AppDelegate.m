@@ -52,6 +52,9 @@
     [self.window makeKeyAndVisible];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
+    
+    
+    [[SingleTone sharedManager] setStringAletForWebView:@"0"];
 
     
     return YES;

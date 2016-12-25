@@ -15,10 +15,12 @@
 #import "SingleTone.h"
 #import "ChooseProfessionalModel.h"
 #import "HMImagePickerController.h"
+#import "VideoViewController.h"
 
 
 
-@interface PersonalDataController () <CountryViewControllerDelegate, ChooseProfessionViewControllerDelegate,
+@interface PersonalDataController () <CountryViewControllerDelegate,
+                                      ChooseProfessionViewControllerDelegate,
                                       HMImagePickerControllerDelegate>
 
 @property (strong, nonatomic) NSArray * images;
@@ -38,6 +40,11 @@
     self.mainTopView.layer.shadowOpacity = 1.0f;
     self.mainTopView.layer.shadowRadius = 4.0f;
     self.buttonNext.layer.cornerRadius = 5.f;
+    
+    self.buttonAvatar.layer.borderColor = [UIColor hx_colorWithHexRGBAString:COLOR_BORDER_AVATAR].CGColor;
+    self.buttonAvatar.layer.borderWidth = 1.f;
+    self.buttonAvatar.layer.cornerRadius = 5.f;
+    self.buttonAvatar.clipsToBounds = YES;
     
     [self hideAllTextFildWithMainView:self.mainTopView];
 }
@@ -112,13 +119,12 @@ replacementString:(NSString *)string {
       didFinishSelectedImages:(NSArray<UIImage *> *)images
                selectedAssets:(NSArray<PHAsset *> *)selectedAssets {
     
-   
-    
     if ([picker isEqual:self.pickerAvatar]) {
         self.imageAvatar = [images objectAtIndex:0];
         [self.buttonAvatar setImage:self.imageAvatar forState:UIControlStateNormal];
-        self.buttonAvatar.layer.cornerRadius = CGRectGetWidth(self.buttonAvatar.bounds) / 2;
-        self.buttonAvatar.clipsToBounds = YES;
+        if (self.buttonAvatar.layer.borderWidth != 0) {
+            self.buttonAvatar.layer.borderWidth = 0;
+        }
     } else {
         self.images = images;
         self.selectedAssets = selectedAssets;
@@ -184,7 +190,7 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonVideo:(UIButton *)sender {
-    NSLog(@"actionButtonVideo");
+    [self pushCountryControllerWithIdentifier:@"VideoViewController"];
 }
 
 - (IBAction)actionButtonAddInfo:(UIButton *)sender {
