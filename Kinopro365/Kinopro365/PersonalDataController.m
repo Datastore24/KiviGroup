@@ -16,6 +16,7 @@
 #import "ChooseProfessionalModel.h"
 #import "HMImagePickerController.h"
 #import "VideoViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
 
@@ -34,6 +35,7 @@
 
 - (void) loadView {
     [super loadView];
+
 
     self.mainTopView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.mainTopView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
@@ -122,9 +124,9 @@ replacementString:(NSString *)string {
     if ([picker isEqual:self.pickerAvatar]) {
         self.imageAvatar = [images objectAtIndex:0];
         [self.buttonAvatar setImage:self.imageAvatar forState:UIControlStateNormal];
-        if (self.buttonAvatar.layer.borderWidth != 0) {
-            self.buttonAvatar.layer.borderWidth = 0;
-        }
+//        if (self.buttonAvatar.layer.borderWidth != 0) {
+//            self.buttonAvatar.layer.borderWidth = 0;
+//        }
     } else {
         self.images = images;
         self.selectedAssets = selectedAssets;

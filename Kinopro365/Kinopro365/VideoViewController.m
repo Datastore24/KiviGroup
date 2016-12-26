@@ -10,6 +10,8 @@
 #import "SingleTone.h"
 
 @interface VideoViewController () 
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) UIColor * defaultColorButton;
 
 @end
 
@@ -23,6 +25,10 @@
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Видео"];
     self.navigationItem.titleView = CustomText;
     self.webView.mediaPlaybackRequiresUserAction = NO;
+    self.defaultColorButton = self.saveButton.backgroundColor;
+    self.saveButton.userInteractionEnabled = NO;
+    self.saveButton.backgroundColor = [UIColor grayColor];
+
     [self createActivitiIndicatorAlertWithView];
 }
 
@@ -50,15 +56,24 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
+    
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self deleteActivitiIndicator];
-
+    
     if ([[[SingleTone sharedManager] stringAletForWebView] isEqualToString:@"0"]) {
         [self showAlertWithMessage:@"\nДля сохранения ссылки,\nнайдиет через поиск ваше видео,"
                                    @"\nзатем нажмите на кнопку\n\"Сохранить URL\"\n"];
         [[SingleTone sharedManager] setStringAletForWebView:@"1"];
     }
+    
+    NSString *stringUrl = [[self.webView.request URL] absoluteString];
+    if ([stringUrl rangeOfString:@"watch?v="].location != NSNotFound) {
+        self.saveButton.userInteractionEnabled = YES;
+        self.saveButton.backgroundColor = self.defaultColorButton;
+    }
+    
+    NSLog(@"URL %@", stringUrl);
     
     
     

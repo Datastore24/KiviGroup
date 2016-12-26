@@ -8,10 +8,18 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "UserInformationTable.h"
+#import "VkLoginViewController.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "UserInformationTable.h"
+#import "VKAPI.h"
 
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) UserInformationTable * selectedDataObject;
+@property (strong, nonatomic) RLMResults *tableDataArray;
+@property (strong, nonatomic) NSDictionary * dictResponse;
 
 
 @end
@@ -23,39 +31,14 @@
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-
-    UIStoryboard * mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-
-    UIViewController * centerViewController =
-                        [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    UIViewController * leftViewController =
-                        [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftSideViewController"];
-
     
     
-    UINavigationController * leftSideNav = [[UINavigationController alloc]
-                                            initWithRootViewController:leftViewController];
-    UINavigationController * centerNav = [[UINavigationController alloc]
-                                            initWithRootViewController:centerViewController];
-
-    
-    self.centerContainer = [[MMDrawerController alloc]
-                                            initWithCenterViewController:centerNav
-                                            leftDrawerViewController:leftSideNav];
-    
-//    self.centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-//    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-//    [centerContainer setShowsShadow:NO];
-    
-    [self.window setRootViewController:self.centerContainer];
-    [self.window makeKeyAndVisible];
-    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
-    
-    
-    [[SingleTone sharedManager] setStringAletForWebView:@"0"];
-
+    if([self checkAuthFB]){
+        [self authCheck:YES];
+    }else{
+        [self checkAuthVK];
+    }
+   
     
     return YES;
 }
@@ -96,6 +79,88 @@
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+
+#pragma mark - CHECK VK & FB
+-(BOOL) checkAuthFB{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+        return YES;
+    }else{
+        return  NO;
+    }
+}
+
+-(void) checkAuthVK {
+    NSLog(@"CHECK VK START");
+    self.tableDataArray=[UserInformationTable allObjects];
+    if (self.tableDataArray.count >0 ){
+        
+        
+        self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
+        NSLog(@"FETCH %@",self.selectedDataObject);
+        NSString * userID = self.selectedDataObject.vkID;
+        NSString * vkToken = self.selectedDataObject.vkToken;
+        
+        VKAPI * vkAPI = [[VKAPI alloc] init];
+        [vkAPI getUserWithParams:userID andVkToken:vkToken complitionBlock:^(id response) {
+            self.dictResponse = (NSDictionary*) response;
+            
+            if (![[self.dictResponse objectForKey:@"error"] isKindOfClass: [NSDictionary class]]){
+                NSLog(@"DICT %@",self.dictResponse);
+                [self authCheck:YES];
+            }else{
+                [self authCheck:NO];
+            }
+            
+        }];
+        
+        //    //Теперь попробуем вытяныть некую информацию
+        
+        
+    }
+}
+
+-(void) authCheck: (BOOL) check{
+    UIStoryboard * mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    NSString * controller;
+    if(check){
+        controller = @"PersonalDataController";
+    }else{
+        controller = @"LoginViewController";
+    }
+    NSLog(@"CONTROLLER %@",controller);
+    UIViewController * centerViewController =
+    [mainStoryboard instantiateViewControllerWithIdentifier:controller];
+    UIViewController * leftViewController =
+    [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftSideViewController"];
+    
+    
+    
+    UINavigationController * leftSideNav = [[UINavigationController alloc]
+                                            initWithRootViewController:leftViewController];
+    UINavigationController * centerNav = [[UINavigationController alloc]
+                                          initWithRootViewController:centerViewController];
+    
+    
+    self.centerContainer = [[MMDrawerController alloc]
+                            initWithCenterViewController:centerNav
+                            leftDrawerViewController:leftSideNav];
+    
+    //    self.centerContainer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    //    self.centerContainer.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    //    [centerContainer setShowsShadow:NO];
+    
+    [self.window setRootViewController:self.centerContainer];
+    [self.window makeKeyAndVisible];
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
+    
+    
+    [[SingleTone sharedManager] setStringAletForWebView:@"0"];
+    
+
 }
 
 
