@@ -12,6 +12,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "UserInformationTable.h"
 #import "VKAPI.h"
+#import "APIManger.h"
 
 @interface LoginViewController ()
 
@@ -77,6 +78,27 @@
     
     sender.userInteractionEnabled = NO;
     [sender setTitle:@"" forState:UIControlStateNormal];
+        
+        
+        self.textFildPhone.text = [self.textFildPhone.text
+                                        stringByReplacingOccurrencesOfString:@"(" withString:@""];
+        self.textFildPhone.text = [self.textFildPhone.text
+                                        stringByReplacingOccurrencesOfString:@")" withString:@""];
+        self.textFildPhone.text = [self.textFildPhone.text
+                                   stringByReplacingOccurrencesOfString:@"+" withString:@""];
+                                   NSLog(@"PHONE %@",self.textFildPhone.text);
+        APIManger * apiManager = [[APIManger alloc] init];
+        
+        NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"3",@"client_id",
+                                 self.textFildPhone.text,@"username",nil];
+        NSLog(@"PARAMS %@",params);
+        [apiManager getDataFromSeverWithMethod:@"register" andParams:params complitionBlock:^(id response) {
+            NSLog(@"RESPONSE %@",response);
+        }];
+        
+        [self createActivitiIndicatorAlertWithView];
+
     
     [self startTimerOnButton:sender];
     }

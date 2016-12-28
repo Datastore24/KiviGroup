@@ -11,6 +11,7 @@
 		AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A51E0AB873007B78CA /* UserInformationTable.m */; };
 		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
 		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
+		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
@@ -76,6 +77,8 @@
 		AD2624A81E0AC639007B78CA /* VkLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkLoginViewController.m; sourceTree = "<group>"; };
 		AD2624AA1E0AD565007B78CA /* VKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPI.h; sourceTree = "<group>"; };
 		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
+		AD50A4981E13DC2300CC44DB /* APIManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManger.h; sourceTree = "<group>"; };
+		AD50A4991E13DC2300CC44DB /* APIManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManger.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,15 @@
 				AD2624A51E0AB873007B78CA /* UserInformationTable.m */,
 			);
 			name = RealmBase;
+			sourceTree = "<group>";
+		};
+		AD50A4971E13DC0400CC44DB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AD50A4981E13DC2300CC44DB /* APIManger.h */,
+				AD50A4991E13DC2300CC44DB /* APIManger.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		AD887E741E105CE600CA7B8F /* LaunchScreen */ = {
@@ -399,6 +411,7 @@
 				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
 				FFDE8B9E1DDDC46000F937BD /* Main.storyboard */,
 				FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */,
+				AD50A4971E13DC0400CC44DB /* API */,
 				FF25B9E61DFAF6E400D59716 /* Category */,
 				FF90ED2E1E03C9EF00094F6D /* Images */,
 				FF25B9D71DFAB31400D59716 /* Fonts */,
@@ -622,6 +635,7 @@
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
 				FF88DF541E0E696B0002FBBC /* HMSelectCounterButton.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
+				AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */,
 				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
 				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
 				FF88DF521E0E696B0002FBBC /* HMImageSelectButton.m in Sources */,
