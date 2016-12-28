@@ -11,7 +11,6 @@
 #import "UserInformationTable.h"
 #import "VkLoginViewController.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "UserInformationTable.h"
 #import "VKAPI.h"
 
 
