@@ -13,10 +13,13 @@
 #import "UserInformationTable.h"
 #import "VKAPI.h"
 #import "APIManger.h"
+#import "UserInformationTable.h"
 
 @interface LoginViewController ()
 
 @property (assign, nonatomic) NSInteger timerStep; //Счетчик таймера
+@property (strong, nonatomic) NSString * tempCode; //Пока смс не работает
+@property (strong, nonatomic)  APIManger * apiManager;
 
 
 @end
@@ -28,6 +31,8 @@
     self.isAuth = NO;
     self.buttonSendCode.layer.cornerRadius = 4.f;
     self.buttonEntrance.layer.cornerRadius = 4.f;
+    self.apiManager = [[APIManger alloc] init];
+
 
     [self hideAllTextFildWithMainView:self.view];
     
@@ -45,7 +50,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+    self.buttonEntrance.alpha = 0;
+    self.buttonEntrance.userInteractionEnabled = NO;
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -75,29 +81,35 @@
     if (self.textFildPhone.text.length == 0) {
         [self showAlertWithMessage:@"\nВведите номер телефона!\n"];
     } else {
-    
-    sender.userInteractionEnabled = NO;
+               sender.userInteractionEnabled = NO;
+        [self createActivitiIndicatorAlertWithView];
+        NSLog(@"AUTH");
     [sender setTitle:@"" forState:UIControlStateNormal];
         
-        
-        self.textFildPhone.text = [self.textFildPhone.text
+        NSString * sendPhoneNumber;
+        sendPhoneNumber = [self.textFildPhone.text
                                         stringByReplacingOccurrencesOfString:@"(" withString:@""];
-        self.textFildPhone.text = [self.textFildPhone.text
+        sendPhoneNumber = [sendPhoneNumber
                                         stringByReplacingOccurrencesOfString:@")" withString:@""];
-        self.textFildPhone.text = [self.textFildPhone.text
+        sendPhoneNumber = [sendPhoneNumber
                                    stringByReplacingOccurrencesOfString:@"+" withString:@""];
                                    NSLog(@"PHONE %@",self.textFildPhone.text);
-        APIManger * apiManager = [[APIManger alloc] init];
         
         NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  @"3",@"client_id",
-                                 self.textFildPhone.text,@"username",nil];
+                                 sendPhoneNumber,@"username",nil];
         NSLog(@"PARAMS %@",params);
-        [apiManager getDataFromSeverWithMethod:@"register" andParams:params complitionBlock:^(id response) {
+        [self.apiManager getDataFromSeverWithMethod:@"oauth/authorize" andParams:params complitionBlock:^(id response) {
+            [self deleteActivitiIndicator];
+            self.buttonEntrance.alpha = 1.f;
+            self.buttonEntrance.userInteractionEnabled = YES;
+            self.tempCode = [NSString stringWithFormat:@"%@", [response objectForKey:@"_code"]];
+            //ПРОВЕРКА НА ТИП АВТОРИЗАЦИИ
+            
             NSLog(@"RESPONSE %@",response);
         }];
         
-        [self createActivitiIndicatorAlertWithView];
+        
 
     
     [self startTimerOnButton:sender];
@@ -112,9 +124,44 @@
     } else if (self.textFildPassword.text.length == 0) {
         [self showAlertWithMessage:@"\nВведите пароль!\n"];
     } else {
-        PersonalDataController * tmpViewController = [self.storyboard
-                                                      instantiateViewControllerWithIdentifier:@"PersonalDataController"];
-        [self.navigationController pushViewController:tmpViewController animated:YES];
+        
+        if([self.tempCode isEqualToString: self.textFildPassword.text]){
+            
+            NSString * sendPhoneNumber;
+            sendPhoneNumber = [self.textFildPhone.text
+                               stringByReplacingOccurrencesOfString:@"(" withString:@""];
+            sendPhoneNumber = [sendPhoneNumber
+                               stringByReplacingOccurrencesOfString:@")" withString:@""];
+            sendPhoneNumber = [sendPhoneNumber
+                               stringByReplacingOccurrencesOfString:@"+" withString:@""];
+
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     @"3",@"client_id",
+                                     sendPhoneNumber,@"username",
+                                     self.textFildPassword.text,@"code",nil];
+            NSLog(@"PARAMS %@",params);
+            [self createActivitiIndicatorAlertWithView];
+            [self.apiManager getDataFromSeverWithMethod:@"oauth/authorize" andParams:params complitionBlock:^(id response) {
+                [self deleteActivitiIndicator];
+                
+                //ПРОВЕРКА НА ТИП АВТОРИЗАЦИИ
+                
+                NSLog(@"RESPONSE %@",response);
+                if([[response objectForKey:@"status"] integerValue] == 1){
+                 UserInformationTable * userInfoTable   = [[UserInformationTable alloc] init];
+                    [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[response objectForKey:@"access_token"] andExpiresSiteToken:[NSString stringWithFormat:@"%@",[response objectForKey:@"expires"]]];
+                }
+                
+            }];
+            
+            PersonalDataController * tmpViewController = [self.storyboard
+                                                          instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+            [self.navigationController pushViewController:tmpViewController animated:YES];
+            
+        }else{
+            [self showAlertWithMessage:@"\nВведенный код не верен!\n"];
+        }
+        
     }
 }
 

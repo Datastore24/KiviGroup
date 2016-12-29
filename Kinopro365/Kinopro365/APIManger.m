@@ -16,7 +16,7 @@
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com/oauth/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -38,7 +38,7 @@
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com/oauth/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];

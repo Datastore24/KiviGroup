@@ -12,6 +12,7 @@
 #import "VkLoginViewController.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "VKAPI.h"
+#import "DateToTimestamp.h"
 
 
 @interface AppDelegate ()
@@ -31,13 +32,15 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    
-    if([self checkAuthFB]){
-        [self authCheck:YES];
+    if([self checkSiteToken]){
+       [self authCheck:YES];
     }else{
-        [self checkAuthVK];
+        if([self checkAuthFB]){
+            [self authCheck:YES];
+        }else{
+            [self checkAuthVK];
+        }
     }
-   
     
     return YES;
 }
@@ -117,7 +120,54 @@
         //    //Теперь попробуем вытяныть некую информацию
         
         
+    }else{
+        [self authCheck:NO];
     }
+}
+
+-(BOOL) checkSiteToken {
+    // Get the current date/time in timestamp format.
+   
+    
+    NSNumberFormatter *formatNumber = [[NSNumberFormatter alloc] init];
+    formatNumber.numberStyle = NSNumberFormatterDecimalStyle;
+    NSDate * now = [NSDate date];
+    
+    
+    self.tableDataArray=[UserInformationTable allObjects];
+    if (self.tableDataArray.count >0 ){
+        self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
+        NSString * expiresToken = self.selectedDataObject.expiresSiteToken;
+        
+        double timestampval =  [expiresToken doubleValue];
+        NSTimeInterval timestamp = (NSTimeInterval)timestampval;
+        NSDate *updatetimestamp = [NSDate dateWithTimeIntervalSince1970:timestamp];
+
+        switch ([now compare:updatetimestamp]) {
+            case NSOrderedAscending:
+                //Do your logic when date1 < date2
+                NSLog(@"%@ < %@ YES",now,updatetimestamp);
+                return YES;
+                break;
+                
+            case NSOrderedDescending:
+                //Do your logic when date1 < date2
+                NSLog(@"%@ > %@ NO",now,updatetimestamp);
+                return NO;
+                break;
+                
+            case NSOrderedSame:
+                NSLog(@"%@ = %@ YES",now,updatetimestamp);
+                //Do your logic when date1 = date2
+                return YES;
+                break;
+        }
+
+    }else{
+        return NO;
+    }
+    
+    
 }
 
 -(void) authCheck: (BOOL) check{

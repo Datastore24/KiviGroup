@@ -15,8 +15,7 @@
     return @"userID";
 }
 
--(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken
-{
+-(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken andExpiresSiteToken: (NSString *) expiresSiteToken{
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     @try {
@@ -27,6 +26,7 @@
         self.vkToken = vkToken;
         self.vkID = vkID;
         self.siteToken = siteToken;
+        self.expiresSiteToken = expiresSiteToken;
         
         [realm addOrUpdateObject:self];
         [realm commitWriteTransaction];
