@@ -14,9 +14,10 @@
 @property NSString *vkToken;
 @property NSString *vkID;
 @property NSString *siteToken;
+@property NSString *expiresSiteToken;
 
 + (NSString *)primaryKey;
--(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken;
+-(void)insertDataIntoDataBaseWithName:(NSString *)vkToken andVkID:(NSString *)vkID siteToken:(NSString *) siteToken andExpiresSiteToken: (NSString *) expiresSiteToken;
 -(void) updateDataInDataBase;
 -(void) deleteDataInDataBase:(id) array;
 
