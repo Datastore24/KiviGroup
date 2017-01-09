@@ -8,9 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol CoutryModelDelegate <NSObject>
+
+@required
+
+@property (strong, nonatomic) NSArray * countryArray;
+-(void) reloadTable;
+
+
+@end
+
 @interface CoutryModel : NSObject
 
-+ (NSArray*) setCountryArray;
+@property (assign, nonatomic) id <CoutryModelDelegate> delegate;
+
+- (void) getCountryArrayToTableView: (void (^) (void)) compitionBack;
+- (void) putCountryIdToProfle: (NSString *) countryID block: (void (^) (void)) compitionBack;
+- (void) getCityArrayToTableView: (NSString *) countryID block: (void (^) (void)) compitionBack;
 
 
 @end

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) id <CountryViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray * countryArray;
 
 @end
 

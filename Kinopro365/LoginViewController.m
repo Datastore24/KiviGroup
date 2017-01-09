@@ -150,8 +150,9 @@
                 NSLog(@"RESPONSE %@",response);
                 if([[response objectForKey:@"status"] integerValue] == 1){
                  UserInformationTable * userInfoTable   = [[UserInformationTable alloc] init];
-                    [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[response objectForKey:@"access_token"] andExpiresSiteToken:[NSString stringWithFormat:@"%@",[response objectForKey:@"expires"]]];
+                    [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[response objectForKey:@"access_token"] andExpiresSiteToken:[NSString stringWithFormat:@"%@",[response objectForKey:@"expires"]] andSiteUserID:[response objectForKey:@"user_id"]];
                     [[SingleTone sharedManager] setToken:[response objectForKey:@"access_token"]];
+                    [[SingleTone sharedManager] setSiteUserID:[response objectForKey:@"user_id"]];
                 }
                 
             }];

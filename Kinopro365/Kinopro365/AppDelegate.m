@@ -140,6 +140,7 @@
         self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
         NSString * expiresToken = self.selectedDataObject.expiresSiteToken;
         NSString * token = self.selectedDataObject.siteToken;
+        NSString * siteUserID = self.selectedDataObject.siteUserID;
         
         
         double timestampval =  [expiresToken doubleValue];
@@ -150,6 +151,7 @@
             case NSOrderedAscending:
                 //Do your logic when date1 < date2
                 [[SingleTone sharedManager] setToken:token];
+                [[SingleTone sharedManager] setSiteUserID:siteUserID];
                 NSLog(@"%@ < %@ YES",now,updatetimestamp);
                 return YES;
                 break;
@@ -163,6 +165,7 @@
             case NSOrderedSame:
                 NSLog(@"%@ = %@ YES",now,updatetimestamp);
                 [[SingleTone sharedManager] setToken:token];
+                [[SingleTone sharedManager] setSiteUserID:siteUserID];
                 //Do your logic when date1 = date2
                 return YES;
                 break;

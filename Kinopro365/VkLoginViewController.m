@@ -91,7 +91,7 @@
         if(user_id){
             [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"VKAccessUserId"];
             self.selectedDataObject = [[UserInformationTable alloc] init];
-            [self.selectedDataObject  insertDataIntoDataBaseWithName:accessToken andVkID:user_id siteToken:@"" andExpiresSiteToken:@""];
+            [self.selectedDataObject  insertDataIntoDataBaseWithName:accessToken andVkID:user_id siteToken:@"" andExpiresSiteToken:@"" andSiteUserID:nil];
             self.tableDataArray=[UserInformationTable allObjects];
             NSLog(@"FETCH %@",self.tableDataArray);
             

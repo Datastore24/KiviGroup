@@ -16,7 +16,7 @@
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com:81/%@",method];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -38,7 +38,7 @@
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com/%@",method];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -60,7 +60,7 @@
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com:81/%@",method];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -69,6 +69,28 @@
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     //Запрос
     [manager POST:encodedURL parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        compitionBack (responseObject);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
+- (void) putDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
+    
+    
+    
+    //-----------
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com/%@",method];
+    
+    //    NSLog(@"URL: %@",url);
+    NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    //-------------------
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    //Запрос
+    
+    [manager PUT:encodedURL parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         compitionBack (responseObject);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);

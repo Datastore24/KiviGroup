@@ -17,6 +17,7 @@
 #import "HMImagePickerController.h"
 #import "VideoViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "APIManger.h"
 
 
 
@@ -54,6 +55,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSString * userURL = [NSString stringWithFormat:@"v1/users/%@",[[SingleTone sharedManager] siteUserID]];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             [[SingleTone sharedManager] token],@"access-token",
+                             @"json",@"_format",nil];
+    [apiManager getDataFromSeverWithMethod80:userURL andParams:params complitionBlock:^(id response) {
+        NSLog(@"USER INFO %@",response);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -201,6 +210,7 @@ replacementString:(NSString *)string {
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
     NSLog(@"actionButtonNext");
+    
 }
 
 #pragma mark - Other
