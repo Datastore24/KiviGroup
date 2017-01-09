@@ -47,11 +47,11 @@
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              
-                             [[SingleTone sharedManager] token],@"access-token",
+                             
                              countryID, @"country_id",
                              @"json",@"_format",nil];
-    
-     NSString * userURL = [NSString stringWithFormat:@"v1/users/%@",[[SingleTone sharedManager] siteUserID]];
+
+     NSString * userURL = [NSString stringWithFormat:@"v1/users/%@?access-token=%@",[[SingleTone sharedManager] siteUserID],[[SingleTone sharedManager] token]];
     [apiManager putDataFromSeverWithMethod:userURL andParams:params complitionBlock:^(id response) {
         NSLog(@"DATA %@",response);
         compitionBack();

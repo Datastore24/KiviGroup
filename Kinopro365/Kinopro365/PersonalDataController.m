@@ -62,6 +62,9 @@
                              @"json",@"_format",nil];
     [apiManager getDataFromSeverWithMethod80:userURL andParams:params complitionBlock:^(id response) {
         NSLog(@"USER INFO %@",response);
+        self.textFildPhone1.text = [NSString stringWithFormat:@"+%@",[response objectForKey:@"username"]];
+        self.textFildPhone1.textColor = [UIColor grayColor];
+        self.textFildPhone1.userInteractionEnabled = NO;
     }];
 }
 
