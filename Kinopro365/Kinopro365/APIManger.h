@@ -11,4 +11,5 @@
 @interface APIManger : NSObject
 - (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
 - (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
+- (void) getDataFromSeverWithMethod80: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
 @end

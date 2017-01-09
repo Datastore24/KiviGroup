@@ -172,7 +172,6 @@ replacementString:(NSString *)string {
 - (IBAction)actionButtonProfession:(UIButton *)sender {
     ChooseProfessionViewController * detai = [self.storyboard
                                                 instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
-    detai.mainArrayData = [ChooseProfessionalModel setArrayData];
     [[SingleTone sharedManager] setProfessionControllerCode:@"0"];
     detai.delegate = self;
     [self.navigationController pushViewController:detai animated:YES];

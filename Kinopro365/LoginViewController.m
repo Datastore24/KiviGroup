@@ -14,6 +14,7 @@
 #import "VKAPI.h"
 #import "APIManger.h"
 #import "UserInformationTable.h"
+#import "SingleTone.h"
 
 @interface LoginViewController ()
 
@@ -150,6 +151,7 @@
                 if([[response objectForKey:@"status"] integerValue] == 1){
                  UserInformationTable * userInfoTable   = [[UserInformationTable alloc] init];
                     [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[response objectForKey:@"access_token"] andExpiresSiteToken:[NSString stringWithFormat:@"%@",[response objectForKey:@"expires"]]];
+                    [[SingleTone sharedManager] setToken:[response objectForKey:@"access_token"]];
                 }
                 
             }];

@@ -11,7 +11,7 @@
 #import "ChooseProfessionalModel.h"
 #import "SingleTone.h"
 
-@interface ChooseProfessionViewController ()
+@interface ChooseProfessionViewController () <ChooseProfessionViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableString * professianString;
 
@@ -42,6 +42,12 @@
     
 //    self.mainArrayData = [ChooseProfessionalModel setArrayData];
     self.professianString = [NSMutableString string];
+    self.mainArrayData = [NSArray new];
+    ChooseProfessionalModel * model = [[ChooseProfessionalModel alloc] init];
+    model.delegate = self;
+    [model getProfessionalArrayToTableView:^{
+        NSLog(@"DICT %@",self.mainArrayData);
+    }];
     
 }
 
@@ -66,7 +72,7 @@
     
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
     
-    cell.customTextLabel.text = [dictData objectForKey:@"name"];
+    cell.customTextLabel.text = [[dictData objectForKey:@"name"] objectForKey:@"name_plural"];
     cell.mainImage.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
     if ([[dictData objectForKey:@"choose"]boolValue]) {
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
@@ -89,11 +95,11 @@
     if ([[dictData objectForKey:@"choose"]boolValue]) {
         cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:NO] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO];
+        [self creationStringWithString:[[dictData objectForKey:@"name"] objectForKey:@"name_plural"] andChooseParams:NO];
     } else {
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES];
+        [self creationStringWithString:[[dictData objectForKey:@"name"] objectForKey:@"name_plural"] andChooseParams:YES];
     }
 }
 
@@ -170,6 +176,13 @@
     return string;
     
 }
+
+-(void) reloadTable{
+    NSLog(@"RELOAD");
+    [self.tableView reloadData];
+}
+
+
 
 
 

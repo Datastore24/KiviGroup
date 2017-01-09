@@ -33,6 +33,28 @@
     }];
 }
 
+- (void) getDataFromSeverWithMethod80: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
+    
+    
+    
+    //-----------
+    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com/%@",method];
+    
+    //    NSLog(@"URL: %@",url);
+    NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    //-------------------
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    //Запрос
+    [manager GET: encodedURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //Вызов блока
+        compitionBack (responseObject);
+        //Ошибки
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
 - (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
     
     

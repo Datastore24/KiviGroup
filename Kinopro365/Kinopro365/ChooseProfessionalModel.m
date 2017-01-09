@@ -7,33 +7,46 @@
 //
 
 #import "ChooseProfessionalModel.h"
+#import "SingleTone.h"
+#import "APIManger.h"
 
 @implementation ChooseProfessionalModel
 
-+ (NSArray*) setArrayData {
-    
+@synthesize delegate;
+
+
+
+- (void) getProfessionalArrayToTableView: (void (^) (void)) compitionBack{
     NSMutableArray * array = [[NSMutableArray alloc] init];
-    
-    NSArray * arrayNames = [NSArray arrayWithObjects:@"Актёры", @"Геймеры", @"Операторы", @"Дизайнеры",
-                            @"Костюмеры", @"Актёры массовых сцен", @"Хореографы", @"Оператор-постановщик", nil];
-    
     NSArray * arrayImages = [NSArray arrayWithObjects:@"actorsImage.png", @"gamersImage.png", @"operatorsImage.png",
-                                                      @"designersImage.png", @"dressersImage.png", @"massActorsImage.png",
-                                                      @"choreographersImage.png", @"productionOperatorImage.png", nil];
-    NSArray * arrayChoose = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],
-                                  [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],
-                                  [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO],  nil];
+                             @"designersImage.png", @"dressersImage.png", @"massActorsImage.png",
+                             @"choreographersImage.png", @"productionOperatorImage.png", nil];
+   
+    
+    APIManger * apiManager = [[APIManger alloc] init];
+   
+    [apiManager getDataFromSeverWithMethod80:@"v1/info/profareas" andParams:nil complitionBlock:^(id response) {
+         NSLog(@"PROF %@",response);
+        NSArray * arrayNames = response;
+
+        for (int i = 0; i < arrayNames.count; i++) {
+            
+            NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[arrayNames objectAtIndex:i], @"name",
+                                          @"actorsImage.png", @"image", [NSNumber numberWithBool:NO], @"choose", nil];
+
+            [array addObject:dict];
+            
+        }
+        [self.delegate setMainArrayData:array];
+        [self.delegate reloadTable];
+        compitionBack();
+    }];
     
     
-    for (int i = 0; i < arrayNames.count; i++) {
-        
-        NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[arrayNames objectAtIndex:i], @"name",
-                               [arrayImages objectAtIndex:i], @"image", [arrayChoose objectAtIndex:i], @"choose", nil];
-        [array addObject:dict];
-    }
     
-    NSArray * resultArray = [NSArray arrayWithArray:array];
-    return resultArray;
+    
+    
+    
 }
 
 @end

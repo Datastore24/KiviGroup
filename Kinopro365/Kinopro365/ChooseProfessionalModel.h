@@ -8,8 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ChooseProfessionalModelDelegate <NSObject>
+
+@required
+
+@property (strong, nonatomic) NSArray * mainArrayData;
+-(void) reloadTable;
+
+
+@end
+
 @interface ChooseProfessionalModel : NSObject
 
-+ (NSArray*) setArrayData;
+
+@property (assign, nonatomic) id <ChooseProfessionalModelDelegate> delegate;
+
+- (void) getProfessionalArrayToTableView: (void (^) (void)) compitionBack;
 
 @end

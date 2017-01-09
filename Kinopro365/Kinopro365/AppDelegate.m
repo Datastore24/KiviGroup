@@ -13,6 +13,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "VKAPI.h"
 #import "DateToTimestamp.h"
+#import "SingleTone.h"
 
 
 @interface AppDelegate ()
@@ -138,6 +139,8 @@
     if (self.tableDataArray.count >0 ){
         self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
         NSString * expiresToken = self.selectedDataObject.expiresSiteToken;
+        NSString * token = self.selectedDataObject.siteToken;
+        
         
         double timestampval =  [expiresToken doubleValue];
         NSTimeInterval timestamp = (NSTimeInterval)timestampval;
@@ -146,6 +149,7 @@
         switch ([now compare:updatetimestamp]) {
             case NSOrderedAscending:
                 //Do your logic when date1 < date2
+                [[SingleTone sharedManager] setToken:token];
                 NSLog(@"%@ < %@ YES",now,updatetimestamp);
                 return YES;
                 break;
@@ -158,6 +162,7 @@
                 
             case NSOrderedSame:
                 NSLog(@"%@ = %@ YES",now,updatetimestamp);
+                [[SingleTone sharedManager] setToken:token];
                 //Do your logic when date1 = date2
                 return YES;
                 break;
