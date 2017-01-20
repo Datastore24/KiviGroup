@@ -24,16 +24,15 @@
    
     
     APIManger * apiManager = [[APIManger alloc] init];
-   
-    [apiManager getDataFromSeverWithMethod80:@"v1/info/profareas" andParams:nil complitionBlock:^(id response) {
-         NSLog(@"PROF %@",response);
+    [apiManager getDataFromSeverWithMethod:@"" andParams:nil andToken:nil complitionBlock:^(id response) {
+        NSLog(@"PROF %@",response);
         NSArray * arrayNames = response;
-
+        
         for (int i = 0; i < arrayNames.count; i++) {
             
             NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[arrayNames objectAtIndex:i], @"name",
                                           @"actorsImage.png", @"image", [NSNumber numberWithBool:NO], @"choose", nil];
-
+            
             [array addObject:dict];
             
         }
@@ -41,6 +40,8 @@
         [self.delegate reloadTable];
         compitionBack();
     }];
+   
+  
     
     
 }

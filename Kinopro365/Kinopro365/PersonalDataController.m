@@ -56,16 +56,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     APIManger * apiManager = [[APIManger alloc] init];
-    NSString * userURL = [NSString stringWithFormat:@"v1/users/%@",[[SingleTone sharedManager] siteUserID]];
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             [[SingleTone sharedManager] token],@"access-token",
-                             @"json",@"_format",nil];
-    [apiManager getDataFromSeverWithMethod80:userURL andParams:params complitionBlock:^(id response) {
-        NSLog(@"USER INFO %@",response);
-        self.textFildPhone1.text = [NSString stringWithFormat:@"+%@",[response objectForKey:@"username"]];
-        self.textFildPhone1.textColor = [UIColor grayColor];
-        self.textFildPhone1.userInteractionEnabled = NO;
+   
+    [apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+        }else{
+            NSLog(@"RESPONSE PROFILE %@",response);
+            NSDictionary * respDict = [response objectForKey:@"response"];
+//            self.textFildPhone1.text = [NSString stringWithFormat:@"+%@",[[[respDict objectForKey:@"phones"] objectAtIndex:0] objectForKey:@"phone_number"]];
+            self.textFildPhone1.textColor = [UIColor grayColor];
+            self.textFildPhone1.userInteractionEnabled = NO;
+        }
+
+        
     }];
+   
 }
 
 - (void)didReceiveMemoryWarning {

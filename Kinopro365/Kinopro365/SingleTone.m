@@ -14,7 +14,6 @@
 @synthesize professionControllerCode;
 @synthesize stringAletForWebView;
 @synthesize token;
-@synthesize siteUserID;
 @synthesize countryID;
 
 #pragma mark Singleton Methods

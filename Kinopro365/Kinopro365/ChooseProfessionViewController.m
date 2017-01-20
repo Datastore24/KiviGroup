@@ -11,7 +11,7 @@
 #import "ChooseProfessionalModel.h"
 #import "SingleTone.h"
 
-@interface ChooseProfessionViewController () <ChooseProfessionViewControllerDelegate>
+@interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate>
 
 @property (strong, nonatomic) NSMutableString * professianString;
 

@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface APIManger : NSObject
-- (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
-- (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
-
-- (void) getDataFromSeverWithMethod80: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
-
-- (void) putDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
+- (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params andToken: (NSString *) token complitionBlock: (void (^) (id response)) compitionBack;
+- (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params andToken: (NSString *) token complitionBlock: (void (^) (id response)) compitionBack;
 @end
