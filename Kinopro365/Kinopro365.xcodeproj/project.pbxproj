@@ -53,6 +53,8 @@
 		FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2411E02EAAD007ED49F /* CountryViewController.m */; };
 		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
 		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
+		FFA867711E3642F8000195DB /* KinosferaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA867701E3642F8000195DB /* KinosferaController.m */; };
+		FFA867741E36430B000195DB /* KinosferaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA867731E36430B000195DB /* KinosferaModel.m */; };
 		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
@@ -148,6 +150,10 @@
 		FF9DE2451E02EB46007ED49F /* CoutryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoutryModel.m; sourceTree = "<group>"; };
 		FF9DE2471E03086C007ED49F /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		FFA8676F1E3642F8000195DB /* KinosferaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinosferaController.h; sourceTree = "<group>"; };
+		FFA867701E3642F8000195DB /* KinosferaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinosferaController.m; sourceTree = "<group>"; };
+		FFA867721E36430B000195DB /* KinosferaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinosferaModel.h; sourceTree = "<group>"; };
+		FFA867731E36430B000195DB /* KinosferaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinosferaModel.m; sourceTree = "<group>"; };
 		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
 		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +389,17 @@
 			name = CountryController;
 			sourceTree = "<group>";
 		};
+		FFA8676E1E3642C0000195DB /* Kinosfera */ = {
+			isa = PBXGroup;
+			children = (
+				FFA8676F1E3642F8000195DB /* KinosferaController.h */,
+				FFA867701E3642F8000195DB /* KinosferaController.m */,
+				FFA867721E36430B000195DB /* KinosferaModel.h */,
+				FFA867731E36430B000195DB /* KinosferaModel.m */,
+			);
+			name = Kinosfera;
+			sourceTree = "<group>";
+		};
 		FFDE8B891DDDC45F00F937BD = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +422,7 @@
 		FFDE8B941DDDC46000F937BD /* Kinopro365 */ = {
 			isa = PBXGroup;
 			children = (
+				FFA8676E1E3642C0000195DB /* Kinosfera */,
 				FF90942A1DFDC2870062F556 /* PersonalData */,
 				FF25B97A1DF97CFE00D59716 /* Login */,
 				AD887E741E105CE600CA7B8F /* LaunchScreen */,
@@ -622,6 +640,7 @@
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
 				FF88DF551E0E696B0002FBBC /* HMViewerViewController.m in Sources */,
+				FFA867741E36430B000195DB /* KinosferaModel.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,
@@ -630,6 +649,7 @@
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
 				FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */,
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
+				FFA867711E3642F8000195DB /* KinosferaController.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
