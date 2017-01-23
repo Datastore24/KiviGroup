@@ -9,5 +9,11 @@
 #import <Realm/Realm.h>
 
 @interface AdditionalTable : RLMObject
+@property NSString *additionalID;
+@property NSString *additionalName;
+@property NSString *additionalValue;
+@property NSString *isSendToServer;
+
++ (NSString *)primaryKey;
 
 @end

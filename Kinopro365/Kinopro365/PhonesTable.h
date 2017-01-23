@@ -10,4 +10,12 @@
 
 @interface PhonesTable : RLMObject
 
+@property NSString *phoneID;
+@property NSString *phoneNumber;
+@property NSString *isSendToServer;
+
++ (NSString *)primaryKey;
+
+-(void)insertDataIntoDataBaseWithName:(NSString *)phoneID andPhoneNumber:(NSString *)phoneNumber ;
+
 @end

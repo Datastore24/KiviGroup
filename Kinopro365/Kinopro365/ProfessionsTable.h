@@ -9,5 +9,9 @@
 #import <Realm/Realm.h>
 
 @interface ProfessionsTable : RLMObject
+@property NSString *professionID;
+@property NSString *professionName;
+@property NSString *isSendToServer;
 
++ (NSString *)primaryKey;
 @end

@@ -10,4 +10,10 @@
 
 @implementation AdditionalTable
 
++ (NSString *)primaryKey
+{
+    return @"additionalID";
+}
+
+
 @end

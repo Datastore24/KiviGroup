@@ -10,4 +10,9 @@
 
 @implementation ProfessionsTable
 
++ (NSString *)primaryKey
+{
+    return @"professionID";
+}
+
 @end

@@ -14,6 +14,20 @@
 @property NSString *vkToken;
 @property NSString *vkID;
 @property NSString *siteToken;
+@property NSString *last_name;
+@property NSString *first_name;
+@property NSString *last_name_inter;
+@property NSString *first_name_inter;
+@property NSString *sex;
+@property NSString *email;
+@property NSString *user_comment;
+@property NSString *country_id;
+@property NSString *city_id;
+@property NSString *birthday;
+@property NSString *photo;
+@property NSString *isSendToServer;
+
+
 
 
 + (NSString *)primaryKey;
