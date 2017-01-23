@@ -14,6 +14,7 @@
 #import "VKAPI.h"
 #import "APIManger.h"
 #import "UserInformationTable.h"
+#import "SingleTone.h"
 
 @interface LoginViewController ()
 
@@ -96,18 +97,37 @@
                                    NSLog(@"PHONE %@",self.textFildPhone.text);
         
         NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"3",@"client_id",
-                                 sendPhoneNumber,@"username",nil];
+                                 @"bvb2wtC1cWM0CFgH6YkE",@"app_token",
+                                 sendPhoneNumber,@"phone",nil];
         NSLog(@"PARAMS %@",params);
-        [self.apiManager getDataFromSeverWithMethod:@"oauth/authorize" andParams:params complitionBlock:^(id response) {
+        [self.apiManager postDataFromSeverWithMethod:@"account.sendSmsCode" andParams:params andToken:nil complitionBlock:^(id response) {
             [self deleteActivitiIndicator];
-            self.buttonEntrance.alpha = 1.f;
-            self.buttonEntrance.userInteractionEnabled = YES;
-            self.tempCode = [NSString stringWithFormat:@"%@", [response objectForKey:@"_code"]];
+            if([[response objectForKey:@"response"] integerValue] == 1){
+                
+                self.buttonEntrance.alpha = 1.f;
+                self.buttonEntrance.userInteractionEnabled = YES;
+                self.textFildPassword.userInteractionEnabled = YES;
+                
+            }else{
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 211){
+                    //[self pushControllerWithIdentifier:@"ErrorInputController"];
+                }
+                if(errorCode == 212){
+                    [self showAlertWithMessage:@"Введите корректный номер\nтелефона"];
+                }
+                
+            }
+            
             //ПРОВЕРКА НА ТИП АВТОРИЗАЦИИ
             
             NSLog(@"RESPONSE %@",response);
+
         }];
+       
+        
         
         
 
@@ -125,7 +145,6 @@
         [self showAlertWithMessage:@"\nВведите пароль!\n"];
     } else {
         
-        if([self.tempCode isEqualToString: self.textFildPassword.text]){
             
             NSString * sendPhoneNumber;
             sendPhoneNumber = [self.textFildPhone.text
@@ -136,31 +155,77 @@
                                stringByReplacingOccurrencesOfString:@"+" withString:@""];
 
             NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     @"3",@"client_id",
-                                     sendPhoneNumber,@"username",
-                                     self.textFildPassword.text,@"code",nil];
+                                     @"2",@"os_type",
+                                     sendPhoneNumber,@"phone",
+                                     @"GUID",@"device_token",
+                                     self.textFildPassword.text,@"sms_code",nil];
             NSLog(@"PARAMS %@",params);
             [self createActivitiIndicatorAlertWithView];
-            [self.apiManager getDataFromSeverWithMethod:@"oauth/authorize" andParams:params complitionBlock:^(id response) {
-                [self deleteActivitiIndicator];
-                
+            [self.apiManager postDataFromSeverWithMethod:@"account.authBySmsCode" andParams:params andToken:nil complitionBlock:^(id response) {
+                 [self deleteActivitiIndicator];
                 //ПРОВЕРКА НА ТИП АВТОРИЗАЦИИ
                 
-                NSLog(@"RESPONSE %@",response);
-                if([[response objectForKey:@"status"] integerValue] == 1){
-                 UserInformationTable * userInfoTable   = [[UserInformationTable alloc] init];
-                    [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[response objectForKey:@"access_token"] andExpiresSiteToken:[NSString stringWithFormat:@"%@",[response objectForKey:@"expires"]]];
+                if([response objectForKey:@"error_code"]){
+                    [self deleteActivitiIndicator];
+                    NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                          [response objectForKey:@"error_msg"]);
+                    NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                    if(errorCode == 221){
+                        [self showAlertWithMessage:@"Вы ввели не верный\nSMS код"];
+                    }
+                    if(errorCode == 222){
+                        [self showAlertWithMessage:@"Введенный код не верен.\nЗапросите код повторно"];
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.buttonSendCode.alpha = 1.f;
+                        }];
+                        self.textFildPassword.text = @"";
+                        self.textFildPassword.userInteractionEnabled = NO;
+                       
+                    }
+                    if(errorCode == 223){
+                        [self showAlertWithMessage:@"Вам ограничили доступ к сервису"];
+                        
+                        self.textFildPhone.userInteractionEnabled = NO;
+                        self.textFildPassword.userInteractionEnabled = NO;
+                        self.buttonEntrance.userInteractionEnabled = NO;
+                        self.buttonSendCode.userInteractionEnabled = NO;
+                       
+                        
+                    }
+                    
+                    
+                }else{
+                   
+                    
+                        NSDictionary * dictResp = [response objectForKey:@"response"];
+                     NSLog(@"RESPONSE %@",dictResp);
+                        UserInformationTable * userInfoTable   = [[UserInformationTable alloc] init];
+                        [userInfoTable  insertDataIntoDataBaseWithName:nil andVkID:nil siteToken:[dictResp objectForKey:@"token"]];
+                        [[SingleTone sharedManager] setToken:[dictResp objectForKey:@"token"]];
+                    
+                    if([[dictResp objectForKey:@"status"] integerValue] == 0){
+                        PersonalDataController * tmpViewController = [self.storyboard
+                                                                      instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+                        [self.navigationController pushViewController:tmpViewController animated:YES];
+                        
+                    }else if([[dictResp objectForKey:@"status"] integerValue] == 10){
+                        PersonalDataController * tmpViewController = [self.storyboard
+                                                                      instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+                        [self.navigationController pushViewController:tmpViewController animated:YES];
+                        
+                    }
+                        
+                    
+                    
+
                 }
+                
                 
             }];
             
-            PersonalDataController * tmpViewController = [self.storyboard
-                                                          instantiateViewControllerWithIdentifier:@"PersonalDataController"];
-            [self.navigationController pushViewController:tmpViewController animated:YES];
             
-        }else{
-            [self showAlertWithMessage:@"\nВведенный код не верен!\n"];
-        }
+            
+        
         
     }
 }

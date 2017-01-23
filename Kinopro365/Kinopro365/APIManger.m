@@ -10,13 +10,12 @@
 #import <AFNetworking/AFNetworking.h>
 
 @implementation APIManger
-//Информация о пользователе
-- (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
+- (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params andToken: (NSString *) token complitionBlock: (void (^) (id response)) compitionBack{
     
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com/v1/%@?token=%@",method,token];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -33,12 +32,12 @@
     }];
 }
 
-- (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
+- (void) postDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params andToken: (NSString *) token complitionBlock: (void (^) (id response)) compitionBack{
     
     
     
     //-----------
-    NSString * url = [NSString stringWithFormat:@"http://kinopro365.com:81/%@",method];
+    NSString * url = [NSString stringWithFormat:@"http://api.kinopro365.com/v1/%@?token=%@",method,token];
     
     //    NSLog(@"URL: %@",url);
     NSString * encodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
@@ -53,4 +52,5 @@
     }];
     
 }
+
 @end

@@ -10,11 +10,14 @@
 #import "CoutryModel.h"
 #import "PersonalDataController.h"
 #import "Macros.h"
+#import "SingleTone.h"
 
-@interface CountryViewController ()
 
-@property (strong, nonatomic) NSArray * countryArray;
+@interface CountryViewController () <CoutryModelDelegate>
+
+
 @property (strong, nonatomic) NSMutableArray * tableArray;
+@property (strong, nonatomic) CoutryModel * countryModel;
 
 @end
 
@@ -23,8 +26,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.countryArray = [CoutryModel setCountryArray];
-    self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
+    self.countryModel = [[CoutryModel alloc] init];
+    self.countryModel.delegate = self;
+    
+    self.countryArray = [NSArray new];
+    
+    if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
+        [self.countryModel getCountryArrayToTableView:^{
+            self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
+            [self reloadTable];
+        }];
+    }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
+        [self.countryModel getCityArrayToTableView:[[SingleTone sharedManager] countryID] block:^{
+            self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
+            [self reloadTable];
+        }];
+    }
     
 }
 
@@ -51,7 +68,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    cell.textLabel.text = [self.tableArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.textLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
     
     return cell;
@@ -63,8 +80,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate changeButtonText:self withString:[self.tableArray objectAtIndex:indexPath.row]];
+    [self.delegate changeButtonText:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    
+     if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
+         [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"country_id"]];
+         [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"country_id"] block:^{
+             
+         }];
+     }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
+         
+     }
+    
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -74,22 +102,26 @@
     
     [self.tableArray removeAllObjects];
     
-    for (NSString * string in self.countryArray) {
+    for (NSDictionary * string in self.countryArray) {
         
         NSString * currentLetter = nil;
         
-        if (self.searchBar.text.length > 0 && [string rangeOfString:self.searchBar.text].location == NSNotFound) {
+        
+        NSString * nameCountry = [string objectForKey:@"name"];
+        
+        if (self.searchBar.text.length > 0 && [nameCountry rangeOfString:self.searchBar.text].location == NSNotFound) {
             continue;
         }
         
         
-        NSString * firstLetter = [string substringToIndex:1];
+        NSString * firstLetter = [nameCountry substringToIndex:1];
         
         if (![currentLetter isEqualToString:firstLetter]) {
             currentLetter = firstLetter;
         }
         
         [self.tableArray addObject:string];
+        
     }
     
     [self.tableView reloadData];
@@ -101,6 +133,10 @@
     [searchBar resignFirstResponder];
 }
 
+-(void) reloadTable{
+    NSLog(@"RELOAD");
+    [self.tableView reloadData];
+}
 
 
 

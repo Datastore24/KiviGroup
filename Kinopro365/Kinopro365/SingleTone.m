@@ -13,6 +13,8 @@
 @synthesize country_citi;
 @synthesize professionControllerCode;
 @synthesize stringAletForWebView;
+@synthesize token;
+@synthesize countryID;
 
 #pragma mark Singleton Methods
 

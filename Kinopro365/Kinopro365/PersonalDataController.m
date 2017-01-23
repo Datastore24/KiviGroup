@@ -17,6 +17,7 @@
 #import "HMImagePickerController.h"
 #import "VideoViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "APIManger.h"
 
 
 
@@ -54,6 +55,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    APIManger * apiManager = [[APIManger alloc] init];
+   
+    [apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+        }else{
+            NSLog(@"RESPONSE PROFILE %@",response);
+            NSDictionary * respDict = [response objectForKey:@"response"];
+//            self.textFildPhone1.text = [NSString stringWithFormat:@"+%@",[[[respDict objectForKey:@"phones"] objectAtIndex:0] objectForKey:@"phone_number"]];
+            self.textFildPhone1.textColor = [UIColor grayColor];
+            self.textFildPhone1.userInteractionEnabled = NO;
+        }
+
+        
+    }];
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -172,7 +193,6 @@ replacementString:(NSString *)string {
 - (IBAction)actionButtonProfession:(UIButton *)sender {
     ChooseProfessionViewController * detai = [self.storyboard
                                                 instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
-    detai.mainArrayData = [ChooseProfessionalModel setArrayData];
     [[SingleTone sharedManager] setProfessionControllerCode:@"0"];
     detai.delegate = self;
     [self.navigationController pushViewController:detai animated:YES];
@@ -202,6 +222,7 @@ replacementString:(NSString *)string {
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
     NSLog(@"actionButtonNext");
+    
 }
 
 #pragma mark - Other

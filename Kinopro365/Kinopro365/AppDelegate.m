@@ -13,6 +13,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "VKAPI.h"
 #import "DateToTimestamp.h"
+#import "SingleTone.h"
+#import "APIManger.h"
 
 
 @interface AppDelegate ()
@@ -32,15 +34,7 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    if([self checkSiteToken]){
-       [self authCheck:YES];
-    }else{
-        if([self checkAuthFB]){
-            [self authCheck:YES];
-        }else{
-            [self checkAuthVK];
-        }
-    }
+    [self checkSiteToken];
     
     return YES;
 }
@@ -125,48 +119,49 @@
     }
 }
 
--(BOOL) checkSiteToken {
+-(void) checkSiteToken {
     // Get the current date/time in timestamp format.
-   
-    
-    NSNumberFormatter *formatNumber = [[NSNumberFormatter alloc] init];
-    formatNumber.numberStyle = NSNumberFormatterDecimalStyle;
-    NSDate * now = [NSDate date];
     
     
     self.tableDataArray=[UserInformationTable allObjects];
     if (self.tableDataArray.count >0 ){
         self.selectedDataObject = [self.tableDataArray objectAtIndex:0];
-        NSString * expiresToken = self.selectedDataObject.expiresSiteToken;
+      
+        NSString * token = self.selectedDataObject.siteToken;
+        APIManger * apiManager = [[APIManger alloc] init];
+        [apiManager getDataFromSeverWithMethod:@"account.validateToken" andParams:nil andToken:token complitionBlock:^(id response) {
+            
+            NSDictionary * respDict = [response objectForKey:@"response"];
+            
+            if ([[response objectForKey:@"error_code"] integerValue] == 2){
+                NSLog(@"ERROR TOKEN");
+                if([self checkAuthFB]){
+                    [self authCheck:YES];
+                }else{
+                    [self checkAuthVK];
+                }
+                
+            }else{
+                if ([[respDict objectForKey:@"status"] integerValue] == 0){
+                    [self authCheck:YES];
+                }else if ([[respDict objectForKey:@"status"] integerValue] == 10){
+                    [self authCheck:YES];
+                }
+            }
+
+            
+        }];
+        [[SingleTone sharedManager] setToken:token];
         
-        double timestampval =  [expiresToken doubleValue];
-        NSTimeInterval timestamp = (NSTimeInterval)timestampval;
-        NSDate *updatetimestamp = [NSDate dateWithTimeIntervalSince1970:timestamp];
-
-        switch ([now compare:updatetimestamp]) {
-            case NSOrderedAscending:
-                //Do your logic when date1 < date2
-                NSLog(@"%@ < %@ YES",now,updatetimestamp);
-                return YES;
-                break;
-                
-            case NSOrderedDescending:
-                //Do your logic when date1 < date2
-                NSLog(@"%@ > %@ NO",now,updatetimestamp);
-                return NO;
-                break;
-                
-            case NSOrderedSame:
-                NSLog(@"%@ = %@ YES",now,updatetimestamp);
-                //Do your logic when date1 = date2
-                return YES;
-                break;
-        }
-
     }else{
-        return NO;
+        if([self checkAuthFB]){
+            [self authCheck:YES];
+        }else{
+            [self checkAuthVK];
+        }
     }
     
+  
     
 }
 
