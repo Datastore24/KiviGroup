@@ -57,4 +57,5 @@
     [[RLMRealm defaultRealm] deleteObjects:array];
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
+
 @end

@@ -14,4 +14,5 @@
 @property NSString *isSendToServer;
 
 + (NSString *)primaryKey;
+- (void)insertDataIntoDataBaseWithName:(NSString *)professionID andProfessionName:(NSString *)professionName;
 @end
