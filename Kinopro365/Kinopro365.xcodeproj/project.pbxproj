@@ -14,6 +14,9 @@
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
 		AD50A4A01E15447F00CC44DB /* DateToTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A49F1E15447F00CC44DB /* DateToTimestamp.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
+		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
+		ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DC1E36451400D74761 /* ProfessionsTable.m */; };
+		ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DF1E36454300D74761 /* AdditionalTable.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
 		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
@@ -86,6 +89,12 @@
 		AD50A49F1E15447F00CC44DB /* DateToTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateToTimestamp.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		ADED89D81E3644FC00D74761 /* PhonesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesTable.h; sourceTree = "<group>"; };
+		ADED89D91E3644FC00D74761 /* PhonesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonesTable.m; sourceTree = "<group>"; };
+		ADED89DB1E36451400D74761 /* ProfessionsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionsTable.h; sourceTree = "<group>"; };
+		ADED89DC1E36451400D74761 /* ProfessionsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionsTable.m; sourceTree = "<group>"; };
+		ADED89DE1E36454300D74761 /* AdditionalTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionalTable.h; sourceTree = "<group>"; };
+		ADED89DF1E36454300D74761 /* AdditionalTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalTable.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
@@ -217,6 +226,12 @@
 			children = (
 				AD2624A41E0AB873007B78CA /* UserInformationTable.h */,
 				AD2624A51E0AB873007B78CA /* UserInformationTable.m */,
+				ADED89D81E3644FC00D74761 /* PhonesTable.h */,
+				ADED89D91E3644FC00D74761 /* PhonesTable.m */,
+				ADED89DB1E36451400D74761 /* ProfessionsTable.h */,
+				ADED89DC1E36451400D74761 /* ProfessionsTable.m */,
+				ADED89DE1E36454300D74761 /* AdditionalTable.h */,
+				ADED89DF1E36454300D74761 /* AdditionalTable.m */,
 			);
 			name = RealmBase;
 			sourceTree = "<group>";
@@ -636,6 +651,7 @@
 				AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */,
 				FF88DF4F1E0E696B0002FBBC /* HMImageGridViewLayout.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
+				ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
@@ -656,7 +672,9 @@
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */,
+				ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */,
 				FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */,
+				ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */,
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
 				FF88DF541E0E696B0002FBBC /* HMSelectCounterButton.m in Sources */,

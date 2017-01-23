@@ -26,6 +26,7 @@
         self.vkToken = vkToken;
         self.vkID = vkID;
         self.siteToken = siteToken;
+        self.isSendToServer = @"0";
         
         
         [realm addOrUpdateObject:self];
