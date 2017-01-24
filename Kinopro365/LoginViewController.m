@@ -21,6 +21,7 @@
 @property (assign, nonatomic) NSInteger timerStep; //Счетчик таймера
 @property (strong, nonatomic) NSString * tempCode; //Пока смс не работает
 @property (strong, nonatomic)  APIManger * apiManager;
+@property (assign, nonatomic) BOOL animation; //Сля првоерки что анимация произойдет только один раз
 
 
 @end
@@ -43,6 +44,7 @@
     [super viewDidLoad];
     
     self.timerStep = 25;
+    self.animation = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,6 +93,8 @@
 
         return [textField checkForPhoneWithTextField:textField shouldChangeCharactersInRange:range replacementString:string complitionBlock:^(NSString *response) {
             
+
+            
         }];
     }
     return YES;
@@ -104,6 +108,28 @@
     if (self.textFildPhone.text.length == 0) {
         [self showAlertWithMessage:@"\nВведите номер телефона!\n"];
     } else {
+        
+        BOOL isBool = NO; //Тестовая булька для Кирилла
+        
+        if (self.animation) {
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                if (!isBool) {
+                    CGRect buttonFrame = self.buttonSendCode.frame;
+                    buttonFrame.size.width /= 2.2;
+                    buttonFrame.origin.x = CGRectGetMaxX(self.textFildPhone.bounds) - buttonFrame.size.width / 1.6;
+                    self.buttonSendCode.frame = buttonFrame;
+                } else {
+                    self.buttonSendCode.alpha = 0.f;
+                    CGRect rectCode = self.textFildPassword.frame;
+                    rectCode.size.width = self.textFildPhone.frame.size.width;
+                    self.textFildPassword.frame = rectCode;
+                }
+            }];
+            
+            self.animation = NO;
+        }
+        
                sender.userInteractionEnabled = NO;
         [self createActivitiIndicatorAlertWithView];
         NSLog(@"AUTH");

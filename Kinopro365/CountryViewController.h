@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) id <CountryViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSArray * countryArray;
+@property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
+
+- (IBAction)actionButtonCancel:(UIButton *)sender;
 
 @end
 
