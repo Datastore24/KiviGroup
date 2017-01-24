@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AddParamsViewDelegate;
+
 @interface AddParamsView : UIView
+
+@property (strong, nonatomic) NSString * idString;
+@property (strong, nonatomic) id mainObject;
+@property (weak, nonatomic) id <AddParamsViewDelegate> deleagte;
+
+- (instancetype)initWithFrame: (CGRect) frame endTetleText: (NSString*) titleText andIdString: (NSString*) idString andType: (NSString*) type endArrayData: (NSArray*) arrayData;
+
+@end
+
+@protocol AddParamsViewDelegate <NSObject>
+
+- (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (UIButton*) button andArrayViewPicker: (NSArray*) array;
 
 @end
