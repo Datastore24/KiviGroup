@@ -58,6 +58,26 @@
 
 #pragma mark - UITextFieldDelegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+        if ([textField.text isEqualToString:@""]) {
+            textField.text = @"+";
+        }
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+        if ([textField.text isEqualToString:@"+"]) {
+            textField.text = @"";
+        }
+    }
+    
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
@@ -67,9 +87,11 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
                                                        replacementString:(NSString *)string {
     
-    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
 
-        return [textField checkForNamberPhoneWithTextField:textField shouldChangeCharactersInRange:range replacementString:string];
+        return [textField checkForPhoneWithTextField:textField shouldChangeCharactersInRange:range replacementString:string complitionBlock:^(NSString *response) {
+            
+        }];
     }
     return YES;
 }
