@@ -10,6 +10,16 @@
 
 @implementation AddParamsModel
 
++ (NSArray *) setTestArray {
+    
+    NSArray * arrayDrive = [NSArray arrayWithObjects:
+                            @"Категория А", @"Категория B", @"Категория C",
+                            @"Категория D", @"Категория E", @"Не вожу",nil];
+    
+    return arrayDrive;
+    
+}
+
 + (NSArray*) setArrayHeight {
     
     NSMutableArray * mArray = [NSMutableArray array];

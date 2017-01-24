@@ -12,6 +12,7 @@
 
 + (NSArray*) setArrayHeight; //Данные пикер вью
 + (NSArray*) setArrayTitl; //Заголовки для пикер вью
++ (NSArray *) setTestArray;
 
 
 //Массив языков
