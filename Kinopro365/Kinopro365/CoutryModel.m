@@ -9,6 +9,7 @@
 #import "CoutryModel.h"
 #import "SingleTone.h"
 #import "APIManger.h"
+#import "UserInformationTable.h"
 
 @implementation CoutryModel
 @synthesize delegate;
@@ -28,20 +29,15 @@
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
             NSLog(@"RESPONSE COUNTRY %@",response);
-//            NSDictionary *dictCountry = response;
-//            NSMutableArray * arrayCountry = [[NSMutableArray alloc] init];
-//            
-//            for (id item in dictCountry) {
-//                NSDictionary * finalDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                                            item, @"country_id",
-//                                            [dictCountry objectForKey:item],@"name",nil];
-//                [arrayCountry addObject:finalDict];
-//            }
-//            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name"
-//                                                                         ascending:YES];
-//            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
-//            NSArray *sortedArray = [arrayCountry sortedArrayUsingDescriptors:sortDescriptors];
-//            [self.delegate setCountryArray:sortedArray];
+            
+            NSDictionary *dictResponse = [response objectForKey:@"response"];
+            NSArray *dictCountry = [dictResponse objectForKey:@"items"];
+            
+            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                         ascending:YES];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+            NSArray *sortedArray = [dictCountry sortedArrayUsingDescriptors:sortDescriptors];
+            [self.delegate setCountryArray:sortedArray];
             compitionBack();
         }
     }];
@@ -50,19 +46,19 @@
     
 }
 
-- (void) putCountryIdToProfle: (NSString *) countryID block: (void (^) (void)) compitionBack{
-    APIManger * apiManager = [[APIManger alloc] init];
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             
-                             
-                             countryID, @"country_id",
-                             @"json",@"_format",nil];
-
-
-//    [apiManager putDataFromSeverWithMethod:userURL andParams:params complitionBlock:^(id response) {
-//        NSLog(@"DATA %@",response);
-//        compitionBack();
-//    }];
+- (void) putCountryIdToProfle: (NSString *) countryID{
+  
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        userTable.country_id = [NSString stringWithFormat:@"%@",countryID];
+        [realm commitWriteTransaction];
+        
+    }
     
 }
 

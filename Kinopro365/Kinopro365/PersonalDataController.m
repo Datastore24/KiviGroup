@@ -19,6 +19,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "APIManger.h"
 #import "PhonesTable.h"
+#import "ProfessionsTable.h"
+#import "UserInformationTable.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 
 
@@ -30,6 +33,7 @@
 @property (nonatomic) NSArray * selectedAssets;
 @property (strong, nonatomic) HMImagePickerController * pickerAvatar; //Фото контроллер для выбора аватара
 @property (strong, nonatomic) UIImage * imageAvatar; //Картинка аватара;
+@property (strong, nonatomic) APIManger * apiManager;
 
 @end
 
@@ -56,9 +60,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    APIManger * apiManager = [[APIManger alloc] init];
+    self.apiManager = [[APIManger alloc] init];
    
-    [apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+    [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         
         if([response objectForKey:@"error_code"]){
             
@@ -66,11 +70,9 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-            NSLog(@"RESPONSE PROFILE %@",response);
+            
             NSDictionary * respDict = [response objectForKey:@"response"];
-//            self.textFildPhone1.text = [NSString stringWithFormat:@"+%@",[[[respDict objectForKey:@"phones"] objectAtIndex:0] objectForKey:@"phone_number"]];
-            self.textFildPhone1.textColor = [UIColor grayColor];
-            self.textFildPhone1.userInteractionEnabled = NO;
+            [self loadFromDb];
         }
 
         
@@ -138,6 +140,101 @@ replacementString:(NSString *)string {
     
 }
 
+#pragma mark - LoadFromDB
+
+- (void) setTitlForButtonWithTitle: (NSString*) title {
+    
+    [self.buttonProfession setTitle:title forState:UIControlStateNormal];
+    self.imageButtonProffecional.alpha = 0.f;
+    
+    
+}
+
+
+-(void) loadFromDb{
+   
+    
+    RLMResults *profTableDataArray = [ProfessionsTable allObjects];
+    NSMutableString * resultString = [NSMutableString new];
+    if(profTableDataArray.count>0){
+        for(int i=0; i<profTableDataArray.count; i++){
+            ProfessionsTable * profTable = [profTableDataArray objectAtIndex:i];
+            if ([resultString isEqualToString:@""]) {
+                [resultString appendString:profTable.professionName];
+            } else {
+                [resultString appendString:[NSString stringWithFormat:@"/%@", profTable.professionName]];
+            }
+
+            
+        }
+        [self setTitlForButtonWithTitle:resultString];
+    }
+    
+    RLMResults *userTableDataArray = [UserInformationTable allObjects];
+    
+    if(userTableDataArray.count>0){
+        UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+        if(userTable.photo.length !=0){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     userTable.photo,@"id", nil];
+            [self.apiManager getDataFromSeverWithMethod:@"photo.getById" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                if([response objectForKey:@"error_code"]){
+                    
+                    NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                          [response objectForKey:@"error_msg"]);
+                    NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                }else{
+                    
+                    NSDictionary * respDict = [response objectForKey:@"response"];
+                    
+                    NSURL *imgURL = [NSURL URLWithString:[respDict objectForKey:@"url"]];
+                    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                    [manager downloadImageWithURL:imgURL
+                                          options:0
+                                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                             // progression tracking code
+                                         }
+                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                                    NSURL *imageURL) {
+                                            
+                                            if(image){
+                                                
+                                                [self.buttonAvatar setImage:image forState:UIControlStateNormal];
+                                                
+                                                
+                                            }else{
+                                                //Тут обработка ошибки загрузки изображения
+                                            }
+                                        }];
+
+                    
+                    
+                }
+
+            }];
+        }
+        
+        if(userTable.country_id.length !=0){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     userTable.country_id,@"id", nil];
+            [self.apiManager getDataFromSeverWithMethod:@"info.getCountryById" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                if([response objectForKey:@"error_code"]){
+                    
+                    NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                          [response objectForKey:@"error_msg"]);
+                    NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                }else{
+                    NSDictionary * respDict = [response objectForKey:@"response"];
+                    [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }
+            }];
+           
+            
+        }
+    }
+}
+
 #pragma mark - HMImagePickerControllerDelegate
 - (void)imagePickerController:(HMImagePickerController *)picker
       didFinishSelectedImages:(NSArray<UIImage *> *)images
@@ -145,7 +242,38 @@ replacementString:(NSString *)string {
     
     if ([picker isEqual:self.pickerAvatar]) {
         self.imageAvatar = [images objectAtIndex:0];
-        [self.buttonAvatar setImage:self.imageAvatar forState:UIControlStateNormal];
+        NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"0",@"add_to_profile",nil];
+        
+        [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:self.imageAvatar complitionBlock:^(id response) {
+            NSLog(@"RESPONSEFOTO %@",response);
+            if([response isKindOfClass:[NSDictionary class]]){
+                NSDictionary * dictResp = [response objectForKey:@"response"];
+                if([[dictResp objectForKey:@"url"] length] != 0){
+                    [self.buttonAvatar setImage:self.imageAvatar forState:UIControlStateNormal];
+                    
+                    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+                    
+                    if(profTableDataArray.count>0){
+                        
+                        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+                        RLMRealm *realm = [RLMRealm defaultRealm];
+                        [realm beginWriteTransaction];
+                        userTable.photo = [NSString stringWithFormat:@"%@",[dictResp objectForKey:@"id"]];
+                        [realm commitWriteTransaction];
+
+                    }
+                    
+                    
+
+                }
+            }else{
+                [self showAlertWithMessage:@"Загрузить аватар не удалось"];
+            }
+        }];
+        
+        
+        
     } else {
         self.images = images;
         self.selectedAssets = selectedAssets;

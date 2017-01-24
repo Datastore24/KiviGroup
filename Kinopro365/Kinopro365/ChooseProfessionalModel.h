@@ -13,7 +13,10 @@
 @required
 
 @property (strong, nonatomic) NSArray * mainArrayData;
--(void) reloadTable;
+@property (strong, nonatomic) NSMutableString * professianString;
+- (void) reloadTable;
+- (void) creationStringWithString: (NSString*) string andChooseParams: (BOOL) chooseParams andString: (NSMutableString *) proffesianString;
+
 
 
 @end

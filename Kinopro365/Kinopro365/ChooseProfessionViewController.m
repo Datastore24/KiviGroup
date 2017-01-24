@@ -14,7 +14,7 @@
 
 @interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate>
 
-@property (strong, nonatomic) NSMutableString * professianString;
+
 
 @end
 
@@ -96,13 +96,13 @@
     if ([[dictData objectForKey:@"choose"]boolValue]) {
         cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:NO] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO];
+        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO andString:self.professianString];
         
         //Узнаем есть ли избранное
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
                              [dictData objectForKey:@"profID"]];
         RLMResults *outletTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
-        ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:indexPath.row];
+        ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:0];
         
         [[RLMRealm defaultRealm] beginWriteTransaction];
         [[RLMRealm defaultRealm] deleteObject:professionalTable];
@@ -112,7 +112,7 @@
     } else {
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES];
+        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES andString:self.professianString];
         
             ProfessionsTable * professionalTable = [[ProfessionsTable alloc] init];
         [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
@@ -144,34 +144,35 @@
 
 #pragma mark - Other
 
-- (void) creationStringWithString: (NSString*) string andChooseParams: (BOOL) chooseParams {
-    
+- (void) creationStringWithString: (NSString*) string andChooseParams: (BOOL) chooseParams andString: (NSMutableString *) proffesianString {
+   
     string = [self methodCodeLenguageWithString:string];
     
     
     if (chooseParams) {
-        if ([self.professianString isEqualToString:@""]) {
-            [self.professianString appendString:string];
+        if ([proffesianString isEqualToString:@""]) {
+            [proffesianString appendString:string];
         } else {
-            [self.professianString appendString:[NSString stringWithFormat:@"/%@", string]];
+            [proffesianString appendString:[NSString stringWithFormat:@"/%@", string]];
         }
     } else {
         NSString * tmpString = [NSString stringWithFormat:@"/%@", string];
         NSString * tmpString2 = [NSString stringWithFormat:@"%@/", string];
-        if ([self.professianString rangeOfString:tmpString].location != NSNotFound) {
-            [self helpMethodForRange:tmpString];
+        if ([proffesianString rangeOfString:tmpString].location != NSNotFound) {
+            [self helpMethodForRange:tmpString andString:proffesianString];
         } else if ([self.professianString rangeOfString:tmpString2].location != NSNotFound) {
-            [self helpMethodForRange:tmpString2];
+            [self helpMethodForRange:tmpString2 andString:proffesianString];
         } else {
-            [self helpMethodForRange:string];
+            [self helpMethodForRange:string andString:proffesianString];
         }
     }
+     NSLog(@"STRING %@", proffesianString);
     
 }
 
-- (void) helpMethodForRange: (NSString*) string {
-    NSRange range = [self.professianString rangeOfString:string];
-    [self.professianString deleteCharactersInRange:range];
+- (void) helpMethodForRange: (NSString*) string andString: (NSMutableString *) proffesianString {
+    NSRange range = [proffesianString rangeOfString:string];
+    [proffesianString deleteCharactersInRange:range];
 }
 
 

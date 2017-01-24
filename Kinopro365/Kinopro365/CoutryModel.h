@@ -23,7 +23,7 @@
 @property (assign, nonatomic) id <CoutryModelDelegate> delegate;
 
 - (void) getCountryArrayToTableView: (void (^) (void)) compitionBack;
-- (void) putCountryIdToProfle: (NSString *) countryID block: (void (^) (void)) compitionBack;
+- (void) putCountryIdToProfle: (NSString *) countryID;
 - (void) getCityArrayToTableView: (NSString *) countryID block: (void (^) (void)) compitionBack;
 
 
