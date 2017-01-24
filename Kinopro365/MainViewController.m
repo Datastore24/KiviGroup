@@ -11,12 +11,16 @@
 #import "UserInformationTable.h"
 
 
+
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (strong, nonatomic) UIActivityIndicatorView * activiti;
 
 @property (strong, nonatomic) NSArray * arrayPickerView;
 @property (strong, nonatomic) NSString * pickerViewString; //Сохраняет выбранный параметр в пикерВью
+@property (strong, nonatomic) NSString * pickerViewStringID;
+@property (strong, nonatomic) NSString * pickerDictKeyTitle; //Ключ для массива, где внутри коллекция
+@property (strong, nonatomic) NSString * pickerDictKeyID; //Ключ для массива, где внутри коллекция
 
 
 
@@ -183,7 +187,7 @@
     [self presentViewController:alertViewController animated:YES completion:nil];
 }
 
-- (void) showViewPickerWithButton: (UIButton*) button andTitl: (NSString*) message andArrayData: (NSArray*) arrayData {
+- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID{
     NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
     alertViewController.title = NSLocalizedString(@"", nil);
@@ -208,8 +212,19 @@
     UIPickerView * pickerView = [[UIPickerView alloc] init];
     pickerView.delegate = self;
     pickerView.dataSource = self;
+    
+    self.pickerDictKeyTitle = dictKeyTitle;
     self.arrayPickerView = arrayData;
-    self.pickerViewString = [self.arrayPickerView objectAtIndex:0];
+    
+    if(self.pickerDictKeyTitle.length !=0){
+        NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:0];
+        
+        self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
+        NSLog(@"PICKERFIRST %@",[pickerDict objectForKey:self.pickerDictKeyTitle]);
+    }else{
+        self.pickerViewString = [self.arrayPickerView objectAtIndex:0];
+    }
+    
     alertViewController.alertViewContentView = pickerView;
     
     
@@ -218,6 +233,7 @@
                                                           handler:^(NYAlertAction *action) {
                                                               [button setTitle:self.pickerViewString
                                                                       forState:UIControlStateNormal];
+                                                              button.customID = self.pickerViewStringID;
                                                               [self dismissViewControllerAnimated:YES completion:nil];
 
                                                           }]];
@@ -270,14 +286,31 @@
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row
                                                             forComponent:(NSInteger)component {
-   return [self.arrayPickerView objectAtIndex:row];
+    
+    if(self.pickerDictKeyTitle.length !=0){
+        NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:row];
+        
+        return [pickerDict objectForKey:self.pickerDictKeyTitle];
+    }else{
+        return [self.arrayPickerView objectAtIndex:row];
+    }
+    
+   
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.pickerViewString = [self.arrayPickerView objectAtIndex:row];
+    
+    if(self.pickerDictKeyTitle.length !=0){
+        NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:row];
+        self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
+        self.pickerViewStringID = [pickerDict objectForKey:self.pickerDictKeyID];
+    }else{
+         self.pickerViewString = [self.arrayPickerView objectAtIndex:row];
+    }
+
 }
 
 #pragma mark - Other
