@@ -9,6 +9,7 @@
 #import "ChooseProfessionalModel.h"
 #import "SingleTone.h"
 #import "APIManger.h"
+#import "ProfessionsTable.h"
 
 @implementation ChooseProfessionalModel
 
@@ -16,33 +17,56 @@
 
 
 
-- (void) getProfessionalArrayToTableView: (void (^) (void)) compitionBack{
+- (void) getProfessionalArrayToTableView{
     NSMutableArray * array = [[NSMutableArray alloc] init];
     NSArray * arrayImages = [NSArray arrayWithObjects:@"actorsImage.png", @"gamersImage.png", @"operatorsImage.png",
                              @"designersImage.png", @"dressersImage.png", @"massActorsImage.png",
                              @"choreographersImage.png", @"productionOperatorImage.png", nil];
-   
+    NSArray * arrayNames = [NSArray arrayWithObjects:
+                            @"Актёр", @"Режиссер-постановщик", @"Сценарист",
+                             @"Художник-Гримёр", @"Реквизитор", @"Актер без образования",
+                             @"Актер массовых сцен", @"Ассистент по актерам",
+                            @"Режиссер монтажа",@"Монтажер",
+                            @"Второй режиссер (планирование)",@"Второй режиссер (площадка)",
+                            @"Редактор",@"Кастинг-директор",
+                            @"Скрипт супервайзер",@"Каскадер",
+                            @"Оператор-постановщик",@"Художник-постановщик",
+                            @"Композитор",@"Звукорежиссёр",
+                            @"Постановщик трюков",@"Дрессировщик",
+                            @"Оператор",@"Оператор Стэдикам",
+                            @"Ассистент оператора (фокус-пуллер)",@"Хлопушка",
+                            @"Location Менеджер",@"Бум оператор",nil];
     
-    APIManger * apiManager = [[APIManger alloc] init];
-    [apiManager getDataFromSeverWithMethod:@"" andParams:nil andToken:nil complitionBlock:^(id response) {
-        NSLog(@"PROF %@",response);
-        NSArray * arrayNames = response;
+
+   
         
         for (int i = 0; i < arrayNames.count; i++) {
+            NSString * profID = [NSString stringWithFormat:@"%d",i+1];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
+                                 profID];
+            RLMResults *profTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
+            NSLog(@"PROF %@",profTableDataArray);
+            NSNumber * isChoose;
+            if(profTableDataArray.count>0){
+                isChoose = [NSNumber numberWithBool:YES];
+            }else{
+                isChoose = [NSNumber numberWithBool:NO];
+            }
             
-            NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[arrayNames objectAtIndex:i], @"name",
-                                          @"actorsImage.png", @"image", [NSNumber numberWithBool:NO], @"choose", nil];
+            
+            NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          [arrayNames objectAtIndex:i], @"name",
+                                          profID,@"profID",
+                                          @"actorsImage.png", @"image",
+                                          isChoose, @"choose", nil];
             
             [array addObject:dict];
             
         }
         [self.delegate setMainArrayData:array];
         [self.delegate reloadTable];
-        compitionBack();
-    }];
-   
-  
-    
+
+
     
 }
 

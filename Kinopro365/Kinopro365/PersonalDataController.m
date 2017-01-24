@@ -18,6 +18,7 @@
 #import "VideoViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "APIManger.h"
+#import "PhonesTable.h"
 
 
 
@@ -221,6 +222,40 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
+    if(self.textFildName.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваше имя"];
+        
+    }else if(self.textFildLastName.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Вашу фамилию"];
+        
+    }else if(self.textFildEmail.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваш e-mail адрес"];
+        
+    }else if(self.textFildNameEN.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваше имя латиницей"];
+    
+    }else if(self.textFildLastNameEN.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Вашу фамилию латиницей"];
+        
+    }else if(self.textFildPhone1.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните полет Телефон 1"];
+    
+    }else{
+        PhonesTable * phonesTable = [[PhonesTable alloc] init];
+        if(self.textFildPhone2.text.length !=0){
+            [phonesTable insertDataIntoDataBaseWithName:@"2" andPhoneNumber:self.textFildPhone2.text];
+        }
+        
+        [phonesTable insertDataIntoDataBaseWithName:@"1" andPhoneNumber:self.textFildPhone1.text];
+        
+        
+    }
     NSLog(@"actionButtonNext");
     
 }
