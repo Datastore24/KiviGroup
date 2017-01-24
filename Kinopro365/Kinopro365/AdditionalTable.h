@@ -16,4 +16,7 @@
 
 + (NSString *)primaryKey;
 
+- (void)insertDataIntoDataBaseWithName:(NSString *)additionalName
+                    andAdditionalValue: (NSString *) additionalValue;
+
 @end
