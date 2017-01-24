@@ -20,4 +20,8 @@
 //Проверка ввода e-mail
 - (BOOL)validationEmailFor:(UITextField *)textField replacementString:(NSString *)string;
 
+//Проверка ввода теллефона через намбер пад
+- (BOOL)checkForPhoneWithTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+                 replacementString:(NSString *)string complitionBlock: (void (^) (NSString* response)) compitionBlock;
+
 @end
