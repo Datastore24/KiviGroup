@@ -23,6 +23,6 @@
 
 @property (assign, nonatomic) id <ChooseProfessionalModelDelegate> delegate;
 
-- (void) getProfessionalArrayToTableView: (void (^) (void)) compitionBack;
+- (void) getProfessionalArrayToTableView;
 
 @end

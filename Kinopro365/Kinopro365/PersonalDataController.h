@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildNameEN;
 @property (weak, nonatomic) IBOutlet UITextField *textFildLastNameEN;
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone1;
+@property (weak, nonatomic) IBOutlet UITextField *textFildPhone2;
 @property (weak, nonatomic) IBOutlet UITextField *textFildEmail;
 
 //ImageView-------------
