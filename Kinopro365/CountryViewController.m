@@ -11,6 +11,7 @@
 #import "PersonalDataController.h"
 #import "Macros.h"
 #import "SingleTone.h"
+#import "UserInformationTable.h"
 
 
 @interface CountryViewController () <CoutryModelDelegate>
@@ -83,10 +84,8 @@
     [self.delegate changeButtonText:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
      if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
-         [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"country_id"]];
-         [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"country_id"] block:^{
-             
-         }];
+         [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+         [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
      }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
          
      }

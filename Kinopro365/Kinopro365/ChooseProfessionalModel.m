@@ -45,10 +45,10 @@
             NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
                                  profID];
             RLMResults *profTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
-            NSLog(@"PROF %@",profTableDataArray);
             NSNumber * isChoose;
             if(profTableDataArray.count>0){
                 isChoose = [NSNumber numberWithBool:YES];
+                [self.delegate creationStringWithString:[arrayNames objectAtIndex:i] andChooseParams:YES andString:[self.delegate professianString]];
             }else{
                 isChoose = [NSNumber numberWithBool:NO];
             }
