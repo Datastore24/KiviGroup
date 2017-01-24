@@ -226,12 +226,40 @@ replacementString:(NSString *)string {
                 }else{
                     NSDictionary * respDict = [response objectForKey:@"response"];
                     [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [[SingleTone sharedManager] setCountryID:[respDict objectForKey:@"id"]];
                     [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 }
             }];
            
             
         }
+        
+        if(userTable.city_id.length !=0){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     userTable.city_id,@"id", nil];
+            [self.apiManager getDataFromSeverWithMethod:@"info.getCityById" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                if([response objectForKey:@"error_code"]){
+                    
+                    NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                          [response objectForKey:@"error_msg"]);
+                    NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                }else{
+                    NSDictionary * respDict = [response objectForKey:@"response"];
+                    
+                    [self.buttonCity setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }
+            }];
+            
+            
+        }
+        
+        
+        
+        
+     
     }
 }
 
@@ -278,6 +306,19 @@ replacementString:(NSString *)string {
         self.images = images;
         self.selectedAssets = selectedAssets;
         self.labelCountPhoto.text = [NSString stringWithFormat:@"%lu из 10", (unsigned long)self.images.count];
+        
+        for(int i=0; i<self.images.count; i++){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     @"1",@"add_to_profile",nil];
+            
+            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
+                NSLog(@"RESPONSEFOTO %@",response);
+                if(![response isKindOfClass:[NSDictionary class]]){
+                   
+                    NSLog(@"Загрузить фото не удалось");
+                }
+            }];
+        }
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

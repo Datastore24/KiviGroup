@@ -87,7 +87,7 @@
          [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
          [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
      }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
-         
+         [self.countryModel putCityIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
      }
     
     [self.navigationController popViewControllerAnimated:YES];

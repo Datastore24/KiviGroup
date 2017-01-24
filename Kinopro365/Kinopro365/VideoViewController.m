@@ -8,6 +8,7 @@
 
 #import "VideoViewController.h"
 #import "SingleTone.h"
+#import "APIManger.h"
 
 @interface VideoViewController () 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -94,11 +95,34 @@
     
     NSLog(@"%@", [[self.webView.request URL] absoluteString]);
     [self createActivitiIndicatorAlertWithView];
-    [self performSelector:@selector(timeMethodDeletActiviti) withObject:nil afterDelay:2.f];
+    APIManger * apiManager = [[APIManger alloc] init];
+    
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             [[self.webView.request URL] absoluteString],@"link",
+                             @"1",@"add_to_profile",nil];
+    
+    [apiManager postDataFromSeverWithMethod:@"video.save" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+        }else{
+            NSLog(@"RESPONSE VIDEO %@",response);
+            NSDictionary * respDict = [response objectForKey:@"response"];
+            NSString * videoID = [NSString stringWithFormat:@"%@",[respDict objectForKey:@"id"]];
+            
+            if(videoID.length !=0){
+                [self deleteActivitiIndicator];
+                [self showAlertWithMessageWithBlock:@"Видео успешно добавлено!" block:^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                
+            }
+        }
+    }];
+    
     
 }
 
-- (void) timeMethodDeletActiviti {
-    [self deleteActivitiIndicator];
-}
 @end

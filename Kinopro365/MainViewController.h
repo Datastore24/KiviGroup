@@ -15,6 +15,7 @@
 
 //Алерты----
 - (void) showAlertWithMessage: (NSString*) message;
+- (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack;
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button;
 - (void) showViewPickerWithButton: (UIButton*) button andTitl: (NSString*) message andArrayData: (NSArray*) arrayData;
 

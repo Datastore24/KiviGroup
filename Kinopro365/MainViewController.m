@@ -96,6 +96,45 @@
     [self presentViewController:alertViewController animated:YES completion:nil];
 }
 
+- (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack{
+    
+    NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
+    
+    alertViewController.backgroundTapDismissalGestureEnabled = YES;
+    alertViewController.swipeDismissalGestureEnabled = YES;
+    
+    alertViewController.title = NSLocalizedString(@"", nil);
+    alertViewController.message = NSLocalizedString(message, nil);
+    
+    alertViewController.buttonCornerRadius = 4.0f;
+    alertViewController.view.tintColor = self.view.tintColor;
+    
+    alertViewController.titleFont = [UIFont fontWithName:@"AvenirNext-Bold" size:18.0f];
+    alertViewController.messageFont = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14.0f];
+    alertViewController.buttonTitleFont = [UIFont fontWithName:FONT_ISTOK_BOLD
+                                                          size:alertViewController.buttonTitleFont.pointSize];
+    
+    alertViewController.alertViewBackgroundColor = [UIColor whiteColor];
+    alertViewController.alertViewCornerRadius = 10.0f;
+    
+    alertViewController.titleColor = [UIColor colorWithRed:0.42f green:0.78 blue:0.32f alpha:1.0f];
+    alertViewController.messageColor = [UIColor blackColor];
+    
+    alertViewController.buttonColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR];
+    alertViewController.buttonTitleColor = [UIColor whiteColor];
+    
+    [alertViewController addAction:[NYAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(NYAlertAction *action) {
+                                                              
+                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                              compilationBack();
+                                                          }]];
+    
+    [self presentViewController:alertViewController animated:YES completion:nil];
+}
+
+
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button {
     NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
