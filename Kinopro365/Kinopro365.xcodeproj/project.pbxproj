@@ -59,6 +59,7 @@
 		FFA867711E3642F8000195DB /* KinosferaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA867701E3642F8000195DB /* KinosferaController.m */; };
 		FFA867741E36430B000195DB /* KinosferaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA867731E36430B000195DB /* KinosferaModel.m */; };
 		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
+		FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBC2C741E3779E400B1C064 /* AddParamsView.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
@@ -165,6 +166,8 @@
 		FFA867731E36430B000195DB /* KinosferaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinosferaModel.m; sourceTree = "<group>"; };
 		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
 		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
+		FFBC2C731E3779E400B1C064 /* AddParamsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsView.h; sourceTree = "<group>"; };
+		FFBC2C741E3779E400B1C064 /* AddParamsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsView.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 				FFFD1A4A1E09489300626219 /* AddParamsController.m */,
 				FFFD1A4E1E0969C600626219 /* AddParamsModel.h */,
 				FFFD1A4F1E0969C600626219 /* AddParamsModel.m */,
+				FFBC2C731E3779E400B1C064 /* AddParamsView.h */,
+				FFBC2C741E3779E400B1C064 /* AddParamsView.m */,
 			);
 			name = AddParams;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
+				FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */,
 				FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */,
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
 				FFA867711E3642F8000195DB /* KinosferaController.m in Sources */,
