@@ -8,7 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AddParamsModelDelegate <NSObject>
+
+@required
+
+@property (strong, nonatomic) NSArray * profArray;
+
+@end
+
+
 @interface AddParamsModel : NSObject
+
+@property (assign, nonatomic) id <AddParamsModelDelegate> delegate;
 
 + (NSArray*) setArrayHeight; //Данные пикер вью
 + (NSArray*) setArrayTitl; //Заголовки для пикер вью

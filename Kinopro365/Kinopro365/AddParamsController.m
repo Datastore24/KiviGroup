@@ -26,6 +26,8 @@
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. параметры"];
     self.navigationItem.titleView = CustomText;
     
+    NSLog(@"RESPROF %@",self.profArray);
+    
     NSArray * arrayType = [NSArray arrayWithObjects:@"String", @"Picker", @"Switch", @"Picker", @"Switch", @"Switch", @"Switch",nil];
     
     

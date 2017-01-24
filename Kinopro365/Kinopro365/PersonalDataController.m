@@ -34,6 +34,7 @@
 @property (strong, nonatomic) HMImagePickerController * pickerAvatar; //Фото контроллер для выбора аватара
 @property (strong, nonatomic) UIImage * imageAvatar; //Картинка аватара;
 @property (strong, nonatomic) APIManger * apiManager;
+@property (strong, nonatomic) NSMutableArray * profArray;
 
 @end
 
@@ -61,6 +62,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.apiManager = [[APIManger alloc] init];
+    self.profArray = [NSMutableArray new];
    
     [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         
@@ -164,7 +166,11 @@ replacementString:(NSString *)string {
             } else {
                 [resultString appendString:[NSString stringWithFormat:@"/%@", profTable.professionName]];
             }
-
+            
+            NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         profTable.professionID, @"professionID",
+                                         profTable.professionName,@"professionName", nil];
+            [self.profArray addObject:resultDict];
             
         }
         [self setTitlForButtonWithTitle:resultString];
@@ -387,7 +393,10 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonAddParams:(UIButton *)sender {
-    [self pushCountryControllerWithIdentifier:@"AddParamsController"];
+    AddParamsController * addParams = [self.storyboard instantiateViewControllerWithIdentifier:@"AddParamsController"];
+    addParams.profArray = [NSArray arrayWithArray:self.profArray];
+    [self.navigationController pushViewController:addParams animated:YES];
+
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
