@@ -7,6 +7,7 @@
 //
 
 #import "AddInfoemationController.h"
+#import "UserInformationTable.h"
 
 @interface AddInfoemationController ()
 
@@ -31,6 +32,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    RLMResults *userTableDataArray = [UserInformationTable allObjects];
+    
+    if(userTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+        if(userTable.user_comment.length !=0){
+            self.labelCustomPlaceholder.alpha = 0;
+            self.textViewAddInformation.text = userTable.user_comment;
+        }
+    }
     
     if (self.textViewAddInformation.text.length != 0) {
         self.labelCustomPlaceholder.alpha = 0;
@@ -67,18 +79,40 @@
 #pragma mark - Actions
 
 - (IBAction)actionBackBarButton:(id)sender {
+    
+
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
     
     [self createActivitiIndicatorAlertWithView];
-    [self performSelector:@selector(testMethod) withObject:nil afterDelay:3.f];
+   
+    [self performSelector:@selector(saveToBase) withObject:nil afterDelay:2.f];
 }
 
 #pragma mark - Other
 
-- (void) testMethod {
+- (void) saveToBase {
     [self deleteActivitiIndicator];
+    if(self.textViewAddInformation.text.length !=0){
+        RLMResults *userTableDataArray = [UserInformationTable allObjects];
+        
+        if(userTableDataArray.count>0){
+            
+            UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            userTable.user_comment = self.textViewAddInformation.text;
+            [realm commitWriteTransaction];
+            
+        }
+        
+    }
+    [self showAlertWithMessageWithBlock:@"Дополнительная информация сохранена." block:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
 }
 @end

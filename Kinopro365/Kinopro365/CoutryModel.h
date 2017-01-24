@@ -24,6 +24,7 @@
 
 - (void) getCountryArrayToTableView: (void (^) (void)) compitionBack;
 - (void) putCountryIdToProfle: (NSString *) countryID;
+- (void) putCityIdToProfle: (NSString *) cityID;
 - (void) getCityArrayToTableView: (NSString *) countryID block: (void (^) (void)) compitionBack;
 
 

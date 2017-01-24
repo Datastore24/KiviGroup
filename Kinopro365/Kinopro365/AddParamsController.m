@@ -12,6 +12,7 @@
 #import "SingleTone.h"
 #import "AddParamsView.h"
 
+
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
 
 @end
@@ -26,20 +27,29 @@
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. параметры"];
     self.navigationItem.titleView = CustomText;
     
-    NSArray * arrayType = [NSArray arrayWithObjects:@"String", @"Picker", @"Switch", @"Picker", @"Switch", @"Switch", @"Switch",nil];
+    NSLog(@"RESPROF %@",self.profArray);
     
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    NSArray * paramsArray = [NSArray arrayWithArray:[addParamsModel getParamsDict:1]];
     
+     for(int i; i<paramsArray.count; i++){
+         
+         NSDictionary * dictData = [paramsArray objectAtIndex:i];
+         
+         AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
+                                                                                CGRectGetWidth(self.view.bounds), 30)
+                                                andTitle:[dictData objectForKey:@"title"]
+                                                andType:[dictData objectForKey:@"type"]
+                                                andPlaceholder:[dictData objectForKey:@"placeholder"]
+                                                andArrayData:[dictData objectForKey:@"array"]];
+         view.deleagte = self;
+         [self.mainScrollView addSubview:view];
+         
+         
+     }
     
-    
-    for (int i = 0; i < arrayType.count; i++) {
-        
-        AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
-                                                                               CGRectGetWidth(self.view.bounds), 30)
-                                                       endTetleText:@"Привет" andIdString:@"tutki"
-                                                            andType:[arrayType objectAtIndex:i] endArrayData:nil];
-        view.deleagte = self;
-        [self.mainScrollView addSubview:view];
-    }
+   
+
     
     
     
@@ -119,9 +129,9 @@
 
 #pragma mark - AddParamsViewDelegate
 
-- (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (UIButton*) button andArrayViewPicker: (NSArray*) array {
-    
-    [self showViewPickerWithButton:button andTitl:nil andArrayData:array];
+- (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (CustomButton*) button andArrayViewPicker: (NSArray*) array {
+    NSLog(@"ARRAYDOP %@",array);
+    [self showViewPickerWithButton:button andTitl:nil andArrayData:array andKeyTitle:@"name" andKeyID:@"id"];
     
 }
 

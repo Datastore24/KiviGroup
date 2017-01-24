@@ -34,6 +34,7 @@
 @property (strong, nonatomic) HMImagePickerController * pickerAvatar; //Фото контроллер для выбора аватара
 @property (strong, nonatomic) UIImage * imageAvatar; //Картинка аватара;
 @property (strong, nonatomic) APIManger * apiManager;
+@property (strong, nonatomic) NSMutableArray * profArray;
 
 @end
 
@@ -61,6 +62,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.apiManager = [[APIManger alloc] init];
+    self.profArray = [NSMutableArray new];
    
     [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         
@@ -164,7 +166,11 @@ replacementString:(NSString *)string {
             } else {
                 [resultString appendString:[NSString stringWithFormat:@"/%@", profTable.professionName]];
             }
-
+            
+            NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         profTable.professionID, @"professionID",
+                                         profTable.professionName,@"professionName", nil];
+            [self.profArray addObject:resultDict];
             
         }
         [self setTitlForButtonWithTitle:resultString];
@@ -226,12 +232,40 @@ replacementString:(NSString *)string {
                 }else{
                     NSDictionary * respDict = [response objectForKey:@"response"];
                     [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [[SingleTone sharedManager] setCountryID:[respDict objectForKey:@"id"]];
                     [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 }
             }];
            
             
         }
+        
+        if(userTable.city_id.length !=0){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     userTable.city_id,@"id", nil];
+            [self.apiManager getDataFromSeverWithMethod:@"info.getCityById" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                if([response objectForKey:@"error_code"]){
+                    
+                    NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                          [response objectForKey:@"error_msg"]);
+                    NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                }else{
+                    NSDictionary * respDict = [response objectForKey:@"response"];
+                    
+                    [self.buttonCity setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }
+            }];
+            
+            
+        }
+        
+        
+        
+        
+     
     }
 }
 
@@ -278,6 +312,19 @@ replacementString:(NSString *)string {
         self.images = images;
         self.selectedAssets = selectedAssets;
         self.labelCountPhoto.text = [NSString stringWithFormat:@"%lu из 10", (unsigned long)self.images.count];
+        
+        for(int i=0; i<self.images.count; i++){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     @"1",@"add_to_profile",nil];
+            
+            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
+                NSLog(@"RESPONSEFOTO %@",response);
+                if(![response isKindOfClass:[NSDictionary class]]){
+                   
+                    NSLog(@"Загрузить фото не удалось");
+                }
+            }];
+        }
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -346,7 +393,10 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonAddParams:(UIButton *)sender {
-    [self pushCountryControllerWithIdentifier:@"AddParamsController"];
+    AddParamsController * addParams = [self.storyboard instantiateViewControllerWithIdentifier:@"AddParamsController"];
+    addParams.profArray = [NSArray arrayWithArray:self.profArray];
+    [self.navigationController pushViewController:addParams animated:YES];
+
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {

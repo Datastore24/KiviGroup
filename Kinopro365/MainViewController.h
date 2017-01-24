@@ -10,13 +10,15 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import "UILabel+TitleCategory.h"
+#import "CustomButton.h"
 
 @interface MainViewController : UIViewController
 
 //Алерты----
 - (void) showAlertWithMessage: (NSString*) message;
+- (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack;
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button;
-- (void) showViewPickerWithButton: (UIButton*) button andTitl: (NSString*) message andArrayData: (NSArray*) arrayData;
+- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID;
 
 //Джестер на скрытие всех textFilds
 - (void) hideAllTextFildWithMainView: (UIView*) view;

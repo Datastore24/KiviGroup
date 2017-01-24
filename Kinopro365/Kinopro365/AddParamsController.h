@@ -11,5 +11,6 @@
 @interface AddParamsController : MainViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (strong, nonatomic) NSArray * profArray;
 
 @end

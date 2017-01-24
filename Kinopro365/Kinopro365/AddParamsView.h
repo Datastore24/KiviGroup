@@ -16,7 +16,9 @@
 @property (strong, nonatomic) id mainObject;
 @property (weak, nonatomic) id <AddParamsViewDelegate> deleagte;
 
-- (instancetype)initWithFrame: (CGRect) frame endTetleText: (NSString*) titleText andIdString: (NSString*) idString andType: (NSString*) type endArrayData: (NSArray*) arrayData;
+- (instancetype)initWithFrame: (CGRect) frame andTitle:(NSString *) title andType: (NSString *) type
+               andPlaceholder: (NSString *) placeholder
+                    andArrayData: (NSArray*) arrayData;
 
 @end
 
