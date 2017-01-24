@@ -138,6 +138,9 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - Actions
 
-
+- (IBAction)actionButtonCancel:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end
