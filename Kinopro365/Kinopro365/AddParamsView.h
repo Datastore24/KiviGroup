@@ -30,4 +30,6 @@
 
 - (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (UIButton*) button andArrayViewPicker: (NSArray*) array;
 
+- (void) actionLangue: (AddParamsView*) addParamsView andButton: (UIButton*) button andArrayViewPicker: (NSArray*) array;
+
 @end
