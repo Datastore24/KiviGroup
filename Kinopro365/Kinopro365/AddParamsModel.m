@@ -23,7 +23,9 @@
             
             NSInteger profID = [[profDict objectForKey:@"professionID"] integerValue];
             NSArray * paramsArray = [self getParamsDict:profID];
-            if(paramsArray.count>0){
+            
+            
+            if(paramsArray.count>0 && ![paramsArray isEqual:[NSNull null]]){
              [profMutableArray addObjectsFromArray:paramsArray];   
             }
             
@@ -31,33 +33,50 @@
             
         }
         
-        NSMutableArray * unique = [NSMutableArray array];
-        NSMutableSet * processed = [NSMutableSet set];
-        for (NSDictionary * dict in profMutableArray) {
-            if ([processed containsObject:dict] == NO) {
-                [unique addObject:dict];
-                [processed addObject:dict];
+        if(profMutableArray.count>0){
+            NSMutableArray * unique = [NSMutableArray array];
+            NSMutableSet * processed = [NSMutableSet set];
+            for (NSDictionary * dict in profMutableArray) {
+                if ([processed containsObject:dict] == NO) {
+                    
+                    [unique addObject:dict];
+                    [processed addObject:dict];
+                }
             }
+            return unique;
         }
+        
 
-        return unique;
+        
     }
     return @[];
 }
+-(NSArray *) getHeight{
+    NSMutableArray * rost = [NSMutableArray new];
+    for(int i = 100; i<241; i++){
+        NSString * intNumb = [NSString stringWithFormat:@"%d",i];
+        NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               intNumb,@"id",
+                               intNumb,@"name", nil];
+        [rost addObject:dict];
+    }
+    NSArray * resultArray = [NSArray arrayWithArray:rost];
+    return resultArray;
+}
 
 -(NSArray *) getParamsDict: (NSInteger) profID {
-    
-    
+    NSArray * rost = [self getHeight];
+   
     NSArray * profArray;
     if(profID == 1){
         
         profArray = @[
                                 @{
                                     @"title": @"Рост",
-                                    @"placeholder": @"Введите Ваш рост",
+                                    @"placeholder": @"",
                                     @"id": @"ex_height",
-                                    @"type": @"String",
-                                    @"array" : @[]
+                                    @"type": @"Picker",
+                                    @"array" : rost
                                     },
                                 @{
                                     @"title": @"Цвет волос",
@@ -359,8 +378,8 @@
                                     @"title": @"Рост",
                                     @"placeholder": @"Введите Ваш рост",
                                     @"id": @"ex_height",
-                                    @"type": @"String",
-                                    @"array" : @[]
+                                    @"type": @"Picker",
+                                    @"array" : rost
                                     },
                                 @{
                                     @"title": @"Цвет волос",
@@ -642,8 +661,8 @@
                                     @"title": @"Рост",
                                     @"placeholder": @"Введите Ваш рост",
                                     @"id": @"ex_height",
-                                    @"type": @"String",
-                                    @"array" : @[]
+                                    @"type": @"Picker",
+                                    @"array" : rost
                                     },
                                 @{
                                     @"title": @"Цвет волос",
@@ -965,8 +984,8 @@
                                     @"title": @"Рост",
                                     @"placeholder": @"Введите Ваш рост",
                                     @"id": @"ex_height",
-                                    @"type": @"String",
-                                    @"array" : @[]
+                                    @"type": @"Picker",
+                                    @"array" : rost
                                     },
                                 
                                 @{
