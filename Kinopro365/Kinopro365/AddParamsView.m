@@ -83,6 +83,25 @@
                                       @"id": fieldID,
                                       @"type": @"Switch"
                                       };
+                } else if ([type isEqualToString:@"MultiList"]) {
+                    CustomButton * buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
+                    buttonLangue.frame = frameObject;
+                    buttonLangue.customArray = arrayData;
+                    buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
+                    [buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    [buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+                    [buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
+                    [self addSubview:buttonLangue];
+                    self.mainObject = buttonLangue;
+                    self.mainDict = @{
+                                      @"title": title,
+                                      @"id": fieldID,
+                                      @"type": @"MultiList"
+                                      };
+
+                    
+                    
                 }
             
         }
@@ -96,6 +115,10 @@
 
 - (void) actionButtonPicker: (CustomButton*) button {
     [self.deleagte actionButtonOn:self andButton:button andArrayViewPicker:button.customArray];
+}
+
+- (void) actionbuttonLangue: (CustomButton*) button {
+    [self.deleagte actionLangue:self andButton:button andArrayViewPicker:button.customArray];
 }
 
 @end
