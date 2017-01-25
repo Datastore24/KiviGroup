@@ -26,15 +26,14 @@
     
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. параметры"];
     self.navigationItem.titleView = CustomText;
-    
-    NSLog(@"RESPROF %@",self.profArray);
+
     
     self.fieldsArray = [NSMutableArray new];
     
     AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
     
     NSArray * paramsArray =[addParamsModel loadParams:self.profArray];
-    NSLog(@"PARAMSARRAY %@",paramsArray);
+
      for(int i; i<paramsArray.count; i++){
          
          NSDictionary * dictData = [paramsArray objectAtIndex:i];
@@ -50,8 +49,9 @@
         
          view.deleagte = self;
          
-         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
+         
          [self.mainScrollView addSubview:view];
+         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
          
          if(view.mainObject && view.mainDict){
              NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
