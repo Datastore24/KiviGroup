@@ -36,7 +36,6 @@
                 [processed addObject:dict];
             }
         }
-        NSLog(@"PROFARRAY%@", processed);
 
         return unique;
     }
