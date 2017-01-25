@@ -65,10 +65,9 @@
                     CustomButton * buttonPicker = [CustomButton buttonWithType:UIButtonTypeSystem];
                     buttonPicker.frame = frameObject;
                     buttonPicker.customArray = arrayData;
-                    buttonPicker.customName = defValueIndex;
                    
                     buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    
                     [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
                     [buttonPicker addTarget:self action:@selector(actionButtonPicker:) forControlEvents:UIControlEventTouchUpInside];
@@ -79,6 +78,24 @@
                                       @"id": fieldID,
                                       @"type": @"Picker"
                                       };
+                    
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                         fieldID];
+                    
+                    //Грузим данные из базы
+                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                    if(outletTableDataArray.count>0){
+                        for(int i=0; i<outletTableDataArray.count; i++){
+                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                            buttonPicker.customName = addTable.additionalValue;
+                            [buttonPicker setTitle:addTable.additionalValue forState:UIControlStateNormal];
+                        }
+                    }else{
+                        
+                        buttonPicker.customName = defValueIndex;
+                        [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    }
+                    
                 } else if ([type isEqualToString:@"Switch"]) {
                     labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
                     UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(245.f, 0.f, 49.f, 31.f)];
@@ -89,6 +106,10 @@
                                       @"id": fieldID,
                                       @"type": @"Switch"
                                       };
+                    
+                    
+                    
+                    
                 } else if ([type isEqualToString:@"MultiList"]) {
                     self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
                     self.buttonLangue.frame = frameObject;
