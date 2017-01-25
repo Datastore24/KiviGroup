@@ -260,7 +260,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lo-hC-Uye" id="CT7-Nz-wD1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qw3-pl-xvf">
@@ -279,7 +279,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" id="IT2-9i-RvD">
-                                                    <rect key="frame" x="-1" y="40" width="272" height="0.0"/>
+                                                    <rect key="frame" x="-1" y="39" width="272" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -327,24 +327,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="srT-WR-K1k">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="501"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vOV-GT-0yV">
-                                        <rect key="frame" x="15" y="443" width="291" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>
-                                        <state key="normal" title="СОХРАНИТЬ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionButtonSave:" destination="NJh-ET-MUG" eventType="touchUpInside" id="Qnh-pg-5dG"/>
-                                            <action selector="actionButtonSave:" destination="IVJ-VJ-EiH" eventType="touchUpInside" id="gCh-xR-SyU"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vOV-GT-0yV">
+                                <rect key="frame" x="14" y="507" width="291" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>
+                                <state key="normal" title="СОХРАНИТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionButtonSave:" destination="NJh-ET-MUG" eventType="touchUpInside" id="Qnh-pg-5dG"/>
+                                    <action selector="actionButtonSave:" destination="IVJ-VJ-EiH" eventType="touchUpInside" id="gCh-xR-SyU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -954,6 +952,8 @@
                         <outlet property="buttonProfession" destination="3UI-Ks-4OV" id="WkT-Fz-a3W"/>
                         <outlet property="buttonQuestion" destination="5G9-ID-s8U" id="zZa-QJ-KlQ"/>
                         <outlet property="buttonVideo" destination="dd1-hD-eZZ" id="QZi-Af-l4z"/>
+                        <outlet property="dopLabelOne" destination="07x-DK-Kbx" id="rcw-7t-bPe"/>
+                        <outlet property="dopLabelTwo" destination="49z-Qp-5qq" id="2xB-x5-Uib"/>
                         <outlet property="imageButtonProffecional" destination="e86-vi-dwv" id="5TK-tW-fmK"/>
                         <outlet property="labelCountPhoto" destination="aU5-cm-yfA" id="iBE-1e-9oY"/>
                         <outlet property="mainTopView" destination="nQR-wJ-y8f" id="z0N-Uv-rNa"/>

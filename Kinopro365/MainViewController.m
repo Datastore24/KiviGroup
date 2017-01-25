@@ -234,6 +234,7 @@
                                                               [button setTitle:self.pickerViewString
                                                                       forState:UIControlStateNormal];
                                                               button.customID = self.pickerViewStringID;
+                                                              button.customName = self.pickerViewString;
                                                               [self dismissViewControllerAnimated:YES completion:nil];
 
                                                           }]];

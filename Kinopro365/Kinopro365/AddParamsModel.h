@@ -20,7 +20,7 @@
 @interface AddParamsModel : NSObject
 
 @property (assign, nonatomic) id <AddParamsModelDelegate> delegate;
-
--(NSArray *) getParamsDict: (NSInteger) profID;
+- (NSArray *) loadParams: (NSArray *) profArray;
+- (NSArray *) getParamsDict: (NSInteger) profID;
 
 @end
