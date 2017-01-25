@@ -43,7 +43,7 @@
                     [processed addObject:dict];
                 }
             }
-        NSLog(@"UNIQQ %@",unique);
+        
             return unique;
         
         
@@ -77,6 +77,7 @@
                                     @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
+                                    @"defValueIndex": @"170",
                                     @"array" : rost
                                     },
                                 @{
@@ -407,6 +408,7 @@
                                     @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
+                                    @"defValueIndex": @"170",
                                     @"array" : rost
                                     },
                                 @{
@@ -716,6 +718,7 @@
                                     @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
+                                    @"defValueIndex": @"170",
                                     @"array" : rost
                                     },
                                 @{
@@ -1064,6 +1067,7 @@
                                     @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
+                                    @"defValueIndex": @"170",
                                     @"array" : rost
                                     },
                                 

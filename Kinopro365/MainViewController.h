@@ -18,7 +18,7 @@
 - (void) showAlertWithMessage: (NSString*) message;
 - (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack;
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button;
-- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID;
+- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID andDefValueIndex: (NSString *) defValueIndex;
 
 //Джестер на скрытие всех textFilds
 - (void) hideAllTextFildWithMainView: (UIView*) view;

@@ -45,12 +45,20 @@
          
          NSDictionary * dictData = [paramsArray objectAtIndex:i];
          
+         NSString * defValueIndex;
+         if([[dictData objectForKey:@"defValueIndex"] length] != 0){
+             defValueIndex = [dictData objectForKey:@"defValueIndex"];
+         }else{
+             defValueIndex = @"";
+         }
+
          AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
                                                                                 CGRectGetWidth(self.view.bounds), 30)
                                                 andTitle:[dictData objectForKey:@"title"]
                                                 andType:[dictData objectForKey:@"type"]
                                                 andPlaceholder:[dictData objectForKey:@"placeholder"]
-                                                               andId:[dictData objectForKey:@"id"]
+                                                andId:[dictData objectForKey:@"id"]
+                                                andDefValueIndex:defValueIndex
                                                 andArrayData:[dictData objectForKey:@"array"]];
          
         
@@ -151,9 +159,10 @@
 
 #pragma mark - AddParamsViewDelegate
 
-- (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (CustomButton*) button andArrayViewPicker: (NSArray*) array {
-
-    [self showViewPickerWithButton:button andTitl:nil andArrayData:array andKeyTitle:@"name" andKeyID:@"id"];
+- (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (CustomButton*) button
+     andArrayViewPicker: (NSArray*) array {
+   
+    [self showViewPickerWithButton:button andTitl:nil andArrayData:array andKeyTitle:@"name" andKeyID:@"id" andDefValueIndex: button.customName];
     
 }
 
@@ -163,7 +172,7 @@
     addParams.mainArrayData =array;
     addParams.isLanguage = YES;
     [self.navigationController pushViewController:addParams animated:YES];
-    NSLog(@"ARRRRRRRR %@",array);
+    
 }
 
 #pragma mark - Other
@@ -178,7 +187,7 @@
     NSMutableArray * arrayForDB = [NSMutableArray new];
     [arrayForDB removeAllObjects];
     
-    NSLog(@"FIEL %@",self.fieldsArray);
+   
     for (int i=0; i<self.fieldsArray.count; i++){
         NSDictionary * fields = [self.fieldsArray objectAtIndex:i];
         
@@ -191,7 +200,7 @@
                 [self showAlertWithMessage:alertMessage];
                 
             }else{
-               NSLog(@"TEXT %@",textFields.text);
+               
                 NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                        [information objectForKey:@"id"],@"additionalID",
                                        [information objectForKey:@"title"],@"additionalName",

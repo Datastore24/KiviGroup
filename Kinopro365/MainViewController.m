@@ -187,7 +187,7 @@
     [self presentViewController:alertViewController animated:YES completion:nil];
 }
 
-- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID{
+- (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID andDefValueIndex: (NSString *) defValueIndex{
     NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
     alertViewController.title = NSLocalizedString(@"", nil);
@@ -216,13 +216,34 @@
     self.pickerDictKeyTitle = dictKeyTitle;
     self.arrayPickerView = arrayData;
     
+    NSString * defval;
+
+    
+    
+    NSLog(@"ARRRRRRR %@",arrayData);
+  
     if(self.pickerDictKeyTitle.length !=0){
-        NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:0];
         
-        self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
-        NSLog(@"PICKERFIRST %@",[pickerDict objectForKey:self.pickerDictKeyTitle]);
+        if(defValueIndex.length !=0){
+            //Поиск значения по умолчанию
+            NSMutableArray * arrayIndex = [NSMutableArray new];
+            for(int i=0; i<arrayData.count; i++){
+                NSDictionary * dict = [arrayData objectAtIndex:i];
+                [arrayIndex addObject:[dict objectForKey:@"name"]];
+                
+            }
+            NSUInteger index = [arrayIndex indexOfObject:defValueIndex];
+            //
+            [pickerView selectRow:index inComponent:0 animated:YES];
+            self.pickerViewString = defValueIndex;
+        }else{
+            NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:0];
+            self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
+        }
+       
+        
     }else{
-        self.pickerViewString = [self.arrayPickerView objectAtIndex:0];
+        self.pickerViewString = [self.arrayPickerView objectAtIndex:[defval intValue]];
     }
     
     alertViewController.alertViewContentView = pickerView;

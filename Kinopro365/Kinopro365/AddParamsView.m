@@ -27,6 +27,7 @@
 - (instancetype)initWithFrame: (CGRect) frame andTitle:(NSString *) title andType: (NSString *) type
             andPlaceholder: (NSString *) placeholder
                andId: (NSString *) fieldID
+             andDefValueIndex: (NSString *) defValueIndex
                     andArrayData: (NSArray*) arrayData
 {
     self = [super init];
@@ -64,6 +65,7 @@
                     CustomButton * buttonPicker = [CustomButton buttonWithType:UIButtonTypeSystem];
                     buttonPicker.frame = frameObject;
                     buttonPicker.customArray = arrayData;
+                    buttonPicker.customName = defValueIndex;
                    
                     buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
                     [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
@@ -117,7 +119,7 @@
                             } else {
                                 [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
                             }
-                            if(i==3){
+                            if(i==2){
                                 [resultString appendString:@"..."];
                                 break;
                             }
@@ -149,10 +151,12 @@
 - (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool {
     
     if (isbool) {
+        
         self.buttonLangue.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.buttonLangue.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.buttonLangue setTitle: buttonText forState: UIControlStateNormal];
-        
+        self.buttonLangue.frame = CGRectMake(152.f, 0, 142.f, 40.f);
+//        
         self.buttonLangue.backgroundColor = [UIColor clearColor];
         [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
     } else {
