@@ -172,7 +172,7 @@ replacementString:(NSString *)string {
                                          profTable.professionID, @"professionID",
                                          profTable.professionName,@"professionName", nil];
             [self.profArray addObject:resultDict];
-            NSLog(@"PROFARRAY %@",self.profArray);
+            
             if(self.profArray.count>0){
                 AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
                 NSArray * params = [addParamsModel loadParams:self.profArray];
@@ -224,11 +224,17 @@ replacementString:(NSString *)string {
             if(self.profArray.count>0){
                 AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
                 NSArray * params = [addParamsModel loadParams:self.profArray];
+                NSLog(@"PARAMSSSS %@",params);
                 if(params.count == 0){
                     self.dopLabelOne.alpha = 0.f;
                     self.dopLabelTwo.alpha = 0.f;
                     self.buttonAddParams.userInteractionEnabled = NO;
                     self.buttonAddParams.alpha = 0.f;
+                }else{
+                    self.dopLabelOne.alpha = 1.f;
+                    self.dopLabelTwo.alpha = 1.f;
+                    self.buttonAddParams.userInteractionEnabled = YES;
+                    self.buttonAddParams.alpha = 1.f;
                 }
             }else{
                 self.dopLabelOne.alpha = 0.f;

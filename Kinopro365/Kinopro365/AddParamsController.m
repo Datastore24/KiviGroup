@@ -32,11 +32,14 @@
     
     self.fieldsArray = [NSMutableArray new];
     
+    
+    
     AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
     
     NSArray * paramsArray =[addParamsModel loadParams:self.profArray];
+    
 
-     for(int i; i<paramsArray.count; i++){
+     for(int i = 0; i<paramsArray.count; i++){
          
          NSDictionary * dictData = [paramsArray objectAtIndex:i];
          
@@ -50,7 +53,6 @@
          
         
          view.deleagte = self;
-         
          
          [self.mainScrollView addSubview:view];
          self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
