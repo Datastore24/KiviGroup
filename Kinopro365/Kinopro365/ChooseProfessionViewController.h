@@ -17,6 +17,7 @@
 @property (weak, nonatomic) id <ChooseProfessionViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
 @property (strong, nonatomic) NSArray * mainArrayData;
+@property (assign, nonatomic) BOOL isLanguage;
 @property (strong, nonatomic) NSMutableString * professianString;
 
 - (IBAction)actionBackButton:(id)sender;
