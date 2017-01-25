@@ -26,6 +26,8 @@
     
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. параметры"];
     self.navigationItem.titleView = CustomText;
+    
+    self.buttonSave.layer.cornerRadius = 5.f;
 
     
     self.fieldsArray = [NSMutableArray new];

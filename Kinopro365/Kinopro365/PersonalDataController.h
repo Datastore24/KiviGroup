@@ -31,6 +31,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBirthday;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonGenderMale;
+@property (weak, nonatomic) IBOutlet UIButton *buttonGenderFemale;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRound;
+@property (weak, nonatomic) IBOutlet UIImageView *imageForButtonRound;
+
+
 //TextFilds------------
 @property (weak, nonatomic) IBOutlet UITextField *textFildName;
 @property (weak, nonatomic) IBOutlet UITextField *textFildLastName;
@@ -62,6 +68,9 @@
 - (IBAction)actionButtonAddParams:(UIButton *)sender;
 - (IBAction)actionButtonNext:(UIButton *)sender;
 
+- (IBAction)actionButtonMale:(id)sender;
+- (IBAction)actionButtonFemale:(id)sender;
+- (IBAction)actionButtonRound:(id)sender;
 
 
 @end

@@ -37,6 +37,8 @@
 @property (strong, nonatomic) APIManger * apiManager;
 @property (strong, nonatomic) NSMutableArray * profArray;
 
+@property (assign, nonatomic) BOOL isBool; //Параметр для изменения свойств кнопки roundButton
+
 @end
 
 @implementation PersonalDataController
@@ -64,6 +66,8 @@
     // Do any additional setup after loading the view.
     self.apiManager = [[APIManger alloc] init];
     self.profArray = [NSMutableArray new];
+    
+    self.isBool = YES;
    
     [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         
@@ -495,6 +499,46 @@ replacementString:(NSString *)string {
         
     }
     NSLog(@"actionButtonNext");
+    
+}
+
+- (IBAction)actionButtonMale:(id)sender {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOn"] forState:UIControlStateNormal];
+        [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOff"] forState:UIControlStateNormal];
+    }];
+    
+    self.buttonGenderMale.userInteractionEnabled = NO;
+    self.buttonGenderFemale.userInteractionEnabled = YES;
+    
+}
+
+- (IBAction)actionButtonFemale:(id)sender {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOff"] forState:UIControlStateNormal];
+        [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOn"] forState:UIControlStateNormal];
+    }];
+    
+    self.buttonGenderMale.userInteractionEnabled = YES;
+    self.buttonGenderFemale.userInteractionEnabled = NO;
+    
+}
+
+- (IBAction)actionButtonRound:(id)sender {
+    
+    if (self.isBool) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.imageForButtonRound.alpha = 1.f;
+        }];
+        self.isBool = NO;
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.imageForButtonRound.alpha = 0.f;
+        }];
+        self.isBool = YES;
+    }
     
 }
 
