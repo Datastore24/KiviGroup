@@ -25,7 +25,7 @@
             NSArray * paramsArray = [self getParamsDict:profID];
             
             
-            if(paramsArray.count>0 && ![paramsArray isEqual:[NSNull null]]){
+            if(paramsArray.count>0){
              [profMutableArray addObjectsFromArray:paramsArray];   
             }
             
@@ -33,7 +33,7 @@
             
         }
         
-        if(profMutableArray.count>0){
+        
             NSMutableArray * unique = [NSMutableArray array];
             NSMutableSet * processed = [NSMutableSet set];
             for (NSDictionary * dict in profMutableArray) {
@@ -43,8 +43,9 @@
                     [processed addObject:dict];
                 }
             }
+        NSLog(@"UNIQQ %@",unique);
             return unique;
-        }
+        
         
 
         
@@ -403,7 +404,7 @@
         profArray = @[
                                 @{
                                     @"title": @"Рост",
-                                    @"placeholder": @"Введите Ваш рост",
+                                    @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
                                     @"array" : rost
@@ -712,7 +713,7 @@
         profArray = @[
                                 @{
                                     @"title": @"Рост",
-                                    @"placeholder": @"Введите Ваш рост",
+                                    @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
                                     @"array" : rost
@@ -1060,7 +1061,7 @@
         profArray = @[
                                 @{
                                     @"title": @"Рост",
-                                    @"placeholder": @"Введите Ваш рост",
+                                    @"placeholder": @"",
                                     @"id": @"ex_height",
                                     @"type": @"Picker",
                                     @"array" : rost

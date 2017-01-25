@@ -12,6 +12,7 @@
 #import "AddParamsModel.h"
 #import "CustomButton.h"
 #import "HexColors.h"
+#import "AdditionalTable.h"
 
 @interface AddParamsView ()
 
@@ -102,6 +103,28 @@
                                       @"id": fieldID,
                                       @"type": @"MultiList"
                                       };
+                
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                                         @"ex_languages"];
+                    
+                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                    NSMutableString * resultString = [NSMutableString new];
+                    if(outletTableDataArray.count>0){
+                        for(int i=0; i<outletTableDataArray.count; i++){
+                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                            if ([resultString isEqualToString:@""]) {
+                                [resultString appendString:addTable.additionalName];
+                            } else {
+                                [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                            }
+                            if(i==3){
+                                [resultString appendString:@"..."];
+                                break;
+                            }
+                        }
+                        [self ChekButtonWithText:resultString andBool:YES];
+                    }
+                    
                 }
             
         }
@@ -129,6 +152,7 @@
         self.buttonLangue.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.buttonLangue.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.buttonLangue setTitle: buttonText forState: UIControlStateNormal];
+        
         self.buttonLangue.backgroundColor = [UIColor clearColor];
         [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
     } else {

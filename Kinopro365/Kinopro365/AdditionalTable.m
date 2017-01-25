@@ -40,8 +40,6 @@
                 
             }
             
-            NSLog(@"RLMM %@",rlmArray);
-            
             
             [realm addOrUpdateObjectsFromArray:rlmArray];
             [realm commitWriteTransaction];
