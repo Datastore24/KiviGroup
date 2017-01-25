@@ -22,6 +22,7 @@
 #import "ProfessionsTable.h"
 #import "UserInformationTable.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "AddParamsModel.h"
 
 
 
@@ -138,6 +139,9 @@ replacementString:(NSString *)string {
     
     [self.buttonProfession setTitle:titl forState:UIControlStateNormal];
     self.imageButtonProffecional.alpha = 0.f;
+    [self checkProffesion];
+    
+    
     
     
 }
@@ -148,6 +152,48 @@ replacementString:(NSString *)string {
     
     [self.buttonProfession setTitle:title forState:UIControlStateNormal];
     self.imageButtonProffecional.alpha = 0.f;
+    
+    
+}
+
+-(void) checkProffesion{
+    [self.profArray removeAllObjects];
+    RLMResults *profTableDataArray = [ProfessionsTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        for(int i=0; i<profTableDataArray.count; i++){
+            ProfessionsTable * profTable = [profTableDataArray objectAtIndex:i];
+           
+            NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         profTable.professionID, @"professionID",
+                                         profTable.professionName,@"professionName", nil];
+            [self.profArray addObject:resultDict];
+            NSLog(@"PROFARRAY %@",self.profArray);
+            if(self.profArray.count>0){
+                AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+                NSArray * params = [addParamsModel loadParams:self.profArray];
+                if(params.count == 0){
+                    self.dopLabelOne.alpha = 0.f;
+                    self.dopLabelTwo.alpha = 0.f;
+                    self.buttonAddParams.userInteractionEnabled = NO;
+                    self.buttonAddParams.alpha = 0.f;
+                }else{
+                    self.dopLabelOne.alpha = 1.f;
+                    self.dopLabelTwo.alpha = 1.f;
+                    self.buttonAddParams.userInteractionEnabled = YES;
+                    self.buttonAddParams.alpha = 1.f;
+                }
+            }else{
+                self.dopLabelOne.alpha = 0.f;
+                self.dopLabelTwo.alpha = 0.f;
+                self.buttonAddParams.userInteractionEnabled = NO;
+                self.buttonAddParams.alpha = 0.f;
+                
+            }
+            
+            
+        }
+    }
     
     
 }
@@ -171,6 +217,23 @@ replacementString:(NSString *)string {
                                          profTable.professionID, @"professionID",
                                          profTable.professionName,@"professionName", nil];
             [self.profArray addObject:resultDict];
+            if(self.profArray.count>0){
+                AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+                NSArray * params = [addParamsModel loadParams:self.profArray];
+                if(params.count == 0){
+                    self.dopLabelOne.alpha = 0.f;
+                    self.dopLabelTwo.alpha = 0.f;
+                    self.buttonAddParams.userInteractionEnabled = NO;
+                    self.buttonAddParams.alpha = 0.f;
+                }
+            }else{
+                self.dopLabelOne.alpha = 0.f;
+                self.dopLabelTwo.alpha = 0.f;
+                self.buttonAddParams.userInteractionEnabled = NO;
+                self.buttonAddParams.alpha = 0.f;
+                
+            }
+            
             
         }
         [self setTitlForButtonWithTitle:resultString];
@@ -278,7 +341,6 @@ replacementString:(NSString *)string {
                                  @"0",@"add_to_profile",nil];
         
         [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:self.imageAvatar complitionBlock:^(id response) {
-            NSLog(@"RESPONSEFOTO %@",response);
             if([response isKindOfClass:[NSDictionary class]]){
                 NSDictionary * dictResp = [response objectForKey:@"response"];
                 if([[dictResp objectForKey:@"url"] length] != 0){
@@ -316,7 +378,7 @@ replacementString:(NSString *)string {
                                      @"1",@"add_to_profile",nil];
             
             [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
-                NSLog(@"RESPONSEFOTO %@",response);
+                
                 if(![response isKindOfClass:[NSDictionary class]]){
                    
                     NSLog(@"Загрузить фото не удалось");

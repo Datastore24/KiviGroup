@@ -952,6 +952,8 @@
                         <outlet property="buttonProfession" destination="3UI-Ks-4OV" id="WkT-Fz-a3W"/>
                         <outlet property="buttonQuestion" destination="5G9-ID-s8U" id="zZa-QJ-KlQ"/>
                         <outlet property="buttonVideo" destination="dd1-hD-eZZ" id="QZi-Af-l4z"/>
+                        <outlet property="dopLabelOne" destination="07x-DK-Kbx" id="rcw-7t-bPe"/>
+                        <outlet property="dopLabelTwo" destination="49z-Qp-5qq" id="2xB-x5-Uib"/>
                         <outlet property="imageButtonProffecional" destination="e86-vi-dwv" id="5TK-tW-fmK"/>
                         <outlet property="labelCountPhoto" destination="aU5-cm-yfA" id="iBE-1e-9oY"/>
                         <outlet property="mainTopView" destination="nQR-wJ-y8f" id="z0N-Uv-rNa"/>

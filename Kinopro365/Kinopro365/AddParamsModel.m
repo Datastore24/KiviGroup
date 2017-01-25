@@ -23,7 +23,10 @@
             
             NSInteger profID = [[profDict objectForKey:@"professionID"] integerValue];
             NSArray * paramsArray = [self getParamsDict:profID];
-            [profMutableArray addObjectsFromArray:paramsArray];
+            if(paramsArray.count>0){
+             [profMutableArray addObjectsFromArray:paramsArray];   
+            }
+            
             
             
         }

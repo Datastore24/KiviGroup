@@ -40,6 +40,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone2;
 @property (weak, nonatomic) IBOutlet UITextField *textFildEmail;
 
+//Дополнительные параметыры
+@property (weak, nonatomic) IBOutlet UILabel *dopLabelOne;
+@property (weak, nonatomic) IBOutlet UILabel *dopLabelTwo;
+
+
 //ImageView-------------
 @property (weak, nonatomic) IBOutlet UIImageView *imageButtonProffecional;
 
