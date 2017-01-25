@@ -11,6 +11,7 @@
 #import "ChooseProfessionViewController.h"
 #import "SingleTone.h"
 #import "AddParamsView.h"
+#import "AdditionalTable.h"
 
 
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
@@ -163,8 +164,11 @@
 
 - (IBAction)actionButtonSave:(id)sender {
     
-    NSLog(@"self main %@",self.fieldsArray);
+    AdditionalTable * addTable = [[AdditionalTable alloc] init];
+    NSMutableArray * arrayForDB = [NSMutableArray new];
+    [arrayForDB removeAllObjects];
     
+    NSLog(@"FIEL %@",self.fieldsArray);
     for (int i=0; i<self.fieldsArray.count; i++){
         NSDictionary * fields = [self.fieldsArray objectAtIndex:i];
         
@@ -175,8 +179,15 @@
                 
                 NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                 [self showAlertWithMessage:alertMessage];
+                
             }else{
                NSLog(@"TEXT %@",textFields.text);
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       [information objectForKey:@"id"],@"additionalID",
+                                       [information objectForKey:@"title"],@"additionalName",
+                                       textFields.text,@"additionalValue", nil];
+                
+                [arrayForDB addObject:dict];
             }
         }
         
@@ -186,13 +197,46 @@
             if(customButton.customName.length ==0){
                 NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                 [self showAlertWithMessage:alertMessage];
+               
             }else{
-                NSLog(@"PICKER %@",customButton.customName);
+                
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       [information objectForKey:@"id"],@"additionalID",
+                                       [information objectForKey:@"title"],@"additionalName",
+                                       customButton.customName,@"additionalValue", nil];
+               
+                [arrayForDB addObject:dict];
+                
+                
             }
             
            
         }
+        
+        if([[fields objectForKey:@"object"] isKindOfClass:[UISwitch class]]){
+            UISwitch * customSwitch = [fields objectForKey:@"object"];
+            NSDictionary * information = [fields objectForKey:@"info"];
+           
+            if(customSwitch.isOn){
+                
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       [information objectForKey:@"id"],@"additionalID",
+                                       [information objectForKey:@"title"],@"additionalName",
+                                       @"1",@"additionalValue", nil];
+                
+                [arrayForDB addObject:dict];
+            }
+            
+
+            
+        }
     }
+    
+    
+    
+    NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
+    [addTable insertDataIntoDataBaseWithName:resultArray];
+     
     
 }
 @end

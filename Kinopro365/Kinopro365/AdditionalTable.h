@@ -16,7 +16,8 @@
 
 + (NSString *)primaryKey;
 
-- (void)insertDataIntoDataBaseWithName:(NSString *)additionalName
+- (void)insertDataIntoDataBaseWithName: (NSArray *) addArray;
+- (void)insertDataIntoDataBaseWithName: (NSString *) additionalID andAdditionalName:(NSString *) additionalName
                     andAdditionalValue: (NSString *) additionalValue;
 
 @end
