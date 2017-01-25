@@ -11,10 +11,13 @@
 #import "HexColors.h"
 #import "AddParamsModel.h"
 #import "CustomButton.h"
+#import "HexColors.h"
 
 @interface AddParamsView ()
 
 @property (strong, nonatomic) NSArray * arrayForPicker;
+@property (strong, nonatomic) CustomButton * buttonLangue;
+
 
 @end
 
@@ -84,24 +87,21 @@
                                       @"type": @"Switch"
                                       };
                 } else if ([type isEqualToString:@"MultiList"]) {
-                    CustomButton * buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
-                    buttonLangue.frame = frameObject;
-                    buttonLangue.customArray = arrayData;
-                    buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    [buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
-                    [buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
-                    [buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
-                    [self addSubview:buttonLangue];
-                    self.mainObject = buttonLangue;
+                    self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
+                    self.buttonLangue.frame = frameObject;
+                    self.buttonLangue.customArray = arrayData;
+                    self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
+                    [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    [self.buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    self.buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+                    [self.buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
+                    [self addSubview:self.buttonLangue];
+                    self.mainObject = self.buttonLangue;
                     self.mainDict = @{
                                       @"title": title,
                                       @"id": fieldID,
                                       @"type": @"MultiList"
                                       };
-
-                    
-                    
                 }
             
         }
@@ -119,6 +119,24 @@
 
 - (void) actionbuttonLangue: (CustomButton*) button {
     [self.deleagte actionLangue:self andButton:button andArrayViewPicker:button.customArray];
+}
+
+#pragma mark - Other
+
+- (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool {
+    
+    if (isbool) {
+        self.buttonLangue.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.buttonLangue.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self.buttonLangue setTitle: buttonText forState: UIControlStateNormal];
+        self.buttonLangue.backgroundColor = [UIColor clearColor];
+        [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
+    } else {
+        self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
+        [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
+        [self.buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+    
 }
 
 @end

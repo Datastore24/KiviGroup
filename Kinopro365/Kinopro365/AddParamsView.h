@@ -23,6 +23,8 @@
                         andId: (NSString *) fieldID
                  andArrayData: (NSArray*) arrayData;
 
+- (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool;
+
 @end
 
 @protocol AddParamsViewDelegate <NSObject>
