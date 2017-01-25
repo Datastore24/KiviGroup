@@ -14,7 +14,7 @@
 
 
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
-
+@property (strong, nonatomic) NSMutableArray * fieldsArray;
 @end
 
 @implementation AddParamsController
@@ -29,9 +29,11 @@
     
     NSLog(@"RESPROF %@",self.profArray);
     
-    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
-    NSArray * paramsArray = [NSArray arrayWithArray:[addParamsModel getParamsDict:1]];
+    self.fieldsArray = [NSMutableArray new];
     
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    
+    NSArray * paramsArray =[addParamsModel loadParams:self.profArray];
      for(int i; i<paramsArray.count; i++){
          
          NSDictionary * dictData = [paramsArray objectAtIndex:i];
@@ -41,9 +43,22 @@
                                                 andTitle:[dictData objectForKey:@"title"]
                                                 andType:[dictData objectForKey:@"type"]
                                                 andPlaceholder:[dictData objectForKey:@"placeholder"]
+                                                               andId:[dictData objectForKey:@"id"]
                                                 andArrayData:[dictData objectForKey:@"array"]];
+         
+        
          view.deleagte = self;
+         
+         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
          [self.mainScrollView addSubview:view];
+         
+         if(view.mainObject && view.mainDict){
+             NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                          view.mainObject,@"object",
+                                          view.mainDict,@"info", nil];
+            [self.fieldsArray addObject:resultDict];
+         }
+         
          
          
      }
@@ -130,7 +145,7 @@
 #pragma mark - AddParamsViewDelegate
 
 - (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (CustomButton*) button andArrayViewPicker: (NSArray*) array {
-    NSLog(@"ARRAYDOP %@",array);
+
     [self showViewPickerWithButton:button andTitl:nil andArrayData:array andKeyTitle:@"name" andKeyID:@"id"];
     
 }
@@ -143,7 +158,36 @@
 
 - (IBAction)actionButtonSave:(id)sender {
     
-
+    NSLog(@"self main %@",self.fieldsArray);
+    
+    for (int i=0; i<self.fieldsArray.count; i++){
+        NSDictionary * fields = [self.fieldsArray objectAtIndex:i];
+        
+        if([[fields objectForKey:@"object"] isKindOfClass:[UITextField class]]){
+            UITextField * textFields = [fields objectForKey:@"object"];
+            NSDictionary * information = [fields objectForKey:@"info"];
+            if(textFields.text.length ==0){
+                
+                NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
+                [self showAlertWithMessage:alertMessage];
+            }else{
+               NSLog(@"TEXT %@",textFields.text);
+            }
+        }
+        
+        if([[fields objectForKey:@"object"] isKindOfClass:[CustomButton class]]){
+            CustomButton * customButton = [fields objectForKey:@"object"];
+            NSDictionary * information = [fields objectForKey:@"info"];
+            if(customButton.customName.length ==0){
+                NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
+                [self showAlertWithMessage:alertMessage];
+            }else{
+                NSLog(@"PICKER %@",customButton.customName);
+            }
+            
+           
+        }
+    }
     
 }
 @end

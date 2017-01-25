@@ -14,21 +14,33 @@
 
 
 
-- (void) loadParams {
+- (NSArray *) loadParams: (NSArray *) profArray {
     
-    NSArray * profArray = [self.delegate profArray];
     if(profArray.count >0){
         NSMutableArray * profMutableArray = [NSMutableArray new];
         for(int i=0; i<profArray.count; i++){
             NSDictionary * profDict = [profArray objectAtIndex:i];
             
             NSInteger profID = [[profDict objectForKey:@"professionID"] integerValue];
-            
+            NSArray * paramsArray = [self getParamsDict:profID];
+            [profMutableArray addObjectsFromArray:paramsArray];
             
             
         }
+        
+        NSMutableArray * unique = [NSMutableArray array];
+        NSMutableSet * processed = [NSMutableSet set];
+        for (NSDictionary * dict in profMutableArray) {
+            if ([processed containsObject:dict] == NO) {
+                [unique addObject:dict];
+                [processed addObject:dict];
+            }
+        }
+        NSLog(@"PROFARRAY%@", processed);
+
+        return unique;
     }
-    
+    return @[];
 }
 
 -(NSArray *) getParamsDict: (NSInteger) profID {

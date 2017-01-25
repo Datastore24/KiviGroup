@@ -14,15 +14,19 @@
 
 @property (strong, nonatomic) NSString * idString;
 @property (strong, nonatomic) id mainObject;
+@property (strong, nonatomic) NSDictionary * mainDict;
 @property (weak, nonatomic) id <AddParamsViewDelegate> deleagte;
 
 - (instancetype)initWithFrame: (CGRect) frame andTitle:(NSString *) title andType: (NSString *) type
                andPlaceholder: (NSString *) placeholder
-                    andArrayData: (NSArray*) arrayData;
+                        andId: (NSString *) fieldID
+                 andArrayData: (NSArray*) arrayData;
 
 @end
 
 @protocol AddParamsViewDelegate <NSObject>
+
+
 
 - (void) actionButtonOn: (AddParamsView*) addParamsView andButton: (UIButton*) button andArrayViewPicker: (NSArray*) array;
 

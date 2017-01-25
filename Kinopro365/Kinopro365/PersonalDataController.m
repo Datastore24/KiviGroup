@@ -254,8 +254,6 @@ replacementString:(NSString *)string {
                     
                     [self.buttonCity setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
                     [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
-                    [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 }
             }];
             
