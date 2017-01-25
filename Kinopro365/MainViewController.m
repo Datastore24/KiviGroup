@@ -217,10 +217,6 @@
     self.arrayPickerView = arrayData;
     
     NSString * defval;
-
-    
-    
-    NSLog(@"ARRRRRRR %@",arrayData);
   
     if(self.pickerDictKeyTitle.length !=0){
         
