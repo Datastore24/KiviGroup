@@ -12,6 +12,7 @@
 #import "SingleTone.h"
 #import "ProfessionsTable.h"
 #import "AddParamsController.h"
+#import "AdditionalTable.h"
 
 @interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate,AddParamsControllerDelegate>
 
@@ -79,6 +80,17 @@
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
     if(self.isLanguage){
         cell.customTextLabel.text = [dictData objectForKey:@"name"];
+        //Узнаем есть ли избранное
+        NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                             resultName];
+        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+        
+        if(outletTableDataArray.count>0){
+            [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
+        }
+        
+        
     }else{
         cell.customTextLabel.text = [dictData objectForKey:@"name"];
         cell.mainImage.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
@@ -120,6 +132,23 @@
             [[RLMRealm defaultRealm] beginWriteTransaction];
             [[RLMRealm defaultRealm] deleteObject:professionalTable];
             [[RLMRealm defaultRealm] commitWriteTransaction];
+        }else{
+            
+            //Узнаем есть ли избранное
+             NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                 resultName];
+            RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+            NSLog(@"RESSSS %@",outletTableDataArray);
+            if(outletTableDataArray.count>0){
+                AdditionalTable * professionalTable = [outletTableDataArray objectAtIndex:0];
+                
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObject:professionalTable];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+            }
+            
+            
         }
         
         
@@ -134,6 +163,10 @@
         
             ProfessionsTable * professionalTable = [[ProfessionsTable alloc] init];
             [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
+        }else{
+            AdditionalTable * addTable = [[AdditionalTable alloc] init];
+            NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+            [addTable insertDataIntoDataBaseWithName:resultName andAdditionalName:[dictData objectForKey:@"name"] andAdditionalValue:[dictData objectForKey:@"id"]];
         }
         
         
