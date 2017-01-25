@@ -14,28 +14,74 @@
 {
     return @"additionalID";
 }
-- (void)insertDataIntoDataBaseWithName:(NSString *) additionalName
+- (void)insertDataIntoDataBaseWithName: (NSArray *) addArray{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    
+
+        @try {
+       
+          
+           [realm beginWriteTransaction];
+            RLMArray * rlmArray = [[RLMArray alloc] initWithObjectClassName:@"AdditionalTable"];
+            
+            
+            for(int i=0; i<addArray.count; i++){
+                NSDictionary * dict= [addArray objectAtIndex:i];
+                AdditionalTable * addTable = [[AdditionalTable alloc] init];
+                
+                addTable.additionalID = [dict objectForKey:@"additionalID"];
+                addTable.additionalName  = [dict objectForKey:@"additionalName"];
+                addTable.additionalValue  = [dict objectForKey:@"additionalValue"];
+                addTable.isSendToServer = @"0";
+                
+                [rlmArray addObject:addTable];
+                
+                
+            }
+            
+            NSLog(@"RLMM %@",rlmArray);
+            
+            
+            [realm addOrUpdateObjectsFromArray:rlmArray];
+            [realm commitWriteTransaction];
+            
+        
+        }
+    
+        @catch (NSException *exception) {
+            NSLog(@"exception %@",exception);
+            if ([realm inWriteTransaction]) {
+                [realm cancelWriteTransaction];
+            }
+        }
+    
+}
+
+- (void)insertDataIntoDataBaseWithName: (NSString *) additionalID andAdditionalName:(NSString *) additionalName
                     andAdditionalValue: (NSString *) additionalValue{
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     @try {
         
-        [realm beginWriteTransaction];
-
-        self.additionalID = [self getNextID];
-        self.additionalName  = additionalName;
-        self.additionalValue  = additionalValue;
-        self.isSendToServer = @"0";
+       
+            [realm beginWriteTransaction];
+            
+            self.additionalID = additionalID;
+            self.additionalName  = additionalName;
+            self.additionalValue  = additionalValue;
+            self.isSendToServer = @"0";
+            
+            
+            [realm addOrUpdateObject:self];
+            [realm commitWriteTransaction];
         
         
-        
-        [realm addOrUpdateObject:self];
-        [realm commitWriteTransaction];
         
     }
     
     @catch (NSException *exception) {
-        NSLog(@"exception");
+        NSLog(@"exception %@",exception);
         if ([realm inWriteTransaction]) {
             [realm cancelWriteTransaction];
         }
@@ -45,17 +91,19 @@
 -(NSString *) getNextID{
     
     RLMResults *tableDataArray = [[AdditionalTable allObjects] sortedResultsUsingProperty:@"additionalID" ascending:YES];
+   
     NSString * resulID;
     if(tableDataArray.count>0){
         
         AdditionalTable * additionalTable = [tableDataArray lastObject];
-        NSLog(@"LAST OBJECT %@",additionalTable.additionalID);
+        
         NSInteger lastAdditionalID = [additionalTable.additionalID integerValue];
-        NSInteger nextID = lastAdditionalID++;
+        NSInteger nextID = lastAdditionalID+1;
+      
        resulID = [NSString stringWithFormat:@"%ld",nextID];
         
     }else{
-        resulID = @"0";
+        resulID = @"1";
     }
     
     return resulID;
