@@ -19,6 +19,7 @@
 @end
 
 @implementation AddParamsController
+@synthesize delegate;
 
 - (void) loadView {
     [super loadView];
@@ -141,12 +142,12 @@
 
 #pragma mark - ChooseProfessionalViewControllerDelegate
 
-//- (void) setTitlForButtonDelegate: (ChooseProfessionViewController*) chooseProfessionViewController
-//                         withTitl: (NSString*) titl {
-//    
-//    [self.buttonLanguages setTitle:titl forState:UIControlStateNormal];    
-//    
-//}
+- (void) setTitlForButtonDelegate: (ChooseProfessionViewController*) chooseProfessionViewController
+                         withTitl: (NSString*) titl {
+
+    //[self.buttonLanguages setTitle:titl forState:UIControlStateNormal];
+
+}
 
 #pragma mark - AddParamsViewDelegate
 
@@ -154,6 +155,15 @@
 
     [self showViewPickerWithButton:button andTitl:nil andArrayData:array andKeyTitle:@"name" andKeyID:@"id"];
     
+}
+
+- (void) actionLangue: (AddParamsView*) addParamsView andButton: (CustomButton*) button andArrayViewPicker: (NSArray*) array{
+    
+    ChooseProfessionViewController * addParams = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
+    addParams.mainArrayData =array;
+    addParams.isLanguage = YES;
+    [self.navigationController pushViewController:addParams animated:YES];
+    NSLog(@"ARRRRRRRR %@",array);
 }
 
 #pragma mark - Other

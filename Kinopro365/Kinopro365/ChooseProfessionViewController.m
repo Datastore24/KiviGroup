@@ -11,9 +11,9 @@
 #import "ChooseProfessionalModel.h"
 #import "SingleTone.h"
 #import "ProfessionsTable.h"
+#import "AddParamsController.h"
 
-@interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate>
-
+@interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate,AddParamsControllerDelegate>
 
 
 @end
@@ -40,13 +40,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 //    self.mainArrayData = [ChooseProfessionalModel setArrayData];
     self.professianString = [NSMutableString string];
-    self.mainArrayData = [NSArray new];
-    ChooseProfessionalModel * model = [[ChooseProfessionalModel alloc] init];
-    model.delegate = self;
-    [model getProfessionalArrayToTableView];
+    
+    if(!self.isLanguage){
+        ChooseProfessionalModel * model = [[ChooseProfessionalModel alloc] init];
+        model.delegate = self;
+        [model getProfessionalArrayToTableView];
+    }else{
+        AddParamsController * addParamsController = [[AddParamsController alloc] init];
+        addParamsController.delegate = self;
+    }
+    
+    
+    
     
 }
 
@@ -70,14 +77,19 @@
     ProfeccionalTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
-    
-    cell.customTextLabel.text = [dictData objectForKey:@"name"];
-    cell.mainImage.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
+    if(self.isLanguage){
+        cell.customTextLabel.text = [dictData objectForKey:@"name"];
+    }else{
+        cell.customTextLabel.text = [dictData objectForKey:@"name"];
+        cell.mainImage.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
+        
+    }
     if ([[dictData objectForKey:@"choose"]boolValue]) {
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
     } else {
         cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
     }
+    
     
     return cell;
     
@@ -91,31 +103,38 @@
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
     ProfeccionalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-
-    
-    if ([[dictData objectForKey:@"choose"]boolValue]) {
+    if ([[dictData objectForKey:@"choose"] boolValue]) {
         cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:NO] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO andString:self.professianString];
         
-        //Узнаем есть ли избранное
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
+        if(!self.isLanguage){
+            
+            [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO andString:self.professianString];
+        
+            //Узнаем есть ли избранное
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
                              [dictData objectForKey:@"profID"]];
-        RLMResults *outletTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
-        ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:0];
+            RLMResults *outletTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
+            ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:0];
         
-        [[RLMRealm defaultRealm] beginWriteTransaction];
-        [[RLMRealm defaultRealm] deleteObject:professionalTable];
-        [[RLMRealm defaultRealm] commitWriteTransaction];
+            [[RLMRealm defaultRealm] beginWriteTransaction];
+            [[RLMRealm defaultRealm] deleteObject:professionalTable];
+            [[RLMRealm defaultRealm] commitWriteTransaction];
+        }
         
         
     } else {
+        NSLog(@"TEMPDICT %@",dictData);
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
-        [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES andString:self.professianString];
+        
+        if(!self.isLanguage){
+            
+            [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES andString:self.professianString];
         
             ProfessionsTable * professionalTable = [[ProfessionsTable alloc] init];
-        [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
+            [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
+        }
         
         
     }

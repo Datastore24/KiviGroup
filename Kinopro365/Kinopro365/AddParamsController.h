@@ -8,9 +8,18 @@
 
 #import "MainViewController.h"
 
+@protocol AddParamsControllerDelegate <NSObject>
+
+@required
+
+@property (strong, nonatomic) NSArray * mainArrayData;
+@property (assign, nonatomic) BOOL isLanguage;
+
+@end
+
 @interface AddParamsController : MainViewController
 
-
+@property (assign, nonatomic) id <AddParamsControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) NSArray * profArray;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
