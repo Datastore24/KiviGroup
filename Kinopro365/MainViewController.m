@@ -219,13 +219,14 @@
     NSString * defval;
   
     if(self.pickerDictKeyTitle.length !=0){
-        
+        NSLog(@"DEEEF %@",self.arrayPickerView);
         if(defValueIndex.length !=0){
             //Поиск значения по умолчанию
             NSMutableArray * arrayIndex = [NSMutableArray new];
+            
             for(int i=0; i<arrayData.count; i++){
-                NSDictionary * dict = [arrayData objectAtIndex:i];
-                [arrayIndex addObject:[dict objectForKey:@"name"]];
+                NSDictionary * dict = [self.arrayPickerView objectAtIndex:i];
+                [arrayIndex addObject:[dict objectForKey:self.pickerDictKeyTitle]];
                 
             }
             NSUInteger index = [arrayIndex indexOfObject:defValueIndex];
