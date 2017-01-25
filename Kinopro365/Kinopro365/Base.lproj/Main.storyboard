@@ -210,20 +210,6 @@
             </objects>
             <point key="canvasLocation" x="958.75" y="923.79499999999996"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="mBh-eE-Vqe">
-            <objects>
-                <viewController id="oQ7-qf-S9J" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vSS-PR-fbU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yKw-fN-qBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1450.625" y="909.34333333333325"/>
-        </scene>
         <!--Choose Profession View Controller-->
         <scene sceneID="5xr-Bt-rno">
             <objects>
@@ -260,26 +246,26 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lo-hC-Uye" id="CT7-Nz-wD1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qw3-pl-xvf">
-                                                    <rect key="frame" x="32" y="9" width="163" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qw3-pl-xvf">
+                                                    <rect key="frame" x="32" y="9" width="220" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sLB-Pt-Dck">
-                                                    <rect key="frame" x="8" y="11" width="13" height="15"/>
+                                                    <rect key="frame" x="8" y="11" width="13" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vBh-E8-8Sb">
-                                                    <rect key="frame" x="246" y="11" width="19" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="vBh-E8-8Sb">
+                                                    <rect key="frame" x="286" y="11" width="19" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" id="IT2-9i-RvD">
-                                                    <rect key="frame" x="-1" y="39" width="272" height="0.0"/>
+                                                    <rect key="frame" x="-1" y="38.5" width="272" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -316,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvR-dU-PC0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1458.125" y="-606.96999999999991"/>
+            <point key="canvasLocation" x="1458" y="-607"/>
         </scene>
         <!--Add Params Controller-->
         <scene sceneID="kjA-of-ltJ">
@@ -356,6 +342,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="buttonSave" destination="vOV-GT-0yV" id="kxp-2S-1hu"/>
                         <outlet property="mainScrollView" destination="srT-WR-K1k" id="HVD-5t-Z3y"/>
                     </connections>
                 </viewController>
@@ -596,20 +583,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9I-YH-n8d" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="503.75" y="924.90666666666664"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="iLR-dI-iWf">
-            <objects>
-                <viewController id="X0l-fA-PDh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eUc-7v-tYc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ds5-Pc-tc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1945.625" y="184.53666666666666"/>
         </scene>
         <!--Personal Data Controller-->
         <scene sceneID="Qaz-6v-Qc2">
@@ -910,7 +883,7 @@
                                         <rect key="frame" x="37" y="243" width="268" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" hint="" identifier="767" label=""/>
-                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
                                         <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пол" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U06-wZ-9V1">
@@ -923,13 +896,31 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Wg-Mn-nv7">
                                         <rect key="frame" x="253" y="45" width="11" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="standing-up-man-"/>
+                                        <state key="normal" image="mailImageOn"/>
+                                        <connections>
+                                            <action selector="actionButtonMale:" destination="5ac-rI-Ci4" eventType="touchUpInside" id="WFS-G5-0Gl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yIU-JJ-m9p">
                                         <rect key="frame" x="291" y="44" width="13" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="girl (1)"/>
+                                        <state key="normal" image="femaleImageOff"/>
+                                        <connections>
+                                            <action selector="actionButtonFemale:" destination="5ac-rI-Ci4" eventType="touchUpInside" id="jdJ-ZX-tzZ"/>
+                                        </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="16b-SC-Paj">
+                                        <rect key="frame" x="14" y="253" width="15" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="imageRoundOff"/>
+                                        <connections>
+                                            <action selector="actionButtonRound:" destination="5ac-rI-Ci4" eventType="touchUpInside" id="uBU-DZ-7bk"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageRoundOn" id="JVo-Fd-GZX">
+                                        <rect key="frame" x="18" y="260.5" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -947,14 +938,18 @@
                         <outlet property="buttonBirthday" destination="kVr-lG-fZz" id="Ncf-sq-42i"/>
                         <outlet property="buttonCity" destination="mE7-Se-EKb" id="bIx-ru-JTy"/>
                         <outlet property="buttonCountry" destination="RJ3-4S-BmX" id="ZPc-Av-pDh"/>
+                        <outlet property="buttonGenderFemale" destination="yIU-JJ-m9p" id="daC-2e-k5U"/>
+                        <outlet property="buttonGenderMale" destination="3Wg-Mn-nv7" id="lqw-1m-Cii"/>
                         <outlet property="buttonNext" destination="UsN-6d-Get" id="Opk-GN-IKZ"/>
                         <outlet property="buttonPhoto" destination="jc6-f4-wRZ" id="Xuv-Oe-xt2"/>
                         <outlet property="buttonProfession" destination="3UI-Ks-4OV" id="WkT-Fz-a3W"/>
                         <outlet property="buttonQuestion" destination="5G9-ID-s8U" id="zZa-QJ-KlQ"/>
+                        <outlet property="buttonRound" destination="16b-SC-Paj" id="iMq-tT-Dit"/>
                         <outlet property="buttonVideo" destination="dd1-hD-eZZ" id="QZi-Af-l4z"/>
                         <outlet property="dopLabelOne" destination="07x-DK-Kbx" id="rcw-7t-bPe"/>
                         <outlet property="dopLabelTwo" destination="49z-Qp-5qq" id="2xB-x5-Uib"/>
                         <outlet property="imageButtonProffecional" destination="e86-vi-dwv" id="5TK-tW-fmK"/>
+                        <outlet property="imageForButtonRound" destination="JVo-Fd-GZX" id="mJk-zi-reI"/>
                         <outlet property="labelCountPhoto" destination="aU5-cm-yfA" id="iBE-1e-9oY"/>
                         <outlet property="mainTopView" destination="nQR-wJ-y8f" id="z0N-Uv-rNa"/>
                         <outlet property="textFildEmail" destination="syy-9N-jAv" id="cli-Vx-ey3"/>
@@ -974,7 +969,7 @@
     <resources>
         <image name="buttonCancel" width="43" height="44"/>
         <image name="facebookImage" width="28" height="28"/>
-        <image name="girl (1)" width="14" height="27"/>
+        <image name="femaleImageOff" width="14" height="27"/>
         <image name="imageAdd" width="51" height="52"/>
         <image name="imageAppowDown" width="14" height="7"/>
         <image name="imageButtonAvatar" width="60" height="71"/>
@@ -983,10 +978,12 @@
         <image name="imageButtonPhoto" width="51" height="52"/>
         <image name="imageButtonQuestion" width="23" height="24"/>
         <image name="imageButtonVideo" width="51" height="52"/>
+        <image name="imageRoundOff" width="15" height="15"/>
+        <image name="imageRoundOn" width="7" height="7"/>
         <image name="logoImage" width="375" height="667"/>
         <image name="logoLoginImage" width="181" height="39"/>
+        <image name="mailImageOn" width="12" height="27"/>
         <image name="nazad.png" width="10" height="19"/>
-        <image name="standing-up-man-" width="12" height="27"/>
         <image name="vkImage" width="28" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

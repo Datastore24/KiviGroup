@@ -39,7 +39,7 @@
                 [self addSubview:labelTitle];
         
         
-                CGRect frameObject = CGRectMake(152.f, 0, 132.f, 30.f);
+                CGRect frameObject = CGRectMake(152.f, 0, 142.f, 30.f);
         
         
         
