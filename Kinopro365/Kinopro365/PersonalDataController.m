@@ -18,11 +18,15 @@
 #import "VideoViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "APIManger.h"
+
 #import "PhonesTable.h"
 #import "ProfessionsTable.h"
 #import "UserInformationTable.h"
+#import "AdditionalTable.h"
+
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "AddParamsModel.h"
+#import "DateTimeMethod.h"
 
 
 
@@ -36,6 +40,7 @@
 @property (strong, nonatomic) UIImage * imageAvatar; //Картинка аватара;
 @property (strong, nonatomic) APIManger * apiManager;
 @property (strong, nonatomic) NSMutableArray * profArray;
+@property (strong, nonatomic) NSString * sex;
 
 @property (assign, nonatomic) BOOL isBool; //Параметр для изменения свойств кнопки roundButton
 
@@ -64,8 +69,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.sex = @"2";
     self.apiManager = [[APIManger alloc] init];
     self.profArray = [NSMutableArray new];
+    [self checkProffesion];
     
     self.isBool = YES;
    
@@ -79,6 +86,7 @@
         }else{
             
             NSDictionary * respDict = [response objectForKey:@"response"];
+            NSLog(@"PROFILE %@",respDict);
             [self loadFromDb];
         }
 
@@ -197,6 +205,11 @@ replacementString:(NSString *)string {
             
             
         }
+    }else{
+        self.dopLabelOne.alpha = 0.f;
+        self.dopLabelTwo.alpha = 0.f;
+        self.buttonAddParams.userInteractionEnabled = NO;
+        self.buttonAddParams.alpha = 0.f;
     }
     
     
@@ -224,7 +237,7 @@ replacementString:(NSString *)string {
             if(self.profArray.count>0){
                 AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
                 NSArray * params = [addParamsModel loadParams:self.profArray];
-                NSLog(@"PARAMSSSS %@",params);
+
                 if(params.count == 0){
                     self.dopLabelOne.alpha = 0.f;
                     self.dopLabelTwo.alpha = 0.f;
@@ -279,6 +292,47 @@ replacementString:(NSString *)string {
                                             if(image){
                                                 
                                                 [self.buttonAvatar setImage:image forState:UIControlStateNormal];
+                                                self.textFildName.text = userTable.first_name;
+                                                self.textFildLastName.text = userTable.last_name;
+                                                self.textFildEmail.text = userTable.email;
+                                                self.textFildNameEN.text = userTable.first_name_inter;
+                                                self.textFildLastNameEN.text = userTable.last_name_inter;
+                                                NSString * birthday = [DateTimeMethod convertDateStringToFormat:userTable.birthday
+                                                                                            startFormat:@"yyyy-MM-dd" endFormat:@"dd MMMM yyyy"];
+                                                self.buttonBirthday.titleLabel.text = birthday;
+                                                [self.buttonBirthday setTitle:birthday forState:UIControlStateNormal];
+                                                [self.buttonBirthday setTitleColor:[UIColor blackColor]
+                                                            forState:UIControlStateNormal];
+                                                
+                                                if([userTable.sex integerValue] == 2){
+                                                    [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOn"] forState:UIControlStateNormal];
+                                                    [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOff"] forState:UIControlStateNormal];
+
+                                                }else if ([userTable.sex integerValue] == 1){
+                                                    [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOff"] forState:UIControlStateNormal];
+                                                    [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOn"] forState:UIControlStateNormal];
+
+                                                }else{
+                                                    [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOn"] forState:UIControlStateNormal];
+                                                    [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOff"] forState:UIControlStateNormal];
+                                                }
+                                                
+                                                
+                                                if ([userTable.is_public_contacts integerValue] == 0) {
+                                                    [UIView animateWithDuration:0.3 animations:^{
+                                                        self.imageForButtonRound.alpha = 1.f;
+                                                    }];
+                                                    
+                                                    self.isBool = NO;
+                                                    
+                                                    
+                                                } else {
+                                                    [UIView animateWithDuration:0.3 animations:^{
+                                                        self.imageForButtonRound.alpha = 0.f;
+                                                    }];
+                                                   
+                                                    self.isBool = YES;
+                                                }
                                                 
                                                 
                                             }else{
@@ -333,9 +387,26 @@ replacementString:(NSString *)string {
             
         }
         
+        RLMResults *phoneTableDataArray = [PhonesTable allObjects];
+       
+        if(phoneTableDataArray.count>0){
+            for(int k=0; k<phoneTableDataArray.count; k++){
+                if(k==0){
+                    PhonesTable * profTableOne = [phoneTableDataArray objectAtIndex:0];
+                    self.textFildPhone1.text = profTableOne.phoneNumber;
+                    
+                }else if(k==1){
+                    PhonesTable * profTableTwo = [phoneTableDataArray objectAtIndex:1];
+                    self.textFildPhone1.text = profTableTwo.phoneNumber;
+                }
+            }
+            
+            
+            
+            [self setTitlForButtonWithTitle:resultString];
+        }
         
-        
-        
+
      
     }
 }
@@ -470,6 +541,11 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
+    RLMResults *profTableDataArray = [ProfessionsTable allObjects];
+    
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    NSArray * params = [addParamsModel loadParams:self.profArray];
+   
     if(self.textFildName.text.length == 0){
         
         [self showAlertWithMessage:@"Заполните Ваше имя"];
@@ -477,6 +553,10 @@ replacementString:(NSString *)string {
     }else if(self.textFildLastName.text.length == 0){
         
         [self showAlertWithMessage:@"Заполните Вашу фамилию"];
+        
+    }else if ([self.buttonBirthday.titleLabel.text isEqualToString:@"Дата рождения"]){
+        
+        [self showAlertWithMessage:@"Выберите дату Вашего рождения"];
         
     }else if(self.textFildEmail.text.length == 0){
         
@@ -493,7 +573,10 @@ replacementString:(NSString *)string {
     }else if(self.textFildPhone1.text.length == 0){
         
         [self showAlertWithMessage:@"Заполните полет Телефон 1"];
-    
+    }else if(profTableDataArray.count==0){
+        [self showAlertWithMessage:@"Выберите хотя бы одну профессию"];
+    }else if(params.count == 0){
+        [self showAlertWithMessage:@"Заполните дополнительные параметры"];
     }else{
         PhonesTable * phonesTable = [[PhonesTable alloc] init];
         if(self.textFildPhone2.text.length !=0){
@@ -502,9 +585,111 @@ replacementString:(NSString *)string {
         
         [phonesTable insertDataIntoDataBaseWithName:@"1" andPhoneNumber:self.textFildPhone1.text];
         
+        RLMResults *userTableDataArray = [UserInformationTable allObjects];
+        
+        if(userTableDataArray.count>0){
+            
+            UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            
+            NSString * birthday = [DateTimeMethod convertDateStringToFormat:self.buttonBirthday.titleLabel.text
+                                                                    startFormat:@"dd MMMM yyyy" endFormat:@"yyyy-MM-dd"];
+            
+            userTable.first_name = self.textFildName.text;
+            userTable.last_name = self.textFildLastName.text;
+            userTable.email = self.textFildEmail.text;
+            userTable.first_name_inter = self.textFildNameEN.text;
+            userTable.last_name_inter = self.textFildLastNameEN.text;
+            userTable.sex = self.sex;
+            userTable.birthday = birthday;
+            
+           
+            [realm commitWriteTransaction];
+    
+            
+            NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                            [self checkStringToNull:userTable.last_name],@"last_name",
+                                            [self checkStringToNull:userTable.first_name],@"first_name",
+                                            [self checkStringToNull:userTable.last_name_inter],@"last_name_inter",
+                                            [self checkStringToNull:userTable.first_name_inter],@"first_name_inter",
+                                            [self checkStringToNull:userTable.sex],@"sex",
+                                            [self checkStringToNull:userTable.email],@"email",
+                                            [self checkStringToNull:userTable.user_comment],@"user_comment",
+                                            [self checkStringToNull:userTable.is_public_contacts],@"is_public_contacts",
+                                            [self checkStringToNull:userTable.country_id],@"country_id",
+                                            [self checkStringToNull:userTable.city_id],@"city_id",
+                                            [self checkStringToNull:userTable.birthday],@"birthday",
+                                            [self checkStringToNull:userTable.photo],@"photo_id",nil];
+            
+            RLMResults *phoneTableDataArray = [PhonesTable allObjects];
+            for(int p = 0; p<phoneTableDataArray.count; p++){
+                PhonesTable * phoneTableDb = [phoneTableDataArray objectAtIndex:p];
+                NSString * phoneResult = [NSString stringWithFormat:@"phones[%@]",phoneTableDb.phoneID];
+                [params setValue:phoneTableDb.phoneNumber forKey:phoneResult];
+            }
+            
+            RLMResults *proffesionTableDataArray = [ProfessionsTable allObjects];
+            for(int pro = 0; pro<proffesionTableDataArray.count; pro++){
+                ProfessionsTable * profTableDb = [proffesionTableDataArray objectAtIndex:pro];
+                NSString * profResult = [NSString stringWithFormat:@"professions[%d]",pro];
+                [params setValue:profTableDb.professionID forKey:profResult];
+            }
+            
+            RLMResults *addTableDataArray = [AdditionalTable allObjects];
+            int lang = 0;
+            for(int add = 0; add<addTableDataArray.count; add++){
+                AdditionalTable * profTableDb = [addTableDataArray objectAtIndex:add];
+                
+               if ([profTableDb.additionalID rangeOfString:@"ex_languages"].location != NSNotFound) {
+                   NSError *error;
+                   NSString *pattern = @"(.*)\\[(.*)\\]";
+                   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                                          options:NSRegularExpressionCaseInsensitive
+                                                                                            error:&error];
+                   NSString *resultLanguage = [regex stringByReplacingMatchesInString:profTableDb.additionalID
+                                                                  options:0
+                                                                    range:NSMakeRange(0, [profTableDb.additionalID length])
+                                                             withTemplate:[NSString stringWithFormat:@"$1[%d]",lang]];
+                   [params setValue:profTableDb.additionalValue forKey:resultLanguage];
+                   lang = lang+1;
+               }else if([profTableDb.additionalID rangeOfString:@"ex_height"].location != NSNotFound) {
+                   
+               }else{
+                   [params setValue:profTableDb.additionalValue forKey:profTableDb.additionalID];
+               }
+                
+                
+                
+                
+            }
+            
+            NSLog(@"PARAMS SERVER %@",params);
+            
+                    [self.apiManager postDataFromSeverWithMethod:@"account.saveProfileInfo" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                        NSLog(@"RESPONSE %@",response);
+                        if([response objectForKey:@"error_code"]){
+                            [self deleteActivitiIndicator];
+                            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                                  [response objectForKey:@"error_msg"]);
+                            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                            
+                            
+                            
+                        }else{
+
+                        }
+                    }];
+            
+        }
+        
+       
+            
+        
+        
         
     }
-    NSLog(@"actionButtonNext");
+    
     
 }
 
@@ -514,7 +699,7 @@ replacementString:(NSString *)string {
         [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOn"] forState:UIControlStateNormal];
         [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOff"] forState:UIControlStateNormal];
     }];
-    
+    self.sex = @"2";
     self.buttonGenderMale.userInteractionEnabled = NO;
     self.buttonGenderFemale.userInteractionEnabled = YES;
     
@@ -526,23 +711,35 @@ replacementString:(NSString *)string {
         [self.buttonGenderMale setImage:[UIImage imageNamed:@"mailImageOff"] forState:UIControlStateNormal];
         [self.buttonGenderFemale setImage:[UIImage imageNamed:@"femaleImageOn"] forState:UIControlStateNormal];
     }];
-    
+    self.sex = @"1";
     self.buttonGenderMale.userInteractionEnabled = YES;
     self.buttonGenderFemale.userInteractionEnabled = NO;
     
 }
 
 - (IBAction)actionButtonRound:(id)sender {
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+            UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
     
+
     if (self.isBool) {
         [UIView animateWithDuration:0.3 animations:^{
             self.imageForButtonRound.alpha = 1.f;
         }];
         self.isBool = NO;
+        [realm beginWriteTransaction];
+        userTable.is_public_contacts = @"0";
+        [realm commitWriteTransaction];
+        
+        
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             self.imageForButtonRound.alpha = 0.f;
         }];
+        [realm beginWriteTransaction];
+        userTable.is_public_contacts = @"1";
+        [realm commitWriteTransaction];
         self.isBool = YES;
     }
     

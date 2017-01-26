@@ -12,12 +12,12 @@
 		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
 		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
-		AD50A4A01E15447F00CC44DB /* DateToTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A49F1E15447F00CC44DB /* DateToTimestamp.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
 		ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DC1E36451400D74761 /* ProfessionsTable.m */; };
 		ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DF1E36454300D74761 /* AdditionalTable.m */; };
 		ADED89E31E37B0EA00D74761 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89E21E37B0EA00D74761 /* CustomButton.m */; };
+		ADF9C7431E3A19EC0085F993 /* DateTimeMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF9C7421E3A19EC0085F993 /* DateTimeMethod.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
 		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
@@ -87,8 +87,6 @@
 		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
 		AD50A4981E13DC2300CC44DB /* APIManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManger.h; sourceTree = "<group>"; };
 		AD50A4991E13DC2300CC44DB /* APIManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManger.m; sourceTree = "<group>"; };
-		AD50A49E1E15447F00CC44DB /* DateToTimestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateToTimestamp.h; sourceTree = "<group>"; };
-		AD50A49F1E15447F00CC44DB /* DateToTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateToTimestamp.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		ADED89D81E3644FC00D74761 /* PhonesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesTable.h; sourceTree = "<group>"; };
@@ -99,6 +97,8 @@
 		ADED89DF1E36454300D74761 /* AdditionalTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionalTable.m; sourceTree = "<group>"; };
 		ADED89E11E37B0EA00D74761 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		ADED89E21E37B0EA00D74761 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		ADF9C7411E3A19EC0085F993 /* DateTimeMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeMethod.h; sourceTree = "<group>"; };
+		ADF9C7421E3A19EC0085F993 /* DateTimeMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeMethod.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
@@ -468,8 +468,8 @@
 		FFDE8B951DDDC46000F937BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AD50A49E1E15447F00CC44DB /* DateToTimestamp.h */,
-				AD50A49F1E15447F00CC44DB /* DateToTimestamp.m */,
+				ADF9C7411E3A19EC0085F993 /* DateTimeMethod.h */,
+				ADF9C7421E3A19EC0085F993 /* DateTimeMethod.m */,
 				FF9DE2471E03086C007ED49F /* SingleTone.h */,
 				FF9DE2481E03086C007ED49F /* SingleTone.m */,
 				FFDE8BA11DDDC46000F937BD /* Assets.xcassets */,
@@ -654,7 +654,6 @@
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FF88DF4D1E0E696B0002FBBC /* HMImageGridCell.m in Sources */,
-				AD50A4A01E15447F00CC44DB /* DateToTimestamp.m in Sources */,
 				FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* TwoViewController.m in Sources */,
 				FFDE8BC01DDED88800F937BD /* NewViewController.m in Sources */,
@@ -662,6 +661,7 @@
 				FF88DF4F1E0E696B0002FBBC /* HMImageGridViewLayout.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
 				ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */,
+				ADF9C7431E3A19EC0085F993 /* DateTimeMethod.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,

@@ -30,4 +30,6 @@
 - (void) createActivitiIndicatorAlertWithView;
 - (void) deleteActivitiIndicator;
 
+-(NSString *) checkStringToNull:(NSString *) string;
+
 @end

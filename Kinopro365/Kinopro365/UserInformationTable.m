@@ -27,6 +27,7 @@
         self.vkID = vkID;
         self.siteToken = siteToken;
         self.isSendToServer = @"0";
+        self.is_public_contacts = @"1";
         
         
         [realm addOrUpdateObject:self];

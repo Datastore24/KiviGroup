@@ -180,18 +180,29 @@
 }
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
-    if ([self.professianString isEqualToString:@""]) {
-        if(!self.isLanguage){
-            [self showAlertWithMessage:@"\nВыберите хотя-бы одну\nпрофессию\n"];
-        } else {
-            [self showAlertWithMessage:@"\nВыберите хотя-бы один\nязык\n"];
-        }
-        
 
-    } else {
-        [self.delegate setTitlForButtonDelegate:self withTitl:self.professianString];
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                         @"ex_languages"];
+    
+    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+    
+
+    
+        if(!self.isLanguage && [self.professianString isEqualToString:@""]){
+            
+            [self showAlertWithMessage:@"\nВыберите хотя-бы одну\nпрофессию\n"];
+            
+        } else if(self.isLanguage && outletTableDataArray.count==0){
+
+            [self showAlertWithMessage:@"\nВыберите хотя-бы один\nязык\n"];
+            
+        } else{
+            if(!self.isLanguage){
+              [self.delegate setTitlForButtonDelegate:self withTitl:self.professianString];
+            }
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
 }
 
 #pragma mark - Other
