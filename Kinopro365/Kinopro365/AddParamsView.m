@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSArray * arrayForPicker;
 @property (strong, nonatomic) CustomButton * buttonLangue;
+@property (strong, nonatomic) UIImageView * imageViewArrow;
 
 
 @end
@@ -65,13 +66,16 @@
                     CustomButton * buttonPicker = [CustomButton buttonWithType:UIButtonTypeSystem];
                     buttonPicker.frame = frameObject;
                     buttonPicker.customArray = arrayData;
-                   
                     buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    
                     [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
                     [buttonPicker addTarget:self action:@selector(actionButtonPicker:) forControlEvents:UIControlEventTouchUpInside];
                     [self addSubview:buttonPicker];
+                    
+                    UIImageView * imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
+                    imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
+                    [buttonPicker addSubview:imageViewArrow];
+                    
                     self.mainObject = buttonPicker;
                     self.mainDict = @{
                                       @"title": title,
@@ -120,6 +124,11 @@
                     self.buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
                     [self.buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
                     [self addSubview:self.buttonLangue];
+                    
+                    self.imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
+                    self.imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
+                    [self.buttonLangue addSubview:self.imageViewArrow];
+                    
                     self.mainObject = self.buttonLangue;
                     self.mainDict = @{
                                       @"title": title,
@@ -180,10 +189,12 @@
 //        
         self.buttonLangue.backgroundColor = [UIColor clearColor];
         [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
+        self.imageViewArrow.alpha = 0.f;
     } else {
         self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
         [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
         [self.buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.imageViewArrow.alpha = 1.f;
     }
     
 }
