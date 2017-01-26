@@ -653,7 +653,6 @@ replacementString:(NSString *)string {
                                                              withTemplate:[NSString stringWithFormat:@"$1[%d]",lang]];
                    [params setValue:profTableDb.additionalValue forKey:resultLanguage];
                    lang = lang+1;
-               }else if([profTableDb.additionalID rangeOfString:@"ex_height"].location != NSNotFound) {
                    
                }else{
                    [params setValue:profTableDb.additionalValue forKey:profTableDb.additionalID];
@@ -677,6 +676,8 @@ replacementString:(NSString *)string {
                             
                             
                         }else{
+                            
+                            
 
                         }
                     }];

@@ -105,7 +105,7 @@
                 break;
             }
         }
-        NSLog(@"OK");
+        
         CustomButton * customButton = [self.mainScrollView viewWithTag:999];
         customButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -133,53 +133,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//- (IBAction)actionButtonsChooseParams:(UIButton *)sender {
-//    
-//    for (int i = 0; i < self.buttonsChooseParams.count; i++) {
-//       
-//        UIButton * buttonParams = [self.buttonsChooseParams objectAtIndex:i];
-//        if ([buttonParams isEqual:sender]) {
-//            NSArray * needArray = [[AddParamsModel setArrayHeight] objectAtIndex:i];
-//            NSString * alertTitl = [[AddParamsModel setArrayTitl] objectAtIndex:i];
-//            [self showViewPickerWithButton:sender andTitl:alertTitl andArrayData:needArray];
-//        }
-//    }
-//}
-//
-//- (IBAction)actionButtonLanguages:(UIButton *)sender {
-//    
-//    ChooseProfessionViewController * detai = [self.storyboard
-//                                              instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
-//    detai.mainArrayData = [AddParamsModel setArrayData];
-//    [[SingleTone sharedManager] setProfessionControllerCode:@"1"];
-//    detai.delegate = self;
-//    [self.navigationController pushViewController:detai animated:YES];
-//    
-//}
 
-//- (IBAction)actionButtonInternationalPass:(id)sender {
-//    
-//    for (UIButton * button in self.buttonsInternationalPass) {
-//        if ([button isEqual:sender]) {
-//            [UIView animateWithDuration:0.3 animations:^{
-//                button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:button.titleLabel.font.pointSize];
-//                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//                button.userInteractionEnabled = NO;
-//            }];
-//        } else {
-//            [UIView animateWithDuration:0.3 animations:^{
-//                button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:button.titleLabel.font.pointSize];
-//                [button setTitleColor:[UIColor hx_colorWithHexRGBAString:COLOR_PLACEHOLDER] forState:UIControlStateNormal];
-//                button.userInteractionEnabled = YES;
-//            }];
-//        }
-//    }
-//}
-
-//- (IBAction)actionButtonSave:(UIButton *)sender {
-//    [self createActivitiIndicatorAlertWithView];
-//    [self performSelector:@selector(testMethod) withObject:nil afterDelay:3.f];
-//}
 
 #pragma mark - ChooseProfessionalViewControllerDelegate
 

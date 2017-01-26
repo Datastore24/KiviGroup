@@ -219,7 +219,7 @@
     self.pickerDictKeyID = dictKeyID;
     self.arrayPickerView = arrayData;
     NSString * defval;
-    NSLog(@"DEFF %@ %@",defValueIndex,self.pickerDictKeyTitle);
+    
     if(self.pickerDictKeyTitle.length !=0){
         if(defValueIndex.length !=0){
             //Поиск значения по умолчанию
@@ -234,9 +234,8 @@
             //
             [pickerView selectRow:index inComponent:0 animated:YES];
             
-            NSLog(@"DEFFVAL %@",defValueIndex);
             self.pickerViewString = defValueIndex;
-             NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:index];
+            NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:index];
             self.pickerViewStringID = [pickerDict objectForKey:self.pickerDictKeyID];
         }else{
             NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:0];
@@ -259,7 +258,7 @@
                                                           handler:^(NYAlertAction *action) {
                                                               [button setTitle:self.pickerViewString
                                                                       forState:UIControlStateNormal];
-                                                              NSLog(@"SEND %@ %@",self.pickerViewStringID, self.pickerViewString);
+                                                              
                                                               button.customID = self.pickerViewStringID;
                                                               button.customName = self.pickerViewString;
                                                               [self dismissViewControllerAnimated:YES completion:nil];
