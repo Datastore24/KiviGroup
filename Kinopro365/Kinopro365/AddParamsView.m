@@ -12,6 +12,7 @@
 #import "AddParamsModel.h"
 #import "CustomButton.h"
 #import "HexColors.h"
+#import "AdditionalTable.h"
 
 @interface AddParamsView ()
 
@@ -26,6 +27,7 @@
 - (instancetype)initWithFrame: (CGRect) frame andTitle:(NSString *) title andType: (NSString *) type
             andPlaceholder: (NSString *) placeholder
                andId: (NSString *) fieldID
+             andDefValueIndex: (NSString *) defValueIndex
                     andArrayData: (NSArray*) arrayData
 {
     self = [super init];
@@ -65,7 +67,7 @@
                     buttonPicker.customArray = arrayData;
                    
                     buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    
                     [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
                     [buttonPicker addTarget:self action:@selector(actionButtonPicker:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,6 +78,24 @@
                                       @"id": fieldID,
                                       @"type": @"Picker"
                                       };
+                    
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                         fieldID];
+                    
+                    //Грузим данные из базы
+                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                    if(outletTableDataArray.count>0){
+                        for(int i=0; i<outletTableDataArray.count; i++){
+                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                            buttonPicker.customName = addTable.additionalValue;
+                            [buttonPicker setTitle:addTable.additionalValue forState:UIControlStateNormal];
+                        }
+                    }else{
+                        
+                        buttonPicker.customName = defValueIndex;
+                        [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+                    }
+                    
                 } else if ([type isEqualToString:@"Switch"]) {
                     labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
                     UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(245.f, 0.f, 49.f, 31.f)];
@@ -86,6 +106,10 @@
                                       @"id": fieldID,
                                       @"type": @"Switch"
                                       };
+                    
+                    
+                    
+                    
                 } else if ([type isEqualToString:@"MultiList"]) {
                     self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
                     self.buttonLangue.frame = frameObject;
@@ -102,6 +126,28 @@
                                       @"id": fieldID,
                                       @"type": @"MultiList"
                                       };
+                
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                                         @"ex_languages"];
+                    
+                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                    NSMutableString * resultString = [NSMutableString new];
+                    if(outletTableDataArray.count>0){
+                        for(int i=0; i<outletTableDataArray.count; i++){
+                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                            if ([resultString isEqualToString:@""]) {
+                                [resultString appendString:addTable.additionalName];
+                            } else {
+                                [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                            }
+                            if(i==2){
+                                [resultString appendString:@"..."];
+                                break;
+                            }
+                        }
+                        [self ChekButtonWithText:resultString andBool:YES];
+                    }
+                    
                 }
             
         }
@@ -126,9 +172,12 @@
 - (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool {
     
     if (isbool) {
+        
         self.buttonLangue.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.buttonLangue.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.buttonLangue setTitle: buttonText forState: UIControlStateNormal];
+        self.buttonLangue.frame = CGRectMake(152.f, 0, 142.f, 40.f);
+//        
         self.buttonLangue.backgroundColor = [UIColor clearColor];
         [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
     } else {

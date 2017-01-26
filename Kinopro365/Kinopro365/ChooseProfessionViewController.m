@@ -28,7 +28,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.buttonSave.layer.cornerRadius = 5.f;
     
-    if ([[[SingleTone sharedManager] professionControllerCode] isEqualToString:@"0"]) {
+    if(!self.isLanguage){
         UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Выберите профессию"];
         self.navigationItem.titleView = CustomText;
     } else {
@@ -181,7 +181,7 @@
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
     if ([self.professianString isEqualToString:@""]) {
-        if ([[[SingleTone sharedManager] professionControllerCode] isEqualToString:@"0"]) {
+        if(!self.isLanguage){
             [self showAlertWithMessage:@"\nВыберите хотя-бы одну\nпрофессию\n"];
         } else {
             [self showAlertWithMessage:@"\nВыберите хотя-бы один\nязык\n"];

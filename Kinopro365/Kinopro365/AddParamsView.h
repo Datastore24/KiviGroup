@@ -21,6 +21,7 @@
 - (instancetype)initWithFrame: (CGRect) frame andTitle:(NSString *) title andType: (NSString *) type
                andPlaceholder: (NSString *) placeholder
                         andId: (NSString *) fieldID
+             andDefValueIndex: (NSString *) defValueIndex
                  andArrayData: (NSArray*) arrayData;
 
 - (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool;
