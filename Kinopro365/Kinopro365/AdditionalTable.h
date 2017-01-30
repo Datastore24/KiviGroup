@@ -12,6 +12,7 @@
 @property NSString *additionalID;
 @property NSString *additionalName;
 @property NSString *additionalValue;
+@property NSString *additionalNameValue;
 @property NSString *isSendToServer;
 
 + (NSString *)primaryKey;

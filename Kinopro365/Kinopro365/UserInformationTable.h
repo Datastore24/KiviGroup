@@ -25,6 +25,7 @@
 @property NSString *city_id;
 @property NSString *birthday;
 @property NSString *photo;
+@property NSString *is_public_contacts;
 @property NSString *isSendToServer;
 
 

@@ -91,8 +91,9 @@
                     if(outletTableDataArray.count>0){
                         for(int i=0; i<outletTableDataArray.count; i++){
                             AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-                            buttonPicker.customName = addTable.additionalValue;
-                            [buttonPicker setTitle:addTable.additionalValue forState:UIControlStateNormal];
+                            buttonPicker.customName = addTable.additionalNameValue;
+                            buttonPicker.customID = addTable.additionalValue;
+                            [buttonPicker setTitle:addTable.additionalNameValue forState:UIControlStateNormal];
                         }
                     }else{
                         
@@ -110,13 +111,25 @@
                                       @"id": fieldID,
                                       @"type": @"Switch"
                                       };
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                         fieldID];
                     
+                    //Грузим данные из базы
+                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                    if(outletTableDataArray.count>0){
+                        [swith setOn:YES];
+                    }else{
+                        
+                        [swith setOn:NO];
+                    }
+
                     
                     
                     
                 } else if ([type isEqualToString:@"MultiList"]) {
                     self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
                     self.buttonLangue.frame = frameObject;
+                    self.buttonLangue.tag = 999;
                     self.buttonLangue.customArray = arrayData;
                     self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
                     [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];

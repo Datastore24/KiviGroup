@@ -33,6 +33,7 @@
                 addTable.additionalID = [dict objectForKey:@"additionalID"];
                 addTable.additionalName  = [dict objectForKey:@"additionalName"];
                 addTable.additionalValue  = [dict objectForKey:@"additionalValue"];
+                addTable.additionalNameValue = [dict objectForKey:@"additionalNameValue"];
                 addTable.isSendToServer = @"0";
                 
                 [rlmArray addObject:addTable];

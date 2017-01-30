@@ -19,8 +19,10 @@
 @property (strong, nonatomic) NSArray * arrayPickerView;
 @property (strong, nonatomic) NSString * pickerViewString; //Сохраняет выбранный параметр в пикерВью
 @property (strong, nonatomic) NSString * pickerViewStringID;
+@property (strong, nonatomic) NSString * pickerViewStringValueID;
 @property (strong, nonatomic) NSString * pickerDictKeyTitle; //Ключ для массива, где внутри коллекция
 @property (strong, nonatomic) NSString * pickerDictKeyID; //Ключ для массива, где внутри коллекция
+
 
 
 
@@ -214,12 +216,11 @@
     pickerView.dataSource = self;
     
     self.pickerDictKeyTitle = dictKeyTitle;
+    self.pickerDictKeyID = dictKeyID;
     self.arrayPickerView = arrayData;
-    
     NSString * defval;
-  
+    
     if(self.pickerDictKeyTitle.length !=0){
-        NSLog(@"DEEEF %@",self.arrayPickerView);
         if(defValueIndex.length !=0){
             //Поиск значения по умолчанию
             NSMutableArray * arrayIndex = [NSMutableArray new];
@@ -232,10 +233,16 @@
             NSUInteger index = [arrayIndex indexOfObject:defValueIndex];
             //
             [pickerView selectRow:index inComponent:0 animated:YES];
+            
             self.pickerViewString = defValueIndex;
+            NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:index];
+            self.pickerViewStringID = [pickerDict objectForKey:self.pickerDictKeyID];
         }else{
             NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:0];
+         
+            
             self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
+            self.pickerViewStringID = [pickerDict objectForKey:self.pickerDictKeyID];
         }
        
         
@@ -251,6 +258,7 @@
                                                           handler:^(NYAlertAction *action) {
                                                               [button setTitle:self.pickerViewString
                                                                       forState:UIControlStateNormal];
+                                                              
                                                               button.customID = self.pickerViewStringID;
                                                               button.customName = self.pickerViewString;
                                                               [self dismissViewControllerAnimated:YES completion:nil];
@@ -324,6 +332,7 @@
     
     if(self.pickerDictKeyTitle.length !=0){
         NSDictionary * pickerDict = [self.arrayPickerView objectAtIndex:row];
+        
         self.pickerViewString = [pickerDict objectForKey:self.pickerDictKeyTitle];
         self.pickerViewStringID = [pickerDict objectForKey:self.pickerDictKeyID];
     }else{
@@ -351,6 +360,14 @@
 {
     UILabel * CustomText = [[UILabel alloc]initWithTitle:title];
     self.navigationItem.titleView = CustomText;
+}
+
+-(NSString *) checkStringToNull:(NSString *) string{
+    if(string.length == 0){
+        return @"";
+    }else{
+        return string;
+    }
 }
 
 

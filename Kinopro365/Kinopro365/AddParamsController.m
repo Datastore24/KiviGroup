@@ -85,6 +85,39 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                         @"ex_languages"];
+    
+    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+    NSMutableString * resultString = [NSMutableString new];
+    if(outletTableDataArray.count>0){
+        for(int i=0; i<outletTableDataArray.count; i++){
+            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+            if ([resultString isEqualToString:@""]) {
+                [resultString appendString:addTable.additionalName];
+            } else {
+                [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+            }
+            if(i==2){
+                [resultString appendString:@"..."];
+                break;
+            }
+        }
+        
+        CustomButton * customButton = [self.mainScrollView viewWithTag:999];
+        customButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [customButton setTitle: resultString forState: UIControlStateNormal];
+        customButton.frame = CGRectMake(152.f, 0, 142.f, 40.f);
+        //
+        customButton.backgroundColor = [UIColor clearColor];
+        [customButton setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
+        
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -100,53 +133,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//- (IBAction)actionButtonsChooseParams:(UIButton *)sender {
-//    
-//    for (int i = 0; i < self.buttonsChooseParams.count; i++) {
-//       
-//        UIButton * buttonParams = [self.buttonsChooseParams objectAtIndex:i];
-//        if ([buttonParams isEqual:sender]) {
-//            NSArray * needArray = [[AddParamsModel setArrayHeight] objectAtIndex:i];
-//            NSString * alertTitl = [[AddParamsModel setArrayTitl] objectAtIndex:i];
-//            [self showViewPickerWithButton:sender andTitl:alertTitl andArrayData:needArray];
-//        }
-//    }
-//}
-//
-//- (IBAction)actionButtonLanguages:(UIButton *)sender {
-//    
-//    ChooseProfessionViewController * detai = [self.storyboard
-//                                              instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
-//    detai.mainArrayData = [AddParamsModel setArrayData];
-//    [[SingleTone sharedManager] setProfessionControllerCode:@"1"];
-//    detai.delegate = self;
-//    [self.navigationController pushViewController:detai animated:YES];
-//    
-//}
 
-//- (IBAction)actionButtonInternationalPass:(id)sender {
-//    
-//    for (UIButton * button in self.buttonsInternationalPass) {
-//        if ([button isEqual:sender]) {
-//            [UIView animateWithDuration:0.3 animations:^{
-//                button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:button.titleLabel.font.pointSize];
-//                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//                button.userInteractionEnabled = NO;
-//            }];
-//        } else {
-//            [UIView animateWithDuration:0.3 animations:^{
-//                button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:button.titleLabel.font.pointSize];
-//                [button setTitleColor:[UIColor hx_colorWithHexRGBAString:COLOR_PLACEHOLDER] forState:UIControlStateNormal];
-//                button.userInteractionEnabled = YES;
-//            }];
-//        }
-//    }
-//}
-
-//- (IBAction)actionButtonSave:(UIButton *)sender {
-//    [self createActivitiIndicatorAlertWithView];
-//    [self performSelector:@selector(testMethod) withObject:nil afterDelay:3.f];
-//}
 
 #pragma mark - ChooseProfessionalViewControllerDelegate
 
@@ -186,7 +173,7 @@
     AdditionalTable * addTable = [[AdditionalTable alloc] init];
     NSMutableArray * arrayForDB = [NSMutableArray new];
     [arrayForDB removeAllObjects];
-    
+    int countError = 0;
    
     for (int i=0; i<self.fieldsArray.count; i++){
         NSDictionary * fields = [self.fieldsArray objectAtIndex:i];
@@ -195,7 +182,7 @@
             UITextField * textFields = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
             if(textFields.text.length ==0){
-                
+                countError = countError +1;
                 NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                 [self showAlertWithMessage:alertMessage];
                 
@@ -211,23 +198,42 @@
         }
         
         if([[fields objectForKey:@"object"] isKindOfClass:[CustomButton class]]){
+            
             CustomButton * customButton = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
-            if(customButton.customName.length ==0){
-                NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
-                [self showAlertWithMessage:alertMessage];
-               
+            NSLog(@"INFO %@",information);
+            if([[information objectForKey:@"type"] isEqualToString:@"MultiList"]){
+                
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                                     @"ex_languages"];
+                
+                RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+
+                if(outletTableDataArray.count==0){
+                    countError = countError +1;
+                    NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
+                    [self showAlertWithMessage:alertMessage];
+                }
             }else{
-                
-                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                       [information objectForKey:@"id"],@"additionalID",
-                                       [information objectForKey:@"title"],@"additionalName",
-                                       customButton.customName,@"additionalValue", nil];
-               
-                [arrayForDB addObject:dict];
-                
-                
+                if(customButton.customID.length ==0){
+                    countError = countError +1;
+                    NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
+                    [self showAlertWithMessage:alertMessage];
+                    
+                }else{
+                    NSLog(@"BUTTON %@-%@",customButton.customName,customButton.customID);
+                    NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                           [information objectForKey:@"id"],@"additionalID",
+                                           [information objectForKey:@"title"],@"additionalName",
+                                           customButton.customID,@"additionalValue",
+                                           customButton.customName, @"additionalNameValue",nil];
+                    
+                    [arrayForDB addObject:dict];
+                    
+                    
+                }
             }
+            
             
            
         }
@@ -249,6 +255,10 @@
 
             
         }
+    }
+    
+    if(countError==0){
+       [self.navigationController popViewControllerAnimated:YES];
     }
     
     
