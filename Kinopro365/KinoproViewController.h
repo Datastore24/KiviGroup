@@ -10,13 +10,12 @@
 #import <MMDrawerController.h>
 #import <MMDrawerBarButtonItem.h>
 #import <UIViewController+MMDrawerController.h>
+#import "MainViewController.h"
 #import "AppDelegate.h"
 
-@interface TwoViewController : UIViewController
+@interface KinoproViewController : MainViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (IBAction)leftSideButtonMenu:(id)sender;
-
-- (IBAction)actionTestButton:(id)sender;
 
 
 @end

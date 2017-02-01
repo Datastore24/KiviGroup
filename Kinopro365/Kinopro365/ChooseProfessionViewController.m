@@ -135,7 +135,7 @@
         }else{
             
             //Узнаем есть ли избранное
-             NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+            NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
             NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
                                  resultName];
             RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
