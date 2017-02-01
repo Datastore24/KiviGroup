@@ -24,7 +24,6 @@
         
         self.professionID = professionID;
         self.professionName  = professionName;
-        self.isSendToServer = @"0";
         
         
         [realm addOrUpdateObject:self];
@@ -39,4 +38,46 @@
         }
     }
 }
+
+- (void)insertDataIntoDataBaseWithName: (NSArray *) addArray{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    
+    
+    @try {
+        
+        
+        [realm beginWriteTransaction];
+        RLMArray * rlmArray = [[RLMArray alloc] initWithObjectClassName:@"ProfessionsTable"];
+        
+        
+        for(int i=0; i<addArray.count; i++){
+            NSDictionary * dict= [addArray objectAtIndex:i];
+            ProfessionsTable * addTable = [[ProfessionsTable alloc] init];
+            
+            addTable.professionID = [dict objectForKey:@"additionalID"];
+            addTable.professionName  = [dict objectForKey:@"additionalName"];
+            
+            
+            [rlmArray addObject:addTable];
+            
+            
+        }
+        
+        
+        [realm addOrUpdateObjectsFromArray:rlmArray];
+        [realm commitWriteTransaction];
+        
+        
+    }
+    
+    @catch (NSException *exception) {
+        NSLog(@"exception %@",exception);
+        if ([realm inWriteTransaction]) {
+            [realm cancelWriteTransaction];
+        }
+    }
+    
+}
+
 @end

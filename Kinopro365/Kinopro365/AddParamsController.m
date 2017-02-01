@@ -12,6 +12,7 @@
 #import "SingleTone.h"
 #import "AddParamsView.h"
 #import "AdditionalTable.h"
+#import "UserInformationTable.h"
 
 
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
@@ -169,6 +170,18 @@
 }
 
 - (IBAction)actionButtonSave:(id)sender {
+    
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        userTable.isSendToServer = @"0";
+        [realm commitWriteTransaction];
+        
+    }
     
     AdditionalTable * addTable = [[AdditionalTable alloc] init];
     NSMutableArray * arrayForDB = [NSMutableArray new];

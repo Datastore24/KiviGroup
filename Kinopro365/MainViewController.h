@@ -17,6 +17,9 @@
 //Алерты----
 - (void) showAlertWithMessage: (NSString*) message;
 - (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack;
+- (void) showAlertWithMessageWithTwoBlock: (NSString*) message
+                                  blockOK: (void (^)(void)) compilationBackOk
+                              blockCancel: (void (^)(void)) compilationBackCancel;
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button;
 - (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID andDefValueIndex: (NSString *) defValueIndex;
 
@@ -31,5 +34,8 @@
 - (void) deleteActivitiIndicator;
 
 -(NSString *) checkStringToNull:(NSString *) string;
+
+//Получение языка по ID
+-(NSDictionary *) getLanguageNameByID:(NSString *) langID;
 
 @end

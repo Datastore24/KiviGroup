@@ -12,7 +12,6 @@
 
 @property NSString *phoneID;
 @property NSString *phoneNumber;
-@property NSString *isSendToServer;
 
 + (NSString *)primaryKey;
 

@@ -34,7 +34,7 @@
                 addTable.additionalName  = [dict objectForKey:@"additionalName"];
                 addTable.additionalValue  = [dict objectForKey:@"additionalValue"];
                 addTable.additionalNameValue = [dict objectForKey:@"additionalNameValue"];
-                addTable.isSendToServer = @"0";
+                
                 
                 [rlmArray addObject:addTable];
                 
@@ -69,7 +69,7 @@
             self.additionalID = additionalID;
             self.additionalName  = additionalName;
             self.additionalValue  = additionalValue;
-            self.isSendToServer = @"0";
+        
             
             
             [realm addOrUpdateObject:self];
