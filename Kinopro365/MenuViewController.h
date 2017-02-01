@@ -13,7 +13,11 @@
 
 @interface MenuViewController : UIViewController
 - (IBAction)actionFirstViewButton:(id)sender;
-
 - (IBAction)actionSecondViewButton:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;
+
+- (IBAction)actionButtonKinopro:(id)sender;
 
 @end

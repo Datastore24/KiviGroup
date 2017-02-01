@@ -54,4 +54,9 @@
     
     
 }
+- (IBAction)actionButtonKinopro:(id)sender {
+    
+    [self pushMethodWithIdentifier:@"TwoViewController"];
+    
+}
 @end

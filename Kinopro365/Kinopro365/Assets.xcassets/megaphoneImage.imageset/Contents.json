@@ -1,0 +1,23 @@
+{
+  "info" : {
+    "author" : "xcode",
+    "version" : "1"
+  },
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "megaphoneImage.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "megaphoneImage@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "megaphoneImage@3x.png"
+    }
+  ]
+}

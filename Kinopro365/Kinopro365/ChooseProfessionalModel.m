@@ -36,10 +36,7 @@
                             @"Оператор",@"Оператор Стэдикам",
                             @"Ассистент оператора (фокус-пуллер)",@"Хлопушка",
                             @"Location Менеджер",@"Бум оператор",nil];
-    
 
-   
-        
         for (int i = 0; i < arrayNames.count; i++) {
             NSString * profID = [NSString stringWithFormat:@"%d",i+1];
             NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
@@ -65,9 +62,67 @@
         }
         [self.delegate setMainArrayData:array];
         [self.delegate reloadTable];
+}
 
 
+
+
+
+
+
++ (NSArray*) getArrayToTableView {
+    NSMutableArray * array = [[NSMutableArray alloc] init];
+    NSArray * arrayImages = [NSArray arrayWithObjects:
+                             @"actorsImage.png", @"gamersImage.png", @"operatorsImage.png",
+                             @"designersImage.png", @"dressersImage.png", @"massActorsImage.png",
+                             @"choreographersImage.png", @"productionOperatorImage.png", @"actorsImage.png",
+                             @"gamersImage.png", @"operatorsImage.png", @"designersImage.png",
+                             @"dressersImage.png", @"massActorsImage.png", @"choreographersImage.png",
+                             @"productionOperatorImage.png", @"actorsImage.png", @"gamersImage.png",
+                             @"operatorsImage.png", @"designersImage.png", @"dressersImage.png",
+                             @"massActorsImage.png", @"choreographersImage.png", @"productionOperatorImage.png",
+                             @"dressersImage.png", @"actorsImage.png", @"actorsImage.png", nil];
+    NSArray * arrayNames = [NSArray arrayWithObjects:
+                            @"Актёр", @"Режиссер-постановщик", @"Сценарист",
+                            @"Художник-Гримёр", @"Реквизитор", @"Актер без образования",
+                            @"Актер массовых сцен", @"Ассистент по актерам",
+                            @"Режиссер монтажа",@"Монтажер",
+                            @"Второй режиссер (планирование)",@"Второй режиссер (площадка)",
+                            @"Редактор",@"Кастинг-директор",
+                            @"Скрипт супервайзер",@"Каскадер",
+                            @"Оператор-постановщик",@"Художник-постановщик",
+                            @"Композитор",@"Звукорежиссёр",
+                            @"Постановщик трюков",@"Дрессировщик",
+                            @"Оператор",@"Оператор Стэдикам",
+                            @"Ассистент оператора (фокус-пуллер)",@"Хлопушка",
+                            @"Location Менеджер",@"Бум оператор",nil];
+    
+    NSArray * numberArray = [NSArray arrayWithObjects:
+                             @"35", @"10", @"5", @"11", @"138", @"1274",
+                             @"307", @"1", @"503", @"0", @"3456", @"12",
+                             @"87", @"463", @"45", @"385", @"234", @"35",
+                             @"35", @"35", @"35", @"35", @"35", @"35",
+                             @"35", @"35", @"35", nil];
+    
+    for (int i = 0; i < arrayImages.count; i++) {
+        NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [arrayImages objectAtIndex:i], @"image",
+                               [arrayNames objectAtIndex:i], @"name",
+                               [numberArray objectAtIndex:i], @"number", nil];
+        
+        [array addObject:dict];
+    }
+    
+    
+    NSArray * resultArray = [NSArray arrayWithArray:array];
+    
+    
+    return resultArray;
+    
     
 }
+
+
+
 
 @end
