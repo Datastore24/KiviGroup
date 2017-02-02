@@ -14,6 +14,8 @@
 @interface MenuViewController : UIViewController
 - (IBAction)actionFirstViewButton:(id)sender;
 - (IBAction)actionSecondViewButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *userPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *userFLName;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;

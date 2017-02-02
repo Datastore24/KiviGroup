@@ -7,13 +7,21 @@
 //
 
 #import "MenuViewController.h"
+#import "MenuViewModel.h"
 #import "AppDelegate.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <MenuViewModelDelegate>
 
 @end
 
 @implementation MenuViewController
+
+- (void) loadView{
+    [super loadView];
+    MenuViewModel * menuViewModel = [[MenuViewModel alloc] init];
+    menuViewModel.delegate=self;
+    [menuViewModel loadUserInformation];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +43,7 @@
 
 - (IBAction)actionSecondViewButton:(id)sender {
     
-    [self pushMethodWithIdentifier:@"TwoViewController"];
+    [self pushMethodWithIdentifier:@"KinoproViewController"];
     
 }
 
@@ -56,7 +64,15 @@
 }
 - (IBAction)actionButtonKinopro:(id)sender {
     
-    [self pushMethodWithIdentifier:@"TwoViewController"];
+    [self pushMethodWithIdentifier:@"KinoproViewController"];
     
 }
+
+//редактирование профиля
+- (IBAction)editProfileAction:(id)sender {
+    [self pushMethodWithIdentifier:@"PersonalDataController"];
+    
+}
+
+
 @end

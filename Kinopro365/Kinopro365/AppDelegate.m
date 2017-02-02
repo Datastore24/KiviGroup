@@ -104,9 +104,9 @@
             
             if (![[self.dictResponse objectForKey:@"error"] isKindOfClass: [NSDictionary class]]){
                 NSLog(@"DICT %@",self.dictResponse);
-                [self authCheck:YES];
+                [self authCheck:YES andController:@"PersonalDataController"];
             }else{
-                [self authCheck:NO];
+                [self authCheck:NO andController:@"LoginViewController"];
             }
             
         }];
@@ -115,7 +115,7 @@
         
         
     }else{
-        [self authCheck:NO];
+        [self authCheck:NO andController:@"LoginViewController"];
     }
 }
 
@@ -136,16 +136,16 @@
             if ([[response objectForKey:@"error_code"] integerValue] == 2){
                 NSLog(@"ERROR TOKEN");
                 if([self checkAuthFB]){
-                    [self authCheck:YES];
+                    [self authCheck:YES andController:@"PersonalDataController"];
                 }else{
                     [self checkAuthVK];
                 }
                 
             }else{
                 if ([[respDict objectForKey:@"status"] integerValue] == 0){
-                    [self authCheck:YES];
+                    [self authCheck:YES andController:@"PersonalDataController"];
                 }else if ([[respDict objectForKey:@"status"] integerValue] == 10){
-                    [self authCheck:YES];
+                    [self authCheck:YES andController:@"KinoproViewController"];
                 }
             }
 
@@ -155,7 +155,7 @@
         
     }else{
         if([self checkAuthFB]){
-            [self authCheck:YES];
+            [self authCheck:YES andController:@"PersonalDataController"];
         }else{
             [self checkAuthVK];
         }
@@ -165,15 +165,10 @@
     
 }
 
--(void) authCheck: (BOOL) check{
+-(void) authCheck: (BOOL) check andController:(NSString *) controller{
     UIStoryboard * mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    NSString * controller;
-    if(check){
-        controller = @"PersonalDataController";
-    }else{
-        controller = @"LoginViewController";
-    }
+
     NSLog(@"CONTROLLER %@",controller);
     UIViewController * centerViewController =
     [mainStoryboard instantiateViewControllerWithIdentifier:controller];
@@ -181,6 +176,7 @@
     [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftSideViewController"];
     
     
+    [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
     
     UINavigationController * leftSideNav = [[UINavigationController alloc]
                                             initWithRootViewController:leftViewController];
@@ -198,8 +194,6 @@
     
     [self.window setRootViewController:self.centerContainer];
     [self.window makeKeyAndVisible];
-    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
     
     
     [[SingleTone sharedManager] setStringAletForWebView:@"0"];

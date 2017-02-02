@@ -951,7 +951,7 @@ replacementString:(NSString *)string {
                 
                                 
                                     [realm commitWriteTransaction];
-                                    UIViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"TwoViewController"];
+                                    UIViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"KinoproViewController"];
                                     [self.navigationController pushViewController:detail animated:YES];
                                 }
                             }
