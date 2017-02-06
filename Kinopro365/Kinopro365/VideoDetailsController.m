@@ -7,8 +7,9 @@
 //
 
 #import "VideoDetailsController.h"
+#import "VideoDetailsModel.h"
 
-@interface VideoDetailsController ()
+@interface VideoDetailsController () <VideoDetailsModelDelegate>
 
 @end
 
@@ -26,6 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    VideoDetailsModel * videoDetailsModel = [[VideoDetailsModel alloc] init];
+    videoDetailsModel.delegate = self;
+    [videoDetailsModel getVideoArrayWithOffset:@"0" andCount:@"1000"];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -41,4 +46,13 @@
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - VideoDetailsModelDelegate
+
+- (void) loadVideo: (NSArray *) array{
+    
+    NSLog(@"ARRAY %@",array);
+    
+}
+
 @end

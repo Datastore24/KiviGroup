@@ -7,8 +7,9 @@
 //
 
 #import "PhotoDetailsController.h"
+#import "PhotoDetailsModel.h"
 
-@interface PhotoDetailsController ()
+@interface PhotoDetailsController () <PhotoDetailsModelDelegate>
 
 @end
 
@@ -26,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    PhotoDetailsModel * photoDetailsModel = [[PhotoDetailsModel alloc] init];
+    photoDetailsModel.delegate = self;
+    [photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
     // Do any additional setup after loading the view.
 }
 
@@ -40,5 +44,13 @@
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - PhotoDetailsModelDelegate
+
+- (void) loadPhotos: (NSArray *) array{
+    
+    NSLog(@"ARRAY PHOTOS %@",array);
+    
 }
 @end

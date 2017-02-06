@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APIManger.h"
+#import "SingleTone.h"
+
+@protocol PhotoDetailsModelDelegate <NSObject>
+
+@required
+
+- (void) loadPhotos: (NSArray *) array;
+
+@end
 
 @interface PhotoDetailsModel : NSObject
+
+@property (assign, nonatomic) id <PhotoDetailsModelDelegate> delegate;
+
+- (void) getPhotosArrayWithOffset: (NSString *) offset andCount: (NSString *) count;
 
 @end

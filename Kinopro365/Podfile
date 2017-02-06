@@ -17,5 +17,6 @@ pod 'FBSDKCoreKit', '~> 4.18'
 pod 'FBSDKLoginKit', '~> 4.18'
 pod 'FBSDKShareKit', '~> 4.18'
 pod 'Bolts', '~> 1.8'
+pod 'youtube-ios-player-helper', '~> 0.1'
 
 end

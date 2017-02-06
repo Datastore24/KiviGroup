@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APIManger.h"
+#import "SingleTone.h"
+
+@protocol VideoDetailsModelDelegate <NSObject>
+
+@required
+
+- (void) loadVideo: (NSArray *) array;
+
+@end
 
 @interface VideoDetailsModel : NSObject
+
+@property (assign, nonatomic) id <VideoDetailsModelDelegate> delegate;
+
+- (void) getVideoArrayWithOffset: (NSString *) offset andCount: (NSString *) count;
 
 @end
