@@ -12,5 +12,6 @@
 
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
+- (IBAction)actionButtonAddVideo:(UIBarButtonItem *)sender;
 
 @end
