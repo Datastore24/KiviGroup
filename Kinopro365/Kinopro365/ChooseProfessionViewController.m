@@ -13,6 +13,7 @@
 #import "ProfessionsTable.h"
 #import "AddParamsController.h"
 #import "AdditionalTable.h"
+#import "UserInformationTable.h"
 
 @interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate,AddParamsControllerDelegate>
 
@@ -112,6 +113,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        userTable.isSendToServer = @"0";
+        [realm commitWriteTransaction];
+        
+    }
+    
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
     ProfeccionalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     

@@ -12,6 +12,7 @@
 		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
 		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
+		AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCCC71E43177500E754BC /* MenuViewModel.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
 		ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DC1E36451400D74761 /* ProfessionsTable.m */; };
@@ -87,6 +88,8 @@
 		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
 		AD50A4981E13DC2300CC44DB /* APIManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManger.h; sourceTree = "<group>"; };
 		AD50A4991E13DC2300CC44DB /* APIManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManger.m; sourceTree = "<group>"; };
+		AD7FCCC61E43177500E754BC /* MenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewModel.h; sourceTree = "<group>"; };
+		AD7FCCC71E43177500E754BC /* MenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewModel.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		ADED89D81E3644FC00D74761 /* PhonesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesTable.h; sourceTree = "<group>"; };
@@ -501,6 +504,8 @@
 			children = (
 				FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */,
 				FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */,
+				AD7FCCC61E43177500E754BC /* MenuViewModel.h */,
+				AD7FCCC71E43177500E754BC /* MenuViewModel.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -682,6 +687,7 @@
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
 				FF88DF551E0E696B0002FBBC /* HMViewerViewController.m in Sources */,
+				AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,

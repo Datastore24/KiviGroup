@@ -52,6 +52,9 @@
     }
     return @[];
 }
+
+
+
 -(NSArray *) getHeight{
     NSMutableArray * rost = [NSMutableArray new];
     for(int i = 100; i<241; i++){
@@ -64,6 +67,75 @@
     NSArray * resultArray = [NSArray arrayWithArray:rost];
     return resultArray;
 }
+
+//Для сервера
+
+- (NSArray *) loadParamsFromServerProfArray: (NSArray *) profArray {
+    
+    if(profArray.count >0){
+        NSMutableArray * profMutableArray = [NSMutableArray new];
+        for(int i=0; i<profArray.count; i++){
+            NSDictionary * profDict = [profArray objectAtIndex:i];
+            
+            NSInteger profID = [[profDict objectForKey:@"profession_id"] integerValue];
+            NSArray * paramsArray = [self getParamsDict:profID];
+            
+            
+            if(paramsArray.count>0){
+                [profMutableArray addObjectsFromArray:paramsArray];
+            }
+            
+            
+            
+        }
+        
+        
+        NSMutableArray * unique = [NSMutableArray array];
+        NSMutableSet * processed = [NSMutableSet set];
+        for (NSDictionary * dict in profMutableArray) {
+            if ([processed containsObject:dict] == NO) {
+                
+                [unique addObject:dict];
+                [processed addObject:dict];
+            }
+        }
+        
+        return unique;
+        
+        
+        
+        
+    }
+    return @[];
+}
+
+-(NSDictionary *) getInformationDictionary: (NSString *) infID andProfArray: (NSArray *) profArray{
+    
+    NSArray *filtered = [profArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", infID]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }else{
+        item = @{};
+    }
+    
+    
+    return item;
+    
+}
+
+-(NSDictionary *) getNameByDictionary: (NSArray *) array andFindID: (NSString *) infID {
+    
+    NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", infID]];
+    NSDictionary *item = [filtered objectAtIndex:0];
+    
+    return item;
+    
+    return  @{};
+}
+
+//
+
 
 -(NSArray *) getParamsDict: (NSInteger) profID {
     NSArray * rost = [self getHeight];

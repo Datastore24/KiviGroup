@@ -23,4 +23,9 @@
 - (NSArray *) loadParams: (NSArray *) profArray;
 - (NSArray *) getParamsDict: (NSInteger) profID;
 
+
+- (NSArray *) loadParamsFromServerProfArray: (NSArray *) profArray;
+- (NSDictionary *) getInformationDictionary: (NSString *) infID andProfArray: (NSArray *) profArray;
+- (NSDictionary *) getNameByDictionary: (NSArray *) array andFindID: (NSString *) infID;
+
 @end

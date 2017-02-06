@@ -105,6 +105,7 @@
             RLMRealm *realm = [RLMRealm defaultRealm];
             [realm beginWriteTransaction];
             userTable.user_comment = self.textViewAddInformation.text;
+            userTable.isSendToServer = @"0";
             [realm commitWriteTransaction];
             
         }

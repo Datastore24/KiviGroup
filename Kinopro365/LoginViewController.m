@@ -169,7 +169,7 @@
                 
             }
             
-            //ПРОВЕРКА НА ТИП АВТОРИЗАЦИИ
+            
             
             NSLog(@"RESPONSE %@",response);
 
@@ -258,7 +258,7 @@
                         
                     }else if([[dictResp objectForKey:@"status"] integerValue] == 10){
                         PersonalDataController * tmpViewController = [self.storyboard
-                                                                      instantiateViewControllerWithIdentifier:@"PersonalDataController"];
+                                                                      instantiateViewControllerWithIdentifier:@"KinoproViewController"];
                         [self.navigationController pushViewController:tmpViewController animated:YES];
                         
                     }

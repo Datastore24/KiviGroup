@@ -24,7 +24,6 @@
         
         self.phoneID = phoneID;
         self.phoneNumber  = phoneNumber;
-        self.isSendToServer = @"0";
         
         
         [realm addOrUpdateObject:self];

@@ -22,12 +22,9 @@
 @end
 
 @interface ChooseProfessionalModel : NSObject
-
-+ (NSArray*) getArrayToTableView;
-
-
 @property (assign, nonatomic) id <ChooseProfessionalModelDelegate> delegate;
 
++ (NSArray*) getArrayToTableView;
 - (void) getProfessionalArrayToTableView;
 
 @end

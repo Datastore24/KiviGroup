@@ -11,8 +11,9 @@
 @interface ProfessionsTable : RLMObject
 @property NSString *professionID;
 @property NSString *professionName;
-@property NSString *isSendToServer;
+
 
 + (NSString *)primaryKey;
+- (void)insertDataIntoDataBaseWithName: (NSArray *) addArray;
 - (void)insertDataIntoDataBaseWithName:(NSString *)professionID andProfessionName:(NSString *)professionName;
 @end

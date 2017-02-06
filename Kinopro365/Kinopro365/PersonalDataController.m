@@ -28,6 +28,7 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "AddParamsModel.h"
 #import "DateTimeMethod.h"
+#import "AddParamsModel.h"
 
 
 
@@ -76,23 +77,46 @@
     [self checkProffesion];
     
     self.isBool = YES;
-   
-    [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+    
+    RLMResults *userTableDataArray = [UserInformationTable allObjects];
+    
+    if(userTableDataArray.count>0){
         
-        if([response objectForKey:@"error_code"]){
+        UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+        
+        if([userTable.isSendToServer integerValue] == 0){
             
-            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
-                  [response objectForKey:@"error_msg"]);
-            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+            [self showAlertWithMessageWithTwoBlock:@"Имеются неотправленные на сервера данные.\nЗагрузить данные с сервера или продолжить редактирование?" blockOK:^{
+                [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                    
+                    if([response objectForKey:@"error_code"]){
+                        
+                        NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                              [response objectForKey:@"error_msg"]);
+                        NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                    }else{
+                        
+                        NSDictionary * respDict = [response objectForKey:@"response"];
+                        NSLog(@"PROFILE %@",respDict);
+                        
+                        
+                        [self loadFromServer:respDict];
+                    }
+                    
+                    
+                }];
+            } blockCancel:^{
+                 [self loadFromDb];
+            }];
+            
         }else{
+           
+              [self loadFromDb];
             
-            NSDictionary * respDict = [response objectForKey:@"response"];
-            NSLog(@"PROFILE %@",respDict);
-            [self loadFromDb];
         }
-
-        
-    }];
+    }
+   
+    
    
 }
 
@@ -117,6 +141,18 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
+    
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        userTable.isSendToServer = @"0";
+        [realm commitWriteTransaction];
+        
+    }
     
     if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         return [textField checkForNamberPhoneWithTextField:textField shouldChangeCharactersInRange:range
@@ -215,6 +251,229 @@ replacementString:(NSString *)string {
     
     
 }
+
+-(void) loadFromServer:(NSDictionary * ) userInfo {
+    
+    RLMResults *userTableDataArray = [UserInformationTable allObjects];
+    
+    if(userTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        
+//        NSString * birthday = [DateTimeMethod convertDateStringToFormat:self.buttonBirthday.titleLabel.text
+//                                                            startFormat:@"dd MMMM yyyy" endFormat:@"yyyy-MM-dd"];
+        
+        
+        userTable.birthday = [userInfo objectForKey:@"birthday"];
+
+        
+        if([[userInfo objectForKey:@"city"] isKindOfClass:[NSDictionary class]]){
+            if([userInfo objectForKey:@"city"] != [NSNull null ]){
+             userTable.city_id = [[userInfo objectForKey:@"city"] objectForKey:@"id"];
+            }else{
+                userTable.city_id = @"";
+            }
+        }else{
+            userTable.city_id = @"";
+        }
+        
+        if([[userInfo objectForKey:@"country"] isKindOfClass:[NSDictionary class]]){
+            if([userInfo objectForKey:@"country"] != [NSNull null ]){
+                userTable.country_id = [[userInfo objectForKey:@"country"] objectForKey:@"id"];
+            }else{
+                userTable.city_id = @"";
+            }
+        }else{
+            userTable.city_id = @"";
+        }
+        
+        
+            userTable.email = [userInfo objectForKey:@"email"];
+            userTable.first_name = [userInfo objectForKey:@"first_name"];
+            userTable.first_name_inter = [userInfo objectForKey:@"first_name_inter"];
+            userTable.is_public_contacts = [userInfo objectForKey:@"is_public_contacts"];
+            userTable.last_name = [userInfo objectForKey:@"last_name"];
+            userTable.last_name_inter = [userInfo objectForKey:@"last_name_inter"];
+            userTable.sex = [userInfo objectForKey:@"sex"];
+            userTable.isSendToServer = @"1";
+        
+        
+        if([[userInfo objectForKey:@"photo"] isKindOfClass:[NSDictionary class]]){
+            if([userInfo objectForKey:@"photo"] != [NSNull null ]){
+                userTable.photo = [[userInfo objectForKey:@"photo"] objectForKey:@"id"];
+            }else{
+                userTable.photo = @"";
+            }
+        }else{
+            userTable.photo = @"";
+        }
+
+            userTable.user_comment = [userInfo objectForKey:@"user_comment"];
+         [realm commitWriteTransaction];
+        
+        AdditionalTable * addTable = [[AdditionalTable alloc] init];
+        if([[userInfo objectForKey:@"languages"] isKindOfClass:[NSArray class]]){
+            NSMutableArray * resultLanguages = [NSMutableArray new];
+            NSArray * languages = [userInfo objectForKey:@"languages"];
+            if(languages.count>0){
+                RLMResults *addTableDataArray = [AdditionalTable allObjects];
+
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObjects:addTableDataArray];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+                
+                for(int i = 0; i< languages.count; i++){
+                    NSDictionary * langDict = [languages objectAtIndex:i];
+                    
+                    NSDictionary * langFromArray = [self getLanguageNameByID:[langDict objectForKey:@"language_id"]];
+                    
+                    NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[langDict objectForKey:@"language_id"]];
+                    
+                    NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                           resultName,@"additionalID",
+                                           [langFromArray objectForKey:@"name"],@"additionalName",
+                                           [langDict objectForKey:@"language_id"],@"additionalValue",
+                                           @"", @"additionalNameValue",nil];
+                    
+                    [resultLanguages addObject:dict];
+                    
+                    
+                }
+                
+            }
+            
+            if(resultLanguages.count>0){
+                NSArray * fullResultLanguagesArray = [NSArray arrayWithArray:resultLanguages];
+                [addTable insertDataIntoDataBaseWithName:fullResultLanguagesArray];
+            }
+            
+        }
+        
+       
+        
+        NSMutableArray * profMutableArray = [NSMutableArray new];
+        NSMutableArray * resultMutProfArray = [NSMutableArray new];
+        if([[userInfo objectForKey:@"professions"] isKindOfClass:[NSArray class]]){
+            ProfessionsTable * profTable = [[ProfessionsTable alloc] init];
+            NSArray * professions = [userInfo objectForKey:@"professions"];
+            if(professions.count>0){
+                RLMResults *addTableDataArray = [ProfessionsTable allObjects];
+                
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObjects:addTableDataArray];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+                
+                for(int i = 0; i< professions.count; i++){
+                    NSDictionary * profDict = [professions objectAtIndex:i];
+                    NSDictionary * profDictForDB = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                    [profDict objectForKey:@"profession_id"],@"profession_id", nil];
+                    [profMutableArray addObject:profDictForDB];
+                    
+                    NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                           [profDict objectForKey:@"profession_id"],@"additionalID",
+                                           @"",@"additionalName",nil];
+                    
+                    [resultMutProfArray addObject:dict];
+                    
+
+                    
+                }
+                
+                if(resultMutProfArray.count>0){
+                    NSArray * fullResultArray = [NSArray arrayWithArray:resultMutProfArray];
+                    [profTable insertDataIntoDataBaseWithName:fullResultArray];
+                }
+            }
+            
+        }
+        
+        NSArray * resultProfArray = [NSArray arrayWithArray:profMutableArray];
+        
+        NSDictionary * additional = [self getAdditionalArrayFromDictionary:userInfo];
+        if(additional.count >0){
+            
+            NSMutableArray * resultArray = [NSMutableArray new];
+            AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+            for (NSString *key in additional) {
+                
+                NSArray * loadParams = [addParamsModel loadParamsFromServerProfArray:resultProfArray];
+                
+                if(loadParams.count > 0){
+                   
+                    NSDictionary * params = [addParamsModel getInformationDictionary:key andProfArray:loadParams];
+                    
+                    if(params.count> 0){
+                        NSDictionary * finalInfoParams = [addParamsModel getNameByDictionary:[params objectForKey:@"array"] andFindID:[additional objectForKey:key]];
+                        NSLog(@"KEY %@ - PRO ARRAY %@",key,finalInfoParams);
+                        NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                               key,@"additionalID",
+                                               [params objectForKey:@"title"],@"additionalName",
+                                               [additional objectForKey:key],@"additionalValue",
+                                               [finalInfoParams objectForKey:@"name"], @"additionalNameValue",nil];
+                        
+                        [resultArray addObject:dict];
+                        
+                        
+                    }
+                }
+                
+                
+                
+            }
+            if(resultArray.count>0){
+                NSArray * fullResultArray = [NSArray arrayWithArray:resultArray];
+                [addTable insertDataIntoDataBaseWithName:fullResultArray];
+            }
+            
+            
+        }
+        
+        if([[userInfo objectForKey:@"phones"] isKindOfClass:[NSArray class]]){
+            PhonesTable * phoneTable = [[PhonesTable alloc] init];
+            NSArray * phones = [userInfo objectForKey:@"phones"];
+            if(phones.count>0){
+                RLMResults *addTableDataArray = [PhonesTable allObjects];
+                
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObjects:addTableDataArray];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+                
+                for(int i = 0; i< phones.count; i++){
+                    NSDictionary * phoneDict = [phones objectAtIndex:i];
+                    NSString * resultID = [NSString stringWithFormat:@"%d",i+1];
+                    [phoneTable insertDataIntoDataBaseWithName:resultID andPhoneNumber:[phoneDict objectForKey:@"phone_number"]];
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+    
+       
+    }
+    [self loadFromDb];
+
+}
+
+
+//Нахождение дополнительный параметров по ключу ex_
+-(NSDictionary *) getAdditionalArrayFromDictionary: (NSDictionary *) dict{
+    NSMutableDictionary* result = [NSMutableDictionary new];
+    for (NSString* key in  dict) {
+        if ([key hasPrefix:@"ex_"]) {
+            [result setObject:[dict objectForKey:key] forKey:key];
+        }
+    }
+    NSDictionary * resultDict = [NSDictionary dictionaryWithDictionary:result];
+    return resultDict;
+    
+ 
+}
+
 
 
 -(void) loadFromDb{
@@ -392,13 +651,15 @@ replacementString:(NSString *)string {
        
         if(phoneTableDataArray.count>0){
             for(int k=0; k<phoneTableDataArray.count; k++){
+                NSLog(@"PHONE k = %d",k);
                 if(k==0){
                     PhonesTable * profTableOne = [phoneTableDataArray objectAtIndex:0];
                     self.textFildPhone1.text = profTableOne.phoneNumber;
                     
-                }else if(k==1){
+                }
+                if(k==1){
                     PhonesTable * profTableTwo = [phoneTableDataArray objectAtIndex:1];
-                    self.textFildPhone1.text = profTableTwo.phoneNumber;
+                    self.textFildPhone2.text = profTableTwo.phoneNumber;
                 }
             }
             
@@ -542,158 +803,172 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonNext:(UIButton *)sender {
-//    RLMResults *profTableDataArray = [ProfessionsTable allObjects];
-//    
-//    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
-//    NSArray * params = [addParamsModel loadParams:self.profArray];
-//   
-//    if(self.textFildName.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните Ваше имя"];
-//        
-//    }else if(self.textFildLastName.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните Вашу фамилию"];
-//        
-//    }else if ([self.buttonBirthday.titleLabel.text isEqualToString:@"Дата рождения"]){
-//        
-//        [self showAlertWithMessage:@"Выберите дату Вашего рождения"];
-//        
-//    }else if(self.textFildEmail.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните Ваш e-mail адрес"];
-//        
-//    }else if(self.textFildNameEN.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните Ваше имя латиницей"];
-//    
-//    }else if(self.textFildLastNameEN.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните Вашу фамилию латиницей"];
-//        
-//    }else if(self.textFildPhone1.text.length == 0){
-//        
-//        [self showAlertWithMessage:@"Заполните полет Телефон 1"];
-//    }else if(profTableDataArray.count==0){
-//        [self showAlertWithMessage:@"Выберите хотя бы одну профессию"];
-//    }else if(params.count == 0){
-//        [self showAlertWithMessage:@"Заполните дополнительные параметры"];
-//    }else{
-//        PhonesTable * phonesTable = [[PhonesTable alloc] init];
-//        if(self.textFildPhone2.text.length !=0){
-//            [phonesTable insertDataIntoDataBaseWithName:@"2" andPhoneNumber:self.textFildPhone2.text];
-//        }
-//        
-//        [phonesTable insertDataIntoDataBaseWithName:@"1" andPhoneNumber:self.textFildPhone1.text];
-//        
-//        RLMResults *userTableDataArray = [UserInformationTable allObjects];
-//        
-//        if(userTableDataArray.count>0){
-//            
-//            UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
-//            RLMRealm *realm = [RLMRealm defaultRealm];
-//            [realm beginWriteTransaction];
-//            
-//            NSString * birthday = [DateTimeMethod convertDateStringToFormat:self.buttonBirthday.titleLabel.text
-//                                                                    startFormat:@"dd MMMM yyyy" endFormat:@"yyyy-MM-dd"];
-//            
-//            userTable.first_name = self.textFildName.text;
-//            userTable.last_name = self.textFildLastName.text;
-//            userTable.email = self.textFildEmail.text;
-//            userTable.first_name_inter = self.textFildNameEN.text;
-//            userTable.last_name_inter = self.textFildLastNameEN.text;
-//            userTable.sex = self.sex;
-//            userTable.birthday = birthday;
-//            
-//           
-//            [realm commitWriteTransaction];
-//    
-//            
-//            NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-//                                            [self checkStringToNull:userTable.last_name],@"last_name",
-//                                            [self checkStringToNull:userTable.first_name],@"first_name",
-//                                            [self checkStringToNull:userTable.last_name_inter],@"last_name_inter",
-//                                            [self checkStringToNull:userTable.first_name_inter],@"first_name_inter",
-//                                            [self checkStringToNull:userTable.sex],@"sex",
-//                                            [self checkStringToNull:userTable.email],@"email",
-//                                            [self checkStringToNull:userTable.user_comment],@"user_comment",
-//                                            [self checkStringToNull:userTable.is_public_contacts],@"is_public_contacts",
-//                                            [self checkStringToNull:userTable.country_id],@"country_id",
-//                                            [self checkStringToNull:userTable.city_id],@"city_id",
-//                                            [self checkStringToNull:userTable.birthday],@"birthday",
-//                                            [self checkStringToNull:userTable.photo],@"photo_id",nil];
-//            
-//            RLMResults *phoneTableDataArray = [PhonesTable allObjects];
-//            for(int p = 0; p<phoneTableDataArray.count; p++){
-//                PhonesTable * phoneTableDb = [phoneTableDataArray objectAtIndex:p];
-//                NSString * phoneResult = [NSString stringWithFormat:@"phones[%@]",phoneTableDb.phoneID];
-//                [params setValue:phoneTableDb.phoneNumber forKey:phoneResult];
-//            }
-//            
-//            RLMResults *proffesionTableDataArray = [ProfessionsTable allObjects];
-//            for(int pro = 0; pro<proffesionTableDataArray.count; pro++){
-//                ProfessionsTable * profTableDb = [proffesionTableDataArray objectAtIndex:pro];
-//                NSString * profResult = [NSString stringWithFormat:@"professions[%d]",pro];
-//                [params setValue:profTableDb.professionID forKey:profResult];
-//            }
-//            
-//            RLMResults *addTableDataArray = [AdditionalTable allObjects];
-//            int lang = 0;
-//            for(int add = 0; add<addTableDataArray.count; add++){
-//                AdditionalTable * profTableDb = [addTableDataArray objectAtIndex:add];
-//                
-//               if ([profTableDb.additionalID rangeOfString:@"ex_languages"].location != NSNotFound) {
-//                   NSError *error;
-//                   NSString *pattern = @"(.*)\\[(.*)\\]";
-//                   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-//                                                                                          options:NSRegularExpressionCaseInsensitive
-//                                                                                            error:&error];
-//                   NSString *resultLanguage = [regex stringByReplacingMatchesInString:profTableDb.additionalID
-//                                                                  options:0
-//                                                                    range:NSMakeRange(0, [profTableDb.additionalID length])
-//                                                             withTemplate:[NSString stringWithFormat:@"$1[%d]",lang]];
-//                   [params setValue:profTableDb.additionalValue forKey:resultLanguage];
-//                   lang = lang+1;
-//                   
-//               }else{
-//                   [params setValue:profTableDb.additionalValue forKey:profTableDb.additionalID];
-//               }
-//                
-//                
-//                
-//                
-//            }
-//            
-//            NSLog(@"PARAMS SERVER %@",params);
-//            
-//                    [self.apiManager postDataFromSeverWithMethod:@"account.saveProfileInfo" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
-//                        NSLog(@"RESPONSE %@",response);
-//                        if([response objectForKey:@"error_code"]){
-//                            [self deleteActivitiIndicator];
-//                            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
-//                                  [response objectForKey:@"error_msg"]);
-//                            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
-//                            
-//                            
-//                            
-//                        }else{
-//                            
-//                            
-//
-//                        }
-//                    }];
-//            
-//        }
-//        
-//       
-//            
-//        
-//        
-//        
-//    }
+    RLMResults *profTableDataArray = [ProfessionsTable allObjects];
     
-    UIViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"TwoViewController"];
-    [self.navigationController pushViewController:detail animated:YES];
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    NSArray * params = [addParamsModel loadParams:self.profArray];
+   
+    if(self.textFildName.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваше имя"];
+        
+    }else if(self.textFildLastName.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Вашу фамилию"];
+        
+    }else if ([self.buttonBirthday.titleLabel.text isEqualToString:@"Дата рождения"]){
+        
+        [self showAlertWithMessage:@"Выберите дату Вашего рождения"];
+        
+    }else if(self.textFildEmail.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваш e-mail адрес"];
+        
+    }else if(self.textFildNameEN.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Ваше имя латиницей"];
+    
+    }else if(self.textFildLastNameEN.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните Вашу фамилию латиницей"];
+        
+    }else if(self.textFildPhone1.text.length == 0){
+        
+        [self showAlertWithMessage:@"Заполните полет Телефон 1"];
+    }else if(profTableDataArray.count==0){
+        [self showAlertWithMessage:@"Выберите хотя бы одну профессию"];
+    }else if(params.count == 0){
+        [self showAlertWithMessage:@"Заполните дополнительные параметры"];
+    }else{
+        PhonesTable * phonesTable = [[PhonesTable alloc] init];
+        if(self.textFildPhone2.text.length !=0){
+            [phonesTable insertDataIntoDataBaseWithName:@"2" andPhoneNumber:self.textFildPhone2.text];
+        }
+        
+        [phonesTable insertDataIntoDataBaseWithName:@"1" andPhoneNumber:self.textFildPhone1.text];
+        
+        RLMResults *userTableDataArray = [UserInformationTable allObjects];
+        
+        if(userTableDataArray.count>0){
+            
+            UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            
+            NSString * birthday = [DateTimeMethod convertDateStringToFormat:self.buttonBirthday.titleLabel.text
+                                                                    startFormat:@"dd MMMM yyyy" endFormat:@"yyyy-MM-dd"];
+            
+            userTable.first_name = self.textFildName.text;
+            userTable.last_name = self.textFildLastName.text;
+            userTable.email = self.textFildEmail.text;
+            userTable.first_name_inter = self.textFildNameEN.text;
+            userTable.last_name_inter = self.textFildLastNameEN.text;
+            userTable.sex = self.sex;
+            userTable.birthday = birthday;
+            userTable.isSendToServer = 0;
+            
+           
+            [realm commitWriteTransaction];
+    
+            
+            NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                            [self checkStringToNull:userTable.last_name],@"last_name",
+                                            [self checkStringToNull:userTable.first_name],@"first_name",
+                                            [self checkStringToNull:userTable.last_name_inter],@"last_name_inter",
+                                            [self checkStringToNull:userTable.first_name_inter],@"first_name_inter",
+                                            [self checkStringToNull:userTable.sex],@"sex",
+                                            [self checkStringToNull:userTable.email],@"email",
+                                            [self checkStringToNull:userTable.user_comment],@"user_comment",
+                                            [self checkStringToNull:userTable.is_public_contacts],@"is_public_contacts",
+                                            [self checkStringToNull:userTable.country_id],@"country_id",
+                                            [self checkStringToNull:userTable.city_id],@"city_id",
+                                            [self checkStringToNull:userTable.birthday],@"birthday",
+                                            [self checkStringToNull:userTable.photo],@"photo_id",nil];
+            
+            RLMResults *phoneTableDataArray = [PhonesTable allObjects];
+            for(int p = 0; p<phoneTableDataArray.count; p++){
+                PhonesTable * phoneTableDb = [phoneTableDataArray objectAtIndex:p];
+                NSString * phoneResult = [NSString stringWithFormat:@"phones[%@]",phoneTableDb.phoneID];
+                [params setValue:phoneTableDb.phoneNumber forKey:phoneResult];
+            }
+            
+            RLMResults *proffesionTableDataArray = [ProfessionsTable allObjects];
+            for(int pro = 0; pro<proffesionTableDataArray.count; pro++){
+                ProfessionsTable * profTableDb = [proffesionTableDataArray objectAtIndex:pro];
+                NSString * profResult = [NSString stringWithFormat:@"professions[%d]",pro];
+                [params setValue:profTableDb.professionID forKey:profResult];
+            }
+            
+            RLMResults *addTableDataArray = [AdditionalTable allObjects];
+            int lang = 0;
+            for(int add = 0; add<addTableDataArray.count; add++){
+                AdditionalTable * profTableDb = [addTableDataArray objectAtIndex:add];
+                
+               if ([profTableDb.additionalID rangeOfString:@"ex_languages"].location != NSNotFound) {
+                   NSError *error;
+                   NSString *pattern = @"(.*)\\[(.*)\\]";
+                   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                                          options:NSRegularExpressionCaseInsensitive
+                                                                                            error:&error];
+                   NSString *resultLanguage = [regex stringByReplacingMatchesInString:profTableDb.additionalID
+                                                                  options:0
+                                                                    range:NSMakeRange(0, [profTableDb.additionalID length])
+                                                             withTemplate:[NSString stringWithFormat:@"$1[%d]",lang]];
+                   [params setValue:profTableDb.additionalValue forKey:resultLanguage];
+                   lang = lang+1;
+                   
+               }else{
+                   [params setValue:profTableDb.additionalValue forKey:profTableDb.additionalID];
+               }
+                
+                
+                
+                
+            }
+            
+
+                    [self.apiManager postDataFromSeverWithMethod:@"account.saveProfileInfo" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                        NSLog(@"RESPONSE %@",response);
+                        if([response objectForKey:@"error_code"]){
+                            [self deleteActivitiIndicator];
+                            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                                  [response objectForKey:@"error_msg"]);
+                            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                            
+                            
+                            
+                        }else{
+                            
+                            if([response isKindOfClass:[NSDictionary class]]){
+                                NSDictionary * dict = [response objectForKey:@"response"];
+                                NSString * status = [dict objectForKey:@"status"];
+                                if([status integerValue] == 10){
+                                    NSLog(@"SEND OK");
+                                    [realm beginWriteTransaction];
+                                    
+                                    
+                                    userTable.isSendToServer = @"1";
+                
+                                
+                                    [realm commitWriteTransaction];
+                                    UIViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"KinoproViewController"];
+                                    [self.navigationController pushViewController:detail animated:YES];
+                                }
+                            }
+
+                        }
+                    }];
+            
+        }
+        
+       
+            
+        
+        
+        
+    }
+    
+
     
     
 }

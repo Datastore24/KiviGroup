@@ -80,6 +80,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+    
+    if(profTableDataArray.count>0){
+        
+        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        userTable.isSendToServer = @"0";
+        [realm commitWriteTransaction];
+        
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.delegate changeButtonText:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
