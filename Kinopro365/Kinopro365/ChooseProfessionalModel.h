@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray * mainArrayData;
 @property (strong, nonatomic) NSMutableString * professianString;
 - (void) reloadTable;
+- (void) addObjectToDataArray:(NSDictionary *) dict finish:(BOOL) isFinish;
 - (void) creationStringWithString: (NSString*) string andChooseParams: (BOOL) chooseParams andString: (NSMutableString *) proffesianString;
 
 
@@ -24,7 +25,7 @@
 @interface ChooseProfessionalModel : NSObject
 @property (assign, nonatomic) id <ChooseProfessionalModelDelegate> delegate;
 
-+ (NSArray*) getArrayToTableView;
-- (void) getProfessionalArrayToTableView;
 
+- (void) getProfessionalArrayToTableView;
+- (void) getArrayToTableView;
 @end

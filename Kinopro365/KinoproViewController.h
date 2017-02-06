@@ -16,6 +16,7 @@
 @interface KinoproViewController : MainViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (IBAction)leftSideButtonMenu:(id)sender;
+@property (strong, nonatomic) NSMutableArray * arrayData;
 
 
 @end

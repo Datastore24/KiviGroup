@@ -267,8 +267,12 @@ replacementString:(NSString *)string {
 //        NSString * birthday = [DateTimeMethod convertDateStringToFormat:self.buttonBirthday.titleLabel.text
 //                                                            startFormat:@"dd MMMM yyyy" endFormat:@"yyyy-MM-dd"];
         
-        
-        userTable.birthday = [userInfo objectForKey:@"birthday"];
+        if([userInfo objectForKey:@"birthday"] != [NSNull null ]){
+             userTable.birthday = [userInfo objectForKey:@"birthday"];
+        }else{
+            userTable.birthday = @"";
+        }
+       
 
         
         if([[userInfo objectForKey:@"city"] isKindOfClass:[NSDictionary class]]){
@@ -292,13 +296,27 @@ replacementString:(NSString *)string {
         }
         
         
-            userTable.email = [userInfo objectForKey:@"email"];
-            userTable.first_name = [userInfo objectForKey:@"first_name"];
-            userTable.first_name_inter = [userInfo objectForKey:@"first_name_inter"];
-            userTable.is_public_contacts = [userInfo objectForKey:@"is_public_contacts"];
-            userTable.last_name = [userInfo objectForKey:@"last_name"];
-            userTable.last_name_inter = [userInfo objectForKey:@"last_name_inter"];
-            userTable.sex = [userInfo objectForKey:@"sex"];
+            userTable.email = [self checkIdToNull:
+                               [userInfo objectForKey:@"email"]] ;
+            userTable.first_name = [self checkIdToNull:
+                                    [userInfo objectForKey:@"first_name"]];
+            userTable.first_name_inter = [self checkIdToNull:
+                                          [userInfo objectForKey:@"first_name_inter"]];
+        NSString * stringIsPublicContact = [self checkIdToNull:
+                                            [userInfo objectForKey:@"is_public_contacts"]];
+            if( stringIsPublicContact.length == 0){
+              userTable.is_public_contacts = @"0";
+            }else{
+              userTable.is_public_contacts = [userInfo objectForKey:@"is_public_contacts"];
+            }
+            
+            userTable.last_name = [self checkIdToNull:
+                                   [userInfo objectForKey:@"last_name"]];
+            userTable.last_name_inter = [self checkIdToNull:
+                                         [userInfo objectForKey:@"last_name_inter"]];
+            userTable.sex = [self checkIdToNull:
+                             [userInfo objectForKey:@"sex"]];
+        
             userTable.isSendToServer = @"1";
         
         
@@ -312,7 +330,7 @@ replacementString:(NSString *)string {
             userTable.photo = @"";
         }
 
-            userTable.user_comment = [userInfo objectForKey:@"user_comment"];
+            userTable.user_comment = [self checkIdToNull: [userInfo objectForKey:@"user_comment"]];
          [realm commitWriteTransaction];
         
         AdditionalTable * addTable = [[AdditionalTable alloc] init];
