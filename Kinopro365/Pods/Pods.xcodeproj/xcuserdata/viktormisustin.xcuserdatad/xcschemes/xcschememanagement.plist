@@ -8,61 +8,93 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>FBSDKShareKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Motis.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>NYAlertViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods-Kinopro365.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1063B2DD58A3D208230491B21F5AACC6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2FEEDB74125ADE6F9618806825842FE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,6 +119,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6D92808DEC431E5F65895925B1F38768</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>78D29FDDA61F65D7244C402E10584DB5</key>
 		<dict>
 			<key>primary</key>
@@ -107,7 +144,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C5A05E1B3AFFD3210D42B20C26BCD3C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CDA73F4D9CE4FF0DD907BF739A44F823</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D311C7356114BCE79974C81C397A2AA9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

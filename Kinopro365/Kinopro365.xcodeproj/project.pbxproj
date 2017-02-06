@@ -27,6 +27,7 @@
 		FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */; };
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
 		FF533E1A1E41E5EF003A5E90 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF533E191E41E5EF003A5E90 /* TestViewController.m */; };
+		FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */; };
 		FF68933B1E0D4FDC0022EE7D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68933A1E0D4FDC0022EE7D /* Photos.framework */; };
 		FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF331E0E696B0002FBBC /* HMAlbum.m */; };
 		FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF351E0E696B0002FBBC /* HMAlbumTableViewCell.m */; };
@@ -121,6 +122,8 @@
 		FF25B9E81DFAF72000D59716 /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
 		FF533E181E41E5EF003A5E90 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		FF533E191E41E5EF003A5E90 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		FF5FC59A1E48A0780080B20D /* PhotoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailView.h; sourceTree = "<group>"; };
+		FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailView.m; sourceTree = "<group>"; };
 		FF68933A1E0D4FDC0022EE7D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		FF88DF321E0E696B0002FBBC /* HMAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAlbum.h; sourceTree = "<group>"; };
 		FF88DF331E0E696B0002FBBC /* HMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAlbum.m; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */,
 				FFAEFF491E4897E30031AF69 /* PhotoDetailsModel.h */,
 				FFAEFF4A1E4897E30031AF69 /* PhotoDetailsModel.m */,
+				FF5FC59A1E48A0780080B20D /* PhotoDetailView.h */,
+				FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */,
 			);
 			name = PhotoDetails;
 			sourceTree = "<group>";
@@ -745,6 +750,7 @@
 				FF533E1A1E41E5EF003A5E90 /* TestViewController.m in Sources */,
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
 				FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */,
+				FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
