@@ -62,6 +62,11 @@
 		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
 		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
 		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
+		FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF401E4884A50031AF69 /* VideoDetailsController.m */; };
+		FFAEFF441E488CFE0031AF69 /* VideoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF431E488CFE0031AF69 /* VideoDetailView.m */; };
+		FFAEFF481E4897550031AF69 /* PhotoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */; };
+		FFAEFF4B1E4897E30031AF69 /* PhotoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF4A1E4897E30031AF69 /* PhotoDetailsModel.m */; };
+		FFAEFF4E1E4897F00031AF69 /* VideoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */; };
 		FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBC2C741E3779E400B1C064 /* AddParamsView.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
@@ -174,6 +179,16 @@
 		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
 		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
+		FFAEFF3F1E4884A50031AF69 /* VideoDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailsController.h; sourceTree = "<group>"; };
+		FFAEFF401E4884A50031AF69 /* VideoDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailsController.m; sourceTree = "<group>"; };
+		FFAEFF421E488CFE0031AF69 /* VideoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailView.h; sourceTree = "<group>"; };
+		FFAEFF431E488CFE0031AF69 /* VideoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailView.m; sourceTree = "<group>"; };
+		FFAEFF461E4897550031AF69 /* PhotoDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailsController.h; sourceTree = "<group>"; };
+		FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailsController.m; sourceTree = "<group>"; };
+		FFAEFF491E4897E30031AF69 /* PhotoDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailsModel.h; sourceTree = "<group>"; };
+		FFAEFF4A1E4897E30031AF69 /* PhotoDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailsModel.m; sourceTree = "<group>"; };
+		FFAEFF4C1E4897F00031AF69 /* VideoDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailsModel.h; sourceTree = "<group>"; };
+		FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailsModel.m; sourceTree = "<group>"; };
 		FFBC2C731E3779E400B1C064 /* AddParamsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsView.h; sourceTree = "<group>"; };
 		FFBC2C741E3779E400B1C064 /* AddParamsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsView.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,6 +379,8 @@
 				FFFD1A441E092FC900626219 /* AddInformation */,
 				FF90ED271E03C04900094F6D /* ChooseProfession */,
 				FFFD1A481E09486B00626219 /* AddParams */,
+				FFAEFF451E4897110031AF69 /* PhotoDetails */,
+				FFAEFF3E1E48847D0031AF69 /* VideoDetails */,
 			);
 			name = PersonalData;
 			sourceTree = "<group>";
@@ -430,6 +447,30 @@
 				FF533E191E41E5EF003A5E90 /* TestViewController.m */,
 			);
 			name = Kinosfera;
+			sourceTree = "<group>";
+		};
+		FFAEFF3E1E48847D0031AF69 /* VideoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FFAEFF3F1E4884A50031AF69 /* VideoDetailsController.h */,
+				FFAEFF401E4884A50031AF69 /* VideoDetailsController.m */,
+				FFAEFF421E488CFE0031AF69 /* VideoDetailView.h */,
+				FFAEFF431E488CFE0031AF69 /* VideoDetailView.m */,
+				FFAEFF4C1E4897F00031AF69 /* VideoDetailsModel.h */,
+				FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */,
+			);
+			name = VideoDetails;
+			sourceTree = "<group>";
+		};
+		FFAEFF451E4897110031AF69 /* PhotoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FFAEFF461E4897550031AF69 /* PhotoDetailsController.h */,
+				FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */,
+				FFAEFF491E4897E30031AF69 /* PhotoDetailsModel.h */,
+				FFAEFF4A1E4897E30031AF69 /* PhotoDetailsModel.m */,
+			);
+			name = PhotoDetails;
 			sourceTree = "<group>";
 		};
 		FFDE8B891DDDC45F00F937BD = {
@@ -673,10 +714,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
+				FFAEFF441E488CFE0031AF69 /* VideoDetailView.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FF88DF4D1E0E696B0002FBBC /* HMImageGridCell.m in Sources */,
 				FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */,
+				FFAEFF4B1E4897E30031AF69 /* PhotoDetailsModel.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* KinoproViewController.m in Sources */,
+				FFAEFF481E4897550031AF69 /* PhotoDetailsController.m in Sources */,
 				AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */,
 				FF88DF4F1E0E696B0002FBBC /* HMImageGridViewLayout.m in Sources */,
 				FF8EDAF01E41CA7E0051D88F /* KinosferaCell.m in Sources */,
@@ -695,10 +739,12 @@
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
 				ADED89E31E37B0EA00D74761 /* CustomButton.m in Sources */,
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
+				FFAEFF4E1E4897F00031AF69 /* VideoDetailsModel.m in Sources */,
 				FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */,
 				FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */,
 				FF533E1A1E41E5EF003A5E90 /* TestViewController.m in Sources */,
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
+				FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
