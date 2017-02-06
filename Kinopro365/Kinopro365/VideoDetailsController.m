@@ -31,7 +31,7 @@
     videoDetailsModel.delegate = self;
     [videoDetailsModel getVideoArrayWithOffset:@"0" andCount:@"1000"];
     
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +45,10 @@
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)actionButtonAddVideo:(UIBarButtonItem *)sender {
+        [self pushCountryControllerWithIdentifier:@"VideoViewController"];
 }
 
 #pragma mark - VideoDetailsModelDelegate

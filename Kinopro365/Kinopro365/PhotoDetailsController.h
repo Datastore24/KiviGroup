@@ -10,6 +10,13 @@
 
 @interface PhotoDetailsController : MainViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *buttonConfDelete;
+
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
+- (IBAction)actionButtonAddPhoto:(UIBarButtonItem *)sender;
+- (IBAction)actionDeleteButton:(UIBarButtonItem *)sender;
+- (IBAction)actionButtonConfDelete:(UIButton *)sender;
 
 @end

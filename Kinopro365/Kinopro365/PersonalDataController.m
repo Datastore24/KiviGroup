@@ -792,7 +792,7 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonVideo:(UIButton *)sender {
-//    [self pushCountryControllerWithIdentifier:@"VideoViewController"];
+
     [self pushCountryControllerWithIdentifier:@"VideoDetailsController"];
 
 }
