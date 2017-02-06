@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F58CF3B268C937FF221EC44C97C18A9F'
-               BlueprintName = 'FBSDKShareKit'
+               BlueprintIdentifier = '6D92808DEC431E5F65895925B1F38768'
+               BlueprintName = 'youtube-ios-player-helper'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libFBSDKShareKit.a'>
+               BuildableName = 'libyoutube-ios-player-helper.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
