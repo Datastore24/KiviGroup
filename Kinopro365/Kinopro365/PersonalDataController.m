@@ -736,18 +736,7 @@ replacementString:(NSString *)string {
         self.selectedAssets = selectedAssets;
         self.labelCountPhoto.text = [NSString stringWithFormat:@"%lu из 10", (unsigned long)self.images.count];
         
-        for(int i=0; i<self.images.count; i++){
-            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     @"1",@"add_to_profile",nil];
-            
-            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
-                
-                if(![response isKindOfClass:[NSDictionary class]]){
-                   
-                    NSLog(@"Загрузить фото не удалось");
-                }
-            }];
-        }
+        
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

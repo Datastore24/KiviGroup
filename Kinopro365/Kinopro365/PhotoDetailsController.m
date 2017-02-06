@@ -10,6 +10,7 @@
 #import "PhotoDetailsModel.h"
 #import "HMImagePickerController.h"
 #import "PhotoDetailView.h"
+#import "APIManger.h"
 
 @interface PhotoDetailsController () <PhotoDetailsModelDelegate, HMImagePickerControllerDelegate, PhotoDetailViewDelegate>
 
@@ -22,6 +23,7 @@
 @property (assign, nonatomic) BOOL actionButton; //если YES фото переходят в режим редактирования
 @property (assign, nonatomic) NSInteger countDelete; //Колличество выбранных объектов на удаление
 @property (strong, nonatomic) NSMutableArray *arrayDelete; //Массив для удаления объектов
+@property (strong, nonatomic) APIManger * apiManager;
 
 @end
 
@@ -45,6 +47,8 @@
     PhotoDetailsModel * photoDetailsModel = [[PhotoDetailsModel alloc] init];
     photoDetailsModel.delegate = self;
     [photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
+    
+    self.apiManager = [[APIManger alloc] init];
     
     self.x = 0;
     self.y = 0;
@@ -116,29 +120,35 @@
     NSLog(@"%@", self.images);
  
         
-//        for(int i=0; i<self.images.count; i++){
-//            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                                     @"1",@"add_to_profile",nil];
+        for(int i=0; i<self.images.count; i++){
+            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     @"1",@"add_to_profile",nil];
     
-//            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
-//                
-//                if(![response isKindOfClass:[NSDictionary class]]){
-//                    
-//                    NSLog(@"Загрузить фото не удалось");
-//                }
-//            }];
-//        }
-//    }
-    
-    for (UIView * view in self.mainScrollView.subviews) {
-        [view removeFromSuperview];
-    }
-    self.x = 0;
-    self.y = 0;
-    
-    [self creationViews];
+            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
+                
+                if(![response isKindOfClass:[NSDictionary class]]){
+                    
+                    NSLog(@"Загрузить фото не удалось");
+                }
+                if(i == self.images.count - 1){
+                    
+                    for (UIView * view in self.mainScrollView.subviews) {
+                        [view removeFromSuperview];
+                    }
+                    self.x = 0;
+                    self.y = 0;
+                    
+                    [self creationViews];
+                    
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    
+                }
+            }];
+            
+            
+        }
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark - CreationvViews
