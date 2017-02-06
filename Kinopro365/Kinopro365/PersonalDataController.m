@@ -19,6 +19,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "APIManger.h"
 #import "KinoproViewController.h"
+#import "VideoDetailsController.h"
+#import "PhotoDetailsController.h"
 
 #import "PhonesTable.h"
 #import "ProfessionsTable.h"
@@ -778,17 +780,21 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonPhoto:(UIButton *)sender {
-    HMImagePickerController *picker = [[HMImagePickerController alloc] initWithSelectedAssets:self.selectedAssets];
-    picker.pickerDelegate = self;
-    picker.targetSize = CGSizeMake(600, 600);
-    picker.maxPickerCount = 10 - self.images.count;
+//    HMImagePickerController *picker = [[HMImagePickerController alloc] initWithSelectedAssets:self.selectedAssets];
+//    picker.pickerDelegate = self;
+//    picker.targetSize = CGSizeMake(600, 600);
+//    picker.maxPickerCount = 10 - self.images.count;
+//    
+//    [self presentViewController:picker animated:YES completion:nil];
     
-    [self presentViewController:picker animated:YES completion:nil];
+    [self pushCountryControllerWithIdentifier:@"PhotoDetailsController"];
 
 }
 
 - (IBAction)actionButtonVideo:(UIButton *)sender {
-    [self pushCountryControllerWithIdentifier:@"VideoViewController"];
+//    [self pushCountryControllerWithIdentifier:@"VideoViewController"];
+    [self pushCountryControllerWithIdentifier:@"VideoDetailsController"];
+
 }
 
 - (IBAction)actionButtonAddInfo:(UIButton *)sender {
