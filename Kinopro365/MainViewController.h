@@ -34,6 +34,7 @@
 - (void) deleteActivitiIndicator;
 
 -(NSString *) checkStringToNull:(NSString *) string;
+-(NSString *) checkIdToNull:(id) string;
 
 //Получение языка по ID
 -(NSDictionary *) getLanguageNameByID:(NSString *) langID;

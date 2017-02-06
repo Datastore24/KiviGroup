@@ -12,9 +12,11 @@
 #import "KinoproSearchController.h"
 #import "TestViewController.h"
 
-@interface KinoproViewController ()
+@interface KinoproViewController () <ChooseProfessionalModelDelegate>
 
-@property (strong, nonatomic) NSArray * arrayData;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -38,8 +40,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.arrayData = [NSMutableArray array];
+    ChooseProfessionalModel * chooseProfModel = [[ChooseProfessionalModel alloc] init];
+    chooseProfModel.delegate = self;
+    [chooseProfModel getArrayToTableView];
+   
     
-    self.arrayData = [ChooseProfessionalModel getArrayToTableView];
+}
+
+-(void) reloadTableKinosfera{
+    NSLog(@"RELOAD");
+    
+    
+    [self.tableView reloadData];
+}
+
+-(void) addObjectToDataArray:(NSDictionary *) dict finish:(BOOL) isFinish {
+    if(isFinish){
+        [self.arrayData addObject:dict];
+        [self reloadTableKinosfera];
+    }else{
+        [self.arrayData addObject:dict];
+    }
+    
+    NSLog(@"ARRAY %@",self.arrayData);
     
 }
 

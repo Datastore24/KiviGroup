@@ -419,6 +419,14 @@
     }
 }
 
+-(NSString *) checkIdToNull:(id) string{
+    if(string == [NSNull null]){
+        return @"";
+    }else{
+        return string;
+    }
+}
+
 
 
 -(NSDictionary *) getLanguageNameByID:(NSString *) langID{
