@@ -73,6 +73,12 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+    [self loadViewCustom];
+    
+}
+
+-(void) loadViewCustom {
+    
     [self createActivitiIndicatorAlertWithView];
     
     [self.photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
@@ -119,6 +125,7 @@
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
     
     NSLog(@"%@", self.arrayDelete);
+    [self.photoDetailsModel deletePhotos:self.arrayDelete];
     
     
 }

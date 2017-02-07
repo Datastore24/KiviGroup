@@ -16,6 +16,7 @@
 
 - (void) loadPhotos: (NSArray *) array;
 - (void) desableActivityIndicator;
+- (void) loadViewCustom;
 
 @end
 
@@ -24,5 +25,6 @@
 @property (assign, nonatomic) id <PhotoDetailsModelDelegate> delegate;
 
 - (void) getPhotosArrayWithOffset: (NSString *) offset andCount: (NSString *) count;
+- (void) deletePhotos:(NSMutableArray *) arrayView;
 
 @end

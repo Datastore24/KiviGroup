@@ -7,6 +7,7 @@
 //
 
 #import "PhotoDetailsModel.h"
+#import "PhotoDetailView.h"
 
 @implementation PhotoDetailsModel
 
@@ -34,6 +35,33 @@
         
     }];
     
+}
+
+-(void) deletePhotos:(NSMutableArray *) arrayView{
+    APIManger * apiManager = [[APIManger alloc] init];
+    for (int i=0; i<arrayView.count; i++){
+        PhotoDetailView * detailView = [arrayView objectAtIndex:i];
+    
+        NSString * stringID = detailView.stringID;
+        NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 stringID,@"id", nil];
+        NSLog(@"PARAMS PHOTOS %@",params);
+        [apiManager getDataFromSeverWithMethod:@"photo.delete" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+             NSLog(@"RESP PHOTOS %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+            }
+        }];
+        
+        if(i == arrayView.count - 1){
+            [self.delegate desableActivityIndicator];
+            [self.delegate loadViewCustom];
+        }
+        
+    }
 }
 
 @end
