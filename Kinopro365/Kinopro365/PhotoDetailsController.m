@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSArray * images;
 @property (nonatomic) NSArray * selectedAssets;
+@property (strong, nonatomic) PhotoDetailsModel * photoDetailsModel;
 
 @property (assign, nonatomic) NSInteger x; //-----------
 @property (assign, nonatomic) NSInteger y; //Числовые параметры для отрисовки таблицы
@@ -24,6 +25,10 @@
 @property (assign, nonatomic) NSInteger countDelete; //Колличество выбранных объектов на удаление
 @property (strong, nonatomic) NSMutableArray *arrayDelete; //Массив для удаления объектов
 @property (strong, nonatomic) APIManger * apiManager;
+
+@property (strong, nonatomic) NSArray * arrayData;
+
+@property (strong, nonatomic) PhotoDetailView * imageView;
 
 @end
 
@@ -40,13 +45,20 @@
     self.buttonConfDelete.layer.cornerRadius = 5;
     self.buttonConfDelete.alpha = 0.f;
     
+    self.imageView = [[PhotoDetailView alloc] initWithCustomFrame:
+                                   CGRectMake(0.f, 64.f, self.view.frame.size.width,
+                                              self.view.frame.size.height - 64.f)];
+//    self.imageView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:self.imageView];
+    self.imageView.alpha = 0.f;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PhotoDetailsModel * photoDetailsModel = [[PhotoDetailsModel alloc] init];
-    photoDetailsModel.delegate = self;
-    [photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
+    self.photoDetailsModel = [[PhotoDetailsModel alloc] init];
+    self.photoDetailsModel.delegate = self;
+    
     
     self.apiManager = [[APIManger alloc] init];
     
@@ -56,6 +68,17 @@
     self.countDelete = 0;
     self.arrayDelete = [NSMutableArray array];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    [self createActivitiIndicatorAlertWithView];
+    
+    [self.photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
+    
+    [self creationViews];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +118,14 @@
 
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
     
+    NSLog(@"%@", self.arrayDelete);
+    
+    
+}
+
+- (void) desableActivityIndicator {
+    
+    [self deleteActivitiIndicator];
     
 }
 
@@ -103,6 +134,11 @@
 - (void) loadPhotos: (NSArray *) array{
     
     NSLog(@"ARRAY PHOTOS %@",array);
+    
+    self.arrayData = array;
+    
+    
+    [self creationViews];
     
 }
 
@@ -114,7 +150,7 @@
     
 
         self.images = images;
-        self.selectedAssets = selectedAssets;
+//        self.selectedAssets = selectedAssets;
     
     
     NSLog(@"%@", self.images);
@@ -132,11 +168,7 @@
                 }
                 if(i == self.images.count - 1){
                     
-                    for (UIView * view in self.mainScrollView.subviews) {
-                        [view removeFromSuperview];
-                    }
-                    self.x = 0;
-                    self.y = 0;
+                    
                     
                     [self creationViews];
                     
@@ -155,8 +187,18 @@
 
 - (void) creationViews {
     
-    for (int i = 0; i < self.images.count; i++) {
-        PhotoDetailView * view = [[PhotoDetailView alloc] initWithImage:[self.images objectAtIndex:i]
+    for (UIView * view in self.mainScrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    self.x = 0;
+    self.y = 0;
+    
+    
+    for (int i = 0; i < self.arrayData.count; i++) {
+        
+        NSDictionary * dict = [self.arrayData objectAtIndex:i];
+        
+        PhotoDetailView * view = [[PhotoDetailView alloc] initWithImage:[dict objectForKey:@"url"] andID:[dict objectForKey:@"id"]
                                                                 andFrame:CGRectMake(5 + 78 * self.x, 15 + 103 * self.y, 75, 100)];
         view.delegate = self;
         
@@ -177,6 +219,16 @@
     
     if (!self.actionButton) {
         NSLog(@"%@", sender);
+        
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.imageView.imageView.image = sender.imageView.image;
+            self.imageView.alpha = 1.f;
+        }];
+        
+        
+        
+        
     } else {
         if (!sender.isBool) {
             sender.isBool = YES;

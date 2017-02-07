@@ -15,8 +15,12 @@
 
 @property (weak, nonatomic) id <PhotoDetailViewDelegate> delegate;
 @property (strong, nonatomic) UIImageView * imageViewDelete;
+@property (strong, nonatomic) NSString * stringID;
 
-- (instancetype)initWithImage: (UIImage*) image andFrame: (CGRect) frame;
+@property (strong, nonatomic) UIImageView * imageView;
+
+- (instancetype)initWithImage: (NSString*) image andID: (NSString*) id andFrame: (CGRect) frame;
+- (instancetype)initWithCustomFrame:(CGRect)frame;
 
 
 @end

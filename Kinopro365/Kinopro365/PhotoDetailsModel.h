@@ -15,6 +15,7 @@
 @required
 
 - (void) loadPhotos: (NSArray *) array;
+- (void) desableActivityIndicator;
 
 @end
 
