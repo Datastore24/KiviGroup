@@ -32,8 +32,10 @@
         
         self.stringID = stringID;
         
-        self.imageViewDelete = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - 30, self.bounds.size.height - 30, 25, 25)];
-        self.imageViewDelete.image = [UIImage imageNamed:@"mark"];
+        self.imageViewDelete = [[UIImageView alloc] initWithFrame:
+                                CGRectMake(self.bounds.size.width - 30,
+                                           self.bounds.size.height - 30, 25, 25)];
+        self.imageViewDelete.image = [UIImage imageNamed:@"dell"];
         self.imageViewDelete.alpha = 0.f;
         [self addSubview:self.imageViewDelete];
         
@@ -53,6 +55,12 @@
         self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.imageView];
         
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(self.frame.size.width - 40, 10, 30, 30);
+        [button setImage:[UIImage imageNamed:@"ImageCancelNew"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+        
     }
     return self;
 }
@@ -63,6 +71,12 @@
     
     [self.delegate actionView:self withButton:sender];
     
+}
+
+- (void) actionButton: (UIButton*) sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 0.f;
+    }];
 }
 
 @end

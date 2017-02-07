@@ -225,17 +225,10 @@
 - (void) actionView: (PhotoDetailView*) photoDetailView withButton: (CustomButton*) sender {
     
     if (!self.actionButton) {
-        NSLog(@"%@", sender);
-        
-        
         [UIView animateWithDuration:0.3 animations:^{
             self.imageView.imageView.image = sender.imageView.image;
             self.imageView.alpha = 1.f;
         }];
-        
-        
-        
-        
     } else {
         if (!sender.isBool) {
             sender.isBool = YES;
@@ -249,7 +242,6 @@
             [self.arrayDelete removeObject:photoDetailView];
         }
     }
-    
     if (self.countDelete > 0) {
         self.buttonConfDelete.alpha = 1;
     } else {
@@ -257,6 +249,7 @@
     }
     
 }
+
 
 
 
