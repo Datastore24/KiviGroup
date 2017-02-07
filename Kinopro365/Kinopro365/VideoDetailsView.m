@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.frame = frame;
+        self.backgroundColor = [UIColor grayColor];
         [self loadWithVideoId:[self createIDYouTubeWithURL:url]];
         
         self.stringID = stringID;
@@ -31,6 +32,7 @@
         self.imageViewDelete.image = [UIImage imageNamed:@"dell"];
         self.imageViewDelete.alpha = 0.f;
         [self addSubview:self.imageViewDelete];
+        
         
         
 

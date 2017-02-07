@@ -108,15 +108,37 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-            NSLog(@"RESPONSE VIDEO %@",response);
             NSDictionary * respDict = [response objectForKey:@"response"];
             NSString * videoID = [NSString stringWithFormat:@"%@",[respDict objectForKey:@"id"]];
             
             if(videoID.length !=0){
+                
+                
                 [self deleteActivitiIndicator];
-                [self showAlertWithMessageWithBlock:@"Видео успешно добавлено!" block:^{
-                    [self.navigationController popViewControllerAnimated:YES];
+                
+                NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                         videoID,@"video_id",nil];
+
+                
+                [apiManager getDataFromSeverWithMethod:@"video.addToProfile" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                    
+                    if([response objectForKey:@"error_code"]){
+                        
+                        NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                              [response objectForKey:@"error_msg"]);
+                        NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                        [self showAlertWithMessageWithBlock:@"Видео не было добавлено!" block:^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+                    }else{
+                        [self showAlertWithMessageWithBlock:@"Видео успешно добавлено!" block:^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+                    }
+                    
                 }];
+                
+                
                 
             }
         }

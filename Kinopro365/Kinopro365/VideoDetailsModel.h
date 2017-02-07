@@ -15,6 +15,8 @@
 @required
 
 - (void) loadVideo: (NSArray *) array;
+- (void) desableActivityIndicator;
+- (void) loadViewCustom;
 
 @end
 
@@ -23,5 +25,6 @@
 @property (assign, nonatomic) id <VideoDetailsModelDelegate> delegate;
 
 - (void) getVideoArrayWithOffset: (NSString *) offset andCount: (NSString *) count;
+- (void) deleteVideos:(NSMutableArray *) arrayView;
 
 @end

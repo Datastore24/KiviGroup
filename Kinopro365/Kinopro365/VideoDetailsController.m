@@ -45,7 +45,7 @@
     [super viewDidLoad];
     self.videoDetailsModel = [[VideoDetailsModel alloc] init];
     self.videoDetailsModel.delegate = self;
-    [self.videoDetailsModel getVideoArrayWithOffset:@"0" andCount:@"1000"];
+    
     
     self.actionButton = NO;
     self.countDelete = 0;
@@ -55,8 +55,26 @@
 
 }
 
+-(void) loadViewCustom {
+    
+    [self.arrayDelete removeAllObjects];
+    
+    self.countDelete = 0;
+    
+    self.buttonConfDelete.alpha = 0;
+    
+    [self createActivitiIndicatorAlertWithView];
+    
+    [self.videoDetailsModel getVideoArrayWithOffset:@"0" andCount:@"1000"];
+    
+    [self creationViews];
+    
+}
+
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    [self loadViewCustom];
     
 }
 
@@ -67,6 +85,9 @@
 
 
 
+
+
+
 #pragma mark - Actions
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
@@ -74,6 +95,8 @@
 }
 
 - (IBAction)actionButtonAddVideo:(UIBarButtonItem *)sender {
+        self.actionButton = NO;
+    
         [self pushCountryControllerWithIdentifier:@"VideoViewController"];
 }
 
@@ -93,6 +116,8 @@
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
     
     NSLog(@"%@", self.arrayDelete);
+    [self.videoDetailsModel deleteVideos:self.arrayDelete];
+    
     
 }
 
@@ -170,6 +195,13 @@
         }
         
     }
+    [self deleteActivitiIndicator];
+}
+
+- (void) desableActivityIndicator {
+    
+    [self deleteActivitiIndicator];
+    
 }
 
 @end

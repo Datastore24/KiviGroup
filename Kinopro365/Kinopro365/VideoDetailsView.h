@@ -26,6 +26,7 @@
 @protocol VideoDetailsViewDelegate <NSObject>
 
 - (void) actionButton: (VideoDetailsView*) videoDetailsView andButton: (CustomButton*) button;
+- (void) desableActivityIndicator;
 
 @end
 
