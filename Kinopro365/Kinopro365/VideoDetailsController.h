@@ -7,11 +7,16 @@
 //
 
 #import "MainViewController.h"
+#import <youtube-ios-player-helper/YTPlayerView.h>
 
 @interface VideoDetailsController : MainViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonConfDelete;
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
 - (IBAction)actionButtonAddVideo:(UIBarButtonItem *)sender;
+- (IBAction)actionButtonDelete:(UIBarButtonItem *)sender;
+- (IBAction)actionButtonConfDelete:(UIButton *)sender;
 
 @end

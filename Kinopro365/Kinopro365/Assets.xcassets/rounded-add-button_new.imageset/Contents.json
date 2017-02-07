@@ -7,17 +7,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "mark.png"
+      "filename" : "rounded-add-button_new.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "mark@2x.png"
+      "filename" : "rounded-add-button_new@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "mark@3x.png"
+      "filename" : "rounded-add-button_new@3x.png"
     }
   ]
 }
