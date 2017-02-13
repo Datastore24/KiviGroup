@@ -290,7 +290,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="GRm-tL-Qwt">
-                        <barButtonItem key="leftBarButtonItem" image="nazad.png" style="plain" id="sho-CB-gO2">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrowLeft" style="plain" id="sho-CB-gO2">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="actionBackButton:" destination="yh4-Rf-Ain" id="GFB-gK-ut0"/>
@@ -745,26 +745,26 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ho-eC-APm" id="Ztm-tL-RUm">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LUu-oI-9IM">
-                                                    <rect key="frame" x="34" y="9" width="204" height="21.5"/>
+                                                    <rect key="frame" x="34" y="9" width="204" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lbO-yj-m6H">
-                                                    <rect key="frame" x="8.5" y="13" width="14" height="13"/>
+                                                    <rect key="frame" x="8.5" y="13" width="14" height="12.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VMd-oJ-n6C">
-                                                    <rect key="frame" x="288.5" y="13" width="18" height="13"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrowRightImage" id="VMd-oJ-n6C">
+                                                    <rect key="frame" x="296.5" y="14" width="8" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dlw-d7-cu9">
-                                                    <rect key="frame" x="236" y="9" width="45" height="20"/>
+                                                    <rect key="frame" x="236" y="11" width="45" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -789,7 +789,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="QOU-N1-Qyt">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="liB-id-pDt">
+                        <barButtonItem key="leftBarButtonItem" image="ImageButtonMenu" id="liB-id-pDt">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="leftSideButtonMenu:" destination="OSH-7J-mwl" id="xjz-au-LV6"/>
                             </connections>
@@ -802,7 +803,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9I-YH-n8d" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="-709"/>
+            <point key="canvasLocation" x="159" y="-702"/>
+        </scene>
+        <!--Profession Controller-->
+        <scene sceneID="w0H-Qs-AL9">
+            <objects>
+                <viewController storyboardIdentifier="ProfessionController" id="1ck-0V-YKq" customClass="ProfessionController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ssJ-Pa-Xnw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="o2j-6K-rOS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1ck-0V-YKq" id="3WP-6G-m0I"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lEI-9y-Puu">
+                        <barButtonItem key="leftBarButtonItem" image="nazad.png" style="plain" id="m4i-qO-9NI">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="actionBackButton:" destination="1ck-0V-YKq" id="y08-jY-bis"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="mainScrollView" destination="o2j-6K-rOS" id="1sv-fW-rC2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzF-GZ-7F7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="-698"/>
         </scene>
         <!--Kinopro Search Controller-->
         <scene sceneID="tyr-4Z-fxY">
@@ -914,11 +950,11 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="B810DAF1-8F5A-43DD-9ECD-232EEAD59B24" id="UFd-EY-JtF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="E219BBC6-F81D-4A5C-9283-EE9A815A7946" id="UFd-EY-JtF">
                                         <rect key="frame" x="172" y="160" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="B810DAF1-8F5A-43DD-9ECD-232EEAD59B24" id="RY9-jb-8of">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="E219BBC6-F81D-4A5C-9283-EE9A815A7946" id="RY9-jb-8of">
                                         <rect key="frame" x="271" y="230" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -932,7 +968,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="B810DAF1-8F5A-43DD-9ECD-232EEAD59B24" id="sms-gI-yfe">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="E219BBC6-F81D-4A5C-9283-EE9A815A7946" id="sms-gI-yfe">
                                         <rect key="frame" x="271" y="273" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -946,7 +982,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="B810DAF1-8F5A-43DD-9ECD-232EEAD59B24" id="qMl-0w-Fad">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="E219BBC6-F81D-4A5C-9283-EE9A815A7946" id="qMl-0w-Fad">
                                         <rect key="frame" x="271" y="160" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -997,21 +1033,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bo4-1y-GiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="521" y="-709"/>
-        </scene>
-        <!--Test View Controller-->
-        <scene sceneID="zeL-am-wHs">
-            <objects>
-                <viewController storyboardIdentifier="TestViewController" id="wcb-Bs-qVx" customClass="TestViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eK1-SD-ehK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QFq-Wl-XrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="887" y="-703"/>
+            <point key="canvasLocation" x="886" y="-702"/>
         </scene>
         <!--Video Details Controller-->
         <scene sceneID="hds-Mw-gmY">
@@ -1041,7 +1063,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kx7-eE-MOf">
-                        <barButtonItem key="leftBarButtonItem" image="left-arrow копия 18" id="R0q-MY-oBB">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrowLeft" id="R0q-MY-oBB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="actionButtonBack:" destination="ujf-Sx-48M" id="a0n-sa-Ags"/>
@@ -1070,7 +1092,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uH0-cX-ND0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="-704"/>
+            <point key="canvasLocation" x="1266" y="-2007"/>
         </scene>
         <!--Personal Data Controller-->
         <scene sceneID="Qaz-6v-Qc2">
@@ -1116,13 +1138,6 @@
                                             <action selector="actionButtonAddInfo:" destination="5ac-rI-Ci4" eventType="touchUpInside" id="0Qx-la-hje"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фото" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ko9-2k-DBC">
-                                        <rect key="frame" x="70" y="28" width="69" height="12"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
-                                        <color key="textColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Видео" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zzI-bZ-TOC">
                                         <rect key="frame" x="70" y="97" width="69" height="12"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -1151,13 +1166,6 @@
                                         <color key="textColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 из 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aU5-cm-yfA">
-                                        <rect key="frame" x="70" y="41" width="69" height="12"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
-                                        <color key="textColor" red="0.66576868300000003" green="0.77186614269999998" blue="0.85119801760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UsN-6d-Get">
                                         <rect key="frame" x="14" y="159" width="291" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -1172,6 +1180,13 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="параметры" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="49z-Qp-5qq">
                                         <rect key="frame" x="218" y="103" width="93" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
+                                        <color key="textColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Фото" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ko9-2k-DBC">
+                                        <rect key="frame" x="70" y="36" width="69" height="12"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
                                         <color key="textColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1438,7 +1453,6 @@
                         <outlet property="dopLabelTwo" destination="49z-Qp-5qq" id="2xB-x5-Uib"/>
                         <outlet property="imageButtonProffecional" destination="e86-vi-dwv" id="5TK-tW-fmK"/>
                         <outlet property="imageForButtonRound" destination="JVo-Fd-GZX" id="mJk-zi-reI"/>
-                        <outlet property="labelCountPhoto" destination="aU5-cm-yfA" id="iBE-1e-9oY"/>
                         <outlet property="mainTopView" destination="nQR-wJ-y8f" id="z0N-Uv-rNa"/>
                         <outlet property="textFildEmail" destination="syy-9N-jAv" id="cli-Vx-ey3"/>
                         <outlet property="textFildLastName" destination="Kty-R8-weI" id="C6T-Wg-HW0"/>
@@ -1481,7 +1495,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iJB-m5-lAT">
-                        <barButtonItem key="leftBarButtonItem" image="left-arrow копия 18" id="GLJ-UJ-HYJ">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrowLeft" id="GLJ-UJ-HYJ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="actionButtonBack:" destination="seY-gx-Wux" id="7sh-vo-Zmj"/>
@@ -1511,11 +1525,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoC-BL-atB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="-704"/>
+            <point key="canvasLocation" x="1621" y="-2007"/>
         </scene>
     </scenes>
     <resources>
-        <image name="B810DAF1-8F5A-43DD-9ECD-232EEAD59B24" width="12" height="6">
+        <image name="E219BBC6-F81D-4A5C-9283-EE9A815A7946" width="12" height="6">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1571,6 +1585,8 @@ rgq3CsoKzgrZCuIK5wrvCvIK9wsGCwoLEQsZCyYLKwstCy8LNAs8Cz8LRAtMC08LYQtkC2kAAAAAAAAC
 AQAAAAAAAABBAAAAAAAAAAAAAAAAAAALaw
 </mutableData>
         </image>
+        <image name="ImageButtonMenu" width="25" height="17"/>
+        <image name="arrowRightImage" width="8" height="14"/>
         <image name="bookmarkImage" width="20" height="19"/>
         <image name="buttonCancel" width="43" height="44"/>
         <image name="eyeImage" width="19" height="11"/>
@@ -1588,7 +1604,7 @@ AQAAAAAAAABBAAAAAAAAAAAAAAAAAAALaw
         <image name="imageButtonVideo" width="51" height="52"/>
         <image name="imageRoundOff" width="15" height="15"/>
         <image name="imageRoundOn" width="7" height="7"/>
-        <image name="left-arrow копия 18" width="10" height="19"/>
+        <image name="leftArrowLeft" width="10" height="19"/>
         <image name="likeImage" width="15" height="13"/>
         <image name="logoImage" width="375" height="667"/>
         <image name="logoLoginImage" width="181" height="39"/>

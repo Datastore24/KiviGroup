@@ -10,7 +10,7 @@
 #import "KinosferaCell.h"
 #import "ChooseProfessionalModel.h"
 #import "KinoproSearchController.h"
-#import "TestViewController.h"
+#import "ProfessionController.h"
 
 @interface KinoproViewController () <ChooseProfessionalModelDelegate>
 
@@ -29,12 +29,6 @@
     
     UILabel * customText = [[UILabel alloc]initWithTitle:@"Киносфера"];
     self.navigationItem.titleView = customText;
-    
-    UIImage *myImage = [UIImage imageNamed:@"magnifying-glass"];
-    myImage = [myImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *glassButton = [[UIBarButtonItem alloc] initWithImage:myImage style:UIBarButtonItemStylePlain
-                                                                  target:self action:@selector(actionGlassButton:)];
-    self.navigationItem.rightBarButtonItem = glassButton;
     
 }
 
@@ -120,21 +114,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    
-    
+    [self pushMethodWithIdentifier:@"ProfessionController"];
     NSLog(@"didSelectRowAtIndexPath %ld", (long)indexPath.row);
     
 }
 
 #pragma mark - Actions
 
-- (void) actionGlassButton: (UIBarButtonItem*) barButton {
-    
-    [self pushMethodWithIdentifier:@"KinoproSearchController"];
-    
-    
-}
+
 
 @end
