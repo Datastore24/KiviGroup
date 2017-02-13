@@ -79,6 +79,14 @@
 
 -(void) loadViewCustom {
     
+    [self.arrayDelete removeAllObjects];
+    
+    self.countDelete = 0;
+    
+    self.buttonConfDelete.alpha = 0;
+    
+    
+    
     [self createActivitiIndicatorAlertWithView];
     
     [self.photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
@@ -101,7 +109,7 @@
 }
 
 - (IBAction)actionButtonAddPhoto:(UIBarButtonItem *)sender {
-    
+        self.actionButton = NO;
         HMImagePickerController *picker = [[HMImagePickerController alloc] initWithSelectedAssets:self.selectedAssets];
         picker.pickerDelegate = self;
         picker.targetSize = CGSizeMake(600, 600);
@@ -124,7 +132,8 @@
 
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
     
-    NSLog(@"%@", self.arrayDelete);
+    NSLog(@"ARRAY DELETE %@", self.arrayDelete);
+    self.actionButton = NO;
     [self.photoDetailsModel deletePhotos:self.arrayDelete];
     
     
@@ -140,7 +149,6 @@
 
 - (void) loadPhotos: (NSArray *) array{
     
-    NSLog(@"ARRAY PHOTOS %@",array);
     
     self.arrayData = array;
     
@@ -164,24 +172,41 @@
  
         
         for(int i=0; i<self.images.count; i++){
-            NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                     @"1",@"add_to_profile",nil];
-    
-            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:params andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
+            
+            [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:nil andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
+                
+                NSLog(@"PHOTOSAVE %@",response);
                 
                 if(![response isKindOfClass:[NSDictionary class]]){
                     
                     NSLog(@"Загрузить фото не удалось");
+                }else{
+                    NSDictionary * dictResponse = [response objectForKey:@"response"];
+                    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                             [dictResponse objectForKey:@"id"],@"photo_id", nil];
+                    [self.apiManager getDataFromSeverWithMethod:@"photo.addToProfile" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id responseTwo) {
+                        if([responseTwo isKindOfClass:[NSDictionary class]]){
+                            if([[responseTwo objectForKey:@"response"] integerValue] != 1){
+                                NSLog(@"Загрузить фото в профиль не удалось");
+                            }
+                            
+                            
+                        }else{
+                            NSLog(@"Загрузить фото в профиль не удалось");
+                        }
+                        
+                        if(i == self.images.count - 1){
+                            
+                            
+                            
+                            [self creationViews];
+                            
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                            
+                        }
+                    }];
                 }
-                if(i == self.images.count - 1){
-                    
-                    
-                    
-                    [self creationViews];
-                    
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    
-                }
+                
             }];
             
             
