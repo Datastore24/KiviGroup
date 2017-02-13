@@ -62,6 +62,7 @@
 		FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2411E02EAAD007ED49F /* CountryViewController.m */; };
 		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
 		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
+		FFA1C6DA1E51BC2000B619DD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA1C6D91E51BC2000B619DD /* Media.xcassets */; };
 		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
 		FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF401E4884A50031AF69 /* VideoDetailsController.m */; };
 		FFAEFF481E4897550031AF69 /* PhotoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */; };
@@ -71,7 +72,6 @@
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
-		FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA11DDDC46000F937BD /* Assets.xcassets */; };
 		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
 		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
 		FFDE8BBA1DDEC7BA00F937BD /* KinoproViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB91DDEC7BA00F937BD /* KinoproViewController.m */; };
@@ -180,6 +180,7 @@
 		FF9DE2451E02EB46007ED49F /* CoutryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoutryModel.m; sourceTree = "<group>"; };
 		FF9DE2471E03086C007ED49F /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
+		FFA1C6D91E51BC2000B619DD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
 		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
 		FFAEFF3F1E4884A50031AF69 /* VideoDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailsController.h; sourceTree = "<group>"; };
@@ -197,7 +198,6 @@
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFDE8B991DDDC46000F937BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FFDE8B9F1DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFDE8BA11DDDC46000F937BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDE8BA41DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDE8BA61DDDC46000F937BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ../MenuViewController.h; sourceTree = "<group>"; };
@@ -526,9 +526,9 @@
 			children = (
 				ADF9C7411E3A19EC0085F993 /* DateTimeMethod.h */,
 				ADF9C7421E3A19EC0085F993 /* DateTimeMethod.m */,
+				FFA1C6D91E51BC2000B619DD /* Media.xcassets */,
 				FF9DE2471E03086C007ED49F /* SingleTone.h */,
 				FF9DE2481E03086C007ED49F /* SingleTone.m */,
-				FFDE8BA11DDDC46000F937BD /* Assets.xcassets */,
 				FFDE8BA61DDDC46000F937BD /* Info.plist */,
 				FFDE8B961DDDC46000F937BD /* main.m */,
 				FF25B97F1DF9808B00D59716 /* Macros.h */,
@@ -650,13 +650,13 @@
 				FF90ED431E03D79F00094F6D /* gamersImage.png in Resources */,
 				FF25B9DD1DFAB37000D59716 /* Istok-BoldItalic.ttf in Resources */,
 				FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */,
+				FFA1C6DA1E51BC2000B619DD /* Media.xcassets in Resources */,
 				FF88DF501E0E696B0002FBBC /* HMImagePicker.bundle in Resources */,
 				FF90ED401E03D79F00094F6D /* choreographersImage.png in Resources */,
 				FF90ED411E03D79F00094F6D /* designersImage.png in Resources */,
 				FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */,
 				FF90ED3F1E03D79F00094F6D /* actorsImage.png in Resources */,
 				FF90ED491E03DB8100094F6D /* activ_galka.png in Resources */,
-				FFDE8BA21DDDC46000F937BD /* Assets.xcassets in Resources */,
 				FF90ED451E03D79F00094F6D /* operatorsImage.png in Resources */,
 				FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */,
 				FFFD1A4D1E09539800626219 /* arrowForAge.png in Resources */,
@@ -890,6 +890,7 @@
 			baseConfigurationReference = 03BE460E5AEF85BD0CA12475 /* Pods-Kinopro365.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6598R4ULA4;
 				INFOPLIST_FILE = Kinopro365/Info.plist;
@@ -904,6 +905,7 @@
 			baseConfigurationReference = 57B581C766F205CB0C49FF04 /* Pods-Kinopro365.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6598R4ULA4;
 				INFOPLIST_FILE = Kinopro365/Info.plist;
