@@ -26,7 +26,6 @@
 		FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DA1DFAB35100D59716 /* Istok-Italic.ttf */; };
 		FF25B9DF1DFAB37900D59716 /* Istok-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */; };
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
-		FF533E1A1E41E5EF003A5E90 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF533E191E41E5EF003A5E90 /* TestViewController.m */; };
 		FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */; };
 		FF68933B1E0D4FDC0022EE7D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68933A1E0D4FDC0022EE7D /* Photos.framework */; };
 		FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF331E0E696B0002FBBC /* HMAlbum.m */; };
@@ -63,6 +62,12 @@
 		FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2451E02EB46007ED49F /* CoutryModel.m */; };
 		FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9DE2481E03086C007ED49F /* SingleTone.m */; };
 		FFA1C6DA1E51BC2000B619DD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFA1C6D91E51BC2000B619DD /* Media.xcassets */; };
+		FFA1C6DF1E51C72500B619DD /* ProfessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1C6DE1E51C72500B619DD /* ProfessionController.m */; };
+		FFA1C6E21E51C73800B619DD /* ProfessionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1C6E11E51C73800B619DD /* ProfessionCellView.m */; };
+		FFA1C6E51E51C94600B619DD /* UIView+BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1C6E41E51C94600B619DD /* UIView+BorderView.m */; };
+		FFA1C6E81E51D17F00B619DD /* ProfessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1C6E71E51D17F00B619DD /* ProfessionModel.m */; };
+		FFA1C6EA1E51D4FF00B619DD /* imagePhotoProf.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA1C6E91E51D4FF00B619DD /* imagePhotoProf.png */; };
+		FFA1C6ED1E51E1D000B619DD /* ViewForScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA1C6EC1E51E1D000B619DD /* ViewForScroll.m */; };
 		FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */; };
 		FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF401E4884A50031AF69 /* VideoDetailsController.m */; };
 		FFAEFF481E4897550031AF69 /* PhotoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF471E4897550031AF69 /* PhotoDetailsController.m */; };
@@ -120,8 +125,6 @@
 		FF25B9DB1DFAB35100D59716 /* Istok-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Istok-Regular.ttf"; path = "Fonts/Istok-Regular.ttf"; sourceTree = "<group>"; };
 		FF25B9E71DFAF72000D59716 /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
 		FF25B9E81DFAF72000D59716 /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
-		FF533E181E41E5EF003A5E90 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		FF533E191E41E5EF003A5E90 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		FF5FC59A1E48A0780080B20D /* PhotoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailView.h; sourceTree = "<group>"; };
 		FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailView.m; sourceTree = "<group>"; };
 		FF68933A1E0D4FDC0022EE7D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -181,6 +184,17 @@
 		FF9DE2471E03086C007ED49F /* SingleTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTone.h; sourceTree = "<group>"; };
 		FF9DE2481E03086C007ED49F /* SingleTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTone.m; sourceTree = "<group>"; };
 		FFA1C6D91E51BC2000B619DD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		FFA1C6DD1E51C72500B619DD /* ProfessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionController.h; sourceTree = "<group>"; };
+		FFA1C6DE1E51C72500B619DD /* ProfessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionController.m; sourceTree = "<group>"; };
+		FFA1C6E01E51C73800B619DD /* ProfessionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionCellView.h; sourceTree = "<group>"; };
+		FFA1C6E11E51C73800B619DD /* ProfessionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionCellView.m; sourceTree = "<group>"; };
+		FFA1C6E31E51C94600B619DD /* UIView+BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderView.h"; sourceTree = "<group>"; };
+		FFA1C6E41E51C94600B619DD /* UIView+BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BorderView.m"; sourceTree = "<group>"; };
+		FFA1C6E61E51D17F00B619DD /* ProfessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionModel.h; sourceTree = "<group>"; };
+		FFA1C6E71E51D17F00B619DD /* ProfessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionModel.m; sourceTree = "<group>"; };
+		FFA1C6E91E51D4FF00B619DD /* imagePhotoProf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePhotoProf.png; sourceTree = "<group>"; };
+		FFA1C6EB1E51E1D000B619DD /* ViewForScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewForScroll.h; sourceTree = "<group>"; };
+		FFA1C6EC1E51E1D000B619DD /* ViewForScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForScroll.m; sourceTree = "<group>"; };
 		FFA8E7D91E0414DD00D541B3 /* ChooseProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProfessionViewController.h; sourceTree = "<group>"; };
 		FFA8E7DA1E0414DD00D541B3 /* ChooseProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProfessionViewController.m; sourceTree = "<group>"; };
 		FFAEFF3F1E4884A50031AF69 /* VideoDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetailsController.h; sourceTree = "<group>"; };
@@ -310,6 +324,8 @@
 		FF25B9E61DFAF6E400D59716 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FFA1C6E31E51C94600B619DD /* UIView+BorderView.h */,
+				FFA1C6E41E51C94600B619DD /* UIView+BorderView.m */,
 				FF90ED341E03D47300094F6D /* UILabel+TitleCategory.h */,
 				FF90ED351E03D47300094F6D /* UILabel+TitleCategory.m */,
 				FF25B9E71DFAF72000D59716 /* HexColors.h */,
@@ -438,6 +454,22 @@
 			name = CountryController;
 			sourceTree = "<group>";
 		};
+		FFA1C6DC1E51C6FD00B619DD /* Profession */ = {
+			isa = PBXGroup;
+			children = (
+				FFA1C6E91E51D4FF00B619DD /* imagePhotoProf.png */,
+				FFA1C6DD1E51C72500B619DD /* ProfessionController.h */,
+				FFA1C6DE1E51C72500B619DD /* ProfessionController.m */,
+				FFA1C6E01E51C73800B619DD /* ProfessionCellView.h */,
+				FFA1C6E11E51C73800B619DD /* ProfessionCellView.m */,
+				FFA1C6E61E51D17F00B619DD /* ProfessionModel.h */,
+				FFA1C6E71E51D17F00B619DD /* ProfessionModel.m */,
+				FFA1C6EB1E51E1D000B619DD /* ViewForScroll.h */,
+				FFA1C6EC1E51E1D000B619DD /* ViewForScroll.m */,
+			);
+			name = Profession;
+			sourceTree = "<group>";
+		};
 		FFA8676E1E3642C0000195DB /* Kinosfera */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,9 +477,8 @@
 				FFDE8BB91DDEC7BA00F937BD /* KinoproViewController.m */,
 				FF8EDAEE1E41CA7E0051D88F /* KinosferaCell.h */,
 				FF8EDAEF1E41CA7E0051D88F /* KinosferaCell.m */,
+				FFA1C6DC1E51C6FD00B619DD /* Profession */,
 				FF8EDAF41E41DAAB0051D88F /* KinoptoSearch */,
-				FF533E181E41E5EF003A5E90 /* TestViewController.h */,
-				FF533E191E41E5EF003A5E90 /* TestViewController.m */,
 			);
 			name = Kinosfera;
 			sourceTree = "<group>";
@@ -644,6 +675,7 @@
 				FF90ED441E03D79F00094F6D /* massActorsImage.png in Resources */,
 				FF25B9DE1DFAB37500D59716 /* Istok-Italic.ttf in Resources */,
 				FF90ED421E03D79F00094F6D /* dressersImage.png in Resources */,
+				FFA1C6EA1E51D4FF00B619DD /* imagePhotoProf.png in Resources */,
 				FF90ED461E03D79F00094F6D /* ProductionOperatorImage.png in Resources */,
 				FF90ED4A1E03DB8100094F6D /* neactiv_galka.png in Resources */,
 				FF90ED301E03C9FB00094F6D /* nazad.png in Resources */,
@@ -729,8 +761,10 @@
 				FF88DF4F1E0E696B0002FBBC /* HMImageGridViewLayout.m in Sources */,
 				FF8EDAF01E41CA7E0051D88F /* KinosferaCell.m in Sources */,
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
+				FFA1C6ED1E51E1D000B619DD /* ViewForScroll.m in Sources */,
 				ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */,
 				ADF9C7431E3A19EC0085F993 /* DateTimeMethod.m in Sources */,
+				FFA1C6DF1E51C72500B619DD /* ProfessionController.m in Sources */,
 				FFF9CB721E49E30C004D833D /* VideoDetailsView.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
@@ -742,12 +776,13 @@
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,
 				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
+				FFA1C6E81E51D17F00B619DD /* ProfessionModel.m in Sources */,
+				FFA1C6E51E51C94600B619DD /* UIView+BorderView.m in Sources */,
 				ADED89E31E37B0EA00D74761 /* CustomButton.m in Sources */,
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
 				FFAEFF4E1E4897F00031AF69 /* VideoDetailsModel.m in Sources */,
 				FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */,
 				FFFD1A471E092FFB00626219 /* AddInfoemationController.m in Sources */,
-				FF533E1A1E41E5EF003A5E90 /* TestViewController.m in Sources */,
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
 				FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */,
 				FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */,
@@ -763,6 +798,7 @@
 				ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */,
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
+				FFA1C6E21E51C73800B619DD /* ProfessionCellView.m in Sources */,
 				FF88DF541E0E696B0002FBBC /* HMSelectCounterButton.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
 				AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */,

@@ -10,7 +10,7 @@
 
 @protocol ChooseProfessionalModelDelegate <NSObject>
 
-@required
+@optional
 
 @property (strong, nonatomic) NSArray * mainArrayData;
 @property (strong, nonatomic) NSMutableString * professianString;
