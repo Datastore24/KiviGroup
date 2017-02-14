@@ -934,12 +934,7 @@ replacementString:(NSString *)string {
                    [params setValue:profTableDb.additionalValue forKey:profTableDb.additionalID];
                }
                 
-                
-                
-                
             }
-            
-
                     [self.apiManager postDataFromSeverWithMethod:@"account.saveProfileInfo" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
                         NSLog(@"RESPONSE %@",response);
                         if([response objectForKey:@"error_code"]){
@@ -947,22 +942,15 @@ replacementString:(NSString *)string {
                             NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
                                   [response objectForKey:@"error_msg"]);
                             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
-                            
-                            
-                            
+ 
                         }else{
-                            
                             if([response isKindOfClass:[NSDictionary class]]){
                                 NSDictionary * dict = [response objectForKey:@"response"];
                                 NSString * status = [dict objectForKey:@"status"];
                                 if([status integerValue] == 10){
                                     NSLog(@"SEND OK");
                                     [realm beginWriteTransaction];
-                                    
-                                    
                                     userTable.isSendToServer = @"1";
-                
-                                
                                     [realm commitWriteTransaction];
                                     UIViewController * detail = [self.storyboard instantiateViewControllerWithIdentifier:@"KinoproViewController"];
                                     [self.navigationController pushViewController:detail animated:YES];
@@ -971,19 +959,9 @@ replacementString:(NSString *)string {
 
                         }
                     }];
-            
         }
-        
-       
-            
-        
-        
-        
-    }
-    
 
-    
-    
+    }
 }
 
 - (IBAction)actionButtonMale:(id)sender {

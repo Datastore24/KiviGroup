@@ -21,7 +21,10 @@
 
 @protocol ViewForScrollDelegate <NSObject>
 
-- (void) actionMoveLeftWithView: (ViewForScroll*) viewForScroll andButton: (UIButton*) sender andArrayButtons: (NSMutableArray*) arrayButtons;
-- (void) actionMoveRightWithView: (ViewForScroll*) viewForScroll andButton: (UIButton*) sender andArrayButtons: (NSMutableArray*) arrayButtons;
+- (void) actionMoveLeftWithView: (ViewForScroll*) viewForScroll andButton: (UIButton*) sender
+                andArrayButtons: (NSMutableArray*) arrayButtons;
+- (void) actionMoveRightWithView: (ViewForScroll*) viewForScroll andButton: (UIButton*) sender
+                 andArrayButtons: (NSMutableArray*) arrayButtons;
+- (void) actionButtonLablCount: (ViewForScroll*) viewForScroll andButton: (UIButton*) sender;
 
 @end

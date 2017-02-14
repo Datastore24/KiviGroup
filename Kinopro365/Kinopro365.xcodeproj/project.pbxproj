@@ -74,6 +74,7 @@
 		FFAEFF4B1E4897E30031AF69 /* PhotoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF4A1E4897E30031AF69 /* PhotoDetailsModel.m */; };
 		FFAEFF4E1E4897F00031AF69 /* VideoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */; };
 		FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBC2C741E3779E400B1C064 /* AddParamsView.m */; };
+		FFDBB8A51E53179800C63A27 /* KinoproSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDBB8A41E53179800C63A27 /* KinoproSearchModel.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
@@ -207,6 +208,8 @@
 		FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetailsModel.m; sourceTree = "<group>"; };
 		FFBC2C731E3779E400B1C064 /* AddParamsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsView.h; sourceTree = "<group>"; };
 		FFBC2C741E3779E400B1C064 /* AddParamsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsView.m; sourceTree = "<group>"; };
+		FFDBB8A31E53179800C63A27 /* KinoproSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinoproSearchModel.h; sourceTree = "<group>"; };
+		FFDBB8A41E53179800C63A27 /* KinoproSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinoproSearchModel.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 			children = (
 				FF8EDAF11E41DAA70051D88F /* KinoproSearchController.h */,
 				FF8EDAF21E41DAA70051D88F /* KinoproSearchController.m */,
+				FFDBB8A31E53179800C63A27 /* KinoproSearchModel.h */,
+				FFDBB8A41E53179800C63A27 /* KinoproSearchModel.m */,
 			);
 			name = KinoptoSearch;
 			sourceTree = "<group>";
@@ -753,6 +758,7 @@
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FF88DF4D1E0E696B0002FBBC /* HMImageGridCell.m in Sources */,
+				FFDBB8A51E53179800C63A27 /* KinoproSearchModel.m in Sources */,
 				FF9DE2491E03086C007ED49F /* SingleTone.m in Sources */,
 				FFAEFF4B1E4897E30031AF69 /* PhotoDetailsModel.m in Sources */,
 				FFDE8BBA1DDEC7BA00F937BD /* KinoproViewController.m in Sources */,

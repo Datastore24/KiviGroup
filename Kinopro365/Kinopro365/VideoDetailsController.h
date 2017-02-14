@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonConfDelete;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonDelete;
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
 - (IBAction)actionButtonAddVideo:(UIBarButtonItem *)sender;

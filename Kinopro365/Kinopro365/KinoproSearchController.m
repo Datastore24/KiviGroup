@@ -7,8 +7,17 @@
 //
 
 #import "KinoproSearchController.h"
+#import "UITextField+CheckNumber.h"
+#import "HexColors.h"
+#import "KinoproSearchModel.h"
+#import "Macros.h"
+#import "SingleTone.h"
+#import "CountryViewController.h"
 
-@interface KinoproSearchController ()
+
+@interface KinoproSearchController () <UITextFieldDelegate, CountryViewControllerDelegate>
+
+@property (strong, nonatomic) NSArray * arrayData;
 
 @end
 
@@ -31,7 +40,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.arrayData = [KinoproSearchModel setTestArray];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,14 +53,83 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Actions
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
+
+- (IBAction)actionButtonsGender:(UIButton *)sender {
+    
+    for (UIButton * button in self.buttonsGender) {
+        if ([button isEqual:sender]) {
+            button.alpha = 1.f;
+            button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:16];
+        } else {
+            button.alpha = 0.5f;
+            button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        }
+    }
+}
+
+- (IBAction)actionButtonAgeOn:(id)sender {
+    [self showViewPickerWithButton:sender andTitl:@"Введите возраст" andArrayData:self.arrayData
+                       andKeyTitle:nil andKeyID:nil andDefValueIndex:nil];
+}
+
+- (IBAction)actionButtonAgeTo:(id)sender {
+    [self showViewPickerWithButton:sender andTitl:@"Введите возраст" andArrayData:self.arrayData
+                       andKeyTitle:nil andKeyID:nil andDefValueIndex:nil];
+}
+
+- (IBAction)actionButtonCountry:(id)sender {
+    [[SingleTone sharedManager] setCountry_citi:@"country"];
+    [self pushCountryController];
+}
+
+- (IBAction)actionButtonCity:(id)sender {
+    [[SingleTone sharedManager] setCountry_citi:@"city"];
+    [self pushCountryController];
+}
+
+- (IBAction)actionButtonAddParams:(id)sender {
+}
+
+- (IBAction)actionButtonClearFilter:(id)sender {
+}
+
+- (IBAction)actionButtonSearch:(id)sender {
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+
+        return [textField checkForRussianWordsWithTextField:textField withString:string];
+}
+
+#pragma mark - Other
+
+- (void) pushCountryController {
+    CountryViewController * detai = [self.storyboard instantiateViewControllerWithIdentifier:@"CountryViewController"];
+    detai.delegate = self;
+    [self.navigationController pushViewController:detai animated:YES];
+}
+
+
+
+
+
+
+
+
 
 @end

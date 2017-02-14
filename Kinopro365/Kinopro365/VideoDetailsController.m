@@ -101,39 +101,28 @@
 }
 
 - (IBAction)actionButtonDelete:(UIBarButtonItem *)sender {
-    
-    
     if (!self.actionButton) {
-        NSLog(@"Начинаю процесс редактирования");
+        [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
         self.actionButton = YES;
     } else {
-        NSLog(@"Заканчиваю процесс редактирования");
+        [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
         self.actionButton = NO;
     }
-    
 }
 
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
-    
-    NSLog(@"%@", self.arrayDelete);
+    self.actionButton = NO;
     [self.videoDetailsModel deleteVideos:self.arrayDelete];
-    
-    
+    [self.buttonDelete setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
 }
 
 #pragma mark - VideoDetailsModelDelegate
 
 - (void) loadVideo: (NSArray *) array{
     
-    NSLog(@"ARRAY %@",array);
-    
     self.arrayData = array;
-    
     [self creationViews];
 
-    
-
-    
 }
 
 #pragma mark - VideoDetailsViewDelegate

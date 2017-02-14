@@ -122,9 +122,11 @@
     
     if (!self.actionButton) {
         NSLog(@"Начинаю процесс редактирования");
+        [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
         self.actionButton = YES;
     } else {
         NSLog(@"Заканчиваю процесс редактирования");
+        [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
         self.actionButton = NO;
     }
     
@@ -135,6 +137,8 @@
     NSLog(@"ARRAY DELETE %@", self.arrayDelete);
     self.actionButton = NO;
     [self.photoDetailsModel deletePhotos:self.arrayDelete];
+    
+    [self.deleteButton setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
     
     
 }
