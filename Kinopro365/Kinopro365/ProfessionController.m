@@ -11,6 +11,7 @@
 #import "KinoproSearchController.h"
 #import "ViewForScroll.h"
 #import "Macros.h"
+#import "ProfessionDetailController.h"
 
 
 @interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate>
@@ -227,7 +228,7 @@
 
 - (void) actionButtonCell: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button {
     
-    NSLog(@"Hello");
+    [self pushCountryControllerWithIdentifier:@"ProfessionDetailController"];
     
 }
 

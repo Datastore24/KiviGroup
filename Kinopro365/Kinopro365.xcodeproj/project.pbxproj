@@ -75,6 +75,7 @@
 		FFAEFF4E1E4897F00031AF69 /* VideoDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAEFF4D1E4897F00031AF69 /* VideoDetailsModel.m */; };
 		FFBC2C751E3779E400B1C064 /* AddParamsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBC2C741E3779E400B1C064 /* AddParamsView.m */; };
 		FFDBB8A51E53179800C63A27 /* KinoproSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDBB8A41E53179800C63A27 /* KinoproSearchModel.m */; };
+		FFDBB8AC1E53487D00C63A27 /* ProfessionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
 		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
@@ -210,6 +211,8 @@
 		FFBC2C741E3779E400B1C064 /* AddParamsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsView.m; sourceTree = "<group>"; };
 		FFDBB8A31E53179800C63A27 /* KinoproSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinoproSearchModel.h; sourceTree = "<group>"; };
 		FFDBB8A41E53179800C63A27 /* KinoproSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinoproSearchModel.m; sourceTree = "<group>"; };
+		FFDBB8AA1E53487D00C63A27 /* ProfessionDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionDetailController.h; sourceTree = "<group>"; };
+		FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionDetailController.m; sourceTree = "<group>"; };
 		FFDE8B921DDDC46000F937BD /* Kinopro365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinopro365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -483,6 +486,7 @@
 				FF8EDAEE1E41CA7E0051D88F /* KinosferaCell.h */,
 				FF8EDAEF1E41CA7E0051D88F /* KinosferaCell.m */,
 				FFA1C6DC1E51C6FD00B619DD /* Profession */,
+				FFDBB8A61E53437F00C63A27 /* ProfessionDetail */,
 				FF8EDAF41E41DAAB0051D88F /* KinoptoSearch */,
 			);
 			name = Kinosfera;
@@ -512,6 +516,15 @@
 				FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */,
 			);
 			name = PhotoDetails;
+			sourceTree = "<group>";
+		};
+		FFDBB8A61E53437F00C63A27 /* ProfessionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FFDBB8AA1E53487D00C63A27 /* ProfessionDetailController.h */,
+				FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */,
+			);
+			name = ProfessionDetail;
 			sourceTree = "<group>";
 		};
 		FFDE8B891DDDC45F00F937BD = {
@@ -777,6 +790,7 @@
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
 				FF88DF551E0E696B0002FBBC /* HMViewerViewController.m in Sources */,
 				AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */,
+				FFDBB8AC1E53487D00C63A27 /* ProfessionDetailController.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,

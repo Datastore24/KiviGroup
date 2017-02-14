@@ -13,6 +13,7 @@
 #import "Macros.h"
 #import "SingleTone.h"
 #import "CountryViewController.h"
+#import "AddParamsController.h"
 
 
 @interface KinoproSearchController () <UITextFieldDelegate, CountryViewControllerDelegate>
@@ -101,6 +102,9 @@
 }
 
 - (IBAction)actionButtonAddParams:(id)sender {
+    
+    [self pushCountryControllerWithIdentifier:@"AddParamsController"];
+    
 }
 
 - (IBAction)actionButtonClearFilter:(id)sender {
