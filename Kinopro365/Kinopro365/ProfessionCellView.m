@@ -12,6 +12,7 @@
 #import "Macros.h"
 
 
+
 @implementation ProfessionCellView
 
 - (instancetype)initCellProfessionWithMainView: (UIView*) view andHeight: (CGFloat) height andOrignX: (CGFloat) orgnX
@@ -43,26 +44,44 @@
         UIImageView * imageViewStars = [[UIImageView alloc] initWithFrame:CGRectMake(113.f, 97.f, 13.f, 20.f)];
         imageViewStars.image = [UIImage imageNamed:@"professionImageStar"];
         [self addSubview:imageViewStars];
-        
         UILabel * labelNumberStars = [self createLabelWithName:starsNumber andFrame:CGRectMake(134.f, 102.f, 20.f, 12.f)];
         [self addSubview:labelNumberStars];
         
         UIImageView * imageViewLike = [[UIImageView alloc] initWithFrame:CGRectMake(179.f, 102.f, 15.f, 13.f)];
         imageViewLike.image = [UIImage imageNamed:@"professionImageLike"];
         [self addSubview:imageViewLike];
-        
         UILabel * labelNumberLike = [self createLabelWithName:likeNumber andFrame:CGRectMake(202.f, 102.f, 20.f, 12.f)];
         [self addSubview:labelNumberLike];
         
-        UIButton * buttonBookmark = [UIButton buttonWithType:UIButtonTypeCustom];
+        CustomButton * buttonCell = [CustomButton buttonWithType:UIButtonTypeCustom];
+        buttonCell.frame = self.bounds;
+        [buttonCell addTarget:self action:@selector(actionButtonCell:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonCell];
+        
+        CustomButton * buttonBookmark = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonBookmark.frame =CGRectMake(288.f, 97.f, 19.f, 20.f);
+        buttonBookmark.isBool = NO;
         [buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
+        [buttonBookmark addTarget:self action:@selector(actionButtonBookMark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
 
     }
     return self;
 }
 
+#pragma mark - Actoions
+
+- (void) actionButtonBookMark: (CustomButton*) sender {
+    
+    [self.deleagte actionBookMark:self withButton:sender];
+}
+
+- (void) actionButtonCell: (CustomButton*) sender {
+    
+    [self.deleagte actionButtonCell:self withButton:sender];
+}
+
+#pragma mark - CreationViews
 
 - (UILabel*) createLabelWithName: (NSString*) name andFrame: (CGRect) frame {
     
@@ -72,8 +91,9 @@
     labelData.textAlignment = NSTextAlignmentLeft;
     labelData.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
     return labelData;
-
 }
+
+
 
 
 

@@ -8,6 +8,8 @@
 
 #import "ViewForScroll.h"
 #import "UIView+BorderView.h"
+#import "HexColors.h"
+#import "Macros.h"
 
 @implementation ViewForScroll
 
@@ -29,29 +31,38 @@
             UIButton * buttonLeblCount = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonLeblCount.frame = CGRectMake(46.f + sizeButton + sizeButton * i, 0.f, sizeButton, self.bounds.size.height);
             [buttonLeblCount setTitle:stringForButton forState:UIControlStateNormal];
+            [buttonLeblCount setTitleColor:[UIColor hx_colorWithHexRGBAString:@"5683AA"] forState:UIControlStateNormal];
+            if (i == 0) {
+                buttonLeblCount.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:18];
+                buttonLeblCount.userInteractionEnabled = NO;
+            } else {
+                buttonLeblCount.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+            }
             buttonLeblCount.tag = 10 + i;
+            [buttonLeblCount addTarget:self action:@selector(actionButtonLeblCount:)
+                                            forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonLeblCount];
             [self.arayButtons addObject:buttonLeblCount];
         }
         
         UIView * leftView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 46.f, CGRectGetHeight(self.bounds))];
-        leftView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        leftView.backgroundColor = [UIColor whiteColor];
         [self addSubview:leftView];
         
         UIButton * buttonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonLeft.frame = CGRectMake(12.f, 12.f, 22.f, 22.f);
-        buttonLeft.backgroundColor = [UIColor blueColor];
+        [buttonLeft setImage:[UIImage imageNamed:@"buttonProfLeft"] forState:UIControlStateNormal];
         [buttonLeft addTarget:self action:@selector(actionButtonLeft:) forControlEvents:UIControlEventTouchUpInside];
         [leftView addSubview:buttonLeft];
         
         UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - 46, 0.f, 46.f,
                                                                       CGRectGetHeight(self.bounds))];
-        rightView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        rightView.backgroundColor = [UIColor whiteColor];
         [self addSubview:rightView];
         
         UIButton * buttonRight = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonRight.frame = CGRectMake(12.f, 12.f, 22.f, 22.f);
-        buttonRight.backgroundColor = [UIColor blueColor];
+        [buttonRight setImage:[UIImage imageNamed:@"buttonProfRight"] forState:UIControlStateNormal];
         [buttonRight addTarget:self action:@selector(actionbuttonRight:) forControlEvents:UIControlEventTouchUpInside];
         [rightView addSubview:buttonRight];
         
@@ -67,13 +78,16 @@
 - (void) actionButtonLeft: (UIButton*) sender {
     
     [self.delegate actionMoveLeftWithView:self andButton:sender andArrayButtons:self.arayButtons];
-    
 }
 
 - (void) actionbuttonRight: (UIButton*) sender {
     
     [self.delegate actionMoveRightWithView:self andButton:sender andArrayButtons:self.arayButtons];
-    
+}
+
+- (void) actionButtonLeblCount: (UIButton*) sender {
+   
+    [self.delegate actionButtonLablCount:self andButton:sender];
 }
 
 @end

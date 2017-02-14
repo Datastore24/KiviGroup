@@ -24,6 +24,11 @@
 
 @implementation CountryViewController
 
+- (void) loadView {
+    [super loadView];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -123,8 +128,6 @@
         if (self.searchBar.text.length > 0 && [nameCountry rangeOfString:self.searchBar.text].location == NSNotFound) {
             continue;
         }
-        
-        
         NSString * firstLetter = [nameCountry substringToIndex:1];
         
         if (![currentLetter isEqualToString:firstLetter]) {
@@ -132,9 +135,7 @@
         }
         
         [self.tableArray addObject:string];
-        
     }
-    
     [self.tableView reloadData];
     
 }
