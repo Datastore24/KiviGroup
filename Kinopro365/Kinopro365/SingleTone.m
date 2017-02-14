@@ -15,6 +15,8 @@
 @synthesize stringAletForWebView;
 @synthesize token;
 @synthesize countryID;
+@synthesize citySearchID;
+@synthesize countrySearchID;
 
 #pragma mark Singleton Methods
 

@@ -43,10 +43,18 @@
             [self reloadTable];
         }];
     }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
-        [self.countryModel getCityArrayToTableView:[[SingleTone sharedManager] countryID] block:^{
-            self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
-            [self reloadTable];
-        }];
+        if(self.isSearch){
+            [self.countryModel getCityArrayToTableView:[[SingleTone sharedManager] countrySearchID] block:^{
+                self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
+                [self reloadTable];
+            }];
+        }else{
+            [self.countryModel getCityArrayToTableView:[[SingleTone sharedManager] countryID] block:^{
+                self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
+                [self reloadTable];
+            }];
+        }
+        
     }
     
 }
@@ -86,26 +94,38 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     RLMResults *profTableDataArray = [UserInformationTable allObjects];
-    
-    if(profTableDataArray.count>0){
+    if(!self.isSearch){
+        if(profTableDataArray.count>0){
+            
+            UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            userTable.isSendToServer = @"0";
+            [realm commitWriteTransaction];
+            
+        }
+        [self.delegate changeButtonText:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
         
-        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        userTable.isSendToServer = @"0";
-        [realm commitWriteTransaction];
+        if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
+            [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+            [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+        }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
+            [self.countryModel putCityIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+        }
+    }else{
+        [self.delegate changeButtonTextInSearch:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
+        
+        if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
+            [[SingleTone sharedManager] setCountrySearchID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+        }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
+            [[SingleTone sharedManager] setCitySearchID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+        }
         
     }
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate changeButtonText:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
     
-     if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
-         [[SingleTone sharedManager] setCountryID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
-         [self.countryModel putCountryIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
-     }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
-         [self.countryModel putCityIdToProfle:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
-     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     
     [self.navigationController popViewControllerAnimated:YES];
     
