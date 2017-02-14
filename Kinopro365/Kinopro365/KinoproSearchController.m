@@ -85,11 +85,19 @@
 - (IBAction)actionButtonCountry:(id)sender {
     [[SingleTone sharedManager] setCountry_citi:@"country"];
     [self pushCountryController];
+    
+    
+
 }
 
 - (IBAction)actionButtonCity:(id)sender {
-    [[SingleTone sharedManager] setCountry_citi:@"city"];
-    [self pushCountryController];
+    
+    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]) {
+        [self showAlertWithMessage:@"\nВведите страну!\n"];
+    } else {
+        [[SingleTone sharedManager] setCountry_citi:@"city"];
+        [self pushCountryController];
+    }
 }
 
 - (IBAction)actionButtonAddParams:(id)sender {
@@ -121,9 +129,20 @@ replacementString:(NSString *)string {
 - (void) pushCountryController {
     CountryViewController * detai = [self.storyboard instantiateViewControllerWithIdentifier:@"CountryViewController"];
     detai.delegate = self;
+    detai.isSearch = YES;
     [self.navigationController pushViewController:detai animated:YES];
 }
 
+#pragma mark - CountryViewControllerDelegate
+
+- (void) changeButtonTextInSearch: (CountryViewController*) controller withString: (NSString*) string {
+    
+    if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
+        [self.buttonCountry setTitle:string forState:UIControlStateNormal];
+    } else {
+        [self.buttonCity setTitle:string forState:UIControlStateNormal];
+    }
+}
 
 
 

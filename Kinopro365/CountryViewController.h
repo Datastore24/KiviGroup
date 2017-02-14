@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSArray * countryArray;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 
+@property (assign, nonatomic)  BOOL isSearch;
+
 - (IBAction)actionButtonCancel:(UIButton *)sender;
 
 @end
@@ -27,5 +29,6 @@
 @optional
 
 - (void) changeButtonText: (CountryViewController*) controller withString: (NSString*) string;
+- (void) changeButtonTextInSearch: (CountryViewController*) controller withString: (NSString*) string;
 
 @end

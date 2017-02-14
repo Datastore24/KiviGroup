@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSString * token;
 @property (strong, nonatomic) NSString * countryID;
 
+@property (strong, nonatomic) NSString * countrySearchID;
+@property (strong, nonatomic) NSString * citySearchID;
+
 + (id)sharedManager;
 
 @end

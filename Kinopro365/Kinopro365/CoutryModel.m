@@ -20,7 +20,9 @@
 - (void) getCountryArrayToTableView: (void (^) (void)) compitionBack{
     
     APIManger * apiManager = [[APIManger alloc] init];
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"", nil];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             @"0",@"offset",
+                             @"1000",@"count",nil];
     
     [apiManager getDataFromSeverWithMethod:@"info.getCountries" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         if([response objectForKey:@"error_code"]){
@@ -67,7 +69,9 @@
     
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             countryID,@"country_id", nil];
+                             countryID,@"country_id",
+                             @"0",@"offset",
+                             @"1000",@"count",nil];
     
     [apiManager getDataFromSeverWithMethod:@"info.getCities" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         if([response objectForKey:@"error_code"]){
