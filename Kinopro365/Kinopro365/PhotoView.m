@@ -10,12 +10,28 @@
 
 @implementation PhotoView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame andWithImageButton: (NSString*) imageButton {
+    
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        UIButton * buttonImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        buttonImage.frame = self.bounds;
+        [buttonImage setImage:[UIImage imageNamed:imageButton] forState:UIControlStateNormal];
+        [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonImage];
+        
+        
+    }
+    return self;
 }
-*/
+
+#pragma mark - Actions
+
+- (void) actionButtonImage: (UIButton*) sender {
+    
+    NSLog(@"Hello");
+    
+}
 
 @end
