@@ -28,6 +28,10 @@
 		FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9E81DFAF72000D59716 /* HexColors.m */; };
 		FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */; };
 		FF68933B1E0D4FDC0022EE7D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68933A1E0D4FDC0022EE7D /* Photos.framework */; };
+		FF6BFBB01E5448BC00B3A1C3 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6BFBAF1E5448BC00B3A1C3 /* PhotoView.m */; };
+		FF6BFBB31E544E7D00B3A1C3 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6BFBB21E544E7D00B3A1C3 /* VideoView.m */; };
+		FF6BFBB61E5455F200B3A1C3 /* TextDataProfession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6BFBB51E5455F200B3A1C3 /* TextDataProfession.m */; };
+		FF6BFBB91E545D4400B3A1C3 /* AddParamsProfession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6BFBB81E545D4400B3A1C3 /* AddParamsProfession.m */; };
 		FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF331E0E696B0002FBBC /* HMAlbum.m */; };
 		FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF351E0E696B0002FBBC /* HMAlbumTableViewCell.m */; };
 		FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF88DF371E0E696B0002FBBC /* HMAlbumTableViewController.m */; };
@@ -130,6 +134,14 @@
 		FF5FC59A1E48A0780080B20D /* PhotoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailView.h; sourceTree = "<group>"; };
 		FF5FC59B1E48A0780080B20D /* PhotoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailView.m; sourceTree = "<group>"; };
 		FF68933A1E0D4FDC0022EE7D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		FF6BFBAE1E5448BC00B3A1C3 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		FF6BFBAF1E5448BC00B3A1C3 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		FF6BFBB11E544E7D00B3A1C3 /* VideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
+		FF6BFBB21E544E7D00B3A1C3 /* VideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
+		FF6BFBB41E5455F200B3A1C3 /* TextDataProfession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextDataProfession.h; sourceTree = "<group>"; };
+		FF6BFBB51E5455F200B3A1C3 /* TextDataProfession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextDataProfession.m; sourceTree = "<group>"; };
+		FF6BFBB71E545D4400B3A1C3 /* AddParamsProfession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddParamsProfession.h; sourceTree = "<group>"; };
+		FF6BFBB81E545D4400B3A1C3 /* AddParamsProfession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddParamsProfession.m; sourceTree = "<group>"; };
 		FF88DF321E0E696B0002FBBC /* HMAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAlbum.h; sourceTree = "<group>"; };
 		FF88DF331E0E696B0002FBBC /* HMAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAlbum.m; sourceTree = "<group>"; };
 		FF88DF341E0E696B0002FBBC /* HMAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAlbumTableViewCell.h; sourceTree = "<group>"; };
@@ -523,6 +535,14 @@
 			children = (
 				FFDBB8AA1E53487D00C63A27 /* ProfessionDetailController.h */,
 				FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */,
+				FF6BFBAE1E5448BC00B3A1C3 /* PhotoView.h */,
+				FF6BFBAF1E5448BC00B3A1C3 /* PhotoView.m */,
+				FF6BFBB11E544E7D00B3A1C3 /* VideoView.h */,
+				FF6BFBB21E544E7D00B3A1C3 /* VideoView.m */,
+				FF6BFBB41E5455F200B3A1C3 /* TextDataProfession.h */,
+				FF6BFBB51E5455F200B3A1C3 /* TextDataProfession.m */,
+				FF6BFBB71E545D4400B3A1C3 /* AddParamsProfession.h */,
+				FF6BFBB81E545D4400B3A1C3 /* AddParamsProfession.m */,
 			);
 			name = ProfessionDetail;
 			sourceTree = "<group>";
@@ -769,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
+				FF6BFBB91E545D4400B3A1C3 /* AddParamsProfession.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
 				FF88DF4D1E0E696B0002FBBC /* HMImageGridCell.m in Sources */,
 				FFDBB8A51E53179800C63A27 /* KinoproSearchModel.m in Sources */,
@@ -784,6 +805,7 @@
 				ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */,
 				ADF9C7431E3A19EC0085F993 /* DateTimeMethod.m in Sources */,
 				FFA1C6DF1E51C72500B619DD /* ProfessionController.m in Sources */,
+				FF6BFBB31E544E7D00B3A1C3 /* VideoView.m in Sources */,
 				FFF9CB721E49E30C004D833D /* VideoDetailsView.m in Sources */,
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
@@ -797,6 +819,7 @@
 				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,
 				FFA1C6E81E51D17F00B619DD /* ProfessionModel.m in Sources */,
+				FF6BFBB61E5455F200B3A1C3 /* TextDataProfession.m in Sources */,
 				FFA1C6E51E51C94600B619DD /* UIView+BorderView.m in Sources */,
 				ADED89E31E37B0EA00D74761 /* CustomButton.m in Sources */,
 				FF9DE2461E02EB46007ED49F /* CoutryModel.m in Sources */,
@@ -826,6 +849,7 @@
 				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
 				FF88DF521E0E696B0002FBBC /* HMImageSelectButton.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
+				FF6BFBB01E5448BC00B3A1C3 /* PhotoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
