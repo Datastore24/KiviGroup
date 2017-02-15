@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <youtube-ios-player-helper/YTPlayerView.h>
 
 @interface VideoView : UIView
+
+- (instancetype)initCustonButtonAccessVideo;
+- (instancetype)initWithHeight: (CGFloat) height andURLVideo: (NSString*) urlVideo;
 
 @end

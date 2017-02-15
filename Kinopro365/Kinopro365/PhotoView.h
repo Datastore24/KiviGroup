@@ -10,4 +10,6 @@
 
 @interface PhotoView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame andWithImageButton: (NSString*) imageButton;
+
 @end

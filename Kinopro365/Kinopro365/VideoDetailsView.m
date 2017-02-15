@@ -55,9 +55,6 @@
     NSString* finalStr = [str substringFromIndex: range.location + range.length];
     
     return finalStr;
-    
-    
-    
 }
 
 

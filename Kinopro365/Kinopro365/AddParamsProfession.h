@@ -10,4 +10,6 @@
 
 @interface AddParamsProfession : UIView
 
+- (instancetype)initWithHeight: (CGFloat) height andText: (NSString*) text;
+
 @end

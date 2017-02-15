@@ -10,4 +10,7 @@
 
 @interface TextDataProfession : UIView
 
+- (instancetype)initWithHeight: (CGFloat) height antFirstTextLabel: (NSString*) firstTextLabel
+            andSecondTextLabel: (NSString*) secondTextLabel;
+
 @end
