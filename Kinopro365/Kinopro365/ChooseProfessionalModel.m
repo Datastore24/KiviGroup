@@ -85,26 +85,43 @@
                              @"designersImage.png", @"dressersImage.png", nil];
     
     NSArray * arrayNames = [NSArray arrayWithObjects:
-                            @"Актёр", @"Режиссер-постановщик", @"Сценарист",
-                            @"Художник-Гримёр", @"Реквизитор", @"Актер без образования",
-                            @"Актер массовых сцен", @"Ассистент по актерам",
-                            @"Режиссер монтажа",@"Монтажер",
-                            @"Второй режиссер (планирование)",@"Второй режиссер (площадка)",
-                            @"Редактор",@"Кастинг-директор",
-                            @"Скрипт супервайзер",@"Каскадер",
-                            @"Оператор-постановщик",@"Художник-постановщик",
-                            @"Композитор",@"Звукорежиссёр",
-                            @"Постановщик трюков",@"Дрессировщик",
-                            @"Оператор",@"Оператор Стэдикам",
-                            @"Ассистент оператора (фокус-пуллер)",@"Хлопушка",
-                            @"Location Менеджер",@"Бум оператор",nil];
+                            @{@"name" : @"Актёр", @"id" : @"1"},
+                            @{@"name" : @"Режиссер-постановщик", @"id" : @"2"},
+                            @{@"name" : @"Сценарист", @"id" : @"3"},
+                            @{@"name" : @"Художник-Гримёр", @"id" : @"4"},
+                            @{@"name" : @"Реквизитор", @"id" : @"5"},
+                            @{@"name" : @"Актер без образования", @"id" : @"6"},
+                            @{@"name" : @"Актер массовых сцен", @"id" : @"7"},
+                            @{@"name" : @"Ассистент по актерам", @"id" : @"8"},
+                            @{@"name" : @"Режиссер монтажа", @"id" : @"9"},
+                            @{@"name" : @"Монтажер", @"id" : @"10"},
+                            @{@"name" : @"Второй режиссер (планирование)", @"id" : @"11"},
+                            @{@"name" : @"Второй режиссер (площадка)", @"id" : @"12"},
+                            @{@"name" : @"Редактор", @"id" : @"13"},
+                            @{@"name" : @"Кастинг-директор", @"id" : @"14"},
+                            @{@"name" : @"Скрипт супервайзер", @"id" : @"15"},
+                            @{@"name" : @"Каскадер", @"id" : @"16"},
+                            @{@"name" : @"Оператор-постановщик", @"id" : @"17"},
+                            @{@"name" : @"Художник-постановщик", @"id" : @"18"},
+                            @{@"name" : @"Композитор", @"id" : @"19"},
+                            @{@"name" : @"Звукорежиссёр", @"id" : @"20"},
+                            @{@"name" : @"Постановщик трюков", @"id" : @"21"},
+                            @{@"name" : @"Дрессировщик", @"id" : @"22"},
+                            @{@"name" : @"Оператор", @"id" : @"23"},
+                            @{@"name" : @"Оператор Стэдикам", @"id" : @"24"},
+                            @{@"name" : @"Ассистент оператора (фокус-пуллер)", @"id" : @"25"},
+                            @{@"name" : @"Хлопушка", @"id" : @"26"},
+                            @{@"name" : @"Location Менеджер", @"id" : @"27"},
+                            @{@"name" : @"Бум оператор", @"id" : @"28"},nil];
+    
     
     
     for (int i = 0; i < arrayNames.count; i++) {
-        int k = i+1;
         APIManger * apiManager = [[APIManger alloc] init];
         
         [apiManager getDataFromSeverWithMethod:@"user.countByProfessions" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            
+            
             if([response objectForKey:@"error_code"]){
                 
                 NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
@@ -113,10 +130,10 @@
             }else{
                 
                 NSArray *dictResponse = [response objectForKey:@"response"];
-                
+                NSDictionary * dictNames = [arrayNames objectAtIndex: i];
                
-                NSString * searchString = [NSString stringWithFormat:@"%d",k];
-                NSPredicate *filter = [NSPredicate predicateWithFormat:@"profession_id = %@",searchString];
+                NSPredicate *filter = [NSPredicate predicateWithFormat:
+                                       @"profession_id = %@",[dictNames objectForKey:@"id"]];
                 NSArray *filteredProf = [dictResponse filteredArrayUsingPredicate:filter];
                 
             
@@ -125,7 +142,8 @@
                     NSDictionary * profDict = [filteredProf objectAtIndex:0];
                     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                            [arrayImages objectAtIndex:i], @"image",
-                                           [arrayNames objectAtIndex:i], @"name",
+                                           [dictNames objectForKey:@"name"], @"name",
+                                           [dictNames objectForKey:@"id"], @"id",
                                            [profDict objectForKey:@"count"], @"number", nil];
                     
                     [array addObject:dict];
@@ -140,7 +158,8 @@
                     
                     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                            [arrayImages objectAtIndex:i], @"image",
-                                           [arrayNames objectAtIndex:i], @"name",
+                                           [dictNames objectForKey:@"name"], @"name",
+                                           [dictNames objectForKey:@"id"], @"id",
                                            @"0", @"number", nil];
                     
                     if(i == arrayNames.count -1){

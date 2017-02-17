@@ -17,6 +17,7 @@
 
 - (IBAction)leftSideButtonMenu:(id)sender;
 @property (strong, nonatomic) NSMutableArray * arrayData;
+@property (strong, nonatomic) NSArray * finalArray;
 
 
 @end

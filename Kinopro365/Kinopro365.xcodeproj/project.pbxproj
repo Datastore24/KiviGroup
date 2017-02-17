@@ -14,6 +14,7 @@
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
 		AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCCC71E43177500E754BC /* MenuViewModel.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
+		AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
 		ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DC1E36451400D74761 /* ProfessionsTable.m */; };
 		ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DF1E36454300D74761 /* AdditionalTable.m */; };
@@ -109,6 +110,8 @@
 		AD7FCCC71E43177500E754BC /* MenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewModel.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		AD9DA2E61E570EC100D8AA0C /* ProfessionDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionDetailModel.h; sourceTree = "<group>"; };
+		AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionDetailModel.m; sourceTree = "<group>"; };
 		ADED89D81E3644FC00D74761 /* PhonesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesTable.h; sourceTree = "<group>"; };
 		ADED89D91E3644FC00D74761 /* PhonesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonesTable.m; sourceTree = "<group>"; };
 		ADED89DB1E36451400D74761 /* ProfessionsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionsTable.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 			children = (
 				FFDBB8AA1E53487D00C63A27 /* ProfessionDetailController.h */,
 				FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */,
+				AD9DA2E61E570EC100D8AA0C /* ProfessionDetailModel.h */,
+				AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */,
 				FF6BFBAE1E5448BC00B3A1C3 /* PhotoView.h */,
 				FF6BFBAF1E5448BC00B3A1C3 /* PhotoView.m */,
 				FF6BFBB11E544E7D00B3A1C3 /* VideoView.h */,
@@ -838,6 +843,7 @@
 				ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */,
 				FF8EDAF31E41DAA70051D88F /* KinoproSearchController.m in Sources */,
 				FF88DF4A1E0E696B0002FBBC /* HMAlbum.m in Sources */,
+				AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */,
 				ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */,
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,

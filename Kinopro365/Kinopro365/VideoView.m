@@ -57,7 +57,7 @@
 - (NSString*) createIDYouTubeWithURL: (NSString*) url {
     
     NSString* str= url;
-    NSRange range= [str rangeOfString: @"watch?v=" options: NSBackwardsSearch];
+    NSRange range= [str rangeOfString: @"https://www.youtube.com/embed/" options: NSBackwardsSearch];
     NSString* finalStr = [str substringFromIndex: range.location + range.length];
     
     return finalStr;

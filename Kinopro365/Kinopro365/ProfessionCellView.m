@@ -10,6 +10,7 @@
 #import "UIView+BorderView.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 
 
@@ -19,7 +20,8 @@
                                  andImageAvart: (NSString*) imageAvatar andNameText: (NSString*) name
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
-                                 andLikeNumber: (NSString*) likeNumber {
+                                 andLikeNumber: (NSString*) likeNumber
+                                  andProfileID: (NSString *) profileID{
     self = [super init];
     if (self) {
         
@@ -29,7 +31,33 @@
         [self addSubview:upBorderView];
         
         UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(13.f, 5.f, 76.f, 115.f)];
-        avatarImageView.image = [UIImage imageNamed:imageAvatar];
+        
+        
+        
+        NSURL *imgURL = [NSURL URLWithString:imageAvatar];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                        NSURL *imageURL) {
+                                
+                                if(image){
+                                    avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+                                    avatarImageView.clipsToBounds = YES;
+                                    avatarImageView.image = image;
+                                    
+                                    
+                                }else{
+                                    //Тут обработка ошибки загрузки изображения
+                                }
+                            }];
+        
+        
+        
+        
         [self addSubview:avatarImageView];
         
         UILabel * labelName = [self createLabelWithName:name andFrame:CGRectMake(110.f, 11.f, 200, 17.75f)];
@@ -55,6 +83,8 @@
         
         CustomButton * buttonCell = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonCell.frame = self.bounds;
+        buttonCell.customFullName = name;
+        buttonCell.customID = profileID;
         [buttonCell addTarget:self action:@selector(actionButtonCell:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonCell];
         

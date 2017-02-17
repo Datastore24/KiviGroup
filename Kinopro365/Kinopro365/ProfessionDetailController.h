@@ -16,6 +16,10 @@
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *arrayCollectionNo;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *arrayCollectionYES;
 
+@property (strong, nonatomic) NSString * profileID;
+@property (strong, nonatomic) NSString * profName;
+@property (strong, nonatomic) NSString * profID;
+
 
 //Scrolls
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -35,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelGrowth;
 @property (weak, nonatomic) IBOutlet UILabel *labelStarCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelLikeCount;
+@property (weak, nonatomic) IBOutlet UIImageView *imageAvatar;
 
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
