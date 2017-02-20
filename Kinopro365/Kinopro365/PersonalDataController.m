@@ -89,6 +89,7 @@
         if([userTable.isSendToServer integerValue] == 0){
             
             [self showAlertWithMessageWithTwoBlock:@"Имеются неотправленные на сервера данные.\nЗагрузить данные с сервера или продолжить редактирование?" blockOK:^{
+                NSLog(@"BLOCKOK");
                 [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
                     
                     if([response objectForKey:@"error_code"]){
@@ -108,6 +109,7 @@
                     
                 }];
             } blockCancel:^{
+                NSLog(@"BLOCKCANCEL");
                  [self loadFromDb];
             }];
             

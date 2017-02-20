@@ -8,13 +8,14 @@
 
 #import "ProfessionController.h"
 #import "ProfessionCellView.h"
+#import "ProfessionModel.h"
 #import "KinoproSearchController.h"
 #import "ViewForScroll.h"
 #import "Macros.h"
 #import "ProfessionDetailController.h"
 
 
-@interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate>
+@interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate,ProfessionModelDelegate>
 
 @property (strong, nonatomic) NSMutableArray * arrayScrollsView;
 @property (strong, nonatomic) ViewForScroll * viewForScroll;
@@ -30,7 +31,7 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * customText = [[UILabel alloc]initWithTitle:@"Актеры"];
+    UILabel * customText = [[UILabel alloc]initWithTitle:self.professionName];
     self.navigationItem.titleView = customText;
     
     self.mainScrollView.pagingEnabled = YES;
@@ -44,13 +45,18 @@
                                                                    target:self action:@selector(actionGlassButton:)];
     self.navigationItem.rightBarButtonItem = glassButton;
     
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.arrayScrollsView = [NSMutableArray array];
+    [self createActivitiIndicatorAlertWithView];
+    ProfessionModel * profModel = [[ProfessionModel alloc] init];
+    profModel.delegate = self;
+    [profModel loadProfessionFromServerOffset:@"0" andCount:@"50" andProfID:self.professionID];
     
 }
 
@@ -58,6 +64,15 @@
     [super viewWillAppear:YES];
     
     self.mainScrollView.contentOffset = CGPointZero;
+    
+    
+    
+    
+    
+}
+
+- (void) loadProfession:(NSDictionary *) profDict{
+    
     
     self.stepX = 0;
     self.stepY = 0;
@@ -70,69 +85,72 @@
         [view removeFromSuperview];
     }
     
-    NSString * avatarImage = @"imagePhotoProf.png";
-    NSString * name = @"Елизавета Филатова";
-    NSString * country = @"Россия";
-    NSString * city = @"Москва";
-    NSString * age = @"25";
-    NSString * growth = @"168";
-    NSString * starCount = @"5";
-    NSString * likeCount = @"15";
-    int counter = 38;
+    NSArray * itemsArray = [profDict objectForKey:@"items"];
+    int counter = (int)itemsArray.count;
     int step;
-    int step2;
     
-        if (counter % 5 == 0) {
-            step = counter / 5;
-        } else {
-            step = counter / 5 + 1;
-        }
-        for (int i = 0; i < step; i++) {
-            UIScrollView * scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0 + CGRectGetWidth(self.view.bounds) * i,
-                                                                                      0.f, self.mainScrollView.frame.size.width,
-                                                                                      self.mainScrollView.frame.size.height)];
-            scrolView.showsVerticalScrollIndicator = NO;
-            [self.mainScrollView addSubview:scrolView];
-            [self.arrayScrollsView addObject:scrolView];
+    if (counter % 50 == 0) {
+        step = counter / 50;
+    } else {
+        step = counter / 50 + 1;
+    }
+    UIScrollView * scrolView;
+    for (int i = 0; i < step; i++) {
+        scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0 + CGRectGetWidth(self.view.bounds) * i,
+                                                                                  0.f, self.mainScrollView.frame.size.width,
+                                                                                  self.mainScrollView.frame.size.height)];
+        scrolView.showsVerticalScrollIndicator = NO;
+        [self.mainScrollView addSubview:scrolView];
+        [self.arrayScrollsView addObject:scrolView];
+        
+    }
+        for (int j = 0; j < itemsArray.count; j++) {
             
-            if (i != step - 1) {
-                step2 = 5;
-            } else {
-                step2 = counter % 5;
-            }
-            for (int j = 0; j < step2; j++) {
-                
-                UILabel * labelCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, CGRectGetWidth(self.view.bounds), 16)];
-                labelCount.text = @"Всего: 9485 анкет";
-                labelCount.textAlignment = NSTextAlignmentCenter;
-                labelCount.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:12];
-                [scrolView addSubview:labelCount];
-                
-                ProfessionCellView * cellView = [[ProfessionCellView alloc]
-                                                 initCellProfessionWithMainView:self.view andHeight:
-                                                 (125.f * self.stepX) + 34.f andOrignX:0
-                                                 andImageAvart: avatarImage andNameText:
-                                                 name andCountryText:[NSString stringWithFormat:@"%@ (%@)", country, city]
-                                                 andAgeText:[NSString stringWithFormat:@"%@ лет", age]
-                                                 andGrowthText:[NSString stringWithFormat:@"рост: %@ см", growth]
-                                                 andStarsNumber:starCount andLikeNumber:likeCount];
-                cellView.deleagte = self;
-                [scrolView addSubview:cellView];
-                self.stepX += 1;
-            }
-            scrolView.contentSize = CGSizeMake(0, (125.f * step2) + 64.f + 34.f);
-            self.stepX = 0;
-            self.stepY += 1;
+            NSDictionary * itemDict = [itemsArray objectAtIndex:j];
+            UILabel * labelCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, CGRectGetWidth(self.view.bounds), 16)];
+            
+           
+            labelCount.text =  [NSString stringWithFormat:@"Всего: %@ анкет",
+                                [profDict objectForKey:@"count"]];
+            labelCount.textAlignment = NSTextAlignmentCenter;
+            labelCount.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:12];
+            [scrolView addSubview:labelCount];
+            
+            NSString * resultName = [NSString stringWithFormat:@"%@ %@",
+                                     [itemDict objectForKey:@"first_name"],
+                                     [itemDict objectForKey:@"last_name"]];
+            
+            ProfessionCellView * cellView = [[ProfessionCellView alloc]
+                                             initCellProfessionWithMainView:self.view andHeight:
+                                             (125.f * self.stepX) + 34.f andOrignX:0
+                                             andImageAvart: [itemDict objectForKey:@"photo_url"]
+                                             andNameText: resultName
+                                             andCountryText:[NSString stringWithFormat:@"%@ (%@)",
+                                                             [itemDict objectForKey:@"city_name"],
+                                                             [itemDict objectForKey:@"country_name"]]
+                                             andAgeText:[NSString stringWithFormat:@"%@ лет",
+                                                         [itemDict objectForKey:@"age"]]
+                                             andGrowthText:@""
+                                             andStarsNumber:[itemDict objectForKey:@"count_rewards"]
+                                             andLikeNumber:[itemDict objectForKey:@"count_likes"]
+                                             andProfileID:[itemDict objectForKey:@"id"]];
+            cellView.deleagte = self;
+            [scrolView addSubview:cellView];
+            self.stepX += 1;
         }
-        self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds) * (step), 0);
+        scrolView.contentSize = CGSizeMake(0, (125.f * itemsArray.count) + 64.f + 34.f);
+        self.stepX = 0;
+        self.stepY += 1;
+    
+    self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds) * (step), 0);
     
     
     self.viewForScroll = [[ViewForScroll alloc] initWithCustonView:self.view andRect:
-                                     CGRectMake(0.f, CGRectGetHeight(self.view.bounds) - 45,
-                                                CGRectGetWidth(self.view.bounds), 45.f) andCountScrolls:self.stepY];
+                          CGRectMake(0.f, CGRectGetHeight(self.view.bounds) - 45,
+                                     CGRectGetWidth(self.view.bounds), 45.f) andCountScrolls:self.stepY];
     self.viewForScroll.delegate = self;
     [self.view addSubview:self.viewForScroll];
-    
+    [self deleteActivitiIndicator];
     
 }
 
@@ -228,7 +246,14 @@
 
 - (void) actionButtonCell: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button {
     
-    [self pushCountryControllerWithIdentifier:@"ProfessionDetailController"];
+    ProfessionDetailController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionDetailController"];
+    
+    profController.profileID = button.customID;
+    profController.profName = self.professionName;
+    profController.profID = self.professionID;
+    
+    [self.navigationController pushViewController:profController animated:YES];
+    
     
 }
 

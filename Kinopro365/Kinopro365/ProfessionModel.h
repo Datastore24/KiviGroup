@@ -8,7 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ProfessionModelDelegate <NSObject>
+
+- (void) loadProfession:(NSDictionary *) profDict;
+
+@end
+
 @interface ProfessionModel : NSObject
 
+@property (assign, nonatomic) id <ProfessionModelDelegate> delegate;
+
+-(void) loadProfessionFromServerOffset: (NSString *) offset
+                              andCount: (NSString *) count
+                             andProfID:(NSString *) profID;
 
 @end

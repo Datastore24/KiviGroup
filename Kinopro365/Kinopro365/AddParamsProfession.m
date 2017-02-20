@@ -28,7 +28,7 @@
         titleLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"343536"];
         titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:18];
         [self addSubview:titleLabel];
-        
+          
         UILabel * labeltext = [[UILabel alloc] initWithFrame:CGRectMake(13.f, 42.f, self.bounds.size.width - 26, heightSelf)];
         labeltext.numberOfLines = 0;
         labeltext.text = text;

@@ -19,7 +19,8 @@
                                  andImageAvart: (NSString*) imageAvatar andNameText: (NSString*) name
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
-                                 andLikeNumber: (NSString*) likeNumber;
+                                 andLikeNumber: (NSString*) likeNumber
+                                  andProfileID: (NSString *) profileID;
 
 @end
 

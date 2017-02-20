@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelCountProfession;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (strong, nonatomic) NSString * professionID;
+@property (strong, nonatomic) NSString * professionName;
 
 - (IBAction)actionBackButton:(id)sender;
 

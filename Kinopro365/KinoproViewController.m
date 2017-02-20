@@ -52,12 +52,23 @@
 -(void) addObjectToDataArray:(NSDictionary *) dict finish:(BOOL) isFinish {
     if(isFinish){
         [self.arrayData addObject:dict];
+        NSComparator compareDistances = ^(id string1, id string2)
+        {
+            NSNumber *number1 = [NSNumber numberWithFloat:[string1 integerValue]];
+            NSNumber *number2 = [NSNumber numberWithFloat:[string2 integerValue]];
+            
+            return [number1 compare:number2];
+        };
+        // sort list and create nearest list
+        NSSortDescriptor *sortDescriptorNearest = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES comparator:compareDistances];
+        self.finalArray = [self.arrayData sortedArrayUsingDescriptors:@[sortDescriptorNearest]];
+        
         [self reloadTableKinosfera];
     }else{
         [self.arrayData addObject:dict];
     }
     
-    NSLog(@"ARRAY %@",self.arrayData);
+    
     
 }
 
@@ -86,7 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.arrayData.count;
+    return self.finalArray.count;
     
 }
 
@@ -98,8 +109,7 @@
     
     KinosferaCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    NSDictionary * dict = [self.arrayData objectAtIndex:indexPath.row];
-    
+    NSDictionary * dict = [self.finalArray objectAtIndex:indexPath.row];
     cell.image.image = [UIImage imageNamed:[dict objectForKey:@"image"]];
     cell.name.text = [dict objectForKey:@"name"];
     cell.number.text = [dict objectForKey:@"number"];
@@ -114,7 +124,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self pushMethodWithIdentifier:@"ProfessionController"];
+    
+    ProfessionController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionController"];
+    
+    NSDictionary * dict = [self.finalArray objectAtIndex:indexPath.row];
+    profController.professionID = [dict objectForKey:@"id"];
+    profController.professionName = [dict objectForKey:@"name"];
+
+    [self.navigationController pushViewController:profController animated:YES];
+    
+    
     NSLog(@"didSelectRowAtIndexPath %ld", (long)indexPath.row);
     
 }
