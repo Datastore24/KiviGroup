@@ -8,6 +8,7 @@
 
 #import "ProfessionDetailController.h"
 #import "ProfessionDetailModel.h"
+#import "AddParamsModel.h"
 #import "PhotoView.h"
 #import "VideoView.h"
 #import "TextDataProfession.h"
@@ -220,30 +221,70 @@
         self.maxHeightVideo = startY - 26.f;
     }
     
-    NSArray * arrayTitles = [NSArray arrayWithObjects:
-                             @"Телосложение", @"Размер одежды:", @"Цвет волос:", nil];
-    
-    
-    NSArray * arrayTextParams = [NSArray arrayWithObjects:
-                                 @"Спортивное", @"48", @"Темный", nil];
-    
-    for (int i = 0; i < arrayTitles.count; i ++) {
-        TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
-                                                                           antFirstTextLabel:[arrayTitles objectAtIndex:i]
-                                                                          andSecondTextLabel:[arrayTextParams objectAtIndex:i]];
-        [self.mainScrollView addSubview:textDataProfession];
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+
+    NSArray * profArray = [addParamsModel getParamsDict:[self.profID integerValue]];
+    int i=0;
+    for (NSString *key in profileDict) {
+        NSDictionary * params = [addParamsModel getInformationDictionary:key andProfArray:profArray];
+        
+ 
+        if(params.count> 0){
+            NSDictionary * finalInfoParams = [addParamsModel getNameByDictionary:[params objectForKey:@"array"] andFindID:[profileDict objectForKey:key]];
+            
+            NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   key,@"additionalID",
+                                   [params objectForKey:@"title"],@"title",
+                                   [finalInfoParams objectForKey:@"name"], @"value",nil];
+            
+            
+            TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
+                                                                               antFirstTextLabel: [params objectForKey:@"title"]
+                                                                              andSecondTextLabel:[finalInfoParams objectForKey:@"name"]];
+            [self.mainScrollView addSubview:textDataProfession];
+
+            i++;
+            
+            
+        }
     }
+    
+    NSArray * language = [profileDict objectForKey:@"languages"];
+    
+    NSMutableString * resultString = [NSMutableString new];
+    
+    for(int k=0; k<language.count; k++) {
+        NSDictionary * langDict = [language objectAtIndex:k];
+        NSDictionary * resLangDict =  [self getLanguageNameByID:[langDict objectForKey:@"language_id"]];
+        NSLog(@"RESLANG %@",resLangDict);
+        if(k==0){
+            [resultString appendString:[resLangDict objectForKey:@"name"]];
+        }else if(k>0){
+            [resultString appendString:@", "];
+            [resultString appendString:[resLangDict objectForKey:@"name"]];
+        }
+    }
+    
+   
+    
+    TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
+                                                                       antFirstTextLabel: @"Языки"
+                                                                      andSecondTextLabel:resultString];
+    [self.mainScrollView addSubview:textDataProfession];
+    
+     i++;   
+
     
     //Отрисовка доп параметров-----------------------------
     
 
     if ([profileDict objectForKey:@"user_comment"] == [NSNull null]) {
-        self.mainScrollView.contentSize = CGSizeMake(0, self.maxHeightVideo + 36.f + 25 * arrayTitles.count);
+        self.mainScrollView.contentSize = CGSizeMake(0, self.maxHeightVideo + 36.f + 25 * i+1);
     } else {
         
         
         AddParamsProfession * addParamsView = [[AddParamsProfession alloc]
-                                               initWithHeight:self.maxHeightVideo + 36.f + 25 * arrayTitles.count
+                                               initWithHeight:self.maxHeightVideo + 36.f + 25 * i+1
                                                andText:[profileDict objectForKey:@"user_comment"]];
         [self.mainScrollView addSubview:addParamsView];
         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(addParamsView.frame));
@@ -251,7 +292,7 @@
         
         //Отрисовка тени-------------------------------------
         UIView * viewShadow = [[UIView alloc] initWithFrame:
-                               CGRectMake(0, self.maxHeightVideo + 36.f + 25 * arrayTitles.count,
+                               CGRectMake(0, self.maxHeightVideo + 36.f + 25 * i+1,
                                           CGRectGetWidth(self.view.bounds), 2)];
         viewShadow.backgroundColor = [UIColor whiteColor];
         viewShadow.layer.borderColor = [UIColor whiteColor].CGColor;

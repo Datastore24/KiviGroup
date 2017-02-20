@@ -25,7 +25,10 @@
         firstLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
         [self addSubview:firstLabel];
         
-        UILabel * secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) / 2, 0.f, CGRectGetWidth(self.bounds) / 2 - 12, 25)];
+        CGFloat heightSelf = [self findHeightForText:secondTextLabel havingWidth:CGRectGetWidth(self.bounds) / 2 - 12 andFont:[UIFont fontWithName:FONT_ISTOK_REGULAR size:16]];
+        
+        UILabel * secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) / 2, 0.f, CGRectGetWidth(self.bounds) / 2 - 12, heightSelf)];
+        secondLabel.numberOfLines = 0;
         secondLabel.text = secondTextLabel;
         secondLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"343536"];
         secondLabel.textAlignment = NSTextAlignmentRight;
@@ -34,6 +37,15 @@
         
     }
     return self;
+}
+
+- (CGFloat)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font {
+    CGSize size = CGSizeZero;
+    if (text) {
+        CGRect frame = [text boundingRectWithSize:CGSizeMake(widthValue, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName:font } context:nil];
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+    }
+    return size.height;
 }
 
 

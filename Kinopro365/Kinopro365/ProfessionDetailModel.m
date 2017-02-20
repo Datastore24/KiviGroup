@@ -18,7 +18,9 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              profileID,@"user_id",
                              profID,@"profession_id",nil];
+   
     [apiManager getDataFromSeverWithMethod:@"user.get" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+         NSLog(@"PROFILE %@",response);
         if([response objectForKey:@"error_code"]){
             
             NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
