@@ -13,6 +13,7 @@
 #import "AddParamsView.h"
 #import "AdditionalTable.h"
 #import "UserInformationTable.h"
+#import "KinoproSearchController.h"
 
 
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
@@ -35,7 +36,7 @@
     
     self.fieldsArray = [NSMutableArray new];
     
-    
+   
     
     AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
     
@@ -45,42 +46,44 @@
      for(int i = 0; i<paramsArray.count; i++){
          
          NSDictionary * dictData = [paramsArray objectAtIndex:i];
-         
+       
          NSString * defValueIndex;
          if([[dictData objectForKey:@"defValueIndex"] length] != 0){
              defValueIndex = [dictData objectForKey:@"defValueIndex"];
          }else{
              defValueIndex = @"";
          }
-
-         AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
-                                                                                CGRectGetWidth(self.view.bounds), 30)
-                                                andTitle:[dictData objectForKey:@"title"]
-                                                andType:[dictData objectForKey:@"type"]
-                                                andPlaceholder:[dictData objectForKey:@"placeholder"]
-                                                andId:[dictData objectForKey:@"id"]
-                                                andDefValueIndex:defValueIndex
-                                                andArrayData:[dictData objectForKey:@"array"]];
          
-        
-         view.deleagte = self;
+       
+             AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
+                                                                                    CGRectGetWidth(self.view.bounds), 30)
+                                                                andTitle:[dictData objectForKey:@"title"]
+                                                                 andType:[dictData objectForKey:@"type"]
+                                                          andPlaceholder:[dictData objectForKey:@"placeholder"]
+                                                                   andId:[dictData objectForKey:@"id"]
+                                                        andDefValueIndex:defValueIndex
+                                                            andArrayData:[dictData objectForKey:@"array"]
+                                                             andIsSearch: self.isSearch];
+             
+             
+             view.deleagte = self;
+             
+             [self.mainScrollView addSubview:view];
+             self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
+             
+             if(view.mainObject && view.mainDict){
+                 NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                              view.mainObject,@"object",
+                                              view.mainDict,@"info", nil];
+                 [self.fieldsArray addObject:resultDict];
+             }
+             
+             
          
-         [self.mainScrollView addSubview:view];
-         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(view.frame)+50);
          
-         if(view.mainObject && view.mainDict){
-             NSDictionary * resultDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                          view.mainObject,@"object",
-                                          view.mainDict,@"info", nil];
-            [self.fieldsArray addObject:resultDict];
-         }
-         
-         
-         
-     }
     
    
-
+     }
     
     
     
@@ -88,35 +91,63 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
-                         @"ex_languages"];
-    
-    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
     NSMutableString * resultString = [NSMutableString new];
-    if(outletTableDataArray.count>0){
-        for(int i=0; i<outletTableDataArray.count; i++){
-            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-            if ([resultString isEqualToString:@""]) {
-                [resultString appendString:addTable.additionalName];
-            } else {
-                [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+    if(!self.isSearch){
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                             @"ex_languages"];
+        
+        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+              if(outletTableDataArray.count>0){
+            for(int i=0; i<outletTableDataArray.count; i++){
+                AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                if ([resultString isEqualToString:@""]) {
+                    [resultString appendString:addTable.additionalName];
+                } else {
+                    [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                }
+                if(i==2){
+                    [resultString appendString:@"..."];
+                    break;
+                }
             }
-            if(i==2){
-                [resultString appendString:@"..."];
-                break;
-            }
+            
+            CustomButton * customButton = [self.mainScrollView viewWithTag:999];
+            customButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [customButton setTitle: resultString forState: UIControlStateNormal];
+            customButton.frame = CGRectMake(152.f, 0, 142.f, 40.f);
+            //
+            customButton.backgroundColor = [UIColor clearColor];
+            [customButton setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
+            
         }
-        
-        CustomButton * customButton = [self.mainScrollView viewWithTag:999];
-        customButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [customButton setTitle: resultString forState: UIControlStateNormal];
-        customButton.frame = CGRectMake(152.f, 0, 142.f, 40.f);
-        //
-        customButton.backgroundColor = [UIColor clearColor];
-        [customButton setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
-        
+    }else{
+        if(self.langArray.count>0){
+           
+            for(int i=0; i<self.langArray.count; i++){
+                NSDictionary * langDict = [self.langArray objectAtIndex:i];
+                if ([resultString isEqualToString:@""]) {
+                    [resultString appendString: [langDict objectForKey:@"name"]];
+                } else {
+                    [resultString appendString:[NSString stringWithFormat:@", %@", [langDict objectForKey:@"name"]]];
+                }
+                if(i==2){
+                    [resultString appendString:@"..."];
+                    break;
+                }
+            }
+            
+            CustomButton * customButton = [self.mainScrollView viewWithTag:999];
+            customButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            customButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            [customButton setTitle: resultString forState: UIControlStateNormal];
+            customButton.frame = CGRectMake(152.f, 0, 142.f, 40.f);
+            //
+            customButton.backgroundColor = [UIColor clearColor];
+            [customButton setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
+        }
     }
+    
 }
 
 - (void)viewDidLoad {
@@ -159,6 +190,10 @@
     ChooseProfessionViewController * addParams = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
     addParams.mainArrayData =array;
     addParams.isLanguage = YES;
+    if(self.isSearch){
+            addParams.isSearch = YES;
+    }
+    
     [self.navigationController pushViewController:addParams animated:YES];
     
 }
@@ -187,26 +222,27 @@
     NSMutableArray * arrayForDB = [NSMutableArray new];
     [arrayForDB removeAllObjects];
     int countError = 0;
-   
+    
     for (int i=0; i<self.fieldsArray.count; i++){
         NSDictionary * fields = [self.fieldsArray objectAtIndex:i];
         
         if([[fields objectForKey:@"object"] isKindOfClass:[UITextField class]]){
             UITextField * textFields = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
-            if(textFields.text.length ==0){
+            if(textFields.text.length ==0 && !self.isSearch){
                 countError = countError +1;
                 NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                 [self showAlertWithMessage:alertMessage];
                 
             }else{
-               
+                if(textFields.text.length !=0){
                 NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                        [information objectForKey:@"id"],@"additionalID",
                                        [information objectForKey:@"title"],@"additionalName",
                                        textFields.text,@"additionalValue", nil];
                 
                 [arrayForDB addObject:dict];
+                }
             }
         }
         
@@ -214,47 +250,49 @@
             
             CustomButton * customButton = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
-            NSLog(@"INFO %@",information);
+          
             if([[information objectForKey:@"type"] isEqualToString:@"MultiList"]){
                 
                 NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
                                      @"ex_languages"];
                 
                 RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-
-                if(outletTableDataArray.count==0){
+                
+                if(outletTableDataArray.count==0 && !self.isSearch){
                     countError = countError +1;
                     NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                     [self showAlertWithMessage:alertMessage];
                 }
             }else{
-                if(customButton.customID.length ==0){
+                if(customButton.customID.length ==0 && !self.isSearch){
                     countError = countError +1;
                     NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                     [self showAlertWithMessage:alertMessage];
                     
                 }else{
-                    NSLog(@"BUTTON %@-%@",customButton.customName,customButton.customID);
-                    NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                           [information objectForKey:@"id"],@"additionalID",
-                                           [information objectForKey:@"title"],@"additionalName",
-                                           customButton.customID,@"additionalValue",
-                                           customButton.customName, @"additionalNameValue",nil];
+                    if(customButton.customID.length !=0){
+                        NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                               [information objectForKey:@"id"],@"additionalID",
+                                               [information objectForKey:@"title"],@"additionalName",
+                                               customButton.customID,@"additionalValue",
+                                               customButton.customName, @"additionalNameValue",nil];
+                        
+                        [arrayForDB addObject:dict];
+                    }
                     
-                    [arrayForDB addObject:dict];
                     
                     
                 }
             }
             
             
-           
+            
         }
         
         if([[fields objectForKey:@"object"] isKindOfClass:[UISwitch class]]){
             UISwitch * customSwitch = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
-           
+            
             if(customSwitch.isOn){
                 
                 NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -265,20 +303,41 @@
                 [arrayForDB addObject:dict];
             }
             
-
+            
             
         }
     }
     
-    if(countError==0){
-       [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    
+   
     
     NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
-    [addTable insertDataIntoDataBaseWithName:resultArray];
-     
+    if(!self.isSearch){
+        
+        [addTable insertDataIntoDataBaseWithName:resultArray];
+        if(countError==0){
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+
+    }else{
+        
+        if(self.langArray.count>0){
+            NSDictionary * langDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       self.langArray,@"languages", nil];
+            [arrayForDB addObject:langDict];
+        }
+        NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
+        
+       
+        
+         KinoproSearchController * kinosearch = [self.navigationController.viewControllers objectAtIndex:2];
+        
+        kinosearch.dopArray = resultArray;
+        
+        [self.navigationController popToViewController:kinosearch animated:YES];
+
+    }
+    
     
 }
 @end

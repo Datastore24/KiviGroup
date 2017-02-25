@@ -22,7 +22,8 @@
                andPlaceholder: (NSString *) placeholder
                         andId: (NSString *) fieldID
              andDefValueIndex: (NSString *) defValueIndex
-                 andArrayData: (NSArray*) arrayData;
+                 andArrayData: (NSArray*) arrayData
+                  andIsSearch: (BOOL) isSearch;
 
 - (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool;
 

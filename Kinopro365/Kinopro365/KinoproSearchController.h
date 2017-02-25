@@ -7,8 +7,15 @@
 //
 
 #import "MainViewController.h"
+@protocol KinoproSearchControllerDelegate <NSObject>
+
+-(void) loadWithFilter:(NSMutableDictionary *) filterArray;
+
+@end
 
 @interface KinoproSearchController : MainViewController
+
+@property (assign, nonatomic) id <KinoproSearchControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
@@ -34,7 +41,7 @@
 
 //Buttons
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttonsGender;
+@property (strong, nonatomic) IBOutletCollection(CustomButton) NSArray *buttonsGender;
 @property (weak, nonatomic) IBOutlet CustomButton *buttonAgeOn;
 @property (weak, nonatomic) IBOutlet CustomButton *byttonAgeTo;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
@@ -42,6 +49,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddParams;
 @property (weak, nonatomic) IBOutlet UIButton *buttonClearFilter;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSearch;
+
+
+@property (strong,nonatomic) NSString * profID;
+@property (strong,nonatomic) NSArray * dopArray;
 
 
 

@@ -15,13 +15,14 @@
 #import "ProfessionDetailController.h"
 
 
-@interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate,ProfessionModelDelegate>
+@interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate,ProfessionModelDelegate,KinoproSearchControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray * arrayScrollsView;
 @property (strong, nonatomic) ViewForScroll * viewForScroll;
 
 @property (assign, nonatomic) NSInteger stepX;
 @property (assign, nonatomic) NSInteger stepY;
+@property (strong, nonatomic) ProfessionModel * profModel;
 
 
 @end
@@ -54,9 +55,9 @@
     
     self.arrayScrollsView = [NSMutableArray array];
     [self createActivitiIndicatorAlertWithView];
-    ProfessionModel * profModel = [[ProfessionModel alloc] init];
-    profModel.delegate = self;
-    [profModel loadProfessionFromServerOffset:@"0" andCount:@"50" andProfID:self.professionID];
+    self.profModel = [[ProfessionModel alloc] init];
+    self.profModel.delegate = self;
+    [self.profModel loadProfessionFromServerOffset:@"0" andCount:@"50" andProfID:self.professionID andFilterArray:nil];
     
 }
 
@@ -64,11 +65,22 @@
     [super viewWillAppear:YES];
     
     self.mainScrollView.contentOffset = CGPointZero;
+    if(self.isFiltered){
+        [self loadWithFilter:self.filterArray];
+    }
     
+}
+
+-(void) loadWithFilter:(NSMutableDictionary *) filterArray{
+    NSLog(@"FILTER %@",filterArray);
+    NSDictionary * resultArray = [[NSDictionary alloc] initWithDictionary:filterArray];
+    for(UIView * view in self.mainScrollView.subviews){
+        [view removeFromSuperview];
+    }
     
-    
-    
-    
+    [self.profModel loadProfessionFromServerOffset:@"0" andCount:@"50"
+                                    andProfID:self.professionID
+                               andFilterArray:resultArray];
 }
 
 - (void) loadProfession:(NSDictionary *) profDict{
@@ -133,7 +145,8 @@
                                              andGrowthText:@""
                                              andStarsNumber:[itemDict objectForKey:@"count_rewards"]
                                              andLikeNumber:[itemDict objectForKey:@"count_likes"]
-                                             andProfileID:[itemDict objectForKey:@"id"]];
+                                             andProfileID:[itemDict objectForKey:@"id"]
+                                             andIsFavourite:[NSString stringWithFormat:@"%@", [itemDict objectForKey:@"is_favourite"]]];
             cellView.deleagte = self;
             [scrolView addSubview:cellView];
             self.stepX += 1;
@@ -166,7 +179,11 @@
 }
 
 - (void) actionGlassButton: (UIBarButtonItem*) button {
-    [self pushCountryControllerWithIdentifier:@"KinoproSearchController"];
+    
+    KinoproSearchController * searchController = [self.storyboard instantiateViewControllerWithIdentifier:@"KinoproSearchController"];
+    searchController.profID = self.professionID;
+    [self.navigationController pushViewController:searchController animated:YES];
+    
 }
 
 
@@ -235,12 +252,25 @@
 #pragma mark - ProfessionCellViewDelegate
 
 - (void) actionBookMark: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button {
+    ProfessionModel * profModel =[[ProfessionModel alloc] init];
     if (!button.isBool) {
-        [button setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
-        button.isBool = YES;
+        
+        [profModel sendIsFavourite:NO andProfileID:button.customID complitionBlock:^{
+            [button setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
+                    forState:UIControlStateNormal];
+            button.isBool = YES;
+        }];
+        
+        
+        
     } else {
-        [button setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
-        button.isBool = NO;
+        
+        [profModel sendIsFavourite:YES andProfileID:button.customID complitionBlock:^{
+            [button setImage:[UIImage imageNamed:@"professionImageBookmark"]
+                    forState:UIControlStateNormal];
+            button.isBool = NO;
+        }];
+        
     }
 }
 
@@ -251,6 +281,7 @@
     profController.profileID = button.customID;
     profController.profName = self.professionName;
     profController.profID = self.professionID;
+    profController.buttonBookmarkBack = button.customButton;
     
     [self.navigationController pushViewController:profController animated:YES];
     

@@ -9,9 +9,14 @@
 #import "VideoView.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import "MainViewController.h"
+
+@interface VideoView() <YTPlayerViewDelegate>
+
+@end
 
 @implementation VideoView
-
+@synthesize delegate;
 - (instancetype)initCustonButtonAccessVideo {
     self = [super init];
     if (self) {
@@ -37,15 +42,20 @@
     return self;
 }
 
-- (instancetype)initWithHeight: (CGFloat) height andURLVideo: (NSString*) urlVideo
+- (instancetype)initWithHeight: (CGFloat) height andURLVideo: (NSString*) urlVideo lastObject:(BOOL) lastObject
 {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(13.f, height, 296, 123);
         self.backgroundColor = [UIColor lightGrayColor];
         
+        
         YTPlayerView * playerView = [[YTPlayerView alloc] initWithFrame:self.bounds];
         [playerView loadWithVideoId:[self createIDYouTubeWithURL:urlVideo]];
+        playerView.delegate = self;
+        if(lastObject){
+            playerView.tag = 5000;
+        }
         [self addSubview:playerView];
         
     }
@@ -63,5 +73,14 @@
     return finalStr;
 }
 
+#pragma mark - YTPlayerViewDelegate
+
+- (void)playerViewDidBecomeReady:(nonnull YTPlayerView *)playerView{
+    if(playerView.tag == 5000){
+        NSLog(@"REDYPL");
+        [self.delegate deleteActivitiIndicatorDelegate];
+    }
+    
+}
 
 @end

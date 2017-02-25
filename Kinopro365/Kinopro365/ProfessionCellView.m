@@ -21,7 +21,8 @@
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
                                  andLikeNumber: (NSString*) likeNumber
-                                  andProfileID: (NSString *) profileID{
+                                  andProfileID: (NSString *) profileID
+                                andIsFavourite: (NSString *) isFavourite{
     self = [super init];
     if (self) {
         
@@ -31,9 +32,9 @@
         [self addSubview:upBorderView];
         
         UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(13.f, 5.f, 76.f, 115.f)];
+        //Тень
         
-        
-        
+        //
         NSURL *imgURL = [NSURL URLWithString:imageAvatar];
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         [manager downloadImageWithURL:imgURL
@@ -47,6 +48,9 @@
                                 if(image){
                                     avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
                                     avatarImageView.clipsToBounds = YES;
+                                    avatarImageView.layer.cornerRadius = 5;
+                                   
+                                    
                                     avatarImageView.image = image;
                                     
                                     
@@ -57,7 +61,7 @@
         
         
         
-        
+        [self addSubview:shadow];
         [self addSubview:avatarImageView];
         
         UILabel * labelName = [self createLabelWithName:name andFrame:CGRectMake(110.f, 11.f, 200, 17.75f)];
@@ -85,13 +89,28 @@
         buttonCell.frame = self.bounds;
         buttonCell.customFullName = name;
         buttonCell.customID = profileID;
+        
         [buttonCell addTarget:self action:@selector(actionButtonCell:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonCell];
         
         CustomButton * buttonBookmark = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonBookmark.frame =CGRectMake(288.f, 97.f, 19.f, 20.f);
-        buttonBookmark.isBool = NO;
-        [buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
+         buttonBookmark.customID = profileID;
+        
+        if([isFavourite integerValue] == 0){
+            buttonBookmark.isBool = NO;
+            [buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
+        }else{
+            buttonBookmark.isBool = YES;
+            [buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
+            
+            
+        }
+        
+        buttonCell.customButton = buttonBookmark;
+        
+        
+        
         [buttonBookmark addTarget:self action:@selector(actionButtonBookMark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
 

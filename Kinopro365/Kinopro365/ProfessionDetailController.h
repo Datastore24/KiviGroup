@@ -27,6 +27,7 @@
 
 //Buttons
 @property (weak, nonatomic) IBOutlet CustomButton *buttonBookmark;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonBookmarkBack;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLike;
 @property (weak, nonatomic) IBOutlet UIButton *buttonStar;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneOne;

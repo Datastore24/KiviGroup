@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <youtube-ios-player-helper/YTPlayerView.h>
 
+
+@protocol VideoViewDelegate <NSObject>
+
+-(void) deleteActivitiIndicatorDelegate;
+
+@end
+
 @interface VideoView : UIView
 
+@property (assign, nonatomic) id <VideoViewDelegate> delegate;
 - (instancetype)initCustonButtonAccessVideo;
-- (instancetype)initWithHeight: (CGFloat) height andURLVideo: (NSString*) urlVideo;
+- (instancetype)initWithHeight: (CGFloat) height andURLVideo: (NSString*) urlVideo lastObject:(BOOL) lastObject;
 
 @end
