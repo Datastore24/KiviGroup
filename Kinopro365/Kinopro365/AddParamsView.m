@@ -30,6 +30,7 @@
                andId: (NSString *) fieldID
              andDefValueIndex: (NSString *) defValueIndex
                     andArrayData: (NSArray*) arrayData
+            andIsSearch: (BOOL) isSearch
 {
     self = [super init];
     if (self) {
@@ -86,20 +87,28 @@
                     NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
                                          fieldID];
                     
-                    //Грузим данные из базы
-                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                    if(outletTableDataArray.count>0){
-                        for(int i=0; i<outletTableDataArray.count; i++){
-                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-                            buttonPicker.customName = addTable.additionalNameValue;
-                            buttonPicker.customID = addTable.additionalValue;
-                            [buttonPicker setTitle:addTable.additionalNameValue forState:UIControlStateNormal];
-                        }
-                    }else{
-                        
+                    if(isSearch){
                         buttonPicker.customName = defValueIndex;
                         [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+
+                        
+                    }else{
+                        //Грузим данные из базы
+                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                        if(outletTableDataArray.count>0){
+                            for(int i=0; i<outletTableDataArray.count; i++){
+                                AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                                buttonPicker.customName = addTable.additionalNameValue;
+                                buttonPicker.customID = addTable.additionalValue;
+                                [buttonPicker setTitle:addTable.additionalNameValue forState:UIControlStateNormal];
+                            }
+                        }else{
+                            
+                            buttonPicker.customName = defValueIndex;
+                            [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
+                        }
                     }
+                    
                     
                 } else if ([type isEqualToString:@"Switch"]) {
                     labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
@@ -114,14 +123,19 @@
                     NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
                                          fieldID];
                     
-                    //Грузим данные из базы
-                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                    if(outletTableDataArray.count>0){
-                        [swith setOn:YES];
-                    }else{
-                        
+                    if(isSearch){
                         [swith setOn:NO];
+                    }else{
+                        //Грузим данные из базы
+                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                        if(outletTableDataArray.count>0){
+                            [swith setOn:YES];
+                        }else{
+                            
+                            [swith setOn:NO];
+                        }
                     }
+                    
 
                     
                     
@@ -149,26 +163,30 @@
                                       @"type": @"MultiList"
                                       };
                 
-                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
-                                         @"ex_languages"];
-                    
-                    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                    NSMutableString * resultString = [NSMutableString new];
-                    if(outletTableDataArray.count>0){
-                        for(int i=0; i<outletTableDataArray.count; i++){
-                            AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-                            if ([resultString isEqualToString:@""]) {
-                                [resultString appendString:addTable.additionalName];
-                            } else {
-                                [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                    if(!isSearch){
+                        
+                        NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                                             @"ex_languages"];
+                        
+                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                        NSMutableString * resultString = [NSMutableString new];
+                        if(outletTableDataArray.count>0){
+                            for(int i=0; i<outletTableDataArray.count; i++){
+                                AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                                if ([resultString isEqualToString:@""]) {
+                                    [resultString appendString:addTable.additionalName];
+                                } else {
+                                    [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                                }
+                                if(i==2){
+                                    [resultString appendString:@"..."];
+                                    break;
+                                }
                             }
-                            if(i==2){
-                                [resultString appendString:@"..."];
-                                break;
-                            }
+                            [self ChekButtonWithText:resultString andBool:YES];
                         }
-                        [self ChekButtonWithText:resultString andBool:YES];
                     }
+                    
                     
                 }
             

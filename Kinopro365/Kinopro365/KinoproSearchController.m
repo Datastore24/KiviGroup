@@ -14,6 +14,7 @@
 #import "SingleTone.h"
 #import "CountryViewController.h"
 #import "AddParamsController.h"
+#import "ProfessionController.h"
 
 
 @interface KinoproSearchController () <UITextFieldDelegate, CountryViewControllerDelegate>
@@ -23,6 +24,7 @@
 @end
 
 @implementation KinoproSearchController
+@synthesize delegate;
 
 - (void) loadView {
     [super loadView];
@@ -46,6 +48,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    NSLog(@"DOPPARAM %@",self.dopArray);
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
@@ -60,14 +63,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)actionButtonsGender:(UIButton *)sender {
-    
-    for (UIButton * button in self.buttonsGender) {
+- (IBAction)actionButtonsGender:(CustomButton *)sender {
+
+    for (CustomButton * button in self.buttonsGender) {
         if ([button isEqual:sender]) {
             button.alpha = 1.f;
+            button.customName = sender.titleLabel.text;
             button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:16];
         } else {
             button.alpha = 0.5f;
+            button.customName = nil;
             button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
         }
     }
@@ -103,14 +108,80 @@
 
 - (IBAction)actionButtonAddParams:(id)sender {
     
-    [self pushCountryControllerWithIdentifier:@"AddParamsController"];
+    AddParamsController * addParamsController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddParamsController"];
+    NSArray * searchArray = [[NSArray alloc] initWithObjects:@{@"professionID":self.profID}, nil];
+    addParamsController.profArray = searchArray;
+    addParamsController.isSearch = YES;
+    [self.navigationController pushViewController:addParamsController animated:YES];
+
     
 }
 
 - (IBAction)actionButtonClearFilter:(id)sender {
+    self.textFildName.text = nil;
+    self.textFildSurname.text = nil;
+    [self.buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+    [self.buttonCountry setTitle:@"Страна" forState:UIControlStateNormal];
+    [self.buttonAgeOn setTitle:@"От" forState:UIControlStateNormal];
+    [self.byttonAgeTo setTitle:@"До" forState:UIControlStateNormal];
+    
+    for(int i=0; i<self.buttonsGender.count; i++){
+        CustomButton * button = [self.buttonsGender objectAtIndex:i];
+        button.alpha = 0.5f;
+        button.customName = nil;
+        button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        if(i==2){
+            button.alpha = 1.f;
+            button.customName = button.titleLabel.text;
+            button.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:16];
+        }
+        
+    }
+    
+    
 }
 
 - (IBAction)actionButtonSearch:(id)sender {
+    
+    NSMutableDictionary * dictParams = [NSMutableDictionary new];
+    if(self.textFildName.text.length != 0){
+        [dictParams setObject:self.textFildName.text forKey:@"first_name"];
+    }
+    if(self.textFildSurname.text.length != 0){
+        [dictParams setObject:self.textFildSurname.text forKey:@"last_name"];
+    }
+    if(![self.buttonAgeOn.titleLabel.text isEqualToString:@"От"]){
+        [dictParams setObject:self.buttonAgeOn.titleLabel.text forKey:@"age_from"];
+    }
+    if(![self.byttonAgeTo.titleLabel.text isEqualToString:@"До"]){
+        [dictParams setObject:self.byttonAgeTo.titleLabel.text forKey:@"age_to"];
+    }
+    if(![self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]){
+        [dictParams setObject:[[SingleTone sharedManager] countrySearchID] forKey:@"country_id"];
+    }
+    
+    if(![self.buttonCity.titleLabel.text isEqualToString:@"Город"]){
+        [dictParams setObject:[[SingleTone sharedManager] citySearchID] forKey:@"city_id"];
+    }
+    for(int i=0; i<self.buttonsGender.count; i++){
+        CustomButton * genderButton = [self.buttonsGender objectAtIndex:i];
+        if([genderButton.customName isEqualToString:@"Муж."]){
+            [dictParams setObject:@"2" forKey:@"sex"];
+        }else if([genderButton.customName isEqualToString:@"Жен."]){
+            [dictParams setObject:@"1" forKey:@"sex"];
+        }
+    }
+    if(self.dopArray.count>0){
+        [dictParams setObject:self.dopArray forKey:@"dopArray"];
+    }
+    
+    ProfessionController * addParam = [self.navigationController.viewControllers objectAtIndex:1];
+    
+    addParam.isFiltered = YES;
+    addParam.filterArray = dictParams;
+    
+    [self.navigationController popToViewController:addParam animated:YES];
+    
 }
 
 

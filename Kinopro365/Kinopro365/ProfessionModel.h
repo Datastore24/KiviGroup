@@ -20,6 +20,11 @@
 
 -(void) loadProfessionFromServerOffset: (NSString *) offset
                               andCount: (NSString *) count
-                             andProfID:(NSString *) profID;
+                             andProfID: (NSString *) profID
+                        andFilterArray: (NSDictionary *) filterArray;
+
+-(void) sendIsFavourite: (BOOL) isFavourite
+           andProfileID:(NSString *) profileID
+        complitionBlock: (void (^) (void)) compitionBack;
 
 @end

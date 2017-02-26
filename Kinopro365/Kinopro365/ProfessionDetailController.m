@@ -15,7 +15,7 @@
 #import "AddParamsProfession.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
-@interface ProfessionDetailController () <ProfessionDetailModelDelegate >
+@interface ProfessionDetailController () <ProfessionDetailModelDelegate,VideoViewDelegate>
 
 @property (assign, nonatomic) CGFloat maxHeightVideo; //параметр сохраняет конечное положение вью всех видео
 @property (strong, nonatomic) ProfessionDetailModel * profDetailModel;
@@ -38,10 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-   
     
     
 }
@@ -80,6 +76,7 @@
                             if(image){
                                 self.imageAvatar.contentMode = UIViewContentModeScaleAspectFill;
                                 self.imageAvatar.clipsToBounds = YES;
+                                self.imageAvatar.layer.cornerRadius = 5;
                                 self.imageAvatar.image = image;
                                 
                                 
@@ -108,6 +105,16 @@
     
     self.labelLikeCount.text = [profileDict objectForKey:@"count_likes"];
     self.labelStarCount.text = [profileDict objectForKey:@"count_rewards"];
+    
+    if([[profileDict objectForKey:@"is_favourite"] integerValue]!=0){
+        [self.buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
+        self.buttonBookmark.isBool = YES;
+    }else{
+        [self.buttonBookmark setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
+        self.buttonBookmark.isBool = NO;
+    }
+    
+   
 
     BOOL openContact;
     if([[profileDict objectForKey:@"is_open_contacts"] integerValue] == 1){
@@ -147,6 +154,7 @@
         [self.profDetailModel loadPhoto:self.profileID andOffset:@"0" andCount:@"1000" complitionBlock:^(id response) {
             NSArray * itemsArray = [response objectForKey:@"items"];
             
+            
             for (int i = 0; i < itemsArray.count; i++) {
                 NSDictionary * itemsDict = [itemsArray objectAtIndex:i];
                 PhotoView * photoView = [[PhotoView alloc] initWithFrame:CGRectMake(21.f + 74.f * i, 7.f, 53.f, 80.f)
@@ -183,13 +191,17 @@
                 }else{
                     startY = 270;
                 }
-                
-                VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + 144 * i andURLVideo:[itemDict objectForKey:@"link"]];
-                [self.mainScrollView addSubview:videoViewPlayer];
-                
                 if(i==itemsArray.count -1){
-                     self.maxHeightVideo = CGRectGetMaxY(videoViewPlayer.frame);
+                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + 144 * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:YES];
+                    videoViewPlayer.delegate = self;
+                    [self.mainScrollView addSubview:videoViewPlayer];
+                    self.maxHeightVideo = CGRectGetMaxY(videoViewPlayer.frame);
+                }else{
+                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + 144 * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:NO];
+                     videoViewPlayer.delegate = self;
+                    [self.mainScrollView addSubview:videoViewPlayer];
                 }
+                
                 
             }
             
@@ -199,6 +211,7 @@
        
     }else{
         [self loadMore:profileDict andOpenContact:openContact];
+        [self deleteActivitiIndicator];
         
     }
     
@@ -206,7 +219,7 @@
     
     
     
-        [self deleteActivitiIndicator];
+    
 }
 
 -(void) loadMore:(NSDictionary *) profileDict andOpenContact: (BOOL) openContact {
@@ -316,12 +329,32 @@
 
 - (IBAction)actionButtonBookmark:(CustomButton*)sender {
     
-    if (sender.isBool) {
-        [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
-        sender.isBool = NO;
+    ProfessionDetailModel * profDetailModel = [[ProfessionDetailModel alloc] init];
+    
+    if (!sender.isBool) {
+        
+        [profDetailModel sendIsFavourite:NO andProfileID:self.profileID complitionBlock:^{
+            [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
+                    forState:UIControlStateNormal];
+            [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
+                    forState:UIControlStateNormal];
+            
+            
+            sender.isBool = YES;
+        }];
+        
+        
+        
     } else {
-        [sender setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
-        sender.isBool = YES;
+        
+        [profDetailModel sendIsFavourite:YES andProfileID:self.profileID complitionBlock:^{
+            [sender setImage:[UIImage imageNamed:@"professionImageBookmark"]
+                    forState:UIControlStateNormal];
+            [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmark"]
+                                     forState:UIControlStateNormal];
+            sender.isBool = NO;
+        }];
+        
     }
     
 }
@@ -331,4 +364,9 @@
 
 - (IBAction)actionButtomStar:(id)sender {
 }
+
+-(void) deleteActivitiIndicatorDelegate{
+    [self deleteActivitiIndicator];
+}
+
 @end

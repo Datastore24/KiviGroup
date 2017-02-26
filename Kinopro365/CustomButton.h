@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSString * customImageURL;
 @property (strong, nonatomic) NSArray * customArray;
 @property (strong, nonatomic) NSArray * customArrayTwo;
+@property (strong, nonatomic) CustomButton * customButton;
 
 @end

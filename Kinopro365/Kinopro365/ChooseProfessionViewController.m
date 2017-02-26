@@ -17,7 +17,7 @@
 
 @interface ChooseProfessionViewController () <ChooseProfessionalModelDelegate,AddParamsControllerDelegate>
 
-
+@property (strong, nonatomic) NSMutableArray * langArray;
 @end
 
 @implementation ChooseProfessionViewController
@@ -35,6 +35,7 @@
     } else {
         UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Выберите языки"];
         self.navigationItem.titleView = CustomText;
+        self.langArray = [NSMutableArray new];
     }
     
 
@@ -97,11 +98,16 @@
         cell.mainImage.image = [UIImage imageNamed:[dictData objectForKey:@"image"]];
         
     }
-    if ([[dictData objectForKey:@"choose"]boolValue]) {
-        cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
-    } else {
+    if(!self.isSearch){
+        if ([[dictData objectForKey:@"choose"]boolValue]) {
+            cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
+        } else {
+            cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
+        }
+    }else{
         cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
     }
+    
     
     
     return cell;
@@ -113,77 +119,90 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    RLMResults *profTableDataArray = [UserInformationTable allObjects];
-    
-    if(profTableDataArray.count>0){
-        
-        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        userTable.isSendToServer = @"0";
-        [realm commitWriteTransaction];
-        
-    }
-    
     NSMutableDictionary * dictData = [self.mainArrayData objectAtIndex:indexPath.row];
     ProfeccionalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if ([[dictData objectForKey:@"choose"] boolValue]) {
-        cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
-        [dictData setObject:[NSNumber numberWithBool:NO] forKey:@"choose"];
+    if(!self.isSearch){
+        RLMResults *profTableDataArray = [UserInformationTable allObjects];
         
-        if(!self.isLanguage){
+        if(profTableDataArray.count>0){
             
-            [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO andString:self.professianString];
-        
-            //Узнаем есть ли избранное
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
-                             [dictData objectForKey:@"profID"]];
-            RLMResults *outletTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
-            ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:0];
-        
-            [[RLMRealm defaultRealm] beginWriteTransaction];
-            [[RLMRealm defaultRealm] deleteObject:professionalTable];
-            [[RLMRealm defaultRealm] commitWriteTransaction];
-        }else{
+            UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            userTable.isSendToServer = @"0";
+            [realm commitWriteTransaction];
             
-            //Узнаем есть ли избранное
-            NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
-                                 resultName];
-            RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-            NSLog(@"RESSSS %@",outletTableDataArray);
-            if(outletTableDataArray.count>0){
-                AdditionalTable * professionalTable = [outletTableDataArray objectAtIndex:0];
+        }
+        
+        
+        
+        
+        if ([[dictData objectForKey:@"choose"] boolValue]) {
+            cell.checkImage.image = [UIImage imageNamed:@"neactiv_galka.png"];
+            [dictData setObject:[NSNumber numberWithBool:NO] forKey:@"choose"];
+            
+            if(!self.isLanguage){
+                
+                [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:NO andString:self.professianString];
+                
+                //Узнаем есть ли избранное
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"professionID = %@",
+                                     [dictData objectForKey:@"profID"]];
+                RLMResults *outletTableDataArray = [ProfessionsTable objectsWithPredicate:pred];
+                ProfessionsTable * professionalTable = [outletTableDataArray objectAtIndex:0];
                 
                 [[RLMRealm defaultRealm] beginWriteTransaction];
                 [[RLMRealm defaultRealm] deleteObject:professionalTable];
                 [[RLMRealm defaultRealm] commitWriteTransaction];
+            }else{
+                
+                //Узнаем есть ли избранное
+                NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                     resultName];
+                RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                NSLog(@"RESSSS %@",outletTableDataArray);
+                if(outletTableDataArray.count>0){
+                    AdditionalTable * professionalTable = [outletTableDataArray objectAtIndex:0];
+                    
+                    [[RLMRealm defaultRealm] beginWriteTransaction];
+                    [[RLMRealm defaultRealm] deleteObject:professionalTable];
+                    [[RLMRealm defaultRealm] commitWriteTransaction];
+                }
+                
+                
+            }
+            
+            
+        } else {
+            NSLog(@"TEMPDICT %@",dictData);
+            cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
+            [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
+            
+            if(!self.isLanguage){
+                
+                [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES andString:self.professianString];
+                
+                ProfessionsTable * professionalTable = [[ProfessionsTable alloc] init];
+                [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
+            }else{
+                AdditionalTable * addTable = [[AdditionalTable alloc] init];
+                NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
+                [addTable insertDataIntoDataBaseWithName:resultName andAdditionalName:[dictData objectForKey:@"name"] andAdditionalValue:[dictData objectForKey:@"id"]];
             }
             
             
         }
-        
-        
-    } else {
-        NSLog(@"TEMPDICT %@",dictData);
+    }else{
         cell.checkImage.image = [UIImage imageNamed:@"activ_galka.png"];
         [dictData setObject:[NSNumber numberWithBool:YES] forKey:@"choose"];
-        
-        if(!self.isLanguage){
-            
-            [self creationStringWithString:[dictData objectForKey:@"name"] andChooseParams:YES andString:self.professianString];
-        
-            ProfessionsTable * professionalTable = [[ProfessionsTable alloc] init];
-            [professionalTable insertDataIntoDataBaseWithName:[dictData objectForKey:@"profID"] andProfessionName:[dictData objectForKey:@"name"]];
-        }else{
-            AdditionalTable * addTable = [[AdditionalTable alloc] init];
-            NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[dictData objectForKey:@"id"]];
-            [addTable insertDataIntoDataBaseWithName:resultName andAdditionalName:[dictData objectForKey:@"name"] andAdditionalValue:[dictData objectForKey:@"id"]];
-        }
-        
+        [self.langArray addObject:@{@"id":[dictData objectForKey:@"id"],
+                                    @"name":[dictData objectForKey:@"name"]}];
         
     }
+    
+    
 }
 
 #pragma mark - Actons
@@ -193,13 +212,14 @@
 }
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
-
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
-                         @"ex_languages"];
     
-    RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+    if(!self.isSearch){
+        RLMResults *outletTableDataArray;
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                             @"ex_languages"];
+        
+        outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
     
-
     
         if(!self.isLanguage && [self.professianString isEqualToString:@""]){
             
@@ -216,6 +236,14 @@
             
             [self.navigationController popViewControllerAnimated:YES];
         }
+    }else{
+        
+        AddParamsController * addParam = [self.navigationController.viewControllers objectAtIndex:3];
+        
+        addParam.langArray = self.langArray;
+        
+        [self.navigationController popToViewController:addParam animated:YES];
+    }
 }
 
 #pragma mark - Other

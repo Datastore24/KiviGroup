@@ -20,7 +20,8 @@
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
                                  andLikeNumber: (NSString*) likeNumber
-                                  andProfileID: (NSString *) profileID;
+                                  andProfileID: (NSString *) profileID
+                                andIsFavourite: (NSString *) isFavourite;
 
 @end
 

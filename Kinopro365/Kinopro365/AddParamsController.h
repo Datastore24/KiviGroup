@@ -22,7 +22,9 @@
 @property (assign, nonatomic) id <AddParamsControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) NSArray * profArray;
+@property (assign, nonatomic) BOOL isSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
+@property (strong, nonatomic) NSArray * langArray;
 
 
 

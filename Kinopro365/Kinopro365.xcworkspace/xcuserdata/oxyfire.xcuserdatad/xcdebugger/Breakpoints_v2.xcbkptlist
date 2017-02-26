@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kinopro365/ProfessionDetailController.m"
-            timestampString = "509272050.086808"
+            timestampString = "509543210.503471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-loadProfile:"
             landmarkType = "7">
          </BreakpointContent>

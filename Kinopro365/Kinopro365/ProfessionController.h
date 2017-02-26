@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) NSString * professionID;
 @property (strong, nonatomic) NSString * professionName;
+@property (assign, nonatomic) BOOL isFiltered;
+@property (strong, nonatomic) NSMutableDictionary * filterArray;
 
 - (IBAction)actionBackButton:(id)sender;
 

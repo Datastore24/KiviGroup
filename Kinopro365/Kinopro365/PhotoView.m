@@ -34,6 +34,7 @@
                                     [[buttonImage imageView]
                                      setContentMode:UIViewContentModeScaleAspectFill];
                                     [[buttonImage imageView] setClipsToBounds:YES];
+                                    [[[buttonImage imageView] layer] setCornerRadius:5.f];
                                     
                                     [buttonImage setImage:image forState:UIControlStateNormal];
                                     

@@ -27,5 +27,8 @@
         andOffset: (NSString *) offset
          andCount: (NSString *) count
   complitionBlock: (void (^) (id response)) compitionBack;
+-(void) sendIsFavourite: (BOOL) isFavourite
+           andProfileID:(NSString *) profileID
+        complitionBlock: (void (^) (void)) compitionBack;
 
 @end
