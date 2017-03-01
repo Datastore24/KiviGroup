@@ -61,7 +61,7 @@
         
         
         
-        [self addSubview:shadow];
+        
         [self addSubview:avatarImageView];
         
         UILabel * labelName = [self createLabelWithName:name andFrame:CGRectMake(110.f, 11.f, 200, 17.75f)];
