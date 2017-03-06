@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancel;
 
 @property (assign, nonatomic)  BOOL isSearch;
+@property (assign, nonatomic)  BOOL isVacancy;
 
 - (IBAction)actionButtonCancel:(UIButton *)sender;
 

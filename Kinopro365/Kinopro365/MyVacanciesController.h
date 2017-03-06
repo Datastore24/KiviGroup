@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelListVacancies;
 
 
+
 - (IBAction)actionButtonBack:(id)sender;
 - (IBAction)actionAddVacancies:(id)sender;
 

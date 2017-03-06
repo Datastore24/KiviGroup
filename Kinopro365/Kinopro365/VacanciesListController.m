@@ -7,11 +7,18 @@
 //
 
 #import "VacanciesListController.h"
+#import "VacanciesListModel.h"
+#import "VacanciesDetailsController.h"
 #import "HexColors.h"
 #import "VacanciesListCell.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "DateTimeMethod.h"
+#import "CountryViewController.h"
 
 
-@interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource>
+@interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource, VacanciesListModelDelegate,CountryViewControllerDelegate>
+@property (strong, nonatomic) VacanciesListModel * vacanciesListModel;
+@property (strong, nonatomic) NSArray * vacanArray;
 
 @end
 
@@ -27,7 +34,8 @@
     
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Вакансии"];
     self.navigationItem.titleView = CustomText;
-
+    self.vacanciesListModel = [[VacanciesListModel alloc] init];
+    self.vacanciesListModel.delegate = self;
     
 }
 
@@ -42,13 +50,44 @@
 }
 
 
+- (void) loadVacancies:(NSDictionary *) vacanDict{
+    if([[vacanDict objectForKey:@"items"] isKindOfClass:[NSArray class]]){
+        self.vacanArray = [vacanDict objectForKey:@"items"];
+        self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[vacanDict objectForKey:@"count"]];
+        [self.mainTableView reloadData];
+    }
+   
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    NSString * coutryID;
+    NSString * cityID;
+    if([[SingleTone sharedManager] countrySearchID]){
+        coutryID = [[SingleTone sharedManager] countrySearchID];
+    }else{
+        coutryID = @"";
+    }
+    
+    if([[SingleTone sharedManager] citySearchID]){
+        cityID = [[SingleTone sharedManager] citySearchID];
+    }else{
+        cityID = @"";
+    }
+    
+    [self.vacanciesListModel loadVacanciesFromServerOffset:@"0" andCount:@"1000"
+                                              andCountryID:coutryID andCityID:cityID];
+    
+
+}
+
 
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return self.vacanArray.count;
     
 }
 
@@ -56,14 +95,47 @@
     
     static NSString * identifier = @"Cell";
     
+    NSDictionary * dictVacan = [self.vacanArray objectAtIndex:indexPath.row];
         VacanciesListCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         cell.backgroundColor = [UIColor whiteColor];
-        
+    
+    
         cell.mainImage.layer.cornerRadius = 5.f;
-        cell.mainImage.image = [UIImage imageNamed:@"vacanciesTestImage.png"];
-        cell.titleLabel.text = @"На три месяца ищется звукорежиссер со своими микрофонами.";
-        cell.countryLabel.text = @"Москва (Россия)";
-        cell.activelyLabel.text = @"Активно до 20.11";
+    
+    
+    NSURL *imgURL = [NSURL URLWithString:[dictVacan objectForKey:@"logo_url"]];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:imgURL
+                          options:0
+                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             // progression tracking code
+                         }
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                    NSURL *imageURL) {
+                            
+                            if(image){
+                                cell.mainImage.contentMode = UIViewContentModeScaleAspectFill;
+                                cell.mainImage.clipsToBounds = YES;
+                                cell.mainImage.layer.cornerRadius = 5;
+                                cell.mainImage.image = image;
+                                self.vacanciesImage = image;
+                                
+                                
+                            }else{
+                                //Тут обработка ошибки загрузки изображения
+                            }
+                        }];
+    
+        cell.titleLabel.text = [dictVacan objectForKey:@"name"];
+    
+        cell.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[dictVacan objectForKey:@"city_name"],[dictVacan objectForKey:@"country_name"]];
+
+        NSDate * endDate = [DateTimeMethod timestampToDate:[dictVacan objectForKey:@"end_at"]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSString *stringDate = [dateFormatter stringFromDate:endDate];
+    
+        cell.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
         
         return cell;
 
@@ -81,7 +153,18 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self pushCountryControllerWithIdentifier:@"VacanciesDetailsController"];
+    NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
+    
+    VacanciesDetailsController * vacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"VacanciesDetailsController"];
+    
+    vacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
+    vacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
+    vacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
+    vacanciesDetailsController.vacancyImage = self.vacanciesImage;
+    
+    
+    [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
+    
     
     
 }
@@ -101,10 +184,39 @@
 - (IBAction)actionButtonCountry:(id)sender {
 
     NSLog(@"Переход на окно выбора страны");
+    [[SingleTone sharedManager] setCountry_citi:@"country"];
+    [self pushCountryController];
 }
 
 - (IBAction)actionButtonCity:(id)sender {
     
-    NSLog(@"Переход на окно выбора Города"); 
+    NSLog(@"Переход на окно выбора Города");
+    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]) {
+        [self showAlertWithMessage:@"\nВведите страну!\n"];
+    } else {
+        [[SingleTone sharedManager] setCountry_citi:@"city"];
+        [self pushCountryController];
+    }
 }
+
+#pragma mark - Other
+- (void) pushCountryController {
+    CountryViewController * detai = [self.storyboard instantiateViewControllerWithIdentifier:@"CountryViewController"];
+    detai.delegate = self;
+    detai.isSearch = YES;
+    [self.navigationController pushViewController:detai animated:YES];
+}
+
+#pragma mark - CountryViewControllerDelegate
+
+- (void) changeButtonTextInSearch: (CountryViewController*) controller withString: (NSString*) string {
+    
+    if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
+        [self.buttonCountry setTitle:string forState:UIControlStateNormal];
+    } else {
+        [self.buttonCity setTitle:string forState:UIControlStateNormal];
+    }
+}
+
+
 @end

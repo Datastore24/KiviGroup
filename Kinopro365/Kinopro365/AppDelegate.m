@@ -11,6 +11,8 @@
 #import "UserInformationTable.h"
 #import "VkLoginViewController.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <VK-ios-sdk/VKSdk.h>
+
 #import "VKAPI.h"
 
 #import "SingleTone.h"
@@ -34,6 +36,20 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
+    
+  
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSLog(@"LOCATION %@",language);
+    NSString * finalLanguageAPI;
+    if([language isEqualToString:@"ru-US"]){
+        finalLanguageAPI = @"ru-RU";
+    }else if([language isEqualToString:@"ru-RU"]){
+        finalLanguageAPI = @"ru-RU";
+    }else{
+        finalLanguageAPI = @"en-US";
+    }
+    [[SingleTone sharedManager] setLocalization:finalLanguageAPI];
     [self checkSiteToken];
     
     return YES;
@@ -71,10 +87,10 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    [VKSdk processOpenURL:url fromApplication:sourceApplication];
+    [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    
+    return YES;
 }
 
 #pragma mark - CHECK VK & FB

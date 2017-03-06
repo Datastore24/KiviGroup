@@ -11,10 +11,14 @@
 		AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A51E0AB873007B78CA /* UserInformationTable.m */; };
 		AD2624A91E0AC639007B78CA /* VkLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624A81E0AC639007B78CA /* VkLoginViewController.m */; };
 		AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2624AB1E0AD565007B78CA /* VKAPI.m */; };
+		AD3DCA271E6D7A05008E76EA /* VacanciesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3DCA261E6D7A05008E76EA /* VacanciesListModel.m */; };
+		AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3DCA291E6D806B008E76EA /* VacanciesDetailsModel.m */; };
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
 		AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCCC71E43177500E754BC /* MenuViewModel.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
 		AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */; };
+		ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */; };
+		ADC507B61E6DDEA2003731D6 /* AddVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B51E6DDEA2003731D6 /* AddVacanciesModel.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
 		ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DC1E36451400D74761 /* ProfessionsTable.m */; };
 		ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89DF1E36454300D74761 /* AdditionalTable.m */; };
@@ -115,6 +119,10 @@
 		AD2624A81E0AC639007B78CA /* VkLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkLoginViewController.m; sourceTree = "<group>"; };
 		AD2624AA1E0AD565007B78CA /* VKAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPI.h; sourceTree = "<group>"; };
 		AD2624AB1E0AD565007B78CA /* VKAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPI.m; sourceTree = "<group>"; };
+		AD3DCA251E6D7A05008E76EA /* VacanciesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacanciesListModel.h; sourceTree = "<group>"; };
+		AD3DCA261E6D7A05008E76EA /* VacanciesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VacanciesListModel.m; sourceTree = "<group>"; };
+		AD3DCA281E6D806B008E76EA /* VacanciesDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacanciesDetailsModel.h; sourceTree = "<group>"; };
+		AD3DCA291E6D806B008E76EA /* VacanciesDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VacanciesDetailsModel.m; sourceTree = "<group>"; };
 		AD50A4981E13DC2300CC44DB /* APIManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManger.h; sourceTree = "<group>"; };
 		AD50A4991E13DC2300CC44DB /* APIManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManger.m; sourceTree = "<group>"; };
 		AD7FCCC61E43177500E754BC /* MenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewModel.h; sourceTree = "<group>"; };
@@ -123,6 +131,10 @@
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		AD9DA2E61E570EC100D8AA0C /* ProfessionDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionDetailModel.h; sourceTree = "<group>"; };
 		AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionDetailModel.m; sourceTree = "<group>"; };
+		ADC507B11E6DC9A4003731D6 /* MyVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVacanciesModel.h; sourceTree = "<group>"; };
+		ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVacanciesModel.m; sourceTree = "<group>"; };
+		ADC507B41E6DDEA2003731D6 /* AddVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVacanciesModel.h; sourceTree = "<group>"; };
+		ADC507B51E6DDEA2003731D6 /* AddVacanciesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVacanciesModel.m; sourceTree = "<group>"; };
 		ADED89D81E3644FC00D74761 /* PhonesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesTable.h; sourceTree = "<group>"; };
 		ADED89D91E3644FC00D74761 /* PhonesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonesTable.m; sourceTree = "<group>"; };
 		ADED89DB1E36451400D74761 /* ProfessionsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionsTable.h; sourceTree = "<group>"; };
@@ -367,6 +379,8 @@
 				B81ADD031E6808D900B76E8F /* VacanciesListController.m */,
 				B81ADD051E680DFA00B76E8F /* VacanciesListCell.h */,
 				B81ADD061E680DFA00B76E8F /* VacanciesListCell.m */,
+				AD3DCA251E6D7A05008E76EA /* VacanciesListModel.h */,
+				AD3DCA261E6D7A05008E76EA /* VacanciesListModel.m */,
 			);
 			name = VacanciesList;
 			sourceTree = "<group>";
@@ -376,6 +390,8 @@
 			children = (
 				B81ADD0E1E681BEA00B76E8F /* VacanciesDetailsController.h */,
 				B81ADD0F1E681BEA00B76E8F /* VacanciesDetailsController.m */,
+				AD3DCA281E6D806B008E76EA /* VacanciesDetailsModel.h */,
+				AD3DCA291E6D806B008E76EA /* VacanciesDetailsModel.m */,
 			);
 			name = VacanciesDetails;
 			sourceTree = "<group>";
@@ -387,6 +403,8 @@
 				B8350DE91E683755006A2849 /* MyVacanciesController.m */,
 				B8350DEF1E68667C006A2849 /* MyVacanciesCell.h */,
 				B8350DF01E68667C006A2849 /* MyVacanciesCell.m */,
+				ADC507B11E6DC9A4003731D6 /* MyVacanciesModel.h */,
+				ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */,
 			);
 			name = MyVacancies;
 			sourceTree = "<group>";
@@ -396,6 +414,8 @@
 			children = (
 				B8350DEC1E68394F006A2849 /* AddVacanciesController.h */,
 				B8350DED1E68394F006A2849 /* AddVacanciesController.m */,
+				ADC507B41E6DDEA2003731D6 /* AddVacanciesModel.h */,
+				ADC507B51E6DDEA2003731D6 /* AddVacanciesModel.m */,
 			);
 			name = AddVacancies;
 			sourceTree = "<group>";
@@ -895,6 +915,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
+				ADC507B61E6DDEA2003731D6 /* AddVacanciesModel.m in Sources */,
 				B81ADD041E6808D900B76E8F /* VacanciesListController.m in Sources */,
 				FF6BFBB91E545D4400B3A1C3 /* AddParamsProfession.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
@@ -946,6 +967,7 @@
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
+				AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */,
 				ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */,
@@ -962,7 +984,9 @@
 				AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */,
 				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
 				B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */,
+				AD3DCA271E6D7A05008E76EA /* VacanciesListModel.m in Sources */,
 				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
+				ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */,
 				FF88DF521E0E696B0002FBBC /* HMImageSelectButton.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 				FF6BFBB01E5448BC00B3A1C3 /* PhotoView.m in Sources */,

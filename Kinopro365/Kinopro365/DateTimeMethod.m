@@ -39,6 +39,8 @@
     return localDate;
 }
 
+
+
 + (NSString *)timeFormattedHHMM:(int)totalSeconds
 {
     

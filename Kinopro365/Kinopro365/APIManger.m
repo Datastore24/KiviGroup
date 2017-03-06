@@ -8,6 +8,7 @@
 
 #import "APIManger.h"
 #import <AFNetworking/AFNetworking.h>
+#import "SingleTone.h"
 
 @implementation APIManger
 - (void) getDataFromSeverWithMethod: (NSString *) method andParams: (NSDictionary *) params andToken: (NSString *) token complitionBlock: (void (^) (id response)) compitionBack{
@@ -22,6 +23,7 @@
     //-------------------
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    [manager.requestSerializer setValue:[[SingleTone sharedManager] localization] forHTTPHeaderField:@"Accept-Language"];
     //Запрос
     [manager GET: encodedURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //Вызов блока
@@ -44,6 +46,7 @@
     //-------------------
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    [manager.requestSerializer setValue:[[SingleTone sharedManager] localization] forHTTPHeaderField:@"Accept-Language"];
     //Запрос
     [manager POST:encodedURL parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         compitionBack (responseObject);
@@ -73,6 +76,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    [manager.requestSerializer setValue:[[SingleTone sharedManager] localization] forHTTPHeaderField:@"Accept-Language"];
     [manager POST:encodedURL parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      
      {

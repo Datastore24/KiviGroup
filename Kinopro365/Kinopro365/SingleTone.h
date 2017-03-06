@@ -11,6 +11,7 @@
 
 @interface SingleTone : NSObject
 
+@property (strong, nonatomic) NSString * localization;
 @property (strong, nonatomic) NSString * country_citi;
 @property (strong, nonatomic) NSString * professionControllerCode; //0 - Выбо профессии 1 - Выбор языка
 @property (strong, nonatomic) NSString * stringAletForWebView;

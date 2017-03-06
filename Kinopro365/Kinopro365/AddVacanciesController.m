@@ -9,6 +9,8 @@
 #import "AddVacanciesController.h"
 #import "HexColors.h"
 #import "HMImagePickerController.h"
+#import "APIManger.h"
+#import "SingleTone.h"
 
 @interface AddVacanciesController () <UITextFieldDelegate, UITextViewDelegate, HMImagePickerControllerDelegate>
 
@@ -16,6 +18,7 @@
 @property (assign, nonatomic) CGFloat heightForText;
 @property (strong, nonatomic) HMImagePickerController * pickerVacencies;
 @property (strong, nonatomic) UIImage * imageVacancies;
+@property (strong, nonatomic) NSString * photoID;
 
 
 @property (strong, nonatomic) NSArray * testArrayProfessions;
@@ -279,9 +282,32 @@
                selectedAssets:(NSArray<PHAsset *> *)selectedAssets {
     
     self.imageVacancies = [images objectAtIndex:0];
-    [self.buttonAddImage setImage:self.imageVacancies forState:UIControlStateNormal];
-    self.buttonAddImage.layer.cornerRadius = 3.f;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    APIManger * apiManager = [[APIManger alloc] init];
+    [apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:nil andToken:[[SingleTone sharedManager] token] andImage:self.imageVacancies complitionBlock:^(id response) {
+        
+        NSLog(@"PHOTOSAVE %@",response);
+        
+        if(![response isKindOfClass:[NSDictionary class]]){
+            
+            NSLog(@"Загрузить фото не удалось");
+        }else{
+            NSDictionary * dictResponse = [response objectForKey:@"response"];
+            
+            self.photoID = [NSString stringWithFormat:@"%@",[dictResponse objectForKey:@"id"]];
+            
+            NSLog(@"PHOTOID %@",self.photoID);
+            [self.buttonAddImage setImage:self.imageVacancies forState:UIControlStateNormal];
+            self.buttonAddImage.layer.cornerRadius = 3.f;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            
+        }
+        
+    }];
+    
+    
+
 }
 
 

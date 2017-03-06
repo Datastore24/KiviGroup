@@ -54,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>VK-ios-sdk-VKSdkResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VK-ios-sdk.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,11 +72,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2FEEDB74125ADE6F9618806825842FE1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>3C7B23B3FE0CE1A6131C7E09B3F47DA3</key>
 		<dict>
 			<key>primary</key>
@@ -77,12 +82,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D92808DEC431E5F65895925B1F38768</key>
+		<key>6F81B81C351BA12E01C8F400382D5F79</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>78D29FDDA61F65D7244C402E10584DB5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>81277D752A1D1D31BB7408709546BCC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A95A068C2255404393D437630670CA84</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5A05E1B3AFFD3210D42B20C26BCD3C4</key>
+		<key>BD79CA86C9B7CEAFA0C8326E936B6026</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D311C7356114BCE79974C81C397A2AA9</key>
+		<key>C5D56A640B6CAC05399FBBFC0267A286</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1D9CE503DDFEC558EC53459BA79A1A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
