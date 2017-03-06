@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;
 
 - (IBAction)actionButtonKinopro:(id)sender;
+- (IBAction)actionVacanciesButton:(id)sender;
 
 @end
