@@ -77,12 +77,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)leftSideButtonMenu:(id)sender {
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    
-}
+
 
 
 - (void) pushMethodWithIdentifier: (NSString*) identifier {
@@ -139,6 +134,13 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)leftSideButtonMenu:(id)sender {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    
+}
 
 
 

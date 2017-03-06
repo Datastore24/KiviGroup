@@ -68,6 +68,14 @@
     
 }
 
+- (IBAction)actionVacanciesButton:(id)sender {
+    
+    
+    [self pushMethodWithIdentifier:@"VacanciesListController"];
+
+    
+}
+
 //редактирование профиля
 - (IBAction)editProfileAction:(id)sender {
     [self pushMethodWithIdentifier:@"PersonalDataController"];

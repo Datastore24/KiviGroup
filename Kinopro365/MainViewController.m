@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import <NYAlertViewController/NYAlertViewController.h>
 #import "UserInformationTable.h"
+#import "UIPlaceHolderTextView.h"
 
 
 
@@ -62,6 +63,7 @@
     for (UITextField * textFild in tapGesture.view.subviews) {
         [textFild resignFirstResponder];
     }
+    
 }
 
 #pragma mark - Allerts
@@ -190,7 +192,7 @@
 
 
 
-- (void) showDataPickerBirthdayWithButton: (UIButton*) button {
+- (void) showDataPickerBirthdayWithButton: (UIButton*) button endBool: (BOOL) isBool {
     NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
     
     alertViewController.title = NSLocalizedString(@"", nil);
@@ -214,6 +216,11 @@
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] init];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    if (isBool) {
+        datePicker.minimumDate = [NSDate date];
+    }
+    
     alertViewController.alertViewContentView = datePicker;
     
     
@@ -222,8 +229,10 @@
                                                           handler:^(NYAlertAction *action) {
                                                               [button setTitle:[self refactDateString:datePicker.date]
                                                                                              forState:UIControlStateNormal];
-                                                              [button setTitleColor:[UIColor blackColor]
-                                                                           forState:UIControlStateNormal];
+                                                              if (!isBool) {
+                                                                  [button setTitleColor:[UIColor blackColor]
+                                                                               forState:UIControlStateNormal];
+                                                              }
                                                               [self dismissViewControllerAnimated:YES completion:nil];
                                                           }]];
     

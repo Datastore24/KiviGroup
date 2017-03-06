@@ -772,7 +772,7 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonBirthday:(UIButton *)sender {
-    [self showDataPickerBirthdayWithButton:sender];
+    [self showDataPickerBirthdayWithButton:sender endBool:NO];
 }
 
 - (IBAction)actionButtonQuestion:(UIButton *)sender {
