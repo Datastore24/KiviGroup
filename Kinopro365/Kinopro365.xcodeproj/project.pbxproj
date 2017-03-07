@@ -36,6 +36,7 @@
 		B8350DF51E686D96006A2849 /* MyVacanciesDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8350DF41E686D96006A2849 /* MyVacanciesDetailsController.m */; };
 		B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8350DF71E6878FA006A2849 /* UIPlaceHolderTextView.m */; };
 		B842F7741E6EA6D3000A56DB /* AddCastingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7731E6EA6D3000A56DB /* AddCastingsController.m */; };
+		B842F7791E6EC4B2000A56DB /* CastingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */; };
 		B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
@@ -169,6 +170,8 @@
 		B8350DF71E6878FA006A2849 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		B842F7721E6EA6D3000A56DB /* AddCastingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCastingsController.h; sourceTree = "<group>"; };
 		B842F7731E6EA6D3000A56DB /* AddCastingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCastingsController.m; sourceTree = "<group>"; };
+		B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastingDetailsController.h; sourceTree = "<group>"; };
+		B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastingDetailsController.m; sourceTree = "<group>"; };
 		B8A704361E6D5F5600949D0A /* ViewCellMyVacancies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyVacancies.h; sourceTree = "<group>"; };
 		B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyVacancies.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,10 +446,20 @@
 		B842F7711E6EA5EF000A56DB /* Castings */ = {
 			isa = PBXGroup;
 			children = (
+				B842F7761E6EC495000A56DB /* CastingsDetails */,
 				B842F7721E6EA6D3000A56DB /* AddCastingsController.h */,
 				B842F7731E6EA6D3000A56DB /* AddCastingsController.m */,
 			);
 			name = Castings;
+			sourceTree = "<group>";
+		};
+		B842F7761E6EC495000A56DB /* CastingsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */,
+				B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */,
+			);
+			name = CastingsDetails;
 			sourceTree = "<group>";
 		};
 		FF25B97A1DF97CFE00D59716 /* Login */ = {
@@ -1001,6 +1014,7 @@
 				B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */,
 				FF88DF541E0E696B0002FBBC /* HMSelectCounterButton.m in Sources */,
 				FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */,
+				B842F7791E6EC4B2000A56DB /* CastingDetailsController.m in Sources */,
 				AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */,
 				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
 				B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */,
