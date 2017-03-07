@@ -9,6 +9,7 @@
 #import "MyVacanciesController.h"
 #import "MyVacanciesCell.h"
 #import "MyVacanciesModel.h"
+#import "MyVacanciesDetailsController.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
 
@@ -165,7 +166,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self pushCountryControllerWithIdentifier:@"MyVacanciesDetailsController"];
+    
+    NSDictionary * dict = [self.myVacanArray objectAtIndex:indexPath.row];
+    
+    MyVacanciesDetailsController * myVacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyVacanciesDetailsController"];
+    
+    myVacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
+    myVacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
+    myVacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
+    
+    [self.navigationController pushViewController:myVacanciesDetailsController animated:YES];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

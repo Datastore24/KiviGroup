@@ -7,13 +7,17 @@
 //
 
 #import "MyVacanciesDetailsController.h"
+#import "MyVacanciesDetailsModel.h"
 #import "HexColors.h"
 #import "ViewCellMyVacancies.h"
+#import "DateTimeMethod.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 
-@interface MyVacanciesDetailsController () <ViewCellMyVacanciesDelegate>
+@interface MyVacanciesDetailsController () <ViewCellMyVacanciesDelegate,MyVacanciesDetailsModelDelegate>
 
 @property (assign, nonatomic) CGFloat heightTextView;
+@property (strong, nonatomic) MyVacanciesDetailsModel * myVacanciesDetailsModel;
 
 
 @end
@@ -30,6 +34,9 @@
     
     self.buttonAddText.isBool = YES;
     self.heightTextView = self.mainTextView.frame.origin.y;
+    self.myVacanciesDetailsModel = [[MyVacanciesDetailsModel alloc] init];
+    self.myVacanciesDetailsModel.delegate = self;
+    [self.myVacanciesDetailsModel loadVacancies:self.vacancyID];
     
 }
 
@@ -42,20 +49,91 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    for (UIView * view in self.scrollViewForVacansies.subviews) {
-        [view removeFromSuperview];
-    }
     
     
-    for (int i = 0; i < 5; i++) {
-        ViewCellMyVacancies * cell = [[ViewCellMyVacancies alloc] initWithMainView:self.scrollViewForVacansies endHeight:235.f * i endImageName:@"testImageVacancies.png" endName:@"Виктор Мишустин" endCountry:@"Сочи (Россия)" endAge:@"28 лет" endIsReward:NO endRewardNumber:@"5" endIsLike:NO endLikeNumber:@"15" endIsBookmark:NO endPhoneOne:@"7(909) 134 23 14" endPhoneTwo:@"7(909) 555 20 10" endEmail:@"ivanov@gmail.com"];
-        cell.delegate = self;
-        [self.scrollViewForVacansies addSubview:cell];
-    }
-    
-    self.scrollViewForVacansies.contentSize = CGSizeMake(0, 235.f * 4);
     
     
+}
+
+-(void) loadMyVacancies:(NSDictionary *) vacanciesDict{
+    
+    self.mainTextView.text = [vacanciesDict objectForKey:@"description"];
+    self.titleVacancies.text =[vacanciesDict objectForKey:@"name"];
+    
+    NSDate * endDate = [DateTimeMethod timestampToDate:[vacanciesDict objectForKey:@"end_at"]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM"];
+    NSString *stringDate = [dateFormatter stringFromDate:endDate];
+    
+    self.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[vacanciesDict objectForKey:@"city_name"],[vacanciesDict objectForKey:@"country_name"]];
+    self.labelNumberRecall.text =[NSString stringWithFormat:@"%@",[vacanciesDict objectForKey:@"count_offer"]];
+    
+    
+    NSURL *imgURL = [NSURL URLWithString:[vacanciesDict objectForKey:@"logo_url"]];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:imgURL
+                          options:0
+                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             // progression tracking code
+                         }
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                    NSURL *imageURL) {
+                            
+                            if(image){
+                                self.mainImageVacancies.contentMode = UIViewContentModeScaleAspectFill;
+                                self.mainImageVacancies.clipsToBounds = YES;
+                                self.mainImageVacancies.layer.cornerRadius = 5;
+                                self.mainImageVacancies.image = image;
+                                
+                                
+                            }else{
+                                //Тут обработка ошибки загрузки изображения
+                            }
+                        }];
+    
+    
+    [self.myVacanciesDetailsModel loadOffersProfile:self.vacancyID andOffset:@"0" andCount:@"1000" complitionBlock:^(id response) {
+        
+        if([response isKindOfClass:[NSDictionary class]]){
+            NSArray * respOffers = [response objectForKey:@"items"];
+            
+            for (UIView * view in self.scrollViewForVacansies.subviews) {
+                [view removeFromSuperview];
+            }
+            
+            NSLog(@"RESPARRAY %@",respOffers);
+            
+            for (int i = 0; i < respOffers.count; i++) {
+                
+                NSDictionary * dictOffers = [respOffers objectAtIndex:i];
+                NSArray *phones =  [dictOffers objectForKey:@"phones"];
+                NSString * phone1;
+                NSString * phone2;
+                if(phones.count>0){
+                    if(phones.count>1){
+                        phone1=[[phones objectAtIndex:0] objectForKey:@"phone_number"];
+                        phone2=[[phones objectAtIndex:1] objectForKey:@"phone_number"];
+                    }else{
+                        phone1=[[phones objectAtIndex:0] objectForKey:@"phone_number"];
+                        phone2=@"";
+                    }
+                }else{
+                    phone1=@"";
+                    phone2=@"";
+                }
+                
+                ViewCellMyVacancies * cell = [[ViewCellMyVacancies alloc] initWithMainView:self.scrollViewForVacansies endHeight:235.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[dictOffers objectForKey:@"first_name"] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет", [dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endPhoneOne:phone1 endPhoneTwo:phone2 endEmail:@""];
+                cell.delegate = self;
+                [self.scrollViewForVacansies addSubview:cell];
+            }
+            
+            self.scrollViewForVacansies.contentSize = CGSizeMake(0, 235.f * respOffers.count-1);
+
+        }
+        
+    }];
+
     
 }
 
@@ -158,7 +236,7 @@
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonEmail: (CustomButton*) sender {
    
-    NSLog(@"сохраняем в буыфер - %@", sender.titleLabel.text);
+    NSLog(@"сохраняем в буфер - %@", sender.titleLabel.text);
 }
 
 
