@@ -84,7 +84,7 @@
 
 -(void) sendIsFavourite: (BOOL) isFavourite
            andProfileID:(NSString *) profileID
-        complitionBlock: (void (^) (void)) compitionBack{
+        complitionBlock: (void (^) (id response)) compitionBack{
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              profileID,@"user_id",nil];
@@ -97,7 +97,7 @@
                       [response objectForKey:@"error_msg"]);
                 NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
             }else{
-                compitionBack();
+                compitionBack(response);
             }
         }];
         
@@ -110,7 +110,80 @@
                       [response objectForKey:@"error_msg"]);
                 NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
             }else{
-                compitionBack();
+                compitionBack(response);
+            }
+        }];
+        
+    }
+    
+}
+
+- (void) sendIsReward: (BOOL) isReward
+           andProfileID:(NSString *) profileID
+        complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             profileID,@"user_id",nil];
+    if(isReward){
+        [apiManager getDataFromSeverWithMethod:@"user.pickReward" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+               compitionBack(response);
+            }else{
+               compitionBack(response);
+            }
+        }];
+        
+    }else{
+        [apiManager getDataFromSeverWithMethod:@"user.giveReward" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                compitionBack(response);
+            }else{
+                compitionBack(response);
+            }
+        }];
+        
+    }
+    
+}
+
+-(void) sendIsLike: (BOOL) isReward
+        andProfileID:(NSString *) profileID
+     complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             profileID,@"user_id",nil];
+    if(isReward){
+        [apiManager getDataFromSeverWithMethod:@"user.unlike" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                
+                compitionBack(response);
+            }else{
+                compitionBack(response);
+            }
+        }];
+        
+    }else{
+        [apiManager getDataFromSeverWithMethod:@"user.like" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+               compitionBack(response);
+            }else{
+                compitionBack(response);
             }
         }];
         

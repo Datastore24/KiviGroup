@@ -333,21 +333,18 @@
     
     if (!sender.isBool) {
         
-        [profDetailModel sendIsFavourite:NO andProfileID:self.profileID complitionBlock:^{
+        [profDetailModel sendIsFavourite:NO andProfileID:self.profileID complitionBlock:^(id response) {
             [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
                     forState:UIControlStateNormal];
             [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
-                    forState:UIControlStateNormal];
+                                     forState:UIControlStateNormal];
             
             
             sender.isBool = YES;
         }];
         
-        
-        
     } else {
-        
-        [profDetailModel sendIsFavourite:YES andProfileID:self.profileID complitionBlock:^{
+        [profDetailModel sendIsFavourite:YES andProfileID:self.profileID complitionBlock:^(id response) {
             [sender setImage:[UIImage imageNamed:@"professionImageBookmark"]
                     forState:UIControlStateNormal];
             [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmark"]

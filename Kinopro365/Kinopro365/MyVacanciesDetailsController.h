@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSString * vacancyID;
 @property (strong, nonatomic) NSString * vacancyName;
 @property (strong, nonatomic) NSString * vacancyURL;
+@property (strong, nonatomic) NSString * profID;
+@property (strong, nonatomic) NSString * profName;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIView *viewForPerson;
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;

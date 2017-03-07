@@ -20,7 +20,7 @@
 - (instancetype)initWithMainView: (UIView*) mainView endHeight: (CGFloat) height endImageName: (NSString*) imageUrl endName: (NSString*) name
                       endCountry: (NSString*) country endAge: (NSString*) age endIsReward: (BOOL) isReward endRewardNumber: (NSString*) rewardNumber
                        endIsLike: (BOOL) isLike endLikeNumber: (NSString*) likeNumber endIsBookmark: (BOOL) isBookmark endPhoneOne: (NSString*) phoneOne
-                     endPhoneTwo: (NSString*) phoneTwo endEmail: (NSString*) email;
+                     endPhoneTwo: (NSString*) phoneTwo endEmail: (NSString*) email endProfileID: (NSString*) profileID;
 
 @end
 

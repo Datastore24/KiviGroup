@@ -12,6 +12,8 @@
 #import "ViewCellMyVacancies.h"
 #import "DateTimeMethod.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "ProfessionDetailModel.h"
+#import "ProfessionDetailController.h"
 
 
 @interface MyVacanciesDetailsController () <ViewCellMyVacanciesDelegate,MyVacanciesDetailsModelDelegate>
@@ -123,7 +125,7 @@
                     phone2=@"";
                 }
                 
-                ViewCellMyVacancies * cell = [[ViewCellMyVacancies alloc] initWithMainView:self.scrollViewForVacansies endHeight:235.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[dictOffers objectForKey:@"first_name"] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет", [dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endPhoneOne:phone1 endPhoneTwo:phone2 endEmail:@""];
+                ViewCellMyVacancies * cell = [[ViewCellMyVacancies alloc] initWithMainView:self.scrollViewForVacansies endHeight:235.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[dictOffers objectForKey:@"first_name"] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет", [dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endPhoneOne:phone1 endPhoneTwo:phone2 endEmail:@"" endProfileID:[dictOffers objectForKey:@"id"]];
                 cell.delegate = self;
                 [self.scrollViewForVacansies addSubview:cell];
             }
@@ -190,36 +192,152 @@
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonImage: (CustomButton*) sender {
     
     NSLog(@"Переход на страницу пользователя");
+    ProfessionDetailController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionDetailController"];
+    
+    profController.profileID = sender.customID;
+    profController.profName = self.profID;
+    profController.profID = self.profName;
+    profController.buttonBookmarkBack = sender.customButton;
+    
+    [self.navigationController pushViewController:profController animated:YES];
     
 }
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonReward: (CustomButton*) sender {
     
-    [sender setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
-    NSInteger numberReward = [viewCellMyVacancies.numberRewar.text integerValue];
-    numberReward += 1;
-    viewCellMyVacancies.numberRewar.text = [NSString stringWithFormat:@"%ld", numberReward];
-    sender.userInteractionEnabled = NO;
+    ProfessionDetailModel * supportModel = [[ProfessionDetailModel alloc] init];
+    if(!sender.isBool){
+        [supportModel sendIsReward:NO andProfileID:sender.customID complitionBlock:^(id response) {
+             if([response objectForKey:@"error_code"]){
+                 NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                 if(errorCode == 561){
+                     [self showAlertWithMessage:@"Награду может выдавать\nтолько подтвержденный заказчик."];
+                 }else if(errorCode == 563){
+                     [self showAlertWithMessage:@"Нельзя выдать награду самому себе"];
+                 }else if(errorCode == 564){
+                     [self showAlertWithMessage:@"Пользователю уже была выдана награда"];
+                 }
+             }else{
+                 [sender setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+                 NSInteger numberReward = [viewCellMyVacancies.numberRewar.text integerValue];
+                 numberReward += 1;
+                 viewCellMyVacancies.numberRewar.text = [NSString stringWithFormat:@"%ld", numberReward];
+                 sender.isBool = YES;
+             }
+            
+        }];
+        
+        
+    }else{
+        
+        [supportModel sendIsReward:YES andProfileID:sender.customID complitionBlock:^(id response) {
+            
+            if([response objectForKey:@"error_code"]){
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 572){
+                    [self showAlertWithMessage:@"Вы не выдавали награду пользователю."];
+                }
+                
+            }else{
+                [sender setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+                NSInteger numberReward = [viewCellMyVacancies.numberRewar.text integerValue];
+                numberReward -= 1;
+                viewCellMyVacancies.numberRewar.text = [NSString stringWithFormat:@"%ld", numberReward];
+                sender.isBool = NO;
+            }
+            
+        }];
+        
+        
+    }
+    
+
     
 }
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonLike: (CustomButton*) sender {
-    [sender setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
-    NSInteger numberLike = [viewCellMyVacancies.numberLike.text integerValue];
-    numberLike += 1;
-    viewCellMyVacancies.numberLike.text = [NSString stringWithFormat:@"%ld", numberLike];
-    sender.userInteractionEnabled = NO;
+    
+    
+    ProfessionDetailModel * supportModel = [[ProfessionDetailModel alloc] init];
+    if(!sender.isBool){
+        [supportModel sendIsLike:NO andProfileID:sender.customID complitionBlock:^(id response) {
+            if([response objectForKey:@"error_code"]){
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 541){
+                    [self showAlertWithMessage:@"Нельзя поставить лайк самому себе"];
+                }else if(errorCode == 543){
+                    [self showAlertWithMessage:@"Пользователю уже поставлен лайк"];
+                }
+                
+            }else{
+                [sender setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
+                NSInteger numberLike = [viewCellMyVacancies.numberLike.text integerValue];
+                numberLike += 1;
+                viewCellMyVacancies.numberLike.text = [NSString stringWithFormat:@"%ld", numberLike];
+                sender.isBool = YES;
+            }
+        }];
+    }else{
+        [supportModel sendIsLike:YES andProfileID:sender.customID complitionBlock:^(id response) {
+            if([response objectForKey:@"error_code"]){
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 552){
+                    [self showAlertWithMessage:@"Пользователю не был поставлен лайк"];
+                }
+                
+            }else{
+                [sender setImage:[UIImage imageNamed:@"likeImage"] forState:UIControlStateNormal];
+                NSInteger numberLike = [viewCellMyVacancies.numberLike.text integerValue];
+                numberLike -= 1;
+                viewCellMyVacancies.numberLike.text = [NSString stringWithFormat:@"%ld", numberLike];
+                sender.isBool = NO;
+            }
+        }];
+        
+    }
+    
+    
+
     
 }
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonBookmark: (CustomButton*) sender {
     
+    ProfessionDetailModel * supportModel = [[ProfessionDetailModel alloc] init];
+    if(!sender.isBool){
+        [supportModel sendIsFavourite:NO andProfileID:sender.customID complitionBlock:^(id response) {
+            if([response objectForKey:@"error_code"]){
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 552){
+                    [self showAlertWithMessage:@"Пользователю не был поставлен лайк"];
+                }
+                
+            }else{
+                sender.isBool = YES;
+                [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
+            }
+        }];
+    }else{
+        [supportModel sendIsFavourite:YES andProfileID:sender.customID complitionBlock:^(id response) {
+            if([response objectForKey:@"error_code"]){
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 552){
+                    [self showAlertWithMessage:@"Пользователю не был поставлен лайк"];
+                }
+                
+            }else{
+                sender.isBool = NO;
+                [sender setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];;
+            }
+        }];
+        
+    }
+    
+    
     if (sender.isBool) {
-        sender.isBool = NO;
-        [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"] forState:UIControlStateNormal];
+        
     } else {
-        sender.isBool = YES;
-        [sender setImage:[UIImage imageNamed:@"professionImageBookmark"] forState:UIControlStateNormal];
+        
     }
     
 }
