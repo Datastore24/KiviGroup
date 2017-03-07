@@ -37,6 +37,7 @@
 		B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8350DF71E6878FA006A2849 /* UIPlaceHolderTextView.m */; };
 		B842F7741E6EA6D3000A56DB /* AddCastingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7731E6EA6D3000A56DB /* AddCastingsController.m */; };
 		B842F7791E6EC4B2000A56DB /* CastingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */; };
+		B842F77C1E6EFC71000A56DB /* ViewForDetailsCastings.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */; };
 		B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
@@ -172,6 +173,8 @@
 		B842F7731E6EA6D3000A56DB /* AddCastingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCastingsController.m; sourceTree = "<group>"; };
 		B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastingDetailsController.h; sourceTree = "<group>"; };
 		B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastingDetailsController.m; sourceTree = "<group>"; };
+		B842F77A1E6EFC71000A56DB /* ViewForDetailsCastings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewForDetailsCastings.h; sourceTree = "<group>"; };
+		B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForDetailsCastings.m; sourceTree = "<group>"; };
 		B8A704361E6D5F5600949D0A /* ViewCellMyVacancies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyVacancies.h; sourceTree = "<group>"; };
 		B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyVacancies.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +461,8 @@
 			children = (
 				B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */,
 				B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */,
+				B842F77A1E6EFC71000A56DB /* ViewForDetailsCastings.h */,
+				B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */,
 			);
 			name = CastingsDetails;
 			sourceTree = "<group>";
@@ -1000,6 +1005,7 @@
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */,
+				B842F77C1E6EFC71000A56DB /* ViewForDetailsCastings.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */,
 				ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */,
