@@ -24,10 +24,7 @@
 @property (strong, nonatomic) UIImage * imageVacancies;
 @property (strong, nonatomic) NSString * photoID;
 
-
 @property (strong, nonatomic) NSArray * arrayProfessions;
-
-
 
 
 @end
@@ -36,8 +33,31 @@
 
 - (void) loadView {
     [super loadView];
+    UILabel * CustomText;
+    if(!self.isEditor){
+            CustomText = [[UILabel alloc]initWithTitle:@"Создать вакансию"];
+    }else{
+            CustomText = [[UILabel alloc]initWithTitle:@"Редактировать вакансию"];
+        self.textView.text = self.textViewVacancy;
+        self.textFildName.text = self.nameVacancy;
+        [self.buttonCity setTitle:self.cityNameVacancy forState:UIControlStateNormal];
+        [self.buttonCountry setTitle:self.countryNameVacancy forState:UIControlStateNormal];
+        if(self.mainImageVacancy){
+                 [self.buttonAddImage setImage:self.mainImageVacancy forState:UIControlStateNormal];
+        }
+       
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy"];
+        NSString *yearString = [formatter stringFromDate:[NSDate date]];
+        NSString * addYear = [NSString stringWithFormat:@"%@.%@",self.endAtVacancy,yearString];
+        NSString * endAt = [DateTimeMethod convertDateStringToFormat:addYear startFormat:@"dd.MM.yyyy" endFormat:@"dd MMMM yyyy"];
+        [self.buttonDate setTitle:endAt forState:UIControlStateNormal];
+        [self.buttonProfession setTitle:self.professionNameVacancy forState:UIControlStateNormal];
+        [self.createButton setTitle:@"Изменить" forState:UIControlStateNormal];
+        
+        
+    }
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Создать вакансию"];
     self.navigationItem.titleView = CustomText;
     
     self.viewForComment.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"].CGColor;
@@ -167,9 +187,6 @@
 
 - (IBAction)actionButtonCreate:(id)sender {
     
-   
-
-    
     NSDate * stringToDate = [DateTimeMethod convertStringToNSDate:self.buttonDate.titleLabel.text withFormatDate:@"dd MMMM yyyy"];
     NSString * unixTimeEndAt = [DateTimeMethod dateToTimestamp:stringToDate];
     
@@ -178,47 +195,99 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd MMMM yyyy"];
     NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
-
-    NSLog(@"currentDate %@", currentDateString);
     
     CustomButton * prof = [self.view viewWithTag:5000];
     
-    NSLog(@"Имя:%@\nТекст:%@\nОкончание:%@\nСтрана:%@\nГород:%@\nPHOTOID:%@\nPROFID:%@",self.textFildName.text,self.textView.text,unixTimeEndAt, [[SingleTone sharedManager] countrySearchID],[[SingleTone sharedManager] citySearchID],self.photoID,prof.customID);
     
-    
-    if(self.textFildName.text.length ==0){
-        [self showAlertWithMessage:@"Введите название вакансии"];
-    }else if(self.photoID.length == 0){
-        [self showAlertWithMessage:@"Выберите фото вакансии"];
-    }else if([unixTimeEndAt isEqualToString:@"0"]){
-        [self showAlertWithMessage:@"Выберите дату приема заявок"];
-    }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
-        [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
-    }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
-        [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
-    }else if(prof.customID.length == 0){
-        [self showAlertWithMessage:@"Выберите профессию"];
-    }else if([[SingleTone sharedManager] countrySearchID].length == 0){
-        [self showAlertWithMessage:@"Выберите Страну"];
-    }else if([[SingleTone sharedManager] citySearchID].length == 0){
-        [self showAlertWithMessage:@"Выберите Город"];
-    }else if(self.textView.text.length == 0){
-        [self showAlertWithMessage:@"Введите описание вакансии"];
-    }else{
-        AddVacanciesModel * addVacanciesModel = [[AddVacanciesModel alloc] init];
-        [addVacanciesModel addVacanciesName:self.textFildName.text andLogoID:self.photoID andEndAt:unixTimeEndAt andProfessionID:prof.customID andCountryID:[[SingleTone sharedManager] countrySearchID] andCityID:[[SingleTone sharedManager] citySearchID] andDescription:self.textView.text complitionBlock:^(id response) {
-            NSLog(@"response %@",response);
-            if([[response objectForKey:@"response"] integerValue] == 1){
+    AddVacanciesModel * addVacanciesModel = [[AddVacanciesModel alloc] init];
+    if(!self.isEditor){
+        if(self.textFildName.text.length ==0){
+            [self showAlertWithMessage:@"Введите название вакансии"];
+        }else if(self.photoID.length == 0){
+            [self showAlertWithMessage:@"Выберите фото вакансии"];
+        }else if([unixTimeEndAt isEqualToString:@"0"]){
+            [self showAlertWithMessage:@"Выберите дату приема заявок"];
+        }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
+        }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
+        }else if(prof.customID.length == 0){
+            [self showAlertWithMessage:@"Выберите профессию"];
+        }else if([[SingleTone sharedManager] countrySearchID].length == 0){
+            [self showAlertWithMessage:@"Выберите Страну"];
+        }else if([[SingleTone sharedManager] citySearchID].length == 0){
+            [self showAlertWithMessage:@"Выберите Город"];
+        }else if(self.textView.text.length == 0){
+            [self showAlertWithMessage:@"Введите описание вакансии"];
+        }else{
+            [addVacanciesModel addVacanciesName:self.textFildName.text andLogoID:self.photoID andEndAt:unixTimeEndAt andProfessionID:prof.customID andCountryID:[[SingleTone sharedManager] countrySearchID] andCityID:[[SingleTone sharedManager] citySearchID] andDescription:self.textView.text complitionBlock:^(id response) {
+                NSLog(@"response %@",response);
+                if([[response objectForKey:@"response"] integerValue] == 1){
                     [self showAlertWithMessageWithBlock:@"Вы создали вакансию" block:^{
                         [self.navigationController popViewControllerAnimated:YES];
                     }];
+                }
+                
+            }];
+        }
+        
+    }else{
+      
+        if(self.textFildName.text.length ==0){
+            [self showAlertWithMessage:@"Введите название вакансии"];
+        }else if([self.mainImageVacancy isEqual:[NSNull null]]){
+            [self showAlertWithMessage:@"Выберите фото вакансии"];
+        }else if([unixTimeEndAt isEqualToString:@"0"]){
+            [self showAlertWithMessage:@"Выберите дату приема заявок"];
+        }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
+        }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
+        }else if(self.professionIDVacancy.length == 0){
+            [self showAlertWithMessage:@"Выберите профессию"];
+        }else if(self.countryNameVacancy.length == 0 || [self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]){
+            [self showAlertWithMessage:@"Выберите Страну"];
+        }else if(self.cityNameVacancy.length == 0 || [self.buttonCity.titleLabel.text isEqualToString:@"Город"]){
+            [self showAlertWithMessage:@"Выберите Город"];
+        }else if(self.textView.text.length == 0){
+            [self showAlertWithMessage:@"Введите описание вакансии"];
+        }else{
+            NSLog(@"PROFID %@",prof.customID);
+            if(prof.customID.length !=0){
+                self.professionIDVacancy = prof.customID;
             }
             
-        }];
+            if([[[SingleTone sharedManager] countrySearchID] length] != 0){
+                self.countryIDVacancy = [[SingleTone sharedManager] countrySearchID];
+            }
+            
+            if([[[SingleTone sharedManager] citySearchID] length] != 0){
+                self.cityIDVacancy = [[SingleTone sharedManager] citySearchID];
+            }
+            
+            
+            NSString * photo;
+            if(self.photoID.length !=0){
+                photo = self.photoID;
+            }else{
+                photo = @"";
+            }
+            
+            
+            [addVacanciesModel editVacanciesName:self.textFildName.text andLogoID:photo andEndAt:unixTimeEndAt andProfessionID:self.professionIDVacancy andCountryID:self.countryIDVacancy andCityID:self.cityIDVacancy andDescription:self.textView.text andVacancyID:self.vacancyID complitionBlock:^(id response) {
+                NSLog(@"response %@",response);
+                if([[response objectForKey:@"response"] integerValue] == 1){
+                    [self showAlertWithMessageWithBlock:@"Вакансия успешно изменена" block:^{
+                        [[SingleTone sharedManager] setCountrySearchID:nil];
+                        [[SingleTone sharedManager] setCitySearchID:nil];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                }
+            }];
+        }
+    
     }
-    
-    
-    
+
 
     
 }
@@ -389,6 +458,7 @@
     
     if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
         [self.buttonCountry setTitle:string forState:UIControlStateNormal];
+        [self.buttonCity setTitle:@"Город" forState:UIControlStateNormal];
     } else {
         [self.buttonCity setTitle:string forState:UIControlStateNormal];
     }

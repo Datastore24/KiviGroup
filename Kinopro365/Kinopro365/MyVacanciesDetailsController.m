@@ -14,12 +14,16 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "ProfessionDetailModel.h"
 #import "ProfessionDetailController.h"
+#import "AddVacanciesController.h"
+#import "ChooseProfessionalModel.h"
 
 
 @interface MyVacanciesDetailsController () <ViewCellMyVacanciesDelegate,MyVacanciesDetailsModelDelegate>
 
 @property (assign, nonatomic) CGFloat heightTextView;
 @property (strong, nonatomic) MyVacanciesDetailsModel * myVacanciesDetailsModel;
+@property (strong, nonatomic) NSDictionary * vacancyDict;
+@property (strong, nonatomic) UIImage * mainImageVacancy;
 
 
 @end
@@ -51,48 +55,56 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    
+    [self createActivitiIndicatorAlertWithView];
     [self.myVacanciesDetailsModel loadVacancies:self.vacancyID];
     
     
 }
 
 -(void) loadMyVacancies:(NSDictionary *) vacanciesDict{
+    self.vacancyDict = nil;
+    self.vacancyDict = vacanciesDict;
+    self.mainTextView.text = [self.vacancyDict objectForKey:@"description"];
+    self.titleVacancies.text =[self.vacancyDict objectForKey:@"name"];
     
-    self.mainTextView.text = [vacanciesDict objectForKey:@"description"];
-    self.titleVacancies.text =[vacanciesDict objectForKey:@"name"];
-    
-    NSDate * endDate = [DateTimeMethod timestampToDate:[vacanciesDict objectForKey:@"end_at"]];
+    NSDate * endDate = [DateTimeMethod timestampToDate:[self.vacancyDict objectForKey:@"end_at"]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd.MM"];
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
     
     self.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
-    self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[vacanciesDict objectForKey:@"city_name"],[vacanciesDict objectForKey:@"country_name"]];
-    self.labelNumberRecall.text =[NSString stringWithFormat:@"%@",[vacanciesDict objectForKey:@"count_offer"]];
+    self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[self.vacancyDict objectForKey:@"city_name"],[vacanciesDict objectForKey:@"country_name"]];
+    self.labelNumberRecall.text =[NSString stringWithFormat:@"%@",[self.vacancyDict objectForKey:@"count_offer"]];
     
+    if(![[self.vacancyDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
+        NSURL *imgURL = [NSURL URLWithString:[self.vacancyDict objectForKey:@"logo_url"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                        NSURL *imageURL) {
+                                
+                                if(image){
+                                    self.mainImageVacancies.contentMode = UIViewContentModeScaleAspectFill;
+                                    self.mainImageVacancies.clipsToBounds = YES;
+                                    self.mainImageVacancies.layer.cornerRadius = 5;
+                                    self.mainImageVacancies.image = image;
+                                    self.mainImageVacancy = image;
+                                    [self deleteActivitiIndicator];
+                                    
+                                    
+                                }else{
+                                    //Тут обработка ошибки загрузки изображения
+                                    [self deleteActivitiIndicator];
+                                }
+                            }];
+    }else{
+        [self deleteActivitiIndicator];
+    }
     
-    NSURL *imgURL = [NSURL URLWithString:[vacanciesDict objectForKey:@"logo_url"]];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:imgURL
-                          options:0
-                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                             // progression tracking code
-                         }
-                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
-                                    NSURL *imageURL) {
-                            
-                            if(image){
-                                self.mainImageVacancies.contentMode = UIViewContentModeScaleAspectFill;
-                                self.mainImageVacancies.clipsToBounds = YES;
-                                self.mainImageVacancies.layer.cornerRadius = 5;
-                                self.mainImageVacancies.image = image;
-                                
-                                
-                            }else{
-                                //Тут обработка ошибки загрузки изображения
-                            }
-                        }];
     
     
     [self.myVacanciesDetailsModel loadOffersProfile:self.vacancyID andOffset:@"0" andCount:@"1000" complitionBlock:^(id response) {
@@ -180,6 +192,40 @@
 - (IBAction)actionEditButton:(id)sender {
     
     NSLog(@"Редактировать вакансию");
+    AddVacanciesController * addVacanciesController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddVacanciesController"];
+    
+    NSDate * endDate = [DateTimeMethod timestampToDate:[self.vacancyDict objectForKey:@"end_at"]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM"];
+    NSString *stringDate = [dateFormatter stringFromDate:endDate];
+    
+    addVacanciesController.vacancyID = [self.vacancyDict objectForKey:@"id"];
+    addVacanciesController.nameVacancy = self.titleVacancies.text;
+    addVacanciesController.textViewVacancy = self.mainTextView.text;
+    addVacanciesController.mainImageVacancy = self.mainImageVacancy;
+    addVacanciesController.endAtVacancy = stringDate;
+    addVacanciesController.countryNameVacancy = [self.vacancyDict objectForKey:@"country_name"];
+    addVacanciesController.cityNameVacancy = [self.vacancyDict objectForKey:@"city_name"];
+    addVacanciesController.countryIDVacancy = [self.vacancyDict objectForKey:@"country_id"];
+    addVacanciesController.cityIDVacancy = [self.vacancyDict objectForKey:@"city_id"];
+    
+    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [self.vacancyDict objectForKey:@"profession_id"]]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }
+    
+    if(item.count > 0){
+        addVacanciesController.professionNameVacancy = [item objectForKey:@"name"];
+    }
+
+    addVacanciesController.professionIDVacancy = [self.vacancyDict objectForKey:@"profession_id"];
+    NSLog(@"PROFIDDD %@",[self.vacancyDict objectForKey:@"profession_id"]);
+    addVacanciesController.isEditor = YES;
+    
+    
+    [self.navigationController pushViewController:addVacanciesController animated:YES];
 }
 
 - (IBAction)actionDeleteButton:(id)sender {
@@ -225,7 +271,16 @@
     ProfessionDetailController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionDetailController"];
     
     profController.profileID = sender.customID;
-    profController.profName = self.profName;
+    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [self.vacancyDict objectForKey:@"profession_id"]]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }
+    
+    if(item.count > 0){
+         profController.profName = [item objectForKey:@"name"];
+    }
     profController.profID = self.profID;
     profController.buttonBookmarkBack = sender.customButton;
     
@@ -375,16 +430,25 @@
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonPhoneOne: (CustomButton*) sender {
     
     NSLog(@"звоним на - %@", sender.titleLabel.text);
+    NSString * urlPhone = [NSString stringWithFormat:@"tel:%@",sender.titleLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlPhone] options:@{} completionHandler:nil];
+
 }
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonPhoneTwo: (CustomButton*) sender {
     
     NSLog(@"звоним на - %@", sender.titleLabel.text);
+    NSString * urlPhone = [NSString stringWithFormat:@"tel:%@",sender.titleLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlPhone] options:@{} completionHandler:nil];
+
 }
 
 - (void) actionWith: (ViewCellMyVacancies*) viewCellMyVacancies endButtonEmail: (CustomButton*) sender {
    
     NSLog(@"сохраняем в буфер - %@", sender.titleLabel.text);
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = sender.titleLabel.text;
+    [self showAlertWithMessage:@"E-mail скопирован в буфер"];
 }
 
 

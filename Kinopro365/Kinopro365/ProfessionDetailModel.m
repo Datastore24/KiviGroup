@@ -34,7 +34,7 @@
                 if(![[[response objectForKey:@"response"] objectForKey:key] isKindOfClass:[NSArray class]]){
                     NSString * value = [NSString stringWithFormat:@"%@",[[response objectForKey:@"response"] objectForKey:key]];
                     
-                    if ([key rangeOfString:@"languages"].location != NSNotFound) {
+                    if ([key rangeOfString:@"ex_"].location != NSNotFound) {
                         if(![value isEqualToString:@"0"]){
                             [tempDict setObject:value forKey:key];
                         }
