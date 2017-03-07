@@ -264,6 +264,7 @@
             
         }
     }
+    NSLog(@"LANGUAGE %@",[profileDict objectForKey:@"languages"]);
     
     NSArray * language = [profileDict objectForKey:@"languages"];
     
@@ -296,13 +297,13 @@
     //Отрисовка доп параметров-----------------------------
     
 
-    if ([profileDict objectForKey:@"user_comment"] == [NSNull null]) {
-        self.mainScrollView.contentSize = CGSizeMake(0, self.maxHeightVideo + 36.f + 25 * i+1);
+    if ([profileDict objectForKey:@"user_comment"] == [NSNull null] || [[profileDict objectForKey:@"user_comment"] length] == 0) {
+        self.mainScrollView.contentSize = CGSizeMake(0, self.maxHeightVideo + 46.f + 25 * i+1);
     } else {
         
         
         AddParamsProfession * addParamsView = [[AddParamsProfession alloc]
-                                               initWithHeight:self.maxHeightVideo + 36.f + 25 * i+1
+                                               initWithHeight:self.maxHeightVideo + 46.f + 25 * i+1
                                                andText:[profileDict objectForKey:@"user_comment"]];
         [self.mainScrollView addSubview:addParamsView];
         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(addParamsView.frame));
