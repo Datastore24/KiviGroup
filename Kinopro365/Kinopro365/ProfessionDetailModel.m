@@ -18,7 +18,8 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              profileID,@"user_id",
                              profID,@"profession_id",nil];
-   
+    NSLog(@"PARAMS %@",params);
+    
     [apiManager getDataFromSeverWithMethod:@"user.get" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
          NSLog(@"PROFILE %@",response);
         if([response objectForKey:@"error_code"]){
@@ -27,7 +28,23 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-            [self.delegate loadProfile:[response objectForKey:@"response"]];
+            NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
+            
+            for(NSString * key in [response objectForKey:@"response"]){
+                NSString * value = [NSString stringWithFormat:@"%@",[[response objectForKey:@"response"] objectForKey:key]];
+
+                if ([key rangeOfString:@"ex_"].location != NSNotFound) {
+                    if(![value isEqualToString:@"0"]){
+                        [tempDict setObject:value forKey:key];
+                    }
+                }else{
+                    [tempDict setObject:value forKey:key];
+                }
+            }
+            
+            NSDictionary * resultDict = [[NSDictionary alloc] initWithDictionary:tempDict];
+            NSLog(@"RESULTDICT %@",resultDict);
+            [self.delegate loadProfile:resultDict];
         
         }
     }];
@@ -84,7 +101,7 @@
 
 -(void) sendIsFavourite: (BOOL) isFavourite
            andProfileID:(NSString *) profileID
-        complitionBlock: (void (^) (void)) compitionBack{
+        complitionBlock: (void (^) (id response)) compitionBack{
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              profileID,@"user_id",nil];
@@ -97,7 +114,7 @@
                       [response objectForKey:@"error_msg"]);
                 NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
             }else{
-                compitionBack();
+                compitionBack(response);
             }
         }];
         
@@ -110,7 +127,80 @@
                       [response objectForKey:@"error_msg"]);
                 NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
             }else{
-                compitionBack();
+                compitionBack(response);
+            }
+        }];
+        
+    }
+    
+}
+
+- (void) sendIsReward: (BOOL) isReward
+           andProfileID:(NSString *) profileID
+        complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             profileID,@"user_id",nil];
+    if(isReward){
+        [apiManager getDataFromSeverWithMethod:@"user.pickReward" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+               compitionBack(response);
+            }else{
+               compitionBack(response);
+            }
+        }];
+        
+    }else{
+        [apiManager getDataFromSeverWithMethod:@"user.giveReward" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                compitionBack(response);
+            }else{
+                compitionBack(response);
+            }
+        }];
+        
+    }
+    
+}
+
+-(void) sendIsLike: (BOOL) isReward
+        andProfileID:(NSString *) profileID
+     complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             profileID,@"user_id",nil];
+    if(isReward){
+        [apiManager getDataFromSeverWithMethod:@"user.unlike" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                
+                compitionBack(response);
+            }else{
+                compitionBack(response);
+            }
+        }];
+        
+    }else{
+        [apiManager getDataFromSeverWithMethod:@"user.like" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+            NSLog(@"RESPFAV %@",response);
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+               compitionBack(response);
+            }else{
+                compitionBack(response);
             }
         }];
         

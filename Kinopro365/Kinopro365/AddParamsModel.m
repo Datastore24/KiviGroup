@@ -127,11 +127,14 @@
 -(NSDictionary *) getNameByDictionary: (NSArray *) array andFindID: (NSString *) infID {
     
     NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", infID]];
-    NSDictionary *item = [filtered objectAtIndex:0];
+    if(filtered.count>0){
+        NSDictionary *item = [filtered objectAtIndex:0];
+         return item;
+    }else{
+        return  @{};
+    }
     
-    return item;
     
-    return  @{};
 }
 
 //

@@ -204,7 +204,7 @@
                 
                 
             }
-            
+            NSLog(@"PROFILEDICT %@",profileDict);
             [self loadMore:profileDict andOpenContact:openContact];
             
         }];
@@ -240,20 +240,23 @@
     int i=0;
     for (NSString *key in profileDict) {
         NSDictionary * params = [addParamsModel getInformationDictionary:key andProfArray:profArray];
-        
+        NSLog(@"PARAMSKEY %@",key);
  
         if(params.count> 0){
             NSDictionary * finalInfoParams = [addParamsModel getNameByDictionary:[params objectForKey:@"array"] andFindID:[profileDict objectForKey:key]];
+            NSLog(@"DICTFINAL %@",finalInfoParams);
             
-            NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                   key,@"additionalID",
-                                   [params objectForKey:@"title"],@"title",
-                                   [finalInfoParams objectForKey:@"name"], @"value",nil];
+//            NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                   key,@"additionalID",
+//                                   [params objectForKey:@"title"],@"title",
+//                                   [finalInfoParams objectForKey:@"name"], @"value",nil];
             
             
             TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
                                                                                antFirstTextLabel: [params objectForKey:@"title"]
                                                                               andSecondTextLabel:[finalInfoParams objectForKey:@"name"]];
+            
+           
             [self.mainScrollView addSubview:textDataProfession];
 
             i++;
@@ -279,13 +282,15 @@
     }
     
    
-    
-    TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
-                                                                       antFirstTextLabel: @"Языки"
-                                                                      andSecondTextLabel:resultString];
-    [self.mainScrollView addSubview:textDataProfession];
-    
-     i++;   
+    if(language.count>0){
+        TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
+                                                                           antFirstTextLabel: @"Языки"
+                                                                          andSecondTextLabel:resultString];
+        [self.mainScrollView addSubview:textDataProfession];
+        
+        i++;  
+    }
+     
 
     
     //Отрисовка доп параметров-----------------------------
@@ -333,21 +338,18 @@
     
     if (!sender.isBool) {
         
-        [profDetailModel sendIsFavourite:NO andProfileID:self.profileID complitionBlock:^{
+        [profDetailModel sendIsFavourite:NO andProfileID:self.profileID complitionBlock:^(id response) {
             [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
                     forState:UIControlStateNormal];
             [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
-                    forState:UIControlStateNormal];
+                                     forState:UIControlStateNormal];
             
             
             sender.isBool = YES;
         }];
         
-        
-        
     } else {
-        
-        [profDetailModel sendIsFavourite:YES andProfileID:self.profileID complitionBlock:^{
+        [profDetailModel sendIsFavourite:YES andProfileID:self.profileID complitionBlock:^(id response) {
             [sender setImage:[UIImage imageNamed:@"professionImageBookmark"]
                     forState:UIControlStateNormal];
             [self.buttonBookmarkBack setImage:[UIImage imageNamed:@"professionImageBookmark"]

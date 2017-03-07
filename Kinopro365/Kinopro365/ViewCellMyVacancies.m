@@ -10,14 +10,14 @@
 #import "HexColors.h"
 #import "Macros.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
-#import "ProfessionDetailModel.h"
+
 
 @implementation ViewCellMyVacancies
 
 - (instancetype)initWithMainView: (UIView*) mainView endHeight: (CGFloat) height endImageName: (NSString*) imageUrl endName: (NSString*) name
                       endCountry: (NSString*) country endAge: (NSString*) age endIsReward: (BOOL) isReward endRewardNumber: (NSString*) rewardNumber
                        endIsLike: (BOOL) isLike endLikeNumber: (NSString*) likeNumber endIsBookmark: (BOOL) isBookmark endPhoneOne: (NSString*) phoneOne
-                     endPhoneTwo: (NSString*) phoneTwo endEmail: (NSString*) email
+                     endPhoneTwo: (NSString*) phoneTwo endEmail: (NSString*) email endProfileID: (NSString*) profileID
  {
     self = [super init];
     if (self) {
@@ -26,7 +26,7 @@
         
         
         
-        CustomButton * buttonImage = [self createCustomButtonWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f) endImageName:imageUrl];
+        CustomButton * buttonImage = [self createCustomButtonWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f) endImageName:imageUrl andProfileID:profileID];
         [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonImage];
         
@@ -39,33 +39,36 @@
             [self addSubview:label];
         }
         
+        //Награды
         CustomButton * buttonReward = [self creationCustonButtonForChangeParamsWithFrame:CGRectMake(111.5f, 97.f, 13.f, 20.f) endParams:isReward
                                                                               endOnImage:@"isRewarImageOn" endOffImage:@"professionImageStar"];
-        if (buttonReward.isBool) {
-            buttonReward.userInteractionEnabled = NO;
-        }
+        buttonReward.customID = profileID;
         [buttonReward addTarget:self action:@selector(actionButtonReward:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonReward];
         
         self.numberRewar = [self creationLabelWithFrame:CGRectMake(135.f, 104.f, 20.f, 11.f) endText:rewardNumber];
         [self addSubview:self.numberRewar];
-
+        //
         
-        CustomButton * buttonLike = [self creationCustonButtonForChangeParamsWithFrame:CGRectMake(179.f, 104.5f, 15.f, 13.f) endParams:isReward
+        //Лайки
+        CustomButton * buttonLike = [self creationCustonButtonForChangeParamsWithFrame:CGRectMake(179.f, 104.5f, 15.f, 13.f) endParams:isLike
                                                                             endOnImage:@"isLikeImageOn" endOffImage:@"likeImage"];
-        if (buttonLike.isBool) {
-            buttonLike.userInteractionEnabled = NO;
-        }
+        buttonLike.customID = profileID;
         [buttonLike addTarget:self action:@selector(actionButtonLike:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonLike];
         
         self.numberLike = [self creationLabelWithFrame:CGRectMake(202.f, 104.f, 20.f, 11.f) endText:likeNumber];
         [self addSubview:self.numberLike];
         
-        CustomButton * buttonBookmark = [self creationCustonButtonForChangeParamsWithFrame:CGRectMake(289.f, 99.f, 19.f, 19.f) endParams:isReward
-                                                                                endOnImage:@"professionImageBookmarkOn" endOffImage:@"professionImageBookmark"];
+        //Закладки
+        CustomButton * buttonBookmark = [self creationCustonButtonForChangeParamsWithFrame:CGRectMake(289.f, 99.f, 19.f, 19.f) endParams:isBookmark
+                                                    endOnImage:@"professionImageBookmarkOn"
+                                                                    endOffImage:@"professionImageBookmark"];
+        buttonBookmark.customID = profileID;
         [buttonBookmark addTarget:self action:@selector(actionButtonBookmark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
+        
+        //
         
         if(phoneOne.length != 0){
             UILabel * labelPhoneOne = [self creationLabelWithFrame:CGRectMake(13.f, 137.f, 78.f, 14.f) endText:@"Телефон 1"];
@@ -115,7 +118,8 @@
 
 #pragma mark - Methods for Creation
 
-- (CustomButton*) createCustomButtonWithFrame: (CGRect) frame endImageName: (NSString*) imageName {
+- (CustomButton*) createCustomButtonWithFrame: (CGRect) frame endImageName: (NSString*) imageName
+                                 andProfileID: (NSString *) profileID {
     
     CustomButton * button = [CustomButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
@@ -135,14 +139,14 @@
                                 [button.imageView setClipsToBounds:YES];
                                 [button.imageView.layer setCornerRadius:5];
                                 [button setImage:image forState:UIControlStateNormal];
+                                button.customID = profileID;
                                 
                             }else{
                                 //Тут обработка ошибки загрузки изображения
                             }
                         }];
     
-    
-    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+
     return button;
 }
 

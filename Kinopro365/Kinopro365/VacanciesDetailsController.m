@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
 #import <VK-ios-sdk/VKSdk.h>
+#import "ChooseProfessionalModel.h"
 
 @interface VacanciesDetailsController () <VacanciesDetailsModelDelegate,VKSdkDelegate,VKSdkUIDelegate>
 @property (strong, nonatomic) VacanciesDetailsModel * vacanciesDetailModel;
@@ -87,6 +88,22 @@
     self.activeLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     self.cityLabel.text = [NSString stringWithFormat:@"Город: %@",[vacanciesDict objectForKey:@"city_name"]];
     self.counterLabel.text =[NSString stringWithFormat:@"Подано заявок: %@",[vacanciesDict objectForKey:@"count_offer"]];
+    
+    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+    
+    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [vacanciesDict objectForKey:@"profession_id"]]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }
+    
+    
+    if([item objectForKey:@"name"]){
+        self.ProffesionLabel.text = [NSString stringWithFormat:@"Профессия: %@",[item objectForKey:@"name"]];
+    }else{
+        self.ProffesionLabel.text = @"Профессия";
+    }
+    
 
     
     NSURL *imgURL = [NSURL URLWithString:[vacanciesDict objectForKey:@"logo_url"]];

@@ -18,7 +18,9 @@
 - (void) showAlertWithMessage: (NSString*) message;
 - (void) showAlertWithMessageWithBlock: (NSString*) message block: (void (^)(void)) compilationBack;
 - (void) showAlertWithMessageWithTwoBlock: (NSString*) message
+                             nameButtonOK: (NSString *) nameButtonOk
                                   blockOK: (void (^)(void)) compilationBackOk
+                         nameButtonCancel: (NSString *) nameButtonCancel
                               blockCancel: (void (^)(void)) compilationBackCancel;
 - (void) showDataPickerBirthdayWithButton: (UIButton*) button endBool: (BOOL) isBool;
 - (void) showViewPickerWithButton: (CustomButton*) button andTitl: (NSString*) message andArrayData: (NSArray *) arrayData andKeyTitle:(NSString *) dictKeyTitle andKeyID:(NSString *) dictKeyID andDefValueIndex: (NSString *) defValueIndex;

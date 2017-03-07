@@ -29,6 +29,12 @@
   complitionBlock: (void (^) (id response)) compitionBack;
 -(void) sendIsFavourite: (BOOL) isFavourite
            andProfileID:(NSString *) profileID
-        complitionBlock: (void (^) (void)) compitionBack;
+        complitionBlock: (void (^) (id response)) compitionBack;
+-(void) sendIsReward: (BOOL) isReward
+        andProfileID:(NSString *) profileID
+     complitionBlock: (void (^) (id response)) compitionBack;
+-(void) sendIsLike: (BOOL) isReward
+      andProfileID:(NSString *) profileID
+   complitionBlock: (void (^) (id response)) compitionBack;
 
 @end
