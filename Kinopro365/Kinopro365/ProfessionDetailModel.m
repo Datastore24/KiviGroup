@@ -31,15 +31,27 @@
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
             
             for(NSString * key in [response objectForKey:@"response"]){
-                NSString * value = [NSString stringWithFormat:@"%@",[[response objectForKey:@"response"] objectForKey:key]];
-
-                if ([key rangeOfString:@"ex_"].location != NSNotFound) {
-                    if(![value isEqualToString:@"0"]){
-                        [tempDict setObject:value forKey:key];
+                if(![[[response objectForKey:@"response"] objectForKey:key] isKindOfClass:[NSArray class]]){
+                    NSString * value = [NSString stringWithFormat:@"%@",[[response objectForKey:@"response"] objectForKey:key]];
+                    
+                    if ([key rangeOfString:@"languages"].location != NSNotFound) {
+                        if(![value isEqualToString:@"0"]){
+                            [tempDict setObject:value forKey:key];
+                        }
+                    }else if ([key rangeOfString:@"languages"].location != NSNotFound) {
+                        [tempDict setObject:[[response objectForKey:@"response"] objectForKey:@"languages"] forKey:@"languages"];
+                    }else{
+                        if([[[response objectForKey:@"response"] objectForKey:key] isEqual:[NSNull null]]){
+                            [tempDict setObject:[NSNull null] forKey:key];
+                        }else{
+                            [tempDict setObject:value forKey:key];
+                        }
+                        
                     }
                 }else{
-                    [tempDict setObject:value forKey:key];
+                    [tempDict setObject:[[response objectForKey:@"response"] objectForKey:key] forKey:key];
                 }
+                
             }
             
             NSDictionary * resultDict = [[NSDictionary alloc] initWithDictionary:tempDict];
