@@ -62,6 +62,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     NSString * coutryID;
     NSString * cityID;
     [self createActivitiIndicatorAlertWithView];
