@@ -44,6 +44,7 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self createActivitiIndicatorAlertWithView];
     [self.myVacanciesModel loadVacanciesFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
 }

@@ -68,6 +68,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     
