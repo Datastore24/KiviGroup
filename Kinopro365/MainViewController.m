@@ -316,7 +316,7 @@
                                                           handler:^(NYAlertAction *action) {
                                                               [button setTitle:self.pickerViewString
                                                                       forState:UIControlStateNormal];
-                                                              
+                                                              button.tag = 5000;
                                                               button.customID = self.pickerViewStringID;
                                                               button.customName = self.pickerViewString;
                                                               [self dismissViewControllerAnimated:YES completion:nil];

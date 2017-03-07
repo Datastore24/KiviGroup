@@ -39,6 +39,8 @@
     return localDate;
 }
 
+
+
 + (NSString *)timeFormattedHHMM:(int)totalSeconds
 {
     
@@ -56,6 +58,37 @@
     [format setDateFormat:endFormat];
     NSString* finalDateString = [format stringFromDate:date];
     return  finalDateString;
+}
+
++(NSDate *) convertStringToNSDate: (NSString *) stringDate withFormatDate:(NSString *) dateFormat{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:dateFormat];
+    NSDate *dateFromString = [[NSDate alloc] init];
+    // voila!
+    dateFromString = [dateFormatter dateFromString:stringDate];
+    
+    return dateFromString;
+}
+
++(NSDate *) getLocalDateInFormat: (NSString *) format {
+    //NSString* format = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    // Set up an NSDateFormatter for UTC time zone
+    NSDateFormatter* formatterUtc = [[NSDateFormatter alloc] init];
+    [formatterUtc setDateFormat:format];
+    [formatterUtc setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    // Cast the input string to NSDate
+    NSDate* utcDate = [NSDate date];
+    
+    // Set up an NSDateFormatter for the device's local time zone
+    NSDateFormatter* formatterLocal = [[NSDateFormatter alloc] init];
+    [formatterLocal setDateFormat:format];
+    [formatterLocal setTimeZone:[NSTimeZone localTimeZone]];
+    
+    // Create local NSDate with time zone difference
+    NSDate* localDate = [formatterUtc dateFromString:[formatterLocal stringFromDate:utcDate]];
+    
+    return localDate;
 }
 
 @end

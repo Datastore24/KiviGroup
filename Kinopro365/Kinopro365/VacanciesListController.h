@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
 @property (weak, nonatomic) IBOutlet UILabel *labelListVacancies;
+@property (strong, nonatomic) UIImage * vacanciesImage;
 
 
 
