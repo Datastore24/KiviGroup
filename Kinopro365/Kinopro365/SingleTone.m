@@ -18,6 +18,7 @@
 @synthesize citySearchID;
 @synthesize countrySearchID;
 @synthesize localization;
+@synthesize typeView;
 
 
 #pragma mark Singleton Methods

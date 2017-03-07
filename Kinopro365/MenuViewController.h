@@ -12,8 +12,7 @@
 #import <UIViewController+MMDrawerController.h>
 
 @interface MenuViewController : UIViewController
-- (IBAction)actionFirstViewButton:(id)sender;
-- (IBAction)actionSecondViewButton:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIButton *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *userFLName;
 
@@ -22,5 +21,7 @@
 
 - (IBAction)actionButtonKinopro:(id)sender;
 - (IBAction)actionVacanciesButton:(id)sender;
+- (IBAction)actionButtonCastings:(id)sender;
+
 
 @end

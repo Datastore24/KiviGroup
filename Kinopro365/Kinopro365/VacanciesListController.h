@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 
 
+
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
 @property (weak, nonatomic) IBOutlet UILabel *labelListVacancies;
@@ -26,7 +27,7 @@
 
 
 - (IBAction)leftSideButtonMenu:(id)sender;
-- (IBAction)pushMyVocansies:(id)sender;
+//- (IBAction)pushMyVocansies:(id)sender;
 - (IBAction)actionButtonCountry:(id)sender;
 - (IBAction)actionButtonCity:(id)sender;
 

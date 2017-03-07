@@ -14,6 +14,8 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
 #import "CountryViewController.h"
+#import "SingleTone.h"
+#import "AddVacanciesController.h"
 
 
 @interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource, VacanciesListModelDelegate,CountryViewControllerDelegate>
@@ -28,12 +30,46 @@
     [super loadView];
     
     
+
+    
+    
     self.view.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"EAF3FA"];
     self.mainTableView.backgroundColor = [UIColor clearColor];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Вакансии"];
-    self.navigationItem.titleView = CustomText;
+    UILabel * customText;
+    NSString * stringWriteBarButton;
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        customText = [[UILabel alloc]initWithTitle:@"Вакансии"];
+        stringWriteBarButton = @"myVacansieImage";
+    } else {
+        customText = [[UILabel alloc]initWithTitle:@"Кастинги"];
+        stringWriteBarButton = @"my_cas";
+    }
+
+    
+    
+    
+    
+    UIImage *myImage = [UIImage imageNamed:stringWriteBarButton];
+    myImage = [myImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *myVacansiesButton = [[UIBarButtonItem alloc] initWithImage:myImage style:UIBarButtonItemStylePlain
+                                                                      target:self action:@selector(pushMyVocansies:)];
+    self.navigationItem.rightBarButtonItem = myVacansiesButton;
+    
+    UIImage *addImage = [UIImage imageNamed:@"buttonAddOn"];
+    addImage = [addImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *addVacansiesButton = [[UIBarButtonItem alloc] initWithImage:addImage style:UIBarButtonItemStylePlain
+                                                                         target:self action:@selector(addVocansies:)];
+    self.navigationItem.rightBarButtonItem = addVacansiesButton;
+    
+    NSArray *tempArray2= [[NSArray alloc] initWithObjects:addVacansiesButton, myVacansiesButton, nil];
+    self.navigationItem.rightBarButtonItems=tempArray2;
+    
+    
+    
+    
+    self.navigationItem.titleView = customText;
     self.vacanciesListModel = [[VacanciesListModel alloc] init];
     self.vacanciesListModel.delegate = self;
     
@@ -131,6 +167,9 @@
     
         cell.titleLabel.text = [dictVacan objectForKey:@"name"];
     
+    //Сюда вствить профессию--------
+    cell.labelProfession.text = @"Профессия";
+    
         cell.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[dictVacan objectForKey:@"city_name"],[dictVacan objectForKey:@"country_name"]];
 
         NSDate * endDate = [DateTimeMethod timestampToDate:[dictVacan objectForKey:@"end_at"]];
@@ -148,7 +187,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-       return 93;
+       return 112;
 
 }
 
@@ -183,6 +222,12 @@
 - (IBAction)pushMyVocansies:(id)sender {
     [self pushCountryControllerWithIdentifier:@"MyVacanciesController"];
 }
+
+- (IBAction)addVocansies:(id)sender {
+    [self pushCountryControllerWithIdentifier:@"AddVacanciesController"];
+}
+
+
 
 - (IBAction)actionButtonCountry:(id)sender {
 

@@ -21,6 +21,8 @@
 @property (strong, nonatomic) NSString * countrySearchID;
 @property (strong, nonatomic) NSString * citySearchID;
 
+@property (strong, nonatomic) NSString * typeView; // Параметр для проверки окна (кастинги или вакансии) 0 - Вакансии 1 - Кастинги
+
 + (id)sharedManager;
 
 @end
