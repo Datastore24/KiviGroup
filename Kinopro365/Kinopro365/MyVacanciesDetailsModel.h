@@ -20,5 +20,6 @@
 
 -(void) loadVacancies: (NSString *) vacancyID;
 -(void) loadOffersProfile:(NSString *) vacancyID andOffset: (NSString *) offset andCount: (NSString *) count complitionBlock: (void (^) (id response)) compitionBack;
+- (void) deleteVacancy: (NSString *) vacancyID complitionBlock: (void (^) (id response)) compitionBack;
 
 @end

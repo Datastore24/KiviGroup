@@ -41,8 +41,17 @@
                 
             }
             
+             [realm addOrUpdateObjectsFromArray:rlmArray];
             
-            [realm addOrUpdateObjectsFromArray:rlmArray];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalValue BEGINSWITH %@",
+                                 @"0"];
+            
+            RLMResults *additionalNULL = [AdditionalTable objectsWithPredicate:pred];
+            
+            [[RLMRealm defaultRealm] deleteObjects:additionalNULL];
+            
+            
+           
             [realm commitWriteTransaction];
             
         

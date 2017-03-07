@@ -28,7 +28,23 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-            [self.delegate loadProfile:[response objectForKey:@"response"]];
+            NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
+            
+            for(NSString * key in [response objectForKey:@"response"]){
+                NSString * value = [NSString stringWithFormat:@"%@",[[response objectForKey:@"response"] objectForKey:key]];
+
+                if ([key rangeOfString:@"ex_"].location != NSNotFound) {
+                    if(![value isEqualToString:@"0"]){
+                        [tempDict setObject:value forKey:key];
+                    }
+                }else{
+                    [tempDict setObject:value forKey:key];
+                }
+            }
+            
+            NSDictionary * resultDict = [[NSDictionary alloc] initWithDictionary:tempDict];
+            NSLog(@"RESULTDICT %@",resultDict);
+            [self.delegate loadProfile:resultDict];
         
         }
     }];

@@ -204,7 +204,7 @@
                 
                 
             }
-            
+            NSLog(@"PROFILEDICT %@",profileDict);
             [self loadMore:profileDict andOpenContact:openContact];
             
         }];
@@ -240,20 +240,23 @@
     int i=0;
     for (NSString *key in profileDict) {
         NSDictionary * params = [addParamsModel getInformationDictionary:key andProfArray:profArray];
-        
+        NSLog(@"PARAMSKEY %@",key);
  
         if(params.count> 0){
             NSDictionary * finalInfoParams = [addParamsModel getNameByDictionary:[params objectForKey:@"array"] andFindID:[profileDict objectForKey:key]];
+            NSLog(@"DICTFINAL %@",finalInfoParams);
             
-            NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                   key,@"additionalID",
-                                   [params objectForKey:@"title"],@"title",
-                                   [finalInfoParams objectForKey:@"name"], @"value",nil];
+//            NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                   key,@"additionalID",
+//                                   [params objectForKey:@"title"],@"title",
+//                                   [finalInfoParams objectForKey:@"name"], @"value",nil];
             
             
             TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
                                                                                antFirstTextLabel: [params objectForKey:@"title"]
                                                                               andSecondTextLabel:[finalInfoParams objectForKey:@"name"]];
+            
+           
             [self.mainScrollView addSubview:textDataProfession];
 
             i++;

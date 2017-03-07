@@ -143,7 +143,9 @@
 }
 
 - (void) showAlertWithMessageWithTwoBlock: (NSString*) message
+                             nameButtonOK: (NSString *) nameButtonOk
                                   blockOK: (void (^)(void)) compilationBackOk
+                             nameButtonCancel: (NSString *) nameButtonCancel
                               blockCancel: (void (^)(void)) compilationBackCancel{
     
     NYAlertViewController *alertViewController = [[NYAlertViewController alloc] initWithNibName:nil bundle:nil];
@@ -171,7 +173,7 @@
     alertViewController.buttonColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR];
     alertViewController.buttonTitleColor = [UIColor whiteColor];
     
-    [alertViewController addAction:[NYAlertAction actionWithTitle:@"С сервера"
+    [alertViewController addAction:[NYAlertAction actionWithTitle:nameButtonOk
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(NYAlertAction *action) {
                                                               
@@ -179,7 +181,7 @@
                                                               compilationBackOk();
                                                           }]];
     
-    [alertViewController addAction:[NYAlertAction actionWithTitle:NSLocalizedString(@"Продолжить", nil)
+    [alertViewController addAction:[NYAlertAction actionWithTitle:nameButtonCancel
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(NYAlertAction *action) {
                                                               

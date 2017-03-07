@@ -54,4 +54,22 @@
     }];
     
 }
+
+- (void) deleteVacancy: (NSString *) vacancyID complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             vacancyID,@"vacancy_id",nil];
+    
+    [apiManager getDataFromSeverWithMethod:@"vacancy.delete" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            compitionBack(response);
+        }else{
+            compitionBack(response);
+            
+        }
+    }];
+}
 @end

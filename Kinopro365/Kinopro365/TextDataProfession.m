@@ -18,7 +18,6 @@
     if (self) {
         
         self.frame = CGRectMake(0, height, [[UIScreen mainScreen] bounds].size.width, 25);
-        
         UILabel * firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, 0.f, CGRectGetWidth(self.bounds) / 2, 25)];
         firstLabel.text = firstTextLabel;
         firstLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"343536"];

@@ -301,6 +301,13 @@
                                        @"1",@"additionalValue", nil];
                 
                 [arrayForDB addObject:dict];
+            }else{
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       [information objectForKey:@"id"],@"additionalID",
+                                       [information objectForKey:@"title"],@"additionalName",
+                                       @"0",@"additionalValue", nil];
+                
+                [arrayForDB addObject:dict];
             }
             
             

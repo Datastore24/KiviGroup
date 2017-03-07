@@ -184,7 +184,37 @@
 
 - (IBAction)actionDeleteButton:(id)sender {
     
-    NSLog(@"Удалить вакансию");    
+    NSLog(@"Удалить вакансию");
+    
+    [self showAlertWithMessageWithTwoBlock:@"Вы уверены,\nчто хотите удалить вакансию?" nameButtonOK:@"Удалить" blockOK:^{
+        [self.myVacanciesDetailsModel deleteVacancy:self.vacancyID complitionBlock:^(id response) {
+            NSLog(@"RESPONSE %@",response); 
+            if([response objectForKey:@"error_code"]){
+                
+                NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                      [response objectForKey:@"error_msg"]);
+                NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                if(errorCode == 651){
+                    [self showAlertWithMessage:@"Вакансия не найдена"];
+                }else if(errorCode == 652){
+                    [self showAlertWithMessage:@" Вакансия с переданным id не принадлежит пользователю"];
+                    
+                }
+            }else{
+                if([[response objectForKey:@"response"] integerValue] == 1){
+                    [self showAlertWithMessageWithBlock:@"Вакансия успешно удалена" block:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                    
+                }
+            }
+        }];
+
+    } nameButtonCancel:@"Отменить" blockCancel:^{
+        
+    }];
+    
+   
 }
 
 #pragma mark - ViewCellMyVacanciesDelegate
