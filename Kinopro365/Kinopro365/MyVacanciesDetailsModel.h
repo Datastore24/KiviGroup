@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MyVacanciesDetailsModelDelegate <NSObject>
+
+-(void) loadMyVacancies:(NSDictionary *) vacanciesDict;
+
+@end
+
 @interface MyVacanciesDetailsModel : NSObject
+
+@property (strong, nonatomic) id <MyVacanciesDetailsModelDelegate> delegate;
+
+-(void) loadVacancies: (NSString *) vacancyID;
+-(void) loadOffersProfile:(NSString *) vacancyID andOffset: (NSString *) offset andCount: (NSString *) count complitionBlock: (void (^) (id response)) compitionBack;
 
 @end

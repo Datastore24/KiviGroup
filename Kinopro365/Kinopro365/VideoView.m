@@ -67,10 +67,15 @@
 - (NSString*) createIDYouTubeWithURL: (NSString*) url {
     
     NSString* str= url;
-    NSRange range= [str rangeOfString: @"https://www.youtube.com/embed/" options: NSBackwardsSearch];
-    NSString* finalStr = [str substringFromIndex: range.location + range.length];
+    NSString *stringWithoutSpaces = [str
+                                     stringByReplacingOccurrencesOfString:@"https://www.youtube.com/embed/" withString:@""];
+    stringWithoutSpaces = [stringWithoutSpaces
+                                     stringByReplacingOccurrencesOfString:@"https://m.youtube.com/watch?v=" withString:@""];
     
-    return finalStr;
+//    NSRange range= [str rangeOfString: @"https://www.youtube.com/embed/" options: NSBackwardsSearch];
+//    NSString* finalStr = [str substringFromIndex: range.location + range.length];
+    
+    return stringWithoutSpaces;
 }
 
 #pragma mark - YTPlayerViewDelegate

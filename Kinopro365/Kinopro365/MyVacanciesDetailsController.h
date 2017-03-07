@@ -11,6 +11,9 @@
 
 @interface MyVacanciesDetailsController : MainViewController
 
+@property (strong, nonatomic) NSString * vacancyID;
+@property (strong, nonatomic) NSString * vacancyName;
+@property (strong, nonatomic) NSString * vacancyURL;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIView *viewForPerson;
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;

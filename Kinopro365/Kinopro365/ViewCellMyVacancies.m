@@ -9,6 +9,8 @@
 #import "ViewCellMyVacancies.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "ProfessionDetailModel.h"
 
 @implementation ViewCellMyVacancies
 
@@ -22,9 +24,14 @@
         
         self.frame = CGRectMake(0.f, height, CGRectGetWidth(mainView.bounds), 235.f);
         
+        
+        
         CustomButton * buttonImage = [self createCustomButtonWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f) endImageName:imageUrl];
         [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonImage];
+        
+        
+        
         
         NSArray * arrayText = [NSArray arrayWithObjects:name, country, age, nil];
         for (int i = 0; i < 3; i++) {
@@ -60,34 +67,43 @@
         [buttonBookmark addTarget:self action:@selector(actionButtonBookmark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
         
-        NSArray * arrayNamePhone = [NSArray arrayWithObjects:@"Телефон 1", @"Телефон 2", nil];
-        for (int i = 0; i < 2; i++) {
-            UILabel * label = [self creationLabelWithFrame:CGRectMake(13.f, 137.f + 38.f * i, 78.f, 14.f) endText:[arrayNamePhone objectAtIndex:i]];
-            [self addSubview: label];
+        if(phoneOne.length != 0){
+            UILabel * labelPhoneOne = [self creationLabelWithFrame:CGRectMake(13.f, 137.f, 78.f, 14.f) endText:@"Телефон 1"];
+            [self addSubview: labelPhoneOne];
+            
+            CustomButton * buttonPhoneOne = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 130.f, 154.5, 30) endName:phoneOne enfImage:@"phoneImageProf"];
+            [buttonPhoneOne addTarget:self action:@selector(actionButtonPhoneOne:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonPhoneOne];
+        }
+        NSLog(@"PHONE %ld",phoneTwo.length);
+        if(phoneTwo.length != 0){
+            UILabel * labelPhoneTwo = [self creationLabelWithFrame:CGRectMake(13.f, 137.f + 38.f, 78.f, 14.f) endText:@"Телефон 2"];
+            [self addSubview: labelPhoneTwo];
+            
+            CustomButton * buttonPhoneTwo = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 167.f, 154.5, 30) endName:phoneTwo enfImage:@"phoneImageProf"];
+            [buttonPhoneTwo addTarget:self action:@selector(actionButtonPhoneTwo:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonPhoneTwo];
+        }
+       
+        
+        if(email.length !=0){
+            UILabel * labelEmail = [self creationLabelWithFrame:CGRectMake(13.f, 206.f, 78.f, 14.f) endText:@"E-mail"];
+            [self addSubview: labelEmail];
+            
+            CustomButton * buttonEmail = [CustomButton buttonWithType:UIButtonTypeSystem];
+            buttonEmail.frame = CGRectMake(153, 208.f, 160, 13.f);
+            [buttonEmail setTitle:email forState:UIControlStateNormal];
+            [buttonEmail setTitleColor:[UIColor hx_colorWithHexRGBAString:@"353535"] forState:UIControlStateNormal];
+            buttonEmail.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:14];
+            [buttonEmail setTitleEdgeInsets:UIEdgeInsetsMake(0, 25, 0, 0)];
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, 0, 18.f, 13.f)];
+            imageView.image = [UIImage imageNamed:@"mainImageProf"];
+            [buttonEmail addSubview:imageView];
+            [buttonEmail addTarget:self action:@selector(actionButtonEmail:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonEmail];
         }
         
-        UILabel * labelEmail = [self creationLabelWithFrame:CGRectMake(13.f, 206.f, 78.f, 14.f) endText:@"E-mail"];
-        [self addSubview: labelEmail];
         
-        CustomButton * buttonPhoneOne = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 130.f, 154.5, 30) endName:phoneOne enfImage:@"phoneImageProf"];
-        [buttonPhoneOne addTarget:self action:@selector(actionButtonPhoneOne:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonPhoneOne];
-        
-        CustomButton * buttonPhoneTwo = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 167.f, 154.5, 30) endName:phoneTwo enfImage:@"phoneImageProf"];
-        [buttonPhoneTwo addTarget:self action:@selector(actionButtonPhoneTwo:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonPhoneTwo];
-        
-        CustomButton * buttonEmail = [CustomButton buttonWithType:UIButtonTypeSystem];
-        buttonEmail.frame = CGRectMake(153, 208.f, 160, 13.f);
-        [buttonEmail setTitle:email forState:UIControlStateNormal];
-        [buttonEmail setTitleColor:[UIColor hx_colorWithHexRGBAString:@"353535"] forState:UIControlStateNormal];
-        buttonEmail.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:14];
-        [buttonEmail setTitleEdgeInsets:UIEdgeInsetsMake(0, 25, 0, 0)];
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.f, 0, 18.f, 13.f)];
-        imageView.image = [UIImage imageNamed:@"mainImageProf"];
-        [buttonEmail addSubview:imageView];
-        [buttonEmail addTarget:self action:@selector(actionButtonEmail:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonEmail];
         
         UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 234.f, CGRectGetWidth(mainView.bounds), 1)];
         borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"AEAEAE"];
@@ -103,6 +119,29 @@
     
     CustomButton * button = [CustomButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
+    
+    NSURL *imgURL = [NSURL URLWithString:imageName];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:imgURL
+                          options:0
+                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             // progression tracking code
+                         }
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                    NSURL *imageURL) {
+                            
+                            if(image){
+                                [button.imageView setContentMode:UIViewContentModeScaleAspectFill];
+                                [button.imageView setClipsToBounds:YES];
+                                [button.imageView.layer setCornerRadius:5];
+                                [button setImage:image forState:UIControlStateNormal];
+                                
+                            }else{
+                                //Тут обработка ошибки загрузки изображения
+                            }
+                        }];
+    
+    
     [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     return button;
 }
