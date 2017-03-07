@@ -10,5 +10,6 @@
 
 @interface AddVacanciesModel : NSObject
 
+- (void) addVacanciesName: (NSString *) name andLogoID: (NSString *) logoID andEndAt: (NSString *) endAt andProfessionID: (NSString *) professionID andCountryID: (NSString *) countryID andCityID: (NSString *) cityID andDescription: (NSString *) description complitionBlock: (void (^) (id response)) compitionBack;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "UIPlaceHolderTextView.h"
+#import "CustomButton.h"
 
 
 @interface AddVacanciesController : MainViewController
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildName;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddImage;
 @property (weak, nonatomic) IBOutlet UIButton *buttonDate;
-@property (weak, nonatomic) IBOutlet UIButton *buttonProfession;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonProfession;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCreate;

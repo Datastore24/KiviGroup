@@ -7,12 +7,16 @@
 //
 
 #import "AddVacanciesController.h"
+#import "AddVacanciesModel.h"
 #import "HexColors.h"
 #import "HMImagePickerController.h"
 #import "APIManger.h"
 #import "SingleTone.h"
+#import "CountryViewController.h"
+#import "ChooseProfessionalModel.h"
+#import "DateTimeMethod.h"
 
-@interface AddVacanciesController () <UITextFieldDelegate, UITextViewDelegate, HMImagePickerControllerDelegate>
+@interface AddVacanciesController () <UITextFieldDelegate, UITextViewDelegate, HMImagePickerControllerDelegate, CountryViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary * dictKeyboard;
 @property (assign, nonatomic) CGFloat heightForText;
@@ -21,7 +25,7 @@
 @property (strong, nonatomic) NSString * photoID;
 
 
-@property (strong, nonatomic) NSArray * testArrayProfessions;
+@property (strong, nonatomic) NSArray * arrayProfessions;
 
 
 
@@ -56,7 +60,7 @@
     
     self.heightForText = 55;
     
-    self.testArrayProfessions = [NSArray arrayWithObjects:@"Актер", @"Режесер", @"Каскадер", @"Звукооператор", @"Модель", nil];
+    self.arrayProfessions = [ChooseProfessionalModel getArrayProfessions];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,28 +128,93 @@
     [self showDataPickerBirthdayWithButton:sender endBool:YES];
 }
 
-- (IBAction)actionButtonProfession:(id)sender {
-    [self showViewPickerWithButton:sender andTitl:@"Выберите профессию" andArrayData:self.testArrayProfessions andKeyTitle:nil andKeyID:nil andDefValueIndex:nil];
+- (IBAction)actionButtonProfession:(CustomButton *)sender {
+    [self showViewPickerWithButton:sender andTitl:@"Выберите профессию" andArrayData:self.arrayProfessions andKeyTitle:@"name" andKeyID:@"id" andDefValueIndex:nil];
 }
 
 - (IBAction)actionButtonCountry:(id)sender {
     
     NSLog(@"Выбор страны");
+    [[SingleTone sharedManager] setCountry_citi:@"country"];
+    [self pushCountryController];
     
 }
 
 - (IBAction)actionButtonCity:(id)sender {
     
     NSLog(@"Выбор города");
+    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]) {
+        [self showAlertWithMessage:@"\nВведите страну!\n"];
+    } else {
+        [[SingleTone sharedManager] setCountry_citi:@"city"];
+        [self pushCountryController];
+    }
     
+}
+
+#pragma mark - Other
+- (void) pushCountryController {
+    CountryViewController * detai = [self.storyboard instantiateViewControllerWithIdentifier:@"CountryViewController"];
+    detai.delegate = self;
+    detai.isSearch = YES;
+    [self.navigationController pushViewController:detai animated:YES];
 }
 
 - (IBAction)actionButtonCreate:(id)sender {
     
-    NSLog(@"Вы созвади вакансию");
-    [self showAlertWithMessageWithBlock:@"Вы создали вакансию" block:^{
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+   
+
+    
+    NSDate * stringToDate = [DateTimeMethod convertStringToNSDate:self.buttonDate.titleLabel.text withFormatDate:@"dd MMMM yyyy"];
+    NSString * unixTimeEndAt = [DateTimeMethod dateToTimestamp:stringToDate];
+    
+    
+    NSDate * currentDate = [DateTimeMethod getLocalDateInFormat:@"dd MMMM yyyy"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
+    NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+
+    NSLog(@"currentDate %@", currentDateString);
+    
+    CustomButton * prof = [self.view viewWithTag:5000];
+    
+    NSLog(@"Имя:%@\nТекст:%@\nОкончание:%@\nСтрана:%@\nГород:%@\nPHOTOID:%@\nPROFID:%@",self.textFildName.text,self.textView.text,unixTimeEndAt, [[SingleTone sharedManager] countrySearchID],[[SingleTone sharedManager] citySearchID],self.photoID,prof.customID);
+    
+    
+    if(self.textFildName.text.length ==0){
+        [self showAlertWithMessage:@"Введите название вакансии"];
+    }else if(self.photoID.length == 0){
+        [self showAlertWithMessage:@"Выберите фото вакансии"];
+    }else if([unixTimeEndAt isEqualToString:@"0"]){
+        [self showAlertWithMessage:@"Выберите дату приема заявок"];
+    }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
+        [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
+    }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
+        [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
+    }else if(prof.customID.length == 0){
+        [self showAlertWithMessage:@"Выберите профессию"];
+    }else if([[SingleTone sharedManager] countrySearchID].length == 0){
+        [self showAlertWithMessage:@"Выберите Страну"];
+    }else if([[SingleTone sharedManager] citySearchID].length == 0){
+        [self showAlertWithMessage:@"Выберите Город"];
+    }else if(self.textView.text.length == 0){
+        [self showAlertWithMessage:@"Введите описание вакансии"];
+    }else{
+        AddVacanciesModel * addVacanciesModel = [[AddVacanciesModel alloc] init];
+        [addVacanciesModel addVacanciesName:self.textFildName.text andLogoID:self.photoID andEndAt:unixTimeEndAt andProfessionID:prof.customID andCountryID:[[SingleTone sharedManager] countrySearchID] andCityID:[[SingleTone sharedManager] citySearchID] andDescription:self.textView.text complitionBlock:^(id response) {
+            NSLog(@"response %@",response);
+            if([[response objectForKey:@"response"] integerValue] == 1){
+                    [self showAlertWithMessageWithBlock:@"Вы создали вакансию" block:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+            }
+            
+        }];
+    }
+    
+    
+    
+
     
 }
 
@@ -305,9 +374,19 @@
         }
         
     }];
-    
-    
+  
 
+}
+
+#pragma mark - CountryViewControllerDelegate
+
+- (void) changeButtonTextInSearch: (CountryViewController*) controller withString: (NSString*) string {
+    
+    if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
+        [self.buttonCountry setTitle:string forState:UIControlStateNormal];
+    } else {
+        [self.buttonCity setTitle:string forState:UIControlStateNormal];
+    }
 }
 
 

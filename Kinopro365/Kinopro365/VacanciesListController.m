@@ -55,6 +55,7 @@
         self.vacanArray = [vacanDict objectForKey:@"items"];
         self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[vacanDict objectForKey:@"count"]];
         [self.mainTableView reloadData];
+        [self deleteActivitiIndicator];
     }
    
 }
@@ -63,6 +64,7 @@
     [super viewWillAppear:YES];
     NSString * coutryID;
     NSString * cityID;
+    [self createActivitiIndicatorAlertWithView];
     if([[SingleTone sharedManager] countrySearchID]){
         coutryID = [[SingleTone sharedManager] countrySearchID];
     }else{

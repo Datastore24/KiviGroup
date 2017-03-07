@@ -33,13 +33,19 @@
     
     self.myVacanciesModel = [[MyVacanciesModel alloc] init];
     self.myVacanciesModel.delegate = self;
-    [self.myVacanciesModel loadVacanciesFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
+    
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self createActivitiIndicatorAlertWithView];
+    [self.myVacanciesModel loadVacanciesFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +58,7 @@
         self.myVacanArray = [myVacanDict objectForKey:@"items"];
         self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[myVacanDict objectForKey:@"count"]];
         [self.mainTableView reloadData];
+        [self deleteActivitiIndicator];
     }
     
 }
@@ -59,10 +66,14 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if([[[self.myVacanArray objectAtIndex:0] objectForKey:@"name"] isEqual:[NSNull null]]){
-        return 0;
+    if(self.myVacanArray.count>0){
+        if([[[self.myVacanArray objectAtIndex:0] objectForKey:@"name"] isEqual:[NSNull null]] ){
+            return 0;
+        }else{
+            return self.myVacanArray.count;
+        }
     }else{
-        return self.myVacanArray.count;
+        return 0;
     }
     
     
