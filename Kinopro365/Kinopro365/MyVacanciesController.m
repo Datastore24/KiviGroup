@@ -12,6 +12,7 @@
 #import "MyVacanciesDetailsController.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
+#import "ChooseProfessionalModel.h"
 
 @interface MyVacanciesController () <UITableViewDelegate, UITableViewDataSource,MyVacanciesModelDelegate>
 
@@ -174,6 +175,18 @@
     myVacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
     myVacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
     myVacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
+    myVacanciesDetailsController.profID = [dict objectForKey:@"profession_id"];
+    
+    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dict objectForKey:@"profession_id"]]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }
+    
+    if(item.count > 0){
+        myVacanciesDetailsController.profName = [item objectForKey:@"name"];
+    }
     
     [self.navigationController pushViewController:myVacanciesDetailsController animated:YES];
     

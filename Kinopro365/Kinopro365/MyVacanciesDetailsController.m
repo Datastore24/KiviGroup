@@ -38,7 +38,7 @@
     self.heightTextView = self.mainTextView.frame.origin.y;
     self.myVacanciesDetailsModel = [[MyVacanciesDetailsModel alloc] init];
     self.myVacanciesDetailsModel.delegate = self;
-    [self.myVacanciesDetailsModel loadVacancies:self.vacancyID];
+    
     
 }
 
@@ -52,7 +52,7 @@
     [super viewWillAppear:YES];
     
     
-    
+    [self.myVacanciesDetailsModel loadVacancies:self.vacancyID];
     
     
 }
@@ -195,8 +195,8 @@
     ProfessionDetailController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionDetailController"];
     
     profController.profileID = sender.customID;
-    profController.profName = self.profID;
-    profController.profID = self.profName;
+    profController.profName = self.profName;
+    profController.profID = self.profID;
     profController.buttonBookmarkBack = sender.customButton;
     
     [self.navigationController pushViewController:profController animated:YES];

@@ -146,8 +146,7 @@
                             }
                         }];
     
-    
-    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+
     return button;
 }
 

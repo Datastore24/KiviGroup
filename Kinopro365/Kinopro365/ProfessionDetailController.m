@@ -279,13 +279,15 @@
     }
     
    
-    
-    TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
-                                                                       antFirstTextLabel: @"Языки"
-                                                                      andSecondTextLabel:resultString];
-    [self.mainScrollView addSubview:textDataProfession];
-    
-     i++;   
+    if(language.count>0){
+        TextDataProfession * textDataProfession = [[TextDataProfession alloc] initWithHeight:self.maxHeightVideo + 26.f + 25 * i
+                                                                           antFirstTextLabel: @"Языки"
+                                                                          andSecondTextLabel:resultString];
+        [self.mainScrollView addSubview:textDataProfession];
+        
+        i++;  
+    }
+     
 
     
     //Отрисовка доп параметров-----------------------------
