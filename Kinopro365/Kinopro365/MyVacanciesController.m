@@ -100,7 +100,6 @@
     } else {
         if(![[dictMyVacan objectForKey:@"logo_url"] isEqual: [NSNull null]]){
             
-            
             NSURL *imgURL = [NSURL URLWithString:[dictMyVacan objectForKey:@"logo_url"]];
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
       

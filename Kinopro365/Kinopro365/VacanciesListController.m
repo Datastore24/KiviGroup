@@ -157,7 +157,7 @@
                                 cell.mainImage.clipsToBounds = YES;
                                 cell.mainImage.layer.cornerRadius = 5;
                                 cell.mainImage.image = image;
-                                self.vacanciesImage = image;
+                                
                                 
                                 
                             }else{
@@ -194,6 +194,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
     
@@ -202,7 +203,7 @@
     vacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
     vacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
     vacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
-    vacanciesDetailsController.vacancyImage = self.vacanciesImage;
+    vacanciesDetailsController.vacancyImage = cell.mainImage.image;
     
     
     [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
