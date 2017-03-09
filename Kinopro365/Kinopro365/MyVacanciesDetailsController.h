@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activelyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumberRecall;
+@property (weak, nonatomic) IBOutlet UIImageView *imageHide;
 
 - (IBAction)actionBackButton:(id)sender;
 - (IBAction)actionButtonTextAdd:(CustomButton*)sender;

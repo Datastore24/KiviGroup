@@ -171,9 +171,13 @@
     if (sender.isBool) {
         height = self.view.bounds.size.height - self.heightTextView;
         [sender setTitle:@"Свернуть" forState:UIControlStateNormal];
+//        self.imageHide.center = CGPointMake(9.5f, 3.5f);
+        //rotate rect
+        self.imageHide.transform = CGAffineTransformMakeRotation(M_PI); //rotation in radians
         sender.isBool = NO;
     } else {
         [sender setTitle:@"Развернуть" forState:UIControlStateNormal];
+        self.imageHide.transform = CGAffineTransformMakeRotation(0); //rotation in radians
         height = 0;
         sender.isBool = YES;
     }
