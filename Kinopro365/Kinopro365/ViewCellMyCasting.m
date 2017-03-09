@@ -15,7 +15,7 @@
 - (instancetype)initWithMainView: (UIView*) mainView endHeight: (CGFloat) height endImageName: (NSString*) imageUrl endName: (NSString*) name
                       endCountry: (NSString*) country endAge: (NSString*) age endIsReward: (BOOL) isReward endRewardNumber: (NSString*) rewardNumber
                        endIsLike: (BOOL) isLike endLikeNumber: (NSString*) likeNumber endIsBookmark: (BOOL) isBookmark
-                    endProfileID: (NSString*) profileID enfGrowth: (NSString*) growth
+                    endProfileID: (NSString*) profileID enfGrowth: (NSString*) growth endApproved: (BOOL) approved
 {
     self = [super init];
     if (self) {
@@ -70,6 +70,25 @@
         UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 129.f, CGRectGetWidth(mainView.bounds), 1)];
         borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"AEAEAE"];
         [self addSubview:borderView];
+        
+        //Кнопки удаление и Отмены
+        
+        if (!approved) {
+            CustomButton * buttonDelete = [self createCustomButtonWithFrame:CGRectMake(238.f, 47.f, 26.f, 26.f)
+                                                             endImageString:@"buttonDeleteCellImage"];
+            [buttonDelete addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonDelete];
+            
+            CustomButton * buttonConfirm = [self createCustomButtonWithFrame:CGRectMake(284.f, 47.f, 26.f, 26.f)
+                                                              endImageString:@"buttonConfermCellImage"];
+            [buttonConfirm addTarget:self action:@selector(actionButtonConfirm:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonConfirm];
+        } else {
+            CustomButton * buttonDelete = [self createCustomButtonWithFrame:CGRectMake(284.f, 47.f, 26.f, 26.f)
+                                                             endImageString:@"buttonDeleteCellImage"];
+            [buttonDelete addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonDelete];
+        }
         
     }
     return self;
@@ -128,6 +147,15 @@
     return button;
 }
 
+- (CustomButton*) createCustomButtonWithFrame: (CGRect) frame endImageString: (NSString*) imageName {
+   
+    CustomButton * button = [CustomButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    
+    return button;
+}
+
 - (CustomButton*) createBlueCustonmButtonWithFrame: (CGRect) frame endName: (NSString*) name enfImage: (NSString*) buttonImage {
     
     CustomButton * button = [CustomButton buttonWithType:UIButtonTypeSystem];
@@ -178,6 +206,16 @@
 - (void) actionButtonBookmark: (CustomButton*) sender {
     
     [self.delegate actionWith:self endButtonBookmark:sender];
+}
+
+- (void) actionButtonDelete: (CustomButton*) sender {
+    
+    [self.delegate actionWith:self endButtonDelete:sender];
+}
+
+- (void) actionButtonConfirm: (CustomButton*) sender {
+    [self.delegate actionWith:self endButtonConfirm:sender];
+    
 }
 
 @end

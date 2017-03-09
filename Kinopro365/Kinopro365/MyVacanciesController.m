@@ -227,6 +227,10 @@
 }
 
 - (IBAction)actionAddVacancies:(id)sender {
-    [self pushCountryControllerWithIdentifier:@"AddVacanciesController"];
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        [self pushCountryControllerWithIdentifier:@"AddVacanciesController"];
+    } else {
+        [self pushCountryControllerWithIdentifier:@"AddCastingController"];
+    }
 }
 @end
