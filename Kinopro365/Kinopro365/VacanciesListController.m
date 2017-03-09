@@ -133,29 +133,31 @@
     
         cell.mainImage.layer.cornerRadius = 5.f;
     
+    if(![[dictVacan objectForKey:@"logo_url"] isEqual:[NSNull null]]){
+        NSURL *imgURL = [NSURL URLWithString:[dictVacan objectForKey:@"logo_url"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                        NSURL *imageURL) {
+                                
+                                if(image){
+                                    cell.mainImage.contentMode = UIViewContentModeScaleAspectFill;
+                                    cell.mainImage.clipsToBounds = YES;
+                                    cell.mainImage.layer.cornerRadius = 5;
+                                    cell.mainImage.image = image;
+                                    
+                                    
+                                    
+                                }else{
+                                    //Тут обработка ошибки загрузки изображения
+                                }
+                            }];
+    }
     
-    NSURL *imgURL = [NSURL URLWithString:[dictVacan objectForKey:@"logo_url"]];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:imgURL
-                          options:0
-                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                             // progression tracking code
-                         }
-                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
-                                    NSURL *imageURL) {
-                            
-                            if(image){
-                                cell.mainImage.contentMode = UIViewContentModeScaleAspectFill;
-                                cell.mainImage.clipsToBounds = YES;
-                                cell.mainImage.layer.cornerRadius = 5;
-                                cell.mainImage.image = image;
-                                
-                                
-                                
-                            }else{
-                                //Тут обработка ошибки загрузки изображения
-                            }
-                        }];
     
         cell.titleLabel.text = [dictVacan objectForKey:@"name"];
     

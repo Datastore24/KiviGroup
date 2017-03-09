@@ -105,29 +105,31 @@
     }
     
 
-    
-    NSURL *imgURL = [NSURL URLWithString:[vacanciesDict objectForKey:@"logo_url"]];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:imgURL
-                          options:0
-                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                             // progression tracking code
-                         }
-                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
-                                    NSURL *imageURL) {
-                            
-                            if(image){
-                                self.avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
-                                self.avatarImageView.clipsToBounds = YES;
-                                self.avatarImageView.layer.cornerRadius = 5;
-                                self.avatarImageView.image = image;
-                                
-                                
-                            }else{
-                                //Тут обработка ошибки загрузки изображения
-                            }
-                        }];
+     if(![[vacanciesDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
+         NSURL *imgURL = [NSURL URLWithString:[vacanciesDict objectForKey:@"logo_url"]];
+         SDWebImageManager *manager = [SDWebImageManager sharedManager];
+         [manager downloadImageWithURL:imgURL
+                               options:0
+                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                  // progression tracking code
+                              }
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                         NSURL *imageURL) {
+                                 
+                                 if(image){
+                                     self.avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+                                     self.avatarImageView.clipsToBounds = YES;
+                                     self.avatarImageView.layer.cornerRadius = 5;
+                                     self.avatarImageView.image = image;
+                                     
+                                     
+                                 }else{
+                                     //Тут обработка ошибки загрузки изображения
+                                 }
+                             }];
 
+     }
+   
 
 }
 
