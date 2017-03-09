@@ -7,7 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomButton.h"
+
+@protocol ViewCellMyCastingDelegate;
 
 @interface ViewCellMyCasting : UIView
+
+@property (strong, nonatomic) UILabel * numberRewar;
+@property (strong, nonatomic) UILabel * numberLike;
+@property (weak, nonatomic) id <ViewCellMyCastingDelegate> delegate;
+
+- (instancetype)initWithMainView: (UIView*) mainView endHeight: (CGFloat) height endImageName: (NSString*) imageUrl endName: (NSString*) name
+                      endCountry: (NSString*) country endAge: (NSString*) age endIsReward: (BOOL) isReward endRewardNumber: (NSString*) rewardNumber
+                       endIsLike: (BOOL) isLike endLikeNumber: (NSString*) likeNumber endIsBookmark: (BOOL) isBookmark
+                    endProfileID: (NSString*) profileID enfGrowth: (NSString*) growth;
+
+@end
+
+@protocol ViewCellMyCastingDelegate <NSObject>
+
+- (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonImage: (CustomButton*) sender;
+
+- (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonReward: (CustomButton*) sender;
+
+- (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonLike: (CustomButton*) sender;
+
+- (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonBookmark: (CustomButton*) sender;
+
 
 @end

@@ -29,10 +29,6 @@
 - (void) loadView {
     [super loadView];
     
-    
-
-    
-    
     self.view.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"EAF3FA"];
     self.mainTableView.backgroundColor = [UIColor clearColor];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -46,10 +42,6 @@
         customText = [[UILabel alloc]initWithTitle:@"Кастинги"];
         stringWriteBarButton = @"my_cas";
     }
-
-    
-    
-    
     
     UIImage *myImage = [UIImage imageNamed:stringWriteBarButton];
     myImage = [myImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -205,8 +197,12 @@
     vacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
     vacanciesDetailsController.vacancyImage = cell.mainImage.image;
     
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
+    } else {
+        [self pushCountryControllerWithIdentifier:@"CastingDetailsController"];
+    }
     
-    [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
     
     
     

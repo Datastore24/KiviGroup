@@ -10,6 +10,7 @@
 #import "MenuViewModel.h"
 #import "AppDelegate.h"
 #import "SingleTone.h"
+#import "VacanciesListController.h"
 
 @interface MenuViewController () <MenuViewModelDelegate>
 
@@ -51,23 +52,18 @@
     
 }
 - (IBAction)actionButtonKinopro:(id)sender {
-    
     [self pushMethodWithIdentifier:@"KinoproViewController"];
     
 }
 
-- (IBAction)actionVacanciesButton:(id)sender {
-    
+- (IBAction)actionButtonVacancies:(id)sender {
     [[SingleTone sharedManager] setTypeView:@"0"];
-    
     [self pushMethodWithIdentifier:@"VacanciesListController"];
 }
 
 - (IBAction)actionButtonCastings:(id)sender {
-    
-    [[SingleTone sharedManager] setTypeView:@"1"];
-    
-    [self pushMethodWithIdentifier:@"VacanciesListController"];
+        [[SingleTone sharedManager] setTypeView:@"1"];
+        [self pushMethodWithIdentifier:@"VacanciesListController"];
 }
 
 //редактирование профиля

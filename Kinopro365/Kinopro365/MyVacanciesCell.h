@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewForNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labelNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
+@property (weak, nonatomic) IBOutlet UILabel *labelProfession;
 
 @end

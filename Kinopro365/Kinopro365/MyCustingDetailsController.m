@@ -7,12 +7,41 @@
 //
 
 #import "MyCustingDetailsController.h"
+#import "ViewCellMyCasting.h"
+
 
 @interface MyCustingDetailsController ()
+
+@property (strong, nonatomic) UIScrollView * firstScrollView;
 
 @end
 
 @implementation MyCustingDetailsController
+
+- (void) loadView {
+    [super loadView];
+    
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Кастинги"];
+    self.navigationItem.titleView = CustomText;
+    
+    self.firstScrollView = [[UIScrollView alloc] initWithFrame:self.mainScrollView.bounds];
+    [self.mainScrollView addSubview:self.firstScrollView];
+    
+    
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    
+    for (int i = 0; i < 5; i++) {
+        ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:@"testImageVacancies.png" endName:@"Анастасия Филатова" endCountry:@"Москва (Рoссия)" endAge:@"25 лет" endIsReward:NO endRewardNumber:@"5" endIsLike:NO endLikeNumber:@"15" endIsBookmark:NO endProfileID:nil enfGrowth:@"рост: 168 см"];
+        [self.firstScrollView addSubview:cell];
+    }
+    
+    self.firstScrollView.contentSize = CGSizeMake(0, 130.f * 5);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,14 +53,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

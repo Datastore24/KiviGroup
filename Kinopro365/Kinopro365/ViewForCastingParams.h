@@ -10,4 +10,6 @@
 
 @interface ViewForCastingParams : UIView
 
+- (instancetype)initWithMainView: (UIView*) mainView endHeight: (CGFloat) height endText: (NSString*) text;
+
 @end

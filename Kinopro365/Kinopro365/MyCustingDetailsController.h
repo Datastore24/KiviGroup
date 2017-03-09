@@ -10,4 +10,14 @@
 
 @interface MyCustingDetailsController : MainViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *activelyLabel;
+
+@property (weak, nonatomic) IBOutlet CustomButton *buttonHide;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
 @end
