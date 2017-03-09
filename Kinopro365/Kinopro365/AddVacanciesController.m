@@ -351,6 +351,8 @@
                                  [NSNumber numberWithFloat:heightValue], @"height",
                                  [NSNumber numberWithFloat:heightCount], @"count", nil];
     
+    
+    
     NSLog(@"Hello2");
     return dictParams;
 }
