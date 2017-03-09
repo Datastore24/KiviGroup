@@ -16,6 +16,7 @@
 #import "CountryViewController.h"
 #import "SingleTone.h"
 #import "AddVacanciesController.h"
+#import "ChooseProfessionalModel.h"
 
 
 @interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource, VacanciesListModelDelegate,CountryViewControllerDelegate>
@@ -161,8 +162,26 @@
     
         cell.titleLabel.text = [dictVacan objectForKey:@"name"];
     
-    //Сюда вствить профессию--------
-    cell.labelProfession.text = @"Профессия";
+    //Профессия
+    
+    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+    
+    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dictVacan objectForKey:@"profession_id"]]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }
+    
+    
+    if([item objectForKey:@"name"]){
+        cell.labelProfession.text = [item objectForKey:@"name"];
+    }else{
+        cell.labelProfession.text = @"";
+    }
+    
+    
+    
+    //
     
         cell.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[dictVacan objectForKey:@"city_name"],[dictVacan objectForKey:@"country_name"]];
 
