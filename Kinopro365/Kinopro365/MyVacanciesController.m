@@ -13,6 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
 #import "ChooseProfessionalModel.h"
+#import "SingleTone.h"
 
 @interface MyVacanciesController () <UITableViewDelegate, UITableViewDataSource,MyVacanciesModelDelegate>
 
@@ -30,8 +31,14 @@
     self.mainTableView.backgroundColor = [UIColor clearColor];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Мои вакансии"];
-    self.navigationItem.titleView = CustomText;
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Мои вакансии"];
+        self.navigationItem.titleView = CustomText;
+    } else {
+        UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Мои кастинги"];
+        self.navigationItem.titleView = CustomText;
+    }
+    
     
     self.myVacanciesModel = [[MyVacanciesModel alloc] init];
     self.myVacanciesModel.delegate = self;
@@ -135,20 +142,18 @@
     
     }
     
-    cell.viewForNumber.layer.cornerRadius = 10;
+    cell.viewForNumber.layer.cornerRadius = CGRectGetHeight(cell.viewForNumber.bounds) / 2;
     cell.labelNumber.text = [NSString stringWithFormat:@"%@",[dictMyVacan objectForKey:@"count_offer"]];
+    cell.labelProfession.text = @"Профессия";
     
     //Временная условия для статуса
     if(![[dictMyVacan objectForKey:@"review_status"] isEqual: [NSNull null]]){
         if ([[dictMyVacan objectForKey:@"review_status"] integerValue] == 3) {
             cell.labelStatus.text = @"Отклонена";
-            cell.labelStatus.textColor = [UIColor redColor];
         } else if ([[dictMyVacan objectForKey:@"review_status"] integerValue] == 2) {
             cell.labelStatus.text = @"Одобрена";
-            cell.labelStatus.textColor = [UIColor greenColor];
         } else if ([[dictMyVacan objectForKey:@"review_status"] integerValue] == 1) {
             cell.labelStatus.text = @"Ожидает модерацию";
-            cell.labelStatus.textColor = [UIColor blueColor];
         }
     }
     
@@ -160,7 +165,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 93;
+    return 140;
     
 }
 
@@ -186,8 +191,13 @@
     if(item.count > 0){
         myVacanciesDetailsController.profName = [item objectForKey:@"name"];
     }
+
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        [self.navigationController pushViewController:myVacanciesDetailsController animated:YES];
+    } else {
+        [self pushCountryControllerWithIdentifier:@"MyCustingDetailsController"];
+    }
     
-    [self.navigationController pushViewController:myVacanciesDetailsController animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

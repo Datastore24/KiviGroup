@@ -170,10 +170,10 @@
     
     if (sender.isBool) {
         height = self.view.bounds.size.height - self.heightTextView;
-        [sender setTitle:@"-" forState:UIControlStateNormal];
+        [sender setTitle:@"Свернуть" forState:UIControlStateNormal];
         sender.isBool = NO;
     } else {
-        [sender setTitle:@"+" forState:UIControlStateNormal];
+        [sender setTitle:@"Развернуть" forState:UIControlStateNormal];
         height = 0;
         sender.isBool = YES;
     }

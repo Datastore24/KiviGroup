@@ -37,8 +37,10 @@
 		B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8350DF71E6878FA006A2849 /* UIPlaceHolderTextView.m */; };
 		B842F7741E6EA6D3000A56DB /* AddCastingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7731E6EA6D3000A56DB /* AddCastingsController.m */; };
 		B842F7791E6EC4B2000A56DB /* CastingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */; };
-		B842F77C1E6EFC71000A56DB /* ViewForDetailsCastings.m in Sources */ = {isa = PBXBuildFile; fileRef = B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */; };
+		B84E1B2B1E6FE8D100552362 /* ViewForCastingParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B84E1B2A1E6FE8D100552362 /* ViewForCastingParams.m */; };
 		B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */; };
+		B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */; };
+		B8F4AFCB1E703EE200621D68 /* ViewCellMyCasting.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
 		FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9781DF97CF900D59716 /* LoginViewController.m */; };
 		FF25B9DC1DFAB36400D59716 /* Istok-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF25B9D81DFAB35100D59716 /* Istok-Bold.ttf */; };
@@ -173,10 +175,14 @@
 		B842F7731E6EA6D3000A56DB /* AddCastingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCastingsController.m; sourceTree = "<group>"; };
 		B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastingDetailsController.h; sourceTree = "<group>"; };
 		B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastingDetailsController.m; sourceTree = "<group>"; };
-		B842F77A1E6EFC71000A56DB /* ViewForDetailsCastings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewForDetailsCastings.h; sourceTree = "<group>"; };
-		B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForDetailsCastings.m; sourceTree = "<group>"; };
+		B84E1B291E6FE8D100552362 /* ViewForCastingParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewForCastingParams.h; sourceTree = "<group>"; };
+		B84E1B2A1E6FE8D100552362 /* ViewForCastingParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForCastingParams.m; sourceTree = "<group>"; };
 		B8A704361E6D5F5600949D0A /* ViewCellMyVacancies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyVacancies.h; sourceTree = "<group>"; };
 		B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyVacancies.m; sourceTree = "<group>"; };
+		B8F4AFC61E7023A500621D68 /* MyCustingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustingDetailsController.h; sourceTree = "<group>"; };
+		B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustingDetailsController.m; sourceTree = "<group>"; };
+		B8F4AFC91E703EE200621D68 /* ViewCellMyCasting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyCasting.h; sourceTree = "<group>"; };
+		B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyCasting.m; sourceTree = "<group>"; };
 		EDDE7B67A9A384650BBF74B5 /* libPods-Kinopro365.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kinopro365.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25B9741DF97CBF00D59716 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
 		FF25B9751DF97CBF00D59716 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
@@ -449,9 +455,9 @@
 		B842F7711E6EA5EF000A56DB /* Castings */ = {
 			isa = PBXGroup;
 			children = (
+				B8F4AFC21E70233700621D68 /* MyCastingDetails */,
 				B842F7761E6EC495000A56DB /* CastingsDetails */,
-				B842F7721E6EA6D3000A56DB /* AddCastingsController.h */,
-				B842F7731E6EA6D3000A56DB /* AddCastingsController.m */,
+				B84E1B281E6FE89800552362 /* AddCasting */,
 			);
 			name = Castings;
 			sourceTree = "<group>";
@@ -461,10 +467,30 @@
 			children = (
 				B842F7771E6EC4B2000A56DB /* CastingDetailsController.h */,
 				B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */,
-				B842F77A1E6EFC71000A56DB /* ViewForDetailsCastings.h */,
-				B842F77B1E6EFC71000A56DB /* ViewForDetailsCastings.m */,
+				B84E1B291E6FE8D100552362 /* ViewForCastingParams.h */,
+				B84E1B2A1E6FE8D100552362 /* ViewForCastingParams.m */,
 			);
 			name = CastingsDetails;
+			sourceTree = "<group>";
+		};
+		B84E1B281E6FE89800552362 /* AddCasting */ = {
+			isa = PBXGroup;
+			children = (
+				B842F7721E6EA6D3000A56DB /* AddCastingsController.h */,
+				B842F7731E6EA6D3000A56DB /* AddCastingsController.m */,
+			);
+			name = AddCasting;
+			sourceTree = "<group>";
+		};
+		B8F4AFC21E70233700621D68 /* MyCastingDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B8F4AFC61E7023A500621D68 /* MyCustingDetailsController.h */,
+				B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */,
+				B8F4AFC91E703EE200621D68 /* ViewCellMyCasting.h */,
+				B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */,
+			);
+			name = MyCastingDetails;
 			sourceTree = "<group>";
 		};
 		FF25B97A1DF97CFE00D59716 /* Login */ = {
@@ -990,6 +1016,7 @@
 				FFA1C6E81E51D17F00B619DD /* ProfessionModel.m in Sources */,
 				B8350DEA1E683755006A2849 /* MyVacanciesController.m in Sources */,
 				FF6BFBB61E5455F200B3A1C3 /* TextDataProfession.m in Sources */,
+				B8F4AFCB1E703EE200621D68 /* ViewCellMyCasting.m in Sources */,
 				FFA1C6E51E51C94600B619DD /* UIView+BorderView.m in Sources */,
 				ADED89E31E37B0EA00D74761 /* CustomButton.m in Sources */,
 				B8350DF11E68667C006A2849 /* MyVacanciesCell.m in Sources */,
@@ -1005,7 +1032,7 @@
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */,
-				B842F77C1E6EFC71000A56DB /* ViewForDetailsCastings.m in Sources */,
+				B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
 				FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */,
 				ADED89E01E36454300D74761 /* AdditionalTable.m in Sources */,
@@ -1015,6 +1042,7 @@
 				AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */,
 				ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */,
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
+				B84E1B2B1E6FE8D100552362 /* ViewForCastingParams.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
 				FFA1C6E21E51C73800B619DD /* ProfessionCellView.m in Sources */,
 				B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */,
