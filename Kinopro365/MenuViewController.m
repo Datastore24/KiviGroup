@@ -66,6 +66,10 @@
         [self pushMethodWithIdentifier:@"VacanciesListController"];
 }
 
+- (IBAction)actionButtonBookmark:(id)sender {
+    [self pushMethodWithIdentifier:@"BookmarksController"];
+}
+
 //редактирование профиля
 - (IBAction)editProfileAction:(id)sender {
     [self pushMethodWithIdentifier:@"PersonalDataController"];
