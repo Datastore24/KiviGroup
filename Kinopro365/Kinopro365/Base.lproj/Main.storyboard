@@ -1914,7 +1914,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="me7-PR-2p4">
-                                                    <rect key="frame" x="0.0" y="110" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="110.5" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -2910,7 +2910,7 @@ Cg
                                         <rect key="frame" x="0.0" y="28" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hvr-MO-9DR" id="6nq-4t-Hgx">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="npR-f4-0Hn">
@@ -3342,24 +3342,17 @@ Cgo
                                             <action selector="actionButtonCity:" destination="gwj-I0-ntb" eventType="touchUpInside" id="Q6h-36-jwp"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="DST-Eo-tgs">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="IkE-ba-cpf" customClass="UIPlaceHolderTextView">
                                         <rect key="frame" x="13" y="355" width="295" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="IkE-ba-cpf" customClass="UIPlaceHolderTextView">
-                                                <rect key="frame" x="9" y="3" width="277" height="69"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" red="0.31764705882352939" green="0.4823529411764706" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="gwj-I0-ntb" id="pez-qq-mnj"/>
-                                                </connections>
-                                            </textView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
+                                        <color key="textColor" red="0.31764705882352939" green="0.4823529411764706" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="gwj-I0-ntb" id="pez-qq-mnj"/>
+                                        </connections>
+                                    </textView>
                                     <label opaque="NO" contentMode="center" misplaced="YES" text="Город" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="XAn-cU-OfE">
                                         <rect key="frame" x="14" y="287" width="55" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -3396,7 +3389,6 @@ Cgo
                         <outlet property="mainScrollView" destination="nMV-Kd-V68" id="xKm-wQ-vmE"/>
                         <outlet property="textFildName" destination="X4g-2A-YVH" id="qdU-S7-cqC"/>
                         <outlet property="textView" destination="IkE-ba-cpf" id="MZq-sd-OUW"/>
-                        <outlet property="viewForComment" destination="DST-Eo-tgs" id="QOf-i6-cO8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmB-qH-PN6" userLabel="First Responder" sceneMemberID="firstResponder"/>

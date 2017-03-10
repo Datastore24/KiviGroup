@@ -38,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCreate;
 
-@property (weak, nonatomic) IBOutlet UIView *viewForComment;
+
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *textView;
 
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
