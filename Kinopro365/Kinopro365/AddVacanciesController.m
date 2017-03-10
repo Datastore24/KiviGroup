@@ -60,9 +60,9 @@
     
     self.navigationItem.titleView = CustomText;
     
-    self.viewForComment.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"].CGColor;
-    self.viewForComment.layer.borderWidth = 1.f;
-    self.viewForComment.layer.cornerRadius = 5.f;
+    self.textView.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"].CGColor;
+    self.textView.layer.borderWidth = 1.f;
+    self.textView.layer.cornerRadius = 5.f;
     
     self.mainScrollView.userInteractionEnabled = YES;
     
@@ -95,16 +95,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showTextFildText:)
                                                  name:UITextFieldTextDidChangeNotification
@@ -288,38 +279,24 @@
     
     }
 
-
-    
-}
-
-#pragma mark - Notifications
-
-- (void) keyboardWillShow: (NSNotification*) notification {
-    
-    self.dictKeyboard = [self paramsKeyboardWithNotification:notification];
-}
-
-- (void) keyboardWillHide: (NSNotification*) notification {
-    
-    self.dictKeyboard = [self paramsKeyboardWithNotification:notification];
 }
 
 #pragma mark - UITextViewDelegate
 
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    [self animationMethodWithDictParams:self.dictKeyboard];
+    [self animationMethodWithBool:YES];
     
 }
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    [self animationMethodWithDictParams:self.dictKeyboard];
+    [self animationMethodWithBool:NO];
 
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
     
     CGFloat textHeight = [self getLabelHeight:textView];
-    NSLog(@"%@", textView.text);
+    NSLog(@"%f", textHeight);
     
     if (textHeight > 55) {
         [self animationsForViewWithTextHeight:textHeight endBool:NO];
@@ -340,25 +317,6 @@
 
 #pragma mark - Other
 
-- (NSDictionary*) paramsKeyboardWithNotification: (NSNotification*) notification {
-    
-    CGFloat animationDuration = [[notification.userInfo objectForKey:@"UIKeyboardAnimationDurationUserInfoKey"] floatValue];
-    NSValue* keyboardFrameBegin = [notification.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"];
-    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
-    CGFloat heightValue = keyboardFrameBeginRect.origin.y;
-    CGFloat heightCount = keyboardFrameBeginRect.size.height;
-    
-    NSDictionary * dictParams = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSNumber numberWithFloat:animationDuration], @"animation",
-                                 [NSNumber numberWithFloat:heightValue], @"height",
-                                 [NSNumber numberWithFloat:heightCount], @"count", nil];
-    
-    
-    
-    NSLog(@"Hello2");
-    return dictParams;
-}
-
 - (CGFloat)getLabelHeight:(UITextView*)textView
 {
     CGSize constraint = CGSizeMake(textView.frame.size.width - 10, CGFLOAT_MAX);
@@ -377,49 +335,42 @@
 
 #pragma mark - Animations
 
-- (void) animationMethodWithDictParams: (NSDictionary*) dict{
+- (void) animationMethodWithBool: (BOOL) isBool {
     
-    [UIView animateWithDuration:[[dict objectForKey:@"animation"] floatValue] animations:^{
-        CGRect newRect = self.view.frame;
-        newRect.origin.y = [[dict objectForKey:@"height"] floatValue] - (CGRectGetHeight(newRect));
-        self.view.frame = newRect;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        if (isBool) {
+            self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14) + (352 - 130));
+            self.mainScrollView.contentOffset =
+            CGPointMake(0, ((CGRectGetMaxY(self.textView.frame) + 30) + (352 - 130)) - self.view.frame.size.height);
+        } else {
+            self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14));
+        }
+        
     }];
 }
 
 - (void) animationsForViewWithTextHeight: (CGFloat) textHeight endBool: (BOOL) isBool {
-    
-    static CGFloat constHeight;
-    
-    if (textHeight > self.heightForText) {
-        constHeight = 18.f;
-    } else if (textHeight < self.heightForText) {
-        constHeight = -18.f;
-    }
-   
-    if (textHeight != self.heightForText) {
+
         [UIView animateWithDuration:0.3 animations:^{
+            CGRect textViewRect = self.textView.frame;
+            if (!isBool) {
+                textViewRect.size.height = textHeight + 25;
+            } else {
+                textViewRect.size.height = 80;
+            }
+            self.textView.frame = textViewRect;
             
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            CGRect buttonRect = self.buttonCreate.frame;
+            buttonRect.origin.y = CGRectGetMaxY(self.textView.frame) + 10;
+            self.buttonCreate.frame = buttonRect;
             
-            CGRect rectForView = self.viewForComment.frame;
-            CGRect rectForText = self.textView.frame;
-            CGRect rectForButton = self.buttonCreate.frame;
+            self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130));
+            self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.textView.frame) + 30 + (352 - 130)) - self.view.frame.size.height);
             
-            rectForView.size.height += constHeight;
-            rectForText.size.height += constHeight;
-            rectForButton.origin.y += constHeight;
-            self.mainScrollView.contentSize = CGSizeMake(0, self.view.bounds.size.height + (constHeight - 64));
-            self.mainScrollView.contentOffset = CGPointMake(0, self.mainScrollView.contentOffset.y + constHeight);
             
-            self.viewForComment.frame = rectForView;
-            self.textView.frame = rectForText;
-            self.buttonCreate.frame = rectForButton;
-            
-        } completion:^(BOOL finished) {
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            self.heightForText = textHeight;
         }];
-    }
+
 
 }
 
@@ -448,11 +399,8 @@
             self.buttonAddImage.layer.cornerRadius = 3.f;
             [self dismissViewControllerAnimated:YES completion:nil];
             
-            
         }
-        
     }];
-  
 
 }
 
