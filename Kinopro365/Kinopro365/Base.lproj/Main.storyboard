@@ -2265,7 +2265,7 @@ Cg
                                         <subviews>
                                             <label opaque="NO" contentMode="center" misplaced="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="9hQ-3Y-6Z9" userLabel="Нужена девушка не высокого роста с ясными глазами. Русая и умещ">
                                                 <rect key="frame" x="12" y="10" width="296" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <accessibility key="accessibilityConfiguration" hint="" identifier="7858" label=""/>
                                                 <string key="text">Нужена девушка не высокого роста
 с ясными глазами. Русая и умещая
@@ -2508,14 +2508,41 @@ Cg
                                 <rect key="frame" x="0.0" y="215" width="320" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" id="QIn-RU-blP">
-                                        <rect key="frame" x="12" y="0.0" width="296" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="JtB-V4-maV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" misplaced="YES" id="TjZ-4P-7iu">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gU8-Ox-C9v">
+                                                        <rect key="frame" x="14" y="0.0" width="292" height="118"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.91764705879999997" green="0.95294117649999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" misplaced="YES" id="H4R-hE-uKZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Osf-sb-pNt">
+                                                        <rect key="frame" x="14" y="0.0" width="292" height="118"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                    </textView>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -2550,16 +2577,20 @@ Cg
                         <outlet property="buttonConfirm" destination="fu2-7J-Ci1" id="VUu-S4-Xr7"/>
                         <outlet property="buttonConsideration" destination="zCH-e2-0D2" id="8fZ-VW-N1e"/>
                         <outlet property="buttonTextAdd" destination="Sb0-fn-tdQ" id="0jL-Qh-YOi"/>
+                        <outlet property="comTextLabel" destination="Osf-sb-pNt" id="Mr1-9R-3y8"/>
                         <outlet property="countryLabel" destination="R1N-zD-WBb" id="sVj-f7-vnl"/>
+                        <outlet property="hideTextLabel" destination="gU8-Ox-C9v" id="Ipj-Td-Vxq"/>
                         <outlet property="imageHide" destination="7Sl-62-Ky3" id="tNi-aG-ENb"/>
                         <outlet property="labelConsideration" destination="ciB-C5-Dam" id="6JI-vK-Mn8"/>
                         <outlet property="mainImage" destination="uCh-ZJ-100" id="5vL-iU-stA"/>
                         <outlet property="mainScrollView" destination="QJd-Nc-d7b" id="ANJ-Ua-43o"/>
-                        <outlet property="mainTextView" destination="QIn-RU-blP" id="k2J-vl-XLV"/>
+                        <outlet property="scrollForText" destination="JtB-V4-maV" id="HMP-dj-dci"/>
                         <outlet property="textLabel" destination="3v5-g3-2h8" id="3TH-fz-lvx"/>
                         <outlet property="titleLabel" destination="Mao-22-6Xx" id="ZTv-ZX-mkH"/>
+                        <outlet property="viewForComText" destination="H4R-hE-uKZ" id="D9v-Le-p8d"/>
+                        <outlet property="viewForHideText" destination="TjZ-4P-7iu" id="9hH-8v-CAg"/>
                         <outlet property="viewForLabel" destination="JE0-6W-3WK" id="2vK-Qo-vmF"/>
-                        <outlet property="viewForMainText" destination="cwi-G4-Koi" id="noC-4c-EaR"/>
+                        <outlet property="viewForMainText" destination="cwi-G4-Koi" id="0YZ-3n-rMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkQ-tO-Lmx" userLabel="First Responder" sceneMemberID="firstResponder"/>

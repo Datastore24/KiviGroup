@@ -21,9 +21,14 @@
 
 //Парметры для показа текста
 @property (weak, nonatomic) IBOutlet CustomButton *buttonTextAdd;
-@property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 @property (weak, nonatomic) IBOutlet UIView *viewForMainText;
 @property (weak, nonatomic) IBOutlet UIImageView *imageHide;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollForText;
+@property (weak, nonatomic) IBOutlet UIView *viewForHideText;
+@property (weak, nonatomic) IBOutlet UIView *viewForComText;
+@property (weak, nonatomic) IBOutlet UILabel *hideTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comTextLabel;
+
 
 //Колличество на рассмотрении
 @property (weak, nonatomic) IBOutlet UIView *viewForLabel;

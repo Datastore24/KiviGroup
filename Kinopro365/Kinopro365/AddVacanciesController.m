@@ -321,8 +321,10 @@
     CGFloat textHeight = [self getLabelHeight:textView];
     NSLog(@"%@", textView.text);
     
-    if (textHeight >= 55) {
-        [self animationsForViewWithTextHeight:textHeight];
+    if (textHeight > 55) {
+        [self animationsForViewWithTextHeight:textHeight endBool:NO];
+    } else {
+        [self animationsForViewWithTextHeight:textHeight endBool:YES];
     }
 }
 
@@ -384,7 +386,7 @@
     }];
 }
 
-- (void) animationsForViewWithTextHeight: (CGFloat) textHeight {
+- (void) animationsForViewWithTextHeight: (CGFloat) textHeight endBool: (BOOL) isBool {
     
     static CGFloat constHeight;
     
