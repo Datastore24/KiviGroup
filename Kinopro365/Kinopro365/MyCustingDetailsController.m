@@ -33,12 +33,24 @@
     self.secondScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.mainScrollView.bounds), 0, CGRectGetWidth(self.mainScrollView.bounds), CGRectGetHeight(self.mainScrollView.bounds))];
     [self.mainScrollView addSubview:self.secondScrollView];
     
-    self.heightTextView = self.mainTextView.frame.origin.y;
+//    self.heightTextView = self.mainTextView.frame.origin.y;
     self.viewForLabel.layer.cornerRadius = CGRectGetHeight(self.viewForLabel.bounds) / 2;
     self.buttonTextAdd.isBool = YES;
     
     self.buttonConsideration.userInteractionEnabled = NO;
     
+    //работа со скролом текста------------------------------
+    //Тестовые строки---------------------------------------
+    //Строка для скрытого текста----------------
+    NSString * hideText = @"Маттерхорн (нем. Matterhorn, итал. Monte Cervino, фр. Mont Cervin) — вершина в Пеннинских Альпах на границе Швейцарии в кантоне Вале и Италии в провинции Валле-д’Аоста. Высота вершины составляет 4478 метров над уровнем моря. Маттерхорн имеет примечательную четырёхгранную пирамидальную форму со стенами, обращёнными по сторонам света.";
+    //Строка обычного описания------------------
+    NSString * comText = @"Из-за высокой технической сложности восхождения, а также страха, внушаемого вершиной, Маттерхорн стал одной из последних покорённых основных горных вершин Альп. До 1865 года различные группы альпинистов предприняли более 10 попыток взойти на его вершину.";
+    self.hideTextLabel.text = hideText;
+    self.comTextLabel.text = comText;
+    
+    
+    NSLog(@"%@", NSStringFromCGRect(self.viewForMainText.frame));
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -124,7 +136,7 @@
     CGFloat height;
     
     if (sender.isBool) {
-        height = self.view.bounds.size.height - self.heightTextView;
+        height = self.view.bounds.size.height - self.viewForMainText.frame.origin.y;
         [sender setTitle:@"Свернуть" forState:UIControlStateNormal];
         //        self.imageHide.center = CGPointMake(9.5f, 3.5f);
         //rotate rect
@@ -139,11 +151,30 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectForView = self.viewForMainText.frame;
-        CGRect rectTextView = self.mainTextView.frame;
-        rectTextView.size.height = height;
+//        CGRect rectTextView = self.mainTextView.frame;
+//        rectTextView.size.height = height;
         rectForView.size.height = height;
-        self.mainTextView.frame = rectTextView;
+//        self.mainTextView.frame = rectTextView;
         self.viewForMainText.frame = rectForView;
+        self.scrollForText.frame = self.viewForMainText.bounds;
+        
+        CGFloat heightHideText = [self getLabelHeight:self.hideTextLabel];
+        CGRect rectHideView = self.viewForHideText.frame;
+        rectHideView.origin.y = 20.f;
+        rectHideView.size.height = heightHideText;
+        self.viewForHideText.frame = rectHideView;
+        self.hideTextLabel.frame = CGRectMake(14.f, 0.f, self.viewForHideText.frame.size.width - 28.f, self.viewForHideText.frame.size.height);
+        
+        
+        CGFloat heightComText = [self getLabelHeight:self.comTextLabel];
+        CGRect rectComView = self.viewForComText.frame;
+        rectComView.origin.y = CGRectGetMaxY(self.viewForHideText.frame) + 30;
+        rectComView.size.height = heightComText;
+        self.viewForComText.frame = rectComView;
+        self.comTextLabel.frame = CGRectMake(14.f, 0.f, self.viewForComText.frame.size.width - 28.f, self.viewForComText.frame.size.height);
+        self.scrollForText.contentSize = CGSizeMake(0, CGRectGetMaxY(self.viewForComText.frame) + 10.f);
+
+        
     }];
     
 }
@@ -170,4 +201,24 @@
         self.buttonConsideration.userInteractionEnabled = YES;
     }];
 }
+
+
+#pragma mark - Other
+- (CGFloat)getLabelHeight:(UILabel*)label
+{
+    CGSize constraint = CGSizeMake(label.frame.size.width, CGFLOAT_MAX);
+    CGSize size;
+    
+    NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+    CGSize boundingBox = [label.text boundingRectWithSize:constraint
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:@{NSFontAttributeName:label.font}
+                                                     context:context].size;
+    
+    size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
+    
+    return size.height;
+}
+
+
 @end

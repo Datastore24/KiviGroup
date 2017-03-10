@@ -31,18 +31,19 @@
     self.viewForShare.layer.shadowRadius = 4.0f;
     
     self.starHeightViewForParams = CGRectGetHeight(self.viewForParams.bounds);
+
     
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    //Скрытие скрытых парамтеров--------------------------
-    self.heightHide = self.viewForHide.frame.size.height;
-    CGRect rectForHide = self.viewForHide.frame;
-    rectForHide.size.height = 0;
-    self.viewForHide.frame = rectForHide;
-    [self animationWithHeigthAnimathion:self.heightHide endType:2];
+//    //Скрытие скрытых парамтеров--------------------------
+//    self.heightHide = self.viewForHide.frame.size.height;
+//    CGRect rectForHide = self.viewForHide.frame;
+//    rectForHide.size.height = 0;
+//    self.viewForHide.frame = rectForHide;
+//    [self animationWithHeigthAnimathion:self.heightHide endType:2];
     
     
     //Обновление окна параметров
