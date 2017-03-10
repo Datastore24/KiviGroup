@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString * castingID;
 @property (strong, nonatomic) NSString * castingName;
 @property (strong, nonatomic) NSString * castingURL;
-@property (strong, nonatomic) UIImage * castingImage;
+@property (strong, nonatomic) UIImageView * castingImage;
 
 //topView
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
