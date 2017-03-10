@@ -16,6 +16,7 @@
 		AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD50A4991E13DC2300CC44DB /* APIManger.m */; };
 		AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCCC71E43177500E754BC /* MenuViewModel.m */; };
 		AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD887E721E105CDA00CA7B8F /* LaunchViewController.m */; };
+		AD9C8ABF1E72C8EF00F2FFC8 /* CastingDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9C8ABE1E72C8EF00F2FFC8 /* CastingDetailsModel.m */; };
 		AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */; };
 		ADA435871E6EA7F60037A55C /* MyVacanciesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA435861E6EA7F60037A55C /* MyVacanciesDetailsModel.m */; };
 		ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */; };
@@ -138,6 +139,8 @@
 		AD7FCCC71E43177500E754BC /* MenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewModel.m; sourceTree = "<group>"; };
 		AD887E711E105CD900CA7B8F /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		AD887E721E105CDA00CA7B8F /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		AD9C8ABD1E72C8EF00F2FFC8 /* CastingDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastingDetailsModel.h; sourceTree = "<group>"; };
+		AD9C8ABE1E72C8EF00F2FFC8 /* CastingDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastingDetailsModel.m; sourceTree = "<group>"; };
 		AD9DA2E61E570EC100D8AA0C /* ProfessionDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionDetailModel.h; sourceTree = "<group>"; };
 		AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionDetailModel.m; sourceTree = "<group>"; };
 		ADA435851E6EA7F60037A55C /* MyVacanciesDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVacanciesDetailsModel.h; sourceTree = "<group>"; };
@@ -477,6 +480,8 @@
 				B842F7781E6EC4B2000A56DB /* CastingDetailsController.m */,
 				B84E1B291E6FE8D100552362 /* ViewForCastingParams.h */,
 				B84E1B2A1E6FE8D100552362 /* ViewForCastingParams.m */,
+				AD9C8ABD1E72C8EF00F2FFC8 /* CastingDetailsModel.h */,
+				AD9C8ABE1E72C8EF00F2FFC8 /* CastingDetailsModel.m */,
 			);
 			name = CastingsDetails;
 			sourceTree = "<group>";
@@ -1082,6 +1087,7 @@
 				FF88DF521E0E696B0002FBBC /* HMImageSelectButton.m in Sources */,
 				FFDE8B971DDDC46000F937BD /* main.m in Sources */,
 				FF6BFBB01E5448BC00B3A1C3 /* PhotoView.m in Sources */,
+				AD9C8ABF1E72C8EF00F2FFC8 /* CastingDetailsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

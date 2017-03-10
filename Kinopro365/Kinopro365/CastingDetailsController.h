@@ -12,6 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
+@property (strong, nonatomic) NSString * castingID;
+@property (strong, nonatomic) NSString * castingName;
+@property (strong, nonatomic) NSString * castingURL;
+@property (strong, nonatomic) UIImage * castingImage;
 
 //topView
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;

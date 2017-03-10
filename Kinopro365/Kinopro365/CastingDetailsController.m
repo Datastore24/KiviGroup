@@ -8,12 +8,16 @@
 
 #import "CastingDetailsController.h"
 #import "ViewForCastingParams.h"
+#import "CastingDetailsModel.h"
+#import "DateTimeMethod.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 @interface CastingDetailsController ()
 
 @property (assign, nonatomic) CGFloat starHeightViewForParams;
 @property (assign, nonatomic) CGFloat heightForAnimation;
 @property (assign, nonatomic) CGFloat heightHide;
+@property (strong, nonatomic) CastingDetailsModel * castingDetailModel;
 
 @end
 
@@ -22,7 +26,7 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Телесериал"];
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:@""];
     self.navigationItem.titleView = CustomText;
     
     self.viewForShare.layer.shadowColor = [UIColor lightGrayColor].CGColor;
@@ -31,6 +35,7 @@
     self.viewForShare.layer.shadowRadius = 4.0f;
     
     self.starHeightViewForParams = CGRectGetHeight(self.viewForParams.bounds);
+    
 
     
 }
@@ -44,6 +49,9 @@
 //    rectForHide.size.height = 0;
 //    self.viewForHide.frame = rectForHide;
 //    [self animationWithHeigthAnimathion:self.heightHide endType:2];
+    
+    self.castingDetailModel = [[CastingDetailsModel alloc] init];
+    [self.castingDetailModel loadCasting:self.castingID];
     
     
     //Обновление окна параметров
@@ -73,6 +81,46 @@
     [self animationWithHeigthAnimathion:self.heightForAnimation endType:1];
     self.mainScrollView.contentSize = CGSizeMake(0, self.view.bounds.size.height + self.heightForAnimation - 64 - self.heightHide);
 
+}
+
+-(void) loadCasting: (NSDictionary *) catingDict{
+    
+    self.labelDescription.text = [catingDict objectForKey:@"description"];
+    self.labelTitle.text =[catingDict objectForKey:@"name"];
+    self.labelBidCount.text = [catingDict objectForKey:@"count_offer"];
+    
+    NSDate * endDate = [DateTimeMethod timestampToDate:[catingDict objectForKey:@"end_at"]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM"];
+    NSString *stringDate = [dateFormatter stringFromDate:endDate];
+    self.labelActively.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    
+    if(![[catingDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
+        NSURL *imgURL = [NSURL URLWithString:[catingDict objectForKey:@"logo_url"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                        NSURL *imageURL) {
+                                
+                                if(image){
+                                    self.castingImage.contentMode = UIViewContentModeScaleAspectFill;
+                                    self.castingImage.clipsToBounds = YES;
+                                    self.castingImage.layer.cornerRadius = 5;
+                                    self.castingImage.image = image;
+                                    
+                                    
+                                }else{
+                                    //Тут обработка ошибки загрузки изображения
+                                }
+                            }];
+        
+    }
+    
+    
 }
 
 - (void)viewDidLoad {

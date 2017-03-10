@@ -22,4 +22,11 @@
                              andCount: (NSString *) count
                          andCountryID: (NSString *) countryID
                             andCityID: (NSString *) cityID;
+
+-(void) loadCastingsFromServerOffset: (NSString *) offset
+                            andCount: (NSString *) count
+                        andCountryID: (NSString *) countryID
+                           andCityID: (NSString *) cityID
+                     andProfessionID: (NSString *) professionID
+                    andProjectTypeID: (NSString *) profjectTypeID;
 @end
