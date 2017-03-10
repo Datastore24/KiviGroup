@@ -10,9 +10,10 @@
 #import "ViewForCastingParams.h"
 #import "CastingDetailsModel.h"
 #import "DateTimeMethod.h"
+#import <VK-ios-sdk/VKSdk.h>
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
-@interface CastingDetailsController ()
+@interface CastingDetailsController () <CastingDetailsModelDelegate,VKSdkDelegate,VKSdkUIDelegate>
 
 @property (assign, nonatomic) CGFloat starHeightViewForParams;
 @property (assign, nonatomic) CGFloat heightForAnimation;
@@ -21,7 +22,10 @@
 
 @end
 
-@implementation CastingDetailsController
+@implementation CastingDetailsController{
+    FBSDKShareButton * FBbutton;
+}
+
 
 - (void) loadView {
     [super loadView];
@@ -51,6 +55,7 @@
 //    [self animationWithHeigthAnimathion:self.heightHide endType:2];
     
     self.castingDetailModel = [[CastingDetailsModel alloc] init];
+    self.castingDetailModel.delegate = self;
     [self.castingDetailModel loadCasting:self.castingID];
     
     
@@ -95,6 +100,16 @@
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
     self.labelActively.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     
+    //СКРЫТОЕ ПОЛЕ
+    self.openHideLabel = NO;
+    if(self.openHideLabel){
+        self.labelForHide.text = [catingDict objectForKey:@"contact_info"];
+    }else{
+        self.labelForHide.text = [catingDict objectForKey:@""];
+        self.heightHide = 0.f;
+    }
+    
+    
     if(![[catingDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
         NSURL *imgURL = [NSURL URLWithString:[catingDict objectForKey:@"logo_url"]];
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -107,10 +122,10 @@
                                         NSURL *imageURL) {
                                 
                                 if(image){
-                                    self.castingImage.contentMode = UIViewContentModeScaleAspectFill;
-                                    self.castingImage.clipsToBounds = YES;
-                                    self.castingImage.layer.cornerRadius = 5;
-                                    self.castingImage.image = image;
+                                    self.mainImage.contentMode = UIViewContentModeScaleAspectFill;
+                                    self.mainImage.clipsToBounds = YES;
+                                    self.mainImage.layer.cornerRadius = 5;
+                                    self.mainImage.image = image;
                                     
                                     
                                 }else{
@@ -126,6 +141,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[VKSdk initializeWithAppId:@"5910248"] registerDelegate:self];
+    [[VKSdk initializeWithAppId:@"5910248"] setUiDelegate:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,16 +160,71 @@
 - (IBAction)actionButtonVK:(id)sender {
     
     NSLog(@"Поделиться в контакте");
+    VKShareDialogController * shareDialog = [VKShareDialogController new];
+    
+    shareDialog.text = [NSString stringWithFormat:@"В приложение CINARTA разместили Кастинг: %@",
+                        self.castingName];
+    shareDialog.shareLink = [[VKShareLink alloc] initWithTitle:@"Скачать приложение"
+                                                          link:[NSURL URLWithString:@"https://radioversta.ru"]];
+    shareDialog.uploadImages = @[[VKUploadImage uploadImageWithImage:self.castingImage
+                                                           andParams:[VKImageParameters jpegImageWithQuality:100.f]]];
+    
+    [shareDialog setCompletionHandler:^(VKShareDialogController * dialog, VKShareDialogControllerResult result) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [self presentViewController:shareDialog animated:YES completion:nil];
     
 }
 
 - (IBAction)actionButtonFacebook:(id)sender {
     
-    NSLog(@"Поделиться в фэйсбук");
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL
+                          URLWithString:@"http://radioversta.ru"];
+    content.contentTitle = @"Приложение CINARTA";
+    
+    content.contentDescription = [NSString stringWithFormat:@"В приложение CINARTA разместили Кастинг: %@",
+                                  self.castingName];
+    content.imageURL = [NSURL URLWithString:self.castingURL];
+    
+    FBbutton = [[FBSDKShareButton alloc] init];
+    FBbutton.shareContent = content;
+    FBbutton.center= self.view.center;
+    FBbutton.alpha = 0.f;
+    [self.view addSubview:FBbutton];
+    
+    
+    NSLog(@"Поделить в фэйсбуке");
+    [FBbutton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)actionButtonAddBit:(id)sender {
     NSLog(@"Подать заявку");
+    [self.castingDetailModel sendCastings:self.castingID complitionBlock:^(id response) {
+        if([[response objectForKey:@"response"] integerValue] == 1){
+            [self showAlertWithMessageWithBlock:@"Ваша заявка принята" block:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }else if([[response objectForKey:@"error_code"] integerValue] == 781){
+            [self showAlertWithMessageWithBlock:@"Кастинг не найден" block:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }else if([[response objectForKey:@"error_code"] integerValue] == 782){
+            [self showAlertWithMessageWithBlock:@"Нельзя подать заявку на свой кастинг" block:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }else if([[response objectForKey:@"error_code"] integerValue] == 783){
+            [self showAlertWithMessageWithBlock:@"Заявка уже была подана" block:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }else{
+            [self showAlertWithMessageWithBlock:@"Заявку принять не удалось" block:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+        
+    }];
 }
 
 #pragma mark - Other
@@ -195,6 +268,33 @@
     }
 }
 
+#pragma mark - VKSDK
+
+- (void)vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result{
+    if (result.token) {
+        [self actionButtonFacebook:nil];
+    } else if (result.error) {
+        // Пользователь отменил авторизацию или произошла ошибка
+    }
+}
+
+- (void)vkSdkUserAuthorizationFailed{
+    
+}
+
+- (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
+    
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"vkauthorize://"]]) {
+        
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
+    
+    VKCaptchaViewController * vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+    [vc presentIn:self];
+}
 
 
 

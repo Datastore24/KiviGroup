@@ -36,9 +36,9 @@
 -(void)sendCastings: (NSString *) castingID complitionBlock: (void (^) (id response)) compitionBack{
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             castingID,@"vacancy_id",nil];
+                             castingID,@"casting_id",nil];
     
-    [apiManager getDataFromSeverWithMethod:@"vacancy.apply" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+    [apiManager getDataFromSeverWithMethod:@"casting.apply" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         NSLog(@"CASTING %@",response);
         if([response objectForKey:@"error_code"]){
             
