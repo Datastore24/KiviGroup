@@ -17,6 +17,7 @@
 #import "SingleTone.h"
 #import "AddVacanciesController.h"
 #import "ChooseProfessionalModel.h"
+#import "CastingDetailsController.h"
 
 
 @interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource, VacanciesListModelDelegate,CountryViewControllerDelegate>
@@ -71,6 +72,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[SingleTone sharedManager] setCitySearchID:nil];
+    [[SingleTone sharedManager] setCountrySearchID:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,7 +86,11 @@
 - (void) loadVacancies:(NSDictionary *) vacanDict{
     if([[vacanDict objectForKey:@"items"] isKindOfClass:[NSArray class]]){
         self.vacanArray = [vacanDict objectForKey:@"items"];
-        self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[vacanDict objectForKey:@"count"]];
+        if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+            self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[vacanDict objectForKey:@"count"]];
+        }else{
+            self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных кастингов",[vacanDict objectForKey:@"count"]];
+        }
         [self.mainTableView reloadData];
         [self deleteActivitiIndicator];
     }
@@ -95,6 +103,7 @@
     NSString * coutryID;
     NSString * cityID;
     [self createActivitiIndicatorAlertWithView];
+    
     if([[SingleTone sharedManager] countrySearchID]){
         coutryID = [[SingleTone sharedManager] countrySearchID];
     }else{
@@ -107,8 +116,18 @@
         cityID = @"";
     }
     
-    [self.vacanciesListModel loadVacanciesFromServerOffset:@"0" andCount:@"1000"
-                                              andCountryID:coutryID andCityID:cityID];
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        //Вакансии
+        
+        
+        [self.vacanciesListModel loadVacanciesFromServerOffset:@"0" andCount:@"1000"
+                                                  andCountryID:coutryID andCityID:cityID];
+        
+    }else{
+        //Кастинги
+        [self.vacanciesListModel loadCastingsFromServerOffset:@"0" andCount:@"1000" andCountryID:coutryID andCityID:cityID andProfessionID:@"" andProjectTypeID:@""];
+    }
+   
     
 
 }
@@ -207,21 +226,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
-    
-    VacanciesDetailsController * vacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"VacanciesDetailsController"];
-    
-    vacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
-    vacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
-    vacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
-    vacanciesDetailsController.vacancyImage = cell.mainImage.image;
     
     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
+        
+        VacanciesDetailsController * vacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"VacanciesDetailsController"];
+        
+        vacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
+        vacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
+        vacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
+        vacanciesDetailsController.vacancyImage = cell.mainImage.image;
+
         [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
     } else {
-        [self pushCountryControllerWithIdentifier:@"CastingDetailsController"];
+        
+        VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
+        
+        CastingDetailsController * castingDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"CastingDetailsController"];
+        
+        castingDetailsController.castingID = [dict objectForKey:@"id"];
+        castingDetailsController.castingURL = [dict objectForKey:@"logo_url"];
+        castingDetailsController.castingName = [dict objectForKey:@"name"];
+        castingDetailsController.castingImage = cell.mainImage.image;
+        
+        [self.navigationController pushViewController:castingDetailsController animated:YES];
     }
     
     
