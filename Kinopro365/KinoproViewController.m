@@ -30,6 +30,8 @@
     UILabel * customText = [[UILabel alloc]initWithTitle:@"Киносфера"];
     self.navigationItem.titleView = customText;
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
 }
 
 - (void)viewDidLoad {

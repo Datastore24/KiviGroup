@@ -40,6 +40,8 @@
 		B850385A1E7170E000DBF600 /* AddCastingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85038591E7170E000DBF600 /* AddCastingController.m */; };
 		B850385D1E71878200DBF600 /* ViewForComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B850385C1E71878200DBF600 /* ViewForComment.m */; };
 		B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */; };
+		B8D1D4461E72B81D008B476B /* BookmarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D1D4451E72B81D008B476B /* BookmarksController.m */; };
+		B8D1D4481E72BA95008B476B /* cellImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D1D4471E72BA95008B476B /* cellImage.png */; };
 		B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */; };
 		B8F4AFCB1E703EE200621D68 /* ViewCellMyCasting.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
@@ -182,6 +184,9 @@
 		B850385C1E71878200DBF600 /* ViewForComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForComment.m; sourceTree = "<group>"; };
 		B8A704361E6D5F5600949D0A /* ViewCellMyVacancies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyVacancies.h; sourceTree = "<group>"; };
 		B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyVacancies.m; sourceTree = "<group>"; };
+		B8D1D4441E72B81D008B476B /* BookmarksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksController.h; sourceTree = "<group>"; };
+		B8D1D4451E72B81D008B476B /* BookmarksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksController.m; sourceTree = "<group>"; };
+		B8D1D4471E72BA95008B476B /* cellImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellImage.png; sourceTree = "<group>"; };
 		B8F4AFC61E7023A500621D68 /* MyCustingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustingDetailsController.h; sourceTree = "<group>"; };
 		B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustingDetailsController.m; sourceTree = "<group>"; };
 		B8F4AFC91E703EE200621D68 /* ViewCellMyCasting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyCasting.h; sourceTree = "<group>"; };
@@ -487,6 +492,16 @@
 			name = AddCasting;
 			sourceTree = "<group>";
 		};
+		B8D1D4431E72B7FF008B476B /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				B8D1D4471E72BA95008B476B /* cellImage.png */,
+				B8D1D4441E72B81D008B476B /* BookmarksController.h */,
+				B8D1D4451E72B81D008B476B /* BookmarksController.m */,
+			);
+			name = Bookmarks;
+			sourceTree = "<group>";
+		};
 		B8F4AFC21E70233700621D68 /* MyCastingDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +773,7 @@
 		FFDE8B941DDDC46000F937BD /* Kinopro365 */ = {
 			isa = PBXGroup;
 			children = (
+				B8D1D4431E72B7FF008B476B /* Bookmarks */,
 				B842F7711E6EA5EF000A56DB /* Castings */,
 				B81ADD001E6808A100B76E8F /* Vacancies */,
 				FFA8676E1E3642C0000195DB /* Kinosfera */,
@@ -919,6 +935,7 @@
 				FF90ED411E03D79F00094F6D /* designersImage.png in Resources */,
 				FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */,
 				FF90ED3F1E03D79F00094F6D /* actorsImage.png in Resources */,
+				B8D1D4481E72BA95008B476B /* cellImage.png in Resources */,
 				FF90ED491E03DB8100094F6D /* activ_galka.png in Resources */,
 				FF90ED451E03D79F00094F6D /* operatorsImage.png in Resources */,
 				FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */,
@@ -1014,6 +1031,7 @@
 				FFDBB8AC1E53487D00C63A27 /* ProfessionDetailController.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
+				B8D1D4461E72B81D008B476B /* BookmarksController.m in Sources */,
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,
 				FF9DE2421E02EAAD007ED49F /* CountryViewController.m in Sources */,
 				FF25B9E91DFAF72000D59716 /* HexColors.m in Sources */,

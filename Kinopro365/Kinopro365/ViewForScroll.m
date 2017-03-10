@@ -26,7 +26,7 @@
         
         for (int i = 0; i < countScrolls; i++) {
             
-            NSString * stringForButton = [NSString stringWithFormat:@"%d - %d", 5 * i, 5 * (i + 1)];
+            NSString * stringForButton = [NSString stringWithFormat:@"%d - %d", 50 * i, 50 * (i + 1)];
             
             UIButton * buttonLeblCount = [UIButton buttonWithType:UIButtonTypeSystem];
             buttonLeblCount.frame = CGRectMake(46.f + sizeButton + sizeButton * i, 0.f, sizeButton, self.bounds.size.height);

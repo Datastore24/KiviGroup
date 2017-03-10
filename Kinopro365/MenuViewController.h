@@ -23,6 +23,7 @@
 - (IBAction)actionButtonKinopro:(id)sender;
 - (IBAction)actionButtonVacancies:(id)sender;
 - (IBAction)actionButtonCastings:(id)sender;
+- (IBAction)actionButtonBookmark:(id)sender;
 
 
 
