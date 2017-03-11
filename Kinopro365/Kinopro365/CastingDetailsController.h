@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @interface CastingDetailsController : MainViewController
 
@@ -15,7 +17,7 @@
 @property (strong, nonatomic) NSString * castingID;
 @property (strong, nonatomic) NSString * castingName;
 @property (strong, nonatomic) NSString * castingURL;
-@property (strong, nonatomic) UIImageView * castingImage;
+@property (strong, nonatomic) UIImage * castingImage;
 
 //topView
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
@@ -27,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
 //Hide view (данные открываются только если человека пригласили на кастинг)
+@property (assign, nonatomic) BOOL openHideLabel;
 @property (weak, nonatomic) IBOutlet UIView *viewForHide;
 @property (weak, nonatomic) IBOutlet UILabel *labelForHide;
 

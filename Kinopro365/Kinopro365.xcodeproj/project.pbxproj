@@ -19,6 +19,7 @@
 		AD9C8ABF1E72C8EF00F2FFC8 /* CastingDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9C8ABE1E72C8EF00F2FFC8 /* CastingDetailsModel.m */; };
 		AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */; };
 		ADA435871E6EA7F60037A55C /* MyVacanciesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA435861E6EA7F60037A55C /* MyVacanciesDetailsModel.m */; };
+		ADAD41C91E72DCE1006577D5 /* MyCustingDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD41C81E72DCE1006577D5 /* MyCustingDetailsModel.m */; };
 		ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */; };
 		ADC507B61E6DDEA2003731D6 /* AddVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B51E6DDEA2003731D6 /* AddVacanciesModel.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
@@ -145,6 +146,8 @@
 		AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionDetailModel.m; sourceTree = "<group>"; };
 		ADA435851E6EA7F60037A55C /* MyVacanciesDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVacanciesDetailsModel.h; sourceTree = "<group>"; };
 		ADA435861E6EA7F60037A55C /* MyVacanciesDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVacanciesDetailsModel.m; sourceTree = "<group>"; };
+		ADAD41C71E72DCE1006577D5 /* MyCustingDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustingDetailsModel.h; sourceTree = "<group>"; };
+		ADAD41C81E72DCE1006577D5 /* MyCustingDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustingDetailsModel.m; sourceTree = "<group>"; };
 		ADC507B11E6DC9A4003731D6 /* MyVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVacanciesModel.h; sourceTree = "<group>"; };
 		ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVacanciesModel.m; sourceTree = "<group>"; };
 		ADC507B41E6DDEA2003731D6 /* AddVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVacanciesModel.h; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 				B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */,
 				B8F4AFC91E703EE200621D68 /* ViewCellMyCasting.h */,
 				B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */,
+				ADAD41C71E72DCE1006577D5 /* MyCustingDetailsModel.h */,
+				ADAD41C81E72DCE1006577D5 /* MyCustingDetailsModel.m */,
 			);
 			name = MyCastingDetails;
 			sourceTree = "<group>";
@@ -1059,6 +1064,7 @@
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
+				ADAD41C91E72DCE1006577D5 /* MyCustingDetailsModel.m in Sources */,
 				AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */,
 				B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
