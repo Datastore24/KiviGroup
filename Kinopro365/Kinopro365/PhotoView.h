@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PhotoViewDelegate;
+
 @interface PhotoView : UIView
 
+@property (weak,nonatomic) id <PhotoViewDelegate> delegate;
+
+
 - (instancetype)initWithFrame:(CGRect)frame andWithImageButton: (NSString*) imageButton;
+
+@end
+
+@protocol PhotoViewDelegate <NSObject>
+
+- (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton;
 
 @end

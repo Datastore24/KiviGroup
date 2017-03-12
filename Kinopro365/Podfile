@@ -19,5 +19,6 @@ pod 'FBSDKShareKit', '~> 4.18'
 pod 'VK-ios-sdk'
 pod 'Bolts', '~> 1.8'
 pod 'youtube-ios-player-helper', '~> 0.1'
+pod "HVTableView"
 
 end

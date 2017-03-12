@@ -19,6 +19,8 @@
 @property (assign, nonatomic) NSInteger countDelete; //Колличество выбранных объектов на удаление
 @property (strong, nonatomic) NSMutableArray *arrayDelete; //Массив для удаления объектов
 
+@property (strong, nonatomic) NSMutableArray * arrayViews;
+
 @property (strong, nonatomic) NSArray * arrayData;
 
 @property (strong, nonatomic) VideoDetailsModel * videoDetailsModel;
@@ -44,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.videoDetailsModel = [[VideoDetailsModel alloc] init];
+    self.arrayViews = [NSMutableArray array];
     self.videoDetailsModel.delegate = self;
     
     
@@ -101,19 +104,27 @@
 }
 
 - (IBAction)actionButtonDelete:(UIBarButtonItem *)sender {
-    if (!self.actionButton) {
-        [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
-        self.actionButton = YES;
+    NSLog(@"arrayViews %@", self.arrayViews);
+    if (self.arrayViews.count != 0) {
+        if (!self.actionButton) {
+            [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"] ];
+            self.actionButton = YES;
+        } else {
+            [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
+            self.actionButton = NO;
+            [self allClear];
+        }
     } else {
-        [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
-        self.actionButton = NO;
+        [self showAlertWithMessage:@"У вас нет не одного видео для удаления"];
     }
 }
 
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
     self.actionButton = NO;
     [self.videoDetailsModel deleteVideos:self.arrayDelete];
-    [self.buttonDelete setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
+    [self.buttonDelete setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
+    
+    
 }
 
 #pragma mark - VideoDetailsModelDelegate
@@ -160,6 +171,7 @@
     
     for (UIView * view in self.mainScrollView.subviews) {
         [view removeFromSuperview];
+        [self.arrayViews removeAllObjects];
     }
     self.x = 0;
     self.y = 0;
@@ -173,6 +185,7 @@
                                    CGRectMake(15 + 155 * self.x, 26 + 94 * self.y, 140, 79)
                                                                           andID:[dict objectForKey:@"id"]
                                                                          andURL:[dict objectForKey:@"link"]];
+        [self.arrayViews addObject:view];
         view.delegateView = self;
         
         [self.mainScrollView addSubview:view];
@@ -192,5 +205,19 @@
     [self deleteActivitiIndicator];
     
 }
+
+- (void) allClear {
+    
+    self.countDelete = 0;
+    self.buttonConfDelete.alpha = 0;
+    
+    for (VideoDetailsView * view in self.arrayViews) {
+        view.imageViewDelete.alpha = 0;
+        view.button.isBool = NO;
+    }
+    
+    [self.arrayDelete removeAllObjects];
+}
+
 
 @end

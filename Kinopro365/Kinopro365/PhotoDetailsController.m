@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) PhotoDetailView * imageView;
 
+@property (strong, nonatomic) NSMutableArray * arrayButtons;
+
 @end
 
 @implementation PhotoDetailsController
@@ -57,6 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.photoDetailsModel = [[PhotoDetailsModel alloc] init];
+    self.arrayButtons = [NSMutableArray array];
     self.photoDetailsModel.delegate = self;
     
     
@@ -75,6 +78,8 @@
     
     [self loadViewCustom];
     
+    
+    
 }
 
 -(void) loadViewCustom {
@@ -92,6 +97,10 @@
     [self.photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
     
     [self creationViews];
+    
+
+    
+
     
 }
 
@@ -120,16 +129,22 @@
 
 - (IBAction)actionDeleteButton:(UIBarButtonItem *)sender {
     
-    if (!self.actionButton) {
-        NSLog(@"Начинаю процесс редактирования");
-        [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
-        self.actionButton = YES;
-    } else {
-        NSLog(@"Заканчиваю процесс редактирования");
-        [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
-        self.actionButton = NO;
-    }
+    NSLog(@"array %@", self.arrayButtons);
     
+    if (self.arrayButtons.count != 0) {
+        if (!self.actionButton) {
+            NSLog(@"Начинаю процесс редактирования");
+            [sender setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
+            self.actionButton = YES;
+        } else {
+            NSLog(@"Заканчиваю процесс редактирования");
+            [sender setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
+            self.actionButton = NO;
+            [self allClear];
+        }
+    } else {
+        [self showAlertWithMessage:@"У вас нет не одной фотографии для удаления"];
+    }
 }
 
 - (IBAction)actionButtonConfDelete:(UIButton *)sender {
@@ -138,25 +153,19 @@
     self.actionButton = NO;
     [self.photoDetailsModel deletePhotos:self.arrayDelete];
     
-    [self.deleteButton setImage:[UIImage imageNamed:@"buttonDeleteOff"]];
-    
-    
+    [self.deleteButton setImage:[UIImage imageNamed:@"buttonDeleteOn"]];
 }
 
 - (void) desableActivityIndicator {
     
     [self deleteActivitiIndicator];
-    
 }
 
 #pragma mark - PhotoDetailsModelDelegate
 
 - (void) loadPhotos: (NSArray *) array{
     
-    
     self.arrayData = array;
-    
-    
     [self creationViews];
     
 }
@@ -169,12 +178,7 @@
     
 
         self.images = images;
-//        self.selectedAssets = selectedAssets;
     
-    
-    NSLog(@"%@", self.images);
- 
-        
         for(int i=0; i<self.images.count; i++){
             
             [self.apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:nil andToken:[[SingleTone sharedManager] token] andImage:[self.images objectAtIndex:i] complitionBlock:^(id response) {
@@ -212,11 +216,7 @@
                 }
                 
             }];
-            
-            
         }
-
-    
 }
 
 #pragma mark - CreationvViews
@@ -225,6 +225,7 @@
     
     for (UIView * view in self.mainScrollView.subviews) {
         [view removeFromSuperview];
+        [self.arrayButtons removeAllObjects];
     }
     self.x = 0;
     self.y = 0;
@@ -236,6 +237,8 @@
         
         PhotoDetailView * view = [[PhotoDetailView alloc] initWithImage:[dict objectForKey:@"url"] andID:[dict objectForKey:@"id"]
                                                                 andFrame:CGRectMake(5 + 78 * self.x, 15 + 103 * self.y, 75, 100)];
+        [self.arrayButtons addObject:view];
+        
         view.delegate = self;
         
         [self.mainScrollView addSubview:view];
@@ -245,7 +248,6 @@
             self.x = 0;
             self.y += 1;
         }
-        
     }
 }
 
@@ -277,6 +279,19 @@
         self.buttonConfDelete.alpha = 0;
     }
     
+}
+
+- (void) allClear {
+    
+    self.countDelete = 0;
+    self.buttonConfDelete.alpha = 0;
+    
+    for (PhotoDetailView * view in self.arrayButtons) {
+        view.imageViewDelete.alpha = 0;
+        view.buttonPhoto.isBool = NO;
+    }
+    
+    [self.arrayDelete removeAllObjects];
 }
 
 

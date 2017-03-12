@@ -20,11 +20,11 @@
         
         self.stringID = stringID;
         
-        CustomButton * button = [CustomButton buttonWithType:UIButtonTypeSystem];
-        button.frame = self.bounds;
-        button.backgroundColor = [UIColor clearColor];
-        [button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
+        self.button = [CustomButton buttonWithType:UIButtonTypeSystem];
+        self.button.frame = self.bounds;
+        self.button.backgroundColor = [UIColor clearColor];
+        [self.button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.button];
         
         self.imageViewDelete = [[UIImageView alloc] initWithFrame:
                                 CGRectMake(self.bounds.size.width - 30,
