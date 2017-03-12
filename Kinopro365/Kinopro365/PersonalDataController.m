@@ -180,10 +180,10 @@ replacementString:(NSString *)string {
     
     if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]) {
         [self.buttonCountry setTitle:string forState:UIControlStateNormal];
-        [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.buttonCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     } else {
         [self.buttonCity setTitle:string forState:UIControlStateNormal];
-        [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.buttonCity setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     } 
 }
 
@@ -644,7 +644,7 @@ replacementString:(NSString *)string {
                     NSDictionary * respDict = [response objectForKey:@"response"];
                     [self.buttonCountry setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
                     [[SingleTone sharedManager] setCountryID:[respDict objectForKey:@"id"]];
-                    [self.buttonCountry setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [self.buttonCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 }
             }];
            
@@ -664,7 +664,7 @@ replacementString:(NSString *)string {
                     NSDictionary * respDict = [response objectForKey:@"response"];
                     
                     [self.buttonCity setTitle:[respDict objectForKey:@"name"] forState:UIControlStateNormal];
-                    [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [self.buttonCity setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 }
             }];
             
