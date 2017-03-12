@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>NSDate+TimeAgo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Pods-TravelTogether.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods-TravelTogetherTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-TravelTogetherUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>13C0548F87978E770BF07D80F168F666</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9749C02B163E95B657C1990CB479540</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E444A1075FCC8DD03284809E44183068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBF32BF51446EF0DB6160D5EB9C74E0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

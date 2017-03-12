@@ -18,11 +18,21 @@
 - (void) loadView {
     [super loadView];
     [self.navigationController setNavigationBarHidden: NO animated:YES];
-    self.textViewAddInformation.layer.borderColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR].CGColor;
-    self.textViewAddInformation.layer.borderWidth = 1.f;
-    self.textViewAddInformation.layer.cornerRadius = 5.f;
+    self.viewForText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR].CGColor;
+    self.viewForText.layer.borderWidth = 1.f;
+    self.viewForText.layer.cornerRadius = 5.f;
+    self.viewForText.clipsToBounds = YES;
     
-    self.buttonSave.layer.cornerRadius = 5.f;
+    
+//    CAShapeLayer * maskLayer = [CAShapeLayer layer];
+//    maskLayer.path = [UIBezierPath bezierPathWithRoundedRect: self.buttonSave.bounds byRoundingCorners: UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii: (CGSize){5.0, 5.0}].CGPath;
+//    self.buttonSave.layer.mask = maskLayer;
+//    
+//    CAShapeLayer * maskLayerView = [CAShapeLayer layer];
+//    maskLayerView.path = [UIBezierPath bezierPathWithRoundedRect: self.textViewAddInformation.bounds byRoundingCorners: UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii: (CGSize){1.0, 1.0}].CGPath;
+//    self.textViewAddInformation.layer.mask = maskLayerView;
+//    
+
     
     self.labelCustomPlaceholder.text = @"Кратко расскажите о себе.\nКакие курсы закончили? В каких\nпроектах участвовали?";
     
@@ -76,6 +86,15 @@
     
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self animationMethodWithBool:YES];
+    
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self animationMethodWithBool:NO];
+    
+}
+
 #pragma mark - Actions
 
 - (IBAction)actionBackBarButton:(id)sender {
@@ -115,5 +134,32 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
+}
+
+- (void) animationMethodWithBool: (BOOL) isBool {
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        if (isBool) {
+            
+
+            CGRect rectTextView = self.viewForText.frame;
+            rectTextView.size.height -= (352 - 130);
+            self.viewForText.frame = rectTextView;
+            CGRect rectText = self.textViewAddInformation.frame;
+            rectText.size.height -= (352 - 130);
+            self.textViewAddInformation.frame = rectText;
+
+        } else {
+
+            CGRect rectTextView = self.viewForText.frame;
+            rectTextView.size.height += (352 - 130);
+            self.viewForText.frame = rectTextView;
+            CGRect rectText = self.textViewAddInformation.frame;
+            rectText.size.height += (352 - 130);
+            self.textViewAddInformation.frame = rectText;
+        }
+        
+    }];
 }
 @end
