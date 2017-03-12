@@ -41,9 +41,19 @@
 		B84E1B2B1E6FE8D100552362 /* ViewForCastingParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B84E1B2A1E6FE8D100552362 /* ViewForCastingParams.m */; };
 		B850385A1E7170E000DBF600 /* AddCastingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85038591E7170E000DBF600 /* AddCastingController.m */; };
 		B850385D1E71878200DBF600 /* ViewForComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B850385C1E71878200DBF600 /* ViewForComment.m */; };
+		B8642EA81E7520B70040F611 /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8642EA71E7520B70040F611 /* FeedbackController.m */; };
+		B88BF8421E740E8E00A68262 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF8411E740E8E00A68262 /* HVTableView.m */; };
+		B88BF84E1E7414A700A68262 /* VacanciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF84D1E7414A700A68262 /* VacanciesCell.m */; };
+		B88BF8521E742BAE00A68262 /* PaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF8511E742BAE00A68262 /* PaymentController.m */; };
+		B88BF8561E7431E900A68262 /* HistoryPaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF8551E7431E900A68262 /* HistoryPaymentController.m */; };
+		B88BF8591E74336D00A68262 /* CellPaymentHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF8581E74336D00A68262 /* CellPaymentHistory.m */; };
+		B88BF85D1E74359500A68262 /* AnotherPaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88BF85C1E74359500A68262 /* AnotherPaymentController.m */; };
 		B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */; };
 		B8D1D4461E72B81D008B476B /* BookmarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D1D4451E72B81D008B476B /* BookmarksController.m */; };
 		B8D1D4481E72BA95008B476B /* cellImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B8D1D4471E72BA95008B476B /* cellImage.png */; };
+		B8D1D44C1E73D7C0008B476B /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D1D44B1E73D7C0008B476B /* SettingsController.m */; };
+		B8D1D4501E73DBF2008B476B /* SettingsDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D1D44F1E73DBF2008B476B /* SettingsDetailsController.m */; };
+		B8D1D4541E73EBE3008B476B /* AlertsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D1D4531E73EBE3008B476B /* AlertsController.m */; };
 		B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */; };
 		B8F4AFCB1E703EE200621D68 /* ViewCellMyCasting.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F4AFCA1E703EE200621D68 /* ViewCellMyCasting.m */; };
 		FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25B9751DF97CBF00D59716 /* MainViewController.m */; };
@@ -188,11 +198,31 @@
 		B85038591E7170E000DBF600 /* AddCastingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCastingController.m; sourceTree = "<group>"; };
 		B850385B1E71878200DBF600 /* ViewForComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewForComment.h; sourceTree = "<group>"; };
 		B850385C1E71878200DBF600 /* ViewForComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewForComment.m; sourceTree = "<group>"; };
+		B8642EA61E7520B70040F611 /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
+		B8642EA71E7520B70040F611 /* FeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController.m; sourceTree = "<group>"; };
+		B88BF8401E740E8E00A68262 /* HVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HVTableView.h; sourceTree = "<group>"; };
+		B88BF8411E740E8E00A68262 /* HVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HVTableView.m; sourceTree = "<group>"; };
+		B88BF84C1E7414A700A68262 /* VacanciesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VacanciesCell.h; sourceTree = "<group>"; };
+		B88BF84D1E7414A700A68262 /* VacanciesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VacanciesCell.m; sourceTree = "<group>"; };
+		B88BF8501E742BAE00A68262 /* PaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentController.h; sourceTree = "<group>"; };
+		B88BF8511E742BAE00A68262 /* PaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentController.m; sourceTree = "<group>"; };
+		B88BF8541E7431E900A68262 /* HistoryPaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPaymentController.h; sourceTree = "<group>"; };
+		B88BF8551E7431E900A68262 /* HistoryPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPaymentController.m; sourceTree = "<group>"; };
+		B88BF8571E74336D00A68262 /* CellPaymentHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellPaymentHistory.h; sourceTree = "<group>"; };
+		B88BF8581E74336D00A68262 /* CellPaymentHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellPaymentHistory.m; sourceTree = "<group>"; };
+		B88BF85B1E74359500A68262 /* AnotherPaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnotherPaymentController.h; sourceTree = "<group>"; };
+		B88BF85C1E74359500A68262 /* AnotherPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherPaymentController.m; sourceTree = "<group>"; };
 		B8A704361E6D5F5600949D0A /* ViewCellMyVacancies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyVacancies.h; sourceTree = "<group>"; };
 		B8A704371E6D5F5600949D0A /* ViewCellMyVacancies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCellMyVacancies.m; sourceTree = "<group>"; };
 		B8D1D4441E72B81D008B476B /* BookmarksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksController.h; sourceTree = "<group>"; };
 		B8D1D4451E72B81D008B476B /* BookmarksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksController.m; sourceTree = "<group>"; };
 		B8D1D4471E72BA95008B476B /* cellImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellImage.png; sourceTree = "<group>"; };
+		B8D1D44A1E73D7C0008B476B /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		B8D1D44B1E73D7C0008B476B /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		B8D1D44E1E73DBF2008B476B /* SettingsDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsDetailsController.h; sourceTree = "<group>"; };
+		B8D1D44F1E73DBF2008B476B /* SettingsDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsDetailsController.m; sourceTree = "<group>"; };
+		B8D1D4521E73EBE3008B476B /* AlertsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsController.h; sourceTree = "<group>"; };
+		B8D1D4531E73EBE3008B476B /* AlertsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsController.m; sourceTree = "<group>"; };
 		B8F4AFC61E7023A500621D68 /* MyCustingDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustingDetailsController.h; sourceTree = "<group>"; };
 		B8F4AFC71E7023A500621D68 /* MyCustingDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustingDetailsController.m; sourceTree = "<group>"; };
 		B8F4AFC91E703EE200621D68 /* ViewCellMyCasting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCellMyCasting.h; sourceTree = "<group>"; };
@@ -500,6 +530,46 @@
 			name = AddCasting;
 			sourceTree = "<group>";
 		};
+		B8642EA51E7520A20040F611 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				B8642EA61E7520B70040F611 /* FeedbackController.h */,
+				B8642EA71E7520B70040F611 /* FeedbackController.m */,
+			);
+			name = Feedback;
+			sourceTree = "<group>";
+		};
+		B88BF84F1E742B8F00A68262 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				B88BF85A1E74357700A68262 /* AnotherPayment */,
+				B88BF8531E7431D000A68262 /* HistoryPayment */,
+				B88BF8501E742BAE00A68262 /* PaymentController.h */,
+				B88BF8511E742BAE00A68262 /* PaymentController.m */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		B88BF8531E7431D000A68262 /* HistoryPayment */ = {
+			isa = PBXGroup;
+			children = (
+				B88BF8541E7431E900A68262 /* HistoryPaymentController.h */,
+				B88BF8551E7431E900A68262 /* HistoryPaymentController.m */,
+				B88BF8571E74336D00A68262 /* CellPaymentHistory.h */,
+				B88BF8581E74336D00A68262 /* CellPaymentHistory.m */,
+			);
+			name = HistoryPayment;
+			sourceTree = "<group>";
+		};
+		B88BF85A1E74357700A68262 /* AnotherPayment */ = {
+			isa = PBXGroup;
+			children = (
+				B88BF85B1E74359500A68262 /* AnotherPaymentController.h */,
+				B88BF85C1E74359500A68262 /* AnotherPaymentController.m */,
+			);
+			name = AnotherPayment;
+			sourceTree = "<group>";
+		};
 		B8D1D4431E72B7FF008B476B /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +578,38 @@
 				B8D1D4451E72B81D008B476B /* BookmarksController.m */,
 			);
 			name = Bookmarks;
+			sourceTree = "<group>";
+		};
+		B8D1D4491E73D787008B476B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B8D1D44D1E73DBD2008B476B /* SettingsDetails */,
+				B8D1D44A1E73D7C0008B476B /* SettingsController.h */,
+				B8D1D44B1E73D7C0008B476B /* SettingsController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		B8D1D44D1E73DBD2008B476B /* SettingsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B8D1D44E1E73DBF2008B476B /* SettingsDetailsController.h */,
+				B8D1D44F1E73DBF2008B476B /* SettingsDetailsController.m */,
+			);
+			name = SettingsDetails;
+			sourceTree = "<group>";
+		};
+		B8D1D4511E73EBB4008B476B /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				B88BF8401E740E8E00A68262 /* HVTableView.h */,
+				B88BF8411E740E8E00A68262 /* HVTableView.m */,
+				B8D1D4521E73EBE3008B476B /* AlertsController.h */,
+				B8D1D4531E73EBE3008B476B /* AlertsController.m */,
+				B88BF84C1E7414A700A68262 /* VacanciesCell.h */,
+				B88BF84D1E7414A700A68262 /* VacanciesCell.m */,
+			);
+			name = Alerts;
 			sourceTree = "<group>";
 		};
 		B8F4AFC21E70233700621D68 /* MyCastingDetails */ = {
@@ -783,6 +885,10 @@
 		FFDE8B941DDDC46000F937BD /* Kinopro365 */ = {
 			isa = PBXGroup;
 			children = (
+				B8642EA51E7520A20040F611 /* Feedback */,
+				B88BF84F1E742B8F00A68262 /* Payment */,
+				B8D1D4511E73EBB4008B476B /* Alerts */,
+				B8D1D4491E73D787008B476B /* Settings */,
 				B8D1D4431E72B7FF008B476B /* Bookmarks */,
 				B842F7711E6EA5EF000A56DB /* Castings */,
 				B81ADD001E6808A100B76E8F /* Vacancies */,
@@ -1011,6 +1117,7 @@
 				FF25B9791DF97CF900D59716 /* LoginViewController.m in Sources */,
 				B850385A1E7170E000DBF600 /* AddCastingController.m in Sources */,
 				ADC507B61E6DDEA2003731D6 /* AddVacanciesModel.m in Sources */,
+				B88BF8421E740E8E00A68262 /* HVTableView.m in Sources */,
 				B81ADD041E6808D900B76E8F /* VacanciesListController.m in Sources */,
 				FF6BFBB91E545D4400B3A1C3 /* AddParamsProfession.m in Sources */,
 				FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */,
@@ -1029,6 +1136,7 @@
 				FF25B9761DF97CBF00D59716 /* MainViewController.m in Sources */,
 				FFA1C6ED1E51E1D000B619DD /* ViewForScroll.m in Sources */,
 				ADED89DD1E36451400D74761 /* ProfessionsTable.m in Sources */,
+				B8D1D44C1E73D7C0008B476B /* SettingsController.m in Sources */,
 				ADF9C7431E3A19EC0085F993 /* DateTimeMethod.m in Sources */,
 				FFA1C6DF1E51C72500B619DD /* ProfessionController.m in Sources */,
 				FF6BFBB31E544E7D00B3A1C3 /* VideoView.m in Sources */,
@@ -1036,10 +1144,12 @@
 				FF90ED2D1E03C15600094F6D /* ChooseProfessionalModel.m in Sources */,
 				FF88DF531E0E696B0002FBBC /* HMPreviewViewController.m in Sources */,
 				AD887E731E105CDA00CA7B8F /* LaunchViewController.m in Sources */,
+				B8D1D4541E73EBE3008B476B /* AlertsController.m in Sources */,
 				FF88DF551E0E696B0002FBBC /* HMViewerViewController.m in Sources */,
 				AD7FCCC81E43177500E754BC /* MenuViewModel.m in Sources */,
 				FFDBB8AC1E53487D00C63A27 /* ProfessionDetailController.m in Sources */,
 				FF88DF4B1E0E696B0002FBBC /* HMAlbumTableViewCell.m in Sources */,
+				B8D1D4501E73DBF2008B476B /* SettingsDetailsController.m in Sources */,
 				FF90ED361E03D47300094F6D /* UILabel+TitleCategory.m in Sources */,
 				B8D1D4461E72B81D008B476B /* BookmarksController.m in Sources */,
 				FF88DF4E1E0E696B0002FBBC /* HMImageGridViewController.m in Sources */,
@@ -1048,6 +1158,7 @@
 				B8350DF51E686D96006A2849 /* MyVacanciesDetailsController.m in Sources */,
 				FFA1C6E81E51D17F00B619DD /* ProfessionModel.m in Sources */,
 				B8350DEA1E683755006A2849 /* MyVacanciesController.m in Sources */,
+				B88BF85D1E74359500A68262 /* AnotherPaymentController.m in Sources */,
 				FF6BFBB61E5455F200B3A1C3 /* TextDataProfession.m in Sources */,
 				B8F4AFCB1E703EE200621D68 /* ViewCellMyCasting.m in Sources */,
 				FFA1C6E51E51C94600B619DD /* UIView+BorderView.m in Sources */,
@@ -1062,9 +1173,12 @@
 				FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
+				B88BF8561E7431E900A68262 /* HistoryPaymentController.m in Sources */,
+				B88BF84E1E7414A700A68262 /* VacanciesCell.m in Sources */,
 				FF90942D1DFDC2AD0062F556 /* PersonalDataController.m in Sources */,
 				AD2624A61E0AB873007B78CA /* UserInformationTable.m in Sources */,
 				ADAD41C91E72DCE1006577D5 /* MyCustingDetailsModel.m in Sources */,
+				B88BF8521E742BAE00A68262 /* PaymentController.m in Sources */,
 				AD3DCA2A1E6D806B008E76EA /* VacanciesDetailsModel.m in Sources */,
 				B8F4AFC81E7023A500621D68 /* MyCustingDetailsController.m in Sources */,
 				FF9094331DFDC5E20062F556 /* UITextField+CheckNumber.m in Sources */,
@@ -1078,6 +1192,7 @@
 				FF88DF511E0E696B0002FBBC /* HMImagePickerController.m in Sources */,
 				B84E1B2B1E6FE8D100552362 /* ViewForCastingParams.m in Sources */,
 				AD2624AC1E0AD565007B78CA /* VKAPI.m in Sources */,
+				B88BF8591E74336D00A68262 /* CellPaymentHistory.m in Sources */,
 				FFA1C6E21E51C73800B619DD /* ProfessionCellView.m in Sources */,
 				B8A704381E6D5F5600949D0A /* ViewCellMyVacancies.m in Sources */,
 				FF88DF541E0E696B0002FBBC /* HMSelectCounterButton.m in Sources */,
@@ -1087,6 +1202,7 @@
 				AD50A49A1E13DC2300CC44DB /* APIManger.m in Sources */,
 				FFA8E7DB1E0414DD00D541B3 /* ChooseProfessionViewController.m in Sources */,
 				B8350DF81E6878FA006A2849 /* UIPlaceHolderTextView.m in Sources */,
+				B8642EA81E7520B70040F611 /* FeedbackController.m in Sources */,
 				AD3DCA271E6D7A05008E76EA /* VacanciesListModel.m in Sources */,
 				FF90ED331E03CB1400094F6D /* ProfeccionalTableViewCell.m in Sources */,
 				ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */,

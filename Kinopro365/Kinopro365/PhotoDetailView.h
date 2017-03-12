@@ -16,6 +16,7 @@
 @property (weak, nonatomic) id <PhotoDetailViewDelegate> delegate;
 @property (strong, nonatomic) UIImageView * imageViewDelete;
 @property (strong, nonatomic) NSString * stringID;
+@property (strong, nonatomic) CustomButton * buttonPhoto;
 
 @property (strong, nonatomic) UIImageView * imageView;
 

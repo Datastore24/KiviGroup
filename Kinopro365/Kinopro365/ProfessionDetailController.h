@@ -28,8 +28,8 @@
 //Buttons
 @property (weak, nonatomic) IBOutlet CustomButton *buttonBookmark;
 @property (weak, nonatomic) IBOutlet CustomButton *buttonBookmarkBack;
-@property (weak, nonatomic) IBOutlet UIButton *buttonLike;
-@property (weak, nonatomic) IBOutlet UIButton *buttonStar;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonLike;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonStar;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneOne;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneTwo;
 
@@ -45,7 +45,7 @@
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
 - (IBAction)actionButtonBookmark:(CustomButton*)sender;
-- (IBAction)actionButtonLike:(id)sender;
-- (IBAction)actionButtomStar:(id)sender;
+- (IBAction)actionButtonLike:(CustomButton*)sender;
+- (IBAction)actionButtomStar:(CustomButton*)sender;
 
 @end

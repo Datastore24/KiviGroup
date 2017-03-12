@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIImageView * imageViewDelete;
 @property (strong, nonatomic) NSString * stringID;
 @property (weak, nonatomic) id <VideoDetailsViewDelegate> delegateView;
+@property (strong,nonatomic) CustomButton * button;
 
 - (instancetype)initWithCustonFrame: (CGRect) frame andID: (NSString*) stringID andURL: (NSString*) url;
 

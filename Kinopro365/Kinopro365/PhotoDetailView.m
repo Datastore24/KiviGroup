@@ -22,13 +22,13 @@
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: image]];
         UIImage * image = [UIImage imageWithData: imageData];
         
-        CustomButton * buttonPhoto = [CustomButton buttonWithType:UIButtonTypeCustom];
-        buttonPhoto.frame = self.bounds;
-        [buttonPhoto setImage:image forState:UIControlStateNormal];
-        buttonPhoto.isBool = NO;
-        [buttonPhoto addTarget:self action:@selector(actionButtonPhoto:) forControlEvents:UIControlEventTouchUpInside];
-        buttonPhoto.backgroundColor = [UIColor blueColor];
-        [self addSubview:buttonPhoto];
+        self.buttonPhoto = [CustomButton buttonWithType:UIButtonTypeCustom];
+        self.buttonPhoto.frame = self.bounds;
+        [self.buttonPhoto setImage:image forState:UIControlStateNormal];
+        self.buttonPhoto.isBool = NO;
+        [self.buttonPhoto addTarget:self action:@selector(actionButtonPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        self.buttonPhoto.backgroundColor = [UIColor blueColor];
+        [self addSubview:self.buttonPhoto];
         
         self.stringID = stringID;
         

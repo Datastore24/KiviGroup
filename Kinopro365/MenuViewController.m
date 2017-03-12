@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "SingleTone.h"
 #import "VacanciesListController.h"
+#import "Macros.h"
 
 @interface MenuViewController () <MenuViewModelDelegate>
 
@@ -51,6 +52,18 @@
     
     
 }
+- (IBAction)actionForCheck:(id)sender {
+    
+    for (int i = 0; i < self.arrayButtons.count; i++) {
+        UILabel * label = [self.arrayLabels objectAtIndex:i];
+        if ([[self.arrayButtons objectAtIndex:i] isEqual:sender]) {
+            label.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:16];
+        } else {
+            label.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        }
+    }
+}
+
 - (IBAction)actionButtonKinopro:(id)sender {
     [self pushMethodWithIdentifier:@"KinoproViewController"];
     
@@ -68,6 +81,22 @@
 
 - (IBAction)actionButtonBookmark:(id)sender {
     [self pushMethodWithIdentifier:@"BookmarksController"];
+}
+
+- (IBAction)actionButtonSettings:(id)sender {
+    [self pushMethodWithIdentifier:@"SettingsController"];  
+}
+
+- (IBAction)actionAllertButton:(id)sender {
+    [self pushMethodWithIdentifier:@"AlertsController"];  
+}
+
+- (IBAction)actionButtonPayment:(id)sender {
+   [self pushMethodWithIdentifier:@"PaymentController"];  
+}
+
+- (IBAction)actionButtonFeedback:(id)sender {
+    [self pushMethodWithIdentifier:@"FeedbackController"];
 }
 
 //редактирование профиля

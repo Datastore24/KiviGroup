@@ -15,7 +15,7 @@
 #import "AddParamsProfession.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
-@interface ProfessionDetailController () <ProfessionDetailModelDelegate,VideoViewDelegate>
+@interface ProfessionDetailController () <ProfessionDetailModelDelegate,VideoViewDelegate, PhotoViewDelegate>
 
 @property (assign, nonatomic) CGFloat maxHeightVideo; //параметр сохраняет конечное положение вью всех видео
 @property (strong, nonatomic) ProfessionDetailModel * profDetailModel;
@@ -33,13 +33,26 @@
     self.buttonPhoneOne.layer.cornerRadius = 5.f;
     self.buttonPhoneTwo.layer.cornerRadius = 5.f;
     
+    //проверка на наличие нажатой кнопки награда и лайк
     
+    self.buttonLike.isBool = NO;
+    self.buttonStar.isBool = NO;
+    
+    if (self.buttonStar.isBool) {
+        [self.buttonStar setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+    } else {
+        [self.buttonStar setImage:[UIImage imageNamed:@"professionImageStar"] forState:UIControlStateNormal];
+    }
+    
+    if (self.buttonLike.isBool) {
+        [self.buttonLike setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
+    } else {
+        [self.buttonLike setImage:[UIImage imageNamed:@"professionImageLike"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,6 +172,7 @@
                 NSDictionary * itemsDict = [itemsArray objectAtIndex:i];
                 PhotoView * photoView = [[PhotoView alloc] initWithFrame:CGRectMake(21.f + 74.f * i, 7.f, 53.f, 80.f)
                                                       andWithImageButton:[itemsDict objectForKey:@"url"]];
+                photoView.delegate = self;
                 [self.photoScrollView addSubview:photoView];
             }
             
@@ -327,6 +341,13 @@
 
 }
 
+#pragma mark - PhotoViewDelegate
+
+- (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton {
+    NSLog(@"Hello");
+}
+
+
 #pragma mark - Actions
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
@@ -362,10 +383,36 @@
     
 }
 
-- (IBAction)actionButtonLike:(id)sender {
+- (IBAction)actionButtonLike:(CustomButton*)sender {
+    if (sender.isBool) {
+        [sender setImage:[UIImage imageNamed:@"professionImageLike"] forState:UIControlStateNormal];
+        NSInteger count = [self.labelLikeCount.text integerValue];
+        count -= 1;
+        self.labelLikeCount.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = NO;
+    } else {
+        [sender setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [self.labelLikeCount.text integerValue];
+        count += 1;
+        self.labelLikeCount.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = YES;
+    }
 }
 
-- (IBAction)actionButtomStar:(id)sender {
+- (IBAction)actionButtomStar:(CustomButton*)sender {
+    if (sender.isBool) {
+        [sender setImage:[UIImage imageNamed:@"professionImageStar"] forState:UIControlStateNormal];
+        NSInteger count = [self.labelStarCount.text integerValue];
+        count -= 1;
+        self.labelStarCount.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = NO;
+    } else {
+        [sender setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [self.labelStarCount.text integerValue];
+        count += 1;
+        self.labelStarCount.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = YES;
+    }
 }
 
 -(void) deleteActivitiIndicatorDelegate{

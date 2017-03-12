@@ -56,7 +56,7 @@
 
 - (void) actionButtonImage: (UIButton*) sender {
     
-    NSLog(@"Hello");
+    [self.delegate actionCell:self withImageButton:sender];
     
 }
 
