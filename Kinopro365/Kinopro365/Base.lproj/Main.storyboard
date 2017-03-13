@@ -406,7 +406,7 @@
                                         </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yXg-z7-HQJ">
-                                        <rect key="frame" x="0.0" y="391.5" width="290" height="44"/>
+                                        <rect key="frame" x="0.0" y="391" width="290" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>
@@ -486,22 +486,22 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lo-hC-Uye" id="CT7-Nz-wD1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qw3-pl-xvf">
-                                                    <rect key="frame" x="32" y="3" width="216" height="24"/>
+                                                    <rect key="frame" x="32" y="2" width="216" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sLB-Pt-Dck">
-                                                    <rect key="frame" x="5" y="6" width="13" height="16"/>
+                                                    <rect key="frame" x="5" y="5" width="13" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="vBh-E8-8Sb">
-                                                    <rect key="frame" x="283" y="6" width="19" height="16"/>
+                                                    <rect key="frame" x="283" y="5" width="19" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" id="IT2-9i-RvD">
@@ -821,7 +821,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LUu-oI-9IM">
-                                                    <rect key="frame" x="32.5" y="11.5" width="205.5" height="23.5"/>
+                                                    <rect key="frame" x="32" y="11" width="206" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -832,7 +832,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrowRightImage" id="VMd-oJ-n6C">
-                                                    <rect key="frame" x="294.5" y="14" width="8.5" height="17.5"/>
+                                                    <rect key="frame" x="295" y="14" width="8" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dlw-d7-cu9">
@@ -843,7 +843,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="NGD-Rx-kNn">
-                                                    <rect key="frame" x="9" y="43.5" width="302" height="0.5"/>
+                                                    <rect key="frame" x="9" y="44" width="302" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -1608,7 +1608,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" id="dmk-hW-rqi">
-                                        <rect key="frame" x="110" y="55" width="119" height="0.5"/>
+                                        <rect key="frame" x="110" y="55" width="119" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -1623,7 +1623,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="5sJ-hd-9jw">
-                                        <rect key="frame" x="110" y="89" width="119" height="0.5"/>
+                                        <rect key="frame" x="110" y="89" width="119" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -1638,12 +1638,12 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="lhu-tM-rbI">
-                                        <rect key="frame" x="153" y="200" width="111" height="0.5"/>
+                                        <rect key="frame" x="153" y="200" width="111" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" id="F15-L2-Oi4">
-                                        <rect key="frame" x="153" y="175" width="109.5" height="29"/>
+                                        <rect key="frame" x="153" y="175" width="110" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
@@ -1653,7 +1653,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="kpa-TT-HI4">
-                                        <rect key="frame" x="164" y="238" width="137" height="0.5"/>
+                                        <rect key="frame" x="164" y="238" width="137" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -1668,7 +1668,7 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="Jhp-75-qFt">
-                                        <rect key="frame" x="110" y="161" width="160" height="0.5"/>
+                                        <rect key="frame" x="110" y="161" width="160" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -1683,12 +1683,12 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="9my-o7-06q">
-                                        <rect key="frame" x="18.5" y="238" width="137" height="0.5"/>
+                                        <rect key="frame" x="19" y="238" width="136" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон 1" textAlignment="natural" minimumFontSize="17" id="A2X-Eu-YUw">
-                                        <rect key="frame" x="18.5" y="212" width="137" height="31"/>
+                                        <rect key="frame" x="19" y="212" width="136" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
@@ -1698,12 +1698,12 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="0ju-ak-NZs">
-                                        <rect key="frame" x="18.5" y="200" width="109" height="0.5"/>
+                                        <rect key="frame" x="19" y="200" width="108" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" id="WC1-Zx-7cV">
-                                        <rect key="frame" x="18.5" y="175" width="107.5" height="29"/>
+                                        <rect key="frame" x="19" y="175" width="107" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
@@ -1713,12 +1713,12 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" misplaced="YES" id="oNT-jw-G9X">
-                                        <rect key="frame" x="110" y="125" width="160" height="0.5"/>
+                                        <rect key="frame" x="110" y="125" width="160" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.24039590359999999" green="0.49612581729999999" blue="0.70768874879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kVr-lG-fZz">
-                                        <rect key="frame" x="110" y="100" width="154.5" height="29"/>
+                                        <rect key="frame" x="110" y="100" width="154" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
                                         <state key="normal" title="Дата рождения">
@@ -1741,25 +1741,25 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageButtonComedy" id="e86-vi-dwv">
-                                        <rect key="frame" x="43.5" y="313" width="23" height="26"/>
+                                        <rect key="frame" x="43" y="313" width="23" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" alpha="0.64999997615814209" contentMode="center" misplaced="YES" text="Открывать контакты только кастинг директорам" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="fvh-Rn-teU" userLabel="Открывать контакты только кастинг  директорам">
-                                        <rect key="frame" x="37" y="264" width="268.5" height="40"/>
+                                        <rect key="frame" x="37" y="264" width="269" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" hint="" identifier="767" label=""/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
                                         <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Пол" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U06-wZ-9V1">
-                                        <rect key="frame" x="263" y="41" width="30.5" height="11"/>
+                                        <rect key="frame" x="263" y="41" width="30" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                         <color key="textColor" red="0.20392156862745098" green="0.20784313725490194" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Wg-Mn-nv7">
-                                        <rect key="frame" x="252.5" y="66" width="11.5" height="26"/>
+                                        <rect key="frame" x="253" y="66" width="11" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="mailImageOn"/>
                                         <connections>
@@ -1767,7 +1767,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yIU-JJ-m9p">
-                                        <rect key="frame" x="292.5" y="65" width="12" height="27"/>
+                                        <rect key="frame" x="293" y="65" width="12" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="femaleImageOff"/>
                                         <connections>
@@ -1787,7 +1787,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EWx-wP-29W">
-                                        <rect key="frame" x="19.5" y="106" width="83" height="21"/>
+                                        <rect key="frame" x="20" y="106" width="83" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.50588235290000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
@@ -1801,11 +1801,11 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="leftArrowDown" id="cnQ-Lc-dMM">
-                                        <rect key="frame" x="86.5" y="115" width="12" height="6"/>
+                                        <rect key="frame" x="86" y="115" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bh5-Z1-UbE">
-                                        <rect key="frame" x="19.5" y="142" width="83" height="21"/>
+                                        <rect key="frame" x="20" y="142" width="83" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.50588235290000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
@@ -1819,11 +1819,11 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="leftArrowDown" id="h5T-ti-1Vj">
-                                        <rect key="frame" x="86.5" y="151" width="12" height="6"/>
+                                        <rect key="frame" x="86" y="151" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5G9-ID-s8U">
-                                        <rect key="frame" x="283.5" y="182" width="20" height="20"/>
+                                        <rect key="frame" x="284" y="182" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="imageButtonQuestion"/>
                                         <connections>
@@ -1831,7 +1831,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hse-Db-CXD">
-                                        <rect key="frame" x="37" y="41" width="49.5" height="60"/>
+                                        <rect key="frame" x="37" y="41" width="49" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="imageButtonAvatar"/>
                                         <connections>
@@ -1958,41 +1958,41 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oy7-Sc-nPi" id="JKI-gP-8dZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="8Tb-Yu-uXO">
-                                                    <rect key="frame" x="13" y="21.5" width="82.5" height="58.5"/>
+                                                    <rect key="frame" x="13" y="21" width="82" height="59"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GTt-s0-AaU">
-                                                    <rect key="frame" x="14" y="91" width="149.5" height="16.5"/>
+                                                    <rect key="frame" x="14" y="91" width="149" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="12"/>
                                                     <color key="textColor" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r1E-Hp-ZPd">
-                                                    <rect key="frame" x="104" y="36.5" width="205.5" height="33.5"/>
+                                                    <rect key="frame" x="104" y="36" width="205" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <color key="textColor" red="0.20392156862745098" green="0.20784313725490194" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dqJ-uk-PaV">
-                                                    <rect key="frame" x="170.5" y="91" width="139" height="16.5"/>
+                                                    <rect key="frame" x="170" y="91" width="139" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="12"/>
                                                     <color key="textColor" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="me7-PR-2p4">
-                                                    <rect key="frame" x="0.0" y="111.5" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="111" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vg2-KP-wdK">
-                                                    <rect key="frame" x="0.0" y="5" width="320" height="15.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="320" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Italic" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -2484,11 +2484,11 @@ Cg
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igg-JH-53S" id="Ebn-bk-WjF">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b4C-L9-W3S">
-                                                    <rect key="frame" x="33" y="8" width="205" height="22"/>
+                                                    <rect key="frame" x="33" y="7" width="205" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -2499,7 +2499,7 @@ Cg
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRightImage" id="UHj-nB-ezi">
-                                                    <rect key="frame" x="295" y="12" width="8" height="16"/>
+                                                    <rect key="frame" x="295" y="11" width="8" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u61-h9-zel">
@@ -2510,7 +2510,7 @@ Cg
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="oZa-S2-ZcA">
-                                                    <rect key="frame" x="0.0" y="43" width="320" height="1.5"/>
+                                                    <rect key="frame" x="0.0" y="43" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -2740,7 +2740,7 @@ Cg
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" contentMode="center" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="TrS-Jp-ieV" userLabel="12.22.2017 ">
-                                                    <rect key="frame" x="11" y="8" width="81" height="17.5"/>
+                                                    <rect key="frame" x="11" y="8" width="81" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration" hint="" identifier="24263" label=""/>
                                                     <string key="text">12.22.2017
@@ -2749,7 +2749,7 @@ Cg
                                                     <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                                 </label>
                                                 <label opaque="NO" contentMode="center" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="TRm-9b-44P" userLabel="ЗАЧИСЛЕНО ">
-                                                    <rect key="frame" x="13" y="41.5" width="86" height="14.5"/>
+                                                    <rect key="frame" x="13" y="41" width="86" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration" hint="" identifier="24262" label=""/>
                                                     <string key="text">ЗАЧИСЛЕНО
@@ -2767,7 +2767,7 @@ Cg
                                                     <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XNC-7Z-vyT">
-                                                    <rect key="frame" x="289" y="24" width="16" height="16.5"/>
+                                                    <rect key="frame" x="289" y="24" width="16" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="deleteCellPayment"/>
                                                     <connections>
@@ -3272,7 +3272,7 @@ Cg
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageCellInfo" id="xVh-5d-XTk">
-                                                    <rect key="frame" x="289" y="7.5" width="20" height="20"/>
+                                                    <rect key="frame" x="289" y="8" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" alpha="0.75" contentMode="center" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" id="O3S-eD-Suh" userLabel="Михайл Иванов предлагает вам  обмен контактами.    ">
@@ -3301,7 +3301,7 @@ Cg
                                                     <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5v1-ZE-VlQ">
-                                                    <rect key="frame" x="12.5" y="168" width="89.5" height="24.5"/>
+                                                    <rect key="frame" x="12" y="168" width="90" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.31764705879999999" green="0.4823529412" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
@@ -3313,7 +3313,7 @@ Cg
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x5G-47-eOo">
-                                                    <rect key="frame" x="115.5" y="168" width="167" height="24.5"/>
+                                                    <rect key="frame" x="116" y="168" width="167" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.31764705879999999" green="0.4823529412" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
@@ -3600,7 +3600,7 @@ Cg
                                         <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Rt-eA-frE">
-                                        <rect key="frame" x="258" y="63.5" width="43" height="34"/>
+                                        <rect key="frame" x="258" y="64" width="43" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="vacanciesAddImage"/>
                                         <connections>
@@ -3723,7 +3723,7 @@ Cg
                                         <rect key="frame" x="289" y="132" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eI1-Ja-XkT">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eI1-Ja-XkT" customClass="CustomButton">
                                         <rect key="frame" x="138" y="260" width="169" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.50588235290000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
@@ -3739,7 +3739,7 @@ Cg
                                         <rect key="frame" x="289" y="272" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qwb-ID-O61">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qwb-ID-O61" customClass="CustomButton">
                                         <rect key="frame" x="138" y="302" width="169" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.50588235290000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
@@ -3789,7 +3789,7 @@ Cg
                                         <rect key="frame" x="288" y="357" width="12" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jun-pO-Jv8">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jun-pO-Jv8" customClass="CustomButton">
                                         <rect key="frame" x="138" y="387" width="169" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.50588235290000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
@@ -3858,9 +3858,9 @@ Cg
                         <outlet property="buttonCountry" destination="ZJ8-A7-ivB" id="QMI-Ge-T0U"/>
                         <outlet property="buttonCreate" destination="yBp-0z-mD3" id="lpz-cG-r4q"/>
                         <outlet property="buttonDate" destination="lGw-7r-I2N" id="I0O-5z-Ezs"/>
-                        <outlet property="buttonGender" destination="Jun-pO-Jv8" id="Ucc-7U-HcP"/>
-                        <outlet property="buttonNeed" destination="qwb-ID-O61" id="KhL-ae-C8e"/>
-                        <outlet property="buttonType" destination="eI1-Ja-XkT" id="FlT-NR-b11"/>
+                        <outlet property="buttonGender" destination="Jun-pO-Jv8" id="SU7-nb-dmd"/>
+                        <outlet property="buttonNeed" destination="qwb-ID-O61" id="3rF-VR-sTM"/>
+                        <outlet property="buttonType" destination="eI1-Ja-XkT" id="7W8-jN-gaF"/>
                         <outlet property="mainScrollView" destination="mI4-Gb-X5Y" id="fGQ-fb-Z16"/>
                         <outlet property="textFildName" destination="aye-z6-9TU" id="uDa-v9-9gM"/>
                         <outlet property="viewSave" destination="pjk-BN-ssx" id="Tc5-3F-QwF"/>
@@ -3891,48 +3891,48 @@ Cg
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="npR-f4-0Hn">
-                                                    <rect key="frame" x="13.5" y="25" width="83" height="62.5"/>
+                                                    <rect key="frame" x="14" y="25" width="83" height="63"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gZz-Dj-Kz9">
-                                                    <rect key="frame" x="13.5" y="122" width="156.5" height="16"/>
+                                                    <rect key="frame" x="14" y="122" width="156" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="13"/>
                                                     <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IGJ-Fe-MTS">
-                                                    <rect key="frame" x="110" y="43" width="201.5" height="34.5"/>
+                                                    <rect key="frame" x="110" y="43" width="201" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="16"/>
                                                     <color key="textColor" red="0.20392156859999999" green="0.20784313730000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gp4-qG-IaJ">
-                                                    <rect key="frame" x="171.5" y="122" width="139" height="16"/>
+                                                    <rect key="frame" x="172" y="122" width="139" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="13"/>
                                                     <color key="textColor" red="0.41568627450000001" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cok-qY-SLw">
-                                                    <rect key="frame" x="110" y="89.5" width="209.5" height="26"/>
+                                                    <rect key="frame" x="110" y="90" width="210" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Italic" family="Istok" pointSize="16"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.50588235294117645" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="GjO-eQ-ejO">
-                                                    <rect key="frame" x="0.0" y="141.5" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="142" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="abf-GZ-ZpJ">
-                                                    <rect key="frame" x="82.5" y="21.5" width="23.5" height="23.5"/>
+                                                    <rect key="frame" x="82" y="22" width="24" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xgP-2Y-iSI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="23.5" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3942,7 +3942,7 @@ Cg
                                                     <color key="backgroundColor" red="0.27450980392156865" green="0.50980392156862742" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Профессия" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BOg-Ft-bIR">
-                                                    <rect key="frame" x="-0.5" y="5.5" width="320" height="16"/>
+                                                    <rect key="frame" x="-1" y="6" width="321" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Istok-Italic" family="Istok" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -4402,7 +4402,7 @@ Cgo
                                         </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kQ2-Fz-3Ri">
-                                        <rect key="frame" x="0.0" y="391.5" width="290" height="44"/>
+                                        <rect key="frame" x="0.0" y="391" width="290" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>

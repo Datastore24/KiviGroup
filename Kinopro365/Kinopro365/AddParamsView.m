@@ -31,6 +31,7 @@
              andDefValueIndex: (NSString *) defValueIndex
                     andArrayData: (NSArray*) arrayData
             andIsSearch: (BOOL) isSearch
+            andIsCasting: (BOOL) isCasting
 {
     self = [super init];
     if (self) {
@@ -87,7 +88,7 @@
                     NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
                                          fieldID];
                     
-                    if(isSearch){
+                    if(isSearch || isCasting){
                         buttonPicker.customName = defValueIndex;
                         [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
 
@@ -124,7 +125,7 @@
                     NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
                                          fieldID];
                     
-                    if(isSearch){
+                    if(isSearch || isCasting){
                         [swith setOn:NO];
                     }else{
                         //Грузим данные из базы
@@ -164,7 +165,7 @@
                                       @"type": @"MultiList"
                                       };
                 
-                    if(!isSearch){
+                    if(!isSearch && !isCasting){
                         
                         NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
                                              @"ex_languages"];

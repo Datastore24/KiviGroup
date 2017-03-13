@@ -14,6 +14,7 @@
 #import "AdditionalTable.h"
 #import "UserInformationTable.h"
 #import "KinoproSearchController.h"
+#import "AddCastingController.h"
 
 
 @interface AddParamsController () <ChooseProfessionViewControllerDelegate, AddParamsViewDelegate>
@@ -69,7 +70,8 @@
                                                                    andId:[dictData objectForKey:@"id"]
                                                         andDefValueIndex:defValueIndex
                                                             andArrayData:[dictData objectForKey:@"array"]
-                                                             andIsSearch: self.isSearch];
+                                                             andIsSearch: self.isSearch
+                                     andIsCasting:self.isCasting];
              
              
              view.deleagte = self;
@@ -98,7 +100,7 @@
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     NSMutableString * resultString = [NSMutableString new];
-    if(!self.isSearch){
+    if(!self.isSearch && !self.isCasting){
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
                              @"ex_languages"];
         
@@ -196,9 +198,10 @@
     ChooseProfessionViewController * addParams = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseProfessionViewController"];
     addParams.mainArrayData =array;
     addParams.isLanguage = YES;
-    if(self.isSearch){
+    if(self.isSearch || self.isCasting){
             addParams.isSearch = YES;
     }
+    
     
     [self.navigationController pushViewController:addParams animated:YES];
     
@@ -235,7 +238,7 @@
         if([[fields objectForKey:@"object"] isKindOfClass:[UITextField class]]){
             UITextField * textFields = [fields objectForKey:@"object"];
             NSDictionary * information = [fields objectForKey:@"info"];
-            if(textFields.text.length ==0 && !self.isSearch){
+            if(textFields.text.length ==0 && !self.isSearch && !self.isCasting){
                 countError = countError +1;
                 NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                 [self showAlertWithMessage:alertMessage];
@@ -264,13 +267,13 @@
                 
                 RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
                 
-                if(outletTableDataArray.count==0 && !self.isSearch){
+                if(outletTableDataArray.count==0 && !self.isSearch && !self.isCasting){
                     countError = countError +1;
                     NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                     [self showAlertWithMessage:alertMessage];
                 }
             }else{
-                if(customButton.customID.length ==0 && !self.isSearch){
+                if(customButton.customID.length ==0 && !self.isSearch && !self.isCasting){
                     countError = countError +1;
                     NSString * alertMessage = [NSString stringWithFormat:@"Заполните поле: %@",[information objectForKey:@"title"]];
                     [self showAlertWithMessage:alertMessage];
@@ -324,15 +327,7 @@
    
     
     NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
-    if(!self.isSearch){
-        
-        [addTable insertDataIntoDataBaseWithName:resultArray];
-        if(countError==0){
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-
-    }else{
+    if(self.isSearch){
         
         if(self.langArray.count>0){
             NSDictionary * langDict = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -341,13 +336,43 @@
         }
         NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
         
-       
         
-         KinoproSearchController * kinosearch = [self.navigationController.viewControllers objectAtIndex:2];
+        
+        
+
+        KinoproSearchController * kinosearch = [self.navigationController.viewControllers objectAtIndex:2];
         
         kinosearch.dopArray = resultArray;
         
         [self.navigationController popToViewController:kinosearch animated:YES];
+        
+    }else if(self.isCasting){
+        
+        if(self.langArray.count>0){
+            NSDictionary * langDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       self.langArray,@"languages", nil];
+            [arrayForDB addObject:langDict];
+        }
+        NSArray * resultArray = [NSArray arrayWithArray:arrayForDB];
+        
+        
+        NSUInteger numberOfViewControllersOnStack = [self.navigationController.viewControllers count];
+        NSLog(@"COUNTER %ld",numberOfViewControllersOnStack);
+        
+        AddCastingController * castingController = [self.navigationController.viewControllers objectAtIndex:numberOfViewControllersOnStack-2];
+        castingController.dopArray =resultArray;
+
+        
+        [self.navigationController popToViewController:castingController animated:YES];
+    }else{
+        
+        [addTable insertDataIntoDataBaseWithName:resultArray];
+        if(countError==0){
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        
+        
 
     }
     

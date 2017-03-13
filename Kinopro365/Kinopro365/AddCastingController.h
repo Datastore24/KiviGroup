@@ -12,6 +12,7 @@
 
 @property (strong,nonatomic) NSString * profID;
 @property (strong,nonatomic) NSArray * dopArray;
+@property (assign, nonatomic) BOOL isEditor;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *textFildName;
@@ -20,11 +21,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonDate;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
-@property (weak, nonatomic) IBOutlet UIButton *buttonType;
-@property (weak, nonatomic) IBOutlet UIButton *buttonNeed;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonType;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonNeed;
+
+
 @property (weak, nonatomic) IBOutlet CustomButton *buttonAgeFrom;
 @property (weak, nonatomic) IBOutlet CustomButton *buttonAgeTo;
-@property (weak, nonatomic) IBOutlet UIButton *buttonGender;
+@property (weak, nonatomic) IBOutlet CustomButton *buttonGender;
+
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddParams;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddPhoto;
 

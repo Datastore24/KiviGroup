@@ -19,6 +19,7 @@
 #import "AddParamsController.h"
 #import "ProfessionController.h"
 #import "AddParamsModel.h"
+#import "APIManger.h"
 
 @interface AddCastingController () <HMImagePickerControllerDelegate, CountryViewControllerDelegate, ViewForCommentDelegate>
 
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) ViewForComment * viewHideComment;
 
 @property (strong, nonatomic) NSMutableArray * arrayViews;
+
+@property (strong, nonatomic) NSString * photoID;
 
 
 
@@ -179,6 +182,21 @@
     
     NSLog(@"Доп параметры");
     
+    if([self.buttonNeed.titleLabel.text isEqualToString:@"Выбрать"]){
+        [self showAlertWithMessage:@"Выберите профессию"];
+    }else{
+        NSLog(@"OPPP %@", self.buttonNeed.titleLabel.text);
+        NSLog(@"CUSTOM %@", self.buttonNeed.customID);
+            AddParamsController * addParamsController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddParamsController"];
+            NSArray * searchArray = [[NSArray alloc] initWithObjects:@{@"professionID":self.buttonNeed.customID}, nil];
+            addParamsController.profArray = searchArray;
+            addParamsController.isCasting = YES;
+            [self.navigationController pushViewController:addParamsController animated:YES];
+    }
+    
+
+
+    
     
 }
 
@@ -213,28 +231,28 @@
     [self.buttonAddPhoto setImage: self.imageVacancies forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-//    APIManger * apiManager = [[APIManger alloc] init];
-//    [apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:nil andToken:[[SingleTone sharedManager] token] andImage:self.imageVacancies complitionBlock:^(id response) {
-//        
-//        NSLog(@"PHOTOSAVE %@",response);
-//        
-//        if(![response isKindOfClass:[NSDictionary class]]){
-//            
-//            NSLog(@"Загрузить фото не удалось");
-//        }else{
-//            NSDictionary * dictResponse = [response objectForKey:@"response"];
-//            
-//            self.photoID = [NSString stringWithFormat:@"%@",[dictResponse objectForKey:@"id"]];
-//            
-//            NSLog(@"PHOTOID %@",self.photoID);
-//            [self.buttonAddImage setImage:self.imageVacancies forState:UIControlStateNormal];
-//            self.buttonAddImage.layer.cornerRadius = 3.f;
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//            
-//            
-//        }
-//        
-//    }];
+    APIManger * apiManager = [[APIManger alloc] init];
+    [apiManager postImageDataFromSeverWithMethod:@"photo.save" andParams:nil andToken:[[SingleTone sharedManager] token] andImage:self.imageVacancies complitionBlock:^(id response) {
+        
+        NSLog(@"PHOTOSAVE %@",response);
+        
+        if(![response isKindOfClass:[NSDictionary class]]){
+            
+            NSLog(@"Загрузить фото не удалось");
+        }else{
+            NSDictionary * dictResponse = [response objectForKey:@"response"];
+            
+            self.photoID = [NSString stringWithFormat:@"%@",[dictResponse objectForKey:@"id"]];
+            
+            NSLog(@"PHOTOID %@",self.photoID);
+            [self.buttonAddPhoto setImage:self.imageVacancies forState:UIControlStateNormal];
+            self.buttonAddPhoto.layer.cornerRadius = 3.f;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            
+        }
+        
+    }];
     
     
 }
@@ -329,6 +347,8 @@
         self.viewSave.frame = rectSave;
     }];
 }
+
+
 
 
 @end

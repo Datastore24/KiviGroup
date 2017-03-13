@@ -238,7 +238,10 @@
         }
     }else{
         
-        AddParamsController * addParam = [self.navigationController.viewControllers objectAtIndex:3];
+        NSUInteger numberOfViewControllersOnStack = [self.navigationController.viewControllers count];
+        
+        AddParamsController * addParam = [self.navigationController.viewControllers objectAtIndex:numberOfViewControllersOnStack-2];
+        
         
         addParam.langArray = self.langArray;
         

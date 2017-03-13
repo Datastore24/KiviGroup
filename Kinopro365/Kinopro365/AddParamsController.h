@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) NSArray * profArray;
 @property (assign, nonatomic) BOOL isSearch;
+@property (assign, nonatomic) BOOL isCasting;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
 @property (strong, nonatomic) NSArray * langArray;
 @property (weak, nonatomic) IBOutlet UIView *topView;
