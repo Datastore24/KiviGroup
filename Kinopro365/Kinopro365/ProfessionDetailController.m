@@ -77,8 +77,11 @@
                       CGRectMake(0.f, 64.f, self.view.frame.size.width,
                                  self.view.frame.size.height - 64.f)];
     //    self.imageView.backgroundColor = [UIColor blueColor];
+    self.imageView.imageViewDelete.backgroundColor = [UIColor blackColor];
+    [self.imageView.imageViewDelete setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:self.imageView];
     self.imageView.alpha = 0.f;
+    
     
 }
 

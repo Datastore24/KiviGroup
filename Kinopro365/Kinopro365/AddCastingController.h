@@ -10,6 +10,9 @@
 
 @interface AddCastingController : MainViewController
 
+@property (strong,nonatomic) NSString * profID;
+@property (strong,nonatomic) NSArray * dopArray;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *textFildName;
 

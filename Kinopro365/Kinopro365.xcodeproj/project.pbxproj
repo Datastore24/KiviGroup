@@ -20,6 +20,7 @@
 		AD9DA2E81E570EC100D8AA0C /* ProfessionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA2E71E570EC100D8AA0C /* ProfessionDetailModel.m */; };
 		ADA435871E6EA7F60037A55C /* MyVacanciesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA435861E6EA7F60037A55C /* MyVacanciesDetailsModel.m */; };
 		ADAD41C91E72DCE1006577D5 /* MyCustingDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD41C81E72DCE1006577D5 /* MyCustingDetailsModel.m */; };
+		ADAD41CC1E76CDE0006577D5 /* AddCastingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD41CB1E76CDE0006577D5 /* AddCastingModel.m */; };
 		ADC507B31E6DC9A4003731D6 /* MyVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */; };
 		ADC507B61E6DDEA2003731D6 /* AddVacanciesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC507B51E6DDEA2003731D6 /* AddVacanciesModel.m */; };
 		ADED89DA1E3644FC00D74761 /* PhonesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED89D91E3644FC00D74761 /* PhonesTable.m */; };
@@ -158,6 +159,8 @@
 		ADA435861E6EA7F60037A55C /* MyVacanciesDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVacanciesDetailsModel.m; sourceTree = "<group>"; };
 		ADAD41C71E72DCE1006577D5 /* MyCustingDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustingDetailsModel.h; sourceTree = "<group>"; };
 		ADAD41C81E72DCE1006577D5 /* MyCustingDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustingDetailsModel.m; sourceTree = "<group>"; };
+		ADAD41CA1E76CDE0006577D5 /* AddCastingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCastingModel.h; sourceTree = "<group>"; };
+		ADAD41CB1E76CDE0006577D5 /* AddCastingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCastingModel.m; sourceTree = "<group>"; };
 		ADC507B11E6DC9A4003731D6 /* MyVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVacanciesModel.h; sourceTree = "<group>"; };
 		ADC507B21E6DC9A4003731D6 /* MyVacanciesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVacanciesModel.m; sourceTree = "<group>"; };
 		ADC507B41E6DDEA2003731D6 /* AddVacanciesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVacanciesModel.h; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 				B85038591E7170E000DBF600 /* AddCastingController.m */,
 				B850385B1E71878200DBF600 /* ViewForComment.h */,
 				B850385C1E71878200DBF600 /* ViewForComment.m */,
+				ADAD41CA1E76CDE0006577D5 /* AddCastingModel.h */,
+				ADAD41CB1E76CDE0006577D5 /* AddCastingModel.m */,
 			);
 			name = AddCasting;
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 				FFFD1A4B1E09489300626219 /* AddParamsController.m in Sources */,
 				FFAEFF411E4884A50031AF69 /* VideoDetailsController.m in Sources */,
 				FF5FC59C1E48A0780080B20D /* PhotoDetailView.m in Sources */,
+				ADAD41CC1E76CDE0006577D5 /* AddCastingModel.m in Sources */,
 				FFFD1A501E0969C600626219 /* AddParamsModel.m in Sources */,
 				FF88DF4C1E0E696B0002FBBC /* HMAlbumTableViewController.m in Sources */,
 				B88BF8561E7431E900A68262 /* HistoryPaymentController.m in Sources */,
