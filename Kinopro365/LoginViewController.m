@@ -105,11 +105,15 @@
 //Получить код----------
 - (IBAction)actionButtonSendCode:(UIButton *)sender {
     
-    if (self.textFildPhone.text.length == 0) {
-        [self showAlertWithMessage:@"\nВведите номер телефона!\n"];
+    if (self.textFildPhone.text.length < 15) {
+        [self showAlertWithMessage:@"\nВведите корректный номер телефона!\n"];
     } else {
         
         BOOL isBool = NO; //Тестовая булька для Кирилла
+        
+        self.textFildPhone.userInteractionEnabled = NO;
+        [self.textFildPassword becomeFirstResponder];
+        
         
         if (self.animation) {
             [UIView animateWithDuration:0.3 animations:^{
@@ -155,6 +159,9 @@
                 self.buttonEntrance.alpha = 1.f;
                 self.buttonEntrance.userInteractionEnabled = YES;
                 self.textFildPassword.userInteractionEnabled = YES;
+                
+                
+                
                 
             }else{
                 NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],

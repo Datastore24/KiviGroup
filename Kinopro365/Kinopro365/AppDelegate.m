@@ -193,11 +193,27 @@
     
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR]];
+
     
     UINavigationController * leftSideNav = [[UINavigationController alloc]
                                             initWithRootViewController:leftViewController];
     UINavigationController * centerNav = [[UINavigationController alloc]
                                           initWithRootViewController:centerViewController];
+    
+    leftSideNav.navigationBar.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+    leftSideNav.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    leftSideNav.navigationBar.layer.shadowRadius = 3.0f;
+    leftSideNav.navigationBar.layer.shadowOpacity = 1.0f;
+    leftSideNav.navigationBar.layer.masksToBounds=NO;
+    
+    centerNav.navigationBar.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+    centerNav.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    centerNav.navigationBar.layer.shadowRadius = 3.0f;
+    centerNav.navigationBar.layer.shadowOpacity = 1.0f;
+    centerNav.navigationBar.layer.masksToBounds=NO;
+    
+    
+    
     
     
     self.centerContainer = [[MMDrawerController alloc]

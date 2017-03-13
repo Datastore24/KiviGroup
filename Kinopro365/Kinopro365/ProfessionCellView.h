@@ -19,15 +19,20 @@
                                  andImageAvart: (NSString*) imageAvatar andNameText: (NSString*) name
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
-                                 andLikeNumber: (NSString*) likeNumber
-                                  andProfileID: (NSString *) profileID
-                                andIsFavourite: (NSString *) isFavourite;
+                                 andLikeNumber: (NSString*) likeNumber andProfileID: (NSString *) profileID
+                                andIsFavourite: (NSString *) isFavourite endReward: (BOOL) isReward
+                                       endLike: (BOOL) isLike;
+
+@property (strong, nonatomic) UILabel * labelNumberStars;
+@property (strong, nonatomic) UILabel * labelNumberLike;
 
 @end
 
 @protocol ProfessionCellViewDelegate <NSObject>
 
 - (void) actionBookMark: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button;
+- (void) actionLike: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button;
+- (void) actionReward: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button;
 - (void) actionButtonCell: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button;
 
 @end

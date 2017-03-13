@@ -14,11 +14,14 @@
 #import "TextDataProfession.h"
 #import "AddParamsProfession.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "PhotoDetailView.h"
 
 @interface ProfessionDetailController () <ProfessionDetailModelDelegate,VideoViewDelegate, PhotoViewDelegate>
 
 @property (assign, nonatomic) CGFloat maxHeightVideo; //параметр сохраняет конечное положение вью всех видео
 @property (strong, nonatomic) ProfessionDetailModel * profDetailModel;
+
+@property (strong, nonatomic) PhotoDetailView * imageView;
 
 @end
 
@@ -26,6 +29,8 @@
 
 - (void) loadView {
     [super loadView];
+    
+    //UIImageView For photo
     
     self.photoScrollView.showsHorizontalScrollIndicator = NO;
     UILabel * customText = [[UILabel alloc]initWithTitle:self.profName];
@@ -68,7 +73,12 @@
     self.profDetailModel.delegate = self;
     [self.profDetailModel loadProfile:self.profileID andProffesionID:self.profID];
     
-    
+    self.imageView = [[PhotoDetailView alloc] initWithCustomFrame:
+                      CGRectMake(0.f, 64.f, self.view.frame.size.width,
+                                 self.view.frame.size.height - 64.f)];
+    //    self.imageView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:self.imageView];
+    self.imageView.alpha = 0.f;
     
 }
 
@@ -344,7 +354,10 @@
 #pragma mark - PhotoViewDelegate
 
 - (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton {
-    NSLog(@"Hello");
+    [UIView animateWithDuration:0.3 animations:^{
+        self.imageView.imageView.image = imageButton.imageView.image;
+        self.imageView.alpha = 1.f;
+    }];
 }
 
 

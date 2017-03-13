@@ -44,6 +44,14 @@
     [self.storyboard instantiateViewControllerWithIdentifier:identifier];
     UINavigationController * nextNavNav = [[UINavigationController alloc]
                                           initWithRootViewController:nextController];
+//    nextNavNav.navigationBar.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    nextNavNav.navigationBar.layer.borderWidth=2;// set border you can see the shadow
+    nextNavNav.navigationBar.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+    nextNavNav.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    nextNavNav.navigationBar.layer.shadowRadius = 3.0f;
+    nextNavNav.navigationBar.layer.shadowOpacity = 1.0f;
+    nextNavNav.navigationBar.layer.masksToBounds=NO;
+    
     
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

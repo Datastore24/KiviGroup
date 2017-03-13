@@ -25,6 +25,7 @@
 @property (assign, nonatomic) BOOL isSearch;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
 @property (strong, nonatomic) NSArray * langArray;
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 
 

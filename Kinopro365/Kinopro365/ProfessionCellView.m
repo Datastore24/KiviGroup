@@ -20,9 +20,9 @@
                                  andImageAvart: (NSString*) imageAvatar andNameText: (NSString*) name
                                 andCountryText: (NSString*) country andAgeText: (NSString*) age
                                  andGrowthText: (NSString*) growth andStarsNumber: (NSString*) starsNumber
-                                 andLikeNumber: (NSString*) likeNumber
-                                  andProfileID: (NSString *) profileID
-                                andIsFavourite: (NSString *) isFavourite{
+                                 andLikeNumber: (NSString*) likeNumber andProfileID: (NSString *) profileID
+                                andIsFavourite: (NSString *) isFavourite endReward: (BOOL) isReward
+                                       endLike: (BOOL) isLike {
     self = [super init];
     if (self) {
         
@@ -73,18 +73,6 @@
         UILabel * labelGrowth = [self createLabelWithName:growth andFrame:CGRectMake(110.f, 11.f + 17.75f * 3, 200, 17.75f)];
         [self addSubview:labelGrowth];
         
-        UIImageView * imageViewStars = [[UIImageView alloc] initWithFrame:CGRectMake(113.f, 97.f, 13.f, 20.f)];
-        imageViewStars.image = [UIImage imageNamed:@"professionImageStar"];
-        [self addSubview:imageViewStars];
-        UILabel * labelNumberStars = [self createLabelWithName:starsNumber andFrame:CGRectMake(134.f, 102.f, 20.f, 12.f)];
-        [self addSubview:labelNumberStars];
-        
-        UIImageView * imageViewLike = [[UIImageView alloc] initWithFrame:CGRectMake(179.f, 102.f, 15.f, 13.f)];
-        imageViewLike.image = [UIImage imageNamed:@"professionImageLike"];
-        [self addSubview:imageViewLike];
-        UILabel * labelNumberLike = [self createLabelWithName:likeNumber andFrame:CGRectMake(202.f, 102.f, 20.f, 12.f)];
-        [self addSubview:labelNumberLike];
-        
         CustomButton * buttonCell = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonCell.frame = self.bounds;
         buttonCell.customFullName = name;
@@ -92,6 +80,37 @@
         
         [buttonCell addTarget:self action:@selector(actionButtonCell:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonCell];
+        
+        CustomButton * buttonRewar = [CustomButton buttonWithType:UIButtonTypeCustom];
+        buttonRewar.frame = CGRectMake(113.f, 97.f, 13.f, 20.f);
+        NSString * imageReward;
+        if (isReward) {
+            imageReward = @"isRewarImageOn";
+        } else {
+            imageReward = @"professionImageStar";
+        }
+        [buttonRewar setImage:[UIImage imageNamed:imageReward] forState:UIControlStateNormal];
+        [buttonRewar addTarget:self action:@selector(actionButtonReward:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonRewar];
+        
+
+        self.labelNumberStars = [self createLabelWithName:starsNumber andFrame:CGRectMake(134.f, 102.f, 20.f, 12.f)];
+        [self addSubview:self.labelNumberStars];
+        
+        CustomButton * buttonLike = [CustomButton buttonWithType:UIButtonTypeCustom];
+        buttonLike.frame = CGRectMake(179.f, 102.f, 15.f, 13.f);
+        NSString * imageLike;
+        if (isLike) {
+            imageLike = @"isLikeImageOn";
+        } else {
+            imageLike = @"professionImageLike";
+        }
+        [buttonLike setImage:[UIImage imageNamed:imageLike] forState:UIControlStateNormal];
+        [buttonLike addTarget:self action:@selector(actionButtonLike:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:buttonLike];
+        
+        self.labelNumberLike = [self createLabelWithName:likeNumber andFrame:CGRectMake(202.f, 102.f, 20.f, 12.f)];
+        [self addSubview:self.labelNumberLike];
         
         CustomButton * buttonBookmark = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonBookmark.frame =CGRectMake(288.f, 97.f, 19.f, 20.f);
@@ -128,6 +147,16 @@
 - (void) actionButtonCell: (CustomButton*) sender {
     
     [self.deleagte actionButtonCell:self withButton:sender];
+}
+
+- (void) actionButtonReward: (CustomButton*) sender {
+    [self.deleagte actionReward:self withButton:sender];
+    
+}
+
+- (void) actionButtonLike: (CustomButton*) sender {
+    [self.deleagte actionLike:self withButton:sender];
+    
 }
 
 #pragma mark - CreationViews

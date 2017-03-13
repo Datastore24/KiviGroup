@@ -28,6 +28,12 @@
     
     [self.navigationController setNavigationBarHidden: NO animated:YES];
     
+    self.topView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.topView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
+    self.topView.layer.shadowOpacity = 1.0f;
+    self.topView.layer.shadowRadius = 4.0f;
+
+    
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. параметры"];
     self.navigationItem.titleView = CustomText;
     

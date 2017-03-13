@@ -132,6 +132,8 @@
                                      [itemDict objectForKey:@"first_name"],
                                      [itemDict objectForKey:@"last_name"]];
             
+            //Для Кирилла Пописать булевые параметры в конце метода !!---------
+            
             ProfessionCellView * cellView = [[ProfessionCellView alloc]
                                              initCellProfessionWithMainView:self.view andHeight:
                                              (125.f * self.stepX) + 34.f andOrignX:0
@@ -146,7 +148,9 @@
                                              andStarsNumber:[itemDict objectForKey:@"count_rewards"]
                                              andLikeNumber:[itemDict objectForKey:@"count_likes"]
                                              andProfileID:[itemDict objectForKey:@"id"]
-                                             andIsFavourite:[NSString stringWithFormat:@"%@", [itemDict objectForKey:@"is_favourite"]]];
+                                             andIsFavourite:[NSString stringWithFormat:@"%@", [itemDict objectForKey:@"is_favourite"]] endReward:NO endLike:NO];
+            //-----------------------------------------------------------------------
+            
             cellView.deleagte = self;
             [scrolView addSubview:cellView];
             self.stepX += 1;
@@ -286,6 +290,40 @@
     [self.navigationController pushViewController:profController animated:YES];
     
     
+}
+
+- (void) actionLike: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button {
+    
+    if (button.isBool) {
+        [button setImage:[UIImage imageNamed:@"professionImageLike"] forState:UIControlStateNormal];
+        NSInteger count = [professionCellView.labelNumberLike.text integerValue];
+        count -= 1;
+        professionCellView.labelNumberLike.text = [NSString stringWithFormat:@"%ld", count];
+        button.isBool = NO;
+    } else {
+        [button setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [professionCellView.labelNumberLike.text integerValue];
+        count += 1;
+        professionCellView.labelNumberLike.text = [NSString stringWithFormat:@"%ld", count];
+        button.isBool = YES;
+    }
+    
+}
+- (void) actionReward: (ProfessionCellView*) professionCellView withButton: (CustomButton*) button {
+    
+    if (button.isBool) {
+        [button setImage:[UIImage imageNamed:@"professionImageStar"] forState:UIControlStateNormal];
+        NSInteger count = [professionCellView.labelNumberStars.text integerValue];
+        count -= 1;
+        professionCellView.labelNumberStars.text = [NSString stringWithFormat:@"%ld", count];
+        button.isBool = NO;
+    } else {
+        [button setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [professionCellView.labelNumberStars.text integerValue];
+        count += 1;
+        professionCellView.labelNumberStars.text = [NSString stringWithFormat:@"%ld", count];
+        button.isBool = YES;
+    } 
 }
 
 
