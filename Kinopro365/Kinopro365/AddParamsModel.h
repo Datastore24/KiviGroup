@@ -28,4 +28,6 @@
 - (NSDictionary *) getInformationDictionary: (NSString *) infID andProfArray: (NSArray *) profArray;
 - (NSDictionary *) getNameByDictionary: (NSArray *) array andFindID: (NSString *) infID;
 
+- (NSArray *)getTypeCustings;
+
 @end

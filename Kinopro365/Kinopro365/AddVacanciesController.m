@@ -80,7 +80,7 @@
     
     self.heightForText = 55;
     
-    self.arrayProfessions = [ChooseProfessionalModel getArrayProfessions];
+    self.arrayProfessions = [ChooseProfessionalModel getArrayProfessionsForVacancy];
 }
 
 - (void)didReceiveMemoryWarning {
