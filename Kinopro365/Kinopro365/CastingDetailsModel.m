@@ -16,9 +16,9 @@
 -(void) loadCasting: (NSString *) castingID{
     APIManger * apiManager = [[APIManger alloc] init];
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             castingID,@"vacancy_id",nil];
+                             castingID,@"casting_id",nil];
     
-    [apiManager getDataFromSeverWithMethod:@"vacancy.get" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+    [apiManager getDataFromSeverWithMethod:@"casting.get" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         NSLog(@"CASTING %@",response);
         if([response objectForKey:@"error_code"]){
             

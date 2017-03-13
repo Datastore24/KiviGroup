@@ -20,4 +20,8 @@
                              andCount: (NSString *) count
                           andIsActive: (NSString *) isActive;
 
+-(void) loadСastingsFromServerOffset: (NSString *) offset
+                            andCount: (NSString *) count
+                          andIsActive: (NSString *) isActive;
+
 @end

@@ -229,6 +229,7 @@
     
     
     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        NSLog(@"VACAN");
         VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         
         NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
@@ -242,7 +243,7 @@
 
         [self.navigationController pushViewController:vacanciesDetailsController animated:YES];
     } else {
-        
+         NSLog(@"CAST");
         VacanciesListCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         
         NSDictionary * dict = [self.vacanArray objectAtIndex:indexPath.row];
