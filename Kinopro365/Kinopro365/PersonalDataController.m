@@ -139,6 +139,29 @@
 
 #pragma mark - UITextFieldDelegate
 
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+        if ([textField.text isEqualToString:@""]) {
+            textField.text = @"+";
+        }
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+        if ([textField.text isEqualToString:@"+"]) {
+            textField.text = @"";
+        }
+    }
+    
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
@@ -160,6 +183,12 @@ replacementString:(NSString *)string {
         
     }
     
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+        
+        return [textField checkForPhoneWithTextField:textField shouldChangeCharactersInRange:range replacementString:string complitionBlock:^(NSString *response) {
+        }];
+    }
+    
     if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
         return [textField checkForNamberPhoneWithTextField:textField shouldChangeCharactersInRange:range
                                                                                  replacementString:string];
@@ -170,6 +199,8 @@ replacementString:(NSString *)string {
     } else {
         return [textField validationEmailFor:textField replacementString:string];
     }
+    
+    
 
     return YES;
 }
@@ -778,8 +809,8 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonQuestion:(UIButton *)sender {
-    [self showAlertWithMessage:@"\nУкажите ваше имя и фамилию\nангл. буквами для правильного\n"
-                               @"отображения в международном\nформате.\n"];
+    [self showAlertWithMessage:@"\nУкажите ваше имя и фамилию\nлатинскими буквами для\nправильного "
+                               @"отображения\nв международном формате.\n"];
 }
 
 - (IBAction)actionButtonProfession:(UIButton *)sender {
@@ -791,12 +822,6 @@ replacementString:(NSString *)string {
 }
 
 - (IBAction)actionButtonPhoto:(UIButton *)sender {
-//    HMImagePickerController *picker = [[HMImagePickerController alloc] initWithSelectedAssets:self.selectedAssets];
-//    picker.pickerDelegate = self;
-//    picker.targetSize = CGSizeMake(600, 600);
-//    picker.maxPickerCount = 10 - self.images.count;
-//    
-//    [self presentViewController:picker animated:YES completion:nil];
     
     [self pushCountryControllerWithIdentifier:@"PhotoDetailsController"];
 

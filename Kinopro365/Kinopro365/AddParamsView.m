@@ -113,6 +113,7 @@
                 } else if ([type isEqualToString:@"Switch"]) {
                     labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
                     UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(245.f, 0.f, 49.f, 31.f)];
+                    swith.onTintColor = [UIColor hx_colorWithHexRGBAString:@"5581A8"];
                     [self addSubview:swith];
                     self.mainObject = swith;
                     self.mainDict = @{
