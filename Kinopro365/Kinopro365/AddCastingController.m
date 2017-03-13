@@ -15,6 +15,10 @@
 #import "ChooseProfessionalModel.h"
 #import "KinoproSearchModel.h"
 #import "ViewForComment.h"
+#import "CountryViewController.h"
+#import "AddParamsController.h"
+#import "ProfessionController.h"
+#import "AddParamsModel.h"
 
 @interface AddCastingController () <HMImagePickerControllerDelegate, CountryViewControllerDelegate, ViewForCommentDelegate>
 
@@ -67,7 +71,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.arrayProfessions = [ChooseProfessionalModel getArrayProfessions];
+    self.arrayProfessions = [ChooseProfessionalModel getArrayProfessionsForCastings];
     self.arrayData = [KinoproSearchModel setTestArray];
     self.arrayGender = [NSArray arrayWithObjects:@"Мужской", @"Женский", nil];
     self.arrayViews = [NSMutableArray array];
@@ -76,7 +80,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+    NSLog(@"DOPPARAM %@",self.dopArray);
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
@@ -141,6 +145,14 @@
 - (IBAction)actionButtonType:(id)sender {
     
     NSLog(@"Тип заявки...");
+    
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+
+    
+    NSArray * castingType = [addParamsModel getTypeCustings];
+ 
+    
+    [self showViewPickerWithButton:sender andTitl:@"Выберите тип кастинга" andArrayData:castingType andKeyTitle:@"name" andKeyID:@"id" andDefValueIndex:nil];
     
 }
 
