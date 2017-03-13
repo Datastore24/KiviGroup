@@ -23,17 +23,6 @@
     self.viewForText.layer.cornerRadius = 5.f;
     self.viewForText.clipsToBounds = YES;
     
-    
-//    CAShapeLayer * maskLayer = [CAShapeLayer layer];
-//    maskLayer.path = [UIBezierPath bezierPathWithRoundedRect: self.buttonSave.bounds byRoundingCorners: UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii: (CGSize){5.0, 5.0}].CGPath;
-//    self.buttonSave.layer.mask = maskLayer;
-//    
-//    CAShapeLayer * maskLayerView = [CAShapeLayer layer];
-//    maskLayerView.path = [UIBezierPath bezierPathWithRoundedRect: self.textViewAddInformation.bounds byRoundingCorners: UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii: (CGSize){1.0, 1.0}].CGPath;
-//    self.textViewAddInformation.layer.mask = maskLayerView;
-//    
-
-    
     self.labelCustomPlaceholder.text = @"Кратко расскажите о себе.\nКакие курсы закончили? В каких\nпроектах участвовали?";
     
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Доп. информация"];

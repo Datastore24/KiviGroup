@@ -1941,7 +1941,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oy7-Sc-nPi" id="JKI-gP-8dZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="8Tb-Yu-uXO">
@@ -2136,16 +2136,16 @@
                                                 <fontDescription key="fontDescription" name="IstokWeb-Regular" family="IstokWeb-Regular" pointSize="14"/>
                                                 <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZQG-e5-nrb">
-                                                <rect key="frame" x="119" y="128" width="28" height="28"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZQG-e5-nrb">
+                                                <rect key="frame" x="106" y="128" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="vkImage"/>
                                                 <connections>
                                                     <action selector="actionButtonVK:" destination="Q4O-4z-LcB" eventType="touchUpInside" id="H07-do-W16"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qHO-sX-6NV">
-                                                <rect key="frame" x="175" y="128" width="28" height="28"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qHO-sX-6NV">
+                                                <rect key="frame" x="184" y="128" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="facebookImage"/>
                                                 <connections>
@@ -2373,7 +2373,7 @@ Cg
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TCl-Ih-xyh">
-                                                <rect key="frame" x="119" y="35" width="28" height="28"/>
+                                                <rect key="frame" x="106" y="35" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="vkImage"/>
                                                 <connections>
@@ -2381,7 +2381,7 @@ Cg
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2bo-Nx-YZY">
-                                                <rect key="frame" x="171" y="35" width="28" height="28"/>
+                                                <rect key="frame" x="184" y="35" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="facebookImage"/>
                                                 <connections>
@@ -2629,7 +2629,7 @@ Cg
                                         <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9EM-fr-fYK">
-                                        <rect key="frame" x="109" y="386" width="28" height="28"/>
+                                        <rect key="frame" x="106" y="386" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="vkImage"/>
                                         <connections>
@@ -2637,7 +2637,7 @@ Cg
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LL8-qx-khv">
-                                        <rect key="frame" x="183" y="386" width="28" height="28"/>
+                                        <rect key="frame" x="184" y="386" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="facebookImage"/>
                                         <connections>
@@ -3870,7 +3870,7 @@ Cg
                                         <rect key="frame" x="0.0" y="28" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hvr-MO-9DR" id="6nq-4t-Hgx">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="npR-f4-0Hn">
@@ -3906,7 +3906,7 @@ Cg
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="GjO-eQ-ejO">
-                                                    <rect key="frame" x="-0.5" y="141.5" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="141.5" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -4363,42 +4363,50 @@ Cgo
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UPe-sO-j8i">
-                                <rect key="frame" x="14" y="74" width="90" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YCz-nm-P6T">
+                                <rect key="frame" x="15" y="76" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="a3S-WD-Bov">
-                                <rect key="frame" x="14" y="108" width="291" height="156"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="Y0p-yt-Mxd">
+                                <rect key="frame" x="15" y="117" width="290" height="436"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bZy-cG-O6M">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="392"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="c9X-mz-29M" id="el4-JN-K3i"/>
+                                        </connections>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kQ2-Fz-3Ri">
+                                        <rect key="frame" x="0.0" y="391.5" width="290" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>
+                                        <state key="normal" title="ОТПРАВИТЬ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionButtonSave:" destination="c9X-mz-29M" eventType="touchUpInside" id="Paf-Co-aI1"/>
+                                            <action selector="actionButtonSave:" destination="IVJ-VJ-EiH" eventType="touchUpInside" id="Zg9-z1-EnA"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QTv-Ov-igF">
+                                        <rect key="frame" x="4" y="-1" width="281" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
+                                        <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="c9X-mz-29M" id="gz2-H8-vUJ"/>
-                                </connections>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oTI-6d-dgW">
-                                <rect key="frame" x="17" y="114" width="288" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Istok-Regular" family="Istok" pointSize="14"/>
-                                <color key="textColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xrd-EO-6rb">
-                                <rect key="frame" x="14" y="507" width="291" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Istok-Bold" family="Istok" pointSize="16"/>
-                                <state key="normal" title="ОТПРАВИТЬ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionButtonSave:" destination="c9X-mz-29M" eventType="touchUpInside" id="bBg-qL-iS1"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -4412,9 +4420,10 @@ Cgo
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="buttonSave" destination="Xrd-EO-6rb" id="nGH-on-3VN"/>
-                        <outlet property="labelCustomPlaceholder" destination="oTI-6d-dgW" id="HzD-de-JzI"/>
-                        <outlet property="textViewAddInformation" destination="a3S-WD-Bov" id="1Pt-G7-EN6"/>
+                        <outlet property="buttonSave" destination="kQ2-Fz-3Ri" id="Bas-lV-OEP"/>
+                        <outlet property="labelCustomPlaceholder" destination="QTv-Ov-igF" id="0mU-fo-WhV"/>
+                        <outlet property="textViewAddInformation" destination="bZy-cG-O6M" id="apO-Ij-d3Z"/>
+                        <outlet property="viewForText" destination="Y0p-yt-Mxd" id="Arc-Eq-qFt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mA3-Wv-q4W" sceneMemberID="firstResponder"/>

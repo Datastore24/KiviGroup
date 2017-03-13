@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textViewAddInformation;
 @property (weak, nonatomic) IBOutlet UILabel *labelCustomPlaceholder;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
+@property (weak, nonatomic) IBOutlet UIView *viewForText;
 
 //Actions-----
 
