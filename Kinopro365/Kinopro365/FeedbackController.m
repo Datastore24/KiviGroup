@@ -17,11 +17,10 @@
 - (void) loadView {
     [super loadView];
     [self.navigationController setNavigationBarHidden: NO animated:YES];
-    self.textViewAddInformation.layer.borderColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR].CGColor;
-    self.textViewAddInformation.layer.borderWidth = 1.f;
-    self.textViewAddInformation.layer.cornerRadius = 5.f;
-    
-    self.buttonSave.layer.cornerRadius = 5.f;
+    self.viewForText.layer.borderColor = [UIColor hx_colorWithHexRGBAString:COLOR_ALERT_BUTTON_COLOR].CGColor;
+    self.viewForText.layer.borderWidth = 1.f;
+    self.viewForText.layer.cornerRadius = 5.f;
+    self.viewForText.clipsToBounds = YES;
     
     self.labelCustomPlaceholder.text = @"Если вы нашли ошибку, напишите нам об этом!";
     
@@ -59,6 +58,15 @@
     
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self animationMethodWithBool:YES];
+    
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self animationMethodWithBool:NO];
+    
+}
+
 #pragma mark - Actions
 
 
@@ -72,6 +80,34 @@
 
     
     NSLog(@"Сохранить");
+}
+
+#pragma mark - Animathion
+
+- (void) animationMethodWithBool: (BOOL) isBool {
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        if (isBool) {
+
+            CGRect rectTextView = self.viewForText.frame;
+            rectTextView.size.height -= (352 - 130);
+            self.viewForText.frame = rectTextView;
+            CGRect rectText = self.textViewAddInformation.frame;
+            rectText.size.height -= (352 - 130);
+            self.textViewAddInformation.frame = rectText;
+            
+        } else {
+            
+            CGRect rectTextView = self.viewForText.frame;
+            rectTextView.size.height += (352 - 130);
+            self.viewForText.frame = rectTextView;
+            CGRect rectText = self.textViewAddInformation.frame;
+            rectText.size.height += (352 - 130);
+            self.textViewAddInformation.frame = rectText;
+        }
+        
+    }];
 }
 
 
