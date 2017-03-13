@@ -8,13 +8,15 @@
 
 #import "MyCustingDetailsController.h"
 #import "ViewCellMyCasting.h"
+#import "MyCustingDetailsModel.h"
 
 
-@interface MyCustingDetailsController () <ViewCellMyCastingDelegate>
+@interface MyCustingDetailsController () <ViewCellMyCastingDelegate, MyCustingDetailsModelDelegate>
 
 @property (strong, nonatomic) UIScrollView * firstScrollView;
 @property (strong, nonatomic) UIScrollView * secondScrollView;
 @property (assign, nonatomic) CGFloat heightTextView;
+@property (strong, nonatomic) MyCustingDetailsModel * myCastingDetailsModel;
 
 @end
 
@@ -38,6 +40,12 @@
     self.buttonTextAdd.isBool = YES;
     
     self.buttonConsideration.userInteractionEnabled = NO;
+    
+    self.myCastingDetailsModel = [[MyCustingDetailsModel alloc] init];
+    self.myCastingDetailsModel.delegate = self;
+    [self.myCastingDetailsModel loadCastings:self.castingID];
+    
+    
     
     //работа со скролом текста------------------------------
     //Тестовые строки---------------------------------------

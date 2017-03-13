@@ -12,6 +12,13 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
+@property (strong, nonatomic) NSString * castingID;
+@property (strong, nonatomic) NSString * castingName;
+@property (strong, nonatomic) NSString * castingURL;
+
+@property (strong, nonatomic) NSString * profID;
+@property (strong, nonatomic) NSString * profName;
+
 //Верхнее окно
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;

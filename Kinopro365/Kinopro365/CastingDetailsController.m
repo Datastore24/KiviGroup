@@ -12,6 +12,8 @@
 #import "DateTimeMethod.h"
 #import <VK-ios-sdk/VKSdk.h>
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
+#import "ChooseProfessionalModel.h"
+#import "AddParamsModel.h"
 
 @interface CastingDetailsController () <CastingDetailsModelDelegate,VKSdkDelegate,VKSdkUIDelegate>
 
@@ -30,8 +32,7 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@""];
-    self.navigationItem.titleView = CustomText;
+    
     
     self.viewForShare.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.viewForShare.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
@@ -46,13 +47,10 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+     UILabel * CustomText = [[UILabel alloc]initWithTitle:@""];
+    self.navigationItem.titleView = CustomText;
 //    //Скрытие скрытых парамтеров--------------------------
-//    self.heightHide = self.viewForHide.frame.size.height;
-//    CGRect rectForHide = self.viewForHide.frame;
-//    rectForHide.size.height = 0;
-//    self.viewForHide.frame = rectForHide;
-//    [self animationWithHeigthAnimathion:self.heightHide endType:2];
+
     
     self.castingDetailModel = [[CastingDetailsModel alloc] init];
     self.castingDetailModel.delegate = self;
@@ -68,27 +66,22 @@
     self.viewForParams.frame = rect;
     
     
-    NSArray * arrayString = [NSArray arrayWithObjects:
-                             @"Город: Москва", @"Требуется: Актер",
-                             @"Пол: Жен", @"Возраст: от 25 до 30",
-                             @"Рост: 145 - 160", nil];
-    
-    for (int i = 0; i < arrayString.count; i++) {
-        ViewForCastingParams * view = [[ViewForCastingParams alloc] initWithMainView:self.viewForParams endHeight:0 + 16 * i endText:[arrayString objectAtIndex:i]];
-        [self.viewForParams addSubview:view];
-    }
-    CGRect newRect = self.viewForParams.frame;
-    newRect.size.height = 20 + 16 * arrayString.count;
-    self.viewForParams.frame = newRect;
-    
-    self.heightForAnimation = self.viewForParams.frame.size.height - self.starHeightViewForParams;
-    
-    [self animationWithHeigthAnimathion:self.heightForAnimation endType:1];
-    self.mainScrollView.contentSize = CGSizeMake(0, self.view.bounds.size.height + self.heightForAnimation - 64 - self.heightHide);
-
+  
 }
 
 -(void) loadCasting: (NSDictionary *) catingDict{
+    
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    
+    NSArray * castingType = [addParamsModel getTypeCustings];
+    NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[catingDict objectForKey:@"project_type_id"] andProfArray:castingType];
+    
+    //Заголовок
+    
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:[paramsCasting objectForKey:@"name"]];
+    self.navigationItem.titleView = CustomText;
+    
+    //
     
     self.labelDescription.text = [catingDict objectForKey:@"description"];
     self.labelTitle.text =[catingDict objectForKey:@"name"];
@@ -100,14 +93,21 @@
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
     self.labelActively.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     
-    //СКРЫТОЕ ПОЛЕ
+    //СКРЫТОЕ ПОЛЕ - НУЖНО ПРОПИСАТЬ ДЛЯ КОГО ОНО ДОСТУПНО
+    
     self.openHideLabel = NO;
     if(self.openHideLabel){
         self.labelForHide.text = [catingDict objectForKey:@"contact_info"];
     }else{
         self.labelForHide.text = [catingDict objectForKey:@""];
-        self.heightHide = 0.f;
+        self.heightHide = self.viewForHide.frame.size.height;
+        CGRect rectForHide = self.viewForHide.frame;
+        rectForHide.size.height = 0;
+        self.viewForHide.frame = rectForHide;
+        [self animationWithHeigthAnimathion:self.heightHide endType:2];
     }
+    
+    
     
     
     if(![[catingDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
@@ -133,6 +133,103 @@
                                 }
                             }];
         
+        
+        
+        NSMutableArray * tempArray = [NSMutableArray new];
+        
+        [tempArray addObject:[NSString stringWithFormat:@"Город: %@",[catingDict objectForKey:@"city_name"]]];
+        
+        NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [catingDict objectForKey:@"profession_id"]]];
+        NSDictionary *item;
+        if(filtered.count>0){
+            item = [filtered objectAtIndex:0];
+        }
+        
+        //Профеесия
+        if(item.count > 0){
+            [tempArray addObject:[NSString stringWithFormat:@"Требуется: %@",[item objectForKey:@"name"]]];
+        }else{
+            [tempArray addObject:@"Требуется: Не указано"];
+        }
+
+        //Пол
+        if([[catingDict objectForKey:@"sex"] isEqual: [NSNull null]]){
+            
+            [tempArray addObject:@"Пол: Не указан"];
+            
+        }else{
+            if([[catingDict objectForKey:@"sex"]  integerValue] == 1){
+               [tempArray addObject:@"Пол: Жен."];
+            }else{
+               [tempArray addObject:@"Пол: Муж."];
+            }
+        }
+        //
+        
+        //Возвраст
+        
+        if(![[catingDict objectForKey:@"age_from"] isEqual:[NSNull null]] && ![[catingDict objectForKey:@"age_to"] isEqual:[NSNull null]]){
+            
+            [tempArray addObject:[NSString stringWithFormat:@"Возраст: от %@ до %@",[catingDict objectForKey:@"age_from"],[catingDict objectForKey:@"age_to"]]];
+        
+        }
+        //
+        
+        //Рост
+        if(![[catingDict objectForKey:@"ex_height_from"] isEqual:[NSNull null]] && ![[catingDict objectForKey:@"ex_height_to"] isEqual:[NSNull null]]){
+             [tempArray addObject:[NSString stringWithFormat:@"Рост: от %@ до %@",[catingDict objectForKey:@"ex_height_from"],[catingDict objectForKey:@"ex_height_to"]]];
+        }
+        //
+        
+        //Дополнительные параметры
+        NSMutableDictionary* resultAdditionalParams = [NSMutableDictionary new];
+        for (NSString* key in catingDict) {
+            if ([key hasPrefix:@"ex_"]) {
+                if(![key isEqualToString:@"ex_height_from"] && ![key isEqualToString:@"ex_height_to"])
+                [resultAdditionalParams setObject:[catingDict objectForKey:key] forKey:key];
+            }
+        }
+        
+        NSLog(@"ResultAdd %@",resultAdditionalParams);
+        //
+        
+        
+        //Дополнительные параметры со значениями
+        NSArray * profArray = [addParamsModel getParamsDict:[[catingDict objectForKey:@"profession_id"] integerValue]];
+        for(NSString * keys in resultAdditionalParams){
+            NSDictionary * params = [addParamsModel getInformationDictionary:keys andProfArray:profArray];
+            NSLog(@"PARAMSADDD %@",[params objectForKey:@"title"]);
+            if(params.count> 0){
+                NSDictionary * finalInfoParams = [addParamsModel getNameByDictionary:[params objectForKey:@"array"] andFindID:[catingDict objectForKey:keys]];
+    
+                
+                if(![[finalInfoParams objectForKey:@"name"] isEqual:[NSNull null]]){
+                        [tempArray addObject:[NSString stringWithFormat:@"%@: %@",[params objectForKey:@"title"],[finalInfoParams objectForKey:@"name"]]];
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        for (int i = 0; i < tempArray.count; i++) {
+            ViewForCastingParams * view = [[ViewForCastingParams alloc] initWithMainView:self.viewForParams endHeight:0 + 16 * i endText:[tempArray objectAtIndex:i]];
+            [self.viewForParams addSubview:view];
+        }
+        CGRect newRect = self.viewForParams.frame;
+        newRect.size.height = 20 + 16 * tempArray.count;
+        self.viewForParams.frame = newRect;
+        
+        self.heightForAnimation = self.viewForParams.frame.size.height - self.starHeightViewForParams;
+        
+        [self animationWithHeigthAnimathion:self.heightForAnimation endType:1];
+        self.mainScrollView.contentSize = CGSizeMake(0, self.view.bounds.size.height + self.heightForAnimation - 64 - self.heightHide);
+
+        
     }
     
     
@@ -143,6 +240,7 @@
     // Do any additional setup after loading the view.
     [[VKSdk initializeWithAppId:@"5910248"] registerDelegate:self];
     [[VKSdk initializeWithAppId:@"5910248"] setUiDelegate:self];
+    
     
 }
 

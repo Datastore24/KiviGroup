@@ -10,6 +10,7 @@
 #import "MyVacanciesCell.h"
 #import "MyVacanciesModel.h"
 #import "MyVacanciesDetailsController.h"
+#import "MyCustingDetailsController.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "DateTimeMethod.h"
 #import "ChooseProfessionalModel.h"
@@ -55,7 +56,12 @@
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self createActivitiIndicatorAlertWithView];
-    [self.myVacanciesModel loadVacanciesFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
+     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+         [self.myVacanciesModel loadVacanciesFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
+     }else{
+         [self.myVacanciesModel loadСastingsFromServerOffset:@"0" andCount:@"1000" andIsActive:@""];
+     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +72,14 @@
 - (void) loadMyVacancies:(NSDictionary *) myVacanDict{
     if([[myVacanDict objectForKey:@"items"] isKindOfClass:[NSArray class]]){
         self.myVacanArray = [myVacanDict objectForKey:@"items"];
-        self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[myVacanDict objectForKey:@"count"]];
+        
+         if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+             self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных вакансий",[myVacanDict objectForKey:@"count"]];
+         }else{
+             self.labelListVacancies.text = [NSString stringWithFormat:@"%@ активных кастингов",[myVacanDict objectForKey:@"count"]];
+         }
+        
+        
         [self.mainTableView reloadData];
         [self deleteActivitiIndicator];
     }
@@ -190,29 +203,56 @@
     
     NSDictionary * dict = [self.myVacanArray objectAtIndex:indexPath.row];
     
-    MyVacanciesDetailsController * myVacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyVacanciesDetailsController"];
-    
-    myVacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
-    myVacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
-    myVacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
-    myVacanciesDetailsController.profID = [dict objectForKey:@"profession_id"];
-    
-    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
-    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dict objectForKey:@"profession_id"]]];
-    NSDictionary *item;
-    if(filtered.count>0){
-        item = [filtered objectAtIndex:0];
-    }
-    
-    if(item.count > 0){
-        myVacanciesDetailsController.profName = [item objectForKey:@"name"];
-    }
-
     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        
+        MyVacanciesDetailsController * myVacanciesDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyVacanciesDetailsController"];
+        
+        myVacanciesDetailsController.vacancyID = [dict objectForKey:@"id"];
+        myVacanciesDetailsController.vacancyURL = [dict objectForKey:@"logo_url"];
+        myVacanciesDetailsController.vacancyName = [dict objectForKey:@"name"];
+        myVacanciesDetailsController.profID = [dict objectForKey:@"profession_id"];
+        
+        NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dict objectForKey:@"profession_id"]]];
+        NSDictionary *item;
+        if(filtered.count>0){
+            item = [filtered objectAtIndex:0];
+        }
+        
+        if(item.count > 0){
+            myVacanciesDetailsController.profName = [item objectForKey:@"name"];
+        }
+        
         [self.navigationController pushViewController:myVacanciesDetailsController animated:YES];
-    } else {
-        [self pushCountryControllerWithIdentifier:@"MyCustingDetailsController"];
+        
+        
+    }else{
+        
+        MyCustingDetailsController * myCastingsDetailsController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCustingDetailsController"];
+        
+        myCastingsDetailsController.castingID = [dict objectForKey:@"id"];
+        myCastingsDetailsController.castingURL = [dict objectForKey:@"logo_url"];
+        myCastingsDetailsController.castingName = [dict objectForKey:@"name"];
+        myCastingsDetailsController.profID = [dict objectForKey:@"profession_id"];
+        
+        NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dict objectForKey:@"profession_id"]]];
+        NSDictionary *item;
+        if(filtered.count>0){
+            item = [filtered objectAtIndex:0];
+        }
+        
+        if(item.count > 0){
+            myCastingsDetailsController.profName = [item objectForKey:@"name"];
+        }
+        
+        
+            [self.navigationController pushViewController:myCastingsDetailsController animated:YES];
+  
+        
     }
+    
+    
     
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

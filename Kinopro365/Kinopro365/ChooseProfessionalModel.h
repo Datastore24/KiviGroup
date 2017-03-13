@@ -29,4 +29,6 @@
 - (void) getProfessionalArrayToTableView;
 - (void) getArrayToTableView;
 + (NSArray *) getArrayProfessions;
++ (NSArray *) getArrayProfessionsForVacancy;
++ (NSArray *) getArrayProfessionsForCastings;
 @end
