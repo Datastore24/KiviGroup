@@ -124,6 +124,22 @@
     
 }
 
+
+-(NSDictionary *) getIDDictionary: (NSString *) infName andArray: (NSArray *) array{
+    
+    NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(name like %@)", infName]];
+    NSDictionary *item;
+    if(filtered.count>0){
+        item = [filtered objectAtIndex:0];
+    }else{
+        item = @{};
+    }
+    
+    
+    return item;
+    
+}
+
 -(NSDictionary *) getNameByDictionary: (NSArray *) array andFindID: (NSString *) infID {
     
     NSArray *filtered = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", infID]];

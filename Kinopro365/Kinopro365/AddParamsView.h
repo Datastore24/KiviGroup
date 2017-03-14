@@ -23,7 +23,8 @@
                         andId: (NSString *) fieldID
              andDefValueIndex: (NSString *) defValueIndex
                  andArrayData: (NSArray*) arrayData
-                  andIsSearch: (BOOL) isSearch;
+                  andIsSearch: (BOOL) isSearch
+                 andIsCasting: (BOOL) isCasting;
 
 - (void) ChekButtonWithText: (NSString*) buttonText andBool: (BOOL) isbool;
 
