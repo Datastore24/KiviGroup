@@ -29,7 +29,7 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Кастинги"];
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Мои кастинги"];
     self.navigationItem.titleView = CustomText;
     
     self.mainScrollView.scrollEnabled = NO;

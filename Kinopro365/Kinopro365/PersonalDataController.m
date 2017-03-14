@@ -86,10 +86,10 @@
         
         UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
         
-        if([userTable.isSendToServer integerValue] == 0){
+        
             
             
-            [self showAlertWithMessageWithTwoBlock:@"Имеются неотправленные на сервера данные.\nЗагрузить данные с сервера или продолжить редактирование?" nameButtonOK:@"С сервера" blockOK:^{
+
                 NSLog(@"BLOCKOK");
                 [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
                     
@@ -109,17 +109,11 @@
                     
                     
                 }];
-            } nameButtonCancel:@"Продолжить" blockCancel:^{
-                [self loadFromDb];
-            }];
             
             
             
-        }else{
-           
-              [self loadFromDb];
             
-        }
+        
     }
    
     
@@ -215,7 +209,7 @@ replacementString:(NSString *)string {
     } else {
         [self.buttonCity setTitle:string forState:UIControlStateNormal];
         [self.buttonCity setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    } 
+    }
 }
 
 #pragma mark - ChooseProfessionalViewControllerDelegate
@@ -425,10 +419,16 @@ replacementString:(NSString *)string {
                     NSDictionary * profDictForDB = [NSDictionary dictionaryWithObjectsAndKeys:
                                                     [profDict objectForKey:@"profession_id"],@"profession_id", nil];
                     [profMutableArray addObject:profDictForDB];
+                    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
                     
+                     NSArray * profArray = [ChooseProfessionalModel getArrayProfessions];
+                    
+                    NSDictionary * params = [addParamsModel getInformationDictionary:[profDict objectForKey:@"profession_id"]  andProfArray:profArray];
+                    
+
                     NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                            [profDict objectForKey:@"profession_id"],@"additionalID",
-                                           @"",@"additionalName",nil];
+                                           [params objectForKey:@"name"],@"additionalName",nil];
                     
                     [resultMutProfArray addObject:dict];
                     
@@ -792,6 +792,18 @@ replacementString:(NSString *)string {
 
 - (IBAction)actionButtonCountry:(UIButton *)sender {
     [[SingleTone sharedManager] setCountry_citi:@"country"];
+    self.buttonCity.titleLabel.text = @"Город";
+//    RLMResults *profTableDataArray = [UserInformationTable allObjects];
+//    
+//    if(profTableDataArray.count>0){
+//        
+//        UserInformationTable * userTable = [profTableDataArray objectAtIndex:0];
+//        RLMRealm *realm = [RLMRealm defaultRealm];
+//        [realm beginWriteTransaction];
+//        userTable.city_id = [NSString stringWithFormat:@""];
+//        [realm commitWriteTransaction];
+//        
+//    }
     [self pushCountryController];
 }
 
@@ -873,6 +885,14 @@ replacementString:(NSString *)string {
     }else if(self.textFildLastNameEN.text.length == 0){
         
         [self showAlertWithMessage:@"Заполните Вашу фамилию латиницей"];
+    }else if([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]){
+        
+        [self showAlertWithMessage:@"Выберите Страну"];
+        
+    }else if([self.buttonCity.titleLabel.text isEqualToString:@"Город"]){
+       
+        [self showAlertWithMessage:@"Выберите город"];
+        NSLog(@"TEST");
         
     }else if(self.textFildPhone1.text.length == 0){
         
