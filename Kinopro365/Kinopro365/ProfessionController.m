@@ -13,6 +13,7 @@
 #import "ViewForScroll.h"
 #import "Macros.h"
 #import "ProfessionDetailController.h"
+#import "UIView+BorderView.h"
 
 
 @interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate,ProfessionModelDelegate,KinoproSearchControllerDelegate>
@@ -124,6 +125,7 @@
            
             labelCount.text =  [NSString stringWithFormat:@"Всего: %@ анкет",
                                 [profDict objectForKey:@"count"]];
+            labelCount.textColor = [UIColor hx_colorWithHexRGBAString:@"838483"];
             labelCount.textAlignment = NSTextAlignmentCenter;
             labelCount.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:12];
             [scrolView addSubview:labelCount];
@@ -131,6 +133,11 @@
             NSString * resultName = [NSString stringWithFormat:@"%@ %@",
                                      [itemDict objectForKey:@"first_name"],
                                      [itemDict objectForKey:@"last_name"]];
+            
+            UIView * upBorderView = [UIView createGrayBorderViewWithView:scrolView andHeight:CGRectGetMaxY(labelCount.frame) + 7 endType:NO];
+            [scrolView addSubview:upBorderView];
+            
+            
             
             //Для Кирилла Пописать булевые параметры в конце метода !!---------
             

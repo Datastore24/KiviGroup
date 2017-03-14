@@ -46,6 +46,15 @@
     
     [self.shadowView.layer setCornerRadius:5.0f];
     
+    
+    [self.barButtonID setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:FONT_ISTOK_REGULAR size:16],
+      UITextAttributeFont,
+      nil]
+                                                forState:UIControlStateNormal];
+    
+    
     //проверка на наличие нажатой кнопки награда и лайк
     
     self.buttonLike.isBool = NO;
@@ -440,6 +449,12 @@
         self.labelStarCount.text = [NSString stringWithFormat:@"%ld", count];
         sender.isBool = YES;
     }
+}
+
+- (IBAction)barButtonID:(id)sender {
+    
+    NSLog(@"Копировать ID в буффер обмена");
+    
 }
 
 -(void) deleteActivitiIndicatorDelegate{

@@ -36,6 +36,8 @@
     
     self.buttonSearch.layer.cornerRadius = 5.f;
     
+    self.viewCountAddParams.layer.cornerRadius = CGRectGetWidth(self.viewCountAddParams.bounds) / 2;
+    
     UILabel * customText = [[UILabel alloc]initWithTitle:@"Поиск"];
     self.navigationItem.titleView = customText;
     
