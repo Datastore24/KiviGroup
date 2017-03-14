@@ -197,17 +197,49 @@
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonReward: (CustomButton*) sender {
     
-    NSLog(@"Кнопка награды");
+    if (sender.isBool) {
+        [sender setImage:[UIImage imageNamed:@"professionImageStar"] forState:UIControlStateNormal];
+        NSInteger count = [viewCellMyCasting.numberRewar.text integerValue];
+        count -= 1;
+        viewCellMyCasting.numberRewar.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = NO;
+    } else {
+        [sender setImage:[UIImage imageNamed:@"isRewarImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [viewCellMyCasting.numberRewar.text integerValue];
+        count += 1;
+        viewCellMyCasting.numberRewar.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = YES;
+    }
 }
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonLike: (CustomButton*) sender {
     
-    NSLog(@"Кнопка лайка");
+    if (sender.isBool) {
+        [sender setImage:[UIImage imageNamed:@"professionImageLike"] forState:UIControlStateNormal];
+        NSInteger count = [viewCellMyCasting.numberLike.text integerValue];
+        count -= 1;
+        viewCellMyCasting.numberLike.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = NO;
+    } else {
+        [sender setImage:[UIImage imageNamed:@"isLikeImageOn"] forState:UIControlStateNormal];
+        NSInteger count = [viewCellMyCasting.numberLike.text integerValue];
+        count += 1;
+        viewCellMyCasting.numberLike.text = [NSString stringWithFormat:@"%ld", count];
+        sender.isBool = YES;
+    }
 }
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonBookmark: (CustomButton*) sender {
     
-    NSLog(@"Кнопка закладки");
+    if (!sender.isBool) {
+            [sender setImage:[UIImage imageNamed:@"professionImageBookmarkOn"]
+                    forState:UIControlStateNormal];
+            sender.isBool = YES;
+    } else {
+            [sender setImage:[UIImage imageNamed:@"professionImageBookmark"]
+                    forState:UIControlStateNormal];
+            sender.isBool = NO;
+    }
 }
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonDelete: (CustomButton*) sender {
