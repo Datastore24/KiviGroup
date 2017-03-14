@@ -14,8 +14,8 @@
 + (UIView*) createBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height {
     
     CGRect rectBorderView = CGRectZero;
-    rectBorderView.origin = CGPointMake(0, height);
-    rectBorderView.size = CGSizeMake(CGRectGetWidth(mainView.bounds), 1);
+    rectBorderView.origin = CGPointMake(9, height);
+    rectBorderView.size = CGSizeMake(CGRectGetWidth(mainView.bounds) - 18, 0.5);
     UIView * borderView = [[UIView alloc] initWithFrame:rectBorderView];
     borderView.backgroundColor = [UIColor whiteColor];
     borderView.alpha = 0.1f;
@@ -23,13 +23,18 @@
     return borderView;
 }
 
-+ (UIView*) createGrayBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height {
++ (UIView*) createGrayBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height endType: (BOOL) type {
     
     CGRect rectBorderView = CGRectZero;
-    rectBorderView.origin = CGPointMake(0, height);
-    rectBorderView.size = CGSizeMake(CGRectGetWidth(mainView.bounds), 1);
+    if (type) {
+        rectBorderView.origin = CGPointMake(9, height);
+        rectBorderView.size = CGSizeMake(CGRectGetWidth(mainView.bounds) - 18, 0.5);
+    } else {
+        rectBorderView.origin = CGPointMake(0, height);
+        rectBorderView.size = CGSizeMake(CGRectGetWidth(mainView.bounds), 0.5);
+    }
     UIView * borderView = [[UIView alloc] initWithFrame:rectBorderView];
-    borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"ededed"];
+    borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"AEAEAE" alpha:0.75];
     
     return borderView;
 }

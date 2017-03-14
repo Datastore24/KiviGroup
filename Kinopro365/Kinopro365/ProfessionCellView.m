@@ -28,8 +28,19 @@
         
         self.frame = CGRectMake(orgnX, height, CGRectGetWidth(view.bounds), 125.f);
         
-        UIView * upBorderView = [UIView createGrayBorderViewWithView:self andHeight:0.f];
+        UIView * upBorderView = [UIView createGrayBorderViewWithView:self andHeight:125.f endType:YES];
         [self addSubview:upBorderView];
+        
+        UIView * viewShadow = [[UIView alloc] initWithFrame:CGRectMake(13.f, 5.f, 75.f, 114.f)];
+        viewShadow.backgroundColor = [UIColor lightGrayColor];
+        [viewShadow.layer setShadowOffset:CGSizeMake(0, 3)];
+        [viewShadow.layer setShadowOpacity:0.7];
+        [viewShadow.layer setShadowRadius:2.0f];
+        [viewShadow.layer setShouldRasterize:YES];
+        
+        [viewShadow.layer setCornerRadius:5.0f];
+        
+        [self addSubview:viewShadow];
         
         UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(13.f, 5.f, 76.f, 115.f)];
         //Тень
@@ -51,17 +62,12 @@
                                     avatarImageView.layer.cornerRadius = 5;
                                    
                                     
-                                    avatarImageView.image = image;
-                                    
-                                    
+                                    avatarImageView.image = image;  
                                 }else{
                                     //Тут обработка ошибки загрузки изображения
                                 }
                             }];
-        
-        
-        
-        
+
         [self addSubview:avatarImageView];
         
         UILabel * labelName = [self createLabelWithName:name andFrame:CGRectMake(110.f, 11.f, 200, 17.75f)];

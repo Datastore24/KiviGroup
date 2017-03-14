@@ -110,6 +110,9 @@
     cell.image.image = [UIImage imageNamed:[dict objectForKey:@"image"]];
     cell.name.text = [dict objectForKey:@"name"];
     cell.number.text = [dict objectForKey:@"number"];
+//    if ([cell.number.text isEqualToString:@"0"]) {
+//        cell.number.alpha = 0.f;
+//    }
 //    cell.arrawImage = [UIImage imageNamed:@""];
     
     return cell;
