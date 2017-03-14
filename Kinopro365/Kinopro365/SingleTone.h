@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString * citySearchID;
 
 @property (strong, nonatomic) NSString * typeView; // Параметр для проверки окна (кастинги или вакансии) 0 - Вакансии 1 - Кастинги
+@property (strong, nonatomic) NSString * myKinosfera; //Если приходит 1 то окно анкеты меняется---------------
 
 + (id)sharedManager;
 

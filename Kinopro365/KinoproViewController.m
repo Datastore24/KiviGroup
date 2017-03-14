@@ -40,7 +40,6 @@
     ChooseProfessionalModel * chooseProfModel = [[ChooseProfessionalModel alloc] init];
     chooseProfModel.delegate = self;
     [chooseProfModel getArrayToTableView];
-   
     
 }
 
@@ -110,10 +109,15 @@
     cell.image.image = [UIImage imageNamed:[dict objectForKey:@"image"]];
     cell.name.text = [dict objectForKey:@"name"];
     cell.number.text = [dict objectForKey:@"number"];
-//    if ([cell.number.text isEqualToString:@"0"]) {
-//        cell.number.alpha = 0.f;
-//    }
+    if ([cell.number.text isEqualToString:@"0"]) {
+        cell.number.alpha = 0.f;
+    }
 //    cell.arrawImage = [UIImage imageNamed:@""];
+    
+    //Если окно загружается из меню аватрки
+    if ([[[SingleTone sharedManager] myKinosfera] isEqualToString:@"1"]) {
+        cell.number.alpha = 0.f;
+    }
     
     return cell;
     
@@ -125,6 +129,13 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    //Если окно загружается из меню аватарки необходимо попасть сразу в анкету
+    if ([[[SingleTone sharedManager] myKinosfera] isEqualToString:@"1"]) {
+        
+        [self pushMethodWithIdentifier:@"ProfessionDetailController"];
+        
+    } else {
+    
     ProfessionController * profController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionController"];
     
     NSDictionary * dict = [self.finalArray objectAtIndex:indexPath.row];
@@ -135,7 +146,7 @@
     
     
     NSLog(@"didSelectRowAtIndexPath %ld", (long)indexPath.row);
-    
+    }
 }
 
 #pragma mark - Actions

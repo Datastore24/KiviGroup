@@ -63,6 +63,7 @@
     self.textView.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"].CGColor;
     self.textView.layer.borderWidth = 1.f;
     self.textView.layer.cornerRadius = 5.f;
+    self.textView.scrollEnabled = NO;
     
     self.mainScrollView.userInteractionEnabled = YES;
     
@@ -342,7 +343,7 @@
         if (isBool) {
             self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14) + (352 - 130));
             self.mainScrollView.contentOffset =
-            CGPointMake(0, ((CGRectGetMaxY(self.textView.frame) + 30) + (352 - 130)) - self.view.frame.size.height);
+            CGPointMake(0, ((CGRectGetMaxY(self.buttonCreate.frame) + 14) + (352 - 130)) - self.view.frame.size.height);
         } else {
             self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14));
         }
@@ -366,7 +367,7 @@
             self.buttonCreate.frame = buttonRect;
             
             self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130));
-            self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.textView.frame) + 30 + (352 - 130)) - self.view.frame.size.height);
+            self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130)) - self.view.frame.size.height);
             
             
         }];

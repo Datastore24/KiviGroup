@@ -15,6 +15,9 @@
 
 @interface MenuViewController () <MenuViewModelDelegate>
 
+@property (strong, nonatomic) NSArray * arrayImagesOn;
+@property (strong, nonatomic) NSArray * arrayImagesOff;
+
 @end
 
 @implementation MenuViewController
@@ -24,10 +27,24 @@
     MenuViewModel * menuViewModel = [[MenuViewModel alloc] init];
     menuViewModel.delegate=self;
     [menuViewModel loadUserInformation];
+    
+    self.viewForAlert.layer.cornerRadius = CGRectGetWidth(self.viewForAlert.bounds) / 2;
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.arrayImagesOn = [NSArray arrayWithObjects:
+                          @"filmImage", @"megaphoneImageOn", @"groupImageOn",
+                          @"castingImageOn", @"bookmarkImageOn", @"notificationImageOn",
+                          @"walletImageOn", @"settingImageOn", nil];
+    
+    self.arrayImagesOff = [NSArray arrayWithObjects:
+                           @"filmImageOff", @"megaphoneImage", @"groupImage",
+                           @"theateImage", @"bookmarkImage", @"notificationsImage",
+                           @"walletImaga", @"settingsImage", nil];
     
     self.navigationController.navigationBarHidden = YES;
 }
@@ -64,15 +81,19 @@
     
     for (int i = 0; i < self.arrayButtons.count; i++) {
         UILabel * label = [self.arrayLabels objectAtIndex:i];
+        UIImageView * imageView = [self.arrayImages objectAtIndex:i];
         if ([[self.arrayButtons objectAtIndex:i] isEqual:sender]) {
             label.font = [UIFont fontWithName:FONT_ISTOK_BOLD size:16];
+            imageView.image = [UIImage imageNamed:[self.arrayImagesOn objectAtIndex:i]];
         } else {
             label.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+            imageView.image = [UIImage imageNamed:[self.arrayImagesOff objectAtIndex:i]];
         }
     }
 }
 
 - (IBAction)actionButtonKinopro:(id)sender {
+    [[SingleTone sharedManager] setMyKinosfera:@"0"];
     [self pushMethodWithIdentifier:@"KinoproViewController"];
     
 }
@@ -88,6 +109,7 @@
 }
 
 - (IBAction)actionButtonBookmark:(id)sender {
+    [[SingleTone sharedManager] setMyKinosfera:@"0"];
     [self pushMethodWithIdentifier:@"BookmarksController"];
 }
 
@@ -105,6 +127,27 @@
 
 - (IBAction)actionButtonFeedback:(id)sender {
     [self pushMethodWithIdentifier:@"FeedbackController"];
+}
+
+- (IBAction)actionAvatar:(id)sender {
+    
+    
+    [[SingleTone sharedManager] setMyKinosfera:@"1"];
+    //Необходима проверка колличества профессий
+    //Если приходит несколько профессий переходим в контроллер выбора профессий
+    //Если одна профессия переходим сразу в анкету
+    //-----
+    //Временный будевый параметр
+    BOOL isBool = NO; //Если YES приходит Массив, если NO приходит одна профессия
+    
+    if (isBool) {
+        [self pushMethodWithIdentifier:@"KinoproViewController"];
+    } else {
+        [self pushMethodWithIdentifier:@"ProfessionDetailController"];
+    }
+    
+    
+    
 }
 
 //редактирование профиля

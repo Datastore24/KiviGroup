@@ -14,6 +14,7 @@
 #import "Macros.h"
 #import "ProfessionDetailController.h"
 #import "UIView+BorderView.h"
+#import "HexColors.h"
 
 
 @interface ProfessionController () <ViewForScrollDelegate, ProfessionCellViewDelegate,ProfessionModelDelegate,KinoproSearchControllerDelegate>
@@ -108,6 +109,7 @@
         step = counter / 50 + 1;
     }
     UIScrollView * scrolView;
+    UILabel * labelCount;
     for (int i = 0; i < step; i++) {
         scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0 + CGRectGetWidth(self.view.bounds) * i,
                                                                                   0.f, self.mainScrollView.frame.size.width,
@@ -116,19 +118,20 @@
         [self.mainScrollView addSubview:scrolView];
         [self.arrayScrollsView addObject:scrolView];
         
+        labelCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, CGRectGetWidth(self.view.bounds), 16)];
+        
+        
+        labelCount.text =  [NSString stringWithFormat:@"Всего: %@ анкет",
+                            [profDict objectForKey:@"count"]];
+        labelCount.textColor = [[UIColor hx_colorWithHexRGBAString:@"343536"] colorWithAlphaComponent:0.75];
+        labelCount.textAlignment = NSTextAlignmentCenter;
+        labelCount.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:12];
+        [scrolView addSubview:labelCount];
+        
     }
         for (int j = 0; j < itemsArray.count; j++) {
             
             NSDictionary * itemDict = [itemsArray objectAtIndex:j];
-            UILabel * labelCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, CGRectGetWidth(self.view.bounds), 16)];
-            
-           
-            labelCount.text =  [NSString stringWithFormat:@"Всего: %@ анкет",
-                                [profDict objectForKey:@"count"]];
-            labelCount.textColor = [UIColor hx_colorWithHexRGBAString:@"838483"];
-            labelCount.textAlignment = NSTextAlignmentCenter;
-            labelCount.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:12];
-            [scrolView addSubview:labelCount];
             
             NSString * resultName = [NSString stringWithFormat:@"%@ %@",
                                      [itemDict objectForKey:@"first_name"],
