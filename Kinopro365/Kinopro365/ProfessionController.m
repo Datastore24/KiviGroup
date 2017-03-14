@@ -142,7 +142,7 @@
                                              andCountryText:[NSString stringWithFormat:@"%@ (%@)",
                                                              [itemDict objectForKey:@"city_name"],
                                                              [itemDict objectForKey:@"country_name"]]
-                                             andAgeText:[NSString stringWithFormat:@"%@ лет",
+                                             andAgeText:[NSString stringWithFormat:@"Возраст: %@",
                                                          [itemDict objectForKey:@"age"]]
                                              andGrowthText:@""
                                              andStarsNumber:[itemDict objectForKey:@"count_rewards"]

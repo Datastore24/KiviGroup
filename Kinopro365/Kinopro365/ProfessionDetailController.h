@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelStarCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelLikeCount;
 @property (weak, nonatomic) IBOutlet UIImageView *imageAvatar;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 
 
 - (IBAction)actionButtonBack:(UIBarButtonItem *)sender;

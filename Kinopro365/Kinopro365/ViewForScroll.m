@@ -66,7 +66,7 @@
         [buttonRight addTarget:self action:@selector(actionbuttonRight:) forControlEvents:UIControlEventTouchUpInside];
         [rightView addSubview:buttonRight];
         
-        UIView * borderView = [UIView createGrayBorderViewWithView:self andHeight:0];
+        UIView * borderView = [UIView createGrayBorderViewWithView:self andHeight:0 endType: NO];
         [self addSubview:borderView];
         
     }

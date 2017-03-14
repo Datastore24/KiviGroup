@@ -12,6 +12,6 @@
 
 //СОздание границы для таблицы
 + (UIView*) createBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height;
-+ (UIView*) createGrayBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height;
++ (UIView*) createGrayBorderViewWithView: (UIView*) mainView andHeight: (CGFloat) height endType: (BOOL) type;
 
 @end

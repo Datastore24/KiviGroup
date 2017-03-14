@@ -38,6 +38,14 @@
     self.buttonPhoneOne.layer.cornerRadius = 5.f;
     self.buttonPhoneTwo.layer.cornerRadius = 5.f;
     
+    self.shadowView.backgroundColor = [UIColor lightGrayColor];
+    [self.shadowView.layer setShadowOffset:CGSizeMake(0, 3)];
+    [self.shadowView.layer setShadowOpacity:0.7];
+    [self.shadowView.layer setShadowRadius:2.0f];
+    [self.shadowView.layer setShouldRasterize:YES];
+    
+    [self.shadowView.layer setCornerRadius:5.0f];
+    
     //проверка на наличие нажатой кнопки награда и лайк
     
     self.buttonLike.isBool = NO;
@@ -78,7 +86,7 @@
                                  self.view.frame.size.height - 64.f)];
     //    self.imageView.backgroundColor = [UIColor blueColor];
     self.imageView.imageViewDelete.backgroundColor = [UIColor blackColor];
-    [self.imageView.imageViewDelete setContentMode:UIViewContentModeScaleAspectFit];
+    [self.imageView.imageViewDelete setContentMode:UIViewContentModeTop];
     [self.view addSubview:self.imageView];
     self.imageView.alpha = 0.f;
     
@@ -119,7 +127,7 @@
                          [profileDict objectForKey:@"city_name"],
                          [profileDict objectForKey:@"country_name"]];
     
-    self.labelAge.text = [NSString stringWithFormat:@"%@ лет",
+    self.labelAge.text = [NSString stringWithFormat:@"Возраст: %@",
                           [profileDict objectForKey:@"age"]];
     
     if([profileDict objectForKey:@"ex_height"]){
@@ -338,17 +346,20 @@
         
         //Отрисовка тени-------------------------------------
         UIView * viewShadow = [[UIView alloc] initWithFrame:
-                               CGRectMake(0, self.maxHeightVideo + 36.f + 25 * i+1,
+                               CGRectMake(0, CGRectGetMinY(addParamsView.frame) - 2.f,
                                           CGRectGetWidth(self.view.bounds), 2)];
         viewShadow.backgroundColor = [UIColor whiteColor];
         viewShadow.layer.borderColor = [UIColor whiteColor].CGColor;
         viewShadow.layer.shadowRadius  = 1.5f;
-        viewShadow.layer.shadowColor   = [UIColor blackColor].CGColor;
+        viewShadow.layer.shadowColor   = [UIColor darkGrayColor].CGColor;
         viewShadow.layer.shadowOffset  = CGSizeMake(0.0f, 2.0f);
         viewShadow.layer.shadowOpacity = 0.7f;
         viewShadow.layer.masksToBounds = NO;
-        
         [self.mainScrollView addSubview:viewShadow];
+        
+        UIView * custView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(addParamsView.frame) - 3.f, CGRectGetWidth(self.view.bounds), 3.f)];
+        custView.backgroundColor = [UIColor whiteColor];
+        [self.mainScrollView addSubview:custView];
         
     }
 

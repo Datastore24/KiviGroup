@@ -16,6 +16,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        UIView * viewShadow = [[UIView alloc] initWithFrame:self.bounds];
+        viewShadow.backgroundColor = [UIColor lightGrayColor];
+        [viewShadow.layer setShadowOffset:CGSizeMake(0, 3)];
+        [viewShadow.layer setShadowOpacity:0.7];
+        [viewShadow.layer setShadowRadius:2.0f];
+        [viewShadow.layer setShouldRasterize:YES];
+        
+        [viewShadow.layer setCornerRadius:5.0f];
+        
+        [self addSubview:viewShadow];
+        
         UIButton * buttonImage = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonImage.frame = self.bounds;
        
