@@ -11,6 +11,7 @@
 #import "MyCustingDetailsModel.h"
 #import "DateTimeMethod.h"
 #import "AddParamsModel.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 
 @interface MyCustingDetailsController () <ViewCellMyCastingDelegate, MyCustingDetailsModelDelegate>
@@ -28,6 +29,8 @@
 - (void) loadView {
     [super loadView];
     
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Кастинги"];
+    self.navigationItem.titleView = CustomText;
     
     self.mainScrollView.scrollEnabled = NO;
     self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.bounds) * 2, 0);
@@ -59,13 +62,10 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+    
+    [self createActivitiIndicatorAlertWithView];
+    
     //На рассмотрение
-    for (int i = 0; i < 5; i++) {
-        ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:@"testImageVacancies.png" endName:@"Анастасия Филатова" endCountry:@"Москва (Рoссия)" endAge:@"25 лет" endIsReward:NO endRewardNumber:@"5" endIsLike:NO endLikeNumber:@"15" endIsBookmark:NO endProfileID:nil enfGrowth:@"рост: 168 см" endApproved: NO];
-        cell.delegate = self;
-        [self.firstScrollView addSubview:cell];
-    }
-    self.firstScrollView.contentSize = CGSizeMake(0, 130.f * 5);
     
     //Одобренные
     for (int i = 0; i < 3; i++) {
@@ -98,10 +98,9 @@
     
     NSArray * castingType = [addParamsModel getTypeCustings];
     NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[self.castingDict objectForKey:@"project_type_id"] andProfArray:castingType];
+   
+    self.titleLabel.text =  [paramsCasting objectForKey:@"name"];
     
-    NSLog(@"INF %@",[paramsCasting objectForKey:@"name"]);
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:[paramsCasting objectForKey:@"name"]];
-    self.navigationItem.titleView = CustomText;
     //
     
     NSDate * endDate = [DateTimeMethod timestampToDate:[self.castingDict objectForKey:@"end_at"]];
@@ -115,9 +114,78 @@
 
     
     //Тестовые строки---------------------------------------
- 
+    NSLog(@"HIDE %@ COM %@",[self.castingDict objectForKey:@"contact_info"],[self.castingDict objectForKey:@"description"]);
     self.hideTextLabel.text = [self.castingDict objectForKey:@"contact_info"];
     self.comTextLabel.text = [self.castingDict objectForKey:@"description"];
+    
+    if(![[self.castingDict objectForKey:@"logo_url"] isEqual:[NSNull null]]){
+        NSURL *imgURL = [NSURL URLWithString:[self.castingDict objectForKey:@"logo_url"]];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:imgURL
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                        NSURL *imageURL) {
+                                
+                                if(image){
+                                    self.mainImage.contentMode = UIViewContentModeScaleAspectFill;
+                                    self.mainImage.clipsToBounds = YES;
+                                    self.mainImage.layer.cornerRadius = 5;
+                                    self.mainImage.image = image;
+                                    [self deleteActivitiIndicator];
+                                    
+                                    
+                                }else{
+                                    //Тут обработка ошибки загрузки изображения
+                                    [self deleteActivitiIndicator];
+                                }
+                            }];
+    }else{
+        [self deleteActivitiIndicator];
+    }
+    
+    [self.myCastingDetailsModel loadOffersProfile:self.castingID andOffset:@"0" andCount:@"1000" complitionBlock:^(id response) {
+        if([response isKindOfClass:[NSDictionary class]]){
+            NSArray * respOffers = [response objectForKey:@"items"];
+            for (UIView * view in self.firstScrollView.subviews) {
+                [view removeFromSuperview];
+            }
+            
+            for (int i = 0; i < respOffers.count; i++) {
+                NSDictionary * dictOffers = [respOffers objectAtIndex:i];
+                
+                
+                    ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[NSString stringWithFormat:@"%@ %@",[dictOffers objectForKey:@"first_name"],[dictOffers objectForKey:@"last_name"]] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет",[dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endProfileID:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"id"]] enfGrowth:[NSString stringWithFormat:@"рост: -- см"] endApproved: NO];
+                    cell.delegate = self;
+                    [self.firstScrollView addSubview:cell];
+                
+                
+
+            }
+            self.firstScrollView.contentSize = CGSizeMake(0, 130.f * respOffers.count);
+            
+        }
+    }];
+    
+    
+    
+  [self.myCastingDetailsModel loadApprovedProfile:self.castingID andOffset:@"0" andCount:@"1000" complitionBlock:^(id response) {
+      if([response isKindOfClass:[NSDictionary class]]){
+          NSArray * respApproved = [response objectForKey:@"items"];
+          for (UIView * view in self.secondScrollView.subviews) {
+              [view removeFromSuperview];
+          }
+          
+          for (int i = 0; i < respApproved.count; i++) {
+              NSDictionary * dictApproved = [respApproved objectAtIndex:i];
+              
+          }
+          
+      }
+  }];
+
 }
 
 #pragma mark - ViewCellMyCastingDelegate
