@@ -13,13 +13,13 @@
 @implementation AddCastingModel
 
 
-- (void) addCastingsName: (NSString *) name andParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
+- (void) addCastingsParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack{
     
     APIManger * apiManager = [[APIManger alloc] init];
     
     
     [apiManager postDataFromSeverWithMethod:@"casting.create" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
-        NSLog(@"Vacancies %@",response);
+     
         if([response objectForKey:@"error_code"]){
             
             NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],

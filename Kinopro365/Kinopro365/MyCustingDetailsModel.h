@@ -10,7 +10,7 @@
 
 @protocol MyCustingDetailsModelDelegate <NSObject>
 
--(void) loadMyCastings:(NSDictionary *) vacanciesDict;
+-(void) loadMyCastings:(NSDictionary *) castingsDict;
 
 @end
 

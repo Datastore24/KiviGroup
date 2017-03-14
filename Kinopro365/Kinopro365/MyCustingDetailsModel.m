@@ -26,7 +26,7 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-//            [self.delegate loadMyCastings:[response objectForKey:@"response"]];
+            [self.delegate loadMyCastings:[response objectForKey:@"response"]];
             
         }
     }];
