@@ -255,7 +255,7 @@
             NSMutableDictionary * resultDict = [NSMutableDictionary new];
             [resultDict setObject:self.photoID forKey:@"logo_id"];
             [resultDict setObject:self.textFildName.text forKey:@"name"];
-            [resultDict setObject:self.viewHideComment.textViewHide.text forKey:@"description"];
+            [resultDict setObject:self.viewComment.textView.text forKey:@"description"];
             [resultDict setObject:[[SingleTone sharedManager] countrySearchID] forKey:@"country_id"];
             [resultDict setObject:[[SingleTone sharedManager] citySearchID] forKey:@"city_id"];
             [resultDict setObject:unixTimeEndAt forKey:@"end_at"];

@@ -9,6 +9,7 @@
 #import "ViewCellMyCasting.h"
 #import "HexColors.h"
 #import "Macros.h"
+#import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
 @implementation ViewCellMyCasting
 
@@ -104,27 +105,27 @@
     
     [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     
-//    NSURL *imgURL = [NSURL URLWithString:imageName];
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//    [manager downloadImageWithURL:imgURL
-//                          options:0
-//                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//                             // progression tracking code
-//                         }
-//                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
-//                                    NSURL *imageURL) {
-//                            
-//                            if(image){
-//                                [button.imageView setContentMode:UIViewContentModeScaleAspectFill];
-//                                [button.imageView setClipsToBounds:YES];
-//                                [button.imageView.layer setCornerRadius:5];
-//                                [button setImage:image forState:UIControlStateNormal];
-//                                button.customID = profileID;
-//                                
-//                            }else{
-//                                //Тут обработка ошибки загрузки изображения
-//                            }
-//                        }];
+    NSURL *imgURL = [NSURL URLWithString:imageName];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:imgURL
+                          options:0
+                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             // progression tracking code
+                         }
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,
+                                    NSURL *imageURL) {
+                            
+                            if(image){
+                                [button.imageView setContentMode:UIViewContentModeScaleAspectFill];
+                                [button.imageView setClipsToBounds:YES];
+                                [button.imageView.layer setCornerRadius:5];
+                                [button setImage:image forState:UIControlStateNormal];
+                                button.customID = profileID;
+                                
+                            }else{
+                                //Тут обработка ошибки загрузки изображения
+                            }
+                        }];
     
     
     return button;
