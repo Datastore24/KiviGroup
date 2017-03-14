@@ -7,6 +7,7 @@
 //
 
 #import "AddCastingController.h"
+#import "AddCastingModel.h"
 #import "HMImagePickerController.h"
 #import "HexColors.h"
 #import "CountryViewController.h"
@@ -20,6 +21,7 @@
 #import "ProfessionController.h"
 #import "AddParamsModel.h"
 #import "APIManger.h"
+#import "DateTimeMethod.h"
 
 @interface AddCastingController () <HMImagePickerControllerDelegate, CountryViewControllerDelegate, ViewForCommentDelegate>
 
@@ -201,6 +203,56 @@
 }
 
 - (IBAction)actionButtonCreate:(id)sender {
+    
+    NSDate * stringToDate = [DateTimeMethod convertStringToNSDate:self.buttonDate.titleLabel.text withFormatDate:@"dd MMMM yyyy"];
+    NSString * unixTimeEndAt = [DateTimeMethod dateToTimestamp:stringToDate];
+    
+    
+    NSDate * currentDate = [DateTimeMethod getLocalDateInFormat:@"dd MMMM yyyy"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
+    NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+    
+    AddCastingModel * addVacanciesModel = [[AddCastingModel alloc] init];
+    
+    if(!self.isEditor){
+        if(self.textFildName.text.length ==0){
+            [self showAlertWithMessage:@"Введите название кастинга"];
+        }else if(self.photoID.length == 0){
+            [self showAlertWithMessage:@"Выберите фото кастинга"];
+        }else if([unixTimeEndAt isEqualToString:@"0"]){
+            [self showAlertWithMessage:@"Выберите дату приема заявок"];
+        }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
+        }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
+            [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
+        }else if(self.buttonNeed.customID.length == 0){
+            [self showAlertWithMessage:@"Выберите профессию"];
+        }else if([[SingleTone sharedManager] countrySearchID].length == 0){
+            [self showAlertWithMessage:@"Выберите Страну"];
+        }else if([[SingleTone sharedManager] citySearchID].length == 0){
+            [self showAlertWithMessage:@"Выберите Город"];
+        }else if(self.buttonType.titleLabel.text.length == 0){
+            [self showAlertWithMessage:@"Выберите тип кастинга"];
+        }else if(self.buttonAgeFrom.titleLabel.text.length == 0){
+            [self showAlertWithMessage:@"Выберите возраст от"];
+        }else if(self.buttonAgeTo.titleLabel.text.length == 0){
+            [self showAlertWithMessage:@"Выберите возраст до"];
+        }else if(self.dopArray.count==0){
+            [self showAlertWithMessage:@"Выберите дополнительные параметры"];
+        }else if(self.buttonGender.titleLabel.text.length == 0){
+            [self showAlertWithMessage:@"Выберите пол"];
+//        }else if(self.viewComment.title. .text.length == 0){
+//            [self showAlertWithMessage:@"Заполните описание и иипажи"];
+        }else{
+        
+        }
+    }else{
+        
+    }
+    
+    
+
 }
 
 #pragma mark - UITextFieldDelegate
