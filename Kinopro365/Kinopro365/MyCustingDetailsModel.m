@@ -96,4 +96,22 @@
         }
     }];
 }
+
+- (void) deleteCasting: (NSString *) castingID complitionBlock: (void (^) (id response)) compitionBack{
+    APIManger * apiManager = [[APIManger alloc] init];
+    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             castingID,@"casting_id",nil];
+    
+    [apiManager getDataFromSeverWithMethod:@"casting.delete" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            compitionBack(response);
+        }else{
+            compitionBack(response);
+            
+        }
+    }];
+}
 @end

@@ -21,10 +21,6 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)actionButtonDelete:(id)sender {
-    
-    [self.delegate actionCell:self endButtonDelete:sender];
-}
 
 - (IBAction)actionButtonPush:(id)sender {
     [self.delegate actionCell:self endButtonPush:sender];

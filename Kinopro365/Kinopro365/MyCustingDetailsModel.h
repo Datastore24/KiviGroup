@@ -22,4 +22,5 @@
 -(void) loadOffersProfile:(NSString *) castingID andOffset: (NSString *) offset andCount: (NSString *) count complitionBlock: (void (^) (id response)) compitionBack;
 -(void) loadApprovedProfile:(NSString *) castingID andOffset: (NSString *) offset andCount: (NSString *) count complitionBlock: (void (^) (id response)) compitionBack;
 - (void) decideCastings: (NSString *) castingID andDecision: (NSString *) decision complitionBlock: (void (^) (id response)) compitionBack;
+- (void) deleteCasting: (NSString *) castingID complitionBlock: (void (^) (id response)) compitionBack;
 @end

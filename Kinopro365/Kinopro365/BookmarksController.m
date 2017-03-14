@@ -61,6 +61,10 @@
     cell.number.text = @"21";
     //    cell.arrawImage = [UIImage imageNamed:@""];
     
+    if ([cell.number.text isEqualToString:@"0"]) {
+        cell.number.alpha = 0.f;
+    }
+    
     return cell;
     
 }

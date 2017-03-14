@@ -16,9 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelData;
 @property (weak, nonatomic) IBOutlet UIImageView *imageType;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *mainTextLabel;
-@property (weak, nonatomic) IBOutlet UIButton *buttonDelete;
+
 @property (weak, nonatomic) IBOutlet UIButton *buttonPush;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImage;
 
@@ -27,7 +27,7 @@
 
 //Actions
 
-- (IBAction)actionButtonDelete:(id)sender;
+
 - (IBAction)actionButtonPush:(id)sender;
 
 
@@ -35,7 +35,7 @@
 
 @protocol VacanciesCellDelegate <NSObject>
 
-- (void) actionCell: (VacanciesCell*) vacanciesCell endButtonDelete: (UIButton*) sender;
+
 - (void) actionCell: (VacanciesCell*) vacanciesCell endButtonPush: (UIButton*) sender;
 
 

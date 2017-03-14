@@ -76,7 +76,8 @@
     
     VacanciesCell * cell = [tableView dequeueReusableCellWithIdentifier:[VacanciesCell cellIdentifier]];
     cell.delegate = self;
-    
+
+    cell.buttonPush.layer.cornerRadius = 5.f;
     cell.mainTextLabel.text = self.testStringText;
     
     NSString * typeString = [self.arrayType objectAtIndex:indexPath.row];
@@ -99,7 +100,7 @@
         cell.mainTextLabel.frame = rect;
         
         cell.buttonPush.alpha = 0.f;
-        cell.buttonDelete.alpha = 0.f;
+
         cell.arrowImage.transform = CGAffineTransformMakeRotation(0);
         
         if ([typeString integerValue] == 5) {
@@ -116,7 +117,7 @@
         
         if ([typeString integerValue] != 1 && [typeString integerValue] != 2) {
             cell.buttonPush.alpha = 1.f;
-            cell.buttonDelete.alpha = 1.f;
+
         }
         cell.arrowImage.transform = CGAffineTransformMakeRotation(-M_PI+0.00);
         
@@ -147,7 +148,7 @@
        cell.mainTextLabel.frame = rect;
        
        cell.buttonPush.alpha = 0.f;
-       cell.buttonDelete.alpha = 0.f;
+
        cell.arrowImage.transform = CGAffineTransformMakeRotation(0);
        
        
@@ -173,7 +174,7 @@
         
         if ([typeString integerValue] != 1 && [typeString integerValue] != 2) {
             cell.buttonPush.alpha = 1.f;
-            cell.buttonDelete.alpha = 1.f;
+
         }
         
         cell.arrowImage.transform = CGAffineTransformMakeRotation(-M_PI+0.00);
@@ -192,12 +193,12 @@
     
     if (isexpanded) {
         if ([typeString integerValue] != 1 && [typeString integerValue] != 2) {
-        return 145 + self.heightTextForCell;
+        return 90 + self.heightTextForCell;
         } else {
-            return 110 + self.heightTextForCell;
+            return 55 + self.heightTextForCell;
         }
     } else {
-    return 165;
+    return 120;
     }
 }
 
