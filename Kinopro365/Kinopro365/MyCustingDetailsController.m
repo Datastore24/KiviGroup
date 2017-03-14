@@ -68,12 +68,7 @@
     //На рассмотрение
     
     //Одобренные
-    for (int i = 0; i < 3; i++) {
-        ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:@"testImageVacancies.png" endName:@"Анастасия Филатова" endCountry:@"Москва (Рoссия)" endAge:@"25 лет" endIsReward:NO endRewardNumber:@"5" endIsLike:NO endLikeNumber:@"15" endIsBookmark:NO endProfileID:nil enfGrowth:@"рост: 168 см" endApproved: YES];
-        cell.delegate = self;
-        [self.secondScrollView addSubview:cell];
-    }
-    self.secondScrollView.contentSize = CGSizeMake(0, 130.f * 3);
+   
     
     
 }
@@ -91,7 +86,7 @@
 -(void) loadMyCastings:(NSDictionary *) castingsDict{
     self.castingDict = nil;
     self.castingDict = castingsDict;
-    self.textLabel = [self.castingDict objectForKey:@"name"];
+    self.textLabel.text = [self.castingDict objectForKey:@"name"];
     
     //Заголовок
     AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
@@ -110,7 +105,7 @@
     
     self.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[self.castingDict objectForKey:@"city_name"],[self.castingDict objectForKey:@"country_name"]];
-    self.labelConsideration.text =[NSString stringWithFormat:@"%@",[self.castingDict objectForKey:@"count_approved_offer"]];
+    self.labelConsideration.text =[NSString stringWithFormat:@"%@",[self.castingDict objectForKey:@"count_offer"]];
 
     
     //Тестовые строки---------------------------------------
@@ -180,8 +175,26 @@
           
           for (int i = 0; i < respApproved.count; i++) {
               NSDictionary * dictApproved = [respApproved objectAtIndex:i];
-              
+            
+                  ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:[dictApproved objectForKey:@"photo_url"]
+                                    endName:[NSString stringWithFormat:@"%@ %@",[dictApproved objectForKey:@"first_name"],[dictApproved objectForKey:@"last_name"]]
+                                        endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictApproved objectForKey:@"city_name"],[dictApproved objectForKey:@"country_name"]]
+                                        endAge:[NSString stringWithFormat:@"%@ лет",[dictApproved objectForKey:@"age"]]
+                                        endIsReward:[[dictApproved objectForKey:@"is_reward"] boolValue]
+                                        endRewardNumber:[NSString stringWithFormat:@"%@",[dictApproved objectForKey:@"count_rewards"]]
+                                        endIsLike:[[dictApproved objectForKey:@"is_like"] boolValue]
+                                        endLikeNumber:[NSString stringWithFormat:@"%@",[dictApproved objectForKey:@"count_likes"]]
+                                        endIsBookmark:[[dictApproved objectForKey:@"is_favourite"] boolValue]
+                                        endProfileID:[NSString stringWithFormat:@"%@",[dictApproved objectForKey:@"id"]]
+                                        enfGrowth:[NSString stringWithFormat:@"рост: -- см"]
+                                                                             endApproved: YES];
+                  cell.delegate = self;
+                  [self.secondScrollView addSubview:cell];
+    
+             
           }
+          
+           self.secondScrollView.contentSize = CGSizeMake(0, 130.f * respApproved.count);
           
       }
   }];
@@ -245,11 +258,21 @@
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonDelete: (CustomButton*) sender {
     
     NSLog(@"Кнопка удаления");
+    [self.myCastingDetailsModel decideCastings:self.castingID andDecision:@"2" complitionBlock:^(id response) {
+        if([[response objectForKey:@"response"] integerValue] == 1){
+            [self.myCastingDetailsModel loadCastings:self.castingID];
+        }
+    }];
 }
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonConfirm: (CustomButton*) sender {
     
     NSLog(@"Кнопка подтвеждения");
+    [self.myCastingDetailsModel decideCastings:self.castingID andDecision:@"1" complitionBlock:^(id response) {
+         if([[response objectForKey:@"response"] integerValue] == 1){
+             [self.myCastingDetailsModel loadCastings:self.castingID];
+         }
+    }];
 }
 
 #pragma mark - Actions

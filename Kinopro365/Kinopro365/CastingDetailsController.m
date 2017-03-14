@@ -33,7 +33,6 @@
     [super loadView];
     
     
-    
     self.viewForShare.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.viewForShare.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
     self.viewForShare.layer.shadowOpacity = 1.0f;
@@ -47,7 +46,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-     UILabel * CustomText = [[UILabel alloc]initWithTitle:@""];
+     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Кастинги"];
     self.navigationItem.titleView = CustomText;
 //    //Скрытие скрытых парамтеров--------------------------
 
@@ -76,22 +75,17 @@
     NSArray * castingType = [addParamsModel getTypeCustings];
     NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[catingDict objectForKey:@"project_type_id"] andProfArray:castingType];
     
-    //Заголовок
-    
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:[paramsCasting objectForKey:@"name"]];
-    self.navigationItem.titleView = CustomText;
-    
-    //
-    
+
     self.labelDescription.text = [catingDict objectForKey:@"description"];
     self.labelTitle.text =[catingDict objectForKey:@"name"];
-    self.labelBidCount.text = [catingDict objectForKey:@"count_offer"];
+    self.labelBidCount.text = [NSString stringWithFormat:@"Подано заявок: %@",[catingDict objectForKey:@"count_offer"]];
     
     NSDate * endDate = [DateTimeMethod timestampToDate:[catingDict objectForKey:@"end_at"]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd.MM"];
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
     self.labelActively.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    self.labelType.text = [paramsCasting objectForKey:@"name"];
     
     //СКРЫТОЕ ПОЛЕ - НУЖНО ПРОПИСАТЬ ДЛЯ КОГО ОНО ДОСТУПНО
     
