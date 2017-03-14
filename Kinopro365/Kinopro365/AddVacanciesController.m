@@ -44,7 +44,16 @@
         [self.buttonCountry setTitle:self.countryNameVacancy forState:UIControlStateNormal];
         if(self.mainImageVacancy){
                  [self.buttonAddImage setImage:self.mainImageVacancy forState:UIControlStateNormal];
+            CGFloat textHeight = [self getLabelHeight:self.textView];
+            if (textHeight > 55) {
+                [self animationsForViewWithTextHeight:textHeight endBool:NO endStartAnim:YES];
+            } else {
+                [self animationsForViewWithTextHeight:textHeight endBool:YES endStartAnim:YES];
+            }
         }
+        
+        self.buttonAddImage.layer.cornerRadius = 5.f;
+        self.buttonAddImage.clipsToBounds = YES;
        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy"];
@@ -300,9 +309,9 @@
     NSLog(@"%f", textHeight);
     
     if (textHeight > 55) {
-        [self animationsForViewWithTextHeight:textHeight endBool:NO];
+        [self animationsForViewWithTextHeight:textHeight endBool:NO endStartAnim:NO];
     } else {
-        [self animationsForViewWithTextHeight:textHeight endBool:YES];
+        [self animationsForViewWithTextHeight:textHeight endBool:YES endStartAnim:NO];
     }
 }
 
@@ -351,9 +360,16 @@
     }];
 }
 
-- (void) animationsForViewWithTextHeight: (CGFloat) textHeight endBool: (BOOL) isBool {
+- (void) animationsForViewWithTextHeight: (CGFloat) textHeight endBool: (BOOL) isBool endStartAnim: (BOOL) startAnim {
 
-        [UIView animateWithDuration:0.3 animations:^{
+    
+    CGFloat duraction;
+    if (startAnim) {
+        duraction = 0.f;
+    } else {
+        duraction = 0.3f;
+    }
+        [UIView animateWithDuration:duraction animations:^{
             CGRect textViewRect = self.textView.frame;
             if (!isBool) {
                 textViewRect.size.height = textHeight + 25;
@@ -366,10 +382,14 @@
             buttonRect.origin.y = CGRectGetMaxY(self.textView.frame) + 10;
             self.buttonCreate.frame = buttonRect;
             
+            if (startAnim) {
+                self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14);
+                self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + 64) - self.view.frame.size.height);
+            } else {
             self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130));
             self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130)) - self.view.frame.size.height);
-            
-            
+        }
+         
         }];
 
 
@@ -397,7 +417,9 @@
             
             NSLog(@"PHOTOID %@",self.photoID);
             [self.buttonAddImage setImage:self.imageVacancies forState:UIControlStateNormal];
-            self.buttonAddImage.layer.cornerRadius = 3.f;
+            self.buttonAddImage.layer.cornerRadius = 5.f;
+            self.buttonAddImage.clipsToBounds = YES;
+            
             [self dismissViewControllerAnimated:YES completion:nil];
             
         }

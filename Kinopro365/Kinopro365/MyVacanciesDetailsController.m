@@ -169,7 +169,7 @@
     CGFloat height;
     
     if (sender.isBool) {
-        height = self.view.bounds.size.height - self.heightTextView;
+        height = self.view.bounds.size.height - self.heightTextView - 190;
         [sender setTitle:@"Свернуть" forState:UIControlStateNormal];
 //        self.imageHide.center = CGPointMake(9.5f, 3.5f);
         //rotate rect
