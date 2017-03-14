@@ -12,8 +12,7 @@
 
 @interface ViewForComment () <UITextViewDelegate>
 
-@property (strong, nonatomic) UIPlaceHolderTextView * textView;
-@property (strong, nonatomic) UIPlaceHolderTextView * textViewHide;
+
 
 @end
 
