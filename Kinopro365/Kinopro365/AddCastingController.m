@@ -231,25 +231,74 @@
             [self showAlertWithMessage:@"Дата окончания не может быть\nв этот же день"];
         }else if([self.buttonDate.titleLabel.text integerValue] < [currentDateString integerValue]){
             [self showAlertWithMessage:@"Дата окончания не может быть\nв прошлом"];
-        }else if(self.buttonNeed.customID.length == 0){
-            [self showAlertWithMessage:@"Выберите профессию"];
         }else if([[SingleTone sharedManager] countrySearchID].length == 0){
             [self showAlertWithMessage:@"Выберите Страну"];
         }else if([[SingleTone sharedManager] citySearchID].length == 0){
             [self showAlertWithMessage:@"Выберите Город"];
-        }else if(self.buttonType.titleLabel.text.length == 0){
+        }else if(self.buttonType.customID.length == 0){
             [self showAlertWithMessage:@"Выберите тип кастинга"];
-        }else if(self.buttonAgeFrom.titleLabel.text.length == 0){
+        }else if(self.buttonNeed.customID.length == 0){
+            [self showAlertWithMessage:@"Выберите профессию"];
+        }else if([self.buttonAgeFrom.titleLabel.text isEqualToString:@"От"]){
             [self showAlertWithMessage:@"Выберите возраст от"];
-        }else if(self.buttonAgeTo.titleLabel.text.length == 0){
+        }else if([self.buttonAgeTo.titleLabel.text isEqualToString:@"До"]){
             [self showAlertWithMessage:@"Выберите возраст до"];
+        }else if([self.buttonGender.titleLabel.text isEqualToString:@"Выбрать"]){
+            [self showAlertWithMessage:@"Выберите пол"];
         }else if(self.dopArray.count==0){
             [self showAlertWithMessage:@"Выберите дополнительные параметры"];
-        }else if(self.buttonGender.titleLabel.text.length == 0){
-            [self showAlertWithMessage:@"Выберите пол"];
-//        }else if(self.viewComment.title. .text.length == 0){
-//            [self showAlertWithMessage:@"Заполните описание и иипажи"];
+        }else if(self.viewComment.textView.text.length == 0){
+            [self showAlertWithMessage:@"Заполните описание и типажи"];
+        }else if(self.viewHideComment.textViewHide.text.length == 0){
+            [self showAlertWithMessage:@"Заполните информацию для утверждения анкет"];
         }else{
+            NSMutableDictionary * resultDict = [NSMutableDictionary new];
+            [resultDict setObject:self.photoID forKey:@"logo_id"];
+            [resultDict setObject:self.textFildName.text forKey:@"name"];
+            [resultDict setObject:self.viewHideComment.textViewHide.text forKey:@"description"];
+            [resultDict setObject:[[SingleTone sharedManager] countrySearchID] forKey:@"country_id"];
+            [resultDict setObject:[[SingleTone sharedManager] citySearchID] forKey:@"city_id"];
+            [resultDict setObject:unixTimeEndAt forKey:@"end_at"];
+            [resultDict setObject:self.buttonType.customID forKey:@"project_type_id"];
+            [resultDict setObject:self.buttonNeed.customID forKey:@"profession_id"];
+            [resultDict setObject:self.viewHideComment.textViewHide.text forKey:@"contact_info"];
+            [resultDict setObject:self.buttonAgeTo.titleLabel.text forKey:@"age_from"];
+            [resultDict setObject:self.buttonAgeTo.titleLabel.text forKey:@"age_to"];
+            
+            if([self.buttonGender.titleLabel.text isEqualToString:@"Мужской"]){
+                [resultDict setObject:@"2" forKey:@"sex"];
+            }else{
+                [resultDict setObject:@"1" forKey:@"sex"];
+            }
+            
+            for(int i=0; i<self.dopArray.count; i++){
+                NSDictionary * dict = [self.dopArray objectAtIndex:i];
+                NSLog(@"DICT %@",dict);
+                
+                if([[dict objectForKey:@"languages"] isKindOfClass:[NSArray class]]){
+                        NSArray * language = [dict objectForKey:@"languages"];
+                        if(language.count>0){
+                            for(int k=0; k<language.count; k++){
+                                NSDictionary * langDict = [language objectAtIndex:k];
+                                NSString * langCountString = [NSString stringWithFormat:@"ex_languages[%d]",k];
+                                [resultDict setObject:[langDict objectForKey:@"id"] forKey:langCountString];
+                            }
+                        }
+                
+                }else{
+                    [resultDict setObject:[dict objectForKey:@"additionalValue"] forKey:[dict objectForKey:@"additionalID"]];
+                }
+                
+            }
+            NSLog(@"RESULTDICT %@",resultDict);
+            [addVacanciesModel addCastingsParams:resultDict complitionBlock:^(id response) {
+                NSLog(@"response %@",response);
+                if([[response objectForKey:@"response"] integerValue] == 1){
+                    [self showAlertWithMessageWithBlock:@"Вы создали кастинг" block:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                }
+            }];
         
         }
     }else{

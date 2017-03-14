@@ -15,6 +15,7 @@
 #import "DateTimeMethod.h"
 #import "ChooseProfessionalModel.h"
 #import "SingleTone.h"
+#import "AddParamsModel.h"
 
 @interface MyVacanciesController () <UITableViewDelegate, UITableViewDataSource,MyVacanciesModelDelegate>
 
@@ -156,23 +157,48 @@
     }
     
     cell.viewForNumber.layer.cornerRadius = CGRectGetHeight(cell.viewForNumber.bounds) / 2;
-    cell.labelNumber.text = [NSString stringWithFormat:@"%@",[dictMyVacan objectForKey:@"count_offer"]];
     
     
-    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+            cell.labelNumber.text = [NSString stringWithFormat:@"%@",
+                                     [dictMyVacan objectForKey:@"count_offer"]];
+            
+            NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+            
+            NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dictMyVacan objectForKey:@"profession_id"]]];
+            NSDictionary *item;
+            if(filtered.count>0){
+                item = [filtered objectAtIndex:0];
+            }
+            
+            
+            
+            
+            
+            if([item objectForKey:@"name"]){
+                cell.labelProfession.text = [NSString stringWithFormat:@"Профессия: %@",[item objectForKey:@"name"]];
+            }else{
+                cell.labelProfession.text = @"";
+            }
+        }else{
+            cell.labelNumber.text = [NSString stringWithFormat:@"%@",
+                                     [dictMyVacan objectForKey:@"count_pending_offer"]];
+            
+            AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+            
+            NSArray * castingType = [addParamsModel getTypeCustings];
+            NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[dictMyVacan objectForKey:@"project_type_id"] andProfArray:castingType];
+            
+            cell.labelProfession.text = [NSString stringWithFormat:@"%@",[paramsCasting objectForKey:@"name"]];
+            
+           
+        }
+   
     
-    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dictMyVacan objectForKey:@"profession_id"]]];
-    NSDictionary *item;
-    if(filtered.count>0){
-        item = [filtered objectAtIndex:0];
-    }
+    
+   
     
     
-    if([item objectForKey:@"name"]){
-        cell.labelProfession.text = [NSString stringWithFormat:@"Профессия: %@",[item objectForKey:@"name"]];
-    }else{
-        cell.labelProfession.text = @"";
-    }
     
     
     //Временная условия для статуса

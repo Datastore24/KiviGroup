@@ -9,6 +9,8 @@
 #import "MyCustingDetailsController.h"
 #import "ViewCellMyCasting.h"
 #import "MyCustingDetailsModel.h"
+#import "DateTimeMethod.h"
+#import "AddParamsModel.h"
 
 
 @interface MyCustingDetailsController () <ViewCellMyCastingDelegate, MyCustingDetailsModelDelegate>
@@ -16,6 +18,7 @@
 @property (strong, nonatomic) UIScrollView * firstScrollView;
 @property (strong, nonatomic) UIScrollView * secondScrollView;
 @property (assign, nonatomic) CGFloat heightTextView;
+@property (strong, nonatomic) NSDictionary * castingDict;
 @property (strong, nonatomic) MyCustingDetailsModel * myCastingDetailsModel;
 
 @end
@@ -25,8 +28,6 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Кастинги"];
-    self.navigationItem.titleView = CustomText;
     
     self.mainScrollView.scrollEnabled = NO;
     self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.bounds) * 2, 0);
@@ -48,13 +49,7 @@
     
     
     //работа со скролом текста------------------------------
-    //Тестовые строки---------------------------------------
-    //Строка для скрытого текста----------------
-    NSString * hideText = @"Маттерхорн (нем. Matterhorn, итал. Monte Cervino, фр. Mont Cervin) — вершина в Пеннинских Альпах на границе Швейцарии в кантоне Вале и Италии в провинции Валле-д’Аоста. Высота вершины составляет 4478 метров над уровнем моря. Маттерхорн имеет примечательную четырёхгранную пирамидальную форму со стенами, обращёнными по сторонам света.";
-    //Строка обычного описания------------------
-    NSString * comText = @"Из-за высокой технической сложности восхождения, а также страха, внушаемого вершиной, Маттерхорн стал одной из последних покорённых основных горных вершин Альп. До 1865 года различные группы альпинистов предприняли более 10 попыток взойти на его вершину.";
-    self.hideTextLabel.text = hideText;
-    self.comTextLabel.text = comText;
+    
     
     
     NSLog(@"%@", NSStringFromCGRect(self.viewForMainText.frame));
@@ -91,6 +86,38 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) loadMyCastings:(NSDictionary *) castingsDict{
+    self.castingDict = nil;
+    self.castingDict = castingsDict;
+    self.textLabel = [self.castingDict objectForKey:@"name"];
+    
+    //Заголовок
+    AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+    
+    NSArray * castingType = [addParamsModel getTypeCustings];
+    NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[self.castingDict objectForKey:@"project_type_id"] andProfArray:castingType];
+    
+    NSLog(@"INF %@",[paramsCasting objectForKey:@"name"]);
+    UILabel * CustomText = [[UILabel alloc]initWithTitle:[paramsCasting objectForKey:@"name"]];
+    self.navigationItem.titleView = CustomText;
+    //
+    
+    NSDate * endDate = [DateTimeMethod timestampToDate:[self.castingDict objectForKey:@"end_at"]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM"];
+    NSString *stringDate = [dateFormatter stringFromDate:endDate];
+    
+    self.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[self.castingDict objectForKey:@"city_name"],[self.castingDict objectForKey:@"country_name"]];
+    self.labelConsideration.text =[NSString stringWithFormat:@"%@",[self.castingDict objectForKey:@"count_approved_offer"]];
+
+    
+    //Тестовые строки---------------------------------------
+ 
+    self.hideTextLabel.text = [self.castingDict objectForKey:@"contact_info"];
+    self.comTextLabel.text = [self.castingDict objectForKey:@"description"];
 }
 
 #pragma mark - ViewCellMyCastingDelegate

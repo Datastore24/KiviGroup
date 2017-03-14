@@ -18,6 +18,7 @@
 #import "AddVacanciesController.h"
 #import "ChooseProfessionalModel.h"
 #import "CastingDetailsController.h"
+#import "AddParamsModel.h"
 
 
 @interface VacanciesListController () <UITableViewDelegate, UITableViewDataSource, VacanciesListModelDelegate,CountryViewControllerDelegate>
@@ -182,20 +183,29 @@
         cell.titleLabel.text = [dictVacan objectForKey:@"name"];
     
     //Профессия
-    
-    NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
-    
-    NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dictVacan objectForKey:@"profession_id"]]];
-    NSDictionary *item;
-    if(filtered.count>0){
-        item = [filtered objectAtIndex:0];
-    }
-    
-    
-    if([item objectForKey:@"name"]){
-        cell.labelProfession.text = [item objectForKey:@"name"];
+    if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
+        NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        
+        NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [dictVacan objectForKey:@"profession_id"]]];
+        NSDictionary *item;
+        if(filtered.count>0){
+            item = [filtered objectAtIndex:0];
+        }
+        
+        
+        if([item objectForKey:@"name"]){
+            cell.labelProfession.text = [item objectForKey:@"name"];
+        }else{
+            cell.labelProfession.text = @"";
+        }
     }else{
-        cell.labelProfession.text = @"";
+        AddParamsModel * addParamsModel = [[AddParamsModel alloc] init];
+        
+        NSArray * castingType = [addParamsModel getTypeCustings];
+        NSDictionary * paramsCasting = [addParamsModel getInformationDictionary:[dictVacan objectForKey:@"project_type_id"] andProfArray:castingType];
+        
+        cell.labelProfession.text = [NSString stringWithFormat:@"%@",[paramsCasting objectForKey:@"name"]];
+
     }
     
     

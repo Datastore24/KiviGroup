@@ -10,4 +10,6 @@
 
 @interface AddCastingModel : NSObject
 
+- (void) addCastingsParams: (NSDictionary *) params complitionBlock: (void (^) (id response)) compitionBack;
+
 @end
