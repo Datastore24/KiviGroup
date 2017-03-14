@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kinopro365/AddCastingController.m"
-            timestampString = "511110662.554284"
+            timestampString = "511174427.894738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-actionButtonAddParams:"
             landmarkType = "7">
          </BreakpointContent>

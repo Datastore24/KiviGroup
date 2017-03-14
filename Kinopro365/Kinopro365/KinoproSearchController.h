@@ -50,6 +50,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonClearFilter;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSearch;
 
+@property (weak, nonatomic) IBOutlet UIView *viewCountAddParams;
+@property (weak, nonatomic) IBOutlet UILabel *labelCountAddParams;
+
+
 
 @property (strong,nonatomic) NSString * profID;
 @property (strong,nonatomic) NSArray * dopArray;

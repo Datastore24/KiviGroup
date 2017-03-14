@@ -11,6 +11,7 @@
 @interface ProfessionDetailController : MainViewController
 
 @property (weak, nonatomic) IBOutlet UIView *viewForPhoto;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonID;
 
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *arrayCollectionNo;
@@ -48,5 +49,6 @@
 - (IBAction)actionButtonBookmark:(CustomButton*)sender;
 - (IBAction)actionButtonLike:(CustomButton*)sender;
 - (IBAction)actionButtomStar:(CustomButton*)sender;
+- (IBAction)barButtonID:(id)sender;
 
 @end
