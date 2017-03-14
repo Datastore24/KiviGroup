@@ -204,6 +204,11 @@
 
 - (IBAction)actionButtonCreate:(id)sender {
     
+    
+    NSLog(@"описание %@", self.viewComment.textView.text);
+    NSLog(@"скрытое окно %@", self.viewHideComment.textViewHide.text);
+    
+    
     NSDate * stringToDate = [DateTimeMethod convertStringToNSDate:self.buttonDate.titleLabel.text withFormatDate:@"dd MMMM yyyy"];
     NSString * unixTimeEndAt = [DateTimeMethod dateToTimestamp:stringToDate];
     

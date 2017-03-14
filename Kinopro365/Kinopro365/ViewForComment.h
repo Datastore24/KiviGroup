@@ -14,6 +14,8 @@
 @interface ViewForComment : UIView
 
 @property (weak, nonatomic) id <ViewForCommentDelegate> delegate;
+@property (strong, nonatomic) UIPlaceHolderTextView * textView;
+@property (strong, nonatomic) UIPlaceHolderTextView * textViewHide;
 
 - (instancetype)initWithMainView: (UIView*) view endHeight: (CGFloat) height;
 - (instancetype)initHideWithMainView: (UIView*) view endHeight: (CGFloat) height;
