@@ -7,12 +7,15 @@
 //
 
 #import "MainViewController.h"
+#import <MMDrawerController.h>
+#import <MMDrawerBarButtonItem.h>
+#import <UIViewController+MMDrawerController.h>
+#import "AppDelegate.h"
 
 @interface ProfessionDetailController : MainViewController
 
 @property (weak, nonatomic) IBOutlet UIView *viewForPhoto;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonID;
-
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *arrayCollectionNo;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *arrayCollectionYES;
@@ -34,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneOne;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneTwo;
 
+
 //Labels
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelCountry;
@@ -44,8 +48,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageAvatar;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 
+//Viewvers
+@property (weak, nonatomic) IBOutlet UIImageView *viewrsImage;
+@property (weak, nonatomic) IBOutlet UILabel *viewrsLabel;
 
-- (IBAction)actionButtonBack:(UIBarButtonItem *)sender;
+
+
 - (IBAction)actionButtonBookmark:(CustomButton*)sender;
 - (IBAction)actionButtonLike:(CustomButton*)sender;
 - (IBAction)actionButtomStar:(CustomButton*)sender;

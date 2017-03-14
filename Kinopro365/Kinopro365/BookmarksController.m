@@ -8,6 +8,7 @@
 
 #import "BookmarksController.h"
 #import "KinosferaCell.h"
+#import "SingleTone.h"
 
 @interface BookmarksController () <UITableViewDelegate, UITableViewDataSource>
 

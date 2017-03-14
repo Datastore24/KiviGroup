@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *userFLName;
+@property (weak, nonatomic) IBOutlet UILabel *labelName;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;
@@ -23,10 +24,11 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *arrayLabels;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arrayButtons;
 
+@property (weak, nonatomic) IBOutlet UIView *viewForAlert;
+@property (weak, nonatomic) IBOutlet UILabel *countAlertLabel;
 
 - (IBAction)actionForCheck:(id)sender;
-
-
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *arrayImages;
 
 - (IBAction)actionButtonKinopro:(id)sender;
 - (IBAction)actionButtonVacancies:(id)sender;
@@ -36,6 +38,7 @@
 - (IBAction)actionAllertButton:(id)sender;
 - (IBAction)actionButtonPayment:(id)sender;
 - (IBAction)actionButtonFeedback:(id)sender;
+- (IBAction)actionAvatar:(id)sender;
 
 
 

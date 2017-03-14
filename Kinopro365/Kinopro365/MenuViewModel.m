@@ -47,6 +47,8 @@
                                         if(image){
                                             NSLog(@"image %@",image);
                                             [[self.delegate userPhoto]  setImage:image forState:UIControlStateNormal];
+                                            [self.delegate userPhoto].layer.cornerRadius = 5.f;
+                                            [self.delegate userPhoto].clipsToBounds = YES;
                                             NSString * resultName = [NSString stringWithFormat:@"%@ %@",userInfo.first_name,userInfo.last_name];
                                             [self.delegate userFLName].text = resultName;
                                             

@@ -19,6 +19,7 @@
 @synthesize countrySearchID;
 @synthesize localization;
 @synthesize typeView;
+@synthesize myKinosfera;
 
 
 #pragma mark Singleton Methods

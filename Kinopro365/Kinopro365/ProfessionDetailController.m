@@ -15,6 +15,7 @@
 #import "AddParamsProfession.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 #import "PhotoDetailView.h"
+#import "SingleTone.h"
 
 @interface ProfessionDetailController () <ProfessionDetailModelDelegate,VideoViewDelegate, PhotoViewDelegate>
 
@@ -29,6 +30,23 @@
 
 - (void) loadView {
     [super loadView];
+    
+    UIImage *myImage;
+    if (self.navigationController.viewControllers.count == 1) {
+        myImage = [UIImage imageNamed:@"ImageButtonMenu"];
+    } else {
+        myImage = [UIImage imageNamed:@"nazad.png"];
+    }
+    
+    
+    myImage = [myImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *_btn=[[UIBarButtonItem alloc]initWithImage:myImage
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(actionBackButton:)];
+    
+    self.navigationItem.leftBarButtonItem=_btn;
+    
     
     //UIImageView For photo
     
@@ -53,6 +71,17 @@
       UITextAttributeFont,
       nil]
                                                 forState:UIControlStateNormal];
+    
+    
+    
+    self.viewrsLabel.alpha = 0.f;
+    self.viewrsImage.alpha = 0.f;
+    
+    if ([[[SingleTone sharedManager] myKinosfera] isEqualToString:@"1"]) {
+        self.buttonBookmark.alpha = 0.f;
+        self.viewrsLabel.alpha = 1.f;
+        self.viewrsImage.alpha = 1.f;
+    }
     
     
     //проверка на наличие нажатой кнопки награда и лайк
@@ -84,6 +113,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
     self.maxHeightVideo = 0.f;
     [self createActivitiIndicatorAlertWithView];
     self.profDetailModel = [[ProfessionDetailModel alloc] init];
@@ -386,9 +416,17 @@
 
 #pragma mark - Actions
 
-- (IBAction)actionButtonBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void) actionBackButton: (UIBarButtonItem*) button {
+    
+    if (self.navigationController.viewControllers.count == 1) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
+
 
 - (IBAction)actionButtonBookmark:(CustomButton*)sender {
     
