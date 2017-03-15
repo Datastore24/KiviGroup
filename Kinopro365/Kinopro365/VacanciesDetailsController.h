@@ -37,6 +37,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonVK;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFacebook;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
+
 
 
 

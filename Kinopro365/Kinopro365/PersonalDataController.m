@@ -792,7 +792,7 @@ replacementString:(NSString *)string {
 
 - (IBAction)actionButtonCountry:(UIButton *)sender {
     [[SingleTone sharedManager] setCountry_citi:@"country"];
-    self.buttonCity.titleLabel.text = @"Город";
+    [self.buttonCity setTitle:@"Город" forState:UIControlStateNormal];
 //    RLMResults *profTableDataArray = [UserInformationTable allObjects];
 //    
 //    if(profTableDataArray.count>0){

@@ -29,6 +29,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" id="L9w-lD-1Su">
+                                <rect key="frame" x="22" y="27" width="76" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s8T-zi-38n">
                                 <rect key="frame" x="23" y="27" width="75" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -309,6 +314,7 @@
                         <outlet property="buttonVacancies" destination="FIU-x2-hSJ" id="7NJ-LZ-xKu"/>
                         <outlet property="countAlertLabel" destination="Y9i-P5-YpR" id="MHx-f1-6J4"/>
                         <outlet property="labelName" destination="yAA-mS-kLv" id="pEL-Pd-nJq"/>
+                        <outlet property="shadowView" destination="L9w-lD-1Su" id="6P9-mp-l6N"/>
                         <outlet property="userFLName" destination="cV3-A1-7h9" id="rvL-AZ-3EO"/>
                         <outlet property="userPhoto" destination="s8T-zi-38n" id="bkl-zz-he6"/>
                         <outlet property="viewForAlert" destination="Jhv-Wa-P1B" id="ffP-3c-9bD"/>
@@ -521,7 +527,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lo-hC-Uye" id="CT7-Nz-wD1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qw3-pl-xvf">
@@ -878,7 +884,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="NGD-Rx-kNn">
-                                                    <rect key="frame" x="9" y="44" width="302" height="0.0"/>
+                                                    <rect key="frame" x="9" y="43.5" width="302" height="0.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -2023,7 +2029,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="76x-Af-CLy">
                                 <rect key="frame" x="0.0" y="74" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="112" id="Oy7-Sc-nPi" customClass="VacanciesListCell">
@@ -2033,6 +2039,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" id="Tyt-LN-CPk">
+                                                    <rect key="frame" x="13" y="21" width="82" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="8Tb-Yu-uXO">
                                                     <rect key="frame" x="13" y="21" width="82" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -2059,7 +2070,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="me7-PR-2p4">
-                                                    <rect key="frame" x="9" y="112" width="302" height="0.0"/>
+                                                    <rect key="frame" x="9" y="111.5" width="302" height="0.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -2078,6 +2089,7 @@
                                             <outlet property="countryLabel" destination="GTt-s0-AaU" id="gd0-g1-cqf"/>
                                             <outlet property="labelProfession" destination="vg2-KP-wdK" id="b0Y-wh-eEg"/>
                                             <outlet property="mainImage" destination="8Tb-Yu-uXO" id="f3R-2e-cCb"/>
+                                            <outlet property="shadowView" destination="Tyt-LN-CPk" id="FNA-Kg-dLY"/>
                                             <outlet property="titleLabel" destination="r1E-Hp-ZPd" id="UPo-83-bKf"/>
                                         </connections>
                                     </tableViewCell>
@@ -2177,7 +2189,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Bpt-sy-lWX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" id="Q0R-aJ-u4S">
                                         <rect key="frame" x="0.0" y="375" width="320" height="128"/>
@@ -2262,6 +2274,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" misplaced="YES" id="jEk-8c-lMm">
+                                                <rect key="frame" x="13" y="17" width="109" height="82"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JQO-oR-OkL">
                                                 <rect key="frame" x="13" y="17" width="109" height="82"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2326,6 +2343,7 @@ Cg
                         <outlet property="mainTextLabel" destination="Zn9-IU-Zy6" id="dgG-BG-P62"/>
                         <outlet property="mainWhiteView" destination="1KO-gR-P3v" id="L0X-wR-gAM"/>
                         <outlet property="nameLabel" destination="qp4-7n-8mM" id="7DB-1W-7h1"/>
+                        <outlet property="shadowView" destination="jEk-8c-lMm" id="OV9-LP-YcV"/>
                         <outlet property="titleLabel" destination="qp4-7n-8mM" id="TBS-6p-ni0"/>
                         <outlet property="twoWithView" destination="GYu-4m-XBH" id="dcd-vn-yRm"/>
                         <outlet property="viewForMainText" destination="Z4N-7S-dbJ" id="gvW-9t-Cel"/>
@@ -2550,7 +2568,7 @@ Cg
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igg-JH-53S" id="Ebn-bk-WjF">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b4C-L9-W3S">
@@ -2576,7 +2594,7 @@ Cg
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="oZa-S2-ZcA">
-                                                    <rect key="frame" x="0.0" y="45" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="45.5" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -3288,7 +3306,7 @@ Cg
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6qb-PN-nDc" customClass="HVTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Content1" rowHeight="150" id="Wrj-cG-L0r" customClass="VacanciesCell">
@@ -3897,6 +3915,11 @@ Cgo
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" id="3ZI-7E-q3t">
+                                                    <rect key="frame" x="14" y="25" width="83" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="npR-f4-0Hn">
                                                     <rect key="frame" x="14" y="25" width="83" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -3966,6 +3989,7 @@ Cgo
                                             <outlet property="labelProfession" destination="BOg-Ft-bIR" id="vBE-Gi-fVW"/>
                                             <outlet property="labelStatus" destination="Cok-qY-SLw" id="t7c-nT-ypT"/>
                                             <outlet property="mainImage" destination="npR-f4-0Hn" id="mCa-7O-sS9"/>
+                                            <outlet property="shadovView" destination="3ZI-7E-q3t" id="1Dn-hx-oOH"/>
                                             <outlet property="titleLabel" destination="IGJ-Fe-MTS" id="T4S-Lg-Sig"/>
                                             <outlet property="viewForNumber" destination="abf-GZ-ZpJ" id="LyI-tW-n9L"/>
                                         </connections>
@@ -4032,13 +4056,18 @@ Cgo
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="WOj-wX-oOR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="mH9-YL-rM4">
                                         <rect key="frame" x="0.0" y="176" width="320" height="328"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.91764705882352937" green="0.95294117647058818" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                     </scrollView>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="jkv-uj-AkL">
+                                        <rect key="frame" x="14" y="6" width="83" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="vPR-iR-tGh">
                                         <rect key="frame" x="14" y="6" width="83" height="62"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -4170,6 +4199,7 @@ Cgo
                         <outlet property="mainScrollView" destination="WOj-wX-oOR" id="LyW-CU-lan"/>
                         <outlet property="mainTextView" destination="JbQ-rz-2MM" id="XMx-kt-FX4"/>
                         <outlet property="scrollViewForVacansies" destination="mH9-YL-rM4" id="h3E-AY-zFR"/>
+                        <outlet property="shadowView" destination="jkv-uj-AkL" id="dQd-tO-IZR"/>
                         <outlet property="titleVacancies" destination="i32-5p-3jB" id="3Kq-7w-3k9"/>
                         <outlet property="viewForMainText" destination="9cq-Q3-Y6S" id="Qgr-Hc-K7I"/>
                         <outlet property="viewForPerson" destination="Cxx-t8-Bp8" id="V3M-Gd-4Kp"/>
@@ -4189,7 +4219,7 @@ Cgo
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="nMV-Kd-V68">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="center" misplaced="YES" id="C4l-1f-LgD" userLabel="11742CD7-EAD3-4A65-96B1-2C5F0772AC89-407-000049269ED99ED0">
                                         <rect key="frame" x="95" y="32" width="213" height="1"/>

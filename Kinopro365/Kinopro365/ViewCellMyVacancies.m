@@ -24,7 +24,15 @@
         
         self.frame = CGRectMake(0.f, height, CGRectGetWidth(mainView.bounds), 235.f);
         
-        
+        UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f)];
+        shadowView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        shadowView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+        [shadowView.layer setShadowOffset:CGSizeMake(0, 3)];
+        [shadowView.layer setShadowOpacity:0.7];
+        [shadowView.layer setShadowRadius:2.0f];
+        [shadowView.layer setShouldRasterize:YES];
+        [shadowView.layer setCornerRadius:5.0f];
+        [self addSubview:shadowView];
         
         CustomButton * buttonImage = [self createCustomButtonWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f) endImageName:imageUrl andProfileID:profileID];
         [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];

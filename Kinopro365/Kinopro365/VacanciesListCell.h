@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *activelyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *labelProfession;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
+
 
 @end

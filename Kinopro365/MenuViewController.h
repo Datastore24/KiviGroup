@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *userFLName;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;

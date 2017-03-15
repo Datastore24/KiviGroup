@@ -141,6 +141,14 @@
                                 }else{
                                     //Тут обработка ошибки загрузки изображения
                                 }
+                                cell.shadovView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+                                cell.shadovView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+                                [cell.shadovView.layer setShadowOffset:CGSizeMake(0, 3)];
+                                [cell.shadovView.layer setShadowOpacity:0.7];
+                                [cell.shadovView.layer setShadowRadius:2.0f];
+                                [cell.shadovView.layer setShouldRasterize:YES];
+                                [cell.shadovView.layer setCornerRadius:5.0f];
+                                cell.mainImage.layer.cornerRadius = 5.f;
                             }];
               }
     }

@@ -148,11 +148,9 @@
     static NSString * identifier = @"Cell";
     
     NSDictionary * dictVacan = [self.vacanArray objectAtIndex:indexPath.row];
-        VacanciesListCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        cell.backgroundColor = [UIColor whiteColor];
     
-    
-        cell.mainImage.layer.cornerRadius = 5.f;
+    VacanciesListCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.backgroundColor = [UIColor whiteColor];
     
     if(![[dictVacan objectForKey:@"logo_url"] isEqual:[NSNull null]]){
         NSURL *imgURL = [NSURL URLWithString:[dictVacan objectForKey:@"logo_url"]];
@@ -176,6 +174,15 @@
                                 }else{
                                     //Тут обработка ошибки загрузки изображения
                                 }
+                                
+                                cell.shadowView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+                                cell.shadowView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+                                [cell.shadowView.layer setShadowOffset:CGSizeMake(0, 3)];
+                                [cell.shadowView.layer setShadowOpacity:0.7];
+                                [cell.shadowView.layer setShadowRadius:2.0f];
+                                [cell.shadowView.layer setShouldRasterize:YES];
+                                [cell.shadowView.layer setCornerRadius:5.0f];
+                                cell.mainImage.layer.cornerRadius = 5.f;
                             }];
     }
     
