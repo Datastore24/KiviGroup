@@ -56,7 +56,8 @@
     self.buttonPhoneOne.layer.cornerRadius = 5.f;
     self.buttonPhoneTwo.layer.cornerRadius = 5.f;
     
-    self.shadowView.backgroundColor = [UIColor lightGrayColor];
+    self.shadowView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.shadowView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     [self.shadowView.layer setShadowOffset:CGSizeMake(0, 3)];
     [self.shadowView.layer setShadowOpacity:0.7];
     [self.shadowView.layer setShadowRadius:2.0f];

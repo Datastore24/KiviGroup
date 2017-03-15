@@ -30,6 +30,15 @@
     
     self.viewForAlert.layer.cornerRadius = CGRectGetWidth(self.viewForAlert.bounds) / 2;
     
+    self.shadowView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.shadowView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    [self.shadowView.layer setShadowOffset:CGSizeMake(0, 3)];
+    [self.shadowView.layer setShadowOpacity:0.7];
+    [self.shadowView.layer setShadowRadius:2.0f];
+    [self.shadowView.layer setShouldRasterize:YES];
+    
+    [self.shadowView.layer setCornerRadius:5.0f];
+    
     
 }
 

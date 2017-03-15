@@ -32,7 +32,8 @@
         [self addSubview:upBorderView];
         
         UIView * viewShadow = [[UIView alloc] initWithFrame:CGRectMake(13.f, 5.f, 75.f, 114.f)];
-        viewShadow.backgroundColor = [UIColor lightGrayColor];
+        viewShadow.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        viewShadow.layer.shadowColor = [UIColor lightGrayColor].CGColor;
         [viewShadow.layer setShadowOffset:CGSizeMake(0, 3)];
         [viewShadow.layer setShadowOpacity:0.7];
         [viewShadow.layer setShadowRadius:2.0f];

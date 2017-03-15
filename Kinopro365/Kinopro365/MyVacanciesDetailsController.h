@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
 @property (weak, nonatomic) IBOutlet CustomButton *buttonAddText;
 @property (weak, nonatomic) IBOutlet UIView *viewForMainText;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewForVacansies;
 

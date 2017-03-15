@@ -17,7 +17,8 @@
     if (self) {
         
         UIView * viewShadow = [[UIView alloc] initWithFrame:self.bounds];
-        viewShadow.backgroundColor = [UIColor lightGrayColor];
+        viewShadow.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        viewShadow.layer.shadowColor = [UIColor lightGrayColor].CGColor;
         [viewShadow.layer setShadowOffset:CGSizeMake(0, 3)];
         [viewShadow.layer setShadowOpacity:0.7];
         [viewShadow.layer setShadowRadius:2.0f];
