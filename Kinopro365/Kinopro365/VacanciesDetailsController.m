@@ -88,7 +88,7 @@
     self.activeLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     self.cityLabel.text = [NSString stringWithFormat:@"Город: %@",[vacanciesDict objectForKey:@"city_name"]];
     self.counterLabel.text =[NSString stringWithFormat:@"Подано заявок: %@",[vacanciesDict objectForKey:@"count_offer"]];
-    
+    self.counterApply = [[vacanciesDict objectForKey:@"count_offer"] integerValue];
     NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
     
     NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [vacanciesDict objectForKey:@"profession_id"]]];
@@ -197,11 +197,13 @@
         
         if([[response objectForKey:@"response"] integerValue] == 1){
             [self showAlertWithMessageWithBlock:@"Ваша заявка принята" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                
+                self.counterApply +=1;
+                self.counterLabel.text =[NSString stringWithFormat:@"Подано заявок: %ld",self.counterApply];
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 683){
             [self showAlertWithMessageWithBlock:@"Заявка уже была подана" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 681){
             [self showAlertWithMessageWithBlock:@"Вакансия не найдена" block:^{
@@ -209,7 +211,7 @@
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 682){
             [self showAlertWithMessageWithBlock:@"Нельзя подать заявку\nна свою вакансию" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                
             }];
         }else{
             [self showAlertWithMessageWithBlock:@"Заявку принять не удалось" block:^{

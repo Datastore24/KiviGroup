@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelType;
 @property (weak, nonatomic) IBOutlet UILabel *labelActively;
 @property (weak, nonatomic) IBOutlet UILabel *labelBidCount;
+@property (assign, nonatomic) NSInteger counterLabel;
 
 //titleView
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;

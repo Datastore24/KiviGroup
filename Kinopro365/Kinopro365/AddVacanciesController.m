@@ -88,6 +88,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[SingleTone sharedManager] setCountrySearchID:@""];
+    [[SingleTone sharedManager] setCitySearchID:@""];
+    
     self.heightForText = 55;
     
     self.arrayProfessions = [ChooseProfessionalModel getArrayProfessionsForVacancy];
@@ -100,6 +103,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
@@ -204,8 +208,6 @@
     if(!self.isEditor){
         if(self.textFildName.text.length ==0){
             [self showAlertWithMessage:@"Введите название вакансии"];
-        }else if(self.photoID.length == 0){
-            [self showAlertWithMessage:@"Выберите фото вакансии"];
         }else if([unixTimeEndAt isEqualToString:@"0"]){
             [self showAlertWithMessage:@"Выберите дату приема заявок"];
         }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
@@ -225,6 +227,10 @@
                 NSLog(@"response %@",response);
                 if([[response objectForKey:@"response"] integerValue] == 1){
                     [self showAlertWithMessageWithBlock:@"Вы создали вакансию" block:^{
+                        [[SingleTone sharedManager] setCountrySearchID:@""];
+                        [[SingleTone sharedManager] setCitySearchID:@""];
+                        
+                        NSLog(@"PIZDEC2 %@,%@",[[SingleTone sharedManager] countrySearchID],[[SingleTone sharedManager] citySearchID]);
                         [self.navigationController popViewControllerAnimated:YES];
                     }];
                 }
@@ -236,8 +242,6 @@
       
         if(self.textFildName.text.length ==0){
             [self showAlertWithMessage:@"Введите название вакансии"];
-        }else if([self.mainImageVacancy isEqual:[NSNull null]]){
-            [self showAlertWithMessage:@"Выберите фото вакансии"];
         }else if([unixTimeEndAt isEqualToString:@"0"]){
             [self showAlertWithMessage:@"Выберите дату приема заявок"];
         }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
@@ -278,9 +282,15 @@
             [addVacanciesModel editVacanciesName:self.textFildName.text andLogoID:photo andEndAt:unixTimeEndAt andProfessionID:self.professionIDVacancy andCountryID:self.countryIDVacancy andCityID:self.cityIDVacancy andDescription:self.textView.text andVacancyID:self.vacancyID complitionBlock:^(id response) {
                 NSLog(@"response %@",response);
                 if([[response objectForKey:@"response"] integerValue] == 1){
+                    
+                    
                     [self showAlertWithMessageWithBlock:@"Вакансия успешно изменена" block:^{
-                        [[SingleTone sharedManager] setCountrySearchID:nil];
-                        [[SingleTone sharedManager] setCitySearchID:nil];
+                        
+                        [[SingleTone sharedManager] setCountrySearchID:@""];
+                        [[SingleTone sharedManager] setCitySearchID:@""];
+                        
+                        NSLog(@"PIZDEC2 %@,%@",[[SingleTone sharedManager] countrySearchID],[[SingleTone sharedManager] citySearchID]);
+                        
                         [self.navigationController popViewControllerAnimated:YES];
                     }];
                 }

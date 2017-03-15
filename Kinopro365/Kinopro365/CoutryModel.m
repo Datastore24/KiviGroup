@@ -40,7 +40,8 @@
                                                                          ascending:YES];
             NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
             NSArray *sortedArray = [dictCountry sortedArrayUsingDescriptors:sortDescriptors];
-            [self.delegate setCountryArray:sortedArray];
+            NSMutableArray * resultArray =[(NSArray *) sortedArray mutableCopy];
+            [self.delegate setCountryArray:resultArray];
             compitionBack();
         }
     }];
@@ -89,7 +90,8 @@
                                                                          ascending:YES];
             NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
             NSArray *sortedArray = [dictCountry sortedArrayUsingDescriptors:sortDescriptors];
-            [self.delegate setCountryArray:sortedArray];
+            NSMutableArray * resultArray =[(NSArray *) sortedArray mutableCopy];
+            [self.delegate setCountryArray:resultArray];
             compitionBack();
         }
     }];

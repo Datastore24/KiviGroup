@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *activeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *counterLabel;
+@property (assign, nonatomic) NSInteger counterApply;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 

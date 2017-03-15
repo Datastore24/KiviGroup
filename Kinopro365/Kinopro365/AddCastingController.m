@@ -75,7 +75,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[SingleTone sharedManager] setCountrySearchID:@""];
+    [[SingleTone sharedManager] setCitySearchID:@""];
     self.arrayProfessions = [ChooseProfessionalModel getArrayProfessionsForCastings];
     self.arrayData = [KinoproSearchModel setTestArray];
     self.arrayGender = [NSArray arrayWithObjects:@"Мужской", @"Женский", nil];
@@ -86,6 +87,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     NSLog(@"DOPPARAM %@",self.dopArray);
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
@@ -291,10 +293,14 @@
                 
             }
             NSLog(@"RESULTDICT %@",resultDict);
+            
+            
             [addVacanciesModel addCastingsParams:resultDict complitionBlock:^(id response) {
                 NSLog(@"response %@",response);
                 if([[response objectForKey:@"response"] integerValue] == 1){
                     [self showAlertWithMessageWithBlock:@"Вы создали кастинг" block:^{
+                        [[SingleTone sharedManager] setCountrySearchID:@""];
+                        [[SingleTone sharedManager] setCitySearchID:@""];
                         [self.navigationController popViewControllerAnimated:YES];
                     }];
                 }
