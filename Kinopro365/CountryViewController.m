@@ -36,7 +36,7 @@
     self.countryModel.delegate = self;
     
     self.countryArray = [NSArray new];
-    
+    NSLog(@"COUNTRYCITY %@",[[SingleTone sharedManager] country_citi]);
     if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
         [self.countryModel getCountryArrayToTableView:^{
             self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
@@ -166,7 +166,7 @@
 }
 
 -(void) reloadTable{
-    NSLog(@"RELOAD");
+    NSLog(@"RELOAD COUNTRY");
     [self.tableView reloadData];
 }
 

@@ -304,7 +304,7 @@
 }
 
 -(void) reloadTable{
-    NSLog(@"RELOAD");
+    NSLog(@"RELOAD PROF");
     [self.tableView reloadData];
 }
 
