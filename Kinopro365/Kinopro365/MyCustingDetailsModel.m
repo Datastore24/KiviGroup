@@ -83,7 +83,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              castingID,@"casting_offer_id",
                              decision,@"decision",nil];
-    
+    NSLog(@"paramsdecide %@", params);
     [apiManager getDataFromSeverWithMethod:@"casting.decide" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         if([response objectForKey:@"error_code"]){
             
@@ -102,6 +102,7 @@
     NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                              castingID,@"casting_id",nil];
     
+    NSLog(@"params %@", params);
     [apiManager getDataFromSeverWithMethod:@"casting.delete" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         if([response objectForKey:@"error_code"]){
             

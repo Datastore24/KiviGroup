@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *userFLName;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UILabel *countRewardsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLikesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countViewsLabel;
+
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonKinopro;

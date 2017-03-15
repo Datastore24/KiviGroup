@@ -11,6 +11,8 @@
 #import "ChooseProfessionalModel.h"
 #import "KinoproSearchController.h"
 #import "ProfessionController.h"
+#import "APIManger.h"
+#import "PersonalDataController.h"
 
 @interface KinoproViewController () <ChooseProfessionalModelDelegate>
 
@@ -31,6 +33,32 @@
     self.navigationItem.titleView = customText;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    APIManger * apiManager = [[APIManger alloc] init];
+    PersonalDataController * personalDataController = [[PersonalDataController alloc] init];
+    
+    [apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+        
+        if([response objectForKey:@"error_code"]){
+            
+            NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                  [response objectForKey:@"error_msg"]);
+            NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+        }else{
+            
+            NSDictionary * respDict = [response objectForKey:@"response"];
+            NSLog(@"PROFILE %@",respDict);
+            
+            NSArray * profArray =[respDict objectForKey:@"professions"];
+            
+            [[SingleTone sharedManager] setMyProfArray:profArray];
+            [[SingleTone sharedManager] setMyProfileID:[respDict objectForKey:@"id"]];
+            
+            [personalDataController loadFromServer:respDict];
+        }
+        
+        
+    }];
     
 }
 

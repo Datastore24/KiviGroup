@@ -17,6 +17,7 @@
                       endCountry: (NSString*) country endAge: (NSString*) age endIsReward: (BOOL) isReward endRewardNumber: (NSString*) rewardNumber
                        endIsLike: (BOOL) isLike endLikeNumber: (NSString*) likeNumber endIsBookmark: (BOOL) isBookmark
                     endProfileID: (NSString*) profileID enfGrowth: (NSString*) growth endApproved: (BOOL) approved
+               endCastingOfferID: (NSString *) castingOfferID
 {
     self = [super init];
     if (self) {
@@ -77,18 +78,21 @@
         if (!approved) {
             CustomButton * buttonDelete = [self createCustomButtonWithFrame:CGRectMake(238.f, 47.f, 26.f, 26.f)
                                                              endImageString:@"buttonDeleteCellImage"];
+            buttonDelete.customID = castingOfferID;
             [buttonDelete addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonDelete];
             
             CustomButton * buttonConfirm = [self createCustomButtonWithFrame:CGRectMake(284.f, 47.f, 26.f, 26.f)
                                                               endImageString:@"buttonConfermCellImage"];
+            buttonConfirm.customID = castingOfferID;
             [buttonConfirm addTarget:self action:@selector(actionButtonConfirm:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:buttonConfirm];
         } else {
-            CustomButton * buttonDelete = [self createCustomButtonWithFrame:CGRectMake(284.f, 47.f, 26.f, 26.f)
-                                                             endImageString:@"buttonDeleteCellImage"];
-            [buttonDelete addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:buttonDelete];
+//            CustomButton * buttonDeleteTwo = [self createCustomButtonWithFrame:CGRectMake(284.f, 47.f, 26.f, 26.f)
+//                                                             endImageString:@"buttonDeleteCellImage"];
+//            buttonDeleteTwo.customID = castingOfferID;
+//            [buttonDeleteTwo addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
+//            [self addSubview:buttonDeleteTwo];
         }
         
     }

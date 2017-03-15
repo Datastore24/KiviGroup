@@ -65,11 +65,11 @@
     
     [self.shadowView.layer setCornerRadius:5.0f];
     
-    
+    [self.barButtonID setTitle: [NSString stringWithFormat:@"id: %@",self.profileID]];
     [self.barButtonID setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:FONT_ISTOK_REGULAR size:16],
-      UITextAttributeFont,
+      NSFontAttributeName,
       nil]
                                                 forState:UIControlStateNormal];
     
@@ -82,6 +82,7 @@
         self.buttonBookmark.alpha = 0.f;
         self.viewrsLabel.alpha = 1.f;
         self.viewrsImage.alpha = 1.f;
+        self.viewrsLabel.text= [[SingleTone sharedManager] myCountViews];
     }
     
     
@@ -112,6 +113,8 @@
     
 }
 
+
+
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
@@ -119,6 +122,8 @@
     [self createActivitiIndicatorAlertWithView];
     self.profDetailModel = [[ProfessionDetailModel alloc] init];
     self.profDetailModel.delegate = self;
+    
+    NSLog(@"PROFILEID %@ PROFID %@",self.profileID,self.profID);
     [self.profDetailModel loadProfile:self.profileID andProffesionID:self.profID];
     
     self.imageView = [[PhotoDetailView alloc] initWithCustomFrame:
@@ -493,6 +498,9 @@
 - (IBAction)barButtonID:(id)sender {
     
     NSLog(@"Копировать ID в буффер обмена");
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.profileID;
+    NSLog(@"PASTEBOARD %@",pasteboard.string);
     
 }
 

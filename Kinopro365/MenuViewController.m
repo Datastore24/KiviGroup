@@ -12,6 +12,8 @@
 #import "SingleTone.h"
 #import "VacanciesListController.h"
 #import "Macros.h"
+#import "ProfessionDetailController.h"
+#import "ChooseProfessionalModel.h"
 
 @interface MenuViewController () <MenuViewModelDelegate>
 
@@ -24,9 +26,7 @@
 
 - (void) loadView{
     [super loadView];
-    MenuViewModel * menuViewModel = [[MenuViewModel alloc] init];
-    menuViewModel.delegate=self;
-    [menuViewModel loadUserInformation];
+    
     
     self.viewForAlert.layer.cornerRadius = CGRectGetWidth(self.viewForAlert.bounds) / 2;
     
@@ -40,6 +40,13 @@
     [self.shadowView.layer setCornerRadius:5.0f];
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    MenuViewModel * menuViewModel = [[MenuViewModel alloc] init];
+    menuViewModel.delegate=self;
+    [menuViewModel loadUserInformation];
 }
 
 - (void)viewDidLoad {
@@ -147,13 +154,51 @@
     //Если одна профессия переходим сразу в анкету
     //-----
     //Временный будевый параметр
-    BOOL isBool = NO; //Если YES приходит Массив, если NO приходит одна профессия
+    NSArray * profArray = [[SingleTone sharedManager] myProfArray];
     
-    if (isBool) {
-        [self pushMethodWithIdentifier:@"KinoproViewController"];
-    } else {
-        [self pushMethodWithIdentifier:@"ProfessionDetailController"];
-    }
+//    if (profArray.count>1) {
+//        [self pushMethodWithIdentifier:@"KinoproViewController"];
+//    } else if(profArray.count == 1){
+    
+        
+        ProfessionDetailController * profController =
+        [self.storyboard instantiateViewControllerWithIdentifier:@"ProfessionDetailController"];
+        UINavigationController * nextNavNav = [[UINavigationController alloc]
+                                               initWithRootViewController:profController];
+        //    nextNavNav.navigationBar.layer.borderColor = [[UIColor whiteColor] CGColor];
+        //    nextNavNav.navigationBar.layer.borderWidth=2;// set border you can see the shadow
+        nextNavNav.navigationBar.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+        nextNavNav.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        nextNavNav.navigationBar.layer.shadowRadius = 3.0f;
+        nextNavNav.navigationBar.layer.shadowOpacity = 1.0f;
+        nextNavNav.navigationBar.layer.masksToBounds=NO;
+        
+        profController.profileID = [[SingleTone sharedManager] myProfileID];
+        
+        NSDictionary * profDict = [profArray objectAtIndex:0];
+    
+        profController.profID = [profDict objectForKey:@"profession_id"];
+        
+        NSArray * professionArray = [ChooseProfessionalModel getArrayProfessions];
+        NSArray *filtered = [professionArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(id == %@)", [profDict objectForKey:@"profession_id"]]];
+        NSDictionary *item;
+        if(filtered.count>0){
+            item = [filtered objectAtIndex:0];
+        }
+        
+        //Профеесия
+        if(item.count > 0){
+            profController.profName = [item objectForKey:@"name"];
+            
+        }
+        
+        NSLog(@"PROFILEID %@ PROFID %@ PROFNAME %@", [[SingleTone sharedManager] myProfileID],profController.profID,profController.profName);
+        
+        
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.centerContainer.centerViewController = nextNavNav;
+        [appDelegate.centerContainer toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+//    }
     
     
     

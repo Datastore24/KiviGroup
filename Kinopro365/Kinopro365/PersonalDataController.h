@@ -72,5 +72,7 @@
 - (IBAction)actionButtonFemale:(id)sender;
 - (IBAction)actionButtonRound:(id)sender;
 
+-(void) loadFromServer:(NSDictionary * ) userInfo;
+
 
 @end

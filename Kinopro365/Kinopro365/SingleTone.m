@@ -20,6 +20,8 @@
 @synthesize localization;
 @synthesize typeView;
 @synthesize myKinosfera;
+@synthesize myProfileID;
+@synthesize myCountViews;
 
 
 #pragma mark Singleton Methods

@@ -87,8 +87,6 @@
         UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
         
         
-            
-            
 
                 NSLog(@"BLOCKOK");
                 [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {

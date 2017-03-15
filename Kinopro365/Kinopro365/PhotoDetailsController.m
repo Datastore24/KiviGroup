@@ -84,7 +84,7 @@
 
 -(void) loadViewCustom {
     
-    [self.arrayDelete removeAllObjects];
+//    [self.arrayDelete removeAllObjects];
     
     self.countDelete = 0;
     
@@ -96,7 +96,7 @@
     
     [self.photoDetailsModel getPhotosArrayWithOffset:@"0" andCount:@"1000"];
     
-    [self creationViews];
+    
     
 
     
