@@ -51,8 +51,6 @@
     [self.shadowView.layer setShouldRasterize:YES];
     
     [self.shadowView.layer setCornerRadius:5.0f];
-    
-    
 }
 
 - (void)viewDidLoad {

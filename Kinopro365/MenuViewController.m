@@ -39,6 +39,15 @@
     
     [self.shadowView.layer setCornerRadius:5.0f];
     
+    //-------------------------------------
+    if (isiPhone6) {
+        for (UIImageView * imageView in self.arrayImages) {
+            CGRect rectImage = imageView.frame;
+            rectImage.size.width += 5.f;
+            imageView.frame = rectImage;
+        }
+    }
+    
     
 }
 

@@ -2594,7 +2594,7 @@ Cg
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="oZa-S2-ZcA">
-                                                    <rect key="frame" x="0.0" y="45.5" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="46" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>

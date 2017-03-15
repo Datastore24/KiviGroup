@@ -35,6 +35,12 @@
 #define COLOR_PLACEHOLDER @"C7C7CD"
 #define COLOR_BORDER_AVATAR @"e5ebf1"
 
+//Элементы под разные устройства----------------------------------------------
+#define isiPhone6  ([[UIScreen mainScreen] bounds].size.height == 667)?TRUE:FALSE
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
+#define isiPhone4s  ([[UIScreen mainScreen] bounds].size.height == 480)?TRUE:FALSE
+#define isiPhone6Plus  ([[UIScreen mainScreen] bounds].size.height == 736)?TRUE:FALSE
+
 
 
 
