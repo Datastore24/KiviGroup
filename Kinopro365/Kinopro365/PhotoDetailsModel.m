@@ -25,7 +25,7 @@
                   [response objectForKey:@"error_msg"]);
             NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
         }else{
-//            NSLog(@"RESPONSE PHOTOS %@",response);
+           NSLog(@"RESPONSE PHOTOS %@",response);
             
             NSDictionary *dictResponse = [response objectForKey:@"response"];
             NSArray *itemsArray = [dictResponse objectForKey:@"items"];

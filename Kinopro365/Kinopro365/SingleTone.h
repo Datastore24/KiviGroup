@@ -18,6 +18,11 @@
 @property (strong, nonatomic) NSString * token;
 @property (strong, nonatomic) NSString * countryID;
 
+@property (strong, nonatomic) NSString * myProfileID;
+@property (strong, nonatomic) NSArray  * myProfArray;
+
+@property (strong, nonatomic) NSString * myCountViews;
+
 @property (strong, nonatomic) NSString * countrySearchID;
 @property (strong, nonatomic) NSString * citySearchID;
 

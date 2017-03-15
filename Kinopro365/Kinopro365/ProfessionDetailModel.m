@@ -21,7 +21,7 @@
     NSLog(@"PARAMS %@",params);
     
     [apiManager getDataFromSeverWithMethod:@"user.get" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
-         NSLog(@"PROFILE %@",response);
+         NSLog(@"PROFILEEEE %@",response);
         if([response objectForKey:@"error_code"]){
             
             NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],

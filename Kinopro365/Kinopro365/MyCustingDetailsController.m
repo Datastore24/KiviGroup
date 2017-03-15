@@ -105,7 +105,7 @@
     
     self.activelyLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
     self.countryLabel.text = [NSString stringWithFormat:@"%@ (%@)",[self.castingDict objectForKey:@"city_name"],[self.castingDict objectForKey:@"country_name"]];
-    self.labelConsideration.text =[NSString stringWithFormat:@"%@",[self.castingDict objectForKey:@"count_offer"]];
+    self.labelConsideration.text =[NSString stringWithFormat:@"%@",[self.castingDict objectForKey:@"count_pending_offer"]];
 
     
     //Тестовые строки---------------------------------------
@@ -148,11 +148,13 @@
                 [view removeFromSuperview];
             }
             
+            
+            
             for (int i = 0; i < respOffers.count; i++) {
                 NSDictionary * dictOffers = [respOffers objectAtIndex:i];
                 
                 
-                    ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[NSString stringWithFormat:@"%@ %@",[dictOffers objectForKey:@"first_name"],[dictOffers objectForKey:@"last_name"]] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет",[dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endProfileID:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"id"]] enfGrowth:[NSString stringWithFormat:@"рост: -- см"] endApproved: NO];
+                ViewCellMyCasting * cell = [[ViewCellMyCasting alloc] initWithMainView:self.firstScrollView endHeight:130.f * i endImageName:[dictOffers objectForKey:@"photo_url"] endName:[NSString stringWithFormat:@"%@ %@",[dictOffers objectForKey:@"first_name"],[dictOffers objectForKey:@"last_name"]] endCountry:[NSString stringWithFormat:@"%@ (%@)",[dictOffers objectForKey:@"city_name"],[dictOffers objectForKey:@"country_name"]] endAge:[NSString stringWithFormat:@"%@ лет",[dictOffers objectForKey:@"age"]] endIsReward:[[dictOffers objectForKey:@"is_reward"] boolValue] endRewardNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_rewards"]] endIsLike:[[dictOffers objectForKey:@"is_like"] boolValue] endLikeNumber:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"count_likes"]] endIsBookmark:[[dictOffers objectForKey:@"is_favourite"] boolValue] endProfileID:[NSString stringWithFormat:@"%@",[dictOffers objectForKey:@"id"]] enfGrowth:[NSString stringWithFormat:@"рост: %@ см",[dictOffers objectForKey:@"height"]] endApproved: NO endCastingOfferID: [dictOffers objectForKey:@"casting_offer_id"]];
                     cell.delegate = self;
                     [self.firstScrollView addSubview:cell];
                 
@@ -186,8 +188,9 @@
                                         endLikeNumber:[NSString stringWithFormat:@"%@",[dictApproved objectForKey:@"count_likes"]]
                                         endIsBookmark:[[dictApproved objectForKey:@"is_favourite"] boolValue]
                                         endProfileID:[NSString stringWithFormat:@"%@",[dictApproved objectForKey:@"id"]]
-                                        enfGrowth:[NSString stringWithFormat:@"рост: -- см"]
-                                                                             endApproved: YES];
+                                        enfGrowth:[NSString stringWithFormat:@"рост: %@ см",[dictApproved objectForKey:@"height"]]
+                                                                             endApproved: YES
+                                        endCastingOfferID: [dictApproved objectForKey:@"casting_offer_id"]];
                   cell.delegate = self;
                   [self.secondScrollView addSubview:cell];
     
@@ -257,8 +260,10 @@
 
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonDelete: (CustomButton*) sender {
     
+    NSLog(@"CUSTOMID %@",sender.customID);
+    
     NSLog(@"Кнопка удаления");
-    [self.myCastingDetailsModel decideCastings:self.castingID andDecision:@"2" complitionBlock:^(id response) {
+    [self.myCastingDetailsModel decideCastings:sender.customID andDecision:@"2" complitionBlock:^(id response) {
         if([[response objectForKey:@"response"] integerValue] == 1){
             [self.myCastingDetailsModel loadCastings:self.castingID];
         }
@@ -268,7 +273,7 @@
 - (void) actionWith: (ViewCellMyCasting*) viewCellMyCasting endButtonConfirm: (CustomButton*) sender {
     
     NSLog(@"Кнопка подтвеждения");
-    [self.myCastingDetailsModel decideCastings:self.castingID andDecision:@"1" complitionBlock:^(id response) {
+    [self.myCastingDetailsModel decideCastings:sender.customID andDecision:@"1" complitionBlock:^(id response) {
          if([[response objectForKey:@"response"] integerValue] == 1){
              [self.myCastingDetailsModel loadCastings:self.castingID];
          }

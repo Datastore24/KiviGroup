@@ -34,6 +34,31 @@
                 NSDictionary * respDict = [response objectForKey:@"response"];
                 NSLog(@"respDict %@",respDict);
                 
+                [self.delegate userFLName].text = userInfo.first_name;
+                [self.delegate labelName].text = userInfo.last_name;
+                
+                [apiManager getDataFromSeverWithMethod:@"account.getCounters" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
+                    if([response objectForKey:@"error_code"]){
+                        
+                        NSLog(@"Ошибка сервера код: %@, сообщение: %@",[response objectForKey:@"error_code"],
+                              [response objectForKey:@"error_msg"]);
+                        NSInteger errorCode = [[response objectForKey:@"error_code"] integerValue];
+                    }else{
+                        NSDictionary * respDictCount = [response objectForKey:@"response"];
+                        [self.delegate countRewardsLabel].text = [respDictCount objectForKey:@"rewards"];
+                        [self.delegate countLikesLabel].text = [respDictCount objectForKey:@"likes"];
+                        [self.delegate countViewsLabel].text = [respDictCount objectForKey:@"views"];
+                        [[SingleTone sharedManager] setMyCountViews:[respDictCount objectForKey:@"views"]];
+                        if([[respDictCount objectForKey:@"notifications"] integerValue]>0){
+                            [self.delegate countAlertLabel].text = [respDictCount objectForKey:@"notifications"];
+                        }else{
+                            [[self.delegate countAlertLabel] setAlpha:0.f];
+                        }
+                        
+                        
+                    }
+                }];
+                
                 NSURL *imgURL = [NSURL URLWithString:[respDict objectForKey:@"url"]];
                 SDWebImageManager *manager = [SDWebImageManager sharedManager];
                 [manager downloadImageWithURL:imgURL
@@ -45,12 +70,14 @@
                                                 NSURL *imageURL) {
                                         
                                         if(image){
-                                            NSLog(@"image %@",image);
+                                           
                                             [[self.delegate userPhoto]  setImage:image forState:UIControlStateNormal];
                                             [self.delegate userPhoto].layer.cornerRadius = 5.f;
                                             [self.delegate userPhoto].clipsToBounds = YES;
-                                            NSString * resultName = [NSString stringWithFormat:@"%@ %@",userInfo.first_name,userInfo.last_name];
-                                            [self.delegate userFLName].text = resultName;
+                            
+                                            
+                                            
+                                            
                                             
                                             
                                         }else{
