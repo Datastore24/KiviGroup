@@ -7,6 +7,7 @@
 //
 
 #import "AnotherPaymentController.h"
+#import "UITextField+CheckNumber.h"
 
 @interface AnotherPaymentController () <UITextFieldDelegate>
 
@@ -56,5 +57,34 @@
     return YES;
     
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if ([textField.text isEqualToString:@""]) {
+            textField.text = @"id";
+        }
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField.keyboardType == UIKeyboardTypeNumbersAndPunctuation) {
+        if ([textField.text isEqualToString:@"id"]) {
+            textField.text = @"";
+        }
+    }
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    return [textField checkForIDWithTextField:textField shouldChangeCharactersInRange:range replacementString:string complitionBlock:^(NSString *response) {
+        
+    }];
+}
+
+
 
 @end

@@ -23,5 +23,8 @@
 //Проверка ввода теллефона через намбер пад
 - (BOOL)checkForPhoneWithTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
                  replacementString:(NSString *)string complitionBlock: (void (^) (NSString* response)) compitionBlock;
+//Для ввода ID
+- (BOOL)checkForIDWithTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+              replacementString:(NSString *)string complitionBlock: (void (^) (NSString* response)) compitionBlock;
 
 @end

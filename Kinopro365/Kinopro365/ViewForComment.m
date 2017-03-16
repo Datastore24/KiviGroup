@@ -31,6 +31,7 @@
         
         self.textView = [self createtextViewWithFrame:CGRectMake(14.f, 36, 296.f, 80.f)
                                                       endTextPlaceHolder:@"Какая концепция проекта? Кто нужен\nдля проекта? Что нужно делать?\nСколько платят?"];
+        self.textView.scrollEnabled = NO;
         self.textView.delegate = self;
         [self addSubview:self.textView];
         
@@ -52,6 +53,7 @@
         
         self.textViewHide = [self createtextViewWithFrame:CGRectMake(14.f, 54, 296.f, 98.f)
                                                       endTextPlaceHolder:@"Адрес и время проведения кастинга.\nКонтакты для связи.\n(Отправляется в оповещение\nодобренным пользователям)."];
+        self.textViewHide.scrollEnabled = NO;
         self.textViewHide.delegate = self;
         [self addSubview:self.textViewHide];
         

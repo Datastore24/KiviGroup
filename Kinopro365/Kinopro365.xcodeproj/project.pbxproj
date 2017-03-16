@@ -906,6 +906,8 @@
 				FFDE8B991DDDC46000F937BD /* AppDelegate.m */,
 				FF25B9741DF97CBF00D59716 /* MainViewController.h */,
 				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
+				B87B97F61E7A7DB500A40DB6 /* LaunchScreen.storyboard */,
+				B87B97F81E7A7DB500A40DB6 /* Main.storyboard */,
 				AD50A4971E13DC0400CC44DB /* API */,
 				FF25B9E61DFAF6E400D59716 /* Category */,
 				FF90ED2E1E03C9EF00094F6D /* Images */,
@@ -919,8 +921,6 @@
 		FFDE8B951DDDC46000F937BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B87B97F61E7A7DB500A40DB6 /* LaunchScreen.storyboard */,
-				B87B97F81E7A7DB500A40DB6 /* Main.storyboard */,
 				ADF9C7411E3A19EC0085F993 /* DateTimeMethod.h */,
 				ADF9C7421E3A19EC0085F993 /* DateTimeMethod.m */,
 				FFA1C6D91E51BC2000B619DD /* Media.xcassets */,

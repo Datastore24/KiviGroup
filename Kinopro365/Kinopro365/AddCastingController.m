@@ -395,7 +395,7 @@
     if ([viewForComment isEqual:self.viewComment]) {
         [self animationMethodWithBoolean:NO endView:self.viewComment];
     } else if ([viewForComment isEqual:self.viewHideComment]) {
-        [self animationMethodWithBoolean:NO endView:self.viewHideComment];
+        [self animationMethodWithBoolean:NO endView:self.viewSave];
     } else {
         NSLog(@"Шляпа");
     }
@@ -415,7 +415,7 @@
 - (void) checkOnHideHeight: (UITextView*) textView {
     [UIView animateWithDuration:0.3 animations:^{
         self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.viewSave.frame) + (352 - 130));
-        self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.viewHideComment.frame) + 30 + (352 - 130)) - self.view.frame.size.height);
+        self.mainScrollView.contentOffset = CGPointMake(0, ((CGRectGetMaxY(self.viewHideComment.frame) + 69) + (352 - 130)) - self.view.frame.size.height);
         [self animationViewsWithBool:NO];
     }];
 }
@@ -436,8 +436,12 @@
 
         if (isBool) {
             self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.viewSave.frame)) + (352 - 130));
-            self.mainScrollView.contentOffset =
-            CGPointMake(0, ((CGRectGetMaxY(view.frame) + 30) + (352 - 130)) - self.view.frame.size.height);
+            if ([view isEqual:self.viewComment]) {
+                self.mainScrollView.contentOffset =
+                CGPointMake(0, ((CGRectGetMaxY(view.frame) + 30) + (352 - 130)) - self.view.frame.size.height);
+            } else {
+                self.mainScrollView.contentOffset = CGPointMake(0, ((CGRectGetMaxY(self.viewHideComment.frame) + 69) + (352 - 130)) - self.view.frame.size.height);
+            }
         } else {
             self.mainScrollView.contentSize = CGSizeMake(0, (CGRectGetMaxY(self.viewSave.frame)));
         }

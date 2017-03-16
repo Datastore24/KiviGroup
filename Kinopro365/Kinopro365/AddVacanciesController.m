@@ -39,17 +39,17 @@
     }else{
             CustomText = [[UILabel alloc]initWithTitle:@"Редактировать вакансию"];
         self.textView.text = self.textViewVacancy;
+        CGFloat textHeight = [self getLabelHeight:self.textView];
+        if (textHeight > 55) {
+            [self animationsForViewWithTextHeight:textHeight endBool:NO endStartAnim:YES];
+        } else {
+            [self animationsForViewWithTextHeight:textHeight endBool:YES endStartAnim:YES];
+        }
         self.textFildName.text = self.nameVacancy;
         [self.buttonCity setTitle:self.cityNameVacancy forState:UIControlStateNormal];
         [self.buttonCountry setTitle:self.countryNameVacancy forState:UIControlStateNormal];
         if(self.mainImageVacancy){
-                 [self.buttonAddImage setImage:self.mainImageVacancy forState:UIControlStateNormal];
-            CGFloat textHeight = [self getLabelHeight:self.textView];
-            if (textHeight > 55) {
-                [self animationsForViewWithTextHeight:textHeight endBool:NO endStartAnim:YES];
-            } else {
-                [self animationsForViewWithTextHeight:textHeight endBool:YES endStartAnim:YES];
-            }
+            [self.buttonAddImage setImage:self.mainImageVacancy forState:UIControlStateNormal];
         }
         
         self.buttonAddImage.layer.cornerRadius = 5.f;
@@ -394,7 +394,7 @@
             
             if (startAnim) {
                 self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14);
-                self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + 64) - self.view.frame.size.height);
+//                self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + 64) - self.view.frame.size.height);
             } else {
             self.mainScrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130));
             self.mainScrollView.contentOffset = CGPointMake(0, (CGRectGetMaxY(self.buttonCreate.frame) + 14 + (352 - 130)) - self.view.frame.size.height);

@@ -85,8 +85,10 @@
         cell.imageType.image = [UIImage imageNamed:@"imageCellCastings"];
     } else if ([typeString integerValue] == 1) {
         cell.imageType.image = [UIImage imageNamed:@"imageCellInfo"];
+        cell.buttonPush.alpha = 0.f;
     } else if ([typeString integerValue] == 2) {
         cell.imageType.image = [UIImage imageNamed:@"imageCellMoney"];
+        cell.buttonPush.alpha = 0.f;
     } else if ([typeString integerValue] == 3) {
         cell.imageType.image = [UIImage imageNamed:@"imageCellVacancies"];
     } else if ([typeString integerValue] == 4) {

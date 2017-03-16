@@ -40,6 +40,8 @@
     
     self.starHeightViewForParams = CGRectGetHeight(self.viewForParams.bounds);
     
+    self.buttonAddBit.layer.cornerRadius = 5.f;
+    
 
     
 }

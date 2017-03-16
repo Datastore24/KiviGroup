@@ -13,6 +13,10 @@
 
 @interface MenuViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *rewardImage;
+@property (weak, nonatomic) IBOutlet UIImageView *likeImage;
+@property (weak, nonatomic) IBOutlet UIImageView *viewesImage;
+
 @property (weak, nonatomic) IBOutlet UIButton *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *userFLName;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
@@ -34,6 +38,8 @@
 
 - (IBAction)actionForCheck:(id)sender;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *arrayImages;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *collectionSide;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *countCollection;
 
 - (IBAction)actionButtonKinopro:(id)sender;
 - (IBAction)actionButtonVacancies:(id)sender;
