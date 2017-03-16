@@ -11,7 +11,7 @@
 
 @implementation PhotoView
 
-- (instancetype)initWithFrame:(CGRect)frame andWithImageButton: (NSString*) imageButton {
+- (instancetype)initWithFrame:(CGRect)frame andWithImageButton: (NSString*) imageButton endTag: (NSInteger) customtag {
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -28,8 +28,10 @@
         
         [self addSubview:viewShadow];
         
-        UIButton * buttonImage = [UIButton buttonWithType:UIButtonTypeCustom];
-        buttonImage.frame = self.bounds;
+        self.customTag = customtag;
+        
+        self.buttonImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.buttonImage.frame = self.bounds;
        
         
         NSURL *imgURL = [NSURL URLWithString:imageButton];
@@ -43,12 +45,12 @@
                                         NSURL *imageURL) {
                                 
                                 if(image){
-                                    [[buttonImage imageView]
+                                    [[self.buttonImage imageView]
                                      setContentMode:UIViewContentModeScaleAspectFill];
-                                    [[buttonImage imageView] setClipsToBounds:YES];
-                                    [[[buttonImage imageView] layer] setCornerRadius:5.f];
+                                    [[self.buttonImage imageView] setClipsToBounds:YES];
+                                    [[[self.buttonImage imageView] layer] setCornerRadius:5.f];
                                     
-                                    [buttonImage setImage:image forState:UIControlStateNormal];
+                                    [self.buttonImage setImage:image forState:UIControlStateNormal];
                                     
                                     
                                     
@@ -57,8 +59,8 @@
                                 }
                                 [self.delegate loadImage:self endImage:image];
                             }];
-        [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:buttonImage];
+        [self.buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.buttonImage];
         
         
     }

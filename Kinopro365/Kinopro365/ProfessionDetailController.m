@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UIView * viewForScrollPhoto;
 @property (strong, nonatomic) PhotoDetailView * imageView;
 @property (assign, nonatomic) NSInteger countImage;
+@property (strong, nonatomic) NSMutableArray * arrauImages;
 
 @end
 
@@ -113,6 +114,12 @@
     self.scrollViewPhoto.pagingEnabled = YES;
     [self.viewForScrollPhoto addSubview:self.scrollViewPhoto];
     
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(self.viewForScrollPhoto.frame.size.width - 40, 74, 30, 30);
+    [button setImage:[UIImage imageNamed:@"ImageCancelNew"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.viewForScrollPhoto addSubview:button];
+    
     self.viewForScrollPhoto.alpha = 0.f;
 }
 
@@ -120,6 +127,7 @@
     [super viewDidLoad];
     
     self.countImage = 0.f;
+    self.arrauImages = [NSMutableArray array];
     
 }
 
@@ -252,9 +260,10 @@
             for (int i = 0; i < itemsArray.count; i++) {
                 NSDictionary * itemsDict = [itemsArray objectAtIndex:i];
                 PhotoView * photoView = [[PhotoView alloc] initWithFrame:CGRectMake(21.f + 74.f * i, 7.f, 53.f, 80.f)
-                                                      andWithImageButton:[itemsDict objectForKey:@"url"]];
+                                                      andWithImageButton:[itemsDict objectForKey:@"url"] endTag:i + 1];
                 photoView.delegate = self;
                 [self.photoScrollView addSubview:photoView];
+                [self.arrauImages addObject:photoView];
             }
             
         }];
@@ -428,6 +437,12 @@
 #pragma mark - PhotoViewDelegate
 
 - (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton {
+
+    for (PhotoView * view in self.arrauImages) {
+        if ([view.buttonImage isEqual:imageButton]) {
+            self.scrollViewPhoto.contentOffset = CGPointMake(CGRectGetWidth(self.view.bounds) * (photoView.customTag - 1), 0);
+        }
+    }
     [UIView animateWithDuration:0.3 animations:^{
         self.viewForScrollPhoto.alpha = 1.f;
     }];
@@ -435,16 +450,15 @@
 
 - (void) loadImage: (PhotoView*) photoView endImage: (UIImage*) image {
     
+    NSLog(@"Hello");
+    
+    
     UIImageView * viewForScroll = [[UIImageView alloc] initWithFrame:CGRectMake(0.f + CGRectGetWidth(self.view.bounds) * self.countImage,
                                                                                 0.f, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    viewForScroll.contentMode = UIViewContentModeScaleAspectFit;
+    viewForScroll.clipsToBounds = YES;
     viewForScroll.image = image;
     [self.scrollViewPhoto addSubview:viewForScroll];
-    
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(viewForScroll.frame.size.width - 40, 10, 30, 30);
-    [button setImage:[UIImage imageNamed:@"ImageCancelNew"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
-    [viewForScroll addSubview:button];
     
     self.countImage += 1;
     self.scrollViewPhoto.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds) * self.countImage, 0);
