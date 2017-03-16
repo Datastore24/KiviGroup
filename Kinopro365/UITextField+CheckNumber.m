@@ -137,16 +137,59 @@
     
     [resultString insertString:@"+" atIndex:0];
     
-    if (resultString.length >= 3) {
-        [resultString insertString:@" " atIndex:2];
-    }
-    if (resultString.length >= 7) {
-        [resultString insertString:@" " atIndex:6];
+    if (textField.keyboardType == UIKeyboardTypeNumberPad) {
+            if (resultString.length >= 3) {
+                [resultString insertString:@" " atIndex:2];
+            }
+            if (resultString.length >= 7) {
+                [resultString insertString:@" " atIndex:6];
+            }
+        
+            if (resultString.length >= 11) {
+                [resultString insertString:@" " atIndex:10];
+            }
+        
     }
     
-    if (resultString.length >= 11) {
-        [resultString insertString:@" " atIndex:10];
+ 
+    compitionBlock(newString);
+    
+    textField.text = resultString;
+    
+    return NO;
+    
+}
+
+- (BOOL)checkForIDWithTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+                 replacementString:(NSString *)string complitionBlock: (void (^) (NSString* response)) compitionBlock {
+    
+    if (range.location == 0 || range.location == 1) {
+        return NO;
     }
+    NSCharacterSet *invalidCharSet = [NSCharacterSet characterSetWithCharactersInString:
+                                      @" ,*#;+"];
+    NSArray * components = [string componentsSeparatedByCharactersInSet:invalidCharSet];
+    
+    if ([components count] > 2) {
+        return NO;
+    }
+    
+    NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSArray * validComponents = [newString componentsSeparatedByCharactersInSet:invalidCharSet];
+    newString = [validComponents componentsJoinedByString:@""];
+    
+    
+    if (newString.length > 11) {
+        
+        return NO;
+    }
+    
+    NSMutableString * resultString = [NSMutableString string];
+    [resultString appendString:newString];
+    
+//    [resultString insertString:@"id" atIndex:0];
+    
+    
     
     compitionBlock(newString);
     
@@ -155,6 +198,7 @@
     return NO;
     
 }
+
 
 
 @end
