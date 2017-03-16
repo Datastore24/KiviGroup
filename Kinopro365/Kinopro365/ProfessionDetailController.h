@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet CustomButton *buttonStar;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneOne;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoneTwo;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAvatar;
 
 
 //Labels
@@ -45,7 +46,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelGrowth;
 @property (weak, nonatomic) IBOutlet UILabel *labelStarCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelLikeCount;
-@property (weak, nonatomic) IBOutlet UIImageView *imageAvatar;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 
 //Viewvers
@@ -58,5 +58,7 @@
 - (IBAction)actionButtonLike:(CustomButton*)sender;
 - (IBAction)actionButtomStar:(CustomButton*)sender;
 - (IBAction)barButtonID:(id)sender;
+- (IBAction)actionButtonAvatar:(id)sender;
+
 
 @end
