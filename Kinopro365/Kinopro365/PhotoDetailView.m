@@ -51,8 +51,11 @@
     self = [super init];
     if (self) {
         self.frame = frame;
+        self.backgroundColor = [UIColor blackColor];
         
         self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.imageView.clipsToBounds = YES;
         [self addSubview:self.imageView];
         
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
