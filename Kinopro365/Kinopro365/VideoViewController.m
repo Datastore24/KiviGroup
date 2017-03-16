@@ -13,6 +13,7 @@
 @interface VideoViewController () 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (strong, nonatomic) UIColor * defaultColorButton;
+@property (assign, nonatomic) BOOL isChangUrlString;
 
 @end
 
@@ -25,11 +26,12 @@
     [self.navigationController setNavigationBarHidden: NO animated:YES];
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Видео"];
     self.navigationItem.titleView = CustomText;
-    self.webView.mediaPlaybackRequiresUserAction = NO;
     self.defaultColorButton = self.saveButton.backgroundColor;
+    self.webView.mediaPlaybackRequiresUserAction = YES;
+    self.webView.allowsInlineMediaPlayback = NO;
     self.saveButton.userInteractionEnabled = NO;
     self.saveButton.backgroundColor = [UIColor grayColor];
-
+    self.isChangUrlString = NO;
     [self createActivitiIndicatorAlertWithView];
 }
 
@@ -50,15 +52,34 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
                                      navigationType:(UIWebViewNavigationType)navigationType {
-    
-    
+   
     
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
+     NSString *stringUrl = [[self.webView.request URL] absoluteString];
     
+    NSLog(@"URLDIDSTARTLOAD %@", stringUrl);
+    
+    if ([stringUrl rangeOfString:@"watch?v="].location != NSNotFound && self.isChangUrlString == NO && [stringUrl rangeOfString:@"&autoplay=0"].location == NSNotFound) {
+        
+            [self.webView stopLoading];
+            NSString * urlResultString = [NSString stringWithFormat:@"%@&autoplay=0",stringUrl];
+            NSLog(@"FINALREQUEST %@", urlResultString);
+            NSURL * url = [NSURL URLWithString:urlResultString];
+            NSURLRequest * requestToLoad = [NSURLRequest requestWithURL:url];
+            self.isChangUrlString = YES;
+            [self.webView loadRequest:requestToLoad];
+        
+        
+    }else{
+        self.isChangUrlString = NO;
+    }
+
 }
+
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self deleteActivitiIndicator];
     
@@ -74,7 +95,7 @@
         self.saveButton.backgroundColor = self.defaultColorButton;
     }
     
-    NSLog(@"URL %@", stringUrl);
+    NSLog(@"URLFINISH %@", stringUrl);
     
     
     
