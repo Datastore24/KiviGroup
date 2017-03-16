@@ -111,7 +111,6 @@
         
         BOOL isBool = NO; //Тестовая булька для Кирилла
         
-        self.textFildPhone.userInteractionEnabled = NO;
         [self.textFildPassword becomeFirstResponder];
         
         

@@ -22,5 +22,6 @@
 @protocol PhotoViewDelegate <NSObject>
 
 - (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton;
+- (void) loadImage: (PhotoView*) photoView endImage: (UIImage*) image;
 
 @end

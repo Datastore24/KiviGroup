@@ -55,6 +55,7 @@
                                 }else{
                                     //Тут обработка ошибки загрузки изображения
                                 }
+                                [self.delegate loadImage:self endImage:image];
                             }];
         [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonImage];

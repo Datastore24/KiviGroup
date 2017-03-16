@@ -21,8 +21,11 @@
 
 @property (assign, nonatomic) CGFloat maxHeightVideo; //параметр сохраняет конечное положение вью всех видео
 @property (strong, nonatomic) ProfessionDetailModel * profDetailModel;
+@property (strong, nonatomic) UIScrollView * scrollViewPhoto;
 
+@property (strong, nonatomic) UIView * viewForScrollPhoto;
 @property (strong, nonatomic) PhotoDetailView * imageView;
+@property (assign, nonatomic) NSInteger countImage;
 
 @end
 
@@ -102,10 +105,22 @@
     } else {
         [self.buttonLike setImage:[UIImage imageNamed:@"professionImageLike"] forState:UIControlStateNormal];
     }
+    
+    self.viewForScrollPhoto = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.viewForScrollPhoto.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.viewForScrollPhoto];
+    self.scrollViewPhoto = [[UIScrollView alloc] initWithFrame:self.viewForScrollPhoto.bounds];
+    self.scrollViewPhoto.pagingEnabled = YES;
+    [self.viewForScrollPhoto addSubview:self.scrollViewPhoto];
+    
+    self.viewForScrollPhoto.alpha = 0.f;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.countImage = 0.f;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,10 +168,10 @@
                                     NSURL *imageURL) {
                             
                             if(image){
-                                self.imageAvatar.contentMode = UIViewContentModeScaleAspectFill;
-                                self.imageAvatar.clipsToBounds = YES;
-                                self.imageAvatar.layer.cornerRadius = 5;
-                                self.imageAvatar.image = image;
+                                self.buttonAvatar.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                self.buttonAvatar.imageView.clipsToBounds = YES;
+                                [self.buttonAvatar setImage:image forState:UIControlStateNormal];
+                                self.buttonAvatar.imageView.layer.cornerRadius = 5;
                                 
                                 
                             }else{
@@ -414,9 +429,25 @@
 
 - (void) actionCell: (PhotoView*) photoView withImageButton: (UIButton*) imageButton {
     [UIView animateWithDuration:0.3 animations:^{
-        self.imageView.imageView.image = imageButton.imageView.image;
-        self.imageView.alpha = 1.f;
+        self.viewForScrollPhoto.alpha = 1.f;
     }];
+}
+
+- (void) loadImage: (PhotoView*) photoView endImage: (UIImage*) image {
+    
+    UIImageView * viewForScroll = [[UIImageView alloc] initWithFrame:CGRectMake(0.f + CGRectGetWidth(self.view.bounds) * self.countImage,
+                                                                                0.f, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    viewForScroll.image = image;
+    [self.scrollViewPhoto addSubview:viewForScroll];
+    
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(viewForScroll.frame.size.width - 40, 10, 30, 30);
+    [button setImage:[UIImage imageNamed:@"ImageCancelNew"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
+    [viewForScroll addSubview:button];
+    
+    self.countImage += 1;
+    self.scrollViewPhoto.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds) * self.countImage, 0);
 }
 
 
@@ -502,6 +533,19 @@
     pasteboard.string = self.profileID;
     NSLog(@"PASTEBOARD %@",pasteboard.string);
     
+}
+
+- (IBAction)actionButtonAvatar:(UIButton*)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.imageView.imageView.image = sender.imageView.image;
+        self.imageView.alpha = 1.f;
+    }];
+}
+
+- (void) actionButton: (UIButton*) button {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewForScrollPhoto.alpha = 0.f;
+    }];
 }
 
 -(void) deleteActivitiIndicatorDelegate{
