@@ -16,14 +16,19 @@
     
     APIManger * apiManager = [[APIManger alloc] init];
     
-    NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
+    
+    
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                     name,@"name",
-                                    logoID,@"logo_id",
                                     endAt,@"end_at",
                              professionID,@"profession_id",
                              countryID,@"country_id",
                              cityID,@"city_id",
                              description,@"description",nil];
+    
+    if(logoID.length >0 && [logoID isEqual:[NSNull null]]){
+        [params setObject:logoID forKey:@"logo_id"];
+    }
     
     [apiManager postDataFromSeverWithMethod:@"vacancy.create" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
         NSLog(@"Vacancies %@",response);
@@ -41,19 +46,7 @@
 - (void) editVacanciesName: (NSString *) name andLogoID: (NSString *) logoID andEndAt: (NSString *) endAt andProfessionID: (NSString *) professionID andCountryID: (NSString *) countryID andCityID: (NSString *) cityID andDescription: (NSString *) description andVacancyID:(NSString *) vacancyID complitionBlock: (void (^) (id response)) compitionBack{
     
     APIManger * apiManager = [[APIManger alloc] init];
-    NSDictionary * params;
-    if(logoID.length != 0){
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 vacancyID,@"vacancy_id",
-                                 name,@"name",
-                                 logoID,@"logo_id",
-                                 endAt,@"end_at",
-                                 professionID,@"profession_id",
-                                 countryID,@"country_id",
-                                 cityID,@"city_id",
-                                 description,@"description",nil];
-    }else{
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                  vacancyID,@"vacancy_id",
                                  name,@"name",
                                  endAt,@"end_at",
@@ -61,7 +54,11 @@
                                  countryID,@"country_id",
                                  cityID,@"city_id",
                                  description,@"description",nil];
+
+    if(logoID.length >0 && [logoID isEqual:[NSNull null]]){
+        [params setObject:logoID forKey:@"logo_id"];
     }
+    
     
     
     [apiManager postDataFromSeverWithMethod:@"vacancy.edit" andParams:params andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {

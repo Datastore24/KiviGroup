@@ -72,10 +72,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[SingleTone sharedManager] setCountrySearchID:@""];
+    [[SingleTone sharedManager] setCitySearchID:@""];
     // Do any additional setup after loading the view.
     
-    [[SingleTone sharedManager] setCitySearchID:nil];
-    [[SingleTone sharedManager] setCountrySearchID:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,11 +101,13 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     NSString * coutryID;
     NSString * cityID;
     [self createActivitiIndicatorAlertWithView];
     
+    NSLog(@"PIZDEC %@,%@",[[SingleTone sharedManager] countrySearchID],[[SingleTone sharedManager] citySearchID]);
     if([[SingleTone sharedManager] countrySearchID]){
         coutryID = [[SingleTone sharedManager] countrySearchID];
     }else{
@@ -187,7 +190,7 @@
     }
     
     
-        cell.titleLabel.text = [dictVacan objectForKey:@"name"];
+        cell.titleLabel.text = [dictVacan objectForKey:@"description"];
     
     //Профессия
     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {
@@ -309,13 +312,15 @@
 
     NSLog(@"Переход на окно выбора страны");
     [[SingleTone sharedManager] setCountry_citi:@"country"];
+    [self.buttonCity setTitle:@"Город" forState:UIControlStateNormal];
+    [[SingleTone sharedManager] setCitySearchID:@""];
     [self pushCountryController];
 }
 
 - (IBAction)actionButtonCity:(id)sender {
     
     NSLog(@"Переход на окно выбора Города");
-    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"]) {
+    if ([self.buttonCountry.titleLabel.text isEqualToString:@"Страна"] || [self.buttonCountry.titleLabel.text isEqualToString:@"Все Страны"]) {
         [self showAlertWithMessage:@"\nВведите страну!\n"];
     } else {
         [[SingleTone sharedManager] setCountry_citi:@"city"];

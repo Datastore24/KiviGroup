@@ -35,16 +35,27 @@
     self.countryModel = [[CoutryModel alloc] init];
     self.countryModel.delegate = self;
     
-    self.countryArray = [NSArray new];
+    self.countryArray = [NSMutableArray new];
     NSLog(@"COUNTRYCITY %@",[[SingleTone sharedManager] country_citi]);
     if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
         [self.countryModel getCountryArrayToTableView:^{
+            if(self.isSearch){
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       @"",@"id",
+                                       @"Все Страны",@"name",nil];
+                [self.countryArray insertObject:dict atIndex:0];
+            }
+            
             self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
             [self reloadTable];
         }];
     }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){
         if(self.isSearch){
             [self.countryModel getCityArrayToTableView:[[SingleTone sharedManager] countrySearchID] block:^{
+                NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       @"",@"id",
+                                       @"Все Города",@"name",nil];
+                [self.countryArray insertObject:dict atIndex:0];
                 self.tableArray = [NSMutableArray arrayWithArray:self.countryArray];
                 [self reloadTable];
             }];
@@ -115,6 +126,7 @@
     }else{
         [self.delegate changeButtonTextInSearch:self withString:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"name"]];
         
+        NSLog(@"TABLEARRAY %@",[self.tableArray objectAtIndex:indexPath.row]);
         if([[[SingleTone sharedManager] country_citi] isEqualToString:@"country"]){
             [[SingleTone sharedManager] setCountrySearchID:[[self.tableArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
         }else if ([[[SingleTone sharedManager] country_citi] isEqualToString:@"city"]){

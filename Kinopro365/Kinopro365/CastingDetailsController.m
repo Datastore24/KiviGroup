@@ -79,6 +79,7 @@
     self.labelDescription.text = [catingDict objectForKey:@"description"];
     self.labelTitle.text =[catingDict objectForKey:@"name"];
     self.labelBidCount.text = [NSString stringWithFormat:@"Подано заявок: %@",[catingDict objectForKey:@"count_offer"]];
+    self.counterLabel = [[catingDict objectForKey:@"count_offer"] integerValue];
     
     NSDate * endDate = [DateTimeMethod timestampToDate:[catingDict objectForKey:@"end_at"]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -296,7 +297,8 @@
     [self.castingDetailModel sendCastings:self.castingID complitionBlock:^(id response) {
         if([[response objectForKey:@"response"] integerValue] == 1){
             [self showAlertWithMessageWithBlock:@"Ваша заявка принята" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                self.counterLabel +=1;
+                self.labelBidCount.text = [NSString stringWithFormat:@"Подано заявок: %ld",self.counterLabel];
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 781){
             [self showAlertWithMessageWithBlock:@"Кастинг не найден" block:^{
@@ -304,11 +306,11 @@
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 782){
             [self showAlertWithMessageWithBlock:@"Нельзя подать заявку на свой кастинг" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+                
             }];
         }else if([[response objectForKey:@"error_code"] integerValue] == 783){
             [self showAlertWithMessageWithBlock:@"Заявка уже была подана" block:^{
-                [self.navigationController popViewControllerAnimated:YES];
+               
             }];
         }else{
             [self showAlertWithMessageWithBlock:@"Заявку принять не удалось" block:^{
