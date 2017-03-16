@@ -887,7 +887,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" id="NGD-Rx-kNn">
-                                                    <rect key="frame" x="9" y="44" width="302" height="0.0"/>
+                                                    <rect key="frame" x="9" y="43.5" width="302" height="0.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -1009,7 +1009,7 @@
                                         <color key="textColor" red="0.20391999999999999" green="0.20785999999999999" blue="0.21176" alpha="1" colorSpace="deviceRGB"/>
                                     </label>
                                     <view opaque="NO" contentMode="center" misplaced="YES" id="LWq-Ez-08F" userLabel="Фигура 3 копия">
-                                        <rect key="frame" x="115" y="37" width="175" height="1"/>
+                                        <rect key="frame" x="115" y="37" width="175" height="0.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.3333435294" green="0.50589019609999997" blue="0.65881176470000002" alpha="1" colorSpace="deviceRGB"/>
                                         <accessibility key="accessibilityConfiguration" hint="" identifier="396" label=""/>
