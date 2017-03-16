@@ -120,8 +120,6 @@
 		FFDBB8AC1E53487D00C63A27 /* ProfessionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDBB8AB1E53487D00C63A27 /* ProfessionDetailController.m */; };
 		FFDE8B971DDDC46000F937BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B961DDDC46000F937BD /* main.m */; };
 		FFDE8B9A1DDDC46000F937BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8B991DDDC46000F937BD /* AppDelegate.m */; };
-		FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8B9E1DDDC46000F937BD /* Main.storyboard */; };
-		FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */; };
 		FFDE8BAE1DDDD5CE00F937BD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */; };
 		FFDE8BBA1DDEC7BA00F937BD /* KinoproViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE8BB91DDEC7BA00F937BD /* KinoproViewController.m */; };
 		FFF4933A1E0FDBD900C26176 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF493391E0FDBD900C26176 /* VideoViewController.m */; };
@@ -340,8 +338,6 @@
 		FFDE8B961DDDC46000F937BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFDE8B981DDDC46000F937BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFDE8B991DDDC46000F937BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FFDE8B9F1DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFDE8BA41DDDC46000F937BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDE8BA61DDDC46000F937BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFDE8BAC1DDDD5CE00F937BD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ../MenuViewController.h; sourceTree = "<group>"; };
 		FFDE8BAD1DDDD5CE00F937BD /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ../MenuViewController.m; sourceTree = "<group>"; };
@@ -906,8 +902,6 @@
 				FFDE8B991DDDC46000F937BD /* AppDelegate.m */,
 				FF25B9741DF97CBF00D59716 /* MainViewController.h */,
 				FF25B9751DF97CBF00D59716 /* MainViewController.m */,
-				FFDE8B9E1DDDC46000F937BD /* Main.storyboard */,
-				FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */,
 				AD50A4971E13DC0400CC44DB /* API */,
 				FF25B9E61DFAF6E400D59716 /* Category */,
 				FF90ED2E1E03C9EF00094F6D /* Images */,
@@ -1054,12 +1048,10 @@
 				FF88DF501E0E696B0002FBBC /* HMImagePicker.bundle in Resources */,
 				FF90ED401E03D79F00094F6D /* choreographersImage.png in Resources */,
 				FF90ED411E03D79F00094F6D /* designersImage.png in Resources */,
-				FFDE8BA51DDDC46000F937BD /* LaunchScreen.storyboard in Resources */,
 				FF90ED3F1E03D79F00094F6D /* actorsImage.png in Resources */,
 				B8D1D4481E72BA95008B476B /* cellImage.png in Resources */,
 				FF90ED491E03DB8100094F6D /* activ_galka.png in Resources */,
 				FF90ED451E03D79F00094F6D /* operatorsImage.png in Resources */,
-				FFDE8BA01DDDC46000F937BD /* Main.storyboard in Resources */,
 				FFFD1A4D1E09539800626219 /* arrowForAge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1220,25 +1212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		FFDE8B9E1DDDC46000F937BD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFDE8B9F1DDDC46000F937BD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FFDE8BA31DDDC46000F937BD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFDE8BA41DDDC46000F937BD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FFDE8BA71DDDC46000F937BD /* Debug */ = {
