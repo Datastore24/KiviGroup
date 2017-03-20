@@ -29,9 +29,17 @@
         self.frame = CGRectMake(orgnX, height, CGRectGetWidth(view.bounds), 125.f);
         
         UIView * upBorderView = [UIView createGrayBorderViewWithView:self andHeight:125.f endType:YES];
+        upBorderView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [self addSubview:upBorderView];
         
-        UIView * viewShadow = [[UIView alloc] initWithFrame:CGRectMake(13.f, 5.f, 75.f, 114.f)];
+        CGRect rectImage = CGRectMake(13.f, 5.f, 75.f, 114.f);
+        if (isiPhone6) {
+            rectImage = CGRectMake(13.f, 5.f, 87.5f, 133.f);
+        } else if (isiPhone6Plus) {
+            rectImage = CGRectMake(13.f, 5.f, 100, 152.f);
+        }
+        
+        UIView * viewShadow = [[UIView alloc] initWithFrame:rectImage];
         viewShadow.backgroundColor = [UIColor groupTableViewBackgroundColor];
         viewShadow.layer.shadowColor = [UIColor lightGrayColor].CGColor;
         [viewShadow.layer setShadowOffset:CGSizeMake(0, 3)];
@@ -43,7 +51,7 @@
         
         [self addSubview:viewShadow];
         
-        UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(13.f, 5.f, 76.f, 115.f)];
+        UIImageView * avatarImageView = [[UIImageView alloc] initWithFrame:rectImage];
         //Тень
         
         //
@@ -144,7 +152,7 @@
         
         
         for (UILabel * label in self.subviews) {
-            if (isiPhone6) {
+            if (isiPhone6 || isiPhone6Plus) {
                 if ([label isKindOfClass:[UILabel class]] || ([label isKindOfClass:[CustomButton class]] && ![label isEqual:buttonCell])) {
                     CGRect rectLabel = label.frame;
                     rectLabel.origin.x += 20;

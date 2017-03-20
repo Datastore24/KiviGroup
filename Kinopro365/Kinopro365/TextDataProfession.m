@@ -17,8 +17,8 @@
     self = [super init];
     if (self) {
         
-        self.frame = CGRectMake(0, height, [[UIScreen mainScreen] bounds].size.width, 25);
-        UILabel * firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, 0.f, CGRectGetWidth(self.bounds) / 2, 25)];
+        self.frame = CGRectMake(0, height, [[UIScreen mainScreen] bounds].size.width, 35);
+        UILabel * firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.f, 0.f, CGRectGetWidth(self.bounds) / 2, 35)];
         firstLabel.text = firstTextLabel;
         firstLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"343536"];
         firstLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];

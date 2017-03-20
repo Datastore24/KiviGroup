@@ -159,13 +159,32 @@
                                              andLikeNumber:[itemDict objectForKey:@"count_likes"]
                                              andProfileID:[itemDict objectForKey:@"id"]
                                              andIsFavourite:[NSString stringWithFormat:@"%@", [itemDict objectForKey:@"is_favourite"]] endReward:NO endLike:NO];
+            
+            if (isiPhone6) {
+                CGRect rectView = cellView.frame;
+                rectView.size.height = 146.f;
+                rectView.origin.y = (146.f * self.stepX) + 34.f;
+                cellView.frame = rectView;
+            } else if (isiPhone6Plus) {
+                CGRect rectView = cellView.frame;
+                rectView.size.height = 166.5f;
+                rectView.origin.y = (166.5f * self.stepX) + 34.f;
+                cellView.frame = rectView;
+            }
             //-----------------------------------------------------------------------
             
             cellView.deleagte = self;
             [scrolView addSubview:cellView];
             self.stepX += 1;
         }
+    if (isiPhone6) {
+        scrolView.contentSize = CGSizeMake(0, (146.f * itemsArray.count) + 64.f + 34.f);
+    } else if (isiPhone6Plus) {
+        scrolView.contentSize = CGSizeMake(0, (166.5f * itemsArray.count) + 64.f + 34.f);
+    } else {
         scrolView.contentSize = CGSizeMake(0, (125.f * itemsArray.count) + 64.f + 34.f);
+    }
+    
         self.stepX = 0;
         self.stepY += 1;
     

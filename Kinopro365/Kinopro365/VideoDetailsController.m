@@ -181,11 +181,11 @@
         
         NSDictionary * dict = [self.arrayData objectAtIndex:i];
         
-        CGRect rectView = CGRectMake(15 + 155 * self.x, 26 + 94 * self.y, 140, 79);
+        CGRect rectView = CGRectMake(15 + 155 * self.x, 15 + 94 * self.y, 140, 79);
         if (isiPhone6) {
-            rectView = CGRectMake(15 + 181.5 * self.x, 26 + 110.5 * self.y, 166, 95.5);
+            rectView = CGRectMake(15 + 181.5 * self.x, 15 + 110.5 * self.y, 166, 95.5);
         }  else if (isiPhone6Plus) {
-            rectView = CGRectMake(20 + 194.5 * self.x, 26 + 127.5 * self.y, 179.5, 101);
+            rectView = CGRectMake(20 + 194.5 * self.x, 15 + 127.5 * self.y, 179.5, 101);
         }
         
         VideoDetailsView * view = [[VideoDetailsView alloc] initWithCustonFrame: rectView
