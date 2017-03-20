@@ -62,8 +62,7 @@
          }
          
        
-             AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i,
-                                                                                    CGRectGetWidth(self.view.bounds), 30)
+             AddParamsView * view = [[AddParamsView alloc] initWithFrame:CGRectMake(0.f, 20 + 50 * i, 320, 30)
                                                                 andTitle:[dictData objectForKey:@"title"]
                                                                  andType:[dictData objectForKey:@"type"]
                                                           andPlaceholder:[dictData objectForKey:@"placeholder"]
@@ -72,6 +71,19 @@
                                                             andArrayData:[dictData objectForKey:@"array"]
                                                              andIsSearch: self.isSearch
                                      andIsCasting:self.isCasting];
+         if (isiPhone6) {
+             CGRect rectView = view.frame;
+             rectView.size.width = self.view.frame.size.width;
+             rectView.size.height = 35.f;
+             rectView.origin.y = 20 + 58.3f * i;
+             view.frame = rectView; 
+         } else if (isiPhone6Plus) {
+             CGRect rectView = view.frame;
+             rectView.size.width = self.view.frame.size.width;
+             rectView.size.height = 40.f;
+             rectView.origin.y = 20 + 66.5f * i;
+             view.frame = rectView;
+         }
              
              
              view.deleagte = self;

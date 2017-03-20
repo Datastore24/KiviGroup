@@ -39,162 +39,176 @@
         
         self.frame = frame;
         
-       
+        
+        
+        UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(28.f, 0.f, 120.f, 30.f)];
+        labelTitle.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        labelTitle.text = title;
+        labelTitle.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+        if (isiPhone6 || isiPhone6Plus) {
+            labelTitle.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        }
+        [self addSubview:labelTitle];
+        
+        
+        CGRect frameObject = CGRectMake(CGRectGetWidth(self.bounds) - (142 + 28), 0, 142.f, 30.f);
+        
+        
+        
+        if ([type isEqualToString:@"String"]) {
+            UITextField * textFild = [[UITextField alloc] initWithFrame:frameObject];
+            textFild.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            textFild.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+            textFild.placeholder = placeholder;
+            textFild.textAlignment = NSTextAlignmentCenter;
+            self.mainObject = textFild;
+            self.mainDict = @{
+                              @"title": title,
+                              @"id": fieldID,
+                              @"type": @"String"
+                              };
+            [self addSubview:textFild];
+            
+        } else if ([type isEqualToString:@"Picker"]) {
+            CustomButton * buttonPicker = [CustomButton buttonWithType:UIButtonTypeSystem];
+            buttonPicker.frame = frameObject;
+            buttonPicker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            buttonPicker.customArray = arrayData;
+            buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
+            [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+            if (isiPhone6 || isiPhone6Plus) {
+                buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+            }
+            [buttonPicker addTarget:self action:@selector(actionButtonPicker:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:buttonPicker];
+            
+            UIImageView * imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
+            imageViewArrow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
+            [buttonPicker addSubview:imageViewArrow];
+            
+            self.mainObject = buttonPicker;
+            self.mainDict = @{
+                              @"title": title,
+                              @"id": fieldID,
+                              @"type": @"Picker"
+                              };
+            
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                 fieldID];
+            
+            if(isSearch || isCasting){
+                buttonPicker.customName = defValueIndex;
+                [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
                 
-                UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(28.f, 0.f, 120.f, 30.f)];
-                labelTitle.text = title;
-                labelTitle.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
-                [self addSubview:labelTitle];
-        
-        
-                CGRect frameObject = CGRectMake(CGRectGetWidth(self.bounds) - (142 + 28), 0, 142.f, 30.f);
-        
-        
-        
-                if ([type isEqualToString:@"String"]) {
-                    UITextField * textFild = [[UITextField alloc] initWithFrame:frameObject];
-                    textFild.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
-                    textFild.placeholder = placeholder;
-                    textFild.textAlignment = NSTextAlignmentCenter;
-                    self.mainObject = textFild;
-                    self.mainDict = @{
-                                      @"title": title,
-                                      @"id": fieldID,
-                                      @"type": @"String"
-                                      };
-                    [self addSubview:textFild];
-                    
-                } else if ([type isEqualToString:@"Picker"]) {
-                    CustomButton * buttonPicker = [CustomButton buttonWithType:UIButtonTypeSystem];
-                    buttonPicker.frame = frameObject;
-                    buttonPicker.customArray = arrayData;
-                    buttonPicker.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    [buttonPicker setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    buttonPicker.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
-                    [buttonPicker addTarget:self action:@selector(actionButtonPicker:) forControlEvents:UIControlEventTouchUpInside];
-                    [self addSubview:buttonPicker];
-                    
-                    UIImageView * imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
-                    imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
-                    [buttonPicker addSubview:imageViewArrow];
-                    
-                    self.mainObject = buttonPicker;
-                    self.mainDict = @{
-                                      @"title": title,
-                                      @"id": fieldID,
-                                      @"type": @"Picker"
-                                      };
-                    
-                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
-                                         fieldID];
-                    
-                    if(isSearch || isCasting){
-                        buttonPicker.customName = defValueIndex;
-                        [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
-
-                        
-                    }else{
-                        //Грузим данные из базы
-                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                        if(outletTableDataArray.count>0){
-                            for(int i=0; i<outletTableDataArray.count; i++){
-                                AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-                                buttonPicker.customName = addTable.additionalNameValue;
-                                buttonPicker.customID = addTable.additionalValue;
-                                [buttonPicker setTitle:addTable.additionalNameValue forState:UIControlStateNormal];
-                            }
-                        }else{
-                            
-                            buttonPicker.customName = defValueIndex;
-                            [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
-                        }
-                    }
-                    
-                    
-                } else if ([type isEqualToString:@"Switch"]) {
-                    labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
-                    UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - (49 + 26), 0.f, 49.f, 31.f)];
-                    swith.onTintColor = [UIColor hx_colorWithHexRGBAString:@"5581A8"];
-                    [self addSubview:swith];
-                    self.mainObject = swith;
-                    self.mainDict = @{
-                                      @"title": title,
-                                      @"id": fieldID,
-                                      @"type": @"Switch"
-                                      };
-                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
-                                         fieldID];
-                    
-                    if(isSearch || isCasting){
-                        [swith setOn:NO];
-                    }else{
-                        //Грузим данные из базы
-                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                        if(outletTableDataArray.count>0){
-                            [swith setOn:YES];
-                        }else{
-                            
-                            [swith setOn:NO];
-                        }
-                    }
-                    
-
-                    
-                    
-                    
-                } else if ([type isEqualToString:@"MultiList"]) {
-                    self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
-                    self.buttonLangue.frame = frameObject;
-                    self.buttonLangue.tag = 999;
-                    self.buttonLangue.customArray = arrayData;
-                    self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
-                    [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
-                    [self.buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    self.buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
-                    [self.buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
-                    [self addSubview:self.buttonLangue];
-                    
-                    self.imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
-                    self.imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
-                    [self.buttonLangue addSubview:self.imageViewArrow];
-                    
-                    self.mainObject = self.buttonLangue;
-                    self.mainDict = @{
-                                      @"title": title,
-                                      @"id": fieldID,
-                                      @"type": @"MultiList"
-                                      };
                 
-                    if(!isSearch && !isCasting){
-                        
-                        NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
-                                             @"ex_languages"];
-                        
-                        RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
-                        NSMutableString * resultString = [NSMutableString new];
-                        if(outletTableDataArray.count>0){
-                            for(int i=0; i<outletTableDataArray.count; i++){
-                                AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
-                                if ([resultString isEqualToString:@""]) {
-                                    [resultString appendString:addTable.additionalName];
-                                } else {
-                                    [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
-                                }
-                                if(i==2){
-                                    [resultString appendString:@"..."];
-                                    break;
-                                }
-                            }
-                            [self ChekButtonWithText:resultString andBool:YES];
-                        }
+            }else{
+                //Грузим данные из базы
+                RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                if(outletTableDataArray.count>0){
+                    for(int i=0; i<outletTableDataArray.count; i++){
+                        AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                        buttonPicker.customName = addTable.additionalNameValue;
+                        buttonPicker.customID = addTable.additionalValue;
+                        [buttonPicker setTitle:addTable.additionalNameValue forState:UIControlStateNormal];
                     }
+                }else{
                     
-                    
+                    buttonPicker.customName = defValueIndex;
+                    [buttonPicker setTitle:@"Выбрать" forState:UIControlStateNormal];
                 }
+            }
+            
+            
+        } else if ([type isEqualToString:@"Switch"]) {
+            labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
+            labelTitle.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - (49 + 26), 0.f, 49.f, 31.f)];
+            swith.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+            swith.onTintColor = [UIColor hx_colorWithHexRGBAString:@"5581A8"];
+            [self addSubview:swith];
+            self.mainObject = swith;
+            self.mainDict = @{
+                              @"title": title,
+                              @"id": fieldID,
+                              @"type": @"Switch"
+                              };
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID = %@",
+                                 fieldID];
+            
+            if(isSearch || isCasting){
+                [swith setOn:NO];
+            }else{
+                //Грузим данные из базы
+                RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                if(outletTableDataArray.count>0){
+                    [swith setOn:YES];
+                }else{
+                    
+                    [swith setOn:NO];
+                }
+            }
+            
+            
+            
+            
+            
+        } else if ([type isEqualToString:@"MultiList"]) {
+            self.buttonLangue = [CustomButton buttonWithType:UIButtonTypeSystem];
+            self.buttonLangue.frame = frameObject;
+            self.buttonLangue.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            self.buttonLangue.tag = 999;
+            self.buttonLangue.customArray = arrayData;
+            self.buttonLangue.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"4682AC"];
+            [self.buttonLangue setTitle:@"Выбрать" forState:UIControlStateNormal];
+            [self.buttonLangue setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.buttonLangue.titleLabel.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:14];
+            [self.buttonLangue addTarget:self action:@selector(actionbuttonLangue:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:self.buttonLangue];
+            
+            self.imageViewArrow = [[UIImageView alloc] initWithFrame:CGRectMake(123.f, 12.f, 11.f, 6.f)];
+            self.imageViewArrow.image = [UIImage imageNamed:@"left_arrow"];
+            [self.buttonLangue addSubview:self.imageViewArrow];
+            
+            self.mainObject = self.buttonLangue;
+            self.mainDict = @{
+                              @"title": title,
+                              @"id": fieldID,
+                              @"type": @"MultiList"
+                              };
+            
+            if(!isSearch && !isCasting){
+                
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"additionalID BEGINSWITH %@",
+                                     @"ex_languages"];
+                
+                RLMResults *outletTableDataArray = [AdditionalTable objectsWithPredicate:pred];
+                NSMutableString * resultString = [NSMutableString new];
+                if(outletTableDataArray.count>0){
+                    for(int i=0; i<outletTableDataArray.count; i++){
+                        AdditionalTable * addTable = [outletTableDataArray objectAtIndex:i];
+                        if ([resultString isEqualToString:@""]) {
+                            [resultString appendString:addTable.additionalName];
+                        } else {
+                            [resultString appendString:[NSString stringWithFormat:@", %@", addTable.additionalName]];
+                        }
+                        if(i==2){
+                            [resultString appendString:@"..."];
+                            break;
+                        }
+                    }
+                    [self ChekButtonWithText:resultString andBool:YES];
+                }
+            }
+            
             
         }
         
-
+    }
+    
+    
     
     return self;
 }
@@ -219,7 +233,7 @@
         self.buttonLangue.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.buttonLangue setTitle: buttonText forState: UIControlStateNormal];
         self.buttonLangue.frame = CGRectMake(152.f, 0, 142.f, 40.f);
-//        
+        //
         self.buttonLangue.backgroundColor = [UIColor clearColor];
         [self.buttonLangue setTitleColor:[UIColor hx_colorWithHexRGBAString:@"3D7FB4"] forState:UIControlStateNormal];
         self.imageViewArrow.alpha = 0.f;
