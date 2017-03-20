@@ -259,7 +259,14 @@
             
             for (int i = 0; i < itemsArray.count; i++) {
                 NSDictionary * itemsDict = [itemsArray objectAtIndex:i];
-                PhotoView * photoView = [[PhotoView alloc] initWithFrame:CGRectMake(21.f + 74.f * i, 7.f, 53.f, 80.f)
+                CGRect photoRect = CGRectMake(21.f + 74.f * i, 7.f, 53.f, 80.f);
+                if (isiPhone6) {
+                    photoRect = CGRectMake(21.f + 86.5f * i, 7.f, 62.2f, 94.f);
+                } else if (isiPhone6Plus) {
+                    photoRect = CGRectMake(21.f + 95 * i, 7.f, 68, 102.5f);
+                }
+                
+                PhotoView * photoView = [[PhotoView alloc] initWithFrame:photoRect
                                                       andWithImageButton:[itemsDict objectForKey:@"url"] endTag:i + 1];
                 photoView.delegate = self;
                 [self.photoScrollView addSubview:photoView];
@@ -270,6 +277,11 @@
         
         
         self.photoScrollView.contentSize = CGSizeMake(21.f + 74.f * countPhoto, 0);
+        if (isiPhone6) {
+            self.photoScrollView.contentSize = CGSizeMake(21.f + 86.5f * countPhoto, 0);
+        } else if (isiPhone6Plus) {
+            self.photoScrollView.contentSize = CGSizeMake(21.f + 95.f * countPhoto, 0);
+        }
     }else{
         self.viewForPhoto.alpha = 1.f;
     }
@@ -292,16 +304,34 @@
                 NSInteger startY;
                 if(openContact){
                     startY = 342;
+                    if (isiPhone6) {
+                        startY = 401.5;
+                    } else if (isiPhone6Plus) {
+                        startY = 438.5;
+                    }
                 }else{
                     startY = 270;
+                    if (isiPhone6) {
+                        startY = 317;
+                    } else if (isiPhone6Plus) {
+                        startY = 346.5;
+                    }
+                }
+                
+                
+                NSInteger countHeight = 144;
+                if (isiPhone6) {
+                    countHeight = 169;
+                } else if (isiPhone6Plus) {
+                    countHeight = 184.5;
                 }
                 if(i==itemsArray.count -1){
-                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + 144 * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:YES];
+                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + countHeight * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:YES];
                     videoViewPlayer.delegate = self;
                     [self.mainScrollView addSubview:videoViewPlayer];
                     self.maxHeightVideo = CGRectGetMaxY(videoViewPlayer.frame);
                 }else{
-                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + 144 * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:NO];
+                    VideoView * videoViewPlayer = [[VideoView alloc] initWithHeight:startY + countHeight * i andURLVideo:[itemDict objectForKey:@"link"] lastObject:NO];
                      videoViewPlayer.delegate = self;
                     [self.mainScrollView addSubview:videoViewPlayer];
                 }
@@ -332,8 +362,18 @@
         NSInteger startY;
         if(openContact){
             startY = 342;
+            if (isiPhone6) {
+                startY = 401.5;
+            } else if (isiPhone6Plus) {
+                startY = 438.5;
+            }
         }else{
             startY = 270;
+            if (isiPhone6) {
+                startY = 317;
+            } else if (isiPhone6Plus) {
+                startY = 346.5;
+            }
         }
         self.maxHeightVideo = startY - 26.f;
     }

@@ -80,6 +80,8 @@
         UILabel * labelGrowth = [self createLabelWithName:growth andFrame:CGRectMake(110.f, 11.f + 17.75f * 3, 200, 17.75f)];
         [self addSubview:labelGrowth];
         
+        
+        
         CustomButton * buttonCell = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonCell.frame = self.bounds;
         buttonCell.customFullName = name;
@@ -139,6 +141,17 @@
         
         [buttonBookmark addTarget:self action:@selector(actionButtonBookMark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
+        
+        
+        for (UILabel * label in self.subviews) {
+            if (isiPhone6) {
+                if ([label isKindOfClass:[UILabel class]] || ([label isKindOfClass:[CustomButton class]] && ![label isEqual:buttonCell])) {
+                    CGRect rectLabel = label.frame;
+                    rectLabel.origin.x += 20;
+                    label.frame = rectLabel;
+                }
+            }
+        }
 
     }
     return self;

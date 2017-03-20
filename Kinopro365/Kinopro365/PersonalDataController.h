@@ -45,6 +45,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone1;
 @property (weak, nonatomic) IBOutlet UITextField *textFildPhone2;
 @property (weak, nonatomic) IBOutlet UITextField *textFildEmail;
+@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *textFildsArray;
+@property (weak, nonatomic) IBOutlet UILabel *labelDiscription;
+
+
 
 //Дополнительные параметыры
 @property (weak, nonatomic) IBOutlet UILabel *dopLabelOne;

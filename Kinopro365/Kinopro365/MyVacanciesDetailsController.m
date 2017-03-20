@@ -51,6 +51,16 @@
     [self.shadowView.layer setShouldRasterize:YES];
     
     [self.shadowView.layer setCornerRadius:5.0f];
+    
+    if (isiPhone6) {
+        CGRect rectScroll = self.scrollViewForVacansies.frame;
+        rectScroll.size.height += 10;
+        self.scrollViewForVacansies.frame = rectScroll;
+    } else if (isiPhone6Plus) {
+        CGRect rectScroll = self.scrollViewForVacansies.frame;
+        rectScroll.size.height += 15;
+        self.scrollViewForVacansies.frame = rectScroll;
+    }
 }
 
 - (void)viewDidLoad {

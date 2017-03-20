@@ -28,7 +28,7 @@
     [super loadView];
     
     
-    self.viewForAlert.layer.cornerRadius = CGRectGetWidth(self.viewForAlert.bounds) / 2;
+    self.viewForAlert.layer.cornerRadius = CGRectGetHeight(self.viewForAlert.bounds) / 2;
     
     self.shadowView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.shadowView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
@@ -72,15 +72,49 @@
             rectCount.origin.x += 5;
             label.frame = rectCount;
         }
-
-//
         
         
+        CGRect rectAlertView = self.viewForAlert.frame;
+        rectAlertView.size.width += 4;
+        self.viewForAlert.frame = rectAlertView;
+    } else if (isiPhone6Plus) {
+        for (UIImageView * imageView in self.arrayImages) {
+            CGRect rectImage = imageView.frame;
+            rectImage.size.width += 7.f;
+            imageView.frame = rectImage;
         }
-    
-    
-    
-    
+        
+        CGRect rectAvatar = self.userPhoto.frame;
+        rectAvatar.size.width = 120.f;
+        self.userPhoto.frame = rectAvatar;
+        
+        for (UIView * view in self.collectionSide) {
+            CGRect rectSide = view.frame;
+            rectSide.origin.x += 25;
+            view.frame = rectSide;
+        }
+        
+        CGRect rectImage = self.rewardImage.frame;
+        rectImage.size.width += 5;
+        self.rewardImage.frame = rectImage;
+        rectImage = self.likeImage.frame;
+        rectImage.size.width += 5;
+        self.likeImage.frame = rectImage;
+        rectImage = self.viewesImage.frame;
+        rectImage.size.width += 5;
+        self.viewesImage.frame = rectImage;
+        
+        for (UILabel * label in self.countCollection) {
+            CGRect rectCount = label.frame;
+            rectCount.origin.x += 5;
+            label.frame = rectCount;
+        }
+        
+        
+        CGRect rectAlertView = self.viewForAlert.frame;
+        rectAlertView.size.width += 6;
+        self.viewForAlert.frame = rectAlertView;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -41,6 +41,18 @@
         self.navigationItem.titleView = CustomText;
     }
     
+    if (isiPhone6) {
+        CGRect tableRect = self.mainTableView.frame;
+        tableRect.origin.y -= 5;
+        tableRect.size.height += 5.f;
+        self.mainTableView.frame = tableRect;
+    } else if (isiPhone6Plus) {
+        CGRect tableRect = self.mainTableView.frame;
+        tableRect.origin.y -= 9;
+        tableRect.size.height += 9.f;
+        self.mainTableView.frame = tableRect;
+    }
+    
     
     self.myVacanciesModel = [[MyVacanciesModel alloc] init];
     self.myVacanciesModel.delegate = self;

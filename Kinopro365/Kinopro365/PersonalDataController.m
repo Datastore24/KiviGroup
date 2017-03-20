@@ -54,6 +54,21 @@
 
 - (void) loadView {
     [super loadView];
+    
+    if (isiPhone6) {
+    for (UITextField * textFild in self.textFildsArray) {
+            textFild.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        }
+        
+        self.labelDiscription.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        
+    } else if (isiPhone6Plus) {
+        for (UITextField * textFild in self.textFildsArray) {
+            textFild.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+        }
+        
+        self.labelDiscription.font = [UIFont fontWithName:FONT_ISTOK_REGULAR size:16];
+    }
 
 
     self.mainTopView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
@@ -85,9 +100,6 @@
     if(userTableDataArray.count>0){
         
         UserInformationTable * userTable = [userTableDataArray objectAtIndex:0];
-        
-        
-
                 NSLog(@"BLOCKOK");
                 [self.apiManager getDataFromSeverWithMethod:@"account.getProfileInfo" andParams:nil andToken:[[SingleTone sharedManager] token] complitionBlock:^(id response) {
                     
@@ -107,11 +119,6 @@
                     
                     
                 }];
-            
-            
-            
-            
-        
     }
    
     
@@ -258,9 +265,7 @@ replacementString:(NSString *)string {
                 self.buttonAddParams.userInteractionEnabled = NO;
                 self.buttonAddParams.alpha = 0.f;
                 
-            }
-            
-            
+            } 
         }
     }else{
         self.dopLabelOne.alpha = 0.f;
