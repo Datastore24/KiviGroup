@@ -11,6 +11,12 @@
 #import "Macros.h"
 #import <SDWebImage/UIImageView+WebCache.h> //Загрузка изображения
 
+@interface ViewCellMyVacancies ()
+
+@property (strong, nonatomic) NSMutableArray * arraySize;
+
+@end
+
 
 @implementation ViewCellMyVacancies
 
@@ -21,6 +27,8 @@
  {
     self = [super init];
     if (self) {
+        
+        self.arraySize = [NSMutableArray array];
         
         self.frame = CGRectMake(0.f, height, CGRectGetWidth(mainView.bounds), 235.f);
         
@@ -44,6 +52,7 @@
         NSArray * arrayText = [NSArray arrayWithObjects:name, country, age, nil];
         for (int i = 0; i < 3; i++) {
             UILabel * label = [self creationLabelWithFrame:CGRectMake(110.f, 12.f + 16.5f * i, 200, 16.5f) endText:[arrayText objectAtIndex:i]];
+            [self.arraySize addObject:label];
             [self addSubview:label];
         }
         
@@ -52,9 +61,11 @@
                                                                               endOnImage:@"isRewarImageOn" endOffImage:@"professionImageStar"];
         buttonReward.customID = profileID;
         [buttonReward addTarget:self action:@selector(actionButtonReward:) forControlEvents:UIControlEventTouchUpInside];
+        [self.arraySize addObject:buttonReward];
         [self addSubview:buttonReward];
         
         self.numberRewar = [self creationLabelWithFrame:CGRectMake(135.f, 104.f, 20.f, 11.f) endText:rewardNumber];
+        [self.arraySize addObject:self.numberRewar];
         [self addSubview:self.numberRewar];
         //
         
@@ -63,9 +74,11 @@
                                                                             endOnImage:@"isLikeImageOn" endOffImage:@"likeImage"];
         buttonLike.customID = profileID;
         [buttonLike addTarget:self action:@selector(actionButtonLike:) forControlEvents:UIControlEventTouchUpInside];
+        [self.arraySize addObject:buttonLike];
         [self addSubview:buttonLike];
         
         self.numberLike = [self creationLabelWithFrame:CGRectMake(202.f, 104.f, 20.f, 11.f) endText:likeNumber];
+        [self.arraySize addObject:self.numberLike];
         [self addSubview:self.numberLike];
         
         //Закладки
@@ -74,6 +87,7 @@
                                                                     endOffImage:@"professionImageBookmark"];
         buttonBookmark.customID = profileID;
         [buttonBookmark addTarget:self action:@selector(actionButtonBookmark:) forControlEvents:UIControlEventTouchUpInside];
+        [self.arraySize addObject:buttonBookmark];
         [self addSubview:buttonBookmark];
         
         //
@@ -84,6 +98,7 @@
             
             CustomButton * buttonPhoneOne = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 130.f, 154.5, 30) endName:phoneOne enfImage:@"phoneImageProf"];
             [buttonPhoneOne addTarget:self action:@selector(actionButtonPhoneOne:) forControlEvents:UIControlEventTouchUpInside];
+            [self.arraySize addObject:buttonPhoneOne];
             [self addSubview:buttonPhoneOne];
         }
         NSLog(@"PHONE %ld",phoneTwo.length);
@@ -93,6 +108,7 @@
             
             CustomButton * buttonPhoneTwo = [self createBlueCustonmButtonWithFrame:CGRectMake(158.f, 167.f, 154.5, 30) endName:phoneTwo enfImage:@"phoneImageProf"];
             [buttonPhoneTwo addTarget:self action:@selector(actionButtonPhoneTwo:) forControlEvents:UIControlEventTouchUpInside];
+            [self.arraySize addObject:buttonPhoneTwo];
             [self addSubview:buttonPhoneTwo];
         }
        
@@ -111,6 +127,7 @@
             imageView.image = [UIImage imageNamed:@"mainImageProf"];
             [buttonEmail addSubview:imageView];
             [buttonEmail addTarget:self action:@selector(actionButtonEmail:) forControlEvents:UIControlEventTouchUpInside];
+            [self.arraySize addObject:buttonEmail];
             [self addSubview:buttonEmail];
         }
         
@@ -120,6 +137,19 @@
         borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"AEAEAE"];
         [self addSubview:borderView];
         
+        if (isiPhone6) {
+            for (UIView * view in self.arraySize) {
+                CGRect rectView = view.frame;
+                rectView.origin.x += 40;
+                view.frame = rectView;
+            }
+        } else if (isiPhone6Plus) {
+            for (UIView * view in self.arraySize) {
+                CGRect rectView = view.frame;
+                rectView.origin.x += 60;
+                view.frame = rectView;
+            }
+        }
     }
     return self;
 }

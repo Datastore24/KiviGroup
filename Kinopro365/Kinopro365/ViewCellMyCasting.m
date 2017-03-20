@@ -24,9 +24,12 @@
         
         self.frame = CGRectMake(0.f, height, CGRectGetWidth(mainView.bounds), 130.f);
         
+        CGRect rectTemp = CGRectMake(13.f, 12.f, 84.f, 108.f);
+        if (isiPhone6) {
+            rectTemp = CGRectMake(13.f - 30.f, 12.f, 84.f, 108.f);
+        }
         
-        
-        CustomButton * buttonImage = [self createCustomButtonWithFrame:CGRectMake(13.f, 12.f, 84.f, 108.f) endImageName:imageUrl andProfileID:profileID];
+        CustomButton * buttonImage = [self createCustomButtonWithFrame:rectTemp endImageName:imageUrl andProfileID:profileID];
         [buttonImage addTarget:self action:@selector(actionButtonImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonImage];
         
@@ -68,8 +71,12 @@
         [buttonBookmark addTarget:self action:@selector(actionButtonBookmark:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonBookmark];
         
+        rectTemp = CGRectMake(0.f, 129.f, CGRectGetWidth(mainView.bounds), 1);
+        if (isiPhone6) {
+            rectTemp = CGRectMake(0.f - 30.f, 129.f, CGRectGetWidth(mainView.bounds), 1);
+        }
         
-        UIView * borderView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 129.f, CGRectGetWidth(mainView.bounds), 1)];
+        UIView * borderView = [[UIView alloc] initWithFrame:rectTemp];
         borderView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"AEAEAE"];
         [self addSubview:borderView];
         
@@ -93,6 +100,22 @@
 //            buttonDeleteTwo.customID = castingOfferID;
 //            [buttonDeleteTwo addTarget:self action:@selector(actionButtonDelete:) forControlEvents:UIControlEventTouchUpInside];
 //            [self addSubview:buttonDeleteTwo];
+        }
+        
+        for (UIView * view in  self.subviews) {
+            if (isiPhone6) {
+                if (![view isEqual:buttonImage] || ![view isEqual:borderView]) {
+                    CGRect rectView = view.frame;
+                    rectView.origin.x += 30;
+                    view.frame = rectView;
+                }
+            } else if (isiPhone6Plus) {
+                if (![view isEqual:buttonImage] || ![view isEqual:borderView]) {
+                    CGRect rectView = view.frame;
+                    rectView.origin.x += 50;
+                    view.frame = rectView;
+                }
+            }
         }
         
     }
@@ -130,6 +153,10 @@
                                 //Тут обработка ошибки загрузки изображения
                             }
                         }];
+    
+    
+    
+    
     
     
     return button;

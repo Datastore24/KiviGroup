@@ -36,6 +36,18 @@
     self.mainTableView.backgroundColor = [UIColor clearColor];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    if (isiPhone6) {
+        CGRect tableRect = self.mainTableView.frame;
+        tableRect.origin.y += 25;
+        tableRect.size.height -= 25.f;
+        self.mainTableView.frame = tableRect;
+    } else if (isiPhone6Plus) {
+        CGRect tableRect = self.mainTableView.frame;
+        tableRect.origin.y += 42;
+        tableRect.size.height -= 42.f;
+        self.mainTableView.frame = tableRect;
+    }
+    
     UILabel * customText;
     NSString * stringWriteBarButton;
     if ([[[SingleTone sharedManager] typeView] integerValue] == 0) {

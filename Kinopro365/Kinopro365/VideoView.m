@@ -20,7 +20,13 @@
 - (instancetype)initCustonButtonAccessVideo {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(13.f, 269.f, 296, 123);
+        CGRect videoRect = CGRectMake(13.f, 269.f, 296, 123);
+        if (isiPhone6) {
+            videoRect = CGRectMake(13.f, 269.f, 347.5, 144.5);
+        } else if (isiPhone6Plus) {
+            videoRect = CGRectMake(13.f, 269.f, 379.5, 157.5);
+        }
+        self.frame = videoRect;
         self.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"E6F3FB"];
         self.layer.borderColor = [UIColor hx_colorWithHexRGBAString:@"3F658D"].CGColor;
         self.layer.borderWidth = 2.f;
@@ -46,7 +52,13 @@
 {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(13.f, height, 296, 123);
+        CGRect videoRect = CGRectMake(13.f, height, 296, 123);
+        if (isiPhone6) {
+            videoRect = CGRectMake(13.f, height, 347.5, 144.5);
+        } else if (isiPhone6Plus) {
+            videoRect = CGRectMake(13.f, height, 379.5, 157.5);
+        }
+        self.frame = videoRect;
         self.backgroundColor = [UIColor lightGrayColor];
         
         

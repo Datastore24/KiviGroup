@@ -235,8 +235,14 @@
         
         NSDictionary * dict = [self.arrayData objectAtIndex:i];
         
-        PhotoDetailView * view = [[PhotoDetailView alloc] initWithImage:[dict objectForKey:@"url"] andID:[dict objectForKey:@"id"]
-                                                                andFrame:CGRectMake(5 + 78 * self.x, 15 + 103 * self.y, 75, 100)];
+        CGRect viewRect = CGRectMake(6 + 78 * self.x, 15 + 103 * self.y, 75, 100);
+        if (isiPhone6) {
+            viewRect = CGRectMake(6 + 91.5 * self.x, 15 + 121 * self.y, 88.5, 118);
+        } else if (isiPhone6Plus) {
+            viewRect = CGRectMake(7 + 100 * self.x, 15 + 132.5 * self.y, 97, 129.5);
+        }
+        
+        PhotoDetailView * view = [[PhotoDetailView alloc] initWithImage:[dict objectForKey:@"url"] andID:[dict objectForKey:@"id"] andFrame:viewRect];
         [self.arrayButtons addObject:view];
         
         view.delegate = self;

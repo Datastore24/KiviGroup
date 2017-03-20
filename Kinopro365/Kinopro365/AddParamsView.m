@@ -47,7 +47,7 @@
                 [self addSubview:labelTitle];
         
         
-                CGRect frameObject = CGRectMake(152.f, 0, 142.f, 30.f);
+                CGRect frameObject = CGRectMake(CGRectGetWidth(self.bounds) - (142 + 28), 0, 142.f, 30.f);
         
         
         
@@ -113,7 +113,7 @@
                     
                 } else if ([type isEqualToString:@"Switch"]) {
                     labelTitle.frame = CGRectMake(28.f, 0.f, 160.f, 30.f);
-                    UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(245.f, 0.f, 49.f, 31.f)];
+                    UISwitch * swith = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - (49 + 26), 0.f, 49.f, 31.f)];
                     swith.onTintColor = [UIColor hx_colorWithHexRGBAString:@"5581A8"];
                     [self addSubview:swith];
                     self.mainObject = swith;

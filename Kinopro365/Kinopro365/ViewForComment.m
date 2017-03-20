@@ -29,7 +29,7 @@
                                                     endText:@"Описание и типажи"];
         [self addSubview:titleLabel];
         
-        self.textView = [self createtextViewWithFrame:CGRectMake(14.f, 36, 296.f, 80.f)
+        self.textView = [self createtextViewWithFrame:CGRectMake(14.f, 36, CGRectGetWidth(self.bounds) - 28, 80.f)
                                                       endTextPlaceHolder:@"Какая концепция проекта? Кто нужен\nдля проекта? Что нужно делать?\nСколько платят?"];
         self.textView.scrollEnabled = NO;
         self.textView.delegate = self;
@@ -51,7 +51,7 @@
         titleLabel.numberOfLines = 2;
         [self addSubview:titleLabel];
         
-        self.textViewHide = [self createtextViewWithFrame:CGRectMake(14.f, 54, 296.f, 98.f)
+        self.textViewHide = [self createtextViewWithFrame:CGRectMake(14.f, 54, CGRectGetWidth(self.bounds) - 28, 98.f)
                                                       endTextPlaceHolder:@"Адрес и время проведения кастинга.\nКонтакты для связи.\n(Отправляется в оповещение\nодобренным пользователям)."];
         self.textViewHide.scrollEnabled = NO;
         self.textViewHide.delegate = self;
