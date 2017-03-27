@@ -208,10 +208,15 @@
             sendPhoneNumber = [sendPhoneNumber
                                stringByReplacingOccurrencesOfString:@"+" withString:@""];
 
+        UIDevice *device = [UIDevice currentDevice];
+        
+        NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
+        
             NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
                                      @"2",@"os_type",
                                      sendPhoneNumber,@"phone",
-                                     @"GUID",@"device_token",
+                                     @"GUID", @"push_token",
+                                     currentDeviceId,@"device_id",
                                      self.textFildPassword.text,@"sms_code",nil];
             NSLog(@"PARAMS %@",params);
             [self createActivitiIndicatorAlertWithView];
