@@ -47,8 +47,14 @@
 - (void) loadView {
     [super loadView];
     
-    UILabel * customText = [[UILabel alloc]initWithTitle:@"Добавить кастинг"];
-    self.navigationItem.titleView = customText;
+    UILabel * customText;
+    if(!self.isEditor){
+        customText = [[UILabel alloc]initWithTitle:@"Добавить кастинг"];
+    }else{
+        customText = [[UILabel alloc]initWithTitle:@"Редактировать кастинг"];
+ 
+    }
+        self.navigationItem.titleView = customText;
     
     self.buttonCreate.layer.cornerRadius = 5.f;
     
@@ -225,8 +231,6 @@
     if(!self.isEditor){
         if(self.textFildName.text.length ==0){
             [self showAlertWithMessage:@"Введите название кастинга"];
-        }else if(self.photoID.length == 0){
-            [self showAlertWithMessage:@"Выберите фото кастинга"];
         }else if([unixTimeEndAt isEqualToString:@"0"]){
             [self showAlertWithMessage:@"Выберите дату приема заявок"];
         }else if([self.buttonDate.titleLabel.text isEqualToString:currentDateString]){
@@ -255,11 +259,24 @@
             [self showAlertWithMessage:@"Заполните информацию для утверждения анкет"];
         }else{
             NSMutableDictionary * resultDict = [NSMutableDictionary new];
-            [resultDict setObject:self.photoID forKey:@"logo_id"];
+            
+            
+            if(self.photoID.length != 0){
+                [resultDict setObject:self.photoID forKey:@"logo_id"];
+            }
+            
+         if([[SingleTone sharedManager] countrySearchID].length != 0){
+           [resultDict setObject:[[SingleTone sharedManager] countrySearchID] forKey:@"country_id"];
+         }
+            
+         if([[SingleTone sharedManager] citySearchID].length != 0){
+            [resultDict setObject:[[SingleTone sharedManager] citySearchID] forKey:@"city_id"];
+         }
+            
             [resultDict setObject:self.textFildName.text forKey:@"name"];
             [resultDict setObject:self.viewComment.textView.text forKey:@"description"];
-            [resultDict setObject:[[SingleTone sharedManager] countrySearchID] forKey:@"country_id"];
-            [resultDict setObject:[[SingleTone sharedManager] citySearchID] forKey:@"city_id"];
+            
+            
             [resultDict setObject:unixTimeEndAt forKey:@"end_at"];
             [resultDict setObject:self.buttonType.customID forKey:@"project_type_id"];
             [resultDict setObject:self.buttonNeed.customID forKey:@"profession_id"];
