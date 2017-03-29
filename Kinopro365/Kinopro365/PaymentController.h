@@ -31,6 +31,8 @@
 - (IBAction)actionButtonHistory:(id)sender;
 - (IBAction)actionButtonVK:(id)sender;
 - (IBAction)actionButtonFacebook:(id)sender;
+- (IBAction)actionButtonInstagram:(id)sender;
+- (IBAction)actionButtonTwitter:(id)sender;
 
 - (IBAction)actionButtonMenu:(id)sender;
 @end

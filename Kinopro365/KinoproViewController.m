@@ -139,6 +139,8 @@
     cell.number.text = [dict objectForKey:@"number"];
     if ([cell.number.text isEqualToString:@"0"]) {
         cell.number.alpha = 0.f;
+    } else {
+        cell.number.alpha = 1.f;
     }
 //    cell.arrawImage = [UIImage imageNamed:@""];
     

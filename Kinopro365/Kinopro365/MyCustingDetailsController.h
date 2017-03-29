@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewForComText;
 @property (weak, nonatomic) IBOutlet UILabel *hideTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *comTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titelLabelForHideText;
 
 
 //Колличество на рассмотрении

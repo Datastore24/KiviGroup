@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "professionImageStar.png",
+      "filename" : "star (1) копия@1x.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "professionImageStar@2x.png",
+      "filename" : "star (1) копия@2x.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "professionImageStar@3x.png",
+      "filename" : "star (1) копия@3x.jpg",
       "scale" : "3x"
     }
   ],

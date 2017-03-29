@@ -54,6 +54,8 @@
 - (IBAction)actionButtonVK:(id)sender;
 - (IBAction)actionButtonFacebook:(id)sender;
 - (IBAction)actionButtonApply:(id)sender;
+- (IBAction)actionButtonInstagtam:(id)sender;
+- (IBAction)actionButtonTwitter:(id)sender;
 
 
 @end

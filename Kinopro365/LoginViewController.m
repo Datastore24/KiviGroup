@@ -367,6 +367,14 @@
     NSLog(@"isAuth: YES");
 }
 
+- (IBAction)actionButtonIstagram:(UIButton*)sender {
+    NSLog(@"Авторизация через инстаграм");
+}
+
+- (IBAction)actionButtonTwitter:(UIButton *)sender {
+    NSLog(@"Авторизация через твитер");
+}
+
 
 
 @end

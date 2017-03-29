@@ -385,6 +385,11 @@
                 textViewRect.size.height = textHeight + 25;
             } else {
                 textViewRect.size.height = 80;
+                if (isiPhone6) {
+                    textViewRect.size.height = 96;
+                } else if (isiPhone6Plus) {
+                    textViewRect.size.height = 104;
+                }
             }
             self.textView.frame = textViewRect;
             
