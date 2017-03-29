@@ -37,8 +37,8 @@
 - (IBAction)actionButtonEntrance:(UIButton *)sender;
 - (IBAction)actionButtonFacebook:(UIButton *)sender;
 - (IBAction)actionButtonVK:(UIButton *)sender;
+- (IBAction)actionButtonIstagram:(UIButton*)sender;
+- (IBAction)actionButtonTwitter:(UIButton *)sender;
 - (void) authComplete;
-
-
 
 @end

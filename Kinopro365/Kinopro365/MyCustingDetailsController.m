@@ -39,15 +39,16 @@
     self.secondScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.mainScrollView.bounds), 0, CGRectGetWidth(self.mainScrollView.bounds), CGRectGetHeight(self.mainScrollView.bounds))];
     [self.mainScrollView addSubview:self.secondScrollView];
     
-//    self.heightTextView = self.mainTextView.frame.origin.y;
     self.viewForLabel.layer.cornerRadius = CGRectGetHeight(self.viewForLabel.bounds) / 2;
     self.buttonTextAdd.isBool = YES;
-    
     self.buttonConsideration.userInteractionEnabled = NO;
     
     self.myCastingDetailsModel = [[MyCustingDetailsModel alloc] init];
     self.myCastingDetailsModel.delegate = self;
     [self.myCastingDetailsModel loadCastings:self.castingID];
+    
+    [self actionForAnimMethod];
+    [self actionForAnimMethod];
     
     
     
@@ -296,38 +297,43 @@
 
 - (IBAction)actionButtontextAdd:(CustomButton*)sender {
     
+
+    
+    [self actionForAnimMethod];
+
+}
+
+- (void) actionForAnimMethod {
+    
     CGFloat height;
     
-    if (sender.isBool) {
+    if (self.buttonTextAdd.isBool) {
         height = self.view.bounds.size.height - self.viewForMainText.frame.origin.y;
-        [sender setTitle:@"Свернуть" forState:UIControlStateNormal];
+        [self.buttonTextAdd setTitle:@"Свернуть" forState:UIControlStateNormal];
         //        self.imageHide.center = CGPointMake(9.5f, 3.5f);
         //rotate rect
         self.imageHide.transform = CGAffineTransformMakeRotation(M_PI); //rotation in radians
-        sender.isBool = NO;
+        self.buttonTextAdd.isBool = NO;
     } else {
-        [sender setTitle:@"Развернуть" forState:UIControlStateNormal];
+        [self.buttonTextAdd setTitle:@"Развернуть" forState:UIControlStateNormal];
         self.imageHide.transform = CGAffineTransformMakeRotation(0); //rotation in radians
         height = 0;
-        sender.isBool = YES;
+        self.buttonTextAdd.isBool = YES;
     }
     
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rectForView = self.viewForMainText.frame;
-//        CGRect rectTextView = self.mainTextView.frame;
-//        rectTextView.size.height = height;
         rectForView.size.height = height;
-//        self.mainTextView.frame = rectTextView;
         self.viewForMainText.frame = rectForView;
         self.scrollForText.frame = self.viewForMainText.bounds;
         
         CGFloat heightHideText = [self getLabelHeight:self.hideTextLabel];
         CGRect rectHideView = self.viewForHideText.frame;
         rectHideView.origin.y = 20.f;
-        rectHideView.size.height = heightHideText;
+        rectHideView.size.height = heightHideText + 40;
         self.viewForHideText.frame = rectHideView;
-        self.hideTextLabel.frame = CGRectMake(14.f, 0.f, self.viewForHideText.frame.size.width - 28.f, self.viewForHideText.frame.size.height);
-        
+        self.titelLabelForHideText.frame = CGRectMake(14.f, 10.f, self.viewForHideText.frame.size.width - 28.f, 20);
+        self.hideTextLabel.frame = CGRectMake(14.f, 30.f, self.viewForHideText.frame.size.width - 28.f, self.viewForHideText.frame.size.height - 30);
         
         CGFloat heightComText = [self getLabelHeight:self.comTextLabel];
         CGRect rectComView = self.viewForComText.frame;
@@ -336,8 +342,6 @@
         self.viewForComText.frame = rectComView;
         self.comTextLabel.frame = CGRectMake(14.f, 0.f, self.viewForComText.frame.size.width - 28.f, self.viewForComText.frame.size.height);
         self.scrollForText.contentSize = CGSizeMake(0, CGRectGetMaxY(self.viewForComText.frame) + 10.f);
-
-        
     }];
     
 }

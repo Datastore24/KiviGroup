@@ -87,7 +87,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd.MM"];
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
-    self.labelActively.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    self.labelActively.text = [NSString stringWithFormat:@"Активно до %@ ",stringDate];
     self.labelType.text = [paramsCasting objectForKey:@"name"];
     
     //СКРЫТОЕ ПОЛЕ - НУЖНО ПРОПИСАТЬ ДЛЯ КОГО ОНО ДОСТУПНО
@@ -321,6 +321,14 @@
         }
         
     }];
+}
+
+- (IBAction)actionButtonInstagram:(id)sender {
+    NSLog(@"actionButtonInstagram");
+}
+
+- (IBAction)actionButtonTwitter:(id)sender {
+    NSLog(@"actionButtonTwitter");
 }
 
 #pragma mark - Other

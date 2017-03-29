@@ -63,5 +63,8 @@
 - (IBAction)actionButtonVK:(id)sender;
 - (IBAction)actionButtonFacebook:(id)sender;
 - (IBAction)actionButtonAddBit:(id)sender;
+- (IBAction)actionButtonInstagram:(id)sender;
+- (IBAction)actionButtonTwitter:(id)sender;
+
 
 @end

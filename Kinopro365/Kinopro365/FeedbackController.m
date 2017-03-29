@@ -22,7 +22,7 @@
     self.viewForText.layer.cornerRadius = 5.f;
     self.viewForText.clipsToBounds = YES;
     
-    self.labelCustomPlaceholder.text = @"Если вы нашли ошибку, напишите нам об этом!";
+    self.labelCustomPlaceholder.text = @"Ваши предложения и пожелания. Если вы нашли ошибку, пожалуйста, опишите ее подробнее. Если вы окажетесь первым,  кто нашел  данную ошибку или нам понравится ваша идея по улучшению ресурса - вы получите плюс три месяца  пользования в подарок.";
     
     UILabel * CustomText = [[UILabel alloc]initWithTitle:@"Обратная связь"];
     self.navigationItem.titleView = CustomText;
@@ -76,6 +76,10 @@
 }
 
 - (IBAction)actionButtonSave:(UIButton *)sender {
+    
+    [self showAlertWithMessageWithBlock:@"Ваше сообщение отправлено! Благодарим вас за вклад в развитие ресурса!" block:^{
+        NSLog(@"Едем дальше");
+    }];
     
 
     

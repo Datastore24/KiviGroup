@@ -1377,7 +1377,7 @@
 				TargetAttributes = {
 					776D8CCD1CAD17BF0028929C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = K35V233G6Y;
+						DevelopmentTeam = 8W954C8DEM;
 					};
 					776D8CE61CAD17BF0028929C = {
 						CreatedOnToolsVersion = 7.2;
@@ -1834,6 +1834,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ksenia Parashchenko (K35V233G6Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8W954C8DEM;
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ToBeAWoman;
@@ -1849,6 +1850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ksenia Parashchenko (K35V233G6Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8W954C8DEM;
 				INFOPLIST_FILE = PsychologistIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kivilab.ToBeAWoman;

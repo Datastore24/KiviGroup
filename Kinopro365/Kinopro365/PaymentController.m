@@ -69,6 +69,14 @@
     NSLog(@"actionButtonFacebook");
 }
 
+- (IBAction)actionButtonInstagram:(id)sender {
+    NSLog(@"actionButtonInstagram");
+}
+
+- (IBAction)actionButtonTwitter:(id)sender {
+    NSLog(@"actionButtonTwitter");
+}
+
 - (IBAction)actionButtonMenu:(id)sender {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

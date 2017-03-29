@@ -85,7 +85,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd.MM"];
     NSString *stringDate = [dateFormatter stringFromDate:endDate];
-    self.activeLabel.text = [NSString stringWithFormat:@"Активно до: %@ ",stringDate];
+    self.activeLabel.text = [NSString stringWithFormat:@"Активно до %@ ",stringDate];
     self.cityLabel.text = [NSString stringWithFormat:@"Город: %@",[vacanciesDict objectForKey:@"city_name"]];
     self.counterLabel.text =[NSString stringWithFormat:@"Подано заявок: %@",[vacanciesDict objectForKey:@"count_offer"]];
     self.counterApply = [[vacanciesDict objectForKey:@"count_offer"] integerValue];
@@ -222,6 +222,14 @@
     
     
     
+}
+
+- (IBAction)actionButtonInstagtam:(id)sender {
+    NSLog(@"actionButtonInstagtam");
+}
+
+- (IBAction)actionButtonTwitter:(id)sender {
+    NSLog(@"actionButtonTwitter");
 }
 
 #pragma mark - Animations
