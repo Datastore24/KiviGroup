@@ -2354,7 +2354,7 @@
                                             </label>
                                             <view opaque="NO" alpha="0.44999998807907104" contentMode="center" misplaced="YES" id="gv1-sk-eFg" userLabel="Фигура 2 копия 9">
                                                 <rect key="frame" x="0.0" y="109" width="320" height="1"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="deviceRGB"/>
                                                 <accessibility key="accessibilityConfiguration" hint="" identifier="4143" label=""/>
                                             </view>
@@ -3506,7 +3506,7 @@ Cg
                             </button>
                             <view opaque="NO" alpha="0.44999998807907104" contentMode="center" misplaced="YES" id="kM8-rE-9Av" userLabel="Фигура 2 копия 9">
                                 <rect key="frame" x="0.0" y="180" width="320" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="deviceRGB"/>
                                 <accessibility key="accessibilityConfiguration" hint="" identifier="4143" label=""/>
                             </view>
@@ -4265,11 +4265,6 @@ Cgo
                                     </imageView>
                                 </subviews>
                             </scrollView>
-                            <view contentMode="scaleToFill" misplaced="YES" id="7iZ-Lz-0Xx">
-                                <rect key="frame" x="0.0" y="159" width="320" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
