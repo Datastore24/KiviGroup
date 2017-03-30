@@ -22,10 +22,10 @@
     self.viewForText.layer.cornerRadius = 5.f;
     self.viewForText.clipsToBounds = YES;
     
-    self.labelCustomPlaceholder.text = @"Ваши предложения и пожелания. Если вы нашли ошибку, пожалуйста, опишите ее подробнее. Если вы окажетесь первым,  кто нашел  данную ошибку или нам понравится ваша идея по улучшению ресурса - вы получите плюс три месяца  пользования в подарок.";
+    self.labelCustomPlaceholder.text = @"Ваши предложения и пожелания. Если вы нашли ошибку, пожалуйста, опишите ее подробнее. Если вы окажетесь первым,  кто нашел  данную ошибку или нам понравится ваша идея по улучшению ресурса - в знак нашей благодарности вы получите плюс три месяца  пользования в подарок.";
     
     CGRect rectLabel = self.labelCustomPlaceholder.frame;
-    if (isiPhone6) {
+    if (isiPhone6 || isiPhone6Plus) {
         rectLabel.origin.y -= 10;
         self.labelCustomPlaceholder.frame = rectLabel;
     }

@@ -79,13 +79,37 @@
 
         [self addSubview:avatarImageView];
         
-        UILabel * labelName = [self createLabelWithName:name andFrame:CGRectMake(110.f, 11.f, 200, 17.75f)];
+        CGRect rectLabel = CGRectMake(110.f, 11.f, 200, 17.75f);
+        if (isiPhone6) {
+            rectLabel = CGRectMake(100.f, 11.f, 200, 17.75f);
+        } else if (isiPhone6Plus) {
+            
+        }
+        UILabel * labelName = [self createLabelWithName:name andFrame:rectLabel];
         [self addSubview:labelName];
-        UILabel * labelCountry = [self createLabelWithName:country andFrame:CGRectMake(110.f, 11.f + 17.75f, 200, 17.75f)];
+        rectLabel = CGRectMake(110.f, 11.f + 17.75f, 200, 17.75f);
+        if (isiPhone6) {
+            rectLabel = CGRectMake(100.f, 11.f + 17.75f + 5, 200, 17.75f);
+        } else if (isiPhone6Plus) {
+            rectLabel = CGRectMake(110.f, 11.f + (17.75f + 10), 200, 17.75f);
+        }
+        UILabel * labelCountry = [self createLabelWithName:country andFrame:rectLabel];
         [self addSubview:labelCountry];
-        UILabel * labelAge = [self createLabelWithName:age andFrame:CGRectMake(110.f, 11.f + 17.75f * 2, 200, 17.75f)];
+        rectLabel = CGRectMake(110.f, 11.f + 17.75f * 2, 200, 17.75f);
+        if (isiPhone6) {
+            rectLabel = CGRectMake(100.f, 11.f + (17.75f + 5) * 2, 200, 17.75f);
+        } else if (isiPhone6Plus) {
+            rectLabel = CGRectMake(110.f, 11.f + (17.75f + 10) * 2, 200, 17.75f);
+        }
+        UILabel * labelAge = [self createLabelWithName:age andFrame:rectLabel];
         [self addSubview:labelAge];
-        UILabel * labelGrowth = [self createLabelWithName:growth andFrame:CGRectMake(110.f, 11.f + 17.75f * 3, 200, 17.75f)];
+        rectLabel = CGRectMake(110.f, 11.f + 17.75f * 3, 200, 17.75f);
+        if (isiPhone6) {
+            rectLabel = CGRectMake(100.f, 11.f + (17.75f + 5) * 3, 200, 17.75f);
+        } else if (isiPhone6Plus) {
+            rectLabel = CGRectMake(110.f, 11.f + (17.75f + 10) * 3, 200, 17.75f);
+        }
+        UILabel * labelGrowth = [self createLabelWithName:growth andFrame:rectLabel];
         [self addSubview:labelGrowth];
         
         
@@ -100,6 +124,11 @@
         
         CustomButton * buttonRewar = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonRewar.frame = CGRectMake(113.f, 97.f, 13.f, 20.f);
+        if (isiPhone6) {
+            buttonRewar.frame = CGRectMake(103.f, 117.f, 13.f, 20.f);
+        } else if (isiPhone6Plus) {
+            buttonRewar.frame = CGRectMake(103.f, 130.f, 13.f, 20.f);
+        }
         NSString * imageReward;
         if (isReward) {
             imageReward = @"isRewarImageOn";
@@ -111,11 +140,22 @@
         [self addSubview:buttonRewar];
         
 
-        self.labelNumberStars = [self createLabelWithName:starsNumber andFrame:CGRectMake(134.f, 102.f, 20.f, 12.f)];
+        CGRect rectLabelStar = CGRectMake(134.f, 102.f, 20.f, 12.f);
+        if (isiPhone6) {
+            rectLabelStar = CGRectMake(124.f, 122.f, 20.f, 12.f);
+        } else if (isiPhone6Plus) {
+            rectLabelStar = CGRectMake(124.f, 135.f, 20.f, 12.f);
+        }
+        self.labelNumberStars = [self createLabelWithName:starsNumber andFrame:rectLabelStar];
         [self addSubview:self.labelNumberStars];
         
         CustomButton * buttonLike = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonLike.frame = CGRectMake(179.f, 102.f, 15.f, 13.f);
+        if (isiPhone6) {
+            buttonLike.frame = CGRectMake(179.f, 122.f, 15.f, 13.f);
+        } else if (isiPhone6Plus) {
+            buttonLike.frame = CGRectMake(179.f, 135.f, 15.f, 13.f);
+        }
         NSString * imageLike;
         if (isLike) {
             imageLike = @"isLikeImageOn";
@@ -126,11 +166,22 @@
         [buttonLike addTarget:self action:@selector(actionButtonLike:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:buttonLike];
         
-        self.labelNumberLike = [self createLabelWithName:likeNumber andFrame:CGRectMake(202.f, 102.f, 20.f, 12.f)];
+        CGRect rectlabelLike = CGRectMake(202.f, 102.f, 20.f, 12.f);
+        if (isiPhone6) {
+            rectlabelLike = CGRectMake(202.f, 122.f, 20.f, 12.f);
+        } else if (isiPhone6Plus) {
+            rectlabelLike = CGRectMake(202.f, 135.f, 20.f, 12.f);
+        }
+        self.labelNumberLike = [self createLabelWithName:likeNumber andFrame:rectlabelLike];
         [self addSubview:self.labelNumberLike];
         
         CustomButton * buttonBookmark = [CustomButton buttonWithType:UIButtonTypeCustom];
         buttonBookmark.frame =CGRectMake(288.f, 97.f, 19.f, 20.f);
+        if (isiPhone6) {
+            buttonBookmark.frame =CGRectMake(288.f, 117.f, 19.f, 20.f);
+        } else if (isiPhone6Plus) {
+            buttonBookmark.frame =CGRectMake(288.f, 130.f, 19.f, 20.f);
+        }
          buttonBookmark.customID = profileID;
         
         if([isFavourite integerValue] == 0){

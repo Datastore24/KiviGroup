@@ -39,6 +39,9 @@
     
     [self.shadowView.layer setCornerRadius:5.0f];
     
+    self.userPhoto.layer.borderWidth = 0.3f;
+    self.userPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+    
     //-------------------------------------
     if (isiPhone6) {
         for (UIImageView * imageView in self.arrayImages) {
@@ -46,6 +49,10 @@
             rectImage.size.width += 5.f;
             imageView.frame = rectImage;
         }
+        
+        CGRect shadowRect = self.shadowView.frame;
+        shadowRect.size.width = 105.f;
+        self.shadowView.frame = shadowRect;
         
         CGRect rectAvatar = self.userPhoto.frame;
         rectAvatar.size.width = 105.f;
@@ -87,6 +94,10 @@
         CGRect rectAvatar = self.userPhoto.frame;
         rectAvatar.size.width = 120.f;
         self.userPhoto.frame = rectAvatar;
+        
+        CGRect shadowRect = self.shadowView.frame;
+        shadowRect.size.width = 120.f;
+        self.shadowView.frame = shadowRect;
         
         for (UIView * view in self.collectionSide) {
             CGRect rectSide = view.frame;

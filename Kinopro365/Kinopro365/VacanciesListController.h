@@ -16,7 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *buttonCollection;
 
+@property (weak, nonatomic) IBOutlet UIView *borderView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
