@@ -214,11 +214,11 @@
         
         
         for (int i = 0; i < tempArray.count; i++) {
-            ViewForCastingParams * view = [[ViewForCastingParams alloc] initWithMainView:self.viewForParams endHeight:0 + 16 * i endText:[tempArray objectAtIndex:i]];
+            ViewForCastingParams * view = [[ViewForCastingParams alloc] initWithMainView:self.viewForParams endHeight:0 + 20 * i endText:[tempArray objectAtIndex:i]];
             [self.viewForParams addSubview:view];
         }
         CGRect newRect = self.viewForParams.frame;
-        newRect.size.height = 20 + 16 * tempArray.count;
+        newRect.size.height = 20 + 20 * tempArray.count;
         self.viewForParams.frame = newRect;
         
         self.heightForAnimation = self.viewForParams.frame.size.height - self.starHeightViewForParams;

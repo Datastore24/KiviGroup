@@ -75,13 +75,13 @@
              CGRect rectView = view.frame;
              rectView.size.width = self.view.frame.size.width;
              rectView.size.height = 35.f;
-             rectView.origin.y = 20 + 58.3f * i;
+             rectView.origin.y = 20 + (58.3f + 5) * i;
              view.frame = rectView; 
          } else if (isiPhone6Plus) {
              CGRect rectView = view.frame;
              rectView.size.width = self.view.frame.size.width;
              rectView.size.height = 40.f;
-             rectView.origin.y = 20 + 66.5f * i;
+             rectView.origin.y = 20 + (66.5f + 5) * i;
              view.frame = rectView;
          }
              

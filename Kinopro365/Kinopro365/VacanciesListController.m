@@ -38,14 +38,45 @@
     
     if (isiPhone6) {
         CGRect tableRect = self.mainTableView.frame;
-        tableRect.origin.y += 25;
-        tableRect.size.height -= 25.f;
+        tableRect.origin.y += 11;
+        tableRect.size.height -= 11.f;
         self.mainTableView.frame = tableRect;
+        
+        
+        CGRect rectLabel = self.labelListVacancies.frame;
+        rectLabel.origin.y += 2;
+        self.labelListVacancies.frame = rectLabel;
+        
+        for (UIView * view in self.buttonCollection) {
+            CGRect rectButton = view.frame;
+            rectButton.origin.y += 4;
+            view.frame = rectButton;
+        }
+        
+        CGRect topViewFrame = self.topView.frame;
+        topViewFrame.origin.y -= 14;
+        self.topView.frame = topViewFrame;
+        
+        
     } else if (isiPhone6Plus) {
         CGRect tableRect = self.mainTableView.frame;
-        tableRect.origin.y += 42;
-        tableRect.size.height -= 42.f;
+        tableRect.origin.y += 24;
+        tableRect.size.height -= 24.f;
         self.mainTableView.frame = tableRect;
+        
+        CGRect rectLabel = self.labelListVacancies.frame;
+        rectLabel.origin.y += 2;
+        self.labelListVacancies.frame = rectLabel;
+        
+        for (UIView * view in self.buttonCollection) {
+            CGRect rectButton = view.frame;
+            rectButton.origin.y += 4;
+            view.frame = rectButton;
+        }
+        
+        CGRect topViewFrame = self.topView.frame;
+        topViewFrame.origin.y -= 18;
+        self.topView.frame = topViewFrame;
     }
     
     UILabel * customText;
