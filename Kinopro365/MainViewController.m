@@ -434,7 +434,7 @@
     if(string == [NSNull null]){
         return @"";
     }else{
-        return string;
+        return [NSString stringWithFormat:@"%@",string];
     }
 }
 

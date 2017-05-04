@@ -330,7 +330,7 @@ replacementString:(NSString *)string {
             if( stringIsPublicContact.length == 0){
               userTable.is_public_contacts = @"0";
             }else{
-              userTable.is_public_contacts = [userInfo objectForKey:@"is_public_contacts"];
+              userTable.is_public_contacts = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"is_public_contacts"]];
             }
             
             userTable.last_name = [self checkIdToNull:
@@ -345,7 +345,8 @@ replacementString:(NSString *)string {
         
         if([[userInfo objectForKey:@"photo"] isKindOfClass:[NSDictionary class]]){
             if([userInfo objectForKey:@"photo"] != [NSNull null ]){
-                userTable.photo = [[userInfo objectForKey:@"photo"] objectForKey:@"id"];
+                userTable.photo =[self checkIdToNull:
+                                  [[userInfo objectForKey:@"photo"] objectForKey:@"id"]];
             }else{
                 userTable.photo = @"";
             }

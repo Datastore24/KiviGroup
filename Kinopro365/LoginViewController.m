@@ -144,7 +144,7 @@
         sendPhoneNumber = [sendPhoneNumber
                                         stringByReplacingOccurrencesOfString:@")" withString:@""];
         sendPhoneNumber = [sendPhoneNumber
-                                   stringByReplacingOccurrencesOfString:@"+" withString:@""];
+                                   stringByReplacingOccurrencesOfString:@" " withString:@""];
                                    NSLog(@"PHONE %@",self.textFildPhone.text);
         
         NSDictionary * params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -206,7 +206,7 @@
             sendPhoneNumber = [sendPhoneNumber
                                stringByReplacingOccurrencesOfString:@")" withString:@""];
             sendPhoneNumber = [sendPhoneNumber
-                               stringByReplacingOccurrencesOfString:@"+" withString:@""];
+                               stringByReplacingOccurrencesOfString:@" " withString:@""];
 
         UIDevice *device = [UIDevice currentDevice];
         
