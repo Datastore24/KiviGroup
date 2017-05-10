@@ -300,7 +300,7 @@ replacementString:(NSString *)string {
         
         if([[userInfo objectForKey:@"city"] isKindOfClass:[NSDictionary class]]){
             if([userInfo objectForKey:@"city"] != [NSNull null ]){
-             userTable.city_id = [[userInfo objectForKey:@"city"] objectForKey:@"id"];
+             userTable.city_id = [NSString stringWithFormat:@"%@",[[userInfo objectForKey:@"city"] objectForKey:@"id"]];
             }else{
                 userTable.city_id = @"";
             }
@@ -310,7 +310,7 @@ replacementString:(NSString *)string {
         
         if([[userInfo objectForKey:@"country"] isKindOfClass:[NSDictionary class]]){
             if([userInfo objectForKey:@"country"] != [NSNull null ]){
-                userTable.country_id = [[userInfo objectForKey:@"country"] objectForKey:@"id"];
+                userTable.country_id = [NSString stringWithFormat:@"%@",[[userInfo objectForKey:@"country"] objectForKey:@"id"]];
             }else{
                 userTable.city_id = @"";
             }
@@ -371,14 +371,14 @@ replacementString:(NSString *)string {
                 for(int i = 0; i< languages.count; i++){
                     NSDictionary * langDict = [languages objectAtIndex:i];
                     
-                    NSDictionary * langFromArray = [self getLanguageNameByID:[langDict objectForKey:@"language_id"]];
+                    NSDictionary * langFromArray = [self getLanguageNameByID:[NSString stringWithFormat:@"%@",[langDict objectForKey:@"language_id"]]];
                     
                     NSString * resultName = [NSString stringWithFormat:@"ex_languages[%@]",[langDict objectForKey:@"language_id"]];
                     
                     NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                            resultName,@"additionalID",
                                            [langFromArray objectForKey:@"name"],@"additionalName",
-                                           [langDict objectForKey:@"language_id"],@"additionalValue",
+                                           [NSString stringWithFormat:@"%@",[langDict objectForKey:@"language_id"]],@"additionalValue",
                                            @"", @"additionalNameValue",nil];
                     
                     [resultLanguages addObject:dict];

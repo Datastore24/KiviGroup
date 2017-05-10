@@ -155,9 +155,9 @@
                                              andAgeText:[NSString stringWithFormat:@"Возраст: %@",
                                                          [itemDict objectForKey:@"age"]]
                                              andGrowthText:@""
-                                             andStarsNumber:[itemDict objectForKey:@"count_rewards"]
-                                             andLikeNumber:[itemDict objectForKey:@"count_likes"]
-                                             andProfileID:[itemDict objectForKey:@"id"]
+                                             andStarsNumber:[NSString stringWithFormat:@"%@",[itemDict objectForKey:@"count_rewards"]]
+                                             andLikeNumber:[NSString stringWithFormat:@"%@",[itemDict objectForKey:@"count_likes"]]
+                                             andProfileID:[NSString stringWithFormat:@"%@",[itemDict objectForKey:@"id"]]
                                              andIsFavourite:[NSString stringWithFormat:@"%@", [itemDict objectForKey:@"is_favourite"]] endReward:NO endLike:NO];
             
             if (isiPhone6) {
